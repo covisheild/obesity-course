@@ -1,0 +1,196 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://obesity-expertise-course/schema/concept.schema.json",
+  "title": "Concept record",
+  "description": "One teachable concept. The atomic unit of the course. Authored once, assembled into per-subject booklets and, later, into interleaving problem sets. Field order here is the order the fields are authored in.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "concept_id", "subject", "rung", "sequence", "name", "concept_type",
+    "clusters", "definition", "simplified_explanation", "illustration",
+    "must_know", "provenance", "review"
+  ],
+  "properties": {
+    "concept_id": {
+      "type": "string",
+      "pattern": "^(S[0-9]{2}|B0)-R[0-9]-C[0-9]{2}$",
+      "description": "Permanent identifier, never reused and never renumbered even if the concept moves position. Form: SUBJECT-RUNG-CONCEPT, e.g. S01-R1-C03. Book 0 concepts use B0-R0-Cnn. Interleaving problems reference concepts by this ID, so a change here silently breaks a problem set."
+    },
+    "subject": {
+      "type": "string",
+      "pattern": "^(S[0-9]{2}|B0)$",
+      "description": "Subject ID from the frozen v3 map, or B0 for Book 0."
+    },
+    "rung": {
+      "type": "integer", "minimum": 0, "maximum": 4,
+      "description": "Rung number within the subject. 0 is reserved for Book 0 ground-floor material, which belongs to no rung."
+    },
+    "sequence": {
+      "type": "integer", "minimum": 1,
+      "description": "Teaching order within the rung. Contiguous, and re-orderable without touching concept_id."
+    },
+    "name": { "type": "string", "maxLength": 120, "description": "Short noun phrase, as it appears as a section heading." },
+
+    "concept_type": {
+      "enum": ["derivable", "empirical", "institutional"],
+      "description": "Governs the sourcing rule, the treatment and the review clock. derivable: can be built from the reader floor by argument; anchor to a canonical text. empirical: cannot be derived, must be asserted with evidence; cite the primary study or a named systematic review, and state what would overturn it. institutional: true because a body decided it; cite the instrument itself and stamp an as-of date."
+    },
+    "clusters": {
+      "type": "array", "minItems": 1, "items": { "type": "string" },
+      "description": "Thematic cluster keys from clusters.yml. Drives composition of the interleaving problem sets. A concept may sit in more than one."
+    },
+    "ground_floor_deps": {
+      "type": "array", "items": { "type": "string", "pattern": "^B0-R0-C[0-9]{2}$" },
+      "description": "Book 0 concepts this concept requires. Determines what the booklet's micro-refresher must cover and is checked by the build."
+    },
+    "concept_deps": {
+      "type": "array", "items": { "type": "string", "pattern": "^(S[0-9]{2}|B0)-R[0-9]-C[0-9]{2}$" },
+      "description": "Other concept records assumed by this one. Within a subject these must be at the same or a lower rung; the build fails on a forward reference, which is what enforces the unbroken chain."
+    },
+
+    "definition": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["text", "references"],
+      "description": "Technically accurate statement of the concept. Mandatory for every concept.",
+      "properties": {
+        "text": { "type": "string", "description": "The definition. Precise enough to survive a specialist reading it; no hedging, no simplification. Simplification belongs in the next field." },
+        "references": {
+          "type": "array", "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["citekey", "kind", "locator", "verified"],
+            "properties": {
+              "citekey": { "type": "string", "description": "BibTeX key in references/library.bib." },
+              "kind": { "enum": ["textbook", "primary", "systematic_review", "consensus_statement", "instrument", "dataset", "guideline"],
+                        "description": "Must be consistent with concept_type: derivable takes textbook; empirical takes primary or systematic_review; institutional takes instrument, guideline or consensus_statement." },
+              "locator": { "type": "string", "description": "Page, section, clause or table where the claim is actually located. Not optional: this is what makes the citation checkable." },
+              "verified": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": ["resolved_id", "opened", "claim_located", "checked_on"],
+                "properties": {
+                  "resolved_id": { "type": "string", "description": "DOI, ISBN, statute number or stable URL." },
+                  "opened": { "type": "boolean", "description": "The source was obtained and read. Never set true without doing so." },
+                  "claim_located": { "type": "boolean", "description": "The specific claim was found at the locator." },
+                  "checked_on": { "type": "string", "format": "date" },
+                  "note": { "type": "string", "description": "Used when a source could not be obtained, or when it says something subtly different from the claim." }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+
+    "simplified_explanation": {
+      "type": "string",
+      "description": "The same concept rebuilt from the reader floor, assuming no medicine and no remembered mathematics. Mandatory for every concept. Permitted to be loose where the definition is exact; not permitted to be wrong."
+    },
+
+    "illustration": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["body", "analogy_breaks_when"],
+      "description": "Worked example, case, calculation or analogy. Mandatory for every concept. Indian context wherever the concept has Indian specificity; see STYLE.md.",
+      "properties": {
+        "body": { "type": "string" },
+        "analogy_breaks_when": { "type": "string", "description": "The point at which this illustration stops being true. Required, including for numerical examples, where it states the range of validity. An illustration without a stated failure boundary teaches a misconception with the concept." },
+        "numbers": {
+          "type": "array",
+          "description": "Every quoted figure, so the numbers register can check it without re-reading prose.",
+          "items": {
+            "type": "object", "additionalProperties": false,
+            "required": ["value", "unit", "citekey"],
+            "properties": { "value": { "type": "string" }, "unit": { "type": "string" }, "citekey": { "type": "string" }, "as_of": { "type": "string" } }
+          }
+        }
+      }
+    },
+
+    "must_know": {
+      "type": "array",
+      "minItems": 1,
+      "description": "Must-know points for the reader. Mandatory for every concept; the number varies with what the concept demands, not with a template. Rendered under the heading 'Must know points for you'. Admission test: the point must change something the reader would do, say, accept or refuse as the expert this course is building. A true, interesting statement that changes nothing belongs in the illustration or in nothing.",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["point", "bearing"],
+        "properties": {
+          "point": { "type": "string", "description": "One point, one paragraph, written so the consequence is inside it. Not a heading with the content implied." },
+          "bearing": {
+            "enum": ["clinical", "methodological", "policy", "teaching", "public"],
+            "description": "Which capacity of the expert this point arms. clinical: changes what you do or say in front of a patient. methodological: changes what you accept as evidence, or how you design or critique a study. policy: changes what you say in a consultation, committee or testimony. teaching: changes what you teach or how you correct a trainee. public: changes what you say to a journalist or in public. The build tallies these so a corpus tilted entirely one way is visible."
+          },
+          "kind": {
+            "enum": ["misconception", "number", "india_deviation", "boundary", "trap", "consequence", "dispute", "move"],
+            "description": "Optional tag, for the author's discipline and for composing revision sets. misconception: the error a reader is most likely to make, stated as the error. number: a figure worth holding in your head, with unit and source. india_deviation: how this differs in India, or the explicit statement that it does not. boundary: what this does not cover, so it is not over-applied. trap: the viva, reviewer or journalist question that catches someone who half-knows this. consequence: what follows in practice. dispute: what is genuinely contested, and by whom. move: a concrete thing to do, in the order to do it. The build warns when a concept has no misconception and no trap."
+          },
+          "refs": {
+            "type": "array",
+            "items": { "type": "string" },
+            "description": "Citekeys, where the point carries a figure or an institutional fact that needs one."
+          }
+        }
+      }
+    },
+
+    "exercises": {
+      "type": "array",
+      "description": "Present where the rung's skills or build target require practice. Optional at concept level; the rung as a whole must cover all its skills. Type taxonomy is fixed in STYLE.md.",
+      "items": {
+        "type": "object", "additionalProperties": false,
+        "required": ["type", "prompt", "answer"],
+        "properties": {
+          "type": { "enum": ["retrieval", "calculation", "interpretation", "critique", "teaching", "design", "build", "integrative"],
+                    "description": "integrative is reserved for the interleaving booklets and is not authored inside a subject booklet." },
+          "prompt": { "type": "string" },
+          "answer": { "type": "string", "description": "Worked reasoning, not just the result. Rendered to the booklet appendix, never beside the prompt." },
+          "skill_ref": { "type": "string", "description": "The rung skill from v3 this exercise demonstrates, so skill coverage can be checked mechanically." },
+          "confidence_first": { "type": "boolean", "description": "If true, the reader is asked to record a numerical confidence before revealing the answer. Trains S59 calibration." }
+        }
+      }
+    },
+
+    "retrieval_items": {
+      "type": "array",
+      "description": "Two or three question-answer pairs per concept, emitted for a spaced-repetition system. Authored while writing, because extracting them later means re-reading everything.",
+      "items": {
+        "type": "object", "additionalProperties": false,
+        "required": ["q", "a"],
+        "properties": { "q": { "type": "string" }, "a": { "type": "string" } }
+      }
+    },
+
+    "provenance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["map_version_id", "outcome_refs"],
+      "description": "Ties the concept back to the frozen map. The map states outcomes; this record is part of how a reader reaches them.",
+      "properties": {
+        "map_version_id": { "type": "string", "description": "Version id of the frozen subject map this was derived against." },
+        "outcome_refs": { "type": "array", "minItems": 1, "items": { "type": "string" },
+                          "description": "Which rung outcome statements, skills or gate this concept serves. A concept serving none is out of scope." },
+        "bridge_ref": { "type": "array", "items": { "type": "string" },
+                        "description": "Which Intermediate-rung presuppositions this concept discharges. Populated by the bridge-sufficiency test." }
+      }
+    },
+
+    "review": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["stability", "trigger"],
+      "description": "The review clock. Falls out of concept_type and is what lets the build report expired content.",
+      "properties": {
+        "stability": { "enum": ["long", "medium", "short"], "description": "long: derivable, five-yearly. medium: empirical, two to three years. short: institutional, event-driven." },
+        "trigger": { "type": "string", "description": "For long and medium, a date. For short, the event: 'next FSSAI notification', 'next GST Council revision', 'next NFHS round', 'next ICMR-NIN RDA revision'." },
+        "as_of": { "type": "string", "description": "Date the content was true. Mandatory for institutional concepts; printed in the booklet." },
+        "last_reviewed": { "type": "string", "format": "date" }
+      }
+    },
+
+    "status": { "enum": ["stub", "drafted", "referenced", "verified", "released"], "default": "stub",
+                "description": "stub: generated spine only. drafted: prose written. referenced: citations attached. verified: citations opened and claims located. released: published in a booklet edition." }
+  }
+}

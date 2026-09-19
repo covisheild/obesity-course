@@ -1,0 +1,2523 @@
+{
+ "source_map_version_id": "fc19c8bc-a216-4131-99fb-ebe3f19cec4a",
+ "subjects": {
+  "S01": {
+   "id": "S01",
+   "title": "Energy balance and dynamic weight-change modelling",
+   "target": "Expert",
+   "n_rungs": 4,
+   "part": 1,
+   "part_name": "Physical and mathematical foundations",
+   "prereq": [],
+   "rung1": {
+    "level": "Introductory",
+    "concepts": [
+     "Body fat is stored chemical energy and energy is conserved, so fat mass changes if and only if intake differs from expenditure.",
+     "The units: kcal and kJ, and the order of magnitude of a day of intake, a day of expenditure and a kilogram of fat.",
+     "Intake and expenditure are outputs of a regulated system, not dials you set \u2014 restrict intake and expenditure falls."
+    ],
+    "skills": [
+     "State the first law as it applies to the body, in one sentence, without implying it names a lever.",
+     "Spot a claim that violates conservation of energy and say so."
+    ],
+    "build": "A one-page written explanation of why energy balance is arithmetically true and practically insufficient, tested on a non-medical reader.",
+    "gate": "You can explain the accounting identity in three minutes without presenting it as a mechanism or a moral argument."
+   },
+   "rung2": {
+    "level": "Intermediate",
+    "concepts": [
+     "Energy densities of fat and lean tissue (roughly 39.5 and 7.6 MJ/kg) and why the difference matters for interpreting a weight change.",
+     "Why the static 3500 kcal per pound rule is wrong: a deficit changes body mass, which changes maintenance requirement.",
+     "Weight approaching a new asymptote rather than declining linearly, stated qualitatively.",
+     "Gross combustion energy versus digestible versus metabolisable energy; Atwater factors as empirical approximations that fail for whole nuts, resistant starch and high-fibre foods."
+    ],
+    "skills": [
+     "Critique a published weight-loss projection that assumes linear decline.",
+     "Read Hall's dynamic energy balance papers and follow the argument without the mathematics."
+    ],
+    "build": "An annotated teardown of one popular weight-loss claim, identifying which step breaks and why.",
+    "gate": "You can explain why weight loss plateaus without invoking willpower failure or damaged metabolism."
+   }
+  },
+  "S02": {
+   "id": "S02",
+   "title": "Mathematics for modelling and inference",
+   "target": "Advanced",
+   "n_rungs": 3,
+   "part": 1,
+   "part_name": "Physical and mathematical foundations",
+   "prereq": [],
+   "rung1": {
+    "level": "Introductory",
+    "concepts": [
+     "Derivatives as rates and integrals as accumulation, applied to body stores rather than to abstract functions.",
+     "What a matrix is and what multiplying by one does; vectors as data rows.",
+     "Random variable, expectation and variance as mathematical objects distinct from their statistical use.",
+     "What an equilibrium of a dynamic system is."
+    ],
+    "skills": [
+     "Read an equation in a methods section and say what each symbol denotes.",
+     "Follow a derivation in a paper without skipping to the result."
+    ],
+    "build": "A worked notebook of ten equations taken from papers you have read, each annotated in words.",
+    "gate": "You no longer skip equations when reading."
+   },
+   "rung2": {
+    "level": "Intermediate",
+    "concepts": [
+     "Partial derivatives, and a regression coefficient understood as a partial derivative.",
+     "Linear algebra geometrically: projection, rotation, rank and rank deficiency; collinearity in nutrition data as a rank problem.",
+     "Solving simple ODEs analytically; direction fields; stability of an equilibrium in one dimension.",
+     "Maximum likelihood as an optimisation problem; the log-likelihood surface and its curvature.",
+     "Numerical methods: why a solver diverges, step size and stability, numerical integration."
+    ],
+    "skills": [
+     "Derive a maximum likelihood estimator for a simple model and explain its standard error from curvature.",
+     "Diagnose a collinearity problem as rank deficiency rather than as a variance-inflation number."
+    ],
+    "build": "A dietary pattern analysis where you show, in linear algebra terms, why one component was unstable.",
+    "gate": "You can explain to a colleague what their regression coefficient is a derivative of."
+   }
+  },
+  "S03": {
+   "id": "S03",
+   "title": "Probability and statistical inference",
+   "target": "Expert",
+   "n_rungs": 4,
+   "part": 2,
+   "part_name": "Statistical inference and modelling",
+   "prereq": [
+    "S02"
+   ],
+   "rung1": {
+    "level": "Introductory",
+    "concepts": [
+     "Probability axioms, conditional probability, independence, Bayes' theorem.",
+     "Random variables, expectation, variance, covariance; the common distributions and what generates each.",
+     "The difference between a population parameter, a sample statistic and an estimator."
+    ],
+    "skills": [
+     "Compute and interpret a conditional probability, including the base-rate case that defeats most clinicians.",
+     "Say, for any reported number, whether it is a parameter, an estimate or a prediction."
+    ],
+    "build": "A teaching handout on Bayes' theorem built around a diagnostic-testing example from your own clinic.",
+    "gate": "You can correct the prosecutor's fallacy in a colleague's reasoning on the spot."
+   },
+   "rung2": {
+    "level": "Intermediate",
+    "concepts": [
+     "The sampling distribution as the central object of frequentist inference, not as a technicality.",
+     "What a confidence interval is and precisely is not; what a p-value is conditional on.",
+     "Why failure to reject is not evidence of absence.",
+     "Likelihood: construction, maximisation, and the likelihood ratio test."
+    ],
+    "skills": [
+     "Simulate a sampling distribution and use the simulation as your explanation rather than a formula.",
+     "State, for any published analysis, exactly what the reported interval is conditional on.",
+     "Identify a paper that has claimed absence of effect from a non-significant result."
+    ],
+    "build": "A simulation-based teaching notebook that builds a sampling distribution from scratch, used in one resident session.",
+    "gate": "You never again describe a 95% interval as containing the true value with 95% probability."
+   }
+  },
+  "S04": {
+   "id": "S04",
+   "title": "Regression modelling for health outcomes",
+   "target": "Expert",
+   "n_rungs": 4,
+   "part": 2,
+   "part_name": "Statistical inference and modelling",
+   "prereq": [
+    "S03"
+   ],
+   "rung1": {
+    "level": "Introductory",
+    "concepts": [
+     "Linear regression as a conditional mean; what a coefficient means and what it does not.",
+     "Binary outcomes and why linear regression misbehaves on them; the logistic link.",
+     "Odds ratio, risk ratio and risk difference as three different numbers."
+    ],
+    "skills": [
+     "Fit and interpret linear and logistic models and state the scale of every coefficient.",
+     "Convert between effect measures and say when the conversion is not legitimate."
+    ],
+    "build": "A reanalysis of one published table reporting odds ratios, restated as absolute risks for a policy reader.",
+    "gate": "You never report an odds ratio to a non-technical audience without the absolute risk beside it."
+   },
+   "rung2": {
+    "level": "Intermediate",
+    "concepts": [
+     "The GLM as one object with three parts \u2014 random component, linear predictor, link \u2014 rather than a list of named tests.",
+     "Poisson and negative binomial models; overdispersion and when it forces your hand.",
+     "Time-to-event basics: hazard, censoring, Kaplan-Meier, and why person-time is not the same as persons.",
+     "Continuous exposures: why categorising throws away information and manufactures thresholds."
+    ],
+    "skills": [
+     "Choose the right GLM family and link for a given outcome and defend the choice.",
+     "Fit a Cox model and check proportional hazards.",
+     "Model a BMI exposure with splines and present the exposure-response curve."
+    ],
+    "build": "One analysis of your own in which the exposure is modelled continuously and the threshold question is answered from the curve.",
+    "gate": "You can explain to a colleague why their categorised BMI analysis found a threshold that is not there."
+   }
+  },
+  "S05": {
+   "id": "S05",
+   "title": "Clustered, longitudinal, hierarchical and small-area models",
+   "target": "Advanced",
+   "n_rungs": 3,
+   "part": 2,
+   "part_name": "Statistical inference and modelling",
+   "prereq": [
+    "S04"
+   ],
+   "rung1": {
+    "level": "Introductory",
+    "concepts": [
+     "Why observations within a cluster or within a person are not independent, and what pretending otherwise does to standard errors.",
+     "ICC and design effect as concepts.",
+     "Repeated measurements versus change scores.",
+     "What a prior is, in one sentence, and that Bayesian output is a distribution rather than a point."
+    ],
+    "skills": [
+     "Recognise clustered or repeated data on sight and say why a standard regression is wrong for it.",
+     "Read a multilevel results table and say what the random effect represents."
+    ],
+    "build": "A re-analysis of a clustered dataset showing the standard errors before and after accounting for clustering.",
+    "gate": "You can explain to a colleague why their school-based study has fewer effective observations than children."
+   },
+   "rung2": {
+    "level": "Intermediate",
+    "concepts": [
+     "Random effects versus GEE, and precisely which question each answers \u2014 conditional versus marginal contrasts.",
+     "How ICC is estimated, and how badly it is usually guessed at design stage.",
+     "Growth-curve and trajectory models for BMI over time.",
+     "Priors, posterior, conjugacy for intuition; MCMC and HMC behaviour; divergence diagnostics; posterior predictive checks."
+    ],
+    "skills": [
+     "Fit multilevel models in lme4 or nlme and interpret both fixed and random parts.",
+     "Fit a simple hierarchical Bayesian model in brms and interpret the posterior honestly, including its dependence on the prior.",
+     "Run and present posterior predictive checks as a routine validity step."
+    ],
+    "build": "A BMI trajectory analysis on repeated anthropometry, fitted both conditionally and marginally, with the difference explained.",
+    "gate": "You can state which of a conditional or marginal estimate your audience actually needs, and why."
+   }
+  },
+  "S06": {
+   "id": "S06",
+   "title": "Evidence synthesis and meta-analysis",
+   "target": "Advanced",
+   "n_rungs": 3,
+   "part": 2,
+   "part_name": "Statistical inference and modelling",
+   "prereq": [
+    "S04"
+   ],
+   "rung1": {
+    "level": "Introductory",
+    "concepts": [
+     "What a systematic review is and how it differs from a narrative review.",
+     "The PRISMA flow and why screening is done in duplicate.",
+     "Effect measures pooled on the right scale; the forest plot read correctly."
+    ],
+    "skills": [
+     "Screen and extract to a written protocol without drifting.",
+     "Read a forest plot and say what the diamond represents."
+    ],
+    "build": "A registered review protocol on PROSPERO for a question you have checked is unanswered.",
+    "gate": "You can state, before starting, who is waiting for this review's answer."
+   },
+   "rung2": {
+    "level": "Intermediate",
+    "concepts": [
+     "Fixed versus random effects and what each assumes about the underlying effect distribution.",
+     "Heterogeneity and its routine misinterpretation: I-squared is not a measure of absolute variation; prediction intervals are.",
+     "Small-study effects and funnel asymmetry, which is not synonymous with publication bias.",
+     "Risk-of-bias assessment as structured judgement; GRADE as a communication device with known weaknesses."
+    ],
+    "skills": [
+     "Run a full synthesis in metafor: pool, assess heterogeneity, present a prediction interval alongside every random-effects summary.",
+     "Assess risk of bias and carry it into the conclusion rather than reporting it separately."
+    ],
+    "build": "One completed systematic review and meta-analysis, submitted, reporting prediction intervals.",
+    "gate": "Your summary estimate is never quoted without its prediction interval, because you never present it that way."
+   }
+  },
+  "S07": {
+   "id": "S07",
+   "title": "Prediction modelling and machine learning",
+   "target": "Intermediate",
+   "n_rungs": 2,
+   "part": 2,
+   "part_name": "Statistical inference and modelling",
+   "prereq": [
+    "S04"
+   ],
+   "rung1": {
+    "level": "Introductory",
+    "concepts": [
+     "Prediction and explanation as different tasks with different success criteria.",
+     "Training, validation and test data; what overfitting is.",
+     "Discrimination and calibration as two separate properties, and why AUC alone is an inadequate report."
+    ],
+    "skills": [
+     "Read a risk-score paper and say whether it was externally validated and whether calibration was reported.",
+     "Notice when a predictive model's variable importance is being described in causal language."
+    ],
+    "build": "A written critique of one published obesity or diabetes risk score used in India.",
+    "gate": "You can explain to a colleague why their high AUC does not mean the model is usable in their clinic."
+   },
+   "rung2": {
+    "level": "Intermediate",
+    "concepts": [
+     "Regularisation and the bias-variance trade-off; cross-validation done without leakage.",
+     "Why scores developed elsewhere transfer poorly to South Asian populations, and what external validation requires.",
+     "TRIPOD reporting and what a competent prediction paper must contain.",
+     "The honest position that most AI-for-obesity work is prediction dressed as insight."
+    ],
+    "skills": [
+     "Fit a regularised model and a gradient-boosted model yourself, well enough to know what you are commissioning.",
+     "Specify to a collaborator the outcome definition, validation design and reporting standard you require, and judge whether they delivered.",
+     "Decline a machine-learning proposal on a dataset that cannot support the claim, with reasons."
+    ],
+    "build": "One commissioned or supervised prediction analysis where you wrote the specification and signed off the validation.",
+    "gate": "You can tell, in one reading, whether a paper's model is a risk score or a causal claim wearing one."
+   }
+  },
+  "S08": {
+   "id": "S08",
+   "title": "Measurement error theory and correction",
+   "target": "Expert",
+   "n_rungs": 4,
+   "part": 3,
+   "part_name": "Measurement science",
+   "prereq": [
+    "S03",
+    "S04"
+   ],
+   "rung1": {
+    "level": "Introductory",
+    "concepts": [
+     "Every measurement contains error, and error is not the same as bias.",
+     "Random versus systematic error, illustrated on a weighing scale and on a 24-hour recall.",
+     "Under-reporting of intake as the single most reliable finding in dietary assessment, and that it is not uniform across people."
+    ],
+    "skills": [
+     "Identify, for any exposure in a paper, how it was measured and whether the authors treated it as error-free.",
+     "Say why a self-reported intake mean cannot be taken at face value."
+    ],
+    "build": "A written note on how every exposure in your own thesis was measured and what error each carries.",
+    "gate": "You never again describe a self-reported exposure without naming its error structure."
+   },
+   "rung2": {
+    "level": "Intermediate",
+    "concepts": [
+     "Classical and Berkson error models, and why dietary self-report violates both by having person-specific bias correlated with body size.",
+     "Attenuation of effect estimates under non-differential error.",
+     "The two counterintuitive results: differential error can bias away from the null, and error in a confounder causes residual confounding that no adjustment repairs.",
+     "Reliability and agreement: ICC, Bland-Altman, why a correlation coefficient is a bad way to validate an instrument, kappa and its base-rate dependence."
+    ],
+    "skills": [
+     "Say, qualitatively, which direction a given error structure will push an estimate.",
+     "Critique a validation study that reported correlation instead of agreement.",
+     "Read Keogh and White's tutorial papers and follow the algebra."
+    ],
+    "build": "A Bland-Altman reanalysis of an instrument-validation paper that reported only correlation.",
+    "gate": "You can predict the direction of bias from the error structure before seeing the result."
+   }
+  },
+  "S09": {
+   "id": "S09",
+   "title": "Measurement instruments: body composition, expenditure, diet, activity, sleep",
+   "target": "Expert",
+   "n_rungs": 4,
+   "part": 3,
+   "part_name": "Measurement science",
+   "prereq": [
+    "S01",
+    "S08"
+   ],
+   "rung1": {
+    "level": "Introductory",
+    "concepts": [
+     "What each common instrument physically measures: a scale, a tape, a bioimpedance device, a questionnaire, an accelerometer.",
+     "BMI as a ratio with known misclassification, and waist and waist-to-height as cheap proxies.",
+     "That a cheap instrument reported with an expensive instrument's precision is the commonest error in Indian field studies."
+    ],
+    "skills": [
+     "Take anthropometry correctly and repeatably, including waist at the right landmark.",
+     "Say, for any study, which instrument produced each variable."
+    ],
+    "build": "A written standard operating procedure for anthropometry in your own department, with a repeatability check.",
+    "gate": "Two observers using your SOP agree within a stated tolerance."
+   },
+   "rung2": {
+    "level": "Intermediate",
+    "concepts": [
+     "Body composition models: two-, three- and four-compartment, and what each assumes.",
+     "DXA's photon attenuation assumptions and where they fail in obesity; bioimpedance as a conductivity measurement with hydration-dependent error; air displacement plethysmography; isotope dilution for total body water.",
+     "Indirect calorimetry: respiratory quotient, the Weir equation, what a whole-room calorimeter measures.",
+     "Dietary instruments compared: 24-hour recall, FFQ, food records, weighed records \u2014 each with its own error structure.",
+     "Activity and sleep instruments: accelerometry and the cut-point problem, GPAQ and IPAQ error, polysomnography, actigraphy, PSQI, Epworth."
+    ],
+    "skills": [
+     "Explain the error structure of DXA, BIA and doubly labelled water from memory.",
+     "Choose an instrument for a given study and budget, and state in the protocol what misclassification you are buying.",
+     "Read a methods section and name the measurement property the authors failed to report."
+    ],
+    "build": "An instrument comparison memo for one planned study, recommending a choice with the error trade-off quantified.",
+    "gate": "Your protocol reviewers stop asking which instrument you used and why."
+   }
+  },
+  "S10": {
+   "id": "S10",
+   "title": "Potential outcomes, identification and target trial emulation",
+   "target": "Expert",
+   "n_rungs": 4,
+   "part": 4,
+   "part_name": "Causal inference",
+   "prereq": [
+    "S03"
+   ],
+   "rung1": {
+    "level": "Introductory",
+    "concepts": [
+     "Association is not causation, stated as a structural claim rather than a slogan.",
+     "Counterfactual thinking: what would have happened to this person under the other exposure.",
+     "Confounding as a recognisable structure rather than a list of variables to adjust for.",
+     "Randomisation as the device that makes the counterfactual contrast estimable."
+    ],
+    "skills": [
+     "State the counterfactual contrast a study is trying to estimate, in words.",
+     "Recognise when a paper has slid from association language into causal language."
+    ],
+    "build": "A written counterfactual restatement of the research question in your own thesis.",
+    "gate": "You can say what your own study's estimate would mean if it were causal, and why it may not be."
+   },
+   "rung2": {
+    "level": "Intermediate",
+    "concepts": [
+     "Potential outcomes formally; average treatment effect and treatment effect on the treated.",
+     "The three identification conditions \u2014 exchangeability, positivity, consistency \u2014 stated for a specific study rather than recited.",
+     "Consistency as the condition this field breaks: obesity is a state, not a treatment, and lowering BMI by diet, surgery, a GLP-1 agonist or lifelong lower adiposity are four different causal quantities.",
+     "The target trial as a seven-part specification: eligibility, treatment strategies, assignment, follow-up start, outcome, causal contrast, analysis plan."
+    ],
+    "skills": [
+     "Write the target trial table for a published observational obesity analysis.",
+     "Identify a positivity violation in a real dataset.",
+     "Explain to a clinical audience why the effect of obesity is not a well-defined quantity, without losing the room."
+    ],
+    "build": "A written target trial specification for one published paper, circulated in journal club.",
+    "gate": "You can name, for any observational obesity estimate, which of the three conditions is most in doubt."
+   }
+  },
+  "S11": {
+   "id": "S11",
+   "title": "Causal diagrams, structural bias and sensitivity analysis",
+   "target": "Expert",
+   "n_rungs": 4,
+   "part": 4,
+   "part_name": "Causal inference",
+   "prereq": [
+    "S10"
+   ],
+   "rung1": {
+    "level": "Introductory",
+    "concepts": [
+     "A DAG as a picture of assumptions, and arrows as claims.",
+     "Confounder, mediator and collider as three distinct roles a variable can play.",
+     "That adjusting for everything measured is not conservative."
+    ],
+    "skills": [
+     "Draw a simple DAG for a familiar clinical question.",
+     "Name the role each covariate is playing in a published adjustment set."
+    ],
+    "build": "A DAG for your own thesis question, drawn and shown to two colleagues for attack.",
+    "gate": "You can explain why adjusting for a mediator is a mistake, using a drawing."
+   },
+   "rung2": {
+    "level": "Intermediate",
+    "concepts": [
+     "d-separation, the backdoor criterion, minimal sufficient adjustment sets, and what a DAG cannot encode.",
+     "The four ways adjustment goes wrong: confounding, collider stratification, mediator adjustment, adjustment for a proxy of the outcome.",
+     "Selection bias as structural bias rather than a sampling annoyance.",
+     "The named obesity traps: the obesity paradox, reverse causation, depletion of susceptibles, time-varying confounding, the ill-defined intervention."
+    ],
+    "skills": [
+     "Draw the DAG for collider stratification and use it to explain the obesity paradox to a mixed clinical audience.",
+     "Derive a minimal adjustment set in dagitty and justify every variable included and excluded.",
+     "Identify which of the four adjustment failures a given paper has committed."
+    ],
+    "build": "A journal-club series in which each session diagnoses one obesity trap in a real paper.",
+    "gate": "You can draw each of the four adjustment failures in under a minute, from memory."
+   }
+  },
+  "S12": {
+   "id": "S12",
+   "title": "G-methods, time-varying treatment and mediation",
+   "target": "Advanced",
+   "n_rungs": 3,
+   "part": 4,
+   "part_name": "Causal inference",
+   "prereq": [
+    "S10",
+    "S11",
+    "S04"
+   ],
+   "rung1": {
+    "level": "Introductory",
+    "concepts": [
+     "Why adjusting for a variable that is both a confounder and affected by prior treatment is wrong in both directions.",
+     "Standardisation as averaging over a covariate distribution.",
+     "Weighting as a way of constructing a pseudo-population."
+    ],
+    "skills": [
+     "Recognise a time-varying confounding structure in a longitudinal design.",
+     "Compute a simple standardised estimate by hand."
+    ],
+    "build": "A DAG of one longitudinal weight-management dataset showing the feedback between weight, treatment and outcome.",
+    "gate": "You can say why baseline adjustment is not enough for a weight-loss programme evaluation."
+   },
+   "rung2": {
+    "level": "Intermediate",
+    "concepts": [
+     "The g-formula and inverse probability weighting; why they agree in simple cases and diverge in interesting ones.",
+     "Marginal structural models and stabilised weights; positivity violations in practice and what truncation costs.",
+     "Mediation in the counterfactual framework: controlled direct effects, natural direct and indirect effects, and the cross-world assumption."
+    ],
+    "skills": [
+     "Fit an MSM with stabilised weights and diagnose the weight distribution.",
+     "Implement the parametric g-formula for a sustained-strategy contrast and present it as risk over time.",
+     "Decompose a mediated effect and state the assumption that makes the decomposition meaningful."
+    ],
+    "build": "One longitudinal analysis of your own fitted with g-methods and reported against a naive adjusted estimate.",
+    "gate": "You can explain to a reviewer, in a paragraph plus a DAG, why baseline adjustment was insufficient."
+   }
+  },
+  "S13": {
+   "id": "S13",
+   "title": "Instrumental variables and Mendelian randomisation",
+   "target": "Advanced",
+   "n_rungs": 3,
+   "part": 4,
+   "part_name": "Causal inference",
+   "prereq": [
+    "S10",
+    "S11"
+   ],
+   "rung1": {
+    "level": "Introductory",
+    "concepts": [
+     "Instrumental variables as a way of using a source of variation you did not control.",
+     "Genotype as fixed at conception and therefore unconfounded by later behaviour.",
+     "What Mendelian randomisation claims to estimate."
+    ],
+    "skills": [
+     "Read an MR abstract and say what exposure and outcome are being linked.",
+     "State why an instrument must not affect the outcome except through the exposure."
+    ],
+    "build": "An annotated reading of one MR paper on adiposity.",
+    "gate": "You can explain MR to a clinician in three sentences without saying it proves causation."
+   },
+   "rung2": {
+    "level": "Intermediate",
+    "concepts": [
+     "The three IV assumptions \u2014 relevance, independence, exclusion restriction \u2014 for a genetic instrument specifically.",
+     "Two-sample and two-step designs; MR-Egger, weighted median and mode-based estimators; what pleiotropy diagnostics can and cannot detect.",
+     "Weak instrument bias, winner's curse and sample overlap.",
+     "The problems of BMI as an MR exposure: it is a composite, instruments act through appetite and behaviour, and the contrast estimated is lifelong adiposity rather than an intervention."
+    ],
+    "skills": [
+     "Run a two-sample MR in TwoSampleMR with the full diagnostic suite.",
+     "Critique a published MR study on adiposity on instrument selection, pleiotropy handling and interpretive overreach."
+    ],
+    "build": "One MR analysis run end to end, with assumptions stated rather than cited.",
+    "gate": "You can explain why an MR estimate of the effect of BMI and a semaglutide trial answer different questions, and both are correct."
+   }
+  },
+  "S14": {
+   "id": "S14",
+   "title": "Quasi-experimental policy evaluation",
+   "target": "Advanced",
+   "n_rungs": 3,
+   "part": 4,
+   "part_name": "Causal inference",
+   "prereq": [
+    "S10",
+    "S11",
+    "S05"
+   ],
+   "rung1": {
+    "level": "Introductory",
+    "concepts": [
+     "A policy change as a natural experiment, and the before-after comparison as its weakest form.",
+     "Why a control group matters even when nobody randomised.",
+     "Secular trend as the thing that ruins naive before-after claims."
+    ],
+    "skills": [
+     "Identify a dated policy change and a plausible comparator.",
+     "Say why a simple before-after evaluation is uninterpretable."
+    ],
+    "build": "A written evaluation sketch for one recent Indian policy change, naming the comparator.",
+    "gate": "You never accept a before-after prevalence claim as evidence of policy effect."
+   },
+   "rung2": {
+    "level": "Intermediate",
+    "concepts": [
+     "Difference-in-differences and the parallel trends assumption: how to argue for it and test its implications.",
+     "Event-study plots as the standard presentation.",
+     "Interrupted time series with and without a control series; autocorrelation; level change versus slope change.",
+     "Regression discontinuity: identification at the cut-off, bandwidth choice, manipulation tests."
+    ],
+    "skills": [
+     "Run a difference-in-differences evaluation of a state-level policy and defend parallel trends with evidence.",
+     "Build an interrupted time series around a dated change, such as the 40% GST slab on carbonated beverages from 22 September 2025.",
+     "Present an event-study plot correctly."
+    ],
+    "build": "One completed quasi-experimental evaluation of an Indian state or national policy.",
+    "gate": "A reviewer challenges parallel trends and your pre-trend evidence answers them."
+   }
+  },
+  "S15": {
+   "id": "S15",
+   "title": "Study and trial design, power and missing data",
+   "target": "Advanced",
+   "n_rungs": 3,
+   "part": 5,
+   "part_name": "Epidemiology",
+   "prereq": [
+    "S03",
+    "S10"
+   ],
+   "rung1": {
+    "level": "Introductory",
+    "concepts": [
+     "The standard design menu: cross-sectional, cohort, case-control, trial, and what each estimates.",
+     "Bias, confounding and chance as three separate threats.",
+     "Why sample size is a design question and not a calculation done at the end."
+    ],
+    "skills": [
+     "Name the design of any paper you read and what parameter it estimates.",
+     "Run a conventional sample size calculation and state its assumptions."
+    ],
+    "build": "A design comparison memo for your own thesis question, with the alternatives named.",
+    "gate": "You can say what your chosen design buys and what it costs, out loud."
+   },
+   "rung2": {
+    "level": "Intermediate",
+    "concepts": [
+     "The fuller observational menu: nested case-control, case-cohort, case-crossover, self-controlled case series, two-stage sampling.",
+     "The trial menu beyond the parallel RCT: cluster randomised, stepped-wedge, factorial, non-inferiority, adaptive, pragmatic and registry-based.",
+     "Missing data: MCAR, MAR, MNAR; multiple imputation done properly, including the requirement that the imputation model contains the outcome.",
+     "Arguing from precision and minimal important difference rather than from significance."
+    ],
+    "skills": [
+     "Choose and justify a design against a stated question and budget, with alternatives named and rejected for reasons.",
+     "Implement multiple imputation in mice and report sensitivity to the missingness assumption.",
+     "Run a simple simulation-based power analysis."
+    ],
+    "build": "A protocol in which the design section names three rejected alternatives and why.",
+    "gate": "Your protocol reviewers argue about your parameters rather than your design choice."
+   }
+  },
+  "S16": {
+   "id": "S16",
+   "title": "Genetics, developmental origins and life-course epidemiology",
+   "target": "Expert",
+   "n_rungs": 4,
+   "part": 5,
+   "part_name": "Epidemiology",
+   "prereq": [
+    "S10",
+    "S15"
+   ],
+   "rung1": {
+    "level": "Introductory",
+    "concepts": [
+     "Obesity runs in families, and family resemblance has both genetic and shared-environment sources.",
+     "Birthweight and later disease as an observed association \u2014 the Barker hypothesis in outline.",
+     "That India has a history of low birthweight and is now acquiring adult energy surplus."
+    ],
+    "skills": [
+     "Take a three-generation family and birth history in clinic.",
+     "State the double burden of malnutrition as one problem rather than two."
+    ],
+    "build": "A written family-and-birth history proforma added to your own clinical or study intake.",
+    "gate": "You ask about birthweight and childhood growth as routinely as you ask about diet."
+   },
+   "rung2": {
+    "level": "Intermediate",
+    "concepts": [
+     "Heritability: what twin and adoption studies estimate, why BMI heritability of 0.4 to 0.7 does not mean obesity is 40 to 70 percent genetic in any policy-relevant sense, and why heritability rises as environments homogenise.",
+     "Monogenic obesity \u2014 leptin and leptin receptor deficiency, POMC, PCSK1, MC4R at roughly 1 in 300 to 1500 \u2014 and syndromic forms: Prader-Willi, Bardet-Biedl, Alstr\u00f6m and the ciliopathy connection.",
+     "Polygenic architecture: FTO acting through IRX3/IRX5, and the finding that most implicated genes are expressed in the central nervous system, making obesity substantially a neurobehavioural trait.",
+     "Life-course models: critical and sensitive periods, accumulation, chains of risk.",
+     "The Dutch Hunger Winter; fetal programming versus postnatal catch-up growth as separate mechanisms."
+    ],
+    "skills": [
+     "Recognise the clinical triad warranting genetic testing \u2014 severe early-onset obesity, hyperphagia from infancy, consanguinity \u2014 all more findable in India than in Europe and almost entirely undiagnosed here.",
+     "Critique a heritability claim used to argue against environmental intervention.",
+     "Read the Indian birth cohort literature and summarise its joint finding."
+    ],
+    "build": "A clinic audit of how many patients meet monogenic red-flag criteria and how many were tested.",
+    "gate": "You can explain why high heritability and environmental causation are both true, to a sceptical clinician."
+   }
+  },
+  "S17": {
+   "id": "S17",
+   "title": "Social epidemiology, equity measurement and surveillance in India",
+   "target": "Advanced",
+   "n_rungs": 3,
+   "part": 5,
+   "part_name": "Epidemiology",
+   "prereq": [
+    "S15"
+   ],
+   "rung1": {
+    "level": "Introductory",
+    "concepts": [
+     "Socioeconomic position as a construct with multiple measures, not a single variable.",
+     "The social gradient in disease, and that its direction can differ between settings.",
+     "Equity as a distributional question distinct from an average effect."
+    ],
+    "skills": [
+     "Describe an outcome by wealth quintile, urban-rural and sex, correctly.",
+     "Say which SES measure a survey used and what it captures."
+    ],
+    "build": "A stratified descriptive table of obesity prevalence for one state, by three SES measures.",
+    "gate": "You notice when a national average is hiding a reversed gradient."
+   },
+   "rung2": {
+    "level": "Intermediate",
+    "concepts": [
+     "Indian SES measurement specifically: consumption quintiles, wealth index construction and its limitations, caste and class as distinct constructs, urban-rural classification and the peri-urban middle that most surveys handle badly.",
+     "The social gradient in obesity and its reversal with development \u2014 in India still positive in many states and already inverted in others, which is the most important single empirical fact about obesity in the country.",
+     "Equity metrics: concentration index, slope and relative indices of inequality, and what each is sensitive to.",
+     "Surveillance versus research; STEPS methodology; sentinel versus population surveillance.",
+     "Screening theory: sensitivity, specificity, predictive values, ROC, lead time and length bias, overdiagnosis."
+    ],
+    "skills": [
+     "Compute and present a concentration index and a relative index of inequality on NFHS data, by state.",
+     "Compute predictive values at realistic Indian prevalence and argue the population BMI screening case in both directions.",
+     "Read a surveillance system and identify its data quality weak point."
+    ],
+    "build": "A state-by-state mapping of the direction of the social gradient in obesity, with the inversion explained.",
+    "gate": "You can state, for any proposed intervention, whether it is likely to be equity-neutral, improving or worsening."
+   }
+  },
+  "S18": {
+   "id": "S18",
+   "title": "Nutritional epidemiology and its pathologies",
+   "target": "Expert",
+   "n_rungs": 4,
+   "part": 5,
+   "part_name": "Epidemiology",
+   "prereq": [
+    "S08",
+    "S10",
+    "S11",
+    "S15"
+   ],
+   "rung1": {
+    "level": "Introductory",
+    "concepts": [
+     "Diet-disease associations are typically small, in the 1.05 to 1.3 relative risk range.",
+     "Self-reported diet is measured with large error, and people who report eating well differ in many other ways.",
+     "Diet is a composition: eating more of one thing means eating less of another."
+    ],
+    "skills": [
+     "Ask instead of what before evaluating any dietary claim.",
+     "Identify healthy-user bias in a published cohort finding."
+    ],
+    "build": "A written critique of one widely reported diet-disease headline.",
+    "gate": "You can explain to a journalist why a 20 percent risk reduction from a food frequency questionnaire is fragile."
+   },
+   "rung2": {
+    "level": "Intermediate",
+    "concepts": [
+     "The signal-to-noise problem stated quantitatively: measurement error, confounding and selection each generate bias of similar magnitude to the effects being reported.",
+     "Healthy-user and healthy-adherer bias, and why adjustment for measured SES does not fix it.",
+     "Compositional constraint: every dietary effect estimate is implicitly a substitution effect and the substitution must be specified.",
+     "Vibration of effects and the garden of forking paths; specification-curve analysis and preregistration as the answers.",
+     "Industry funding effects operating through question selection and framing rather than fabrication \u2014 and why reflexive dismissal on funding grounds is itself a failure of rigour."
+    ],
+    "skills": [
+     "Run a specification-curve analysis on a nutrition dataset and present the distribution of defensible estimates rather than one.",
+     "Specify the substitution explicitly in your own analyses.",
+     "Judge a funded study on method rather than on funder."
+    ],
+    "build": "A specification-curve reanalysis of one published Indian nutrition finding.",
+    "gate": "You can show that a published association spans null to substantial across defensible specifications."
+   }
+  },
+  "S19": {
+   "id": "S19",
+   "title": "Integrative metabolism, insulin resistance and energy expenditure regulation",
+   "target": "Advanced",
+   "n_rungs": 3,
+   "part": 6,
+   "part_name": "Metabolic and appetite biology",
+   "prereq": [
+    "S01"
+   ],
+   "rung1": {
+    "level": "Introductory",
+    "concepts": [
+     "The fed, fasted and starved states and which fuel dominates in each.",
+     "The four components of total daily energy expenditure: resting metabolic rate, thermic effect of food, exercise activity thermogenesis, non-exercise activity thermogenesis, and their relative sizes.",
+     "Insulin as the dominant anabolic signal, at MBBS depth."
+    ],
+    "skills": [
+     "Estimate a patient's resting metabolic rate from a predictive equation and state its error.",
+     "Say which component of expenditure an intervention is actually targeting."
+    ],
+    "build": "A worked energy expenditure breakdown for three real patients of different body sizes.",
+    "gate": "You can say why RMR dominates expenditure in most people and what that implies for exercise advice."
+   },
+   "rung2": {
+    "level": "Intermediate",
+    "concepts": [
+     "Substrate metabolism integrated: glycolysis, gluconeogenesis, TCA, oxidative phosphorylation, beta-oxidation, ketogenesis, and de novo lipogenesis with its actual quantitative smallness in humans on mixed diets.",
+     "Fuel selection and metabolic flexibility; respiratory quotient as the readout; the Randle cycle; insulin resistance as a failure of flexibility.",
+     "Insulin action at molecular level \u2014 receptor, IRS, PI3K-Akt, GLUT4 translocation \u2014 and the tissue-specific dissociation where hepatic lipogenesis stays insulin-sensitive while glucose disposal is resistant.",
+     "Predictive RMR equations and their error in South Asians."
+    ],
+    "skills": [
+     "Explain metabolic flexibility and its failure to a clinical audience using RQ.",
+     "Correct the common claim that dietary carbohydrate is converted to fat in quantitatively important amounts.",
+     "Read a metabolic physiology paper and follow the substrate argument."
+    ],
+    "build": "A teaching session on insulin resistance built from the molecular pathway up to the clinical phenotype.",
+    "gate": "An endocrinologist stops simplifying their vocabulary when talking to you."
+   }
+  },
+  "S20": {
+   "id": "S20",
+   "title": "Adipose tissue biology, ectopic fat and the South Asian phenotype",
+   "target": "Expert",
+   "n_rungs": 4,
+   "part": 6,
+   "part_name": "Metabolic and appetite biology",
+   "prereq": [
+    "S19"
+   ],
+   "rung1": {
+    "level": "Introductory",
+    "concepts": [
+     "Adipose tissue as an endocrine organ, not a storage depot.",
+     "Visceral versus subcutaneous fat, and why waist circumference adds information over BMI.",
+     "That South Asians carry more fat and less muscle at the same BMI, and that Indian action points are 23 and 25."
+    ],
+    "skills": [
+     "Measure and interpret waist circumference and waist-to-height against Indian cut-offs.",
+     "Explain to a patient why their normal BMI does not exclude metabolic risk."
+    ],
+    "build": "A clinic audit comparing BMI-based and waist-based risk classification in your own patients.",
+    "gate": "You classify risk by more than BMI as a matter of routine."
+   },
+   "rung2": {
+    "level": "Intermediate",
+    "concepts": [
+     "Leptin, adiponectin, resistin and inflammatory cytokines; leptin's asymmetric biology as a starvation signal more than a satiety signal, which is why leptin therapy failed in common obesity and succeeded in lipodystrophy.",
+     "Adipocyte hyperplasia versus hypertrophy; developmental windows for adipocyte number; adipose expandability and the limited-expandability hypothesis as the bridge to ectopic fat.",
+     "Ectopic fat and lipotoxicity across depots: visceral, subcutaneous, intrahepatic, intramyocellular, epicardial, perirenal. MASLD as the hepatic manifestation.",
+     "Adipose inflammation: macrophage polarisation, crown-like structures, hypoxia, fibrosis, and the causal ambiguity about whether inflammation drives insulin resistance or follows it.",
+     "The South Asian phenotype in detail: higher body fat at equal BMI, greater visceral and hepatic fat, lower lean and skeletal muscle mass, lower adiponectin, earlier insulin resistance and beta-cell failure."
+    ],
+    "skills": [
+     "Explain the thin-fat phenotype to clinical, policy and lay audiences at three depths.",
+     "Interpret a body composition report in a South Asian patient against the right reference.",
+     "Argue why waist outperforms BMI for cardiometabolic risk, from mechanism."
+    ],
+    "build": "A descriptive analysis of body composition or waist distribution in your own population against Indian cut-points.",
+    "gate": "You can explain the phenotype without a slide, to any audience."
+   }
+  },
+  "S21": {
+   "id": "S21",
+   "title": "Appetite, reward and the determinants of intake",
+   "target": "Expert",
+   "n_rungs": 4,
+   "part": 6,
+   "part_name": "Metabolic and appetite biology",
+   "prereq": [
+    "S19"
+   ],
+   "rung1": {
+    "level": "Introductory",
+    "concepts": [
+     "Appetite is regulated by the brain, not decided by the person, and hunger is a signal rather than a choice.",
+     "Ghrelin, leptin, insulin and GLP-1 named, with their broad direction of effect.",
+     "Satiation (meal termination) and satiety (between-meal suppression) as different things."
+    ],
+    "skills": [
+     "Explain to a patient that hunger after weight loss is physiological.",
+     "Name which hormone a given drug class acts on."
+    ],
+    "build": "A patient-facing explanation of post-weight-loss hunger, tested on real patients.",
+    "gate": "No patient leaves your clinic believing hunger is a character defect."
+   },
+   "rung2": {
+    "level": "Intermediate",
+    "concepts": [
+     "The hypothalamic melanocortin pathway: arcuate POMC and AgRP/NPY neurons, second-order MC4R neurons in the paraventricular nucleus, and the fact that loss-of-function mutations here produce the most severe human obesity known.",
+     "Brainstem integration: nucleus tractus solitarius, area postrema, vagal afferent signalling \u2014 and why so many appetite drugs cause nausea, since satiety and emesis circuits overlap.",
+     "The gut-brain endocrine axis in detail: GLP-1, GIP, PYY 3-36, oxyntomodulin, CCK, amylin, ghrelin \u2014 secretion stimuli, half-lives, receptor distribution, central versus peripheral action. This is the pharmacological map of the entire current drug pipeline.",
+     "The mesolimbic reward system and the wanting versus liking distinction as dissociable systems with different neurochemistry.",
+     "The seven manipulable determinants of intake: energy density, portion size and unit bias, eating rate and texture, hyperpalatability, protein leverage, variety and sensory-specific satiety, liquid calories."
+    ],
+    "skills": [
+     "Describe the melanocortin pathway and the gut-brain axis from memory, on a whiteboard.",
+     "Map a drug class onto its receptor and predict its adverse effect profile.",
+     "Rank two proposed interventions by which manipulable determinant each acts on."
+    ],
+    "build": "A teaching module mapping the current drug pipeline onto the gut-brain axis.",
+    "gate": "You can explain why GLP-1 agonists cause nausea from circuit anatomy rather than from a label."
+   }
+  },
+  "S22": {
+   "id": "S22",
+   "title": "Clinical assessment, staging and secondary causes",
+   "target": "Advanced",
+   "n_rungs": 3,
+   "part": 7,
+   "part_name": "Clinical obesity medicine",
+   "prereq": [
+    "S19",
+    "S20"
+   ],
+   "rung1": {
+    "level": "Introductory",
+    "concepts": [
+     "Height, weight, BMI and waist measured correctly and repeatably.",
+     "The common comorbidities to ask about and the common drug causes of weight gain.",
+     "That BMI alone is a poor basis for a management decision."
+    ],
+    "skills": [
+     "Take a competent obesity-focused history and examination.",
+     "List the drugs in a patient's chart that promote weight gain."
+    ],
+    "build": "A structured obesity clinic proforma you use on every patient.",
+    "gate": "Your history reliably surfaces weight trajectory, dieting history and drug causes."
+   },
+   "rung2": {
+    "level": "Intermediate",
+    "concepts": [
+     "The full obesity history: weight trajectory from birth, dieting and regain history, family history, medications (antipsychotics, insulin and sulfonylureas, steroids, some antiepileptics, beta blockers), sleep, eating pattern and timing, binge and night-eating behaviour, activity, psychosocial context, weight-related quality of life.",
+     "Secondary and contributory causes: hypothyroidism, Cushing's, PCOS, hypothalamic lesions, monogenic red flags.",
+     "Comorbidity assessment: dysglycaemia, dyslipidaemia, hypertension, MASLD with fibrosis staging, OSA, PCOS, osteoarthritis, GERD, depression, subfertility, obesity-associated cancers."
+    ],
+    "skills": [
+     "Screen for and exclude secondary causes with the right investigations rather than a panel.",
+     "Stage MASLD fibrosis non-invasively and act on the result.",
+     "Produce a problem list rather than a diagnosis."
+    ],
+    "build": "A completed audit of secondary-cause screening in twenty consecutive patients.",
+    "gate": "You can defend every investigation you ordered and every one you did not."
+   }
+  },
+  "S23": {
+   "id": "S23",
+   "title": "Lifestyle, dietary and behavioural treatment",
+   "target": "Advanced",
+   "n_rungs": 3,
+   "part": 7,
+   "part_name": "Clinical obesity medicine",
+   "prereq": [
+    "S22",
+    "S27"
+   ],
+   "rung1": {
+    "level": "Introductory",
+    "concepts": [
+     "Energy restriction as the common mechanism behind all named diets.",
+     "That adherence, not composition, dominates outcomes at twelve months.",
+     "Realistic effect sizes rather than the ones patients have been promised."
+    ],
+    "skills": [
+     "Take a diet history within Indian household food architecture.",
+     "State to a patient what weight change is realistic, before starting."
+    ],
+    "build": "A written patient-facing expectations sheet with honest numbers.",
+    "gate": "Your patients can state, before starting, what weight change is realistic."
+   },
+   "rung2": {
+    "level": "Intermediate",
+    "concepts": [
+     "Reference effect sizes: intensive lifestyle intervention gives roughly 5 to 8 percent weight loss at one year with substantial regain by three to five years, with Look AHEAD, the Diabetes Prevention Program and the Indian DPP work as the anchors.",
+     "The dietary menu: energy restriction, low carbohydrate, low fat, Mediterranean, intermittent fasting and time-restricted eating, very-low-energy diets and total diet replacement with DiRECT remission data.",
+     "Behavioural components and which carry the effect: self-monitoring, stimulus control, problem solving, relapse prevention, motivational interviewing.",
+     "Physical activity for maintenance rather than for loss, with resistance training weighted properly for low South Asian muscle mass."
+    ],
+    "skills": [
+     "Construct a dietary plan inside a real Indian household's roti-sabzi-dal-rice architecture, with quantities.",
+     "Deliver motivational interviewing competently.",
+     "Prescribe resistance training specifically rather than recommending activity."
+    ],
+    "build": "A set of three worked Indian dietary plans at different income levels, used in clinic.",
+    "gate": "You can match a dietary pattern to a life rather than defending a diet."
+   }
+  },
+  "S24": {
+   "id": "S24",
+   "title": "Pharmacotherapy of obesity",
+   "target": "Advanced",
+   "n_rungs": 3,
+   "part": 7,
+   "part_name": "Clinical obesity medicine",
+   "prereq": [
+    "S21",
+    "S22"
+   ],
+   "rung1": {
+    "level": "Introductory",
+    "concepts": [
+     "The available agents and what each roughly achieves.",
+     "That these are chronic therapies and that stopping leads to regain.",
+     "The Indian access position: semaglutide's Indian patents expired on 20 March 2026, generic entry has been very large with prices roughly 50 to 60 percent below innovator levels; tirzepatide has been available since 2025 and remains on patent."
+    ],
+    "skills": [
+     "Counsel a patient on what a GLP-1 agonist will and will not do.",
+     "Recognise a patient using one without supervision."
+    ],
+    "build": "A written patient information sheet on GLP-1 therapy including discontinuation.",
+    "gate": "No patient of yours starts one of these drugs believing it is a course rather than a therapy."
+   },
+   "rung2": {
+    "level": "Intermediate",
+    "concepts": [
+     "The agents in detail: orlistat; metformin's modest effect; phentermine-topiramate and naltrexone-bupropion where available; liraglutide; semaglutide (STEP programme, roughly 15 percent mean weight loss, SELECT cardiovascular benefit); tirzepatide (SURMOUNT, roughly 20 percent); setmelanotide for specific monogenic forms.",
+     "Mechanisms mapped onto the gut-brain axis; dosing and escalation schedules.",
+     "Adverse effects: gastrointestinal intolerance, gallbladder and pancreatitis signals, loss of lean mass, contraindications.",
+     "Discontinuation and regain, which makes cost the central clinical question."
+    ],
+    "skills": [
+     "Initiate, escalate and monitor a GLP-1 receptor agonist as routine practice, including the discontinuation conversation.",
+     "Manage GI adverse effects and protect lean mass with concurrent resistance training and protein targets.",
+     "Select between agents for a specific patient and defend the choice."
+    ],
+    "build": "A prescribing and monitoring protocol for your clinic, with a documented discontinuation pathway.",
+    "gate": "You run initiation and discontinuation conversations equally well."
+   }
+  },
+  "S25": {
+   "id": "S25",
+   "title": "Metabolic and bariatric surgery: selection and co-management",
+   "target": "Advanced",
+   "n_rungs": 3,
+   "part": 7,
+   "part_name": "Clinical obesity medicine",
+   "prereq": [
+    "S22"
+   ],
+   "rung1": {
+    "level": "Introductory",
+    "concepts": [
+     "The three common procedures \u2014 sleeve gastrectomy, Roux-en-Y gastric bypass, one-anastomosis gastric bypass, the last widely done in India.",
+     "That surgery works partly through gut hormones and altered food preference, not only restriction.",
+     "That surgery creates lifelong obligations."
+    ],
+    "skills": [
+     "Explain the options to a patient at the level of what each involves and commits them to.",
+     "Recognise a patient who should be discussed with a surgeon."
+    ],
+    "build": "A referral checklist for bariatric assessment used in your clinic.",
+    "gate": "You can describe each procedure and its main long-term obligation without notes."
+   },
+   "rung2": {
+    "level": "Intermediate",
+    "concepts": [
+     "Outcomes: diabetes remission, the STAMPEDE and SM-BOSS/SLEEVEPASS trials, mortality benefit.",
+     "Long-term obligations in detail: micronutrient deficiency, bone loss, alcohol use disorder, post-bariatric hypoglycaemia, pregnancy timing, revisional surgery.",
+     "The Indian practice landscape and the current insurance and Ayushman Bharat coverage position.",
+     "Endoscopic and device therapies at reading level."
+    ],
+    "skills": [
+     "Select and counsel a candidate, run the pre-operative assessment and hand over cleanly.",
+     "Deliver post-operative micronutrient and bone surveillance.",
+     "Recognise late complications and act."
+    ],
+    "build": "A post-bariatric surveillance protocol running in your clinic with a patient register.",
+    "gate": "A bariatric surgeon is content for you to manage their patients' medical follow-up."
+   }
+  },
+  "S26": {
+   "id": "S26",
+   "title": "Life-stage obesity: paediatric, adolescent and pregnancy",
+   "target": "Advanced",
+   "n_rungs": 3,
+   "part": 7,
+   "part_name": "Clinical obesity medicine",
+   "prereq": [
+    "S16",
+    "S22"
+   ],
+   "rung1": {
+    "level": "Introductory",
+    "concepts": [
+     "Growth references and why childhood obesity is defined against a reference rather than a fixed cut-off.",
+     "That India's obesity problem is arriving through its children: NFHS-3 to NFHS-5 shows a 288 percent relative rise in adolescent boys against a 91 percent rise in adult women.",
+     "That adolescent weight interventions can precipitate disordered eating."
+    ],
+    "skills": [
+     "Plot and interpret a child's growth trajectory correctly.",
+     "Recognise language in a school programme that risks harm."
+    ],
+    "build": "A growth-charting audit in your paediatric or school contacts.",
+    "gate": "You never discuss a child's weight in front of them in terms of a number alone."
+   },
+   "rung2": {
+    "level": "Intermediate",
+    "concepts": [
+     "IAP versus WHO references and the practical consequences of choosing one.",
+     "Family-based behavioural treatment as the evidence-based core.",
+     "Disordered eating risk in adolescents and how programme design creates or avoids it.",
+     "Obesity in pregnancy and preconception care; GDM management; interpregnancy weight change; the intergenerational cycle."
+    ],
+    "skills": [
+     "Assess and manage a child or adolescent with the family as the unit of intervention.",
+     "Provide preconception and antenatal weight counselling within existing maternal health services.",
+     "Screen an adolescent for disordered eating before starting any weight intervention."
+    ],
+    "build": "A family-based treatment pathway running in your setting, with an eating-disorder safety screen built in.",
+    "gate": "A psychiatrist reviewing your adolescent pathway finds nothing to change."
+   }
+  },
+  "S27": {
+   "id": "S27",
+   "title": "Nutrient science for obesity and cardiometabolic risk",
+   "target": "Advanced",
+   "n_rungs": 3,
+   "part": 8,
+   "part_name": "Nutrition science",
+   "prereq": [
+    "S19"
+   ],
+   "rung1": {
+    "level": "Introductory",
+    "concepts": [
+     "The macronutrients, their energy densities, and what each does.",
+     "Whole versus refined grains; free sugars versus intrinsic sugars; the main fat classes.",
+     "That Indian vegetarian diets can meet requirements with attention to quantity, B12, iron and zinc."
+    ],
+    "skills": [
+     "Assess a diet against requirements at the level of a clinical consultation.",
+     "Identify the binding deficiency in a described diet rather than listing all of them."
+    ],
+    "build": "Three worked diet assessments across different Indian regional patterns.",
+    "gate": "You can say what is actually missing from a diet rather than what is theoretically suboptimal."
+   },
+   "rung2": {
+    "level": "Intermediate",
+    "concepts": [
+     "Protein quality and the shift from PDCAAS to DIAAS; complementarity in cereal-pulse diets.",
+     "Carbohydrate quality: fibre types and their distinct effects, resistant starch, glycaemic index and load with an honest account of their weak predictive performance and the substantial inter-individual variability in postprandial response.",
+     "Dietary fats: the saturated fat controversy handled through the replacement-nutrient framing, why saturated fat and mortality is a badly posed question, industrial trans fat as the clearest case of successful food regulation, and the composition of Indian cooking oils.",
+     "Free sugars and fructose: hepatic metabolism, sugar-sweetened beverages as the best-evidenced single dietary target, and the limits of extrapolating from beverages to sugar in general.",
+     "Sodium, potassium and blood pressure; micronutrients in obesity contexts including vitamin D's associational-but-not-trial-supported relationship with adiposity, B12, iron and the hepcidin link, iodine."
+    ],
+    "skills": [
+     "State what any dietary recommendation is a substitution for, before evaluating it.",
+     "Argue the saturated fat question correctly, which means refusing the question as posed and re-posing it.",
+     "Advise on cooking oil choice from composition rather than from marketing."
+    ],
+    "build": "A written appraisal of one contested macronutrient question, with the comparator specified throughout.",
+    "gate": "Your first response to any macronutrient controversy is a question about the comparator."
+   }
+  },
+  "S28": {
+   "id": "S28",
+   "title": "Ultra-processed food and the effects of processing",
+   "target": "Advanced",
+   "n_rungs": 3,
+   "part": 8,
+   "part_name": "Nutrition science",
+   "prereq": [
+    "S18",
+    "S21",
+    "S27"
+   ],
+   "rung1": {
+    "level": "Introductory",
+    "concepts": [
+     "What processing means, and that processed is not a synonym for unhealthy.",
+     "NOVA as a four-category classification and what it claims.",
+     "That ultra-processed food is the frame in which Indian labelling and marketing regulation will be argued."
+    ],
+    "skills": [
+     "Classify a shopping basket under NOVA.",
+     "State the UPF hypothesis in one sentence without overclaiming it."
+    ],
+    "build": "A NOVA classification of one Indian household's weekly purchases.",
+    "gate": "You can distinguish a processing claim from a nutrient claim in a news story."
+   },
+   "rung2": {
+    "level": "Intermediate",
+    "concepts": [
+     "Hall's controlled feeding trial as the strongest causal evidence that UPF increases ad libitum intake, and exactly what it does and does not establish.",
+     "The substantive critiques of NOVA: category heterogeneity, poor reproducibility of classification between coders, and the difficulty of separating processing from nutrient composition.",
+     "The candidate mechanisms, each traceable to appetite biology: energy density, hyperpalatability, eating rate, texture, low satiety per calorie."
+    ],
+    "skills": [
+     "Classify a real Indian packaged food basket and report inter-coder reliability rather than assuming it.",
+     "Trace a claimed UPF effect to a specific mechanism and name the design that would isolate it.",
+     "Read the UPF literature and separate the observational from the experimental claims."
+    ],
+    "build": "A NOVA classification study of the Indian packaged food supply with a measured reliability statistic.",
+    "gate": "You can state which parts of the UPF case rest on one feeding trial."
+   }
+  },
+  "S29": {
+   "id": "S29",
+   "title": "Indian dietary patterns, guidelines, food composition and diet cost",
+   "target": "Advanced",
+   "n_rungs": 3,
+   "part": 8,
+   "part_name": "Nutrition science",
+   "prereq": [
+    "S27"
+   ],
+   "rung1": {
+    "level": "Introductory",
+    "concepts": [
+     "The ICMR-NIN Recommended Dietary Allowances (2020) and the Dietary Guidelines for Indians (2024 revision): what they say.",
+     "The Indian Food Composition Tables (2017) exist and have gaps.",
+     "Regional dietary patterns and the cereal dominance of the average Indian diet."
+    ],
+    "skills": [
+     "Look up a requirement or a food composition value correctly.",
+     "Describe the dominant dietary pattern of your own state."
+    ],
+    "build": "A written summary of the dietary pattern of your study population against ICMR requirements.",
+    "gate": "You quote the RDA accurately rather than approximately."
+   },
+   "rung2": {
+    "level": "Intermediate",
+    "concepts": [
+     "Where the RDA and the 2024 guidelines are weak, and why the food composition gaps are the binding constraint on most Indian dietary analysis.",
+     "Protein dilution of the Indian diet; rising edible oil and sugar availability; the millet policy push and its actual evidence base; the double burden within the same household.",
+     "Dietary pattern analysis methods: a priori indices versus data-driven approaches (principal components, cluster analysis, reduced rank regression), and the problem of applying Western indices to Indian diets.",
+     "Food security measurement: FIES, HFIAS, dietary diversity scores, and the point that food insecurity and obesity coexist because cheap energy-dense calories are the affordable option."
+    ],
+    "skills": [
+     "Quote the ICMR RDA and the Indian dietary guidelines accurately and name their weak points.",
+     "Derive a dietary pattern from Indian data using an appropriate method and defend the method choice.",
+     "Measure food insecurity alongside adiposity and interpret the combination."
+    ],
+    "build": "A dietary pattern analysis on Indian data using a method chosen for the question rather than by convention.",
+    "gate": "You can say why a Western diet-quality index misclassifies an Indian diet, with examples."
+   }
+  },
+  "S30": {
+   "id": "S30",
+   "title": "Physical activity and sedentary behaviour science",
+   "target": "Advanced",
+   "n_rungs": 3,
+   "part": 9,
+   "part_name": "Movement, sleep and circadian biology",
+   "prereq": [
+    "S19"
+   ],
+   "rung1": {
+    "level": "Introductory",
+    "concepts": [
+     "Aerobic and resistance training as distinct stimuli with distinct adaptations.",
+     "The activity guidelines and what they are based on.",
+     "That activity is weak for weight loss and strong for health \u2014 the single most important honest message in this subject."
+    ],
+    "skills": [
+     "Give a specific activity recommendation rather than advice to be more active.",
+     "Correct the assumption that exercise is primarily a weight intervention."
+    ],
+    "build": "A written activity prescription template used with real patients.",
+    "gate": "You never present exercise to a patient as the route to weight loss."
+   },
+   "rung2": {
+    "level": "Intermediate",
+    "concepts": [
+     "Exercise physiology fundamentals: VO2max and its determinants, lactate threshold, endurance and resistance adaptations, progressive overload, specificity, detraining.",
+     "Dose-response to mortality and cardiometabolic outcomes: steep gains at the low end, flattening thereafter \u2014 so moving the least-active to slightly-active is the highest-yield population strategy.",
+     "Sedentary behaviour as a partly independent exposure; breaks in sitting; interaction with total activity.",
+     "The occupational physical activity paradox: high occupational activity does not confer the benefits of leisure activity and may harm \u2014 highly relevant where much manual labour is involuntary and poorly recovered."
+    ],
+    "skills": [
+     "Write an individualised training prescription including resistance work, with progression.",
+     "Explain the occupational paradox to a programme designer proposing a workplace steps campaign.",
+     "Design a population activity intervention targeted at the least-active rather than the willing."
+    ],
+    "build": "A delivered activity programme aimed specifically at the lowest-activity group, with uptake measured.",
+    "gate": "Your programme designs target the least-active rather than the most willing."
+   }
+  },
+  "S31": {
+   "id": "S31",
+   "title": "Activity measurement and compositional 24-hour analysis",
+   "target": "Expert",
+   "n_rungs": 4,
+   "part": 9,
+   "part_name": "Movement, sleep and circadian biology",
+   "prereq": [
+    "S09",
+    "S30",
+    "S02"
+   ],
+   "rung1": {
+    "level": "Introductory",
+    "concepts": [
+     "An accelerometer measures acceleration, not activity, and everything else is a processing choice.",
+     "Wear time, non-wear and epoch as the basic parameters.",
+     "That sleep, sedentary time, light activity and MVPA sum to 1,440 minutes a day."
+    ],
+    "skills": [
+     "Deploy an accelerometer correctly and retrieve usable data.",
+     "Read a published accelerometry methods section and identify the cut-points used."
+    ],
+    "build": "One pilot deployment of accelerometers with a written wear protocol.",
+    "gate": "You can say why two studies using different cut-points are not comparable."
+   },
+   "rung2": {
+    "level": "Intermediate",
+    "concepts": [
+     "The cut-point problem and why raw-acceleration metrics such as ENMO and MAD are the modern alternative.",
+     "Wear-time criteria, non-wear detection, device placement and their effect on the derived exposure.",
+     "Self-report instruments and their substantial error: GPAQ and IPAQ.",
+     "Consumer wearables and their validity, which matters because they are the only realistic route to scale in India.",
+     "Why the 24-hour day is compositional and cannot be analysed as independent predictors."
+    ],
+    "skills": [
+     "Process raw accelerometry in GGIR from file to exposure variable.",
+     "Compare a self-report and an objective measure in the same sample and quantify the disagreement.",
+     "Explain why adding an hour of activity necessarily removes an hour of something else."
+    ],
+    "build": "A processed accelerometry dataset with a documented, reproducible pipeline.",
+    "gate": "You can defend every processing choice in your pipeline to a reviewer."
+   }
+  },
+  "S32": {
+   "id": "S32",
+   "title": "Sleep science and obstructive sleep apnoea",
+   "target": "Advanced",
+   "n_rungs": 3,
+   "part": 9,
+   "part_name": "Movement, sleep and circadian biology",
+   "prereq": [
+    "S19"
+   ],
+   "rung1": {
+    "level": "Introductory",
+    "concepts": [
+     "Sleep as a measurable exposure with duration, timing and quality as separable dimensions.",
+     "Obstructive sleep apnoea as common, under-diagnosed and bidirectionally linked to obesity.",
+     "That self-reported sleep duration is a poor measurement."
+    ],
+    "skills": [
+     "Screen for OSA with a validated instrument.",
+     "Ask a competent sleep history in an obesity consultation."
+    ],
+    "build": "OSA screening added routinely to your obesity clinic proforma.",
+    "gate": "You screen for apnoea in every patient with obesity rather than in the ones who mention snoring."
+   },
+   "rung2": {
+    "level": "Intermediate",
+    "concepts": [
+     "Sleep architecture and regulation: the two-process model, homeostatic sleep pressure and circadian timing.",
+     "The association of short sleep with adiposity; the experimental sleep-restriction literature showing increased energy intake; and the honest caveat that the long-term causal effect on weight is smaller than the acute experiments suggest.",
+     "OSA pathophysiology, metabolic consequences of untreated disease, and CPAP's disappointing effect on weight.",
+     "Measurement: polysomnography, actigraphy, the Pittsburgh index, the Epworth scale, and the validity problem with self-report.",
+     "Stress, cortisol and emotional eating; sleep restriction's effects on ghrelin, leptin and food choice."
+    ],
+    "skills": [
+     "Refer for and interpret a sleep study.",
+     "Choose between actigraphy and self-report for a study given a budget, and report the resulting misclassification.",
+     "Explain to patients why treating apnoea will improve many things and probably not their weight."
+    ],
+    "build": "Sleep measured objectively in one of your own studies rather than appearing as a limitation.",
+    "gate": "Sleep is a measured variable in your research rather than a line in your discussion section."
+   }
+  },
+  "S33": {
+   "id": "S33",
+   "title": "Circadian biology and chrononutrition",
+   "target": "Expert",
+   "n_rungs": 4,
+   "part": 9,
+   "part_name": "Movement, sleep and circadian biology",
+   "prereq": [
+    "S19",
+    "S21",
+    "S32"
+   ],
+   "rung1": {
+    "level": "Introductory",
+    "concepts": [
+     "A circadian rhythm is endogenous, roughly 24-hourly, and entrained by external cues.",
+     "Light is the dominant cue for the brain clock and food is the dominant cue for organ clocks.",
+     "Chronotype and social jetlag as measurable individual characteristics."
+    ],
+    "skills": [
+     "Administer and score MCTQ or MEQ correctly.",
+     "Describe a person's eating window and chronotype from a diary."
+    ],
+    "build": "A descriptive chronotype and eating-window profile of one study population.",
+    "gate": "You can explain circadian misalignment to a lay audience in two minutes."
+   },
+   "rung2": {
+    "level": "Intermediate",
+    "concepts": [
+     "The molecular clock: CLOCK, BMAL1, PER, CRY, the transcription-translation feedback loop, and peripheral clocks in liver, adipose, muscle and pancreas.",
+     "Entrainment: light as the dominant zeitgeber for the suprachiasmatic nucleus, feeding as the dominant zeitgeber for peripheral clocks, and internal desynchrony as the mechanistic core of chrononutrition \u2014 when the light cycle and the feeding cycle disagree, peripheral clocks decouple from the central clock.",
+     "Diurnal variation in metabolic physiology: glucose tolerance declining across the day, higher morning insulin sensitivity, higher morning thermic effect of food, melatonin's interaction with insulin secretion.",
+     "Chrononutrition instruments (CP-Q and variants) and their thin Indian validation status."
+    ],
+    "skills": [
+     "Explain internal desynchrony from the molecular level to the metabolic phenotype.",
+     "Critique a time-restricted eating study for whether timing or energy intake explains the result.",
+     "Select an instrument appropriate to an Indian population and state what it has not been validated for."
+    ],
+    "build": "A written critical review of the chrononutrition instruments available for Indian use.",
+    "gate": "You can say, for any chrononutrition paper, whether it measured timing or measured intake."
+   }
+  },
+  "S34": {
+   "id": "S34",
+   "title": "Behavioural theory, choice architecture and intervention design",
+   "target": "Advanced",
+   "n_rungs": 3,
+   "part": 10,
+   "part_name": "Behavioural and psychological science",
+   "prereq": [
+    "S21"
+   ],
+   "rung1": {
+    "level": "Introductory",
+    "concepts": [
+     "Behaviour is shaped by context, not only by intention.",
+     "Habit as automatic, cue-triggered behaviour rather than weak willpower.",
+     "That information campaigns are the weakest lever and the most popular one."
+    ],
+    "skills": [
+     "Describe a target behaviour precisely enough to measure it.",
+     "Identify the cue, response and context in a described eating habit."
+    ],
+    "build": "A written behavioural specification for one target behaviour in your own setting.",
+    "gate": "You can state a target behaviour as who does what, when and where."
+   },
+   "rung2": {
+    "level": "Intermediate",
+    "concepts": [
+     "Dual-process accounts, bounded rationality, and the biases that matter for food: present bias and delay discounting, default effects, anchoring on portion, unit bias, salience, the planning-execution gap.",
+     "Habit theory: cue-response learning, context dependence, automaticity, and why habit change requires context change \u2014 the bridge from psychology to environmental policy.",
+     "Self-regulation and its limits, including the replication troubles around ego depletion and the shift toward self-control as situation selection.",
+     "COM-B and the Behaviour Change Wheel; the BCT taxonomy as a coding scheme; self-determination theory; social cognitive theory; the MRC framework for complex interventions.",
+     "Choice architecture assessed honestly: nudges work, average effects are small, and the published literature is inflated by publication bias."
+    ],
+    "skills": [
+     "Code an intervention's active ingredients in BCT terms.",
+     "Name the COM-B components a programme addresses and the ones it ignores.",
+     "Read the meta-analytic exchange on nudge effect sizes and say what it shows."
+    ],
+    "build": "A BCT coding of one existing Indian programme, with the gaps named.",
+    "gate": "You can specify a target behaviour, its COM-B components and its BCTs for any programme put in front of you."
+   }
+  },
+  "S35": {
+   "id": "S35",
+   "title": "Eating behaviour, mental health and weight stigma",
+   "target": "Expert",
+   "n_rungs": 4,
+   "part": 10,
+   "part_name": "Behavioural and psychological science",
+   "prereq": [
+    "S21",
+    "S22"
+   ],
+   "rung1": {
+    "level": "Introductory",
+    "concepts": [
+     "Weight stigma exists, is common in healthcare, and harms.",
+     "Person-first language and the specific words to avoid.",
+     "That before-and-after imagery and prevalence-and-risk messaging can increase stigma."
+    ],
+    "skills": [
+     "Conduct a consultation without stigmatising language.",
+     "Identify stigmatising content in a poster or a patient leaflet."
+    ],
+    "build": "A language audit of your department's obesity-related patient materials.",
+    "gate": "A patient with obesity would describe your consultation as respectful without being asked."
+   },
+   "rung2": {
+    "level": "Intermediate",
+    "concepts": [
+     "Eating behaviour psychology: restraint theory and its critiques, disinhibition, the Three-Factor Eating Questionnaire and the Dutch Eating Behaviour Questionnaire, binge eating disorder, night eating syndrome.",
+     "The clinical distinction between a disordered eating pattern and an adaptive response to restriction.",
+     "Obesity and mental health: bidirectionality with depression, the weight effects of psychotropics, body image, disordered eating risk in adolescents.",
+     "Stigma measurement: experienced versus internalised stigma and the validated instruments.",
+     "Measurement invariance and item response theory at the level needed to use these scales responsibly."
+    ],
+    "skills": [
+     "Distinguish clinically between disordered eating and an adaptive response to restriction, and change management accordingly.",
+     "Administer and interpret a stigma or eating behaviour instrument.",
+     "Manage a patient whose weight gain is psychotropic in origin."
+    ],
+    "build": "A validated stigma or eating behaviour instrument fielded in an Indian sample.",
+    "gate": "You detect disordered eating in your own clinic at a rate consistent with published prevalence."
+   }
+  },
+  "S36": {
+   "id": "S36",
+   "title": "Qualitative and mixed methods",
+   "target": "Advanced",
+   "n_rungs": 3,
+   "part": 10,
+   "part_name": "Behavioural and psychological science",
+   "prereq": [],
+   "rung1": {
+    "level": "Introductory",
+    "concepts": [
+     "Qualitative research answers different questions from quantitative research rather than being weaker.",
+     "Interview and focus group as distinct instruments with distinct dynamics.",
+     "That a quotation is data, not decoration."
+    ],
+    "skills": [
+     "Conduct a semi-structured interview without leading the respondent.",
+     "Write a topic guide with open questions."
+    ],
+    "build": "Five pilot interviews conducted, transcribed and read.",
+    "gate": "You can run an interview in which the respondent speaks more than you do."
+   },
+   "rung2": {
+    "level": "Intermediate",
+    "concepts": [
+     "Sampling logic: purposive and theoretical sampling; saturation and its critiques.",
+     "Thematic and framework analysis, and when each is appropriate.",
+     "Interviewer effects in hierarchical settings, which matter acutely in Indian clinical and administrative contexts.",
+     "COREQ reporting and what makes qualitative work credible to a quantitative reviewer."
+    ],
+    "skills": [
+     "Build and apply a coding framework someone else could replicate.",
+     "Run and analyse an interview study end to end.",
+     "Report qualitative findings so that a quantitative reviewer can judge them."
+    ],
+    "build": "One completed qualitative study, analysed and written to COREQ.",
+    "gate": "Your coding framework survives being applied by a second coder."
+   }
+  },
+  "S37": {
+   "id": "S37",
+   "title": "Food systems, value chains and Indian food policy",
+   "target": "Advanced",
+   "n_rungs": 3,
+   "part": 11,
+   "part_name": "Food systems and commercial determinants",
+   "prereq": [],
+   "rung1": {
+    "level": "Introductory",
+    "concepts": [
+     "A food system spans production, storage, processing, distribution, retail, preparation, consumption and waste.",
+     "Someone decides what is available, at what price, in what place.",
+     "Indian food policy was built to end calorie deficiency, not calorie excess."
+    ],
+    "skills": [
+     "Describe where a familiar food came from and who handled it.",
+     "Name the main Indian food policy instruments."
+    ],
+    "build": "A written supply-chain sketch of one commonly consumed packaged product.",
+    "gate": "You can locate an intervention proposal somewhere in the food system rather than treating it as acting on consumers directly."
+   },
+   "rung2": {
+    "level": "Intermediate",
+    "concepts": [
+     "The HLPE food systems framework as a formal reference, learned well enough to locate any intervention within it.",
+     "Value chains and margin structure: which actor captures value and therefore resists change; why processed food carries higher margins than fresh produce.",
+     "Indian agricultural policy as nutrition policy: minimum support prices concentrated in rice, wheat and sugarcane; the PDS cereal orientation; sugar policy including ethanol diversion; edible oil import dependence and the palm oil mission; the millet push; horticulture's weak support.",
+     "The nutrition transition: Popkin's stages and India's compressed, regionally uneven passage through them."
+    ],
+    "skills": [
+     "Trace one packaged product from agricultural subsidy through sourcing, margin and marketing spend to shelf and mouth.",
+     "Locate any proposed intervention within the HLPE framework and say which driver it acts on.",
+     "Explain why the PDS and the obesity problem are the same policy conversation."
+    ],
+    "build": "A written value-chain analysis of one Indian product category, with margins estimated.",
+    "gate": "An agricultural economist finds your account of MSP and edible oil policy accurate."
+   }
+  },
+  "S38": {
+   "id": "S38",
+   "title": "Food environment measurement, retail and digital delivery",
+   "target": "Advanced",
+   "n_rungs": 3,
+   "part": 11,
+   "part_name": "Food systems and commercial determinants",
+   "prereq": [
+    "S15",
+    "S37"
+   ],
+   "rung1": {
+    "level": "Introductory",
+    "concepts": [
+     "The food environment is the set of options available where people actually are.",
+     "Outlet density, price and promotion as measurable properties of a place.",
+     "That quick-commerce has put fried and sweet food fifteen minutes from most urban households."
+    ],
+    "skills": [
+     "Walk a defined area and enumerate food outlets by type.",
+     "Describe the digital food environment of one neighbourhood from a delivery app."
+    ],
+    "build": "A pilot outlet census of one ward, with a written typology.",
+    "gate": "You can describe a neighbourhood's food environment in measurable terms rather than impressions."
+   },
+   "rung2": {
+    "level": "Intermediate",
+    "concepts": [
+     "Measurement methods: outlet density and typology mapping, GIS methods, NEMS-type store and restaurant audits, school neighbourhood audits, price and availability surveys, shelf-space and promotion audits.",
+     "Marketing: television, digital, influencer and in-app marketing; the evidence on food marketing to children; product placement and celebrity endorsement, which in India includes cricketers and film actors endorsing sugar-sweetened beverages and pan masala.",
+     "The INFORMAS framework for benchmarking food environments.",
+     "Retail transformation: kirana to modern trade, quick-commerce under fifteen minutes, aggregator platforms, and their combined effect on time cost and cue density."
+    ],
+    "skills": [
+     "Audit a neighbourhood food environment with a documented, replicable method to INFORMAS-comparable standards.",
+     "Build and clean a geocoded outlet dataset and analyse density against area deprivation.",
+     "Design a school neighbourhood audit a resident can execute in a term."
+    ],
+    "build": "A completed food environment audit of one Indian city ward, published or lodged with the municipality.",
+    "gate": "Your audit method is documented well enough for another city to repeat it."
+   }
+  },
+  "S39": {
+   "id": "S39",
+   "title": "Commercial determinants and corporate political activity",
+   "target": "Advanced",
+   "n_rungs": 3,
+   "part": 11,
+   "part_name": "Food systems and commercial determinants",
+   "prereq": [
+    "S37"
+   ],
+   "rung1": {
+    "level": "Introductory",
+    "concepts": [
+     "Companies act on incentives and are not neutral participants in health policy.",
+     "The individual-responsibility frame as a deliberate strategy rather than a naive belief.",
+     "That corporate social responsibility activity is reputational."
+    ],
+    "skills": [
+     "Recognise the individual-responsibility frame in a public statement.",
+     "Identify who funded a study or a conference."
+    ],
+    "build": "An annotated collection of ten public statements by Indian food companies, coded by frame.",
+    "gate": "You notice the frame before you notice the argument."
+   },
+   "rung2": {
+    "level": "Intermediate",
+    "concepts": [
+     "The corporate political activity taxonomy with a live Indian instance for each: framing; information and evidence; direct access and lobbying; coalition management; legal and trade strategy; market strategy.",
+     "Market strategy in detail: reformulation to just below a regulatory threshold, portion and price-point engineering for low-income consumers, expansion into unregulated categories.",
+     "The monitoring infrastructure: INFORMAS, the Access to Nutrition Index, the Business Impact Assessment on obesity.",
+     "Industry funding effects as documented \u2014 they shift question selection and framing more than they corrupt analysis \u2014 and why reflexive dismissal on funding grounds is itself a failure of rigour."
+    ],
+    "skills": [
+     "Identify each corporate political activity strategy in a live Indian example, with documentary evidence.",
+     "Read a consultation response or a scientific panel composition and say what is being attempted.",
+     "Judge a funded study on method rather than on funder."
+    ],
+    "build": "A documented case study of corporate political activity around one live Indian regulatory process.",
+    "gate": "You can predict, before a consultation closes, which three arguments industry will make and who will make them."
+   }
+  },
+  "S40": {
+   "id": "S40",
+   "title": "Food demand, elasticity and the economics of externality",
+   "target": "Advanced",
+   "n_rungs": 3,
+   "part": 12,
+   "part_name": "Economics and decision modelling",
+   "prereq": [
+    "S04",
+    "S29"
+   ],
+   "rung1": {
+    "level": "Introductory",
+    "concepts": [
+     "Price affects quantity demanded, and elasticity is the measure of by how much.",
+     "Externality as a cost borne by someone other than the buyer.",
+     "Why finance ministries respond to revenue and cost offset rather than to prevalence."
+    ],
+    "skills": [
+     "Interpret a published elasticity estimate.",
+     "State the economic argument for intervening in a food market."
+    ],
+    "build": "A one-page economic framing of one Indian food policy proposal.",
+    "gate": "You can explain to a clinician why the health argument alone will not move a treasury."
+   },
+   "rung2": {
+    "level": "Intermediate",
+    "concepts": [
+     "Price, income and cross-price elasticity and substitution; demand system models (AIDS, QUAIDS) and their data requirements.",
+     "Externalities and internalities: the three distinct arguments \u2014 externalised healthcare and productivity costs, internalities from present bias and imperfect information, and children who cannot consent \u2014 which license different interventions and are attacked differently.",
+     "Consumer surplus and welfare analysis; why the standard welfare objection to food taxes is about internalities rather than externalities.",
+     "At reading level: labour economics of obesity, with a real Indian literature gap, and behavioural public economics."
+    ],
+    "skills": [
+     "Estimate a price elasticity for a food category from HCES or NSSO data, handling zero purchases and unit values correctly.",
+     "Specify which of the three economic arguments a proposal rests on and defend it against the standard objection.",
+     "Translate an elasticity into a projected consumption change and then an intake change, stating assumptions at each hop."
+    ],
+    "build": "An India-specific elasticity estimate for one food category, written up for publication.",
+    "gate": "An economist reviewing your estimate argues about specification rather than about competence."
+   }
+  },
+  "S41": {
+   "id": "S41",
+   "title": "Fiscal instruments: taxation and subsidy design in India",
+   "target": "Advanced",
+   "n_rungs": 3,
+   "part": 12,
+   "part_name": "Economics and decision modelling",
+   "prereq": [
+    "S40",
+    "S37"
+   ],
+   "rung1": {
+    "level": "Introductory",
+    "concepts": [
+     "A tax raises price and reduces quantity; a subsidy does the reverse.",
+     "That India taxes carbonated and caffeinated beverages at 40 percent in the GST demerit slab from 22 September 2025, while sugar in mithai, biscuits and bakery items is taxed at 5 percent.",
+     "That the GST Council, not the health ministry, sets these rates."
+    ],
+    "skills": [
+     "State who controls a given tax rate in India.",
+     "Describe the sugar tax asymmetry accurately."
+    ],
+    "build": "A one-page written brief on the current Indian tax position on sugar.",
+    "gate": "You can name the body that would have to act for a food tax to change."
+   },
+   "rung2": {
+    "level": "Intermediate",
+    "concepts": [
+     "Pigouvian logic; taxing the harmful attribute rather than the product; specific versus ad valorem design; tiered thresholds to induce reformulation; pass-through rates; cross-border and informal substitution.",
+     "Regressivity handled honestly: the burden is regressive while the health benefit is progressive, and earmarking changes the net distribution.",
+     "International evidence and design lessons: Mexico, Chile, the UK levy with its strong reformulation effect, South Africa, Philadelphia.",
+     "Indian fiscal architecture: GST rate-setting under Article 279A, the constitutional division of taxation powers, state versus central authority over food."
+    ],
+    "skills": [
+     "Design a tiered threshold tax on a nutrient of concern and project its reformulation incentive.",
+     "Model pass-through and distributional incidence and present the regressivity answer with numbers rather than rhetoric.",
+     "Explain why the UK levy produced reformulation and a volumetric tax would not have."
+    ],
+    "build": "A costed tax design proposal for one Indian product category.",
+    "gate": "You can answer the regressivity objection with an empirical answer that concedes what is true."
+   }
+  },
+  "S42": {
+   "id": "S42",
+   "title": "Burden of disease, economic evaluation and decision-analytic modelling",
+   "target": "Advanced",
+   "n_rungs": 3,
+   "part": 12,
+   "part_name": "Economics and decision modelling",
+   "prereq": [
+    "S02",
+    "S05",
+    "S40"
+   ],
+   "rung1": {
+    "level": "Introductory",
+    "concepts": [
+     "DALYs and QALYs as summary measures combining length and quality of life.",
+     "Cost-effectiveness as cost per unit of health gained, and the idea of a threshold.",
+     "That India has a formal health technology assessment process which determines what gets funded."
+    ],
+    "skills": [
+     "Read and interpret an ICER and a cost-effectiveness plane.",
+     "Say what perspective and time horizon an economic evaluation used."
+    ],
+    "build": "A written appraisal of one published Indian economic evaluation.",
+    "gate": "You can say whether a cost-effectiveness claim used the right perspective."
+   },
+   "rung2": {
+    "level": "Intermediate",
+    "concepts": [
+     "Comparative risk assessment: population attributable fractions and their additivity problem, theoretical minimum risk exposure distributions, DALY construction, and the strong assumptions inside every GBD obesity estimate.",
+     "Cost-of-illness methodology: prevalence versus incidence-based, direct and indirect costs, human capital versus friction cost, and the enormous uncertainty in Indian cost-of-obesity estimates, most of which are weakly constructed.",
+     "Cost-utility analysis: perspective, time horizon, discounting, acceptability curves, and India's HTA reference case.",
+     "Decision trees and Markov cohort models, and their limits for a chronic multifactorial condition.",
+     "Return-on-investment analysis and the WHO Best Buys for NCDs, which is the document Indian policy actually cites."
+    ],
+    "skills": [
+     "Build a Markov cohort model in heemod and run a probabilistic sensitivity analysis.",
+     "Produce a defensible Indian cost-of-obesity estimate with its uncertainty stated.",
+     "Critique a submitted economic evaluation against the Indian reference case."
+    ],
+    "build": "A costed economic evaluation of one obesity intervention, to CHEERS reporting standard.",
+    "gate": "Your evaluation would be accepted for consideration by the national HTA process."
+   }
+  },
+  "S43": {
+   "id": "S43",
+   "title": "Health financing, HTA and pharmaceutical access in India",
+   "target": "Intermediate",
+   "n_rungs": 2,
+   "part": 12,
+   "part_name": "Economics and decision modelling",
+   "prereq": [
+    "S42",
+    "S24"
+   ],
+   "rung1": {
+    "level": "Introductory",
+    "concepts": [
+     "Who pays for health care in India: out-of-pocket, PM-JAY, state schemes, private insurance.",
+     "Catastrophic health expenditure as the central Indian financing concern.",
+     "That coverage, not efficacy, is usually the binding constraint on a treatment reaching patients."
+    ],
+    "skills": [
+     "Tell a patient accurately what they will and will not have to pay for.",
+     "Say whether a given intervention is in a PM-JAY package."
+    ],
+    "build": "A written coverage map for the obesity interventions you offer.",
+    "gate": "You can answer who pays for any intervention you recommend."
+   },
+   "rung2": {
+    "level": "Intermediate",
+    "concepts": [
+     "PM-JAY package construction: what is and is not covered for obesity and bariatric surgery, and the process by which a package is added.",
+     "The national HTA process and how a submission is evaluated.",
+     "Pharmaceutical pricing economics and the National List of Essential Medicines \u2014 the mechanism by which generic semaglutide could become affordable at population scale.",
+     "Insurance design and moral hazard as they apply to chronic weight therapy."
+    ],
+    "skills": [
+     "Trace the route by which a specific intervention would enter a PM-JAY package or the NLEM, naming the committee and the evidence required.",
+     "Critique a submitted HTA dossier.",
+     "Advise a clinician or a patient group on the realistic route to coverage."
+    ],
+    "build": "A written coverage-pathway analysis for one obesity intervention, shared with a professional body.",
+    "gate": "You can answer who pays, and how that could change, with the mechanism named."
+   }
+  },
+  "S44": {
+   "id": "S44",
+   "title": "System dynamics and complexity concepts",
+   "target": "Advanced",
+   "n_rungs": 3,
+   "part": 13,
+   "part_name": "Systems and complexity",
+   "prereq": [
+    "S02"
+   ],
+   "rung1": {
+    "level": "Introductory",
+    "concepts": [
+     "A stock is a quantity that accumulates; a flow is a rate that changes it. Body fat is a stock; obesity prevalence is a stock; diet quality is a flow.",
+     "Feedback loops: reinforcing loops amplify, balancing loops stabilise.",
+     "That effects can be delayed by years or decades."
+    ],
+    "skills": [
+     "Distinguish stocks from flows in any policy argument put in front of you, out loud, in the meeting.",
+     "Identify a reinforcing and a balancing loop in a described system."
+    ],
+    "build": "A stock-flow sketch of one obesity-related policy argument you have heard.",
+    "gate": "You catch a stock-flow confusion in a live discussion."
+   },
+   "rung2": {
+    "level": "Intermediate",
+    "concepts": [
+     "Causal loop and stock-and-flow diagramming to a standard from which someone else could build the model.",
+     "Balancing and reinforcing loops identified in a real system rather than asserted, and the difference between naming a loop and demonstrating one.",
+     "Delays as the most underrated feature of this system: twenty years from dietary change to diabetes incidence, a generation from maternal nutrition to offspring risk, years from enactment to measurable prevalence change \u2014 which guarantees political attention spans are shorter than response times and argues for process indicators.",
+     "Nonlinearity, thresholds and tipping points; path dependence and lock-in, since once a food system is built around cheap refined carbohydrate and edible oil the cost of reversal rises with time.",
+     "System archetypes \u2014 fixes that fail, shifting the burden, success to the successful, tragedy of the commons \u2014 and their instances in nutrition policy.",
+     "Meadows's leverage points hierarchy used analytically: paradigms and goals beat parameters and buffers, which is why arguing about BMI cut-offs is low leverage."
+    ],
+    "skills": [
+     "Draw a stock-and-flow diagram someone else could build from.",
+     "Identify which archetype a failing programme is instantiating.",
+     "Place a proposed intervention on the leverage hierarchy and say what higher-leverage alternative exists."
+    ],
+    "build": "A causal loop diagram of the obesity system in one Indian district, built with the archetypes named.",
+    "gate": "Every map you draw names the two loops you believe dominate and what would falsify that claim."
+   }
+  },
+  "S45": {
+   "id": "S45",
+   "title": "Participatory systems mapping and group model building",
+   "target": "Advanced",
+   "n_rungs": 3,
+   "part": 13,
+   "part_name": "Systems and complexity",
+   "prereq": [
+    "S44",
+    "S36"
+   ],
+   "rung1": {
+    "level": "Introductory",
+    "concepts": [
+     "A participatory map is built by stakeholders, not shown to them.",
+     "That the senior-most person in an Indian administrative room will shape the map unless the process prevents it.",
+     "The difference between a workshop that produces a poster and one that produces a model."
+    ],
+    "skills": [
+     "Facilitate a small group to produce a shared causal sketch.",
+     "Keep a dominant participant from setting the agenda."
+    ],
+    "build": "A two-hour pilot mapping session with colleagues, with the map retained.",
+    "gate": "A group you facilitated produces a map none of them would have drawn alone."
+   },
+   "rung2": {
+    "level": "Intermediate",
+    "concepts": [
+     "One documented protocol learned properly \u2014 STICKE or ISM \u2014 rather than a general idea of participatory mapping.",
+     "The structured progression from stakeholder anecdote to shared causal map, and the facilitation moves that produce it.",
+     "Group dynamics in hierarchical settings and the specific devices that flatten them.",
+     "How to convert a participatory map into a prioritised intervention list rather than a poster."
+    ],
+    "skills": [
+     "Run a full one-day mapping workshop to a documented protocol.",
+     "Convert the resulting map into a prioritised intervention list with named owners.",
+     "Handle a workshop in which the senior official disagrees with the group's map."
+    ],
+    "build": "A completed district workshop with a retained map and a prioritised intervention list.",
+    "gate": "Participants act on the map after the workshop ends."
+   }
+  },
+  "S46": {
+   "id": "S46",
+   "title": "Agent-based and network modelling",
+   "target": "Intermediate",
+   "n_rungs": 2,
+   "part": 13,
+   "part_name": "Systems and complexity",
+   "prereq": [
+    "S44"
+   ],
+   "rung1": {
+    "level": "Introductory",
+    "concepts": [
+     "An agent-based model simulates individuals and lets patterns emerge; a network is nodes and ties.",
+     "That obesity has been claimed to spread through social networks, and that the claim is contested.",
+     "Degree, clustering and centrality as basic network descriptors."
+    ],
+    "skills": [
+     "Read an ABM paper and say what the agents were and what rules they followed.",
+     "Describe a network figure correctly."
+    ],
+    "build": "A run-through of an existing NetLogo or Mesa food-environment model, with parameters varied.",
+    "gate": "You can say what an ABM result is and is not evidence for."
+   },
+   "rung2": {
+    "level": "Intermediate",
+    "concepts": [
+     "ABM construction: agents with income, time constraints, preferences and social influence choosing among outlets with prices and locations; using the model to explore where an intervention's effect saturates.",
+     "The validation problem stated honestly: an ABM generates hypotheses about mechanism, it does not estimate an effect size.",
+     "Diffusion models and dynamic transmission-style modelling for norm spread.",
+     "The Christakis and Fowler social-contagion work and the serious methodological critiques: homophily and shared environment are not separable from contagion in observational network data."
+    ],
+    "skills": [
+     "Build a simple food environment ABM of one ward and state its validation limits unprompted.",
+     "Critique a published network contagion claim and name the identification problem.",
+     "Specify to a modelling collaborator what you need and judge whether the result is interpretable."
+    ],
+    "build": "A simple ward-level ABM built and documented, with an explicit statement of what it cannot establish.",
+    "gate": "You can explain why an ABM result is a hypothesis and still argue that building it was worthwhile."
+   }
+  },
+  "S47": {
+   "id": "S47",
+   "title": "Policy process, framing and advocacy craft",
+   "target": "Advanced",
+   "n_rungs": 3,
+   "part": 14,
+   "part_name": "Policy, law and political economy",
+   "prereq": [],
+   "rung1": {
+    "level": "Introductory",
+    "concepts": [
+     "Policy is made by identifiable bodies through identifiable processes.",
+     "Framing determines which instruments are even discussable.",
+     "The difference between informing policy and campaigning for it."
+    ],
+    "skills": [
+     "Identify who would have to act for a given proposal to become policy.",
+     "Recognise the frame a public argument is operating in."
+    ],
+    "build": "A written one-page note on one Indian policy proposal, naming the deciding body.",
+    "gate": "You can say, for any proposal, who decides and under what authority."
+   },
+   "rung2": {
+    "level": "Intermediate",
+    "concepts": [
+     "Policy process theory used diagnostically: Kingdon's multiple streams, the advocacy coalition framework, punctuated equilibrium, and the Walt and Gilson triangle of content, context, process and actors.",
+     "The tobacco control precedent as the closest template, including where the analogy holds and where it fails.",
+     "The Overton window and why frame choice precedes instrument choice.",
+     "Writing for policy audiences as a distinct genre: answer first, one page, costed recommendation, no methods section.",
+     "The WHO and UNICEF frameworks for handling industry interference."
+    ],
+    "skills": [
+     "Diagnose with Kingdon whether a window is open and what is missing from which stream.",
+     "Write a four-page policy brief with the legal mechanism, evidence, quantified projected effect, counter-arguments and affected interests.",
+     "Decide deliberately, in each instance, whether you are a researcher informing policy or an advocate campaigning \u2014 and never blur the two in one document."
+    ],
+    "build": "One policy brief on an Indian instrument, circulated to a real audience.",
+    "gate": "Your brief survives scrutiny by both a health secretary and an industry lawyer."
+   }
+  },
+  "S48": {
+   "id": "S48",
+   "title": "Indian regulatory architecture and the live policy agenda",
+   "target": "Expert",
+   "n_rungs": 4,
+   "part": 14,
+   "part_name": "Policy, law and political economy",
+   "prereq": [
+    "S47",
+    "S37"
+   ],
+   "rung1": {
+    "level": "Introductory",
+    "concepts": [
+     "FSSAI regulates food standards and labelling; the GST Council sets tax rates; the Ministry of Education and CBSE govern school food.",
+     "That front-of-pack labelling is currently contested in India and that trans fat elimination already succeeded.",
+     "That Article 47 places a duty on the State regarding nutrition."
+    ],
+    "skills": [
+     "Name the regulator for a given food policy question.",
+     "Describe the current front-of-pack labelling dispute in outline."
+    ],
+    "build": "A one-page institutional map of Indian food regulation, kept current.",
+    "gate": "You never have to look up which body regulates food labelling."
+   },
+   "rung2": {
+    "level": "Intermediate",
+    "concepts": [
+     "The full instrument map with statutes: food standards, labelling, claims and additives with FSSAI under the Food Safety and Standards Act 2006; misleading advertisement action with the Central Consumer Protection Authority under the Consumer Protection Act 2019; broadcast advertising content with the Ministry of Information and Broadcasting under the Cable Television Networks Rules; indirect tax with the GST Council under Article 279A; school food with the Ministry of Education, CBSE and states under PM POSHAN; NCD delivery with MoHFW and states under NP-NCD and Ayushman Arogya Mandirs; agricultural price support and PDS under the National Food Security Act 2013; and Article 47 with Article 21 as interpreted.",
+     "Trans fat elimination as India's one clean domestic precedent for a mandatory compositional standard, and why it succeeded: a cheap technical substitute existed, so industry resistance collapsed.",
+     "Delivery infrastructure: NP-NCD, population-based screening through Ayushman Arogya Mandirs, PM-JAY coverage."
+    ],
+    "skills": [
+     "Name which Indian body holds which regulatory lever, under which statute, without notes.",
+     "Explain why trans fat succeeded and why a sugar standard would be harder, from the substitute-availability argument.",
+     "Read a draft regulation and identify its enforcement mechanism."
+    ],
+    "build": "A maintained institutional and statutory brief used by your department and collaborators.",
+    "gate": "Colleagues route their which-body-regulates-this questions to you."
+   }
+  },
+  "S49": {
+   "id": "S49",
+   "title": "Comparative and international policy",
+   "target": "Intermediate",
+   "n_rungs": 2,
+   "part": 14,
+   "part_name": "Policy, law and political economy",
+   "prereq": [
+    "S47"
+   ],
+   "rung1": {
+    "level": "Introductory",
+    "concepts": [
+     "Other countries have tried labelling, taxes and marketing restrictions, with measured results.",
+     "Chile, Mexico and Brazil as the standard reference cases.",
+     "That a foreign result does not automatically transfer."
+    ],
+    "skills": [
+     "Summarise one foreign policy package accurately.",
+     "Say why a foreign evaluation might not apply in India."
+    ],
+    "build": "A written comparison note on one instrument in two countries.",
+    "gate": "You never cite a foreign policy result without naming a reason it might differ here."
+   },
+   "rung2": {
+    "level": "Intermediate",
+    "concepts": [
+     "The Chilean labelling and marketing package as the most evaluated comprehensive intervention: what was implemented, in what sequence, and what the evaluations found.",
+     "Mexico's tax and Brazil's dietary guidelines as contrasting instruments.",
+     "The WHO Global Action Plan and NCD targets, and how Indian commitments map to them.",
+     "Transportability applied to policy: what has to be true for a Chilean effect to reproduce in India.",
+     "International bodies and how technical working groups form: WHO country office and SEARO, UNICEF India, the World Obesity Federation, global NCD alliance networks."
+    ],
+    "skills": [
+     "Write a comparative analysis of one instrument across three countries including India, with the design differences that explain outcome differences.",
+     "Judge whether a foreign evaluation supports an Indian proposal or merely decorates it.",
+     "Position yourself for an international technical working group, which tends to cascade."
+    ],
+    "build": "A published comparative policy analysis with India as one of the cases.",
+    "gate": "Your comparative section explains why the foreign result will be different here, rather than assuming it will repeat."
+   }
+  },
+  "S50": {
+   "id": "S50",
+   "title": "Implementation science and programme craft",
+   "target": "Advanced",
+   "n_rungs": 3,
+   "part": 15,
+   "part_name": "Implementation and health systems delivery",
+   "prereq": [
+    "S15",
+    "S36"
+   ],
+   "rung1": {
+    "level": "Introductory",
+    "concepts": [
+     "An intervention that works in a trial can fail in a district, and the reasons are specifiable.",
+     "Fidelity: whether a programme was delivered as designed.",
+     "The difference between a logic model and a wish list."
+    ],
+    "skills": [
+     "Write a logic model for a familiar programme.",
+     "Ask whether a programme was actually delivered before asking whether it worked."
+    ],
+    "build": "A logic model for one existing programme in your setting, with each arrow written as a falsifiable claim.",
+    "gate": "You ask about delivery before you ask about outcome."
+   },
+   "rung2": {
+    "level": "Intermediate",
+    "concepts": [
+     "The efficacy-effectiveness-implementation distinction and hybrid type 2 and 3 designs.",
+     "Implementation outcomes as distinct from health outcomes \u2014 acceptability, adoption, appropriateness, feasibility, fidelity, cost, penetration, sustainability (Proctor's taxonomy).",
+     "Frameworks used for their intended purpose: CFIR for determinants, RE-AIM for evaluation and reach, Normalization Process Theory for how practices embed, EPIS for phases, PRECEDE-PROCEED for planning. Pick two and know them properly.",
+     "The ERIC taxonomy of implementation strategies, so you can name what you are doing rather than calling it capacity building.",
+     "Indicator design across input, process, output, outcome and impact, and the trap of indicators that are easy to report rather than informative.",
+     "Quality improvement methods: PDSA cycles, run charts, the IHI model, Kayakalp and NQAS."
+    ],
+    "skills": [
+     "Measure implementation outcomes distinctly from health outcomes in a real evaluation.",
+     "Run a PDSA cycle with a run chart on a live service problem in your own institution.",
+     "Name your implementation strategies in ERIC terms in a protocol."
+    ],
+    "build": "One evaluation reporting Proctor outcomes alongside health outcomes.",
+    "gate": "Your evaluations report why something worked or failed with the same rigour as whether it did."
+   }
+  },
+  "S51": {
+   "id": "S51",
+   "title": "The Indian health system and its financing mechanics",
+   "target": "Advanced",
+   "n_rungs": 3,
+   "part": 15,
+   "part_name": "Implementation and health systems delivery",
+   "prereq": [
+    "S50"
+   ],
+   "rung1": {
+    "level": "Introductory",
+    "concepts": [
+     "The service delivery ladder: sub-centre, PHC, CHC, district hospital, Ayushman Arogya Mandirs.",
+     "The frontline cadres: ASHA, ANM, multipurpose worker, community health officer.",
+     "That any population obesity intervention in India will be delivered by these people or not at all."
+    ],
+    "skills": [
+     "Describe the staffing and function of each level.",
+     "Estimate the time an ASHA actually has available."
+    ],
+    "build": "A written time-budget estimate for one frontline cadre in your district.",
+    "gate": "You design against a real time budget rather than an assumed one."
+   },
+   "rung2": {
+    "level": "Intermediate",
+    "concepts": [
+     "Structure and financing: National Health Mission; centrally sponsored scheme design; state health department organisation.",
+     "The state Programme Implementation Plan cycle through which money is actually allocated \u2014 the mechanism by which an idea becomes a funded activity, which almost no researcher understands.",
+     "Frontline workload, incentive structure and training pipeline in detail.",
+     "Task-shifting and task-sharing evidence; non-physician-delivered NCD care; mHealth and the NCD portal with its data quality problems.",
+     "Health information systems: HMIS, the NCD application, Ayushman Bharat Digital Mission, and the gap between what is reported and what happened."
+    ],
+    "skills": [
+     "Read a state PIP and locate where an activity would sit.",
+     "Design an intervention against a realistic frontline time budget, stated explicitly in the protocol.",
+     "Audit the gap between reported and delivered service volumes in one facility."
+    ],
+    "build": "A written PIP-ready activity proposal with costing and cadre time accounted for.",
+    "gate": "A programme officer reads your proposal and knows immediately which budget line it belongs in."
+   }
+  },
+  "S52": {
+   "id": "S52",
+   "title": "R, reproducibility engineering and data management",
+   "target": "Expert",
+   "n_rungs": 4,
+   "part": 16,
+   "part_name": "Computation and data",
+   "prereq": [],
+   "rung1": {
+    "level": "Introductory",
+    "concepts": [
+     "R as a language with objects, functions and packages, not a menu of commands.",
+     "The tidyverse verbs and what a data frame is.",
+     "That raw data is never edited and analysis is never done by hand in a spreadsheet."
+    ],
+    "skills": [
+     "Import, clean, summarise and plot a dataset in a script that runs from top to bottom.",
+     "Keep raw data untouched and all changes in code."
+    ],
+    "build": "One dataset analysed end to end in a single script that another person can run.",
+    "gate": "Your analysis reproduces from raw data with one command."
+   },
+   "rung2": {
+    "level": "Intermediate",
+    "concepts": [
+     "Writing functions rather than repeating blocks; data.table idioms for larger data.",
+     "Git and GitHub for version control and collaboration \u2014 every project in a repo from day one.",
+     "Quarto as a reproducible path from raw data to manuscript, and literate programming as a working style.",
+     "SQL and DuckDB for querying large survey and hospital data.",
+     "Field data collection tooling: REDCap, KoboToolbox or ODK."
+    ],
+    "skills": [
+     "Write a Quarto manuscript in which every number traces to a line of code.",
+     "Use Git properly, including branching and recovering from a mistake.",
+     "Load a large survey into DuckDB and query it."
+    ],
+    "build": "Your thesis or one full project reanalysed end to end in one Quarto document, in a public or institutional repo.",
+    "gate": "Every number in your manuscript is traceable to code, and you can prove it."
+   }
+  },
+  "S53": {
+   "id": "S53",
+   "title": "Python for simulation, scraping and tooling",
+   "target": "Intermediate",
+   "n_rungs": 2,
+   "part": 16,
+   "part_name": "Computation and data",
+   "prereq": [
+    "S52"
+   ],
+   "rung1": {
+    "level": "Introductory",
+    "concepts": [
+     "Python as a second language with a different ecosystem and different strengths.",
+     "numpy, pandas and matplotlib as the counterparts to what you already use.",
+     "That Python earns its place for simulation, agent-based modelling, scraping and tooling \u2014 and for nothing else here."
+    ],
+    "skills": [
+     "Read and run someone else's Python analysis script.",
+     "Translate a simple R analysis into Python and get the same answer."
+    ],
+    "build": "One existing analysis reimplemented in Python as a learning exercise.",
+    "gate": "You can read Python code in a paper's supplement without being blocked."
+   },
+   "rung2": {
+    "level": "Intermediate",
+    "concepts": [
+     "The scientific stack in practical use, and where each tool is better or worse than its R counterpart.",
+     "Simulation and agent-based frameworks (Mesa), and when to reach for Python rather than deSolve.",
+     "Web scraping: HTTP, HTML parsing, rate limiting, and the legal and ethical constraints on scraping a commercial platform.",
+     "Basic software engineering hygiene \u2014 modules, tests, environments \u2014 sufficient to hand something to another person."
+    ],
+    "skills": [
+     "Scrape a food delivery platform's menus for one city and produce a clean, documented dataset.",
+     "Build a simple agent-based model and run scenario sweeps.",
+     "Hand a working script to a collaborator who can run it without you."
+    ],
+    "build": "A novel digital dataset acquired by your own code, documented and shared.",
+    "gate": "You can acquire a digital dataset yourself rather than describing one you wish existed."
+   }
+  },
+  "S54": {
+   "id": "S54",
+   "title": "India's data infrastructure, access and complex survey analysis",
+   "target": "Expert",
+   "n_rungs": 4,
+   "part": 16,
+   "part_name": "Computation and data",
+   "prereq": [
+    "S52",
+    "S17"
+   ],
+   "rung1": {
+    "level": "Introductory",
+    "concepts": [
+     "The major Indian datasets by name: NFHS, CNNS, ICMR-INDIAB, NNMS, LASI, HCES, GBD India, SRS.",
+     "That NFHS-3 to NFHS-5 shows a 288 percent relative rise in adolescent boys against a 91 percent rise in adult women \u2014 India's obesity problem is arriving through its children.",
+     "That survey data has weights and that ignoring them gives wrong answers."
+    ],
+    "skills": [
+     "Download NFHS microdata and open it.",
+     "Name which dataset would contain a given variable."
+    ],
+    "build": "A weighted national prevalence estimate reproduced from NFHS microdata and checked against the published report.",
+    "gate": "Your estimate matches the published figure to the decimal."
+   },
+   "rung2": {
+    "level": "Intermediate",
+    "concepts": [
+     "What each dataset can and cannot answer, including the limitation of each: NFHS cross-sectional with limited biochemistry and partial adolescent coverage; CNNS one-off; ICMR-INDIAB not powered for districts; NNMS single round; LASI older ages only; HCES household not individual and purchases not intake; GBD modelled rather than measured; SRS with weak cause certification; birth cohorts small and ageing; NCD portal and PM-JAY claims with data quality caveats; commercial retail panels expensive and opaque.",
+     "Complex survey analysis done correctly: weights, strata, primary sampling units, and why survey or WeMix rather than unweighted regression. This is routinely got wrong in the Indian literature.",
+     "Access mechanics: DHS Program registration, MoSPI unit-level data, institutional data use agreements."
+    ],
+    "skills": [
+     "Analyse NFHS microdata with correct survey weights, reproducibly, in one day.",
+     "Critique a published Indian analysis that ignored the survey design.",
+     "Obtain a dataset through the correct formal route."
+    ],
+    "build": "A published secondary analysis on Indian survey data with the design correctly handled.",
+    "gate": "You can name which dataset answers any Indian obesity question in thirty seconds."
+   }
+  },
+  "S55": {
+   "id": "S55",
+   "title": "Question selection and research strategy",
+   "target": "Expert",
+   "n_rungs": 4,
+   "part": 17,
+   "part_name": "Research craft",
+   "prereq": [],
+   "rung1": {
+    "level": "Introductory",
+    "concepts": [
+     "A research question is a choice, and most are made by accident.",
+     "The difference between a question that is answerable and one whose answer would change something.",
+     "That most descriptive cross-sectional studies are never cited."
+    ],
+    "skills": [
+     "State a research question in one sentence with a population, exposure and outcome.",
+     "Ask of a candidate question: who is waiting for this answer, and what will they do differently?"
+    ],
+    "build": "A written list of ten candidate questions, each scored against the who-is-waiting test.",
+    "gate": "You can explain why you rejected nine of your ten candidate questions."
+   },
+   "rung2": {
+    "level": "Intermediate",
+    "concepts": [
+     "The four assets recognition is made of: a citable body of work on one named question; custody of data or a cohort; a teaching lineage; institutional position and committee membership \u2014 with the fourth manufactured by the first three.",
+     "The portfolio ladder and what each rung costs and returns, from correspondence through secondary analysis, systematic review, instrument validation, primary cross-sectional, modelling, qualitative and policy analysis, prospective cohort, randomised trial, and guideline authorship.",
+     "Systematic literature searching as a technical skill: database syntax across PubMed, Embase and Scopus, controlled vocabulary, search strategy documentation, citation chaining, and reference management with a real library.",
+     "Funding sequence: intramural, then ICMR ad-hoc and task force, DST and DBT, India Alliance fellowships, ICSSR for policy-adjacent work, and international sources including Wellcome, the Gates Foundation nutrition portfolio and NIH Fogarty \u2014 each step won mostly on the last one delivered on time."
+    ],
+    "skills": [
+     "Sequence your next three outputs so each funds the next.",
+     "Run a documented systematic search rather than a convenience one.",
+     "Write a grant application whose case rests on prior delivery."
+    ],
+    "build": "A written three-year output plan with each item mapped to the one question and the funding rung it buys.",
+    "gate": "You can name the one question you own in a single sentence."
+   }
+  },
+  "S56": {
+   "id": "S56",
+   "title": "Protocol, preregistration, reporting standards and research ethics",
+   "target": "Advanced",
+   "n_rungs": 3,
+   "part": 17,
+   "part_name": "Research craft",
+   "prereq": [
+    "S55",
+    "S15"
+   ],
+   "rung1": {
+    "level": "Introductory",
+    "concepts": [
+     "A protocol is written before the study and states what will be done.",
+     "Ethics committee approval and CTRI registration as prerequisites, not formalities.",
+     "That reporting guidelines exist and are checklists for design, not for submission."
+    ],
+    "skills": [
+     "Write a complete protocol with objectives, design, sample size, analysis and ethics.",
+     "Take a study through an institutional ethics committee."
+    ],
+    "build": "One protocol written, approved and registered.",
+    "gate": "Your protocol is approved without a major revision."
+   },
+   "rung2": {
+    "level": "Intermediate",
+    "concepts": [
+     "Preregistration and protocol publication as a discipline against yourself.",
+     "Statistical analysis plans written and dated before unblinding or before touching outcome data.",
+     "Reporting guidelines used at the design stage: CONSORT and SPIRIT, STROBE and STROBE-nut, PRISMA, TRIPOD, CHEERS, COREQ, ISPOR-SMDM.",
+     "Research ethics in practice: ICMR national ethical guidelines, informed consent in low-literacy settings, benefit sharing, and the specific ethics of research on stigmatised conditions \u2014 non-stigmatising language, community involvement, returning results.",
+     "Authorship and collaboration: ICMJE criteria, CRediT, negotiating author order before the work starts, and being an excellent collaborator by delivering early and making the senior author's life easier."
+    ],
+    "skills": [
+     "Write a SAP a statistician could execute without asking you a question.",
+     "Preregister an analysis and then report it as preregistered, including the deviations.",
+     "Negotiate authorship before work begins rather than after."
+    ],
+    "build": "One preregistered study reported with its deviations declared.",
+    "gate": "Your analyses match what you preregistered, and where they do not, you said so first."
+   }
+  },
+  "S57": {
+   "id": "S57",
+   "title": "Teaching, mentorship and coalition building",
+   "target": "Advanced",
+   "n_rungs": 3,
+   "part": 18,
+   "part_name": "Teaching, communication and integrity",
+   "prereq": [],
+   "rung1": {
+    "level": "Introductory",
+    "concepts": [
+     "Teaching is a skill with evidence behind it, not a talent.",
+     "Retrieval practice and spacing work; re-reading and learning styles do not.",
+     "That explaining something is how you find out whether you understand it."
+    ],
+    "skills": [
+     "Run a teaching session built around retrieval rather than transmission.",
+     "Write an assessable learning objective."
+    ],
+    "build": "One taught session delivered using retrieval practice, with a written objective.",
+    "gate": "Your learners can do something afterwards that they could not do before, and you measured it."
+   },
+   "rung2": {
+    "level": "Intermediate",
+    "concepts": [
+     "The learning science that holds: retrieval practice, spaced repetition, interleaving, generation effects, and cognitive load theory as the main design constraint.",
+     "Constructive alignment \u2014 objectives, activities and assessment designed as one object \u2014 with Bloom used for writing assessable objectives rather than as decoration.",
+     "Competency-based medical education as India has adopted it; workplace-based assessment; OSCE and mini-CEX design; feedback models.",
+     "Explanation craft: the Feynman discipline, worked examples, analogy selection, and knowing when an analogy has started to mislead.",
+     "Coalitions worth real investment: IAPSM and IPHA, IAPEN and the Nutrition Society of India, the obesity and endocrine societies, the Association of Physicians of India network \u2014 and civil society food policy organisations, which are few, short of technical capacity, and very receptive to a competent researcher who shows up reliably."
+    ],
+    "skills": [
+     "Teach any subject in this map to residents without notes, within a month of studying it.",
+     "Design an assessment that tests understanding rather than recall.",
+     "Join one professional body and one civil society organisation and be useful to both."
+    ],
+    "build": "A module on obesity taught to a resident cohort, with assessment and feedback data.",
+    "gate": "Residents ask you to teach things outside your formal allocation."
+   }
+  },
+  "S58": {
+   "id": "S58",
+   "title": "Scientific writing, visualisation and public communication",
+   "target": "Advanced",
+   "n_rungs": 3,
+   "part": 18,
+   "part_name": "Teaching, communication and integrity",
+   "prereq": [],
+   "rung1": {
+    "level": "Introductory",
+    "concepts": [
+     "A paper is an argument, not a report of activities.",
+     "One idea per paragraph; the sentence as the unit of clarity.",
+     "That a figure with honest axes and a single message beats a decorated one."
+    ],
+    "skills": [
+     "Write a paragraph that makes one point and supports it.",
+     "Make a plot with honest axes and no decoration."
+    ],
+    "build": "One manuscript section rewritten to one-idea-per-paragraph and shown to a reader.",
+    "gate": "A colleague reading your draft can state your argument after one pass."
+   },
+   "rung2": {
+    "level": "Intermediate",
+    "concepts": [
+     "Scientific writing as craft: the reader-expectation approach to sentence structure, paragraph as argument, and ruthless deletion. Most rejected Indian manuscripts are rejected for writing and framing rather than for science.",
+     "Data visualisation: appropriate marks for data shape, avoidance of decorative complexity, and making one figure that carries an argument.",
+     "Presenting: structuring a talk around one claim, and being memorable for a specific idea rather than for a comprehensive review.",
+     "Risk and uncertainty communication: absolute versus relative risk, natural frequencies, avoiding false precision, and correcting a claim without amplifying it.",
+     "Writing for policy audiences as a distinct genre: answer first, one page, costed recommendation, no methods section."
+    ],
+    "skills": [
+     "Write a paper that needs no language editing.",
+     "Make one figure that carries an argument on its own.",
+     "Give a talk structured around a single claim."
+    ],
+    "build": "One paper accepted without language revision, and one figure reused by someone else.",
+    "gate": "Reviewers comment on your science rather than on your English."
+   }
+  },
+  "S59": {
+   "id": "S59",
+   "title": "Epistemics: philosophy of science and calibration",
+   "target": "Advanced",
+   "n_rungs": 3,
+   "part": 18,
+   "part_name": "Teaching, communication and integrity",
+   "prereq": [],
+   "rung1": {
+    "level": "Introductory",
+    "concepts": [
+     "Evidence varies in strength and confidence should vary with it.",
+     "The difference between a hypothesis, a finding and a belief.",
+     "That being wrong in public is a normal event in science and not a disgrace."
+    ],
+    "skills": [
+     "State how confident you are in a claim, in words, and say why.",
+     "Change a stated position when the evidence changes, out loud."
+    ],
+    "build": "A written record of five current beliefs with confidence levels attached, dated.",
+    "gate": "You have said the words I was wrong about that, about something you published or taught."
+   },
+   "rung2": {
+    "level": "Intermediate",
+    "concepts": [
+     "Philosophy of science enough to be useful: falsifiability and its limits, underdetermination, Kuhn on paradigms and Lakatos on research programmes, inference to the best explanation, and the Bradford Hill viewpoints understood as considerations rather than criteria.",
+     "The mechanism-plus-difference-making view: a causal claim is best supported by both a population-level difference and a plausible mechanism \u2014 and the obesity literature is strong on mechanism and weak on population difference for almost every specific dietary factor.",
+     "Calibration as a trainable skill: put numbers and intervals on your beliefs, write them down, score yourself later. Domain experts are usually badly calibrated because nobody scores them.",
+     "Base rates and reference classes applied to your own plans."
+    ],
+    "skills": [
+     "State a numerical credence for your main hypothesis, record it, and score yourself later.",
+     "Assess a causal claim against both mechanism and population difference and say which leg is weak.",
+     "Apply a base rate to one of your own career plans."
+    ],
+    "build": "A dated calibration register of predictions with numerical credences, scored annually.",
+    "gate": "Your calibration score has improved between two annual reviews."
+   }
+  },
+  "S60": {
+   "id": "S60",
+   "title": "Ethics of obesity intervention and industry engagement",
+   "target": "Expert",
+   "n_rungs": 4,
+   "part": 18,
+   "part_name": "Teaching, communication and integrity",
+   "prereq": [
+    "S35",
+    "S39"
+   ],
+   "rung1": {
+    "level": "Introductory",
+    "concepts": [
+     "Public health interventions restrict choices and that requires justification.",
+     "Weight stigma can be caused by well-intentioned health messaging.",
+     "That industry will eventually invite you to something."
+    ],
+    "skills": [
+     "State the ethical objection to a food regulation you support.",
+     "Decline an invitation you are unsure about rather than accepting by default."
+    ],
+    "build": "A first draft of a written personal policy on industry engagement, dated.",
+    "gate": "You have an answer ready for an invitation before one arrives."
+   },
+   "rung2": {
+    "level": "Intermediate",
+    "concepts": [
+     "Autonomy and paternalism: the classical liberal objection to food regulation, soft and libertarian paternalism, the internality argument, and the special standing of children.",
+     "Justice and equity: intervention-generated inequality; the progressive-benefit versus regressive-cost structure of food taxes; and the ethics of imposing dietary change on people with little discretionary income or time.",
+     "The obesity-as-disease debate in both directions: disease framing improves access to treatment and insurance and reduces blame; it also medicalises a population condition, expands the drug market, and can displace structural action. The 2025 preclinical-clinical distinction is partly an attempt to resolve this.",
+     "Research ethics with stigmatised conditions, and global health ethics including extractive research relationships."
+    ],
+    "skills": [
+     "Defend a regulatory position against the autonomy objection, in public, without dismissing the objection.",
+     "Argue the obesity-as-disease question on both sides and state where you land and why.",
+     "Audit a proposed intervention for intervention-generated inequality."
+    ],
+    "build": "A written ethical appraisal of one intervention you advocate, including the strongest objection to it.",
+    "gate": "Someone who opposes your position says you represented their argument fairly."
+   }
+  },
+  "S61": {
+   "id": "S61",
+   "title": "Adjacent specialist domains: recognise and route",
+   "target": "Introductory",
+   "n_rungs": 1,
+   "part": 18,
+   "part_name": "Teaching, communication and integrity",
+   "prereq": [],
+   "rung1": {
+    "level": "Introductory",
+    "concepts": [
+     "The adjacent fields and who owns each: molecular and circuit neuroscience (systems neuroscientist); molecular and cell biology including mitochondrial bioenergetics, autophagy and single-cell adipose atlases (metabolic biologist); statistical genetics beyond MR \u2014 imputation, fine-mapping, colocalisation, transcriptome-wide association, rare variant and exome work (statistical geneticist); causal discovery algorithms, which underperform on real epidemiological data (causal inference methodologist); interference and spillover in community interventions (methodologist, consulted before designing); trade and investment law including WTO constraints and intellectual property (trade lawyer); planetary health and the diet-climate-land use link (sustainability scientist); endoscopic and device therapies (bariatric endoscopist); labour economics of obesity, with a real Indian literature gap (labour economist); behavioural economics of firms and advertising research (marketing scientist); deep learning and cloud infrastructure (collaborate with someone whose job it is).",
+     "What each field can answer that you cannot, stated as a question you would ask them.",
+     "That the commonest failure at this boundary is not ignorance but improvisation \u2014 offering a confident answer where you cannot evaluate your own reasoning."
+    ],
+    "skills": [
+     "Recognise, mid-conversation, that a question has left your competence, and say so.",
+     "Name the right specialist and formulate the question so their answer is usable.",
+     "Judge whether their answer is responsive, without being able to produce it yourself."
+    ],
+    "build": "A maintained contact list of named specialists in each adjacent field, with at least three of them people you have actually worked with.",
+    "gate": "You have said that is outside what I can assess, and here is who can, in public, without embarrassment."
+   },
+   "rung2": null
+  }
+ }
+}

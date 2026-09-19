@@ -1,0 +1,108 @@
+# Concept record template. Copy, rename to <concept_id>.yml, fill in.
+# Validated against concept.schema.json by course/build.py.
+# Field order below is the order to author in: identity, then type, then the four
+# mandatory prose blocks, then practice, then provenance and the review clock.
+
+concept_id: S00-R1-C01        # permanent. never reused, never renumbered.
+subject: S00                  # subject id from the frozen map, or B0 for Book 0
+rung: 1                       # 0 for Book 0
+sequence: 1                   # teaching order within the rung; re-orderable
+name: Short noun phrase as it appears as a heading
+
+# derivable | empirical | institutional  -- decides sourcing, treatment, review clock
+concept_type: derivable
+
+clusters: [measurement-inference]     # keys from clusters.yml
+ground_floor_deps: [B0-R0-C01]        # Book 0 sections this needs
+concept_deps: []                      # other records assumed; no forward refs in-subject
+
+# ---- mandatory block 1: the definition, technically exact -------------------
+# Every prose field is a literal block '|', never a folded block '>'. A folded block
+# turns each blank line into a single newline, which destroys paragraph breaks and
+# markdown tables silently: the record looks right and the booklet is a wall of text.
+definition:
+  text: |
+    Precise enough that a specialist reading it finds nothing to correct. No hedging and
+    no simplification - simplification is the next block, not this one.
+  references:
+    - citekey: author2020title
+      kind: textbook            # must match concept_type (see SPEC.md s4)
+      locator: "pp. 112-115"    # mandatory. page, section, clause or table.
+      verified:
+        resolved_id: "10.xxxx/yyyyy"
+        opened: false           # set true only by the person who read it
+        claim_located: false    # set true only after finding the claim at the locator
+        checked_on: "2026-09-19"
+        note: ""                # used if the source could not be obtained
+
+# ---- mandatory block 2: the same thing from the reader floor ----------------
+simplified_explanation: |
+  Rebuilt assuming no medicine and no remembered mathematics. May be loose where the
+  definition is exact. May not be wrong.
+
+# ---- mandatory block 3: illustration, with its failure boundary ------------
+illustration:
+  body: |
+    Worked example, case, calculation or analogy. Indian context by default. Every line
+    of a calculation shown.
+
+    Write it as something the reader does, in the present tense, addressing them
+    directly. Not a report of work someone else already did. Where a real attempt fails
+    instructively, show the failure first and the clean case afterwards as contrast.
+  analogy_breaks_when: |
+    The point at which this picture stops being true. Required, including for numerical
+    examples, where it states the range over which the number holds.
+  numbers:
+    - value: "39.5"
+      unit: "MJ/kg"
+      citekey: author2020title
+      as_of: ""
+
+# ---- mandatory block 4: must-know points -----------------------------------
+# Printed as "Must know points for you". As many as the concept demands - three for a
+# small one, eight for a load-bearing one. No template, no padding to a number.
+# Admission test: the point must change something you would do, say, accept or refuse.
+# bearing = which capacity of the expert it arms:
+#   clinical | methodological | policy | teaching | public
+# kind (optional tag) = misconception | number | india_deviation | boundary | trap
+#                     | consequence | dispute | move
+must_know:
+  - point: |
+      State the error as the error, then correct it. One point, one paragraph, with the
+      consequence inside it rather than implied.
+    kind: misconception
+    bearing: methodological
+  - point: |
+      What this does not cover, so it is not over-applied.
+    kind: boundary
+    bearing: clinical
+    refs: [author2020title]   # only where the point carries a figure or an instrument
+
+# ---- practice: where the rung's skills or build target require it ----------
+exercises:
+  - type: calculation         # retrieval|calculation|interpretation|critique|teaching|design|build
+    prompt: |
+      What the reader must do.
+    answer: |
+      Worked reasoning, not just the result. Rendered to the appendix.
+    skill_ref: S00-R1-K01     # the rung skill from the frozen map this demonstrates
+    confidence_first: true    # ask for a numerical confidence before the answer
+
+retrieval_items:
+  - q: Spaced-repetition prompt.
+    a: Short answer.
+
+# ---- provenance: what this concept is here to serve ------------------------
+provenance:
+  map_version_id: fc19c8bc-a216-4131-99fb-ebe3f19cec4a
+  outcome_refs: [S00-R1-O01]        # rung outcome, skill, build target or gate
+  bridge_ref: [S00-R2-P01]          # rung-2 presuppositions this discharges
+
+# ---- the review clock ------------------------------------------------------
+review:
+  stability: long             # long=derivable | medium=empirical | short=institutional
+  trigger: "2031-09-19"       # a date for long/medium; a named event for short
+  as_of: ""                   # mandatory for institutional
+  last_reviewed: "2026-09-19"
+
+status: stub                  # stub|drafted|referenced|verified|released

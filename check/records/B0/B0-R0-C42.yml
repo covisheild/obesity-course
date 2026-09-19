@@ -1,0 +1,169 @@
+concept_id: B0-R0-C42
+subject: B0
+rung: 0
+sequence: 42
+name: 'Argument: premise, inference, conclusion'
+concept_type: derivable
+clusters:
+- craft-and-integrity
+- system-and-state
+ground_floor_deps: []
+concept_deps: []
+definition:
+  text: |
+    An argument is a set of statements offered as reasons, called premises, together with a further
+    statement they are meant to establish, called the conclusion. The move from the first to the
+    second is the inference.
+
+    An argument can fail in exactly two independent ways. A premise can be false. Or the inference
+    can fail to carry, even when every premise is true.
+
+    Separating those two failures is the whole skill. True premises plus a broken inference
+    establish nothing. A sound inference with one false premise can be repaired.
+  references:
+  - citekey: pending_logic_text
+    kind: textbook
+    locator: introductory chapter on argument structure - to be confirmed on obtaining
+    verified:
+      resolved_id: PENDING
+      opened: false
+      claim_located: false
+      checked_on: '2026-09-19'
+      note: |
+        NOT OBTAINED. No textbook is reachable from the authoring environment. Listed in the citation
+        backlog.
+simplified_explanation: |
+  Someone hands you a claim and asks you to accept it. Along with the claim, they give you reasons
+  — these are the premises. The claim itself is the conclusion. The step from premises to
+  conclusion is the inference, the move meant to carry you from one to the other.
+
+  An argument can fail in two separate ways, and you test each on its own. A premise can turn out
+  false. Or the inference can fail to carry, even when every premise is true. Mixing the two tests
+  wastes time. People argue for years over whether a premise is true, when the real fault sits in
+  the inference and not in the premise at all.
+
+  Ask the two questions in order. First: if every premise were true, would the conclusion follow?
+  Then, only then: are the premises actually true? Keeping the two apart is most of the skill. A
+  true premise paired with a broken inference proves nothing. A sound inference with one false
+  premise can often be mended, once you see the fault plainly.
+illustration:
+  body: |
+    Here is a claim you will meet often once you work in obesity policy. Take it apart, on paper, in
+    three lines.
+
+    - *Premise one:* obesity happens when a person takes in more energy than they use.
+    - *Premise two:* how much a person eats is something they choose.
+    - *Conclusion:* obesity is a matter of personal choice.
+
+    Test the inference first. Grant both premises. Say them aloud as though you believed every word.
+    Now ask: does the conclusion follow?
+
+    It does not. Premise two says intake is chosen. The conclusion needs something far stronger —
+    that intake is *freely* chosen. It would have to be untouched by price, by what sits on the
+    shelf nearby, by advertising, by sleep, by the biology that drives appetite.
+
+    Somewhere between the premise and the conclusion, "is a choice" has quietly turned into "is only
+    a choice". That swap is the fault. It sits in the inference, and it stands whether or not the
+    premises themselves are true.
+
+    Now test the premises, one at a time. Premise one holds up as plain accounting — energy in
+    against energy out. Premise two is partly true and badly incomplete; it leaves out everything
+    that shapes the choice before the person ever makes it.
+
+    Notice what you just did. You reached "this argument does not work" without settling either
+    premise. Run the inference test first, always. It is quicker, and it keeps you out of a long
+    fight over facts that were never going to decide the question anyway.
+  analogy_breaks_when: |
+    This three-line shape fits an argument laid out in the open, premise by premise. Most arguments
+    you meet in a hostile room are not laid out at all.
+
+    The premise doing the real work is usually the one left unspoken, left out because saying it
+    aloud would expose it. Nobody in the claim above says out loud that eating sits untouched by
+    price, or by what is on the shelf nearby. That premise stays hidden, and the argument leans on
+    it anyway.
+
+    So when you cannot find the fault in an argument, the likely reason is simple. You have not yet
+    written down the premise the speaker left out. Look there first.
+  numbers: []
+must_know:
+- point: |
+    True premises do not make a conclusion true. Whether the premises are true and whether the
+    inference carries are separate questions, and you need both to hold before the argument does any
+    work.
+  kind: misconception
+  bearing: methodological
+- point: |
+    Test the two failure modes in order: ask first whether the conclusion follows, then ask whether
+    the premises are true.
+  kind: move
+  bearing: methodological
+- point: |
+    The shape of an argument does not change from one country to the next. What changes is which
+    premise gets left unspoken. In Indian food policy debate, the commonest unspoken premise is that
+    people already know what is in their food.
+  kind: india_deviation
+  bearing: policy
+- point: |
+    Grant every premise aloud, then show the conclusion still does not follow. That move costs you
+    nothing. It cannot be answered with more data, and it closes the argument instead of extending
+    it.
+  kind: consequence
+  bearing: public
+- point: |
+    Watch yourself when you are handed an argument you already agree with. Check its inference as
+    hard as you would if you disagreed, because left alone you will find that you do not.
+  kind: trap
+  bearing: teaching
+- point: |
+    This gives you the shape of an argument and the point where it breaks. It does not tell you
+    whether a premise is true — that needs evidence — or whether a conclusion matters, which needs
+    judgement.
+  kind: boundary
+  bearing: methodological
+exercises:
+- type: critique
+  prompt: |
+    Take this claim: "Countries that eat more packaged food have more obesity, so packaged food
+    causes obesity." Lay it out as premises and a conclusion. Then say whether the inference holds.
+  answer: |
+    The premise: countries where people eat more packaged food show more obesity. The conclusion:
+    packaged food causes obesity.
+
+    The inference does not hold. A pattern across countries can come from something that moves both,
+    such as income, or more people living in cities. And a pattern in country averages need not hold
+    for people.
+
+    To repair it you would need two more premises. One ruling out a common cause. One connecting the
+    country pattern to people. The conclusion may still be true; what has failed is this route to
+    it.
+  confidence_first: true
+- type: teaching
+  prompt: |
+    Explain to a first-year resident, in ten minutes with a whiteboard, why "the inference is
+    broken" is a stronger objection than "your facts are wrong". Use a food policy example of your
+    own.
+  answer: |
+    The spine of the explanation. A wrong fact can be replaced, and the argument survives, so
+    attacking facts invites an endless supply of new ones. A broken inference means no fact of that
+    kind could establish the conclusion. That ends the line rather than extending it.
+
+    Demonstrate it. Take a claim, grant every premise aloud, and show that the conclusion still does
+    not follow. The granting is what makes it land.
+retrieval_items:
+- q: What are the two independent ways an argument can fail?
+  a: A premise can be false, or the inference can fail to carry even if all premises are true.
+- q: Which should you test first, and why?
+  a: The inference, because if it fails the argument is finished regardless of the facts, and testing it is usually quicker.
+- q: When you cannot find an argument's flaw, what is the usual reason?
+  a: A load-bearing premise has been left unstated; write it down and it is generally the weak one.
+provenance:
+  map_version_id: fc19c8bc-a216-4131-99fb-ebe3f19cec4a
+  outcome_refs:
+  - S48-R1-S2
+  - B0-F4
+  bridge_ref: []
+review:
+  stability: long
+  trigger: '2031-09-19'
+  last_reviewed: '2026-09-19'
+status: drafted
