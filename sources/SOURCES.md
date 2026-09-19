@@ -25,3 +25,23 @@ folder exists to prevent.
 - The Supreme Court order of 10 September 2026
 - General Clauses Act 1897
 - Government of India (Allocation of Business) Rules 1961
+
+## Vintage of each copy
+
+Added 2026-09-20 by the Book 0 Part A chat, which needed figures out of two of these files and
+found that nothing in the table above records how current any copy is. The column that matters for
+an institutional number is not when the Act was passed. It is what the copy in this folder says
+about changes made since.
+
+Read by searching each file for every occurrence of `by Act N of YYYY` and taking the newest.
+
+| File | Newest change the copy itself names | What that means for a figure taken out of it |
+| --- | --- | --- |
+| `fss_act_2006.txt` | **Act 13 of 2008**, with effect from 7 February 2008. One amending Act, cited in three footnotes. Nothing later anywhere in the file | Every penalty figure in it is as at 2008 on the face of this copy. Quote it as what this copy says, not as the penalty in force |
+| `nfsa_2013.txt` | **None.** The file carries no amendment footnote at all, so it reads as the Act as enacted in 2013 | Schedule I's prices were fixed for three years from commencement and that window closed in 2016; the file says nothing about what replaced them. Schedule II's nutritional standards carry no such clock in the text |
+| `constitution_current.txt` | Consolidated 2026 text, per the row above; contains Article 279A | Usable |
+| `constitution.txt` | Latest amendment 2003 | **Do not cite**, per the row above |
+| `consumer_prot_2019.txt` | Not yet checked this way | Check before quoting a figure from it |
+
+This does not make any of these files wrong. It makes the date on them knowable, which is the whole
+point of Book 0 F3, and it was not knowable from this file before.
