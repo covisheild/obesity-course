@@ -1,7 +1,12 @@
 # How to run the pipeline
 
-Seven prompts and then a read. Copy them as written. Each is one Cowork task, except Task 5, whose
-three steps must be three separate tasks for the reason given there.
+Six prompts and then a read. Copy them as written. Each is one Cowork task.
+
+Tasks 2, 3 and 5 are run by delegating to subagents rather than by doing the work in the main
+thread. This is not only for speed. A subagent's work happens in its own context and only its
+result comes back, so a Part's eight sections can be drafted, audited and cut inside one task
+instead of exhausting one window by the third section. For Task 5 the delegation is also what
+makes the method sound, for the reason given there.
 
 ---
 
@@ -37,7 +42,14 @@ a sandbox; they can be reached from a browser.
 > Then write `books/<SUBJECT>/READY.md` listing every source, with obtained yes or no, checking
 > `sources/` for what is already there.
 
-## Task 2 — Sonnet. Draft.
+## Task 2 — Sonnet. Draft. Delegate in batches.
+
+Split the inventory into batches of three or four concepts and give each batch to its own
+subagent, running them together. Each gets the prompt below with its own `<RANGE>`. They write
+disjoint files, so they do not collide. The main thread collects the records and checks that the
+glossary rows they added agree with each other before anything is written to
+`prose/GLOSSARY.md` — two subagents cannot see each other's additions, and that is the one place
+a batch can contradict itself.
 
 > Read `claude.md` in full. Read all four records in `done/` before writing a word: they are the
 > standard, and matching them matters more than following the rules in the abstract.
@@ -52,7 +64,12 @@ a sandbox; they can be reached from a browser.
 >
 > Prose fields are literal blocks (`|`), never folded (`>`).
 
-## Task 3 — Opus. Audit.
+## Task 3 — Opus. Audit. Delegate, and not to whoever drafted it.
+
+One subagent per batch, and none of them may be the subagent that wrote the records it is
+auditing. A context that wrote a claim will read its own words back as obviously supported; that
+is the same self-consultation §12 describes, arriving at the audit instead of the compression
+pass. Fresh contexts, every time.
 
 > Read `claude.md`. You are auditing, not rewriting.
 >
@@ -78,17 +95,44 @@ a sandbox; they can be reached from a browser.
 > Write `books/<SUBJECT>/HANDOVER.md`: what was written, what is still unsourced and why, and
 > every number that will need re-checking with its trigger.
 
-## Task 5 — the compression pass. Three tasks, not one.
+## Task 5 — the compression pass. One task, three delegated steps.
 
-Full rule in `claude.md` §12. The three steps run as three separate Cowork tasks and this is not a
-convenience: step 2 only works if the reader doing it has never seen the full-length text. Run them
-in one task and the method is gone while still appearing to run.
+Full rule in `claude.md` §12. Step 2 works only if the reader doing it has never seen the
+full-length text **and cannot reach it**. Both conditions are load-bearing and they are met
+differently.
+
+**The context condition** is met by delegating step 2 to a subagent. A subagent does not inherit
+the conversation that cut the text; it starts from the prompt it is handed and nothing else. It is
+cold by construction, which a separate session is not automatically — a separate session that
+clones the repository still has `_build/` sitting in front of it.
+
+**The reachability condition** is met by the scratch directory. Before step 2 runs, copy the cut
+sections somewhere that holds nothing else and hand the subagent that path. The original is then
+not something the checker has been asked to avoid; it is something the checker does not have. This
+is the part the pass has been running on trust, and it is the part worth fixing.
+
+**The one rule that cannot be delegated away:** the thread that performed the cut must never
+perform the cold read. It has the original in its context and cannot un-see it. It orchestrates;
+it does not check.
+
+Run all three steps in one task, in this order, delegating 5a and 5b and doing 5c in the main
+thread. Delegate 5a and 5c per section or per Part as convenient; delegate 5b **once per Part**,
+reading the whole Part's cut text in one sitting — a checker that has not seen the originals is
+cold whether it reads one section or eight, and batching turns 3n tasks into 3.
 
 The model matters less than anything else here. Measured on F4, two different models cutting on the
-same brief landed 24 words apart. Use whatever is to hand for steps 1 and 3; step 2 wants a fresh
-context, not a particular model.
+same brief landed 24 words apart. Use whatever is to hand for steps 1 and 3; step 2 wants a clean
+context and a clean directory, not a particular model.
 
-### Task 5a — cut hard.
+**Setting up the scratch directory**, before any subagent is launched:
+
+```bash
+rm -rf /tmp/coldread && mkdir -p /tmp/coldread
+cp books/<SUBJECT>/compress/*-pass1.md /tmp/coldread/
+ls /tmp/coldread          # confirm: cut sections only, nothing else
+```
+
+### Step 5a — cut hard. Delegate one subagent per section.
 
 > Read `claude.md` §11, §11a and §12. Read `books/<SUBJECT>/_build/<SUBJECT>.md`, section <SECTION>.
 >
@@ -104,27 +148,37 @@ context, not a particular model.
 >
 > Then say, in under eighty words, the one cut you were least sure about.
 
-### Task 5b — test cold. New task, and it reads nothing else.
+### Step 5b — test cold. One subagent for the whole Part, pointed at the scratch directory.
 
-> Read ONLY `books/<SUBJECT>/compress/<SECTION>-pass1.md`. Do not open any other file in this
-> project, do not look for other versions of this section, and do not use what you already know
-> about the subject to fill gaps. If something is not in that file, it was not taught, and I need
-> you to notice that rather than supply it.
+Launched by the orchestrating thread, never run by it. The prompt below is the whole of what that
+subagent receives: it names no repository path, no subject, and no section, because a checker that
+knows where the originals live is one helpful impulse away from reading them.
+
+> Read the files in `/tmp/coldread/`. That directory is your entire world. Do not look anywhere
+> else on the filesystem, do not search for other versions of this material, and do not use what
+> you already know about the subject to fill gaps. If something is not in those files, it was not
+> taught, and I need you to notice that rather than supply it.
 >
-> You are an intelligent adult with no prior background in this subject, who has read this section
-> once and nothing before it.
+> You are an intelligent adult with no prior background in this subject, who has read these
+> sections once, in this order, and nothing before them.
 >
-> Answer the section's exercises as that reader. <Where the concept has bridge_ref dependents, add:
-> Then do this, from the text alone: `<the presupposition the dependent concept discharges here>`.>
-> Then list everything the section taught you that would change what you do, say, accept or refuse.
+> Take each file in turn. Answer its exercises as that reader. <Where a concept has bridge_ref
+> dependents, add: Then do this, from the text alone: `<the presupposition the dependent concept
+> discharges here>`.>
+> Then list everything it taught you that would change what you do, say, accept or refuse.
 >
 > Then — the part that matters — list every place you had to guess, infer, or supply something the
-> text did not give you. Quote the sentence that left each gap. Say what a reader without your
-> background could not have done at that point. Include anything you read twice, any term used
-> before it was explained, any step asserted but never demonstrated. Check hard before saying there
-> are none: a fluent read is exactly what hides this.
+> text did not give you, file by file. Quote the sentence that left each gap. Say what a reader
+> without your background could not have done at that point. Include anything you read twice, any
+> term used before it was explained, any step asserted but never demonstrated. Check hard before
+> saying there are none: a fluent read is exactly what hides this.
 
-### Task 5c — restore only what the test proved.
+Before launching it, confirm `/tmp/coldread/` holds the cut sections and nothing else. A stray
+`_build/` copy in that directory silently voids the pass while every step still appears to run —
+which is the same failure the old three-session split was written to prevent, arriving by a
+different door.
+
+### Step 5c — restore only what the test proved. Main thread.
 
 > Read `claude.md` §12, the original section, `<SECTION>-pass1.md`, and the gap report from 5b.
 >
@@ -158,10 +212,10 @@ you is a shortlist: the sections whose gap reports came back longest are the one
 
 Cowork's scheduled tasks run in the cloud and do not need your computer awake. Two practical
 points. Tasks that touch files on your own machine need the desktop app open, so keep the project
-folder in the Cowork project rather than depending on a local path. And schedule the steps
-as separate tasks in sequence rather than one long one, so that a failure in the audit stops the
-book instead of being written over by the next step. Task 5b has a second reason to stand alone:
-it is only worth running in a context that has not seen the full-length text.
+folder in the Cowork project rather than depending on a local path. And schedule the tasks in
+sequence rather than as one long one, so that a failure in the audit stops the book instead of
+being written over by the next step. Within Task 5 the three steps stay in the one task, because
+what makes step 2 sound is the subagent's context and the scratch directory, not a task boundary.
 
 ## What this actually costs
 
