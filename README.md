@@ -14,7 +14,7 @@ a fact.
 | `claude.md` | the contract — how prose is written and what a record must contain. Read in full, always. |
 | `PIPELINE.md` | the six steps that take a subject from nothing to released |
 | `PARALLEL.md` | how to work in more than one chat without the corpus drifting apart |
-| `done/` | the four finished Book 0 sections. They are the standard. |
+| `check/records/B0/` | the finished Book 0 records. They are the standard. |
 | `prose/GLOSSARY.md` | terms of art and the plain words they get at first use |
 
 ## Layout
@@ -25,7 +25,7 @@ PIPELINE.md            the six pipeline steps, with the prompt for each
 PARALLEL.md            working in more than one chat at once
 map/                   the frozen subject map — 61 subjects, 195 rungs
 check/                 build.py, schema, hard-word list, Book 0 outline
-done/                  finished Book 0 concept records
+check/records/B0/       finished Book 0 concept records (also see check/, below)
 books/<SUBJECT>/       per-subject working directory, one chat at a time
 sources/               opened primary sources; append-only
 prose/GLOSSARY.md      cross-booklet terminology

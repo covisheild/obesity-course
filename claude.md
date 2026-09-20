@@ -52,7 +52,8 @@ says no, stop and tell the human which file to go and get. Do not start and work
 - `sources/` — statute texts already obtained and read. These are the ground truth for step 3.
 - `map/` — the frozen subject map (v3), the subject index, the cluster keys. The map does not change.
 - `plan/` — Book 0's scope, the pilot inventories, the S48 source map and verification note.
-- `done/` — four finished Book 0 sections, and the booklet as published. **Match these.** They
+- `check/records/B0/` — the finished Book 0 records, and `done/B0-as-published.docx` for the
+  booklet as published. **Match these.** They
   carry more information about what is wanted than the rules below do.
 - `check/` — the build. `python check/build.py --check` validates every record; `--subject B0`
   assembles and renders. Blocking failures are not negotiable.

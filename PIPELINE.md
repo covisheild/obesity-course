@@ -55,8 +55,9 @@ glossary rows they added agree with each other before anything is written to
 `prose/GLOSSARY.md` — two subagents cannot see each other's additions, and that is the one place
 a batch can contradict itself.
 
-> Read `claude.md` in full. Read all four records in `done/` before writing a word: they are the
-> standard, and matching them matters more than following the rules in the abstract.
+> Read `claude.md` in full. Read the finished records in `check/records/B0/` before writing a
+> word: they are the standard, and matching them matters more than following the rules in the
+> abstract.
 >
 > Write records for concepts <RANGE> of `books/<SUBJECT>/INVENTORY.md`, one YAML file each, using
 > `check/example.concept.yml` as the template and `check/concept.schema.json` as the schema.

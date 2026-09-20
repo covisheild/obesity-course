@@ -53,7 +53,7 @@ A chat owns exactly one subject and writes only inside it.
 | Path | Owner |
 | --- | --- |
 | `books/<SUBJECT>/**` | the one chat building that subject |
-| `done/**` | Book 0 chats only, one Part each |
+| `check/records/B0/**` | Book 0 chats only, one Part each |
 | `sources/**` | append-only, any chat; never delete or replace another chat's file |
 | `prose/GLOSSARY.md` | append-only, any chat; see below |
 | `claude.md`, `PIPELINE.md`, `PARALLEL.md`, `check/**`, `map/**` | **nobody, mid-flight** |
@@ -62,6 +62,17 @@ The last row is the important one. The contract, the build and the frozen map ar
 deliberately, between rounds, in a chat that is doing nothing else — never by a chat that is in the
 middle of a book and finds a rule inconvenient. A chat that thinks a rule is wrong writes that
 down in its handover and carries on under the rule.
+
+**A chat may still make such a change mid-book, but only on Harsh's explicit instruction in that
+conversation, never on its own judgment.** The practice-set rule (§7a) was added this way, while a
+Book 0 Part A chat was mid-book, because Harsh directed it there. That is a live example of the
+exception, not a precedent for a chat deciding a rule needs changing and doing it. The distinction
+is who decided: a chat proposing a change writes it to the handover and waits; a chat executing a
+change Harsh just asked for does it now. When Harsh does this, the chat that made the change is
+still responsible for reconciling it with whatever else is mid-flight — the practice-set change
+landed on top of the compression-pass rewrite from earlier the same day, and the two hunks that
+touched the same paragraphs had to be reapplied by hand rather than mechanically applied, because
+the base each was written against had already moved.
 
 ---
 
@@ -109,8 +120,8 @@ between-rounds job, not a mid-flight one.
 ## What every chat reads before writing anything
 
 1. `claude.md` in full. Not the summary, not the section it thinks is relevant.
-2. The four records in `done/`. They are the standard, and matching them matters more than
-   following the rules in the abstract.
+2. The finished records in `check/records/B0/`. They are the standard, and matching them matters
+   more than following the rules in the abstract.
 3. `PIPELINE.md` for the step it is running.
 4. `prose/GLOSSARY.md`.
 5. The Notion tracker row for the unit it is claiming.
