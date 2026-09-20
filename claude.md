@@ -27,11 +27,13 @@ around, and that rests entirely on every citation holding when somebody hostile 
 
 | Step | Who | What |
 | --- | --- | --- |
-| 1 | Opus | Structure. Which concepts a rung needs, in what order, what each must cover, which sources each will need. Output: an inventory table, no prose. |
-| 2 | Sonnet | Draft. The four reader-facing blocks per concept, written to the register below, into the record YAML. |
-| 3 | Opus | Audit. Open every source in `sources/` and check every claim against it. Check currency. Output: a numbered defect list, not a rewrite. |
+| 1 | Opus | Structure. Which concepts a rung needs, in what order, what each must cover, which sources each will need, and which of them are quantitative and so owe ten practice problems. Output: an inventory table, no prose. |
+| 2 | Sonnet | Draft. The four reader-facing blocks per concept, written to the register below, into the record YAML. Plus, on every quantitative concept, the ten practice problems of section 7a. |
+| 3 | Opus | Audit. Open every source in `sources/` and check every claim against it. Recompute every practice answer. Check currency. Output: a numbered defect list, not a rewrite. |
 | 4 | Sonnet | Fix. Apply the defect list. Run `python check/build.py --check` until blocking is zero. |
 | 5 | Human | Read it. |
+
+**Step 3 audits the practice answers too**, by recomputing them rather than by reading them. Eighty worked answers is eighty chances to ship a wrong one, and a wrong answer in the appendix is worse than a wrong sentence in the prose, because the reader who disagrees with it assumes they are the one who erred.
 
 **Step 3 is an audit against files, not a read-through.** Three factual errors survived step 2
 in the pilot and every one of them read as plausible prose: a section of an Act said to be silent
@@ -168,6 +170,65 @@ A teaching exercise names which audience it is for. Prompts that would produce t
 - **Answers live in the appendix, never beside the prompt.** Worked reasoning, not just the result.
 - `confidence_first: true` on exercises where recording a numerical confidence before checking is useful. This trains S59 calibration for free and costs a line.
 
+## 7a. The drill set
+
+**Every concept that teaches a mathematical technique carries exactly ten practice problems, in
+ascending difficulty, unsolved in the text, answered in the appendix. This is mandatory and the
+build blocks without it.**
+
+It is the one place in the corpus where a count is fixed rather than discovered, and the
+difference from §5 is the point. Must-know points are as many as the concept demands, because the
+demand comes from the concept. Practice is ten, because the demand comes from the reader's
+fingers, and a reader who has worked one example of a technique has not learned it. A section can
+be read, agreed with, and found impossible to use twenty minutes later. Ten problems is what
+closes that gap, and it is the cheapest thing in the whole method.
+
+**Which concepts.** A concept is quantitative when the reader has to be able to *carry something
+out*, as against being able to *state* something. `quantitative: true` in the record says so. Left
+out, it is derived: a Book 0 record in Part A, B, C or D is quantitative and one in E or F is not.
+Set it explicitly on a subject record whose rung teaches a calculation, and explicitly to false on
+a mathematical-Part record that genuinely teaches no technique. Getting this wrong in the
+permissive direction is cheap; getting it wrong in the other direction means a technique shipped
+that nobody can perform.
+
+**The ladder.** Ten levels, each used once, and the band decides what the problem is *for*. A set
+of ten problems that are all level 2 with different numbers is the failure this table exists to
+prevent.
+
+| Level | Band | The problem asks for |
+| --- | --- | --- |
+| 1–3 | mechanical | The technique on bare numbers. One step. No context, no unit, nothing to interpret. The reader is checking that their hands know the move |
+| 4–6 | applied | A real quantity, with its unit and its label kept attached to the answer. Indian material by default, and a figure from `sources/` wherever one exists |
+| 7–8 | diagnostic | A worked answer that is **wrong**. The reader finds the step that broke and says why the wrong answer looks reasonable. This is the band that transfers to reviewing other people's work |
+| 9–10 | transfer | A claim in words — a sentence from a note, a press line, a thing said in a meeting. The reader decides what to compute, computes it, and then says what the answer does **not** establish |
+
+Levels 9 and 10 are where the course's actual purpose sits, so they are not optional garnish on a
+set of sums. A reader who can do levels 1 to 8 is numerate. A reader who can do 9 and 10 is
+someone whose analysis cannot be routed around.
+
+**Writing them.**
+
+- **The prompt is unsolved.** No worked fragment, no hint, no restatement of the method. If the
+  prompt contains the shape of the answer, it is a worked example and belongs in the illustration.
+- **The answer shows every line**, exactly as §4 requires of any calculation. A reader who cannot
+  follow line three cannot skip to line four, and in the appendix there is nobody to ask.
+- **Real figures or none.** A problem quoting a real number names its `citekey` in `refs`, and the
+  build rejects a citekey that is not in `library.bib`. Where no real figure exists, use bare
+  numbers and say nothing about the world. **Never invent a statistic to make a problem feel
+  applied** — an invented prevalence in a practice problem is the same defect as an invented one
+  in the prose, and it is worse, because the reader is about to do arithmetic on it and remember
+  the result.
+- **Vary the move, not just the numbers.** Ten problems that differ only in their digits teach
+  one problem ten times. Across a set, change what is given and what is asked for, and reverse
+  the direction at least once.
+- §9 applies here in full. A practice problem is where a course that teaches S35 and breaches it
+  in a worked example gets caught.
+
+**Where they go.** `practice[]` in the record, never `exercises[]`. The two do different jobs and
+mixing them destroys both: `exercises` carry `skill_ref` against the frozen map and the rung's
+build target, and ten drills dropped among them drown that signal. A quantitative concept carries
+both — its exercises and its ten.
+
 ## 8. Citations
 
 - One reference minimum on every definition, of the `kind` the concept type requires.
@@ -265,7 +326,7 @@ That result is kept, and the measure is demoted, because the measure was answeri
 
 **What a fresh context requires, and what it does not.** The checker must not hold the full-length text, and must not be able to reach it. Those are two conditions, not one, and only the first is about context. A separate session that clones the repository can open `_build/` and read the original at will, so splitting the steps across sessions buys the first condition and leaves the second resting on an instruction the checker is free to disregard. The second is therefore enforced by what the checker can reach rather than by what it is told: the cut sections are copied into a directory holding nothing else, and that directory is what the checker is given. The first is satisfied by any context that has not seen the original, which a delegated subagent is by construction — it does not inherit the conversation that cut the text. The steps may therefore run inside one session, provided the thread that did the cutting never performs the cold read itself and the checker's directory is clean. A thread that has read the original cannot check it, whatever it has been instructed.
 
-**The constraints, which bind every step.** Words are removed by deleting whole sentences and whole paragraphs, never by compressing. Two sentences are not fused into one longer one. A second idea is not pushed into a sentence that had one. §11a rule 9 stands: length is not won back by re-stacking clauses, and a compression pass that raised the mean sentence length has failed whatever its word count says. In the comparison the mean sentence ran 12.4 words in the original and 11.6 in the chosen version, with the longest sentence at 25 in both. The headings survive even where almost nothing survives under them. The exercises are not touched.
+**The constraints, which bind every step.** Words are removed by deleting whole sentences and whole paragraphs, never by compressing. Two sentences are not fused into one longer one. A second idea is not pushed into a sentence that had one. §11a rule 9 stands: length is not won back by re-stacking clauses, and a compression pass that raised the mean sentence length has failed whatever its word count says. In the comparison the mean sentence ran 12.4 words in the original and 11.6 in the chosen version, with the longest sentence at 25 in both. The headings survive even where almost nothing survives under them. The exercises are not touched, and neither is the practice set: ten problems are ten problems after compression as before it, and a pass that cut two of them has changed what the reader can do rather than how much they had to read.
 
 **The test set, and the constraint that §6 places on it.** Step 2 tests the cut against the section's own exercises. That is sufficient only for a concept nothing is built on. Where `provenance.bridge_ref` records that a later concept discharges a presupposition against this one, the cold reader's test set **must also include that presupposition**, stated as a task: *from this text alone, can you do the thing the dependent concept will assume you can do?* A cut that satisfies a section's own exercises can still strand the concept two rungs above it, and nothing in the section itself would show that. The bridge-sufficiency test is what makes this checkable; a compression pass run without it is safe for standalone sections and unsafe everywhere else.
 
@@ -409,7 +470,7 @@ Records in, booklets out. The build is also the quality gate; these checks are t
 
 **Booklet front matter.** Every booklet carries an edition number and a rung-status line — for example `Rungs 1–2 released · rungs 3–4 in preparation` — so a partially written booklet is releasable rather than permanently unfinished. Institutional content additionally prints its as-of date.
 
-**Blocking checks.** Forward reference inside a subject. Reference `kind` incompatible with `concept_type`. `review.stability` inconsistent with `concept_type`. Missing `locator` on any reference. A citekey, in a reference or in a must-know point, that is not in `library.bib`. A concept with no `outcome_refs`. A concept with no must-know points, or with the retired five-slot mapping in place of a list. A prose field authored as a YAML folded scalar. An exercise with no worked answer, or of type `integrative`. An unknown cluster key.
+**Blocking checks.** Forward reference inside a subject. Reference `kind` incompatible with `concept_type`. `review.stability` inconsistent with `concept_type`. Missing `locator` on any reference. A citekey, in a reference, in a must-know point or in a practice problem, that is not in `library.bib`. A concept with no `outcome_refs`. A concept with no must-know points, or with the retired five-slot mapping in place of a list. A prose field authored as a YAML folded scalar. An exercise with no worked answer, or of type `integrative`. **A quantitative concept carrying other than exactly ten practice problems, or whose ten are not at levels 1 to 10 with each level used once.** A practice problem with no worked answer. An unknown cluster key.
 
 **Warning checks.** A reference with `verified.opened: false` — permitted while drafting, blocking at status `verified`. A bridge presupposition with no `bridge_ref`. A rung skill with no exercise anywhere in the rung. An institutional concept with no `as_of`. A concept past its review trigger. A `ground_floor_deps` entry with no corresponding Book 0 record. More must-know points than the soft cap of nine. A concept with no must-know point tagged `misconception` or `trap`. The sequence-read warnings of `STYLE.md` §10: an over-long sentence, an over-long paragraph, an illustration that never addresses the reader, and an acronym used in a booklet before anything expands it.
 

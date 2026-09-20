@@ -245,6 +245,241 @@ exercises:
 
     And keep the 11 per cent. It is a perfectly good statement about tonnes. It has simply been
     given the wrong noun.
+quantitative: true
+practice:
+- level: 1
+  prompt: |
+    Reduce each ratio as far as it will go.
+
+    ```
+        18 to 24        45 to 15        200 to 500
+    ```
+  answer: |
+    ```
+        18 to 24    = 3 to 4      (divide both by 6)
+        45 to 15    = 3 to 1      (divide both by 15)
+        200 to 500  = 2 to 5      (divide both by 100)
+    ```
+
+    A ratio reduces the way a fraction does. It is a division written another way.
+
+    None of the three carries a unit. Whatever the 18 and the 24 were measured in has cancelled
+    out, and that is what makes a ratio a bare number.
+- level: 2
+  prompt: |
+    Of 250 households in a block, 90 lift their full entitlement. Write that as a ratio of lifting
+    to not lifting, and as a proportion of all households.
+  answer: |
+    The ratio first. Lifting against not lifting means 90 against the rest.
+
+    ```
+        250 minus 90 = 160 not lifting
+        90 to 160 = 9 to 16     (divide both by 10)
+    ```
+
+    Now the proportion, which is out of all of them.
+
+    ```
+        90 divided by 250 = 0.36
+    ```
+
+    Nine to sixteen, and 0.36.
+
+    Notice the two denominators. The ratio is against the 160 who did not; the proportion is
+    against all 250. Neither number is wrong and they answer different questions.
+- level: 3
+  prompt: |
+    A rate is 15 per 1,000 people per year. Write the same rate per 100,000 people per year, and
+    per person per year.
+  answer: |
+    Per 100,000 first. That is a hundred times as many people, so a hundred times as many events.
+
+    ```
+        15 times 100 = 1,500 per 100,000 per year
+    ```
+
+    Per person, divide by a thousand.
+
+    ```
+        15 divided by 1,000 = 0.015 per person per year
+    ```
+
+    One rate, three ways of writing it. Nothing has been measured differently, and none of the
+    three is more precise than the others. The denominator was chosen to keep the zeros off the
+    page.
+- level: 4
+  prompt: |
+    Section 3(1) of the National Food Security Act, 2013 gives 5 kilograms per person per month. A
+    household of four is entitled under it. Work out the household's entitlement per month and per
+    year, and state the denominator of each answer.
+  answer: |
+    ```
+        5 kilograms per person per month, times 4 people
+        = 20 kilograms per household per month
+
+        20 times 12 months
+        = 240 kilograms per household per year
+    ```
+
+    The denominators, said out loud. The first is per household per month. The second is per
+    household per year.
+
+    Both had to change together when you multiplied by four: the per-person denominator became a
+    per-household one, and that is the step worth watching. The number 20 means nothing until it
+    carries "per household per month" with it.
+  refs: [nfsa_2013]
+- level: 5
+  prompt: |
+    Under the proviso to section 3(1), an Antyodaya household gets 35 kilograms per household per
+    month. Work out the household size at which a priority household on 5 kilograms per person per
+    month receives the same amount.
+  answer: |
+    Put both on the same denominator, which is kilograms per household per month.
+
+    ```
+        priority household of n people = 5 times n
+        set that equal to 35
+        5 times n = 35
+        n = 35 divided by 5
+        n = 7
+    ```
+
+    Seven people.
+
+    That number is worth carrying. Below seven, an Antyodaya household receives more; above seven,
+    a priority household does. "They match at a household of seven" is a sentence that settles an
+    argument, and it took one division.
+  refs: [nfsa_2013]
+- level: 6
+  prompt: |
+    A block has 3,200 people and records 48 events in a year. A second block has 12,500 people and
+    records 160 events in a year. Work out each rate per 1,000 people per year and say which is
+    higher.
+  answer: |
+    First block.
+
+    ```
+        48 divided by 3,200 = 0.015 per person per year
+        times 1,000 = 15 per 1,000 per year
+    ```
+
+    Second block.
+
+    ```
+        160 divided by 12,500 = 0.0128 per person per year
+        times 1,000 = 12.8 per 1,000 per year
+    ```
+
+    The first block is higher, at 15 against 12.8, even though it recorded fewer events.
+
+    That reversal is the point of the problem. The raw counts say 48 against 160. The rates say the
+    opposite, because the second block has nearly four times the people.
+- level: 7
+  prompt: |
+    Here is a worked answer. Find the step that broke.
+
+    ```
+        block A: 15 cases per 1,000 people
+        block B: 40 cases per 100,000 people
+        40 is more than 15, so block B is worse
+    ```
+  answer: |
+    The step that broke is the comparison, which sets two rates side by side without matching their
+    denominators.
+
+    Put both on the same denominator.
+
+    ```
+        block A: 15 per 1,000
+                 = 15 times 100
+                 = 1,500 per 100,000
+        block B: 40 per 100,000
+    ```
+
+    Block A is nearly forty times block B, not the other way round.
+
+    Why it looks reasonable: both lines end in "people", both numbers are small, and the larger
+    number belongs to the block being called worse. Everything about the shape of the sentence is
+    right except the only thing that mattered.
+- level: 8
+  prompt: |
+    Here is a worked answer. Find the step that broke.
+
+    ```
+        a scheme delivers 2 kg per person per week
+        a month is 4 weeks
+        so it delivers 8 kg per person per month
+        a household has 5 people
+        so it delivers 8 kg per household per month
+    ```
+  answer: |
+    The first three lines hold. Two kilograms a week for four weeks is eight kilograms a month.
+
+    The step that broke is the last one. The denominator was changed from per person to per
+    household with no arithmetic done at all.
+
+    ```
+        8 kilograms per person per month, times 5 people
+        = 40 kilograms per household per month
+    ```
+
+    Forty, not eight.
+
+    Why it looks reasonable: the household size appears in the line just above, so the reader feels
+    it has been used. It has been mentioned. Mentioning a denominator is not the same as dividing
+    or multiplying by it.
+- level: 9
+  prompt: |
+    Here is a line from a district presentation.
+
+    > We issued 640 tonnes of grain last month against 590 the month before, so coverage is up
+    > eight per cent.
+
+    Decide what to compute, compute it, and say what your answer does not establish.
+  answer: |
+    The percentage first, because a stated figure is worth testing.
+
+    ```
+        640 minus 590 = 50
+        50 divided by 590 = 0.0847...
+        times 100 = 8.5 per cent
+    ```
+
+    So the eight per cent is about right as a statement about tonnes.
+
+    It is not a statement about coverage. Coverage is a proportion of people or households, and
+    tonnes is a weight. The sentence has computed one thing and named it another.
+
+    What this does not establish. It does not tell you whether more households were reached, or the
+    same households lifted more, or the entitlement itself changed. All three raise tonnes. To turn
+    tonnes into coverage you need the count entitled in each month, and that is the number to ask
+    for.
+- level: 10
+  prompt: |
+    A journalist calls with one line and wants a comment by the evening.
+
+    > District A has twice the case rate of district B, so it needs twice the resources.
+
+    Decide what to compute, compute it, and say what your answer does not establish.
+  answer: |
+    Nothing can be computed until one thing is known: what each rate is divided by.
+
+    Suppose both are per 1,000 people, and A has 2 lakh people and B has 8 lakh. Then a doubled
+    rate is not a doubled count.
+
+    ```
+        district A: 20 per 1,000, times 200 thousand people = 4,000 cases
+        district B: 10 per 1,000, times 800 thousand people = 8,000 cases
+    ```
+
+    Twice the rate and half the cases. Resources follow people, so the conclusion is backwards.
+
+    Those population figures are made up, to show the move. The move is not. Ask for the two
+    denominators before you agree or disagree with the sentence.
+
+    What this does not establish. Even with both counts in hand, nothing here says what resource a
+    case needs, or whether the two districts counted cases the same way. A rate comparison decides
+    which question to ask next, not what to do.
 retrieval_items:
 - q: What is the difference between a ratio, a proportion and a rate?
   a: A ratio compares two quantities of the same kind and has no unit. A proportion is a part over the whole it came from and runs from zero to one. A rate is a count divided by the time or the number of people it was counted over.

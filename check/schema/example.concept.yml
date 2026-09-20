@@ -88,6 +88,47 @@ exercises:
     skill_ref: S00-R1-K01     # the rung skill from the frozen map this demonstrates
     confidence_first: true    # ask for a numerical confidence before the answer
 
+# ---- the drill set: mandatory on every quantitative concept ----------------
+# Exactly ten problems on the one technique, levels 1 to 10, each level once.
+# The build blocks on a quantitative concept with anything else.
+#
+# `quantitative` is derived where it is omitted: a Book 0 record in Part A, B, C
+# or D is quantitative. Set it explicitly on a subject record that teaches a
+# calculation, or to false on a mathematical-Part record that teaches no technique.
+#
+# The ladder, and it is not decoration - each band asks for a different thing:
+#    1-3   mechanical   the technique on bare numbers, one step, no context
+#    4-6   applied      a real quantity, with its unit and its label kept attached
+#    7-8   diagnostic   a worked answer that is wrong; find the step that broke
+#    9-10  transfer     a claim in words; choose the technique, then say what the
+#                       answer does not establish
+#
+# Prompts print in the section, unsolved. Answers print in the appendix and show
+# every line. A problem that quotes a real figure names its citekey in refs.
+quantitative: true
+practice:
+  - level: 1
+    prompt: |
+      The technique on bare numbers. One step.
+    answer: |
+      ```
+          every line of the working
+          = shown
+      ```
+  - level: 7
+    prompt: |
+      Here is a worked answer. Find the step that broke.
+    answer: |
+      Name the step, say what it should have been, and say why the wrong answer
+      looks reasonable.
+  - level: 10
+    prompt: |
+      A claim in words. Decide what to compute, compute it, then say what your
+      answer does not establish.
+    answer: |
+      The computation, then the boundary. The second half is the point.
+    refs: [author2020title]
+
 retrieval_items:
   - q: Spaced-repetition prompt.
     a: Short answer.

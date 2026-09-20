@@ -290,6 +290,279 @@ exercises:
     What it cannot establish: which of the two numbers is wrong, or what the right figure is. It
     also cannot establish that the scheme is bad. A four rupee scheme that hands out one piece of
     information might be exactly right. The check tells you to ask, not what the answer is.
+quantitative: true
+practice:
+- level: 1
+  prompt: |
+    Round each of these to one digit and a power of ten.
+
+    ```
+        4,820      61       938,000      0.0037
+    ```
+  answer: |
+    Keep the first digit, look at the next one to decide whether it goes up, and count the places.
+
+    ```
+        4,820     -> 5 times 10^3
+        61        -> 6 times 10^1
+        938,000   -> 9 times 10^5
+        0.0037    -> 4 times 10^-3
+    ```
+
+    The first one rounded up from 4.8 to 5. At this level of roughness that is the point: you are
+    not trying to keep the 8.
+- level: 2
+  prompt: |
+    Estimate each of these by rounding both numbers to one digit first. Then say, for the first
+    one, whether your estimate is above or below the true answer.
+
+    ```
+        412 times 7,900        61,000 divided by 290
+    ```
+  answer: |
+    ```
+        412 times 7,900
+        -> 4 times 10^2, times 8 times 10^3
+        = 32 times 10^5
+        = 3.2 times 10^6, call it 3 times 10^6
+    ```
+
+    ```
+        61,000 divided by 290
+        -> 6 times 10^4, divided by 3 times 10^2
+        = 2 times 10^2
+    ```
+
+    Above or below, for the first. The 412 was rounded down to 400 and the 7,900 up to 8,000. One
+    each way, so the two pull in opposite directions and the estimate should be close. The true
+    answer is 3,254,800, and the estimate of 3 million is a little under.
+- level: 3
+  prompt: |
+    Two quantities are 4 times 10^6 and 9 times 10^7. Are they of the same order of magnitude? Show
+    the working that decides it.
+  answer: |
+    Divide one by the other and see whether the answer is under about ten.
+
+    ```
+        9 times 10^7, divided by 4 times 10^6
+        = (9 divided by 4) times 10^(7 minus 6)
+        = 2.25 times 10^1
+        = about 22
+    ```
+
+    Twenty-two is more than ten, so no: they are not of the same order of magnitude. One is about
+    an order of magnitude and a bit above the other.
+
+    Notice that the exponents alone, 6 against 7, would have told you they were one step apart. The
+    digits in front moved that to a bit more than one step. So divide, rather than reading the
+    exponents off.
+- level: 4
+  prompt: |
+    The second schedule of the National Food Security Act, 2013 sets an upper primary meal at 700
+    calories. Estimate the calories a school of 600 children receives across 200 school days. Mark
+    every input you were not given.
+  answer: |
+    Round the two figures you were given, and mark nothing, because both were given.
+
+    ```
+        700 calories  -> 7 times 10^2
+        600 children  -> 6 times 10^2
+        200 days      -> 2 times 10^2
+    ```
+
+    Multiply, digits and exponents separately.
+
+    ```
+        7 times 6 times 2 = 84
+        10^2 times 10^2 times 10^2 = 10^6
+        = 84 times 10^6
+        = 8.4 times 10^7 calories
+    ```
+
+    About 8 times 10^7 calories a year, which is eight crore.
+
+    Inputs you were not given: none. This problem handed you all three, and that is unusual. Say so
+    when it happens, because an estimate with no assumptions in it is a different and stronger
+    object than one with two.
+  refs: [nfsa_2013]
+- level: 5
+  prompt: |
+    Estimate the number of school meals served in one Indian district in a school year. Mark every
+    input you supply yourself, and give your answer to the nearest power of ten.
+  answer: |
+    Two inputs are needed and neither was given, so both are guesses and both get marked.
+
+    ```
+        children fed in a district   1,00,000 = 10^5    <- a guess
+        school days in a year        200 = 2 times 10^2 <- a guess
+    ```
+
+    Multiply.
+
+    ```
+        10^5 times 2 times 10^2
+        = 2 times 10^7 meals
+    ```
+
+    Two crore meals, so 10^7 to the nearest power of ten.
+
+    Both guesses are the answer's real content. Suppose a district turns out to feed three lakh
+    children. The answer moves to 6 times 10^7, which is still 10^7 to the nearest power of ten.
+    That stability is what the method buys: the answer survived a guess being wrong threefold.
+- level: 6
+  prompt: |
+    Section 3(1) of the National Food Security Act, 2013 gives 5 kilograms per person per month.
+    Estimate the tonnes a district needs in a year. Mark every input you supply, and say which one
+    your answer depends on most.
+  answer: |
+    One input is given, one is a guess.
+
+    ```
+        5 kilograms per person per month
+        people covered in a district   5,00,000 = 5 times 10^5   <- a guess
+    ```
+
+    Work it through.
+
+    ```
+        5 kilograms times 5 times 10^5 people = 25 times 10^5 kilograms a month
+        = 2.5 times 10^6 kilograms a month
+        times 12 months = 30 times 10^6
+        = 3 times 10^7 kilograms a year
+    ```
+
+    Now the unit. A tonne is a thousand kilograms.
+
+    ```
+        3 times 10^7 divided by 10^3 = 3 times 10^4 tonnes a year
+    ```
+
+    About thirty thousand tonnes.
+
+    Which input it depends on most: the population guess, because it is the only one that can be
+    wrong. The 5 kilograms and the 12 months are both exact.
+  refs: [nfsa_2013]
+- level: 7
+  prompt: |
+    Here is a worked estimate. Find the step that broke.
+
+    ```
+        3 times 10^4 households
+        each getting 20 kilograms a month
+        3 times 20 = 60
+        so 60 times 10^4 = 6 times 10^4 kilograms a month
+    ```
+  answer: |
+    The digits were multiplied correctly and then the power of ten was mishandled in the last step.
+
+    ```
+        60 times 10^4 = 6 times 10^5
+    ```
+
+    Sixty is 6 times 10^1, and that extra ten has to go into the exponent, not disappear.
+
+    ```
+        3 times 10^4, times 2 times 10^1
+        = 6 times 10^5 kilograms a month
+    ```
+
+    Six lakh kilograms, or 600 tonnes, and the worked answer said sixty thousand.
+
+    Why it looks reasonable: the digit 6 and the exponent 4 both sit in the line above. So the last
+    line looks like a tidy-up rather than a step. It is a step. Putting one digit in front changes
+    the exponent every time the digits reach ten.
+- level: 8
+  prompt: |
+    Here is a worked estimate. Find what is wrong with it, and it is not the arithmetic.
+
+    ```
+        a district has about 10 lakh people          <- a guess
+        about 2 per cent need the service            <- a guess
+        each needs about 3 visits a year             <- a guess
+        10^6 times 0.02 times 3 = 6 times 10^4 visits a year
+    ```
+  answer: |
+    Check the arithmetic first, since it is offered.
+
+    ```
+        10^6 times 0.02 = 2 times 10^4
+        2 times 10^4 times 3 = 6 times 10^4
+    ```
+
+    That is right. Sixty thousand visits.
+
+    What is wrong is that every input is a guess and nothing was compared against anything. The
+    method has two halves and only the first was done. An estimate that is never checked against a
+    quantity you actually know is three guesses multiplied together and presented as a finding.
+
+    What the second half would look like. Sixty thousand visits a year is about 160 a day across
+    the district. How many facilities and how many staff does that imply, and is that possible?
+    That comparison is where an impossible answer shows itself.
+
+    Why it looks reasonable: the guesses are all marked, which is the honest part, and it makes the
+    working look complete. Marking a guess does not test it.
+- level: 9
+  prompt: |
+    Here is a claim from a press note.
+
+    > The programme will provide 50 lakh children with a daily glass of milk for 200 days at a cost
+    > of 100 crore rupees.
+
+    Decide what to compute, compute it, and say what your answer does not establish.
+  answer: |
+    Compute the cost of one glass, since that is the only quantity you have any feel for.
+
+    ```
+        50 lakh children = 5 times 10^6
+        200 days = 2 times 10^2
+        glasses = 5 times 10^6, times 2 times 10^2 = 10^9 glasses
+
+        100 crore rupees = 100 times 10^7 = 10^9 rupees
+
+        10^9 rupees divided by 10^9 glasses = 1 rupee a glass
+    ```
+
+    One rupee a glass of milk. Compare that against a price you know: a glass of milk costs
+    several times that at any shop in India.
+
+    So something in the sentence is not as stated. Perhaps one of the three figures is wrong.
+    Perhaps the milk is not bought at retail. Perhaps "provide" is doing work the note never
+    explains.
+
+    What this does not establish. It does not say which figure is wrong, and it does not say the
+    programme is a bad one. It establishes that the three numbers cannot all be right as stated,
+    which is enough to ask before repeating any of them.
+- level: 10
+  prompt: |
+    A journalist reads you a figure over the phone and wants a comment in the next ten minutes.
+
+    > A new tax on sugary drinks will raise 40,000 crore rupees a year.
+
+    Decide what to compute, compute it, say what you would tell the journalist, and say what your
+    answer does not establish.
+  answer: |
+    Work backwards to something you can judge. Per person is usually the way.
+
+    ```
+        40,000 crore = 4 times 10^4 times 10^7 = 4 times 10^11 rupees
+        population of India, roughly 1.4 times 10^9    <- a guess
+        4 times 10^11 divided by 1.4 times 10^9
+        = about 2.9 times 10^2
+        = roughly 300 rupees per person per year
+    ```
+
+    Three hundred rupees a person a year, from every person in the country, on sugary drinks tax
+    alone. Now compare against something you know. That is a meaningful share of what many
+    households spend on all drinks in a year, and it assumes nobody avoids the tax.
+
+    What to tell the journalist, in one sentence.
+
+    > That works out at about 300 rupees a year from every person in India. That is high enough
+    > that I would want the assumed consumption and tax rate before repeating it.
+
+    What this does not establish. It does not show the figure is wrong. A narrow tax at a high rate
+    on heavy consumers could reach it. It establishes which two numbers to ask for, and it took one
+    division and one comparison.
 retrieval_items:
 - q: What is an order-of-magnitude estimate for?
   a: Testing whether a figure somebody has given you is possible, not producing a figure of your own.

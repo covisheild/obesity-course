@@ -249,6 +249,231 @@ exercises:
     So all three steps hold. The thing to challenge is not in the notation at all: it is the 365.
     Production every single day of the year, with no closure and no maintenance, is an assumption
     the note never states. Check the exponents, then check the assumption hiding in the multiplier.
+quantitative: true
+practice:
+- level: 1
+  prompt: |
+    Write each of these out in full.
+
+    ```
+        10^2      10^5      10^0      10^-2
+    ```
+  answer: |
+    ```
+        10^2   = 100
+        10^5   = 1,00,000        (one lakh)
+        10^0   = 1
+        10^-2  = 0.01
+    ```
+
+    Two of these are worth a second look. Anything to the power zero is one, which surprises people
+    and falls straight out of the rules. Divide 10^2 by 10^2 and the exponents subtract to give
+    10^0. Any number divided by itself is one, so 10^0 is one.
+
+    And 10^-2 is small, not negative. It sits between zero and one.
+- level: 2
+  prompt: |
+    Work these out using the exponent rules alone, without writing the numbers in full.
+
+    ```
+        10^4 times 10^3        10^8 divided by 10^5        10^3 times 10^-1
+    ```
+  answer: |
+    Multiplying adds the exponents. Dividing subtracts them.
+
+    ```
+        10^4 times 10^3      = 10^(4 plus 3)      = 10^7
+        10^8 divided by 10^5 = 10^(8 minus 5)     = 10^3
+        10^3 times 10^-1     = 10^(3 minus 1)     = 10^2
+    ```
+
+    The third one shows why a negative exponent is worth having. Multiplying by 10^-1 is the same
+    as dividing by ten, and the rule handles it without a special case.
+- level: 3
+  prompt: |
+    Write each of these in scientific notation, as a number between one and ten times a power of
+    ten.
+
+    ```
+        6,200      93,00,000      0.0047      1,00,00,000
+    ```
+  answer: |
+    Move the point until one digit is in front of it, and count how far it moved.
+
+    ```
+        6,200        = 6.2 times 10^3
+        93,00,000    = 9.3 times 10^6
+        0.0047       = 4.7 times 10^-3
+        1,00,00,000  = 1 times 10^7
+    ```
+
+    The third moved the other way, so its exponent is negative. The last is one crore, and
+    a crore is exactly 10^7.
+- level: 4
+  prompt: |
+    Section 34(1) of the Consumer Protection Act, 2019 caps District Commission complaints at one
+    crore rupees. Section 47 caps State Commission ones at ten crore. Write both in scientific
+    notation and say, from the exponents alone, how many times larger the second is.
+  answer: |
+    ```
+        one crore  = 1,00,00,000   = 1 times 10^7
+        ten crore  = 10,00,00,000  = 1 times 10^8
+    ```
+
+    Now subtract the exponents rather than dividing the numbers.
+
+    ```
+        10^8 divided by 10^7 = 10^(8 minus 7) = 10^1 = 10
+    ```
+
+    Ten times larger. No long division, and no zeros counted.
+  refs: [consumer_prot_2019]
+- level: 5
+  prompt: |
+    A district serves 1.8 times 10^5 meals in a year. The second schedule of the National Food
+    Security Act, 2013 sets each meal at 450 calories. Work out the total calories in scientific
+    notation, showing the exponent step.
+  answer: |
+    Put the 450 into scientific notation first, so both numbers are in the same form.
+
+    ```
+        450 = 4.5 times 10^2
+    ```
+
+    Now multiply the digits and add the exponents, separately.
+
+    ```
+        4.5 times 1.8 = 8.1
+        10^2 times 10^5 = 10^7
+        so 8.1 times 10^7 calories
+    ```
+
+    Eight point one times ten to the seven. That is 8,10,00,000 calories, or a little over eight
+    crore.
+
+    Keep the label. Calories, not meals and not rupees.
+  refs: [nfsa_2013]
+- level: 6
+  prompt: |
+    A value is given as 2.5E+04 in a spreadsheet cell and another as 3.0E-02. Write both out in
+    full, then multiply them and give the answer in scientific notation.
+  answer: |
+    In full first, because that is the habit.
+
+    ```
+        2.5E+04 = 2.5 times 10^4  = 25,000
+        3.0E-02 = 3.0 times 10^-2 = 0.03
+    ```
+
+    Now multiply, digits and exponents separately.
+
+    ```
+        2.5 times 3.0 = 7.5
+        10^4 times 10^-2 = 10^(4 minus 2) = 10^2
+        so 7.5 times 10^2 = 750
+    ```
+
+    Seven hundred and fifty. Check it against the full numbers: 25,000 times 0.03 is 750.
+- level: 7
+  prompt: |
+    Here is a worked answer. Find the step that broke.
+
+    ```
+        10^6 times 10^3
+        = 10^(6 times 3)
+        = 10^18
+    ```
+  answer: |
+    The step that broke is the second line. Multiplying two powers **adds** the exponents; it does
+    not multiply them.
+
+    ```
+        10^6 times 10^3 = 10^(6 plus 3) = 10^9
+    ```
+
+    Check it by counting zeros. Six zeros times three zeros gives nine zeros, and 10^18 would be
+    eighteen.
+
+    Why it looks reasonable: the operation between the two numbers is a multiplication, so
+    multiplying the small raised numbers feels like the matching move. The exponents count how many
+    copies there are, and putting two piles together adds the counts.
+- level: 8
+  prompt: |
+    Here is a worked answer. Find the step that broke.
+
+    ```
+        a concentration is 5 times 10^-3
+        a second is 2 times 10^-6
+        10^-3 is smaller than 10^-6 because -3 is greater than -6
+        so the first is the smaller concentration
+    ```
+  answer: |
+    The third line inverts the comparison. A more negative exponent means a smaller number, not a
+    larger one.
+
+    Write both out and the question answers itself.
+
+    ```
+        5 times 10^-3 = 0.005
+        2 times 10^-6 = 0.000002
+    ```
+
+    The first is the larger, by more than a thousand times.
+
+    Why it looks reasonable: the sentence contains a true statement. Minus three really is greater
+    than minus six. The wrong conclusion is then drawn from it. A true clause sitting next to a
+    wrong one is harder to spot than two wrong ones.
+
+    The habit that prevents it: write the number out in full before comparing anything.
+- level: 9
+  prompt: |
+    Here is a line from a note.
+
+    > Annual production is 1.2E+06 tonnes, so at 3 lakh tonnes a quarter the plant is running
+    > close to capacity.
+
+    Decide what to compute, compute it, and say what your answer does not establish.
+  answer: |
+    Put both figures into the same form before comparing them.
+
+    ```
+        1.2E+06 = 1.2 times 10^6 = 12,00,000 tonnes a year
+        3 lakh a quarter = 3,00,000 times 4 = 12,00,000 tonnes a year
+    ```
+
+    The two agree. Annual production and four quarters of capacity are the same number, so
+    "close to capacity" is supported: it is at capacity.
+
+    What this does not establish. It says nothing about whether capacity is the right measure of
+    anything. It says nothing about whether production was steady across the four quarters, or
+    whether the tonnes were produced or merely reported. Two numbers agreeing tells you the arithmetic is consistent. It
+    does not tell you either number is true.
+- level: 10
+  prompt: |
+    In a meeting somebody says this.
+
+    > We reach 2 crore people, so a rupee a head is only 2 lakh rupees.
+
+    Decide what to compute, compute it, and say what your answer does not establish.
+  answer: |
+    Do it in powers of ten, which is where the slip will show.
+
+    ```
+        2 crore = 2 times 10^7 people
+        1 rupee each
+        2 times 10^7 times 1 = 2 times 10^7 rupees
+        = 2,00,00,000 = 2 crore rupees
+    ```
+
+    Two crore rupees, not two lakh. The sentence is out by a factor of a hundred.
+
+    The slip is that a rupee a head for a crore of people costs a crore of rupees. The unit changes
+    from people to rupees and the power of ten does not.
+
+    What this does not establish. Nothing here says whether two crore rupees is affordable, whether
+    a rupee a head buys anything, or whether the two crore people figure is real. It establishes
+    that the number in the room is a hundred times too small, which is enough to stop the meeting
+    agreeing to it.
 retrieval_items:
 - q: What do the base and the exponent of a power each tell you?
   a: The base is the number being multiplied. The exponent counts how many copies of it are multiplied together.

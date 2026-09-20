@@ -259,3 +259,72 @@ Recorded so the next audit does not repeat it.
 - No figure in Part A that is not in `illustration.numbers` is presented as a measurement. The
   teaching examples in C04 and C08 are named as made up in the text, following the precedent of the
   two-state table in `B0-R0-C39`, whose `numbers` list is likewise empty.
+
+---
+
+# Second pass · the practice sets
+
+Added 2026-09-20, after `claude.md` §7a made ten practice problems mandatory on every quantitative
+concept and eighty were written for A1 to A8. Same method: every statutory figure located by
+searching the file, every one of the eighty answers recomputed rather than read.
+
+## 15 · C02 · `practice[5]` · a protein figure taken off the bottom of a range
+
+**The claim.** "The same schedule sets protein at 12 grams for a lower primary meal, 20 for an
+upper primary meal and 18 for a take-home ration." The worked answer then divided 12 by 18 to get
+two thirds.
+
+**What the file has.** Schedule II of `nfsa_2013.txt` gives the protein column as a **range** in
+four of its six rows: 12–15 for children aged six months to three years, 12–15 for three to six
+years, 20–25 for a malnourished child, and **18–20** for a pregnant woman or lactating mother.
+Only rows 4 and 5 — lower primary at 12 and upper primary at 20 — give a single figure.
+
+**Why it matters.** The problem silently picked the bottom of a range and then did exact
+arithmetic on it. The answer, two thirds, is arithmetically right and rests on a choice the reader
+was never told had been made. In a section whose whole lesson is that a fraction must know what
+its whole was, this is the same defect one level down.
+
+**Fix applied.** The problem now uses only single-figure entries — protein 12 against 20, and
+calories 450 against 500 — and the worked answer ends by pointing out that four of the six protein
+rows are ranges, so those are the only two that can be divided without declaring which end of a
+range was taken.
+
+## What was checked in the eighty answers and is correct
+
+- **Every numeric step in all eighty answers was recomputed**, including the four logarithms in A7
+  (log 4,800 = 3.681; log 25,000 = 4.398; log 3,00,000 = 5.477; 10^1.1 = 12.589), the compound
+  percentage in A4 level 8 (100 → 80 → 96), the order-of-magnitude chains in A8, and the
+  spreadsheet conversions in A6. All correct.
+- **Every statutory figure newly quoted was located.** Consumer Protection Act, 2019: s.21(2) ten
+  lakh and its proviso fifty lakh, at lines 1443 and 1447; s.34(1) one crore, at 1687; s.47 ten
+  crore, at 2223. National Food Security Act, 2013: s.3(2) "up to seventy-five per cent of the
+  rural population and up to fifty per cent of the urban population", at line 421; Schedule II
+  600 calories for a pregnant woman or lactating mother, at 1482.
+- **The "up to" in s.3(2) is carried into the answer rather than dropped.** A4 level 4 works out a
+  ceiling and its answer says so in as many words: these are the most who may be covered, not a
+  count and not a target. That qualifier is the same class of thing as defect 7 above, and it was
+  written in rather than found missing.
+- **`consumer_prot_2019.txt` was checked for vintage** the same way as the other two and cites no
+  amending Act anywhere in it, so it reads as the Act as enacted in 2019. The row in
+  `sources/SOURCES.md` that said "not yet checked this way" has been filled in.
+- **Invented figures.** Three practice problems supply numbers that are not from any source: the
+  household and population figures in A5 level 10, the district population in A8 level 5, and the
+  population of India in A8 level 10. Each is marked in the working as a guess, or named in the
+  answer as made up to show the move, following `B0-R0-C39`. None appears in
+  `illustration.numbers` and none is presented as a fact. A8's entire method is labelled
+  assumptions, so a marked guess there is the content rather than a lapse.
+- **Problem conditions that are neither sourced nor guesses** — 250 households, 2,400 respondents,
+  196 school days, 1,850 kilograms — are stated conditions of a made-up problem, in the way a
+  textbook question states its own numbers. They make no claim about the world.
+
+## One gap this audit cannot close, recorded rather than fixed
+
+The numbers register, `check/_build/numbers_register.csv`, is built from `illustration.numbers`
+only. A real figure quoted inside a practice problem names its citekey in `refs`, which the build
+checks against `library.bib`, but it does not reach the register with a value and a unit. So the
+register under-reports what the corpus quotes, by eighteen figures in Part A alone.
+
+Two ways to close it, neither taken here because `check/build.py` is a between-rounds file and this
+pass was already changing it once: give `practice[].refs` the same shape as
+`illustration.numbers`, or have `reports()` walk practice refs and emit a row without a value. The
+second is cheaper and honest about what it knows. Carried in `HANDOVER.md`.

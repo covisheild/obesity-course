@@ -41,7 +41,7 @@ Read by searching each file for every occurrence of `by Act N of YYYY` and takin
 | `nfsa_2013.txt` | **None.** The file carries no amendment footnote at all, so it reads as the Act as enacted in 2013 | Schedule I's prices were fixed for three years from commencement and that window closed in 2016; the file says nothing about what replaced them. Schedule II's nutritional standards carry no such clock in the text |
 | `constitution_current.txt` | Consolidated 2026 text, per the row above; contains Article 279A | Usable |
 | `constitution.txt` | Latest amendment 2003 | **Do not cite**, per the row above |
-| `consumer_prot_2019.txt` | Not yet checked this way | Check before quoting a figure from it |
+| `consumer_prot_2019.txt` | **None.** Checked the same way on 2026-09-20 and the file carries no amendment footnote, so it reads as the Act as enacted in 2019 | Quote s.21, s.34, s.47 and s.58 figures as what this copy says |
 
 This does not make any of these files wrong. It makes the date on them knowable, which is the whole
 point of Book 0 F3, and it was not knowable from this file before.

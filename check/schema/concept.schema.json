@@ -153,6 +153,28 @@
       }
     },
 
+    "quantitative": {
+      "type": "boolean",
+      "description": "True where the concept teaches a mathematical technique the reader has to be able to carry out, rather than a fact or a distinction they have to be able to state. A quantitative concept carries a ten-problem practice set; the build blocks without one. Omitted, it is derived: a Book 0 record in Part A, B, C or D is quantitative, everything else is not. Set it explicitly on a subject record whose rung teaches a calculation, and set it explicitly to false on a Book 0 record in a mathematical Part that genuinely teaches no technique."
+    },
+
+    "practice": {
+      "type": "array",
+      "description": "The drill set. Exactly ten problems on one technique, in ascending difficulty, mandatory for every quantitative concept. Distinct from `exercises`, which carry the rung's skills and build target and use the fixed type taxonomy; these carry fluency in the technique and nothing else. Prompts print in the section, unsolved and in order; answers print in the booklet appendix, never beside the prompt. Full rule in STYLE.md 7a.",
+      "items": {
+        "type": "object", "additionalProperties": false,
+        "required": ["level", "prompt", "answer"],
+        "properties": {
+          "level": { "type": "integer", "minimum": 1, "maximum": 10,
+                     "description": "Position on the difficulty ladder. The ten levels in a set are 1 to 10, each used exactly once, and the build blocks otherwise: this is what makes 'progressive' checkable rather than a matter of taste. 1-3 mechanical, on bare numbers. 4-6 applied, on a real quantity with its unit and label. 7-8 diagnostic, on a worked answer that is wrong. 9-10 transfer, on a claim in words where the reader must choose the technique and say what the answer does not establish." },
+          "prompt": { "type": "string", "description": "What the reader is to do. Unsolved. Carries no hint of the answer and no worked fragment." },
+          "answer": { "type": "string", "description": "Every line of the working, not just the result, per STYLE.md 4. Rendered to the appendix." },
+          "refs": { "type": "array", "items": { "type": "string" },
+                    "description": "Citekeys, where the problem quotes a real figure. Checked against library.bib exactly as must_know refs are, so a drill built on an invented statistic fails the build." }
+        }
+      }
+    },
+
     "retrieval_items": {
       "type": "array",
       "description": "Two or three question-answer pairs per concept, emitted for a spaced-repetition system. Authored while writing, because extracting them later means re-reading everything.",

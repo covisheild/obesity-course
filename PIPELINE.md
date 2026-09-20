@@ -38,7 +38,11 @@ a sandbox; they can be reached from a browser.
 > each one to the reader floor, and stop only at the floor or at an existing Book 0 section.
 >
 > Output one table: concept id, name, type (derivable / empirical / institutional), the Book 0
-> sections it needs, what it must cover in one line, and the source it will need. No prose.
+> sections it needs, what it must cover in one line, the source it will need, and whether it is
+> **quantitative** — that is, whether the reader has to be able to carry the technique out rather
+> than state it. Every quantitative concept owes ten practice problems at step 2 and the build
+> blocks without them, so getting this column right here is what stops the drill sets being
+> discovered late. No prose.
 > Then write `books/<SUBJECT>/READY.md` listing every source, with obtained yes or no, checking
 > `sources/` for what is already there.
 
@@ -56,6 +60,13 @@ a batch can contradict itself.
 >
 > Write records for concepts <RANGE> of `books/<SUBJECT>/INVENTORY.md`, one YAML file each, using
 > `check/example.concept.yml` as the template and `check/concept.schema.json` as the schema.
+>
+> For every concept the inventory marks quantitative, write `practice[]`: **exactly ten problems,
+> levels 1 to 10, each level once**, on the ladder in `claude.md` §7a — 1-3 mechanical on bare
+> numbers, 4-6 applied to a real quantity with its unit, 7-8 diagnostic on a worked answer that is
+> wrong, 9-10 transfer from a claim in words. Prompts carry no hint of the answer. Answers show
+> every line. A problem quoting a real figure names its citekey in `refs`; where no real figure
+> exists, use bare numbers rather than inventing one.
 >
 > For every factual claim, quote the exact words from the file in `sources/` that carry it, and
 > put the file and section in the locator. If no file in `sources/` carries it, set
@@ -76,6 +87,12 @@ pass. Fresh contexts, every time.
 > For every claim in `books/<SUBJECT>/records/*.yml`: open the file named in the locator inside
 > `sources/`, search it for the words the record relies on, and record whether they are there.
 > A claim that reads plausibly and is not in the file is the failure you are looking for.
+>
+> Then **recompute every practice answer**, line by line, rather than reading it. Ten problems a
+> concept is ten chances to ship a wrong answer into an appendix where the reader has nobody to
+> ask, and a reader who disagrees with a worked answer assumes they are the one who erred. Check
+> also that each set actually climbs: ten problems at the same difficulty with different numbers
+> satisfy the build and fail the reader.
 >
 > Then check currency: anything with a date, a price, a rate or a cut-point, against the
 > instrument in `sources/`, and flag what needs re-checking against a newer one.
@@ -144,7 +161,8 @@ ls /tmp/coldread          # confirm: cut sections only, nothing else
 > Remove words by deleting whole sentences and whole paragraphs. Never fuse two sentences into one.
 > Never push a second idea into a sentence that had one. Keep every heading in order even where
 > almost nothing survives under it. Keep the second person and the physical instructions. Add
-> nothing. The exercises stay word for word.
+> nothing. The exercises stay word for word, and so do all ten practice problems: they are what
+> the reader can do, not what the reader has to read, and cutting one changes the first.
 >
 > Then say, in under eighty words, the one cut you were least sure about.
 
@@ -162,7 +180,10 @@ knows where the originals live is one helpful impulse away from reading them.
 > You are an intelligent adult with no prior background in this subject, who has read these
 > sections once, in this order, and nothing before them.
 >
-> Take each file in turn. Answer its exercises as that reader. <Where a concept has bridge_ref
+> Take each file in turn. Answer its exercises as that reader, and work its ten practice
+> problems. The practice set is the sharpest gap detector in this step: a hole in the teaching
+> shows up as a problem you cannot start, and it shows up at a known level rather than as a
+> vague unease. <Where a concept has bridge_ref
 > dependents, add: Then do this, from the text alone: `<the presupposition the dependent concept
 > discharges here>`.>
 > Then list everything it taught you that would change what you do, say, accept or refuse.

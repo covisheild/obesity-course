@@ -34,6 +34,20 @@ STABILITY_FOR_TYPE = {"derivable": "long", "empirical": "medium", "institutional
 MUST_KNOW_BEARINGS = ["clinical", "methodological", "policy", "teaching", "public"]
 MUST_KNOW_SOFT_CAP = 9
 
+# The drill set. A concept that teaches a technique the reader has to be able to carry out is not
+# taught by being read: it is taught by being done, ten times, at rising difficulty. This is the
+# one place in the corpus where a count is fixed rather than discovered, and it is fixed on
+# purpose - "as many as the concept demands" is right for must-know points and wrong for practice,
+# where the demand is the reader's fluency and not the concept's size. Full rule in STYLE.md 7a.
+PRACTICE_REQUIRED = 10
+PRACTICE_LEVELS = set(range(1, PRACTICE_REQUIRED + 1))
+
+# Which Book 0 Parts teach technique. Read off book0/OUTLINE.md: A numbers, B units, C
+# relationships and change, D uncertainty. E is the physical and living world and F is reading and
+# reasoning, and neither teaches a calculation the reader must be able to perform. A record may
+# override this either way with an explicit `quantitative`.
+MATHEMATICAL_PARTS = {"A", "B", "C", "D"}
+
 # Prose fields must be authored as literal blocks. A folded scalar (`>`) turns a blank line into a
 # single newline, which silently destroys every paragraph break and every markdown table in the
 # field, and the damage is invisible in the record and only shows up in the rendered booklet.
@@ -164,6 +178,10 @@ def prose_fields(r) -> list[tuple[str, str]]:
         out += [(f"must_know[{i+1}]", p.get("point")) for i, p in enumerate(mk) if isinstance(p, dict)]
     for i, ex in enumerate(r.get("exercises") or []):
         out += [(f"exercise {i+1} prompt", ex.get("prompt")), (f"exercise {i+1} answer", ex.get("answer"))]
+    for p in (r.get("practice") or []):
+        if isinstance(p, dict):
+            lv = p.get("level")
+            out += [(f"practice {lv} prompt", p.get("prompt")), (f"practice {lv} answer", p.get("answer"))]
     return [(k, v) for k, v in out if isinstance(v, str) and v.strip()]
 
 
@@ -340,7 +358,9 @@ def check(recs: dict, subjects: dict, clusters: dict, bibkeys: set):
         block.append("hard-word list no longer catches the sentence it was built from")
 
     order = {rid: (r.get("rung", 0), r.get("sequence", 0)) for rid, r in recs.items()}
-    b0_index = {s["index"] for p in load_book0_outline() for s in p["sections"]}
+    outline = load_book0_outline()
+    b0_index = {s["index"] for p in outline for s in p["sections"]}
+    b0_part = {s["index"]: p["letter"] for p in outline for s in p["sections"]}
     for rid, r in recs.items():
         ctype = r.get("concept_type")
 
@@ -426,6 +446,34 @@ def check(recs: dict, subjects: dict, clusters: dict, bibkeys: set):
         for dep in r.get("ground_floor_deps") or []:
             if dep not in recs:
                 W(rid, f"ground_floor_deps references missing Book 0 record '{dep}' (write it or drop it)")
+
+        # the drill set: ten problems, levels 1 to 10, on every quantitative concept
+        quant = r.get("quantitative")
+        if quant is None:
+            quant = (r.get("subject") == "B0"
+                     and b0_part.get(r.get("sequence")) in MATHEMATICAL_PARTS)
+        prac = [p for p in (r.get("practice") or []) if isinstance(p, dict)]
+        if quant:
+            if len(prac) != PRACTICE_REQUIRED:
+                E(rid, f"quantitative concept carries {len(prac)} practice problems, and the rule "
+                       f"is exactly {PRACTICE_REQUIRED}. A technique is learned by being done, not "
+                       "by being read (STYLE.md 7a).")
+            levels = [p.get("level") for p in prac]
+            if len(prac) == PRACTICE_REQUIRED and set(levels) != PRACTICE_LEVELS:
+                missing = sorted(PRACTICE_LEVELS - set(levels))
+                dupes = sorted({l for l in levels if levels.count(l) > 1})
+                E(rid, "practice levels must be 1 to 10, each exactly once"
+                       + (f"; missing {missing}" if missing else "")
+                       + (f"; repeated {dupes}" if dupes else ""))
+        elif prac:
+            W(rid, f"{len(prac)} practice problems on a concept not marked quantitative - either "
+                   "set 'quantitative: true' and write the full ten, or move these to exercises")
+        for p in prac:
+            if not (p.get("answer") or "").strip():
+                E(rid, f"practice {p.get('level')} has no worked answer")
+            for ck in p.get("refs") or []:
+                if bibkeys and ck not in bibkeys:
+                    E(rid, f"practice {p.get('level')} cites '{ck}', which is not in library.bib")
 
         # answers must exist for every exercise; integrative belongs elsewhere
         for i, ex in enumerate(r.get("exercises") or []):
@@ -554,6 +602,16 @@ def booklet_md(sid, recs, subjects, clusters) -> tuple[str, list[str]]:
                        + ("  \n*Record your confidence as a percentage before turning to the answer.*"
                           if ex.get("confidence_first") else ""), ""]
                 answers += [f"**{tag}.** {ex['answer']}", ""]
+            prac = sorted([p for p in (r.get("practice") or []) if isinstance(p, dict)],
+                          key=lambda p: p.get("level", 0))
+            if prac:
+                md += ["**Practice.** Ten problems on this technique, easiest first. Work them on "
+                       "paper before turning to the answers, which are in the appendix at the back "
+                       "under these numbers.", ""]
+                for p in prac:
+                    tag = f"{r['concept_id']}-P{p['level']:02d}"
+                    md += [f"**{tag}.** {p['prompt']}", ""]
+                    answers += [f"**{tag}.** {p['answer']}", ""]
     if answers:
         md += ["\\newpage", "", "# Appendix · Worked answers", ""] + answers
     return "\n".join(md), [r["concept_id"] for r in mine]
@@ -632,6 +690,19 @@ def reports(recs, subjects, clusters, block, warn):
             for w, (cid, hint) in first_use.items():
                 fh.write(f"| {w} | {cid} | {hint} |\n")
             fh.write("\n")
+        drills = [(r["concept_id"], len([p for p in (r.get("practice") or []) if isinstance(p, dict)]))
+                  for r in ordered]
+        drills = [(cid, n) for cid, n in drills if n]
+        if drills:
+            fh.write("## Practice sets\n\n"
+                     f"Problems per quantitative concept. The rule is exactly {PRACTICE_REQUIRED}, "
+                     "levels 1 to 10 (STYLE.md §7a); anything else is a blocking failure and is "
+                     "listed below rather than here.\n\n"
+                     "| Concept | Problems |\n| --- | --- |\n")
+            for cid, n in drills:
+                fh.write(f"| {cid} | {n} |\n")
+            fh.write(f"\n**{sum(n for _, n in drills)} practice problems across "
+                     f"{len(drills)} concepts.**\n\n")
         fh.write("## Must-know points by bearing\n\n"
                  "What each point changes for the reader. A corpus tilted entirely one way is not "
                  "wrong, but it should be a decision rather than a habit.\n\n"

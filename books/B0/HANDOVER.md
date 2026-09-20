@@ -5,6 +5,13 @@ compression pass was **not** run, by design: `claude.md` §12 and `PIPELINE.md` 
 5b and 5c to be three separate sessions, and running them here would have destroyed the method
 while appearing to run it.
 
+**A contract change was made in the same session, at the reader's direction**, and it is the
+larger of the two things here. Every concept that teaches a mathematical technique now carries ten
+practice problems at rising difficulty, unsolved in the text and answered in the appendix. It is
+mandatory and the build blocks without it. `PARALLEL.md` reserves changes to `claude.md`,
+`PIPELINE.md` and `check/**` for a between-rounds chat doing nothing else; this was that change,
+made deliberately, and the section below records exactly what moved.
+
 ---
 
 ## What was written
@@ -20,8 +27,9 @@ while appearing to run it.
 | A7 | `B0-R0-C07` | Logarithms — what they are for before how they work | derivable | drafted |
 | A8 | `B0-R0-C08` | Orders of magnitude and the back-of-envelope sanity check | derivable | drafted |
 
-Book 0 is now **12 of 43 sections**. Build: `blocking 0, warnings 11`, and all eleven warnings are
-`reference not yet opened` — eight new ones plus the three that were already there.
+Book 0 is now **12 of 43 sections**, carrying **80 practice problems** across the eight new ones.
+Build: `blocking 0, warnings 11`, and all eleven warnings are `reference not yet opened` — eight
+new ones plus the three that were already there.
 
 **Files written or changed.** Listed in full at the bottom.
 
@@ -66,7 +74,9 @@ searching it.
 
 ## Every number that needs re-checking, with its trigger
 
-Fifteen quoted figures, all from two files, all in `check/_build/numbers_register.csv`.
+Twenty-one quoted figures now, from three files. The first eleven rows are in
+`check/_build/numbers_register.csv`; the last six reach the corpus through practice problems, which
+the register does not carry — see the note at the end of `DEFECTS.md`.
 
 | Figure | Where it is | Source and locator | Re-check trigger |
 | --- | --- | --- | --- |
@@ -81,6 +91,11 @@ Fifteen quoted figures, all from two files, all in `check/_build/numbers_registe
 | 800 kcal, malnourished child, 6 months to 6 years | C02 exercise | `nfsa_2013.txt` Schedule II | same |
 | 5 kg per person per month, priority households | C03, C05 | `nfsa_2013.txt` s.3(1) | next amendment to s.3 |
 | 35 kg per household per month, Antyodaya | C05 | `nfsa_2013.txt` proviso to s.3(1) | next amendment to s.3, **and** any change to what the Central Government specifies per State under the scheme |
+| 600 kcal, take-home ration, pregnant woman or lactating mother | C02 practice 4 | `nfsa_2013.txt` Schedule II | next amendment to Schedule II |
+| up to 75 per cent rural, up to 50 per cent urban coverage | C04 practice 4 | `nfsa_2013.txt` s.3(2) | next amendment to s.3 |
+| 10,00,000 and 50,00,000 rupees, false or misleading advertisement | C01 practice 4, C07 practice 4 | `consumer_prot_2019.txt` s.21(2) and its proviso | next amendment to the Consumer Protection Act, 2019 |
+| 1,00,00,000 rupees, District Commission jurisdiction | C01 practice 5, C06 practice 4, C07 practice 4 | `consumer_prot_2019.txt` s.34(1) | same |
+| 10,00,00,000 rupees, State Commission jurisdiction | C01 practice 5, C06 practice 4, C07 practice 4 | `consumer_prot_2019.txt` s.47 | same |
 
 **The trigger that matters most, and it is not in the table.** Both source copies are of unstated
 and different vintage, and this was found by the audit rather than assumed:
@@ -88,6 +103,8 @@ and different vintage, and this was found by the audit rather than assumed:
 - `fss_act_2006.txt` cites exactly one amending Act anywhere in it — **Act 13 of 2008, w.e.f.
   7 February 2008** — and nothing later.
 - `nfsa_2013.txt` cites **no amendment at all**, so it reads as the Act as enacted in 2013.
+- `consumer_prot_2019.txt` was checked the same way in the second pass and likewise cites none, so
+  it reads as the Act as enacted in 2019.
 
 Neither file says so on its face. `sources/SOURCES.md` now carries a "Vintage of each copy" section
 recording it, appended rather than edited, per `PARALLEL.md`. C01 and C07 each carry one sentence
@@ -194,10 +211,14 @@ factorisation** (nothing above it uses it). Recorded in `INVENTORY.md` so they a
    want to check it yourself.
 2. **Compression pass on A4 and A8 first**, as three separate sessions each, per §12. A8 has no
    `bridge_ref` dependents, so its own exercises are a sufficient test set; the same is true of all
-   eight, since Book 0 carries no `bridge_ref`.
-3. **Then Part B, or Part F's remaining section F2.** Part A is now the whole of the arithmetic
+   eight, since Book 0 carries no `bridge_ref`. The practice sets are out of scope for the cut and
+   are the test material for 5b, which is a better use of them than they had before.
+3. **Retrofit the rule to Parts B, C and D as they are written.** Nothing needs retrofitting now:
+   the only other written records are Part F, which is not quantitative. The first Part B record
+   will block until its ten are written, which is the rule working.
+4. **Then Part B, or Part F's remaining section F2.** Part A is now the whole of the arithmetic
    that Parts B to E stand on.
-4. **Whenever a browser is to hand:** one school mathematics text, eight locators; and current
+5. **Whenever a browser is to hand:** one school mathematics text, eight locators; and current
    copies of the Food Safety and Standards Act, 2006 and the National Food Security Act, 2013.
 
 ---
@@ -224,10 +245,123 @@ books/B0/HANDOVER.md
 **Changed**
 
 ```
-check/references/library.bib   one PENDING entry, pending_arithmetic_text
-prose/GLOSSARY.md              eleven rows appended, plus the between-rounds note
-sources/SOURCES.md             "Vintage of each copy" section appended
+claude.md                          new section 7a; section 8 blocking checks; section 12;
+                                   the division-of-work table and the step 3 note
+PIPELINE.md                        Tasks 1, 2, 3, 5a and 5b
+check/build.py                     practice checks, rendering, readability sweep, report table
+check/schema/concept.schema.json   practice[] and quantitative
+check/schema/example.concept.yml   the practice template
+check/references/library.bib       one PENDING entry, pending_arithmetic_text
+prose/GLOSSARY.md                  eleven rows appended, plus the between-rounds note
+sources/SOURCES.md                 "Vintage of each copy" section appended, and the Consumer
+                                   Protection Act row filled in
 ```
 
-Nothing in `claude.md`, `PIPELINE.md`, `PARALLEL.md`, `map/**` or `check/build.py` was touched.
+`PARALLEL.md`, `map/**` and the frozen map were not touched. The first five rows above are the
+between-rounds contract change described at the top of this file; everything else is ordinary
+Part A work.
 `check/_build/` is generated and is gitignored.
+
+---
+
+## The practice-set rule: what changed, and where
+
+Added to the contract in this session. A concept that teaches a technique the reader has to be
+able to **carry out** now carries exactly ten practice problems. The reasoning, in one line: a
+section can be read, agreed with, and found impossible to use twenty minutes later, and ten
+problems is the cheapest thing in the method that closes that gap.
+
+### The six places it landed
+
+| File | What went in |
+| --- | --- |
+| `claude.md` §7a | The rule, the difficulty ladder, and how to write them. New section |
+| `claude.md` §8 blocking checks | Two new blocking conditions, and practice citekeys added to the library check |
+| `claude.md` §12 and division-of-work table | The compression pass may not touch the practice set; step 2 writes it; step 3 recomputes it |
+| `check/schema/concept.schema.json` | `practice[]` with `level`, `prompt`, `answer`, `refs`; and a `quantitative` boolean |
+| `check/schema/example.concept.yml` | The template, with one problem from each band |
+| `check/build.py` | The blocking checks, the rendering, the readability sweep over practice prose, and a practice-set table in the check report |
+| `PIPELINE.md` | Task 1 names the column, Task 2 writes the ten, Task 3 recomputes them, 5a may not cut them, 5b works them |
+
+### How "which concepts" is decided, and why it is not left to the author
+
+`quantitative: true` in the record says so outright. Left out, the build derives it: **a Book 0
+record in Part A, B, C or D is quantitative; one in E or F is not.** That set is read off
+`check/book0/OUTLINE.md` and lives in `MATHEMATICAL_PARTS` in `build.py`.
+
+The derivation is the point. An author who forgets the field still gets blocked, so the rule
+cannot be dodged by omission — only by writing `quantitative: false` on purpose, which is visible
+in a diff. Subject records default to false and opt in explicitly.
+
+This is also why **the four finished Part F records were not touched**. F1, F3, F4 and F5 are
+Part F, so they are not quantitative, so they owe nothing. `B0-R0-C39` teaches you to read a
+table; it does not teach a technique you perform.
+
+### How "progressive" is made checkable
+
+Each problem carries a `level` from 1 to 10 and the build blocks unless the ten levels are exactly
+1 to 10 with each used once. Without that, "progressive difficulty" is a matter of taste and the
+failure mode is ten level-2 problems with different numbers. The bands:
+
+| Level | Band | What the problem is for |
+| --- | --- | --- |
+| 1–3 | mechanical | The move on bare numbers. The reader's hands learning it |
+| 4–6 | applied | A real quantity, unit and label kept attached |
+| 7–8 | diagnostic | A worked answer that is **wrong**; find the step that broke. This is the band that transfers to reviewing other people's work |
+| 9–10 | transfer | A claim in words; choose the technique, then say what the answer does **not** establish |
+
+The build cannot check the *bands*, only the levels, so a set that numbers ten mechanical problems
+1 to 10 will pass. That is a real hole and the audit is what closes it — `PIPELINE.md` Task 3 now
+says to check that each set actually climbs.
+
+### Where the eighty problems came from
+
+This was the question worth answering before writing any of them. Three sources and no fourth:
+
+1. **Figures already opened in `sources/`.** The National Food Security Act, 2013 — Schedule II
+   meal and ration standards, s.3(1) entitlements, and s.3(2)'s "up to 75 per cent of the rural
+   population and up to 50 per cent of the urban population", which is new to the corpus and is
+   the best percentage material in the pack. The Food Safety and Standards Act, 2006 penalty
+   ceilings. And the Consumer Protection Act, 2019, which was sitting unused: s.21(2) ten lakh and
+   fifty lakh, s.34 one crore, s.47 ten crore. Those last three are exactly 10^6, 10^7 and 10^8,
+   which makes them the cleanest logarithm material in the repository.
+2. **Bare numbers**, for levels 1 to 3, which need no source at all. Arithmetic is derivable and
+   the reader checks it with the calculator the floor grants them.
+3. **Stated problem conditions** — "a block has 250 households" — which are conditions of a made-up
+   question and make no claim about the world.
+
+**What was not used, deliberately.** No invented prevalence, no invented survey figure, no
+plausible-sounding Indian statistic. Where a problem needs a number nobody has, it is marked in
+the working as a guess, which is A8's whole method, or named in the answer as made up to show the
+move. Defect 15 in `DEFECTS.md` is what happens when this slips: a protein figure was taken off
+the bottom of a Schedule II range and divided as though it were exact.
+
+### What a future chat should know before writing a practice set
+
+- **Fence every worked block, and put no blank line inside a fence.** `build.py` skips a block
+  starting with a backtick fence, but it splits blocks on blank lines, so a fence containing one
+  becomes two blocks and only the first is skipped. The second is then measured as prose and
+  reported as a 30-word sentence.
+- **A blockquote line counts its `>` as a word**, and the sentence splitter will not break after a
+  full stop that is followed by `>`. So a two-sentence quote is measured as one long sentence. Keep
+  a quoted claim to a single sentence under about 22 words.
+- **Sentences beginning with a digit or `10^3` do not split**, so three sentences get measured as
+  one. Write "Ten to the power three is…" at the start of a sentence.
+- **Level 9 and 10 answers run long.** They carry a computation and then a boundary, and the
+  boundary is the half that matters. Expect 120 to 190 words and do not compress them away: §12
+  now forbids the compression pass from touching the practice set at all.
+- **The numbers register does not see practice figures.** It is built from
+  `illustration.numbers` only. A practice problem names its citekey in `refs` and the build checks
+  it against `library.bib`, but no value or unit reaches the register, so it under-reports Part A
+  by eighteen figures. Closing this is a between-rounds job; the cheapest fix is to have
+  `reports()` walk `practice[].refs`. Recorded at the end of `DEFECTS.md`.
+
+### What this rule costs
+
+Part A reader-facing prose roughly doubled. Before the practice sets it was about 1,170 to 1,500
+words a section; the eighty problems add roughly 800 to 1,100 words a section on top, most of it
+in the appendix rather than in the reading path. The sections themselves grew by the ten prompts
+only, which is 100 to 150 words.
+
+That asymmetry is worth keeping in view when the compression pass runs. The thing a reader has to
+read did not grow much. The thing they have to do grew a lot, and none of it is compressible.
