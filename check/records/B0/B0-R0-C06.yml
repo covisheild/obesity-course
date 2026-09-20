@@ -14,20 +14,15 @@ definition:
   text: |
     A power is repeated multiplication of one number by itself. The number being multiplied is the
     base and the small raised number is the exponent, which counts how many copies of the base are
-    multiplied together. Ten to the power three, written 10^3, is ten times ten times ten, or one
-    thousand.
+    multiplied together.
 
     A negative exponent means repeated division by the base rather than repeated multiplication, so
     10^-3 is one thousandth. Any base raised to the power zero is one.
 
     Multiplying two powers of the same base adds their exponents, and dividing subtracts them.
 
-    A square root of a number is the quantity which, multiplied by itself, gives that number. It
-    undoes raising to the power two.
-
     Scientific notation writes a quantity as a number between one and ten multiplied by a power of
-    ten. In that form the digits and the size of the number are recorded separately, which is what
-    makes it hard to lose a factor of ten.
+    ten.
   references:
   - citekey: pending_arithmetic_text
     kind: textbook
@@ -43,35 +38,23 @@ definition:
         does not depend on the source. The anchor is required by the spec and is in the citation
         backlog.
 simplified_explanation: |
-  Writing ten times ten times ten is tiring, so there is a shorthand. Write the ten once, and put a
-  small raised number after it saying how many of them to multiply.
-
   Ten to the power three is written 10^3. The ten is the base. The small raised three is the
   exponent, and all it does is count how many tens are being multiplied. Ten to the power three is
   one thousand.
 
-  A quick way to read any power of ten: the exponent is the number of zeros. Ten to the power three
-  is a one followed by three zeros. Ten to the power six is a one followed by six zeros.
+  A quick way to read any power of ten: the exponent is the number of zeros.
 
   A minus sign in the exponent flips it from multiplying to dividing. So 10^-3 is one divided by a
-  thousand, which is 0.001. The minus does not make the number negative. It makes it small.
+  thousand, which is 0.001.
 
-  Two rules save you most of the work. Multiply two powers of ten and you add the exponents.
-  Divide, and you subtract them. A lakh times a hundred is 10^5 times 10^2, which is 10^7 — a
-  crore. You can check that by counting zeros, and you should, the first few times.
+  Multiply two powers of ten and you add the exponents. Divide, and you subtract them.
 
-  A square root runs the whole thing backwards. Ten times ten is a hundred, so the square root of a
-  hundred is ten.
-
-  Last, the notation you will meet in every paper and every spreadsheet. Write a quantity as a
-  number between one and ten, times a power of ten. Thirty-five thousand becomes 3.5 times 10^4.
-  The digits and the size are now kept in separate places, which is exactly why a factor of ten is
-  hard to lose.
+  Write a quantity as a number between one and ten, times a power of ten. Thirty-five thousand
+  becomes 3.5 times 10^4.
 illustration:
   body: |
     Build the ladder of powers of ten yourself, in two columns, with the Indian names on one side
-    and the international names on the other. Write it out by hand once. It is worth the two
-    minutes.
+    and the international names on the other.
 
     ```
                                  Indian name    international name
@@ -87,9 +70,7 @@ illustration:
     ```
 
     Read the gaps. A lakh is 10^5 and a crore is 10^7, so the Indian ladder steps by two powers of
-    ten. A million is 10^6 and a billion is 10^9, so the international ladder steps by three. The
-    two never land on the same rung, which is the whole reason a lakh cannot be matched to a
-    million by feel.
+    ten. A million is 10^6 and a billion is 10^9, so the international ladder steps by three.
 
     Now the failure, and it is one of the commonest in real work. A spreadsheet has a column of
     grain tonnages in it. The column is narrow, so the spreadsheet prints one cell like this.
@@ -101,11 +82,7 @@ illustration:
     Somebody copies the visible part into a report and writes 1.5 tonnes.
 
     Read what the cell actually said. That E means "times ten to the power", so the cell held 1.5
-    times 10^6 tonnes. One and a half million tonnes. The report is out by a factor of a million,
-    and the number in it looks entirely reasonable on the page.
-
-    The fix takes no skill at all. Whenever you see an E in a number, stop and write the number out
-    in full before you do anything else with it.
+    times 10^6 tonnes.
 
     ```
         1.5 times 10^6
@@ -113,7 +90,7 @@ illustration:
         = 1,500,000
     ```
 
-    Now the clean case, so you can feel the rules working. Take a lakh and multiply it by a hundred.
+    Take a lakh and multiply it by a hundred.
 
     ```
         1,00,000 times 100
@@ -122,9 +99,6 @@ illustration:
         = 10^7
         = 1,00,00,000, which is one crore
     ```
-
-    Check it by counting zeros: five zeros and two zeros makes seven zeros. The rule and the
-    counting agree, as they always will.
 
     Try the other direction. Divide a crore by a lakh.
 
@@ -135,57 +109,40 @@ illustration:
         = 100
     ```
 
-    A crore is a hundred lakh. You have just derived from the exponents the thing that section A1
-    asked you to remember.
+    A crore is a hundred lakh.
   analogy_breaks_when: |
     "The exponent is the number of zeros" is a rule about powers of ten and nothing else. Two to the
-    power three is eight, and there is no zero anywhere in it. The moment the base is not ten, go
-    back to counting how many copies are multiplied.
-
-    Scientific notation protects you from losing a factor of ten. It does not protect you from
-    anything else. The digits in front are still only as good as the measurement they came from.
-    Writing 1.50 times 10^6 claims three significant figures whether or not you have them.
-
-    One more, and it catches people with a calculator. A negative exponent makes a number small, not
-    negative. And most square roots are not whole numbers. The square root of a hundred is exactly
-    ten. The square root of ninety is 9.4868..., a decimal that never ends and has to be rounded
-    like any other.
+    power three is eight, and there is no zero anywhere in it.
   numbers: []
 must_know:
 - point: |
     A negative exponent does not make a number negative. It makes it small. Ten to the power minus
-    three is one thousandth, an ordinary positive quantity. Reading the minus as a sign on the
-    number is how a concentration ends up below zero in somebody's table.
+    three is one thousandth, an ordinary positive quantity.
   kind: misconception
   bearing: methodological
 - point: |
     Whenever a number contains an E, or a small raised number, write it out in full before you use
-    it. Every spreadsheet on earth will print you a figure in that form. The visible digits look
-    like a complete number when they are half of one.
+    it.
   kind: move
   bearing: methodological
 - point: |
     The Indian ladder steps by two powers of ten: lakh is 10^5 and crore is 10^7. The international
-    ladder steps by three: million is 10^6 and billion is 10^9. They never land on the same rung, so
-    matching them by feel is guaranteed to be wrong.
+    ladder steps by three: million is 10^6 and billion is 10^9.
   kind: india_deviation
   bearing: policy
 - point: |
     Write any large figure as a digit or two times a power of ten before you compare it with
-    another. It separates the digits from the size, and almost every large-number error is an error
-    in the size rather than in the digits.
+    another.
   kind: move
   bearing: methodological
 - point: |
     Asked to check a colleague's calculation quickly, check the exponents first and the digits
-    second. A wrong digit makes an answer slightly wrong. A wrong exponent makes it wrong by a
-    factor of ten or more, and that is the error that changes a decision.
+    second.
   kind: consequence
   bearing: teaching
 - point: |
     This gives you the notation and the two rules that move it around. It does not tell you what any
-    particular power of ten means in the world. That is what makes an answer of 10^11 look no
-    stranger than 10^9 until you have something to compare it against.
+    particular power of ten means in the world.
   kind: boundary
   bearing: methodological
 exercises:

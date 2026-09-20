@@ -1,0 +1,132 @@
+# Step 5c. What the cold read proved was load-bearing.
+#
+# Each entry is a distinctive fragment of one of the original's own sentences. The rebuild
+# walks the original and keeps a sentence if the cut kept it OR if a fragment here matches it,
+# so every restored sentence returns word for word, in its original position. Nothing that is
+# not already in the original can be written here.
+#
+# Two kinds of entry, marked in the comments:
+#   [unable]  the gap report shows the reader could not do something. claude.md 12's own test.
+#   [dangle]  the cut left a pronoun or a "so"/"here"/"anyway" with no antecedent, and the
+#             sentence that supplied it was the one deleted. STYLE 10 rule 2 and 5.
+#   [accuracy] one override, argued in the handover: a statutory qualifier whose removal makes
+#             the retained claim overstate the entitlement.
+
+A1:
+  simplified_explanation:
+    # [dangle] "Here the last three digits go together" - "Here" pointed at nothing once the
+    # India paragraph's opening went.
+    - "Now the part that catches people in India"
+    - "Where you put the commas is a different question"
+    - "And India does not do it the way most places do"
+  illustration.body:
+    # [dangle] "Ten lakh, they think" - "they" had no antecedent.
+    - "Somebody reading the Act writes a note in English for a reader abroad"
+    # [unable] E1 and P04 ask "how many times larger" and nothing said what the division's
+    # answer means. This is the only sentence in the section that says it.
+    - "That is right: the first ceiling is twice the second"
+  illustration.analogy_breaks_when:
+    # [dangle] "So count the digits, not the commas" followed a paragraph it does not follow from.
+    - "The commas break in a second way, and quietly"
+    - "A spreadsheet or a website prints the grouping it was built for"
+
+A2:
+  definition.text:
+    # [unable] P02, P03, P07, P09, P10 all need equivalence to build a common denominator; the
+    # reader had to supply the rule. This is the original's statement of it.
+    - "Multiplying the numerator and the denominator by the same amount"
+    # WITHDRAWN. "Two fractions may be compared or added only once they stand over the same
+    # denominator, because a part is defined by the whole it was cut from." was the cutter's
+    # own least-sure cut and it reads well, which is the reason claude.md 12 gives for not
+    # restoring something. The test does not prove it: the cold reader produced that reason
+    # unaided on P03 and was stopped by the *procedure*, which this sentence does not carry.
+    # It is also the section's longest sentence, and restoring it was what pushed A2's mean
+    # sentence length above the original's. The hole it half-covers goes to DEFECTS instead.
+  simplified_explanation:
+    # [unable] the roti passage asserted "exactly the same amount" with the step removed; the
+    # reader had to reconstruct it.
+    - "Both numbers in the second fraction are five times the numbers in the first"
+  illustration.body:
+    # [unable] P08 asks the reader to accept that 9/14 is about two thirds - a comparison of
+    # two fractions. These two sentences are where the original performs it.
+    - "Nine fourteenths is a little under two thirds"
+    - "Three fifths is a little over half"
+
+A3:
+  simplified_explanation: []
+  illustration.body:
+    # [dangle] "You have 0.1666666667 and you want two places" read as a retraction of the
+    # range the section had just settled on. This sentence is the signpost that it is not.
+    - "Now round the middle case properly, so you can see the rule work"
+  illustration.analogy_breaks_when:
+    # [unable] the cut raised the exactly-five rounding edge and abandoned it, with P01
+    # landing on 7.2950. These are the original's statement of why it matters and when.
+    - "That nudges a long column of numbers slightly high"
+    - "It rarely matters"
+    - "It matters when you are rounding thousands of values and then adding them"
+
+A4:
+  illustration.analogy_breaks_when:
+    # [dangle] "Go back to the two original numbers, or say in your own writing that you could
+    # not" was left as a fragment with its first half deleted.
+    - "When a source says \"per cent\" you often cannot tell which it meant"
+
+A5:
+  illustration.body:
+    # [accuracy] not proved by the test. The 35 kg figure is conditional in the Act and the cut
+    # left it flat, which is the defect class the audit already caught once (DEFECTS 7).
+    - "That figure applies to the extent the Central Government specifies for each State"
+    # [dangle] the per-thousand paragraph arrived with no transition and its equivalence bare.
+    - "One more thing to take from this, because it comes up in every table you will read"
+    - "The only reason is to avoid a string of zeros after the point"
+
+A6:
+  simplified_explanation: []
+  illustration.body:
+    # [unable] the ladder table was left half-filled with nothing saying what the gaps show.
+    # These also carry the only statement anywhere in Part A of what a billion is worth.
+    - "Read the gaps"
+    - "A lakh is 10^5 and a crore is 10^7, so the Indian ladder steps by two powers of ten"
+    - "A million is 10^6 and a billion is 10^9, so the international ladder steps by three"
+    # [dangle] "A spreadsheet has a column of grain tonnages in it" began with no transition and
+    # read as another row of the table above it.
+    - "Now the failure, and it is one of the commonest in real work"
+  must_know[0].point:
+    # [unable] P08 needs 10^-3 to be orderable against 10^-6; the reader had to supply its value.
+    - "Ten to the power minus three is one thousandth, an ordinary positive quantity"
+
+A7:
+  simplified_explanation:
+    # [unable] "use a calculator for the logarithm column" named no key and showed no instance.
+    # This is the section's only worked logarithm of a number that is not a power of ten, and
+    # P03 asks for exactly that judgement.
+    - "A calculator will tell you it is about 2.7"
+    - "You do not have to work that out by hand"
+  illustration.body:
+    # [dangle] "For the other three, search the section headings" - "the other three" had no
+    # antecedent, because the first of the four searches had been deleted.
+    - "One hit this time, in the proviso to section 50"
+
+A8:
+  illustration.body:
+    # [dangle] "Do it anyway, on paper, in front of them" answered an objection the cut deleted.
+    - "You do not have the figures"
+    # [unable] the reader had to guess a day's calories, the school year and a district's
+    # children. This passage is where the original supplies all three.
+    - "Does that sound right for a lakh of children getting one meal on some of the days"
+    - "Check it roughly"
+    - "One meal of 450 against a day of 2,000 is about a fifth"
+    - "Two hundred school days out of 365 is about half"
+    - "A fifth of a half is a tenth, and a tenth of a lakh of children is ten thousand"
+    - "It agrees, so nothing has fallen over"
+    # [unable] the section's stated question is "is this number possible" and the cut left it
+    # never answered in the negative on a real case. E1, E2, P09 and P10 all ask for that verdict.
+    - "Now the failure, which is why anyone bothers with the second half"
+    - "A hundred thousand people's worth of annual eating"
+    - "The school meals would be feeding a large part of everybody"
+    - "That is the whole method, and the first half of it is useless without the second"
+    # [unable] and the wording of the verdict, which E2, P09 and P10 all ask the reader to produce.
+    - "Last, what you say out loud when you have done this"
+    - "Not \"it is ten to the ten\""
+    - "Say something like this"
+    - "On a rough calculation this comes out around the amount ten thousand people eat"

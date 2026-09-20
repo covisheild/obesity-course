@@ -1,0 +1,102 @@
+"definition.text": |
+  A decimal continues place value to the right of a point. Each place to the right is worth one
+  tenth of the place on its left, so the places run tenths, hundredths, thousandths.
+
+  Rounding is choosing which place to stop at and adjusting the last kept digit for what follows
+  it.
+
+  The significant figures of a number are the digits that carry information about the quantity,
+  counted from the first digit that is not zero. A quantity calculated from other quantities
+  cannot carry more significant figures than the least precise of them.
+
+"simplified_explanation": |
+  A decimal is the same place-value rule, carried on past the point. To the right, each step is
+  ten times smaller: tenths, then hundredths, then thousandths.
+
+  Rounding is deciding where to stop. Pick the place you want to stop at and look at the very next
+  digit. If it is four or less, leave your last digit alone. If it is five or more, push it up by
+  one.
+
+  Your answer cannot be more exact than the numbers you put in. Divide something you know to two
+  digits by something you know to two digits, and you know the answer to about two digits.
+
+"illustration.body": |
+  Open sources/nfsa2013.txt again and search inside it for "five kilograms". The first is section
+  3(1), which gives a person in a priority household five kilograms of foodgrains per person per
+  month.
+
+  How much is that a day?
+
+  Type five, divide by thirty, and read what the calculator says.
+
+  ```
+      5 divided by 30 = 0.1666666667
+  ```
+
+  Here is the mistake, and it goes into real documents. The figure is copied straight across, and
+  a report goes out saying each person receives 0.1666666667 kilograms of grain a day.
+
+  Count the digits after the point. Ten of them. Nothing you did could possibly support that.
+
+  The five is exact: it is not a measurement, it is a figure written into an Act, and it is five
+  and nothing else. The thirty is not exact at all. You chose it. A month is twenty-eight days, or
+  thirty, or thirty-one.
+
+  So work the two ends instead of one middle.
+
+  ```
+      5 divided by 31 = 0.16129...
+      5 divided by 28 = 0.17857...
+  ```
+
+  The honest answer sits somewhere between 0.16 and 0.18 kilograms a day. Two digits, not ten.
+
+  Now round the middle case properly, so you can see the rule work. You have 0.1666666667 and you
+  want two places after the point. The next digit along is a 6, which is five or more, so the 6
+  you are keeping goes up to 7.
+
+  ```
+      0.1666666667 rounds to 0.17
+  ```
+
+  Round to 0.17, then multiply by 30 to get back to a month.
+
+  ```
+      0.17 times 30 = 5.1
+  ```
+
+  You started with exactly 5 and came back with 5.1. The rounding leaked.
+
+  If somebody needs a daily figure, give them 0.16 to 0.18 kilograms and say where the spread came
+  from.
+
+"illustration.analogy_breaks_when": |
+  Significant figures are a rough guide to precision, not a measure of it. They do not tell you
+  how wrong the number might be.
+
+  The rounding rule itself has an edge. When the digit you are dropping is exactly five and
+  nothing follows it, the rule above always pushes up. That nudges a long column of numbers
+  slightly high. It rarely matters. It matters when you are rounding thousands of values and then
+  adding them.
+
+"must_know[0].point": |
+  The digits on a calculator display are not precision. They are what the division produced.
+
+"must_know[1].point": |
+  Keep full precision while you work and round once, at the end, to what your weakest input
+  earned.
+
+"must_know[2].point": |
+  Five kilograms in an Act is exactly five. Five kilograms on a scale is not. Ask which kind you
+  are holding before you decide how to round it.
+
+"must_know[3].point": |
+  Indian entitlements are commonly written per month while reporting wants a daily figure. That
+  one division is where false precision enters.
+
+"must_know[4].point": |
+  When a number you are given carries more digits than its source could support, say so at the
+  time.
+
+"must_know[5].point": |
+  Do not quote a spuriously precise figure in public even when it is the one you were handed.

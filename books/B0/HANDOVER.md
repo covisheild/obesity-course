@@ -5,6 +5,11 @@ compression pass was **not** run, by design: `claude.md` §12 and `PIPELINE.md` 
 5b and 5c to be three separate sessions, and running them here would have destroyed the method
 while appearing to run it.
 
+> **Superseded, same day.** Task 5 has since been run, in one task with the three steps delegated,
+> which is what §12 now permits: the context condition is met by the subagent and the reachability
+> condition by the scratch directory, so a session boundary buys nothing the delegation does not.
+> See **Task 5 · the compression pass** at the end of this file. Task 6 is still not done.
+
 **A contract change was made in the same session, at the reader's direction**, and it is the
 larger of the two things here. Every concept that teaches a mathematical technique now carries ten
 practice problems at rising difficulty, unsolved in the text and answered in the appendix. It is
@@ -365,3 +370,174 @@ only, which is 100 to 150 words.
 
 That asymmetry is worth keeping in view when the compression pass runs. The thing a reader has to
 read did not grow much. The thing they have to do grew a lot, and none of it is compressible.
+
+---
+
+# Task 5 · the compression pass
+
+Run 20 September 2026, after the fix and before the human read, which is where §12 puts it. One
+task, three delegated steps: eight cutters at 5a, one cold reader at 5b, restoration at 5c in the
+main thread. Working files and their explanation are in `books/B0/compress/`.
+
+## What it did to the text
+
+Reader-facing prose only — the five fields a reader reads as prose: `definition.text`,
+`simplified_explanation`, `illustration.body`, `illustration.analogy_breaks_when`, and each
+`must_know[].point`. Exercises, the eighty practice problems and the retrieval items were not
+touched and could not have been; see the note on how the scratch files were assembled.
+
+| Section | Original | After the cut | After the restore | Net |
+| --- | ---: | ---: | ---: | ---: |
+| A1 | 1,267 | 648 | 734 | −42% |
+| A2 | 1,168 | 578 | 640 | −45% |
+| A3 | 1,247 | 641 | 679 | −46% |
+| A4 | 1,401 | 714 | 735 | −48% |
+| A5 | 1,259 | 709 | 755 | −40% |
+| A6 | 1,247 | 558 | 622 | −50% |
+| A7 | 1,504 | 711 | 740 | −51% |
+| A8 | 1,459 | 773 | 987 | −32% |
+| **Part A** | **10,552** | **5,332** | **5,892** | **−44%** |
+
+Mean sentence length across Part A: **12.54 → 12.04 after the cut → 12.13 after the restore.**
+Longest sentence 34 throughout, unchanged. Build after: `blocking 0, warnings 11`, the same eleven
+`reference not yet opened` warnings that were there before. No new readability warning was
+introduced by either step.
+
+**The F4 result held.** 44 per cent against F4's 38, from a method that was measured once on one
+section. The restore put back 560 words, 11 per cent of the cut — F4's restore was 78 words on a
+490-word cut, 16 per cent. So the same split holds: the instruction to cut hard does most of the
+work and the test makes it safe to give, rather than doing the cutting itself.
+
+**A8 is the outlier and is the one to look at.** It gave up 32 per cent where the rest gave up 40
+to 51, because the cold read proved three separate passages load-bearing — the cross-check that
+supplies a day's calories and a school year, the failure case that is the only place the method is
+carried through to a negative verdict, and the spoken wording that E2, P09 and P10 all ask the
+reader to produce. That is the method working, not the cutter failing.
+
+## What the practice sets bought
+
+Step 5b worked all eighty problems as well as the sixteen exercises, which is new this round and
+is the sharpest thing in the step. A hole in the teaching arrives as a problem you cannot start,
+**at a known level**, instead of as a general impression. The per-level verdicts are in
+`DEFECTS.md` under "Found by the compression pass".
+
+The number worth carrying: **one problem in eighty was a hard stop.** Everywhere else the reader
+imported a rule the text had not given and produced a correct-looking answer. Treat "worked with a
+guess" as the dangerous verdict — a reader who cannot import the rule produces a confident wrong
+answer rather than a blank, and nothing downstream would catch it.
+
+The one hard stop is **A7-P05, level 5**: no inverse operation anywhere, and C06's definition of a
+power positively excludes `10^1.6`. It is defect 16.
+
+## What came back, and on what grounds
+
+Forty-four sentences across the eight sections — A1 7, A2 4, A3 4, A4 1, A5 3, A6 5, A7 3, A8 17 —
+each keyed in `compress/RESTORE.yml` to the gap that justifies it. Three kinds:
+
+- **[unable]** — the gap report shows the reader could not do something. §12's own test. Most of
+  the restore is this, and A8's three passages are the largest part of it.
+- **[dangle]** — the cut left a pronoun or a "so", "here", "anyway" with no antecedent, and the
+  deleted sentence was the one that supplied it. Nine of these. §12 does not name them; §10 rules 2
+  and 5 do, and the skill's step-2 prompt asks the checker to collect them, which would be pointless
+  if nothing could be done about them. Judgement call, flagged rather than buried.
+- **[accuracy]** — one, and it is an override of the test rather than an application of it. A5's
+  cut dropped *"That figure applies to the extent the Central Government specifies for each State
+  under that scheme"*, leaving the 35 kg Antyodaya entitlement stated flat. The cold reader did not
+  stumble, so §12 would leave it out. It went back anyway: that is defect 7 in this very file,
+  already caught once by the audit, and shipping a known statutory misstatement to satisfy a method
+  rule is the wrong trade.
+
+**One restoration was withdrawn on the rule.** A2's *"Two fractions may be compared or added only
+once they stand over the same denominator, because a part is defined by the whole it was cut from"*
+was the A2 cutter's own least-sure cut and reads well, which §12 names as a reason not to restore.
+The test does not prove it: the cold reader produced that reason unaided and was stopped by the
+*procedure*, which the sentence does not carry. It also happened to be the section's longest
+sentence. Left out; the hole is defect 17.
+
+**Three cutters' worries were answered and not acted on** — A1's, A4's and A7's, all about the
+boundary move that levels 9 and 10 ask for. Every one of those problems came back worked. That is
+the cold read doing the job the cutter cannot do for itself.
+
+## The finding that is not about Part A
+
+**C06 now teaches no roots at all.** The A6 cutter removed them entirely and predicted the result:
+no exercise and none of the ten practice problems touches a root, so the cold read came back clean
+on their absence. A third of the section's title has no test behind it. Restoring them would have
+hidden that, so they were left out and it is defect 22 — a live decision, not a description.
+Either roots earn an exercise and a rung on the ladder, or they belong elsewhere.
+
+This is the strongest single argument for the practice sets being in the test rather than beside
+it: an eighty-problem test set is what made "this material has no test behind it" a measurable
+statement.
+
+## Two things about the method itself
+
+**The scratch directory was verified mechanically, not asserted.** `/tmp/coldread/` held the eight
+cut sections and nothing else: confirmed by `find` at depth, by matching every file's sha256
+against its `compress/` counterpart, and by grepping the directory for `_build`, the repository
+path and `check/records` — no hits. This was the first run since the enforced-isolation wording was
+written, and the condition held.
+
+**One hole in the isolation remains, and it is not closable by a scratch directory.** Five of the
+eight sections tell the reader to open `sources/fss_act_2006.txt` and `sources/nfsa_2013.txt`, and
+those filenames are inside the prose the checker is handed. The original is genuinely unreachable;
+the statute sources are only unreachable by instruction. Removing the filenames would mean editing
+prose the pass may not edit, and would change what the test tested. Worth stating in §12 as a
+limit rather than leaving it to be rediscovered.
+
+The two consequences of running the test this way — no answer appendix, no source files — are
+recorded at the end of `DEFECTS.md` as artefacts, so a later reader does not file them as faults.
+
+## One question left for the contract
+
+§12 says a pass that raised the mean sentence length has failed whatever its word count says, and
+Task 5c repeats it as an end-of-step check. On A2 the restore raised it, 12.18 → 12.35, while every
+surviving sentence is provably the original's own. The rule is written against 5a, where a rise
+means sentences were fused; at 5c a rise can also mean the passages the test proved were long ones.
+Part A as a whole falls, 12.54 → 12.13.
+
+Whether the rule binds per section or per Part, and whether it binds 5c at all, is a change to the
+contract and is not decided here. Also at the end of `DEFECTS.md`.
+
+## Suggested next steps, replacing the list above
+
+1. **Task 6, the human read.** `python check/build.py --subject B0`, then Part A cold, end to end.
+   The shortlist from 5b, longest gap report first: **A3, then A2, then A8**. A5 came back with
+   every problem worked and is the one to read fastest.
+2. **Re-open the audit on defects 16 to 25.** Ten new entries, none of them closable by
+   restoration. Defect 16 (A7's missing inverse) and defect 17 (A2's untaught addition) are the two
+   that block problems outright.
+3. **Decide defect 22**, on roots in C06, before Part B starts. It is a scope decision and it will
+   recur: the same question applies wherever a section's title promises more than its practice set
+   tests.
+4. **Decide defect 19**, the ordering of A3 and A4. Swapping them is the cheap fix and it moves
+   eight section positions, so it is a between-rounds job.
+5. **Decide the §12 question above.**
+6. Then Part B, or F2.
+
+## Files written and changed by Task 5
+
+**Changed**
+
+```
+check/records/B0/B0-R0-C01.yml   prose fields only, on all eight
+check/records/B0/B0-R0-C02.yml   exercises, practice, retrieval items, references,
+check/records/B0/B0-R0-C03.yml   illustration.numbers, must-know kinds and bearings,
+check/records/B0/B0-R0-C04.yml   and all metadata verified byte-identical to before
+check/records/B0/B0-R0-C05.yml
+check/records/B0/B0-R0-C06.yml
+check/records/B0/B0-R0-C07.yml
+check/records/B0/B0-R0-C08.yml
+books/B0/DEFECTS.md              defects 16-25, the per-level verdict table, two artefacts,
+                                 and one contract question appended
+books/B0/HANDOVER.md             this section, and the superseded note at the top
+```
+
+**New**
+
+```
+books/B0/compress/               the pass's working files, README.md explains them
+```
+
+`claude.md`, `PIPELINE.md`, `PARALLEL.md`, `check/**`, `map/**`, `prose/**` and `sources/**` were
+not touched. `check/_build/` is generated and is gitignored.

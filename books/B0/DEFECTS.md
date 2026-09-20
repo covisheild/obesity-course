@@ -328,3 +328,269 @@ Two ways to close it, neither taken here because `check/build.py` is a between-r
 pass was already changing it once: give `practice[].refs` the same shape as
 `illustration.numbers`, or have `reports()` walk practice refs and emit a row without a value. The
 second is cheaper and honest about what it knows. Carried in `HANDOVER.md`.
+
+---
+
+# Found by the compression pass
+
+Third pass, 20 September 2026. These came out of the cold read at step 5b and **none of them was
+closable at step 5c**, because the full-length original does not fill them either. Restoring text
+cannot fix a hole that was always there. They go back through the audit.
+
+They are the class of defect the audit cannot see on its own. The audit checks claims against
+sources; these are gaps *between* claims — a rule stated and never demonstrated, a term used and
+never defined, a move an exercise requires that the text nowhere performs.
+
+**Where the level numbers come from.** The cold reader worked all eighty practice problems, not
+just the sixteen exercises, and reported each one as worked, worked-with-a-guess or
+could-not-attempt. A hole in the teaching therefore shows up as a problem you cannot start, at a
+known level. That is what the level numbers below are: the band of the §7a ladder where the
+teaching actually failed, not an impression of difficulty.
+
+| File | Practice verdict |
+| --- | --- |
+| A1 | worked 1–7, 9; guessed 8, 10 |
+| A2 | worked 1, 4, 5, 6, 8; guessed 2, 3, 7, 9, 10 |
+| A3 | worked 1, 4, 7; guessed 2, 3, 5, 6, 8, 9, 10 |
+| A4 | worked 3, 5, 7, 8, 9, 10; guessed 1, 2, 4, 6 |
+| A5 | worked 1–10 |
+| A6 | worked 1, 3, 4, 7, 9, 10; guessed 2, 5, 6, 8 |
+| A7 | worked 1–4, 6–10; **could not attempt 5** |
+| A8 | worked 1, 3, 4, 5, 7, 8; guessed 2, 6, 9, 10 |
+
+Read "guessed" as the dangerous verdict rather than the mild one. Exactly one problem in eighty
+stopped the reader outright. Everywhere else a rule was imported that the text had not given, and
+a correct-looking answer came out. A reader who could not import it produces a confident wrong
+answer, not a blank — which is why a gap report is worth more than a completion rate.
+
+## 16 · C07 · no inverse operation, and A6's definition of a power forbids one
+
+**The only outright blockage in eighty problems: A7-P05, level 5.** It also makes the second half
+of exercise E2 unanswerable and the section's own headline finding unverifiable by the reader.
+
+`illustration.body` says *"That is a span of 1.6, and 1.6 powers of ten is a factor of about
+forty."* Turning a difference of logarithms back into a multiplying factor needs ten raised to a
+power that is not a whole number. C06 defines an exponent as a count of copies of the base being
+multiplied together, under which `10^1.6` means nothing at all. C07 neither extends that
+definition, nor names the inverse operation, nor says which calculator key performs it.
+
+The reader can subtract to 1.08 on P05 and then has nowhere to go. Fix in C06 or C07, not by
+deleting the claim: the "about forty" is what the whole illustration is for.
+
+## 17 · C02 · the section tells the reader to compare and add fractions and never does either
+
+**Blocks A2-P02 (2), P03 (3), P07 (7), P09 (9) and P10 (10) — half the set, spanning the ladder.**
+
+`definition.text` carries *"To compare or add two, put them over the same denominator first."* The
+illustration only ever simplifies. Nowhere in the section is there a worked instance of choosing a
+common denominator, of multiplying each fraction up to it, or of what happens to the numerators
+once they match.
+
+P07 is the sharpest case and it is close to self-refuting: it is a find-the-broken-step problem
+about an addition of fractions whose correct procedure the reader has never been shown.
+
+A related, smaller hole in the same record: finding a common divisor is performed three times and
+never taught. The illustration's two cues are *"both ended in a zero"* and *"both are in the five
+times table"*; P01 offers 36/48, which fits neither. **"Times table" is itself used as a known
+term** and nothing in C01 or C02 explains it.
+
+## 18 · C03 · the significant-figure rule says where to start counting and never where to stop
+
+**Blocks A3-P02 (2) outright and contaminates P05 (5), P06 (6) and P08 (8).**
+
+`definition.text`: *"The significant figures of a number are the digits that carry information
+about the quantity, counted from the first digit that is not zero."* Trailing zeros — the entire
+difficulty — are never mentioned. Read literally the rule gives 450 → three figures and 1,200 →
+four, which contradicts how the section itself treats 450 elsewhere.
+
+Two more in the same record:
+
+- **Rounding to a number of significant figures is never demonstrated**, only rounding to decimal
+  places. **A3-P03 (3)** asks for three significant figures and P05 asks how many the answer
+  deserves. The operation appears in the section only inside P07, which is the deliberately broken
+  worked answer.
+- **The exact-versus-measured rule and the significant-figure rule contradict each other**, and the
+  section does not notice. *"Five kilograms in an Act is exactly five"* against *"a quantity
+  calculated from other quantities cannot carry more significant figures than the least precise of
+  them."* **A3-P05 (5)** sits exactly on the seam: 450 is an Act figure, so by the first rule the
+  answer is exactly 88,200 and the question does not arise.
+- **The exactly-five rounding edge is raised and abandoned.** *"When the digit you are dropping is
+  exactly five and nothing follows it, the rule above always pushes up."* No alternative is given.
+  **A3-P01 (1)** contains 7.2950, which lands on it. (The restore put back the original's
+  statement of *why* that bias matters; it still does not say what to do instead.)
+
+## 19 · C03 and the ordering of Part A · per cent is used three sections before it is defined
+
+**Removes the whole top band of A3: P08 (8), P09 (9) and P10 (10) for a reader taking the sections
+in order.** All three require computing or checking a percentage, and percentages are not defined
+until C04.
+
+The same fault, smaller, in three exercises: *"Record your confidence as a percentage before
+turning to the answer"* appears on A1-E1, A2-E1 and A3-E1. It is the first instruction the reader
+is given after the first exercise in the book, and it uses a term the course does not introduce for
+three more sections.
+
+This is a sequencing defect, not a content one. Swapping A3 and A4 fixes the practice problems and
+leaves the confidence line, which wants rewording or moving.
+
+## 20 · C04 · a percentage is never taken *of* anything
+
+**Blocks A4-P02 (2), P04 (4) and the second half of P06 (6), and is needed for P08 and for E2.**
+
+The only multiplication in C04 is a percentage of a percentage — *"0.40 times 0.30 is 0.12"* — where
+both factors are percentages and the product is reported as a percentage. Turning a percentage into
+a count of things is the commonest use there is and it appears nowhere in the section.
+
+**Expressing one quantity as a percentage of another is missing in the same way.** The section
+teaches percentage *change* — change over starting value — and nothing else. A4-P02 asks for 840 as
+a percentage of 1,200, which is a different operation.
+
+Two smaller ones in C04:
+
+- **Percentages above 100 and below 1 are never mentioned**, and under C02's definition of a
+  numerator as a count of parts of the whole, neither 125 per cent nor 0.5 per cent can be written
+  at all. **Hits A4-P01 (1)** on two of its four items.
+- **No must-know point carries the restriction on multiplying percentages.** The illustration is
+  careful — *"Of those who do"* — but the point as stated is just that a percentage of a percentage
+  multiplies, which would equally authorise multiplying two unrelated percentages.
+
+## 21 · C01 · four holes under "count the digits", three of them at the bottom of the ladder
+
+None blocked the cold reader outright and all four were filled by importing something. They sit at
+levels 1, 3, 6 and 10, which is the shape of a section whose test set is harder than its teaching.
+
+- **The place-name ladder below a lakh is never listed.** The reader is told each place is ten times
+  the one to its right and is shown "five hundred" and "five". **A1-P01 (1)** asks what each digit
+  of 90,807 is worth and the names have to be built by the reader.
+- **Comparing two numbers of equal digit length is never demonstrated.** The section's whole method
+  is counting digits, which ties for **A1-P03 (3)**.
+- **Compound naming is never shown.** The section names single rungs and never composes one.
+  **A1-P06 (6)** wants 45,000,000 as "four crore fifty lakh".
+- **Billion is never given a value.** C01 uses the word twice and defines lakh, crore and million
+  only. **A1-P10 (10)** turns entirely on that one conversion. The corpus does define it — in C06's
+  ladder, five sections later. (That sentence had been cut and the restore put it back, so the
+  definition now exists again at C06; the ordering problem is C01's and is not fixable there.)
+- **A1-E2 asks the reader to say which step an error happened at**, and the section never decomposes
+  a claim into steps in front of them. The illustration shows the error as a single wrong belief.
+
+## 22 · C06 · roots are in the title and nowhere in the section's test set
+
+The cut removed square roots entirely — the definition, the plain-terms paragraph, and the
+"most square roots are not whole numbers" passage. **The cold read came back with nothing blocked
+by their absence**, because not one exercise and not one of the ten practice problems touches a
+root.
+
+That is the finding, and it is not an argument for restoring them. A third of the section's title
+has no test behind it. Either roots need an exercise and a place in the practice ladder, or they
+belong in a different section. The restore left them out deliberately, so this is a live decision
+rather than a description of the text: **C06 as it now stands does not teach roots at all.**
+
+Smaller, in the same record:
+
+- **Multiplying two numbers in scientific notation is never demonstrated.** Every worked instance
+  multiplies or divides bare powers of ten, with the mantissa always 1. **Blocks A6-P05 (5) and
+  P06 (6)**, and is needed to check E2. The reader is shown how to write 35,000 as 3.5 × 10^4 and
+  never shown what to do with the 3.5 afterwards.
+- **Arithmetic with negative numbers is taught nowhere in A1–A6.** C06 introduces negative
+  exponents and then needs them added and ordered. **Hits A6-P02 (2)**, which needs 3 + (−1), and
+  **P08 (8)**, which needs a larger exponent to mean a larger number when both are negative.
+- **Converting a small decimal to scientific notation is not demonstrated.** The only worked case
+  runs the other way. **A6-P03 (3)** includes 0.0047.
+- **A6-E2 cannot be checked from what A6-E2 gives.** The multiplier between daily and annual
+  production is never stated, so the reader must supply 365, or 360, or a count of working days, to
+  check a step the exercise instructs them to check. Whether the intended fault is the arithmetic or
+  the every-day-of-the-year assumption cannot be told from the wording.
+
+## 23 · C08 · the method's load-bearing step needs a stock of known quantities the course never gives
+
+**This is what stopped the reader on A8-P09 (9) and P10 (10), the two problems where the comparison
+is the whole task.**
+
+`illustration.analogy_breaks_when` is explicit that *"the method only works if the thing you compare
+against is one you actually know."* Across all eight sections the reader is given almost nothing to
+know: no population of India, no population of a typical state or district, no price of anything.
+P09 needs the price of a glass of milk and P10 needs the population of India, and neither appears
+anywhere in Part A.
+
+C08 teaches the procedure and withholds the reference points that make the procedure work. The fix
+is a short table of quantities a reader may hold — and it is a Book 0 decision, not a C08 one,
+because the same table would sharpen A1-P10, A5-P10 and A6-P10 too.
+
+Also in C08:
+
+- **A tonne is never defined in any of the eight sections**, although tonnes appear in A5-E2 and
+  A5-P09 and are required as an *output* by **A8-P06 (6)**.
+- **The mixed-rounding case is never handled.** The section says *"round three numbers down and your
+  answer is low"*. **A8-P02 (2)** asks whether an estimate is above or below the truth when one
+  input was rounded down and one up, which needs the relative size of each rounding — a step the
+  section never performs.
+- **The definition of an order of magnitude and the estimating procedure are different operations
+  and the text slides between them.** *"The power of ten nearest to it"* makes 450 into 10^3; the
+  illustration writes *"450 calories, to one digit: 5 times 10^2"*. **A8-P01 (1)** asks for one and
+  **P03 (3)** for the other, and the difference is never named.
+- **A8-P04 tells the reader to "mark every input you were not given" and then gives every input.**
+  Either it is a null case or the intended answer is the attendance assumption hidden in the word
+  "receives", which nothing in the wording signals.
+
+## 24 · C05 · three assertions the section never performs
+
+A5 was the only section where every one of the ten problems was reachable from the text. These cost
+the reader nothing and are still real.
+
+- **Reducing a ratio is asserted, never performed.** *"Twelve grams against twenty grams is a ratio
+  of twelve to twenty, or three to five."* The "or" does all the work. **A5-P01 (1)** is nothing but
+  ratio reduction, and it only worked because C02 had shown the same operation on fractions — which
+  C05 never says is the same operation.
+- **A part-to-part ratio is never formed from a total.** **A5-P02 (2)** wants "lifting to not
+  lifting" from "90 of 250"; every ratio in the section is between two quantities handed over
+  directly.
+- **A proportion is defined as running from zero to one and then never used.** No proportion appears
+  in the illustration at all. **A5-P02 (2)** asks for one.
+- **The numerator of a rate is never required to carry a label.** **A5-P06 (6)** says "48 events in
+  a year" and never says what an event is. The section's whole discipline is interrogating the
+  bottom of a rate; C02 established that a number with its label stripped off is not a number, and
+  this problem strips the top.
+- **A5-E1 requires the move the section warns against, without acknowledging it.** The record says
+  converting per-household to per-person with an average assumes every household is average; E1 then
+  hands the reader an average household size and asks for the entitlement. The right answer flags
+  the assumption and nothing in the wording invites it.
+
+## 25 · C02 · terms borrowed from the scheme vocabulary and never introduced
+
+*Anganwadi*, *take-home ration*, *lactating mother* and *hot cooked meal* all arrive in C02's
+illustration as though already defined, and *anganwadi* is needed to read **A2-P09 (9)**. C02 also
+uses "a half" in P09 and P10 and never writes it as a fraction.
+
+Under §11 rule 8 these are either terms of art that belong in `teach_once` with plain words at
+first use, or decoration. They are currently neither.
+
+## Two artefacts of the isolation method, recorded so nobody files them as defects
+
+The cold reader worked from a directory holding the eight cut sections and nothing else, which is
+what `claude.md` §12 requires. Two of its findings are consequences of that and not faults in the
+corpus:
+
+1. **"There is no appendix."** Every section ends by pointing at the appendix of worked answers,
+   and the appendix is not in the scratch directory — deliberately, so that the reader had to work
+   the eighty problems rather than read them back. It exists in the assembled booklet.
+2. **"The source files do not exist."** A1, A2, A3, A5 and A7 instruct the reader to open and search
+   `sources/fss_act_2006.txt` and `sources/nfsa_2013.txt`, and A1-P09 states flatly *"You have the
+   Food Safety and Standards Act, 2006 open."* The checker did not. In every case the figure needed
+   was also restated in the prose, so nothing was blocked — but the verification habit these
+   sections are built around could not be performed, and no cold read run this way ever will be
+   able to perform it. That is a limit on what step 5b can test, not a defect in the sections.
+
+## One question for the contract, not a defect in the text
+
+`claude.md` §12 says a compression pass that raised the mean sentence length has failed whatever
+its word count says, and `PIPELINE.md` Task 5c repeats it as a check to run at the end. On A2 the
+restore raised it, from 12.18 words to 12.35, while every surviving sentence is still the
+original's own, word for word — which is checked mechanically and passes.
+
+The rule is written against step 5a, where a rise means sentences were fused. At step 5c a rise can
+also mean that the sentences the test proved load-bearing were long ones, which is what happened
+here: C02's equivalence rule and the roti passage's missing step both run to 23 words. Part A as a
+whole still falls, 12.54 to 12.13.
+
+Someone has to decide whether the rule binds per section or per Part, and whether it binds 5c at
+all. Left here rather than answered, because it is a change to the contract.

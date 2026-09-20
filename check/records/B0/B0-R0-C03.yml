@@ -14,17 +14,14 @@ concept_deps:
 definition:
   text: |
     A decimal continues place value to the right of a point. Each place to the right is worth one
-    tenth of the place on its left, so the places run tenths, hundredths, thousandths. A decimal is
-    therefore a fraction whose denominator is ten, a hundred, a thousand, and so on.
+    tenth of the place on its left, so the places run tenths, hundredths, thousandths.
 
     Rounding is choosing which place to stop at and adjusting the last kept digit for what follows
-    it. Look at the first digit being dropped: below five, the kept digit stands; five or above, it
-    goes up by one.
+    it.
 
     The significant figures of a number are the digits that carry information about the quantity,
     counted from the first digit that is not zero. A quantity calculated from other quantities
-    cannot carry more significant figures than the least precise of them. A calculator has no way
-    to know this and will print as many digits as its display holds.
+    cannot carry more significant figures than the least precise of them.
   references:
   - citekey: pending_arithmetic_text
     kind: textbook
@@ -40,35 +37,22 @@ definition:
         does not depend on the source. The anchor is required by the spec and is in the citation
         backlog.
 simplified_explanation: |
-  A decimal is the same place-value rule, carried on past the point. To the left of the point, each
-  step is ten times bigger. To the right, each step is ten times smaller: tenths, then hundredths,
-  then thousandths.
-
-  So 0.17 is seventeen hundredths. A decimal is just a fraction wearing different clothes, and the
-  denominator is always ten, or a hundred, or a thousand.
+  A decimal is the same place-value rule, carried on past the point. To the right, each step is
+  ten times smaller: tenths, then hundredths, then thousandths.
 
   Rounding is deciding where to stop. Pick the place you want to stop at and look at the very next
   digit. If it is four or less, leave your last digit alone. If it is five or more, push it up by
-  one. That is all there is to it.
-
-  Now the part that matters far more than the rule. A calculator will hand you ten digits whether
-  or not those digits mean anything. The digits it gives you are not evidence. They are what the
-  division happened to produce.
+  one.
 
   Your answer cannot be more exact than the numbers you put in. Divide something you know to two
-  digits by something you know to two digits, and you know the answer to about two digits. Writing
-  down eight of them does not make you more careful. It makes a claim about the world that nothing
-  you have supports. A reader who notices will stop trusting the rest of your numbers too.
-
-  The habit that follows is simple. Keep every digit while you are working. Round once, at the very
-  end, and round to what your weakest input earned.
+  digits by something you know to two digits, and you know the answer to about two digits.
 illustration:
   body: |
-    Open `sources/nfsa_2013.txt` again and search inside it for "five kilograms". Two hits, and both
-    are inside section 3. The first is section 3(1), which gives a person in a priority household
-    five kilograms of foodgrains per person per month.
+    Open sources/nfsa2013.txt again and search inside it for "five kilograms". The first is section
+    3(1), which gives a person in a priority household five kilograms of foodgrains per person per
+    month.
 
-    Somebody now asks you the obvious follow-up. How much is that a day?
+    How much is that a day?
 
     Type five, divide by thirty, and read what the calculator says.
 
@@ -79,13 +63,11 @@ illustration:
     Here is the mistake, and it goes into real documents. The figure is copied straight across, and
     a report goes out saying each person receives 0.1666666667 kilograms of grain a day.
 
-    Count the digits after the point. Ten of them. A tenth decimal place in kilograms is a
-    ten-millionth of a gram. That last digit is claiming to pin the daily ration down that far.
-    Nothing you did could possibly support that.
+    Count the digits after the point. Ten of them. Nothing you did could possibly support that.
 
-    Look at where the ten digits came from. Two numbers went in. The five is exact: it is not a
-    measurement, it is a figure written into an Act, and it is five and nothing else. The thirty is
-    not exact at all. You chose it. A month is twenty-eight days, or thirty, or thirty-one.
+    The five is exact: it is not a measurement, it is a figure written into an Act, and it is five
+    and nothing else. The thirty is not exact at all. You chose it. A month is twenty-eight days, or
+    thirty, or thirty-one.
 
     So work the two ends instead of one middle.
 
@@ -94,45 +76,34 @@ illustration:
         5 divided by 28 = 0.17857...
     ```
 
-    The honest answer sits somewhere between 0.16 and 0.18 kilograms a day. Two digits, not ten. And
-    even those two are only as good as your guess about the month.
+    The honest answer sits somewhere between 0.16 and 0.18 kilograms a day. Two digits, not ten.
 
     Now round the middle case properly, so you can see the rule work. You have 0.1666666667 and you
-    want two places after the point. The two places give you 0.16. The next digit along is a 6,
-    which is five or more, so the 6 you are keeping goes up to 7.
+    want two places after the point. The next digit along is a 6, which is five or more, so the 6
+    you are keeping goes up to 7.
 
     ```
         0.1666666667 rounds to 0.17
     ```
 
-    Last, the trap inside the habit. Suppose you round first and then carry on. Round to 0.17, then
-    multiply by 30 to get back to a month.
+    Round to 0.17, then multiply by 30 to get back to a month.
 
     ```
         0.17 times 30 = 5.1
     ```
 
-    You started with exactly 5 and came back with 5.1. The rounding leaked. That is why you round
-    once, at the end, and never in the middle of a chain.
+    You started with exactly 5 and came back with 5.1. The rounding leaked.
 
-    The best answer to the original question is the one that does not round at all. Each person
-    gets 5 kilograms a month. If somebody needs a daily figure, give them 0.16 to 0.18 kilograms and
-    say where the spread came from.
+    If somebody needs a daily figure, give them 0.16 to 0.18 kilograms and say where the spread came
+    from.
   analogy_breaks_when: |
-    Significant figures are a rough guide to precision, not a measure of it. They tell you roughly
-    how many digits you have earned. They do not tell you how wrong the number might be. Two
-    numbers with the same three digits can be trustworthy to very different degrees. That is a
-    different question, and a later part of this book takes it up.
+    Significant figures are a rough guide to precision, not a measure of it. They do not tell you
+    how wrong the number might be.
 
     The rounding rule itself has an edge. When the digit you are dropping is exactly five and
     nothing follows it, the rule above always pushes up. That nudges a long column of numbers
     slightly high. It rarely matters. It matters when you are rounding thousands of values and then
     adding them.
-
-    And notice the asymmetry in the worked example. The five was exact because an Act said so. A
-    figure that came off a weighing scale or out of a survey is never exact in that way. So the
-    precision question is sharper there, not softer. Treating a legal figure and a measured figure
-    the same way is the mistake this section is really guarding against.
   numbers:
   - value: '5'
     unit: kilograms of foodgrains per person per month, priority households, s.3(1)
@@ -140,37 +111,30 @@ illustration:
 must_know:
 - point: |
     The digits on a calculator display are not precision. They are what the division produced.
-    Copying them into a report claims an exactness nothing you did supports, and the first reader
-    who notices will discount every other number you brought.
   kind: misconception
   bearing: methodological
 - point: |
     Keep full precision while you work and round once, at the end, to what your weakest input
-    earned. Rounding in the middle of a chain leaks, and the leak grows with every further step.
+    earned.
   kind: move
   bearing: methodological
 - point: |
-    A figure fixed by law and a figure read off an instrument look identical on the page and are
-    not the same kind of number. Five kilograms in an Act is exactly five. Five kilograms on a
-    scale is not. Ask which kind you are holding before you decide how to round it.
+    Five kilograms in an Act is exactly five. Five kilograms on a scale is not. Ask which kind you
+    are holding before you decide how to round it.
   kind: boundary
   bearing: methodological
 - point: |
     Indian entitlements are commonly written per month while reporting wants a daily figure. That
-    one division is where false precision enters. The number of days is a choice you made, and the
-    decimal places hide that you made it.
+    one division is where false precision enters.
   kind: india_deviation
   bearing: policy
 - point: |
     When a number you are given carries more digits than its source could support, say so at the
-    time. It is the cheapest possible challenge and it needs no data of your own. Very often nobody
-    in the room knew where the figure came from.
+    time.
   kind: consequence
   bearing: policy
 - point: |
-    Do not quote a spuriously precise figure in public even when it is the one you were handed. It
-    invites a question about the last digit that you cannot answer, and losing that exchange costs
-    you the point you were actually making.
+    Do not quote a spuriously precise figure in public even when it is the one you were handed.
   kind: trap
   bearing: public
 exercises:

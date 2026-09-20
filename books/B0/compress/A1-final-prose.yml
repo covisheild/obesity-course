@@ -1,0 +1,93 @@
+"definition.text": |
+  A number written in digits carries two things at once: which digits were used, and the place
+  each one occupies. The place fixes what the digit is worth.
+
+  Each place is worth ten times the place immediately to its right. That is the whole of what a
+  written number means, and it is why the system is called base ten.
+
+"simplified_explanation": |
+  Take 4,505. There are two fives in it, and one of them is worth five hundred while the other is
+  worth five. Move one step to the left and a digit is worth ten times as much.
+
+  Now the part that catches people in India. Where you put the commas is a different question from
+  what the digits are worth. And India does not do it the way most places do. Here the last three
+  digits go together and everything above that is grouped in pairs: 10,00,000. In most other
+  places they run in threes all the way along: 1,000,000. Same number, same value, different
+  commas.
+
+  The names follow the commas. India counts thousand, lakh, crore. Most other places count
+  thousand, million, billion. One lakh is a hundred thousand and one crore is ten million, so the
+  two ladders never line up.
+
+  A calculator does base ten for you, fast and without complaint, but it cannot read your mind.
+  Type one zero too many and it will work the sum out correctly and hand you an answer ten times
+  too big.
+
+"illustration.body": |
+  Open sources/fssact2006.txt, which is the Food Safety and Standards Act, 2006. Search inside it
+  for "misleading advertisement".
+
+  Every Indian Act opens with a list of its section names, so your first hit is the line 53.
+  Penalty for misleading advertisement in that list. Search again and take the second hit, which
+  is section 53 itself.
+
+  It says ten lakh rupees. Write that in digits, the Indian way, and then the international way.
+
+  ```
+      10,00,000      1,000,000
+  ```
+
+  Count the zeros in each. Five, and five. The number has not changed. Only the commas moved.
+
+  Somebody reading the Act writes a note in English for a reader abroad. Ten lakh, they think, and
+  lakh sounds like million. So ten lakh becomes ten million, and they type this.
+
+  ```
+      1,00,00,000
+  ```
+
+  Ten million is one crore. They have multiplied the penalty by ten, in a note that other people
+  will quote back at them.
+
+  Ten lakh is one million. One crore is ten million.
+
+  Section 53's ceiling is ten lakh and section 51's is five lakh. Type one million, then divide by
+  five hundred thousand, and it returns 2. That is right: the first ceiling is twice the second.
+  Now type it again and leave one zero off the second number. It returns 20.
+
+  The calculator did not object either time, and it never will. Checking the question is your job.
+  Counting the digits before you press equals is how you do it.
+
+"illustration.analogy_breaks_when": |
+  Place value is a rule about writing numbers down. It tells you nothing about whether ten lakh
+  rupees is a large penalty or a small one.
+
+  The commas break in a second way, and quietly. A spreadsheet or a website prints the grouping it
+  was built for, and does not say which one that is. So count the digits, not the commas. Where
+  the two disagree, the digits are right.
+
+  A calculator is only as good as what you typed. It will divide a sum of money by a count of
+  children and hand you an answer. That answer is arithmetic rather than sense.
+
+"must_know[0].point": |
+  A lakh is not a million. One lakh is a hundred thousand. One crore is ten million.
+
+"must_know[1].point": |
+  Before you press equals, count the digits in each number you typed. Then say the number out
+  loud, in the naming system you are writing in.
+
+"must_know[2].point": |
+  Indian statutes, budgets and ministry papers state money in lakh and crore. Journals and
+  international agencies state it in million and billion. Every time a figure crosses between the
+  two, write it in digits first and count them.
+
+"must_know[3].point": |
+  Asked on the spot how big a crore is, do not answer "a lot". Say ten million, say a hundred
+  lakh, and say how many digits that is.
+
+"must_know[4].point": |
+  A trainee who cannot move between the two groupings will hand you a broken table. When a table
+  looks odd, check the conversion before you check the arithmetic.
+
+"must_know[5].point": |
+  This gets you to what a written number means and no further.

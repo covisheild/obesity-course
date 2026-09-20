@@ -17,15 +17,9 @@ definition:
     the same order of magnitude when their ratio is smaller than about ten.
 
     An order-of-magnitude estimate rounds every input to one significant figure, carries out the
-    arithmetic on the powers of ten, and claims the answer only to the nearest power of ten. Its
-    output is a range rather than a value.
+    arithmetic on the powers of ten, and claims the answer only to the nearest power of ten.
 
-    Its purpose is to test a figure, not to produce one. An estimate of this kind detects an error
-    of a factor of ten or more and cannot detect an error of a factor of two.
-
-    Every input that was assumed rather than obtained is recorded as an assumption, because the
-    result is a claim about the arithmetic and about those assumptions jointly, and about nothing
-    else.
+    Its purpose is to test a figure, not to produce one.
   references:
   - citekey: pending_arithmetic_text
     kind: textbook
@@ -41,32 +35,18 @@ definition:
         does not depend on the source. The anchor is required by the spec and is in the citation
         backlog.
 simplified_explanation: |
-  Somebody reads you a number over the phone and asks what you think. You have no data and thirty
-  seconds. There is still something you can do.
-
   Round every number in sight to one digit and a power of ten. Do the arithmetic on the powers of
   ten, which is adding and subtracting small numbers. Then compare the answer against something
   whose size you already know.
 
-  What you get back is not an answer. It is a verdict on somebody else's answer. It comes in one of
-  three forms: that figure is about right, that figure is impossible, or I cannot tell.
-
-  Being about right here is a loose thing. This method catches a number that is out by a factor of
-  ten or a hundred. It will never catch one that is out by a factor of two, and pretending
-  otherwise is the way it gets misused.
-
-  The discipline that makes it honest is one line long. Every number you supplied yourself gets
-  written down and labelled a guess. Not kept in your head — written down, in the working, where
-  anybody can see it and argue with it. An estimate is a claim about the arithmetic and about your
-  guesses together. Hide the guesses and you have turned an argument into a fact.
+  What you get back is not an answer. It is a verdict on somebody else's answer.
 illustration:
   body: |
-    Somebody asks you, in a meeting, roughly how much food energy a district's school meal
-    programme puts out in a year. You do not have the figures. Do it anyway, on paper, in front of
-    them.
+    Somebody asks you, in a meeting, roughly how much food energy a district's school meal programme
+    puts out in a year. You do not have the figures. Do it anyway, on paper, in front of them.
 
-    Start with what you can stand behind. The second schedule of the National Food Security Act,
-    2013 sets a lower primary hot cooked meal at 450 calories. Round it to one digit.
+    The second schedule of the National Food Security Act, 2013 sets a lower primary hot cooked meal
+    at 450 calories. Round it to one digit.
 
     ```
         450 calories, to one digit: 5 times 10^2
@@ -88,8 +68,7 @@ illustration:
         = 10^10 calories in a year
     ```
 
-    Ten thousand million calories, which is a thousand crore. That number means nothing on its own,
-    and that is the point people miss. An estimate is only worth anything once you compare it against something.
+    An estimate is only worth anything once you compare it against something.
 
     So compare. About how much does one person eat in a year? Take two thousand calories a day and
     mark it a guess as well.
@@ -106,8 +85,8 @@ illustration:
         10^10 divided by 10^6 = 10^(10 minus 6) = 10^4
     ```
 
-    The programme delivers about as much food energy in a year as ten thousand people eat in a
-    year. Does that sound right for a lakh of children getting one meal on some of the days?
+    The programme delivers about as much food energy in a year as ten thousand people eat in a year.
+    Does that sound right for a lakh of children getting one meal on some of the days?
 
     Check it roughly. One meal of 450 against a day of 2,000 is about a fifth. Two hundred school
     days out of 365 is about half. A fifth of a half is a tenth, and a tenth of a lakh of children
@@ -137,19 +116,15 @@ illustration:
     > assumed a lakh of children and two hundred school days. If it is wrong by a factor of ten,
     > one of those assumptions is wrong and I want the real figures.
   analogy_breaks_when: |
-    This method is built to catch a factor of ten and it is blind to a factor of two. So it can
-    never settle an argument about whether an effect is large enough to matter, and reaching for it
-    in that argument is misuse. It answers one question: is this number possible.
+    This method is built to catch a factor of ten and it is blind to a factor of two. It answers one
+    question: is this number possible.
 
-    The comparison is where it can go quietly wrong. The method only works if the thing you compare
-    against is one you actually know. Compare against another estimate and you have two guesses
-    agreeing with each other, which feels like confirmation and is not.
+    The method only works if the thing you compare against is one you actually know. Compare against
+    another estimate and you have two guesses agreeing with each other, which feels like
+    confirmation and is not.
 
     And rounding to one digit cuts both ways. Round three numbers down and your answer is low by a
-    factor of two or three before you start. That is inside the tolerance of the method, which is
-    why the answer is stated as "around" and never with a second digit. The moment somebody writes
-    your estimate down as a figure with two digits after the point, it has stopped being an
-    estimate. Nobody will have noticed.
+    factor of two or three before you start.
   numbers:
   - value: '450'
     unit: calories per hot cooked meal, lower primary classes, second schedule
@@ -158,49 +133,42 @@ must_know:
 - point: |
     An order-of-magnitude estimate is not a rough version of the right answer. It is a different
     tool with a different job: deciding whether a number somebody else has given you is possible.
-    Using it to produce a figure for a document is the misuse to watch for in yourself.
   kind: misconception
   bearing: methodological
 - point: |
-    Round every input to one digit and a power of ten. Do the arithmetic on the exponents. Then
-    compare the answer against a quantity whose size you already know. The comparison is not the
-    last step. It is the step that does the work.
+    Then compare the answer against a quantity whose size you already know. The comparison is not
+    the last step. It is the step that does the work.
   kind: move
   bearing: methodological
 - point: |
     Write down every number you supplied yourself and label it a guess, in the working, where
-    somebody can argue with it. An estimate is a claim about the arithmetic and about your
-    assumptions jointly, and an unlabelled assumption turns it into a claim about the world.
+    somebody can argue with it.
   kind: move
   bearing: methodological
 - point: |
     This catches an error of a factor of ten and never one of a factor of two. So it cannot be used
-    to argue that an effect is big enough to matter. Anyone who uses it that way, including you,
-    should be stopped.
+    to argue that an effect is big enough to matter.
   kind: boundary
   bearing: methodological
 - point: |
     When a journalist reads you a figure on the phone, you can usually say within thirty seconds
     whether it is possible. Say exactly that and no more: whether it is possible, and what you
-    assumed. It is far more useful to them than a refusal and far safer than agreement.
+    assumed.
   kind: consequence
   bearing: public
 - point: |
     Indian figures cross between lakh, crore and million inside one discussion, and this is where a
-    power of ten goes missing. Doing the estimate in powers of ten rather than in names is what
-    stops it, because 10^5 and 10^7 cannot be confused by ear.
+    power of ten goes missing.
   kind: india_deviation
   bearing: policy
 - point: |
     In a committee, an estimate offered with its assumptions written on the page is very hard to
     dismiss and very easy to improve. Someone will correct one of your guesses, which is the point.
-    An estimate offered without them is a number that can only be believed or disbelieved.
   kind: consequence
   bearing: policy
 - point: |
     Asked to check a calculation under time pressure, do not redo it. Estimate it independently and
-    see whether the two land on the same power of ten. Redoing somebody's arithmetic repeats their
-    assumptions; estimating it does not.
+    see whether the two land on the same power of ten.
   kind: trap
   bearing: teaching
 exercises:
