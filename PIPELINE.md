@@ -2,6 +2,11 @@
 
 Six prompts and then a read. Copy them as written. Each is one Cowork task.
 
+This file is instruction only. The measurements the method was designed from, and the record of
+which rules changed and why, are in `MEASUREMENTS.md`, and nothing there tells you what to do. A
+chat that has to work out which paragraphs of its own operating manual are still live will get
+that judgement wrong sooner or later, so the history lives somewhere else.
+
 Tasks 2, 3 and 5 are run by delegating to subagents rather than by doing the work in the main
 thread. This is not only for speed. A subagent's work happens in its own context and only its
 result comes back, so a Part's eight sections can be drafted, audited and cut inside one task
@@ -238,32 +243,6 @@ folder in the Cowork project rather than depending on a local path. And schedule
 sequence rather than as one long one, so that a failure in the audit stops the book instead of
 being written over by the next step. Within Task 5 the three steps stay in the one task, because
 what makes step 2 sound is the subagent's context and the scratch directory, not a task boundary.
-
-## What this actually costs
-
-Measured on the four Book 0 sections written in the pilot:
-
-| | |
-| --- | --- |
-| Reader-facing prose | about 1,000 words a section, before compression |
-| Drafting | four sections in about a minute of model time |
-| Editing after the draft | roughly ten sentence-level fixes a section |
-| Factual errors found in audit | three across four sections |
-| Check warnings, before and after | 54, then 3 |
-
-Measured on F4 when the compression pass was added:
-
-| | |
-| --- | --- |
-| Reader-facing prose, after compression | 568 words, from 917 |
-| Cut by a single judging pass instead | 749 and 773 — the two models 24 words apart |
-| Restored by the cold test | 78 words, in two passages |
-| Gaps found that the original had too | four, now in `DEFECTS.md` |
-| Mean sentence length, before and after | 12.4 words, then 11.6 |
-
-The drafting is not the slow part and never was. The audit is, and it is the part that must not
-be skipped. The compression pass is cheap in model time and its real output is the second table's
-last row.
 
 ## What is not solved by any of this
 

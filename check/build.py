@@ -18,6 +18,8 @@ ROOT = os.path.dirname(os.path.abspath(__file__))
 RECORDS, OUT = os.path.join(ROOT, "records"), os.path.join(ROOT, "_build")
 SCHEMA = os.path.join(ROOT, "schema", "concept.schema.json")
 BIB = os.path.join(ROOT, "references", "library.bib")
+REFDOC = os.path.join(ROOT, "references", "reference.docx")
+FIGURES_DIR = os.path.join(ROOT, "figures")
 LEVELS = ["Introductory", "Intermediate", "Advanced", "Expert"]
 
 KIND_FOR_TYPE = {
@@ -36,11 +38,21 @@ MUST_KNOW_SOFT_CAP = 9
 
 # The drill set. A concept that teaches a technique the reader has to be able to carry out is not
 # taught by being read: it is taught by being done, ten times, at rising difficulty. This is the
-# one place in the corpus where a count is fixed rather than discovered, and it is fixed on
-# purpose - "as many as the concept demands" is right for must-know points and wrong for practice,
-# where the demand is the reader's fluency and not the concept's size. Full rule in STYLE.md 7a.
-PRACTICE_REQUIRED = 10
-PRACTICE_LEVELS = set(range(1, PRACTICE_REQUIRED + 1))
+# The drill set is a range, not a number. Ten began as a working figure and was briefly enforced
+# as an equality, which made concepts pad to reach it and trim to avoid exceeding it - the count
+# started driving the teaching instead of following it. What has to hold is that the ladder is
+# climbed: the reader meets the technique mechanically, applies it, diagnoses a broken version of
+# it, and carries it somewhere new. A concept with one move reaches that in four problems; a
+# concept with several may need eighteen. Outside the range, `practice_note` must say why.
+PRACTICE_MIN, PRACTICE_MAX = 3, 18
+PRACTICE_BANDS = [(1, 3, "mechanical"), (4, 6, "applied"), (7, 8, "diagnostic"), (9, 10, "transfer")]
+
+
+def BAND_OF(level: int) -> str:
+    for lo, hi, name in PRACTICE_BANDS:
+        if lo <= level <= hi:
+            return name
+    return "transfer" if level > 10 else "mechanical"
 
 # Which Book 0 Parts teach technique. Read off book0/OUTLINE.md: A numbers, B units, C
 # relationships and change, D uncertainty. E is the physical and living world and F is reading and
@@ -447,27 +459,52 @@ def check(recs: dict, subjects: dict, clusters: dict, bibkeys: set):
             if dep not in recs:
                 W(rid, f"ground_floor_deps references missing Book 0 record '{dep}' (write it or drop it)")
 
-        # the drill set: ten problems, levels 1 to 10, on every quantitative concept
+        # The drill set. Ten was a working figure, not a law, and enforcing it as an
+        # equality forced concepts to pad or to cut. What actually has to hold is that the
+        # ladder is climbed: mechanical, applied, diagnostic and transfer bands all
+        # represented, in rising order, with enough repetition to make the technique
+        # automatic. A concept with one move needs fewer; a concept with several needs more.
         quant = r.get("quantitative")
         if quant is None:
             quant = (r.get("subject") == "B0"
                      and b0_part.get(r.get("sequence")) in MATHEMATICAL_PARTS)
         prac = [p for p in (r.get("practice") or []) if isinstance(p, dict)]
         if quant:
-            if len(prac) != PRACTICE_REQUIRED:
-                E(rid, f"quantitative concept carries {len(prac)} practice problems, and the rule "
-                       f"is exactly {PRACTICE_REQUIRED}. A technique is learned by being done, not "
-                       "by being read (STYLE.md 7a).")
-            levels = [p.get("level") for p in prac]
-            if len(prac) == PRACTICE_REQUIRED and set(levels) != PRACTICE_LEVELS:
-                missing = sorted(PRACTICE_LEVELS - set(levels))
-                dupes = sorted({l for l in levels if levels.count(l) > 1})
-                E(rid, "practice levels must be 1 to 10, each exactly once"
-                       + (f"; missing {missing}" if missing else "")
-                       + (f"; repeated {dupes}" if dupes else ""))
+            excused = (r.get("practice_note") or "").strip()
+            if not PRACTICE_MIN <= len(prac) <= PRACTICE_MAX and not excused:
+                E(rid, f"quantitative concept carries {len(prac)} practice problems; the range is "
+                       f"{PRACTICE_MIN} to {PRACTICE_MAX} (STYLE.md 7a). Judge it by the technique: "
+                       "one move needs few, several moves need many. Outside this range, say why "
+                       "in 'practice_note' and the build will accept it.")
+            levels = [p.get("level") for p in prac if isinstance(p.get("level"), int)]
+            if len(levels) != len(prac):
+                E(rid, "every practice problem needs an integer 'level' from 1 to 10")
+            elif levels != sorted(levels):
+                E(rid, "practice problems must be stored in rising order of level")
+            elif prac:
+                bands = {BAND_OF(l) for l in levels}
+                if not {"mechanical", "transfer"} <= bands:
+                    missing = sorted({"mechanical", "transfer"} - bands)
+                    E(rid, f"practice ladder never reaches: {', '.join(missing)}. A drill set that "
+                           "is all mechanical does not test understanding, and one that is all "
+                           "transfer does not build fluency.")
+                elif len(bands) < 3:
+                    W(rid, f"practice covers only {len(bands)} of the four difficulty bands; the "
+                           "middle of the ladder is where most readers actually fall off")
         elif prac:
             W(rid, f"{len(prac)} practice problems on a concept not marked quantitative - either "
-                   "set 'quantitative: true' and write the full ten, or move these to exercises")
+                   "set 'quantitative: true' or move these to exercises")
+        # A figure whose file is absent renders as a broken-image placeholder in Word and
+        # as nothing at all in print, and neither failure is visible from the record.
+        for f in (r.get("figures") or []):
+            if not isinstance(f, dict):
+                continue
+            if not os.path.exists(os.path.join(FIGURES_DIR, f.get("file", ""))):
+                E(rid, f"figure '{f.get('file')}' is not in check/figures/ - run "
+                       "check/figures/draw.py, or remove the entry")
+            elif not os.path.exists(os.path.join(FIGURES_DIR, f.get("source", ""))):
+                W(rid, f"figure '{f.get('file')}' names source script '{f.get('source')}', "
+                       "which is not in check/figures/ - the picture cannot be redrawn")
         for p in prac:
             if not (p.get("answer") or "").strip():
                 E(rid, f"practice {p.get('level')} has no worked answer")
@@ -519,30 +556,288 @@ def check(recs: dict, subjects: dict, clusters: dict, bibkeys: set):
 
 # ---------------------------------------------------------------- assembly
 
-def _refs(r):
-    out = []
-    for ref in (r.get("definition", {}) or {}).get("references", []) or []:
-        v = ref.get("verified") or {}
-        flag = "" if v.get("claim_located") else " *[unverified]*"
-        out.append(f"[@{ref['citekey']}, {ref['locator']}]{flag}")
-    return " ".join(out)
+# Reader-facing prose is authored in plain words, and two things it cannot express are
+# supplied here rather than pushed onto the author. Section 11 makes plain language the
+# core obligation of the book, so every piece of notation an author has to remember is a
+# tax on the one rule that matters most.
+#
+#   1. Display working. A calculation set out line by line used to be indented four
+#      spaces, which markdown reads as a code block and Word then typesets as computer
+#      source. Arithmetic is not source code. Authors fence it as ```working and it
+#      renders in a Working paragraph style. Legacy indents are still converted, and
+#      warned about, so nothing silently regresses to monospace.
+#   2. Notation. Authors write 10^7 and log10; they are typeset here as real
+#      superscripts and subscripts. The book can therefore show standard notation
+#      without anyone having to write LaTeX inside a YAML field.
+
+WORKING_OPEN = '::: {custom-style="Working"}'
+
+_SUP = re.compile(r"(?<![\w^~])(\d[\d,.]*)\s*\^\s*(-?\d+(?:\.\d+)?)(?!\^)")
+_LOGB = re.compile(r"\blog\s?(10|2|e)\b")
+_FENCE = re.compile(r"^\s*```+\s*(working|calc)?\s*$")
 
 
-def concept_md(r, label=None) -> list[str]:
+def _notation(text: str) -> str:
+    """10^7 -> superscript, log10 -> subscript. Prose is otherwise untouched."""
+    text = _SUP.sub(r"\1^\2^", text)
+    return _LOGB.sub(r"log~\1~", text)
+
+
+def _working_div(body: list[str]) -> list[str]:
+    body = [b for b in (x.strip() for x in body) if b]
+    if not body:
+        # A run of spaces is how these blocks set two quantities side by side for
+        # comparison. Markdown collapses them, so they become non-breaking spaces and the
+        # columns survive without needing a table for two numbers.
+        return []
+    body = [re.sub(r" {3,}", "\\\\ " * 4, b) for b in body]
+    return ["", WORKING_OPEN, *[b + "\\" for b in body[:-1]], body[-1], ":::", ""]
+
+
+def _working(text: str, flag=None) -> str:
+    """Fenced blocks and legacy four-space indents become display arithmetic.
+
+    An untagged fence counts. The corpus contains no code, so a fenced block is always a
+    calculation, and treating an untagged one as code is what put 186 paragraphs of
+    arithmetic into a monospace face. Authors should tag them ```working; untagged ones
+    are converted and flagged so the habit is visible rather than silently absorbed.
+    """
+    lines, out, i = text.split("\n"), [], 0
+    while i < len(lines):
+        m = _FENCE.match(lines[i])
+        if m:
+            if not m.group(1) and flag:
+                flag()
+            i, body = i + 1, []
+            while i < len(lines) and not _FENCE.match(lines[i]):
+                body.append(lines[i])
+                i += 1
+            out += _working_div(body)
+            i += 1
+            continue
+        if lines[i].startswith("    ") and lines[i].strip():
+            body = []
+            while i < len(lines) and lines[i].startswith("    ") and lines[i].strip():
+                body.append(lines[i])
+                i += 1
+            if flag:
+                flag()
+            out += _working_div(body)
+            continue
+        out.append(lines[i])
+        i += 1
+    return "\n".join(out)
+
+
+def _prose(text, flag=None) -> str:
+    """Every reader-facing prose field passes through here on its way to the page."""
+    return _notation(_working(str(text or ""), flag))
+
+
+def _block(prefix, text, trail="", flag=None) -> list[str]:
+    """A labelled passage that may contain display arithmetic.
+
+    Prose fields can expand into block-level markdown, so a label cannot simply be
+    concatenated in front of one: `"**Definition.** " + prose` puts the opening fence of a
+    working block in the middle of a paragraph, where it stops being a fence and the
+    arithmetic silently falls back to a code block. The label goes on the first line of
+    prose and any citation mark on the last, and the blocks in between are left alone.
+    """
+    lines = _prose(text, flag).split("\n")
+    first = next((i for i, l in enumerate(lines) if l.strip()), None)
+    if first is None:
+        return [prefix.strip(), ""] if prefix.strip() else []
+    if lines[first].startswith(":::"):
+        lines = [prefix.rstrip(), ""] + lines[first:]
+    else:
+        lines[first] = prefix + lines[first]
+    if trail:
+        last = max(i for i, l in enumerate(lines) if l.strip())
+        lines[last] = lines[last] + trail if not lines[last].startswith(":::") else lines[last]
+        if lines[last].startswith(":::"):
+            lines += ["", trail.strip()]
+    return lines + [""]
+
+
+_NUMBERS = ["no", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine",
+            "ten", "eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen",
+            "seventeen", "eighteen", "nineteen", "twenty"]
+
+
+def _count_word(n: int) -> str:
+    return _NUMBERS[n] if 0 <= n < len(_NUMBERS) else str(n)
+
+
+# References are numbered in the text and listed at the end of the Part they appear in.
+# Numbering is per (source, clause) pair rather than per source, so a number always names
+# exactly what was consulted and the reader never carries a locator through the prose.
+# Reader-facing text therefore contains no repository paths: the bibliography carries a
+# resolvable URL, which is what someone who does not have this repository can actually use.
+
+def _bib_entries() -> dict:
+    """Parse library.bib into {citekey: {field: value}}, brace-aware."""
+    if not os.path.exists(BIB):
+        return {}
+    with open(BIB, encoding="utf-8") as fh:
+        src = fh.read()
+    out = {}
+    for m in re.finditer(r"@(\w+)\s*\{\s*([^,\s]+)\s*,", src):
+        depth, j = 1, src.index("{", m.start()) + 1
+        while j < len(src) and depth:
+            depth += (src[j] == "{") - (src[j] == "}")
+            j += 1
+        body, fields = src[m.end():j - 1], {}
+        for fm in re.finditer(r"(\w+)\s*=\s*", body):
+            p = fm.end()
+            if p < len(body) and body[p] in "{\"":
+                close, d, q = body[p], 1, p + 1
+                while q < len(body) and d:
+                    if close == "{":
+                        d += (body[q] == "{") - (body[q] == "}")
+                    else:
+                        d -= body[q] == '"'
+                    q += 1
+                val = body[p + 1:q - 1]
+            else:
+                q = p
+                while q < len(body) and body[q] not in ",\n":
+                    q += 1
+                val = body[p:q]
+            fields[fm.group(1).lower()] = " ".join(val.replace("{", "").replace("}", "").split())
+        out[m.group(2)] = fields
+    return out
+
+
+class Cites:
+    """Numbered references, restarting at each Part, listed where that Part ends."""
+
+    def __init__(self, entries):
+        self.entries, self.order, self.num, self.unverified = entries, [], {}, set()
+
+    def mark(self, r) -> str:
+        marks = []
+        for ref in (r.get("definition", {}) or {}).get("references", []) or []:
+            key, loc = ref.get("citekey"), (ref.get("locator") or "").strip()
+            if not key:
+                continue
+            # A source that has not been obtained gets one entry however many clauses cite
+            # it. Numbering per clause is precision the reader can act on only when the
+            # source is reachable; on a placeholder it produces eight identical entries.
+            if not (self.entries.get(key) or {}).get("url"):
+                loc = ""
+            ident = (key, loc)
+            if ident not in self.num:
+                self.order.append(ident)
+                self.num[ident] = len(self.order)
+            if not (ref.get("verified") or {}).get("claim_located"):
+                self.unverified.add(ident)
+            marks.append(str(self.num[ident]))
+        return f"[{', '.join(marks)}]" if marks else ""
+
+    def _format(self, ident) -> str:
+        key, loc = ident
+        e = self.entries.get(key)
+        if not e:
+            return f"`{key}` — no entry in the reference library."
+        bits = [e.get("author", "").rstrip("."), e.get("title", "").rstrip(".")]
+        # A bib `note` is where the build keeps its own working commentary, and several of
+        # them run to a paragraph of internal reasoning about why a source is still
+        # missing. That belongs in the retrieval report, not under the reader's eye, so
+        # only a note short enough to be a genuine citation detail is printed.
+        note = (e.get("note") or "").strip()
+        if note and len(note) <= 120:
+            bits.append(note.rstrip("."))
+        elif e.get("year") and e["year"].lower() not in ("n.d.", "nd", "none"):
+            bits.append(e["year"])
+        if loc:
+            bits.append(loc)
+        if e.get("howpublished"):
+            bits.append(e["howpublished"])
+        out = ". ".join(b.strip().rstrip(".").strip() for b in bits if b and b.strip()) + "."
+        if e.get("url"):
+            out += f" <{e['url']}>"
+            if e.get("urldate"):
+                out += f" (accessed {e['urldate']})"
+            out += "."
+        if ident in self.unverified:
+            out += " *Outstanding — see the note below.*"
+        return out
+
+    UNVERIFIED_NOTE = (
+        "*An entry marked outstanding has not yet been checked against the source itself. "
+        "Nothing in these sections rests on one: the reasoning is a derivation you can "
+        "check with a calculator, and the entry records an anchor still to be supplied.*")
+
+    def flush(self, heading) -> list[str]:
+        """Emit and reset. Called at each Part boundary and once at the end."""
+        if not self.order:
+            return []
+        md, any_open = [f"### {heading}", ""], bool(self.unverified)
+        for ident in self.order:
+            md += [f"{self.num[ident]}. {self._format(ident)}", ""]
+        if any_open:
+            md += [self.UNVERIFIED_NOTE, ""]
+        self.order, self.num, self.unverified = [], {}, set()
+        return md
+
+
+def _illustrations(r) -> list:
+    """One illustration or several. A concept carries as many as earn their place."""
+    many = r.get("illustrations")
+    if isinstance(many, list) and many:
+        return [i for i in many if isinstance(i, dict) and (i.get("body") or "").strip()]
+    one = r.get("illustration")
+    return [one] if isinstance(one, dict) and (one.get("body") or "").strip() else []
+
+
+def _figures(r, sid) -> list[str]:
+    """Figures live beside the records and are referenced by file name."""
+    md = []
+    for f in (r.get("figures") or []):
+        if not isinstance(f, dict) or not f.get("file"):
+            continue
+        path = os.path.join("figures", f["file"]).replace("\\", "/")
+        # Pandoc turns an image's bracket text into the figure's caption, so the caption
+        # goes there and nothing else does. Putting the alt text in the brackets and the
+        # caption on a line below printed both, one above the other, under every figure.
+        # `alt` stays in the record: it is the accessible description, not a second caption.
+        cap = " ".join((f.get("caption") or "").split())
+        md += [f"![{cap}]({path}){{width=6in}}", ""]
+    return md
+
+
+def concept_md(r, cites, label=None, sid=None) -> list[str]:
+    flagged = []
+    p = lambda t: _prose(t, lambda: flagged.append(1))
     md = [f"### {label + ' · ' if label else ''}{r['name']}", ""]
-    md += [f"*{r['concept_id']} · {r['concept_type']}"
-           + (f" · as of {r['review'].get('as_of')}" if r.get("review", {}).get("as_of") else "") + "*", ""]
-    md += ["**Definition.** " + r["definition"]["text"] + " " + _refs(r), ""]
-    md += ["**In plain terms.** " + r["simplified_explanation"], ""]
-    ill = r["illustration"]
-    md += ["**Illustration.** " + ill["body"], "",
-           "**Where this picture breaks.** " + ill["analogy_breaks_when"], ""]
+    # The concept id and type are build metadata and are not shown: the heading already
+    # names the section. Currency is shown, because a reader of statutory material needs
+    # to know how old it is.
+    asof = (r.get("review") or {}).get("as_of")
+    if asof and r.get("concept_type") != "derivable":
+        md += [f"*Checked against the sources as they stood on {asof}.*", ""]
+    mark = cites.mark(r)
+    flg = lambda: flagged.append(1)
+    md += _block("**Definition.** ", r["definition"]["text"], f" {mark}" if mark else "", flg)
+    md += _block("**In plain terms.** ", r["simplified_explanation"], flag=flg)
+    md += _figures(r, sid)
+    ills = _illustrations(r)
+    for n, ill in enumerate(ills, 1):
+        head = "**Illustration.** " if len(ills) == 1 else f"**Illustration {n}.** "
+        md += _block(head, ill["body"], flag=flg)
+        if (ill.get("analogy_breaks_when") or "").strip():
+            md += _block("**Where this picture breaks.** ", ill["analogy_breaks_when"], flag=flg)
     mk = r.get("must_know") if isinstance(r.get("must_know"), list) else []
-    rows = [f"- {' '.join((p.get('point') or '').split())}" for p in mk
-            if isinstance(p, dict) and (p.get("point") or "").strip()]
+    rows = [f"- {p(' '.join((q.get('point') or '').split()))}" for q in mk
+            if isinstance(q, dict) and (q.get("point") or "").strip()]
     if rows:
         md += ["**Must know points for you.**", ""] + rows + [""]
+    if flagged:
+        LEGACY_INDENT.add(r["concept_id"])
     return md
+
+
+LEGACY_INDENT = set()
 
 
 def booklet_md(sid, recs, subjects, clusters) -> tuple[str, list[str]]:
@@ -582,7 +877,11 @@ def booklet_md(sid, recs, subjects, clusters) -> tuple[str, list[str]]:
                    "This booklet uses the following Book 0 sections. Each is summarised where it is first "
                    "needed; work through Book 0 itself if a summary is not enough.", ""]
             md += [f"- `{d}`" + (f" — {recs[d]['name']}" if d in recs else "") for d in gf] + [""]
-    answers, seen_part = [], None
+    # Exercises and practice problems are numbered within their own section rather than
+    # tagged with the record id. The id was build plumbing leaking onto the page; the
+    # appendix groups answers under the section heading, which keeps them unambiguous
+    # without making the reader parse an identifier to find question three.
+    cites, answers, seen_part = Cites(_bib_entries()), [], None
     for rung in sorted({r.get("rung", 0) for r in mine}):
         band = [r for r in mine if r.get("rung", 0) == rung]
         if sid != "B0":
@@ -592,26 +891,34 @@ def booklet_md(sid, recs, subjects, clusters) -> tuple[str, list[str]]:
             if sid == "B0":
                 part, sec = where.get(r.get("sequence"), (None, None))
                 if part and part["letter"] != seen_part:
+                    if seen_part:
+                        md += cites.flush(f"References · Part {seen_part}")
                     seen_part = part["letter"]
                     md += [f"## Part {part['letter']} · {part['title']}", ""]
                 label = sec["id"] if sec else None
-            md += concept_md(r, label)
-            for i, ex in enumerate(r.get("exercises") or []):
-                tag = f"{r['concept_id']}-E{i+1}"
-                md += [f"**Exercise {tag}** ({ex['type']}). {ex['prompt']}"
-                       + ("  \n*Record your confidence as a percentage before turning to the answer.*"
-                          if ex.get("confidence_first") else ""), ""]
-                answers += [f"**{tag}.** {ex['answer']}", ""]
-            prac = sorted([p for p in (r.get("practice") or []) if isinstance(p, dict)],
-                          key=lambda p: p.get("level", 0))
+            md += concept_md(r, cites, label, sid)
+            here = f"{label + ' · ' if label else ''}{r['name']}"
+            block = []
+            for i, ex in enumerate(r.get("exercises") or [], 1):
+                md += _block(f"**Exercise {i}** ({ex['type']}). ", ex["prompt"])
+                if ex.get("confidence_first"):
+                    md += ["*Record your confidence as a percentage before turning to the answer.*", ""]
+                block += _block(f"**Exercise {i}.** ", ex["answer"])
+            prac = sorted([q for q in (r.get("practice") or []) if isinstance(q, dict)],
+                          key=lambda q: q.get("level", 0))
             if prac:
-                md += ["**Practice.** Ten problems on this technique, easiest first. Work them on "
-                       "paper before turning to the answers, which are in the appendix at the back "
-                       "under these numbers.", ""]
-                for p in prac:
-                    tag = f"{r['concept_id']}-P{p['level']:02d}"
-                    md += [f"**{tag}.** {p['prompt']}", ""]
-                    answers += [f"**{tag}.** {p['answer']}", ""]
+                md += [f"**Practice.** {_count_word(len(prac)).capitalize()} problems on this "
+                       "technique, easiest first. Work them on paper before turning to the "
+                       "answers, which are in the appendix at the back under this section's name.", ""]
+                for i, q in enumerate(prac, 1):
+                    md += _block(f"**{i}.** ", q["prompt"])
+                    block += _block(f"**{i}.** ", q["answer"])
+            if block:
+                answers += [f"### {here}", ""] + block
+    if seen_part:
+        md += cites.flush(f"References · Part {seen_part}")
+    elif sid != "B0":
+        md += cites.flush("References")
     if answers:
         md += ["\\newpage", "", "# Appendix · Worked answers", ""] + answers
     return "\n".join(md), [r["concept_id"] for r in mine]
@@ -695,12 +1002,17 @@ def reports(recs, subjects, clusters, block, warn):
         drills = [(cid, n) for cid, n in drills if n]
         if drills:
             fh.write("## Practice sets\n\n"
-                     f"Problems per quantitative concept. The rule is exactly {PRACTICE_REQUIRED}, "
-                     "levels 1 to 10 (STYLE.md §7a); anything else is a blocking failure and is "
-                     "listed below rather than here.\n\n"
-                     "| Concept | Problems |\n| --- | --- |\n")
+                     f"Problems per quantitative concept. The range is {PRACTICE_MIN} to "
+                     f"{PRACTICE_MAX} (STYLE.md §7a), judged by how many moves the technique has, "
+                     "with the bands each drill set reaches shown so that a set which never leaves "
+                     "the mechanical end is visible here rather than only on a careful read.\n\n"
+                     "| Concept | Problems | Bands reached |\n| --- | --- | --- |\n")
+            byid = {r["concept_id"]: r for r in ordered}
             for cid, n in drills:
-                fh.write(f"| {cid} | {n} |\n")
+                lv = [p.get("level") for p in (byid[cid].get("practice") or [])
+                      if isinstance(p, dict) and isinstance(p.get("level"), int)]
+                seen = [b for _, _, b in PRACTICE_BANDS if b in {BAND_OF(x) for x in lv}]
+                fh.write(f"| {cid} | {n} | {', '.join(seen) or '—'} |\n")
             fh.write(f"\n**{sum(n for _, n in drills)} practice problems across "
                      f"{len(drills)} concepts.**\n\n")
         fh.write("## Must-know points by bearing\n\n"
@@ -782,7 +1094,14 @@ def render(md_path, stem):
         render._pdf_warned = True
         print("  [pdf] skipped: no working PDF engine. tectonic runs but cannot resolve Windows "
               "platform directories inside the sandbox; install a LaTeX engine or convert from docx.")
-    args_common = ["--citeproc", f"--bibliography={os.path.abspath(BIB)}"] if os.path.exists(BIB) else []
+    # Citations are numbered and listed per Part during assembly, so citeproc is not used.
+    # A reference document carries the styles: Working for display arithmetic, a table
+    # style that renders as a table, and spacing that does not leave gaps between every
+    # paragraph. Without it pandoc's default template typesets arithmetic as source code.
+    args_common = []
+    figs = os.path.join(ROOT, "figures")
+    if os.path.isdir(figs):
+        shutil.copytree(figs, os.path.join(OUT, "figures"), dirs_exist_ok=True)
     for fmt, ext in formats:
         target = os.path.join(OUT, f"{stem}.{ext}")
         if quarto:
@@ -791,8 +1110,11 @@ def render(md_path, stem):
             cwd = OUT
         else:
             engine = ["--pdf-engine=tectonic"] if fmt == "pdf" and shutil.which("tectonic") else []
+            ref = [f"--reference-doc={os.path.abspath(REFDOC)}"] \
+                if fmt == "docx" and os.path.exists(REFDOC) else []
             cmd = _launch(pandoc or "pandoc") + [md_path, "-o", target, "--from",
-                   "markdown-yaml_metadata_block", "--toc", "--toc-depth=3"] + args_common + engine
+                   "markdown-yaml_metadata_block", "--toc", "--toc-depth=3",
+                   f"--resource-path={OUT}"] + args_common + ref + engine
             cwd = None
         env = dict(os.environ)
         if fmt == "pdf":

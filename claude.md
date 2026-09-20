@@ -86,6 +86,10 @@ Write for an intelligent adult who knows nothing about this subject and is not s
 - Prefer the concrete to the abstract on first encounter, and give the abstraction afterwards once it has something to attach to.
 - Never write "simply", "obviously", "just" or "of course" about a step the reader has not been taught. These words do no work and they tell a stuck reader that the problem is them.
 
+**Notation: words first, then symbols, then symbols.** The book writes "divided by", "times" and "ten to the power seven" the first time each appears, immediately alongside the standard form — `450 divided by 700`, then `450 ÷ 700`. After that section, the symbol is used on its own. Writing out every operator for the whole book is the failure this rule exists to prevent: a reader who finishes Book 0 having never met `÷`, `×`, a superscript exponent or `log₁₀` cannot read the next thing they pick up, which is the one job the ground floor has. Introducing a symbol is a kindness; withholding it is not.
+
+Write exponents as `10^7` and logarithms as `log10` in the record. The build typesets them as real superscripts and subscripts, so nobody writes markup in a YAML field. Set display arithmetic in a ```` ```working ```` block; an untagged fence still works and is flagged, and a bare four-space indent is a legacy form that used to make Word typeset arithmetic as computer source code.
+
 ## 2. Floor compliance
 
 The six operational tests in `SPEC.md` §1 are the hard rules. In practice:
@@ -108,6 +112,21 @@ The source document's own warning applies to the writing, not only to the resear
 - **institutional** — never present as a fact of nature. "The GST Council set this rate in September 2025" is the claim; "carbonated drinks are taxed at 40%" is not, because it will stop being true without anything about the world changing.
 
 ## 4. Illustrations
+
+**How many.** One by default, and as many as earn their place. A concept that turns on a single
+move needs one; a concept whose difficulty is that two situations look alike and behave
+differently needs the two cases side by side, and giving it one is a false economy. Use the
+`illustrations` list when there is more than one; `illustration` stays valid for a single one. The
+test for a second illustration is the same as for a first: does the reader do something in it that
+they could not do after the one before. An illustration that restates the previous one with
+different numbers is a practice problem in the wrong place.
+
+**Where the source lives is not the reader's problem.** An illustration that says "open
+`sources/nfsa2013.txt`" is written for someone holding this repository, which no reader is. Name
+the instrument as its own title and give the public URL the bibliography would give; the search
+string, the clause and the thing the reader is meant to notice all stay exactly as they were. The
+locator in the record is the audit trail and belongs to the auditor. What the reader gets is a
+citation number and a reference they can open.
 
 - **An illustration is something the reader does, not something they are told about.** Give them the claim, the search string, the page, the step — in the present tense, addressed to them. If you find yourself writing "this was done and it showed", rewrite it as "do this, and watch what happens".
 - **Lead with the failure where there is one.** A worked case that succeeds teaches the procedure; a worked case that fails teaches why the procedure exists. When a real attempt broke instructively, that goes first, and the clean case follows as contrast so the reader can feel the difference. Ending on the easy case is fine. Starting on it wastes the reader's attention at the moment they have most of it.
@@ -173,16 +192,26 @@ A teaching exercise names which audience it is for. Prompts that would produce t
 
 ## 7a. The drill set
 
-**Every concept that teaches a mathematical technique carries exactly ten practice problems, in
-ascending difficulty, unsolved in the text, answered in the appendix. This is mandatory and the
-build blocks without it.**
+**Every concept that teaches a mathematical technique carries a set of practice problems, in
+ascending difficulty, unsolved in the text, answered in the appendix. This is mandatory. The
+count is between three and eighteen, chosen from the technique, and the build blocks outside
+that range unless `practice_note` says why.**
 
-It is the one place in the corpus where a count is fixed rather than discovered, and the
-difference from §5 is the point. Must-know points are as many as the concept demands, because the
-demand comes from the concept. Practice is ten, because the demand comes from the reader's
-fingers, and a reader who has worked one example of a technique has not learned it. A section can
-be read, agreed with, and found impossible to use twenty minutes later. Ten problems is what
-closes that gap, and it is the cheapest thing in the whole method.
+A reader who has worked one example of a technique has not learned it. A section can be read,
+agreed with, and found impossible to use twenty minutes later; the drill set is what closes that
+gap, and it is the cheapest thing in the whole method. That much is not negotiable.
+
+**The count is, and the history of this rule is the reason to say so plainly.** Ten was written
+here as a working figure and then enforced as an equality, so a concept with one move padded up to
+ten and a concept with six moves stopped at ten. The count started driving the teaching instead of
+following it. What has to hold is that the ladder below is climbed: the reader meets the technique
+mechanically, applies it to a real quantity, diagnoses a broken version of it, and carries it
+somewhere new. A technique with a single move reaches that in four problems. Logarithms, or
+anything whose moves compose, may need eighteen and be right to.
+
+The contrast with §5 survives at lower resolution: must-know points are as many as the concept
+demands, and practice is as many as the *reader's fingers* demand, which is usually more. Err
+high. An unnecessary problem costs a reader four minutes; a missing one costs them the technique.
 
 **Which concepts.** A concept is quantitative when the reader has to be able to *carry something
 out*, as against being able to *state* something. `quantitative: true` in the record says so. Left
@@ -192,9 +221,12 @@ a mathematical-Part record that genuinely teaches no technique. Getting this wro
 permissive direction is cheap; getting it wrong in the other direction means a technique shipped
 that nobody can perform.
 
-**The ladder.** Ten levels, each used once, and the band decides what the problem is *for*. A set
-of ten problems that are all level 2 with different numbers is the failure this table exists to
-prevent.
+**The ladder.** Every problem carries a `level` from 1 to 10 and the band decides what the problem
+is *for*. Levels may repeat and may be skipped — three mechanical problems all at level 2 is
+normal — but the set must reach both ends: the build blocks a drill set with no mechanical problem
+or no transfer problem, and warns when it touches fewer than three of the four bands. A set that is
+all level 2 with different numbers is the failure this table exists to prevent; so is a set that
+opens at level 7.
 
 | Level | Band | The problem asks for |
 | --- | --- | --- |
@@ -232,8 +264,12 @@ both — its exercises and its ten.
 
 ## 8. Citations
 
+**What the reader sees.** A bracketed number in the text and a numbered list at the end of that Part. Nothing else: no file path, no author-date, no locator carried through the prose. Each entry gives the instrument or work, the clause consulted, and a resolvable URL, because a reference the reader cannot open is a claim rather than a citation. An entry whose source has not been obtained is marked outstanding and says so in plain words, under the list, so an unchecked claim can never look like a checked one. Numbering restarts at each Part.
+
+**What the record carries** is the audit trail, and it is not the same object. Numbering is per source-and-clause, so a number always names exactly what was consulted.
+
 - One reference minimum on every definition, of the `kind` the concept type requires.
-- **`locator` is mandatory** — page, section, clause or table. A citation without a locator is not checkable and does not count.
+- **`locator` is mandatory** — page, section, clause or table. A citation without a locator is not checkable and does not count. It is for the auditor; the reader meets it inside the reference entry, never in the sentence.
 - `verified.opened` is set true only by the person who obtained and read the source. Never inferred, never copied from another record, never set because the citation looks right.
 - A source that could not be obtained is recorded as such in `verified.note`, and the definition is marked `drafted`, not `verified`. An unobtainable source is a known state; a fabricated one is not recoverable.
 - Institutional references cite the instrument, with its number and date, and the record carries `review.as_of`.
