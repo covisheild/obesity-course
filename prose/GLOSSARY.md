@@ -47,6 +47,7 @@ Sections A1 to A8. Same rule: before teaching one of these, use the plain words 
 | ratio | two quantities of the same kind set side by side by dividing one by the other | B0-R0-C05 |
 | scientific notation | a number between one and ten, times a power of ten | B0-R0-C06 |
 | significant figures | the digits in a number that carry information about the quantity | B0-R0-C03 |
+| square root | the number which, multiplied by itself, gives you the one you started with | B0-R0-C06 |
 
 **Two rows above this section now name the wrong record, and are not changed here.** With Part A
 written, document order puts the first use of **denominator** in `B0-R0-C02` and of **precision**

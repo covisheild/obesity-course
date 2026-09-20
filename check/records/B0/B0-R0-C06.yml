@@ -21,6 +21,10 @@ definition:
 
     Multiplying two powers of the same base adds their exponents, and dividing subtracts them.
 
+    A root is the inverse of a power. The square root of a quantity is the number which, multiplied
+    by itself, yields that quantity. Equivalently it is that quantity raised to the exponent one
+    half, which is the case that shows an exponent need not be a whole number.
+
     Scientific notation writes a quantity as a number between one and ten multiplied by a power of
     ten.
   references:
@@ -48,6 +52,22 @@ simplified_explanation: |
   thousand, which is 0.001.
 
   Multiply two powers of ten and you add the exponents. Divide, and you subtract them.
+
+  Squaring a number means multiplying it by itself. Three squared is nine.
+
+  A square root runs that backwards. The square root of nine is three, because three times three is
+  nine. Ask it as a question. What number, multiplied by itself, gives me this one?
+
+  Some roots come out whole. The square root of 144 is 12. Most do not. The square root of two
+  starts 1.414 and never stops. Take what the calculator gives you and round it the way the section
+  on rounding told you to.
+
+  There is a second way to write a root, and you need it further on. An exponent of one half means
+  the square root. So 9^(1/2) is 3, the same answer, written in the language of powers.
+
+  That is worth a pause, because it breaks the rule you started with. An exponent does not have to
+  count copies. Once one half is allowed, so is 1.6, and 10^1.6 is an ordinary number the
+  calculator gives as about 40. Logarithms, two sections on, are built on exactly that.
 
   Write a quantity as a number between one and ten, times a power of ten. Thirty-five thousand
   becomes 3.5 times 10^4.
@@ -141,6 +161,16 @@ must_know:
   kind: consequence
   bearing: teaching
 - point: |
+    The square root of a sum is not the sum of the square roots. Work out what sits under the root
+    first, then take the root of that one number.
+  kind: misconception
+  bearing: methodological
+- point: |
+    An exponent does not have to be a whole number. One half means the square root, and a value in
+    between is an ordinary number the calculator will give you.
+  kind: boundary
+  bearing: methodological
+- point: |
     This gives you the notation and the two rules that move it around. It does not tell you what any
     particular power of ten means in the world.
   kind: boundary
@@ -206,21 +236,47 @@ exercises:
     So all three steps hold. The thing to challenge is not in the notation at all: it is the 365.
     Production every single day of the year, with no closure and no maintenance, is an assumption
     the note never states. Check the exponents, then check the assumption hiding in the multiplier.
+- type: calculation
+  prompt: |
+    A square plot of land covers 2,025 square metres. Work out the length of one side.
+
+    Then do the same for a second square plot covering 2,000 square metres. Say how many digits of
+    that answer you would be willing to write down.
+  answer: |
+    A square's area is one side multiplied by itself. So the side is the square root of the area.
+
+    ```
+        side = 2,025^(1/2) = 45 metres
+    ```
+
+    Check it by multiplying back. 45 times 45 is 2,025.
+
+    The second one does not come out whole.
+
+    ```
+        side = 2,000^(1/2) = 44.72135...
+    ```
+
+    The calculator will offer you eight digits. The area you were given has four. Write 44.72
+    metres, or say about 45 metres. Digits the question never gave you are not yours to pass on.
+  confidence_first: true
 quantitative: true
 practice:
 - level: 1
   prompt: |
-    Write each of these out in full.
+    Write each of these out as an ordinary number.
 
     ```
-        10^2      10^5      10^0      10^-2
+        10^2      10^5      10^0      10^-2      9^(1/2)      144^(1/2)
     ```
   answer: |
     ```
-        10^2   = 100
-        10^5   = 1,00,000        (one lakh)
-        10^0   = 1
-        10^-2  = 0.01
+        10^2      = 100
+        10^5      = 1,00,000        (one lakh)
+        10^0      = 1
+        10^-2     = 0.01
+        9^(1/2)   = 3
+        144^(1/2) = 12
     ```
 
     Two of these are worth a second look. Anything to the power zero is one, which surprises people
@@ -228,6 +284,9 @@ practice:
     10^0. Any number divided by itself is one, so 10^0 is one.
 
     And 10^-2 is small, not negative. It sits between zero and one.
+
+    Check the last two by multiplying back. Three times three is nine. Twelve times twelve is 144.
+    A root is the only operation here you can check without trusting the calculator.
 - level: 2
   prompt: |
     Work these out using the exponent rules alone, without writing the numbers in full.
