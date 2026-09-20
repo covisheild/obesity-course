@@ -68,7 +68,7 @@ were compared blind.
 
 # Authoring style sheet
 
-The daily-use document. `SPEC.md` says what a record must contain; this says how it is written. Every rule here is checkable by a second reader, which is the test of whether it belonged in a style sheet at all.
+The daily-use document. the specification below says what a record must contain; this says how it is written. Every rule here is checkable by a second reader, which is the test of whether it belonged in a style sheet at all.
 
 ---
 
@@ -92,7 +92,7 @@ Write exponents as `10^7` and logarithms as `log10` in the record. The build typ
 
 ## 2. Floor compliance
 
-The six operational tests in `SPEC.md` §1 are the hard rules. In practice:
+The six operational tests in the specification below §1 are the hard rules. In practice:
 
 1. **Name every symbol in words at first use**, in the same sentence. Not "where ρ is density" as an afterthought — "the letter rho, written ρ, stands for density".
 2. **Introduce every unit** before it is used in a number, including kcal, kJ, mmol/L, kg/m².
@@ -122,7 +122,7 @@ they could not do after the one before. An illustration that restates the previo
 different numbers is a practice problem in the wrong place.
 
 **Where the source lives is not the reader's problem.** An illustration that says "open
-`sources/nfsa2013.txt`" is written for someone holding this repository, which no reader is. Name
+`sources/nfsa_2013.txt`" is written for someone holding this repository, which no reader is. Name
 the instrument as its own title and give the public URL the bibliography would give; the search
 string, the clause and the thing the reader is meant to notice all stay exactly as they were. The
 locator in the record is the audit trail and belongs to the auditor. What the reader gets is a
@@ -246,7 +246,7 @@ someone whose analysis cannot be routed around.
 - **The answer shows every line**, exactly as §4 requires of any calculation. A reader who cannot
   follow line three cannot skip to line four, and in the appendix there is nobody to ask.
 - **Real figures or none.** A problem quoting a real number names its `citekey` in `refs`, and the
-  build rejects a citekey that is not in `library.bib`. Where no real figure exists, use bare
+  build rejects a citekey that is not in `check/references/library.bib`. Where no real figure exists, use bare
   numbers and say nothing about the world. **Never invent a statistic to make a problem feel
   applied** — an invented prevalence in a practice problem is the same defect as an invented one
   in the prose, and it is worse, because the reader is about to do arithmetic on it and remember
@@ -385,7 +385,7 @@ checks and why.
 
 # Course specification
 
-The authoring contract for the obesity expertise course. One concept record per teachable concept; records assemble into Book 0 and 61 per-subject booklets, and later into interleaving problem sets. This document fixes the rules. `STYLE.md` governs how the prose is written; `schema/concept.schema.json` is the machine-checkable form of what follows.
+The authoring contract for the obesity expertise course. One concept record per teachable concept; records assemble into Book 0 and 61 per-subject booklets, and later into interleaving problem sets. This document fixes the rules. the style sheet above governs how the prose is written; `schema/concept.schema.json` is the machine-checkable form of what follows.
 
 Derived against the frozen subject map, version id `fc19c8bc-a216-4131-99fb-ebe3f19cec4a`.
 
@@ -507,18 +507,18 @@ Records in, booklets out. The build is also the quality gate; these checks are t
 
 **Booklet front matter.** Every booklet carries an edition number and a rung-status line — for example `Rungs 1–2 released · rungs 3–4 in preparation` — so a partially written booklet is releasable rather than permanently unfinished. Institutional content additionally prints its as-of date.
 
-**Blocking checks.** Forward reference inside a subject. Reference `kind` incompatible with `concept_type`. `review.stability` inconsistent with `concept_type`. Missing `locator` on any reference. A citekey, in a reference, in a must-know point or in a practice problem, that is not in `library.bib`. A concept with no `outcome_refs`. A concept with no must-know points, or with the retired five-slot mapping in place of a list. A prose field authored as a YAML folded scalar. An exercise with no worked answer, or of type `integrative`. **A quantitative concept carrying other than exactly ten practice problems, or whose ten are not at levels 1 to 10 with each level used once.** A practice problem with no worked answer. An unknown cluster key.
+**Blocking checks.** Forward reference inside a subject. Reference `kind` incompatible with `concept_type`. `review.stability` inconsistent with `concept_type`. Missing `locator` on any reference. A citekey, in a reference, in a must-know point or in a practice problem, that is not in `check/references/library.bib`. A concept with no `outcome_refs`. A concept with no must-know points, or with the retired five-slot mapping in place of a list. A prose field authored as a YAML folded scalar. An exercise with no worked answer, or of type `integrative`. **A quantitative concept whose drill set falls outside three to eighteen problems without a `practice_note` saying why, or whose ladder never reaches the mechanical band or the transfer band.** A practice problem with no worked answer. An unknown cluster key. A figure whose file is not in `check/figures/`.
 
-**Warning checks.** A reference with `verified.opened: false` — permitted while drafting, blocking at status `verified`. A bridge presupposition with no `bridge_ref`. A rung skill with no exercise anywhere in the rung. An institutional concept with no `as_of`. A concept past its review trigger. A `ground_floor_deps` entry with no corresponding Book 0 record. More must-know points than the soft cap of nine. A concept with no must-know point tagged `misconception` or `trap`. The sequence-read warnings of `STYLE.md` §10: an over-long sentence, an over-long paragraph, an illustration that never addresses the reader, and an acronym used in a booklet before anything expands it.
+**Warning checks.** A reference with `verified.opened: false` — permitted while drafting, blocking at status `verified`. A bridge presupposition with no `bridge_ref`. A rung skill with no exercise anywhere in the rung. An institutional concept with no `as_of`. A concept past its review trigger. A `ground_floor_deps` entry with no corresponding Book 0 record. More must-know points than the soft cap of nine. A concept with no must-know point tagged `misconception` or `trap`. The sequence-read warnings of the style sheet above §10: an over-long sentence, an over-long paragraph, an illustration that never addresses the reader, and an acronym used in a booklet before anything expands it.
 
 **Renderer.** Record assembly emits plain markdown and is independent of the renderer, so swapping one for another affects no content.
 
 As built, the renderer is **pandoc**, producing **docx and HTML**. Quarto was the intended choice and is not usable here: it conflicts with the pinned pandoc in the shared environment, and the conda-forge build installed into a dedicated environment ships `quarto.cmd` and `quarto.js` with no working runtime, so every invocation fails. `build.py` therefore probes each renderer by running it, not by finding it on `PATH`, and takes Quarto automatically if a working install ever appears.
 
-**Must-know points are not a fixed set of slots.** Every concept carries a list of points, printed as *Must know points for you*, and the length of that list is decided by the concept rather than by a template. Each point declares a `bearing` — `clinical`, `methodological`, `policy`, `teaching` or `public` — naming which capacity of the expert it arms, and a point that changes nothing the reader would do, say, accept or refuse is cut. The five fixed slots of the first draft are retired; the build rejects a record still using them. Full rule in `STYLE.md` §5.
+**Must-know points are not a fixed set of slots.** Every concept carries a list of points, printed as *Must know points for you*, and the length of that list is decided by the concept rather than by a template. Each point declares a `bearing` — `clinical`, `methodological`, `policy`, `teaching` or `public` — naming which capacity of the expert it arms, and a point that changes nothing the reader would do, say, accept or refuse is cut. The five fixed slots of the first draft are retired; the build rejects a record still using them. Full rule in the style sheet above §5.
 
-**The drafting route, decided by blind comparison.** Two drafts of Book 0 section F5 were written from the same record, the same opened statute text and the same standard — one by the session model, one by a Sonnet-class model — and read unlabelled. The reader picked the Sonnet-class draft. So reader-facing prose is **drafted by that model and edited here**: the sourcing, the statute checking, the fact verification, the exercises and every build check stay on this side, and the draft arrives as prose to be corrected rather than prose to be accepted. The comparison also demoted the reading-grade measure, which had preferred the rejected draft; see `STYLE.md` §11a.
+**The drafting route, decided by blind comparison.** Two drafts of Book 0 section F5 were written from the same record, the same opened statute text and the same standard — one by the session model, one by a Sonnet-class model — and read unlabelled. The reader picked the Sonnet-class draft. So reader-facing prose is **drafted by that model and edited here**: the sourcing, the statute checking, the fact verification, the exercises and every build check stay on this side, and the draft arrives as prose to be corrected rather than prose to be accepted. The comparison also demoted the reading-grade measure, which had preferred the rejected draft; see the style sheet above §11a.
 
-**The sequence read is an editorial commitment.** Read from the top in order, the corpus must be an easy read, and a place where the reader has to go back is a defect with a fix. Mechanically supported by the forward-reference check, the acronym check and the sentence and paragraph warnings; finally established by a human reading the assembled booklet cold, end to end, before release. Full rule in `STYLE.md` §10.
+**The sequence read is an editorial commitment.** Read from the top in order, the corpus must be an easy read, and a place where the reader has to go back is a defect with a fix. Mechanically supported by the forward-reference check, the acronym check and the sentence and paragraph warnings; finally established by a human reading the assembled booklet cold, end to end, before release. Full rule in the style sheet above §10.
 
 **PDF is unavailable in this sandbox.** Tectonic installs and reports its version but cannot resolve Windows platform directories inside the container, and no combination of `TECTONIC_CACHE_DIR`, `XDG_CACHE_HOME`, `APPDATA` or `USERPROFILE` overrides it; no other LaTeX engine is present. The build probes for a working engine by compiling a minimal document and, finding none, skips PDF with that explanation rather than emitting a failure per booklet. Two routes to PDF when it is wanted: a working Quarto with TinyTeX, or converting the docx on a normal desktop.

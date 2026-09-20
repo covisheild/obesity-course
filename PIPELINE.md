@@ -65,21 +65,39 @@ a batch can contradict itself.
 > abstract.
 >
 > Write records for concepts <RANGE> of `books/<SUBJECT>/INVENTORY.md`, one YAML file each, using
-> `check/example.concept.yml` as the template and `check/concept.schema.json` as the schema.
+> `check/schema/example.concept.yml` as the template and `check/schema/concept.schema.json` as
+> the schema.
 >
-> For every concept the inventory marks quantitative, write `practice[]`: **exactly ten problems,
-> levels 1 to 10, each level once**, on the ladder in `claude.md` §7a — 1-3 mechanical on bare
-> numbers, 4-6 applied to a real quantity with its unit, 7-8 diagnostic on a worked answer that is
-> wrong, 9-10 transfer from a claim in words. Prompts carry no hint of the answer. Answers show
-> every line. A problem quoting a real figure names its citekey in `refs`; where no real figure
-> exists, use bare numbers rather than inventing one.
+> For every concept the inventory marks quantitative, write `practice[]` on the ladder in
+> `claude.md` §7a — levels 1-3 mechanical on bare numbers, 4-6 applied to a real quantity with
+> its unit, 7-8 diagnostic on a worked answer that is wrong, 9-10 transfer from a claim in words.
+> **How many is your judgement, between three and eighteen**, and you choose it from the
+> technique: one move needs few, several composing moves need many. Levels may repeat and may be
+> skipped. The set must reach both ends of the ladder — a drill set with no mechanical problem or
+> no transfer problem is a blocking failure — and say in one line, in your handover, why you
+> chose the number you chose. Prompts carry no hint of the answer. Answers show every line. A
+> problem quoting a real figure names its citekey in `refs`; where no real figure exists, use
+> bare numbers rather than inventing one.
 >
 > For every factual claim, quote the exact words from the file in `sources/` that carry it, and
 > put the file and section in the locator. If no file in `sources/` carries it, set
 > `opened: false`, say in `verified.note` which instrument is needed, and write the concept so it
 > does not depend on the unopened claim.
 >
-> Prose fields are literal blocks (`|`), never folded (`>`).
+> The locator is for the auditor. **Never tell the reader to open a file in `sources/`** — they
+> do not have this repository. Name the instrument by its own title and give the public URL from
+> `check/references/library.bib`; the search string and the clause stay exactly as they were.
+>
+> Prose fields are literal blocks (`|`), never folded (`>`). Set display arithmetic in a
+> ```` ```working ```` block, never by indenting it — an indented block used to be typeset as
+> computer source code. Write exponents as `10^7` and logarithms as `log10`; the build makes them
+> real superscripts and subscripts, so do not write markup. Introduce an operator in words the
+> first time beside its symbol, then use the symbol.
+>
+> Use `illustrations` (a list) where one illustration does not do the teaching, and
+> `illustration` where it does. If a figure would show something the prose cannot say in the same
+> space, do not draw it here — name it in your handover with the numbers it would use, and the
+> main thread will decide.
 
 ## Task 3 — Opus. Audit. Delegate, and not to whoever drafted it.
 

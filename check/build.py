@@ -67,7 +67,7 @@ PROSE_KEYS = ("text", "simplified_explanation", "body", "analogy_breaks_when",
               "point", "prompt", "answer", "note")
 FOLDED_RE = re.compile(r"^\s*(?:- )?(" + "|".join(PROSE_KEYS) + r"):\s*>[-+]?\s*$", re.M)
 
-# Sequence-read and plain-language thresholds (STYLE.md 10 and 11). Warnings, not errors:
+# Sequence-read and plain-language thresholds (the style sheet §10 and 11). Warnings, not errors:
 # they mark places to look. The numbers are pinned by CALIBRATION below, so they cannot be
 # quietly loosened until everything passes.
 LONG_SENTENCE_WORDS = 25        # reader-facing prose
@@ -79,7 +79,7 @@ LONG_PARAGRAPH_SENTENCES = 7
 # There is a second defect the grade cannot see: prose chopped into fragments scores beautifully
 # and reads worse. A floor was tried and withdrawn - the draft the reader chose has a procedural
 # passage at mean 9.9 words, below any floor that would catch real choppiness elsewhere. Rhythm
-# stays an editorial judgement (STYLE.md 11a), not a measure.
+# stays an editorial judgement (the style sheet §11a), not a measure.
 
 # A grade computed over one bullet is noise: a single 30-word sentence with three long words
 # spikes it, and the author learns to ignore the whole report. Score passages, not fragments.
@@ -87,7 +87,7 @@ GRADE_MIN_WORDS = 60
 STACCATO_MIN_WORDS = 90
 MAX_WARNINGS_PER_FIELD = 2
 
-# The two passages at the top of STYLE.md 11: the register the reader chose, and the sentence
+# The two passages at the top of the style sheet §11: the register the reader chose, and the sentence
 # that made them stop. If a threshold change stops separating these two, the build says so.
 CALIBRATION = {
     "standard": "Here is the trap with Indian law online. One Act can exist in several copies, "
@@ -294,7 +294,7 @@ def readability(rid: str, r: dict, W, hard=None) -> None:
             limit = READING_GRADE_MAX_DEF if is_def else READING_GRADE_MAX
             if grade > limit:
                 found.append(f"reading grade {grade:.1f} against a limit of {limit:.0f} - shorter "
-                             "sentences and commoner words (STYLE.md 11)")
+                             "sentences and commoner words (the style sheet §11)")
 
 
         # a hyphenated word wrapped across two lines renders with a space inside it
@@ -337,6 +337,42 @@ def acronym_defects(text: str) -> list[str]:
 
 # ---------------------------------------------------------------- checks
 
+def check_doc_paths() -> list:
+    """Every repository path the instruction documents name must exist.
+
+    The documents rot silently and in a particular way: a file is renamed or merged, the
+    prompts that point at it keep pointing, and the next chat to follow one improvises. A
+    drafting prompt was found citing two template paths that had not existed for weeks,
+    alongside error messages sending readers to a STYLE.md that had been folded into
+    claude.md. Nothing catches that except looking, so this looks.
+
+    Per-subject files (READY.md, DEFECTS.md, INVENTORY.md and the like) are named
+    generically in the documents and are skipped; they exist once a subject exists.
+    """
+    repo = os.path.dirname(ROOT)
+    generic = {"READY.md", "DEFECTS.md", "INVENTORY.md", "HANDOVER.md", "SOURCES.md",
+               "CLAUDE.md", "OUTLINE.md"}
+    out, pat = [], re.compile(r"`([A-Za-z0-9_][A-Za-z0-9_./-]*\.(?:md|py|yml|yaml|json|bib|docx))`")
+    for doc in ("claude.md", "PIPELINE.md", "PARALLEL.md", "MEASUREMENTS.md"):
+        full = os.path.join(repo, doc)
+        if not os.path.exists(full):
+            continue
+        with open(full, encoding="utf-8") as fh:
+            text = fh.read()
+        seen = set()
+        for m in pat.finditer(text):
+            p = m.group(1)
+            if p in seen or os.path.basename(p) in generic or "<" in p or "SUBJECT" in p:
+                continue
+            seen.add(p)
+            if p.startswith("books/"):
+                continue
+            if not (os.path.exists(os.path.join(repo, p)) or os.path.exists(os.path.join(ROOT, p))):
+                out.append(f"{doc} names `{p}`, which does not exist - a chat following this "
+                           "document will improvise")
+    return out
+
+
 def check(recs: dict, subjects: dict, clusters: dict, bibkeys: set):
     """Returns (blocking, warnings). Blocking failures stop a render."""
     block, warn = [], []
@@ -359,13 +395,13 @@ def check(recs: dict, subjects: dict, clusters: dict, bibkeys: set):
     except ModuleNotFoundError:
         warn.append("jsonschema not installed - structural validation skipped")
 
-    # the plain-language thresholds must still separate the two passages in STYLE.md 11
+    # the plain-language thresholds must still separate the two passages in the style sheet §11
     hard = load_hardwords()
     g_ok, g_bad = reading_grade(CALIBRATION["standard"]), reading_grade(CALIBRATION["rejected"])
     if not (g_ok <= READING_GRADE_MAX < g_bad):
         block.append(f"prose thresholds no longer discriminate: the chosen register scores "
                      f"{g_ok:.1f} and the rejected sentence {g_bad:.1f} against a limit of "
-                     f"{READING_GRADE_MAX:.0f} (STYLE.md 11)")
+                     f"{READING_GRADE_MAX:.0f} (the style sheet §11)")
     if not any(e["_re"].search(CALIBRATION["rejected"]) for e in hard["replace"]):
         block.append("hard-word list no longer catches the sentence it was built from")
 
@@ -473,7 +509,7 @@ def check(recs: dict, subjects: dict, clusters: dict, bibkeys: set):
             excused = (r.get("practice_note") or "").strip()
             if not PRACTICE_MIN <= len(prac) <= PRACTICE_MAX and not excused:
                 E(rid, f"quantitative concept carries {len(prac)} practice problems; the range is "
-                       f"{PRACTICE_MIN} to {PRACTICE_MAX} (STYLE.md 7a). Judge it by the technique: "
+                       f"{PRACTICE_MIN} to {PRACTICE_MAX} (the style sheet §7a). Judge it by the technique: "
                        "one move needs few, several moves need many. Outside this range, say why "
                        "in 'practice_note' and the build will accept it.")
             levels = [p.get("level") for p in prac if isinstance(p.get("level"), int)]
@@ -535,6 +571,8 @@ def check(recs: dict, subjects: dict, clusters: dict, bibkeys: set):
         for n in range(len(skills)):
             if f"{sid}-R{rung}-K{n+1:02d}" not in covered[(sid, rung)]:
                 warn.append(f"{sid} rung {rung}: skill K{n+1:02d} has no exercise")
+
+    warn += check_doc_paths()
 
     # bridge sufficiency, where a rung above exists
     for sid, rung in sorted(present):
@@ -984,7 +1022,7 @@ def reports(recs, subjects, clusters, block, warn):
             fh.write("## Plain language\n\n"
                      f"Reading grade, worst {len(worst)} reader-facing fields. "
                      f"Limit {READING_GRADE_MAX:.0f}; `definition.text` is exempt and held to "
-                     f"{READING_GRADE_MAX_DEF:.0f} (STYLE.md §11).\n\n"
+                     f"{READING_GRADE_MAX_DEF:.0f} (the style sheet §11).\n\n"
                      "| Grade | Concept | Field |\n| --- | --- | --- |\n")
             for g, cid, field in worst:
                 fh.write(f"| {g:.1f}{' ⚠' if g > READING_GRADE_MAX else ''} | {cid} | {field} |\n")
@@ -1003,7 +1041,7 @@ def reports(recs, subjects, clusters, block, warn):
         if drills:
             fh.write("## Practice sets\n\n"
                      f"Problems per quantitative concept. The range is {PRACTICE_MIN} to "
-                     f"{PRACTICE_MAX} (STYLE.md §7a), judged by how many moves the technique has, "
+                     f"{PRACTICE_MAX} (the style sheet §7a), judged by how many moves the technique has, "
                      "with the bands each drill set reaches shown so that a set which never leaves "
                      "the mechanical end is visible here rather than only on a careful read.\n\n"
                      "| Concept | Problems | Bands reached |\n| --- | --- | --- |\n")
