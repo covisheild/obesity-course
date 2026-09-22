@@ -21,10 +21,24 @@ Open `books/<SUBJECT>/READY.md`. If any line says **no**, the pipeline does not 
 
 This is not a formality and it is not satisfied by intending to find the source later. A record
 whose concept is `empirical` or `institutional` and whose source is unopened is now a **blocking**
-build failure, so a booklet drafted ahead of its sources cannot be committed clean. Retrieval works
-from inside a session — an FSSAI compendium and a 2025 journal article were both pulled with
-clause-level detail on 22 September 2026 — so the gate is passable. The style sheet §7b lists where
-to look. Get that
+build failure, so a booklet drafted ahead of its sources cannot be committed clean. Retrieval from inside a
+session works, but only up to a boundary that is worth knowing before you plan a Part around it.
+
+**What a session can obtain.** HTML pages on hosts that do not gate robots. BIPM's own SI definition
+and the NIST SI guide were both pulled whole on 22 September 2026 and are now in `sources/`. A
+primary instrument published as a web page is reachable, and that covers more than it sounds like.
+
+**What a session cannot.** PDFs — they fetch but yield no text, so the FSSAI labelling compendium
+is readable by a model summarising it and not storable as a source anyone can quote against.
+CAPTCHA-gated hosts, which includes NCBI Bookshelf and PubChem. Anything behind a login. Direct
+downloads are blocked at the proxy, so there is no way around this from inside.
+
+**What that means for planning.** A section resting on a PDF instrument cannot clear the source
+gate from a session alone, and the gate now blocks rather than warns. Someone with a browser has to
+put the file in `sources/` — which is a five-minute job and is the one part of this pipeline that
+still needs a person. Find that out at the gate, before the inventory, not at the audit.
+
+The style sheet §7b lists where to look, and prefers HTML primary sources for exactly this reason. Get that
 file, drop it in `sources/`, add a line to `SOURCES.md` saying what it is, then begin.
 
 For S48 three files are missing and they are the three that matter most:
