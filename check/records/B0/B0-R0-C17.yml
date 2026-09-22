@@ -1,0 +1,998 @@
+concept_id: B0-R0-C17
+subject: B0
+rung: 0
+sequence: 17
+name: Two equations at once
+concept_type: derivable
+clusters:
+- measurement-inference
+- craft-and-integrity
+ground_floor_deps: []
+concept_deps:
+- B0-R0-C12
+- B0-R0-C15
+- B0-R0-C16
+definition:
+  text: |
+    An equation may hold two unknowns. On its own such an equation does not fix either of them.
+    It states a relation between them: every value given to one fixes a value of the other, so
+    the equation has as many solutions as there are values to try.
+
+    A system of two equations in two unknowns is a pair of equations required to hold at the same
+    time. A solution of the system is a pair of values that satisfies both equations, not one.
+
+    Two methods solve such a system. Substitution rearranges one equation to give one unknown in
+    terms of the other, and puts that expression into the second equation, which then holds one
+    unknown. Elimination adds a multiple of one equation to the other, choosing the multiple so
+    that one unknown cancels.
+
+    A system of two such equations has exactly one solution, or none, or infinitely many. It has
+    none when the two equations make statements that cannot both be true. It has infinitely many
+    when one equation is a multiple of the other, and so states nothing the first did not.
+  references:
+  - citekey: openstax_college_algebra_2e
+    kind: textbook
+    locator: ch. 7, Systems of Equations and Inequalities - on systems of linear equations in two
+      variables, and on solving them by substitution and by elimination
+    verified:
+      resolved_id: https://openstax.org/books/college-algebra-2e
+      opened: true
+      claim_located: false
+      checked_on: '2026-09-23'
+      note: |-
+        Anchor confirmed by this session on 2026-09-22: the book's own table of contents was
+        opened and the cited chapter located in it. The passage behind this definition has not
+        been read, which is why claim_located stays false. The content is a derivation the
+        reader can check, so it does not rest on the anchor.
+simplified_explanation: |
+  The section before this one solved equations with one letter in them. This one starts where a
+  line has two.
+
+  Here is such a line.
+
+  ```working
+      x + y = 10
+  ```
+
+  Ask what x is. There is no single answer. Try some pairs and see.
+
+  ```table
+      x   y
+      1   9
+      4   6
+      7   3
+  ```
+
+  Every pair in that list makes the statement true, and there are as many more as you care to
+  write down.
+
+  That is the point to hold on to, and it is the one worth more than the method that follows. One
+  equation with two unknowns does not pin either of them down. It ties them together. Fix one and
+  the other follows; fix neither and you have nothing.
+
+  So when somebody gives you one relationship between two quantities and then tells you a fact
+  about one of them, they have told you something. When they give you the relationship alone and
+  then say what one of the quantities is, they have not.
+
+  Now add a second statement that has to be true at the same time.
+
+  ```working
+      x + y = 10
+      x minus y = 4
+  ```
+
+  Now there is one pair that works, and only one. Two statements, two unknowns.
+
+  There are two ways to find it, and they are the same idea approached from different sides.
+
+  The first is substitution. Rearrange one equation so that one letter stands alone, then put
+  that into the other equation. The second equation then holds only one letter, which you already
+  know how to solve.
+
+  Rearrange the first line to give x on its own.
+
+  ```working
+      x = 10 minus y
+  ```
+
+  Now put that in place of x in the second line.
+
+  ```working
+      10 minus y minus y = 4
+      10 minus 2y = 4
+      2y = 6
+      y = 3
+  ```
+
+  Then go back and get x.
+
+  ```working
+      x = 10 minus 3
+      x = 7
+  ```
+
+  The second way is elimination. Add the two equations together, left to left and right to right.
+  The y and the minus y cancel.
+
+  ```working
+      2x = 10 plus 4
+      10 plus 4 = 14
+      14 divided by 2 = 7
+  ```
+
+  Same answer, fewer steps here, because this pair happened to be built for it.
+
+  Now check. Put both numbers into both statements, not into one of them.
+
+  ```working
+      7 plus 3 = 10
+      7 minus 3 = 4
+  ```
+
+  Both hold, so the pair is the solution.
+
+  Two more shapes to recognise, because they arrive without warning.
+
+  Sometimes the second statement repeats the first.
+
+  ```working
+      x + y = 10
+      2x + 2y = 20
+  ```
+
+  The second line is the first line doubled. It is true whenever the first is true, so it adds
+  nothing, and you are back to as many answers as you like.
+
+  And sometimes the two statements cannot both hold.
+
+  ```working
+      x + y = 10
+      x + y = 12
+  ```
+
+  Two numbers cannot add to 10 and to 12. There is no pair at all, and the useful thing to say is
+  not the answer but that one of the two statements is wrong.
+illustration:
+  body: |
+    A packet reaches you with two lines of its panel gone. The energy is still there, 468
+    kilocalories in every 100 grams, and so is the protein, 12 grams. The carbohydrate line and
+    the fat line have torn away. Those figures are made up for this problem. The label rule is
+    the real one you have used in the two sections before this.
+
+    ```working
+        E = 4c + 4p + 9f
+    ```
+
+    Put in what the panel still gives you. The protein is 12 grams, so the protein term is 4
+    times 12.
+
+    ```working
+        4 times 12 = 48
+    ```
+
+    Take that 48 off both sides.
+
+    ```working
+        468 minus 48 = 420
+    ```
+
+    So what you know is this.
+
+    ```working
+        4c + 9f = 420
+    ```
+
+    One line, two unknowns. Here is the answer that comes back first, and it is not wrong
+    arithmetic. It is the belief that there is one answer to find.
+
+    There is not. Look at three pairs that all satisfy that line.
+
+    ```table
+        carbohydrate grams   fat grams   from carbohydrate   from fat   total
+        60   20   240   180   420
+        105   0   420   0   420
+        15   40   60   360   420
+    ```
+
+    Every row is a genuine answer. The packet could have been any of them, and this line cannot
+    tell you which. Work out any one of the rows yourself and you will see it hold.
+
+    ```working
+        4 times 15 = 60
+        9 times 40 = 360
+        60 plus 360 = 420
+    ```
+
+    That is what one equation with two unknowns does. It ties c and f together. It fixes neither.
+
+    So what would fix them? A second statement that has to be true at the same time.
+
+    Suppose the maker tells you the carbohydrate is three times the fat. That sentence is made up
+    for this problem too, and where a second statement comes from is the thing to check hardest.
+    Write it beside the first.
+
+    ```working
+        4c + 9f = 420
+        c = 3f
+    ```
+
+    Now substitute. The second line says c is 3f, so put 3f wherever c stands in the first line.
+
+    ```working
+        4 times 3f, plus 9f = 420
+        12f + 9f = 420
+        21f = 420
+    ```
+
+    Divide both sides by 21.
+
+    ```working
+        420 divided by 21 = 20
+    ```
+
+    Twenty grams of fat. Now go back for the carbohydrate.
+
+    ```working
+        3 times 20 = 60
+    ```
+
+    Sixty grams of carbohydrate.
+
+    Check both numbers in both statements. Checking one is not checking the pair.
+
+    ```working
+        4 times 60 = 240
+        9 times 20 = 180
+        240 plus 180 = 420
+    ```
+
+    The first statement holds. And 60 is three times 20, so the second holds as well.
+  analogy_breaks_when: |
+    The second statement was handed to you here. In real work it has to come from somewhere, and
+    where it came from is the part that decides whether your answer means anything.
+
+    Two statements pin two unknowns down only when they say different things. A second
+    statement that repeats the first leaves you exactly where you started. That can be hard to
+    spot. A repeat wearing different numbers does not look like a repeat.
+
+    And solving a pair tells you what follows from the two statements. It does not tell you that
+    either statement is true. Feed in a wrong panel and you get a wrong pair, with no sign on the
+    page that anything went wrong.
+  numbers:
+  - value: '4'
+    unit: kilocalories per gram of protein, for calculating declared energy, Regulation 5(3)(e)(i)
+    citekey: fssai_labelling_2020
+    quote: (D) Protein 4 kcal/g
+    as_of: '2026-09-23'
+  - value: '9'
+    unit: kilocalories per gram of fat, for calculating declared energy, Regulation 5(3)(e)(i)
+    citekey: fssai_labelling_2020
+    quote: (E) Fat 9 kcal/g
+    as_of: '2026-09-23'
+must_know:
+- point: |
+    One equation with two unknowns has many answers, not one. Anyone who reads a single
+    relationship as fixing a single quantity is reading something that is not there. That is
+    the commonest way a number gets invented out of a real formula.
+  kind: misconception
+  bearing: methodological
+- point: |
+    Count the unknowns and count the equations before you start. Two unknowns need two
+    statements, and if you have only one, the honest answer is a range rather than a number.
+  kind: move
+  bearing: methodological
+- point: |
+    Check a solved pair in both equations. A pair that satisfies one of them and not the other
+    is not a solution. Check only the equation you solved last and you will never see it.
+  kind: trap
+  bearing: methodological
+- point: |
+    When somebody draws a conclusion about one quantity from a single relationship, ask what the
+    second statement is and where it came from. That question is usually more productive in a
+    meeting than arguing about the arithmetic.
+  kind: consequence
+  bearing: policy
+- point: |
+    Two statements pin two unknowns down only when they say different things. Two that repeat
+    each other leave you with as many answers as before. Two that contradict each other leave
+    you with none, which is itself worth reporting.
+  kind: boundary
+  bearing: methodological
+- point: |
+    Pick the method by the shape in front of you. Use substitution when one equation already has
+    a letter standing nearly alone. Use elimination when the same letter carries matching numbers
+    in both lines.
+  kind: move
+  bearing: teaching
+- point: |
+    Solving a pair tells you what follows from the two statements, and nothing about whether
+    either is true. So the value of an answer is set by the weaker of the two inputs, and you
+    report it with both of them named.
+  kind: boundary
+  bearing: methodological
+exercises:
+- type: interpretation
+  prompt: |
+    A district officer shows you one line from a planning note.
+
+    > Every meal served costs us the grain plus the cooking fuel, and the two together come to 18
+    > rupees a meal.
+
+    They then ask you how much the grain alone costs.
+
+    Say what you can and cannot answer from that line. Then say exactly what one further piece of
+    information would let you answer it, and give two different forms that piece could take.
+  answer: |
+    What the line gives you is a relation between two quantities. Call the grain cost g and the
+    fuel cost k, both in rupees a meal.
+
+    ```working
+        g + k = 18
+    ```
+
+    What you can say: the grain cost and the fuel cost add to 18 rupees a meal. So neither of
+    them can be more than 18, and if one goes up the other must come down by the same amount.
+
+    What you cannot say: what the grain costs. Any pair adding to 18 fits this line, and the line
+    carries nothing that prefers one pair to another.
+
+    What would settle it is a second statement about the same two quantities, true at the same
+    time. It could take either of these forms, among others.
+
+    The first form names one of them outright.
+
+    ```working
+        k = 5
+    ```
+
+    Then the grain cost follows at once.
+
+    ```working
+        18 minus 5 = 13
+    ```
+
+    The second form relates them again, differently.
+
+    ```working
+        g = 2k
+    ```
+
+    Then substitute and solve.
+
+    ```working
+        2k + k = 18
+        3k = 18
+        18 divided by 3 = 6
+    ```
+
+    The fuel is 6 rupees and the grain is 12.
+
+    ```working
+        18 minus 6 = 12
+    ```
+
+    What matters in the answer you give the officer is the order of the two sentences. First: I
+    cannot answer that from this line. Second: here is what I would need. Giving a number instead
+    would be inventing one.
+- type: teaching
+  prompt: |
+    A journalist has three minutes and no appetite for algebra. They have been told two things
+    about a scheme. Its total spend went up, and its total number of meals went up. They want
+    to write that the cost of each meal went up.
+
+    Explain why that does not follow, in words they can use, with one sentence they could quote.
+  answer: |
+    Three minutes, no symbols, and one picture.
+
+    Start with the shape of what they have. Two numbers went up. The thing they want to write
+    about is a third number, built out of both. Knowing that two numbers rose does not tell you
+    what happened to something made by dividing one by the other.
+
+    Give them a case they can hold. Say a scheme spent more money and served more meals, and that
+    the meals went up faster than the money. Then the cost of each meal went down while both
+    totals went up. Nothing in the two rising figures rules that out.
+
+    Then say what would settle it. The spend in each year and the meal count in each year, all
+    four numbers. With those, the cost of a meal in each year is one division, and the comparison
+    is a fact rather than a guess.
+
+    The quotable sentence: "Two totals going up tells you nothing about the cost of a meal. The four
+    numbers that would settle it take a morning to get."
+
+    What not to say: do not say the claim is false. You do not know that either. You know it
+    does not follow. That is a different statement, and a stronger one. It survives whatever
+    the four numbers turn out to be.
+quantitative: true
+practice:
+- level: 1
+  prompt: |
+    Two statements have to hold at the same time.
+
+    ```working
+        x + y = 7
+        x minus y = 1
+    ```
+
+    Say for each of these pairs whether it is a solution.
+
+    ```table
+        x   y
+        4   3
+        5   2
+        6   1
+    ```
+  answer: |
+    Test each pair in both statements.
+
+    The first pair.
+
+    ```working
+        4 plus 3 = 7
+        4 minus 3 = 1
+    ```
+
+    Both hold, so this pair is a solution.
+
+    The second pair.
+
+    ```working
+        5 plus 2 = 7
+        5 minus 2 = 3
+    ```
+
+    The first holds and the second does not, because 3 is not 1. So this pair is not a solution.
+
+    The third pair.
+
+    ```working
+        6 plus 1 = 7
+        6 minus 1 = 5
+    ```
+
+    Again the first holds and the second does not. Not a solution.
+
+    Notice that all three pairs passed the first test. That is exactly why a pair is checked in
+    both statements and never in one.
+- level: 2
+  prompt: |
+    Write down four different pairs of numbers that make this statement true.
+
+    ```working
+        x + y = 12
+    ```
+
+    Then say how many such pairs there are, and what that means about what this one line can tell
+    you.
+  answer: |
+    Four pairs, and any four will do.
+
+    ```table
+        x   y
+        0   12
+        3   9
+        5   7
+        10   2
+    ```
+
+    Check one of them.
+
+    ```working
+        5 plus 7 = 12
+    ```
+
+    How many are there: as many as you like. Pick any number for x at all and subtract it from 12
+    to get y, and the pair works. There is no end to them.
+
+    What that means: this line cannot tell you what x is. It can only tell you what y is once
+    somebody else has told you x. One statement, two unknowns, no answer.
+- level: 3
+  prompt: |
+    Solve this pair by substitution.
+
+    ```working
+        y = 2x
+        x + y = 18
+    ```
+  answer: |
+    The first line already has y standing alone, so put 2x in place of y in the second line.
+
+    ```working
+        x + 2x = 18
+        3x = 18
+    ```
+
+    Divide both sides by 3.
+
+    ```working
+        18 divided by 3 = 6
+    ```
+
+    So x is 6. Now go back to the first line for y.
+
+    ```working
+        2 times 6 = 12
+    ```
+
+    So y is 12.
+
+    Check the pair in both statements.
+
+    ```working
+        6 plus 12 = 18
+    ```
+
+    And 12 is twice 6, so the first statement holds too.
+- level: 3
+  prompt: |
+    Solve this pair by elimination.
+
+    ```working
+        x + y = 15
+        x minus y = 3
+    ```
+  answer: |
+    Add the two statements together, left side to left side and right side to right side. The y
+    on the first line and the minus y on the second cancel each other.
+
+    ```working
+        2x = 15 plus 3
+        15 plus 3 = 18
+        18 divided by 2 = 9
+    ```
+
+    So x is 9. Put that into the first statement to get y.
+
+    ```working
+        15 minus 9 = 6
+    ```
+
+    So y is 6.
+
+    Check the pair in both statements.
+
+    ```working
+        9 plus 6 = 15
+        9 minus 6 = 3
+    ```
+
+    Both hold.
+
+    Why elimination was the easier route here: the y carried the same number in both lines. One line
+    had a plus and the other a minus. So adding removed it in a single step. Had neither
+    letter matched, substitution would have been the shorter way.
+- level: 4
+  prompt: |
+    A panel gives the energy as 440 kilocalories in every 100 grams and the protein as 10 grams.
+    The carbohydrate line and the fat line are missing. A note attached to the packet says the
+    carbohydrate and the fat together weigh 75 grams. All four figures are made up for this
+    problem.
+
+    Using the factors the Food Safety and Standards (Labelling and Display) Regulations, 2020 set
+    for calculating declared energy, work out the carbohydrate and the fat. Show every line and
+    check the pair in both statements.
+  answer: |
+    Write the label rule and take the protein term out of it.
+
+    ```working
+        E = 4c + 4p + 9f
+        4 times 10 = 40
+        440 minus 40 = 400
+    ```
+
+    So the first statement is this.
+
+    ```working
+        4c + 9f = 400
+    ```
+
+    The note gives the second statement.
+
+    ```working
+        c + f = 75
+    ```
+
+    Rearrange the second to put c on its own, then substitute it into the first.
+
+    ```working
+        c = 75 minus f
+        4 times the whole of 75 minus f, plus 9f = 400
+    ```
+
+    Work the bracket out. Four times 75 is 300, and four times minus f is minus 4f.
+
+    ```working
+        4 times 75 = 300
+        300 minus 4f + 9f = 400
+        300 + 5f = 400
+    ```
+
+    Take 300 off both sides, then divide by 5.
+
+    ```working
+        400 minus 300 = 100
+        100 divided by 5 = 20
+    ```
+
+    Twenty grams of fat. Now the carbohydrate.
+
+    ```working
+        75 minus 20 = 55
+    ```
+
+    Fifty-five grams of carbohydrate.
+
+    Check the pair in both statements.
+
+    ```working
+        4 times 55 = 220
+        9 times 20 = 180
+        220 plus 180 = 400
+    ```
+
+    ```working
+        55 plus 20 = 75
+    ```
+
+    Both hold.
+  refs:
+  - fssai_labelling_2020
+- level: 5
+  prompt: |
+    Schedule II of the National Food Security Act, 2013 sets two figures you need here. The hot
+    cooked meal for lower primary classes is 450 kilocalories. The one for upper primary classes
+    is 700 kilocalories.
+
+    A kitchen serves 50 meals in a day, some lower primary and some upper primary, and its plan
+    totals 27,500 kilocalories for the day. The 50 and the 27,500 are made up for this problem.
+
+    Work out how many meals of each kind the plan is for. Show every line, and check the pair in
+    both statements.
+  answer: |
+    Name the two unknowns. Let L stand for the number of lower primary meals and U for the number
+    of upper primary meals.
+
+    The first statement is the count of meals.
+
+    ```working
+        L + U = 50
+    ```
+
+    The second is the total kilocalories, with each meal carrying its own figure from Schedule
+    II.
+
+    ```working
+        450L + 700U = 27,500
+    ```
+
+    Rearrange the first statement and substitute into the second.
+
+    ```working
+        L = 50 minus U
+        450 times the whole of 50 minus U, plus 700U = 27,500
+    ```
+
+    Work the bracket out.
+
+    ```working
+        450 times 50 = 22,500
+        22,500 minus 450U + 700U = 27,500
+    ```
+
+    The two U terms collect into one.
+
+    ```working
+        700 minus 450 = 250
+        22,500 + 250U = 27,500
+    ```
+
+    Take 22,500 off both sides, then divide by 250.
+
+    ```working
+        27,500 minus 22,500 = 5,000
+        5,000 divided by 250 = 20
+    ```
+
+    Twenty upper primary meals. Now the lower primary count.
+
+    ```working
+        50 minus 20 = 30
+    ```
+
+    Thirty lower primary meals.
+
+    Check the pair in both statements.
+
+    ```working
+        30 plus 20 = 50
+    ```
+
+    ```working
+        450 times 30 = 13,500
+        700 times 20 = 14,000
+        13,500 plus 14,000 = 27,500
+    ```
+
+    Both hold. The two figures from Schedule II come from the Act. The split of 30 and 20 is your own
+    arithmetic on a made-up plan. Say so whenever you quote it.
+  refs:
+  - nfsa_2013
+- level: 6
+  prompt: |
+    Schedule II of the National Food Security Act, 2013 sets four figures you need here. The hot
+    cooked meal for lower primary classes is 450 kilocalories and 12 grams of protein. The one
+    for upper primary classes is 700 kilocalories and 20 grams of protein.
+
+    A kitchen's day sheet gives only two totals: 27,500 kilocalories and 760 grams of protein.
+    The meal count has not been written down. Both totals are made up for this problem.
+
+    Work out how many meals of each kind the sheet describes. Use elimination rather than
+    substitution. Show every line, and check the pair in both statements.
+  answer: |
+    Let L stand for the number of lower primary meals and U for the number of upper primary
+    meals. Each kind carries its own pair of figures from Schedule II, so each total gives you
+    one statement.
+
+    ```working
+        450L + 700U = 27,500
+        12L + 20U = 760
+    ```
+
+    To eliminate U, make the U terms match. The first line carries 700U and the second carries
+    20U, so multiply the whole of the second line by 35.
+
+    ```working
+        20 times 35 = 700
+        12 times 35 = 420
+        760 times 35 = 26,600
+    ```
+
+    So the second statement, multiplied through, says this.
+
+    ```working
+        420L + 700U = 26,600
+    ```
+
+    Now subtract that from the first statement, left from left and right from right. The U terms
+    cancel.
+
+    ```working
+        450 minus 420 = 30
+        27,500 minus 26,600 = 900
+        30L = 900
+    ```
+
+    Divide both sides by 30.
+
+    ```working
+        900 divided by 30 = 30
+    ```
+
+    Thirty lower primary meals. Now go back for U, using the protein statement.
+
+    ```working
+        12 times 30 = 360
+        760 minus 360 = 400
+        400 divided by 20 = 20
+    ```
+
+    Twenty upper primary meals.
+
+    Check the pair in both statements.
+
+    ```working
+        450 times 30 = 13,500
+        700 times 20 = 14,000
+        13,500 plus 14,000 = 27,500
+    ```
+
+    ```working
+        12 times 30 = 360
+        20 times 20 = 400
+        360 plus 400 = 760
+    ```
+
+    Both hold. Notice what you were given and what you were not: no meal count at all, and two
+    totals of different kinds. Two totals were enough, because energy and protein are different
+    statements about the same two unknowns.
+  refs:
+  - nfsa_2013
+- level: 7
+  prompt: |
+    Here is a worked answer. Find the step that broke.
+
+    ```working
+        two statements have to hold at the same time
+        x + y = 20
+        x minus y = 6
+        rearrange the first statement
+        x = 20 minus y
+        put that into the first statement
+        20 minus y + y = 20
+        20 = 20
+        so both statements hold whatever y is
+        and any pair adding to 20 will do
+    ```
+  answer: |
+    The step that broke is the sixth line. The rearranged first statement was put back into the
+    first statement.
+
+    That can only ever give something true and useless. The rearranged line says the same thing
+    as the line it came from, so putting one into the other says it twice. The 20 equals 20 that
+    came out is not a finding. It is the working going round in a circle.
+
+    The whole point of substituting is to carry what you learned from one statement into the
+    other one. Put the rearranged first line into the second.
+
+    ```working
+        20 minus y minus y = 6
+        20 minus 2y = 6
+    ```
+
+    Take 20 off both sides, then divide by minus 2. Easier still, add 2y to both sides and take 6
+    off both sides.
+
+    ```working
+        20 minus 6 = 14
+        2y = 14
+        14 divided by 2 = 7
+    ```
+
+    So y is 7. Now go back for x.
+
+    ```working
+        20 minus 7 = 13
+    ```
+
+    So x is 13.
+
+    Check in both statements.
+
+    ```working
+        13 plus 7 = 20
+        13 minus 7 = 6
+    ```
+
+    Why it looks reasonable: every line of the working is a true statement, and the last line
+    is the truest of all. Nothing was miscalculated. A reader watching for arithmetic errors
+    finds none. The error is in which statement the substitution went into, and the page does
+    not label them.
+- level: 8
+  prompt: |
+    Here is a worked answer. Find the step that broke.
+
+    ```working
+        a note carries two statements about a kitchen's day
+        the lower primary and upper primary meals together number 50
+        L + U = 50
+        twice the lower primary meals and twice the upper primary meals together number 100
+        2L + 2U = 100
+        that is two statements and two unknowns, so the pair can be solved
+        from the first, L = 50 minus U
+        put it into the second
+        2 times the whole of 50 minus U, plus 2U = 100
+        100 minus 2U + 2U = 100
+        100 = 100
+        so L is 25 and U is 25
+    ```
+  answer: |
+    Two things broke, and the second one is the one that matters.
+
+    The first is the last line. The working reached a statement that is true for every pair, and
+    then a pair was named anyway. Nothing in the working produced 25 and 25. The numbers were
+    chosen because the two unknowns looked symmetrical.
+
+    The second is upstream, and it is why the working could not have ended any other way. The
+    second statement is the first statement doubled. Multiply the first by 2 and you get the
+    second exactly, so the second says nothing the first did not already say.
+
+    ```working
+        50 times 2 = 100
+    ```
+
+    So this is one statement written twice, not two statements. Two unknowns and one statement
+    means many answers, and 25 with 25 is only one of them.
+
+    ```working
+        30 plus 20 = 50
+        10 plus 40 = 50
+    ```
+
+    Both of those pairs satisfy the note just as well as 25 and 25 does.
+
+    What a real second statement would look like: one that says something the first cannot. A
+    total of kilocalories for the day does that, because a lower primary meal and an upper
+    primary meal carry different figures.
+
+    Why it looks reasonable: the working counted two lines and two unknowns and drew the usual
+    conclusion, and counting lines is what most people do. The substitution was carried out
+    correctly. And 25 with 25 is a pair that does satisfy the statement, so checking it back
+    against the note would not have caught this either. The only thing that catches it is asking
+    whether the second line says anything new.
+- level: 10
+  prompt: |
+    A programme note says this about a school kitchen.
+
+    > Between last year and this year the kitchen's total number of meals went up, and its total
+    > kilocalories went up. So it served more lower primary meals and more upper primary meals
+    > than it did last year.
+
+    Schedule II of the National Food Security Act, 2013 sets the lower primary hot cooked meal at
+    450 kilocalories. It sets the upper primary hot cooked meal at 700 kilocalories. Take last year as
+    30 lower primary meals and 20 upper primary meals a day. Those two counts are made up for
+    this problem.
+
+    Decide what to compute, compute it, and say what your answer does not establish.
+  answer: |
+    What to compute: whether a pair of counts exists in which both totals rise and one of the two
+    counts falls. If one does, the claim does not follow, whatever this kitchen actually did.
+
+    Start with last year's two totals.
+
+    ```working
+        30 plus 20 = 50
+    ```
+
+    ```working
+        450 times 30 = 13,500
+        700 times 20 = 14,000
+        13,500 plus 14,000 = 27,500
+    ```
+
+    Fifty meals and 27,500 kilocalories.
+
+    Now try this year as 26 lower primary meals and 25 upper primary meals.
+
+    ```working
+        26 plus 25 = 51
+    ```
+
+    ```working
+        450 times 26 = 11,700
+        700 times 25 = 17,500
+        11,700 plus 17,500 = 29,200
+    ```
+
+    Fifty-one meals and 29,200 kilocalories. Both totals went up. The lower primary count went
+    down, from 30 to 26.
+
+    So the claim does not follow. Two totals are two statements about two unknowns, and knowing
+    that both totals rose is not knowing either unknown. The upper primary meal carries a larger
+    figure, so shifting meals towards it lifts the kilocalorie total even while one count falls.
+
+    What this does not establish. It does not establish that the lower primary count actually
+    fell, and nothing here says the note's conclusion is false. It says the two totals do not
+    reach it. It also does not establish what the kitchen did at all, because the counts used
+    here were invented to test the reasoning. And it says nothing about whether any child ate a
+    meal, since a meal counted and a meal eaten are two different things.
+
+    What to ask for instead: both counts for both years. Two counts and two totals for one year
+    would also do it, because then you have two statements and two unknowns and the pair solves.
+  refs:
+  - nfsa_2013
+retrieval_items:
+- q: How many solutions does one equation with two unknowns have?
+  a: As many as you like. Fix either unknown and the equation fixes the other, so the equation
+    ties the two together rather than pinning either of them down.
+- q: What are the two ways of solving two equations in two unknowns, and when does each suit?
+  a: Substitution, which rearranges one equation to give a letter alone and puts that into the
+    other, and suits a pair where one letter nearly stands alone already. Elimination, which adds
+    a multiple of one equation to the other so a letter cancels, and suits a pair where the same
+    letter carries matching numbers.
+- q: What are the two ways a pair of equations can fail to give one answer?
+  a: The second can repeat the first, in which case there are as many answers as before. Or the
+    two can contradict each other, in which case there is no answer at all and one of the two
+    statements is wrong.
+provenance:
+  map_version_id: fc19c8bc-a216-4131-99fb-ebe3f19cec4a
+  outcome_refs:
+  - B0-C3
+review:
+  stability: long
+  trigger: '2031-09-23, and sooner on either of two events: the next amendment to Schedule II of
+    the National Food Security Act, 2013, or the next amendment to Regulation 5(3)(e)(i) of the
+    Food Safety and Standards (Labelling and Display) Regulations, 2020. The technique is durable
+    and dated five-yearly; the meal standards and the conversion factors that the illustration and
+    practice levels 4, 5, 6 and 10 are drilled on are set by a statute and by a regulator, and both
+    can be revised.'
+  last_reviewed: '2026-09-23'
+status: drafted

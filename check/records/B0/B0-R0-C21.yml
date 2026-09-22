@@ -1,0 +1,1000 @@
+concept_id: B0-R0-C21
+subject: B0
+rung: 0
+sequence: 21
+name: Rate of change, average and instantaneous, without the machinery
+concept_type: derivable
+clusters:
+- measurement-inference
+- craft-and-integrity
+ground_floor_deps: []
+concept_deps:
+- B0-R0-C05
+- B0-R0-C11
+- B0-R0-C19
+- B0-R0-C20
+definition:
+  text: |
+    A rate of change is a change in a quantity divided by the time that change took. Its unit is
+    the unit of the quantity divided by the unit of time.
+
+    The average rate of change over an interval is the change between the two ends of the interval
+    divided by the length of the interval. Drawn on a graph with time along the bottom, it is the
+    slope of the straight line joining the two end points. That joining line is a chord.
+
+    The rate at an instant is the rate of change at one moment rather than over a stretch of time.
+    On a graph it is the steepness of the curve at that one point, which is the slope of the
+    straight line that touches the curve there. That touching line is a tangent.
+
+    For a straight line the average rate over every interval is the same number, and it equals the
+    rate at every instant on the line. For a curve the two differ, and an average over an interval
+    fixes nothing about where inside that interval the change happened.
+
+    An average rate over an interval is exact as a statement about that interval. It becomes a
+    claim about a moment only when somebody quotes it as one.
+
+    Mathematics calls the rate at an instant the derivative and writes it dy/dx.
+  references:
+  - citekey: openstax_calculus_v1
+    kind: textbook
+    locator: ch. 3, Derivatives, and the sections on average and instantaneous rate of change
+    verified:
+      resolved_id: https://openstax.org/details/books/calculus-volume-1
+      opened: true
+      claim_located: false
+      checked_on: '2026-09-23'
+      note: |-
+        Anchor confirmed by this session on 2026-09-22: the book's own table of contents was
+        opened and the cited chapter located in it. The passage behind this definition has not
+        been read, which is why claim_located stays false. The content is a derivation the
+        reader can check, so it does not rest on the anchor.
+simplified_explanation: |
+  A slope is a rate. You met that in the section on graphs. This section is about the rate you will
+  meet most often, which is how fast a quantity changes as time passes.
+
+  A rate of change is a change divided by the time it took. Take the quantity at the start. Take it
+  at the end. Subtract to get the change. Divide by how long it took.
+
+  ```working
+      the rate of change = the change in the quantity, divided by the time it took
+  ```
+
+  The unit falls out of the division, exactly as it did for a slope. Kilograms divided by months is
+  kilograms per month. A rate of change is never in kilograms on its own, and a rate quoted without
+  its unit is a number you cannot check.
+
+  Now the part people get wrong, and it is the whole of this section.
+
+  A rate can be worked out over a stretch of time, or asked for at a single moment. Those are two
+  different quantities and they usually have two different values.
+
+  **The average rate over an interval.** It uses the value at the start and the value at the end. It
+  uses nothing in between. So it can tell you nothing about what happened in between.
+
+  **The rate at one moment.** This is how fast the quantity is changing right now. Its name is the
+  instantaneous rate. On a graph it is the steepness of the line at that single point.
+
+  For a straight line the two are the same number. A straight line has one steepness and it has it
+  everywhere. Pick any two points on it and you get the same answer.
+
+  For a curve they come apart. A curve is steep in some places and nearly flat in others. An
+  average across the whole of it can match its steepness at no point of it at all.
+
+  Here is how you get each one off a drawn curve, with a ruler.
+
+  For the average rate between two points, lay the ruler across those two points. Read its slope,
+  which is the rise divided by the run. The line you have laid down has a name: it is a chord.
+
+  For the rate at one point, lay the ruler so that it touches the curve at that point and runs
+  along it. Read its slope the same way. That touching line has a name too: it is a tangent.
+
+  A shorter interval gives you a closer answer. Take the average over a month and you get the
+  month. Take it over a day around the same moment and you get much nearer to the moment itself.
+
+  One more thing, so that you recognise it on somebody else's page. The rate at a moment has a
+  name in mathematics: the derivative. It is written dy/dx, said "dee y by dee x". It means a
+  change in y divided by a change in x. The stretch it is taken over is so short that it may as
+  well be a point.
+  That is all you need. Nothing in this book asks you to work one out.
+
+  Last, run the unit check from the section on dimensional analysis before you believe any rate.
+  A quantity in kilograms, changing over months, gives a rate in kilograms per month. If somebody
+  hands you a rate whose unit is not the quantity divided by a time, it is not a rate of change.
+illustration:
+  body: |
+    Start with a sentence that is two thirds right, because the true part is what carries the false
+    part past a reader.
+
+    Take the saturating column from the section before this one. A quantity was recorded six times,
+    one month apart.
+
+    ```table
+    months from the start  the quantity
+    0                      10
+    1                      30
+    2                      42
+    3                      49.2
+    4                      53.5
+    5                      56.1
+    ```
+
+    A note about it says this.
+
+    > It rose by about 46 over five months. That is about 9 a month. Two more months take it past
+    > 70.
+
+    Test the first claim. Subtract the first value from the last.
+
+    ```working
+        56.1 minus 10 = 46.1
+    ```
+
+    Test the second. Divide that change by the time it took.
+
+    ```working
+        46.1 divided by 5 = 9.22
+    ```
+
+    About 9.22 a month. So the first two sentences hold. That number is the average rate of change
+    over the five months, and it is correct.
+
+    Now work out the rate over each single month. Each one is a change divided by one month.
+
+    ```working
+        30 minus 10 = 20
+        42 minus 30 = 12
+        49.2 minus 42 = 7.2
+        53.5 minus 49.2 = 4.3
+        56.1 minus 53.5 = 2.6
+    ```
+
+    Put them beside the months they belong to.
+
+    ```table
+    the month       the rate over it
+    first           20 a month
+    second          12 a month
+    third           7.2 a month
+    fourth          4.3 a month
+    fifth           2.6 a month
+    ```
+
+    The rate was 20 a month at the start and 2.6 a month at the end. It was never 9.22. The average
+    is a true statement about the five months together and a false statement about any one of them.
+
+    That is why the third sentence of the note fails. It takes an average over the past and uses it
+    as the rate now. Use the rate now instead, which is 2.6 a month.
+
+    ```working
+        2.6 times 2 = 5.2
+        56.1 plus 5.2 = 61.3
+    ```
+
+    About 61.3, not past 70. The note is not wrong about its arithmetic. It is wrong about which
+    interval its arithmetic describes.
+
+    Now the easy case, so that you can feel the difference.
+
+    Section 3(1) of the National Food Security Act, 2013 entitles a person in a priority household
+    to five kilograms of foodgrains per person per month. A household of four is counted for twenty
+    kilograms a month.
+
+    ```working
+        5 times 4 = 20
+    ```
+
+    Say the house starts with 10 kilograms in it and nothing is taken out. Here is the grain in the
+    house, month by month.
+
+    ```table
+    months from today  kilograms in the house
+    0                  10
+    1                  30
+    2                  50
+    3                  70
+    4                  90
+    ```
+
+    Take the average rate over the whole four months.
+
+    ```working
+        90 minus 10 = 80
+        80 divided by 4 = 20
+    ```
+
+    Twenty kilograms a month. Now take it over the third month alone.
+
+    ```working
+        70 minus 50 = 20
+        20 divided by 1 = 20
+    ```
+
+    Twenty again. Take any interval you like and you will get twenty, because the points sit on a
+    straight line and a straight line has one steepness. Here the average rate and the rate at any
+    moment are the same number, and there is nothing to argue about.
+
+    So the question to carry away is not "what is the rate". It is "over what interval".
+
+    Finish with the unit, because a rate without one is not checkable. Kilograms up the side,
+    months along the bottom.
+
+    ```working
+        kilograms divided by months
+        = kilograms per month
+    ```
+
+    Twenty kilograms a month. Not twenty.
+  numbers:
+  - value: '5'
+    quote: entitled to receive five kilograms of foodgrains per person per month
+    unit: kilograms of foodgrains per person per month, priority households, s.3(1)
+    citekey: nfsa_2013
+    as_of: '2026-09-23'
+  analogy_breaks_when: |
+    The six values in the first table are bare numbers. They are the ones from the section before
+    this one and they describe nothing in the world.
+
+    An average rate over an interval is exact for that interval. It stops being true the moment
+    somebody quotes it as the rate now, and that is the only way it goes wrong.
+
+    A rate read off a drawn curve with a ruler is an estimate. How good it is depends on how well
+    the curve was drawn and how steadily you held the ruler.
+
+    A quantity measured once a month has no rate you can check between the measurements. The five
+    monthly rates above describe five whole months. What happened inside any one of them is not in
+    the table.
+
+    And time is not the only thing a quantity can change against. A change in an outcome for each
+    extra unit of a dose works the same way, and every word of this section applies to it. Time is
+    used throughout only because it is the case you will meet most.
+figures:
+- file: c7-chord-tangent.png
+  caption: "The average rate across the whole span is the straight line joining the first point to the last. The rate at the end is the steepness of the curve where it finishes. The two numbers differ by more than three times, and both describe the same curve."
+  alt: "A curve rising steeply then flattening. A straight chord joins its first and last points, labelled as the average rate. A dashed line lies along the curve at its final point, labelled with a much smaller rate."
+  source: draw.py
+must_know:
+- point: |
+    Ask "over what interval" every time somebody hands you a rate. A rate with no interval attached
+    is not yet a number you can use, and the interval is usually the whole of the disagreement.
+  kind: move
+  bearing: methodological
+- point: |
+    An average rate over a stretch of time is not the rate now. It is built from the first value and the last
+    value alone. It uses nothing that happened in between. So it can match the rate at no moment
+    inside the stretch.
+  kind: misconception
+  bearing: methodological
+- point: |
+    Quote a rate with its unit, taken from the quantity divided by the time. Twenty kilograms a
+    month is a claim somebody can check. Twenty is not, and it is the form in which wrong rates
+    travel.
+  kind: move
+  bearing: methodological
+- point: |
+    Two quantities can share an average rate and have nothing else in common. One may have risen
+    steadily and the other may have risen fast and then stopped. Ask for the values in between
+    before you accept that two things are behaving alike.
+  kind: trap
+  bearing: methodological
+- point: |
+    A rate you read off a curve by eye is an estimate and not a measurement. It is only as good as
+    the drawing under your ruler. Use it to say which part of the curve is steeper, and go back to
+    the numbers before you quote a figure.
+  kind: boundary
+  bearing: methodological
+- point: |
+    Where gains are slowing, an average over the whole programme is the number most flattering to
+    it. Ask for the rate over the most recent interval before you agree to continue on the strength
+    of the average.
+  kind: consequence
+  bearing: policy
+- point: |
+    When a press line says a quantity is rising at some figure a month, ask which months were used.
+    A rise averaged over a year and a rise over last month are different claims, and only one of
+    them is about now.
+  kind: move
+  bearing: public
+- point: |
+    Teach a trainee to write the interval down beside every rate they compute, before the number
+    leaves their page. A rate that loses its interval on the way to a slide cannot be got back.
+  kind: move
+  bearing: teaching
+exercises:
+- type: interpretation
+  prompt: |
+    A figure has months along the bottom and a count up the side. The curve climbs steeply for the
+    first three months, then bends over and runs almost flat for the next nine.
+
+    Say what the average rate over the twelve months describes, and what it does not. Then say
+    which two numbers you would ask for instead, and why those two.
+  answer: |
+    The average rate over the twelve months is the change between month zero and month twelve,
+    divided by twelve. It is the slope of one straight line laid across those two points, and that
+    line is a chord.
+
+    What it describes: the whole year taken as one block. If you want to know how much was added
+    across the year, it is exactly the right number.
+
+    What it does not describe: any moment inside the year. The curve is steep at the start and
+    nearly flat at the end. Its steepness passes through the average somewhere in the middle. At
+    either end it sits nowhere near it.
+
+    The two numbers to ask for: the rate over the first three months, and the rate over the last
+    three months. Each is a change divided by three months.
+
+    Why those two. They are the two ends of the story. Comparing them answers the question the
+    average hides, which is whether the thing is still rising as fast as it was. A single figure
+    for the year cannot answer that, however carefully it is computed.
+
+    One more thing to check before you say any of it. Read what one step on each axis stands for.
+    A curve that bends over on one scale can look straight on another.
+  confidence_first: true
+- type: critique
+  prompt: |
+    A programme note contains this line.
+
+    > Coverage has grown at an average of 6 points a year for four years. On that trend we reach
+    > the target of 40 points above baseline in three more years.
+
+    The yearly gains were 12 points, then 6, then 3, then 1.5.
+
+    Say what is wrong with the second sentence, and say what you would put in its place.
+  answer: |
+    The first sentence is arithmetic and it is nearly right. Add the four gains and divide by four.
+
+    ```working
+        12 plus 6 = 18
+        18 plus 3 = 21
+        21 plus 1.5 = 22.5
+        22.5 divided by 4 = 5.625
+    ```
+
+    About 5.6 points a year, which the note has rounded to 6.
+
+    What is wrong with the second sentence: it takes an average over four years and uses it as the
+    rate now. The rate now is the gain in the fourth year, which is 1.5 points a year.
+
+    Look at what the yearly gains are doing.
+
+    ```working
+        6 divided by 12 = 0.5
+        3 divided by 6 = 0.5
+        1.5 divided by 3 = 0.5
+    ```
+
+    Each year's gain is half the year before it. The rate is not holding at 6 and it is not holding
+    at anything. It is falling, and it is falling by half a year at a time.
+
+    Now the note's own target. Coverage stands 22.5 points above baseline and the next year's gain
+    looks like being about 0.75 points.
+
+    ```working
+        1.5 divided by 2 = 0.75
+    ```
+
+    Three more years at gains that keep halving add well under two points. So 40 is not reached in
+    three years. Nothing in these four numbers says it is reached at all.
+
+    What to put in its place. Say that coverage rose 22.5 points over four years. Say that the gain in
+    the most recent year was 1.5 points. Say that the gains have halved each year so far. Then say
+    what would have to change for the trend to be different, and that nothing in these numbers
+    tells you whether it will.
+- type: teaching
+  prompt: |
+    A first-year resident has ten minutes and a whiteboard. They keep saying "the rate" about a
+    quantity that is changing, and they mean whichever rate is nearest to hand.
+
+    Teach them the difference between an average rate and a rate at a moment. They should leave
+    asking the right question about the next figure they see.
+  answer: |
+    Ten minutes, a whiteboard, and somebody who expects a mechanism rather than a rule.
+
+    Draw a curve that climbs steeply and then flattens. Mark the start and the end. Do not say
+    anything about rates yet.
+
+    Ask them how fast the quantity grew. They will give you a number. Ask them how they got it, and
+    they will tell you they took the change and divided by the time. Write that down.
+
+    ```working
+        the rate of change = the change, divided by the time it took
+    ```
+
+    Now lay a ruler across the two marked points and draw the line. Tell them that is the number
+    they just gave you, drawn: the average rate is the slope of that line. The line is a chord.
+
+    Then lay the ruler flat against the far end of the curve, where it has flattened, and draw that
+    line too. Ask them whether the two lines have the same steepness. They can see that they do
+    not. That is the moment the idea lands, and it lands because they looked rather than listened.
+
+    Name the second one. The steepness at a single point is the rate at that moment, its line is a
+    tangent, and mathematics calls it the derivative.
+
+    Now give them numbers, because a picture alone will not survive the week. Use six values a
+    month apart, work the whole-run average with them on the board, then work the last month on its
+    own. Let them see the two answers differ by a factor of several.
+
+    Close with the question you want them to carry. Not "what is the rate", but "over what
+    interval". Tell them to ask it out loud in the next meeting where somebody says a number is
+    rising at so much a month.
+quantitative: true
+practice:
+- level: 1
+  prompt: |
+    A quantity is 14 at the start and 38 at the end. The change took 6 units of time.
+
+    Work out the average rate of change.
+  answer: |
+    The change first.
+
+    ```working
+        38 minus 14 = 24
+    ```
+
+    Then divide by the time it took.
+
+    ```working
+        24 divided by 6 = 4
+    ```
+
+    The average rate of change is 4 for each unit of time. There is no unit on it here, because
+    neither quantity was named.
+- level: 2
+  prompt: |
+    Work out the average rate of change for each of these.
+
+    ```working
+        from 50 to 90, over 8 units of time
+        from 90 to 50, over 8 units of time
+        from 7 to 7, over 5 units of time
+    ```
+  answer: |
+    The first.
+
+    ```working
+        90 minus 50 = 40
+        40 divided by 8 = 5
+    ```
+
+    Five for each unit of time.
+
+    The second.
+
+    ```working
+        50 minus 90 = -40
+        -40 divided by 8 = -5
+    ```
+
+    Minus five. The minus sign says the quantity fell, and the 5 says how fast.
+
+    The third.
+
+    ```working
+        7 minus 7 = 0
+        0 divided by 5 = 0
+    ```
+
+    Zero. The quantity did not change over the interval. That is a real rate and it is the answer.
+    It does not mean the quantity sat still the whole time, only that it ended where it started.
+- level: 2
+  prompt: |
+    A quantity is recorded at equal steps: 4, 10, 20, 34, 52.
+
+    Work out the rate over each single step. Then work out the average rate over the whole run.
+  answer: |
+    Each step takes one unit of time, so each rate is just the change across that step.
+
+    ```working
+        10 minus 4 = 6
+        20 minus 10 = 10
+        34 minus 20 = 14
+        52 minus 34 = 18
+    ```
+
+    So the four step rates are 6, 10, 14 and 18.
+
+    Now the whole run. It covers four steps.
+
+    ```working
+        52 minus 4 = 48
+        48 divided by 4 = 12
+    ```
+
+    An average rate of 12.
+
+    Look at the four step rates against that 12. The average sits between the second and the third,
+    and it matches neither. Here the rate is rising, so the average understates the end and
+    overstates the start.
+- level: 3
+  prompt: |
+    A quantity changes at an average rate of 7 for each unit of time.
+
+    Work out the change over 9 units of time. Then work out how long it takes the quantity to
+    change by 91.
+  answer: |
+    The rate is the change divided by the time. So the change is the rate multiplied by the time.
+
+    ```working
+        7 times 9 = 63
+    ```
+
+    A change of 63 over 9 units of time.
+
+    The second part runs the other way. You have the change and the rate, and you want the time, so
+    divide the change by the rate.
+
+    ```working
+        91 divided by 7 = 13
+    ```
+
+    Thirteen units of time.
+
+    Both parts are the same relation read in different directions, which is worth seeing once. A
+    rate ties three quantities together, and knowing any two gives you the third.
+- level: 3
+  prompt: |
+    Work out the unit of the rate of change in each of these cases.
+
+    ```table
+    the quantity        the time it is changing over
+    kilograms           months
+    kilocalories        days
+    number of people    years
+    rupees              weeks
+    ```
+  answer: |
+    The unit of a rate of change is always the quantity's unit divided by the time unit. Take them
+    in order.
+
+    Kilograms divided by months is kilograms per month.
+
+    Kilocalories divided by days is kilocalories per day.
+
+    People divided by years is people per year.
+
+    Rupees divided by weeks is rupees per week.
+
+    None of those came from the numbers, because there were none. They came from reading the two
+    labels, which is the whole of the unit check from the section on dimensional analysis.
+- level: 4
+  prompt: |
+    Section 3(1) of the National Food Security Act, 2013 entitles a person in a priority household
+    to five kilograms of foodgrains per person per month.
+
+    A household of six collects its full entitlement every month and takes nothing out of the
+    house. The house holds 12 kilograms today.
+
+    Write the grain in the house at months one, two and three. Work out the average rate of change
+    over those three months, with its unit. Then work out the rate over the second month alone and
+    say why the two agree.
+  answer: |
+    Work out the monthly entitlement first.
+
+    ```working
+        5 times 6 = 30
+    ```
+
+    Thirty kilograms a month. Now the running values, starting from 12.
+
+    ```working
+        12 plus 30 = 42
+        42 plus 30 = 72
+        72 plus 30 = 102
+    ```
+
+    So 42 kilograms at month one, 72 at month two and 102 at month three.
+
+    The average rate over the three months.
+
+    ```working
+        102 minus 12 = 90
+        90 divided by 3 = 30
+    ```
+
+    Thirty, and the unit comes off the two quantities. Kilograms divided by months is kilograms per
+    month, so it is 30 kilograms a month.
+
+    The second month alone.
+
+    ```working
+        72 minus 42 = 30
+        30 divided by 1 = 30
+    ```
+
+    Thirty kilograms a month again.
+
+    They agree because the same amount is added every month, so the points sit on a straight line.
+    A straight line has one steepness and it has it everywhere, so every interval gives the same
+    rate.
+  refs:
+  - nfsa_2013
+- level: 5
+  prompt: |
+    A quantity is recorded once a month for five months: 200, 320, 380, 410, 425.
+
+    Work out the average rate of change over the whole five months. Then work out the rate over the
+    first month and the rate over the last month. Say which of the three you would quote to
+    somebody who asks how fast it is growing now, and why.
+  answer: |
+    The whole run covers four months, because the first reading is at month zero.
+
+    ```working
+        425 minus 200 = 225
+        225 divided by 4 = 56.25
+    ```
+
+    An average of 56.25 a month.
+
+    The first month.
+
+    ```working
+        320 minus 200 = 120
+    ```
+
+    A hundred and twenty a month.
+
+    The last month.
+
+    ```working
+        425 minus 410 = 15
+    ```
+
+    Fifteen a month.
+
+    Which to quote to somebody asking about now: the 15. The question was about the present, and
+    the last month is the only one of the three that is about the present.
+
+    The 56.25 answers a different question, which is how much was added across the whole run for
+    each month of it. Say that out loud when you give it, or it will be heard as the rate now.
+
+    And say the interval with every one of the three figures. Without it, 120 and 15 are the same
+    kind of claim about the same quantity, and a reader cannot tell them apart.
+- level: 5
+  prompt: |
+    A quantity falls from 900 to 300 over 12 months.
+
+    Work out the average rate of change, with its sign. Then say what the sign means, and say what
+    this number does not tell you about the twelve months.
+  answer: |
+    Subtract the first value from the last, keeping the order.
+
+    ```working
+        300 minus 900 = -600
+    ```
+
+    Then divide by the time.
+
+    ```working
+        -600 divided by 12 = -50
+    ```
+
+    Minus fifty for each month.
+
+    What the sign means: the quantity fell. A rate of change is negative when the end is below the
+    start, and the size still says how fast.
+
+    What it does not tell you. It does not tell you that the quantity fell every month. It could
+    have dropped 600 in the first month and sat still for eleven. It could have risen and then
+    fallen further. Every one of those gives the same average of minus 50, because the average uses
+    only the two end values.
+
+    To find out which happened, ask for the monthly readings. There is no way to recover them from
+    the average, and no amount of care with the arithmetic will change that.
+- level: 6
+  prompt: |
+    Two quantities are recorded at the same five monthly times.
+
+    ```table
+    month  quantity P  quantity Q
+    0      100         100
+    1      130         190
+    2      160         230
+    3      190         248
+    4      220         256
+    ```
+
+    Work out the average rate of change of each over the four months. Then work out the rate over
+    the last month for each. Say what the pair of comparisons shows.
+  answer: |
+    Average rate for P.
+
+    ```working
+        220 minus 100 = 120
+        120 divided by 4 = 30
+    ```
+
+    Thirty a month.
+
+    Average rate for Q.
+
+    ```working
+        256 minus 100 = 156
+        156 divided by 4 = 39
+    ```
+
+    Thirty-nine a month.
+
+    On the averages alone, Q is growing faster than P.
+
+    Now the last month. For P.
+
+    ```working
+        220 minus 190 = 30
+    ```
+
+    Thirty a month.
+
+    For Q.
+
+    ```working
+        256 minus 248 = 8
+    ```
+
+    Eight a month.
+
+    What the pair shows: the two comparisons point opposite ways. Over the whole run Q outgrew P.
+    Over the most recent month P is growing nearly four times as fast as Q.
+
+    Neither comparison is wrong and they answer different questions. P is a straight line, so its
+    average and its monthly rate are the same 30. Q is flattening, so its average is held up by
+    months that are over.
+
+    The lesson is the one to take into a meeting. Ask which interval a comparison used, because
+    with a flattening quantity the choice of interval decides the winner.
+- level: 7
+  prompt: |
+    Here is a worked answer. Find the step that broke.
+
+    ```working
+        a quantity goes from 40 to 100 over 5 months
+        the change is 100 minus 40, which is 60
+        the rate is the time divided by the change
+        5 divided by 60 = 0.083
+        so the quantity is rising at 0.083 a month
+    ```
+  answer: |
+    The step that broke is the third. The change and the time were divided the wrong way round.
+
+    A rate of change is the change divided by the time, not the time divided by the change.
+
+    ```working
+        60 divided by 5 = 12
+    ```
+
+    Twelve a month.
+
+    The units catch it as well as the arithmetic does. Divide months by kilograms and you get
+    months per kilogram, which is how long each kilogram takes. That is a real quantity and it is
+    not a rate of change.
+
+    A size check finishes it off. The quantity rose by 60 in five months, so it gained more than 10
+    in a typical month. An answer under a tenth of one unit a month cannot describe that rise.
+
+    Why it looks reasonable: the subtraction is right, the division is right, and the answer is
+    given to three decimals, which reads as care. The one broken step is the one with no arithmetic
+    in it.
+- level: 7
+  prompt: |
+    Here is a worked answer. Find the step that broke.
+
+    ```working
+        the monthly values are 10, 30, 42, 49.2, 53.5, 56.1
+        the total rise is 56.1 minus 10, which is 46.1
+        that took 5 months, so the average rate is 46.1 divided by 5
+        46.1 divided by 5 = 9.22
+        so the quantity is currently rising at 9.22 a month
+        and in five more months it will be about 56.1 plus 46.1
+    ```
+  answer: |
+    The step that broke is the fifth. Every line before it is correct, and the word that breaks it
+    is "currently".
+
+    The 9.22 is the average rate over the five months. It is built from the first value and the
+    last value and uses nothing in between.
+
+    Work out the rate over the most recent month instead.
+
+    ```working
+        56.1 minus 53.5 = 2.6
+    ```
+
+    Two point six a month. That is the rate now, and it is less than a third of the average.
+
+    Look at all five monthly rates and the reason is plain.
+
+    ```working
+        30 minus 10 = 20
+        42 minus 30 = 12
+        49.2 minus 42 = 7.2
+        53.5 minus 49.2 = 4.3
+        56.1 minus 53.5 = 2.6
+    ```
+
+    The rate has fallen at every step. The average of 9.22 was never the rate at any moment of the
+    five months.
+
+    The last line inherits the error. At 2.6 a month, five more months add about 13.
+
+    ```working
+        2.6 times 5 = 13
+        56.1 plus 13 = 69.1
+    ```
+
+    About 69, against the 102.2 the broken working projects.
+
+    Why it looks reasonable: four correct lines in a row buy the fifth a great deal of trust, and
+    the fifth changes only one word. An average rate and a rate now are written down identically,
+    so nothing on the page marks the switch.
+- level: 8
+  prompt: |
+    Here is a worked answer. Find the step that broke.
+
+    ```working
+        a curve is drawn with months along the bottom and kilograms up the side
+        at month 2 the curve passes through 30 kilograms
+        at month 8 the curve passes through 66 kilograms
+        the rate at month 8 is the rise divided by the run
+        66 minus 30 = 36
+        36 divided by 6 = 6
+        so at month 8 the quantity is rising at 6 kilograms a month
+    ```
+  answer: |
+    The step that broke is the fourth. A rise divided by a run between two points is the average
+    rate over the interval between them. The answer has labelled it as the rate at one of the
+    ends.
+
+    The line laid across month 2 and month 8 is a chord. Its slope is the average rate across those
+    six months.
+
+    ```working
+        36 divided by 6 = 6
+    ```
+
+    Six kilograms a month over the interval from month 2 to month 8. That number is right and its
+    label is wrong.
+
+    The rate at month 8 is a different thing. It is the steepness of the curve at that single point,
+    which is the slope of the tangent there. Getting it needs either the tangent laid on the
+    drawing, or two readings close together around month 8.
+
+    Notice that the answer cannot be rescued by argument. If the curve is flattening, the rate at
+    month 8 is below 6. If it is steepening, the rate at month 8 is above 6. Nothing in the two
+    readings given says which, so the working has no way to reach the number it claims.
+
+    Why it looks reasonable: the arithmetic is right and both readings come off the drawing. The
+    phrase "rise divided by run" is exactly the right phrase. Only the word "at" is wrong, and it
+    is the word that turns a statement about six months into a statement about one moment.
+- level: 9
+  prompt: |
+    A district note crosses your desk with this line in it.
+
+    > The waiting list has come down from 900 to 300 over the last twelve months. That is a steady
+    > clearance rate, so the list will be empty in six more months.
+
+    The office, the list and both figures are made up for this problem. No real service is being
+    described.
+
+    Decide what to compute, compute it, and say what your answer does not establish.
+  answer: |
+    What to compute: the average rate of change over the twelve months, and what that rate would
+    take to clear the remaining 300.
+
+    The change first, keeping the order.
+
+    ```working
+        300 minus 900 = -600
+    ```
+
+    Then the average rate.
+
+    ```working
+        -600 divided by 12 = -50
+    ```
+
+    Fifty off the list each month, on average across the year.
+
+    Now the note's own projection, using that rate.
+
+    ```working
+        300 divided by 50 = 6
+    ```
+
+    Six months. So the arithmetic in the note is right, and that is the whole trap.
+
+    What this does not establish. It does not establish that the rate is steady. Two readings a
+    year apart are consistent with a list that fell fast and stopped, and with one that is falling
+    faster now than ever. The word "steady" is not in the numbers, and the twelve monthly readings
+    that would settle it have not been given.
+
+    It does not establish that the same rate will continue. A list often clears its easy cases
+    first, which makes the rate fall exactly when a projection assumes it will not.
+
+    And it does not establish that the list falling is the thing worth tracking. A list can shorten
+    because people were seen, and it can shorten because people stopped joining it. Those are
+    different events with the same arithmetic.
+
+    What to ask for: the twelve monthly figures, and the number joining the list each month
+    alongside the number leaving it.
+- level: 10
+  prompt: |
+    A colleague sends a one-line summary of a programme review.
+
+    > Gains were 12 points, then 6, then 3, then 1.5, over four years. That averages about 5.6
+    > points a year, so budget for the same again next year.
+
+    The programme and all four figures are made up for this problem. No real programme is being
+    described.
+
+    Decide what to compute, compute it, and say what your answer does not establish.
+  answer: |
+    What to compute: the average the note quotes, and the rate in the most recent year. Then what
+    the four yearly rates are doing to each other.
+
+    The average first. Add the gains and divide by four.
+
+    ```working
+        12 plus 6 = 18
+        18 plus 3 = 21
+        21 plus 1.5 = 22.5
+        22.5 divided by 4 = 5.625
+    ```
+
+    About 5.6 points a year, so the note's average is right.
+
+    The rate in the most recent year is the fourth gain, which is 1.5 points a year. That is less
+    than a third of the average.
+
+    Now look at what the yearly rates are doing.
+
+    ```working
+        6 divided by 12 = 0.5
+        3 divided by 6 = 0.5
+        1.5 divided by 3 = 0.5
+    ```
+
+    Each year's gain is half the year before. On that pattern the next year's gain is about 0.75
+    points.
+
+    ```working
+        1.5 divided by 2 = 0.75
+    ```
+
+    So budgeting for 5.6 points next year is budgeting for about seven times what the most recent
+    year delivered.
+
+    What this does not establish. It does not establish that next year's gain will be 0.75. Four
+    values and an assumed halving are a thin basis, and the pattern is read off the same numbers it
+    is being used to project.
+
+    It does not establish that the programme is failing. Gains that shrink are what running towards
+    a ceiling looks like from inside. A programme close to full coverage has little room left to
+    gain in.
+
+    And it does not settle the budget question, because none of these numbers says what the money
+    would buy anywhere else. What the arithmetic settles is narrower and still worth saying. The
+    average is about the past four years. It is not a forecast of the fifth.
+retrieval_items:
+- q: What is a rate of change, and what unit does it carry?
+  a: A change in a quantity divided by the time that change took. Its unit is the quantity's unit
+    divided by the time unit, so a quantity in kilograms changing over months gives kilograms per
+    month.
+- q: What is the difference between an average rate over an interval and the rate at an instant?
+  a: The average rate uses only the value at each end of the interval, and is the slope of the chord
+    joining them. The rate at an instant is the steepness of the curve at one point, which is the
+    slope of the tangent there. For a straight line the two are equal; for a curve they differ.
+- q: Somebody gives you a rate. What is the first question to ask?
+  a: Over what interval. A rate with no interval attached cannot be told apart from a rate over any
+    other interval, and with a flattening quantity the interval decides the answer.
+- q: What is a derivative, and what does dy/dx mean?
+  a: The rate at an instant. It is written dy/dx and means a change in y divided by a change in x
+    taken over a stretch so short it may as well be a point. Recognising the symbol is all this book
+    asks for.
+provenance:
+  map_version_id: fc19c8bc-a216-4131-99fb-ebe3f19cec4a
+  outcome_refs:
+  - B0-C7
+  bridge_ref: []
+review:
+  stability: long
+  trigger: '2031-09-23'
+  last_reviewed: '2026-09-23'
+status: drafted

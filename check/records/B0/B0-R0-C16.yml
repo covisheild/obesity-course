@@ -1,0 +1,971 @@
+concept_id: B0-R0-C16
+subject: B0
+rung: 0
+sequence: 16
+name: Rearranging an equation
+concept_type: derivable
+clusters:
+- measurement-inference
+- body-and-person
+- craft-and-integrity
+ground_floor_deps: []
+concept_deps:
+- B0-R0-C02
+- B0-R0-C06
+- B0-R0-C12
+- B0-R0-C14
+- B0-R0-C15
+definition:
+  text: |
+    An equation is a statement that the expression on the left of the equals sign and the
+    expression on the right stand for the same number. It is not an instruction to work the left
+    side out.
+
+    If two expressions stand for the same number, then applying the same operation to both of
+    them gives two expressions that still stand for the same number. Four operations therefore
+    leave the solutions of an equation unchanged.
+
+    - adding the same quantity to both sides
+    - subtracting the same quantity from both sides
+    - multiplying both sides by the same quantity
+    - dividing both sides by the same quantity that is not zero
+
+    To solve an equation for a letter is to reach an equation with that letter alone on one side,
+    and no occurrence of it on the other.
+
+    An operation applied to a side that is a sum applies to the whole of that sum, not to one
+    term of it.
+
+    Dividing both sides by an expression that may be zero can destroy a solution, so the case
+    where that expression is zero is treated on its own.
+  references:
+  - citekey: openstax_college_algebra_2e
+    kind: textbook
+    locator: ch. 2, Equations and Inequalities - on solving linear equations in one variable and
+      on solving a formula for a named variable
+    verified:
+      resolved_id: https://openstax.org/books/college-algebra-2e
+      opened: true
+      claim_located: false
+      checked_on: '2026-09-23'
+      note: |-
+        Anchor confirmed by this session on 2026-09-22: the book's own table of contents was
+        opened and the cited chapter located in it. The passage behind this definition has not
+        been read, which is why claim_located stays false. The content is a derivation the
+        reader can check, so it does not rest on the anchor.
+simplified_explanation: |
+  This section stands on the one before it, where a letter became a number you do not know yet.
+  Now you go and find out which number it is.
+
+  Start with what the equals sign is saying. It says the thing on its left and the thing on its
+  right are the same number. It is not telling you to work the left side out and write the answer
+  on the right.
+
+  Picture a pair of scales with a pan on each side, sitting level. Take three kilograms off one
+  pan and the scales tip. Take three off both and they stay level.
+
+  That is the whole rule.
+
+  > Whatever you do to one side, do to the other.
+
+  Now use it. Suppose you are told this.
+
+  ```working
+      x + 7 = 12
+  ```
+
+  You want x on its own. The 7 is in the way. It got there by being added, so take 7 off both
+  sides.
+
+  ```working
+      x + 7 minus 7 = 12 minus 7
+      x = 5
+  ```
+
+  Check it by putting the 5 back where x was.
+
+  ```working
+      5 plus 7 = 12
+  ```
+
+  True, so the 5 is right. That check costs you one line and catches almost everything.
+
+  Multiplying works the same way. Suppose you are told this.
+
+  ```working
+      3x = 21
+  ```
+
+  The 3 got there by multiplying, so divide both sides by 3.
+
+  ```working
+      3x divided by 3 = 21 divided by 3
+      x = 7
+  ```
+
+  Two things to hold on to from here on.
+
+  The first is order. When more than one thing is in the way, undo them in the reverse of the
+  order they were done. Take this line.
+
+  ```working
+      2x + 3 = 11
+  ```
+
+  The x was multiplied by 2 first and had 3 added second. So undo the adding first and the
+  multiplying second.
+
+  ```working
+      2x + 3 minus 3 = 11 minus 3
+      2x = 8
+      2x divided by 2 = 8 divided by 2
+      x = 4
+  ```
+
+  Check.
+
+  ```working
+      2 times 4 = 8
+      8 plus 3 = 11
+  ```
+
+  The second is that a side which is a sum has to be treated whole. If you divide a side by 9,
+  you divide every term on it by 9, not the first one you come to. Brackets are how you say that
+  on paper.
+
+  There is one more use for the rule, and it is the one you will use most. Sometimes nothing is
+  unknown. A formula ties several quantities together, and you want a different one of them on
+  its own.
+
+  Take the rule that ties a distance, a speed and a time. The distance is the speed times the
+  time.
+
+  ```working
+      d = s t
+  ```
+
+  To get t by itself, divide both sides by s.
+
+  ```working
+      d divided by s = s t divided by s
+      d divided by s = t
+  ```
+
+  The time is the distance divided by the speed. You did not measure anything new. You moved the
+  same statement into the shape that answers your question.
+
+  One warning goes with that. Never divide both sides by a letter unless you know it is not zero.
+  Dividing by zero is not a move, and a letter can hide one.
+illustration:
+  body: |
+    You met the rule an Indian food label uses for its energy figure in the section before this
+    one. Four kilocalories for every gram of carbohydrate, four for every gram of protein, nine
+    for every gram of fat.
+
+    ```working
+        E = 4c + 4p + 9f
+    ```
+
+    A packet reaches you with its fat line torn off. The panel still shows the energy as 468
+    kilocalories in every 100 grams, the carbohydrate as 60 grams and the protein as 12 grams.
+    Those three figures are made up for this problem; the factors are not. Somebody wants the
+    fat.
+
+    Here is the working that comes back first. It is wrong.
+
+    ```working
+        E = 4c + 4p + 9f
+        divide both sides by 9
+        f = E divided by 9, minus 4c, minus 4p
+        468 divided by 9 = 52
+        52 minus 240 minus 48 = -236
+        so the fat is -236 grams
+    ```
+
+    Minus two hundred and thirty-six grams of fat. No packet holds that, and no packet holds a
+    negative anything.
+
+    Read the third line again. The division by 9 was applied to one term on the right and to
+    nothing else. The right side is a sum of three terms, and dividing that side means dividing
+    all of it. Divide only the 9f and you have changed what the right side says. The two sides
+    are then no longer equal, and the statement has stopped being true.
+
+    Do it in an order that keeps the sum whole. Get the 9f on its own first, by taking the other
+    two terms off both sides.
+
+    ```working
+        E minus 4c minus 4p = 9f
+    ```
+
+    Now the side carrying f is a single term. Dividing by 9 is safe, because there is nothing
+    else on that side for the 9 to miss.
+
+    ```working
+        the whole of E minus 4c minus 4p, divided by 9 = f
+    ```
+
+    Put the numbers in, one line at a time.
+
+    ```working
+        4 times 60 = 240
+        4 times 12 = 48
+        240 plus 48 = 288
+        468 minus 288 = 180
+        180 divided by 9 = 20
+    ```
+
+    Twenty grams of fat.
+
+    Now check it, the way you check every rearrangement. Put the 20 back into the rule you
+    started from and see whether the energy comes out as the panel says.
+
+    ```working
+        4 times 60 = 240
+        4 times 12 = 48
+        9 times 20 = 180
+        240 plus 48 plus 180 = 468
+    ```
+
+    468 kilocalories, which is the figure on the panel. The rearrangement held.
+
+    Notice what the check would have done to the wrong answer. Put -236 in for f and the energy
+    comes out nowhere near 468. One line would have caught it before anybody said it out loud.
+  analogy_breaks_when: |
+    Rearranging moves a quantity from one side to the other. It does not improve it.
+
+    The 20 grams you recover is only as good as the 468 and the 60 and the 12 you put in. If the
+    panel rounded them, your answer carries that rounding, and it carries it through a division
+    that can make it bigger.
+
+    The working here also assumes the packet holds nothing but carbohydrate, protein and fat
+    that carries energy. A food with dietary fibre, polyols or alcohol in it has more terms in
+    the line. Each of those terms carries its own factor. Leave them out and the fat you
+    recover is wrong by whatever they contribute.
+  numbers:
+  - value: '4'
+    unit: kilocalories per gram of carbohydrate, for calculating declared energy, Regulation 5(3)(e)(i)
+    citekey: fssai_labelling_2020
+    quote: (A) Carbohydrates 4 kcal/g
+    as_of: '2026-09-23'
+  - value: '9'
+    unit: kilocalories per gram of fat, for calculating declared energy, Regulation 5(3)(e)(i)
+    citekey: fssai_labelling_2020
+    quote: (E) Fat 9 kcal/g
+    as_of: '2026-09-23'
+must_know:
+- point: |
+    An equals sign states that two things are the same number. It is not an instruction to
+    compute the left side, which is what it means on a calculator and nowhere else. Read it as a
+    claim and the rest of this section follows; read it as a button and none of it does.
+  kind: misconception
+  bearing: methodological
+- point: |
+    Do the same thing to both sides, and write both sides of that step on the same line. A step
+    that shows only what happened to one side is the step where the error hides.
+  kind: move
+  bearing: methodological
+- point: |
+    A side that is a sum is divided or multiplied as a whole. Dividing one term of a sum and
+    leaving the rest is the commonest way a rearrangement breaks. The answer it gives is
+    usually wildly wrong rather than slightly wrong.
+  kind: trap
+  bearing: methodological
+- point: |
+    Check every rearrangement by putting your answer back into the equation you started from.
+    One line, every time, before the number leaves your desk.
+  kind: move
+  bearing: methodological
+- point: |
+    Any one quantity in a formula can be recovered from the others. So a register with a
+    missing column is not always a register with missing information. Say that in a meeting,
+    instead of asking for the fieldwork to be done again.
+  kind: consequence
+  bearing: policy
+- point: |
+    Never divide both sides by a letter unless you know that letter is not zero. Divide a
+    formula through by a quantity that turns out to be zero and the answer has nothing behind
+    it. Nothing on the page shows that it happened.
+  kind: boundary
+  bearing: methodological
+- point: |
+    A recovered number carries the rounding of everything you put in, and a division can make
+    that rounding larger. Say which figures you started from whenever you quote a quantity you
+    worked backwards to.
+  kind: boundary
+  bearing: methodological
+- point: |
+    Teach the order before the moves. Undo what was done last, first. A trainee who learns
+    rearranging as tricks for moving symbols across the sign has learned something fragile. It
+    fails the moment the equation has brackets in it.
+  kind: move
+  bearing: teaching
+exercises:
+- type: calculation
+  prompt: |
+    A formula says that a total cost T is a fixed charge F plus a rate r for each of n items.
+
+    ```working
+        T = F + rn
+    ```
+
+    Rearrange it to give n on its own, showing every step and saying at each step what you did to
+    both sides.
+
+    Then work n out for a total of 950, a fixed charge of 200 and a rate of 25.
+  answer: |
+    Start from the formula and get the term holding n by itself.
+
+    Take F off both sides.
+
+    ```working
+        T minus F = F + rn minus F
+        T minus F = rn
+    ```
+
+    Now the side holding n is a single term, so divide both sides by r.
+
+    ```working
+        the whole of T minus F, divided by r = n
+    ```
+
+    That is n on its own, which is what was asked for.
+
+    Now the numbers. Subtract first.
+
+    ```working
+        950 minus 200 = 750
+    ```
+
+    Then divide.
+
+    ```working
+        750 divided by 25 = 30
+    ```
+
+    Thirty items.
+
+    Check it by putting 30 back into the formula you started from.
+
+    ```working
+        25 times 30 = 750
+        200 plus 750 = 950
+    ```
+
+    950, which is the total you were given.
+  confidence_first: true
+- type: critique
+  prompt: |
+    A colleague sends you this line and asks you to look at it before it goes into a note.
+
+    > The formula is T = F + rn, and we know T, F and r. So n is T divided by r, minus F.
+
+    Say what has gone wrong and give the right rearrangement. Then say what you would have them
+    change in how they work, rather than in this one line.
+  answer: |
+    The division by r was applied to T only. The right side of the formula is a sum of two
+    terms, F and rn, so dividing that side by r divides both of them.
+
+    What they have written gives F its full size where it should have been shrunk by r. The
+    larger r is, the further out the answer goes.
+
+    Do it in the other order and the problem disappears.
+
+    ```working
+        T minus F = rn
+        the whole of T minus F, divided by r = n
+    ```
+
+    Take the F off first, while the side is still a sum. Then divide, when the side is a single
+    term and there is nothing for the division to miss.
+
+    Try it on numbers to make the size of the error visible. Take T as 950, F as 200 and r as 25.
+    Their line gives this.
+
+    ```working
+        950 divided by 25 = 38
+        38 minus 200 = -162
+    ```
+
+    Minus 162 items. The correct rearrangement gives 30.
+
+    What to change in how they work. Two habits, and the second is the one that matters. Move the
+    added terms before the multiplied ones, so that every division happens to a single term. And
+    put the answer back into the original formula before sending it. A negative count of items
+    would have stopped this line at their own desk.
+quantitative: true
+practice:
+- level: 1
+  prompt: |
+    Solve each of these for x. Show the step you did to both sides.
+
+    ```working
+        x + 7 = 12
+        x minus 4 = 9
+        3x = 21
+    ```
+  answer: |
+    Take 7 off both sides.
+
+    ```working
+        x + 7 minus 7 = 12 minus 7
+        x = 5
+    ```
+
+    Add 4 to both sides.
+
+    ```working
+        x minus 4 + 4 = 9 + 4
+        x = 13
+    ```
+
+    Divide both sides by 3.
+
+    ```working
+        3x divided by 3 = 21 divided by 3
+        x = 7
+    ```
+
+    Check all three by putting the answers back.
+
+    ```working
+        5 plus 7 = 12
+        13 minus 4 = 9
+        3 times 7 = 21
+    ```
+- level: 2
+  prompt: |
+    Solve each of these for x. Two steps each, and say which step you did first and why.
+
+    ```working
+        2x + 3 = 11
+        5x minus 4 = 26
+    ```
+  answer: |
+    Undo what was done last, first. In both lines the multiplication was done first and the
+    adding or subtracting second, so the adding or subtracting comes off first.
+
+    ```working
+        2x + 3 minus 3 = 11 minus 3
+        2x = 8
+        2x divided by 2 = 8 divided by 2
+        x = 4
+    ```
+
+    ```working
+        5x minus 4 + 4 = 26 + 4
+        5x = 30
+        5x divided by 5 = 30 divided by 5
+        x = 6
+    ```
+
+    Check both.
+
+    ```working
+        2 times 4 = 8
+        8 plus 3 = 11
+    ```
+
+    ```working
+        5 times 6 = 30
+        30 minus 4 = 26
+    ```
+
+    Doing it the other way round is not wrong, but it is harder. Divide first and you have to
+    divide the 3 by 2 as well. The side is a sum, and a division applies to all of it.
+- level: 3
+  prompt: |
+    Solve each of these for x.
+
+    ```working
+        5x minus 2 = 3x + 8
+        x divided by 4 = 6
+    ```
+  answer: |
+    The first one has x on both sides. Gather the x terms on one side by taking 3x off both.
+
+    ```working
+        5x minus 2 minus 3x = 3x + 8 minus 3x
+        2x minus 2 = 8
+    ```
+
+    Now it is the shape you have already done. Add 2 to both sides, then divide by 2.
+
+    ```working
+        2x = 10
+        x = 5
+    ```
+
+    Check by working out each side of the original with 5 in place of x.
+
+    ```working
+        5 times 5 = 25
+        25 minus 2 = 23
+    ```
+
+    ```working
+        3 times 5 = 15
+        15 plus 8 = 23
+    ```
+
+    Both sides come to 23, so the two sides really are the same number when x is 5. That is what
+    solving an equation means.
+
+    The second one is one step. The x was divided by 4, so multiply both sides by 4.
+
+    ```working
+        x = 24
+    ```
+
+    ```working
+        24 divided by 4 = 6
+    ```
+- level: 3
+  prompt: |
+    Rearrange each of these to give the named letter on its own. There are no numbers to work
+    out.
+
+    - A = L W, make W the subject
+    - y = m x + k, make x the subject
+    - v = u + a t, make t the subject
+  answer: |
+    In the first, W is multiplied by L, so divide both sides by L.
+
+    ```working
+        A divided by L = W
+    ```
+
+    In the second, x was multiplied by m and then k was added. Undo the adding first.
+
+    ```working
+        y minus k = m x
+    ```
+
+    Now the side holding x is a single term, so divide both sides by m.
+
+    ```working
+        the whole of y minus k, divided by m = x
+    ```
+
+    The third works the same way. Take u off both sides, then divide by a.
+
+    ```working
+        v minus u = a t
+        the whole of v minus u, divided by a = t
+    ```
+
+    In all three, the subtraction came before the division. That order is what keeps the division
+    working on a single term instead of on a sum.
+
+    And in all three you should ask whether the letter you divided by could be zero. A width of
+    zero, a slope of zero or an acceleration of zero each make the division meaningless, and the
+    page does not warn you.
+- level: 4
+  prompt: |
+    A clinic register records a person's body mass index as 27.0 kg/m^2 and their height as
+    1.60 m. The mass column has been left empty.
+
+    The index is the mass in kilograms divided by the square of the height in metres. Rearrange
+    that to give the mass, then work the mass out and give it with its unit. Show every line.
+
+    Then say in one sentence what your answer does not tell you.
+  answer: |
+    Write the rule down first. Let the letters stand for the three quantities: I for the index, m
+    for the mass in kilograms, h for the height in metres.
+
+    ```working
+        I = m divided by h^2
+    ```
+
+    The mass was divided by the square of the height, so multiply both sides by the square of the
+    height.
+
+    ```working
+        I times h^2 = m
+    ```
+
+    The mass is the index times the square of the height. Now the numbers, one line at a time.
+
+    Square the height first.
+
+    ```working
+        1.60 times 1.60 = 2.56
+    ```
+
+    Then multiply.
+
+    ```working
+        27.0 times 2.56 = 69.12
+    ```
+
+    69.1 kilograms.
+
+    Check it by going forwards again.
+
+    ```working
+        69.12 divided by 2.56 = 27.0
+    ```
+
+    What it does not tell you: anything about this person's health. The index is a mass divided
+    by a squared length. What any value of it means is a separate decision. Some body took that
+    decision, on some date, for some population. This arithmetic does not reach it.
+- level: 4
+  prompt: |
+    A panel gives the energy as 396 kilocalories in every 100 grams, the carbohydrate as 45 grams
+    and the protein as 9 grams. The fat line is missing. These three figures are made up for this
+    problem.
+
+    Using the factors the Food Safety and Standards (Labelling and Display) Regulations, 2020 set
+    for calculating declared energy, work the fat out. Show every line and check your answer.
+  answer: |
+    The rule is four kilocalories for every gram of carbohydrate, four for every gram of protein
+    and nine for every gram of fat.
+
+    ```working
+        E = 4c + 4p + 9f
+    ```
+
+    Get the fat term on its own by taking the other two terms off both sides.
+
+    ```working
+        E minus 4c minus 4p = 9f
+    ```
+
+    Now divide both sides by 9.
+
+    ```working
+        the whole of E minus 4c minus 4p, divided by 9 = f
+    ```
+
+    Put the numbers in.
+
+    ```working
+        4 times 45 = 180
+        4 times 9 = 36
+        180 plus 36 = 216
+        396 minus 216 = 180
+        180 divided by 9 = 20
+    ```
+
+    Twenty grams of fat.
+
+    Check by going forwards.
+
+    ```working
+        9 times 20 = 180
+        180 plus 216 = 396
+    ```
+
+    396 kilocalories, which is the figure on the panel.
+  refs:
+  - fssai_labelling_2020
+- level: 5
+  prompt: |
+    Schedule II of the National Food Security Act, 2013 sets a nutritional standard for the hot
+    cooked meal in lower primary classes. It is 450 kilocalories and 12 grams of protein.
+
+    A kitchen plans a meal that meets that standard exactly, and its recipe supplies 78 grams of
+    carbohydrate. The 78 grams is made up for this problem.
+
+    The Food Safety and Standards (Labelling and Display) Regulations, 2020 set the factors for
+    calculating declared energy. Use them to work out how many grams of fat the meal must carry. Show
+    every line. Then say in one line what your answer does not establish about the meal.
+  answer: |
+    Write the rule and put in what you know.
+
+    ```working
+        E = 4c + 4p + 9f
+    ```
+
+    The energy is 450 kilocalories, the protein is 12 grams and the carbohydrate is 78 grams.
+
+    Get the fat term on its own.
+
+    ```working
+        E minus 4c minus 4p = 9f
+    ```
+
+    Now the numbers.
+
+    ```working
+        4 times 78 = 312
+        4 times 12 = 48
+        312 plus 48 = 360
+        450 minus 360 = 90
+        90 divided by 9 = 10
+    ```
+
+    Ten grams of fat.
+
+    Check by going forwards.
+
+    ```working
+        9 times 10 = 90
+        360 plus 90 = 450
+    ```
+
+    What this does not establish. The Act sets an energy figure and a protein figure. It sets
+    no figure for fat and none for carbohydrate. So the 10 grams follows from the recipe
+    somebody chose. It is not a standard anybody laid down. Quote it as your own arithmetic on
+    a made-up recipe, and quote the 450 and the 12 as the Act's.
+  refs:
+  - nfsa_2013
+  - fssai_labelling_2020
+- level: 6
+  prompt: |
+    A register holds a person's mass as 54 kg and their body mass index as 24.0 kg/m^2. The
+    height column is empty.
+
+    Work the height out, showing every line, and give it with its unit. Then say which step
+    here has no counterpart in the problem before it. Say why the direction of a rearrangement
+    changes what you have to do.
+  answer: |
+    Start from the rule, with I for the index, m for the mass in kilograms and h for the height
+    in metres.
+
+    ```working
+        I = m divided by h^2
+    ```
+
+    This time the letter you want is underneath. Multiply both sides by the square of the height
+    to bring it up.
+
+    ```working
+        I times h^2 = m
+    ```
+
+    Now divide both sides by the index.
+
+    ```working
+        h^2 = m divided by I
+    ```
+
+    That gives the square of the height, not the height. Take the square root of both sides,
+    which is the step the problem before it did not have.
+
+    Now the numbers.
+
+    ```working
+        54 divided by 24.0 = 2.25
+    ```
+
+    The square of the height is 2.25. The square root of 2.25 is 1.5, because 1.5 multiplied by
+    itself gives 2.25.
+
+    ```working
+        1.5 times 1.5 = 2.25
+    ```
+
+    One point five metres.
+
+    Check by going forwards.
+
+    ```working
+        54 divided by 2.25 = 24.0
+    ```
+
+    Why the direction changes what you do: the height enters the rule squared, and the mass does
+    not. Recovering the mass needs one multiplication. Recovering the height needs a division and
+    then a square root, because you have to undo the squaring as well.
+- level: 7
+  prompt: |
+    Here is a worked answer. Find the step that broke.
+
+    ```working
+        a rule says the index is the mass in kilograms divided by the square of the height in metres
+        a register gives the index as 25.0 and the height as 1.80 m
+        the mass is wanted, so multiply the index by the height
+        25.0 times 1.80 = 45
+        so the mass is 45 kg
+    ```
+  answer: |
+    The step that broke is the third one, and the fourth line carries it out faithfully.
+
+    The height enters the rule squared. So undoing the division puts back the square of the
+    height, not the height.
+
+    Square the height first.
+
+    ```working
+        1.80 times 1.80 = 3.24
+    ```
+
+    Then multiply.
+
+    ```working
+        25.0 times 3.24 = 81
+    ```
+
+    Eighty-one kilograms, not 45.
+
+    The unit check catches it too. The index is in kilograms per metre squared. Multiply that by
+    metres and you are left with kilograms per metre, which is not a mass.
+
+    Why it looks reasonable: 45 kilograms is an ordinary mass for a person, so nothing about the
+    answer looks alarming. The arithmetic in the line is correct. And multiplying to undo a
+    dividing is the right idea, applied to the wrong quantity. Every part of the move is right
+    except what it was applied to, which is the shape this error nearly always has.
+- level: 8
+  prompt: |
+    Here is a worked answer. Find the step that broke.
+
+    ```working
+        a rule says E = 4c + 4p + 9f
+        a panel gives the energy as 500 kilocalories and the fat as 20 grams
+        the carbohydrate is wanted
+        9 times 20 = 180
+        500 minus 180 = 320
+        so 4c + 4p = 320
+        divide both sides by 4
+        c + p = 80
+        the panel also says the protein is 15 grams
+        so the carbohydrate is 80 grams and the panel holds together
+    ```
+  answer: |
+    Every line of the rearranging is right. The step that broke is the last one, and it is a
+    reading error rather than an arithmetic one.
+
+    The line before it says that the carbohydrate and the protein together come to 80 grams. It
+    does not say the carbohydrate comes to 80 grams. Two letters are still on that side.
+
+    Take the protein off.
+
+    ```working
+        80 minus 15 = 65
+    ```
+
+    Sixty-five grams of carbohydrate.
+
+    Check it by going forwards through the whole rule.
+
+    ```working
+        4 times 65 = 260
+        4 times 15 = 60
+        9 times 20 = 180
+        260 plus 60 plus 180 = 500
+    ```
+
+    500 kilocalories, which is the figure the panel gives.
+
+    Why it looks reasonable: the rearranging was done correctly and shown line by line, so the
+    working reads as careful. The 80 arrived from a division that was genuinely valid. And 80
+    grams of carbohydrate in 100 grams of a food is a perfectly ordinary figure, so nothing about
+    it looks out of place. The error is in what the final line was taken to be about, and a
+    rearranged equation always needs reading before it is used.
+  refs:
+  - fssai_labelling_2020
+- level: 9
+  prompt: |
+    A colleague writes this in a note about a clinic register.
+
+    > The height column is in metres and the index column is filled in. We do not need to keep
+    > the mass column, because we can always work the mass back out.
+
+    Take one row, with the height recorded as 1.65 m and the index recorded as 22.0 kg/m^2.
+
+    Decide what to compute, compute it, and say what your answer does not establish.
+  answer: |
+    What to compute: the mass the row gives back. Then how much that mass moves if the index was
+    rounded before it was written down.
+
+    The mass is the index times the square of the height.
+
+    ```working
+        1.65 times 1.65 = 2.7225
+        22.0 times 2.7225 = 59.895
+    ```
+
+    About 59.9 kilograms. So the colleague is right that the mass can be recovered.
+
+    Now the part the note does not mention. An index written as 22.0 was rounded to one decimal
+    place, so the real value lies somewhere between 21.95 and 22.05. Work the mass out at each
+    end.
+
+    ```working
+        21.95 times 2.7225 = 59.76
+        22.05 times 2.7225 = 60.03
+    ```
+
+    The recovered mass is somewhere between about 59.8 and 60.0 kilograms. A quarter of a
+    kilogram of uncertainty was created by dropping a column that had been measured.
+
+    What this does not establish. It does not establish that the recovery is good enough. Whether
+    a quarter of a kilogram matters depends on what the register is for, and nothing in the
+    arithmetic decides that.
+
+    It says nothing about whether the height or the index was measured well in the first place.
+
+    And it says nothing about the rows where the index was worked out from a height in
+    centimetres. No amount of rearranging will find those. A wrong index rearranges into a wrong
+    mass just as smoothly as a right one.
+- level: 10
+  prompt: |
+    In a meeting about a school kitchen somebody says this.
+
+    > The label rule counts nine kilocalories for every gram of fat. So if we take five grams of
+    > fat out of the recipe, the meal loses five kilocalories.
+
+    Decide what to compute, compute it, and say what your answer does not establish.
+  answer: |
+    What to compute: what a change in one letter does to the total. That is a question about the
+    rule, not about any one meal.
+
+    ```working
+        E = 4c + 4p + 9f
+    ```
+
+    The fat sits in the line multiplied by 9. So a change in the fat of five grams changes the
+    energy by nine times five.
+
+    ```working
+        9 times 5 = 45
+    ```
+
+    Forty-five kilocalories, not five. The speaker has read the change in grams straight across
+    as a change in kilocalories, which is the multiplication being dropped again.
+
+    Now the part that matters more. Taking five grams out of a recipe usually puts something else
+    in, and whatever goes in carries its own factor. If five grams of carbohydrate replace the
+    five grams of fat, work both terms.
+
+    ```working
+        4 times 5 = 20
+        45 minus 20 = 25
+    ```
+
+    The meal loses twenty-five kilocalories, not forty-five and not five. Which answer is right
+    depends on a fact about the recipe that nobody in the meeting has stated.
+
+    What this does not establish. It says nothing about whether the meal still meets any standard
+    set for it, which is a separate question with its own figures. It says nothing about what
+    anybody eats, since a meal served is not a meal eaten. And it says nothing about what the
+    change does to a child, which is not a question the label rule was built to answer.
+  refs:
+  - fssai_labelling_2020
+retrieval_items:
+- q: What does an equals sign claim, and what does it not tell you to do?
+  a: It claims that the expression on its left and the expression on its right stand for the same
+    number. It does not tell you to work the left side out and write the answer on the right.
+- q: What is the one rule that makes every rearrangement legal?
+  a: Whatever you do to one side, do to the other. Adding, subtracting, multiplying or dividing
+    both sides by the same quantity leaves a true statement true, as long as you never divide by
+    zero.
+- q: Why do you take the added terms off a side before dividing it?
+  a: Because an operation on a side applies to the whole of that side. While the side is a sum,
+    a division has to be applied to every term of it; once the side is a single term, there is
+    nothing for the division to miss.
+provenance:
+  map_version_id: fc19c8bc-a216-4131-99fb-ebe3f19cec4a
+  outcome_refs:
+  - B0-C2
+  - B0-C3
+  - B0-B6
+review:
+  stability: long
+  trigger: '2031-09-23, and sooner on either of two events: the next amendment to Regulation 5(3)(e)(i)
+    of the Food Safety and Standards (Labelling and Display) Regulations, 2020, or the next amendment
+    to Schedule II of the National Food Security Act, 2013. The technique is durable and dated
+    five-yearly; the conversion factors and the meal standard that the illustration and practice
+    levels 4, 5, 8 and 10 are drilled on are set by a regulator and by a statute, and both can be
+    revised.'
+  last_reviewed: '2026-09-23'
+status: drafted

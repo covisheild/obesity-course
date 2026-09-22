@@ -1,0 +1,707 @@
+concept_id: B0-R0-C20
+subject: B0
+rung: 0
+sequence: 20
+name: 'Recognising shapes: linear, exponential, saturating'
+concept_type: derivable
+clusters:
+- measurement-inference
+- craft-and-integrity
+ground_floor_deps: []
+concept_deps:
+- B0-R0-C06
+- B0-R0-C07
+- B0-R0-C19
+definition:
+  text: |
+    Three shapes cover most of the relationships this course will draw, and they are told apart by
+    what equal steps in the input do to the output.
+
+    A relationship is linear when equal steps in the input add the same amount to the output every
+    time. Its graph is a straight line, and its slope is that amount divided by the size of the
+    step.
+
+    A relationship is exponential when equal steps in the input multiply the output by the same
+    factor every time. Its increments grow in proportion to the output itself.
+
+    A relationship is saturating when the output rises while its increments shrink towards zero,
+    approaching a value it does not pass. That value is the ceiling, and the output may approach it
+    without ever reaching it.
+
+    The tests are arithmetic, carried out on values taken at equal steps. Constant differences
+    between successive outputs mean linear. Constant ratios mean exponential. Differences that
+    shrink towards zero while the output climbs towards a level mean saturating.
+
+    An exponential relationship drawn with a logarithmic vertical axis is a straight line, because
+    taking log10 of the output turns a constant ratio into a constant difference.
+  references:
+  - citekey: openstax_college_algebra_2e
+    kind: textbook
+    locator: ch. 4-6, Linear Functions through Exponential and Logarithmic Functions
+    verified:
+      resolved_id: https://openstax.org/books/college-algebra-2e
+      opened: true
+      claim_located: false
+      checked_on: '2026-09-23'
+      note: |-
+        Anchor confirmed by this session on 2026-09-22: the book's own table of contents was
+        opened and the cited chapter located in it. The passage behind this definition has not
+        been read, which is why claim_located stays false. The content is a derivation the
+        reader can check, so it does not rest on the anchor.
+simplified_explanation: |
+  You can read a graph now. This section is about naming what you are looking at, which is a
+  separate skill and comes first.
+
+  Three shapes turn up over and over. You can tell them apart by eye, and then check by hand.
+
+  **Linear. Equal steps add.** Take one step along the bottom and the value goes up by the same
+  amount. Take another step and it goes up by that same amount again. Drawn out, it is a straight
+  line.
+
+  **Exponential. Equal steps multiply.** Take one step along the bottom and the value is multiplied
+  by the same number. Take another step and it is multiplied by that number again. Drawn out, it
+  starts off looking lazy and then leaves everything else behind.
+
+  **Saturating. It rises, then flattens.** It climbs quickly at first, then less, then hardly at
+  all. It is heading for a level and it flattens against it. That level is called the ceiling.
+
+  Now the check by hand, for when your eye is not enough. It needs values taken at equal steps
+  along the bottom, and it is two subtractions and two divisions.
+
+  Subtract each value from the next one. Are the differences all the same? Then it is linear.
+
+  Divide each value by the one before it. Are the ratios all the same? Then it is exponential.
+
+  Do the differences keep shrinking while the values keep climbing towards some level? Then it is
+  saturating.
+
+  One more thing, and it is the one people get caught by. Look at the side axis before you name
+  anything. Some side axes multiply by ten at every step, which is the ruler you met in the section
+  on logarithms. On one of those, an exponential comes out as a straight line. So a straight line
+  on that kind of axis means multiplying, not adding.
+
+  And a warning about how much you need to see. Three points do not have a shape. Any three rising
+  points can be drawn as any of the three shapes here. You need enough of the run to see what the
+  steps are doing.
+illustration:
+  body: |
+    Start with three numbers and a wrong answer, because naming a shape too early is the mistake
+    this section exists to stop.
+
+    Somebody shows you three values, taken one step apart: 10, 30, 42. They call the rise
+    exponential and say it is roughly doubling.
+
+    Test it before you agree. Divide each value by the one before it.
+
+    ```working
+        30 divided by 10 = 3
+        42 divided by 30 = 1.4
+    ```
+
+    Three, then 1.4. The ratios are not the same, so nothing here is multiplying by a fixed factor.
+    Exponential is the wrong word. It was reached by looking at a rise rather than by testing one.
+
+    Now take the run out to six values, and put two other shapes beside it for comparison.
+
+    ```table
+    step  linear  exponential  saturating
+    0     10      10           10
+    1     20      15           30
+    2     30      22.5         42
+    3     40      33.8         49.2
+    4     50      50.6         53.5
+    5     60      75.9         56.1
+    ```
+
+    Work down each column with the two tests.
+
+    Take the first column by subtraction.
+
+    ```working
+        20 minus 10 = 10
+        30 minus 20 = 10
+        60 minus 50 = 10
+    ```
+
+    The same amount is added at every step, so the first column is linear.
+
+    Take the second column by division.
+
+    ```working
+        15 divided by 10 = 1.5
+        22.5 divided by 15 = 1.5
+        75.9 divided by 50.6 = 1.5
+    ```
+
+    The same factor multiplies at every step, so the second column is exponential.
+
+    Take the third column by subtraction, and watch what the differences do.
+
+    ```working
+        30 minus 10 = 20
+        42 minus 30 = 12
+        49.2 minus 42 = 7.2
+        53.5 minus 49.2 = 4.3
+        56.1 minus 53.5 = 2.6
+    ```
+
+    The steps shrink while the values keep climbing. Each step closes about the same share of
+    whatever distance is left to 60, so 60 is the ceiling this column is heading for. It gets
+    closer at every step and does not arrive.
+
+    Now look at the first two rows of the table again, because that is where the trap is. At step
+    one the exponential column is the lowest of the three. At step five it is the highest, and it
+    has passed the ceiling the saturating column will never reach.
+
+    That is why you take the run out before you name anything. An exponential is the flattest of
+    the three at the start and the steepest of the three at the end. A short run shows you the
+    opposite of what a long run shows.
+  analogy_breaks_when: |
+    These three shapes are a starting kit and not a list of everything. A curve that falls, one
+    that rises and then falls, and a line with a step in it are all things you will meet. None of
+    them is here.
+
+    The two tests need equal steps along the bottom. Values taken at uneven intervals give
+    differences and ratios that mean nothing. A table that does not say its step size cannot be
+    tested at all.
+
+    Rounding hides small changes. A ratio that reads 1.5 three times running may be drifting in the
+    digits you were not shown.
+
+    And naming a shape is not explaining it. A saturating curve says that something is running out
+    of room. It does not say what.
+figures:
+- file: c6-three-shapes.png
+  caption: "The three shapes on one pair of axes, which is the only way the difference between them can be practised. All three start at the same place; by the sixth step they are nowhere near each other."
+  alt: "Three curves from a common starting point. One rises as a straight line, one curves upward ever more steeply, and one rises quickly then flattens toward a ceiling."
+  source: draw.py
+must_know:
+- point: |
+    Run two tests on any set of values taken at equal steps. Subtract each from the next for a
+    constant difference, and divide each by the one before for a constant ratio. One test or the
+    other names the shape, and the pair of them takes under a minute.
+  kind: move
+  bearing: methodological
+- point: |
+    Exponential does not mean fast. It means each equal step multiplies by the same factor. An
+    exponential curve is the flattest of the three at the start, so calling a steep early rise
+    exponential gets it backwards.
+  kind: misconception
+  bearing: methodological
+- point: |
+    Three points have no shape. Any three rising values can be drawn as a line, a curve that takes
+    off, or a curve that flattens. Ask for the rest of the run before you name anything.
+  kind: trap
+  bearing: methodological
+- point: |
+    Read the side axis before you call a line linear. On an axis where each step multiplies by ten,
+    a straight line is an exponential. The tamest-looking picture is then the one that is
+    multiplying.
+  kind: trap
+  bearing: methodological
+- point: |
+    Where a curve has flattened, a further equal step in the input buys much less than the step
+    before it did. Say that out loud when somebody in a meeting proposes doubling the input. Then
+    say what you would need in order to find where the flat part begins.
+  kind: consequence
+  bearing: policy
+- point: |
+    Naming a shape names a pattern and never a mechanism. A saturating curve does not tell you what
+    ran out, and a reader who takes the name as an explanation has stopped one question early.
+  kind: boundary
+  bearing: methodological
+- point: |
+    When a journalist uses the word exponential, ask what the values were at equal times and
+    whether the ratio held. Most rises that are called exponential in public are not, and the
+    honest sentence is that it grew and here is by how much.
+  kind: move
+  bearing: public
+exercises:
+- type: interpretation
+  prompt: |
+    A figure shows one curve, with time along the bottom and a count up the side. The curve rises
+    steeply for the first part, then bends over and runs nearly flat for the rest.
+
+    Say which of the three shapes it is. Say what the flat part means in the arithmetic. Then say
+    what the figure does not tell you.
+  answer: |
+    It is saturating. The steps up are getting smaller while the count is still climbing, and the
+    curve is flattening against a level.
+
+    What the flat part means in the arithmetic: each equal step along the bottom is adding less
+    than the step before it added. The differences are shrinking towards zero. The count is not
+    falling, and saying that it is falling is the commonest misreading of this shape.
+
+    What the figure does not tell you. It does not tell you the ceiling, unless the curve has been
+    run out far enough for the flattening to settle. It does not tell you why anything flattened,
+    because a shape carries no mechanism. And it does not tell you that the early part was
+    exponential, which is a claim you would have to test by dividing successive values.
+
+    One thing to check before saying any of this out loud: whether the side axis is an ordinary one
+    or one where each step multiplies. The answer above assumes an ordinary axis, and the figure
+    has to say which it is.
+- type: teaching
+  prompt: |
+    A journalist has three minutes and no jargon. They have a chart and a press line saying the
+    numbers are rising exponentially. They ask you whether that is right.
+
+    Say what you would tell them, and give them one quotable sentence.
+  answer: |
+    Three minutes, no jargon, and they need something they can print.
+
+    Start with what the word means, in one sentence they can use. Exponential means every equal
+    step multiplies by the same amount. It is a claim about the ratio between one month and the
+    next. It is not a claim about the rise looking dramatic.
+
+    Then show them the test with their own numbers. Take the values a month apart, and divide each
+    by the one before. If those ratios are about the same, the word holds. If they are falling, the
+    rise is slowing, and there is a different and equally printable story in that.
+
+    Then give them the calibrated statement. Say that the numbers rose, and say by how much. Then
+    say whether the word exponential fits, and give the ratios as the reason. If you
+    only have three points, say that three points cannot settle it, because they cannot.
+
+    The quotable sentence: "It is rising, and the rise is slowing down. Each month adds less than
+    the month before, which is the opposite of exponential."
+
+    What not to do: agree that it is exponential because the line looks steep. Steepness is a
+    choice made by whoever drew the axis, and you told them that last time.
+quantitative: true
+practice:
+- level: 1
+  prompt: |
+    Each of these is a set of values taken one step apart. Name the shape of each, and say which
+    test told you.
+
+    ```table
+    A  4   8    12    16    20
+    B  4   8    16    32    64
+    C  4   12   16    17    17.2
+    ```
+  answer: |
+    A is linear. Subtract each from the next and the difference is the same every time.
+
+    ```working
+        8 minus 4 = 4
+        12 minus 8 = 4
+        20 minus 16 = 4
+    ```
+
+    B is exponential. The differences are not equal, so divide instead.
+
+    ```working
+        8 divided by 4 = 2
+        16 divided by 8 = 2
+        64 divided by 32 = 2
+    ```
+
+    The same factor every step.
+
+    C is saturating. Subtract, and watch the differences fall.
+
+    ```working
+        12 minus 4 = 8
+        16 minus 12 = 4
+        17 minus 16 = 1
+        17.2 minus 17 = 0.2
+    ```
+
+    The values climb while the steps shrink towards nothing, which is the shape heading for a
+    ceiling.
+- level: 2
+  prompt: |
+    Each of these is a set of values taken one step apart. Name the shape of each.
+
+    ```table
+    D  100  50   25    12.5   6.25
+    E  100  130  160   190    220
+    F  2    6    18    54     162
+    ```
+  answer: |
+    D is exponential. Divide each value by the one before it.
+
+    ```working
+        50 divided by 100 = 0.5
+        25 divided by 50 = 0.5
+        6.25 divided by 12.5 = 0.5
+    ```
+
+    The same factor every step, and the factor is less than one, so the values fall. Exponential
+    describes the multiplying, not the direction.
+
+    E is linear. Subtract.
+
+    ```working
+        130 minus 100 = 30
+        160 minus 130 = 30
+        220 minus 190 = 30
+    ```
+
+    F is exponential. Divide.
+
+    ```working
+        6 divided by 2 = 3
+        18 divided by 6 = 3
+        162 divided by 54 = 3
+    ```
+
+    D and F are the pair to look at twice. One falls and one climbs steeply, and both are the same
+    shape, because in both cases each step multiplies by a fixed number.
+- level: 3
+  prompt: |
+    Start at 8 and write five values for each of these rules, taking one step at a time.
+
+    ```working
+        add 6 at every step
+        multiply by 3 at every step
+    ```
+
+    Then say which of the two is which shape.
+  answer: |
+    The first rule, adding 6.
+
+    ```working
+        8 plus 6 = 14
+        14 plus 6 = 20
+        20 plus 6 = 26
+        26 plus 6 = 32
+    ```
+
+    So 8, 14, 20, 26, 32. Equal steps add the same amount, so this is linear.
+
+    The second rule, multiplying by 3.
+
+    ```working
+        8 times 3 = 24
+        24 times 3 = 72
+        72 times 3 = 216
+        216 times 3 = 648
+    ```
+
+    So 8, 24, 72, 216, 648. Equal steps multiply by the same factor, so this is exponential.
+
+    Look at the two end values. The adding rule reached 32 and the multiplying rule reached 648,
+    from the same start and in the same four steps.
+- level: 4
+  prompt: |
+    Under section 3(1) of the National Food Security Act, 2013, a person in a priority household is
+    entitled to five kilograms of foodgrains a month.
+
+    Write the total grain a household of four is counted for after one, two, three and four months.
+    Name the shape. Give the slope of the line with its unit. Then say what would have to be true
+    for this quantity to be exponential.
+  answer: |
+    Work out one month first.
+
+    ```working
+        5 times 4 = 20
+    ```
+
+    Twenty kilograms a month. Now the running totals.
+
+    ```working
+        20 times 1 = 20
+        20 times 2 = 40
+        20 times 3 = 60
+        20 times 4 = 80
+    ```
+
+    So 20, 40, 60 and 80 kilograms.
+
+    Name the shape by subtracting.
+
+    ```working
+        40 minus 20 = 20
+        60 minus 40 = 20
+        80 minus 60 = 20
+    ```
+
+    Equal steps add the same amount, so it is linear. Drawn with months along the bottom and
+    kilograms up the side, the slope is 20 kilograms per month.
+
+    What would make it exponential: the monthly amount would have to multiply rather than repeat.
+    The second month would have to bring more grain than the first, in proportion to the total
+    already received. Nothing in section 3(1) does that, because the entitlement is a fixed amount
+    for each person for each month.
+  refs:
+  - nfsa_2013
+- level: 5
+  prompt: |
+    A quantity is measured at equal steps and comes out as 20, 44, 56.0, 62.0, 65.0, 66.5.
+
+    Name the shape, show the working that names it, and estimate the ceiling it is heading for.
+  answer: |
+    Subtract each value from the next.
+
+    ```working
+        44 minus 20 = 24
+        56.0 minus 44 = 12
+        62.0 minus 56.0 = 6
+        65.0 minus 62.0 = 3
+        66.5 minus 65.0 = 1.5
+    ```
+
+    The values climb and the steps shrink, so it is saturating.
+
+    Now look at how the steps shrink. Each one is half the one before it.
+
+    ```working
+        24 divided by 2 = 12
+        12 divided by 2 = 6
+    ```
+
+    If each step keeps halving, the remaining steps add 0.75, then 0.375, and so on. Those add up
+    to about 1.5 more.
+
+    ```working
+        66.5 plus 1.5 = 68
+    ```
+
+    So the ceiling is about 68. Say "about", because you have worked it out from the pattern of six
+    values and not from anything that told you what the ceiling was.
+- level: 6
+  prompt: |
+    Two quantities are recorded at equal steps.
+
+    ```table
+    G  5    35    65    95    125
+    H  5    10    20    40    80
+    ```
+
+    Say which of the two will be the larger at step 12, and show the working that decides it.
+  answer: |
+    Name the shapes first, because the shapes decide the answer.
+
+    G rises by the same amount each step.
+
+    ```working
+        35 minus 5 = 30
+        65 minus 35 = 30
+    ```
+
+    So G is linear, adding 30 a step.
+
+    H multiplies by the same factor each step.
+
+    ```working
+        10 divided by 5 = 2
+        20 divided by 10 = 2
+    ```
+
+    So H is exponential, doubling each step.
+
+    Now run both to step 12. G has taken 12 steps of 30 from a start of 5.
+
+    ```working
+        30 times 12 = 360
+        360 plus 5 = 365
+    ```
+
+    H has doubled 12 times from a start of 5. Doubling twelve times multiplies by 2^12.
+
+    ```working
+        2^12 = 4096
+        5 times 4096 = 20480
+    ```
+
+    Twenty thousand four hundred and eighty, against 365. H is far larger.
+
+    Notice that H was the smaller of the two at steps two, three and four. An exponential starts
+    behind a linear and then passes it. Where it passes tells you nothing about how far ahead it
+    ends up.
+- level: 7
+  prompt: |
+    Here is a worked answer. Find the step that broke.
+
+    ```working
+        the values at equal steps are 10, 30, 42, 49.2, 53.5, 56.1
+        the first step rose by 20, which is a big jump
+        the curve is clearly rising fast
+        a curve that rises fast is exponential
+        so the quantity is growing exponentially and will keep doing so
+    ```
+  answer: |
+    The step that broke is the fourth. Rising fast is not what exponential means, and the test that
+    settles it was never run.
+
+    Divide each value by the one before it.
+
+    ```working
+        30 divided by 10 = 3
+        42 divided by 30 = 1.4
+        49.2 divided by 42 = 1.17
+    ```
+
+    The ratios are falling, not holding. So nothing here is multiplying by a fixed factor.
+
+    Now subtract instead.
+
+    ```working
+        30 minus 10 = 20
+        42 minus 30 = 12
+        49.2 minus 42 = 7.2
+    ```
+
+    The steps are shrinking while the values climb. That is saturating, which is the opposite of
+    the shape claimed. The last line is the damaging part. This curve is flattening rather than
+    about to take off.
+
+    Why it looks reasonable: the first difference really is 20, and the first ratio really is 3.
+    Read only the start of a saturating curve and it looks like something taking off. The answer
+    stopped at the first step, and the first step is the one place where the two shapes look alike.
+- level: 8
+  prompt: |
+    Here is a worked answer. Find the step that broke.
+
+    ```working
+        the figure has a side axis marked 10, 100, 1,000, 10,000
+        the points lie on a straight line across the figure
+        a straight line is the picture of a linear relationship
+        so the quantity is rising by a fixed amount each month
+        the rise from the first month to the last is steady and needs no further comment
+    ```
+  answer: |
+    The step that broke is the third. The line is straight, and the axis is not an ordinary one.
+
+    Read the side axis again. Each label is ten times the one before it, so this is the multiplying
+    ruler from the section on logarithms.
+
+    ```working
+        100 divided by 10 = 10
+        1,000 divided by 100 = 10
+    ```
+
+    On an axis like that, equal distances up the page mean equal multiplications rather than equal
+    additions. A straight line therefore means a constant ratio, which is exponential.
+
+    Read the values off the axis instead of the line, and the difference is plain. If the line
+    crosses 10 at the first month and 10,000 at the fourth, the quantity has multiplied by ten a
+    month.
+
+    ```working
+        10 times 10 times 10 times 10 = 10000
+    ```
+
+    A thousandfold rise over three months is the opposite of needing no further comment.
+
+    Why it looks reasonable: on an ordinary axis, a straight line really is a linear relationship.
+    That is the first thing anybody learns about graphs. The axis labels are printed right there,
+    and reading the line is quicker than reading them.
+- level: 9
+  prompt: |
+    A line in a meeting note says this.
+
+    > Registrations are growing exponentially. We had 200 in the first month, 400 in the second and
+    > 600 in the third.
+
+    The programme and all three figures are made up for this problem. No real programme is being
+    described.
+
+    Decide what to compute, compute it, and say what your answer does not establish.
+  answer: |
+    What to compute: the differences and the ratios between the three values, because those are
+    what the word exponential is a claim about.
+
+    Differences first.
+
+    ```working
+        400 minus 200 = 200
+        600 minus 400 = 200
+    ```
+
+    The same amount is added each month.
+
+    Now ratios.
+
+    ```working
+        400 divided by 200 = 2
+        600 divided by 400 = 1.5
+    ```
+
+    Two, then 1.5. The ratio is falling, so this is not multiplying by a fixed factor. On these
+    three values it is linear and not exponential, and the right sentence is that registrations
+    rose by 200 a month.
+
+    What this does not establish. Three values cannot settle a shape, so this does not establish
+    that the fourth month will add 200 either. It does not establish that the note is wrong about
+    anything except the word, since 200 a month may be exactly what was expected. And it says
+    nothing about whether registrations measure anything worth measuring. Naming a shape is not the
+    same as knowing what is being counted.
+- level: 10
+  prompt: |
+    A district officer writes this in a review note.
+
+    > The programme is running out of steam. Coverage went up 12 points in the first year, then 6,
+    > then 3, then 1.5. The gains are collapsing and we should move the money elsewhere.
+
+    The programme and all four figures are made up for this problem. No real programme is being
+    described.
+
+    Decide what to compute, compute it, and say what your answer does not establish.
+  answer: |
+    What to compute: the running total of coverage, and what the shrinking steps are heading
+    towards.
+
+    Add the gains up as they come.
+
+    ```working
+        12 plus 6 = 18
+        18 plus 3 = 21
+        21 plus 1.5 = 22.5
+    ```
+
+    Coverage has risen by 22.5 points in four years, and it is still rising.
+
+    Now look at the steps themselves.
+
+    ```working
+        6 divided by 12 = 0.5
+        3 divided by 6 = 0.5
+        1.5 divided by 3 = 0.5
+    ```
+
+    Each year's gain is half the year before. That is the signature of a saturating curve, not of a
+    programme failing. The steps shrink because there is less room left to cover, which is what
+    running towards a ceiling looks like from inside.
+
+    Work out roughly where it is heading. The remaining gains, halving each year, add up to about
+    as much as the last one.
+
+    ```working
+        22.5 plus 1.5 = 24
+    ```
+
+    About 24 points above where it started.
+
+    What this does not establish. It does not establish that the programme is working, because
+    coverage could have risen for reasons that have nothing to do with it. It does not establish
+    that 24 points is the true ceiling, since four values and an assumed halving are a thin basis
+    for that. And it does not settle the money question at all. A saturating curve tells you that the
+    next rupee buys less than the last one did. Whether that rupee is better spent elsewhere
+    depends on what it would buy there. That is nowhere in these numbers.
+retrieval_items:
+- q: What two tests tell the three shapes apart, and what does each one find?
+  a: |-
+    Subtract each value from the next, and constant differences mean linear. Divide each value by
+    the one before, and constant ratios mean exponential. Differences that shrink while the values
+    climb towards a level mean saturating.
+- q: Why is "it is rising fast, so it is exponential" wrong?
+  a: Exponential is a claim about the ratio between equal steps, not about steepness. An
+    exponential curve is the flattest of the three at the start and only later the steepest.
+- q: A straight line is drawn on an axis whose labels are 10, 100, 1,000 and 10,000. What shape is
+    the relationship?
+  a: Exponential. Each label is ten times the one before, so equal distances up the page are equal
+    multiplications, and a constant ratio draws as a straight line.
+- q: How many points do you need before you name a shape?
+  a: More than three. Any three rising values can be drawn as a line, as a curve taking off, or as
+    a curve flattening, so the run has to be long enough to show what the steps are doing.
+provenance:
+  map_version_id: fc19c8bc-a216-4131-99fb-ebe3f19cec4a
+  outcome_refs:
+  - B0-C6
+  bridge_ref: []
+review:
+  stability: long
+  trigger: '2031-09-23'
+  last_reviewed: '2026-09-23'
+status: drafted
