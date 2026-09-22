@@ -16,21 +16,19 @@ concept_deps:
 - B0-R0-C21
 definition:
   text: |
-    An amount is a rate multiplied by the length of time over which that rate held. Its unit is the
-    unit of the rate multiplied by the unit of time, which leaves the unit of the quantity itself.
+    An amount is a rate multiplied by the length of time over which that rate held.
 
-    A running total is the sum of those amounts across successive intervals. Its value at any time
-    is the sum of every amount up to that time.
+    A running total is the sum of those amounts across successive intervals.
 
     Drawn with time along the bottom and the rate up the side, each amount is the area of a
     rectangle whose width is the interval and whose height is the rate over it. The running total
     up to any time is the area under the rate line up to that time.
 
     The total is exact only where the rate held steady across each interval. Where the rate moved
-    inside an interval, the rectangle over-counts or under-counts. Take the largest gap between
-    the height used and the rate at any moment inside that interval. That gap, multiplied by the
-    length of the interval, is the most the rectangle can be wrong by. The error is an amount and
-    carries the quantity's unit. Narrower intervals shrink it without removing it.
+    inside an interval, the rectangle over-counts or under-counts. Take the largest gap between the
+    height used and the rate at any moment inside that interval. That gap, multiplied by the length
+    of the interval, is the most the rectangle can be wrong by. The error is an amount and carries
+    the quantity's unit. Narrower intervals shrink it without removing it.
 
     A rate and a total are different quantities with different units, and neither can be read off
     the other without the time it applied over.
@@ -52,7 +50,7 @@ simplified_explanation: |
   The section before this one took a quantity and got a rate out of it. This one goes the other
   way. You start with a rate and you get an amount back.
 
-  A rate multiplied by a time gives an amount. That is the whole of the first step.
+  A rate multiplied by a time gives an amount.
 
   ```working
       the amount = the rate, times the length of time the rate held for
@@ -68,47 +66,33 @@ simplified_explanation: |
   Kilograms per month, multiplied by months, leaves kilograms. The months cancel, exactly as they
   did in the section on dimensional analysis.
 
-  Now the second step, which is the one that does the work.
-
   Rates change. So you cut the time into intervals short enough that the rate can be treated as
   steady inside each one. Work out the amount for each interval. Then add them up as you go.
 
-  That sum is called a running total. It is the amount so far, and it grows by one interval's
-  amount at each step.
-
-  Here is the same thing as a picture, and the picture is worth learning because everybody uses it.
+  That sum is called a running total.
 
   Draw time along the bottom and the rate up the side. Mark the rate over each interval at the
   height it reached. The line those marks make across the figure is the rate line, and everything
   below it is what you are about to measure.
 
-  Now take one interval and draw a rectangle on it. Its width is the length of the interval. Its
-  height is the rate over that interval, so its top sits on the rate line.
+  Now take one interval and draw a rectangle on it. Its height is the rate over that interval, so
+  its top sits on the rate line.
 
-  The area of that rectangle is its height times its width. That is the rate times the time, which
-  is the amount. **The area of the rectangle is the amount.**
+  The area of that rectangle is its height times its width. The area of the rectangle is the
+  amount.
 
   Stack the rectangles side by side across the whole stretch of time. The total area is the running
-  total. So the area under a rate line, up to any time, is the total accumulated up to that time.
-
-  Now the honest part, and it is the part that keeps you out of trouble.
+  total.
 
   A rectangle assumes the rate held steady across its whole width. Where the rate was falling, a
   rectangle drawn at the starting rate counts too much. Where the rate was rising, it counts too
   little.
 
-  Cut the intervals narrower and the error shrinks. It does not vanish. A total built from monthly
-  readings is a statement about what you assumed happened between the readings, and that assumption
-  travels with the answer.
+  Cut the intervals narrower and the error shrinks. It does not vanish.
 
-  One name, so you recognise it on somebody else's page. The total under a rate line is called an
-  integral. It is written with the sign ∫, which is a stretched letter S for sum. That is all you
-  need. Nothing in this book asks you to work one out.
+  The total under a rate line is called an integral. Nothing in this book asks you to work one out.
 illustration:
   body: |
-    Start with a real mistake, because it is quick, it is common, and the arithmetic in it is
-    correct.
-
     A store issues grain. Somebody records the rate at which it goes out, month by month, for six
     months.
 
@@ -126,17 +110,13 @@ illustration:
 
     > The store issues 20 kilograms a month. Over six months that is 120 kilograms.
 
-    The multiplication is right. Twenty a month for six months is 120.
-
-    ```working
-        20 times 6 = 120
-    ```
+    The multiplication is right.
 
     The error is that 20 was the rate in two of the six months and not in the other four. One
     month's rate was used as though it held for all six.
 
     Do it properly. Each month is one interval, and each interval's amount is its rate times one
-    month. So the amount for each month is just the rate in that row.
+    month.
 
     Add them as a running total, which is the amount so far after each month.
 
@@ -150,16 +130,6 @@ illustration:
 
     Eighty kilograms over the six months, against the 120 in the note. The note is out by half
     again.
-
-    ```table
-    after month  kilograms out so far
-    1            20
-    2            40
-    3            55
-    4            65
-    5            75
-    6            80
-    ```
 
     Now draw it, because the picture is how everybody else will show you this.
 
@@ -175,8 +145,8 @@ illustration:
     ```
 
     Twenty kilograms. Do the same for each month and you get six rectangles standing side by side.
-    Their heights are 20, 20, 15, 10, 10 and 5, and every width is one month. The whole shaded
-    area under the rate line is 80 kilograms, which is the answer you already have.
+    Their heights are 20, 20, 15, 10, 10 and 5, and every width is one month. The whole shaded area
+    under the rate line is 80 kilograms, which is the answer you already have.
 
     Check the unit before you go on.
 
@@ -185,29 +155,7 @@ illustration:
         = kilograms
     ```
 
-    The months cancel and kilograms are left. A total is in the unit of the quantity, never in the
-    unit of the rate.
-
-    Now the easy case, where nothing changes and the answer is one rectangle.
-
-    Section 3(1) of the National Food Security Act, 2013 entitles a person in a priority household
-    to five kilograms of foodgrains per person per month. A household of four is counted for twenty
-    kilograms a month.
-
-    ```working
-        5 times 4 = 20
-    ```
-
-    That rate does not change from month to month, so one rectangle covers the whole year. It is
-    twelve months wide and twenty kilograms a month tall.
-
-    ```working
-        20 times 12 = 240
-    ```
-
-    Two hundred and forty kilograms in a year. The 240 is your arithmetic. What the Act states is
-    the five kilograms, so say that you multiplied by four people and twelve months whenever you
-    quote it.
+    A total is in the unit of the quantity, never in the unit of the rate.
 
     Last, the part that decides how much your total is worth.
 
@@ -279,23 +227,16 @@ illustration:
     citekey: nfsa_2013
     as_of: '2026-09-23'
   analogy_breaks_when: |
-    The six monthly rates in the first table are bare numbers. They describe no real store and no
-    real district.
+    The six monthly rates in the first table are bare numbers.
 
-    Area is a total only when time is along the bottom and a rate is up the side. Shade the area
-    under a graph whose side axis is a quantity rather than a rate, and the area is not a total of
-    anything. Read both axis labels before you shade anything.
+    Area is a total only when time is along the bottom and a rate is up the side. Read both axis labels
+    before you shade anything.
 
-    A rectangle built on the rate at the start of an interval counts too much while the rate is
-    falling. It counts too little while the rate is rising. Narrower intervals shrink that error and never
-    remove it.
+    A rectangle built on the rate at the start of an interval counts too much while the rate is falling.
+    Narrower intervals shrink that error and never remove it.
 
-    A total built from readings taken once a month is only as good as the guess that the rate held
-    for the month. Where a rate jumps about inside an interval, the monthly reading can be far from
-    what held for most of it.
-
-    And every amount here is an amount going one way. A flow out of something is an amount
-    subtracted rather than added, and the running total then falls. That is the next section.
+    And every amount here is an amount going one way. A flow out of something is an amount subtracted
+    rather than added, and the running total then falls.
 figures:
 - file: c8-rectangles.png
   caption: "Each rectangle is one month's rate multiplied by one month, so its area is that month's amount. Stacking them is the running total, and the total is the area under the whole rate line."
@@ -303,31 +244,26 @@ figures:
   source: draw.py
 must_know:
 - point: |
-    Multiply a rate by the time it held for before you quote any total. A rate alone is not an
-    amount, and the missing step is where the two get confused.
+    Multiply a rate by the time it held for before you quote any total.
   kind: move
   bearing: methodological
 - point: |
-    Check the unit of every total. A rate in kilograms per month multiplied by months leaves
-    kilograms. If the unit of your answer still has a time on the bottom, you have added rates
-    instead of accumulating them.
+    Check the unit of every total. If the unit of your answer still has a time on the bottom,
+    you have added rates instead of accumulating them.
   kind: move
   bearing: methodological
 - point: |
     Taking one measurement of a rate and multiplying it by a whole year is the commonest way a
-    total goes wrong. It is right only where the rate held all year, which is a claim about the
-    world and needs evidence like any other.
+    total goes wrong.
   kind: trap
   bearing: methodological
 - point: |
-    The area under a rate line is a total and not a rate. A large area means a large amount
-    accumulated, and it says nothing about how fast the quantity is moving now.
+    The area under a rate line is a total and not a rate.
   kind: misconception
   bearing: methodological
 - point: |
     A total carries its interval assumption with it, and narrower intervals shrink the error
-    without ever removing it. Say which readings a total was built from whenever you give it, so
-    that whoever uses it knows what was assumed between them.
+    without ever removing it.
   kind: boundary
   bearing: methodological
 - point: |
@@ -337,14 +273,12 @@ must_know:
   kind: consequence
   bearing: policy
 - point: |
-    When somebody quotes a total to a journalist, give the rate alongside it, or the other way
-    round. A total says how much has piled up, a rate says how fast it is piling up now, and the
-    two answer different questions.
+    A total says how much has piled up, a rate says how fast it is piling up now, and the two
+    answer different questions.
   kind: move
   bearing: public
 - point: |
-    Teach a trainee to draw the rectangles before reaching for a formula. A stack of rectangles under a rate line makes the idea of a total visible. It survives long after
-    any formula they were taught has gone.
+    Teach a trainee to draw the rectangles before reaching for a formula.
   kind: move
   bearing: teaching
 exercises:

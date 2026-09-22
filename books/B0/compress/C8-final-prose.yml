@@ -1,0 +1,85 @@
+definition.text: 'An amount is a rate multiplied by the length of time over which that rate held.
+
+
+  A running total is the sum of those amounts across successive intervals.
+
+
+  Drawn with time along the bottom and the rate up the side, each amount is the area of a
+
+  rectangle whose width is the interval and whose height is the rate over it. The running total
+
+  up to any time is the area under the rate line up to that time.
+
+
+  The total is exact only where the rate held steady across each interval. Where the rate moved
+
+  inside an interval, the rectangle over-counts or under-counts. Take the largest gap between the
+
+  height used and the rate at any moment inside that interval. That gap, multiplied by the length
+
+  of the interval, is the most the rectangle can be wrong by. The error is an amount and carries
+
+  the quantity''s unit. Narrower intervals shrink it without removing it.
+
+
+  A rate and a total are different quantities with different units, and neither can be read off
+
+  the other without the time it applied over.
+
+  '
+simplified_explanation: "The section before this one took a quantity and got a rate out of it. This one goes the other\nway. You start with a rate and you get an amount back.\n\nA rate multiplied by a time gives an amount.\n\n```working\n    the amount = the rate, times the length of time the rate held for\n```\n\nTwenty kilograms a month, held for three months, gives sixty kilograms.\n\n```working\n    20 times 3 = 60\n```\n\nCheck the unit, because the unit is what tells you the step was done the right way round.\nKilograms per month, multiplied by months, leaves kilograms. The months cancel, exactly as they\ndid in the section on dimensional analysis.\n\nRates change. So you cut the time into intervals short enough that the rate can be treated as\nsteady inside each one. Work out the amount for each interval. Then add them up as you go.\n\nThat sum is called a running total.\n\nDraw time along the bottom and the rate up the side. Mark the rate over each interval at the\nheight it reached. The line those marks make across the figure is the rate line, and everything\nbelow it is what you are about to measure.\n\nNow take one interval and draw a rectangle on it. Its height is the rate over that interval, so\nits top sits on the rate line.\n\nThe area of that rectangle is its height times its width. The area of the rectangle is the\namount.\n\nStack the rectangles side by side across the whole stretch of time. The total area is the running\ntotal.\n\nA rectangle assumes the rate held steady across its whole width. Where the rate was falling, a\nrectangle drawn at the starting rate counts too much. Where the rate was rising, it counts too\nlittle.\n\nCut the intervals narrower and the error shrinks. It does not vanish.\n\nThe total under a rate line is called an integral. Nothing in this book asks you to work one out.\n"
+illustration.body: "A store issues grain. Somebody records the rate at which it goes out, month by month, for six\nmonths.\n\n```table\nmonth  kilograms a month going out\n1      20\n2      20\n3      15\n4      10\n5      10\n6      5\n```\n\nA note on the file says this.\n\n> The store issues 20 kilograms a month. Over six months that is 120 kilograms.\n\nThe multiplication is right.\n\nThe error is that 20 was the rate in two of the six months and not in the other four. One\nmonth's rate was used as though it held for all six.\n\nDo it properly. Each month is one interval, and each interval's amount is its rate times one\nmonth.\n\nAdd them as a running total, which is the amount so far after each month.\n\n```working\n    20 plus 20 = 40\n    40 plus 15 = 55\n    55 plus 10 = 65\n    65 plus 10 = 75\n    75 plus 5 = 80\n```\n\nEighty kilograms over the six months, against the 120 in the note. The note is out by half\nagain.\n\nNow draw it, because the picture is how everybody else will show you this.\n\nPut months along the bottom and kilograms a month up the side. Mark each month's rate at the\nheight it reached, and the six marks make one stepped line across the figure. That line is the\nrate line.\n\nNow over month one, draw a rectangle one month wide and 20 kilograms a month tall, so that its\ntop sits on the rate line. Its area is its height times its width.\n\n```working\n    20 times 1 = 20\n```\n\nTwenty kilograms. Do the same for each month and you get six rectangles standing side by side.\nTheir heights are 20, 20, 15, 10, 10 and 5, and every width is one month. The whole shaded area\nunder the rate line is 80 kilograms, which is the answer you already have.\n\nCheck the unit before you go on.\n\n```working\n    kilograms per month, times months\n    = kilograms\n```\n\nA total is in the unit of the quantity, never in the unit of the rate.\n\nLast, the part that decides how much your total is worth.\n\nTake a rate that is falling steadily, from 20 kilograms a month down to nothing over four\nmonths. Read it at the start of each month and you get 20, 15, 10 and 5.\n\nBuild the total from four rectangles, each one month wide.\n\n```working\n    20 plus 15 plus 10 plus 5 = 50\n```\n\nFifty kilograms.\n\nNow cut the intervals in half. Read the rate every half month and you get 20, 17.5, 15, 12.5,\n10, 7.5, 5 and 2.5. Each rectangle is half a month wide, so add the eight heights and multiply\nby half a month.\n\n```working\n    20 plus 17.5 plus 15 plus 12.5 plus 10 plus 7.5 plus 5 plus 2.5 = 90\n    90 times 0.5 = 45\n```\n\nForty-five kilograms.\n\nThe rate falls in a straight line from 20 to nothing, so its average over the four months is\nhalfway between the two ends.\n\n```working\n    20 plus 0 = 20\n    20 divided by 2 = 10\n```\n\nTen kilograms a month, for four months.\n\n```working\n    10 times 4 = 40\n```\n\nForty kilograms, and that one is exact.\n\nPut the three answers beside each other and watch the error close.\n\n```table\nhow the total was built     answer     how far above the exact answer\nfour whole-month blocks     50 kg      10 kg\neight half-month blocks     45 kg      5 kg\nthe exact total             40 kg      none\n```\n\nHalving the interval halved the error, and it did that because this rate falls in a straight\nline. On a rate like this one, halving again would halve the error again. Read that as a\nproperty of a rate that changes steadily, not as a rule about intervals.\n\nWhere a rate bends, narrower intervals still shrink the error, but by no fixed share you can\ncount on. Where a rate rises over part of the span and falls over the rest, two rectangle\nerrors can point opposite ways and partly cancel. Changing the interval then changes the total\nerror by anything at all.\n\nIn this worked case the error never reaches zero, and every rectangle counts too much, because\nthe rate was falling inside each one of them.\n\nSo a total is not one number. It is one number and one assumption, and the assumption is that\nthe rate held across each interval you used.\n"
+illustration.analogy_breaks_when: 'The six monthly rates in the first table are bare numbers.
+
+
+  Area is a total only when time is along the bottom and a rate is up the side. Read both axis labels
+
+  before you shade anything.
+
+
+  A rectangle built on the rate at the start of an interval counts too much while the rate is falling.
+
+  Narrower intervals shrink that error and never remove it.
+
+
+  And every amount here is an amount going one way. A flow out of something is an amount subtracted
+
+  rather than added, and the running total then falls.
+
+  '
+must_know[0].point: 'Multiply a rate by the time it held for before you quote any total.
+
+  '
+must_know[1].point: 'Check the unit of every total. If the unit of your answer still has a time on the bottom,
+
+  you have added rates instead of accumulating them.
+
+  '
+must_know[2].point: 'Taking one measurement of a rate and multiplying it by a whole year is the commonest way a
+
+  total goes wrong.
+
+  '
+must_know[3].point: 'The area under a rate line is a total and not a rate.
+
+  '
+must_know[4].point: 'A total carries its interval assumption with it, and narrower intervals shrink the error
+
+  without ever removing it.
+
+  '
+must_know[5].point: 'Before accepting an annual figure built from one measurement, ask how many times the rate was
+
+  measured and when. A yearly total from a single reading is a forecast wearing the clothes of a
+
+  count.
+
+  '
+must_know[6].point: 'A total says how much has piled up, a rate says how fast it is piling up now, and the two
+
+  answer different questions.
+
+  '
+must_know[7].point: 'Teach a trainee to draw the rectangles before reaching for a formula.
+
+  '

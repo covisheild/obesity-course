@@ -1,0 +1,147 @@
+"definition.text": |
+  A relationship is linear when equal steps in the input add the same amount to the output every
+  time.
+
+  A relationship is exponential when equal steps in the input multiply the output by the same
+  factor every time.
+
+  A relationship is saturating when the output rises while its increments shrink towards zero,
+  approaching a value it does not pass. That value is the ceiling, and the output may approach it
+  without ever reaching it.
+
+  The tests are arithmetic, carried out on values taken at equal steps. Constant differences
+  between successive outputs mean linear. Constant ratios mean exponential.
+
+  Divide each difference by the difference before it. A ratio that holds at some number below
+  one means each difference is a fixed share of the one before, so the differences sum to a
+  finite amount and a ceiling exists.
+"simplified_explanation": |
+  Three shapes turn up over and over.
+
+  **Linear. Equal steps add.** Take one step along the bottom and the value goes up by the same
+  amount. Drawn out, it is a straight line.
+
+  **Exponential. Equal steps multiply.** Take one step along the bottom and the value is multiplied
+  by the same number. Drawn out, it starts off looking lazy and then leaves everything else behind.
+
+  **Saturating. It rises, then flattens.** It is heading for a level and it flattens against it.
+  That level is called the ceiling.
+
+  Subtract each value from the next one. Are the differences all the same? Then it is linear.
+
+  Divide each value by the one before it. Are the ratios all the same? Then it is exponential.
+
+  Do the differences keep shrinking while the values keep climbing? That is not yet enough to say
+  saturating. A quantity can climb for ever by ever smaller amounts and head for no level at all.
+
+  So run one more division, and this time divide the differences rather than the values. Does that
+  ratio hold at some number below one? Then each difference is a fixed share of the one before it,
+  the differences add up to a finite amount, and there is a ceiling. That is saturating.
+
+  Look at the side axis before you name anything. Some side axes multiply by ten at every step,
+  which is the ruler you met in the section on logarithms. On one of those, an exponential comes
+  out as a straight line.
+"illustration.body": |
+  Somebody shows you three values, taken one step apart: 10, 30, 42. They call the rise
+  exponential and say it is roughly doubling.
+
+  Divide each value by the one before it.
+
+  ```working
+      30 divided by 10 = 3
+      42 divided by 30 = 1.4
+  ```
+
+  The ratios are not the same, so nothing here is multiplying by a fixed factor. Exponential is
+  the wrong word.
+
+  Now take the run out to six values, and put two other shapes beside it for comparison.
+
+  ```table
+  step  linear  exponential  saturating
+  0     10      10           10
+  1     20      15           30
+  2     30      22.5         42
+  3     40      33.8         49.2
+  4     50      50.6         53.5
+  5     60      75.9         56.1
+  ```
+
+  Take the first column by subtraction.
+
+  ```working
+      20 minus 10 = 10
+      30 minus 20 = 10
+      60 minus 50 = 10
+  ```
+
+  The same amount is added at every step, so the first column is linear.
+
+  Take the second column by division.
+
+  ```working
+      15 divided by 10 = 1.5
+      22.5 divided by 15 = 1.5
+      75.9 divided by 50.6 = 1.5
+  ```
+
+  The same factor multiplies at every step, so the second column is exponential.
+
+  Take the third column by subtraction, and watch what the differences do.
+
+  ```working
+      30 minus 10 = 20
+      42 minus 30 = 12
+      49.2 minus 42 = 7.2
+      53.5 minus 49.2 = 4.3
+      56.1 minus 53.5 = 2.6
+  ```
+
+  The steps shrink while the values keep climbing. Now divide each of those differences by the
+  one before it, which is the test that says whether the shrinking is heading anywhere.
+
+  ```working
+      12 divided by 20 = 0.6
+      7.2 divided by 12 = 0.6
+  ```
+
+  The ratio holds at about 0.6 all the way down the column, and 0.6 is below one. So each step
+  closes about the same share of whatever distance is left, the shrinking differences add up to
+  something finite, and a ceiling exists. Here it is 60.
+
+  Now look at step one and step five, because that is where the trap is. At step one the
+  exponential column is the lowest of the three. At step five it is the highest, and it has
+  passed the ceiling the saturating column will never reach.
+
+  That is why you take the run out before you name anything.
+
+  An exponential eventually passes any linear.
+"illustration.analogy_breaks_when": |
+  These three shapes are a starting kit and not a list of everything.
+
+  The two tests need equal steps along the bottom.
+
+  Rounding hides small changes.
+"must_know[0].point": |
+  Run two tests on any set of values taken at equal steps. Subtract each from the next for a
+  constant difference, and divide each by the one before for a constant ratio.
+"must_know[1].point": |
+  Shrinking differences do not on their own mean a ceiling. So run one more test before you say
+  saturating. Divide each difference by the difference before it. A ratio that holds below one
+  means the differences add up to a finite amount, so there is a ceiling to ask about. Where no
+  such ratio holds, you have no ceiling to quote and should say so rather than estimate one.
+"must_know[2].point": |
+  Exponential does not mean fast. It means each equal step multiplies by the same factor.
+"must_know[3].point": |
+  Three points have no shape. Ask for the rest of the run before you name anything.
+"must_know[4].point": |
+  Read the side axis before you call a line linear. On an axis where each step multiplies by ten,
+  a straight line is an exponential.
+"must_know[5].point": |
+  Where a curve has flattened, a further equal step in the input buys much less than the step
+  before it did.
+"must_know[6].point": |
+  Naming a shape names a pattern and never a mechanism.
+"must_know[7].point": |
+  When a journalist uses the word exponential, ask what the values were at equal times and
+  whether the ratio held.

@@ -14,15 +14,11 @@ concept_deps:
 - B0-R0-C19
 definition:
   text: |
-    Three shapes cover most of the relationships this course will draw, and they are told apart by
-    what equal steps in the input do to the output.
-
     A relationship is linear when equal steps in the input add the same amount to the output every
-    time. Its graph is a straight line, and its slope is that amount divided by the size of the
-    step.
+    time.
 
     A relationship is exponential when equal steps in the input multiply the output by the same
-    factor every time. Its increments are proportional to the output itself.
+    factor every time.
 
     A relationship is saturating when the output rises while its increments shrink towards zero,
     approaching a value it does not pass. That value is the ceiling, and the output may approach it
@@ -38,9 +34,6 @@ definition:
     difference is a fixed share of the one before, so the differences sum to a finite amount and a
     ceiling exists. Where that ratio does not hold below one, shrinking differences establish no
     ceiling, and the shape has not been named.
-
-    An exponential relationship drawn with a logarithmic vertical axis is a straight line, because
-    taking log10 of the output turns a constant ratio into a constant difference.
   references:
   - citekey: openstax_college_algebra_2e
     kind: textbook
@@ -56,10 +49,7 @@ definition:
         been read, which is why claim_located stays false. The content is a derivation the
         reader can check, so it does not rest on the anchor.
 simplified_explanation: |
-  You can read a graph now. This section is about naming what you are looking at, which is a
-  separate skill and comes first.
-
-  Three shapes turn up over and over. You can tell them apart by eye, and then check by hand.
+  Three shapes turn up over and over.
 
   **Linear. Equal steps add.** Take one step along the bottom and the value goes up by the same
   amount. Take another step and it goes up by that same amount again. Drawn out, it is a straight
@@ -72,9 +62,6 @@ simplified_explanation: |
   **Saturating. It rises, then flattens.** It climbs quickly at first, then less, then hardly at
   all. It is heading for a level and it flattens against it. That level is called the ceiling.
 
-  Now the check by hand, for when your eye is not enough. It needs values taken at equal steps
-  along the bottom, and it is a few subtractions and a few divisions.
-
   Subtract each value from the next one. Are the differences all the same? Then it is linear.
 
   Divide each value by the one before it. Are the ratios all the same? Then it is exponential.
@@ -84,8 +71,7 @@ simplified_explanation: |
 
   A logarithm does exactly that. Take the multiplying ruler from the section on logarithms. Each
   number sits a little further along it than the one before, and each of those steps is shorter
-  than the step before it. The ruler goes on for ever. Nothing on it is a level to flatten
-  against.
+  than the step before it. The ruler goes on for ever. Nothing on it is a level to flatten against.
 
   So run one more division, and this time divide the differences rather than the values. Take each
   difference and divide it by the difference before it. Does that ratio hold at some number below
@@ -112,15 +98,15 @@ illustration:
     Somebody shows you three values, taken one step apart: 10, 30, 42. They call the rise
     exponential and say it is roughly doubling.
 
-    Test it before you agree. Divide each value by the one before it.
+    Divide each value by the one before it.
 
     ```working
         30 divided by 10 = 3
         42 divided by 30 = 1.4
     ```
 
-    Three, then 1.4. The ratios are not the same, so nothing here is multiplying by a fixed factor.
-    Exponential is the wrong word. It was reached by looking at a rise rather than by testing one.
+    The ratios are not the same, so nothing here is multiplying by a fixed factor. Exponential is
+    the wrong word.
 
     Now take the run out to six values, and put two other shapes beside it for comparison.
 
@@ -176,26 +162,17 @@ illustration:
 
     The ratio holds at about 0.6 all the way down the column, and 0.6 is below one. So each step
     closes about the same share of whatever distance is left, the shrinking differences add up to
-    something finite, and a ceiling exists. Here it is 60. The column gets closer to it at every
-    step and does not arrive.
+    something finite, and a ceiling exists. Here it is 60.
 
     Now look at step one and step five, because that is where the trap is. At step one the
     exponential column is the lowest of the three. At step five it is the highest, and it has
     passed the ceiling the saturating column will never reach.
 
-    That is why you take the run out before you name anything. Here the exponential column is the
-    flattest at the start and the steepest at the end. A short run shows you the opposite of what
-    a long run shows.
+    That is why you take the run out before you name anything.
 
-    Do not carry that away as a property of exponentials. It is a property of these three columns,
-    which somebody scaled against each other. Start all three at 10. Let the exponential multiply
-    by 3 at every step and the linear add 10. The exponential now leads from the first step.
-
-    What always holds is the other half. An exponential eventually passes any linear.
+    An exponential eventually passes any linear.
   analogy_breaks_when: |
-    These three shapes are a starting kit and not a list of everything. A curve that falls, one
-    that rises and then falls, and a line with a step in it are all things you will meet. None of
-    them is here.
+    These three shapes are a starting kit and not a list of everything.
 
     The two tests need equal steps along the bottom. Values taken at uneven intervals give
     differences and ratios that mean nothing. A table that does not say its step size cannot be
@@ -203,9 +180,6 @@ illustration:
 
     Rounding hides small changes. A ratio that reads 1.5 three times running may be drifting in the
     digits you were not shown.
-
-    And naming a shape is not explaining it. A saturating curve says that something is running out
-    of room. It does not say what.
 figures:
 - file: c6-three-shapes.png
   caption: "The three shapes on one pair of axes, which is the only way the difference between them can be practised. All three start at the same place; by the last of the six readings they are nowhere near each other."
@@ -214,9 +188,7 @@ figures:
 must_know:
 - point: |
     Run two tests on any set of values taken at equal steps. Subtract each from the next for a
-    constant difference, and divide each by the one before for a constant ratio. A constant
-    difference is linear and a constant ratio is exponential, and the pair of tests takes under a
-    minute.
+    constant difference, and divide each by the one before for a constant ratio.
   kind: move
   bearing: methodological
 - point: |
@@ -228,37 +200,30 @@ must_know:
   kind: trap
   bearing: methodological
 - point: |
-    Exponential does not mean fast. It means each equal step multiplies by the same factor. An
-    exponential rise can be the gentlest-looking of the three at the start, so a steep early rise
-    is no evidence for the word.
+    Exponential does not mean fast. It means each equal step multiplies by the same factor.
   kind: misconception
   bearing: methodological
 - point: |
-    Three points have no shape. Any three rising values can be drawn as a line, a curve that takes
-    off, or a curve that flattens. Ask for the rest of the run before you name anything.
+    Three points have no shape. Ask for the rest of the run before you name anything.
   kind: trap
   bearing: methodological
 - point: |
     Read the side axis before you call a line linear. On an axis where each step multiplies by ten,
-    a straight line is an exponential. The tamest-looking picture is then the one that is
-    multiplying.
+    a straight line is an exponential.
   kind: trap
   bearing: methodological
 - point: |
     Where a curve has flattened, a further equal step in the input buys much less than the step
-    before it did. Say that out loud when somebody in a meeting proposes doubling the input. Then
-    say what you would need in order to find where the flat part begins.
+    before it did.
   kind: consequence
   bearing: policy
 - point: |
-    Naming a shape names a pattern and never a mechanism. A saturating curve does not tell you what
-    ran out, and a reader who takes the name as an explanation has stopped one question early.
+    Naming a shape names a pattern and never a mechanism.
   kind: boundary
   bearing: methodological
 - point: |
     When a journalist uses the word exponential, ask what the values were at equal times and
-    whether the ratio held. A rise called exponential in public may well not be one, and the
-    honest sentence is that it grew and here is by how much.
+    whether the ratio held.
   kind: move
   bearing: public
 exercises:

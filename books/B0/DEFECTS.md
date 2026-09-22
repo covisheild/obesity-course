@@ -594,3 +594,181 @@ whole still falls, 12.54 to 12.13.
 
 Someone has to decide whether the rule binds per section or per Part, and whether it binds 5c at
 all. Left here rather than answered, because it is a change to the contract.
+
+---
+
+# Found by the compression pass · Book 0 Part C (C1–C9)
+
+Run 23 September 2026. Nine sections cut to roughly half, then answered cold by two readers who
+held Parts A and B in released form and Part C only in its cut state, with no route to the
+originals. What follows is the part of their gap report the restore could not close, because the
+full-length original did not fill these holes either. The audit checks claims against sources;
+these are gaps *between* claims, which is why they survived it.
+
+Ordered by what they cost. The first four are the ones to fix before Part D.
+
+## 26 · Book-wide · negative numbers are used in five sections and introduced in none
+
+The only prior mention anywhere in twenty-three sections is A6's "A negative exponent does not make
+a number negative", which presupposes the idea it would have to introduce.
+
+Then: C2's decisive piece of evidence is `52 minus 240 minus 48 = -236` and the sentence "no packet
+holds a negative anything" — a reader must subtract past zero, produce a number with a minus sign
+in front of it rather than between two numbers, and know that such a number is impossible as a
+mass. C3's substitution produces `10 minus 2y`, and elimination by subtraction needs a negative
+multiple. C5's problem 2 asks for the slope through (2, 20) and (7, 5), which is −3, and every line
+drawn in C5 rises. C7's problem 8 says "Work out the average rate of change, **with its sign**.
+Then say what the sign means", as though the sign had been covered. C9's net flow goes negative.
+
+The cold reader supplied the whole concept and got every one of them right, which is exactly why
+this is invisible from inside. **Where it belongs is Part A**, and Part A is released. So this is
+the first real instance of the ground floor needing a section added after the fact, and the
+decision it forces — insert into a released Part, or open the new Part with it — is worth taking
+deliberately rather than by default.
+
+## 27 · C1 · order of operations is demonstrated once, silently, and never stated
+
+C1's illustration computes `4 times 60 = 240` and then `240 plus 48 plus 180`, which is the only
+place in the book where multiplication is taken before addition. It is never named, never
+generalised, never applied to a power.
+
+C1's problem 3 asks for `3a + 2b` and `a^2 − b` with a = 5 and b = 2. A reader supplying the wrong
+convention gets 85 and 529 instead of 19 and 23.
+
+**And it is what C2's whole method stands on.** C2 opens "The x was multiplied by 2 first and had 3
+added second. So undo the adding first and the multiplying second." To say what was done first to
+build `2x + 3` you must already know that it parses as `(2 × x) + 3`. C1 never states it, so the
+chain from C1 to C2 holds by inference only.
+
+## 28 · C3 · four moves its own problems require and its body never performs
+
+C3 is the weakest section in Part C by a wide margin: seven of its twelve items were done only by
+guessing, against one to six elsewhere.
+
+1. **Expanding a bracket.** Problems 5, 6 and 7 all reduce to something of the form
+   `450(50 − U) + 700U = 27,500`. The body multiplies `4 times 3f`, a single term, and never
+   `4 times (75 − f)`. C1's one sentence on brackets says only that they group.
+2. **Subtracting one equation from another, and scaling one first.** The body only ever adds, and
+   only where the coefficients already match. The definition says elimination adds "a multiple" of
+   one equation to the other, so scaling is named and never worked. Problem 7 needs both equations
+   scaled and then subtracted.
+3. **Problem 7 contradicts the section's own guidance.** The body says "Use elimination when the
+   same letter carries matching numbers in both lines." In problem 7 no letter carries matching
+   numbers in either line, and the problem instructs the reader to use elimination anyway. The case
+   where you must manufacture a match is never covered.
+4. **Elimination is never carried to completion.** The worked elimination recovers x, stops, and
+   then says "put both numbers into both statements" — where the second number came from the
+   substitution method twenty lines earlier. The step that recovers the second unknown from the
+   first is nowhere on the page.
+
+## 29 · C9 · the body-weight case breaks the section's own unit rule, and C9 does not notice
+
+C9 states, and verifies for the grain store: "A stock carries the unit of the quantity. A flow
+carries that same unit divided by a unit of time." Its must-know says "Never add or subtract a
+stock and a flow. Kilograms and kilograms a month are different kinds of quantity."
+
+Then: "A person's body weight is a stock. Food energy taken in is a flow into that stock."
+
+Body weight is in kilograms. Food energy is in kilocalories, at length, in B4. Kilocalories a day
+multiplied by days is kilocalories, not kilograms. **Nothing in Book 0 converts an energy imbalance
+into a change in mass**, so C9's own instruction — "Write the balance line out before you argue
+about any of its parts" — is not executable for a person, which is the one case the section says
+it is built to reach.
+
+The cold reader could do C9's refusals in full and nothing numerical, and reported that the section
+gives no sign a piece is missing: its only stated refusal here is about *figures* ("This section
+gives you no figure for either flow"), which reads as declining to supply data rather than as
+admitting the units do not meet.
+
+This is the Part's most consequential finding, because energy balance is where Book 0 is pointed.
+The fix is not a number. It is one sentence saying that the bridge between an energy flow and a
+mass stock is itself a claim about the body, that Book 0 does not carry it, and that the subject
+booklet is where it arrives.
+
+## 30 · C6 · the ceiling is never computed, and two problems ask for one
+
+"The ratio holds at about 0.6 all the way down the column ... a ceiling exists. Here it is 60."
+That is the whole derivation. Problem 5 asks the reader to "estimate the ceiling it is heading
+for" and problem 10 needs one in its strongest form. Summing a geometric series appears in none of
+the twenty-three sections.
+
+Related, in the same section: **problem 1 row C contradicts the section's own rule.** Row C is
+4, 12, 16, 17, 17.2, whose differences are 8, 4, 1, 0.2 and whose difference-ratios are 0.5, 0.25,
+0.2 — not constant. The must-know says "Where no such ratio holds, you have no ceiling to quote and
+should say so rather than estimate one", and the problem says "Name the shape of each". A fluent
+reader writes "saturating" without noticing there is a decision to make. Either the row's numbers
+change or the problem asks for the refusal.
+
+And **problem 2 row D is a falling exponential**, 100, 50, 25, 12.5, 6.25, which the definition
+admits (a factor of 0.5 is a factor) but every image in the section denies — "it starts off looking
+lazy and then leaves everything else behind". Row D's differences also shrink with a constant ratio
+of 0.5, so a reader running the taught tests in order gets "saturating" as well, and is saved only
+by the word "rises" in the saturating definition.
+
+## 31 · C5 · the section never says how to plot a point
+
+"Now draw them. People go along the bottom. Kilograms a month go up the side." That is the complete
+instruction. No worked point, no account of finding a position from a pair of numbers, nothing
+earlier in the book either — A7 covers reading an axis and never placing a mark.
+
+Two consequences. **Coordinate notation `(2, 7)` is used in four problems and introduced nowhere**,
+and it collides directly with C4's `f(x)`, which the reader has just been told means something
+else. And **a line is never written as an equation**: C5 defines slope and intercept as things you
+read off a drawing and never combines them, while problem 4 gives a slope of 4 and an intercept of
+6 and asks for y at four values of x. The form `y = m x + k` exists in the book only as a bare
+symbol-pushing exercise in C2, with no meaning attached and no link to C5.
+
+## 32 · C8 · three problems need a number or a convention the book does not supply
+
+- **Exercise 1** has months along the bottom and litres a day up the side, and asks for the unit of
+  the area. Litres a day times months is not litres. Every unit check C8 performs is a matched pair,
+  so the section models only the case where no conversion is needed and then sets one where it is.
+- **Exercise 2** turns on 52 weeks in a year. Weeks in a year appears nowhere in the book, which is
+  otherwise scrupulous that days-in-a-month is a choice you must declare.
+- **Problem 7** gives a rate measured every three months as 40, 60, 60, 20 and never says whether
+  each reading stands for the three months before it, after it, or around it. The total depends on
+  the answer.
+
+Same shape in C9: **problem 6** needs 24 hours in a day to reach 21,600 litres, and B1 gives the
+minute and the hour in seconds and never the day.
+
+## 33 · C4 · three problems run a rule backwards and the section never says you can
+
+Problems 3, 5 and 6 all invert a rule. C4 never inverts anything, never uses the word, gives no
+method. Worse, C4 states the fact that makes inversion dangerous — "Two different inputs may share
+one output" — sets three backward problems, and never says when going backwards is safe. For the
+rules given it happens to be safe, which is how the hole stays hidden.
+
+Also in C4: its own register has household C at four people and 35 kilograms, and says only
+"Something other than the number of people differs between A and C, and the register does not say
+what." A5's proviso to section 3(1) gives an Antyodaya household 35 kilograms per household per
+month regardless of size. The diagnosis the section says exists is two sections back in the same
+book, and C4 does not point at it.
+
+## 34 · Book-wide · the commonest problem type has no worked model anywhere
+
+"Decide what to compute, compute it, and say what your answer does not establish" is roughly a
+quarter of all problems in the book. Twenty-three sections and not one works an answer to that
+instruction from end to end. A8 comes closest with a spoken version in a different format.
+
+## 35 · Book-wide · the "made up for this problem" discipline holds in the problems and not in the illustrations
+
+C1, C2 and C3 pass the same invented packet — 468 kcal, 60 g, 12 g, 20 g — between them three
+times without once marking it invented, while the problems on the same page say "All four figures
+are made up for this problem." The cold reader took the illustrations for real products. The
+compression pass restored the marking sentences in C1, C2 and C3 where the original had them; the
+discipline still needs stating as a rule rather than repaired case by case.
+
+## Two artefacts of the setup, recorded so nobody files them as defects
+
+**The cold reader had no figures.** `prepare.py` extracts prose fields only, so the scratch
+directory carried no figure, caption or alt text. The reader therefore reported, repeatedly and
+correctly for what it was given, that C5, C6, C7 and C8 argue from drawings that do not exist.
+C5 has two figures, C6, C7 and C8 one each. **Fix `prepare.py` to carry each figure's caption and
+alt text before the next Part's pass**, or the same false report arrives again.
+
+**C3's "every row is a genuine answer".** The reader objected that a row with 105 g of carbohydrate
+and 12 g of protein inside a 100 g packet is not genuine, having just been taught in C2 to reject
+−236 grams of fat on that ground. The sentence means genuine as a solution to the arithmetic, and
+the reader is right that it does not say so — but this one is worth a sentence in C3 rather than a
+defect number, and it is listed here so the next audit does not re-derive it.
