@@ -13,25 +13,28 @@ concept_deps:
 - B0-R0-C09
 - B0-R0-C10
 definition:
-  text: |
-    Every measured quantity has a dimension, which is the kind of thing it is: a length, a mass, a
+  text: 'Every measured quantity has a dimension, which is the kind of thing it is: a length, a mass,
+    a
+
     time, or a combination of these built by multiplication and division. The unit is how that
+
     dimension is measured. Two quantities of the same dimension may be measured in different units.
 
-    An equation between physical quantities must carry the same dimension on both sides, and two
-    quantities may be added or subtracted only when they have the same dimension. The unit check is
-    the practical form of that rule: convert the quantities to a common unit first, and the units on
-    both sides must then match. So 3 kilograms and 4 grams may be added, because both are masses,
-    but not until one of them has been converted.
 
-    Multiplying quantities multiplies their units, and dividing them divides their units. A unit
-    raised to a power obeys the rules for powers of any other quantity.
+    An equation between physical quantities must carry the same dimension on both sides, and two
+
+    quantities may be added or subtracted only when they have the same dimension.
+
+
+    Multiplying quantities multiplies their units, and dividing them divides their units.
+
 
     A logarithm, and any quantity used as an exponent, takes a plain number with no unit on it.
 
-    Checking the units of a proposed formula therefore rejects a formula whose units do not match,
-    without any knowledge of which formula is right. It cannot confirm a formula, because a wrong
-    dimensionless factor changes no unit.
+
+    It cannot confirm a formula, because a wrong dimensionless factor changes no unit.
+
+    '
   references:
   - citekey: openstax_prealgebra_2e
     kind: textbook
@@ -41,791 +44,478 @@ definition:
       opened: false
       claim_located: false
       checked_on: '2026-09-22'
-      note: |-
-        Anchor confirmed to exist and to cover the arithmetic this rests on, which is the
-        cancelling of a shared name on the top and the bottom of a rate: the chapter list
-        was confirmed on 2026-09-22 from the book's front matter, and it is recorded in
-        the entry in check/references/library.bib. The passage behind this definition has
-        not been read, so opened stays false and claim_located stays false. The book does
-        not treat dimensional analysis under that name, and the content here is a
-        derivation the reader checks with a calculator, so it does not rest on the
-        anchor. It stays in the citation backlog until somebody with library access opens
-        the named chapter and fills in the locator.
-simplified_explanation: |
-  Here is the most useful trick in this Part.
+      note: 'Anchor confirmed to exist and to cover the arithmetic this rests on, which is the
 
-  You can often show that a formula is wrong without knowing the right formula. You do it by
+        cancelling of a shared name on the top and the bottom of a rate: the chapter list
+
+        was confirmed on 2026-09-22 from the book''s front matter, and it is recorded in
+
+        the entry in check/references/library.bib. The passage behind this definition has
+
+        not been read, so opened stays false and claim_located stays false. The book does
+
+        not treat dimensional analysis under that name, and the content here is a
+
+        derivation the reader checks with a calculator, so it does not rest on the
+
+        anchor. It stays in the citation backlog until somebody with library access opens
+
+        the named chapter and fills in the locator.'
+simplified_explanation: 'You can often show that a formula is wrong without knowing the right formula.
+  You do it by
+
   looking at the units and ignoring the numbers.
 
-  It works because of one rule. Both sides of an equals sign have to carry the same kind of
-  quantity. The word for the kind of thing a quantity is, is its dimension. If the left side is a
-  time, the right side has to come out as a time.
 
-  A second rule comes with it. You can only add or subtract quantities of the same dimension, and
-  then only once both are written in the same unit. Three metres plus four seconds is not seven of
-  anything, because a length and a time are different kinds of thing. Three kilograms plus four
-  grams is a real sum, because both are masses, but you convert one of them before you add.
+  Both sides of an equals sign have to carry the same kind of quantity. The word for the kind of
+
+  thing a quantity is, is its dimension.
+
+
+  You can only add or subtract quantities of the same dimension, and then only once both are
+
+  written in the same unit. Three metres plus four seconds is not seven of anything, because a
+
+  length and a time are different kinds of thing.
+
 
   Multiplying and dividing behave the way they do with plain numbers. Metres times metres give the
-  unit m^2. Metres divided by seconds give the unit for speed, m/s or metres per second. The units
-  come along for the ride. You can cancel them the way you cancel a shared number in a ratio.
+
+  unit m^2. You can cancel them the way you cancel a shared number in a ratio.
+
 
   So here is the check, in four steps.
 
+
   1. Throw the numbers away and keep the units.
+
   2. Write the unit of every quantity on both sides.
+
   3. Cancel anything that appears on the top and on the bottom.
+
   4. Compare the two sides. Different units mean the formula is wrong.
 
-  Step 4 is the one that pays. You end up able to say "that cannot be right" about a formula you
-  have never seen before. It works on a paper you are reviewing, and on a protocol you are asked
-  to sign.
 
-  Now the limit, and it comes first so that you never over-sell the tool. Matching units do not
-  make a formula right. Halving a quantity, doubling it, or multiplying it by 3.14 leaves every
-  unit exactly where it was. The check throws out wrong formulas. It never certifies a good one.
+  Matching units do not make a formula right. Halving a quantity, doubling it, or multiplying it
 
-  One more rule, which you will need when you meet a logarithm again. A logarithm takes a plain
-  number and nothing else. There is no such thing as log10 of 5 kilograms.
+  by 3.14 leaves every unit exactly where it was.
+
+
+  A logarithm takes a plain number and nothing else. There is no such thing as log10 of 5
+
+  kilograms.
+
+  '
 illustration:
-  body: |
-    Here is a line from a note, of the kind that arrives with a decision already attached to it.
-
-    > The stretch is 12 km and the bus averages 40 kilometres an hour, so allow 480 minutes.
-
-    You may not remember any formula for a journey time. You do not need one. Take the numbers out
-    and watch what the units do.
-
-    ```working
-        km times km per hour
-        = km^2 per hour
-    ```
-
-    A square kilometre per hour is an area divided by a time. It is not a time at all. So the
-    formula behind that sentence is wrong, and you knew it without knowing the right one.
-
-    Now find a shape that does work. You want hours to be left standing at the end.
-
-    ```working
-        km divided by km per hour
-        = km times hour over km
-        = hours
-    ```
-
-    Dividing does it. The kilometres cancel and the hours are left. So the journey time has the
-    shape of a distance divided by a speed, and the units told you that much.
-
-    Put the numbers back.
-
-    ```working
-        12 divided by 40 = 0.3
-    ```
-
-    That is 0.3 hours. Turn it into minutes with a conversion factor, as you did in the section
-    before this one.
-
-    ```working
-        0.3 h times 60 min over 1 h
-        = 18 min
-    ```
-
-    Eighteen minutes, not 480. Nothing about the original sentence looked wrong. Every number in it
-    was real and the arithmetic in it was right.
-
-    Now a case with a fuller unit on it, because most quantities you meet have one.
-
-    Section 3(1) of the National Food Security Act, 2013 entitles a person in a priority household
-    to five kilograms of foodgrains per person per month. Somebody proposes a way of working out a
-    household's grain for a year.
-
-    > yearly grain = 5, divided by the number of people, times 12
-
-    Strip the numbers out again and write only the units.
-
-    ```working
-        kilograms per person per month
-        divided by persons
-        times months
-        = kilograms per person squared
-    ```
-
-    The months cancelled, which is right. The persons did not cancel, because there is now one on
-    the bottom and another one on the bottom. You are left with kilograms per person squared, and
-    there is no such quantity.
-
-    Ask what arrangement would leave kilograms standing instead.
-
-    ```working
-        kilograms per person per month
-        times persons
-        times months
-        = kilograms
-    ```
-
-    So you multiply by the number of people. You do not divide by it. Now put the numbers in, for a
-    household of four.
-
-    ```working
-        5 times 4 times 12 = 240
-    ```
-
-    240 kilograms per household per year. Say where that figure came from when you quote it. The
-    Act states a monthly entitlement of five kilograms per person per month. The 240 is your
-    arithmetic on it, and it is not a figure the Act carries.
-
-    Notice what you did there. You did not know the formula and you did not look one up. You wrote
-    down what unit the answer had to have, and that threw out every arrangement but one shape. It
-    did not tell you the twelve. You brought that, from knowing that a year holds twelve months,
-    and no unit on the page could have told you. A unit check throws out wrong arrangements. It
-    never hands you a right formula.
+  body: "> The stretch is 12 km and the bus averages 40 kilometres an hour, so allow 480 minutes.\n\
+    \nTake the numbers out and watch what the units do.\n\n```working\n    km times km per hour\n\
+    \    = km^2 per hour\n```\n\nA square kilometre per hour is an area divided by a time. It is not\
+    \ a time at all.\n\nYou want hours to be left standing at the end.\n\n```working\n    km divided\
+    \ by km per hour\n    = km times hour over km\n    = hours\n```\n\nDividing does it. The kilometres\
+    \ cancel and the hours are left.\n\nPut the numbers back.\n\n```working\n    12 divided by 40\
+    \ = 0.3\n```\n\nThat is 0.3 hours. Turn it into minutes with a conversion factor, as you did in\
+    \ the section\nbefore this one.\n\n```working\n    0.3 h times 60 min over 1 h\n    = 18 min\n\
+    ```\n\nEighteen minutes, not 480.\n\nSection 3(1) of the National Food Security Act, 2013 entitles\
+    \ a person in a priority household\nto five kilograms of foodgrains per person per month. Somebody\
+    \ proposes a way of working out a\nhousehold's grain for a year.\n\n> yearly grain = 5, divided\
+    \ by the number of people, times 12\n\nStrip the numbers out again and write only the units.\n\
+    \n```working\n    kilograms per person per month\n    divided by persons\n    times months\n \
+    \   = kilograms per person squared\n```\n\nThe months cancelled, which is right. You are left\
+    \ with kilograms per person squared, and\nthere is no such quantity.\n\nAsk what arrangement would\
+    \ leave kilograms standing instead.\n\n```working\n    kilograms per person per month\n    times\
+    \ persons\n    times months\n    = kilograms\n```\n\nSo you multiply by the number of people.\
+    \ You do not divide by it. Now put the numbers in, for a\nhousehold of four.\n\n```working\n \
+    \   5 times 4 times 12 = 240\n```\n\n240 kilograms per household per year. The 240 is your arithmetic\
+    \ on it, and it is not a figure\nthe Act carries.\n\nA unit check throws out wrong arrangements.\
+    \ It never hands you a right formula.\n"
   numbers:
   - value: '5'
     quote: entitled to receive five kilograms of foodgrains per person per month
     unit: kilograms of foodgrains per person per month, priority households, s.3(1)
     citekey: nfsa_2013
     as_of: '2026-09-22'
-  analogy_breaks_when: |
-    This check catches a formula of the wrong shape. It cannot catch a formula of the right shape
+  analogy_breaks_when: 'This check catches a formula of the wrong shape. It cannot catch a formula
+    of the right shape
+
     and the wrong size.
 
-    Halving a quantity leaves every unit where it was. So does doubling it, and so does multiplying
-    it by 3.14. A formula can pass this check and still give you an answer twice the truth.
+
+    Halving a quantity leaves every unit where it was. A formula can pass this check and still give
+
+    you an answer twice the truth.
+
 
     It also says nothing about the quantities themselves. Kilograms of grain and kilograms of
-    anything else carry the same unit. So a formula that is dimensionally perfect can still be
-    measuring the wrong thing.
 
-    And the persons in the working above are not an SI unit. Treating a count of people or of
-    packets as a unit that cancels is a habit that works. It is not part of the SI. Nobody will
-    object. Just do not expect to find the person on the list of base units.
+    anything else carry the same unit.
+
+
+    And the persons in the working above are not an SI unit.
+
+    '
 must_know:
-- point: |
-    Run the check in four steps when a formula you did not write lands in front of you. Throw the
-    numbers away, write the unit of every quantity, cancel what appears top and bottom, and compare
-    the two sides.
+- point: 'Run the check in four steps when a formula you did not write lands in front of you.
+
+    '
   kind: move
   bearing: methodological
-- point: |
-    Matching units never make a formula right. The check rejects and it does not confirm, so
-    "the units work out" is a reason to keep reading rather than a reason to sign.
+- point: 'Matching units never make a formula right.
+
+    '
   kind: misconception
   bearing: methodological
-- point: |
-    The same letters are not the same units. A unit of kg m per second and a unit of kg m^2 per
-    second squared are different quantities. Both are built from the same three base units, and the
-    powers are what tell them apart. Read the powers before you agree that two units match.
+- point: 'The same letters are not the same units. Read the powers before you agree that two units
+    match.
+
+    '
   kind: trap
   bearing: methodological
-- point: |
-    You can reject a formula in a paper, a protocol or a spreadsheet without being able to derive
-    the right one. In a review that is usually all that is needed, and it is the cheapest useful
-    thing you can do to somebody else's arithmetic.
+- point: 'You can reject a formula in a paper, a protocol or a spreadsheet without being able to derive
+
+    the right one.
+
+    '
   kind: consequence
   bearing: methodological
-- point: |
-    Read the unit that falls out of any calculated dose before you act on it. If the working gives
-    a unit the prescription is not written in, stop and redo it rather than assuming the number
-    survived the mix-up.
+- point: 'Read the unit that falls out of any calculated dose before you act on it.
+
+    '
   kind: move
   bearing: clinical
-- point: |
-    A logarithm and an exponent take a plain number with no unit. So log10 of 5 kilograms is not a
-    quantity. Meeting one in a paper means a reference quantity was divided out and never
-    declared. Ask what it was.
+- point: 'A logarithm and an exponent take a plain number with no unit. So log10 of 5 kilograms is
+    not a
+
+    quantity.
+
+    '
   kind: trap
   bearing: methodological
-- point: |
-    This check finds an error in the shape of a formula and never an error in a plain number
-    multiplying it. So it can never be used to argue that an effect is big enough to matter. It
-    shows only that the arithmetic behind the effect is the wrong kind.
+- point: 'This check finds an error in the shape of a formula and never an error in a plain number
+
+    multiplying it.
+
+    '
   kind: boundary
   bearing: methodological
-- point: |
-    Teach a trainee who cannot remember a formula to check the units of the one in front of them.
-    It turns "I do not remember" into "that one cannot be right". The second of those is far more
-    useful on a ward round.
+- point: 'Teach a trainee who cannot remember a formula to check the units of the one in front of
+    them.
+
+    '
   kind: consequence
   bearing: teaching
 exercises:
 - type: critique
-  prompt: |
-    A colleague has checked somebody's formula and reports back in one line.
+  prompt: 'A colleague has checked somebody''s formula and reports back in one line.
+
 
     > The units come out right on both sides, so the formula is correct.
 
+
     Say why that does not follow. Then give an example of a formula that passes a unit check and is
+
     still wrong.
-  answer: |
-    A unit check tests the shape of a formula. It cannot see a plain number multiplying it, because
-    a plain number carries no unit and changes none.
 
-    So the check can reject, and it can never confirm. What your colleague has established is that
-    the formula is not wrong in one particular way.
-
-    An example. The area of a circle is worked out from its radius, which is a length.
-
-    ```working
-        radius times radius
-        = m times m
-        = m^2
-    ```
-
-    Anything of the form "a number times the radius squared" comes out in square metres. So all of
-    these pass the unit check.
-
-    ```working
-        3.14 times r^2
-        2 times 3.14 times r^2
-        6 times r^2
-    ```
-
-    Only the first is the area of a circle. The other two are square metres of something that does
-    not exist, and no unit check will ever tell you which one you are holding.
-
-    What to say back. Ask where the formula came from, and check the number in front. The unit
-    check is the first gate, not the last one.
+    '
+  answer: "A unit check tests the shape of a formula. It cannot see a plain number multiplying it,\
+    \ because\na plain number carries no unit and changes none.\n\nSo the check can reject, and it\
+    \ can never confirm. What your colleague has established is that\nthe formula is not wrong in\
+    \ one particular way.\n\nAn example. The area of a circle is worked out from its radius, which\
+    \ is a length.\n\n```working\n    radius times radius\n    = m times m\n    = m^2\n```\n\nAnything\
+    \ of the form \"a number times the radius squared\" comes out in square metres. So all of\nthese\
+    \ pass the unit check.\n\n```working\n    3.14 times r^2\n    2 times 3.14 times r^2\n    6 times\
+    \ r^2\n```\n\nOnly the first is the area of a circle. The other two are square metres of something\
+    \ that does\nnot exist, and no unit check will ever tell you which one you are holding.\n\nWhat\
+    \ to say back. Ask where the formula came from, and check the number in front. The unit\ncheck\
+    \ is the first gate, not the last one.\n"
 - type: teaching
-  prompt: |
-    A first-year resident says they can never remember formulas, and treats that as the end of the
+  prompt: 'A first-year resident says they can never remember formulas, and treats that as the end
+    of the
+
     matter. You have ten minutes and a whiteboard.
 
+
     Teach them the unit check so that they leave able to use it on the next formula they meet.
-  answer: |
-    Ten minutes, for somebody who expects a mechanism rather than a rule.
 
-    Open by moving the goalposts. Tell them they are not going to remember formulas, and that you
-    do not either. The useful skill is being able to throw the wrong ones out.
-
-    Write a wrong one on the board without saying it is wrong.
-
-    ```working
-        time for the journey = distance times speed
-    ```
-
-    Ask them for the units of each piece. They will give you kilometres and kilometres per hour.
-    Write those in.
-
-    ```working
-        km times km per hour
-        = km^2 per hour
-    ```
-
-    Ask what kind of quantity that is. Let them get to "an area divided by a time" on their own,
-    and then ask whether it can be a journey time. That is the moment the idea lands, and it lands
-    because they did it rather than watched it.
-
-    Now turn it round. Ask what you would have to do to those two units to be left with hours. They
-    will find the division. Write the four steps under it.
-
-    ```working
-        1. throw the numbers away
-        2. write the unit of every quantity
-        3. cancel what appears on the top and the bottom
-        4. compare the two sides
-    ```
-
-    Close with the limit, because a resident who over-trusts this will be caught out by it. Tell
-    them the check throws out wrong formulas and never certifies a right one, and give them the
-    circle example if there is time.
+    '
+  answer: "Ten minutes, for somebody who expects a mechanism rather than a rule.\n\nOpen by moving\
+    \ the goalposts. Tell them they are not going to remember formulas, and that you\ndo not either.\
+    \ The useful skill is being able to throw the wrong ones out.\n\nWrite a wrong one on the board\
+    \ without saying it is wrong.\n\n```working\n    time for the journey = distance times speed\n\
+    ```\n\nAsk them for the units of each piece. They will give you kilometres and kilometres per\
+    \ hour.\nWrite those in.\n\n```working\n    km times km per hour\n    = km^2 per hour\n```\n\n\
+    Ask what kind of quantity that is. Let them get to \"an area divided by a time\" on their own,\n\
+    and then ask whether it can be a journey time. That is the moment the idea lands, and it lands\n\
+    because they did it rather than watched it.\n\nNow turn it round. Ask what you would have to do\
+    \ to those two units to be left with hours. They\nwill find the division. Write the four steps\
+    \ under it.\n\n```working\n    1. throw the numbers away\n    2. write the unit of every quantity\n\
+    \    3. cancel what appears on the top and the bottom\n    4. compare the two sides\n```\n\nClose\
+    \ with the limit, because a resident who over-trusts this will be caught out by it. Tell\nthem\
+    \ the check throws out wrong formulas and never certifies a right one, and give them the\ncircle\
+    \ example if there is time.\n"
 quantitative: true
 practice:
 - level: 1
-  prompt: |
-    Simplify each of these unit expressions.
-
-    ```working
-        m/s times s
-        m times m times m
-        kg divided by m^3, times m^3
-    ```
-  answer: |
-    ```working
-        m/s times s                = m
-        m times m times m          = m^3
-        kg divided by m^3, times m^3 = kg
-    ```
-
-    In the first, the seconds on the top cancel the seconds on the bottom, and metres are left.
-
-    In the second, three metres multiplied together give metres to the power three.
-
-    In the third, the m^3 on the bottom cancels the m^3 on the top, and kilograms are left. That
-    one is worth remembering as a shape: a density multiplied by a volume gives a mass.
+  prompt: "Simplify each of these unit expressions.\n\n```working\n    m/s times s\n    m times m\
+    \ times m\n    kg divided by m^3, times m^3\n```\n"
+  answer: "```working\n    m/s times s                = m\n    m times m times m          = m^3\n\
+    \    kg divided by m^3, times m^3 = kg\n```\n\nIn the first, the seconds on the top cancel the\
+    \ seconds on the bottom, and metres are left.\n\nIn the second, three metres multiplied together\
+    \ give metres to the power three.\n\nIn the third, the m^3 on the bottom cancels the m^3 on the\
+    \ top, and kilograms are left. That\none is worth remembering as a shape: a density multiplied\
+    \ by a volume gives a mass.\n"
 - level: 1
-  prompt: |
-    Which of these pairs can be added together as they stand, which can be added after a
-    conversion, and which cannot be added at all?
-
-    ```working
-        3 m and 4 m
-        3 m and 4 s
-        3 kg and 4 g
-        3 m^2 and 4 m
-    ```
-  answer: |
-    ```working
-        3 m and 4 m     as they stand      3 plus 4 = 7, so 7 m
-        3 m and 4 s     never
-        3 kg and 4 g    after converting
-        3 m^2 and 4 m   never
-    ```
-
-    The second pair is a length and a time. There is no conversion between them, because they are
-    not the same kind of quantity.
-
-    The third pair is two masses in different units, so convert one and add.
-
-    ```working
-        3 kg times 1,000 g over 1 kg = 3,000 g
-        3,000 plus 4 = 3,004
-    ```
-
-    Three thousand and four grams.
-
-    The fourth pair is an area and a length. Squared metres and metres are not the same unit,
-    whatever they look like on the page. That is the pair people actually get wrong, because both
-    of them say "metres" out loud.
+  prompt: "Which of these pairs can be added together as they stand, which can be added after a\n\
+    conversion, and which cannot be added at all?\n\n```working\n    3 m and 4 m\n    3 m and 4 s\n\
+    \    3 kg and 4 g\n    3 m^2 and 4 m\n```\n"
+  answer: "```working\n    3 m and 4 m     as they stand      3 plus 4 = 7, so 7 m\n    3 m and 4\
+    \ s     never\n    3 kg and 4 g    after converting\n    3 m^2 and 4 m   never\n```\n\nThe second\
+    \ pair is a length and a time. There is no conversion between them, because they are\nnot the\
+    \ same kind of quantity.\n\nThe third pair is two masses in different units, so convert one and\
+    \ add.\n\n```working\n    3 kg times 1,000 g over 1 kg = 3,000 g\n    3,000 plus 4 = 3,004\n```\n\
+    \nThree thousand and four grams.\n\nThe fourth pair is an area and a length. Squared metres and\
+    \ metres are not the same unit,\nwhatever they look like on the page. That is the pair people\
+    \ actually get wrong, because both\nof them say \"metres\" out loud.\n"
 - level: 2
-  prompt: |
-    Work out the unit of each of these quantities from what it is built out of. Use metres,
-    kilograms and seconds.
-
-    ```working
-        a mass divided by a volume
-        a length divided by a time
-        a length divided by a time, and then divided by a time again
-        a number of people divided by an area
-    ```
-  answer: |
-    ```working
-        a mass divided by a volume          = kg divided by m^3   = kg/m^3
-        a length divided by a time          = m divided by s      = m/s
-        that, divided by a time again       = m/s divided by s    = m/s^2
-        people divided by an area           = people divided by m^2
-    ```
-
-    The third one is worth a second look. Dividing by seconds twice gives seconds squared on the
-    bottom, which you write as m/s^2 or as m s^-2.
-
-    The fourth is a reminder that a count can sit in a unit. People per square metre is a perfectly
-    good unit, and you will more often meet it as people per square kilometre.
+  prompt: "Work out the unit of each of these quantities from what it is built out of. Use metres,\n\
+    kilograms and seconds.\n\n```working\n    a mass divided by a volume\n    a length divided by\
+    \ a time\n    a length divided by a time, and then divided by a time again\n    a number of people\
+    \ divided by an area\n```\n"
+  answer: "```working\n    a mass divided by a volume          = kg divided by m^3   = kg/m^3\n  \
+    \  a length divided by a time          = m divided by s      = m/s\n    that, divided by a time\
+    \ again       = m/s divided by s    = m/s^2\n    people divided by an area           = people\
+    \ divided by m^2\n```\n\nThe third one is worth a second look. Dividing by seconds twice gives\
+    \ seconds squared on the\nbottom, which you write as m/s^2 or as m s^-2.\n\nThe fourth is a reminder\
+    \ that a count can sit in a unit. People per square metre is a perfectly\ngood unit, and you will\
+    \ more often meet it as people per square kilometre.\n"
 - level: 3
-  prompt: |
-    Cancel each of these down as far as it will go.
-
-    ```working
-        kg m^2 s^-2 divided by kg
-        kg m^2 s^-2 divided by s
-        m^2 divided by m
-    ```
-  answer: |
-    ```working
-        kg m^2 s^-2 divided by kg  = m^2 s^-2
-        kg m^2 s^-2 divided by s   = kg m^2 s^-3
-        m^2 divided by m           = m
-    ```
-
-    The first: the kilograms cancel outright.
-
-    The second: there was already a second squared on the bottom, and dividing by another second
-    makes it a second cubed. The exponent went from minus two to minus three, which is the rule for
-    dividing powers you already have.
-
-    The third: two metres on the top, one on the bottom, one left over.
+  prompt: "Cancel each of these down as far as it will go.\n\n```working\n    kg m^2 s^-2 divided\
+    \ by kg\n    kg m^2 s^-2 divided by s\n    m^2 divided by m\n```\n"
+  answer: "```working\n    kg m^2 s^-2 divided by kg  = m^2 s^-2\n    kg m^2 s^-2 divided by s   =\
+    \ kg m^2 s^-3\n    m^2 divided by m           = m\n```\n\nThe first: the kilograms cancel outright.\n\
+    \nThe second: there was already a second squared on the bottom, and dividing by another second\n\
+    makes it a second cubed. The exponent went from minus two to minus three, which is the rule for\n\
+    dividing powers you already have.\n\nThe third: two metres on the top, one on the bottom, one\
+    \ left over.\n"
 - level: 3
-  prompt: |
-    The SI states that J = kg m^2 s^-2, where J is the joule. Write out the unit of each of these
-    in base units, cancelled as far as it will go.
-
-    ```working
-        J divided by kg
-        J times s^2, divided by m^2
-        J divided by s
-    ```
-  answer: |
-    Put kg m^2 s^-2 in place of J every time, then cancel.
-
-    ```working
-        J divided by kg        = kg m^2 s^-2 divided by kg        = m^2 s^-2
-        J times s^2 over m^2   = kg m^2 s^-2 times s^2 over m^2   = kg
-        J divided by s         = kg m^2 s^-2 divided by s         = kg m^2 s^-3
-    ```
-
-    The middle one is the one to notice. Multiplying by s^2 cancelled the s^-2, and dividing by m^2
-    cancelled the m^2, so a kilogram was left standing on its own.
-
-    That is what it means to say the joule is built out of base units. You can take it apart again
-    and get them back.
+  prompt: "The SI states that J = kg m^2 s^-2, where J is the joule. Write out the unit of each of\
+    \ these\nin base units, cancelled as far as it will go.\n\n```working\n    J divided by kg\n \
+    \   J times s^2, divided by m^2\n    J divided by s\n```\n"
+  answer: "Put kg m^2 s^-2 in place of J every time, then cancel.\n\n```working\n    J divided by\
+    \ kg        = kg m^2 s^-2 divided by kg        = m^2 s^-2\n    J times s^2 over m^2   = kg m^2\
+    \ s^-2 times s^2 over m^2   = kg\n    J divided by s         = kg m^2 s^-2 divided by s      \
+    \   = kg m^2 s^-3\n```\n\nThe middle one is the one to notice. Multiplying by s^2 cancelled the\
+    \ s^-2, and dividing by m^2\ncancelled the m^2, so a kilogram was left standing on its own.\n\n\
+    That is what it means to say the joule is built out of base units. You can take it apart again\n\
+    and get them back.\n"
 - level: 4
-  prompt: |
-    A protocol works out a total amount of a drug like this.
+  prompt: 'A protocol works out a total amount of a drug like this.
+
 
     > total amount = strength times volume
 
+
     The strength is recorded in milligrams per millilitre. The volume is recorded in millilitres.
 
+
     Check the units of the right-hand side and say what unit the total amount comes out in.
-  answer: |
-    Write the units and cancel.
 
-    ```working
-        mg per mL, times mL
-        = mg times mL over mL
-        = mg
-    ```
-
-    The millilitres cancel and milligrams are left. So the total amount comes out in milligrams,
-    which is a unit an amount of a drug is measured in. The formula is the right shape.
-
-    Now try it the other way round, so you can see the check working.
-
-    ```working
-        mg per mL, divided by mL
-        = mg per mL squared
-    ```
-
-    Milligrams per square millilitre is not a quantity anybody uses. Had the protocol divided, the
-    units alone would have told you to send it back.
+    '
+  answer: "Write the units and cancel.\n\n```working\n    mg per mL, times mL\n    = mg times mL over\
+    \ mL\n    = mg\n```\n\nThe millilitres cancel and milligrams are left. So the total amount comes\
+    \ out in milligrams,\nwhich is a unit an amount of a drug is measured in. The formula is the right\
+    \ shape.\n\nNow try it the other way round, so you can see the check working.\n\n```working\n\
+    \    mg per mL, divided by mL\n    = mg per mL squared\n```\n\nMilligrams per square millilitre\
+    \ is not a quantity anybody uses. Had the protocol divided, the\nunits alone would have told you\
+    \ to send it back.\n"
 - level: 5
-  prompt: |
-    A district note plans grain for a priority household of six people. It says the household
+  prompt: 'A district note plans grain for a priority household of six people. It says the household
+
     should be counted for 360 kilograms of foodgrains in a year.
 
+
     Work back to the rate for one person for one month, keeping the unit on the answer. Say which
+
     units you cancelled to get there. Then say whether the rate you land on is the one section 3(1)
+
     of the National Food Security Act, 2013 states.
-  answer: |
-    You are given kilograms per household per year and asked for kilograms per person per month. So
-    two things have to come off the answer: the year has to become months, and the household has to
-    become people.
 
-    Write the units first and decide the arrangement from them.
-
-    ```working
-        kilograms per household per year
-        divided by months per year
-        divided by persons per household
-        = kilograms per person per month
-    ```
-
-    The years cancel against the years and the households cancel against the households. Kilograms,
-    one person and one month are what is left standing.
-
-    Now the numbers. A year holds twelve months, and the note's household holds six people.
-
-    ```working
-        360 divided by 12 = 30
-    ```
-
-    Thirty kilograms per household per month.
-
-    ```working
-        30 divided by 6 = 5
-    ```
-
-    Five kilograms per person per month.
-
-    That is the rate section 3(1) of the Act states for a person in a priority household. The 360 in
-    the note is not in the Act. It is somebody's arithmetic on the monthly rate, and working back
-    down is how you check whose arithmetic it was.
-  refs: [nfsa_2013]
+    '
+  answer: "You are given kilograms per household per year and asked for kilograms per person per month.\
+    \ So\ntwo things have to come off the answer: the year has to become months, and the household\
+    \ has to\nbecome people.\n\nWrite the units first and decide the arrangement from them.\n\n```working\n\
+    \    kilograms per household per year\n    divided by months per year\n    divided by persons\
+    \ per household\n    = kilograms per person per month\n```\n\nThe years cancel against the years\
+    \ and the households cancel against the households. Kilograms,\none person and one month are what\
+    \ is left standing.\n\nNow the numbers. A year holds twelve months, and the note's household holds\
+    \ six people.\n\n```working\n    360 divided by 12 = 30\n```\n\nThirty kilograms per household\
+    \ per month.\n\n```working\n    30 divided by 6 = 5\n```\n\nFive kilograms per person per month.\n\
+    \nThat is the rate section 3(1) of the Act states for a person in a priority household. The 360\
+    \ in\nthe note is not in the Act. It is somebody's arithmetic on the monthly rate, and working\
+    \ back\ndown is how you check whose arithmetic it was.\n"
+  refs:
+  - nfsa_2013
 - level: 5
-  prompt: |
-    A bus covers 18 kilometres in 30 minutes. A note says the speed is worked out as the time
+  prompt: 'A bus covers 18 kilometres in 30 minutes. A note says the speed is worked out as the time
+
     divided by the distance.
 
+
     Say what unit that gives and what it is not. Then write the arrangement whose units come out as
+
     a speed, and work the speed out.
-  answer: |
-    Units first.
 
-    ```working
-        minutes divided by kilometres
-        = min/km
-    ```
-
-    Minutes per kilometre is a real quantity. It is a pace, which is how long each kilometre takes.
-    It is not a speed, because a speed is a distance divided by a time.
-
-    Turn it over and you get kilometres divided by minutes.
-
-    ```working
-        kilometres divided by minutes
-        = km/min
-    ```
-
-    That is a speed, and it is not yet the speed you were asked for. Kilometres an hour is what a
-    road speed is quoted in, so the minutes have to become hours. Use the conversion factor from
-    the section before this one, with the minutes where they cancel.
-
-    ```working
-        km/min, times 60 min over 1 h
-        = km/h
-    ```
-
-    Now the numbers. The time is in minutes and the speed you want is per hour, so convert first.
-
-    ```working
-        30 min times 1 h over 60 min = 0.5 h
-    ```
-
-    Then divide.
-
-    ```working
-        18 divided by 0.5 = 36
-    ```
-
-    Thirty-six kilometres an hour.
-
-    Both quantities are useful and they answer different questions. The unit is what tells you
-    which of the two you are holding.
+    '
+  answer: "Units first.\n\n```working\n    minutes divided by kilometres\n    = min/km\n```\n\nMinutes\
+    \ per kilometre is a real quantity. It is a pace, which is how long each kilometre takes.\nIt\
+    \ is not a speed, because a speed is a distance divided by a time.\n\nTurn it over and you get\
+    \ kilometres divided by minutes.\n\n```working\n    kilometres divided by minutes\n    = km/min\n\
+    ```\n\nThat is a speed, and it is not yet the speed you were asked for. Kilometres an hour is\
+    \ what a\nroad speed is quoted in, so the minutes have to become hours. Use the conversion factor\
+    \ from\nthe section before this one, with the minutes where they cancel.\n\n```working\n    km/min,\
+    \ times 60 min over 1 h\n    = km/h\n```\n\nNow the numbers. The time is in minutes and the speed\
+    \ you want is per hour, so convert first.\n\n```working\n    30 min times 1 h over 60 min = 0.5\
+    \ h\n```\n\nThen divide.\n\n```working\n    18 divided by 0.5 = 36\n```\n\nThirty-six kilometres\
+    \ an hour.\n\nBoth quantities are useful and they answer different questions. The unit is what\
+    \ tells you\nwhich of the two you are holding.\n"
 - level: 6
-  prompt: |
-    A block of material has a mass of 2,400 kilograms and a volume of 1.2 cubic metres. A note
+  prompt: 'A block of material has a mass of 2,400 kilograms and a volume of 1.2 cubic metres. A note
+
     works out its density as the volume divided by the mass.
 
-    A density is a mass in every unit of volume. Check the note's units against that, fix the
+
+    A density is a mass in every unit of volume. Check the note''s units against that, fix the
+
     arrangement, and work the density out.
-  answer: |
-    A density is a mass divided by a volume, so its unit has to be kilograms per cubic metre.
 
-    Now the note's arrangement.
-
-    ```working
-        m^3 divided by kg
-        = m^3/kg
-    ```
-
-    Cubic metres per kilogram is upside down. It is a volume in every kilogram, which is a real
-    quantity and is not what was asked for.
-
-    Turn it up the right way.
-
-    ```working
-        kg divided by m^3
-        = kg/m^3
-    ```
-
-    Now the numbers.
-
-    ```working
-        2,400 divided by 1.2 = 2,000
-    ```
-
-    Two thousand kilograms per cubic metre.
-
-    Run the size check on that answer as well. A cubic metre is a large volume, so a density in
-    kilograms per cubic metre is a large number. Had the note's arrangement been used, the answer
-    would have been 0.0005, and a number that small for a heavy block is its own warning.
+    '
+  answer: "A density is a mass divided by a volume, so its unit has to be kilograms per cubic metre.\n\
+    \nNow the note's arrangement.\n\n```working\n    m^3 divided by kg\n    = m^3/kg\n```\n\nCubic\
+    \ metres per kilogram is upside down. It is a volume in every kilogram, which is a real\nquantity\
+    \ and is not what was asked for.\n\nTurn it up the right way.\n\n```working\n    kg divided by\
+    \ m^3\n    = kg/m^3\n```\n\nNow the numbers.\n\n```working\n    2,400 divided by 1.2 = 2,000\n\
+    ```\n\nTwo thousand kilograms per cubic metre.\n\nRun the size check on that answer as well. A\
+    \ cubic metre is a large volume, so a density in\nkilograms per cubic metre is a large number.\
+    \ Had the note's arrangement been used, the answer\nwould have been 0.0005, and a number that\
+    \ small for a heavy block is its own warning.\n"
 - level: 7
-  prompt: |
-    Here is a worked answer. Find the step that broke.
-
-    ```working
-        a rectangular plot measures 30 m by 20 m
-        the fencing needed is 30 times 20 = 600
-        so 600 m of fencing is needed
-    ```
-  answer: |
-    The step that broke is the second one, and the units say so before the arithmetic does.
-
-    ```working
-        30 m times 20 m
-        = 600 m^2
-    ```
-
-    Metres times metres give square metres. That is an area, and fencing is a length. The formula
-    is the wrong shape for what was asked.
-
-    Fencing runs round the edge, so add the four sides.
-
-    ```working
-        30 plus 20 = 50
-        50 times 2 = 100
-    ```
-
-    A hundred metres of fencing.
-
-    Why it looks reasonable: multiplying the two sides of a rectangle is a move everybody knows,
-    and 600 is a plausible-looking quantity of fencing. The word "metres" even appears in the
-    answer. It appears because somebody typed it, not because it fell out of the working, and that
-    is the difference this section is about.
+  prompt: "Here is a worked answer. Find the step that broke.\n\n```working\n    a rectangular plot\
+    \ measures 30 m by 20 m\n    the fencing needed is 30 times 20 = 600\n    so 600 m of fencing\
+    \ is needed\n```\n"
+  answer: "The step that broke is the second one, and the units say so before the arithmetic does.\n\
+    \n```working\n    30 m times 20 m\n    = 600 m^2\n```\n\nMetres times metres give square metres.\
+    \ That is an area, and fencing is a length. The formula\nis the wrong shape for what was asked.\n\
+    \nFencing runs round the edge, so add the four sides.\n\n```working\n    30 plus 20 = 50\n   \
+    \ 50 times 2 = 100\n```\n\nA hundred metres of fencing.\n\nWhy it looks reasonable: multiplying\
+    \ the two sides of a rectangle is a move everybody knows,\nand 600 is a plausible-looking quantity\
+    \ of fencing. The word \"metres\" even appears in the\nanswer. It appears because somebody typed\
+    \ it, not because it fell out of the working, and that\nis the difference this section is about.\n"
 - level: 7
-  prompt: |
-    Here is a worked answer. Find the step that broke.
-
-    ```working
-        the entitlement is 5 kilograms per person per month
-        a year is 365 days
-        5 times 365 = 1,825
-        so the entitlement is 1,825 kilograms per person per year
-    ```
-  answer: |
-    The step that broke is the third. A quantity given for each month was multiplied by a number of
-    days.
-
-    Write the units of that multiplication out.
-
-    ```working
-        kilograms per person per month
-        times days
-        = kilogram days per person per month
-    ```
-
-    Kilogram days per person per month is not a quantity of grain. Nothing cancelled, because
-    nothing matched: there is a month on the bottom and a day on the top.
-
-    What goes on the top has to be months, and a year holds twelve of them.
-
-    ```working
-        kilograms per person per month, times 12 months
-        = kilograms per person per year
-        5 times 12 = 60
-    ```
-
-    Sixty kilograms per person per year. That figure is your arithmetic and not the Act's. What the
-    Act states is five kilograms per person per month. So whenever you quote the sixty, say that you
-    multiplied by twelve months to get it.
-
-    Why it looks reasonable: the 365 is a real and familiar number, and the arithmetic is right.
-    The answer is even labelled per year, which is the label that was wanted. Every part of it is
-    correct except the one that mattered, which is what the 365 was counting.
-  refs: [nfsa_2013]
+  prompt: "Here is a worked answer. Find the step that broke.\n\n```working\n    the entitlement is\
+    \ 5 kilograms per person per month\n    a year is 365 days\n    5 times 365 = 1,825\n    so the\
+    \ entitlement is 1,825 kilograms per person per year\n```\n"
+  answer: "The step that broke is the third. A quantity given for each month was multiplied by a number\
+    \ of\ndays.\n\nWrite the units of that multiplication out.\n\n```working\n    kilograms per person\
+    \ per month\n    times days\n    = kilogram days per person per month\n```\n\nKilogram days per\
+    \ person per month is not a quantity of grain. Nothing cancelled, because\nnothing matched: there\
+    \ is a month on the bottom and a day on the top.\n\nWhat goes on the top has to be months, and\
+    \ a year holds twelve of them.\n\n```working\n    kilograms per person per month, times 12 months\n\
+    \    = kilograms per person per year\n    5 times 12 = 60\n```\n\nSixty kilograms per person per\
+    \ year. That figure is your arithmetic and not the Act's. What the\nAct states is five kilograms\
+    \ per person per month. So whenever you quote the sixty, say that you\nmultiplied by twelve months\
+    \ to get it.\n\nWhy it looks reasonable: the 365 is a real and familiar number, and the arithmetic\
+    \ is right.\nThe answer is even labelled per year, which is the label that was wanted. Every part\
+    \ of it is\ncorrect except the one that mattered, which is what the 365 was counting.\n"
+  refs:
+  - nfsa_2013
 - level: 8
-  prompt: |
-    Here is a worked answer. Find the step that broke.
-
-    ```working
-        energy in the SI has the unit kg m^2 s^-2
-        a note proposes that energy is a mass times a speed
-        a mass is in kg and a speed is in m/s
-        kg times m/s gives kg m/s
-        kg m/s contains kg, m and s, and so does kg m^2 s^-2
-        so the units match and the formula is fine
-    ```
-  answer: |
-    The step that broke is the fifth. Containing the same letters is not carrying the same units.
-
-    Write both out with their powers side by side.
-
-    ```table
-        what it is     its unit
-        the proposal   kg m s^-1
-        the joule      kg m^2 s^-2
-    ```
-
-    The metre is to the power one in the proposal and to the power two in the joule. The second is
-    to the power minus one in the proposal and minus two in the joule. Two of the three powers
-    differ, so these are different quantities that happen to be built from the same three base
-    units.
-
-    So the proposal is rejected. A mass times a speed is not an energy.
-
-    Notice what you cannot say. You cannot say what energy is a mass times, because the check does
-    not produce right formulas. It only throws out wrong ones, and here it has thrown one out.
-
-    Why it looks reasonable: the last two lines have the form of a check. The units are written
-    down and compared, so the working looks like the work. Reading the letters and ignoring the
-    powers is the commonest way this check is done badly. It is worse than not doing it at all,
-    because it ends with the word "fine".
+  prompt: "Here is a worked answer. Find the step that broke.\n\n```working\n    energy in the SI\
+    \ has the unit kg m^2 s^-2\n    a note proposes that energy is a mass times a speed\n    a mass\
+    \ is in kg and a speed is in m/s\n    kg times m/s gives kg m/s\n    kg m/s contains kg, m and\
+    \ s, and so does kg m^2 s^-2\n    so the units match and the formula is fine\n```\n"
+  answer: "The step that broke is the fifth. Containing the same letters is not carrying the same\
+    \ units.\n\nWrite both out with their powers side by side.\n\n```table\n    what it is     its\
+    \ unit\n    the proposal   kg m s^-1\n    the joule      kg m^2 s^-2\n```\n\nThe metre is to the\
+    \ power one in the proposal and to the power two in the joule. The second is\nto the power minus\
+    \ one in the proposal and minus two in the joule. Two of the three powers\ndiffer, so these are\
+    \ different quantities that happen to be built from the same three base\nunits.\n\nSo the proposal\
+    \ is rejected. A mass times a speed is not an energy.\n\nNotice what you cannot say. You cannot\
+    \ say what energy is a mass times, because the check does\nnot produce right formulas. It only\
+    \ throws out wrong ones, and here it has thrown one out.\n\nWhy it looks reasonable: the last\
+    \ two lines have the form of a check. The units are written\ndown and compared, so the working\
+    \ looks like the work. Reading the letters and ignoring the\npowers is the commonest way this\
+    \ check is done badly. It is worse than not doing it at all,\nbecause it ends with the word \"\
+    fine\".\n"
 - level: 9
-  prompt: |
-    A press note crosses your desk with this line in it.
+  prompt: 'A press note crosses your desk with this line in it.
+
 
     > The plant treats 4.5 crore litres a day, which works out at 135 litres a person for the
-    > city's 30 lakh people.
+
+    > city''s 30 lakh people.
+
 
     The plant, the city and both figures are made up for this problem. No real plant and no real
+
     population is being described.
 
+
     Decide what to compute, compute it, and say what your answer does not establish.
-  answer: |
-    What to compute: litres per person per day. The unit tells you the arrangement, because litres
-    per person per day means litres divided by people.
 
-    ```working
-        litres per day, divided by people
-        = litres per person per day
-    ```
-
-    Write both figures out in full first.
-
-    ```working
-        4.5 crore litres a day = 4.5 times 10^7 = 45,000,000 litres a day
-        30 lakh people         = 3 times 10^6   = 3,000,000 people
-    ```
-
-    Now divide.
-
-    ```working
-        45,000,000 divided by 3,000,000 = 15
-    ```
-
-    Fifteen litres per person per day, not 135. The line is out by a factor of nine.
-
-    What this does not establish. It does not tell you what a person needs. Both 15 and 135 are
-    only numbers until somebody names a standard and says who set it. It does not tell you
-    that the water reaches anybody, since a plant treating water and a household receiving it are
-    two different claims. And both figures came from the note itself, so the arithmetic being wrong
-    is the only thing here you have checked.
+    '
+  answer: "What to compute: litres per person per day. The unit tells you the arrangement, because\
+    \ litres\nper person per day means litres divided by people.\n\n```working\n    litres per day,\
+    \ divided by people\n    = litres per person per day\n```\n\nWrite both figures out in full first.\n\
+    \n```working\n    4.5 crore litres a day = 4.5 times 10^7 = 45,000,000 litres a day\n    30 lakh\
+    \ people         = 3 times 10^6   = 3,000,000 people\n```\n\nNow divide.\n\n```working\n    45,000,000\
+    \ divided by 3,000,000 = 15\n```\n\nFifteen litres per person per day, not 135. The line is out\
+    \ by a factor of nine.\n\nWhat this does not establish. It does not tell you what a person needs.\
+    \ Both 15 and 135 are\nonly numbers until somebody names a standard and says who set it. It does\
+    \ not tell you\nthat the water reaches anybody, since a plant treating water and a household receiving\
+    \ it are\ntwo different claims. And both figures came from the note itself, so the arithmetic\
+    \ being wrong\nis the only thing here you have checked.\n"
 - level: 10
-  prompt: |
-    A supplier's brochure makes this claim about a water treatment unit for a village tank.
+  prompt: 'A supplier''s brochure makes this claim about a water treatment unit for a village tank.
+
 
     > It doses at 2 milligrams per litre. So a 5,000 litre tank needs 2 divided by 5,000, which
+
     > is 0.0004 grams of chlorine a fill.
 
+
     The brochure, the unit and both figures are made up for this problem. Do not carry the
+
     2 milligrams per litre away as a chlorine dose. What a tank should be dosed at is set by
+
     whoever sets the standard. This problem is about the arrangement of the units and nothing else.
 
+
     Decide what to compute, compute it, and say what your answer does not establish.
-  answer: |
-    What to compute: the mass of chlorine for one fill. Start from the units, because the brochure
-    has divided and you should check whether dividing can give a mass.
 
-    ```working
-        milligrams per litre, divided by litres
-        = mg per litre squared
-    ```
-
-    Milligrams per square litre is not a mass. So the arrangement is wrong, whatever the number
-    comes out as.
-
-    Multiplying is what leaves a mass standing.
-
-    ```working
-        milligrams per litre, times litres
-        = milligrams
-    ```
-
-    Now the numbers.
-
-    ```working
-        2 times 5,000 = 10,000
-    ```
-
-    Ten thousand milligrams. Convert that to grams, since the brochure answered in grams.
-
-    ```working
-        10,000 divided by 1,000 = 10
-    ```
-
-    Ten grams a fill, against the 0.0004 grams claimed. The brochure is out by a factor of
-    twenty-five thousand, and the error is one inverted arrangement.
-
-    What this does not establish. It says nothing about whether 2 milligrams per litre is the right
-    dose for that tank, which is a question for whoever sets the standard. It says nothing about
-    whether the unit delivers what it claims to deliver. And it says nothing about what the
-    chlorine is mixed with. Ten grams of a product is ten grams of chlorine only if the product is
-    pure.
+    '
+  answer: "What to compute: the mass of chlorine for one fill. Start from the units, because the brochure\n\
+    has divided and you should check whether dividing can give a mass.\n\n```working\n    milligrams\
+    \ per litre, divided by litres\n    = mg per litre squared\n```\n\nMilligrams per square litre\
+    \ is not a mass. So the arrangement is wrong, whatever the number\ncomes out as.\n\nMultiplying\
+    \ is what leaves a mass standing.\n\n```working\n    milligrams per litre, times litres\n    =\
+    \ milligrams\n```\n\nNow the numbers.\n\n```working\n    2 times 5,000 = 10,000\n```\n\nTen thousand\
+    \ milligrams. Convert that to grams, since the brochure answered in grams.\n\n```working\n   \
+    \ 10,000 divided by 1,000 = 10\n```\n\nTen grams a fill, against the 0.0004 grams claimed. The\
+    \ brochure is out by a factor of\ntwenty-five thousand, and the error is one inverted arrangement.\n\
+    \nWhat this does not establish. It says nothing about whether 2 milligrams per litre is the right\n\
+    dose for that tank, which is a question for whoever sets the standard. It says nothing about\n\
+    whether the unit delivers what it claims to deliver. And it says nothing about what the\nchlorine\
+    \ is mixed with. Ten grams of a product is ten grams of chlorine only if the product is\npure.\n"
 retrieval_items:
 - q: What are the four steps of a unit check on a formula?
-  a: Throw the numbers away, write the unit of every quantity on both sides, cancel anything that appears on the top and the bottom, and compare the two sides. Different units mean the formula is wrong.
+  a: Throw the numbers away, write the unit of every quantity on both sides, cancel anything that
+    appears on the top and the bottom, and compare the two sides. Different units mean the formula
+    is wrong.
 - q: What can a unit check never tell you?
-  a: That a formula is right. A plain number multiplying a formula changes no unit, so a formula can pass the check and still be wrong by a factor of two or any other number.
+  a: That a formula is right. A plain number multiplying a formula changes no unit, so a formula can
+    pass the check and still be wrong by a factor of two or any other number.
 - q: Why is kg m per second not the same unit as kg m^2 per second squared?
-  a: Because the powers are part of the unit. Both are built from the same three base units, and the powers differ, so they are different quantities.
+  a: Because the powers are part of the unit. Both are built from the same three base units, and the
+    powers differ, so they are different quantities.
 provenance:
   map_version_id: fc19c8bc-a216-4131-99fb-ebe3f19cec4a
   outcome_refs:
@@ -833,10 +523,9 @@ provenance:
   bridge_ref: []
 review:
   stability: long
-  trigger: '2031-09-22, and sooner on either of two events: the next amendment to section 3 or
-    Schedule I of the National Food Security Act, 2013, or the next Central Government
-    specification of the extent under the Antyodaya Anna Yojana proviso. The technique is durable
-    and dated five-yearly; the statutory figure the second illustration and practice levels 5 and 7
-    are drilled on is not.'
+  trigger: '2031-09-22, and sooner on either of two events: the next amendment to section 3 or Schedule
+    I of the National Food Security Act, 2013, or the next Central Government specification of the
+    extent under the Antyodaya Anna Yojana proviso. The technique is durable and dated five-yearly;
+    the statutory figure the second illustration and practice levels 5 and 7 are drilled on is not.'
   last_reviewed: '2026-09-22'
 status: drafted

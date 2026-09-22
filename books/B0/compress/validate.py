@@ -9,7 +9,7 @@ import sys
 import yaml
 
 HERE = os.path.dirname(os.path.abspath(__file__))
-sys.path.insert(0, "/home/claude/obesity-course/check")
+sys.path.insert(0, os.path.join(os.path.dirname(HERE), "..", "..", "check"))
 import build  # noqa: E402
 
 

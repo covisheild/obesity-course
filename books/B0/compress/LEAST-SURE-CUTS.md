@@ -81,3 +81,51 @@ It is the only place the section shows the reader the actual wording. Practice
 problems 9 and 10 and exercise E2 all ask for that wording. Must-know point 5
 states the rule, but never demonstrates it.
 
+
+## B1
+
+# B1 pass 1 — the cut I was least sure about
+
+Deleting the whole "299 792" paragraph from `illustration.body`: the instruction to search the
+BIPM page for it, the caesium-133 frequency, and how the second comes from that frequency and the
+metre from that speed. I cut the matching paragraph in `simplified_explanation` too. Only
+must_know point 5 still carries the figure, now as an assertion with no page to find it on, and
+nothing kept shows why fixing numbers fixes units.
+
+## B2
+
+# B2 pass 1 — the cut I was least sure about
+
+Deleting the read-aloud cancelling paragraph and the sentence that introduces the two-factor line
+("You can also run both factors in one line"). The combined working block survives with only
+"Write the quantity, then each factor, then cancel." beside it. Practice problem 3 asks for two
+factors in one line, and nothing kept walks the reader through the cancelling that makes the
+combined line readable.
+
+## B3
+
+# B3 pass 1 — the cut I was least sure about
+
+Deleting the closing paragraph of `illustration.body`: that the unit check threw out every
+arrangement but one shape, that it did not tell you the twelve, and that you brought the twelve
+from knowing a year holds twelve months. What survives is "A unit check throws out wrong
+arrangements. It never hands you a right formula." That is the rule without the worked instance,
+and exercise 1 asks for exactly this limit.
+
+## B4
+
+# B4 pass 1 — the cut I was least sure about
+
+Dropping from the illustration: *The Act gave you two digits, so both answers round to 2,900 kilojoules and the choice made no difference here.* The two-calorie working survives, and so does "the gap is in the fourth digit", but nothing kept now says the choice usually washes out at the digits you actually hold. Practice problem 6 asks exactly which definition could have changed an answer at two digits.
+
+## B5
+
+# B5 pass 1 — the cut I was least sure about
+
+Dropping from the cholesterol passage: *It sat below the fold on the screen, and this book writes down only what somebody actually saw.* The refusal stays legible — the course cannot hand you cholesterol's molar mass, and the reader is told to read it off PubChem 5997 — but the reason the number is withheld is now gone, so the dead end may read as an omission rather than a rule. Practice problem 8 turns on it.
+
+## B6
+
+# B6 pass 1 — the cut I was least sure about
+
+Deleting the whole last paragraph of `illustration.analogy_breaks_when`: that the arithmetic is exact while the weight and the height going into it are not, and that shoes on or no wall behind moves the answer more than rounding does. Exercise 1 asks the reader to write one sentence on what their index does not tell them. No threshold sentence was cut; those all survive.
