@@ -173,6 +173,17 @@ The must-know point that earns its place here is the unit-mismatch trap: a heigh
 centimetres gives a BMI ten thousand times too small, and the error is so large it looks like a
 different kind of mistake.
 
+**One drill problem is owed to C2 and is not written here.** B6's level-5 problem gave an index
+and a height and asked for the missing mass, which needs the equation rearranged, and no section
+in Part B rearranges anything — the move is taught in **C2**, a Part later. The build did not
+catch it, because the dependency is in what the problem asks rather than in what `concept_deps`
+declares. It has been replaced in B6 by an applied problem needing only Part B: two register
+rows, one height in centimetres and one in metres. **When Part C is written, C2 takes the
+rearrangement problem**, because it is a good application of that technique and should not be
+lost: give the reader an index of 27.0 kg/m² and a height of 1.60 m, ask for the mass in
+kilograms, and let the rearrangement be the thing drilled. B6 now names the index — body mass
+index, BMI — so C2 can use the name without introducing it.
+
 ---
 
 ## Dependencies on Part A, declared

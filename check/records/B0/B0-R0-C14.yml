@@ -13,22 +13,19 @@ concept_deps:
 - B0-R0-C06
 - B0-R0-C09
 definition:
-  text: 'A centimetre, written cm, is one hundredth of a metre, so one metre is 100 cm.
-
+  text: |
+    A centimetre, written cm, is one hundredth of a metre, so one metre is 100 cm.
 
     Dividing a mass in kilograms by the square of a length in metres gives a quantity whose unit is
-
     the kilogram per metre squared, written kg/m^2.
 
+    A person's mass in kilograms divided by the square of their height in metres is the body mass
+    index, written BMI.
 
-    A length entered in centimetres rather than metres therefore divides the value by 10^4.
-
+    A height entered in centimetres rather than metres therefore divides the index by 10^4.
 
     The index is a number together with its unit. Nothing in its construction states which values
-
     are high or low. That is a separate decision, made by a body rather than by the arithmetic.
-
-    '
   references:
   - citekey: openstax_prealgebra_2e
     kind: textbook
@@ -48,53 +45,82 @@ definition:
         rests on the anchor; it stays in the citation backlog until somebody with library access
 
         opens the chapter and fills in the locator.'
-simplified_explanation: 'Mass is measured in kilograms, written kg. Length is measured in metres,
-  written m. So 100 cm make one metre, and any height in centimetres
-
+simplified_explanation: |
+  Mass is measured in kilograms, written kg. Length is measured in metres, written m. So 100 cm make one metre, and any height in centimetres
   becomes metres when you divide by 100.
 
-
   Take a mass in kilograms. Take a height in metres and multiply it by itself, which
-
   is the squaring you met in the section on powers. Divide the first by the second.
 
+  What you get is called the body mass index, written BMI. It puts a mass and a height together
+  into one number, and the short name for it here is the index.
 
   It carries a unit, and the unit comes out of the division:
-
   kilograms on top, metres times metres underneath.
-
 
   That is a derived unit.
 
-
   The height must be in metres. Put centimetres in and the answer is not slightly off. It is ten
-
   thousand times too small, because the squaring squares the mistake as well.
 
-
-  And the number this gives you does not mean anything on its own. Where the line falls between one
-  value and another is a decision
-
+  And the index does not mean anything on its own. Whether a value counts as high or low is a decision
   somebody made, and this section does not make it.
-
-  '
 illustration:
-  body: "Work the wrong one first.\n\nA person weighs 70 kg and stands 168 cm tall. The height is\
-    \ in centimetres, which is how a\nclinic form usually collects it. Square it as it stands and\
-    \ divide.\n\n```working\n    168 times 168 = 28,224\n```\n\nNow divide the 70 by that. The answer\
-    \ is 0.00248, and the unit that falls out of the division is\nkilograms per centimetre squared,\
-    \ not kilograms per metre squared.\n\nNow do it properly. Put the height into metres first.\n\n\
-    ```working\n    168 divided by 100 = 1.68\n    1.68 times 1.68 = 2.8224\n    70 divided by 2.8224\
-    \ = 24.8\n```\n\n24.8 kg/m^2. Say it out loud as kilograms per metre squared, because the unit\
-    \ is what tells you\nthe first answer was not an answer at all.\n\nOne hundred centimetres in\
-    \ a metre, and the denominator is squared, so the mistake is squared\ntoo.\n\n```working\n   \
-    \ 100 times 100 = 10,000\n```\n\nTake a shape and make\nevery length twice as long, keeping everything\
-    \ else the same. Mass goes with volume, and volume\nhas three lengths in it, so the mass goes\
-    \ up by 2 times 2 times 2.\n\n```working\n    2 times 2 times 2 = 8\n```\n\nThe denominator has\
-    \ only two lengths in it.\n\n```working\n    2 times 2 = 4\n```\n\nSo the index itself goes up.\n\
-    \n```working\n    8 divided by 4 = 2\n```\n\nDividing by the square of a height\ndoes not remove\
-    \ size from the number. It removes some of it, and a squared denominator is a\nchoice somebody\
-    \ made rather than a law you can check.\n"
+  body: |
+    Do the calculation the wrong way first, because the mistake is the thing worth seeing.
+
+    A person weighs 70 kg and stands 168 cm tall. The height is in centimetres, which is how a
+    clinic form usually collects it. Square it as it stands, then divide the 70 by what you get.
+
+    ```working
+        168 times 168 = 28,224
+        70 divided by 28,224 = 0.00248 kg/cm^2
+    ```
+
+    Read the unit that fell out of that division. It is kilograms per centimetre squared, not
+    kilograms per metre squared.
+
+    Now do it properly. Put the height into metres first.
+
+    ```working
+        168 divided by 100 = 1.68
+        1.68 times 1.68 = 2.8224
+        70 divided by 2.8224 = 24.8
+    ```
+
+    24.8 kg/m^2. Say it out loud as kilograms per metre squared, because the unit is what tells you
+    the first answer was not an answer at all.
+
+    One hundred centimetres in a metre, and the denominator is squared, so the mistake is squared
+    too.
+
+    ```working
+        100 times 100 = 10,000
+    ```
+
+    Take a shape and make
+    every length twice as long, keeping everything else the same. Mass goes with volume, and volume
+    has three lengths in it, so the mass goes up by 2 times 2 times 2.
+
+    ```working
+        2 times 2 times 2 = 8
+    ```
+
+    The denominator has only two lengths in it.
+
+    ```working
+        2 times 2 = 4
+    ```
+
+    So the index itself goes up.
+
+    ```working
+        8 divided by 4 = 2
+    ```
+
+    Dividing by the square of a height
+    does not remove size from the number. It removes some of it, and a squared denominator is a
+    choice somebody made rather than a law you can check.
   analogy_breaks_when: 'The doubling argument holds only while the shape and the density stay the
     same. Real bodies are
 
@@ -234,18 +260,42 @@ practice:
     \ per metre squared.\n\nKeep both parts of the answer. The number without the unit could be anything,\
     \ and the unit is\nhow anybody checks you used metres.\n"
 - level: 5
-  prompt: 'A record gives an index of 27.0 kg/m^2 and a height of 1.60 m, but the mass is missing.
-    Work out
+  prompt: |
+    Two rows come out of a clinic register. The first records a mass of 61.5 kg and a height of
+    158 cm. The second records a mass of 73.4 kg and a height of 1.72 m.
 
-    the mass in kilograms, showing every line.
+    Work out the index for each row, showing every line, and give each answer with its unit. Then
+    say which row needed a conversion first, and how the row itself told you.
+  answer: |
+    Read the height in each row before you compute anything. The first is in centimetres and the
+    second is in metres, so the two rows do not take the same working.
 
-    '
-  answer: "This runs the move backwards. The index was the mass divided by the squared height, so\
-    \ the mass\nis the index times the squared height.\n\nSquare the height.\n\n```working\n    1.60\
-    \ times 1.60 = 2.56\n```\n\nMultiply.\n\n```working\n    27.0 times 2.56 = 69.12\n```\n\nAbout\
-    \ 69 kilograms. Write 69, not 69.12: the height was given to three digits and the index to\nthree,\
-    \ so a fourth digit in the answer is invented.\n\nCheck the direction. Multiplying undoes dividing,\
-    \ so the mass must come out larger than the\nindex here, and it does.\n"
+    The first row needs the conversion.
+
+    ```working
+        158 divided by 100 = 1.58
+        1.58 times 1.58 = 2.4964
+        61.5 divided by 2.4964 = 24.6
+    ```
+
+    24.6 kilograms per metre squared.
+
+    The second row is already in metres, so square it and divide.
+
+    ```working
+        1.72 times 1.72 = 2.9584
+        73.4 divided by 2.9584 = 24.8
+    ```
+
+    24.8 kilograms per metre squared.
+
+    How the row told you: by the size of the number. A height in metres is a small number with a
+    decimal point near the front. The same height in centimetres is a three-digit whole number. A
+    row holding 158 is not a row holding metres, whatever the column heading says.
+
+    The two answers come out close together. The two rows did not. A register that holds both
+    units at once hands you one right answer and one that is out by ten thousand. Find out which
+    unit each row is in before you compute any of them.
 - level: 7
   prompt: "Here is a worked answer. Find the step that broke.\n\n```working\n    a person weighs 65\
     \ kg and is 170 cm tall\n    170 divided by 100 = 1.7\n    65 divided by 1.7 = 38.2\n    so the\
