@@ -853,7 +853,9 @@ def check(recs: dict, subjects: dict, clusters: dict, bibkeys: set):
 
 WORKING_OPEN = '::: {custom-style="Working"}'
 
-_SUP = re.compile(r"(?<![\w^~])(\d[\d,.]*)\s*\^\s*"
+# A base may be a number (10^7) or a unit symbol (m^2, km^2, kg/m^2). Units were missed by
+# the original pattern, so a section whose whole subject is kg/m^2 printed it with a caret.
+_SUP = re.compile(r"(?<![\w^~])([A-Za-z]{1,3}|\d[\d,.]*)\s*\^\s*"
                   r"(\(\s*-?\d+\s*/\s*\d+\s*\)|-?\d+(?:\.\d+)?)(?!\^)")
 _LOGB = re.compile(r"\blog\s?(10|2|e)\b")
 _FENCE = re.compile(r"^\s*```+\s*(working|calc|table)?\s*$")
