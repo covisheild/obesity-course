@@ -22,15 +22,22 @@ definition:
     step.
 
     A relationship is exponential when equal steps in the input multiply the output by the same
-    factor every time. Its increments grow in proportion to the output itself.
+    factor every time. Its increments are proportional to the output itself.
 
     A relationship is saturating when the output rises while its increments shrink towards zero,
     approaching a value it does not pass. That value is the ceiling, and the output may approach it
     without ever reaching it.
 
     The tests are arithmetic, carried out on values taken at equal steps. Constant differences
-    between successive outputs mean linear. Constant ratios mean exponential. Differences that
-    shrink towards zero while the output climbs towards a level mean saturating.
+    between successive outputs mean linear. Constant ratios mean exponential.
+
+    Differences that shrink while the output climbs do not on their own mean saturating, because an
+    output can climb for ever by ever smaller amounts and approach no value at all. What settles it
+    is a ratio taken on the differences themselves rather than on the outputs. Divide each
+    difference by the difference before it. A ratio that holds at some number below one means each
+    difference is a fixed share of the one before, so the differences sum to a finite amount and a
+    ceiling exists. Where that ratio does not hold below one, shrinking differences establish no
+    ceiling, and the shape has not been named.
 
     An exponential relationship drawn with a logarithmic vertical axis is a straight line, because
     taking log10 of the output turns a constant ratio into a constant difference.
@@ -66,14 +73,28 @@ simplified_explanation: |
   all. It is heading for a level and it flattens against it. That level is called the ceiling.
 
   Now the check by hand, for when your eye is not enough. It needs values taken at equal steps
-  along the bottom, and it is two subtractions and two divisions.
+  along the bottom, and it is a few subtractions and a few divisions.
 
   Subtract each value from the next one. Are the differences all the same? Then it is linear.
 
   Divide each value by the one before it. Are the ratios all the same? Then it is exponential.
 
-  Do the differences keep shrinking while the values keep climbing towards some level? Then it is
-  saturating.
+  Do the differences keep shrinking while the values keep climbing? That is not yet enough to say
+  saturating. A quantity can climb for ever by ever smaller amounts and head for no level at all.
+
+  A logarithm does exactly that. Take the multiplying ruler from the section on logarithms. Each
+  number sits a little further along it than the one before, and each of those steps is shorter
+  than the step before it. The ruler goes on for ever. Nothing on it is a level to flatten
+  against.
+
+  So run one more division, and this time divide the differences rather than the values. Take each
+  difference and divide it by the difference before it. Does that ratio hold at some number below
+  one? Then each difference is a fixed share of the one before it, the differences add up to a
+  finite amount, and there is a ceiling. That is saturating.
+
+  Differences that shrink without holding a ratio may be heading nowhere in particular. That test
+  has then found you no ceiling, so do not go looking for one on the strength of the shrinking
+  alone.
 
   One more thing, and it is the one people get caught by. Look at the side axis before you name
   anything. Some side axes multiply by ten at every step, which is the ruler you met in the section
@@ -145,17 +166,32 @@ illustration:
         56.1 minus 53.5 = 2.6
     ```
 
-    The steps shrink while the values keep climbing. Each step closes about the same share of
-    whatever distance is left to 60, so 60 is the ceiling this column is heading for. It gets
-    closer at every step and does not arrive.
+    The steps shrink while the values keep climbing. Now divide each of those differences by the
+    one before it, which is the test that says whether the shrinking is heading anywhere.
 
-    Now look at the first two rows of the table again, because that is where the trap is. At step
-    one the exponential column is the lowest of the three. At step five it is the highest, and it
-    has passed the ceiling the saturating column will never reach.
+    ```working
+        12 divided by 20 = 0.6
+        7.2 divided by 12 = 0.6
+    ```
 
-    That is why you take the run out before you name anything. An exponential is the flattest of
-    the three at the start and the steepest of the three at the end. A short run shows you the
-    opposite of what a long run shows.
+    The ratio holds at about 0.6 all the way down the column, and 0.6 is below one. So each step
+    closes about the same share of whatever distance is left, the shrinking differences add up to
+    something finite, and a ceiling exists. Here it is 60. The column gets closer to it at every
+    step and does not arrive.
+
+    Now look at step one and step five, because that is where the trap is. At step one the
+    exponential column is the lowest of the three. At step five it is the highest, and it has
+    passed the ceiling the saturating column will never reach.
+
+    That is why you take the run out before you name anything. Here the exponential column is the
+    flattest at the start and the steepest at the end. A short run shows you the opposite of what
+    a long run shows.
+
+    Do not carry that away as a property of exponentials. It is a property of these three columns,
+    which somebody scaled against each other. Start all three at 10. Let the exponential multiply
+    by 3 at every step and the linear add 10. The exponential now leads from the first step.
+
+    What always holds is the other half. An exponential eventually passes any linear.
   analogy_breaks_when: |
     These three shapes are a starting kit and not a list of everything. A curve that falls, one
     that rises and then falls, and a line with a step in it are all things you will meet. None of
@@ -172,20 +208,29 @@ illustration:
     of room. It does not say what.
 figures:
 - file: c6-three-shapes.png
-  caption: "The three shapes on one pair of axes, which is the only way the difference between them can be practised. All three start at the same place; by the sixth step they are nowhere near each other."
+  caption: "The three shapes on one pair of axes, which is the only way the difference between them can be practised. All three start at the same place; by the last of the six readings they are nowhere near each other."
   alt: "Three curves from a common starting point. One rises as a straight line, one curves upward ever more steeply, and one rises quickly then flattens toward a ceiling."
   source: draw.py
 must_know:
 - point: |
     Run two tests on any set of values taken at equal steps. Subtract each from the next for a
-    constant difference, and divide each by the one before for a constant ratio. One test or the
-    other names the shape, and the pair of them takes under a minute.
+    constant difference, and divide each by the one before for a constant ratio. A constant
+    difference is linear and a constant ratio is exponential, and the pair of tests takes under a
+    minute.
   kind: move
   bearing: methodological
 - point: |
+    Shrinking differences do not on their own mean a ceiling. A quantity can climb for ever by
+    ever smaller amounts. A logarithm does exactly that. So run one more test before you say
+    saturating. Divide each difference by the difference before it. A ratio that holds below one
+    means the differences add up to a finite amount, so there is a ceiling to ask about. Where no
+    such ratio holds, you have no ceiling to quote and should say so rather than estimate one.
+  kind: trap
+  bearing: methodological
+- point: |
     Exponential does not mean fast. It means each equal step multiplies by the same factor. An
-    exponential curve is the flattest of the three at the start, so calling a steep early rise
-    exponential gets it backwards.
+    exponential rise can be the gentlest-looking of the three at the start, so a steep early rise
+    is no evidence for the word.
   kind: misconception
   bearing: methodological
 - point: |
@@ -212,7 +257,7 @@ must_know:
   bearing: methodological
 - point: |
     When a journalist uses the word exponential, ask what the values were at equal times and
-    whether the ratio held. Most rises that are called exponential in public are not, and the
+    whether the ratio held. A rise called exponential in public may well not be one, and the
     honest sentence is that it grew and here is by how much.
   kind: move
   bearing: public
@@ -680,14 +725,22 @@ practice:
     next rupee buys less than the last one did. Whether that rupee is better spent elsewhere
     depends on what it would buy there. That is nowhere in these numbers.
 retrieval_items:
-- q: What two tests tell the three shapes apart, and what does each one find?
+- q: What three tests tell the shapes apart, and what does each one find?
   a: |-
     Subtract each value from the next, and constant differences mean linear. Divide each value by
-    the one before, and constant ratios mean exponential. Differences that shrink while the values
-    climb towards a level mean saturating.
+    the one before, and constant ratios mean exponential. Where the differences shrink, divide each
+    difference by the difference before it. A ratio holding below one means the differences add up
+    to a finite amount, so there is a ceiling and the shape is saturating.
+- q: Differences that shrink while the values climb. Is that enough to name a curve saturating?
+  a: |-
+    No. A quantity can climb for ever by ever smaller amounts with no ceiling at all, which is
+    what a logarithm does. Divide each difference by the difference before it. A ratio that holds
+    below one means the differences add up to a finite amount and a ceiling exists. Where no such
+    ratio holds, the shrinking on its own establishes no ceiling.
 - q: Why is "it is rising fast, so it is exponential" wrong?
   a: Exponential is a claim about the ratio between equal steps, not about steepness. An
-    exponential curve is the flattest of the three at the start and only later the steepest.
+    exponential rise can be the gentlest-looking curve on the page at the start, so how steep it
+    looks early is no evidence for the word.
 - q: A straight line is drawn on an axis whose labels are 10, 100, 1,000 and 10,000. What shape is
     the relationship?
   a: Exponential. Each label is ten times the one before, so equal distances up the page are equal

@@ -33,7 +33,8 @@ definition:
     An average rate over an interval is exact as a statement about that interval. It becomes a
     claim about a moment only when somebody quotes it as one.
 
-    Mathematics calls the rate at an instant the derivative and writes it dy/dx.
+    For a quantity that changes without jumping, there is at least one moment inside the interval
+    at which the rate equals the average over it. Which moment that is, the average does not say.
   references:
   - citekey: openstax_calculus_v1
     kind: textbook
@@ -78,7 +79,13 @@ simplified_explanation: |
   everywhere. Pick any two points on it and you get the same answer.
 
   For a curve they come apart. A curve is steep in some places and nearly flat in others. An
-  average across the whole of it can match its steepness at no point of it at all.
+  average across the whole of it can sit far from its steepness at both ends.
+
+  Somewhere in between, though, the curve is exactly as steep as the average. It has to be. A
+  curve that stayed steeper than the average all the way across would finish higher than it does.
+  One that stayed flatter would finish lower. So the steepness passes through the average on the
+  way. What the average will not tell you is where it passed. Nor will it tell you how far the
+  curve got from the average on either side of that point.
 
   Here is how you get each one off a drawn curve, with a ruler.
 
@@ -92,10 +99,10 @@ simplified_explanation: |
   month. Take it over a day around the same moment and you get much nearer to the moment itself.
 
   One more thing, so that you recognise it on somebody else's page. The rate at a moment has a
-  name in mathematics: the derivative. It is written dy/dx, said "dee y by dee x". It means a
-  change in y divided by a change in x. The stretch it is taken over is so short that it may as
-  well be a point.
-  That is all you need. Nothing in this book asks you to work one out.
+  name in mathematics: the derivative. It is written dy/dx, said "dee y by dee x". The two letters
+  d each mean "a change in". The whole symbol is the steepness at one point, which is what you
+  have just been reading off a curve with a ruler. That is all you need. Nothing in this book asks
+  you to work one out.
 
   Last, run the unit check from the section on dimensional analysis before you believe any rate.
   A quantity in kilograms, changing over months, gives a rate in kilograms per month. If somebody
@@ -159,18 +166,21 @@ illustration:
     fifth           2.6 a month
     ```
 
-    The rate was 20 a month at the start and 2.6 a month at the end. It was never 9.22. The average
-    is a true statement about the five months together and a false statement about any one of them.
+    The rate over the first month was 20 a month and over the fifth it was 2.6 a month. No single
+    month ran at 9.22. The average is a true statement about the five months together and a false
+    statement about any one of them.
 
     That is why the third sentence of the note fails. It takes an average over the past and uses it
-    as the rate now. Use the rate now instead, which is 2.6 a month.
+    as the rate now. Use the most recent month's rate instead, which is 2.6 a month.
 
     ```working
         2.6 times 2 = 5.2
         56.1 plus 5.2 = 61.3
     ```
 
-    About 61.3, not past 70. The note is not wrong about its arithmetic. It is wrong about which
+    About 61.3, not past 70. Treat that figure as a ceiling on what to expect rather than as a
+    forecast. The monthly rate has fallen at every step so far, and nothing in the six readings
+    says it has stopped. The note is not wrong about its arithmetic. It is wrong about which
     interval its arithmetic describes.
 
     Now the easy case, so that you can feel the difference.
@@ -248,9 +258,9 @@ illustration:
     extra unit of a dose works the same way, and every word of this section applies to it. Time is
     used throughout only because it is the case you will meet most.
 figures:
-- file: c7-chord-tangent.png
-  caption: "The average rate across the whole span is the straight line joining the first point to the last. The rate at the end is the steepness of the curve where it finishes. The two numbers differ by more than three times, and both describe the same curve."
-  alt: "A curve rising steeply then flattening. A straight chord joins its first and last points, labelled as the average rate. A dashed line lies along the curve at its final point, labelled with a much smaller rate."
+- file: c7-chords.png
+  caption: "One curve and three averages. Each straight line runs to the last reading from a different starting point, and each average is the slope of its own line: 9.22 a month taken over five months, 3.45 a month taken over the last two, 2.60 a month taken over the last one. Every one of the three is an average and none of them is the rate at a moment, which six monthly readings cannot give you."
+  alt: "A curve rising steeply and then flattening, with a reading marked at each of six months. Three straight lines are drawn to the final reading. One comes from the first reading and is labelled as the average over 5 months, 9.22 a month. One comes from the reading two months back and is labelled as the average over 2 months, 3.45 a month. One comes from the reading one month back and is labelled as the average over 1 month, 2.60 a month. The shorter the span, the smaller the average."
   source: draw.py
 must_know:
 - point: |
@@ -260,8 +270,9 @@ must_know:
   bearing: methodological
 - point: |
     An average rate over a stretch of time is not the rate now. It is built from the first value and the last
-    value alone. It uses nothing that happened in between. So it can match the rate at no moment
-    inside the stretch.
+    value alone. It uses nothing that happened in between. So it can sit far from the rate at both
+    ends of the stretch. Somewhere inside the stretch the quantity was changing at exactly the
+    average rate, and the average never tells you where.
   kind: misconception
   bearing: methodological
 - point: |
@@ -352,7 +363,8 @@ exercises:
     About 5.6 points a year, which the note has rounded to 6.
 
     What is wrong with the second sentence: it takes an average over four years and uses it as the
-    rate now. The rate now is the gain in the fourth year, which is 1.5 points a year.
+    rate now. The most recent year's rate is the gain in the fourth year, which is 1.5 points a
+    year.
 
     Look at what the yearly gains are doing.
 
@@ -363,7 +375,7 @@ exercises:
     ```
 
     Each year's gain is half the year before it. The rate is not holding at 6 and it is not holding
-    at anything. It is falling, and it is falling by half a year at a time.
+    at anything. It is falling, and it halves every year.
 
     Now the note's own target. Coverage stands 22.5 points above baseline and the next year's gain
     looks like being about 0.75 points.
@@ -406,8 +418,8 @@ exercises:
     line too. Ask them whether the two lines have the same steepness. They can see that they do
     not. That is the moment the idea lands, and it lands because they looked rather than listened.
 
-    Name the second one. The steepness at a single point is the rate at that moment, its line is a
-    tangent, and mathematics calls it the derivative.
+    Name the second one. The steepness at a single point is the rate at that moment, and its line
+    is a tangent.
 
     Now give them numbers, because a picture alone will not survive the week. Use six values a
     month apart, work the whole-run average with them on the board, then work the last month on its
@@ -797,7 +809,8 @@ practice:
         56.1 minus 53.5 = 2.6
     ```
 
-    Two point six a month. That is the rate now, and it is less than a third of the average.
+    Two point six a month. That is the most recent month's rate, and it is less than a third of the
+    average.
 
     Look at all five monthly rates and the reason is plain.
 
@@ -809,8 +822,9 @@ practice:
         56.1 minus 53.5 = 2.6
     ```
 
-    The rate has fallen at every step. The average of 9.22 was never the rate at any moment of the
-    five months.
+    The rate has fallen at every step, so 9.22 describes none of the five months on its own. It
+    describes all five taken together, which is a different claim and not the one the fifth line
+    makes.
 
     The last line inherits the error. At 2.6 a month, five more months add about 13.
 
@@ -905,8 +919,9 @@ practice:
     faster now than ever. The word "steady" is not in the numbers, and the twelve monthly readings
     that would settle it have not been given.
 
-    It does not establish that the same rate will continue. A list often clears its easy cases
-    first, which makes the rate fall exactly when a projection assumes it will not.
+    It does not establish that the same rate will continue. A list may clear its easy cases first.
+    That would make the rate fall exactly when a projection assumes it will not. Nothing in two
+    readings says whether it happened here.
 
     And it does not establish that the list falling is the thing worth tracking. A list can shorten
     because people were seen, and it can shorten because people stopped joining it. Those are
@@ -984,10 +999,10 @@ retrieval_items:
 - q: Somebody gives you a rate. What is the first question to ask?
   a: Over what interval. A rate with no interval attached cannot be told apart from a rate over any
     other interval, and with a flattening quantity the interval decides the answer.
-- q: What is a derivative, and what does dy/dx mean?
-  a: The rate at an instant. It is written dy/dx and means a change in y divided by a change in x
-    taken over a stretch so short it may as well be a point. Recognising the symbol is all this book
-    asks for.
+- q: An average rate over an interval. What does it establish about the moments inside it?
+  a: That at some moment inside the interval the quantity was changing at exactly that rate, for a
+    quantity that changes without jumping. It establishes nothing about which moment, and nothing
+    about how far the rate at either end sits from the average.
 provenance:
   map_version_id: fc19c8bc-a216-4131-99fb-ebe3f19cec4a
   outcome_refs:

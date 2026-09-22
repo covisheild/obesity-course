@@ -17,7 +17,9 @@ concept_deps:
 definition:
   text: |
     A stock is a quantity that exists at a moment and can be measured at that moment. A flow is a
-    rate that changes a stock, and it is measured over a stretch of time rather than at a moment.
+    rate that changes a stock and, like any rate, it is quoted over a stretch of time or at a
+    moment. A stock is measured at a moment by looking at it; a flow is measured by watching it for
+    a while.
 
     The stock at any time is its starting value, plus everything that flowed in up to that time,
     minus everything that flowed out. Each of those two totals is a rate multiplied by a time and
@@ -226,10 +228,16 @@ illustration:
     Count only some of the doors and the traffic you missed turns up in the arithmetic as an error
     in a flow you did count.
 
-    A body is not a store room in one way that matters. The two flows in a person are not
-    independent of each other, and neither is independent of the stock. A store room's inflow does
-    not change because its shelves emptied. That is why this section gives you the shape and no
-    numbers.
+    A store room's two flows are set from outside it. Grain arrives because a depot sent it. Grain
+    leaves because shops drew it. Neither answers to what is on the shelves.
+
+    That is not true of every stock. In some systems one flow moves when the other moves, or moves
+    with the level of the stock. Change the inflow in a system like that and the balance does not
+    shift by the amount you changed. The balance line still holds. What fails is the assumption
+    that you can alter one term and leave the others where they were.
+
+    Whether a person's two flows work that way is a question about the body, not about arithmetic.
+    This section does not answer it. That is why you get the shape here and no numbers.
 
     Two readings a month apart do not make a steady stock. They say the stock was the same on two
     days, and the days between are not in the measurement.
@@ -238,9 +246,9 @@ illustration:
     change. Every question about why is outside it.
 must_know:
 - point: |
-    A stock that is not moving is not a stock with nothing going through it. Equal flows leave a
-    stock exactly where equal-sized nothing would leave it, so the level on its own cannot tell the
-    two cases apart.
+    A stock that is not moving is not a stock with nothing going through it. Two flows that match
+    leave the stock exactly where no flows at all would leave it. The level on its own cannot tell
+    the two cases apart.
   kind: misconception
   bearing: methodological
 - point: |
@@ -554,7 +562,7 @@ practice:
   - nfsa_2013
 - level: 5
   prompt: |
-    A tank holds 6,000 litres and holds the same 6,000 litres a day later. Water runs in at 15
+    A tank holds 6,000 litres and holds 6,000 litres again a day later. Water runs in at 15
     litres a minute all day, and the drain runs at the same rate.
 
     Work out how many litres went through the tank in the day. Then work out how many times the
@@ -590,7 +598,7 @@ practice:
         21600 divided by 6000 = 3.6
     ```
 
-    About three and a half times over.
+    Three point six times over.
 
     So a tank whose level did not move by one litre passed more than three times its own contents
     in a day. The level and the traffic are two different measurements, and only one of them was
@@ -830,8 +838,11 @@ practice:
     every moment of the year, only that the totals came out equal across it.
 
     And it does not tell you what would happen if one flow changed. In a store room the inflow does
-    not care what the shelves are doing. In a person the two flows and the stock affect one another. What follows from that is the work of
-    the booklet on energy balance rather than of this arithmetic.
+    not care what the shelves are doing. Cut it by a hundred units a year and the balance drops by
+    a hundred units a year. Now take a system where one flow moves when the other moves, or moves
+    with the level of the stock. That subtraction does not survive. The balance line cannot tell
+    you which kind of system is in front of you, because the same line describes both. Which kind
+    a person is, and what follows from it, is the work of the booklet on energy balance.
 retrieval_items:
 - q: What is the difference between a stock and a flow, and how do you tell them apart?
   a: A stock is a quantity existing at a moment, in the unit of the quantity. A flow is a rate that

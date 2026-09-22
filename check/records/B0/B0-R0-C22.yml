@@ -10,6 +10,7 @@ clusters:
 ground_floor_deps: []
 concept_deps:
 - B0-R0-C05
+- B0-R0-C10
 - B0-R0-C11
 - B0-R0-C19
 - B0-R0-C21
@@ -26,13 +27,13 @@ definition:
     up to any time is the area under the rate line up to that time.
 
     The total is exact only where the rate held steady across each interval. Where the rate moved
-    inside an interval, the rectangle over-counts or under-counts by as much as the rate moved, and
-    narrower intervals shrink that error without removing it.
+    inside an interval, the rectangle over-counts or under-counts. Take the largest gap between
+    the height used and the rate at any moment inside that interval. That gap, multiplied by the
+    length of the interval, is the most the rectangle can be wrong by. The error is an amount and
+    carries the quantity's unit. Narrower intervals shrink it without removing it.
 
     A rate and a total are different quantities with different units, and neither can be read off
     the other without the time it applied over.
-
-    Mathematics calls this total an integral and writes it with the sign ∫.
   references:
   - citekey: openstax_calculus_v1
     kind: textbook
@@ -77,8 +78,12 @@ simplified_explanation: |
 
   Here is the same thing as a picture, and the picture is worth learning because everybody uses it.
 
-  Draw time along the bottom and the rate up the side. Over one interval, draw a rectangle. Its
-  width is the length of the interval. Its height is the rate over that interval.
+  Draw time along the bottom and the rate up the side. Mark the rate over each interval at the
+  height it reached. The line those marks make across the figure is the rate line, and everything
+  below it is what you are about to measure.
+
+  Now take one interval and draw a rectangle on it. Its width is the length of the interval. Its
+  height is the rate over that interval, so its top sits on the rate line.
 
   The area of that rectangle is its height times its width. That is the rate times the time, which
   is the amount. **The area of the rectangle is the amount.**
@@ -96,9 +101,9 @@ simplified_explanation: |
   readings is a statement about what you assumed happened between the readings, and that assumption
   travels with the answer.
 
-  One name, so you recognise it later. The total under a rate line is called an integral. It is
-  written with the sign ∫, which is a stretched letter S for sum. That is all you need from the
-  symbol. Nothing in this book asks you to work one out.
+  One name, so you recognise it on somebody else's page. The total under a rate line is called an
+  integral. It is written with the sign ∫, which is a stretched letter S for sum. That is all you
+  need. Nothing in this book asks you to work one out.
 illustration:
   body: |
     Start with a real mistake, because it is quick, it is common, and the arithmetic in it is
@@ -128,7 +133,7 @@ illustration:
     ```
 
     The error is that 20 was the rate in two of the six months and not in the other four. One
-    month's rate was used as though it held all year.
+    month's rate was used as though it held for all six.
 
     Do it properly. Each month is one interval, and each interval's amount is its rate times one
     month. So the amount for each month is just the rate in that row.
@@ -158,8 +163,12 @@ illustration:
 
     Now draw it, because the picture is how everybody else will show you this.
 
-    Put months along the bottom and kilograms a month up the side. Over month one, draw a rectangle
-    one month wide and 20 kilograms a month tall. Its area is its height times its width.
+    Put months along the bottom and kilograms a month up the side. Mark each month's rate at the
+    height it reached, and the six marks make one stepped line across the figure. That line is the
+    rate line.
+
+    Now over month one, draw a rectangle one month wide and 20 kilograms a month tall, so that its
+    top sits on the rate line. Its area is its height times its width.
 
     ```working
         20 times 1 = 20
@@ -249,8 +258,17 @@ illustration:
     the exact total             40 kg      none
     ```
 
-    Halving the interval halved the error. Halving it again would halve it again. It never reaches
-    zero, and each rectangle counts too much because the rate was falling inside it.
+    Halving the interval halved the error, and it did that because this rate falls in a straight
+    line. On a rate like this one, halving again would halve the error again. Read that as a
+    property of a rate that changes steadily, not as a rule about intervals.
+
+    Where a rate bends, narrower intervals still shrink the error, but by no fixed share you can
+    count on. Where a rate rises over part of the span and falls over the rest, two rectangle
+    errors can point opposite ways and partly cancel. Changing the interval then changes the total
+    error by anything at all.
+
+    In this worked case the error never reaches zero, and every rectangle counts too much, because
+    the rate was falling inside each one of them.
 
     So a total is not one number. It is one number and one assumption, and the assumption is that
     the rate held across each interval you used.
@@ -281,7 +299,7 @@ illustration:
 figures:
 - file: c8-rectangles.png
   caption: "Each rectangle is one month's rate multiplied by one month, so its area is that month's amount. Stacking them is the running total, and the total is the area under the whole rate line."
-  alt: "Six rectangles of equal width and decreasing height standing on a horizontal axis of months, each labelled with its rate. Together they form a descending staircase."
+  alt: "Six rectangles of equal width standing on an axis of months, labelled 20, 20, 15, 10, 10 and 5 kilograms a month. Their tops make one stepped line across the figure, which is the rate line. The heights fall in stages with a flat pair at the 20 level and another at the 10 level. The six areas add to 80 kilograms."
   source: draw.py
 must_know:
 - point: |
@@ -376,8 +394,9 @@ exercises:
     What has been assumed: that a rate measured across one week held across fifty-two. The file has
     one rectangle, one week wide, and has stretched it to cover a year.
 
-    That assumption is doing all the work and it is nowhere stated. It is also the least likely thing in the sentence. Issue rates move with the season, with the
-    month of the entitlement cycle, and with whatever else the depot is doing.
+    That assumption is doing all the work and it is nowhere stated. Ask whether issue rates move
+    with the season or with the month of the entitlement cycle, and get the weekly figures that
+    would show it.
 
     What to ask for: the weekly issue figures for as many past weeks as exist. Fifty-two readings
     give fifty-two rectangles and a total that assumes almost nothing. Twelve monthly readings give
@@ -386,8 +405,8 @@ exercises:
     What to write in its place. Say that the depot issued 400 bags in the first week of April. Then say that a yearly figure needs the rate across the year. The 20,800 is what the year would
     come to if every week matched that one. Give the 20,800 as a conditional and never as a count.
 
-    One more line worth adding. Ask whether the first week of April is a typical week. A cycle that
-    starts at the beginning of the month makes the first week the busiest one there is.
+    One more line worth adding. Ask whether the first week of April is a typical week, or whether
+    the entitlement cycle makes it the busiest.
 - type: teaching
   prompt: |
     A health secretary has one page and three minutes. Two reports have reached them about the same
@@ -892,9 +911,10 @@ retrieval_items:
   a: Because each rectangle assumes the rate held steady across its whole width. Where the rate
     moved inside an interval the rectangle counts too much or too little, and narrower intervals
     shrink that error without removing it.
-- q: What is an integral, and what is the sign for it?
-  a: The running total under a rate line. It is written with the sign ∫, a stretched letter S for
-    sum. Recognising it is all this book asks for.
+- q: A rectangle is drawn on an interval across which the rate moved. How large can its error be?
+  a: At most the largest gap between the height you used and the rate at any moment inside that
+    interval, multiplied by the length of the interval. The error is an amount and carries the
+    quantity's unit, so it cannot be quoted as a rate.
 provenance:
   map_version_id: fc19c8bc-a216-4131-99fb-ebe3f19cec4a
   outcome_refs:

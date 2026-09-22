@@ -284,33 +284,59 @@ def c6_three_shapes():
     save(fig, "c6-three-shapes.png")
 
 
-def c7_chord_tangent():
-    """The average rate is a chord. The rate at an instant is the steepness at one point."""
+def c7_chords():
+    """Averages over shrinking spans, each labelled as the average it is.
+
+    An earlier version of this figure drew the slope across the final month and labelled
+    it "steepness at the end". That is an average rate wearing an instantaneous rate's
+    name - exactly the confusion this section's diagnostic band exists to catch, drawn as
+    if it were the lesson. The table gives readings at whole months and nothing else, so
+    an instantaneous rate is not in the data and cannot honestly be drawn from it. What
+    the data does support is that the average depends on the span you take it over, which
+    is the section's actual claim, so that is what is drawn.
+    """
     head, rows = table_rows("B0-R0-C21", 0)
     xs = [_num(r[0]) for r in rows]
     ys = [_num(r[1]) for r in rows]
-    fig, ax = plt.subplots(figsize=(6.2, 3.0))
+    fig, ax = plt.subplots(figsize=(6.2, 3.1))
     ax.plot(xs, ys, "-", color=BLUE, linewidth=1.9, zorder=2)
     ax.plot(xs, ys, "o", color=BLUE, markersize=5.5, markeredgecolor=SURFACE,
             markeredgewidth=1.3, zorder=3)
-    a, b = 0, len(xs) - 1
-    chord = (ys[b] - ys[a]) / (xs[b] - xs[a])
-    ax.plot([xs[a], xs[b]], [ys[a], ys[b]], color=ORANGE, linewidth=1.5, zorder=4)
-    ax.annotate(f"average over the whole span: {chord:.2f} a month",
-                ((xs[a] + xs[b]) / 2, (ys[a] + ys[b]) / 2), textcoords="offset points",
-                xytext=(-6, -22), ha="center", fontsize=8.5, color=ORANGE)
-    # steepness at the last point, from the last interval the record itself gives
-    last = (ys[-1] - ys[-2]) / (xs[-1] - xs[-2])
-    x0, y0 = xs[-1], ys[-1]
-    ax.plot([x0 - 1.4, x0 + 0.6], [y0 - 1.4 * last, y0 + 0.6 * last],
-            color=INK, linewidth=1.5, linestyle="--", zorder=4)
-    ax.annotate(f"steepness at the end: {last:.1f} a month", (x0, y0),
-                textcoords="offset points", xytext=(-108, 12), fontsize=8.5, color=INK)
-    ax.set_xlim(min(xs) - 0.3, max(xs) + 0.6)
-    ax.set_ylim(0, max(ys) * 1.22)
+    # All three chords end at the last reading, so they converge there and the two short
+    # ones lie almost on the curve. That is not a drawing fault - it is the section's point,
+    # that a shorter span gives an average nearer the rate at a moment - but it means the
+    # lines cannot be told apart by their paths alone. Each therefore starts at a marked
+    # reading and carries its label beside that marker, and each is extended a little past
+    # the last reading so the three separate again on the right.
+    # Labels go in a key rather than beside each line: the two short spans start within one
+    # month of each other and any leader long enough to escape that corner reads as a fourth
+    # line on the chart.
+    spans = [(0, len(xs) - 1, ORANGE), (len(xs) - 3, len(xs) - 1, INK),
+             (len(xs) - 2, len(xs) - 1, ORANGE)]
+    over = 0.55
+    for k, (a, b, colour) in enumerate(spans):
+        rate = (ys[b] - ys[a]) / (xs[b] - xs[a])
+        span = xs[b] - xs[a]
+        ax.plot([xs[a], xs[b] + over], [ys[a], ys[b] + over * rate], color=colour,
+                linewidth=1.6, linestyle=["-", "--", (0, (1, 1.6))][k], zorder=4,
+                label=f"over {span:g} month{'s' if span > 1 else ''}: {rate:.2f} a month")
+        ax.plot([xs[a]], [ys[a]], "s", color=colour, markersize=5.5,
+                markeredgecolor=SURFACE, markeredgewidth=1.2, zorder=5)
+    key = ax.legend(loc="lower right", frameon=False, fontsize=8.5,
+                    handlelength=2.6, borderaxespad=0.8, labelspacing=0.7)
+    for text, (_, _, colour) in zip(key.get_texts(), spans):
+        text.set_color(colour)
+    ax.annotate("One curve, three averages, all ending at the last reading.\n"
+                "Each square marks where its average starts. The span decides the number,\n"
+                "and the shorter the span the closer its line lies to the curve.",
+                (0.03, 0.95), xycoords="axes fraction", fontsize=8.5, color=INK,
+                va="top",
+                linespacing=1.4)
+    ax.set_xlim(min(xs) - 0.3, max(xs) + over + 0.35)
+    ax.set_ylim(0, max(ys) * 1.42)
     _frame(ax, head[0], head[1])
     fig.tight_layout()
-    save(fig, "c7-chord-tangent.png")
+    save(fig, "c7-chords.png")
 
 
 def c8_rectangles():
@@ -324,7 +350,11 @@ def c8_rectangles():
                                edgecolor=BLUE, linewidth=1.1))
         ax.annotate(f"{r:g}", (x - 0.5, r), textcoords="offset points", xytext=(0, 4),
                     ha="center", fontsize=8, color=MUTED)
-    ax.step([0] + xs, [rates[0]] + rates, where="post", color=BLUE, linewidth=0)
+    # The record's prose names "the rate line" and the reader has to be able to see it. Drawn at
+    # linewidth=0 it existed in the figure and nowhere on the page. `where` matters once it is
+    # visible: each rectangle spans (x-1, x], which is what "pre" draws and "post" shifts by a
+    # whole month.
+    ax.step([0] + xs, [rates[0]] + rates, where="pre", color=BLUE, linewidth=1.8, zorder=3)
     ax.annotate(f"every rectangle is a rate times one month;\n"
                 f"the stack is the total, {sum(rates):g} in all",
                 (0.02, 0.80), xycoords="axes fraction", fontsize=8.5, color=INK)
@@ -339,7 +369,7 @@ def c8_rectangles():
 FIGURES.update({"c5-two-scales.png": c5_two_scales,
                 "c5-slope-intercept.png": c5_slope_intercept,
                 "c6-three-shapes.png": c6_three_shapes,
-                "c7-chord-tangent.png": c7_chord_tangent,
+                "c7-chords.png": c7_chords,
                 "c8-rectangles.png": c8_rectangles})
 if __name__ == "__main__":
     main()

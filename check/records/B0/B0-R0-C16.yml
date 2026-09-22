@@ -27,7 +27,7 @@ definition:
 
     - adding the same quantity to both sides
     - subtracting the same quantity from both sides
-    - multiplying both sides by the same quantity
+    - multiplying both sides by the same quantity that is not zero
     - dividing both sides by the same quantity that is not zero
 
     To solve an equation for a letter is to reach an equation with that letter alone on one side,
@@ -135,7 +135,7 @@ simplified_explanation: |
 
   There is one more use for the rule, and it is the one you will use most. Sometimes nothing is
   unknown. A formula ties several quantities together, and you want a different one of them on
-  its own.
+  its own. Getting one letter on its own like that is also called making it the subject.
 
   Take the rule that ties a distance, a speed and a time. The distance is the speed times the
   time.
@@ -154,8 +154,9 @@ simplified_explanation: |
   The time is the distance divided by the speed. You did not measure anything new. You moved the
   same statement into the shape that answers your question.
 
-  One warning goes with that. Never divide both sides by a letter unless you know it is not zero.
-  Dividing by zero is not a move, and a letter can hide one.
+  One warning goes with that. Never divide both sides by a letter unless you know it is not zero,
+  and the same goes for multiplying by one. Dividing by zero is not a move, and a letter can hide
+  one.
 illustration:
   body: |
     You met the rule an Indian food label uses for its energy figure in the section before this
@@ -246,6 +247,11 @@ illustration:
     unit: kilocalories per gram of carbohydrate, for calculating declared energy, Regulation 5(3)(e)(i)
     citekey: fssai_labelling_2020
     quote: (A) Carbohydrates 4 kcal/g
+    as_of: '2026-09-23'
+  - value: '4'
+    unit: kilocalories per gram of protein, for calculating declared energy, Regulation 5(3)(e)(i)
+    citekey: fssai_labelling_2020
+    quote: (D) Protein 4 kcal/g
     as_of: '2026-09-23'
   - value: '9'
     unit: kilocalories per gram of fat, for calculating declared energy, Regulation 5(3)(e)(i)
@@ -712,60 +718,62 @@ practice:
   - fssai_labelling_2020
 - level: 6
   prompt: |
-    A register holds a person's mass as 54 kg and their body mass index as 24.0 kg/m^2. The
-    height column is empty.
+    A store's register gives the energy in each gram of a packed food as 4.5 kilocalories. It gives
+    the energy in one whole packet as 900 kilocalories. The weight column is empty. Both figures
+    are made up for this problem.
 
-    Work the height out, showing every line, and give it with its unit. Then say which step
-    here has no counterpart in the problem before it. Say why the direction of a rearrangement
-    changes what you have to do.
+    The energy in each gram is the energy of the whole packet divided by the weight of the packet
+    in grams. Rearrange that to give the weight, then work the weight out and give it with its
+    unit. Show every line.
+
+    Then say what this needed that the same work does not need when the letter you want is already
+    above the division line. Say why the direction of a rearrangement changes what you have to do.
   answer: |
-    Start from the rule, with I for the index, m for the mass in kilograms and h for the height
-    in metres.
+    Name the three quantities. Let d stand for the energy in each gram and E for the energy of the
+    whole packet. Let w stand for the weight of the packet in grams.
 
     ```working
-        I = m divided by h^2
+        d = E divided by w
     ```
 
-    This time the letter you want is underneath. Multiply both sides by the square of the height
-    to bring it up.
+    This time the letter you want is underneath. Multiply both sides by the weight to bring it up.
+    A packet does not weigh nothing, so you know that multiplication is by something other than
+    zero.
 
     ```working
-        I times h^2 = m
+        d times w = E
     ```
 
-    Now divide both sides by the index.
+    Now the side holding the weight is a single term, and the weight is multiplied by d. So divide
+    both sides by d. The register gives d as 4.5, which is not zero, so that division is a move you
+    are allowed.
 
     ```working
-        h^2 = m divided by I
+        w = E divided by d
     ```
 
-    That gives the square of the height, not the height. Take the square root of both sides,
-    which is the step the problem before it did not have.
-
-    Now the numbers.
+    The weight is the energy of the packet divided by the energy in each gram. Now the numbers.
 
     ```working
-        54 divided by 24.0 = 2.25
+        900 divided by 4.5 = 200
     ```
 
-    The square of the height is 2.25. The square root of 2.25 is 1.5, because 1.5 multiplied by
-    itself gives 2.25.
-
-    ```working
-        1.5 times 1.5 = 2.25
-    ```
-
-    One point five metres.
+    Two hundred grams.
 
     Check by going forwards.
 
     ```working
-        54 divided by 2.25 = 24.0
+        900 divided by 200 = 4.5
     ```
 
-    Why the direction changes what you do: the height enters the rule squared, and the mass does
-    not. Recovering the mass needs one multiplication. Recovering the height needs a division and
-    then a square root, because you have to undo the squaring as well.
+    What this needed that the other direction does not: a second step. A letter that already sits
+    above the division line comes free in one multiplication. This one started underneath, so
+    you had to lift it out from under the division first, and only then divide it loose.
+
+    Why the direction changes what you have to do: the rule was written to give the energy in each
+    gram. So the energy stands on top and the weight underneath. Recovering the energy runs the
+    rule the way it was written. Recovering the weight runs it backwards, and every letter you
+    have to cross on the way costs a step.
 - level: 7
   prompt: |
     Here is a worked answer. Find the step that broke.
@@ -800,8 +808,8 @@ practice:
     The unit check catches it too. The index is in kilograms per metre squared. Multiply that by
     metres and you are left with kilograms per metre, which is not a mass.
 
-    Why it looks reasonable: 45 kilograms is an ordinary mass for a person, so nothing about the
-    answer looks alarming. The arithmetic in the line is correct. And multiplying to undo a
+    Why it looks reasonable: 45 is the right order of magnitude for the quantity asked for, so
+    nothing about the answer looks alarming. The arithmetic in the line is correct. And multiplying to undo a
     dividing is the right idea, applied to the wrong quantity. Every part of the move is right
     except what it was applied to, which is the shape this error nearly always has.
 - level: 8
@@ -847,9 +855,9 @@ practice:
     500 kilocalories, which is the figure the panel gives.
 
     Why it looks reasonable: the rearranging was done correctly and shown line by line, so the
-    working reads as careful. The 80 arrived from a division that was genuinely valid. And 80
-    grams of carbohydrate in 100 grams of a food is a perfectly ordinary figure, so nothing about
-    it looks out of place. The error is in what the final line was taken to be about, and a
+    working reads as careful. The 80 arrived from a division that was genuinely valid. And the
+    figure that came out is the same size as the other figures on the panel, so nothing about it
+    looks out of place. The error is in what the final line was taken to be about, and a
     rearranged equation always needs reading before it is used.
   refs:
   - fssai_labelling_2020
@@ -864,8 +872,8 @@ practice:
 
     Decide what to compute, compute it, and say what your answer does not establish.
   answer: |
-    What to compute: the mass the row gives back. Then how much that mass moves if the index was
-    rounded before it was written down.
+    What to compute: the mass the row gives back. Then how much that mass moves, given that both
+    figures in the row were rounded before they were written down.
 
     The mass is the index times the square of the height.
 
@@ -876,21 +884,48 @@ practice:
 
     About 59.9 kilograms. So the colleague is right that the mass can be recovered.
 
-    Now the part the note does not mention. An index written as 22.0 was rounded to one decimal
-    place, so the real value lies somewhere between 21.95 and 22.05. Work the mass out at each
-    end.
+    Now the part the note does not mention. Both figures in that row were rounded before anybody
+    wrote them down, and both roundings move the answer.
+
+    Start with the index. An index written as 22.0 was rounded to one decimal place, so the real
+    value lies somewhere between 21.95 and 22.05. Work the mass out at each end, with the height
+    left where it is.
 
     ```working
         21.95 times 2.7225 = 59.76
         22.05 times 2.7225 = 60.03
     ```
 
-    The recovered mass is somewhere between about 59.8 and 60.0 kilograms. A quarter of a
-    kilogram of uncertainty was created by dropping a column that had been measured.
+    A quarter of a kilogram, and that is not the whole of it. A height written as 1.65 was rounded
+    in the same way, to two decimal places. So the real height lies somewhere between 1.645 and
+    1.655. The height enters the rule squared, so square both of those ends.
+
+    ```working
+        1.645 times 1.645 = 2.706025
+        1.655 times 1.655 = 2.739025
+    ```
+
+    Now put the two roundings together. The smallest mass the row can stand for is the smallest
+    index times the smallest square. The largest is the largest index times the largest square.
+
+    ```working
+        21.95 times 2.706025 = 59.40
+        22.05 times 2.739025 = 60.40
+    ```
+
+    The recovered mass is somewhere between about 59.4 and 60.4 kilograms.
+
+    ```working
+        60.40 minus 59.40 = 1.00
+    ```
+
+    About a kilogram of uncertainty, not a quarter, and most of it came from the height rather
+    than from the index. Leave either rounding out of the arithmetic and you will quote a tighter
+    answer than you have.
 
     What this does not establish. It does not establish that the recovery is good enough. Whether
-    a quarter of a kilogram matters depends on what the register is for, and nothing in the
-    arithmetic decides that.
+    a kilogram matters depends on what the register is for, and nothing in the arithmetic decides
+    that.
 
     It says nothing about whether the height or the index was measured well in the first place.
 

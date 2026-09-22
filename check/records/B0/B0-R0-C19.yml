@@ -37,7 +37,7 @@ definition:
   references:
   - citekey: openstax_college_algebra_2e
     kind: textbook
-    locator: ch. 4, Linear Functions
+    locator: ch. 2, on the rectangular coordinate system and graphs, and ch. 4, Linear Functions
     verified:
       resolved_id: https://openstax.org/books/college-algebra-2e
       opened: true
@@ -109,15 +109,15 @@ illustration:
 
     Now draw them. People go along the bottom. Kilograms a month go up the side.
 
-    Draw it once with the side axis running from 0 to 40 kilograms. The points climb from the
-    bottom left corner to the top right corner. The line fills the picture and the rise is the first
-    thing you see.
+    Draw it once with the side axis running from 0 to a little above 40 kilograms. The points climb
+    from the bottom left corner to the top right corner. The line fills the picture and the rise is
+    the first thing you see.
 
     Draw it again with the side axis running from 0 to 200 kilograms. Every point is the same point
     as before. The line now sits in the bottom fifth of the picture and looks nearly flat.
 
     Ask what changed between the two. Only the numbers printed up the side. The second drawing has
-    room for 200 kilograms, so 40 kilograms is a fifth of the height instead of all of it.
+    room for 200 kilograms, so 40 kilograms is a fifth of the height instead of nearly all of it.
 
     ```working
         40 divided by 200 = 0.2
@@ -213,6 +213,9 @@ illustration:
     Reading one slope off a line works while the line is straight. A curve has a different
     steepness at every point of it, so no single slope describes a curve.
 
+    Two points one directly above the other have no run at all. An upright line has no slope,
+    because the division has nothing to divide by.
+
     The intercept means something only where zero is a value the bottom quantity can really take.
     Everywhere else it is a product of the drawing.
 
@@ -224,12 +227,12 @@ illustration:
     and nothing in this section tells you which kind you are looking at.
 figures:
 - file: c5-two-scales.png
-  caption: "The same eight readings drawn twice. Nothing about the numbers changed between the two panels; only the top of the vertical axis did. The left panel makes the rise look steep and the right makes it look flat, and neither is dishonest."
-  alt: "Two line charts side by side with identical data points rising from left to right. The left chart's vertical axis stops just above the highest point; the right chart's runs to five times that, so the same line appears almost flat."
+  caption: "The same eight entitlements drawn twice. Nothing about the numbers changed between the two panels; only the top of the side axis did. The left panel makes the rise look steep and the right makes it look flat, and neither is dishonest."
+  alt: "Two line charts side by side with identical data points rising from left to right. The left chart's side axis stops just above the highest point; the right chart's runs to five times that, so the same line appears almost flat."
   source: draw.py
 - file: c5-slope-intercept.png
-  caption: "Slope read as a rise over a run, and the intercept read where the line meets the vertical axis. The rise and the run are marked between the months the text works through."
-  alt: "A rising straight line through seven points. A horizontal segment marks a run of three months and a vertical segment marks a rise of sixty kilograms, giving a slope of twenty kilograms a month. A filled dot on the vertical axis marks the intercept at ten."
+  caption: "Slope read as a rise over a run, and the intercept read where the line meets the side axis. The rise and the run are marked between the months the text works through."
+  alt: "A rising straight line through seven points. A horizontal segment marks a run of three months and a vertical segment marks a rise of sixty kilograms, giving a slope of twenty kilograms a month. A filled dot on the side axis marks the intercept at ten."
   source: draw.py
 must_know:
 - point: |
@@ -728,20 +731,21 @@ practice:
 
     So the figure that looks flat carries the larger change, by a wide margin.
 
-    The order to work in: read the axis ranges, then the values, then the shape. The broken answer
-    read the shape first and never revisited it.
+    The order to work in: read the numbers on each axis, then the values, then the shape. The
+    broken answer read the shape first and never revisited it.
 
     Why it looks reasonable: lines three and four sound like the same statement said twice, and the
-    step between them is the whole error. The two axis ranges are even printed in the working, so
+    step between them is the whole error. The numbers on both axes are even printed in the working, so
     the answer had what it needed and did not use it.
 - level: 9
   prompt: |
     A press line crosses your desk.
 
-    > The chart is almost vertical. The average bag has shot up over the last six months.
+    > The chart is almost vertical. The average bag of grain leaving the depot has shot up over the
+    > last six months.
 
     You open the chart. The side axis runs from 4.90 to 5.10 kilograms. The line goes from 4.95 at
-    the start to 5.02 at the end. The depot and all four figures are made up for this problem.
+    the start to 5.02 at the end. All four figures are made up for this problem.
 
     Decide what to compute, compute it, and say what your answer does not establish.
   answer: |
@@ -822,8 +826,8 @@ practice:
     about the whole line.
 
     What this does not establish. It does not establish that any grain went missing. An intercept
-    at a household size nobody has is a number the fitting produced. Zero people is outside the
-    range of every point that was fitted.
+    at a household size nobody has is a number the fitting produced. Zero people is outside every
+    household size that was fitted.
 
     It does not tell you why the line sits high. That could be a handful of wrong rows, a second
     entitlement under another provision, or an error in the household-size column. And it does not
@@ -844,8 +848,8 @@ retrieval_items:
   a: Only when zero is a value the x quantity can actually take. Otherwise it is a property of the
     drawn line and not a fact anybody can check.
 - q: Two figures of the same numbers look completely different. What is the first thing to look at?
-  a: The range printed on the side axis. A shorter range makes the same change fill more of the
-    picture, and both figures can be honest.
+  a: The numbers printed on the side axis. A shorter span of them makes the same change fill more
+    of the picture, and both figures can be honest.
 provenance:
   map_version_id: fc19c8bc-a216-4131-99fb-ebe3f19cec4a
   outcome_refs:

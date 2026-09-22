@@ -855,8 +855,12 @@ WORKING_OPEN = '::: {custom-style="Working"}'
 
 # A base may be a number (10^7) or a unit symbol (m^2, km^2, kg/m^2). Units were missed by
 # the original pattern, so a section whose whole subject is kg/m^2 printed it with a caret.
+# An exponent may be a plain number (10^7), or a bracketed expression the book writes out in
+# words (10^(5 plus 2), 9^(1/2)). The bracketed case was missed, so Part A printed
+# `10^5 times 10^2 = 10^(5 plus 2)` with the last caret raw on the page while the two before
+# it had become superscripts - the exact defect this whole layer exists to prevent.
 _SUP = re.compile(r"(?<![\w^~])([A-Za-z]{1,3}|\d[\d,.]*)\s*\^\s*"
-                  r"(\(\s*-?\d+\s*/\s*\d+\s*\)|-?\d+(?:\.\d+)?)(?!\^)")
+                  r"(\(\s*-?[\w][\w\s./,+-]{0,38}\)|-?\d+(?:\.\d+)?)(?!\^)")
 _LOGB = re.compile(r"\blog\s?(10|2|e)\b")
 _FENCE = re.compile(r"^\s*```+\s*(working|calc|table)?\s*$")
 
@@ -880,7 +884,13 @@ def _notation(text: str) -> str:
             return f"\x00{len(subs) - 1}\x01"
         return go
 
-    text = _SUP.sub(park("{0}^{1}^"), text)
+    # Pandoc will not set a superscript containing an unescaped space, so a bracketed
+    # exponent written in words has its spaces escaped before it is parked.
+    def _sup(m):
+        subs.append(f"{m.group(1)}^{m.group(2).replace(' ', chr(92) + ' ')}^")
+        return f"\x00{len(subs) - 1}\x01"
+
+    text = _SUP.sub(_sup, text)
     text = _LOGB.sub(park("log~{0}~"), text)
     text = text.replace("^", r"\^").replace("~", r"\~")
     return re.sub(r"\x00(\d+)\x01", lambda m: subs[int(m.group(1))], text)
@@ -1176,7 +1186,9 @@ def _figures(r, sid) -> list[str]:
 def concept_md(r, cites, label=None, sid=None) -> list[str]:
     flagged = []
     p = lambda t: _prose(t, flagged.append)
-    md = [f"### {label + ' · ' if label else ''}{r['name']}", ""]
+    # Headings skip _prose - they are never block-level - but they still carry notation:
+    # B6 is titled "kg, m, cm and kg/m^2" and without this the caret reaches pandoc raw.
+    md = [f"### {_notation(label + ' · ' if label else '')}{_notation(r['name'])}", ""]
     # The concept id and type are build metadata and are not shown: the heading already
     # names the section. Currency is shown, because a reader of statutory material needs
     # to know how old it is.
@@ -1264,7 +1276,7 @@ def booklet_md(sid, recs, subjects, clusters) -> tuple[str, list[str]]:
                     md += [f"## Part {part['letter']} · {part['title']}", ""]
                 label = sec["id"] if sec else None
             md += concept_md(r, cites, label, sid)
-            here = f"{label + ' · ' if label else ''}{r['name']}"
+            here = f"{_notation(label + ' · ' if label else '')}{_notation(r['name'])}"
             block = []
             for i, ex in enumerate(r.get("exercises") or [], 1):
                 md += _block(f"**Exercise {i}** ({ex['type']}). ", ex["prompt"])
@@ -1496,7 +1508,34 @@ def render(md_path, stem):
         else:
             tail = (p.stderr or p.stdout or "").strip().splitlines()
             print(f"  [{fmt}] not produced: {tail[-1] if tail else 'unknown error'}")
+    _caret_check(os.path.join(OUT, f"{stem}.html"))
     return made
+
+
+def _caret_check(html_path):
+    """No caret or tilde may reach the reader as itself.
+
+    The notation layer turns 10^7 into a superscript and escapes every caret it did not use,
+    so a literal one surviving into the rendered page means the pattern missed a case. That
+    is how `10^(5 plus 2)` sat in Part A with a raw caret between two proper superscripts
+    from the day Part A shipped: nothing in the record-level checks can see it, because the
+    record is correct and the renderer is what failed.
+
+    Three lines on the built HTML catch every instance of the whole class at once. Run it
+    here rather than as a record check, because the thing being tested is the output.
+    """
+    if not os.path.exists(html_path):
+        return
+    import html as _html
+    with open(html_path, encoding="utf-8") as fh:
+        text = _html.unescape(re.sub(r"<[^>]+>", "", fh.read()))
+    hits = list(re.finditer(r"[\^~]", text))
+    if not hits:
+        return
+    print(f"  [notation] {len(hits)} literal caret/tilde reached the rendered page - "
+          "the superscript pattern has missed a case:")
+    for m in hits[:5]:
+        print("    ..." + " ".join(text[max(0, m.start() - 60):m.end() + 30].split()) + "...")
 
 
 # ---------------------------------------------------------------- main

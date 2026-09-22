@@ -65,6 +65,17 @@ simplified_explanation: |
   There is a short way to write a rule down. Give it a name, say f. Write f(4), said out loud as
   "f of 4", for the output the rule gives when you put 4 in. The brackets here do not mean times.
 
+  Two names, so you recognise them on somebody else's page. The inputs a rule will accept are
+  called its domain. The outputs it can give back are called its range. Ask a rule what it accepts
+  and what it does not. That is often the quickest way to catch somebody running it outside what
+  it was built for. A rule that counts people takes whole numbers from one upwards. Half a person
+  is not an input it has an answer for.
+
+  Be careful with the second of those two words. In statistics, range means something else
+  entirely, which is the largest value in a set of measurements minus the smallest. The two
+  meanings have nothing to do with each other and you will meet both. Which one is meant depends
+  on whether the thing being described is a rule or a set of measurements.
+
   Name the input, name the output, and name the unit of each before you use anybody's rule. A rule
   with no units on it is a rule you cannot check.
 illustration:
@@ -158,8 +169,10 @@ must_know:
   kind: misconception
   bearing: methodological
 - point: |
-    A drawn curve that doubles back on itself is giving one input two outputs. It is not the
-    picture of a function, whatever the caption calls it, and you can say so from the shape alone.
+    Outputs that climb for a while and then fall again break nothing. A rule can do that and still
+    give exactly one output for every input it takes, and drawing it changes none of that. What
+    breaks the rule in a picture is what breaks it in a table: one input carrying two different
+    outputs. So look for the repeated input, never for the shape of anything.
   kind: trap
   bearing: methodological
 - point: |
@@ -329,6 +342,51 @@ practice:
     ```
 
     It comes back to 40, so the third one holds.
+- level: 4
+  prompt: |
+    A district office runs this rule to plan its grain lifting. Let n stand for the number of
+    people in a household. The rule gives the kilograms of foodgrains a month that household is
+    counted for.
+
+    ```working
+        g(n) = 5 times n
+    ```
+
+    Say what the domain of that rule is, in words, and say what its range is. Then say what the
+    office has done wrong if a row of its planning sheet reads n = 4.5.
+  answer: |
+    The domain is what the rule will accept. The input counts people in a household, so the inputs
+    it has an answer for are the whole numbers from 1 upwards. There is no household of nought
+    people and no household of four and a half.
+
+    The range is what the rule can give back. Multiply each of those inputs by five kilograms a
+    month and you get 5, 10, 15, 20 and so on, upwards in steps of five.
+
+    ```working
+        5 times 1 = 5
+        5 times 2 = 10
+        5 times 3 = 15
+    ```
+
+    So the range is the whole numbers of kilograms a month that are multiples of five, from five
+    upwards.
+
+    What the office has done wrong with n = 4.5: it has put an input into the rule that the rule
+    does not take. The arithmetic will still produce a number.
+
+    ```working
+        5 times 4.5 = 22.5
+    ```
+
+    Twenty-two and a half kilograms a month, and nothing about that figure looks wrong on a page.
+    That is the whole difficulty. A rule run outside its domain does not stop and does not warn
+    you. It answers, and the answer is about no household that exists.
+
+    Where a 4.5 comes from is usually an average household size that somebody has fed into a rule
+    built for one household at a time. The fix is to multiply after the rule rather than inside
+    it: count the people in the district, then apply the rule to that count.
+  refs:
+  - nfsa_2013
 - level: 5
   prompt: |
     Under section 3(1) of the National Food Security Act, 2013, a person in a priority household is
@@ -373,8 +431,9 @@ practice:
   - nfsa_2013
 - level: 6
   prompt: |
-    A household of five is counted for 25 kilograms of foodgrains a month under the rule in the
-    section above.
+    Section 3(1) of the National Food Security Act, 2013 entitles a person in a priority household
+    to five kilograms of foodgrains a month. So a household of five is counted for 25 kilograms of
+    foodgrains a month.
 
     Treat the number of months as the input and the total kilograms as the output. Write the rule,
     work out the total for four months, and work out how many months it takes to reach
@@ -406,6 +465,8 @@ practice:
 
     Read the unit of the answer off the division to be sure of it. Kilograms divided by kilograms
     per month leaves months standing, which is the check you met in the section on dimensions.
+  refs:
+  - nfsa_2013
 - level: 7
   prompt: |
     Here is a worked answer. Find the step that broke.
@@ -475,6 +536,11 @@ practice:
   refs:
   - nfsa_2013
 retrieval_items:
+- q: What are a rule's domain and its range, and what is the trap in the second word?
+  a: |-
+    The domain is the inputs the rule accepts. The range is the outputs it can give back. The trap
+    is that statistics uses range for something else entirely, the largest measurement in a set
+    minus the smallest, and the two meanings are unrelated.
 - q: What is the one requirement that makes a rule a function?
   a: Every input it accepts is attached to exactly one output. Two inputs may share an output, but
     one input may never have two.
