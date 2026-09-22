@@ -133,7 +133,9 @@ pass. Fresh contexts, every time.
 ## Task 4 — Sonnet. Fix.
 
 > Read `claude.md` and `books/<SUBJECT>/DEFECTS.md`. Apply every item. Then run
-> `python check/build.py --check` and fix until blocking is zero. Warnings about unopened
+> `python check/build.py --check` and fix until blocking is zero. The arithmetic check runs
+> here: it evaluates both sides of every equation in reader-facing prose, so a blocking
+> failure from it is a genuine slip in a worked answer and never a formatting complaint. Warnings about unopened
 > references are expected and stay.
 >
 > Then run `python check/build.py --subject <SUBJECT>` and read the assembled booklet from the

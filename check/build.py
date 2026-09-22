@@ -335,6 +335,94 @@ def acronym_defects(text: str) -> list[str]:
 
 # ---------------------------------------------------------------- checks
 
+# Every other check in this file is structural: is the field present, is the citekey in the
+# bibliography, does the ladder reach both ends. None of them asks whether anything is *true*.
+# For a book whose content is arithmetic that is the wrong place to stop - a worked answer with
+# a slip in it passes every gate, reaches the reader, and teaches the slip.
+#
+# Two things make it checkable. The prose writes operators as words, consistently, because §1
+# requires it; and the answers show every line, because §4 does. So most of the arithmetic in
+# the corpus is machine-evaluable without anyone writing it twice.
+#
+# Two things make it subtle, and both are in the material by design:
+#   - Levels 7 and 8 are diagnostic. Their prompts contain a *deliberately wrong* worked answer
+#     for the reader to break. Checking those would flag the teaching as a defect.
+#   - Answers round. `17 divided by 7 = 2.428571429` is right, and exact comparison says it is
+#     not. Tolerance is set from the digits actually shown.
+
+_OPS = [(r"\bdivided by\b", "/"), (r"\btimes\b", "*"), (r"\bplus\b", "+"),
+        (r"\bminus\b", "-"), (r"\bover\b", "/")]
+_ARITH_SAFE = re.compile(r"^[\d\s.+\-*/()]+$")
+
+
+def _arith_value(expr: str):
+    """Evaluate one side of an equation, or None if it is not plain arithmetic."""
+    e = expr.strip()
+    for word, sym in _OPS:
+        e = re.sub(word, sym, e)
+    e = e.replace("^", "**")
+    e = re.sub(r"(?<=\d),(?=\d)", "", e)           # 1,00,000 and 1,000,000 alike
+    e = re.sub(r"\s*\([^)]*\)\s*$", "", e).strip()  # a trailing parenthetical comment
+    if not _ARITH_SAFE.match(e) or not re.search(r"\d", e):
+        return None
+    if re.search(r"\*\*\s*\(", e) or len(e) > 120:
+        return None
+    try:
+        v = eval(e, {"__builtins__": {}}, {})       # noqa: S307 - guarded by _ARITH_SAFE
+    except Exception:
+        return None
+    return v if isinstance(v, (int, float)) and abs(v) < 1e18 else None
+
+
+def _decimals_shown(expr: str) -> int:
+    return max((len(m.group(1)) for m in re.finditer(r"\.(\d+)", expr)), default=0)
+
+
+def check_arithmetic(r: dict) -> list:
+    """Evaluate both sides of every equation in a record's reader-facing prose."""
+    out = []
+
+    def scan(text, where):
+        for line in str(text or "").split("\n"):
+            t = line.strip()
+            if t.count("=") < 1 or "==" in t:
+                continue
+            sides = [p for p in t.split("=") if p.strip()]
+            if len(sides) < 2:
+                continue
+            vals = [_arith_value(p) for p in sides]
+            if any(v is None for v in vals):
+                continue
+            # Compare at the precision the text itself displays.
+            places = min(_decimals_shown(p) for p in sides)
+            tol = max(10 ** -places, abs(vals[0]) * 1e-9) if places else abs(vals[0]) * 1e-9
+            if max(vals) - min(vals) > tol + 1e-12:
+                out.append((where, t, vals))
+
+    d = r.get("definition") or {}
+    scan(d.get("text"), "definition")
+    scan(r.get("simplified_explanation"), "simplified_explanation")
+    for ill in ([r.get("illustration")] if r.get("illustration") else []) + (r.get("illustrations") or []):
+        if isinstance(ill, dict):
+            scan(ill.get("body"), "illustration")
+            scan(ill.get("analogy_breaks_when"), "illustration.analogy_breaks_when")
+    for q in (r.get("must_know") or []):
+        if isinstance(q, dict):
+            scan(q.get("point"), "must_know")
+    for i, ex in enumerate(r.get("exercises") or [], 1):
+        scan(ex.get("prompt"), f"exercise {i} prompt")
+        scan(ex.get("answer"), f"exercise {i} answer")
+    for q in (r.get("practice") or []):
+        if not isinstance(q, dict):
+            continue
+        lvl = q.get("level")
+        # The diagnostic band's prompt is a wrong answer on purpose. Its worked answer is not.
+        if BAND_OF(lvl) != "diagnostic":
+            scan(q.get("prompt"), f"practice {lvl} prompt")
+        scan(q.get("answer"), f"practice {lvl} answer")
+    return out
+
+
 def check_doc_paths() -> list:
     """Every repository path the instruction documents name must exist.
 
@@ -528,6 +616,10 @@ def check(recs: dict, subjects: dict, clusters: dict, bibkeys: set):
         elif prac:
             W(rid, f"{len(prac)} practice problems on a concept not marked quantitative - either "
                    "set 'quantitative: true' or move these to exercises")
+        for where, line, vals in check_arithmetic(r):
+            E(rid, f"arithmetic does not hold in {where}: \"{line[:66]}\" evaluates to "
+                   f"{' and '.join(f'{v:g}' for v in vals)}")
+
         # A boundary point that describes the section instead of the technique. Four shipped
         # in Part A: "This section gets you the arithmetic of a percentage" is a contents entry
         # sitting in the one part of the record meant to outlive the section. Narrow on purpose -
