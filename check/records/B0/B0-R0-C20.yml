@@ -20,9 +20,9 @@ definition:
     A relationship is exponential when equal steps in the input multiply the output by the same
     factor every time.
 
-    A relationship is saturating when the output rises while its increments shrink towards zero,
-    approaching a value it does not pass. That value is the ceiling, and the output may approach it
-    without ever reaching it.
+    A relationship is saturating when the output rises while the differences between successive
+    outputs shrink towards zero, approaching a value it does not pass. That value is the ceiling,
+    and the output may approach it without ever reaching it.
 
     The tests are arithmetic, carried out on values taken at equal steps. Constant differences
     between successive outputs mean linear. Constant ratios mean exponential.
@@ -30,10 +30,21 @@ definition:
     Differences that shrink while the output climbs do not on their own mean saturating, because an
     output can climb for ever by ever smaller amounts and approach no value at all. What settles it
     is a ratio taken on the differences themselves rather than on the outputs. Divide each
-    difference by the difference before it. A ratio that holds at some number below one means each
-    difference is a fixed share of the one before, so the differences sum to a finite amount and a
-    ceiling exists. Where that ratio does not hold below one, shrinking differences establish no
-    ceiling, and the shape has not been named.
+    difference by the difference before it. Three cases follow.
+
+    Where that ratio holds constant below one, each difference is a fixed share of the one before.
+    The ceiling can then be computed. The gap still left above any value is the next difference
+    divided by one minus the ratio.
+
+    Where the ratios vary but stay at or below some number under one, a ceiling exists. The
+    differences still sum to a finite amount. The same division, using that number, gives the most
+    the gap can be. It does not say exactly where the ceiling is.
+
+    Where the ratios creep up towards one, the test shows no ceiling. The differences may add up
+    without limit, as a logarithm's steps do, and the shape has not been named.
+
+    Each case reads the steps observed. It holds beyond them only if the ratios keep behaving the
+    same way.
   references:
   - citekey: openstax_college_algebra_2e
     kind: textbook
@@ -57,7 +68,7 @@ simplified_explanation: |
 
   **Exponential. Equal steps multiply.** Take one step along the bottom and the value is multiplied
   by the same number. Take another step and it is multiplied by that number again. Drawn out, it
-  starts off looking lazy and then leaves everything else behind.
+  starts off looking lazy and then, if it is rising, leaves everything else behind.
 
   **Saturating. It rises, then flattens.** It climbs quickly at first, then less, then hardly at
   all. It is heading for a level and it flattens against it. That level is called the ceiling.
@@ -65,6 +76,9 @@ simplified_explanation: |
   Subtract each value from the next one. Are the differences all the same? Then it is linear.
 
   Divide each value by the one before it. Are the ratios all the same? Then it is exponential.
+
+  A ratio below one is still exponential, and the values then fall towards zero. The test for
+  saturating, which comes next, applies only to values that rise.
 
   Do the differences keep shrinking while the values keep climbing? That is not yet enough to say
   saturating. A quantity can climb for ever by ever smaller amounts and head for no level at all.
@@ -74,13 +88,19 @@ simplified_explanation: |
   than the step before it. The ruler goes on for ever. Nothing on it is a level to flatten against.
 
   So run one more division, and this time divide the differences rather than the values. Take each
-  difference and divide it by the difference before it. Does that ratio hold at some number below
-  one? Then each difference is a fixed share of the one before it, the differences add up to a
-  finite amount, and there is a ceiling. That is saturating.
+  difference and divide it by the difference before it. Then look at what those ratios do.
 
-  Differences that shrink without holding a ratio may be heading nowhere in particular. That test
-  has then found you no ceiling, so do not go looking for one on the strength of the shrinking
-  alone.
+  Do they hold at the same number, below one? Then each difference is a fixed share of the one
+  before it. The differences add up to a finite amount, and you can work out where the ceiling is.
+  That is saturating.
+
+  Do they wobble, but never go above some number below one, such as 0.5? Then the differences
+  still add up to a finite amount, and there is a ceiling. You can say the most it can lie above
+  where you stand. You cannot say exactly where it is.
+
+  Do they creep up towards one, say 0.5, then 0.75, then 0.83? Then the test has found you no
+  ceiling. The steps may be shrinking the way a logarithm's do, heading nowhere. Do not go looking
+  for a ceiling on the strength of the shrinking alone.
 
   One more thing, and it is the one people get caught by. Look at the side axis before you name
   anything. Some side axes multiply by ten at every step, which is the ruler you met in the section
@@ -88,7 +108,7 @@ simplified_explanation: |
   on that kind of axis means multiplying, not adding.
 
   And a warning about how much you need to see. Three points do not have a shape. Any three rising
-  points can be drawn as any of the three shapes here. You need enough of the run to see what the
+  points can be drawn as any of the three shapes here. You need enough values to see what the
   steps are doing.
 illustration:
   body: |
@@ -108,7 +128,7 @@ illustration:
     The ratios are not the same, so nothing here is multiplying by a fixed factor. Exponential is
     the wrong word.
 
-    Now take the run out to six values, and put two other shapes beside it for comparison.
+    Now carry on to six values, and put two other shapes beside them for comparison.
 
     ```table
     step  linear  exponential  saturating
@@ -160,17 +180,44 @@ illustration:
         7.2 divided by 12 = 0.6
     ```
 
-    The ratio holds at about 0.6 all the way down the column, and 0.6 is below one. So each step
-    closes about the same share of whatever distance is left, the shrinking differences add up to
-    something finite, and a ceiling exists. Here it is 60.
+    The ratio holds at about 0.6 all the way down the column, and 0.6 is below one. So if the ratio
+    keeps holding, the shrinking differences add up to something finite, and a ceiling exists. Now
+    find where it is.
+
+    Call the distance still left between a value and the ceiling the gap. Before the first step,
+    the gap is the whole of what the differences will ever add up to.
+
+    Now look at the differences after the first one: 12, then 7.2, and so on. Each is 0.6 of the
+    one before it in the full list. So together they add up to 0.6 of the full list's total. That
+    means the first step leaves 0.6 of the gap still to go. It has closed the other 0.4.
+
+    The first step closed 20. So 20 is 0.4 of the gap, and the gap is 20 divided by 0.4. Add the
+    gap to the starting value of 10.
+
+    ```working
+        1 minus 0.6 = 0.4
+        20 divided by 0.4 = 50
+        10 plus 50 = 60
+    ```
+
+    If the ratio keeps holding, the ceiling is 60. Check it from a later value. At 42 the next
+    difference is 7.2.
+
+    ```working
+        7.2 divided by 0.4 = 18
+        42 plus 18 = 60
+    ```
+
+    The same ceiling. So the rule, in words: divide the next difference by one minus the ratio, and
+    add the answer to the value you are standing on.
 
     Now look at step one and step five, because that is where the trap is. At step one the
     exponential column is the lowest of the three. At step five it is the highest, and it has
     passed the ceiling the saturating column will never reach.
 
-    That is why you take the run out before you name anything.
+    That is why you get more values before you name anything.
 
-    An exponential eventually passes any linear.
+    A rising exponential eventually passes any linear.
   analogy_breaks_when: |
     These three shapes are a starting kit and not a list of everything.
 
@@ -193,10 +240,10 @@ must_know:
   bearing: methodological
 - point: |
     Shrinking differences do not on their own mean a ceiling. A quantity can climb for ever by
-    ever smaller amounts. A logarithm does exactly that. So run one more test before you say
-    saturating. Divide each difference by the difference before it. A ratio that holds below one
-    means the differences add up to a finite amount, so there is a ceiling to ask about. Where no
-    such ratio holds, you have no ceiling to quote and should say so rather than estimate one.
+    ever smaller amounts, as a logarithm does. So run one more test before you say saturating. Divide each difference by the difference before it. A ratio that holds below one
+    lets you work out the ceiling. Ratios that vary but stay at or below some number under one show
+    that a ceiling exists, and not exactly where. Ratios creeping up towards one show you no
+    ceiling, so say you have none to quote rather than estimate one.
   kind: trap
   bearing: methodological
 - point: |
@@ -204,7 +251,7 @@ must_know:
   kind: misconception
   bearing: methodological
 - point: |
-    Three points have no shape. Ask for the rest of the run before you name anything.
+    Three points have no shape. Ask for more values before you name anything.
   kind: trap
   bearing: methodological
 - point: |
@@ -235,15 +282,19 @@ exercises:
     Say which of the three shapes it is. Say what the flat part means in the arithmetic. Then say
     what the figure does not tell you.
   answer: |
-    It is saturating. The steps up are getting smaller while the count is still climbing, and the
-    curve is flattening against a level.
+    It looks saturating. The steps up are getting smaller while the count is still climbing. The
+    bend alone does not settle it, because a curve that climbs for ever by ever smaller steps bends
+    the same way. Read values off the curve at equal steps along the bottom, and subtract each from
+    the next. Then divide each difference by the one before it. Ratios that hold at, or stay under,
+    some number below one make it saturating. Ratios creeping up towards one leave the shape
+    unnamed.
 
     What the flat part means in the arithmetic: each equal step along the bottom is adding less
     than the step before it added. The differences are shrinking towards zero. The count is not
     falling, and saying that it is falling is the commonest misreading of this shape.
 
     What the figure does not tell you. It does not tell you the ceiling, unless the curve has been
-    run out far enough for the flattening to settle. It does not tell you why anything flattened,
+    carried on far enough for the flattening to settle. It does not tell you why anything flattened,
     because a shape carries no mechanism. And it does not tell you that the early part was
     exponential, which is a claim you would have to test by dividing successive values.
 
@@ -280,13 +331,13 @@ quantitative: true
 practice:
 - level: 1
   prompt: |
-    Each of these is a set of values taken one step apart. Name the shape of each, and say which
-    test told you.
+    Each of these is a set of values taken one step apart. Name the shape of each where the tests
+    allow one, and say which test told you.
 
     ```table
     A  4   8    12    16    20
     B  4   8    16    32    64
-    C  4   12   16    17    17.2
+    C  4   12   16    19    21.5
     ```
   answer: |
     A is linear. Subtract each from the next and the difference is the same every time.
@@ -307,17 +358,33 @@ practice:
 
     The same factor every step.
 
-    C is saturating. Subtract, and watch the differences fall.
+    C is the one to stop at. Subtract, and the differences are not the same, so it is not linear.
 
     ```working
         12 minus 4 = 8
         16 minus 12 = 4
-        17 minus 16 = 1
-        17.2 minus 17 = 0.2
+        19 minus 16 = 3
+        21.5 minus 19 = 2.5
     ```
 
-    The values climb while the steps shrink towards nothing, which is the shape heading for a
-    ceiling.
+    Divide, and the ratios are not the same either, so it is not exponential.
+
+    ```working
+        12 divided by 4 = 3
+        21.5 divided by 19 = 1.13
+    ```
+
+    The differences shrink while the values climb. So divide each difference by the one before it.
+
+    ```working
+        4 divided by 8 = 0.5
+        3 divided by 4 = 0.75
+        2.5 divided by 3 = 0.83
+    ```
+
+    Those ratios are creeping up towards one. So the test shows no ceiling, and there is no ceiling
+    to quote. The tests name no shape for C. It may be flattening. These five values do not show
+    that it is, and saying so is the answer.
 - level: 2
   prompt: |
     Each of these is a set of values taken one step apart. Name the shape of each.
@@ -451,20 +518,32 @@ practice:
         66.5 minus 65.0 = 1.5
     ```
 
-    The values climb and the steps shrink, so it is saturating.
-
-    Now look at how the steps shrink. Each one is half the one before it.
+    The values climb and the steps shrink. That is not yet enough, so divide each difference by the
+    one before it.
 
     ```working
-        24 divided by 2 = 12
-        12 divided by 2 = 6
+        12 divided by 24 = 0.5
+        6 divided by 12 = 0.5
+        3 divided by 6 = 0.5
+        1.5 divided by 3 = 0.5
     ```
 
-    If each step keeps halving, the remaining steps add 0.75, then 0.375, and so on. Those add up
-    to about 1.5 more.
+    The ratio holds at 0.5, which is below one, so it is saturating.
+
+    Now the ceiling. Divide the first difference by one minus the ratio, and add the answer to the
+    starting value.
 
     ```working
-        66.5 plus 1.5 = 68
+        1 minus 0.5 = 0.5
+        24 divided by 0.5 = 48
+        20 plus 48 = 68
+    ```
+
+    Check it from a later value. At 65.0 the next difference is 1.5.
+
+    ```working
+        1.5 divided by 0.5 = 3
+        65.0 plus 3 = 68
     ```
 
     So the ceiling is about 68. Say "about", because you have worked it out from the pattern of six
@@ -516,8 +595,8 @@ practice:
 
     Twenty thousand four hundred and eighty, against 365. H is far larger.
 
-    Notice that H was the smaller of the two at steps two, three and four. An exponential starts
-    behind a linear and then passes it. Where it passes tells you nothing about how far ahead it
+    Notice that H was the smaller of the two at steps two, three and four. A rising exponential can
+    start behind a linear and still pass it. Where it passes tells you nothing about how far ahead it
     ends up.
 - level: 7
   prompt: |
@@ -552,8 +631,16 @@ practice:
         49.2 minus 42 = 7.2
     ```
 
-    The steps are shrinking while the values climb. That is saturating, which is the opposite of
-    the shape claimed. The last line is the damaging part. This curve is flattening rather than
+    The steps are shrinking while the values climb. That is not yet enough, so divide each
+    difference by the one before it.
+
+    ```working
+        12 divided by 20 = 0.6
+        7.2 divided by 12 = 0.6
+    ```
+
+    The ratio holds at 0.6, below one. If it keeps holding, this is saturating, which is the
+    opposite of the shape claimed. The last line is the damaging part. This curve is flattening rather than
     about to take off.
 
     Why it looks reasonable: the first difference really is 20, and the first ratio really is 3.
@@ -674,14 +761,14 @@ practice:
     programme failing. The steps shrink because there is less room left to cover, which is what
     running towards a ceiling looks like from inside.
 
-    Work out roughly where it is heading. The remaining gains, halving each year, add up to about
-    as much as the last one.
+    Work out roughly where it is heading. Divide the first gain by one minus the ratio.
 
     ```working
-        22.5 plus 1.5 = 24
+        1 minus 0.5 = 0.5
+        12 divided by 0.5 = 24
     ```
 
-    About 24 points above where it started.
+    About 24 points above where it started, which is only 1.5 above where it stands now.
 
     What this does not establish. It does not establish that the programme is working, because
     coverage could have risen for reasons that have nothing to do with it. It does not establish
@@ -694,14 +781,16 @@ retrieval_items:
   a: |-
     Subtract each value from the next, and constant differences mean linear. Divide each value by
     the one before, and constant ratios mean exponential. Where the differences shrink, divide each
-    difference by the difference before it. A ratio holding below one means the differences add up
-    to a finite amount, so there is a ceiling and the shape is saturating.
+    difference by the difference before it. A ratio holding below one lets you work out the
+    ceiling, and the shape is saturating. Ratios that stay at or below some number under one show a
+    ceiling exists, and not exactly where. Ratios creeping up towards one show no ceiling.
 - q: Differences that shrink while the values climb. Is that enough to name a curve saturating?
   a: |-
     No. A quantity can climb for ever by ever smaller amounts with no ceiling at all, which is
     what a logarithm does. Divide each difference by the difference before it. A ratio that holds
-    below one means the differences add up to a finite amount and a ceiling exists. Where no such
-    ratio holds, the shrinking on its own establishes no ceiling.
+    below one lets you work out the ceiling. Ratios that stay at or below some number under one
+    show a ceiling exists, and not exactly where. Ratios creeping up towards one show no ceiling,
+    and the shrinking on its own establishes none.
 - q: Why is "it is rising fast, so it is exponential" wrong?
   a: Exponential is a claim about the ratio between equal steps, not about steepness. An
     exponential rise can be the gentlest-looking curve on the page at the start, so how steep it
@@ -712,7 +801,7 @@ retrieval_items:
     multiplications, and a constant ratio draws as a straight line.
 - q: How many points do you need before you name a shape?
   a: More than three. Any three rising values can be drawn as a line, as a curve taking off, or as
-    a curve flattening, so the run has to be long enough to show what the steps are doing.
+    a curve flattening, so you need enough values to show what the steps are doing.
 provenance:
   map_version_id: fc19c8bc-a216-4131-99fb-ebe3f19cec4a
   outcome_refs:

@@ -609,6 +609,8 @@ Ordered by what they cost. The first four are the ones to fix before Part D.
 
 ## 26 · Book-wide · negative numbers are used in five sections and introduced in none
 
+**Closed 23 Sep 2026** — in A1, not a new section. A new Part A section would renumber every record from A onward, and the Part D and E chats were creating records by number in parallel. A1's title already promised "what a calculator is actually doing", and a calculator has a minus key that is not a negative sign. An independent bridge test confirmed C16's −236, C19's slope of −3, C21's rate of minus five and C23's negative net flow all follow from A1's text alone.
+
 The only prior mention anywhere in twenty-three sections is A6's "A negative exponent does not make
 a number negative", which presupposes the idea it would have to introduce.
 
@@ -628,6 +630,8 @@ deliberately rather than by default.
 
 ## 27 · C1 · order of operations is demonstrated once, silently, and never stated
 
+**Closed** — stated in A1, with the calculator trap (a desk calculator that works each step as you press the next key gives 20 for 3 plus 2 times 4), and C1 points back to it where it first applies it.
+
 C1's illustration computes `4 times 60 = 240` and then `240 plus 48 plus 180`, which is the only
 place in the book where multiplication is taken before addition. It is never named, never
 generalised, never applied to a power.
@@ -641,6 +645,8 @@ build `2x + 3` you must already know that it parses as `(2 × x) + 3`. C1 never 
 chain from C1 to C2 holds by inference only.
 
 ## 28 · C3 · four moves its own problems require and its body never performs
+
+**Closed** — bracket expansion taught in C1, including the sign flip when the multiplier is negative or a bracket is taken away; subtraction of equations, scaling one line and scaling both lines each worked once in C3; elimination carried through to the second unknown; the guidance extended to making a match.
 
 C3 is the weakest section in Part C by a wide margin: seven of its twelve items were done only by
 guessing, against one to six elsewhere.
@@ -662,6 +668,8 @@ guessing, against one to six elsewhere.
    first is nowhere on the page.
 
 ## 29 · C9 · the body-weight case breaks the section's own unit rule, and C9 does not notice
+
+**Closed** — and the first fix was not enough. The refusal sentence went in, and the section then concluded three paragraphs later, and again in a must-know, a retrieval item, the teaching exercise and the level-10 answer, that a steady weight means energy in matched energy out. That conclusion *is* the refused bridge. C9 now runs two balances: weight in kilograms with mass flows, which conservation of mass makes exact, and stored energy in kilojoules with energy flows. A steady weight shows the mass flows matched. Whether the energy flows matched is the step Book 0 does not take, and the text now says so wherever the conclusion used to appear.
 
 C9 states, and verifies for the grain store: "A stock carries the unit of the quantity. A flow
 carries that same unit divided by a unit of time." Its must-know says "Never add or subtract a
@@ -687,6 +695,8 @@ booklet is where it arrives.
 
 ## 30 · C6 · the ceiling is never computed, and two problems ask for one
 
+**Closed** — the ceiling derived by arithmetic alone (the gap left is the next difference divided by one minus the ratio). The rule then went wrong in the fix and was corrected at audit: a ceiling needs ratios that stay at or below some number under one, not a constant ratio. Three cases now stand. Row C's numbers were changed so its ratios climb towards one and the refusal is correct; row D's falling exponential is covered.
+
 "The ratio holds at about 0.6 all the way down the column ... a ceiling exists. Here it is 60."
 That is the whole derivation. Problem 5 asks the reader to "estimate the ceiling it is heading
 for" and problem 10 needs one in its strongest form. Summing a geometric series appears in none of
@@ -707,18 +717,25 @@ by the word "rises" in the saturating definition.
 
 ## 31 · C5 · the section never says how to plot a point
 
+**Closed** — a worked plotted point, the two meanings of brackets separated, the line written as intercept plus slope times input and tied to C2's `y = m x + k`, an intercept found by stepping back from the nearest reading, and one reading order in place of two.
+
 "Now draw them. People go along the bottom. Kilograms a month go up the side." That is the complete
 instruction. No worked point, no account of finding a position from a pair of numbers, nothing
 earlier in the book either — A7 covers reading an axis and never placing a mark.
 
-Two consequences. **Coordinate notation `(2, 7)` is used in four problems and introduced nowhere**,
-and it collides directly with C4's `f(x)`, which the reader has just been told means something
-else. And **a line is never written as an equation**: C5 defines slope and intercept as things you
+Two consequences. **Coordinate notation `(2, 7)` collides with C4's `f(x)`**, which the reader has
+just been told means something else, and nothing says the two uses of brackets differ. (The cold
+reader also reported the notation introduced nowhere. That was the cut, not the section: the
+restore put back the definition's "A point is fixed by two numbers, written (x, y)", so that half
+is closed. Recorded here because it was first written up wrongly, from the cut text.) And **a line
+is never written as an equation**: C5 defines slope and intercept as things you
 read off a drawing and never combines them, while problem 4 gives a slope of 4 and an intercept of
 6 and asks for y at four values of x. The form `y = m x + k` exists in the book only as a bare
 symbol-pushing exercise in C2, with no meaning attached and no link to C5.
 
 ## 32 · C8 · three problems need a number or a convention the book does not supply
+
+**Closed** — a worked day-to-month conversion in C8's body, and 52 weeks, 24 hours and the three-month reading convention stated in their prompts.
 
 - **Exercise 1** has months along the bottom and litres a day up the side, and asks for the unit of
   the area. Litres a day times months is not litres. Every unit check C8 performs is a matched pair,
@@ -734,6 +751,8 @@ minute and the hour in seconds and never the day.
 
 ## 33 · C4 · three problems run a rule backwards and the section never says you can
 
+**Closed** — running a rule backwards taught, with the condition (no two inputs share an output); the Antyodaya proviso given as the likely explanation of household C, with its words from the Act; the register marked as made up.
+
 Problems 3, 5 and 6 all invert a rule. C4 never inverts anything, never uses the word, gives no
 method. Worse, C4 states the fact that makes inversion dangerous — "Two different inputs may share
 one output" — sets three backward problems, and never says when going backwards is safe. For the
@@ -745,13 +764,9 @@ what." A5's proviso to section 3(1) gives an Antyodaya household 35 kilograms pe
 month regardless of size. The diagnosis the section says exists is two sections back in the same
 book, and C4 does not point at it.
 
-## 34 · Book-wide · the commonest problem type has no worked model anywhere
-
-"Decide what to compute, compute it, and say what your answer does not establish" is roughly a
-quarter of all problems in the book. Twenty-three sections and not one works an answer to that
-instruction from end to end. A8 comes closest with a spoken version in a different format.
-
 ## 35 · Book-wide · the "made up for this problem" discipline holds in the problems and not in the illustrations
+
+**Partly closed** — every unmarked invented figure the cold read and the audit found is now marked, in C1, C2, C3, C4, C5 and C8. Nobody has swept the rest of the book for others, and the rule is not yet in `claude.md` as a rule of its own.
 
 C1, C2 and C3 pass the same invented packet — 468 kcal, 60 g, 12 g, 20 g — between them three
 times without once marking it invented, while the problems on the same page say "All four figures
@@ -759,7 +774,7 @@ are made up for this problem." The cold reader took the illustrations for real p
 compression pass restored the marking sentences in C1, C2 and C3 where the original had them; the
 discipline still needs stating as a rule rather than repaired case by case.
 
-## Two artefacts of the setup, recorded so nobody files them as defects
+## Three artefacts of the setup, recorded so nobody files them as defects
 
 **The cold reader had no figures.** `prepare.py` extracts prose fields only, so the scratch
 directory carried no figure, caption or alt text. The reader therefore reported, repeatedly and
@@ -772,3 +787,56 @@ and 12 g of protein inside a 100 g packet is not genuine, having just been taugh
 −236 grams of fat on that ground. The sentence means genuine as a solution to the arithmetic, and
 the reader is right that it does not say so — but this one is worth a sentence in C3 rather than a
 defect number, and it is listed here so the next audit does not re-derive it.
+
+**"The commonest problem type has no worked model anywhere."** The cold reader counted "Decide
+what to compute, compute it, and say what your answer does not establish" as roughly a quarter of
+all problems and found no section working one end to end. Every one of them has a full worked
+answer in the appendix. The scratch directory carries practice prompts without answers, by design,
+because the reader is meant to work them. This was first filed as defect 34 and withdrawn on
+checking the records; the number is left unused rather than reassigned.
+
+---
+
+# Found by the independent audit of the close-out · 23 September 2026
+
+The fixes for 26–35 were audited by a subagent that wrote none of them. It raised 26 findings, and
+the fix agents corrected the auditor twice: "ratios creeping towards one show no ceiling" goes too
+far (they can still sum to a finite amount, so the text says the test *shows* none), and "halving
+never raises the bound" is false for a rate that rises and falls (rates 4, 8, 0 give a bound of 8
+with one interval and 12 with two). All 26 are applied or corrected. Four were errors in fixes made
+the same day, which is the argument for auditing a fix pass and not only a draft.
+
+Two pre-existing errors were found in text nobody had asked it to read:
+
+- **C21 level 10** said budgeting 5.6 points was "about seven times what the most recent year
+  delivered". 5.625 ÷ 1.5 is 3.75. The seven and a half was against the projected next year.
+- **The compression pass removed C7's one naming of `dy/dx` and C8's one naming of `∫`**, which the
+  Part C inventory requires. No cold reader misses a term they have never met, so the gap report
+  could not have caught it; this is the bridge constraint, and it is why that constraint exists.
+  Both paragraphs restored verbatim.
+
+## 36 · A, B and F · six sourced numbers passed the quote check on evidence that did not contain them
+
+**The most serious finding of the day, and a failure of the verification chain itself.** The quote
+gate asked whether the quoted words are in the source. For six numbers they were, and they did not
+state the number:
+
+| Record | Value | What the quote was |
+| --- | --- | --- |
+| C02 | 12 g protein | "CHAPTER V REFORMS IN TARGETED PUBLIC DISTRIBUTION SYSTEM 12. Reforms…" |
+| C02 | 20 g protein | "THE NATIONAL FOOD SECURITY ACT, 2013 … ARRANGEMENT OF SECTIONS" |
+| C03 | 5 kg | "…lactating mothers. 5. Nutritional support to children. 6. Prevention and" |
+| C05 | 5 kg | the same |
+| C05 | 35 kg | "…33. Penalties. 34. Power to adjudicate. 35. Power to delegate…" |
+| C43 | 3 Lists | a sentence about the Constitution's footnotes |
+
+Each is the first place the value's digits occur in the file: an earlier quote-filling step searched
+for the digits and took the first hit. **Every one of the six figures was correct.** None of the
+evidence was evidence.
+
+**Closed.** The six now quote the Second Schedule's rows, section 3(1), the Antyodaya proviso with
+its qualifying clause, and the Seventh Schedule's three Lists. The build now reads the numbers a
+quote states, in digits or words, ignores list labels and clause numbers, and blocks unless the
+value is among them; run across the whole book, it flagged exactly these six and nothing else. A
+counted figure carries a `derived` field and is reported. The rule is in `claude.md` §7b, with the
+instruction never to fill a quote by searching for the value's digits.

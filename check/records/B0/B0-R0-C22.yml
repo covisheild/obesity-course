@@ -24,11 +24,20 @@ definition:
     rectangle whose width is the interval and whose height is the rate over it. The running total
     up to any time is the area under the rate line up to that time.
 
-    The total is exact only where the rate held steady across each interval. Where the rate moved
-    inside an interval, the rectangle over-counts or under-counts. Take the largest gap between the
+    The total is certain to be exact only where the rate held steady across each interval. Where
+    the rate moved inside an interval, the rectangle over-counts or under-counts. Take the largest gap between the
     height used and the rate at any moment inside that interval. That gap, multiplied by the length
     of the interval, is the most the rectangle can be wrong by. The error is an amount and carries
-    the quantity's unit. Narrower intervals shrink it without removing it.
+    the quantity's unit.
+
+    Added across the intervals, those amounts are the most the total can be wrong by. That most is
+    zero only where the rate held steady inside every interval.
+
+    Take a rate that only falls, or only rises, with each height read at one end of its interval.
+    Halving the intervals then halves the most the total can be wrong by, and never raises the
+    actual error. Where the rate rises and falls, halving usually lowers the most, but not always.
+    The actual error can then grow or shrink, though it never passes the most for the intervals
+    used.
 
     A rate and a total are different quantities with different units, and neither can be read off
     the other without the time it applied over.
@@ -66,6 +75,17 @@ simplified_explanation: |
   Kilograms per month, multiplied by months, leaves kilograms. The months cancel, exactly as they
   did in the section on dimensional analysis.
 
+  They cancel only when the two time units match. Say water is drawn at 40 litres a day for 2
+  months, both figures made up. Litres a day times months is not litres. So turn the months into
+  days first. Count a month as 30 days, and say that you did.
+
+  ```working
+      2 times 30 = 60
+      40 times 60 = 2400
+  ```
+
+  Sixty days at 40 litres a day is 2,400 litres. Now the days cancel.
+
   Rates change. So you cut the time into intervals short enough that the rate can be treated as
   steady inside each one. Work out the amount for each interval. Then add them up as you go.
 
@@ -88,9 +108,14 @@ simplified_explanation: |
   rectangle drawn at the starting rate counts too much. Where the rate was rising, it counts too
   little.
 
-  Cut the intervals narrower and the error shrinks. It does not vanish.
+  Now cut each interval in half. Where the rate only falls, or only rises, the error does not grow,
+  and it usually shrinks. Where the rate rises and falls, the over-counts and under-counts can
+  partly cancel. Then halving can leave the error larger. Only a rate that held steady inside
+  every interval gives a total you know to be exact.
 
-  The total under a rate line is called an integral. Nothing in this book asks you to work one out.
+  One name, so you recognise it on somebody else's page. The total under a rate line is called an
+  integral. It is written with the sign ∫, which is a stretched letter S for sum. That is all you
+  need. Nothing in this book asks you to work one out.
 illustration:
   body: |
     A store issues grain. Somebody records the rate at which it goes out, month by month, for six
@@ -157,10 +182,38 @@ illustration:
 
     A total is in the unit of the quantity, never in the unit of the rate.
 
+    Those 80 kilograms went out of the store, so for the store itself they are subtracted. Say it
+    held 200 kilograms at the start and nothing came in. That 200 is made up for this line.
+
+    ```working
+        200 minus 80 = 120
+    ```
+
+    One hundred and twenty kilograms left. Subtract month by month instead. The running total of
+    grain issued still rises, 20, 40, 55, 65, 75, 80. What falls is the stock left in the store.
+
+    ```working
+        200 minus 20 = 180
+        180 minus 20 = 160
+        160 minus 15 = 145
+        145 minus 10 = 135
+        135 minus 10 = 125
+        125 minus 5 = 120
+    ```
+
+    A flow out is an amount taken away rather than added.
+
     Last, the part that decides how much your total is worth.
 
     Take a rate that is falling steadily, from 20 kilograms a month down to nothing over four
     months. Read it at the start of each month and you get 20, 15, 10 and 5.
+
+    This rate line is a different drawing from the one for the store. There we took each month's
+    rate as holding for the whole month, so the line was a staircase and the rectangles sat exactly
+    on it. Here the rate
+    falls all the time, so its line is a straight slope from 20 down to nothing. Rectangles always
+    make a staircase. The gap between that staircase and the slope is what the table below
+    measures.
 
     Build the total from four rectangles, each one month wide.
 
@@ -210,10 +263,11 @@ illustration:
     line. On a rate like this one, halving again would halve the error again. Read that as a
     property of a rate that changes steadily, not as a rule about intervals.
 
-    Where a rate bends, narrower intervals still shrink the error, but by no fixed share you can
-    count on. Where a rate rises over part of the span and falls over the rest, two rectangle
-    errors can point opposite ways and partly cancel. Changing the interval then changes the total
-    error by anything at all.
+    Where a rate bends but keeps falling, halving the intervals still shrinks the error, but by no
+    fixed share you can count on. Where a rate rises over part of the span and falls over the rest,
+    two rectangle errors can point opposite ways and partly cancel. Halving can then leave the
+    total error larger than it was. It still never passes the most from the definition: each
+    interval's largest gap times its width, added across the intervals.
 
     In this worked case the error never reaches zero, and every rectangle counts too much, because
     the rate was falling inside each one of them.
@@ -233,10 +287,11 @@ illustration:
     before you shade anything.
 
     A rectangle built on the rate at the start of an interval counts too much while the rate is falling.
-    Narrower intervals shrink that error and never remove it.
+    While it keeps falling, halving the intervals shrinks that error and never removes it. Where the
+    rate rises and falls, halving can leave the error larger.
 
     And every amount here is an amount going one way. A flow out of something is an amount subtracted
-    rather than added, and the running total then falls.
+    rather than added, and the amount left then falls.
 figures:
 - file: c8-rectangles.png
   caption: "Each rectangle is one month's rate multiplied by one month, so its area is that month's amount. Stacking them is the running total, and the total is the area under the whole rate line."
@@ -262,8 +317,9 @@ must_know:
   kind: misconception
   bearing: methodological
 - point: |
-    A total carries its interval assumption with it, and narrower intervals shrink the error
-    without ever removing it.
+    A total carries its interval assumption with it. Halving the intervals usually shrinks the
+    error, but where the rate rises and falls it can make it larger. Only a rate that held steady inside
+    every interval gives a total you know to be exact.
   kind: boundary
   bearing: methodological
 - point: |
@@ -315,6 +371,8 @@ exercises:
 
     > The depot issued 400 bags in the first week of April. That is 400 a week, so it will issue
     > about 20,800 bags this year.
+
+    Take a year as 52 weeks.
 
     Say what has been assumed, say what you would ask for, and say what you would write in its
     place.
@@ -570,7 +628,8 @@ practice:
 - level: 5
   prompt: |
     A rate is measured every three months and comes out at 40 units a month, then 60, then 60, then
-    20.
+    20. Each reading is the rate for the three months that start on the day it was taken, and the
+    four together cover the year.
 
     Work out the total across the year. Then work out what you would get by adding the four
     readings, and say what unit that sum is in.
@@ -843,8 +902,9 @@ retrieval_items:
     width is the interval and its height is the rate, so the whole area is the running total.
 - q: Why is a total only as good as the intervals it was built from?
   a: Because each rectangle assumes the rate held steady across its whole width. Where the rate
-    moved inside an interval the rectangle counts too much or too little, and narrower intervals
-    shrink that error without removing it.
+    moved inside an interval the rectangle counts too much or too little. Halving the intervals
+    usually shrinks that error, but where the rate rises and falls it can make it larger. Only a rate that
+    held steady inside every interval makes the total certainly exact.
 - q: A rectangle is drawn on an interval across which the rate moved. How large can its error be?
   a: At most the largest gap between the height you used and the rate at any moment inside that
     interval, multiplied by the length of the interval. The error is an amount and carries the

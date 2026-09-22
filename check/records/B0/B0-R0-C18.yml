@@ -51,6 +51,11 @@ simplified_explanation: |
   There is a short way to write a rule down. Give it a name, say f. Write f(4), said out loud as
   "f of 4", for the output the rule gives when you put 4 in. The brackets here do not mean times.
 
+  A rule can also be run backwards, from an output to the input that gave it. You undo what the
+  rule did, the way the section on rearranging undid each step. That gives a single answer only
+  where no two inputs share an output. Where two inputs do share one, going backwards from that
+  output leads to both. Nothing in the output tells you which.
+
   Two names, so you recognise them on somebody else's page. The inputs a rule will accept are
   called its domain. The outputs it can give back are called its range. Ask a rule what it accepts
   and what it does not. That is often the quickest way to catch somebody running it outside what
@@ -64,7 +69,7 @@ simplified_explanation: |
 illustration:
   body: |
     A block register lands on your desk. It lists four households, how many people are in each, and
-    the foodgrains each is counted for in a month.
+    the foodgrains each is counted for in a month. The register is made up for this section.
 
     ```table
     household  people  kilograms a month
@@ -112,10 +117,43 @@ illustration:
 
     One input, one output, and anything that does not match is a question for whoever wrote the
     register.
+
+    Now run the rule backwards once. A priority household is counted for 30 kilograms a month.
+    How many people are in it? The rule multiplied by five, so undo it by dividing by five.
+
+    ```working
+        30 divided by 5 = 6
+    ```
+
+    Six people. Check it forwards.
+
+    ```working
+        5 times 6 = 30
+    ```
+
+    That backwards step is safe here. Each extra person adds five kilograms, so no two household
+    sizes share an output, and 30 points to one size only.
+
+    The section on ratios gives the likely reason for household C. A proviso just below section
+    3(1) covers households under the Antyodaya Anna Yojana. It entitles them to 35 kilograms a month.
+    It does so "to such extent as may be specified by the Central Government for each State in the
+    said scheme". So the Central Government sets how far the scheme reaches in each State. The 35 is
+    per household, whatever its size.
+
+    If C is an Antyodaya household, the register holds two rules, and the row is right. The register
+    does not say which scheme C is under. So treat this as the likely explanation and ask.
+
+    That rule also shows why going backwards can fail. Under it, a household of two and a household
+    of nine both get 35 kilograms. Given 35, the rule cannot tell you the size.
   numbers:
   - value: '5'
     quote: entitled to receive five kilograms of foodgrains per person per month
     unit: kilograms of foodgrains per person per month, priority households, s.3(1)
+    citekey: nfsa_2013
+    as_of: '2026-09-23'
+  - value: '35'
+    quote: be entitled to thirty-five kilograms of foodgrains per household per month
+    unit: kilograms of foodgrains per household per month, Antyodaya Anna Yojana households, proviso to s.3(1)
     citekey: nfsa_2013
     as_of: '2026-09-23'
   analogy_breaks_when: |
@@ -137,8 +175,8 @@ must_know:
   kind: misconception
   bearing: methodological
 - point: |
-    Outputs that climb for a while and then fall again break nothing. So look for the repeated
-    input, never for the shape of anything.
+    Outputs that climb for a while and then fall again break nothing. So for this test, look for
+    the repeated input, not for the shape of the outputs.
   kind: trap
   bearing: methodological
 - point: |
@@ -155,6 +193,11 @@ must_know:
     A function says the output goes with the input. It never says the input produced it.
   kind: boundary
   bearing: policy
+- point: |
+    Run a rule backwards only where no two inputs share an output. Where two do, an output points
+    back to more than one input, and a single answer from it is a guess.
+  kind: boundary
+  bearing: methodological
 exercises:
 - type: critique
   prompt: |
@@ -490,11 +533,15 @@ practice:
         35 divided by 5 = 7
     ```
 
-    Seven people, for a household the register elsewhere records as four. So the proposal turns one
-    bad row into an invented household of seven, and nothing downstream will show that it happened.
+    Seven people, for a household the register elsewhere records as four. So the proposal turns that
+    row into an invented household of seven, and nothing downstream will show that it happened.
 
-    What this does not establish. It does not tell you whether the 35 is the error or the 4 is.
-    The arithmetic cannot say which of the two the register got wrong. It does not tell you how
+    What this does not establish. It does not tell you whether the 35 is the error, or the 4 is, or
+    neither. If the household is under the Antyodaya Anna Yojana, both figures are right. The
+    register then holds two rules, and dividing by five is the wrong rule for that row. The
+    arithmetic cannot say which of the three is true.
+
+    It does not tell you how
     many other rows disagree, because you have looked at one. And it says nothing about whether any
     of these households were counted correctly to begin with. Recovering an input from an output
     tells you what the rule would have needed, never what happened.

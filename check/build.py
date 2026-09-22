@@ -456,6 +456,85 @@ def _do_not_cite() -> dict:
         return (_yaml().safe_load(fh) or {}).get("do_not_cite") or {}
 
 
+
+_WORDS = {w: i for i, w in enumerate(
+    "zero one two three four five six seven eight nine ten eleven twelve thirteen fourteen "
+    "fifteen sixteen seventeen eighteen nineteen".split())}
+_WORDS.update({w: 10 * (i + 2) for i, w in enumerate(
+    "twenty thirty forty fifty sixty seventy eighty ninety".split())})
+_SCALES = {"hundred": 100, "thousand": 1_000, "lakh": 100_000, "lakhs": 100_000,
+           "million": 1_000_000, "crore": 10_000_000, "crores": 10_000_000}
+
+
+def _numbers_stated(quote: str) -> set:
+    """Every number a passage states, in digits or in words.
+
+    A digit that numbers an item in a list - "5. Nutritional support to children" - is not
+    a number the passage states; it is a label, and it is excluded. That exclusion is the
+    point of the whole function (see _states_value).
+    """
+    q = " ".join(str(quote).split())
+    found = set()
+    # Digits: plain, decimal, Indian or international commas, or the SI's thin spaces
+    # between groups of exactly three. A space before a two-digit group is not grouping:
+    # "Hot Cooked Meal 450 12" is two numbers.
+    for m in re.finditer(r"(?<![\w.])(\d{1,3}(?:,\d{2,3})+|\d{1,3}(?: \d{3})+(?!\d)|\d+)(\.\d+)?", q):
+        tail = q[m.end():m.end() + 3]
+        head = q[max(0, m.start() - 1):m.start()]
+        if re.match(r"\.\s[A-Z]", tail) or tail.startswith("(") or (head == "(" and tail.startswith(")")):
+            continue                      # a list label, or a clause number: 5(3)(b)
+        try:
+            found.add(float(m.group(0).replace(",", "").replace(" ", "")))
+        except ValueError:
+            pass
+    # Words: "five", "thirty-five", "twenty-five thousand", "ten lakh".
+    toks = re.findall(r"[a-z]+", q.lower().replace("-", " "))
+    total, cur, live = 0, 0, False
+    for t in toks + ["."]:
+        if t in _WORDS:
+            cur += _WORDS[t]; live = True
+        elif t in _SCALES and live:
+            if t == "hundred":
+                cur *= 100
+            else:
+                total += cur * _SCALES[t]; cur = 0
+        elif live:
+            found.add(float(total + cur)); total, cur, live = 0, 0, False
+    return found
+
+
+def _states_value(num: dict) -> str | None:
+    """None if the quote states the number; otherwise the reason it does not.
+
+    Written after six numbers in released sections were found passing the quote check on
+    evidence that did not contain them. The quote gate asked one question - are these words
+    in the source? - and "5. Nutritional support to children" is in the Act, so the 5
+    kilograms a month cited against it passed. So did two protein figures quoted from the
+    heading ARRANGEMENT OF SECTIONS. Every one of the six numbers was in fact correct; the
+    evidence for them was not evidence. That is the failure the gate exists to prevent, so
+    the gate now asks the second question too: do these words state this number?
+
+    A number that is counted or derived from a passage rather than stated in it - "three
+    Lists" from a schedule that names List I, List II and List III - carries a `derived`
+    field saying how. It passes, and it is reported, because a derivation is a claim
+    somebody should be able to read.
+    """
+    raw = str(num.get("value", "")).strip()
+    try:
+        value = float(raw.replace(",", "").replace(" ", ""))
+    except ValueError:
+        return None                       # not a number: "Kcal", "none held"
+    if num.get("derived"):
+        return None
+    stated = _numbers_stated(num.get("quote") or "")
+    if any(abs(v - value) <= 1e-9 * max(1.0, abs(value)) for v in stated):
+        return None
+    return ("the quote is in the source but does not state this number"
+            + (f" - it states {', '.join(f'{v:g}' for v in sorted(stated))}" if stated else "")
+            + ". Quote the words that give the figure, or add a 'derived' field saying how it "
+              "is counted from them")
+
+
 def check_quotes(r: dict) -> tuple:
     """Search the source file for the words a record says it took from it.
 
@@ -507,7 +586,13 @@ def check_quotes(r: dict) -> tuple:
         if not isinstance(num, dict):
             continue
         where = f"illustration number {n} ({num.get('value')})"
-        look(num.get("citekey"), num.get("quote"), where)
+        if look(num.get("citekey"), num.get("quote"), where):
+            why = _states_value(num)
+            if why:
+                block.append(f"{where}: {why}")
+            elif num.get("derived"):
+                warn.append(f"{where} is derived rather than stated: "
+                            f"{' '.join(str(num['derived']).split())}")
         if _source_text(num.get("citekey")) is not None and not num.get("quote"):
             block.append(f"{where} comes from a source held in sources/ but carries no "
                          "'quote'. A figure nobody can trace back to its words is the one "

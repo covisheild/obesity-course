@@ -115,7 +115,16 @@ simplified_explanation: |
       14 divided by 2 = 7
   ```
 
-  Now check. Put both numbers into both statements, not into one of them.
+  So x is 7. Elimination has found one unknown, and it is not finished. Put the 7 back into either
+  line to get the other. The first line is the simpler one.
+
+  ```working
+      7 + y = 10
+      10 minus 7 = 3
+  ```
+
+  So y is 3, the same as substitution gave. Now check. Put both numbers into both statements, not
+  into one of them.
 
   ```working
       7 plus 3 = 10
@@ -123,6 +132,123 @@ simplified_explanation: |
   ```
 
   Both hold, so the pair is the solution.
+
+  Adding worked because one line had plus y and the other had minus y. When the same letter
+  carries the same number and the same sign in both lines, subtract instead. Take one line from
+  the other, left from left and right from right.
+
+  ```working
+      x + y = 10
+      x + 3y = 16
+  ```
+
+  Take the first line from the second. The x terms cancel, and 3y take away y leaves 2y.
+
+  ```working
+      16 minus 10 = 6
+      2y = 6
+      6 divided by 2 = 3
+  ```
+
+  So y is 3. Put it back into the first line to get x.
+
+  ```working
+      10 minus 3 = 7
+  ```
+
+  So x is 7. Check the pair in both lines.
+
+  ```working
+      7 plus 3 = 10
+      3 times 3 = 9
+      7 plus 9 = 16
+  ```
+
+  And sometimes no letter carries matching numbers at all. Then make a match. Multiply every term
+  of one line, on both sides, by the same number. That is the rule from the section before this:
+  whatever you do to one side, do to the other.
+
+  ```working
+      x + y = 10
+      3x + 2y = 27
+  ```
+
+  The second line has 2y and the first has only y. So multiply the whole of the first line by 2.
+
+  ```working
+      2 times 10 = 20
+      2x + 2y = 20
+  ```
+
+  Now the y terms match. Take this new line from the second line. The 2y terms cancel, and 3x take
+  away 2x leaves x.
+
+  ```working
+      27 minus 20 = 7
+  ```
+
+  So x is 7. Put it back into the first line to get y.
+
+  ```working
+      10 minus 7 = 3
+  ```
+
+  So y is 3. Check the pair in both lines.
+
+  ```working
+      7 plus 3 = 10
+      3 times 7 = 21
+      2 times 3 = 6
+      21 plus 6 = 27
+  ```
+
+  The same pair sits behind all three examples, so you can watch each method land on it. Every
+  elimination has the same four steps. Make one letter match, if it does not already. Add or
+  subtract the lines so that it cancels. Solve for the letter that is left. Then put that value
+  back into either line to get the other.
+
+  Sometimes no whole-number multiple of one line matches the other. Then multiply both lines, each
+  by its own number.
+
+  ```working
+      2x + 3y = 12
+      3x + 2y = 13
+  ```
+
+  Multiply the whole of the first line by 3 and the whole of the second by 2. Both x terms become
+  6x.
+
+  ```working
+      6x + 9y = 36
+      6x + 4y = 26
+  ```
+
+  Take the second new line from the first. The 6x terms cancel, and 9y take away 4y leaves 5y.
+
+  ```working
+      36 minus 26 = 10
+      5y = 10
+      10 divided by 5 = 2
+  ```
+
+  So y is 2. Put it back into the first line to get x.
+
+  ```working
+      3 times 2 = 6
+      12 minus 6 = 6
+      6 divided by 2 = 3
+  ```
+
+  So x is 3. Check the pair in both lines.
+
+  ```working
+      2 times 3 = 6
+      3 times 2 = 6
+      6 plus 6 = 12
+      3 times 3 = 9
+      2 times 2 = 4
+      9 plus 4 = 13
+  ```
 
   Two more shapes to recognise, because they arrive without warning.
 
@@ -185,7 +311,10 @@ illustration:
         15   40   60   360   420
     ```
 
-    Every row is a genuine answer.
+    Every row is a genuine answer to the arithmetic. Not every row is a possible packet. The
+    second row puts 105 grams of carbohydrate and 12 grams of protein into 100 grams of food. The
+    section before this taught you to throw out a negative mass, and this row fails the same kind
+    of test. Run that second check on any answer, because the arithmetic never runs it for you.
 
     So what would fix them? A second statement that has to be true at the same time.
 
@@ -197,7 +326,7 @@ illustration:
         c = 3f
     ```
 
-    Now substitute.
+    Now substitute. Put 3f in place of c in the first line, so 4c becomes 4 times 3f.
 
     ```working
         4 times 3f, plus 9f = 420
@@ -205,7 +334,15 @@ illustration:
         21f = 420
     ```
 
-    Divide both sides by 21.
+    What went in for c here was a single term, 3f. Often it is a difference instead, such as 75
+    minus f. Then it goes in inside brackets, and you expand them as the section on variables
+    showed. Every term inside is multiplied by the 4.
+
+    ```working
+        4(75 minus f) = 300 minus 4f
+    ```
+
+    Back to the packet. Divide both sides by 21.
 
     ```working
         420 divided by 21 = 20
@@ -274,7 +411,8 @@ must_know:
   bearing: methodological
 - point: |
     Use substitution when one equation already has a letter standing nearly alone. Use
-    elimination when the same letter carries matching numbers in both lines.
+    elimination when the same letter carries matching numbers in both lines. Use it too when you
+    can make them match by multiplying one whole line by a number.
   kind: move
   bearing: teaching
 - point: |
@@ -531,7 +669,7 @@ practice:
 
     Why elimination was the easier route here: the y carried the same number in both lines. One line
     had a plus and the other a minus. So adding removed it in a single step. Had neither
-    letter matched, substitution would have been the shorter way.
+    letter matched, you would have had to make a match first by multiplying a whole line.
 - level: 4
   prompt: |
     A panel gives the energy as 440 kilocalories in every 100 grams and the protein as 10 grams.
@@ -949,7 +1087,7 @@ retrieval_items:
   a: Substitution, which rearranges one equation to give a letter alone and puts that into the
     other, and suits a pair where one letter nearly stands alone already. Elimination, which adds
     a multiple of one equation to the other so a letter cancels, and suits a pair where the same
-    letter carries matching numbers.
+    letter carries matching numbers or can be made to by multiplying one whole line.
 - q: What are the two ways a pair of equations can fail to give one answer?
   a: The second can repeat the first, in which case there are as many answers as before. Or the
     two can contradict each other, in which case there is no answer at all and one of the two

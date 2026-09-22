@@ -89,6 +89,12 @@ simplified_explanation: |
   A shorter interval gives you a closer answer. Take the average over a month and you get the month.
   Take it over a day around the same moment and you get much nearer to the moment itself.
 
+  One more thing, so that you recognise it on somebody else's page. The rate at a moment has a
+  name in mathematics: the derivative. It is written dy/dx, said "dee y by dee x". The two letters
+  d each mean "a change in". The whole symbol is the steepness at one point, which is what you
+  have just been reading off a curve with a ruler. That is all you need. Nothing in this book asks
+  you to work one out.
+
   Last, run the unit check from the section on dimensional analysis before you believe any rate. A
   quantity in kilograms, changing over months, gives a rate in kilograms per month. If somebody
   hands you a rate whose unit is not the quantity divided by a time, it is not a rate of change.
@@ -122,6 +128,10 @@ illustration:
     ```
 
     Test the second. Divide that change by the time it took.
+
+    Count the time before you divide. Six readings a month apart span five months, not six. Each
+    month runs from one reading to the next, so the intervals are always one fewer than the
+    readings.
 
     ```working
         46.1 divided by 5 = 9.22
@@ -162,8 +172,12 @@ illustration:
         56.1 plus 5.2 = 61.3
     ```
 
-    About 61.3, not past 70. The note is not wrong about its arithmetic. It is wrong about which
-    interval its arithmetic describes.
+    About 61.3, not past 70. Even 61.3 is too high if the rate keeps falling, as it has every month
+    so far. So treat it as an upper bound, not a forecast. The section before this one puts this
+    column's ceiling at 60, if the ratio between its steps keeps holding.
+
+    The note is not wrong about its arithmetic. It is wrong about which interval its arithmetic
+    describes.
 
     Now the easy case, so that you can feel the difference.
 
@@ -227,8 +241,12 @@ illustration:
 
     A quantity measured once a month has no rate you can check between the measurements.
 
-    And time is not the only thing a quantity can change against. A change in an outcome for each
-    extra unit of a dose works the same way, and every word of this section applies to it.
+    And time is not the only thing a quantity can change against. The grain a household is counted
+    for changes against the number of people in it, at five kilograms a month for each extra
+    person. Put people along the bottom and that is a slope. The chord, the tangent and the unit
+    check carry over. The grain is in kilograms a month, so the slope is in kilograms a month per
+    person: "per person" is added and "per month" stays. A dose along the bottom and a measured
+    effect up the side works the same way.
 figures:
 - file: c7-chords.png
   caption: "One curve and three averages. Each straight line runs to the last reading from a different starting point, and each average is the slope of its own line: 9.22 a month taken over five months, 3.45 a month taken over the last two, 2.60 a month taken over the last one. Every one of the three is an average and none of them is the rate at a moment, which six monthly readings cannot give you."
@@ -260,8 +278,9 @@ must_know:
   kind: boundary
   bearing: methodological
 - point: |
-    Where gains are slowing, an average over the whole programme is the number most flattering to
-    it.
+    Suppose each year's gain has been smaller than the year before. Then the average over the whole
+    programme is higher than the average over any shorter run of whole years ending today. Quoted
+    as the rate now, it flatters the programme.
   kind: consequence
   bearing: policy
 - point: |
@@ -584,13 +603,14 @@ practice:
   - nfsa_2013
 - level: 5
   prompt: |
-    A quantity is recorded once a month for five months: 200, 320, 380, 410, 425.
+    A quantity is recorded five times, a month apart: 200, 320, 380, 410, 425.
 
-    Work out the average rate of change over the whole five months. Then work out the rate over the
+    Work out the average rate of change from the first reading to the last. Then work out the rate over the
     first month and the rate over the last month. Say which of the three you would quote to
     somebody who asks how fast it is growing now, and why.
   answer: |
-    The whole run covers four months, because the first reading is at month zero.
+    Five readings a month apart cover four months, because the intervals are one fewer than the
+    readings.
 
     ```working
         425 minus 200 = 225
@@ -796,7 +816,9 @@ practice:
         56.1 plus 13 = 69.1
     ```
 
-    About 69, against the 102.2 the broken working projects.
+    About 69, against the 102.2 the broken working projects. Even 69 is an upper bound, because the
+    rate has fallen every month and nothing says it has stopped. If the ratio between its steps
+    keeps holding, the section before this one puts the ceiling at 60.
 
     Why it looks reasonable: four correct lines in a row buy the fifth a great deal of trust, and
     the fifth changes only one word. An average rate and a rate now are written down identically,
@@ -936,8 +958,15 @@ practice:
         1.5 divided by 2 = 0.75
     ```
 
-    So budgeting for 5.6 points next year is budgeting for about seven times what the most recent
-    year delivered.
+    Compare the 5.625 with the most recent year's 1.5, and with the 0.75 the pattern points to.
+
+    ```working
+        5.625 divided by 1.5 = 3.75
+        5.625 divided by 0.75 = 7.5
+    ```
+
+    So budgeting for 5.6 points next year is budgeting for nearly four times what the most recent
+    year delivered. It is seven and a half times what the halving pattern points to.
 
     What this does not establish. It does not establish that next year's gain will be 0.75. Four
     values and an assumed halving are a thin basis, and the pattern is read off the same numbers it

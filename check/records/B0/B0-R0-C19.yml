@@ -47,8 +47,8 @@ definition:
         been read, which is why claim_located stays false. The content is a derivation the
         reader can check, so it does not rest on the anchor.
 simplified_explanation: |
-  Four things decide what the picture tells you. Check them in this order, every time, before you
-  look at the shape.
+  Four things decide what the picture tells you. Read them in this order, every time. The first two
+  come before you look at the line at all.
 
   **What is on each axis.** Look at the flat line along the bottom. That is the x-axis. Look at the
   upright line up the side. That is the y-axis. Each should carry the name of a quantity and a
@@ -70,6 +70,10 @@ simplified_explanation: |
 
   A slope is a rate, and it carries a unit like every rate you have met. The unit is the y unit
   divided by the x unit.
+
+  A slope can be negative. A line that falls as you go right has a rise below zero, so the slope
+  comes out with a minus sign in front. The section on counting covers numbers like that. A slope
+  of minus 3 means the y quantity drops by 3 for every one step across.
 
   **Where the line crosses.** Follow the line to the place where the x quantity is zero. The height
   there is called the intercept. It answers one question: what was the y quantity when the x
@@ -100,6 +104,16 @@ illustration:
 
     Now draw them. People go along the bottom. Kilograms a month go up the side.
 
+    Place one point by hand first. Take the household of three and its 15 kilograms. As a pair it
+    is written (3, 15). The number along the bottom comes first and the number up the side second.
+
+    Start at the origin, where both axes read zero. Go along the bottom until you reach 3. From
+    there go straight up until you are level with 15 on the side axis. Put the mark there. Every
+    other row goes on the same way.
+
+    The brackets in (3, 15) are not the brackets in f(x) from the section on functions. There they
+    held a rule's input. Here they hold a pair of numbers, and the comma between them is the sign.
+
     Draw it once with the side axis running from 0 to a little above 40 kilograms. The line fills
     the picture and the rise is the first thing you see.
 
@@ -117,7 +131,8 @@ illustration:
     Now read a slope and an intercept off a line, which is the other thing a graph is for.
 
     A household of four has 10 kilograms of grain in the house today. Every month it is counted for
-    another 20 kilograms, because five kilograms a person times four people is twenty.
+    another 20 kilograms, because five kilograms a person times four people is twenty. The 10
+    kilograms is made up for this example.
 
     ```working
         5 times 4 = 20
@@ -174,6 +189,36 @@ illustration:
 
     That number means something here. It is the grain that was in the house before any of these
     months began. Somebody can go and look in the house and check it.
+
+    Often nobody wrote down a reading at zero. Find the intercept anyway by stepping back from the
+    nearest reading, using the slope. Suppose the table had started at two months, with 50
+    kilograms. Each month back takes off one slope's worth of grain.
+
+    ```working
+        20 times 2 = 40
+        50 minus 40 = 10
+    ```
+
+    Ten kilograms, the same as the line gave.
+
+    The slope and the intercept together fix the whole line. In words, the output is the
+    intercept, plus the slope times the input. Here that is 10 kilograms, plus 20 kilograms a
+    month times the number of months. Write y for the side quantity and x for the bottom one. Write
+    m for the slope and k for the intercept. Then the line is this.
+
+    ```working
+        y = m x + k
+    ```
+
+    You met that line in the section on rearranging, as letters with no meaning attached. This is
+    its meaning. For the grain in the house, m is 20 and k is 10. Try it at four months.
+
+    ```working
+        20 times 4 = 80
+        80 plus 10 = 90
+    ```
+
+    Ninety kilograms, which is the row for four months in the table.
 
     Now watch an intercept stop meaning anything. Go back to the first drawing, where the bottom
     axis was the number of people. Its intercept is the grain for a household of nobody. No such
@@ -232,8 +277,8 @@ must_know:
   kind: move
   bearing: public
 - point: |
-    Teach a trainee to read a figure in a fixed order: axes, then units, then the numbers on the
-    scale, then the shape.
+    Teach a trainee to read a figure in one fixed order. What each axis measures and its unit come
+    first, then the numbers on the scale. Only then the slope, and last the intercept.
   kind: move
   bearing: teaching
 - point: |
@@ -693,8 +738,9 @@ practice:
 
     So the figure that looks flat carries the larger change, by a wide margin.
 
-    The order to work in: read the numbers on each axis, then the values, then the shape. The
-    broken answer read the shape first and never revisited it.
+    The order to work in is the one this section fixed. First what each axis measures and its
+    unit, then the numbers on the scale, and only then the line. The broken answer read the line
+    first and never revisited it.
 
     Why it looks reasonable: lines three and four sound like the same statement said twice, and the
     step between them is the whole error. The numbers on both axes are even printed in the working, so
@@ -801,8 +847,8 @@ practice:
   - nfsa_2013
 retrieval_items:
 - q: What are the four things to check on a graph, and in what order?
-  a: The quantity on each axis, the unit on each axis, the scale printed on each axis, and only
-    then the shape of the line.
+  a: What each axis measures and its unit, then the numbers on the scale, then the slope, then the
+    intercept. The first two come before you look at the line at all.
 - q: What is a slope, and what unit does it carry?
   a: The rise divided by the run between two points on a straight line. Its unit is the y-axis unit
     divided by the x-axis unit, which makes every slope a rate.

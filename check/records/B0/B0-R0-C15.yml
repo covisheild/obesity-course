@@ -20,7 +20,8 @@ definition:
     Two things written side by side are multiplied. So 2x means 2 times x, and xy means x times
     y. A letter multiplied by itself is written as a power: x^2 means x times x.
 
-    Brackets group a part of an expression so that it is treated as one quantity.
+    Brackets group a part of an expression so that it is treated as one quantity. A number
+    multiplying a bracket multiplies every term inside it, so a(b + c) = ab + ac.
 
     Substituting a number for a letter replaces that letter, everywhere it appears, with the
     number. The expression then becomes arithmetic.
@@ -65,6 +66,9 @@ simplified_explanation: |
 
   That is 2 times the whole of x + 5. It is not 2 times x with a 5 added on afterwards.
 
+  Without the brackets, 2x + 5 means multiply first and add second. That is the order the section
+  on counting set out: multiplying comes before adding. Brackets are how you say otherwise.
+
   When you do find out what the number is, you put it in. Putting a number in place of a letter is
   called substituting.
 
@@ -76,6 +80,42 @@ simplified_explanation: |
   ```
 
   Fourteen. The letter went away and arithmetic was left.
+
+  Now back to the brackets, because you will often want them gone. To take a bracket away,
+  multiply every term inside it by what stands outside. This is called expanding the bracket. In
+  words: 2 times the whole of x plus 5 is 2 times x, plus 2 times 5.
+
+  ```working
+      2(x + 5) = 2x + 10
+  ```
+
+  Check it with x as 7, working each side on its own.
+
+  ```working
+      7 plus 5 = 12
+      2 times 12 = 24
+      2 times 7 = 14
+      14 plus 10 = 24
+  ```
+
+  Both sides give 24. The same holds when the inside is a subtraction. Here 3 times the whole of 10
+  minus y becomes 3 times 10, minus 3 times y.
+
+  ```working
+      3(10 minus y) = 30 minus 3y
+  ```
+
+  With a positive number outside, the subtraction stays a subtraction. Only the multiplying reaches
+  inside.
+
+  If the number outside is negative, every sign inside flips. The same happens when the whole
+  bracket is taken away. This is the rule for negatives from the section on counting: a negative
+  times a negative is positive.
+
+  ```working
+      -3(10 minus y) = -30 plus 3y
+      (3x + 2y) minus (x minus y) = 3x + 2y minus x plus y = 2x + 3y
+  ```
 
   An expression is a piece of algebra that stands for a number, like 2x + 5. An equation is a
   statement that two expressions are the same number, like 2x + 5 = 19.
@@ -109,7 +149,8 @@ illustration:
 
     Read 9f as nine times f. And the f is not the symbol for gram.
 
-    Now substitute.
+    Now substitute. Do the three multiplications first and the adding last. That is the order
+    from the section on counting.
 
     ```working
         4 times 60 = 240
@@ -339,6 +380,51 @@ practice:
     ```
 
     Thirteen against fifteen, from the same words said in a different order.
+- level: 2
+  prompt: |
+    Expand each bracket. Then check each answer by putting 3 in place of the letter, on both
+    sides.
+
+    ```working
+        4(x + 2)
+        5(10 minus y)
+        2(3n + 1)
+    ```
+  answer: |
+    Multiply every term inside by the number outside.
+
+    ```working
+        4(x + 2) = 4x + 8
+        5(10 minus y) = 50 minus 5y
+        2(3n + 1) = 6n + 2
+    ```
+
+    Now check each with the letter as 3. Work the bracketed side first, then the expanded side.
+
+    ```working
+        3 plus 2 = 5
+        4 times 5 = 20
+        4 times 3 = 12
+        12 plus 8 = 20
+    ```
+
+    ```working
+        10 minus 3 = 7
+        5 times 7 = 35
+        5 times 3 = 15
+        50 minus 15 = 35
+    ```
+
+    ```working
+        3 times 3 = 9
+        9 plus 1 = 10
+        2 times 10 = 20
+        6 times 3 = 18
+        18 plus 2 = 20
+    ```
+
+    All three agree. The one to watch is the third. The 2 multiplies the 3n and the 1, and people
+    who expand in a hurry write 6n + 1.
 - level: 3
   prompt: |
     Work each of these out for a equal to 5 and b equal to 2.
