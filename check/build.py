@@ -22,9 +22,22 @@ REFDOC = os.path.join(ROOT, "references", "reference.docx")
 FIGURES_DIR = os.path.join(ROOT, "figures")
 LEVELS = ["Introductory", "Intermediate", "Advanced", "Expert"]
 
+# `textbook` is allowed on an empirical concept, and that is a deliberate widening made on
+# 23 September 2026 for Book 0 Part E. Parts A to D are mathematics and Part F is reading, so
+# every concept so far has been derivable-from-the-floor or a body's decision. Part E is the
+# first that is neither: a plasma membrane is not rebuildable from arithmetic, so it cannot be
+# `derivable`, and it is not a finding with an effect size either, so demanding `primary` for it
+# would mean citing a research paper for the existence of the cell - worse scholarship than
+# citing a canonical text, not better, and the kind of citation nobody checks.
+#
+# The rule this does NOT relax: a claim carrying an effect size, a risk, a dose-response or any
+# measured quantity still needs `primary` or `systematic_review`, and the unopened-source block
+# below still applies in full. A textbook anchor is for settled science that a specialist would
+# find nothing to correct in. Using one to dress up a contested finding is the failure mode, and
+# it is a judgement the audit has to make because no check can make it.
 KIND_FOR_TYPE = {
     "derivable":     {"textbook"},
-    "empirical":     {"primary", "systematic_review"},
+    "empirical":     {"primary", "systematic_review", "textbook"},
     "institutional": {"instrument", "guideline", "consensus_statement"},
 }
 STABILITY_FOR_TYPE = {"derivable": "long", "empirical": "medium", "institutional": "short"}

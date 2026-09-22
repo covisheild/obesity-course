@@ -296,6 +296,12 @@ unopened nothing stands behind the claim except whoever drafted it. Where that w
 means nothing stands behind it. **It blocks.** No booklet in the clinical, policy or epidemiological
 subjects can be built without its sources in hand, and that is the intended consequence.
 
+**§4's textbook widening does not soften this.** An `empirical` concept resting on a canonical
+text still blocks until somebody has opened that text and located the passage. Settled science
+changes which *kind* of source may stand behind a claim; it changes nothing about whether anyone
+has read it. A textbook citation written from what the model already knew is the same defect as
+`pending_arithmetic_text`, wearing a real title.
+
 **Free, openly licensed, genuinely citable material covers most of what this course needs.** Prefer
 it — not on principle but because a source the reader can open in one click is a source they will
 actually check.
@@ -501,7 +507,7 @@ Every concept is exactly one of three kinds. The kind determines its treatment, 
 | Type | What it is | Treatment | Reference kind | Stability | Review trigger |
 | --- | --- | --- | --- | --- | --- |
 | **derivable** | Can be built from the reader floor by argument alone — conservation of energy, probability axioms, stocks and flows, what a matrix does | Derive it. Show the steps. The reader should be able to rebuild it | `textbook` (canonical text for the subject) | long | five years |
-| **empirical** | Cannot be derived; true as a matter of observed fact — appetite circuitry, the thin-fat phenotype, activity dose-response | Assert with evidence. State the effect size and **what would overturn it** | `primary` or `systematic_review` | medium | two to three years |
+| **empirical** | Cannot be derived; true as a matter of observed fact — appetite circuitry, the thin-fat phenotype, activity dose-response | Assert with evidence. State the effect size and **what would overturn it** | `primary` or `systematic_review`; `textbook` for settled science, below | medium | two to three years |
 | **institutional** | True because a body decided it — RDA values, statutes, tax slabs, cut-points, prices | Cite the instrument. Stamp an as-of date. Never present as a fact of nature | `instrument`, `guideline` or `consensus_statement` | short | **event**, not date |
 
 **Event triggers** are named explicitly, not left as "when it changes": *next FSSAI notification*, *next GST Council revision*, *next NFHS round*, *next ICMR-NIN RDA revision*, *next Lancet Commission update*, *next patent or price change*.
@@ -513,6 +519,14 @@ Every concept is exactly one of three kinds. The kind determines its treatment, 
 - **S41** — the 40% GST demerit slab on carbonated and caffeinated beverages (22 September 2025)
 
 Every concept derived from these carries `review.stability: short` and an event trigger. Everything else in the Introductory layer is genuinely durable, which is what makes writing it first the right decision.
+
+**Settled science, and why `empirical` accepts a textbook.** Added 23 September 2026, at the reader's direction, when Book 0 Part E was inventoried. Parts A to D are mathematics and Part F is reading, so until then every concept was either rebuildable from the floor or a decision some body took. Part E is the first that is neither. A plasma membrane is not reconstructible from arithmetic, so the concept cannot be `derivable` — §3 means that word literally. It is also not a finding with an effect size, so requiring `primary` would mean citing a research paper for the existence of the cell, which is worse scholarship than citing a canonical text and produces exactly the citation nobody checks.
+
+So `textbook` is now an accepted kind on an `empirical` concept, and the discipline moves from the build to the author:
+
+- **A claim with a number attached to it is not settled science.** An effect size, a risk, a dose-response, a prevalence, a measured rate — any of these still needs `primary` or `systematic_review`. A textbook anchor under a measured quantity is the failure this widening makes possible, and the audit is what has to catch it, because no mechanical check can tell the two apart.
+- **Everything else about `empirical` is unchanged.** Stability stays medium, the review clock stays two to three years, and §7b's block on an unopened source applies in full: a textbook anchor that nobody opened blocks exactly as a primary one does.
+- **Part E carries the first worked examples of the split.** The structure of a cell membrane is settled and takes a textbook. Atwater's 4/9/4 is `institutional`, because a body adopted those rounded values and can revise them. Resting metabolic rate and the thermic effect of food are measured, and take primary evidence.
 
 **Consistency is enforced.** The build rejects a record whose `definition.references[].kind` is incompatible with its `concept_type`, and one whose `review.stability` does not match its type.
 
