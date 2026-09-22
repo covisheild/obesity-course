@@ -1,0 +1,482 @@
+concept_id: B0-R0-C14
+subject: B0
+rung: 0
+sequence: 14
+name: 'Body-size units: kg, m, cm and kg/m^2'
+concept_type: derivable
+clusters:
+- measurement-inference
+- body-and-person
+ground_floor_deps: []
+concept_deps:
+- B0-R0-C05
+- B0-R0-C06
+definition:
+  text: |
+    The kilogram, written kg, is the SI base unit of mass. The metre, written m, is the SI base
+    unit of length. A centimetre, written cm, is one hundredth of a metre, so one metre is 100 cm.
+
+    Dividing a mass in kilograms by the square of a length in metres gives a quantity whose unit is
+    the kilogram per metre squared, written kg/m^2. This is a derived unit: it is built from base
+    units by division and by raising a base unit to a power.
+
+    Because the length in the denominator is squared, the numerical value of the index depends on
+    the unit chosen for that length, by the square of the conversion factor between the two units.
+    A length entered in centimetres rather than metres therefore divides the value by 10^4.
+
+    The index is a number together with its unit. Nothing in its construction states which values
+    are high or low. That is a separate decision, made by a body rather than by the arithmetic.
+  references:
+  - citekey: openstax_prealgebra_2e
+    kind: textbook
+    locator: ch. 10, Polynomials, integer exponents and scientific notation
+    verified:
+      resolved_id: PENDING
+      opened: true
+      claim_located: false
+      checked_on: '2026-09-22'
+      note: |-
+        Not opened from this authoring environment. The anchor wanted is a school-level chapter on
+        index notation and on squaring a quantity, which is what the denominator of this index
+        does. The content is a derivation the reader checks with a calculator, so nothing here
+        rests on the anchor; it stays in the citation backlog until somebody with library access
+        opens the chapter and fills in the locator.
+simplified_explanation: |
+  Two units first, and you have met the idea behind both.
+
+  Mass is measured in kilograms, written kg. Length is measured in metres, written m. A centimetre,
+  written cm, is one hundredth of a metre. So 100 cm make one metre, and any height in centimetres
+  becomes metres when you divide by 100.
+
+  Now the index. Take a mass in kilograms. Take a height in metres and multiply it by itself, which
+  is the squaring you met in the section on powers. Divide the first by the second.
+
+  The answer is not a bare number. It carries a unit, and the unit comes out of the division:
+  kilograms on top, metres times metres underneath. You write it kg/m^2 and you say it kilograms
+  per metre squared.
+
+  That is a derived unit. It was not handed down. It was built out of two base units by dividing
+  one by the other and squaring one of them on the way.
+
+  Two warnings come with it, and the first is the expensive one.
+
+  The height must be in metres. Put centimetres in and the answer is not slightly off. It is ten
+  thousand times too small, because the squaring squares the mistake as well.
+
+  And the number this gives you does not mean anything on its own. It is an amount with a unit,
+  like a price or a distance. Where the line falls between one value and another is a decision
+  somebody made, and this section does not make it.
+illustration:
+  body: |
+    Work the wrong one first. You will meet it in a spreadsheet long before you meet it in a book.
+
+    A person weighs 70 kg and stands 168 cm tall. The height is in centimetres, which is how a
+    clinic form usually collects it. Square it as it stands and divide.
+
+    ```working
+        168 times 168 = 28,224
+    ```
+
+    Now divide the 70 by that. The answer is 0.00248, and the unit that falls out of the division is
+    kilograms per centimetre squared, not kilograms per metre squared.
+
+    Now do it properly. Put the height into metres first.
+
+    ```working
+        168 divided by 100 = 1.68
+        1.68 times 1.68 = 2.8224
+        70 divided by 2.8224 = 24.8
+    ```
+
+    24.8 kg/m^2. Say it out loud as kilograms per metre squared, because the unit is what tells you
+    the first answer was not an answer at all.
+
+    Put the two denominators side by side and the size of the error stops being a surprise.
+
+    ```working
+        28,224 divided by 2.8224 = 10,000
+        24.8 divided by 10,000 = 0.00248
+    ```
+
+    One hundred centimetres in a metre, and the denominator is squared, so the mistake is squared
+    too.
+
+    ```working
+        100 times 100 = 10,000
+    ```
+
+    An error of ten thousand times is so large that it does not look like an arithmetic slip. It
+    looks like a different quantity altogether, which is exactly why it survives a read-through.
+
+    Now the second thing the square does, and it is not a mistake this time. Take a shape and make
+    every length twice as long, keeping everything else the same. Mass goes with volume, and volume
+    has three lengths in it, so the mass goes up by 2 times 2 times 2.
+
+    ```working
+        2 times 2 times 2 = 8
+    ```
+
+    The denominator has only two lengths in it.
+
+    ```working
+        2 times 2 = 4
+    ```
+
+    So the index itself goes up.
+
+    ```working
+        8 divided by 4 = 2
+    ```
+
+    Twice the index, from the same shape at a different size. Dividing by the square of a height
+    does not remove size from the number. It removes some of it, and a squared denominator is a
+    choice somebody made rather than a law you can check.
+
+    One line of grounding for the units themselves. The metre and the kilogram are two of the seven
+    base units of the SI. Every other unit, this one included, is a product of powers of those base
+    units.
+  analogy_breaks_when: |
+    The doubling argument holds only while the shape and the density stay the same. Real bodies are
+    not scaled copies of each other. The factor of 2 is what the geometry alone gives you, and not
+    a prediction about any person.
+
+    The ten-thousand check holds only for centimetres against metres. A height in inches, or a mass
+    in pounds, carries a different factor. Work that one out the same way rather than reusing this
+    one.
+
+    And the arithmetic here is exact while the two numbers going in are not. A weight taken with
+    shoes on, or a height measured without a wall, moves the answer more than any rounding in the
+    sum does.
+  numbers:
+  - value: '7'
+    unit: SI base units, of which the metre and the kilogram are two, and from which derived units
+      are built as products of powers
+    citekey: bipm_si
+    quote: seven base units and derived units defined as products of powers of the base units
+must_know:
+- point: |
+    A height in centimetres does not give a slightly wrong index. It gives one ten thousand times
+    too small, because the denominator squares the error. If a value lands in the thousandths, stop
+    and look at the height column rather than at the person.
+  kind: trap
+  bearing: methodological
+- point: |
+    Convert the height to metres before anything else, by dividing by 100. Do it as a separate
+    written line, not inside the same keystroke as the division, so you can see it was done.
+  kind: move
+  bearing: clinical
+- point: |
+    Say the unit with the number: 24.8 kilograms per metre squared. The unit is what catches the
+    centimetre error, and a figure quoted without it cannot be checked by anybody who hears it.
+  kind: move
+  bearing: teaching
+- point: |
+    In a dataset, find out which unit height was collected in before you compute a single row. A
+    column holding some heights in metres and some in centimetres gives two groups of values ten
+    thousand apart. An average taken across both is a number about nothing.
+  kind: consequence
+  bearing: methodological
+- point: |
+    Dividing by the square of a height does not take size out of the number. Scale a shape up and
+    the index rises with it. So the index is not a shape measurement that happens to be written in
+    kilograms per metre squared.
+  kind: misconception
+  bearing: methodological
+- point: |
+    The arithmetic stops at the number and its unit. What counts as a high value is not in it.
+    Somebody decided that, and decisions like that get revised. Whether the same line should be
+    drawn for Indian populations is a live question. The subject books take it up with the
+    statements in hand. Quote a cut-off only with whose it is and when it was set.
+  kind: boundary
+  bearing: policy
+exercises:
+- type: calculation
+  prompt: |
+    A person weighs 64 kg and is 155 cm tall. Work out the index, showing the height conversion as
+    its own line, and state the unit. Then write one sentence saying what your answer does not tell
+    you.
+  answer: |
+    Height into metres first.
+
+    ```working
+        155 divided by 100 = 1.55
+    ```
+
+    Square it.
+
+    ```working
+        1.55 times 1.55 = 2.4025
+    ```
+
+    Divide the mass by that.
+
+    ```working
+        64 divided by 2.4025 = 26.6
+    ```
+
+    26.6 kilograms per metre squared.
+
+    What it does not tell you: anything about this person's health. The number is a mass divided by
+    a squared length. Turning it into a judgement needs a cut-off, and a cut-off is a decision taken
+    by some body, on some date, for some population. Book 0 gives you the arithmetic and the unit.
+    The subject books take up whose line it is and whether it holds here.
+  confidence_first: true
+- type: teaching
+  prompt: |
+    A first-year resident has ten minutes and a whiteboard. They ask why the height is squared and
+    why it matters that the answer is in kilograms per metre squared. Explain it so they could
+    reconstruct it afterwards, and give them one error to watch for.
+  answer: |
+    Start with the unit, not the formula. Write kg on the board, then m times m underneath it, and
+    say that dividing one quantity by another divides their units too. That is where kg/m^2 comes
+    from. It was built, not chosen from a list.
+
+    Then square it on purpose. Draw a shape, then the same shape with every length doubled. Mass
+    follows volume and volume carries three lengths, so mass goes up eight times. The denominator
+    carries two lengths, so it goes up four times. Eight divided by four is two: the index doubles
+    for the same shape at a different size. That is the honest statement of what the square does
+    and does not do.
+
+    The error to watch for is the centimetre. Show it on the board once.
+
+    ```working
+        100 times 100 = 10,000
+    ```
+
+    Tell them the value comes out ten thousand times too small. It looks nothing like a small slip,
+    so it usually survives a read-through of a spreadsheet.
+
+    Then stop. Do not go on to what any value means. That is a separate decision, taken by a named
+    body on a named date. A resident who learns a cut-off as though it fell out of the arithmetic
+    has learned something to unlearn later.
+quantitative: true
+practice:
+- level: 1
+  prompt: |
+    Work each of these out. Square the second number, then divide the first by it.
+
+    ```working
+        72 and 1.8
+        81 and 1.5
+        45 and 1.5
+    ```
+  answer: |
+    Square first, divide second.
+
+    ```working
+        1.8 times 1.8 = 3.24
+        72 divided by 3.24 = 22.2
+    ```
+
+    ```working
+        1.5 times 1.5 = 2.25
+        81 divided by 2.25 = 36
+    ```
+
+    ```working
+        1.5 times 1.5 = 2.25
+        45 divided by 2.25 = 20
+    ```
+
+    The last two share a denominator, so the answers are in the same ratio as the two masses. That
+    is worth noticing: with the height fixed, the index moves in step with the mass.
+- level: 2
+  prompt: |
+    Turn each of these lengths into metres.
+
+    ```working
+        168 cm      155 cm      180 cm      96 cm
+    ```
+  answer: |
+    One metre is 100 cm, so divide each by 100.
+
+    ```working
+        168 divided by 100 = 1.68
+        155 divided by 100 = 1.55
+        180 divided by 100 = 1.8
+        96 divided by 100 = 0.96
+    ```
+
+    The decimal point moved two places left every time, which is what dividing by 100 does.
+- level: 3
+  prompt: |
+    A quantity is divided by the square of a length. Somebody supplies the length in centimetres
+    when metres were wanted. By what factor is the answer wrong, and in which direction? Show the
+    step that produces the factor.
+  answer: |
+    One metre is 100 cm, so the number in centimetres is 100 times the number in metres. The
+    denominator is squared, so the factor is squared with it.
+
+    ```working
+        100 times 100 = 10,000
+    ```
+
+    The denominator comes out 10,000 times too big, so the answer comes out 10,000 times too small.
+
+    Say the direction out loud. A bigger denominator makes a smaller answer, every time.
+- level: 4
+  prompt: |
+    A person weighs 58 kg and is 1.52 m tall. Work out the index and give it with its unit, showing
+    every line.
+  answer: |
+    The height is already in metres, so square it.
+
+    ```working
+        1.52 times 1.52 = 2.3104
+    ```
+
+    Divide the mass by that.
+
+    ```working
+        58 divided by 2.3104 = 25.1
+    ```
+
+    25.1 kilograms per metre squared.
+
+    Keep both parts of the answer. The number without the unit could be anything, and the unit is
+    how anybody checks you used metres.
+- level: 5
+  prompt: |
+    A record gives an index of 27.0 kg/m^2 and a height of 1.60 m, but the mass is missing. Work out
+    the mass in kilograms, showing every line.
+  answer: |
+    This runs the move backwards. The index was the mass divided by the squared height, so the mass
+    is the index times the squared height.
+
+    Square the height.
+
+    ```working
+        1.60 times 1.60 = 2.56
+    ```
+
+    Multiply.
+
+    ```working
+        27.0 times 2.56 = 69.12
+    ```
+
+    About 69 kilograms. Write 69, not 69.12: the height was given to three digits and the index to
+    three, so a fourth digit in the answer is invented.
+
+    Check the direction. Multiplying undoes dividing, so the mass must come out larger than the
+    index here, and it does.
+- level: 7
+  prompt: |
+    Here is a worked answer. Find the step that broke.
+
+    ```working
+        a person weighs 65 kg and is 170 cm tall
+        170 divided by 100 = 1.7
+        65 divided by 1.7 = 38.2
+        so the index is 38.2 kg/m^2
+    ```
+  answer: |
+    The conversion on line two is right. The division on line three is by the height, not by the
+    square of the height.
+
+    Square it first.
+
+    ```working
+        1.7 times 1.7 = 2.89
+        65 divided by 2.89 = 22.5
+    ```
+
+    22.5 kilograms per metre squared, not 38.2.
+
+    Look at the unit the broken working actually produced. Kilograms divided by metres is kg/m, and
+    the last line claims kg/m^2. The label was written from memory rather than read off the
+    division.
+
+    Why it looks reasonable: the centimetre conversion was done, which is the step everybody warns
+    about, so the working feels careful. The answer is a two-digit number of the ordinary size, so
+    nothing about it looks alarming. Only the unit gives it away.
+- level: 8
+  prompt: |
+    Here is a worked answer. Find the step that broke.
+
+    ```working
+        a person weighs 62 kg and is 158 cm tall
+        158 times 158 = 24,964
+        62 divided by 24,964 = 0.00248
+        that is far too small, so multiply by 100
+        the index is 0.248 kg/m^2
+    ```
+  answer: |
+    Two things broke, and the second one hides the first.
+
+    The height was never converted. Line two squares 158 centimetres, so line three is kilograms
+    per centimetre squared, whatever the last line calls it.
+
+    Then the repair used the wrong factor. There are 100 centimetres in a metre, but the
+    denominator is squared, so the factor is 100 times 100.
+
+    ```working
+        100 times 100 = 10,000
+    ```
+
+    Do it from the start instead of patching it.
+
+    ```working
+        158 divided by 100 = 1.58
+        1.58 times 1.58 = 2.4964
+        62 divided by 2.4964 = 24.8
+    ```
+
+    24.8 kilograms per metre squared. The patched answer, 0.248, is a hundred times too small.
+
+    Why it looks reasonable: the working noticed its own error and did something about it, which
+    reads as care. A correction applied in the right direction feels finished even when the size of
+    it is wrong. And 0.248 still looks like a number from a calculation rather than an absurdity,
+    where 0.00248 did not.
+
+    The habit that prevents it: convert the unit before the arithmetic, never after it.
+- level: 9
+  prompt: |
+    A colleague sends you this line about a survey.
+
+    > Our height column turned out to be in centimetres, and the index column looks wrong because
+    > of it. It is only a scaling problem, so we can multiply the whole column by 100 and move on.
+
+    Decide what to compute, compute it, and say what your answer does not establish.
+  answer: |
+    What to compute: the factor that a centimetre height actually puts into the index.
+
+    The height enters the denominator squared, so the factor is squared.
+
+    ```working
+        100 times 100 = 10,000
+    ```
+
+    The values are 10,000 times too small, not 100 times. Multiplying the column by 100 leaves
+    every value a hundred times too small. The repaired figures will look far more plausible than
+    the ones they started with. That is the dangerous part of the proposal.
+
+    What this does not establish. It does not establish that every row was in centimetres. A column
+    filled in by different people can hold both units at once. One multiplication applied to all of
+    it repairs some rows and ruins the rest. Before multiplying anything, look at the heights
+    themselves and see which unit each row is in.
+
+    It also says nothing about whether the heights and masses are any good. Fixing a unit fixes a
+    unit. It does not make a badly taken measurement into a good one.
+retrieval_items:
+- q: What unit does dividing a mass in kilograms by the square of a height in metres give, and what
+    kind of unit is that?
+  a: Kilograms per metre squared, written kg/m^2. It is a derived unit, built from base units by
+    dividing and by squaring one of them.
+- q: A height is entered in centimetres instead of metres. What happens to the index, and by how
+    much?
+  a: It comes out 10,000 times too small, because one metre is 100 cm and the denominator is
+    squared, so 100 times 100 enters the sum.
+- q: Does the value of the index tell you anything on its own?
+  a: No. It is an amount with a unit. What counts as high is a decision taken by a body, on a date,
+    for a population, and the subject books are where that is taken up.
+provenance:
+  map_version_id: fc19c8bc-a216-4131-99fb-ebe3f19cec4a
+  outcome_refs:
+  - B0-B6
+  - S01-R1-O2
+review:
+  stability: long
+  trigger: '2031-09-22'
+  last_reviewed: '2026-09-22'
+status: drafted

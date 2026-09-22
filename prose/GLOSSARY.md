@@ -48,6 +48,8 @@ Sections A1 to A8. Same rule: before teaching one of these, use the plain words 
 | scientific notation | a number between one and ten, times a power of ten | B0-R0-C06 |
 | significant figures | the digits in a number that carry information about the quantity | B0-R0-C03 |
 | square root | the number which, multiplied by itself, gives you the one you started with | B0-R0-C06 |
+| SI | the international system of units, the one the world agreed to measure in | B0-R0-C09 |
+| NIST | the United States national measurement institute, which publishes the guide to the SI | B0-R0-C12 |
 
 **Two rows above this section now name the wrong record, and are not changed here.** With Part A
 written, document order puts the first use of **denominator** in `B0-R0-C02` and of **precision**

@@ -1528,7 +1528,23 @@ def main():
         path = os.path.join(OUT, f"{sid}.md")
         with open(path, "w", encoding="utf-8") as fh:
             fh.write(md + "\n")
-        stumbles = acronym_defects(md)
+        # Headings are labels, not teaching. Section 10 asks that a term be introduced where
+        # the reader first meets it in prose, and a heading naming the topic arrives before
+        # that by construction - "B1 · What a unit is, and the SI base units" reported SI as
+        # unexpanded even though the first sentence underneath expands it properly.
+        # Scan teaching prose only. Headings are labels that arrive before the sentence which
+        # introduces the term, and a reference list is bibliographic data where an acronym sits
+        # beside the full name it abbreviates. Both reported terms that the prose does explain.
+        body, in_refs = [], False
+        for l in md.split("\n"):
+            if l.startswith("### References ·"):
+                in_refs = True
+            elif l.startswith("#"):
+                in_refs = False
+            if not in_refs and not l.lstrip().startswith("#"):
+                body.append(l)
+        stumbles = [s for s in acronym_defects("\n".join(body))
+                    if not re.fullmatch(r"[IVXLC]+", s)]   # Schedule II is a numeral
         if stumbles:
             print(f"  [{sid}] used before anything expands them: {', '.join(stumbles)}")
         print(f"{sid}: {len(ids)} concepts ->", ", ".join(render(path, sid)) or "markdown only")

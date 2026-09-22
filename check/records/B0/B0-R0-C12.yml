@@ -1,0 +1,575 @@
+concept_id: B0-R0-C12
+subject: B0
+rung: 0
+sequence: 12
+name: 'Energy units: joule, kilojoule, calorie, kilocalorie'
+concept_type: institutional
+clusters:
+- measurement-inference
+- body-and-person
+ground_floor_deps: []
+concept_deps:
+- B0-R0-C03
+- B0-R0-C06
+definition:
+  text: |
+    The joule is the SI unit of energy. Within the SI the joule stands in a fixed relation to the
+    base units, written J = kg m^2 s^-2, where J is the joule, kg the kilogram, m the metre and s
+    the second.
+
+    A kilojoule is one thousand joules. The prefix kilo means one thousand.
+
+    The calorie is not an SI unit. Its size in joules is fixed by agreement, not by measurement,
+    and two agreements are in use at once. The thermochemical calorie is 4.184 joules exactly. The
+    International Table calorie, settled at the Fifth International Conference on the Properties
+    of Steam in July 1956, is 4.1868 joules.
+
+    A kilocalorie is one thousand calories. It is the calorie used to express the energy content
+    of foods, and in food writing the prefix kilo is usually dropped.
+  references:
+  - citekey: bipm_si
+    kind: instrument
+    locator: SI definition, the paragraph relating the joule to the base units
+    quote: J = kg m2 s-2
+    verified:
+      resolved_id: https://www.bipm.org/en/measurement-units
+      opened: true
+      claim_located: true
+      checked_on: '2026-09-22'
+      note: |
+        BIPM defines the SI, so this page is the instrument itself. The relation of the joule to
+        the base units is stated in the sentence that follows the list of defining constants.
+  - citekey: nist_sp811
+    kind: instrument
+    locator: Footnotes, the paragraph fixing the thermochemical calorie
+    quote: the thermochemical Btu, Btuth, is based on the thermochemical calorie, calth, where calth
+      = 4.184 J exactly
+    verified:
+      resolved_id: https://www.nist.gov/pml/special-publication-811/nist-guide-si-footnotes
+      opened: true
+      claim_located: true
+      checked_on: '2026-09-22'
+      note: |
+        The word exactly is the guide's own. A measured quantity does not come out exact, which is
+        what marks this value as a decision rather than a result.
+  - citekey: nist_sp811
+    kind: instrument
+    locator: Footnotes, the paragraph fixing the International Table calorie
+    quote: The Fifth International Conference on the Properties of Steam (London, July 1956) defined
+      the International Table calorie as 4.1868 J
+    verified:
+      resolved_id: https://www.nist.gov/pml/special-publication-811/nist-guide-si-footnotes
+      opened: true
+      claim_located: true
+      checked_on: '2026-09-22'
+      note: |
+        The guide names the meeting and the month, which is what makes this an institutional fact
+        with a date on it rather than a constant of nature.
+  - citekey: nist_sp811
+    kind: instrument
+    locator: Footnotes, the paragraph on the kilocalorie as the food unit
+    quote: which is the calorie used to express the energy content of foods. However, in practice,
+      the prefix
+    verified:
+      resolved_id: https://www.nist.gov/pml/special-publication-811/nist-guide-si-footnotes
+      opened: true
+      claim_located: true
+      checked_on: '2026-09-22'
+      note: |
+        The same sentence carries both claims this section needs: the kilocalorie is the food unit,
+        and the prefix kilo is usually left off in practice.
+simplified_explanation: |
+  Energy is measured, so energy has a unit. The SI unit is the joule.
+
+  One joule is a small amount. A school meal runs to more than a million of them, which is why you
+  almost never see a food figure written in joules. A thousand joules is one kilojoule. Kilo means
+  a thousand, here and everywhere else.
+
+  Now the calorie, and this is where the care is needed. The calorie is not part of the SI. Its
+  size was decided by committees, and two of them decided differently.
+
+  One committee fixed the thermochemical calorie at 4.184 joules. Another fixed the International
+  Table calorie at 4.1868 joules. Both numbers are exact, because both are decisions. Nobody went
+  to a laboratory and got 4.184. That is the whole difference between this section and the
+  arithmetic sections before it.
+
+  A kilocalorie is a thousand calories. It is the unit used for the energy in food.
+
+  And here is the habit that saves you. In food work people write calories when they mean
+  kilocalories. The American guide to the SI says so in as many words: the prefix kilo is usually
+  left off. So when a packet, a paper or a scheme document says calories, read kilocalories. Then
+  check the size of the number to be sure.
+illustration:
+  body: |
+    Start with the mistake, because it is the one waiting for you.
+
+    Open the National Food Security Act, 2013, and go to Schedule II. It sets nutritional
+    standards for meals. Find the row for lower primary classes. The hot cooked meal is set at 450.
+
+    Take that 450 as calories and turn it into joules.
+
+    ```working
+        450 times 4.184 = 1,882.8
+    ```
+
+    A meal of 1,882.8 joules. That is under two kilojoules, which is nothing at all. Something has
+    gone wrong, and it is not the arithmetic.
+
+    Go back to the table and read the head of the column instead of the number under it. It says
+    Calories, and then, in brackets, Kcal. The Act named its unit and you read past it.
+
+    So the meal is 450 kilocalories. Do it again properly, one line at a time.
+
+    ```working
+        450 kilocalories, first into calories
+        450 times 1,000 = 4,50,000
+        now into joules
+        4,50,000 times 4.184 = 18,82,800
+        and into kilojoules
+        18,82,800 divided by 1,000 = 1,882.8
+    ```
+
+    Look at the first answer and the last. The digits are the same and the unit is not. Kilocalories
+    to kilojoules uses the same 4.184 as calories to joules, because both sides of the sum were
+    multiplied by a thousand.
+
+    ```working
+        450 times 4.184 = 1,882.8
+    ```
+
+    Now the second thing, which nobody tells you and which you need the day you compare two papers.
+    Take the upper primary figure from the same table, 700 kilocalories, and convert it with each of
+    the two calories in turn.
+
+    ```working
+        700 times 4.184 = 2,928.8
+        700 times 4.1868 = 2,930.76
+    ```
+
+    Two answers, from one figure, both correct.
+
+    ```working
+        2,930.76 minus 2,928.8 = 1.96
+    ```
+
+    Just under two kilojoules apart. The gap is in the fourth digit. The Act gave you two digits, so
+    both answers round to 2,900 kilojoules and the choice made no difference here.
+
+    It makes a difference the moment you are checking somebody else's conversion digit for digit. If
+    their kilojoule figure and yours part company in the fourth digit, neither of you has slipped.
+    You used different calories.
+  analogy_breaks_when: |
+    The two conversion factors are exact and they stay exact. They are definitions, so no experiment
+    can revise them and only a standards body can replace them.
+
+    What a conversion cannot do is improve the number you started with. It renames an amount. Every
+    error in the figure you were given is still there afterwards, carried across unchanged.
+
+    And the size check in this example works because a meal is a familiar quantity. It tells you
+    nothing where you have no feel for the size, which is most of a laboratory report.
+  numbers:
+  - value: '450'
+    unit: kilocalories per hot cooked meal, lower primary classes, Schedule II
+    citekey: nfsa_2013
+    quote: Lower primary classes Hot Cooked Meal 450 12
+  - value: '700'
+    unit: kilocalories per hot cooked meal, upper primary classes, Schedule II
+    citekey: nfsa_2013
+    quote: Upper primary classes Hot Cooked Meal 700 20
+  - value: Kcal
+    unit: the unit named in the head of the Schedule II energy column
+    citekey: nfsa_2013
+    quote: Calories (Kcal)
+  - value: '4.184'
+    unit: joules per thermochemical calorie, fixed by definition
+    citekey: nist_sp811
+    quote: calth = 4.184 J exactly
+    as_of: '2026-09-22'
+  - value: '4.1868'
+    unit: joules per International Table calorie, fixed in July 1956
+    citekey: nist_sp811
+    quote: defined the International Table calorie as 4.1868 J
+    as_of: '2026-09-22'
+must_know:
+- point: |
+    Nobody measured the calorie. Committees fixed it, and both of their values are exact by
+    definition. Treat a conversion factor as a decision you can look up and date. It is not a fact
+    about the world that a better experiment will sharpen.
+  kind: misconception
+  bearing: methodological
+  refs: [nist_sp811]
+- point: |
+    One thermochemical calorie is 4.184 joules. That is the factor to use unless a paper tells you
+    otherwise, and the same 4.184 turns kilocalories into kilojoules.
+  kind: number
+  bearing: methodological
+  refs: [nist_sp811]
+- point: |
+    A second calorie is in use. The International Table calorie is 4.1868 joules. Two papers can
+    report the same food in kilojoules and part company in the fourth digit. Check which calorie
+    each of them used before you tell either of them they are wrong.
+  kind: trap
+  bearing: methodological
+  refs: [nist_sp811]
+- point: |
+    When food material says calories, read kilocalories, because the prefix is usually left off in
+    practice. Then check the size. A meal in the hundreds is kilocalories. A meal in the hundreds
+    of joules is a reading error.
+  kind: move
+  bearing: clinical
+  refs: [nist_sp811]
+- point: |
+    Say the unit out loud with every energy figure you quote, in clinic and in a meeting. A factor
+    of a thousand hides inside a dropped prefix, and the number on its own cannot warn anybody.
+  kind: consequence
+  bearing: teaching
+- point: |
+    Converting a figure never improves it. The factor is exact, so every error you were handed
+    survives the conversion untouched. A two-digit figure written out to six digits after
+    conversion has gained nothing but the look of precision.
+  kind: boundary
+  bearing: methodological
+- point: |
+    Schedule II of the National Food Security Act, 2013 heads its energy column Calories, with Kcal
+    in brackets. Quote that unit whenever you quote the figure under it, because the figure alone
+    can be read two ways.
+  kind: india_deviation
+  bearing: policy
+  refs: [nfsa_2013]
+- point: |
+    Nothing here tells you what an Indian food label is required to carry. That sits in a labelling
+    regulation, and this course does not hold one. Say so plainly rather than filling the gap, and
+    open the regulation before you quote it in a committee.
+  kind: boundary
+  bearing: policy
+exercises:
+- type: critique
+  prompt: |
+    Here is a line from a draft teaching note.
+
+    > Careful measurement has established that one calorie is equal to 4.184 joules.
+
+    Say what is wrong with it, and write the sentence you would put in its place.
+  answer: |
+    The word that fails is measurement. The value is a definition. A committee set the
+    thermochemical calorie at 4.184 joules exactly, and a different committee set the International
+    Table calorie at 4.1868 joules.
+
+    You can tell from the number itself. A measured quantity comes with a spread and gets sharper
+    as instruments improve. This one is exact and always was, because it was chosen.
+
+    The replacement sentence names the decision and leaves the door open.
+
+    > The thermochemical calorie is defined as 4.184 joules exactly. A second definition, the
+    > International Table calorie, is 4.1868 joules, so a paper should say which one it used.
+
+    One more thing follows. Nothing an experiment finds can change either figure. Only a standards
+    body can, which is why this section carries an as-of date and the arithmetic sections do not.
+- type: teaching
+  prompt: |
+    A journalist has three minutes and asks you what the energy number on a food packet actually
+    means. Explain it without jargon. Give one quotable sentence, and say plainly how much the
+    two-calorie business matters to a reader.
+  answer: |
+    Answer first, in their words.
+
+    > The number on the packet is in kilocalories, even when the packet just says calories. One
+    > kilocalorie is 4.184 kilojoules, and that factor is fixed by agreement rather than measured.
+
+    Then the part they asked about without knowing it. There are two calories in use and they differ
+    by about seven parts in ten thousand. For a reader looking at a packet that difference is
+    invisible. It only shows up when two published figures are compared to four digits.
+
+    Say the confidence out loud. The conversion is exact and not in doubt. What is worth doubting is
+    the energy figure itself, and that is a different question from the unit.
+
+    What not to say: that one of the two calories is the right one. Neither is. They are two
+    decisions, and a paper should tell you which it used.
+quantitative: true
+practice:
+- level: 1
+  prompt: |
+    Write each of these as the other unit asks for.
+
+    ```working
+        1,000 joules into kilojoules
+        2.5 kilojoules into joules
+        3 kilocalories into calories
+        7,000 calories into kilocalories
+    ```
+  answer: |
+    Kilo means a thousand, so every line here is a multiplication or a division by 1,000.
+
+    ```working
+        1,000 divided by 1,000 = 1
+        2.5 times 1,000 = 2,500
+        3 times 1,000 = 3,000
+        7,000 divided by 1,000 = 7
+    ```
+
+    Going to the bigger unit divides. Going to the smaller unit multiplies. Nothing about the amount
+    of energy changed on any line.
+- level: 2
+  prompt: |
+    Turn each of these into joules, using the thermochemical calorie.
+
+    ```working
+        1      10      250      1,500
+    ```
+  answer: |
+    Multiply each by 4.184.
+
+    ```working
+        1 times 4.184 = 4.184
+        10 times 4.184 = 41.84
+        250 times 4.184 = 1,046
+        1,500 times 4.184 = 6,276
+    ```
+
+    Every answer is bigger than the number you started with. A joule is smaller than a calorie, so
+    it takes more of them to hold the same energy.
+- level: 3
+  prompt: |
+    Now go the other way. Turn each of these joule figures into thermochemical calories.
+
+    ```working
+        8.368      2,092      4,184
+    ```
+  answer: |
+    Divide each by 4.184, because you are going back the way you came.
+
+    ```working
+        8.368 divided by 4.184 = 2
+        2,092 divided by 4.184 = 500
+        4,184 divided by 4.184 = 1,000
+    ```
+
+    Check the direction on the last one. Four thousand joules is a thousand calories, so the
+    calorie figure is the smaller of the two. If your answer came out larger, you multiplied where
+    you should have divided.
+- level: 4
+  prompt: |
+    Schedule II of the National Food Security Act, 2013 sets the hot cooked meal for lower primary
+    classes at 450 kilocalories. Give that figure in kilojoules, using the thermochemical calorie,
+    and keep the unit on the answer. Then say how many digits you would write down.
+  answer: |
+    Kilocalories to kilojoules uses the same factor as calories to joules.
+
+    ```working
+        450 times 4.184 = 1,882.8
+    ```
+
+    So 1,882.8 kilojoules.
+
+    Now the digits. The Act gives 450, which carries two digits you can trust. Writing 1,882.8
+    claims five. Write 1,900 kilojoules, or say about 1,900 kilojoules a meal.
+
+    Keep the label with it. Kilojoules of food energy per hot cooked meal, not per child per day.
+  refs: [nfsa_2013]
+- level: 5
+  prompt: |
+    The same Schedule sets the upper primary hot cooked meal at 700 kilocalories. Convert it twice,
+    once with the thermochemical calorie and once with the International Table calorie. Say how far
+    apart the two answers are, in kilojoules and as a share of the figure.
+  answer: |
+    Once each way.
+
+    ```working
+        700 times 4.184 = 2,928.8
+        700 times 4.1868 = 2,930.76
+    ```
+
+    The gap between them.
+
+    ```working
+        2,930.76 minus 2,928.8 = 1.96
+    ```
+
+    Just under two kilojoules. As a share of the figure, divide the gap by either answer.
+
+    ```working
+        1.96 divided by 2,928.8 = 0.00067
+    ```
+
+    About seven parts in ten thousand, which is under a tenth of one per cent.
+
+    Both answers are right. Which one you report depends on which calorie you say you used, and the
+    Act's two digits cannot tell the two apart.
+  refs: [nfsa_2013]
+- level: 5
+  prompt: |
+    A figure of 2,000 kilojoules is handed to you and the meeting wants it in kilocalories. Convert
+    it, then say which of the two calorie definitions could have changed your answer at two digits.
+  answer: |
+    Divide, because kilojoules are the smaller unit and the count must come down.
+
+    ```working
+        2,000 divided by 4.184 = 478.0
+    ```
+
+    So 478 kilocalories, or about 480 with the digits the figure deserves.
+
+    Now the same sum with the other calorie.
+
+    ```working
+        2,000 divided by 4.1868 = 477.7
+    ```
+
+    478.0 one way and 477.7 the other. At two digits both are 480 kilocalories, so the choice of
+    calorie could not have changed the answer you say out loud. Note which one you used anyway, so
+    somebody checking you to four digits knows.
+- level: 6
+  prompt: |
+    A note gives a day's energy figure as 8,400 kilojoules. Turn it into kilocalories, then turn
+    your answer back into kilojoules and say whether you get the number you started with.
+  answer: |
+    Into kilocalories first.
+
+    ```working
+        8,400 divided by 4.184 = 2,007.6
+    ```
+
+    Round it the way a four-digit figure allows, and you would report about 2,000 kilocalories.
+
+    Now back again, starting from the rounded figure.
+
+    ```working
+        2,000 times 4.184 = 8,368
+    ```
+
+    Eight thousand three hundred and sixty-eight against the 8,400 you began with. Not the same
+    number.
+
+    The conversion did not lose anything. The rounding did. Convert once, from the figure you were
+    given, and never chain a conversion onto a rounded answer.
+- level: 7
+  prompt: |
+    Here is a worked answer. Find the step that broke.
+
+    ```working
+        a meal is set at 450 kilocalories
+        one calorie is 4.184 joules
+        450 divided by 4.184 = 107.6
+        so the meal is 107.6 kilojoules
+    ```
+  answer: |
+    The third line divides where it should multiply.
+
+    A kilojoule is smaller than a kilocalorie, so the same energy needs more of them. The number has
+    to go up, and this one went down.
+
+    ```working
+        450 times 4.184 = 1,882.8
+    ```
+
+    One thousand eight hundred and eighty-three kilojoules, not a hundred and eight.
+
+    Why it looks reasonable: the working names the right factor and uses it once, so it has the
+    shape of a finished conversion. Nothing in the digits shouts. Only the direction is wrong, and
+    direction is the one thing the number cannot tell you.
+
+    The habit that prevents it: before you touch the calculator, say which unit is the smaller one
+    and whether your answer should grow or shrink.
+- level: 8
+  prompt: |
+    Here is a worked answer. Find the step that broke.
+
+    ```working
+        a portion is 250 kilocalories
+        one calorie is 4.184 joules
+        250 times 4.184 = 1,046
+        so the portion is 1,046 joules
+    ```
+  answer: |
+    The arithmetic on line three is right and the unit on line four is wrong. The 250 was in
+    kilocalories and the factor was applied as though it were in calories.
+
+    Take it in two steps.
+
+    ```working
+        250 times 1,000 = 2,50,000
+        2,50,000 times 4.184 = 10,46,000
+    ```
+
+    Ten lakh forty-six thousand joules, which is 1,046 kilojoules. The digits 1,046 were right all
+    along. The prefix was dropped.
+
+    Why it looks reasonable: the answer carries a plausible number and a real unit, and the
+    multiplication checks out if you redo it. A prefix error never shows up in the digits. It shows
+    up only as a factor of a thousand, and you have to be looking for it.
+
+    The habit that prevents it: write the prefix into every line of the working, not just the first.
+- level: 9
+  prompt: |
+    A colleague sends you this line.
+
+    > The two papers disagree. One gives the energy content of the food as 2,510 kilojoules. The
+    > other gives 600 kilocalories. So at least one of them is wrong.
+
+    Decide what to compute, compute it, and say what your answer does not establish.
+  answer: |
+    What to compute: put the two figures in the same unit before deciding anything.
+
+    ```working
+        600 times 4.184 = 2,510.4
+    ```
+
+    Two thousand five hundred and ten kilojoules, against the 2,510 in the other paper. The two
+    papers agree exactly at the digits they printed. Nobody is wrong.
+
+    What this does not establish. The agreement is arithmetic, not evidence. Both papers may be
+    quoting one original measurement, and a conversion between two units cannot tell you whether
+    that measurement was any good. It does not tell you the two papers measured the same food, or
+    prepared it the same way, or counted the same parts of it.
+
+    Two numbers agreeing after a conversion tells you the arithmetic is consistent. It says nothing
+    about either number being true.
+- level: 10
+  prompt: |
+    In a planning meeting somebody says this.
+
+    > Their dataset is in kilojoules and ours is in kilocalories, so the two cannot be compared.
+    > We would have to collect ours again.
+
+    Decide what to compute, compute it, and say what your answer does not establish.
+  answer: |
+    What to compute: whether the unit is the obstacle. Take a figure in one form and put it in the
+    other, then reverse it.
+
+    ```working
+        500 times 4.184 = 2,092
+        2,092 divided by 4.184 = 500
+    ```
+
+    The number came back unchanged. The conversion factor is exact, so moving between kilocalories
+    and kilojoules loses nothing at all. No data need collecting again for this reason, and the
+    proposal in the room would spend money on a rename.
+
+    What this does not establish. It does not show that the two datasets can be compared. Two sets
+    of energy figures can differ because different foods were sampled. They can differ because the
+    energy was worked out by different methods. No conversion touches either of those.
+
+    Say both halves out loud in the meeting. The unit is not the problem. Whether the two sets
+    measured the same thing still is, and that is the question worth the money.
+retrieval_items:
+- q: How many joules is a thermochemical calorie, and was that figure measured or decided?
+  a: 4.184 joules, exactly, and it was decided. It is a definition fixed by a standards body, not a
+    laboratory result that could be sharpened.
+- q: What are the two calories in use, and how far apart are they?
+  a: The thermochemical calorie at 4.184 joules and the International Table calorie at 4.1868
+    joules. They differ by about seven parts in ten thousand, so the choice shows from the fourth
+    digit onwards.
+- q: A food document says calories. What unit is that likely to be, and how do you check?
+  a: Kilocalories, because the prefix kilo is usually left off in food writing. Check by size, and
+    by reading the head of the column rather than the number under it.
+provenance:
+  map_version_id: fc19c8bc-a216-4131-99fb-ebe3f19cec4a
+  outcome_refs:
+  - B0-B4
+  - S01-R1-O2
+review:
+  stability: short
+  trigger: next CGPM revision of the SI, or the next revision of NIST Special Publication 811
+  as_of: '2026-09-22'
+  last_reviewed: '2026-09-22'
+status: drafted
