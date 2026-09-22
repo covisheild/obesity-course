@@ -26,6 +26,18 @@ definition:
 
     A kilocalorie is one thousand calories. It is the calorie used to express the energy content
     of foods, and in food writing the prefix kilo is usually dropped.
+
+    In India the energy on a pre-packaged food label is declared in kilocalories. Regulation
+    5(3)(b) of the Food Safety and Standards (Labelling and Display) Regulations, 2020 requires
+    the label to carry the energy value in kcal. That figure is given for every 100 g or 100 ml,
+    and again per serve. The same clause requires the per-serve share of the Recommended Dietary
+    Allowance, worked out on a basis of 2000 kcal of energy a day. Those regulations require no
+    kilojoule figure anywhere.
+
+    Regulation 5(3)(e)(i) of the same regulations fixes the factors by which the declared energy
+    is calculated rather than measured. They are: carbohydrate 4 kcal/g, polyols other than
+    erythritol 2 kcal/g, erythritol 0 kcal/g, protein 4 kcal/g, fat 9 kcal/g, alcohol 7 kcal/g,
+    organic acid 3 kcal/g and dietary fibre 2 kcal/g.
   references:
   - citekey: bipm_si
     kind: instrument
@@ -78,6 +90,59 @@ definition:
       note: |
         The same sentence carries both claims this section needs: the kilocalorie is the food unit,
         and the prefix kilo is usually left off in practice.
+  - citekey: fssai_labelling_2020
+    kind: instrument
+    locator: Regulation 5(3)(b), nutritional information to be given on the label
+    quote: per serve percentage (%) contribution to Recommended Dietary Allowance calculated on
+      the basis of 2000kcal energy
+    verified:
+      resolved_id: https://www.fssai.gov.in/upload/uploadfiles/files/Comp_Labelling%20Display_Version%20VIII_09_09_2025.pdf
+      opened: true
+      claim_located: true
+      checked_on: '2026-09-22'
+      note: |
+        Compendium Version-VIII, 09 September 2025. The clause names the basis for the
+        percentage figure in kilocalories, which is what fixes the unit the label works in.
+  - citekey: fssai_labelling_2020
+    kind: instrument
+    locator: Regulation 5(3)(b)(i), the energy line of the nutritional information panel
+    quote: (i) energy value (kcal);
+    verified:
+      resolved_id: https://www.fssai.gov.in/upload/uploadfiles/files/Comp_Labelling%20Display_Version%20VIII_09_09_2025.pdf
+      opened: true
+      claim_located: true
+      checked_on: '2026-09-22'
+      note: |
+        The unit is written into the requirement itself. The regulations were searched for
+        kilojoule and for kJ, and the panel is nowhere required to carry either.
+  - citekey: fssai_labelling_2020
+    kind: instrument
+    locator: Regulation 5(3)(e)(i), Calculation of Energy, opening line
+    quote: 'Calculation of Energy: The amount of energy to be listed should be calculated by
+      using the following conversion factors'
+    verified:
+      resolved_id: https://www.fssai.gov.in/upload/uploadfiles/files/Comp_Labelling%20Display_Version%20VIII_09_09_2025.pdf
+      opened: true
+      claim_located: true
+      checked_on: '2026-09-22'
+      note: |
+        The word is calculated. The declared energy on an Indian label is arrived at by
+        arithmetic on the grams, not by burning the food, and the clause says so.
+  - citekey: fssai_labelling_2020
+    kind: instrument
+    locator: Regulation 5(3)(e)(i), the table of conversion factors
+    quote: (A) Carbohydrates 4 kcal/g (B) Polyols except Erythritol 2 kcal/g (C) Erythritol 0kcal/g
+      (D) Protein 4 kcal/g (E) Fat 9 kcal/g (F) Alcohol (Ethanol) 7 kcal/g (G) Organic acid 3
+      kcal/g (H)Dietary fibre 2kcal/g
+    verified:
+      resolved_id: https://www.fssai.gov.in/upload/uploadfiles/files/Comp_Labelling%20Display_Version%20VIII_09_09_2025.pdf
+      opened: true
+      claim_located: true
+      checked_on: '2026-09-22'
+      note: |
+        All eight factors are quoted together because they sit in one table and a reader
+        recomputing a label needs the whole of it. The spacing in the source is irregular, so
+        the quote is given as the words run when the whitespace is collapsed.
 simplified_explanation: |
   Energy is measured, so energy has a unit. The SI unit is the joule.
 
@@ -237,11 +302,22 @@ must_know:
   bearing: policy
   refs: [nfsa_2013]
 - point: |
-    Nothing here tells you what an Indian food label is required to carry. That sits in a labelling
-    regulation, and this course does not hold one. Say so plainly rather than filling the gap, and
-    open the regulation before you quote it in a committee.
-  kind: boundary
+    An Indian food packet must carry its energy in kilocalories. The rule is regulation 5(3)(b)
+    of the labelling regulations of 2020. It asks for the energy value in kcal, for every 100 g
+    or 100 ml and per serve. It asks for no kilojoule figure at all. So the SI unit of energy is
+    the one Indian law does not want. That is why you have to be able to convert.
+  kind: india_deviation
   bearing: policy
+  refs: [fssai_labelling_2020]
+- point: |
+    The energy printed on an Indian label is worked out, not measured. Regulation 5(3)(e)(i) of
+    the same 2020 rules fixes the factors. Carbohydrate and protein are 4 kcal/g each, fat is 9
+    kcal/g and alcohol is 7 kcal/g. So take the grams printed on the label. Multiply each by its
+    factor and add them up. You have then checked the energy figure yourself, and a gap you
+    cannot explain is worth raising before you quote that label.
+  kind: misconception
+  bearing: methodological
+  refs: [fssai_labelling_2020]
 exercises:
 - type: critique
   prompt: |
@@ -442,6 +518,46 @@ practice:
 
     The conversion did not lose anything. The rounding did. Convert once, from the figure you were
     given, and never chain a conversion onto a rounded answer.
+- level: 6
+  prompt: |
+    A food packet gives, for every 100 g, 60 g of carbohydrate, 8 g of protein and 22 g of fat.
+
+    Regulation 5(3)(e)(i) of the labelling regulations of 2020 fixes the factors. Carbohydrate
+    is 4 kcal/g. Protein is 4 kcal/g. Fat is 9 kcal/g.
+
+    Work out the energy the label should declare for every 100 g. Then give the same figure in
+    kilojoules, using the thermochemical calorie.
+  answer: |
+    Take each part of the food in turn, grams times its factor.
+
+    ```working
+        60 times 4 = 240
+        8 times 4 = 32
+        22 times 9 = 198
+    ```
+
+    Now add the three together.
+
+    ```working
+        240 plus 32 plus 198 = 470
+    ```
+
+    So 470 kcal for every 100 g. That is the figure the label should carry, because the
+    regulation says the declared energy is worked out this way rather than measured.
+
+    Now into kilojoules, with the same 4.184 that turns kilocalories into kilojoules.
+
+    ```working
+        470 times 4.184 = 1,966.48
+    ```
+
+    Round it before you write it. The grams on the label carry two digits each, so the last
+    digits of 1,966.48 are not yours to keep. Report about 1,970 kilojoules for every 100 g.
+
+    Two things follow from this problem. You can check any Indian label's energy figure from the
+    grams printed beside it, without any equipment at all. And the regulation asks for no
+    kilojoule figure, so the number you have just produced is one the label will never show you.
+  refs: [fssai_labelling_2020]
 - level: 7
   prompt: |
     Here is a worked answer. Find the step that broke.
@@ -569,7 +685,9 @@ provenance:
   - S01-R1-O2
 review:
   stability: short
-  trigger: next CGPM revision of the SI, or the next revision of NIST Special Publication 811
+  trigger: next FSSAI amendment to the Food Safety and Standards (Labelling and Display)
+    Regulations, 2020, or the next CGPM revision of the SI, or the next revision of NIST Special
+    Publication 811
   as_of: '2026-09-22'
   last_reviewed: '2026-09-22'
 status: drafted

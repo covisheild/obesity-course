@@ -47,7 +47,7 @@ means anything. Every obesity subject needs kg/m² before BMI is discussable at 
 | B2 | Converting units as multiplication by one | derivable | OpenStax anchor | true | 6–8 |
 | B3 | Dimensional analysis as an error check | derivable | OpenStax anchor | true | 12–16 |
 | B4 | Energy units: joule, kilojoule, calorie, kilocalorie | institutional | `bipm_si`, `nist_sp811` — in hand | true | 8–12 |
-| B5 | Concentration units: mg/dL, mmol/L, interconversion | mixed | **held — no molar mass source** | true | 12–14 |
+| B5 | Concentration units: mg/dL, mmol/L, interconversion | empirical | `pubchem_molar_masses` — in hand | true | 12–14 |
 | B6 | Body-size units: kg, m, cm, kg/m² | derivable | `bipm_si` for the base units | true | 6–8 |
 
 ### B1 · What a unit is; the SI base and derived units — `quantitative: false`
@@ -96,21 +96,35 @@ is the fact that a reader comparing two papers needs and will not find stated an
 NIST also records that "the kilogram calorie or large calorie is an obsolete term used for the
 kilocalorie, which is the calorie used to express the energy content of foods".
 
-**Held back from this section:** the claim that Indian labels are required to carry kilocalories.
-It needs the FSSAI labelling compendium, which is a PDF and cannot be stored. Write B4 without it.
-It is a good teaching hook and it can be added later; it is not load-bearing for the unit itself.
+**Added after the first draft.** The FSSAI labelling compendium is now in `sources/` as
+`fssai_labelling_2020.txt`, so the Indian label requirement is written rather than held back.
+Regulation 5(3)(b) requires `energy value (kcal)` per 100 g or 100 ml and per serve, with the
+share of the Recommended Dietary Allowance worked out on 2000 kcal a day, and requires no
+kilojoule figure at all. Regulation 5(3)(e)(i) fixes the factors by which the declared energy is
+calculated rather than measured — carbohydrate 4 kcal/g, protein 4 kcal/g, fat 9 kcal/g, alcohol
+7 kcal/g and four more. A reader can now recompute a label's energy from its grams and check the
+printed figure, and one practice problem makes them do it.
 
-### B5 · Concentration units — **held, source not in hand**
+### B5 · Concentration units — **written; molar mass source now in hand**
 
 The distinction is derivable from `bipm_si`: mg/dL is a mass in a volume, mmol/L is an amount of
 substance in a volume, and the mole is an SI base unit fixed by the Avogadro constant. The two are
 not interchangeable without knowing **what the substance is**, which is the whole teaching point
 and the reason a glucose conversion factor does not work for cholesterol.
 
-The interconversion needs a molar mass, which is measured, not decided — an `empirical` claim. The
-gate blocks it without an opened source, and PubChem is CAPTCHA-gated. **Do not draft this section
-until a molar mass source is in `sources/`.** Writing it now means either an uncited number or a
-section that teaches the idea and refuses the arithmetic, and the second is worse than waiting.
+The interconversion needs a molar mass, which is measured, not decided — an `empirical` claim, so
+the record is typed `empirical` and cites `pubchem_molar_masses` as `primary`.
+
+`sources/pubchem_molar_masses.txt` now holds the PubChem records, read in a browser because
+PubChem is CAPTCHA-gated. It carries D-glucose's molecular weight, 180.16 g/mol (CID 5793), and it
+carries cholesterol's formula, C27H46O (CID 5997), **without** cholesterol's molecular weight,
+which was below the fold when the page was captured.
+
+That gap is used rather than filled. The section works the glucose conversion in full and then
+stops dead on cholesterol: the reader knows the substance, knows the formula and knows the method,
+and still cannot finish without looking the molar mass up. No cholesterol molar mass is supplied
+from anywhere, and the section says in as many words why supplying one would be the failure the
+source gate exists to stop.
 
 ### B6 · Body-size units: kg, m, cm, kg/m² — `derivable`
 
@@ -144,7 +158,7 @@ different kind of mistake.
 
 ## What is being built now, and what is not
 
-Drafting proceeds for **B1, B2, B3, B4 and B6**. **B5 is held at the source gate** and will be
-written when a molar mass source is in `sources/`. Five of six is the honest state of this Part,
-and the sixth is blocked on a five-minute job in a browser rather than on anything the pipeline
-can solve.
+All six sections are drafted. **B5 was held at the source gate** and was released when
+`pubchem_molar_masses.txt` arrived; **B4** was written without the labelling regulation and was
+extended when `fssai_labelling_2020.txt` arrived. Both gaps closed the same way, by somebody
+opening a browser, and neither was closed by writing round it.
