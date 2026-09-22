@@ -32,16 +32,18 @@ definition:
     kind: textbook
     locator: ch. 4, Fractions, on equivalent fractions and multiplying by a fraction equal to one
     verified:
-      resolved_id: PENDING
-      opened: true
+      resolved_id: https://openstax.org/books/prealgebra-2e/pages/1-introduction
+      opened: false
       claim_located: false
       checked_on: '2026-09-22'
       note: |-
-        Anchor confirmed to exist and to cover the arithmetic this rests on: the book was
-        opened on 2026-09-22 and the named chapter located in its table of contents. The
-        passage behind this definition has not been read yet, which is why claim_located
-        is false. The content is a derivation the reader checks with a calculator, so it
-        does not rest on the anchor.
+        Anchor confirmed to exist and to cover the arithmetic this rests on: the chapter
+        list was confirmed on 2026-09-22 from the book's front matter, and it is recorded
+        in the entry in check/references/library.bib. The passage behind this definition
+        has not been read, so opened stays false and claim_located stays false. The
+        content is a derivation the reader checks with a calculator, so it does not rest
+        on the anchor. It stays in the citation backlog until somebody with library
+        access opens the named chapter and fills in the locator.
 simplified_explanation: |
   One kilometre is 1,000 metres. That is an agreement, and you can write it as a fraction in two
   ways.
@@ -170,6 +172,7 @@ illustration:
     quote: entitled to receive five kilograms of foodgrains per person per month
     unit: kilograms of foodgrains per person per month, priority households, s.3(1)
     citekey: nfsa_2013
+    as_of: '2026-09-22'
 must_know:
 - point: |
     A conversion factor is not a rule about when to multiply and when to divide. It is a fraction
@@ -349,12 +352,15 @@ practice:
     smaller than kilograms.
 - level: 4
   prompt: |
-    The proviso to section 3(1) of the National Food Security Act, 2013 covers households under
-    the Antyodaya Anna Yojana. It entitles such a household to 35 kilograms of foodgrains per
-    household per month.
+    The proviso to section 3(1) of the National Food Security Act, 2013 covers households under the
+    Antyodaya Anna Yojana. It entitles such a household to 35 kilograms of foodgrains per household
+    per month. Two limits ride with that figure. The entitlement runs to the extent the Central
+    Government specifies for each State under the scheme. And the grain comes at the prices set out
+    in Schedule I of the Act.
 
-    Write that entitlement in grams per household per month, and in kilograms per household per
-    year. Keep the whole denominator on every answer.
+    Write that 35 kilograms per household per month in grams per household per month, and in
+    kilograms per household per year. Keep the whole denominator on every answer. Then say in one
+    line what those two limits stop you from saying about any one household.
   answer: |
     Grams first.
 
@@ -374,6 +380,18 @@ practice:
     Say both denominators out loud. The first is per household per month. The second is per
     household per year. Only one half of the denominator changed in the second conversion, and the
     per-household half was carried through untouched.
+
+    Now the last line. The proviso does not hand 35 kilograms to every Antyodaya household by
+    itself. The figure reads "thirty-five kilograms of foodgrains per household per month at the
+    prices specified in Schedule I". And the entitlement runs "to such extent as may be specified by
+    the Central Government for each State in the said scheme". So you can convert the 35. You cannot
+    say, from this clause alone, that a named household in a named State is due 35 kilograms. You
+    cannot say it comes free either.
+
+    What the extent is, in that State, is set under the scheme. Look it up before you quote a figure
+    for anybody.
+
+    The arithmetic was never the risk here. Quoting a conditional entitlement as a flat quantity is.
   refs: [nfsa_2013]
 - level: 5
   prompt: |
@@ -515,6 +533,10 @@ provenance:
   bridge_ref: []
 review:
   stability: long
-  trigger: '2031-09-22'
+  trigger: '2031-09-22, and sooner on either of two events: the next amendment to section 3 or
+    Schedule I of the National Food Security Act, 2013, or the next Central Government
+    specification of the extent under the Antyodaya Anna Yojana proviso. The technique is durable
+    and dated five-yearly; the statutory figures the illustration and practice level 4 are drilled
+    on are not, and the proviso is written to change without the Act changing.'
   last_reviewed: '2026-09-22'
 status: drafted

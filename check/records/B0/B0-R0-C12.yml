@@ -11,6 +11,8 @@ ground_floor_deps: []
 concept_deps:
 - B0-R0-C03
 - B0-R0-C06
+- B0-R0-C09
+- B0-R0-C10
 definition:
   text: |
     The joule is the SI unit of energy. Within the SI the joule stands in a fixed relation to the
@@ -27,12 +29,26 @@ definition:
     A kilocalorie is one thousand calories. It is the calorie used to express the energy content
     of foods, and in food writing the prefix kilo is usually dropped.
 
-    In India the energy on a pre-packaged food label is declared in kilocalories. Regulation
-    5(3)(b) of the Food Safety and Standards (Labelling and Display) Regulations, 2020 requires
-    the label to carry the energy value in kcal. That figure is given for every 100 g or 100 ml,
-    and again per serve. The same clause requires the per-serve share of the Recommended Dietary
-    Allowance, worked out on a basis of 2000 kcal of energy a day. Those regulations require no
-    kilojoule figure anywhere.
+    In India, where a pre-packaged food has to carry nutritional information, the energy is
+    declared in kilocalories. Regulation 5(3)(b) of the Food Safety and Standards (Labelling and
+    Display) Regulations, 2020 requires the label to carry the energy value in kcal. That figure
+    is given per 100 g, or per 100 ml, or per single consumption pack. The same clause separately
+    requires, per serve, the percentage contribution to the Recommended Dietary Allowance, worked
+    out on a basis of 2000 kcal of energy a day. Those regulations require no kilojoule figure
+    anywhere.
+
+    The duty is not universal. Regulation 5(3)(c) exempts thirteen classes of food from mandatory
+    nutritional labelling altogether, among them unprocessed single-ingredient products, drinking
+    water, herbs and spices, salt and salt substitutes, table-top sweeteners, coffee, tea and
+    herbal infusions, and vinegars. Regulation 8(1) exempts any package whose surface area is not
+    more than 100 square centimetres. A packet of salt, or a sachet smaller than 100 square
+    centimetres, carries no energy declaration at all.
+
+    The amounts the panel carries are listed in regulation 5(3)(b)(ii): protein, carbohydrate
+    with total sugars and added sugars, the fats with cholesterol, and sodium. Some of those
+    entries are conditional, the clause's provisos saying when they are required. Dietary fibre,
+    polyols and organic acid are not on the list at all, although all three carry an energy
+    factor under 5(3)(e)(i).
 
     Regulation 5(3)(e)(i) of the same regulations fixes the factors by which the declared energy
     is calculated rather than measured. They are: carbohydrate 4 kcal/g, polyols other than
@@ -93,16 +109,21 @@ definition:
   - citekey: fssai_labelling_2020
     kind: instrument
     locator: Regulation 5(3)(b), nutritional information to be given on the label
-    quote: per serve percentage (%) contribution to Recommended Dietary Allowance calculated on
-      the basis of 2000kcal energy
+    quote: Nutritional Information per 100g or 100ml or per single consumption pack of the
+      product and per serve percentage (%) contribution to Recommended Dietary Allowance
+      calculated on the basis of 2000kcal energy
     verified:
       resolved_id: https://www.fssai.gov.in/upload/uploadfiles/files/Comp_Labelling%20Display_Version%20VIII_09_09_2025.pdf
       opened: true
       claim_located: true
       checked_on: '2026-09-22'
       note: |
-        Compendium Version-VIII, 09 September 2025. The clause names the basis for the
-        percentage figure in kilocalories, which is what fixes the unit the label works in.
+        Compendium Version-VIII, 09 September 2025. The quote is carried from the opening word
+        of the clause so that both halves of the requirement are in it. The base is per 100 g
+        or per 100 ml or per single consumption pack, three alternatives and not two, and the
+        thing required per serve is the percentage contribution to the Recommended Dietary
+        Allowance, not a second energy figure. The clause names the basis for that percentage
+        in kilocalories, which is what fixes the unit the label works in.
   - citekey: fssai_labelling_2020
     kind: instrument
     locator: Regulation 5(3)(b)(i), the energy line of the nutritional information panel
@@ -114,7 +135,64 @@ definition:
       checked_on: '2026-09-22'
       note: |
         The unit is written into the requirement itself. The regulations were searched for
-        kilojoule and for kJ, and the panel is nowhere required to carry either.
+        kilojoule and for kJ, and the panel is nowhere required to carry either. They do not
+        forbid a kilojoule figure either; the clause says what the label shall contain.
+  - citekey: fssai_labelling_2020
+    kind: instrument
+    locator: Regulation 5(3)(b)(ii), the amounts the nutritional information panel must give
+    quote: (A) Protein (g); (B) Carbohydrate (g) and Total Sugars (g), added sugars (g); (C)
+      Total fat (g), saturated fat (g), trans fat (other than naturally occurring trans
+      fat)(g)and cholesterol (mg);
+    verified:
+      resolved_id: https://www.fssai.gov.in/upload/uploadfiles/files/Comp_Labelling%20Display_Version%20VIII_09_09_2025.pdf
+      opened: true
+      claim_located: true
+      checked_on: '2026-09-22'
+      note: |
+        The list runs on to sodium in (D). Provisos attached to the same clause make parts of it
+        conditional: saturated fat and trans fat are required only where total fat is more than
+        0.5 per cent, and cholesterol only for products containing fats of animal origin. What
+        is not in the list at all is what matters for a reader recomputing a label. Dietary
+        fibre, polyols and organic acid each carry an energy factor under 5(3)(e)(i), and none
+        of the three is an amount the panel has to print.
+  - citekey: fssai_labelling_2020
+    kind: instrument
+    locator: Regulation 5(3)(c), foods exempted from mandatory nutritional labelling
+    quote: 'The following foods are exempted from mandatory nutritional labelling: (i)
+      Unprocessed products that comprise a single ingredient; (ii) Processed products which
+      the only processing they have been subjected to is maturing and that comprise a single
+      ingredient; (iii) Waters intended for human consumption, including those where the only
+      added ingredients are carbon dioxide; (iv) A herb, a spice or mixtures thereof / Curry
+      Powder except Sprinkler masala (masalas meant for direct consumption); (v) Salt and salt
+      substitutes; (vi) Table top sweeteners;'
+    verified:
+      resolved_id: https://www.fssai.gov.in/upload/uploadfiles/files/Comp_Labelling%20Display_Version%20VIII_09_09_2025.pdf
+      opened: true
+      claim_located: true
+      checked_on: '2026-09-22'
+      note: |
+        The list runs to thirteen classes. The quote carries the first six because those are
+        the ones a reader can put a hand on in a shop; the rest are coffee and chicory
+        extracts, tea and herbal infusions, vinegars, flavourings and additives and gelatine
+        and yeast, chewing gum and bubble gum, alcoholic beverages, and foods for special
+        dietary uses and special medical purposes. This is the clause that stops the labelling
+        duty being universal, and it is why a packet of salt shows no panel.
+  - citekey: fssai_labelling_2020
+    kind: instrument
+    locator: Regulation 8(1), exemptions from certain labelling requirements
+    quote: Where the surface area of the package is not more than 100 square centimetres, the
+      label of such package shall be exempted from the requirements of list of ingredients, Lot
+      Number or Batch Number or Code Number, nutritional information
+    verified:
+      resolved_id: https://www.fssai.gov.in/upload/uploadfiles/files/Comp_Labelling%20Display_Version%20VIII_09_09_2025.pdf
+      opened: true
+      claim_located: true
+      checked_on: '2026-09-22'
+      note: |
+        A second exemption, and it cuts across the first. It turns on the size of the package
+        rather than on what is in it, so a food that would otherwise need a panel loses the
+        requirement once the package is small enough. The clause requires the information on
+        the multi-unit package instead.
   - citekey: fssai_labelling_2020
     kind: instrument
     locator: Regulation 5(3)(e)(i), Calculation of Energy, opening line
@@ -302,19 +380,24 @@ must_know:
   bearing: policy
   refs: [nfsa_2013]
 - point: |
-    An Indian food packet must carry its energy in kilocalories. The rule is regulation 5(3)(b)
-    of the labelling regulations of 2020. It asks for the energy value in kcal, for every 100 g
-    or 100 ml and per serve. It asks for no kilojoule figure at all. So the SI unit of energy is
-    the one Indian law does not want. That is why you have to be able to convert.
+    An Indian food packet that must show nutritional information gives its energy in
+    kilocalories. The rule is regulation 5(3)(b) of the labelling regulations of 2020. It asks
+    for the energy value in kcal, per 100 g or 100 ml or per single consumption pack. Per serve
+    it asks for a different thing, the share of the Recommended Dietary Allowance. It asks for
+    no kilojoule figure at all, so you must be able to convert. A panel is not always due:
+    5(3)(c) exempts thirteen classes of food, salt and tea among them. Regulation 8(1) exempts
+    a package of 100 cm^2 or less, so salt with no panel is the rule kept.
   kind: india_deviation
   bearing: policy
   refs: [fssai_labelling_2020]
 - point: |
     The energy printed on an Indian label is worked out, not measured. Regulation 5(3)(e)(i) of
     the same 2020 rules fixes the factors. Carbohydrate and protein are 4 kcal/g each, fat is 9
-    kcal/g and alcohol is 7 kcal/g. So take the grams printed on the label. Multiply each by its
-    factor and add them up. You have then checked the energy figure yourself, and a gap you
-    cannot explain is worth raising before you quote that label.
+    kcal/g and alcohol is 7 kcal/g. So take the grams printed on the label, multiply each by its
+    factor, and add them up. On a food of carbohydrate, protein and fat that reproduces the
+    declared figure. On a high-fibre or sugar-free food it will not: the panel need not print the
+    grams of fibre, polyols or organic acid. Find out which kind of food you hold before you call
+    a gap a mistake.
   kind: misconception
   bearing: methodological
   refs: [fssai_labelling_2020]
@@ -552,11 +635,14 @@ practice:
     ```
 
     Round it before you write it. The grams on the label carry two digits each, so the last
-    digits of 1,966.48 are not yours to keep. Report about 1,970 kilojoules for every 100 g.
+    digits of 1,966.48 are not yours to keep. Report about 2,000 kilojoules for every 100 g.
 
-    Two things follow from this problem. You can check any Indian label's energy figure from the
-    grams printed beside it, without any equipment at all. And the regulation asks for no
-    kilojoule figure, so the number you have just produced is one the label will never show you.
+    Two things follow from this problem. Where a label declares only carbohydrate, protein and
+    fat, you can reproduce its energy figure from the grams beside it, with no equipment. Where
+    the food carries dietary fibre, polyols or organic acid, the panel need not print those
+    grams. Your total then falls short of the declared figure, and nothing is wrong. And the
+    regulation asks for no kilojoule figure, so the number you have just produced is one the
+    label will never show you.
   refs: [fssai_labelling_2020]
 - level: 7
   prompt: |

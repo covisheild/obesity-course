@@ -18,8 +18,11 @@ definition:
     time, or a combination of these built by multiplication and division. The unit is how that
     dimension is measured. Two quantities of the same dimension may be measured in different units.
 
-    An equation between physical quantities must carry the same units on both sides. Two quantities
-    may be added or subtracted only when their units are the same.
+    An equation between physical quantities must carry the same dimension on both sides, and two
+    quantities may be added or subtracted only when they have the same dimension. The unit check is
+    the practical form of that rule: convert the quantities to a common unit first, and the units on
+    both sides must then match. So 3 kilograms and 4 grams may be added, because both are masses,
+    but not until one of them has been converted.
 
     Multiplying quantities multiplies their units, and dividing them divides their units. A unit
     raised to a power obeys the rules for powers of any other quantity.
@@ -34,29 +37,34 @@ definition:
     kind: textbook
     locator: ch. 5, Decimals, sections on ratios and rates
     verified:
-      resolved_id: PENDING
-      opened: true
+      resolved_id: https://openstax.org/books/prealgebra-2e/pages/1-introduction
+      opened: false
       claim_located: false
       checked_on: '2026-09-22'
       note: |-
         Anchor confirmed to exist and to cover the arithmetic this rests on, which is the
-        cancelling of a shared name on the top and the bottom of a rate: the book was
-        opened on 2026-09-22 and the named chapter located in its table of contents. The
-        passage behind this definition has not been read yet, which is why claim_located
-        is false. The book does not treat dimensional analysis under that name, and the
-        content here is a derivation the reader checks with a calculator, so it does not
-        rest on the anchor.
+        cancelling of a shared name on the top and the bottom of a rate: the chapter list
+        was confirmed on 2026-09-22 from the book's front matter, and it is recorded in
+        the entry in check/references/library.bib. The passage behind this definition has
+        not been read, so opened stays false and claim_located stays false. The book does
+        not treat dimensional analysis under that name, and the content here is a
+        derivation the reader checks with a calculator, so it does not rest on the
+        anchor. It stays in the citation backlog until somebody with library access opens
+        the named chapter and fills in the locator.
 simplified_explanation: |
   Here is the most useful trick in this Part.
 
   You can often show that a formula is wrong without knowing the right formula. You do it by
   looking at the units and ignoring the numbers.
 
-  It works because of one rule. Both sides of an equals sign have to carry the same units. If the
-  left side is a time, the right side has to come out as a time.
+  It works because of one rule. Both sides of an equals sign have to carry the same kind of
+  quantity. The word for the kind of thing a quantity is, is its dimension. If the left side is a
+  time, the right side has to come out as a time.
 
-  A second rule comes with it. You can only add or subtract quantities that carry the same unit.
-  Three metres plus four seconds is not seven of anything.
+  A second rule comes with it. You can only add or subtract quantities of the same dimension, and
+  then only once both are written in the same unit. Three metres plus four seconds is not seven of
+  anything, because a length and a time are different kinds of thing. Three kilograms plus four
+  grams is a real sum, because both are masses, but you convert one of them before you add.
 
   Multiplying and dividing behave the way they do with plain numbers. Metres times metres give the
   unit m^2. Metres divided by seconds give the unit for speed, m/s or metres per second. The units
@@ -104,8 +112,8 @@ illustration:
         = hours
     ```
 
-    Dividing does it. The kilometres cancel and the hours are left. So the journey time is the
-    distance divided by the speed, and the units told you so.
+    Dividing does it. The kilometres cancel and the hours are left. So the journey time has the
+    shape of a distance divided by a speed, and the units told you that much.
 
     Put the numbers back.
 
@@ -145,7 +153,7 @@ illustration:
     the bottom and another one on the bottom. You are left with kilograms per person squared, and
     there is no such quantity.
 
-    Make the units come out as kilograms and the formula repairs itself.
+    Ask what arrangement would leave kilograms standing instead.
 
     ```working
         kilograms per person per month
@@ -161,11 +169,21 @@ illustration:
         5 times 4 times 12 = 240
     ```
 
-    240 kilograms per household per year.
+    240 kilograms per household per year. Say where that figure came from when you quote it. The
+    Act states a monthly entitlement of five kilograms per person per month. The 240 is your
+    arithmetic on it, and it is not a figure the Act carries.
 
     Notice what you did there. You did not know the formula and you did not look one up. You wrote
-    down what unit the answer had to have, and the only arrangement that gives that unit is the
-    right one.
+    down what unit the answer had to have, and that threw out every arrangement but one shape. It
+    did not tell you the twelve. You brought that, from knowing that a year holds twelve months,
+    and no unit on the page could have told you. A unit check throws out wrong arrangements. It
+    never hands you a right formula.
+  numbers:
+  - value: '5'
+    quote: entitled to receive five kilograms of foodgrains per person per month
+    unit: kilograms of foodgrains per person per month, priority households, s.3(1)
+    citekey: nfsa_2013
+    as_of: '2026-09-22'
   analogy_breaks_when: |
     This check catches a formula of the wrong shape. It cannot catch a formula of the right shape
     and the wrong size.
@@ -470,39 +488,46 @@ practice:
     units alone would have told you to send it back.
 - level: 5
   prompt: |
-    Section 3(1) of the National Food Security Act, 2013 entitles a person in a priority household
-    to five kilograms of foodgrains per person per month.
+    A district note plans grain for a priority household of six people. It says the household
+    should be counted for 360 kilograms of foodgrains in a year.
 
-    A note works out a household's grain for a year like this.
-
-    > yearly grain = 5, times the number of people, times 12
-
-    Check the units of the right-hand side. Then work out the figure for a household of four,
-    keeping the unit on the answer.
+    Work back to the rate for one person for one month, keeping the unit on the answer. Say which
+    units you cancelled to get there. Then say whether the rate you land on is the one section 3(1)
+    of the National Food Security Act, 2013 states.
   answer: |
-    The 5 carries a unit, even though the note wrote it bare. It is five kilograms per person per
-    month. The 12 carries one too: it is twelve months in a year.
+    You are given kilograms per household per year and asked for kilograms per person per month. So
+    two things have to come off the answer: the year has to become months, and the household has to
+    become people.
+
+    Write the units first and decide the arrangement from them.
 
     ```working
-        kilograms per person per month
-        times persons
-        times months
-        = kilograms
+        kilograms per household per year
+        divided by months per year
+        divided by persons per household
+        = kilograms per person per month
     ```
 
-    The persons cancel and the months cancel. Kilograms are left, which is what a quantity of grain
-    is measured in. The formula is the right shape.
+    The years cancel against the years and the households cancel against the households. Kilograms,
+    one person and one month are what is left standing.
 
-    Now the household of four.
+    Now the numbers. A year holds twelve months, and the note's household holds six people.
 
     ```working
-        5 times 4 times 12 = 240
+        360 divided by 12 = 30
     ```
 
-    240 kilograms per household per year.
+    Thirty kilograms per household per month.
 
-    Keep the whole denominator on that answer. It is per household, and it is per year, and both
-    halves came out of the working rather than being added at the end.
+    ```working
+        30 divided by 6 = 5
+    ```
+
+    Five kilograms per person per month.
+
+    That is the rate section 3(1) of the Act states for a person in a priority household. The 360 in
+    the note is not in the Act. It is somebody's arithmetic on the monthly rate, and working back
+    down is how you check whose arithmetic it was.
   refs: [nfsa_2013]
 - level: 5
   prompt: |
@@ -522,10 +547,19 @@ practice:
     Minutes per kilometre is a real quantity. It is a pace, which is how long each kilometre takes.
     It is not a speed, because a speed is a distance divided by a time.
 
-    Turn it over and the units come out as a speed.
+    Turn it over and you get kilometres divided by minutes.
 
     ```working
-        kilometres divided by hours
+        kilometres divided by minutes
+        = km/min
+    ```
+
+    That is a speed, and it is not yet the speed you were asked for. Kilometres an hour is what a
+    road speed is quoted in, so the minutes have to become hours. Use the conversion factor from
+    the section before this one, with the minutes where they cancel.
+
+    ```working
+        km/min, times 60 min over 1 h
         = km/h
     ```
 
@@ -649,7 +683,9 @@ practice:
         5 times 12 = 60
     ```
 
-    Sixty kilograms per person per year.
+    Sixty kilograms per person per year. That figure is your arithmetic and not the Act's. What the
+    Act states is five kilograms per person per month. So whenever you quote the sixty, say that you
+    multiplied by twelve months to get it.
 
     Why it looks reasonable: the 365 is a real and familiar number, and the arithmetic is right.
     The answer is even labelled per year, which is the label that was wanted. Every part of it is
@@ -699,6 +735,9 @@ practice:
     > The plant treats 4.5 crore litres a day, which works out at 135 litres a person for the
     > city's 30 lakh people.
 
+    The plant, the city and both figures are made up for this problem. No real plant and no real
+    population is being described.
+
     Decide what to compute, compute it, and say what your answer does not establish.
   answer: |
     What to compute: litres per person per day. The unit tells you the arrangement, because litres
@@ -735,6 +774,10 @@ practice:
 
     > It doses at 2 milligrams per litre. So a 5,000 litre tank needs 2 divided by 5,000, which
     > is 0.0004 grams of chlorine a fill.
+
+    The brochure, the unit and both figures are made up for this problem. Do not carry the
+    2 milligrams per litre away as a chlorine dose. What a tank should be dosed at is set by
+    whoever sets the standard. This problem is about the arrangement of the units and nothing else.
 
     Decide what to compute, compute it, and say what your answer does not establish.
   answer: |
@@ -790,6 +833,10 @@ provenance:
   bridge_ref: []
 review:
   stability: long
-  trigger: '2031-09-22'
+  trigger: '2031-09-22, and sooner on either of two events: the next amendment to section 3 or
+    Schedule I of the National Food Security Act, 2013, or the next Central Government
+    specification of the extent under the Antyodaya Anna Yojana proviso. The technique is durable
+    and dated five-yearly; the statutory figure the second illustration and practice levels 5 and 7
+    are drilled on is not.'
   last_reviewed: '2026-09-22'
 status: drafted

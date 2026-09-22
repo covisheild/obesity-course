@@ -52,17 +52,46 @@ means anything. Every obesity subject needs kg/m² before BMI is discussable at 
 
 ### B1 · What a unit is; the SI base and derived units — `quantitative: false`
 
-The only Part B section that teaches no technique the reader must carry out, and the default for a
-mathematical Part would have made it carry a drill set. Set `quantitative: false` explicitly.
+The section teaches no technique the reader must carry out that is not drilled elsewhere, and the
+default for a mathematical Part would have made it carry a drill set. Set `quantitative: false`
+explicitly, and say in `practice_note` where the construction of derived units is drilled — B3's
+mechanical band, levels 1 to 3. The record does ask the reader to build derived units, twice, so
+the `false` has to be a decision on the page rather than a silent omission.
 
 What it must establish: a measurement is a number **and** a unit, and the number alone means
-nothing; the SI is defined by seven exact constants rather than by artefacts, which is why a metre
-in Raipur is a metre in Paris; and a derived unit is built from base units by multiplication and
-division, so `J = kg m² s⁻²` is not a fact to memorise but a statement about what energy *is*.
+nothing; the SI is defined by seven exact constants, which is why a metre in Raipur is a metre in
+Paris; and a derived unit is built from base units by multiplication and division, so
+`J = kg m² s⁻²` is not a fact to memorise but a statement about what energy *is*.
 
 The last of those is the bridge to B3, and B3 does not work without it.
 
-Cite `bipm_si` with the quote requirement: the constants are stated exactly on that page.
+**Do not write the artefact contrast.** An earlier version of this line said the SI is defined by
+seven exact constants "rather than by artefacts", and the drafted record turned that into a master
+metre kept in a cupboard, retired on 20 May 2019. Both halves are wrong. `sources/bipm_si.txt` —
+the only SI source held — contains no mention of an object, a prototype or an artefact, and its own
+account of what preceded 2019 is that the SI was defined in terms of seven base units and derived
+units defined as products of powers of them. The metre has not been an artefact since 1960 and has
+followed from a fixed value of the speed of light since 1983, so 2019 changed nothing about it. The
+unit that was an object in a cupboard until 2019 is the kilogram, and no source held here says so.
+Write what the page says — from 20 May 2019 all SI units are defined in terms of constants that
+describe the natural world — and leave the object story out until an instrument carrying it is
+obtained.
+
+Cite `bipm_si` with the quote requirement: the constants are stated exactly on that page. One
+reference per source-and-clause, so the list of the seven base units, the sentence saying their
+role continues, and the sentence dating the vote to 16 November 2018 are three references and not
+one.
+
+**Citation backlog for B1: the SI Brochure.** The prefix table (kilo, centi, milli, micro and the
+rest) and the table of non-SI units accepted for use with the SI (the minute and the hour) are
+decisions set out in the SI Brochure. The Brochure is not in `sources/`, and the held BIPM page
+carries neither table. The record therefore names the instrument in the prose — the held page does
+say "The SI is defined by the SI Brochure, published by the BIPM" — and states the prefixes without
+a clause-level citation behind them. That is a real debt, because the whole of B2 and B3 computes
+with these prefixes. It cannot be carried as an `opened: false` reference inside the record: B1 is
+`institutional`, and the build blocks an unopened source on an institutional concept by design. So
+it is recorded here until the Brochure is obtained, and it then becomes a reference with a locator
+on each of the two tables.
 
 ### B2 · Converting units as multiplication by one — `derivable`
 
