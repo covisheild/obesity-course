@@ -510,11 +510,30 @@ def check(recs: dict, subjects: dict, clusters: dict, bibkeys: set):
                 E(rid, f"reference '{ref.get('citekey')}' has no locator")
             if bibkeys and ref.get("citekey") not in bibkeys:
                 E(rid, f"citekey '{ref.get('citekey')}' not in library.bib")
+            # How bad an unopened source is depends entirely on the concept type, and treating
+            # every one as a warning is what let eleven of them sit for days.
+            #
+            # A `derivable` concept can be checked without its source: the reader rebuilds it
+            # from the floor, and the textbook is a canonical anchor rather than the evidence.
+            # An unopened anchor there is a debt, so it warns.
+            #
+            # An `empirical` or `institutional` concept cannot be checked that way at all. Its
+            # content is true because a study measured it or a body decided it, and with the
+            # source unopened there is nothing standing behind the claim except whoever drafted
+            # it - which, for a record drafted by a model, means nothing stands behind it. That
+            # is how a confidently-worded invention reaches a reader who has no way to catch it,
+            # and it is the failure that scales badly into the clinical and policy subjects. It
+            # blocks.
             v = ref.get("verified") or {}
+            uncheckable = ctype in ("empirical", "institutional")
             if not v.get("opened"):
-                W(rid, f"reference '{ref.get('citekey')}' not yet opened")
+                (E if uncheckable else W)(rid, f"reference '{ref.get('citekey')}' not yet opened"
+                                   + (f" - a {ctype} claim cannot rest on an unopened source, "
+                                      "because nothing else can check it" if uncheckable else ""))
             elif not v.get("claim_located"):
-                W(rid, f"reference '{ref.get('citekey')}' opened but claim not located")
+                (E if uncheckable else W)(rid, f"reference '{ref.get('citekey')}' opened but the claim "
+                                   "was not located in it"
+                                   + (" - find the passage or change the claim" if uncheckable else ""))
 
         # review clock consistency
         rev = r.get("review") or {}

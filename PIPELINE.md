@@ -17,7 +17,14 @@ makes the method sound, for the reason given there.
 
 ## Before anything: the source gate
 
-Open `books/<SUBJECT>/READY.md`. If any line says **no**, the pipeline does not start. Get that
+Open `books/<SUBJECT>/READY.md`. If any line says **no**, the pipeline does not start.
+
+This is not a formality and it is not satisfied by intending to find the source later. A record
+whose concept is `empirical` or `institutional` and whose source is unopened is now a **blocking**
+build failure, so a booklet drafted ahead of its sources cannot be committed clean. Retrieval works
+from inside a session — an FSSAI compendium and a 2025 journal article were both pulled with
+clause-level detail on 22 September 2026 — so the gate is passable. The style sheet §7b lists where
+to look. Get that
 file, drop it in `sources/`, add a line to `SOURCES.md` saying what it is, then begin.
 
 For S48 three files are missing and they are the three that matter most:

@@ -274,6 +274,49 @@ Two exemptions are built in, both because the material needs them. The prompt of
 
 It only checks what it can fully parse — plain arithmetic with the operators written as words, which §1 requires anyway. An equation it cannot parse is skipped silently rather than guessed at. That makes it a floor, not a proof: it catches the slip, not the wrong method.
 
+## 7b. Where sources come from, and the one thing never to do
+
+**Never write a claim from what the model knows and then attach a citation to it.** That is the
+defect this section exists to prevent, and Part A shipped with eight instances of it: the prose
+was written from model knowledge and given a `pending_arithmetic_text` anchor that named no real
+book. A citation that cannot be opened is not a weak citation. It is a false one, because it
+asserts a chain of provenance that does not exist, and it is worse than no citation at all —
+an empty field invites a check, a plausible one does not.
+
+The order is: **obtain the source, read the passage, then write.** `READY.md` and the source gate
+already say this. Part A bypassed it on the reasoning that arithmetic is derivable, which was
+true and which established a habit that is not survivable anywhere else.
+
+**How much this matters depends on the concept type, and the build now enforces the difference.**
+A `derivable` concept can be checked without its source — the reader rebuilds it from the floor,
+and the anchor is where they go to confirm, not the evidence for the content. An unopened anchor
+there is a debt, and it warns. An `empirical` or `institutional` concept cannot be checked that
+way at all: it is true because a study measured it or a body decided it, and with the source
+unopened nothing stands behind the claim except whoever drafted it. Where that was a model, that
+means nothing stands behind it. **It blocks.** No booklet in the clinical, policy or epidemiological
+subjects can be built without its sources in hand, and that is the intended consequence.
+
+**Free, openly licensed, genuinely citable material covers most of what this course needs.** Prefer
+it — not on principle but because a source the reader can open in one click is a source they will
+actually check.
+
+| Need | Where |
+| --- | --- |
+| Mathematics and statistics | OpenStax (CC-licensed, full texts), OpenIntro Statistics |
+| Clinical and physiological reference | NCBI Bookshelf — Endotext and StatPearls are free, authored and dated |
+| Primary evidence | PubMed Central open-access subset; Cochrane reviews |
+| Indian statutes and rules | India Code; the issuing ministry's own site for notifications |
+| Indian food regulation | FSSAI's own compendium PDFs, never a law firm's summary of them |
+| Indian dietary and nutrient standards | ICMR-NIN |
+| Indian survey data | NFHS and IIPS report PDFs, not news coverage of them |
+| Guidelines and consensus | WHO; the relevant Indian professional body's own statement |
+
+Two traps in that list. A secondary description of an instrument is not the instrument — a
+consultancy's summary of the FSSAI labelling rules cannot be cited for what those rules say. And
+an open textbook has a scope: Part A needed two anchors rather than one because OpenStax
+*Prealgebra* does not cover logarithms, which was found by opening its table of contents and would
+have been got wrong by anyone working from memory.
+
 ## 8. Citations
 
 **What the reader sees.** A bracketed number in the text and a numbered list at the end of that Part. Nothing else: no file path, no author-date, no locator carried through the prose. Each entry gives the instrument or work, the clause consulted, and a resolvable URL, because a reference the reader cannot open is a claim rather than a citation. An entry whose source has not been obtained is marked outstanding and says so in plain words, under the list, so an unchecked claim can never look like a checked one. Numbering restarts at each Part.
