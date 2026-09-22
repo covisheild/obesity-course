@@ -152,7 +152,7 @@ exercises:
         500,000 divided by 25,000
         = 500 divided by 25          (take three zeros off each)
         = 20
-    ```
+    ```working
 
     The ceiling is twenty times the proviso figure.
   confidence_first: true
@@ -183,7 +183,7 @@ practice:
   answer: |
     Going from the left, one digit at a time.
 
-    ```working
+    ```table
         9  ninety thousand
         0  no thousands
         8  eight hundred
@@ -198,7 +198,7 @@ practice:
     Write each of these in digits, twice: once in the Indian grouping and once in the
     international one. Two lakh. Twelve lakh. Three crore.
   answer: |
-    ```working
+    ```table
         two lakh      2,00,000        200,000
         twelve lakh   12,00,000       1,200,000
         three crore   3,00,00,000     30,000,000
@@ -218,41 +218,20 @@ practice:
     ```working
         90,90,000   =  9090000
         9,900,000   =  9900000
-    ```
+    ```working
 
     The first two digits are 90 against 99, so the second number is larger. It is ninety-nine lakh
     against ninety lakh and ninety thousand.
 
     How you decided: count the digits, then compare digit by digit from the left. Never compare
     comma patterns, because the two systems put them in different places.
-- level: 4
-  prompt: |
-    Section 21(2) of the Consumer Protection Act, 2019 caps a penalty for a false or misleading
-    advertisement at ten lakh rupees. A proviso raises it to fifty lakh for a repeat. Write both
-    figures in both groupings, then say how many times larger the second is.
-  answer: |
-    ```working
-        ten lakh     10,00,000       1,000,000
-        fifty lakh   50,00,000       5,000,000
-    ```
-
-    Now the division, taking the shared zeros off both first.
-
-    ```working
-        50,00,000 divided by 10,00,000
-        = 50 divided by 10
-        = 5
-    ```
-
-    Five times larger.
-  refs: [consumer_prot_2019]
 - level: 5
   prompt: |
     Section 34(1) of the Consumer Protection Act, 2019 gives the District Commission complaints
     worth up to one crore rupees. Section 47 gives the State Commission up to ten crore. Write both
     in both groupings and count the digits in each.
   answer: |
-    ```working
+    ```table
         one crore    1,00,00,000      10,000,000     8 digits
         ten crore    10,00,00,000     100,000,000    9 digits
     ```
@@ -285,25 +264,46 @@ practice:
   refs: [nfsa_2013]
 - level: 7
   prompt: |
-    Here is a line from a note. Find the step that broke.
-
-    > The repeat ceiling is fifty lakh rupees, which is 5,000,000, or five crore.
-  answer: |
-    Take it a step at a time.
+    A colleague is checking two ceilings in the Food Safety and Standards Act, 2006. Section 53
+    sets ten lakh rupees for a misleading advertisement. Section 51 sets five lakh rupees for
+    sub-standard food. They want to know how many times larger the first one is. Here is what they
+    typed, and what came back.
 
     ```working
-        fifty lakh   = 50,00,000
-                     = 5,000,000     correct
-                     = five crore    wrong
+        10000000 divided by 500000 = 20
     ```
 
-    The digits step is right. Fifty lakh really is 5,000,000.
+    > The advertising ceiling is twenty times the sub-standard food ceiling.
 
-    The naming step is wrong. One crore is 1,00,00,000, which is eight digits. 5,000,000 has seven.
-    So fifty lakh is half a crore, not five.
+    Find the step that broke, and say why the answer looks reasonable.
+  answer: |
+    The calculator is not the step that broke. It divided exactly what it was handed, and 20 is the
+    right answer to the sum that was typed.
 
-    Why it looks reasonable: the 5 survives from "fifty" into "five", so the sentence reads as
-    though one conversion carried through both halves. It did not.
+    The step that broke is the typing. Count the digits in each number against the Act.
+
+    ```working
+        ten lakh     10,00,000  = 1000000     7 digits    typed 8 digits
+        five lakh     5,00,000  =  500000     6 digits    typed 6 digits
+    ```
+
+    One zero too many went into the first number. What they actually divided was one crore.
+
+    Done properly:
+
+    ```working
+        1000000 divided by 500000
+        = 10 divided by 5
+        = 2
+    ```
+
+    Twice, not twenty times.
+
+    Why it looks reasonable: 20 is a clean whole number, and a clean answer feels like a confirmed
+    one. Nothing on the display marks a mistyped figure, because from the calculator's side nothing
+    went wrong. The only place this can be caught is before the equals sign, by counting the digits
+    you typed against the digits in the source.
+  refs: [fss_act_2006]
 - level: 8
   prompt: |
     A colleague adds three penalty ceilings — ten lakh, three lakh and five lakh — and reports the

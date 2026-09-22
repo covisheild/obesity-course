@@ -181,7 +181,7 @@ exercises:
     ```working
         priority:   30,000 divided by 1,200 = 25
         Antyodaya:  10,500 divided by 300   = 35
-    ```
+    ```working
 
     Antyodaya is higher on this denominator, at 35 against 25. Note what did the work: the average
     of five people a household. At an average of seven they would be equal, and above seven the
@@ -348,6 +348,39 @@ practice:
     Here is a worked answer. Find the step that broke.
 
     ```working
+        in a block, 72 households lift their full entitlement and 108 do not
+        the ratio of lifting to not lifting is 72 to 108, or 2 to 3
+        72 divided by 108 = 0.6666...
+        so about 67 per cent of households lift their full entitlement
+    ```
+  answer: |
+    The first two lines hold. Seventy-two against 108 is the ratio, and it does reduce to 2 to 3.
+
+    The step that broke is the last one. A ratio has been divided out and the answer read as a
+    proportion. A ratio compares one part with another part. A proportion is a part over the whole
+    it came from, and the whole here is every household in the block.
+
+    ```working
+        72 plus 108 = 180 households in all
+        72 divided by 180 = 0.4
+        times 100 = 40 per cent lift their full entitlement
+    ```
+
+    Forty per cent, not 67.
+
+    The 0.6666 is not a meaningless number. It says the lifting households are two thirds as many
+    as the households that do not lift. That is true. It has been given the wrong denominator and
+    then the wrong noun.
+
+    Why it looks reasonable: a ratio and a proportion are both one number divided by another, and
+    both come out as a decimal. A decimal below one invites being read as a percentage. The check
+    is to say the denominator out loud. Divided by 108 is per non-lifting household. Divided by 180
+    is per household.
+- level: 7
+  prompt: |
+    Here is a worked answer. Find the step that broke.
+
+    ```working
         block A: 15 cases per 1,000 people
         block B: 40 cases per 100,000 people
         40 is more than 15, so block B is worse
@@ -399,30 +432,43 @@ practice:
     or multiplying by it.
 - level: 9
   prompt: |
-    Here is a line from a district presentation.
+    A note crosses your desk with one line in it.
 
-    > We issued 640 tonnes of grain last month against 590 the month before, so coverage is up
-    > eight per cent.
+    > Households here average five people, so an Antyodaya household gets 40 per cent more grain.
 
+    Section 3(1) of the National Food Security Act, 2013 gives 5 kilograms per person per month.
+    The proviso beneath it gives an Antyodaya household 35 kilograms per household per month.
     Decide what to compute, compute it, and say what your answer does not establish.
   answer: |
-    The percentage first, because a stated figure is worth testing.
+    What to compute: both entitlements on one denominator, which is kilograms per household per
+    month.
 
     ```working
-        640 minus 590 = 50
-        50 divided by 590 = 0.0847...
-        times 100 = 8.5 per cent
+        priority household of 5:  5 times 5 = 25 kilograms per household per month
+        Antyodaya household:      35 kilograms per household per month
+        35 minus 25 = 10
+        10 divided by 25 = 0.4, so 40 per cent more
     ```
 
-    So the eight per cent is about right as a statement about tonnes.
+    The 40 per cent is right, for a household of five.
 
-    It is not a statement about coverage. Coverage is a proportion of people or households, and
-    tonnes is a weight. The sentence has computed one thing and named it another.
+    Now the part the line hides. It is a statement about the average household, and the average
+    household is a calculation rather than an address. Run the same division at other sizes.
 
-    What this does not establish. It does not tell you whether more households were reached, or the
-    same households lifted more, or the entitlement itself changed. All three raise tonnes. To turn
-    tonnes into coverage you need the count entitled in each month, and that is the number to ask
-    for.
+    ```working
+        household of 3:  5 times 3 = 15, so 35 is well over twice as much
+        household of 7:  5 times 7 = 35, so the two are equal
+        household of 9:  5 times 9 = 45, so the priority household gets more
+    ```
+
+    The gap is 40 per cent at one household size, nothing at all at another, and the other way
+    round above seven.
+
+    What this does not establish. It says nothing about how household sizes are spread here. An
+    average of five holds whether every household has five people or half have two and half have
+    eight. It says nothing about how many households are in either group. And it says nothing
+    about whether either figure feeds anybody, which is a different question from which is larger.
+  refs: [nfsa_2013]
 - level: 10
   prompt: |
     A journalist calls with one line and wants a comment by the evening.

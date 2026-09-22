@@ -171,7 +171,7 @@ exercises:
     ```working
         30 divided by 31 = 0.9677...
         30 divided by 28 = 1.0714...
-    ```
+    ```working
 
     So the household gets roughly one kilogram a day, somewhere between 0.97 and 1.07.
 
@@ -202,16 +202,51 @@ quantitative: true
 practice:
 - level: 1
   prompt: |
+    In the number 0.408, say what each digit after the point is worth. Then put these four numbers
+    in order, smallest first.
+
+    ```working
+        0.7      0.65      0.089      0.7000
+    ```
+  answer: |
+    Take 0.408 one place at a time, starting just after the point.
+
+    ```table
+        4   four tenths
+        0   no hundredths
+        8   eight thousandths
+    ```
+
+    Each place is worth a tenth of the place on its left. The zero is holding the 8 in the
+    thousandths place. Take the zero out and you have 0.48, which is a different number.
+
+    Now the ordering. Line the numbers up by place rather than by how long they look.
+
+    ```table
+        0.7      7 tenths,  0 hundredths,  0 thousandths
+        0.65     6 tenths,  5 hundredths,  0 thousandths
+        0.089    0 tenths,  8 hundredths,  9 thousandths
+        0.7000   7 tenths,  0 hundredths,  0 thousandths
+    ```
+
+    Smallest first: 0.089, then 0.65, then 0.7 and 0.7000, which are equal.
+
+    Two things to notice. First, 0.65 is smaller than 0.7 even though it has more digits, so
+    compare the tenths first and stop as soon as they differ. Second, 0.7000 has the same value as
+    0.7. The extra zeros change nothing about its size. They do say the figure was carried to four
+    places, and that is what the rest of this section is about.
+- level: 1
+  prompt: |
     Round each of these to two places after the point.
 
     ```working
         0.3849      12.0761      0.0955      7.2950
-    ```
+    ```working
   answer: |
     Look at the third digit after the point each time. Four or less, the second digit stands. Five
     or more, it goes up by one.
 
-    ```working
+    ```table
         0.3849   third digit 4   ->  0.38
         12.0761  third digit 6   ->  12.08
         0.0955   third digit 5   ->  0.10
@@ -227,11 +262,11 @@ practice:
 
     ```working
         450      0.0072      6.030      1,200
-    ```
+    ```working
   answer: |
     Count from the first digit that is not zero.
 
-    ```working
+    ```table
         450      2 or 3   the trailing zero is ambiguous
         0.0072   2        leading zeros only hold the place
         6.030    4        the trailing zero after a point is real
@@ -372,31 +407,6 @@ practice:
 
     And the register itself is not exact in practice, whatever the arithmetic says. Report 64.8 per
     cent, or 65 per cent, and give the two counts underneath.
-- level: 9
-  prompt: |
-    Here is a line from a note.
-
-    > Average household grain offtake was 4.8732 kg against an entitlement of 5 kg, a shortfall of
-    > 2.536 per cent.
-
-    Decide what to compute, compute it, and say what your answer does not establish.
-  answer: |
-    First check the shortfall, because a stated figure is worth testing before it is argued about.
-
-    ```working
-        5 minus 4.8732 = 0.1268
-        0.1268 divided by 5 = 0.02536
-        times 100 = 2.536 per cent
-    ```
-
-    The arithmetic holds. Now the precision. The 4.8732 came from a total divided by a count of
-    households, and neither of those is known to five figures. So the shortfall is about 2.5 per
-    cent, and the last two digits are decoration.
-
-    What this does not establish. It says nothing about how many households the shortfall is spread
-    across. A 2.5 per cent average gap could be every household lifting slightly less, or a small
-    number lifting nothing at all. Those need different responses, and the average cannot tell them
-    apart.
 - level: 10
   prompt: |
     Somebody sends you a one-line finding and asks whether to publish it.

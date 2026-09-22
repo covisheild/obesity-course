@@ -36,8 +36,6 @@ STABILITY_FOR_TYPE = {"derivable": "long", "empirical": "medium", "institutional
 MUST_KNOW_BEARINGS = ["clinical", "methodological", "policy", "teaching", "public"]
 MUST_KNOW_SOFT_CAP = 9
 
-# The drill set. A concept that teaches a technique the reader has to be able to carry out is not
-# taught by being read: it is taught by being done, ten times, at rising difficulty. This is the
 # The drill set is a range, not a number. Ten began as a working figure and was briefly enforced
 # as an equality, which made concepts pad to reach it and trim to avoid exceeding it - the count
 # started driving the teaching instead of following it. What has to hold is that the ladder is
@@ -530,6 +528,25 @@ def check(recs: dict, subjects: dict, clusters: dict, bibkeys: set):
         elif prac:
             W(rid, f"{len(prac)} practice problems on a concept not marked quantitative - either "
                    "set 'quantitative: true' or move these to exercises")
+        # Columns set with spaces inside a working block cannot line up: the Working style
+        # is proportional, so the whole point of the alignment is lost between the record
+        # and the page. Before this check the book contained one real table and about
+        # sixteen that had been written as aligned text and arrived as ragged prose.
+        # A fence toggles. Reading a closing fence as if it opened a block - which is what
+        # a naive `inside = tag != "table"` does - makes the prose after a table look like
+        # a block of its own, and it reported the table it had just correctly skipped.
+        raw, inside, tag, body = r.get("_raw") or "", False, "", []
+        for ln in raw.split("\n"):
+            m = re.match(r"^\s*```+\s*(\S*)\s*$", ln)
+            if m:
+                if inside and tag != "table" and _looks_tabular(body):
+                    W(rid, "a working block has columns in it - tag it ```table so it "
+                           "renders as a table, or the columns arrive as ragged text")
+                inside, tag, body = not inside, ("" if inside else m.group(1)), []
+                continue
+            if inside:
+                body.append(ln)
+
         # A figure whose file is absent renders as a broken-image placeholder in Word and
         # as nothing at all in print, and neither failure is visible from the record.
         for f in (r.get("figures") or []):
@@ -610,15 +627,86 @@ def check(recs: dict, subjects: dict, clusters: dict, bibkeys: set):
 
 WORKING_OPEN = '::: {custom-style="Working"}'
 
-_SUP = re.compile(r"(?<![\w^~])(\d[\d,.]*)\s*\^\s*(-?\d+(?:\.\d+)?)(?!\^)")
+_SUP = re.compile(r"(?<![\w^~])(\d[\d,.]*)\s*\^\s*"
+                  r"(\(\s*-?\d+\s*/\s*\d+\s*\)|-?\d+(?:\.\d+)?)(?!\^)")
 _LOGB = re.compile(r"\blog\s?(10|2|e)\b")
-_FENCE = re.compile(r"^\s*```+\s*(working|calc)?\s*$")
+_FENCE = re.compile(r"^\s*```+\s*(working|calc|table)?\s*$")
 
 
 def _notation(text: str) -> str:
-    """10^7 -> superscript, log10 -> subscript. Prose is otherwise untouched."""
-    text = _SUP.sub(r"\1^\2^", text)
-    return _LOGB.sub(r"log~\1~", text)
+    """10^7 and 9^(1/2) -> superscript, log10 -> subscript.
+
+    Every caret and tilde this does not itself use is escaped afterwards, and that is not
+    housekeeping. Pandoc marks a superscript by pairing two carets, so a line reading
+    `9^(1/2)   144^(1/2)` has its two stray carets paired across the gap between them and
+    sets `(1/2)   144` as a superscript on the 9. The fix cannot be a tidier regex: any
+    unpaired caret left in the text is a live pairing hazard for the next one anywhere in
+    the same paragraph. So the substitutions are parked behind placeholders, everything
+    still carrying a caret or tilde is escaped, and the placeholders are restored.
+    """
+    subs = []
+
+    def park(fmt):
+        def go(m):
+            subs.append(fmt.format(*m.groups()))
+            return f"\x00{len(subs) - 1}\x01"
+        return go
+
+    text = _SUP.sub(park("{0}^{1}^"), text)
+    text = _LOGB.sub(park("log~{0}~"), text)
+    text = text.replace("^", r"\^").replace("~", r"\~")
+    return re.sub(r"\x00(\d+)\x01", lambda m: subs[int(m.group(1))], text)
+
+
+def _looks_tabular(body: list[str]):
+    """Rows of a genuine table, or None.
+
+    Columns in these records are separated by runs of spaces, which a proportional font
+    cannot preserve - so anything with real columns has to become a real table or it
+    arrives as ragged prose. The thing that must not be swept up is a list of equations:
+    `one lakh = 1 times 10^5` splits into two columns on whitespace and is not a table,
+    it is a calculation, and it belongs in a working block. An `=` anywhere in a row is
+    the signal, and it is deliberately blunt - a table wrongly left as working still
+    reads; an equation forced into a grid does not.
+    """
+    live = [l for l in body if l.strip()]
+    # Columns are found by whitespace, which cannot express an empty leading cell - a
+    # header sitting over the third and fourth columns comes out in the first and second.
+    # Where that matters the author writes the row with pipes and says exactly what they
+    # mean; one pipe row makes the whole block explicit.
+    if live and all("|" in l for l in live):
+        return [[c.strip() for c in l.strip().strip("|").split("|")] for l in live]
+    rows = [re.split(r" {2,}", l.strip()) for l in live]
+    if len(rows) < 2 or any("=" in l for l in body):
+        return None
+    multi = [r for r in rows if len(r) >= 2]
+    # Most rows must actually have columns. A block of running text with one
+    # incidentally-spaced line in it is prose, and forcing it into a grid destroys it.
+    if len(multi) < 2 or len(multi) < 0.75 * len(rows):
+        return None
+    return rows
+
+
+def _grid_table(rows: list[list[str]]) -> list[str]:
+    """A pandoc grid table. Headerless unless the first row reads like labels.
+
+    Grid tables are used rather than pipe tables because most of these have no header -
+    a place-value breakdown is two columns of data - and a pipe table cannot express
+    that without an empty header row, which prints as a blank banded strip.
+    """
+    n = max(len(r) for r in rows)
+    rows = [r + [""] * (n - len(r)) for r in rows]
+    # A first row carrying no digits, above rows that do, is a header.
+    head = (len(rows) > 2
+            and not any(ch.isdigit() for ch in " ".join(rows[0]))
+            and any(ch.isdigit() for ch in " ".join(rows[1])))
+    w = [max(4, max(len(r[c]) for r in rows) + 2) for c in range(n)]
+    rule = lambda ch: "+" + "+".join(ch * x for x in w) + "+"
+    out = [rule("-")]
+    for i, r in enumerate(rows):
+        out.append("|" + "|".join(" " + c.ljust(x - 1) for c, x in zip(r, w)) + "|")
+        out.append(rule("=") if (head and i == 0) else rule("-"))
+    return ["", *out, ""]
 
 
 def _working_div(body: list[str]) -> list[str]:
@@ -645,11 +733,18 @@ def _working(text: str, flag=None) -> str:
         m = _FENCE.match(lines[i])
         if m:
             if not m.group(1) and flag:
-                flag()
-            i, body = i + 1, []
+                flag("fence")
+            tag, (i, body) = m.group(1), (i + 1, [])
             while i < len(lines) and not _FENCE.match(lines[i]):
                 body.append(lines[i])
                 i += 1
+            if tag == "table":
+                rows = _looks_tabular(body)
+                out += _grid_table(rows) if rows else _working_div(body)
+                i += 1
+                continue
+            if _looks_tabular(body) and flag:
+                flag("table")
             out += _working_div(body)
             i += 1
             continue
@@ -659,7 +754,7 @@ def _working(text: str, flag=None) -> str:
                 body.append(lines[i])
                 i += 1
             if flag:
-                flag()
+                flag("indent")
             out += _working_div(body)
             continue
         out.append(lines[i])
@@ -668,8 +763,14 @@ def _working(text: str, flag=None) -> str:
 
 
 def _prose(text, flag=None) -> str:
-    """Every reader-facing prose field passes through here on its way to the page."""
-    return _notation(_working(str(text or ""), flag))
+    """Every reader-facing prose field passes through here on its way to the page.
+
+    Notation runs first and the order is load-bearing. A grid table is parsed by column
+    position, so turning `10^1` into a superscript *after* the grid was drawn added a
+    character to a cell and shifted every boundary to its right, and pandoc then read the
+    wreckage as merged cells. Widths have to be computed on the final text.
+    """
+    return _working(_notation(str(text or "")), flag)
 
 
 def _block(prefix, text, trail="", flag=None) -> list[str]:
@@ -846,7 +947,7 @@ def _figures(r, sid) -> list[str]:
 
 def concept_md(r, cites, label=None, sid=None) -> list[str]:
     flagged = []
-    p = lambda t: _prose(t, lambda: flagged.append(1))
+    p = lambda t: _prose(t, flagged.append)
     md = [f"### {label + ' · ' if label else ''}{r['name']}", ""]
     # The concept id and type are build metadata and are not shown: the heading already
     # names the section. Currency is shown, because a reader of statutory material needs
@@ -855,7 +956,7 @@ def concept_md(r, cites, label=None, sid=None) -> list[str]:
     if asof and r.get("concept_type") != "derivable":
         md += [f"*Checked against the sources as they stood on {asof}.*", ""]
     mark = cites.mark(r)
-    flg = lambda: flagged.append(1)
+    flg = flagged.append
     md += _block("**Definition.** ", r["definition"]["text"], f" {mark}" if mark else "", flg)
     md += _block("**In plain terms.** ", r["simplified_explanation"], flag=flg)
     md += _figures(r, sid)

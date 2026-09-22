@@ -90,6 +90,8 @@ Write for an intelligent adult who knows nothing about this subject and is not s
 
 Write exponents as `10^7` and logarithms as `log10` in the record. The build typesets them as real superscripts and subscripts, so nobody writes markup in a YAML field. Set display arithmetic in a ```` ```working ```` block; an untagged fence still works and is flagged, and a bare four-space indent is a legacy form that used to make Word typeset arithmetic as computer source code.
 
+**Anything with columns is a table, and must be tagged ```` ```table ````.** Columns set with spaces cannot survive: the page is typeset in a proportional face, so alignment that looks right in the record arrives as ragged prose. Write the cells separated by two or more spaces and the build draws the table. Where a header sits over some columns and not others, or a cell has to be empty, write the row with pipes instead — one piped row makes the whole block explicit, and `| 10^6 | 10,00,000 | | one million |` says what spaces cannot. A list of equations is not a table and stays in a working block; the build tells the two apart by the `=`, and warns when a working block has columns in it.
+
 ## 2. Floor compliance
 
 The six operational tests in the specification below §1 are the hard rules. In practice:

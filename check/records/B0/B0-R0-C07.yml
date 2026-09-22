@@ -76,7 +76,7 @@ illustration:
     ```working
         10 divided by 1 = 10
         1,000 divided by 100 = 10
-    ```
+    ```working
 
     Both steps multiply by ten.
 
@@ -91,7 +91,7 @@ illustration:
     Write the four down and turn each into a power of ten. Use a calculator for the logarithm
     column; that is what it is for.
 
-    ```working
+    ```table
         25,000      2.5 times 10^4      logarithm 4.4
         3,00,000    3 times 10^5        logarithm 5.5
         5,00,000    5 times 10^5        logarithm 5.7
@@ -216,7 +216,7 @@ exercises:
 
     ```working
         6.0 minus 4.4 = 1.6
-    ```
+    ```working
 
     A difference of 1.6 on the logarithm scale means a factor of 10^1.6. A calculator gives about
     40, which agrees with the division. Note the shape of it: the division needed the zeros counted,
@@ -243,7 +243,7 @@ practice:
         10,000  = 10^4   so the logarithm is 4
         1       = 10^0   so the logarithm is 0
         10^9             so the logarithm is 9
-    ```
+    ```working
 
     The third is the one people get wrong under pressure. The logarithm of one is zero, because ten
     to the power zero is one.
@@ -284,6 +284,40 @@ practice:
     Which end it is nearer. The halfway point on a logarithm scale is not the halfway point in the
     number. Halfway between 10^3 and 10^4 is about 3,160, and 4,800 is above that. So the logarithm
     is above 3.5, nearer 4. A calculator gives 3.68.
+- level: 3
+  prompt: |
+    Work out 100 times 10,000 using logarithms instead of multiplication. Take the logarithm of
+    each number, add the two logarithms, and turn the total back into a number. Then check the
+    result by multiplying directly.
+  answer: |
+    The logarithms first. Both numbers are exact powers of ten, so read the exponent off each one.
+
+    ```working
+        100     = 10^2    so log10 100    = 2
+        10,000  = 10^4    so log10 10,000 = 4
+    ```
+
+    Add them.
+
+    ```working
+        2 plus 4 = 6
+    ```
+
+    Turn the total back into a number by raising ten to it.
+
+    ```working
+        10^6 = 10,00,000     (ten lakh)
+    ```
+
+    Now the direct check.
+
+    ```working
+        100 times 10,000 = 10,00,000
+    ```
+
+    The same number both ways. An addition did a multiplication, and that is the whole reason
+    logarithms were invented. Underneath it is the exponent rule you already have: multiplying two
+    powers of ten adds their exponents, and a logarithm is that exponent.
 - level: 4
   prompt: |
     Section 21(2) of the Consumer Protection Act, 2019 caps a penalty at ten lakh rupees. Sections
@@ -297,11 +331,46 @@ practice:
         ten lakh   = 10,00,000     = 10^6   logarithm 6
         one crore  = 1,00,00,000   = 10^7   logarithm 7
         ten crore  = 10,00,00,000  = 10^8   logarithm 8
-    ```
+    ```working
 
     Six, seven, eight. Each step up the ladder is one on the logarithm scale and ten times in
     rupees, which is what a logarithm scale is for.
   refs: [consumer_prot_2019]
+- level: 4
+  prompt: |
+    Four vertical axes are marked like this, bottom to top, in every case with the marks evenly
+    spaced up the page.
+
+    ```table
+        A    1 lakh    2 lakh     3 lakh      4 lakh
+        B    1 lakh    10 lakh    1 crore     10 crore
+        C    0         250        500         750
+        D    100       1,000      10,000      1,00,000
+    ```
+
+    Say which are logarithmic and which are ordinary. For each logarithmic one, say what a single
+    step up the page means.
+  answer: |
+    Read the steps, not the words. Subtract one mark from the next, then divide one by the next,
+    and see which of the two comes out the same every time.
+
+    ```working
+        A   2 lakh minus 1 lakh = 1 lakh        3 lakh minus 2 lakh = 1 lakh
+        B   10 lakh divided by 1 lakh = 10      1 crore divided by 10 lakh = 10
+        C   250 minus 0 = 250                   500 minus 250 = 250
+        D   1,000 divided by 100 = 10           10,000 divided by 1,000 = 10
+    ```working
+
+    A and C are ordinary. Equal distances up the page are equal amounts.
+
+    B and D are logarithmic. Equal distances are equal multiples, and one step is ten times.
+
+    C settles itself before you subtract anything. It has a mark at zero, and a logarithm scale has
+    no position for zero, because no power of ten produces it.
+
+    B is the one that catches people. Lakh and crore are round-sounding words, so a reader skims
+    the labels and takes the axis for an ordinary one. A is built from the same word and is
+    ordinary. The word tells you nothing. The step tells you everything.
 - level: 5
   prompt: |
     Take the four penalty figures from the Food Safety and Standards Act, 2006: 25,000, 3,00,000,
@@ -310,7 +379,7 @@ practice:
   answer: |
     The two logarithms.
 
-    ```working
+    ```table
         25,000    logarithm 4.4
         3,00,000  logarithm 5.5
     ```
@@ -335,6 +404,48 @@ practice:
     Twelve against 12.6. The small gap is the rounding in the two logarithms, each given to one
     place. That is the price of working on the logarithm scale, and it is usually worth paying.
   refs: [fss_act_2006]
+- level: 5
+  prompt: |
+    Section 3(1) of the National Food Security Act, 2013 gives 5 kilograms of grain per person per
+    month. A block office is planning for 2,00,000 people. Work out the kilograms needed in one
+    month by adding logarithms rather than by multiplying, then check the answer directly.
+  answer: |
+    The two logarithms. A calculator gives the first; the second is an exact power of ten with a
+    digit in front, so a calculator is easiest there too.
+
+    ```working
+        log10 5        = 0.7
+        2,00,000       = 2 times 10^5
+        log10 2,00,000 = 5.3
+    ```
+
+    Add them, because adding logarithms multiplies the numbers.
+
+    ```working
+        0.7 plus 5.3 = 6.0
+    ```
+
+    Raise ten to the total to get back to a number.
+
+    ```working
+        10^6 = 10,00,000 kilograms a month
+    ```
+
+    Ten lakh kilograms, which is a thousand tonnes.
+
+    Now check it directly.
+
+    ```working
+        5 times 2,00,000 = 10,00,000
+    ```working
+
+    The same figure. Keep the label on it. Kilograms of grain in one month, not people and not
+    rupees.
+
+    Notice what the logarithms bought here: nothing at all. Two numbers this easy are quicker
+    multiplied. The move is worth having for the case where the numbers are not easy, and worth
+    practising on the case where you can check it.
+  refs: [nfsa_2013]
 - level: 6
   prompt: |
     A figure has a vertical axis marked 100, 1,000, 10,000 and 1,00,000, evenly spaced. Two points
@@ -343,7 +454,7 @@ practice:
   answer: |
     The logarithms, from a calculator.
 
-    ```working
+    ```table
         300     logarithm 2.5
         30,000  logarithm 4.5
     ```
@@ -381,7 +492,7 @@ practice:
 
     ```working
         200 times 300 = 60,000
-    ```
+    ```working
 
     Sixty thousand, and 10^4.8 is about 63,000, which is that figure with the rounding in the two
     logarithms. So the arithmetic performed a multiplication correctly and the answer was given the
@@ -406,7 +517,7 @@ practice:
 
     Suppose the line started at 1.
 
-    ```working
+    ```table
         2015   1
         2020   10      an increase of 9
         2025   100     an increase of 90
@@ -438,7 +549,7 @@ practice:
         logarithm of 0.1  = -1
         logarithm of 0.01 = -2
         logarithm of 0    = does not exist
-    ```
+    ```working
 
     Going down the axis makes values smaller for ever and never reaches zero.
 
@@ -462,7 +573,7 @@ practice:
     If the question is **how many more people are affected**, the ordinary axis answers it, because
     that is the axis on which distance means amount.
 
-    ```working
+    ```table
         from 100 to 1,000 on a log axis   one step
         from 100 to 1,000 in people       900 more people
     ```

@@ -88,7 +88,9 @@ a batch can contradict itself.
 > do not have this repository. Name the instrument by its own title and give the public URL from
 > `check/references/library.bib`; the search string and the clause stay exactly as they were.
 >
-> Prose fields are literal blocks (`|`), never folded (`>`). Set display arithmetic in a
+> Prose fields are literal blocks (`|`), never folded (`>`). Anything with columns goes in a
+> ```` ```table ```` block, never aligned with spaces inside a working block — a proportional
+> face cannot hold the alignment. Set display arithmetic in a
 > ```` ```working ```` block, never by indenting it — an indented block used to be typeset as
 > computer source code. Write exponents as `10^7` and logarithms as `log10`; the build makes them
 > real superscripts and subscripts, so do not write markup. Introduce an operator in words the

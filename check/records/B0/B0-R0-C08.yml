@@ -243,7 +243,7 @@ exercises:
 
     ```working
         4 times 10^8 divided by 1 times 10^8 = 4 rupees per child per year
-    ```
+    ```working
 
     Four rupees a child for a year. Compare that against something you know: the price of one small
     item of food. Four rupees is around the cost of a single item, once.
@@ -270,7 +270,7 @@ practice:
   answer: |
     Keep the first digit, look at the next one to decide whether it goes up, and count the places.
 
-    ```working
+    ```table
         4,820     -> 5 times 10^3
         61        -> 6 times 10^1
         938,000   -> 9 times 10^5
@@ -324,35 +324,6 @@ practice:
     Notice that the exponents alone, 6 against 7, would have told you they were one step apart. The
     digits in front moved that to a bit more than one step. So divide, rather than reading the
     exponents off.
-- level: 4
-  prompt: |
-    The second schedule of the National Food Security Act, 2013 sets an upper primary meal at 700
-    calories. Estimate the calories a school of 600 children receives across 200 school days. Mark
-    every input you were not given.
-  answer: |
-    Round the two figures you were given, and mark nothing, because both were given.
-
-    ```working
-        700 calories  -> 7 times 10^2
-        600 children  -> 6 times 10^2
-        200 days      -> 2 times 10^2
-    ```
-
-    Multiply, digits and exponents separately.
-
-    ```working
-        7 times 6 times 2 = 84
-        10^2 times 10^2 times 10^2 = 10^6
-        = 84 times 10^6
-        = 8.4 times 10^7 calories
-    ```
-
-    About 8 times 10^7 calories a year, which is eight crore.
-
-    Inputs you were not given: none. This problem handed you all three, and that is unusual. Say so
-    when it happens, because an estimate with no assumptions in it is a different and stronger
-    object than one with two.
-  refs: [nfsa_2013]
 - level: 5
   prompt: |
     Estimate the number of school meals served in one Indian district in a school year. Mark every
@@ -439,6 +410,43 @@ practice:
     Why it looks reasonable: the digit 6 and the exponent 4 both sit in the line above. So the last
     line looks like a tidy-up rather than a step. It is a step. Putting one digit in front changes
     the exponent every time the digits reach ten.
+- level: 7
+  prompt: |
+    Here is a worked estimate. Find the step that broke.
+
+    ```working
+        a scheme covers 30 lakh people
+        each is to get 2 kilograms of grain a month
+        30 lakh = 3 million = 3 times 10^5
+        3 times 10^5, times 2 = 6 times 10^5 kilograms a month
+        = 600 tonnes a month
+    ```
+  answer: |
+    The third line crosses from the Indian ladder to the international one and drops a power of ten
+    on the way. A lakh is 10^5, so thirty lakh is thirty of them.
+
+    ```working
+        30 lakh = 30,00,000 = 3 times 10^6
+    ```
+
+    Three million is right. Three times 10^5 is not. That is three lakh, ten times too small.
+
+    Carry the corrected figure through.
+
+    ```working
+        3 times 10^6, times 2 = 6 times 10^6 kilograms a month
+        6 times 10^6 divided by 10^3 = 6 times 10^3 tonnes a month
+    ```
+
+    Six thousand tonnes, and the worked estimate said six hundred.
+
+    The comparison would have caught it without any of this. Six hundred tonnes shared among thirty
+    lakh people is 0.2 kilograms each, and the line above says two. An estimate that contradicts
+    its own input is finished before you look at the exponents at all.
+
+    Why it looks reasonable: the line holds a true statement. Thirty lakh really is three million.
+    The 3 was then taken from "million". The 10^5 was left behind from "lakh". Two halves of a
+    correct sentence got fitted to the wrong number.
 - level: 8
   prompt: |
     Here is a worked estimate. Find what is wrong with it, and it is not the arithmetic.
@@ -469,6 +477,45 @@ practice:
 
     Why it looks reasonable: the guesses are all marked, which is the honest part, and it makes the
     working look complete. Marking a guess does not test it.
+- level: 8
+  prompt: |
+    Here is a worked estimate and the conclusion drawn from it. The arithmetic is right. Say what
+    is wrong with the conclusion.
+
+    ```working
+        district A   4 lakh households      <- a guess
+                     3 visits each a year   <- a guess
+                     4 times 10^5, times 3 = 1.2 times 10^6 visits
+        district B   6 lakh households      <- a guess
+                     3 visits each a year   <- a guess
+                     6 times 10^5, times 3 = 1.8 times 10^6 visits
+        so district B needs half as many staff again as district A
+    ```
+  answer: |
+    Work out the factor the conclusion rests on.
+
+    ```working
+        1.8 times 10^6, divided by 1.2 times 10^6 = 1.5
+    ```
+
+    One and a half. That sits well inside a factor of two, and this method is blind to a factor of
+    two. Every input was rounded to one digit, and the answer is claimed only to the nearest power
+    of ten.
+
+    ```working
+        1.2 times 10^6, to the nearest power of ten = 10^6
+        1.8 times 10^6, to the nearest power of ten = 10^6
+    ```
+
+    Both districts come out at 10^6 visits. The estimate says the two are the same size and says
+    nothing else. A staffing sentence needs a real count of households in each district.
+
+    What the method could have supported. Had district B come out at 10^7, a tenfold gap would have
+    survived the rounding and the conclusion would have stood.
+
+    Why it looks reasonable: the arithmetic is faultless, both guesses are marked, and the 1.5 came
+    out of a division rather than being asserted. A number carries the precision of what went into
+    it, and one-digit inputs cannot carry one and a half.
 - level: 9
   prompt: |
     Here is a claim from a press note.
