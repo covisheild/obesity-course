@@ -88,6 +88,10 @@ a batch can contradict itself.
 > do not have this repository. Name the instrument by its own title and give the public URL from
 > `check/references/library.bib`; the search string and the clause stay exactly as they were.
 >
+> A `boundary` must-know point names a limit of the technique — when the tool stops being
+> trustworthy and what the reader should do then. It never describes the scope of the section.
+> A point beginning "This section gets you..." is a table of contents entry and will be rejected.
+>
 > Prose fields are literal blocks (`|`), never folded (`>`). Anything with columns goes in a
 > ```` ```table ```` block, never aligned with spaces inside a working block — a proportional
 > face cannot hold the alignment. Set display arithmetic in a

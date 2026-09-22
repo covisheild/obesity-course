@@ -528,6 +528,23 @@ def check(recs: dict, subjects: dict, clusters: dict, bibkeys: set):
         elif prac:
             W(rid, f"{len(prac)} practice problems on a concept not marked quantitative - either "
                    "set 'quantitative: true' or move these to exercises")
+        # A boundary point that describes the section instead of the technique. Four shipped
+        # in Part A: "This section gets you the arithmetic of a percentage" is a contents entry
+        # sitting in the one part of the record meant to outlive the section. Narrow on purpose -
+        # it catches the section-scope shape and leaves every real limit alone.
+        for q in (r.get("must_know") or []):
+            if not isinstance(q, dict) or q.get("kind") != "boundary":
+                continue
+            first = " ".join((q.get("point") or "").split())
+            # One sentence only. A point that opens on scope and then names a real limit and
+            # what to do about it is doing its job - C39 and C42 both do - and flagging those
+            # would teach the author to ignore the warning. Pure scope is a single sentence.
+            sentences = [x for x in re.split(r"(?<=[.!?]) +", first) if x.strip()]
+            if len(sentences) == 1 and re.match(r"^This (section |)(gets|gives|takes) you\b", first):
+                W(rid, f"boundary point describes the section, not a limit of the technique: "
+                       f"\"{first[:60]}...\" - say when the tool stops being trustworthy, or cut it "
+                       "(the style sheet 5)")
+
         # Columns set with spaces inside a working block cannot line up: the Working style
         # is proportional, so the whole point of the alignment is lost between the record
         # and the page. Before this check the book contained one real table and about
