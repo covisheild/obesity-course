@@ -153,8 +153,17 @@
                   "note": {
                     "type": "string",
                     "description": "Used when a source could not be obtained, or when it says something subtly different from the claim."
+                  },
+                  "quote_checked": {
+                    "type": "boolean",
+                    "description": "Set by the build, not by hand: the quote was found in the source file."
                   }
                 }
+              },
+              "quote": {
+                "type": "string",
+                "minLength": 8,
+                "description": "The exact words from the source that carry this claim, copied not paraphrased. When the source is a file in sources/, the build searches that file for this string and blocks if it is not there. This is the only field that makes a citation checkable by machine."
               }
             }
           }
@@ -204,6 +213,11 @@
               },
               "as_of": {
                 "type": "string"
+              },
+              "quote": {
+                "type": "string",
+                "minLength": 4,
+                "description": "The words in the source that state this number. Checked against sources/."
               }
             }
           }

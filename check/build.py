@@ -423,6 +423,98 @@ def check_arithmetic(r: dict) -> list:
     return out
 
 
+def _source_text(citekey: str):
+    """The text of the source file behind a citekey, if this repository holds one."""
+    if not citekey:
+        return None
+    cache = getattr(_source_text, "_cache", None)
+    if cache is None:
+        cache = _source_text._cache = {}
+    if citekey not in cache:
+        src = os.path.join(os.path.dirname(ROOT), "sources")
+        idx, text = {}, None
+        ipath = os.path.join(src, "INDEX.yml")
+        if os.path.exists(ipath):
+            with open(ipath, encoding="utf-8") as fh:
+                idx = _yaml().safe_load(fh) or {}
+        entry = (idx.get("files") or {}).get(citekey)
+        if entry:
+            path = os.path.join(src, entry["file"])
+            if os.path.exists(path):
+                with open(path, encoding="utf-8", errors="replace") as fh:
+                    text = " ".join(fh.read().split()).lower()
+        cache[citekey] = text
+    return cache[citekey]
+
+
+def _do_not_cite() -> dict:
+    """Files held in sources/ that must never back a claim."""
+    ipath = os.path.join(os.path.dirname(ROOT), "sources", "INDEX.yml")
+    if not os.path.exists(ipath):
+        return {}
+    with open(ipath, encoding="utf-8") as fh:
+        return (_yaml().safe_load(fh) or {}).get("do_not_cite") or {}
+
+
+def check_quotes(r: dict) -> tuple:
+    """Search the source file for the words a record says it took from it.
+
+    This is the only check in the build that reads a source. Until it existed the audit
+    was a prompt handed to a subagent with nothing behind it: the instruction said to
+    quote the exact words out of the file in sources/, and the quote went into the
+    subagent's report and then nowhere. A claim that was never in the file passed exactly
+    as cleanly as one that was, because the only artefact of the check was the checker's
+    own assurance that it had checked.
+
+    A quote that is present is a fact verified mechanically. A quote that is absent is
+    precisely the failure the audit exists to catch - a claim that reads plausibly and is
+    not in the source - and it blocks. Whitespace and case are normalised, because a
+    passage copied out of a PDF rewraps; nothing else is relaxed.
+    """
+    block, warn = [], []
+
+    def look(citekey, quote, where):
+        text = _source_text(citekey)
+        if text is None or not quote:
+            return None
+        if " ".join(str(quote).split()).lower() in text:
+            return True
+        block.append(f"{where}: the quoted words are not in sources/{citekey}.txt - "
+                     f"\"{' '.join(str(quote).split())[:70]}\". Either the passage says "
+                     "something else, or the claim did not come from it")
+        return False
+
+    for i, ref in enumerate((r.get("definition") or {}).get("references") or [], 1):
+        if not isinstance(ref, dict):
+            continue
+        key, quote = ref.get("citekey"), ref.get("quote")
+        banned = _do_not_cite()
+        if key in banned:
+            block.append(f"definition reference {i} cites '{key}', which sources/INDEX.yml "
+                         f"marks do-not-cite: {' '.join(str(banned[key].get('why','')).split())}")
+        look(key, quote, f"definition reference {i}")
+        # A local source with no quote can be confirmed by nobody except whoever ticked
+        # the box, so a located claim without one is an assurance rather than a check.
+        # A reference to a source this repository holds must carry the words it relies on.
+        # Without them the citation is an assurance, and an assurance is what the audit was
+        # already producing before this check existed.
+        if _source_text(key) is not None and not quote:
+            block.append(f"definition reference {i} cites '{key}', which is held in sources/, "
+                         "but carries no 'quote'. Copy the exact words the claim rests on so "
+                         "the build can find them")
+
+    for n, num in enumerate((r.get("illustration") or {}).get("numbers") or [], 1):
+        if not isinstance(num, dict):
+            continue
+        where = f"illustration number {n} ({num.get('value')})"
+        look(num.get("citekey"), num.get("quote"), where)
+        if _source_text(num.get("citekey")) is not None and not num.get("quote"):
+            block.append(f"{where} comes from a source held in sources/ but carries no "
+                         "'quote'. A figure nobody can trace back to its words is the one "
+                         "kind of error a reader cannot catch")
+    return block, warn
+
+
 def check_doc_paths() -> list:
     """Every repository path the instruction documents name must exist.
 
@@ -635,6 +727,12 @@ def check(recs: dict, subjects: dict, clusters: dict, bibkeys: set):
         elif prac:
             W(rid, f"{len(prac)} practice problems on a concept not marked quantitative - either "
                    "set 'quantitative: true' or move these to exercises")
+        qblock, qwarn = check_quotes(r)
+        for m in qblock:
+            E(rid, m)
+        for m in qwarn:
+            W(rid, m)
+
         for where, line, vals in check_arithmetic(r):
             E(rid, f"arithmetic does not hold in {where}: \"{line[:66]}\" evaluates to "
                    f"{' and '.join(f'{v:g}' for v in vals)}")

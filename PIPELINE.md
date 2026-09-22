@@ -121,8 +121,11 @@ pass. Fresh contexts, every time.
 
 > Read `claude.md`. You are auditing, not rewriting.
 >
-> For every claim in `books/<SUBJECT>/records/*.yml`: open the file named in the locator inside
-> `sources/`, search it for the words the record relies on, and record whether they are there.
+> For every claim in `books/<SUBJECT>/records/*.yml`: open the file `sources/INDEX.yml` maps
+> the citekey to, search it for the words the record relies on, and **write those words into
+> the record's `quote` field**. Not into your report — into the record. The build searches the
+> source for them and blocks if they are absent, which is what makes this step check anything
+> at all rather than assert that it checked.
 > A claim that reads plausibly and is not in the file is the failure you are looking for.
 >
 > Then **recompute every practice answer**, line by line, rather than reading it. Ten problems a

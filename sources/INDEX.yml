@@ -1,0 +1,35 @@
+# Which file in this folder stands behind which citekey.
+#
+# The build needs this to check a quoted passage against its source, and it cannot be
+# inferred from the filename. `constitution` resolves to constitution_current.txt, not to
+# constitution.txt - and constitution.txt is a pre-2003 consolidation that does not contain
+# Article 279A at all. A convention that mapped citekey to same-named file would have sent
+# every check of a constitutional claim to the one copy that cannot support it, and reported
+# the failure as if the claim were wrong.
+#
+# Add a line here in the same commit that adds a file. A citekey with no line is simply not
+# machine-checkable; a citekey pointing at a do_not_cite file is a blocking failure.
+
+files:
+  fss_act_2006:
+    file: fss_act_2006.txt
+    what: Food Safety and Standards Act 2006 (Act 34 of 2006)
+  nfsa_2013:
+    file: nfsa_2013.txt
+    what: National Food Security Act 2013 (Act 20 of 2013)
+  consumer_prot_2019:
+    file: consumer_prot_2019.txt
+    what: Consumer Protection Act 2019 (Act 35 of 2019)
+  constitution:
+    file: constitution_current.txt
+    what: Constitution of India, consolidated 2026 text (India Code handle 123456789/618394)
+
+# Held but not citable. Kept because Book 0 F3 teaches currency-checking on it: the worked
+# example is a reader discovering that this copy is out of date. Citing it for anything else
+# is the mistake that section exists to teach.
+do_not_cite:
+  constitution_superseded:
+    file: constitution.txt
+    why: >-
+      Older India Code consolidation, latest amendment 2003. Lacks Article 279A entirely.
+      Present only as the worked example in Book 0 F3.
