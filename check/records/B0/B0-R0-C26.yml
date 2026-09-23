@@ -80,7 +80,9 @@ illustration:
     body-mass index and the circumference of the upper arm. This section uses only the 131 men.
 
     The study's Table 3 reports a 31.3 centimetre arm cut-off for men, labelled "overweight,
-    body-mass index 25 or more". It gives sensitivity 86 per cent and specificity 74 per cent.
+    body-mass index 25 or more". The arm is measured with a tape, and a man whose arm measures
+    31.3 centimetres or more counts as a positive result. It gives sensitivity 86 per cent and
+    specificity 74 per cent.
     Table 2 gives 42 men with an index from 25 to 29.9, and 10 more at 30 or more.
 
     ```working
@@ -92,9 +94,11 @@ illustration:
     ```
 
     Try to rebuild the table the label describes: 52 men against 79. Sensitivity of 86 per cent
-    should mean some whole number of the 52 caught by the tape. Try the nearest candidates.
+    should mean some whole number of the 52 caught by the tape. Work out 0.86 times 52, then try
+    the whole numbers either side of it.
 
     ```working
+        0.86 times 52 = 44.72
         44 divided by 52 = 0.8461...
         45 divided by 52 = 0.8653...
     ```
@@ -104,6 +108,7 @@ illustration:
     cent.
 
     ```working
+        0.74 times 79 = 58.46
         58 divided by 79 = 0.7341...
         59 divided by 79 = 0.7468...
     ```
@@ -161,6 +166,10 @@ illustration:
 
     About 61 per cent. This is the positive predictive value: of the men the arm measurement
     flags, the share who are actually in the 25-to-29.9 band.
+
+    The 89 include the 10 men at 30 or more, so a flagged man at 30 or more counts here as a
+    wrong result. For the question 'is his index 25 or more?', 61 per cent is the least the share
+    could be.
 
     Now reverse the question. Take the column of men in the 25-to-29.9 band — 42 of them.
 
@@ -407,14 +416,13 @@ exercises:
   prompt: |
     The paper defines higher percent body fat (PBF) separately for men and women. It measures
     body fat with a machine that passes a small current through the body. Its abstract states the cut-off in one place as
-    "(men: ≥20%; women: ≥30%)". Its own methods section and Table 2 both use "≥28" per cent for
-    women instead.
+    "(men: ≥20%; women: ≥30%)". Its methods section, Table 2 and Table 3 all use "≥28" per cent
+    for women instead.
 
     Say how you would check which of the two women's figures, 30 or 28 per cent, the paper's own
     numbers are actually built on.
   answer: |
-    There is no arithmetic check here of the kind that settles a count against a percentage. A
-    cut-off is a definition, not a total a percentage can be divided back into.
+    Nothing taught so far settles it by arithmetic. A later section will give a way.
 
     What can be checked is how many places in the paper repeat each number. The methods section,
     Table 2 and Table 3 all give the women's cut-off as 28 per cent. Only the abstract's one sentence
@@ -484,13 +492,18 @@ practice:
     of 25, give 0.75 and 0.6. The two questions are not the same question.
 
     Separately, check whether the test and the condition are independent, using last section's
-    test. Does P(test positive) equal P(test positive given condition present)?
+    test. Does P(test positive and condition present) equal P(test positive) times P(condition
+    present)?
 
     ```working
+        15 divided by 100 = 0.15
         25 divided by 100 = 0.25
+        20 divided by 100 = 0.2
+        0.25 times 0.2 = 0.05
     ```
 
-    P(test positive) is 0.25, against 0.75 given the condition is present. They do not match, so
+    P(test positive and condition present) is 0.15. P(test positive) times P(condition present)
+    is 0.05. They do not match, so
     the test and the condition are not independent — which is exactly the point of running a test
     at all.
 - level: 2
@@ -659,6 +672,8 @@ practice:
         0.4007 rounds to 40.1 per cent, close enough to the abstract's own 38.7 per cent
         so 113 is confirmed as the paper's count for abdominal obesity
     ```
+
+    The results text and Table 2 give the same group as 109.
   answer: |
     The step that broke is calling 40.1 per cent "close enough" to 38.7. A gap of about 1.4
     percentage points is not rounding noise. It is a real mismatch, on a figure printed to one
@@ -691,6 +706,9 @@ practice:
         both numbers are consistent with their own printed percentages, so nothing in the paper
         can decide which count is right
     ```
+
+    Table 2 also gives 71 men and 114 women in the high row, and 97 students in the normal-range
+    row.
   answer: |
     The step that broke is the conclusion. Both counts do round to 66 per cent, but the paper's
     own addition settles the question without needing to round anything.

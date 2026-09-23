@@ -34,7 +34,8 @@ definition:
     from the squared deviations: add them, then divide by the count for a whole population, or by
     one less than the count for a sample. The standard deviation is the square root of the
     variance, expressed in the same unit as the original values, because taking a square root
-    undoes the squaring.
+    undoes the squaring. To say how far one value sits from the mean in standard deviations, divide
+    its deviation by the standard deviation.
 
     The mean of a set of values says nothing on its own about where any one member of the set
     actually sits.
@@ -255,8 +256,8 @@ illustration:
     numbers printed beside it are 62.6 and 80.9. It sits above both of them, not between them
     either.
 
-    Both rows fail the same way, and each one passes against the other row's numbers. The numbers
-    fit if the two rows' quartiles were printed in each other's places.
+    Both rows fail, in opposite directions, and each passes against the other row's numbers: 70.9
+    sits between 62.6 and 80.9, and 173 between 167.7 and 177.8. The numbers fit if the two rows' quartiles were printed in each other's places.
 
     Men's mean body-mass index is 24.2 kilograms per square metre, with a standard deviation of
     3.9.
@@ -288,10 +289,19 @@ illustration:
     ```
 
     By the median's own definition, at least half of the 131 men have a body fat percentage at or
-    below 20.3. That is also below the mean of 22.1. A smaller number of men, with a much higher
-    body fat percentage, pull the mean up past them. It is bunched in the middle, with a longer
-    stretch running upward than downward. That is exactly the shape the section on variation
-    described in words.
+    below 20.3. That is also below the mean of 22.1. The men above the median must reach far
+    enough up to pull the mean past it. The quartiles printed beside the median show it: 16.7 and
+    28.8.
+
+    ```working
+        20.3 minus 16.7 = 3.6
+        28.8 minus 20.3 = 8.5
+    ```
+
+    The first quartile sits 3.6 below the median, and the third sits 8.5 above it. The quarter of
+    men just above the median stretches more than twice as far as the quarter just below it. That
+    is a longer stretch running upward than downward. It is exactly the shape the section on
+    variation described in words.
   analogy_breaks_when: |
     Checking a median against its own two quartiles catches a pair of quartiles that sits nowhere
     near the median.
@@ -432,8 +442,8 @@ exercises:
     The same report's raw data shows a median of 4,100 steps. Say what the gap between the two
     numbers tells you. Say what you would ask for before agreeing with the conclusion.
   answer: |
-    The mean, 6,200, sits well above the median, 4,100. A smaller number of patients with a very
-    high step count are pulling the mean up. More than half of all patients walk at or below 4,100
+    The mean, 6,200, sits well above the median, 4,100. The patients above the median reach far
+    enough up to pull the mean past it. At least half of all patients walk at or below 4,100
     steps, which is already under the report's own target of 5,000.
 
     "Comfortably above the target" describes the mean, not the typical patient. The typical
@@ -674,8 +684,8 @@ practice:
     The sample standard deviation is about 2.83.
 - level: 3
   prompt: |
-    Give the variance and the sample standard deviation of a set whose deviations from its own mean
-    are the five values below.
+    Give the sample variance and the sample standard deviation of a sample whose deviations from its
+    own mean are the five values below.
 
     ```working
         -2   4   -1   3   -4
@@ -809,8 +819,8 @@ practice:
     internally consistent.
 
     Here the mean, 33.8, sits below the median, 34.0, the other way round from the men's rows
-    worked through above. A mean below the median happens when a smaller number of values well
-    below the middle pull it down. If this pattern holds, the tail here points toward the low side
+    worked through above. A mean below the median happens when the values below the median reach
+    further down than those above it reach up. If this pattern holds, the tail here points toward the low side
     rather than the high side.
   refs:
   - kiran_2022_muac_nc
@@ -890,11 +900,11 @@ practice:
     the men are at or below 20.3. And 20.3 sits below the mean of 22.1. So at least half of the men
     are below the mean, not above it.
 
-    A smaller number of men, with a much higher body fat percentage, are what pull the mean up.
-    Most men sit near or below the median.
+    The men above the median reach far enough up to pull the mean past it. At least half sit at or
+    below the median.
 
     Why it looks reasonable: "the mean is higher, so more men must be higher" sounds right. It is
-    the wrong direction. A higher mean is the sign of a tail on the high side. A few readings go
+    the wrong direction. A higher mean is the sign of a tail on the high side. Some readings go
     far up. It is not a sign that most readings sit above the mean.
 - level: 9
   prompt: |
@@ -912,8 +922,8 @@ practice:
     ```
 
     The third quartile, 25.6, sits 0.6 above the cut-off. About a quarter of the women sit at or
-    above the third quartile. So about a quarter or more of the 151 women are at 25.6 or above,
-    even though the mean is 23.0.
+    above 25.6. Since 25.6 is above 25, at least about a quarter of the 151 women are at 25 or
+    above, even though the mean is 23.0.
 
     What this does not establish. Body-mass index does not measure body fat directly. It cannot
     tell fat from lean mass. So this figure does not establish anything about any one woman's
@@ -942,16 +952,16 @@ practice:
     ```
 
     By definition, about a quarter of the men sit at or below 16.7 and about a quarter sit at or
-    above 28.8. So at most about half of the men can lie anywhere between 16.7 and 28.8. The
-    colleague's "20 to 24" is a narrower band sitting inside that half. The mean, 22.1, also sits
+    above 28.8. So about half the men lie between 16.7 and 28.8. The colleague's 20 to 24 sits
+    inside that stretch, so at most about half can lie in it. The mean, 22.1, also sits
     above the median, 20.3, by 1.8 points.
 
     ```working
         22.1 minus 20.3 = 1.8
     ```
 
-    That gap says at least half of the men sit at or below 20.3. A smaller number reading well
-    above 22.1 is likely what pulls the mean up past them.
+    The median says at least half of the men sit at or below 20.3. The men above it reach far
+    enough up to pull the mean past it.
 
     What this does not establish. Neither the mean nor the quartiles tell you what fraction of men
     actually fall inside 20 to 24 specifically. That needs a frequency table of the individual

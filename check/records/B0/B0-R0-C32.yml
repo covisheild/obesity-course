@@ -45,7 +45,8 @@ definition:
 
     Below that the Organization's 2003 report carries one further step, net metabolizable energy.
     It takes off the energy the body itself spends on digesting the food and on handling what is
-    absorbed. What the report has no step for anywhere is digestible energy.
+    absorbed. The report's cascade has no step called digestible energy. The phrase is not in
+    chapter 3, where the report sets out the cascade, or in chapter 4.
 
     The energy figure on a food label is not a burning measurement. It is derived using the
     Atwater system, which uses the average caloric content of protein, carbohydrate and fat. Those
@@ -58,8 +59,9 @@ definition:
     for each gram of carbohydrate. In kilocalories for each gram the same three values are 4.0,
     9.0 and 4.0.
 
-    One thing the general system does not do is take fibre out. Atwater's carbohydrate is
-    determined by difference, and thus includes fibre.
+    One thing the general system does not do is take fibre out. Some labelling systems do
+    discount fibre, as OpenStax Chemistry describes. Atwater's general system does not. The Indian
+    labelling regulations give dietary fibre its own factor, 2 kilocalories a gram.
 
     To work out the energy content of a food, the quantities of carbohydrate, protein and fat are
     each multiplied by the factor for that one, and the products are added.
@@ -236,6 +238,10 @@ definition:
       opened: true
       claim_located: true
       checked_on: '2026-09-23'
+      note: |-
+        Cited for the definition's sentence that some labelling systems do discount fibre.
+        The FAO report's section 3.5.1, cited below, is what says Atwater's general
+        system does not.
   - citekey: openstax_chemistry_2e
     kind: textbook
     locator: "\xA7 5.2 Calorimetry, Measuring Nutritional Calories, on doing the sum"
@@ -296,6 +302,18 @@ definition:
       note: |-
         The definition's gross energy, the losses to faecal, gaseous, urinary and surface
         energy, and metabolizable energy all follow this paragraph, held verbatim.
+  - citekey: fao_food_energy_2003
+    kind: consensus_statement
+    locator: ch. 3, s.3.5.1, the Atwater general factor system
+    quote: As originally described by Atwater, carbohydrate is determined by difference, and thus
+      includes fibre.
+    verified:
+      resolved_id: https://www.fao.org/4/y5022e/y5022e04.htm
+      opened: true
+      claim_located: true
+      checked_on: '2026-09-23'
+      note: |-
+        The definition's statement that the general system does not take fibre out.
   - citekey: fssai_labelling_2020
     kind: instrument
     locator: Regulation 5(3)(e)(i), the factors for calculating energy
@@ -354,9 +372,10 @@ simplified_explanation: |
 
   So the cascade is gross energy, then metabolizable energy. Below that the report carries one
   more step, called net metabolizable energy. It takes off the energy the body itself spends on
-  digesting the food and handling it. What the report has no step for anywhere is digestible
-  energy. You may hear somebody put one in the middle and say the report has it. If they do, they
-  have not opened it.
+  digesting the food and handling it. The report's cascade has no step called digestible energy.
+  The phrase is not in chapter 3, where the report sets out the cascade, or in chapter 4. You may
+  hear somebody put one in the middle and say the report has it. If they do, they have not read
+  that chapter.
 
   The number on a packet was almost certainly never measured by burning anything. It was
   calculated.
@@ -459,7 +478,8 @@ illustration:
     > ...the result is an expression of the energy content of food, which is referred to as net
     > metabolizable energy (NME).
 
-    So the report's cascade runs gross energy, then metabolizable energy, then net metabolizable energy. The digestible-energy step is nowhere in the report at all.
+    So the report's cascade runs gross energy, then metabolizable energy, then net metabolizable energy. There is no digestible-energy step in it. The phrase is not in chapter 3, and it is not in chapter 4
+    either.
 
     Search the same chapter for Atwater.
 
@@ -481,13 +501,13 @@ illustration:
         80 divided by 700 = 0.1142857143
     ```
 
-    Round it to three figures and you have 0.114. Multiply by a hundred to turn the proportion into a percentage.
+    Keep every figure for now. Multiply by a hundred to turn the proportion into a percentage.
 
     ```working
-        0.114 times 100 = 11.4
+        0.1142857143 times 100 = 11.42857143
     ```
 
-    About eleven per cent. So the Act fixes an energy figure and a protein figure, and the protein figure accounts for roughly a ninth of the energy. The other eight
+    Round once, at the end: 11.4. About eleven per cent. So the Act fixes an energy figure and a protein figure, and the protein figure accounts for roughly a ninth of the energy. The other eight
     ninths have to come from fat and carbohydrate, and Schedule II sets no figure for either of them.
 
     Now do the same sum in kilojoules and watch something strange happen. The factor for protein in kilojoules is 17.
@@ -503,14 +523,14 @@ illustration:
     ```
 
     ```working
-        340 divided by 2,928.8 = 0.116
+        340 divided by 2,928.8 = 0.1160885004
     ```
 
     ```working
-        0.116 times 100 = 11.6
+        0.1160885004 times 100 = 11.60885004
     ```
 
-    Eleven point six per cent this time, against eleven point four the other way.
+    Round once, at the end: 11.6. Eleven point six per cent this time, against eleven point four the other way.
 
     The report's kilojoule column and its kilocalorie column were each rounded on their own, and they are not exact conversions of one another. A footnote on the same
     page gives protein's precise value as 16.7 kilojoules a gram, and that one does convert properly.
@@ -560,6 +580,12 @@ illustration:
     quote: The precise values for protein, fat, total carbohydrate and alcohol are, respectively,
       16.7, 37.4, 16.7 and 28.9 kJ/g.
     as_of: '2026-09-23'
+  - value: '37.4'
+    unit: kilojoules a gram, the precise Atwater value for fat, from footnote 9
+    citekey: fao_food_energy_2003
+    quote: The precise values for protein, fat, total carbohydrate and alcohol are, respectively,
+      16.7, 37.4, 16.7 and 28.9 kJ/g.
+    as_of: '2026-09-23'
   - value: '700'
     unit: kilocalories per hot cooked meal, upper primary classes, Schedule II
     citekey: nfsa_2013
@@ -585,8 +611,8 @@ illustration:
 
     The Atwater factors are averages over foods. So the method cannot tell apart two foods with the same grams of protein, fat and carbohydrate.
 
-    The two printed columns pair up for protein and for carbohydrate. They do not pair up for fat. Fat's precise value is 37.4 kilojoules a gram,
-    and the report prints 9.0 kilocalories beside it. Try the conversion both ways round.
+    The two printed columns pair up for protein and for carbohydrate. They do not pair up for fat. The footnote that gave protein's 16.7 gives
+    fat's precise value as 37.4 kilojoules a gram, and the report prints 9.0 kilocalories beside it. Try the conversion both ways round.
 
     ```working
         37.4 divided by 4.184 = 8.9388
@@ -609,11 +635,11 @@ must_know:
   refs:
   - fao_food_energy_2003
 - point: |
-    That report has no digestible-energy step anywhere. Its cascade runs from gross or ingested
-    energy to metabolizable energy. The losses named are faecal, gaseous, urinary and surface. A
-    third step sits below, net metabolizable energy. So do not object to a three-step reading of
-    this report. Object to the word digestible, which is not in it anywhere. Name the step that
-    was made up.
+    The report's cascade has no digestible-energy step. It runs from gross or ingested energy to
+    metabolizable energy. The losses named are faecal, gaseous, urinary and surface. A third step
+    sits below, net metabolizable energy. So do not object to a three-step reading of this report.
+    Object to the word digestible when it is credited to this cascade. Name the step that was made
+    up.
   kind: trap
   bearing: methodological
   refs:
@@ -689,7 +715,7 @@ exercises:
     the body itself spends on digesting the food and handling it.
 
     One thing to check in your own answer. Did you write a digestible-energy step in the middle?
-    It is not in the report, and the habit of putting it there is exactly what this section is
+    It is not in the report's cascade, and the habit of putting it there is exactly what this section is
     for.
   confidence_first: true
 - type: critique
@@ -979,18 +1005,23 @@ practice:
         48 divided by 450 = 0.1066666667
     ```
 
-    Round that to three figures and you have 0.107. Turn the proportion into a percentage by
-    multiplying by a hundred.
+    Keep every figure for now. Turn the proportion into a percentage by multiplying by a hundred.
 
     ```working
-        0.107 times 100 = 10.7
+        0.1066666667 times 100 = 10.66666667
     ```
 
-    About ten point seven per cent.
+    Round once, at the end: 10.7. About ten point seven per cent.
 
     Read the unit on the 450 before you leave this. The column is headed Calories with Kcal in
     brackets, so the figure is kilocalories. Taken as plain calories it would be a meal of 450
-    calories, which is under half a kilojoule, and no meal is that.
+    calories. In joules that is this.
+
+    ```working
+        450 times 4.184 = 1,882.8
+    ```
+
+    That is under two kilojoules, and no meal is that.
 
     And read what the answer is about. It is the share of the Act's energy standard that the Act's
     protein standard accounts for. It is not the protein share of any meal a child ate.
@@ -1166,13 +1197,13 @@ practice:
         48 divided by 189 = 0.253968254
     ```
 
-    Round that to three figures and you have 0.254.
+    Keep every figure for now, and multiply by a hundred.
 
     ```working
-        0.254 times 100 = 25.4
+        0.253968254 times 100 = 25.3968254
     ```
 
-    Twenty-five per cent too high, from one extra line.
+    Round once, at the end: 25.4. Twenty-five per cent too high, from one extra line.
 
     Why it looks reasonable. Every multiplication is correct and every factor is the right factor.
     The error is not in the arithmetic at all; it is in reading the panel. A panel nests. The words of which mean the line is a part of the line above it. A part is never added to the
@@ -1257,13 +1288,13 @@ practice:
         80 divided by 700 = 0.1142857143
     ```
 
-    Round that to three figures, 0.114, and turn it into a percentage.
+    Keep every figure for now, and turn it into a percentage.
 
     ```working
-        0.114 times 100 = 11.4
+        0.1142857143 times 100 = 11.42857143
     ```
 
-    About eleven per cent of the energy standard is accounted for by the protein standard. The
+    Round once, at the end: 11.4. About eleven per cent of the energy standard is accounted for by the protein standard. The
     other eighty-nine per cent has to come from fat and carbohydrate, and Schedule II sets no
     figure for either. That is worth saying in the meeting, because it is a real gap in what the
     Schedule fixes.
@@ -1308,7 +1339,8 @@ retrieval_items:
   a: Gross or ingested energy, then metabolizable energy, with faecal, gaseous, urinary and surface
     losses named in between. Below metabolizable energy the report carries a third step, net
     metabolizable energy, which takes off what the body spends on digesting and handling the food.
-    There is no digestible-energy step anywhere; the phrase does not occur in the report.
+    There is no digestible-energy step in it; the phrase does not occur in chapter 3, where the
+    report sets out the cascade, or in chapter 4.
 - q: What are the Atwater general factors, and what are they used for?
   a: One energy value for each of protein, fat and carbohydrate, used regardless of the food it is
     found in. They are 17 kilojoules or 4.0 kilocalories a gram for protein, 37 or 9.0 for fat, and

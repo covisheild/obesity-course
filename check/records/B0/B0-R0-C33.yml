@@ -16,6 +16,7 @@ concept_deps:
 - B0-R0-C15
 - B0-R0-C16
 - B0-R0-C23
+- B0-R0-C32
 definition:
   text: |
     Energy is a quantity that can be counted.
@@ -242,16 +243,21 @@ illustration:
     The energy inside went up by 53,000 joules.
 
     **Line three, round the burner, the unburnt gas, the pan and the water.** This one is
-    different, because the chemical energy of the gas now starts inside your line. At the start,
-    inside, there are 60,000 joules sitting in the gas. At the end that gas is burnt, and what is
-    inside instead is the 42,000 in the water and the 11,000 in the steel. The other 7,000 has
-    crossed the line into the kitchen air.
+    different, because the chemical energy of the gas now starts inside your line. Nothing crosses
+    in. The 7,000 joules that reached the kitchen air crossed out.
 
     ```working
-        53000 minus 60000 = -7000
+        0 minus 7000 = -7000
     ```
 
     The energy inside went down by 7,000 joules.
+
+    Check it as changes. The gas gave up 60,000 joules. The water gained 42,000 and the steel
+    11,000.
+
+    ```working
+        42000 plus 11000 minus 60000 = -7000
+    ```
 
     **Line four, round the whole kitchen.** The door and window are shut. Nothing crossed in,
     nothing crossed out.
@@ -270,7 +276,7 @@ illustration:
 
     Four numbers, one event, and every one of them is right.
 
-    One joule is small.
+    One joule is small. OpenStax College Physics 2e, section 7.1, puts it like this.
 
     > One joule is not a large amount of energy; it would lift a small 100-gram apple a distance of
     > about 1 meter.
@@ -289,7 +295,7 @@ illustration:
     citekey: openstax_college_physics_2e
     as_of: '2026-09-23'
   analogy_breaks_when: |
-    No burner was measured. Only the size of the joule comes from a source.
+    No burner was measured. Only the size of the joule comes from a source, College Physics 2e section 7.1.
 
     The shut kitchen is an idealisation and it has a time limit. Over two minutes, a closed room
     loses little enough through its walls that treating the crossing as zero is fair. Over an hour
@@ -333,7 +339,9 @@ must_know:
 - point: |
     A person is not a closed system, so "the energy has to go somewhere" is true and names nothing.
     Energy crosses a person's line inwards in food and drink. It crosses outwards as heat, as work
-    done on things around them, and in what leaves the body unabsorbed.
+    done on things around them, and in what leaves the body unabsorbed. Two lines are both in use.
+    One is at the mouth and skin, where unabsorbed food crosses in and back out. The other is at
+    the gut wall, where it never crosses in. Say which one you mean.
   kind: consequence
   bearing: clinical
 - point: |
@@ -554,9 +562,9 @@ practice:
 
     Now take the three boundaries one at a time, and for each one ask what crossed it.
 
-    **a) Round the kerosene.** At the start the kerosene holds 900,000 joules of chemical energy.
-    At the end it is burnt and holds none of it. All 900,000 joules crossed out of that boundary,
-    into the flame and from there into the air, the walls and the light. Nothing crossed in.
+    **a) Round the kerosene.** Over the hour the kerosene gives up 900,000 joules of chemical
+    energy. All of it crosses out of that boundary, into the flame and from there into the air, the
+    walls and the light. Nothing crosses in.
 
     ```working
         0 minus 900000 = -900000
@@ -565,17 +573,18 @@ practice:
     The change is minus 900,000 joules.
 
     **b) Round the lamp, the air and the walls.** The chemical energy of the kerosene starts inside
-    this line, so it is not a crossing. The only crossing is the light going out of the window.
+    this line, so it is not a crossing. Nothing crosses in. The only crossing is the light going
+    out of the window.
+
+    ```working
+        0 minus 60000 = -60000
+    ```
+
+    The change is minus 60,000 joules, and it is exactly the light. Check it as changes. The
+    kerosene gave up 900,000 joules, and the air and the walls gained 840,000.
 
     ```working
         840000 minus 900000 = -60000
-    ```
-
-    The change is minus 60,000 joules, and it is exactly the light. Check it against the routes:
-    840,000 joules stayed inside as warmth, 60,000 left.
-
-    ```working
-        840000 plus 60000 = 900000
     ```
 
     **c) Round the room and everything the light reaches.** Now the light is inside the line too,
@@ -702,9 +711,9 @@ practice:
         0 plus 300000 minus 0 = 300000
     ```
 
-    The energy inside the room went up by 300,000 joules over the hour. The fan turned it into
-    moving air and the moving air turned it into warmth, and all of it stayed inside. The room got
-    warmer.
+    The energy inside the room went up by 300,000 joules over the hour. The balance does not say
+    what form it ends in. It does remove the only support for "cannot have got warmer", and the
+    next section takes up where such energy ends up.
 
     The fourth line is arithmetic with nothing behind it. It subtracts the 300,000 from itself because line three assumed the answer. Subtracting a number
     from itself always gives zero, and tells you nothing at all.
@@ -725,7 +734,7 @@ practice:
     What to compute: the balance across a boundary drawn round a person, with every crossing named.
     The claim rests on conservation, so the way to test it is to use conservation properly.
 
-    Draw the line round the person. Then list the routes by which energy crosses it. Inwards: food
+    Draw the line round the person, at the mouth and skin. Then list the routes by which energy crosses it. Inwards: food
     and drink. Outwards: heat leaving the body to the air and to whatever it touches. Also work done on things
     outside the body. Also the energy in everything that leaves the body unabsorbed.
 
@@ -767,46 +776,49 @@ practice:
     > The label says this packet holds 1,200 kilojoules. So eating it puts 1,200 kilojoules into
     > the person.
 
-    The packet and the figure are made up for this problem.
+    The packet and the figure are made up for this problem. The figure on the label was calculated
+    with the Atwater general factors.
 
     Decide what to compute, compute it, and say what your answer does not establish.
   answer: |
-    What to compute: whether the boundary the label's figure was measured round is the same boundary
-    the colleague is applying it to. That is the only question here, and it is answered by drawing
-    both lines.
+    What to compute: whether the question the label's figure answers is the same question the
+    colleague is asking. That is the only question here, and it is answered by drawing both lines.
 
-    The label's line. A food's energy figure is measured, or calculated, for the food burnt
-    completely. The boundary is drawn round the food sample, and what crosses out is everything the
-    sample holds. Call that figure 1,200 kilojoules.
+    The label's line. The figure was calculated with the Atwater general factors. The section before
+    this one showed that those factors already have average losses taken out: what is lost in
+    digestion, in absorption and in the urine. So 1,200 kilojoules is an estimate of what an average
+    person gets from the packet. It is not everything the packet holds.
 
-    The colleague's line. This one is drawn round a person. What crosses in is not what the sample
-    holds. It is what the sample holds, minus whatever leaves the person without being absorbed.
+    The colleague's line. This one is drawn round a person, and the sentence is about this person.
+    This person's losses need not be the average ones. Call the gap between this person's losses
+    and the average D, because nobody in the room has a figure for it.
 
-    So write both and subtract, with the unabsorbed part called U because nobody in the room has a
-    figure for it.
+    Draw the person's line at the mouth, and the whole packet crosses in and whatever is not
+    absorbed crosses back out. Draw it at the gut wall instead, and the unabsorbed part never
+    crosses in. Either way the net crossing comes to the same thing.
 
     ```working
-        the energy crossing into the person = 1200 minus U
+        the energy crossing into the person = 1200 minus D
     ```
 
-    Now the only honest computation available. If U is zero the two lines give the same answer, and
-    if U is anything at all they do not. Nobody in the meeting has a value for U. So the correct
-    output of this computation is a sentence, not a number: we do not have that figure.
+    Now the only honest computation available. If D is zero the colleague's figure is right for
+    this person, and if D is anything else it is not. Nobody in the meeting has a value for D. So
+    the correct output of this computation is a sentence, not a number: we do not have that figure.
 
     What this does not establish. It does not establish that 1,200 is wrong. It is very likely the
     right answer to the question the label was answering.
 
-    It does not establish how big U is. This section gives you no way to find out. It only shows
-    you that the two boundaries differ, so a figure is needed.
+    It does not establish how big D is, or even which way it points. This section gives you no way
+    to find out. It only shows you that the two questions differ, so a figure is needed.
 
     And it does not establish anything at all about the person's weight. That would need a second
     balance, in kilograms. It would also need a claim about what any change is made of, and the
     ground floor does not carry that claim.
 
-    What to say in the meeting. The number is fine and the sentence is not. The label measures what
-    crossed out of a food sample. The claim is about what crossed into a person. Those are two
-    boundaries, and the difference between them is a quantity somebody has to measure rather than
-    assume away.
+    What to say in the meeting. The number is fine and the sentence is not. The label estimates
+    what an average person gets from the packet. The claim is about what crosses into this person.
+    Those are two different questions, and the difference between them is a quantity somebody has
+    to measure rather than assume away.
 retrieval_items:
 - q: What is a system, what is its boundary, and who decides where the boundary goes?
   a: A system is whatever has been enclosed for the purpose of an accounting, the boundary is the

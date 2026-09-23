@@ -22,7 +22,8 @@ definition:
     numbers came from.
 
     A length carries a value only when it is measured from zero. So the value axis of a bar chart
-    must start at zero.
+    must start at zero. The value axis is the one a bar's length is read against: the side axis when
+    bars stand up, the bottom axis when they lie flat.
 
     A figure can mislead while every number on it is correct. A bar chart's value axis may start
     above zero. Pictures or areas may stand in for lengths. Bins or time steps may be unequally
@@ -143,10 +144,13 @@ simplified_explanation: |
   lengths. So a bar's length has to be its value, and that holds only when the bar starts at zero.
 
   By area. A picture, a bubble or a slice of a pie carries its value by how much of the page it
-  covers. The eye takes in area more readily than height.
+  covers. The eye takes in area more readily than height. A pie chart is a circle standing for a
+  whole. Each slice's share of the circle is its share of the total, so a slice shows a share, not
+  an amount.
 
   So a bar chart must start at zero, and a line chart need not. The two rules do not fight. A line
-  chart asks you to read positions, and a printed axis starting at 400 tells you where they are. A
+  chart asks you to read positions, and a printed axis starting at 400, stated in the caption,
+  tells you where they are. A
   bar chart asks you to compare lengths, and a bar cut off at 400 has the wrong length. A line's
   steepness is still somebody's choice, as the section on graphs showed. So read the size of a
   change off the numbers, not off the slope.
@@ -168,7 +172,8 @@ simplified_explanation: |
   the range printed under each bar, and check that each covers the same span of values. A label
   such as "over 80" does not say where its range ends, so ask. A bar covering a wider span catches
   more values. It may be drawn wider, or drawn the same width and taller. Either way it cannot be
-  compared with the others.
+  compared with the others as it stands. To compare it fairly, divide its count by how many of the
+  ordinary spans it covers. That gives the count for each ordinary span, on average.
 
   A time axis can also change its step part way across, say from years to months. Read the date
   under each point and work out the gap to the next.
@@ -220,6 +225,8 @@ illustration:
     About 1.78, which is under twice. Every number on the slide is correct, including the 400 at the bottom.
 
     Redraw the chart with the side axis starting at zero. Each bar is now as long as its value.
+    Or keep the axis from 400 and draw each value as a dot with no bar under it. A dot carries its
+    value by position.
 
     That is why the zero rule belongs to bars.
 
@@ -234,7 +241,8 @@ illustration:
     The bigger plate is 1.556 times as tall. A plate stretched upward alone would look wrong, so it is widened by
     the same amount.
 
-    The page a plate covers is its height times its width.
+    Whatever its shape, a plate made 1.556 times as tall and 1.556 times as wide covers 1.556 times
+    1.556 as much of the page.
 
     ```working
         1.556 times 1.556 = 2.42
@@ -484,8 +492,8 @@ practice:
     Then work backwards. A second picture was enlarged the same way and covers 16 times the area
     of the original. Work out what its height was multiplied by.
   answer: |
-    Area is height times width, and both were multiplied by the same number. So the area is
-    multiplied by that number times itself.
+    Whatever the shape, its area is multiplied by the height's factor times the width's factor.
+    Both were multiplied by the same number. So the area is multiplied by that number times itself.
 
     ```working
         3 times 3 = 9
@@ -513,18 +521,19 @@ practice:
     the page.
 - level: 3
   prompt: |
-    The side axis of a chart is printed with 200 at the bottom and 300 at the top, with a mark
-    every 20.
+    The side axis of a chart is printed with 200 at the bottom and 300 at the top, with a numbered
+    line every 20.
 
-    Point A sits level with the third mark above the bottom. Point B sits halfway between the marks
-    for 220 and 240. Point C sits a quarter of the way from the mark for 280 to the mark for 300.
+    Point A sits level with the third numbered line above the bottom. Point B sits halfway between
+    the numbered lines for 220 and 240. Point C sits a quarter of the way from the numbered line for
+    280 to the numbered line for 300.
 
     Read the value of each point. Then work out how far C is above A.
   answer: |
-    List the marks first. They start at 200 and go up in steps of 20: 200, 220, 240, 260, 280 and
-    300.
+    List the numbered lines first. They start at 200 and go up in steps of 20: 200, 220, 240, 260,
+    280 and 300.
 
-    The third mark above the bottom is 260. That is A.
+    The third numbered line above the bottom is 260. That is A.
 
     Halfway between 220 and 240 is half a step above 220.
 
@@ -695,8 +704,9 @@ practice:
         so the second picture covers 6 times the area of the original
     ```
   answer: |
-    The step that broke is the second, even though its answer is right. Area is height times width,
-    and the working added them. The fourth line is where the break shows.
+    The step that broke is the second, even though its answer is right. Whatever the shape, its area
+    is multiplied by the height's factor times the width's factor, and the working added them. The
+    fourth line is where the break shows.
 
     With 2, adding and multiplying give the same answer.
 

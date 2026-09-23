@@ -248,8 +248,9 @@ illustration:
 
     For samples of four, the law predicts a spread of 1 around the true mean of 5.
 
-    Now return to the medical students. Suppose the 282 had instead been drawn at random from young adults, the group the paper set out to study. The square-root law would
-    then say something concrete.
+    Now return to the medical students. Suppose the 282 had instead been drawn at random from young adults, the group the paper set out to study. A share is itself an average:
+    count each yes as 1 and each no as 0. So the square-root law would then say how far 34.8 per cent was likely to sit from that
+    group's own figure.
 
     They were not drawn at random. They were students at one college who chose to come forward.
 
@@ -312,28 +313,6 @@ illustration:
     as_of: '2026-09-23'
     derived: '34.8 minus 20'
     quote: considered the prevalence of overweight as 20% according to NFHS-4
-  - value: '0.633'
-    unit: standard deviation of 5,000 simulated sample-of-10 means, from the stated eight-number
-      population
-    citekey: openstax_intro_stats_2e
-    as_of: '2026-09-23'
-    derived: simulation, Python's random module, random.seed(110) then one random.choice call per
-      draw, 5,000 samples of size 10 with replacement from 2, 4, 4, 4, 5, 5, 7, 9; a simulation
-      output, not a figure the source states - it checks the square-root law the quoted 7.1
-      sentence states
-    quote: the standard deviation of the sampling distribution is the standard deviation of the
-      original distribution divided by the square root of *n*
-  - value: '0.317'
-    unit: standard deviation of 5,000 simulated sample-of-40 means, from the same eight-number
-      population, drawn straight after the samples of 10 in one continuous run
-    citekey: openstax_intro_stats_2e
-    as_of: '2026-09-23'
-    derived: simulation, Python's random module, random.seed(110) then one random.choice call per
-      draw, 5,000 samples of size 40 with replacement from 2, 4, 4, 4, 5, 5, 7, 9, drawn after the
-      5,000 samples of size 10; a simulation output, not a figure the source states - it checks
-      the square-root law the quoted 7.1 sentence states
-    quote: the standard deviation of the sampling distribution is the standard deviation of the
-      original distribution divided by the square root of *n*
 must_know:
 - point: |
     A bigger sample is not a repair for a biased one. Enlarging a convenience sample tightens its
@@ -582,8 +561,7 @@ practice:
     population's mean.
 
     Why it looks reasonable: both numbers, 24.2 and 3.9, are real figures straight from the same
-    table. Adding and subtracting a spread from a mean is exactly the move this section has used
-    before. The flaw is using the spread of the people in place of the spread of the average. Those
+    table. Adding and subtracting a spread from a mean looks like a natural move. The flaw is using the spread of the people in place of the spread of the average. Those
     are two different numbers describing two different questions.
   refs:
   - kiran_2022_muac_nc

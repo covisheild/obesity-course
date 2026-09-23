@@ -126,6 +126,18 @@ definition:
       claim_located: true
       checked_on: '2026-09-23'
       note: ''
+  - citekey: nfsa_2013
+    kind: instrument
+    locator: s. 9 Coverage of population under Targeted Public Distribution System
+    quote: The percentage coverage under the Targeted Public Distribution System in rural and urban
+      areas for each State shall, subject to sub-section (2) of section 3, be determined by the
+      Central Government
+    verified:
+      resolved_id: https://indiacode.gov.in/handle/123456789/496105
+      opened: true
+      claim_located: true
+      checked_on: '2026-09-23'
+      note: 'Held copy, as enacted in 2013; quoted for the illustration and practice 9.'
 simplified_explanation: |
   A probability is a proportion.
 
@@ -147,7 +159,9 @@ illustration:
     Go back to section 3(1) of the National Food Security Act, 2013. It set five kilograms of
     foodgrains per person per month for a priority household. Read on to section 3(2), which sets a
     ceiling on how many people that entitlement can reach. It shall extend up to seventy-five per
-    cent. of the rural population, and up to fifty per cent. of the urban population.
+    cent. of the rural population, and up to fifty per cent. of the urban population. Section 3(2)
+    does not say it bounds any one State or district. Section 9 leaves "the percentage coverage ...
+    for each State" to the Central Government.
 
     Pick one rural person, anywhere the Act covers, entirely at random. At random means every rural
     person has exactly the same chance of being the one you pick. So the whole rural population is
@@ -207,7 +221,7 @@ illustration:
 
     About a third.
   analogy_breaks_when: |
-    Every probability above is a ceiling, not a measurement. The Act bounds how far the entitlement can
+    Every probability above is a bound, not a measurement. The Act bounds how far the entitlement can
     extend; it does not say how many people are actually receiving it in any one district. Treat 0.75 as the
     largest the chance of being covered could be, and 0.25 as the smallest the chance of not being covered
     could be. Say so whenever you quote a figure built from them.
@@ -254,8 +268,9 @@ must_know:
   kind: boundary
   bearing: clinical
 - point: |
-    Every probability, complement and odds you compute from a ceiling is itself a ceiling. Say so
-    in the same sentence you quote the number, or the reader will treat it as a count.
+    A probability or odds computed from a ceiling is itself a ceiling, but its complement is a
+    floor: at most 0.75 covered means at least 0.25 not covered. Say which in the same sentence you
+    quote the number, or the reader will treat it as a count.
   kind: consequence
   bearing: policy
 - point: |
@@ -288,8 +303,8 @@ exercises:
     calling it odds by mistake. The two are close only for rare events. At one half they are
     already a factor of two apart.
 
-    What to hand them: "Under the law, up to three in four of India's rural population can be
-    covered. That is a ceiling set by the Act, not a count of how many actually are."
+    What to hand them: "Under the law, up to three in four of the rural population can be covered.
+    That is a ceiling set by the Act, not a count of how many actually are."
   confidence_first: true
 - type: critique
   prompt: |
@@ -555,11 +570,12 @@ practice:
     covered, and the note has silently turned it into a statement of fact about this place. It does
     not tell you how many people are actually covered here.
 
-    And the 75 per cent is a national ceiling. The Act leaves each State's share to the Central
+    And section 3(2) names no State or district. The Act leaves each State's share to the Central
     Government under section 9, so it says nothing about this place in particular. Nor does it
     tell you whether the people entitled under the ceiling have actually been identified and
     issued a ration card. That is a separate administrative step, and the Act does not guarantee
     it happens up to the limit it sets.
+  refs: [nfsa_2013]
 retrieval_items:
 - q: What is the difference between a probability and its odds?
   a: When every outcome is equally likely, probability is the count of outcomes in an event

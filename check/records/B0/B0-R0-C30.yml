@@ -61,10 +61,9 @@ definition:
         of error distinct from sampling. It is the textbook grounding this derivable concept's
         definition references require. The formal vocabulary this record actually teaches -
         systematic error, random error, accuracy, trueness, precision, resolution - is the
-        International Vocabulary of Metrology's own wording. The build requires a derivable
-        concept's definition references to carry kind 'textbook', so the VIM sits instead in this
-        record's must-know and practice 'refs', named directly in the prose beside its entry
-        number, exactly where its wording is used.
+        International Vocabulary of Metrology's own wording. The VIM entries are listed below
+        with the words each one supplies. They are of kind 'instrument', admitted beside the
+        textbook anchor because the source is held and each carries its quote.
     quote: it is important to be aware of sampling errors and nonsampling errors. The actual process
       of sampling causes sampling errors
   - citekey: openstax_intro_stats_2e
@@ -78,6 +77,78 @@ definition:
       checked_on: '2026-09-23'
     quote: Factors not related to the sampling process cause nonsampling errors. A defective counting
       device can cause a nonsampling error.
+  - citekey: jcgm_vim3
+    kind: instrument
+    locator: 'Entry 2.13, measurement accuracy'
+    verified:
+      resolved_id: https://jcgm.bipm.org/vim/en/2.13.html
+      opened: true
+      claim_located: true
+      checked_on: '2026-09-23'
+    quote: closeness of agreement between a measured quantity value and a true quantity value of a measurand
+  - citekey: jcgm_vim3
+    kind: instrument
+    locator: 'Entry 2.14, measurement trueness'
+    verified:
+      resolved_id: https://jcgm.bipm.org/vim/en/2.14.html
+      opened: true
+      claim_located: true
+      checked_on: '2026-09-23'
+    quote: closeness of agreement between the average of an infinite number of replicate measured quantity values and a reference quantity value
+  - citekey: jcgm_vim3
+    kind: instrument
+    locator: 'Entry 2.15, measurement precision'
+    verified:
+      resolved_id: https://jcgm.bipm.org/vim/en/2.15.html
+      opened: true
+      claim_located: true
+      checked_on: '2026-09-23'
+    quote: closeness of agreement between indications or measured quantity values obtained by replicate measurements
+  - citekey: jcgm_vim3
+    kind: instrument
+    locator: 'Entry 2.16, measurement error'
+    verified:
+      resolved_id: https://jcgm.bipm.org/vim/en/2.16.html
+      opened: true
+      claim_located: true
+      checked_on: '2026-09-23'
+    quote: measured quantity value minus a reference quantity value
+  - citekey: jcgm_vim3
+    kind: instrument
+    locator: 'Entry 2.17, systematic measurement error'
+    verified:
+      resolved_id: https://jcgm.bipm.org/vim/en/2.17.html
+      opened: true
+      claim_located: true
+      checked_on: '2026-09-23'
+    quote: component of measurement error that in replicate measurements remains constant or varies in a predictable manner
+  - citekey: jcgm_vim3
+    kind: instrument
+    locator: 'Entry 2.18, measurement bias'
+    verified:
+      resolved_id: https://jcgm.bipm.org/vim/en/2.18.html
+      opened: true
+      claim_located: true
+      checked_on: '2026-09-23'
+    quote: estimate of a systematic measurement error
+  - citekey: jcgm_vim3
+    kind: instrument
+    locator: 'Entry 2.19, random measurement error'
+    verified:
+      resolved_id: https://jcgm.bipm.org/vim/en/2.19.html
+      opened: true
+      claim_located: true
+      checked_on: '2026-09-23'
+    quote: component of measurement error that in replicate measurements varies in an unpredictable manner
+  - citekey: jcgm_vim3
+    kind: instrument
+    locator: 'Entry 4.14, resolution'
+    verified:
+      resolved_id: https://jcgm.bipm.org/vim/en/4.14.html
+      opened: true
+      claim_located: true
+      checked_on: '2026-09-23'
+    quote: smallest change in a quantity being measured that causes a perceptible change in the corresponding indication
 simplified_explanation: |
   Take any measurement. Its error is what it says minus what is actually true. If a scale says 61.2
   kilograms and the true weight is 60.5, the error is 0.7 kilograms. An error can be positive or negative.
@@ -121,7 +192,7 @@ illustration:
     This mix-up is common enough to be worth seeing worked through with numbers on a stated case. No
     real scale's repeated calibration readings are held in this book's sources. Say a calibration
     weight — a weight already checked and trusted to be correct — is known to be exactly 60.0
-    kilograms. Two stated scales are each weighed against it twenty times.
+    kilograms. Each of two stated scales weighs it twenty times.
 
     ```table
     scale A readings (kg), tight and shifted
@@ -160,7 +231,10 @@ illustration:
     ```working
         598.5 plus 600.0 = 1198.5
         1198.5 divided by 20 = 59.925
+        60.0 minus 59.925 = 0.075
     ```
+
+    Its average sits 0.075 kilograms below the truth.
 
     This scale's error is random: it wobbles both above and below the truth from reading to reading.
     The wobbles partly cancel when averaged, and a few more readings would tend to bring the average
@@ -209,7 +283,7 @@ must_know:
   refs:
   - jcgm_vim3
 - point: |
-    Differences between observers are each observer's own systematic habit. Mixed across many
+    Part of the difference between observers is each observer's own systematic habit. Mixed across many
     observers, those habits scatter like random error. A single observer taking every measurement
     removes that scatter, but not the one observer's own habit. That habit then reaches every
     reading in the study, and no amount of data from that study alone can reveal it.
