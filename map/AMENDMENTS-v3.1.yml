@@ -1,0 +1,1903 @@
+# Approved amendments to the frozen subject map, v3 -> v3.1.  Read by check/amendments.py.
+#
+# The curriculum is map/subject-map-v3-FROZEN.md plus this file. The map stays frozen; nothing here
+# changes a book id, a book's position in map/BOOKS.yml, or the number of books (196).
+#
+# Why: on 23 Sep 2026 an external audit compared the map with clinical (OMEC, ABOM, Lancet Commission
+# 2025, Canadian CPG), policy (WHO, NOURISHING/MOVING, Food-EPI, best buys), causal-system (Foresight,
+# ANGELO), professional (WHO-ASPHER, Council on Linkages, NMC) and Indian frameworks. 879 items: 56%
+# covered, 31% partial, 12% absent, reducing to verified gap themes. Harsh approved closing all of
+# them (map/audit-2026-09/REPORT.md, decisions in its section 9):
+#   1. Tier 1 and 2 gaps closed here.
+#   2. Persona widened without new books: leadership, management, negotiation, institution building,
+#      community mobilisation and campaign design added inside existing rungs.
+#   3. GLP-1 hands-on work is a clinic co-run with an eligible physician, who holds the prescription
+#      (CDSCO approval condition; see S24-R1-A01).
+# Drafted by four subagents, verified by two independent rounds (0 open defects), 23 Sep 2026.
+#
+# How the pipeline uses it: claude.md section 5 step 1 (inventory) and PIPELINE.md Task 1 read a
+# rung's requirements with `python check/amendments.py --rung <ID>`, which prints the map lines with
+# revisions applied and additions labelled by amendment id, plus the rung above for the bridge.
+# Records name the amendment ids they serve (outcome_refs) or discharge (bridge_ref); build.py blocks
+# a verified or frozen rung that leaves one unserved.
+#
+# Fields: id, rung, kind (concept | skill | revise), field (revise of build/gate only), text,
+# target + map_line (revise only: the exact map text replaced), gap (audit gap ids), why (the verified
+# finding), sources (URLs for named instruments), verify_at_intake (true = the named instrument or
+# fact must be opened at source intake before it is written as fact), note.
+# Revise convention: target = the bullet without its leading "- ", or (field: build / gate) the text
+# after the "**Build target.**" / "**Gate to the next rung.**" label; text replaces it in place.
+
+- id: S17-R2-A01
+  rung: S17-R2
+  kind: concept
+  text: 'Gender and tribal status as equity axes that wealth and caste measures miss: women''s time use (measurable
+    in the Time Use Survey), mobility and safety, and intra-household food allocation, where who eats first and
+    who eats last is a determinant and not only a measurement problem; and Scheduled Tribe populations, whose forest
+    and local-food diets, activity patterns and pace of nutrition transition differ from the non-tribal gradient,
+    and whose numbers in a district sample may be too small to estimate separately.'
+  gap: '2.2'
+  why: 'V-map G7: ''gender'', ''women''s'', ''intra-household'', ''mobility'' 0; ''tribal|adivasi|scheduled tribe''
+    0 relevant, although the map names rural Chhattisgarh (942); C-system §4 items 3 (gender) and India intra-household
+    row.'
+  sources:
+  - https://www.pib.gov.in/PressReleasePage.aspx?PRID=2106113&reg=48&lang=2
+  verify_at_intake: false
+  note: Intra-household allocation as a measurement problem stays at S09-R3 (768); this line adds it as a determinant.
+    Lower-rung prerequisite for the S17-R3 tribal skill below.
+  drafter: A3
+- id: S17-R2-A02
+  rung: S17-R2
+  kind: skill
+  text: Read a programme design or a survey analysis for gender and tribal blind spots — whose time, mobility and
+    food share it assumes, and whether Scheduled Tribe populations can be estimated separately — and say what would
+    fix each.
+  gap: '2.2'
+  why: V-map G7 recommends gender and tribal equity at S17-R2/R3; existing S17-R2 gate asks for equity judgement
+    (1372) with no gender or tribal lens to make it.
+  sources: []
+  verify_at_intake: false
+  note: ''
+  drafter: A3
+- id: S17-R2-A03
+  rung: S17-R2
+  kind: revise
+  text: Surveillance versus research; STEPS methodology; sentinel versus population surveillance; and India's own
+    streams by type — periodic household survey rounds (NFHS, NFHS-6 included), NCD monitoring surveys run by ICMR-NINE
+    (formerly ICMR-NCDIR), and routine administrative growth monitoring of under-fives through the Poshan Tracker.
+  target: Surveillance versus research; STEPS methodology; sentinel versus population surveillance.
+  map_line: 1361
+  gap: '2.4'
+  why: 'V-map G8: Poshan Tracker ''Tracker'' 0 hits, NFHS-6 absent; E-india rows 5, 33, 45 (S17 names NFHS and STEPS
+    but not NNMS/ICMR-NINE); V-facts 2 (NFHS-6 released) and 7 (Tracker codes overweight).'
+  sources:
+  - https://www.pib.gov.in/PressReleasePage.aspx?PRID=2266600&reg=3&lang=1
+  - https://www.ncdirindia.org/
+  - https://www.pib.gov.in/FactsheetDetails.aspx?id=150744&NoteId=150744&ModuleId=16&reg=6&lang=1
+  verify_at_intake: false
+  note: Gives S17-R2's existing skill 'Read a surveillance system and identify its data quality weak point' (1368)
+    real Indian systems to read. Possible overlap with the early-life drafter if they name the Poshan Tracker in
+    S26 for growth monitoring.
+  drafter: A3
+- id: S17-R3-A01
+  rung: S17-R3
+  kind: skill
+  text: Adapt a surveillance instrument or programme component for a tribal block — local food lists, the local
+    language, community consent through village institutions — and show that the adaptation kept comparability with
+    the state instrument.
+  gap: '2.2'
+  why: 'V-map G7: tribal populations absent; Harsh works in Chhattisgarh; S17-R3 already builds surveillance adopted
+    by a district or state (1388).'
+  sources: []
+  verify_at_intake: false
+  note: Feeds the existing S17-R3 build; no build change needed.
+  drafter: A3
+- id: S20-R3-A01
+  rung: S20-R3
+  kind: revise
+  text: 'The 2025 Lancet Commission framework separating preclinical from clinical obesity, requiring organ dysfunction
+    or functional limitation rather than BMI alone, and its organ-by-organ diagnostic criteria for adults and for
+    children, framed as alterations of organ function rather than diseases in their own right. Among them is the
+    cardiorenal set: HFrEF; HFpEF; chronic or recurrent atrial fibrillation; pulmonary artery hypertension; recurrent
+    DVT or pulmonary thromboembolic disease; raised arterial blood pressure; microalbuminuria with reduced eGFR.'
+  target: The 2025 Lancet Commission framework separating preclinical from clinical obesity, requiring organ dysfunction
+    or functional limitation rather than BMI alone.
+  map_line: 1603
+  gap: 1.4a
+  why: 'V-map G4b: S20-R3 cites the organ-dysfunction requirement (1603) but names no cardiorenal criterion, yet
+    the S20-R3 build operationalises the framework; wording from V-facts claim 6 (renal item is microalbuminuria
+    with reduced eGFR, not CKD).'
+  sources:
+  - https://pmc.ncbi.nlm.nih.gov/articles/PMC11870235/
+  verify_at_intake: false
+  note: S20 is a prerequisite of S22, not the reverse, so the criteria are named here and again at S22-R2 (which
+    is built first in series order).
+  drafter: A1
+- id: S20-R3-A02
+  rung: S20-R3
+  kind: concept
+  text: 'The 2025 consensus definition of obesity for Asian Indians (Misra et al., Diabetes & Metabolic Syndrome),
+    with its two stages — excess adiposity without discernible effects on organ function or daily activities, and
+    generalised with abdominal adiposity accompanied by functional limitation or obesity-related disease — set beside
+    the Lancet Commission''s preclinical and clinical categories: what each counts as obesity, where they agree
+    and conflict, and what adopting each would do to measured Indian prevalence and to who is offered treatment.'
+  gap: 2.4, 1.4a
+  why: 'V-map G8 row ''2025 Indian obesity definition'' PARTIAL: S20-R4 asks him to adjudicate Indian definitions
+    (1627, 1631) but the Indian 2025 scheme is never named; V-facts claim 5 corrects the journal to Diabetes & Metabolic
+    Syndrome.'
+  sources:
+  - https://pubmed.ncbi.nlm.nih.gov/39814628/
+  verify_at_intake: true
+  note: Stage wording follows the PubMed abstract (PMID 39814628) as re-read by the verifier; no cut-offs are put
+    in the line. The book must open the full text for the stage criteria and cut-offs.
+  drafter: A1
+- id: S22-R1-A01
+  rung: S22-R1
+  kind: concept
+  text: That the conversation about weight is opened by asking the patient's permission, is structured by the 5As
+    (ask, assess, advise, agree, assist), and ends in shared decision-making on goals the patient values rather
+    than a target set for them.
+  gap: 1.4d
+  why: 'V-map G4d: ''permission'', ''5As'' and ''shared decision'' have 0 hits; A rows 5, 87, 114 (Canadian guideline
+    step 1, OMEC PC5, SCOPE 5As module). Concept only, so no execution is added to an R1; the skill sits at S35-R2.'
+  sources:
+  - https://www.cmaj.ca/content/192/31/E875
+  - https://www.worldobesity.org/training-and-events/scope/e-learning/free-supplementary-modules/
+  verify_at_intake: false
+  note: ''
+  drafter: A1
+- id: S22-R2-A01
+  rung: S22-R2
+  kind: revise
+  text: 'The full obesity history: weight trajectory from birth, dieting and regain history, family history, medications
+    (antipsychotics, insulin and sulfonylureas, steroids, some antiepileptics, beta blockers), supplements and commercial
+    or AYUSH weight-loss products, smoking status including recent cessation (the weight gain that commonly follows
+    quitting, and why it is managed rather than used as a reason to keep smoking), alcohol as a source of energy
+    and a trigger for eating, sleep, eating pattern and timing, binge and night-eating behaviour, activity, psychosocial
+    context, weight-related quality of life.'
+  target: 'The full obesity history: weight trajectory from birth, dieting and regain history, family history, medications
+    (antipsychotics, insulin and sulfonylureas, steroids, some antiepileptics, beta blockers), sleep, eating pattern
+    and timing, binge and night-eating behaviour, activity, psychosocial context, weight-related quality of life.'
+  map_line: 1757
+  gap: 2.3, 1.4g
+  why: 'V-map G10: ''smok|cessation|nicotine'' 0 hits and alcohol only as post-bariatric use disorder (1955); C-system
+    rows on Foresight smoking cessation and alcohol consumption; A row 38 (ABOM A.6 medication and supplement history)
+    finds the supplement and OTC side missing.'
+  sources:
+  - https://aam.mohfw.gov.in/
+  verify_at_intake: true
+  note: AYUSH is named only as a product source the history asks about; its recognise-and-route entry belongs to
+    whoever drafts S61. The URL is E's AAM portal, which counts AYUSH centres; the book should source the AYUSH
+    ministry page at intake.
+  drafter: A1
+- id: S22-R2-A02
+  rung: S22-R2
+  kind: revise
+  text: 'Comorbidity assessment: dysglycaemia, dyslipidaemia, hypertension, MASLD with fibrosis staging, OSA, PCOS,
+    osteoarthritis, GERD, depression, subfertility, obesity-associated cancers; and the cardiorenal manifestations
+    the 2025 Lancet Commission counts among its criteria for clinical obesity (HFrEF; HFpEF; chronic or recurrent
+    atrial fibrillation; pulmonary artery hypertension; recurrent DVT or pulmonary thromboembolic disease; raised
+    arterial blood pressure; microalbuminuria with reduced eGFR), together with its remaining adult organ criteria
+    not listed here, taken from the Commission''s own table.'
+  target: 'Comorbidity assessment: dysglycaemia, dyslipidaemia, hypertension, MASLD with fibrosis staging, OSA,
+    PCOS, osteoarthritis, GERD, depression, subfertility, obesity-associated cancers.'
+  map_line: 1759
+  gap: 1.4a
+  why: 'V-map G4b CONFIRMED: ''heart failure|HFpEF|atrial|CKD|kidney|renal|albumin'' 0 relevant hits; A rows 41,
+    79, 119, 120 (only about 7 of the 18 adult criteria appear). Wording from V-facts claim 6.'
+  sources:
+  - https://pmc.ncbi.nlm.nih.gov/articles/PMC11870235/
+  verify_at_intake: false
+  note: The non-cardiorenal criteria (e.g. raised intracranial pressure, hypoventilation, incontinence, hypogonadism,
+    lymphoedema) are left to the table at intake because A read them only through a summariser; V-facts verified
+    items 4-9, 11 and 12.
+  drafter: A1
+- id: S22-R2-A03
+  rung: S22-R2
+  kind: concept
+  text: 'Treating clinical obesity to its endpoint, which is improvement or remission of its organ manifestations
+    rather than a weight number: managing each complication to target, preferring weight-reducing or weight-neutral
+    drugs over weight-promoting ones for diabetes, hypertension, epilepsy, inflammatory disease and other long-term
+    conditions, and anticipating that glucose-lowering and antihypertensive doses must fall as weight falls.'
+  gap: 1.4b
+  why: 'V-map G4a: ''deprescri|dose reduc|taper'' and ''statin|antihypertens'' 0 hits, complications assessed but
+    never managed; G4h: switching to weight-neutral drugs covered for psychotropics only (2671); A rows 53, 61,
+    62 and top gap 1.'
+  sources: []
+  verify_at_intake: false
+  note: ''
+  drafter: A1
+- id: S22-R2-A04
+  rung: S22-R2
+  kind: concept
+  text: 'Life stages that change the adult assessment: the menopause transition and what it does to weight and fat
+    distribution; older age, where sarcopenic obesity (excess adiposity with low muscle mass and function, by the
+    current consensus definition), frailty and the obesity-paradox debate turn the goal from weight loss to preserving
+    muscle and function, most of all in a low-muscle South Asian phenotype.'
+  gap: 1.4c
+  why: 'V-map G4c CONFIRMED: ''elderly|geriatric|sarcopen|frail|menopaus'' 0 hits; A rows 55, 56, 116, 117 (ABOM
+    B.8c/d, SCOPE modules). Placed in S22, not S26; see note.'
+  sources: []
+  verify_at_intake: true
+  note: 'Placement decision: S22, not S26. S26''s title, prerequisites (S16 DOHaD), build and gate are about children,
+    adolescents and pregnancy and a school or adolescent intervention; older age and menopause are modifiers of
+    adult assessment and treatment. S22 is a prerequisite of S23, S24, S25, S26 and S35, so a concept here reaches
+    the S24-R2 lean-mass skill (revised below) and S23''s resistance-training prescription. S26 is also built late
+    (tier 6). The book should source the sarcopenic obesity consensus definition at intake. S22-R2 now has 4 additions
+    (2 revisions, 2 concepts).'
+  drafter: A1
+- id: S22-R3-A01
+  rung: S22-R3
+  kind: concept
+  text: 'The obesity clinic as a chronic-care service rather than a slot: a multidisciplinary team with defined
+    roles (physician, dietitian, exercise professional or physiotherapist, psychologist or counsellor, nurse or
+    health worker for follow-up); a patient register with proactive recall, protocolised follow-up and self-management
+    support, as in the chronic care model; where teleconsultation helps follow-up and what India''s telemedicine
+    rules permit; and that some drugs the clinic will use carry approval conditions on who may prescribe them, so
+    the team includes a physician eligible to hold those prescriptions.'
+  gap: 1.4e, D3
+  why: 'V-map G4e: ''multidisciplinary|MDT|team'' only 1985, ''recall'' none clinical, ''chronic care|telemedicine''
+    0; A rows 29, 31, 72, 136. The prescriber clause gives the revised S22-R3 build its chain prerequisite (S24
+    is not a prerequisite of S22).'
+  sources: []
+  verify_at_intake: true
+  note: Names the chronic care model and India's telemedicine rules; neither source was opened by any auditor, so
+    both must be sourced at intake.
+  drafter: A1
+- id: S22-R3-A02
+  rung: S22-R3
+  kind: skill
+  text: 'Review a patient''s medicines at the start of weight-loss treatment and at each follow-up as weight falls:
+    reduce or stop glucose-lowering and antihypertensive drugs before hypoglycaemia or hypotension forces it, switch
+    weight-promoting drugs to weight-neutral or weight-reducing alternatives where one exists, agreeing the change
+    with whichever prescriber owns the drug when it is not you, and record the reason for every change; where the
+    alternative is a drug whose approval restricts the prescriber, the eligible physician who co-runs the clinic
+    holds that prescription.'
+  gap: 1.4b
+  why: V-map G4a and G4h recommend one S22-R2/R3 prescribing skill merging deprescribing with weight-neutral switching;
+    A top gap 11 (insulin/SU, beta blockers, steroids, antiepileptics).
+  sources: []
+  verify_at_intake: false
+  note: 'Decision 3: the weight-reducing alternative for a diabetic patient is often a GLP-1 RA or tirzepatide;
+    the closing clause keeps that prescription with the eligible physician (V-amend §1, §3).'
+  drafter: A1
+- id: S22-R3-A03
+  rung: S22-R3
+  kind: revise
+  field: build
+  text: 'A weekly obesity or metabolic clinic, running with staged patients and designed as a chronic-care service:
+    a named multidisciplinary team with written roles, a patient register whose recall and follow-up schedule runs
+    without you chasing it, teleconsultation for follow-up where it serves patients, and an eligible physician who
+    co-runs the clinic and holds every prescription whose approval restricts the prescriber, while you write the
+    protocol, assess, counsel and monitor.'
+  target: A weekly obesity or metabolic clinic slot, running, with staged patients.
+  map_line: 1785
+  gap: 1.4e, D3
+  why: 'V-map G4e: the S22-R3 build specifies no team, recall system or chronic-care model; audit §5.1 and V-facts
+    claim 1: the CDSCO condition restricts GLP-1 prescription to specialties that exclude Community Medicine (Decision
+    3).'
+  sources: []
+  verify_at_intake: false
+  note: ''
+  drafter: A1
+- id: S22-R3-A04
+  rung: S22-R3
+  kind: revise
+  field: gate
+  text: You run the clinic unsupervised within its written division of roles, and your referrals and treatment recommendations
+    are accepted without correction.
+  target: You run the clinic unsupervised and your referrals are accepted without correction.
+  map_line: 1787
+  gap: D3, 1.4e
+  why: 'Decision 3: in a co-run clinic Harsh runs assessment and follow-up independently while the eligible physician
+    holds restricted prescriptions; the gate now tests that division rather than implying sole prescribing.'
+  sources: []
+  verify_at_intake: false
+  note: S22-R3 now has 4 additions (2 new lines, 2 revisions).
+  drafter: A1
+- id: S23-R2-A01
+  rung: S23-R2
+  kind: skill
+  text: 'Counsel a patient who is using or considering a supplement, slimming product, commercial weight-loss programme
+    or AYUSH remedy: establish exactly what they take and what they pay, state what the evidence shows, check for
+    interactions and signs of adulteration, and keep them in your care without dismissing what they trust.'
+  gap: 1.4g
+  why: 'V-map G4g: the supplement market is named only in S23 prose (1797) and misinformation in S58-R3 (4255);
+    ''ayurved|AYUSH|herbal|slimming|nutraceutical'' 0 hits and no clinical counselling; A rows 38, 100 (Canadian
+    guideline chapter ''Commercial Products and Programs'').'
+  sources:
+  - https://obesitycanada.ca/guidelines/chapters/
+  - https://aam.mohfw.gov.in/
+  verify_at_intake: true
+  note: Placed at R2, not R1, because it is an executed counselling skill. Remedy advertising, nutraceutical and
+    drug regulation (CDSCO) are at S48-R2-A03.
+  drafter: A1
+- id: S23-R2-A02
+  rung: S23-R2
+  kind: concept
+  text: 'Cultural food norms as the ground a treatment plan stands on: religious and ritual fasting and the feast
+    that often breaks it, festival and wedding seasons, hospitality feeding in which refusing food carries a social
+    cost, and family beliefs that a heavier body means health or prosperity — planned for with the patient rather
+    than argued against.'
+  gap: '2.2'
+  why: 'V-map G7: ''festiv|hospitality|wedding|ritual'', ''prosperity'', ''fasting'' (other than as a diet regimen,
+    1823) 0 hits; recommendation ''cultural norms to S23-R2''; C-system ''sociocultural valuation of food'' PARTIAL.'
+  sources: []
+  verify_at_intake: false
+  note: Possible overlap with the clinical drafter if they add medication adjustment during religious fasts (e.g.
+    for diabetes drugs); this line is about the eating plan only.
+  drafter: A3
+- id: S23-R2-A03
+  rung: S23-R2
+  kind: skill
+  text: Plan with a patient for a fast, a festival season or a wedding so that the plan survives it, and record
+    that plan in the notes.
+  gap: '2.2'
+  why: V-map G7; makes the S23-R2 gate 'match a dietary pattern to a life' (1835) testable against the calendar
+    Indian patients actually live.
+  sources: []
+  verify_at_intake: false
+  note: ''
+  drafter: A3
+- id: S24-R1-A01
+  rung: S24-R1
+  kind: concept
+  text: That in India these drugs are approved with conditions, attached to the marketing approval and worded either
+    as who may prescribe them or as on whose prescription they may be sold at retail, set by CDSCO on its Subject
+    Expert Committee's advice; that the listed specialties can differ by agent, indication and age group; the difference
+    between a condition attached to a drug's marketing approval and a rule on a doctor's scope of practice; and
+    that you read the current condition for each product from the committee minutes and ministry statements, and
+    route the prescription to an eligible physician when your own specialty is not listed.
+  gap: D3, 2.4
+  why: 'V-facts claim 1: MoHFW (24 Mar 2026) and CDSCO SEC minutes (tirzepatide 2023; Wegovy adolescents 2026) impose
+    prescriber conditions; V-map G8: ''CDSCO|DCGI|prescriber'' 0 hits. The one regulatory-literacy concept Decision
+    3 asks for; placed at R1 because knowing whom to route to is recognise-and-route, and every R2 revision below
+    presupposes it.'
+  sources:
+  - https://www.pib.gov.in/PressReleasePage.aspx?PRID=2244252&reg=3&lang=1
+  - https://cdsco.gov.in/opencms/resources/UploadCDSCOWeb/2018/UploadCommitteeFiles/Recommendations%20Endocrinology%20&%20%20Metabolism%2020.04.2023%20&%2021.04.2023.pdf
+  - https://cdsco.gov.in/opencms/resources/UploadCDSCOWeb/2018/UploadCommitteeFiles/Recommendations%20Endocrinology%20Metabolism%2023.03.2026%20(1)%20(2).pdf
+  verify_at_intake: true
+  note: No specialty list is written into the line (volatile legal status). verify_at_intake because V-facts could
+    not confirm whether the Dec 2025 generic semaglutide approvals carry the condition.
+  drafter: A1
+- id: S24-R2-A01
+  rung: S24-R2
+  kind: revise
+  text: Assess eligibility for a GLP-1 receptor agonist, write the escalation and monitoring plan, and monitor the
+    patient as routine practice in a clinic co-run with an eligible physician who holds the prescription, including
+    the initiation and discontinuation conversations.
+  target: Initiate, escalate and monitor a GLP-1 receptor agonist as routine practice, including the discontinuation
+    conversation.
+  map_line: 1895
+  gap: D3
+  why: 'Audit §5.1 and V-facts claim 1: S24-R2 trains Harsh to initiate GLP-1s, which the CDSCO condition reserves
+    to listed specialties; Decision 3 keeps the clinical knowledge and moves the prescription to the co-running
+    physician.'
+  sources: []
+  verify_at_intake: false
+  note: ''
+  drafter: A1
+- id: S24-R2-A02
+  rung: S24-R2
+  kind: revise
+  text: Manage GI adverse effects and protect lean mass with concurrent resistance training and protein targets,
+    monitoring muscle and function most closely in older adults and anyone with sarcopenic obesity.
+  target: Manage GI adverse effects and protect lean mass with concurrent resistance training and protein targets.
+  map_line: 1896
+  gap: 1.4c
+  why: 'V-map G4c recommends tying older adults to the S24-R2 lean-mass skill; A top gap 3: incretin-driven lean-mass
+    loss is most dangerous in older, low-muscle patients.'
+  sources: []
+  verify_at_intake: false
+  note: ''
+  drafter: A1
+- id: S24-R2-A03
+  rung: S24-R2
+  kind: revise
+  field: build
+  text: A prescribing and monitoring protocol for a clinic you co-run with an eligible physician, stating who holds
+    each prescription and who assesses, counsels and monitors, with a documented discontinuation pathway.
+  target: A prescribing and monitoring protocol for your clinic, with a documented discontinuation pathway.
+  map_line: 1899
+  gap: D3
+  why: 'Decision 3: the build becomes a co-run protocol in which Harsh writes the protocol and the eligible physician
+    holds the prescription (V-facts claim 1).'
+  sources: []
+  verify_at_intake: false
+  note: ''
+  drafter: A1
+- id: S24-R2-A04
+  rung: S24-R2
+  kind: revise
+  field: gate
+  text: You run initiation and discontinuation conversations equally well, as judged by the eligible physician who
+    co-runs the clinic and has adopted your protocol.
+  target: You run initiation and discontinuation conversations equally well.
+  map_line: 1901
+  gap: D3
+  why: 'Decision 3: keeps the original test that both conversations are run equally well and names the co-running
+    eligible physician, who has adopted the protocol, as the judge (V-facts claim 1).'
+  sources: []
+  verify_at_intake: false
+  note: 'S24-R2 has 4 revisions and no new lines. The agent-selection skill (1897, ''Select between agents... defend
+    the choice'') was left as is: choosing and defending an agent is a judgement, not a prescription. S24-R3 checked:
+    ''Teach GLP-1 prescribing to physicians'' (1915), coverage advice and the utilisation study do not assume Harsh
+    prescribes, so no change.'
+  drafter: fixer
+- id: S25-R2-A01
+  rung: S25-R2
+  kind: revise
+  text: 'Long-term obligations in detail: micronutrient deficiency, bone loss, alcohol use disorder, post-bariatric
+    hypoglycaemia and dumping syndrome, pregnancy timing, and weight recurrence: its causes, and its management
+    with behavioural support, adjunct obesity pharmacotherapy (the agents, what each adds after surgery and who
+    may prescribe them, taught here to the depth co-management needs) or revisional surgery.'
+  target: 'Long-term obligations in detail: micronutrient deficiency, bone loss, alcohol use disorder, post-bariatric
+    hypoglycaemia, pregnancy timing, revisional surgery.'
+  map_line: 1955
+  gap: 1.4f
+  why: 'V-map G4f: ''dumping'' 0 hits, no weight recurrence or adjunct pharmacotherapy after surgery in S25; A row
+    104 (Indian consensus on medications as adjuncts to metabolic and bariatric surgery, Goel et al. 2025).'
+  sources: []
+  verify_at_intake: false
+  note: 'S24 is not a prerequisite of S25, so the line itself carries the pharmacotherapy bridge that S25-R3-A01
+    presupposes. Candidate intake source: https://pubmed.ncbi.nlm.nih.gov/40392474/ (abstract only).'
+  drafter: A1
+- id: S25-R3-A01
+  rung: S25-R3
+  kind: revise
+  text: Co-manage complex post-operative patients independently, including hypoglycaemia, dumping, nutritional failure
+    and weight recurrence, with any adjunct drug whose approval restricts the prescriber held by an eligible physician.
+  target: Co-manage complex post-operative patients independently, including hypoglycaemia and nutritional failure.
+  map_line: 1979
+  gap: 1.4f, D3
+  why: V-map G4f recommends S25-R2/R3; the S25-R3 gate already makes him 'the physician on a multidisciplinary bariatric
+    team' (1985). The prescriber clause applies Decision 3 to post-surgical GLP-1 use.
+  sources: []
+  verify_at_intake: false
+  note: 'S25 otherwise checked for Decision 3: selection, pre-operative assessment and surveillance lines do not
+    assume Harsh prescribes restricted drugs.'
+  drafter: A1
+- id: S26-R1-A01
+  rung: S26-R1
+  kind: concept
+  text: 'The platforms that already reach Indian children from birth to eighteen, and what each does: anganwadis
+    under ICDS (Mission Saksham Anganwadi and Poshan 2.0) with supplementary nutrition, take-home rations and growth
+    monitoring recorded in Poshan Tracker; PM POSHAN school meals; RBSK child health screening; RKSK adolescent
+    health services; and the School Health and Wellness Programme.'
+  gap: 1.1, 1.3, 2.4
+  why: 'Chain prerequisite for the S26-R3 settings lines: V-map G1 finds ICDS named but never designed for, ''anganwadi''
+    0 hits; V-map G8 finds RBSK/RKSK and Poshan Tracker 0 hits; V-facts claim 7 confirms Poshan Tracker records
+    growth of 0-5s and codes overweight.'
+  sources:
+  - https://www.pib.gov.in/PressReleasePage.aspx?PRID=2251769&reg=3&lang=1
+  - https://www.pib.gov.in/FactsheetDetails.aspx?id=150744&NoteId=150744&ModuleId=16&reg=6&lang=1
+  - https://www.pib.gov.in/PressReleasePage.aspx?PRID=2082323&reg=48&lang=2
+  - https://www.pib.gov.in/PressReleasePage.aspx?PRID=2257617&reg=3&lang=1
+  - https://www.pib.gov.in/newsite/PrintRelease.aspx?relid=159407&reg=48&lang=2
+  - https://www.pib.gov.in/newsite/PrintRelease.aspx?relid=199289&reg=3&lang=2
+  verify_at_intake: false
+  note: Recognise-level only; no programme content or figures asserted. May overlap A4 (named Indian entities at
+    S54/S51-R1), which names the same programmes as datasets or institutions, not as delivery platforms.
+  drafter: A2
+- id: S26-R1-A02
+  rung: S26-R1
+  kind: skill
+  text: For a child of any age from birth to eighteen, name the platform that already reaches them, the ministry
+    that runs it and the worker who would deliver a prevention message.
+  gap: 1.1, 1.3
+  why: R1 recognise-and-route form of V-map G1's finding that prevention should run 'inside the machinery … ICDS,
+    school health' (1995, 2041) but the machinery is never named.
+  sources: []
+  verify_at_intake: false
+  note: ''
+  drafter: A2
+- id: S26-R1-A03
+  rung: S26-R1
+  kind: revise
+  text: That India's obesity problem is arriving through its children, a claim tested against each NFHS round, NFHS-6
+    included, by the relative rise in adolescents against adults recomputed rather than quoted.
+  target: 'That India''s obesity problem is arriving through its children: NFHS-3 to NFHS-5 shows a 288 percent
+    relative rise in adolescent boys against a 91 percent rise in adult women.'
+  map_line: 2004
+  gap: '2.4'
+  why: 'V-amend consistency defect: S54-R1-A02 removes the NFHS 288%/91% figures under the one rule, but the same
+    figures stand at S26-R1 (2004), built first (Book #53); V-facts 2 (NFHS-6 released).'
+  sources:
+  - https://www.pib.gov.in/PressReleasePage.aspx?PRID=2266600&reg=3&lang=1
+  verify_at_intake: false
+  note: Mirrors S54-R1-A02. The same figures in S26 prose (1993) are not an amendable line; the S26 book sources
+    them fresh at intake.
+  drafter: fixer
+- id: S26-R2-A01
+  rung: S26-R2
+  kind: concept
+  text: 'Paediatric complications of obesity and when to look for them (dysglycaemia and type 2 diabetes, hypertension
+    against paediatric centiles, dyslipidaemia, MASLD, OSA, slipped capital femoral epiphysis, tibia vara, idiopathic
+    intracranial hypertension, PCOS in adolescents, psychosocial harm), with the Lancet Commission''s paediatric
+    criteria for clinical obesity; and puberty: Tanner staging, obesity''s effect on pubertal timing, and why pubertal
+    stage changes how BMI and treatment response are read.'
+  gap: '1.3'
+  why: 'V-map G3: ''puberty'' and paediatric ''complication'' 0 hits; A rows 76, 81, 113 (ABOM 15% paediatric content,
+    Lancet 13 paediatric criteria, SCOPE module) and top gap 10.'
+  sources:
+  - https://pmc.ncbi.nlm.nih.gov/articles/PMC11870235/
+  verify_at_intake: false
+  note: Clinical side only. Infant feeding, IYCF, parental feeding and settings belong to another drafter; adiposity
+    rebound was left out to avoid overlap with their early-life lines. If both drafters add to S26-R2 it may exceed
+    4 additions.
+  drafter: A1
+- id: S26-R2-A02
+  rung: S26-R2
+  kind: revise
+  text: Assess a child or adolescent with obesity, including pubertal stage and an age-appropriate complication
+    screen with referral of what needs a paediatric specialist, and manage with the family as the unit of intervention.
+  target: Assess and manage a child or adolescent with the family as the unit of intervention.
+  map_line: 2027
+  gap: '1.3'
+  why: 'A row 76: S26 has growth charts and family-based treatment but no complication or puberty assessment; turns
+    the new concept into an observable skill.'
+  sources: []
+  verify_at_intake: false
+  note: ''
+  drafter: A1
+- id: S26-R2-A03
+  rung: S26-R2
+  kind: concept
+  text: 'Infant and young child feeding as obesity prevention: exclusive breastfeeding and its protection from the
+    marketing of breast-milk substitutes under the IMS Act; timely complementary feeding; responsive feeding versus
+    pressuring or restrictive parental feeding; sugary drinks and packaged snacks in the first two years; rapid
+    infant weight gain and early adiposity rebound as risk markers — with the evidence read as largely observational
+    and confounded by maternal education, income and body size.'
+  gap: '1.3'
+  why: 'V-map G3: ''infant'', ''IYCF|complementary feed'', ''IMS Act|breast-milk substitut'', ''parent'', ''growth
+    monitor'' all 0 hits; breastfeeding appears only as a confounding problem (1295). B-policy F2/F8 (WHO best buys:
+    IYCF strategy, breastfeeding protection) PARTIAL.'
+  sources:
+  - https://apps.who.int/gb/ebwha/pdf_files/EB152/B152_6-en.pdf
+  verify_at_intake: true
+  note: 'verify_at_intake for the IMS Act: no audit opened its text; the book sources its full title and current
+    amendment state at intake. The confounding caution is stated in the line itself, because S16-R3 (Book #158)
+    is built after S26-R2 (#113).'
+  drafter: A2
+- id: S26-R2-A04
+  rung: S26-R2
+  kind: skill
+  text: Read an infant's growth record for rapid weight gain and turn it into responsive-feeding and complementary-feeding
+    advice for the family, inside an immunisation or anganwadi contact that already happens, without labelling the
+    child.
+  gap: '1.3'
+  why: V-map G3 recommends rapid infant weight gain and parental feeding in S26-R2; A-clinical row 76 finds parent
+    feeding styles and adiposity rebound absent. Builds on S26-R1 'Plot and interpret a child's growth trajectory'
+    (2009).
+  sources: []
+  verify_at_intake: false
+  note: Prevention counselling only; paediatric complications belong to the clinical drafter.
+  drafter: A2
+- id: S26-R3-A01
+  rung: S26-R3
+  kind: concept
+  text: 'Designing inside the platforms rather than beside them: what an anganwadi serves and measures, what PM
+    POSHAN serves, what RBSK screening and RKSK services could carry; growth monitoring as an early-detection platform
+    now that Poshan Tracker classifies overweight, with its data quality, the harm of labelling a young child and
+    the counselling capacity behind each flag all checked before use; and the double-duty constraint that no change
+    may worsen undernutrition.'
+  gap: 1.1, 1.3, 2.4
+  why: V-map G1 recommends settings design at S26-R3 (the map says prevention belongs inside ICDS and school health,
+    1995, 2041, but never builds it); V-facts claim 7 (Poshan Tracker codes overweight; whether its overweight data
+    are accessible is unverified, hence 'checked before use').
+  sources:
+  - https://www.pib.gov.in/FactsheetDetails.aspx?id=150744&NoteId=150744&ModuleId=16&reg=6&lang=1
+  - https://www.pib.gov.in/PressReleasePage.aspx?PRID=2257617&reg=3&lang=1
+  - https://www.pib.gov.in/newsite/PrintRelease.aspx?relid=159407&reg=48&lang=2
+  verify_at_intake: false
+  note: Extends existing S26-R3 concept at line 2041 rather than restating it.
+  drafter: A2
+- id: S26-R3-A02
+  rung: S26-R3
+  kind: skill
+  text: Redesign one anganwadi's or one school's food and activity offer — the menu, the take-home ration, the canteen,
+    what may be sold on or brought into the premises, and protected time for play and physical education — to prevent
+    overweight without worsening undernutrition, costed against the platform's existing norms and its workers' time.
+  gap: 1.1, 1.2
+  why: 'V-map G1: ''anganwadi'', ''canteen'', ''physical education'' 0 hits; no school food standards. F-blind 7.1/7.3
+    and B-policy B5/D12/F18 (school food and PE) PARTIAL/ABSENT.'
+  sources: []
+  verify_at_intake: false
+  note: ''
+  drafter: A2
+- id: S26-R3-A03
+  rung: S26-R3
+  kind: skill
+  text: Design an early-life prevention package delivered through contacts that already happen — antenatal visits,
+    immunisation, anganwadi growth monitoring — covering breastfeeding promotion and protection, complementary and
+    responsive feeding, and a non-stigmatising family response when a young child is flagged overweight.
+  gap: '1.3'
+  why: V-map G3 recommends IYCF, rapid infant weight gain and parental feeding at S26-R2/R3; B-policy A5/F8 (early
+    food environment, breastfeeding best buy) PARTIAL; C-system top gap 4 (delivery through ICDS/POSHAN/IYCF, which
+    S26-R3 names as the vehicle).
+  sources: []
+  verify_at_intake: false
+  note: ''
+  drafter: A2
+- id: S26-R3-A04
+  rung: S26-R3
+  kind: revise
+  field: build
+  text: A school, anganwadi or adolescent intervention delivered through an existing platform — PM POSHAN, ICDS,
+    RBSK, RKSK or the School Health and Wellness Programme — designed, delivered and evaluated with harm outcomes
+    measured alongside weight outcomes, and undernutrition outcomes wherever the setting serves undernourished children.
+  target: A school or adolescent intervention designed, delivered and evaluated with harm outcomes measured alongside
+    weight outcomes.
+  map_line: 2049
+  gap: 1.1, 1.3
+  why: 'V-map G1: ''the design-deliver-evaluate build already exists at S26-R3'', so settings design is closed by
+    widening the build, not adding one; E-india rows 4, 7-9 (the platforms that would carry it).'
+  sources:
+  - https://www.pib.gov.in/PressReleasePage.aspx?PRID=2251769&reg=3&lang=1
+  - https://www.pib.gov.in/PressReleasePage.aspx?PRID=2082323&reg=48&lang=2
+  - https://www.pib.gov.in/newsite/PrintRelease.aspx?relid=199289&reg=3&lang=2
+  verify_at_intake: false
+  note: 'S26-R3 carries 4 A2 lines (concept, 2 skills, 1 revise) plus the gate revise S26-R3-A05: load 4.0, at cap.
+    The gate is revised so the sign-off fits an anganwadi or ICDS design.'
+  drafter: A2
+- id: S26-R3-A05
+  rung: S26-R3
+  kind: revise
+  field: gate
+  text: A paediatrician, a psychiatrist and the head of the platform that delivers it — a school principal, an ICDS
+    supervisor, or the RBSK or RKSK programme officer — would each sign off your design.
+  target: A paediatrician, a psychiatrist and a school principal would each sign off your design.
+  map_line: 2051
+  gap: '1.1'
+  why: 'V-amend §1: the widened S26-R3 build (S26-R3-A04) allows an anganwadi or ICDS intervention, but the gate
+    still required a school principal.'
+  sources: []
+  verify_at_intake: true
+  note: Brings S26-R3 to load 4.0, at cap.
+  drafter: fixer
+- id: S29-R3-A01
+  rung: S29-R3
+  kind: concept
+  text: 'Health literacy and label comprehension: a front-of-pack label changes purchases only if shoppers with
+    low literacy, in their own language and in the few seconds spent at a shelf, notice it, understand it and act
+    on it; how comprehension is tested — objective understanding, ranking and choice tasks, real-purchase studies
+    — and why a threshold set is only half of a labelling scheme.'
+  gap: '2.5'
+  why: 'Audit gap 2.5 and V-map G9: ''literacy'' appears only in the Court''s ''nutrition literacy'' question (3537);
+    no health-literacy or label-comprehension competency, though the live FOPL case turns on it. D-profession A2.2,
+    C3.1, G-HL PARTIAL.'
+  sources: []
+  verify_at_intake: false
+  note: 'Carries the concept inside S29''s own chain for the comprehension-test skill below (S29''s only prerequisite
+    is S27). S48 cannot reach S29 (S48-R3 is Book #136, S29-R3 #151, and S29 is not an S48 prerequisite), so the
+    regulatory form of the same concept is added at S48-R2 (S48-R2-A04), where S48-R3 reaches it by the chain rule.
+    The two lines are the same idea in two unlinked chains, as with S20-R3-A01 and S22-R2-A02.'
+  drafter: A2
+- id: S29-R3-A02
+  rung: S29-R3
+  kind: skill
+  text: Design, with a survey or trial methodologist fixing the sampling and randomisation, and run a comprehension
+    test of candidate front-of-pack formats with low-literacy and non-English-reading shoppers, and report which
+    format they understand and act on, not which one they prefer.
+  gap: '2.5'
+  why: 'Execution form of gap 2.5 (V-map G9: ''deepen existing rung for health literacy and label comprehension
+    in S48-R3 or S29-R3'').'
+  sources: []
+  verify_at_intake: false
+  note: Sampling and randomised exposure are study design (S15), which is outside S29's chain, so they are commissioned
+    from a methodologist; Harsh designs the test content and runs it.
+  drafter: A2
+- id: S30-R2-A01
+  rung: S30-R2
+  kind: concept
+  text: 'The activity transition: labour-saving technology, mechanised work and motorised transport taking activity
+    out of work, the home and travel, and manual labour losing status — described nationally from MoSPI''s Time
+    Use Survey, and a cause whose effect on health is larger than its effect on weight.'
+  gap: '2.1'
+  why: 'V-map G2: ''labour-saving|technolog'', ''time use'', ''domestic'' 0 hits; C-system §4 item 2 (Popkin 2020
+    names activity-saving technology as a direct LMIC driver); E-india row 40 TUS unnamed.'
+  sources:
+  - https://www.pib.gov.in/PressReleasePage.aspx?PRID=2106113&reg=48&lang=2
+  verify_at_intake: false
+  note: Worded to keep S30-R1's 'weak for weight, strong for health' line intact; the constrained-TDEE bound stays
+    at S30-R3 (2309).
+  drafter: A3
+- id: S30-R2-A02
+  rung: S30-R2
+  kind: concept
+  text: 'The activity environment as the population-level exposure: walkability, footpaths and crossings, open and
+    green space, safe and affordable public and non-motorised transport, and the heat, air quality and personal
+    safety — for women above all — that decide whether people walk, cycle or play; and that it is governed by municipal
+    bodies, urban development and transport departments and panchayats rather than by the health department.'
+  gap: 2.1, 2.2
+  why: V-map G2 CONFIRMED absent ('built environment', 'walkab', 'park|open space', 'transport', 'planning' 0);
+    V-map G10 heat acting on activity appears nowhere; C-system Foresight PA-environment block 11 of 13 absent,
+    'perceived danger' flagged for women.
+  sources: []
+  verify_at_intake: false
+  note: Prerequisite for the S30-R3 municipal skill below. Heat here is the activity barrier only; climate depth
+    stays routed to S61 (4434).
+  drafter: A3
+- id: S30-R2-A03
+  rung: S30-R2
+  kind: skill
+  text: Read a ward or city plan — a mobility plan, a master plan, a footpath or park project — and say what it
+    does to the activity of the least active, on health and equity grounds rather than weight.
+  gap: '2.1'
+  why: V-map G2 recommends built environment and active transport as activity exposures in S30-R2/R3; existing S30-R2
+    skills stop at programme design (2297).
+  sources: []
+  verify_at_intake: false
+  note: ''
+  drafter: A3
+- id: S30-R3-A01
+  rung: S30-R3
+  kind: skill
+  text: Advise a municipal or urban development body on the activity levers it controls — street design, footpaths,
+    shade, open space, access to public transport — making the case on health and equity, saying plainly that weight
+    is not the outcome to expect, and naming the indicator that would show change.
+  gap: '2.1'
+  why: 'V-map G2: S30-R3 already argues activity ''should still be funded'' (2313) but gives no environmental lever
+    or owner to fund it through.'
+  sources: []
+  verify_at_intake: false
+  note: Pairs with S30-R3's existing minister skill (2313); both halves of that argument now have a lever. Possible
+    overlap with the settings/policy-instruments drafter if they add school PE or Fit India to S30/S26.
+  drafter: A3
+- id: S32-R2-A01
+  rung: S32-R2
+  kind: revise
+  text: Stress, cortisol and emotional eating, with the social sources of chronic stress treated as measured exposures
+    — adverse childhood experiences and job strain (high demand with low control) — and the size of their association
+    with adiposity, confounded by the social position that produces them; sleep restriction's effects on ghrelin,
+    leptin and food choice.
+  target: Stress, cortisol and emotional eating; sleep restriction's effects on ghrelin, leptin and food choice.
+  map_line: 2443
+  gap: '2.3'
+  why: 'V-map G10: ''adverse childhood|trauma|job strain'' 0 relevant; C-system notes stress gets ''one bullet inside
+    the sleep subject … no social sources''; this revise adds the social sources to that bullet instead of a new
+    line.'
+  sources:
+  - https://pubmed.ncbi.nlm.nih.gov/29253477/
+  verify_at_intake: false
+  note: V-map allowed S32-R2 or S17-R2; chose a revise of the existing stress bullet (zero new lines, keeps S17-R2
+    at three additions). Source is the Hughes 2017 ACE meta-analysis C-system opened (abstract only).
+  drafter: A3
+- id: S33-R4-A01
+  rung: S33-R4
+  kind: concept
+  text: 'Running a trial as a managed enterprise: the trial team''s roles, hiring to written roles, and the good-clinical-practice
+    delegation log, the trial master file, recruitment and retention milestones with a plan for when they slip,
+    a risk register, and the grant budget with its expenditure accounting and audit.'
+  gap: '3.1'
+  why: 'V-map G5 and audit §4 Tier 3.1: ''The map''s own builds (a multi-district trial, an owned cohort, a state
+    PIP activity) assume these skills''; S33-R4 asks Harsh to ''Lead a randomised early-TRE trial'' (2551) with
+    nothing on running one.'
+  sources: []
+  verify_at_intake: true
+  note: 'verify_at_intake: source the current Indian GCP and clinical-trial rules for delegation logs and trial
+    master files at intake. S33''s prerequisites are S19, S21 and S32, so S57-R3 and S50-R3 are outside its chain;
+    this line carries the trial-specific version and the book can recap the general craft from them (built at #129
+    and #167, before #188).'
+  drafter: A4
+- id: S33-R4-A02
+  rung: S33-R4
+  kind: revise
+  text: Lead a randomised early-TRE trial in a group with real metabolic risk, such as shift workers — hiring and
+    supervising the trial team and holding its work plan, risk register and budget yourself.
+  target: Lead a randomised early-TRE trial in a group with real metabolic risk, such as shift workers.
+  map_line: 2551
+  gap: '3.1'
+  why: 'Makes ''lead'' observable as management, not only as scientific direction (V-map G5: ''Lead'' appears as
+    a verb with no management content).'
+  sources: []
+  verify_at_intake: false
+  note: ''
+  drafter: A4
+- id: S34-R2-A01
+  rung: S34-R2
+  kind: concept
+  text: 'The settings approach from the Ottawa Charter: schools, anganwadis, workplaces and health facilities as
+    places where the institution''s food, activity, rules and schedule are what gets changed, rather than the people
+    in them being educated.'
+  gap: '1.1'
+  why: 'Audit §7: ''Only the Ottawa settings approach and health literacy are missing'' from health-promotion theory;
+    D-profession top gap 5 and F-blind 7.9 (''settings approach'' 0 hits). Prerequisite for the S34-R3 workplace
+    skill.'
+  sources:
+  - https://www.who.int/teams/health-promotion/enhanced-wellbeing/first-global-conference
+  - https://www.moh.gov.bh/Content/Upload/File/636276036276797500-TheOttawaCharterForHealthPromotion.pdf
+  verify_at_intake: false
+  note: May overlap A3 (health promotion and campaign lines at S34). Sits with COM-B, SCT and MRC (2596) as the
+    one health-promotion framework the map lacks.
+  drafter: A2
+- id: S34-R3-A01
+  rung: S34-R3
+  kind: skill
+  text: Design a multicomponent programme for one workplace — a canteen standard with healthy defaults, what vending
+    machines and vendors on the premises sell, time and space for activity in the working day — that changes the
+    setting rather than advising the workers, and state which workers (informal, home-based, gig) no workplace programme
+    reaches.
+  gap: '1.1'
+  why: 'V-map G1: no workplace-wellness setting (only the S30-R2 occupational-paradox critique, 2296); V-map recommends
+    a workplace line at S30 or S34. B-policy C2/F19 (multicomponent workplace programmes) PARTIAL; F-blind 7.4.'
+  sources: []
+  verify_at_intake: false
+  drafter: A2
+- id: S34-R3-A02
+  rung: S34-R3
+  kind: concept
+  text: 'Campaign and social-marketing craft for the cases where a campaign earns its place — carrying a structural
+    measure (explaining a label, a tax or a school rule), building public support for one, or standing in where
+    no structural lever is yet available: audience segmentation and formative research; the social-marketing mix
+    of product, price, place and promotion; message, messenger and channel, including IEC material and social media;
+    reach, frequency and dose; pretesting with the audience in its own language; and evaluation of exposure and
+    effect against a comparison fixed before launch — read alongside how the WHO NCD best-buys menu treats mass-media
+    campaigns.'
+  gap: '3.2'
+  why: 'B-policy F6/F15 and top gap 9: mass-media campaigns sit on the WHO best-buys menu that Indian policy cites,
+    but the map teaches only arguing against them; D-profession top gap 7 (ASPHER A7.4, NMC N-P1 ''Develop appropriate
+    IEC Material''); V-map G9: ''social marketing|mass media'' 0 hits.'
+  sources:
+  - https://apps.who.int/gb/ebwha/pdf_files/EB152/B152_6-en.pdf
+  - https://www.who.int/news/item/26-05-2023-more-ways--to-save-more-lives--for-less-money----world-health-assembly-adopts-more-best-buys--to-tackle-noncommunicable-diseases
+  verify_at_intake: true
+  note: 'Keeps the lever hierarchy (2613) and S34-R1 (2578): the line says when a campaign earns its place, not
+    that campaigns are strong. verify_at_intake: the final 2024 best-buys edition was not opened, so the book must
+    check how it groups mass-media campaigns. Presupposes A2''s S34-R2 settings line and the existing MRC framework
+    (2596). No R1/R2 precursor needed: S34-R2 already teaches the behaviour-change theory it rests on.'
+  drafter: A4
+- id: S34-R3-A03
+  rung: S34-R3
+  kind: skill
+  text: Design, pretest and evaluate one campaign that accompanies or builds support for a structural measure —
+    formative research with the audience, a message pretested in their language, a pre-specified evaluation of reach
+    and effect — and state beforehand the result that would make you stop it.
+  gap: '3.2'
+  why: Execution of the campaign concept; F-blind 16.3 ('Design and evaluate mass-media campaigns') PARTIAL.
+  sources: []
+  verify_at_intake: false
+  note: 'S34-R3 additions: this concept and skill plus A2''s workplace skill = 3 new lines and 1 revise.'
+  drafter: A4
+- id: S34-R3-A04
+  rung: S34-R3
+  kind: revise
+  text: Decline to run an awareness intervention offered in place of a structural lever, and win the argument on
+    evidence.
+  target: Decline to run an awareness intervention and win the argument on evidence.
+  map_line: 2622
+  gap: '3.2'
+  why: 'Without this, the existing skill contradicts the new design skill; with it, the map''s stance (2568, 2578,
+    2622) is intact: a campaign must earn its place and never substitutes for a structural lever.'
+  sources: []
+  verify_at_intake: false
+  note: The gate (2626, 'argued a programme away from awareness toward a structural lever') is unchanged.
+  drafter: A4
+- id: S35-R2-A01
+  rung: S35-R2
+  kind: skill
+  text: Open a conversation about weight by asking permission, work through the 5As, and close with goals and a
+    plan the patient chose by shared decision-making, recorded in the patient's own words.
+  gap: 1.4d
+  why: V-map G4d recommends one S22-R1 or S35-R1 line; the concept is at S22-R1 and the executed skill goes here
+    because R1 may not carry execution. Asking permission is the stigma-free way to open, which fits S35's existing
+    consultation standard (2650, 2655).
+  sources:
+  - https://www.cmaj.ca/content/192/31/E875
+  verify_at_intake: false
+  note: ''
+  drafter: A1
+- id: S35-R3-A01
+  rung: S35-R3
+  kind: concept
+  text: 'Indian body-size norms that run opposite to stigma: fatness read as prosperity or good health, a plump
+    child read as a well-cared-for child, and thinness read as illness or poverty — so under-recognition of obesity
+    and weight stigma coexist in the same family, and a message must correct the first without feeding the second.'
+  gap: '2.2'
+  why: 'V-map G7: ''body size ideal|prosperity|beauty'' 0; recommendation ''cultural norms to S35-R3''; C-system
+    rows ''social acceptability of fatness'' and India body-size norms (KO survey item ''excess weight is a sign
+    of prosperity'').'
+  sources: []
+  verify_at_intake: false
+  note: Governed by S35-R3's existing documented stigma test (2688); no new skill needed.
+  drafter: A3
+- id: S36-R3-A01
+  rung: S36-R3
+  kind: revise
+  text: Intervention co-design and participatory methods, up to community-based participatory research, in which
+    the community shares ownership of the question, the data and the decisions — and what that costs in time and
+    control.
+  target: Intervention co-design and participatory methods.
+  map_line: 2767
+  gap: '3.1'
+  why: 'D-profession: CoL C6.4 sub-item ''community-based participatory research'' and C5.5 (''Share power and ownership'')
+    — ''community-based participatory'' 0 hits.'
+  sources: []
+  verify_at_intake: false
+  note: 'S36-R3, not S36-R2 (Book 3), so nothing lands in an early bridge. Built at #124, before S50-R3 (#167),
+    which uses it.'
+  drafter: A4
+- id: S37-R1-A01
+  rung: S37-R1
+  kind: concept
+  text: That the Indian state is itself a major food provider — PDS rations, PM POSHAN school meals, ICDS supplementary
+    nutrition and take-home rations — so what it buys and serves is nutrition policy.
+  gap: '1.2'
+  why: Chain prerequisite for the S37-R2/R3 procurement and double-duty lines (the R1 book must carry the reader
+    to what R2 presupposes). B-policy top gaps 1 and 2.
+  sources:
+  - https://www.pib.gov.in/PressReleasePage.aspx?PRID=2082323&reg=48&lang=2
+  - https://www.pib.gov.in/PressReleasePage.aspx?PRID=2251769&reg=3&lang=1
+  verify_at_intake: false
+  note: ''
+  drafter: A2
+- id: S37-R2-A01
+  rung: S37-R2
+  kind: concept
+  text: Public food provision beyond rations — meals served in public hospitals, hostels and government canteens
+    — as a lever government controls directly; and double-duty actions, from the Global Syndemic framing of obesity,
+    undernutrition and climate change as interacting problems with shared drivers, that reduce undernutrition and
+    obesity together rather than fixing one while feeding the other.
+  gap: 1.2, B-policy gap 10
+  why: 'V-map G6: ''procure'' only in the S51 administrative sense (3744); no double-duty programme standard for
+    PDS, PM POSHAN or ICDS. B-policy A6/B20/D13/F5 (public procurement, a WHO best buy) ABSENT; E1/E10 (syndemic,
+    double duty) PARTIAL, ''syndemic'' 0 hits.'
+  sources:
+  - https://apps.who.int/gb/ebwha/pdf_files/EB152/B152_6-en.pdf
+  - https://policydatabase.wcrf.org/level_one?page=nourishing-level-one
+  verify_at_intake: true
+  note: 'verify_at_intake for the Global Syndemic Commission (Swinburn et al., Lancet 2019): the auditors read only
+    secondary summaries (the Lancet text returned 403). PDS, PM POSHAN and ICDS as food provision are taught at
+    S37-R1-A01 and not repeated here. Climate co-benefits are NOT added: S37-R3 already carries them (2836, 2842)
+    and S61 routes climate depth (4434).'
+  drafter: fixer
+- id: S37-R2-A02
+  rung: S37-R2
+  kind: revise
+  text: Explain why the PDS and the obesity problem are the same policy conversation, and classify a proposed change
+    to the PDS basket, PM POSHAN or take-home rations as double-duty, single-duty or working against the other burden.
+  target: Explain why the PDS and the obesity problem are the same policy conversation.
+  map_line: 2824
+  gap: '1.2'
+  why: 'V-map G6: the double burden is ''framed as a conversation, not as a nutrition-standard design task'' (B-policy
+    B6); revising the existing line is cheaper than a new one.'
+  sources:
+  - https://www.pib.gov.in/PressReleasePage.aspx?PRID=2082323&reg=48&lang=2
+  - https://www.pib.gov.in/PressReleasePage.aspx?PRID=2251769&reg=3&lang=1
+  verify_at_intake: false
+  note: ''
+  drafter: A2
+- id: S37-R3-A01
+  rung: S37-R3
+  kind: skill
+  text: Write the nutrition standard for one public food programme or institution — the PDS basket, a PM POSHAN
+    menu, an ICDS take-home ration, or a hostel or government canteen — that guards against undernutrition and excess
+    sugar, fat and salt together, with nutrient targets set with a nutrition scientist, and supply the procurement
+    specification, the cost per beneficiary and the indicator that would show it was followed.
+  gap: '1.2'
+  why: 'B-policy top gap 1: public food procurement and service standards are a WHO best buy with no rung; top gap
+    2: double-duty design of PDS, PM POSHAN and ICDS. V-map G6 recommends double-duty design at S37-R2/R3.'
+  sources:
+  - https://apps.who.int/gb/ebwha/pdf_files/EB152/B152_6-en.pdf
+  verify_at_intake: false
+  note: Nutrient targets are commissioned because S37 has no nutrition-science prerequisite; the standard, specification,
+    costing and monitoring are executed. Hospital canteens are left to S51-R3-A03, where the health department controls
+    the setting.
+  drafter: A2
+- id: S38-R2-A01
+  rung: S38-R2
+  kind: concept
+  text: 'The activity environment measured on the same GIS base as the food environment: walkability and street-level
+    audits, footpaths, crossings and lighting, shade, open and play space, and access to public transport — a second
+    exposure layer for the same ward.'
+  gap: '2.1'
+  why: 'V-map G2: S38 has GIS and outlet mapping for food only (2881, 2889); recommendation ''extend S38-R2''s GIS
+    audit to the activity environment''.'
+  sources: []
+  verify_at_intake: false
+  note: 'Lower-rung prerequisite inside S38: S30 is not an S38 prerequisite (S15, S37), so the activity-environment
+    measurement idea is taught here rather than presupposed.'
+  drafter: A3
+- id: S38-R2-A02
+  rung: S38-R2
+  kind: revise
+  field: build
+  text: A completed food and activity environment audit of one Indian city ward on a shared GIS base, published
+    or lodged with the municipality.
+  target: A completed food environment audit of one Indian city ward, published or lodged with the municipality.
+  map_line: 2892
+  gap: '2.1'
+  why: 'V-map G2: the audit is already ''lodged with the municipality'' (2892), the body that owns the activity
+    environment; extending the layer closes the gap without a new build.'
+  sources: []
+  verify_at_intake: false
+  note: 'Possible overlap: the policy-instruments/settings drafter may touch S38-R2''s school-neighbourhood audit
+    (2890) for the FSS school regulations; this revise touches only the build line.'
+  drafter: A3
+- id: S38-R3-A01
+  rung: S38-R3
+  kind: concept
+  text: 'Regulating the food environment at city and platform level: menu and calorie labelling for chains and delivery
+    aggregators, and zoning, trade-licensing and vending-zone rules around schools — what evaluations elsewhere
+    show for each, which Indian body holds each power, and how the informal sector escapes both.'
+  gap: '1.2'
+  why: 'V-map G6: ''menu labelling'' 0, ''zoning'' 0; B-policy B3/D7/F11 (menu labelling) ABSENT and B17/D15 (zoning,
+    licensing) PARTIAL: measured in S38 but never regulated. B-policy notes the South Asia Food-EPI panel rated
+    school-zone zoning highly achievable (V-facts claim 4 source).'
+  sources:
+  - https://pmc.ncbi.nlm.nih.gov/articles/PMC11260855/
+  - https://policydatabase.wcrf.org/level_one?page=nourishing-level-one
+  verify_at_intake: false
+  note: ''
+  drafter: A2
+- id: S38-R3-A02
+  rung: S38-R3
+  kind: skill
+  text: Use your outlet and delivery-platform datasets to estimate what a proposed school-vicinity rule or a menu-labelling
+    rule for chains and aggregators would reach, what it would miss and who would enforce it.
+  gap: '1.2'
+  why: 'B-policy top gaps 7 and 12: S38-R3 already scrapes delivery menus (2906) and S38-R2 builds geocoded outlet
+    data (2889), so the gap to instrument analysis is one step.'
+  sources: []
+  verify_at_intake: false
+  note: ''
+  drafter: A2
+- id: S39-R3-A01
+  rung: S39-R3
+  kind: concept
+  text: 'Benchmarking governments, not only companies: the Food-EPI as INFORMAS''s tool for rating government food-environment
+    policy against international good practice through an expert panel; India''s baseline is a four-country South
+    Asia Food-EPI (Bangladesh, India, Pakistan and Sri Lanka), not an India-only study; and why its rating of India''s
+    marketing restrictions differs from WHO''s reporting — the two use different definitions.'
+  gap: '1.2'
+  why: 'V-facts claim 4 (confirmed, with scope correction: four-country South Asia study; Food-EPI''s narrower marketing
+    definition explains the WHO discrepancy). V-map G6 recommends a government Food-EPI at S39-R3; B-policy D3/E7
+    PARTIAL.'
+  sources:
+  - https://pmc.ncbi.nlm.nih.gov/articles/PMC11260855/
+  - https://www.jpi-pen.eu/images/reports/Food-EPI_EU_FINAL_20210305.pdf
+  verify_at_intake: false
+  note: No ratings are asserted; the book sources them at intake. Do not cite informas.org (compromised, per audit
+    caveats).
+  drafter: A2
+- id: S39-R3-A02
+  rung: S39-R3
+  kind: revise
+  text: 'Run an India-specific benchmarking exercise using INFORMAS or ATNI instruments — of food industry practice,
+    or of government policy through a Food-EPI for India or one state: evidence document, briefed expert panel,
+    implementation ratings and ranked actions.'
+  target: Run an India-specific benchmarking exercise using INFORMAS or ATNI instruments.
+  map_line: 2972
+  gap: '1.2'
+  why: 'B-policy top gap 5: the map benchmarks industry (2972) but not government. The Food-EPI is an INFORMAS instrument,
+    so the existing line is widened rather than duplicated (V-amend §1).'
+  sources:
+  - https://pmc.ncbi.nlm.nih.gov/articles/PMC11260855/
+  verify_at_intake: false
+  note: Paired with the build revise S39-R3-A03. Do not cite informas.org (compromised, per audit caveats).
+  drafter: fixer
+- id: S39-R3-A03
+  rung: S39-R3
+  kind: revise
+  field: build
+  text: A published India benchmarking study of food industry practice or of government food-environment policy
+    — publishable and politically useful in equal measure.
+  target: A published India benchmarking study of food industry practice — publishable and politically useful in
+    equal measure.
+  map_line: 2976
+  gap: '1.2'
+  why: 'V-amend §1: the build was limited to food industry practice, so a government Food-EPI (S39-R3-A01/A02) had
+    no artefact to land in.'
+  sources: []
+  verify_at_intake: false
+  note: 'S39-R3 load: 1 concept + 2 revises = 2.0.'
+  drafter: fixer
+- id: S44-R2-A01
+  rung: S44-R2
+  kind: concept
+  text: 'Named whole-system maps against which any cause can be located: the Foresight obesity system map, with
+    its variables and thematic clusters, and the ANGELO grid of physical, economic, political and sociocultural
+    environments at micro and macro scale — used as checklists of what a local map or an intervention has left out,
+    not as models.'
+  gap: '2.3'
+  why: 'V-map G10: ''Foresight|ANGELO|syndemic|socio-ecological'' 0; recommendation ''one S44-R2 bullet: locate
+    any cause on the Foresight or ANGELO map''. HLPE is named only at S37-R2 (2815), which is not an S44 prerequisite.'
+  sources:
+  - https://assets.publishing.service.gov.uk/media/5a7b8811ed915d4147620fb2/07-1177-obesity-system-atlas.pdf
+  - https://assets.publishing.service.gov.uk/media/5a7ce8de40f0b65b3de0be37/07-1179-obesity-building-system-map.pdf
+  - https://pubmed.ncbi.nlm.nih.gov/10600438/
+  - https://pmc.ncbi.nlm.nih.gov/articles/PMC8625107/
+  verify_at_intake: false
+  note: Lower-rung prerequisite for the skill below. ANGELO original is abstract-only (paywalled); the grid's operational
+    definitions come from Adom 2021 (PMC8625107).
+  drafter: A3
+- id: S44-R2-A02
+  rung: S44-R2
+  kind: skill
+  text: Locate any proposed cause or intervention on the Foresight map and the ANGELO grid, and name the regions
+    of the system it leaves untouched.
+  gap: '2.3'
+  why: V-map G10; gives S44-R2's district causal loop diagram build (3280) an external completeness check.
+  sources: []
+  verify_at_intake: true
+  note: ''
+  drafter: A3
+- id: S47-R3-A01
+  rung: S47-R3
+  kind: skill
+  text: Draft the operative clauses of one availability or marketing restriction — scope, definitions, the trigger
+    for which products it covers, exemptions, the enforcing body, the penalty, monitoring and commencement — and
+    show for each clause the loophole it closes.
+  gap: '1.2'
+  why: 'V-map G6: the lever hierarchy puts availability and marketing restriction above labelling (2613) and ''Vague
+    advocacy is ignored and specific drafting is not'' (3425), yet no rung drafts a restriction; the map teaches
+    design for levers 1, 2 and 4 but not 3.'
+  sources: []
+  verify_at_intake: false
+  note: Generic drafting craft; the Indian application with a nutrient-profile trigger sits at S48-R3, where nutrient
+    profiling is already taught (3545). May overlap A3 (A3 adds leadership/campaign lines to S47).
+  drafter: A2
+- id: S47-R3-A02
+  rung: S47-R3
+  kind: concept
+  text: 'Negotiation as a craft distinct from advocacy: the interests behind stated positions, each party''s best
+    alternative to an agreement, what an official, a ministry, a state department, a regulator or an industry body
+    needs in order to say yes, and the researcher''s rule — negotiate over design, timing, phasing and form, never
+    over what the evidence shows.'
+  gap: '3.1'
+  why: 'D-profession top gap 2: NMC N-S4 (''motivation, communication, negotiation and conflict management'') and
+    GCF G17 PARTIAL; V-map G5: ''negotiat'' appears only for data use agreements (3952) and authorship (4108); F-blind
+    M7.'
+  sources: []
+  verify_at_intake: false
+  note: 'Keeps S47-R2''s researcher/advocate line (3462): the rule forbids trading findings. Industry engagement
+    limits stay with S60-R3.'
+  drafter: A4
+- id: S47-R3-A03
+  rung: S47-R3
+  kind: skill
+  text: Prepare and conduct one negotiation over a policy or programme decision with a ministry, a state department
+    or a regulator — beforehand, a written map of each side's interests and alternatives and your own walk-away
+    point; afterwards, a written record of what was agreed.
+  gap: '3.1'
+  why: 'Execution of the negotiation concept; D-profession: ''The map teaches analysis of these actors (S39, S47)
+    but not how to bargain with them.'''
+  sources: []
+  verify_at_intake: false
+  note: Industry is left out because the conflict-of-interest rules (S60) are outside S47's chain; negotiation with
+    industry sits at S48-R4-A01, at a table the regulator convenes. The Indian bodies (FSSAI, states, the GST Council's
+    process) are applied at S48-R4.
+  drafter: A4
+- id: S47-R3-A04
+  rung: S47-R3
+  kind: skill
+  text: 'Help a community constituency — parents, a self-help group federation, a consumer organisation — build
+    public demand for one structural measure and make its own case to elected representatives or a regulator: you
+    supply the evidence and check its accuracy; the voice, the demand and the decision to act stay theirs.'
+  gap: 3.1, 3.2
+  why: 'D-profession top gap 3: ''Structural policy in a democracy also needs public demand, which the map never
+    builds''; F-blind 16.6 (civil-society mobilisation) PARTIAL and 13.5 (legislators, 0 hits); NMC N-C11 (''mobilize
+    community resources and participation'').'
+  sources: []
+  verify_at_intake: false
+  note: 'Differs from ''Assemble and brief a coalition around one instrument'' (3479), which is of organisations
+    and experts; this is a constituency with its own voice, and it keeps the researcher/advocate line (3462). S47-R3
+    total with A2''s drafting skill: 4 additions.'
+  drafter: A4
+- id: S48-R2-A01
+  rung: S48-R2
+  kind: concept
+  text: 'The child-facing instruments in the map: the Infant Milk Substitutes, Feeding Bottles and Infant Foods
+    (Regulation of Production, Supply and Distribution) Act, which restricts the promotion of breast-milk substitutes;
+    the Food Safety and Standards (Safe food and balanced diets for children in school) Regulations, 2020, which
+    bring FSSAI into school food alongside the Ministry of Education and CBSE, the commencement of each provision
+    checked at intake; and the self-regulatory advertising tier under the ASCI code, beside the statutory CCPA and
+    MIB routes.'
+  gap: 1.3, 1.2, 2.4
+  why: 'V-map G3: ''Name the IMS Act in S48-R2''; V-map G8: FSS school regulations not named (''Safe food|fifty|50
+    m'' 0 hits) and 3502/3519 give school food to MoE/CBSE only; V-facts claim 3 gives the correct title. E-india
+    row 21: ASCI tier missing.'
+  sources:
+  - https://fssai.gov.in/upload/uploadfiles/files/Gazette_Notification_Safe_Food_Children_07_09_2020.pdf
+  - https://www.ascionline.in/the-asci-code-guidelines/
+  - https://www.pib.gov.in/PressReleasePage.aspx?PRID=1832906&reg=48&lang=2
+  verify_at_intake: true
+  note: 'verify_at_intake for the IMS Act (no audit opened it: confirm title, amendments and enforcing authority)
+    and for the commencement of each FSS 2020 provision (V-facts claim 3: regs 3(5) and 5(1) await a notified date).
+    CDSCO and remedy/nutraceutical regulation are at S48-R2-A03.'
+  drafter: A2
+- id: S48-R2-A02
+  rung: S48-R2
+  kind: concept
+  text: 'The institutions that draft guidance, hold data and convene rather than regulate, and which lever each
+    touches: NITI Aayog (national strategy, including the National Nutrition Strategy); ICMR-NIN (dietary guidelines,
+    food composition tables and the NNMB surveys); ICMR-NINE, formerly ICMR-NCDIR (national NCD monitoring); NHSRC
+    (the technical support institute of the National Health Mission); PHFI (academic and technical partner); and
+    state health departments — and how a researcher works through each.'
+  gap: '2.4'
+  why: 'V-map G8: NITI, NHSRC, PHFI 0 hits; ICMR-NIN only as RDA author (2203); E-india rows 43–47 and top gap 8
+    (''S48 maps regulators only'').'
+  sources:
+  - https://www.pib.gov.in/newsite/printrelease.aspx?relid=174442&reg=48&lang=2
+  - https://nin.res.in/
+  - https://www.ncdirindia.org/
+  - https://www.nhsrcindia.org/about-us/organisation
+  - https://phfi.org/
+  verify_at_intake: false
+  note: Placed in S48-R2 because its build is 'a maintained institutional and statutory brief' (3529) and it answers
+    'which body' questions. S48-R2 now carries 4 additions (A01-A04), at the cap.
+  drafter: A3
+- id: S48-R2-A03
+  rung: S48-R2
+  kind: concept
+  text: 'The regulation of weight-loss products beyond food labelling: CDSCO as the drug regulator, whose marketing-approval
+    conditions govern who may prescribe or sell obesity drugs and whose enforcement reaches manufacturers, sellers
+    and clinics; the licensing of AYUSH medicines sold for weight loss; FSSAI''s regulations for health supplements
+    and nutraceuticals, which govern slimming products sold as food and the claims they may carry; and the Drugs
+    and Magic Remedies (Objectionable Advertisements) Act for advertised slimming remedies, its reach read from
+    its schedule at intake — so that for any product you can say which body acts when it crosses from food into
+    drug or makes a claim it cannot support.'
+  gap: 1.4g, 2.4
+  why: 'V-amend coverage: the regulation half of 1.4g (audit §7; V-map G4g: no regulation of nutraceuticals or remedy
+    advertising) and CDSCO in the regulatory-architecture subject were never written; F-blind 12.8 (drug regulator
+    and remedies-advertising law absent); V-facts claim 1 (CDSCO approval conditions, enforced against manufacturers,
+    sellers and clinics).'
+  sources:
+  - https://www.pib.gov.in/PressReleasePage.aspx?PRID=2244252&reg=3&lang=1
+  - https://cdsco.gov.in/opencms/resources/UploadCDSCOWeb/2018/UploadCommitteeFiles/Recommendations%20Endocrinology%20&%20%20Metabolism%2020.04.2023%20&%2021.04.2023.pdf
+  verify_at_intake: true
+  note: 'verify_at_intake: no auditor opened the DMR Act, the FSSAI health-supplement and nutraceutical regulations
+    or the AYUSH drug-licensing rules; the book sources their current titles, schedules and enforcing authorities.
+    The CDSCO sources are V-facts claim 1. No legal status is asserted. The clinical counselling half of 1.4g is
+    S23-R2-A01. S48-R2 load 4.0, at cap.'
+  drafter: fixer
+- id: S48-R2-A04
+  rung: S48-R2
+  kind: concept
+  text: 'Health literacy and label comprehension as the test a front-of-pack scheme must pass: a warning mark changes
+    purchases only if shoppers with low literacy, reading in their own language in the seconds spent at a shelf,
+    notice it, understand it and act on it; how comprehension is measured — objective understanding, ranking and
+    choice tasks, real-purchase studies — and what comprehension evidence a regulator or a court can be shown.'
+  gap: '2.5'
+  why: 'V-amend coverage: gap 2.5 was closed only at S29-R3 (Book #151), which S48 cannot reach; S48-R3 (#136) already
+    presupposes the idea in the Court''s nutrition-literacy question (3537) and the threshold skill. V-map G9; D-profession
+    A2.2, C3.1, G-HL PARTIAL.'
+  sources: []
+  verify_at_intake: false
+  note: Placed at S48-R2, the rung below S48-R3, so S48-R3 reaches it by the chain rule; it lands in the S48-R1
+    bridge as vocabulary. Read-and-critique form only; the executed comprehension test stays at S29-R3-A02.
+  drafter: fixer
+- id: S48-R3-A01
+  rung: S48-R3
+  kind: concept
+  text: 'The Indian design space for restricting availability and marketing to children: what the FSS (Safe food
+    and balanced diets for children in school) Regulations, 2020 attempt — sale on campus, a rule for the area around
+    the school gate, advertising, sponsorship and marketing in schools — whose own commencement clause defers some
+    provisions to a date the Food Authority notifies, so the status of each clause is tracked at intake, never assumed;
+    whether and how ''high in saturated fat or trans-fat or added sugar or sodium'' has been defined, which the
+    2020 text left open; and which channels — digital, influencer and in-app marketing, child-appealing packaging,
+    online promotion of breast-milk substitutes — any Indian instrument currently reaches, established at intake.'
+  gap: '1.2'
+  why: 'V-facts claim 3 (CORRECTED): title as given; regs 3(5) and 5(1) deferred to a notified date and no notification
+    found; the 2020 text gave no thresholds. Brief instruction: do not assert which clauses are in force. B-policy
+    B11/D8/D9 (digital and packaging restriction) PARTIAL/ABSENT.'
+  sources:
+  - https://fssai.gov.in/upload/uploadfiles/files/Gazette_Notification_Safe_Food_Children_07_09_2020.pdf
+  - https://fssai.gov.in/food-law/notifications
+  - https://fssai.gov.in/docs/food-law/notice-comment/Draft%20Food%20Safety%20and%20Standards%20(Safe%20food%20and%20balanced%20diets%20for%20children%20in%20school)%20Regulations,%202026.pdf
+  verify_at_intake: true
+  note: 'verify_at_intake: commencement of regs 3(5) and 5(1), the fate of the 2026 draft amendment, any state orders
+    (a Maharashtra FDA order is reported in news only), and which channels each Indian instrument (including the
+    IMS Act, whose promotion ban is not limited by channel) currently reaches. The quoted nutrient phrase follows
+    the regulation''s wording (V-facts claim 3). S48-R3 carries 2 additions; the health-literacy concept it presupposes
+    sits at S48-R2 (S48-R2-A04).'
+  drafter: fixer
+- id: S48-R3-A02
+  rung: S48-R3
+  kind: skill
+  text: Draft an Indian restriction on marketing foods high in fat, sugar or salt to children that covers digital,
+    influencer, in-app and packaging channels and the school vicinity, anchored to a nutrient-profile trigger you
+    can defend, and name which body would enforce each part under which statute.
+  gap: '1.2'
+  why: V-map G6 recommends marketing-restriction design at S48-R3; B-policy top gap 3 ('no rung asks Harsh to draft
+    or defend an Indian restriction'); V-facts claim 4 (Food-EPI rated India's restriction weak overall).
+  sources: []
+  verify_at_intake: false
+  note: Applies S47-R3 drafting and the S48-R2 instrument map; the trigger reuses the S48-R3 threshold skill (3545).
+    S48-R3 now carries 2 A2 lines.
+  drafter: A2
+- id: S48-R4-A01
+  rung: S48-R4
+  kind: skill
+  text: Negotiate the terms of one instrument — a threshold, a phasing date, a scope or an exemption — with FSSAI
+    officials, a state government or the finance officials whose positions feed the GST Council, and with industry
+    at a regulator-convened table, conceding on timing and form but not on the component that carries the population
+    effect.
+  gap: '3.1'
+  why: 'D-profession top gap 2: ''Policy change in India runs through negotiations with the GST Council, FSSAI,
+    other ministries, states and industry.'' S48-R4''s build is a committee or panel seat (3566), where these negotiations
+    happen.'
+  sources:
+  - https://fssai.gov.in/food-law/notifications
+  verify_at_intake: true
+  note: 'verify_at_intake for the GST Council''s rate-recommendation process (no audit opened a GST Council page).
+    No legal status or date asserted. At R4, not R3: S48-R3''s build is a technical submission, and the seat at
+    the table arrives at R4.'
+  drafter: A4
+- id: S50-R2-A01
+  rung: S50-R2
+  kind: concept
+  text: 'Community action, the Ottawa Charter''s third action area, as a method rather than a slogan: engagement
+    as a spectrum from informing, through consulting and collaborating, to community control, and the difference
+    between a community consulted on a programme and one that holds decisions in it; community needs and asset assessment,
+    which maps what a village or ward already has — elected representatives, self-help groups, anganwadis and schools,
+    faith and youth groups, local leaders — as well as what it lacks; and accountability to communities as reporting
+    back what was found, decided and done.'
+  gap: '3.1'
+  why: 'D-profession top gap 3: Ottawa O-A3 (strengthen community action), ASPHER A1.6 and A2.5, CoL C1.8, C5.4,
+    C5.5, NMC N-C11 all PARTIAL; ''needs assessment'', ''empower'', ''community engagement'', ''accountab'' 0 hits.
+    V-map G5: ''mobilis|empower|SHG'' 0.'
+  sources:
+  - https://www.who.int/teams/health-promotion/enhanced-wellbeing/first-global-conference
+  - https://www.moh.gov.bh/Content/Upload/File/636276036276797500-TheOttawaCharterForHealthPromotion.pdf
+  verify_at_intake: false
+  note: 'Placed beside PRECEDE-PROCEED (3656), whose first phase is a social assessment of this kind. The brief''s
+    separate Ottawa settings line is not added here: A2 adds ''The settings approach from the Ottawa Charter'' at
+    S34-R2, which closes that item. This line covers only the community-action area.'
+  drafter: A4
+- id: S50-R3-A01
+  rung: S50-R3
+  kind: concept
+  text: 'Running a multi-site study or programme as a project: a work plan with milestones and a critical path;
+    a risk register with owners, triggers and contingencies; recruiting, training and supervising field teams across
+    sites; and expenditure accounting against the sanctioned budget — tracking spend by budget head, reconciling
+    it monthly, and producing the utilisation statements and audit trail that funders and government require.'
+  gap: '3.1'
+  why: 'D-profession top gap 4: ASPHER A8.5 (project management), A8.8 (risk management), CoL C7.9 (contingency)
+    ABSENT; ASPHER A8.7, CoL C7.6, NMC N-S5 (''maintain account of expenditure'') PARTIAL. V-map G5 recommends deepening
+    the S50-R3 hybrid-study build for exactly this.'
+  sources: []
+  verify_at_intake: false
+  note: The existing costing skill (3683) covers estimating cost; this covers managing money actually spent. S51-R3
+    inherits it (S50 is its prerequisite).
+  drafter: A4
+- id: S50-R3-A02
+  rung: S50-R3
+  kind: skill
+  text: 'Run the operations of your hybrid study: hire and supervise its field staff, keep the work plan and risk
+    register current and act on a risk when its trigger fires, and account for every budget head against the sanctioned
+    budget at close.'
+  gap: '3.1'
+  why: 'Makes the S50-R3 build (''A hybrid effectiveness-implementation study delivered in an Indian district'',
+    3686) executable; D-profession: ''None of these can be run without hiring, supervising, project planning, risk
+    management and expenditure accounting''.'
+  sources: []
+  verify_at_intake: false
+  note: ''
+  drafter: A4
+- id: S50-R3-A03
+  rung: S50-R3
+  kind: skill
+  text: Before designing an intervention, run a community needs and asset assessment in one village or urban ward
+    — with residents and their elected representatives in the room, not only officials — and close the loop by reporting
+    back to that community what was found, what was decided and what was done.
+  gap: '3.1'
+  why: Execution of the S50-R2 community-action concept; CoL C5.2–C5.5 and C4.4 ('Collaborates with the community')
+    PARTIAL; participation in the map today reaches officials (S45), patients and frontline workers (S36-R3) only.
+  sources: []
+  verify_at_intake: false
+  note: Uses community-based participatory research from the S36-R3 revise (S36 is a prerequisite of S50). Indian
+    community bodies are named at S51-R2, which S50 cannot presuppose, so this line names none.
+  drafter: A4
+- id: S51-R1-A01
+  rung: S51-R1
+  kind: concept
+  text: 'The providers outside the public delivery ladder: the private sector — clinics, hospitals, chemists and
+    informal practitioners — where much of India''s care is first sought, and AYUSH, a parallel government-recognised
+    system present inside Ayushman Arogya Mandirs, which many patients use for weight; both are where patients actually
+    are, and AYUSH questions are routed rather than improvised.'
+  gap: '2.4'
+  why: 'V-map G8: private sector PARTIAL (''S51 treats delivery as public only'', 3706–3708); AYUSH 0 hits; E-india
+    row 31 (AYUSH centres within functional AAMs).'
+  sources:
+  - https://aam.mohfw.gov.in/
+  verify_at_intake: true
+  note: 'verify_at_intake for the private sector''s share of care: no auditor opened a source for it (the book should
+    source it from the NSS health consumption round or equivalent). AYUSH routing question is in the S61 entry above.
+    Possible overlap with the clinical drafter''s supplement/remedy counselling (G4g, S23-R2-A01).'
+  drafter: A3
+- id: S51-R1-A02
+  rung: S51-R1
+  kind: skill
+  text: Say, for your district, where a person with obesity is likely to be seen first — public facility, private
+    clinic, chemist or AYUSH practitioner — and name the source for the claim.
+  gap: '2.4'
+  why: V-map G8 (private sector as main provider missing); makes the concept above observable at recognise-and-route
+    level, alongside S51-R1's existing ASHA time-budget estimate (1713).
+  sources: []
+  verify_at_intake: false
+  note: ''
+  drafter: A3
+- id: S51-R2-A01
+  rung: S51-R2
+  kind: concept
+  text: 'The community institutions an obesity programme can work through and must answer to: Gram Panchayats and
+    urban local bodies with their ward committees; the community-process bodies of the National Health Mission —
+    village health, sanitation and nutrition committees, Mahila Arogya Samitis in cities, and Jan Arogya Samitis
+    at Ayushman Arogya Mandirs; and self-help group federations under the national rural livelihoods mission — each
+    able to deliver, to fund small activities and to demand, and each answerable to residents in ways a health department
+    is not.'
+  gap: '3.1'
+  why: 'D-profession CoL C5.2: ''Panchayat'' appears only as a convergence department (3743); ''SHG'', ''self-help'',
+    ''urban local body'' 0 hits; F-blind 13.8 (Panchayati Raj named only). E-india row 46: NHSRC has a ''Community
+    Processes'' division.'
+  sources:
+  - https://www.nhsrcindia.org/about-us/organisation
+  verify_at_intake: true
+  note: 'verify_at_intake: confirm the current names and levels of VHSNC, MAS and JAS and the name of the livelihoods
+    mission (DAY-NRLM); the NHSRC page confirms only that a Community Processes division exists. Lands in the S51-R1
+    bridge. Possible overlap with A3/A4 (Indian entities) and with A2''s revise of the convergence line 3743, which
+    keeps ''Panchayati Raj'' as a department; this line is about the same bodies as community partners.'
+  drafter: A4
+- id: S51-R3-A01
+  rung: S51-R3
+  kind: revise
+  text: 'Convergence: ICDS under Mission Saksham Anganwadi and Poshan 2.0, school education and PM POSHAN, RBSK
+    and RKSK within the National Health Mission, workplaces, urban development, Panchayati Raj — since obesity prevention
+    is not deliverable by the health department alone.'
+  target: 'Convergence: ICDS and Poshan Abhiyaan, school education, urban development, Panchayati Raj — since obesity
+    prevention is not deliverable by the health department alone.'
+  map_line: 3743
+  gap: 1.1, 2.4
+  why: 'V-map G1 recommends settings at S51-R3; E-india row 4: Poshan Abhiyaan is named under its pre-2021 name,
+    now within Mission Poshan 2.0 (PIB, Apr 2026); rows 7-8: RBSK/RKSK unnamed.'
+  sources:
+  - https://www.pib.gov.in/PressReleasePage.aspx?PRID=2251769&reg=3&lang=1
+  - https://nhm.maharashtra.gov.in/en/scheme/rashtriya-bal-swasthya-karyakram-rbsk/
+  - https://www.pib.gov.in/newsite/PrintRelease.aspx?relid=159407&reg=48&lang=2
+  verify_at_intake: false
+  note: May overlap A3 (leadership lines at S51) and A4 (institutions at S51-R1). If another drafter also revises
+    line 3743, merge the two texts.
+  drafter: A2
+- id: S51-R3-A02
+  rung: S51-R3
+  kind: concept
+  text: 'Health facilities as food settings: the hospital canteen, patient diets, what is sold on and around the
+    campus, and staff''s own food environment — the one setting the health department controls outright, and a test
+    of its credibility when it asks other departments to change theirs.'
+  gap: 1.1, 1.2
+  why: 'V-map G1: ''no health facility as a food setting (''hospital'' appears only at 3706 and 3795)''; F-blind
+    7.5 ABSENT; B-policy D13 (public-sector setting standards) ABSENT.'
+  sources: []
+  verify_at_intake: false
+  note: ''
+  drafter: A2
+- id: S51-R3-A03
+  rung: S51-R3
+  kind: skill
+  text: Write a food standard for one health facility's canteen, patient kitchen and campus vendors, build it into
+    the canteen contract and the facility's quality assessment (NQAS or Kayakalp), and measure what changed on the
+    counter.
+  gap: 1.1, 1.2
+  why: Execution of the health-facility setting and of public procurement standards (B-policy top gap 1); uses Kayakalp
+    and NQAS already taught at S50-R2 (3659), a prerequisite subject.
+  sources: []
+  verify_at_intake: true
+  note: 'verify_at_intake: source the current NQAS and Kayakalp assessment criteria that touch food and canteens.
+    NQAS and Kayakalp are quality and hygiene assessment schemes, not procurement routes; the procurement lever
+    is the canteen contract. Hospital canteens live here, not at S37-R3.'
+  drafter: A2
+- id: S51-R3-A04
+  rung: S51-R3
+  kind: revise
+  text: Budgeting, procurement and the practical mechanics of getting an activity approved, paid for and accounted
+    for inside the National Health Mission — fund flow and utilisation certificates — since an activity that cannot
+    account for its spending rarely survives the next PIP cycle.
+  target: Budgeting, procurement and the practical mechanics of getting an activity approved and paid for.
+  map_line: 3744
+  gap: '3.1'
+  why: 'D-profession NMC N-S5 (''maintain account of expenditure as per norms'') and ASPHER A8.7 PARTIAL: ''accounting'',
+    ''expenditure'' 0 relevant hits; the S51-R3 build (an activity in a state PIP being delivered, 3753) needs it.'
+  sources: []
+  verify_at_intake: true
+  note: 'verify_at_intake: the book should source the current utilisation-certificate and fund-flow rules for NHM
+    activities. General expenditure accounting is taught at S50-R3-A01 (S50 is S51''s prerequisite) and is not repeated;
+    this line keeps only the NHM-specific mechanics. S51-R3 load 4.0 (3 new lines, 2 revises).'
+  drafter: fixer
+- id: S51-R3-A05
+  rung: S51-R3
+  kind: skill
+  text: Plan the obesity-care workforce for one district — which tasks sit with ASHAs, ANMs, community health officers,
+    medical officers, dietitians and counsellors, how many of each the plan needs, and how they will be trained
+    and supervised — and check one training's effect in the field months later rather than by a post-test on the
+    day.
+  gap: '3.1'
+  why: 'D-profession top gap 10: EPHF E-P1 (workforce planning), CoL C4.6, ASPHER A9.6 PARTIAL; ''workforce'' 0
+    hits; S57 trains residents, but no rung trains frontline cadres. Builds on S51-R2''s ''training pipeline'' and
+    task-shifting (3725-3726).'
+  sources: []
+  verify_at_intake: false
+  note: 'One skill: workforce planning, with a field check of training effect. Designing and delivering the training
+    itself is teaching craft (S57), outside S51''s chain (S50 -> S15, S36), so it is not asked here. Placed in S51
+    rather than S57 because S57 has no prerequisites and cannot presuppose the cadres (S51-R1).'
+  drafter: fixer
+- id: S54-R1-A01
+  rung: S54-R1
+  kind: revise
+  text: 'The major Indian datasets by name: NFHS (rounds up to and including NFHS-6), CNNS, ICMR-INDIAB, NNMS, LASI,
+    HCES, GBD India, SRS, NNMB, the Time Use Survey and the Poshan Tracker.'
+  target: 'The major Indian datasets by name: NFHS, CNNS, ICMR-INDIAB, NNMS, LASI, HCES, GBD India, SRS.'
+  map_line: 3911
+  gap: '2.4'
+  why: 'V-map G8: NNMB, Time Use Survey and Poshan Tracker 0 hits; NFHS pinned to NFHS-3 to NFHS-5; E-india rows
+    5, 33, 38, 40; V-facts 2, 7.'
+  sources:
+  - https://www.pib.gov.in/PressReleasePage.aspx?PRID=2266600&reg=3&lang=1
+  - https://nin.res.in/
+  - https://doi.org/10.1186/s12889-025-23731-y
+  - https://www.pib.gov.in/PressReleasePage.aspx?PRID=2106113&reg=48&lang=2
+  - https://www.pib.gov.in/FactsheetDetails.aspx?id=150744&NoteId=150744&ModuleId=16&reg=6&lang=1
+  verify_at_intake: false
+  note: ''
+  drafter: A3
+- id: S54-R1-A02
+  rung: S54-R1
+  kind: revise
+  text: 'That the NFHS series, NFHS-6 included, is the test of the claim that India''s obesity problem is arriving
+    through its children: the relative rise in adolescents against adults, recomputed from each round rather than
+    quoted from an earlier one.'
+  target: That NFHS-3 to NFHS-5 shows a 288 percent relative rise in adolescent boys against a 91 percent rise in
+    adult women — India's obesity problem is arriving through its children.
+  map_line: 3912
+  gap: '2.4'
+  why: 'V-facts 2: NFHS-6 released 29 May 2026 with no adult obesity figure in the release; E-india row 33 ''the
+    map is out of date … headline facts need re-checking''. The revise removes the dated percentages (the one rule)
+    and keeps the claim as a test.'
+  sources:
+  - https://www.pib.gov.in/PressReleasePage.aspx?PRID=2266600&reg=3&lang=1
+  verify_at_intake: false
+  note: The same NFHS-3-to-5 claim at S26-R1 (2004) is revised the same way by S26-R1-A03; the S26 prose (1993)
+    cannot be amended and is left to the S26 book's intake. NFHS-6 obesity figures are still unverified (fact sheets
+    not opened).
+  drafter: A3
+- id: S54-R2-A01
+  rung: S54-R2
+  kind: revise
+  text: 'What each dataset can and cannot answer, including the limitation of each: NFHS cross-sectional with limited
+    biochemistry and partial adolescent coverage; CNNS one-off; ICMR-INDIAB not powered for districts; NNMS single
+    round; LASI older ages only; HCES household not individual and purchases not intake; GBD modelled rather than
+    measured; SRS with weak cause certification; birth cohorts small and ageing; NCD portal and PM-JAY claims with
+    data quality caveats; commercial retail panels expensive and opaque; the Poshan Tracker, routine anganwadi growth
+    monitoring of under-fives that codes overweight, with administrative-data caveats and researcher access to be
+    established; ICMR-NIN''s NNMB diet and anthropometry surveys, repeated rounds in a subset of states, and what
+    those rounds can and cannot say about trends in intake; MoSPI''s Time Use Survey, national 24-hour time diaries
+    of activity, sedentary time, domestic work and travel.'
+  target: 'What each dataset can and cannot answer, including the limitation of each: NFHS cross-sectional with
+    limited biochemistry and partial adolescent coverage; CNNS one-off; ICMR-INDIAB not powered for districts; NNMS
+    single round; LASI older ages only; HCES household not individual and purchases not intake; GBD modelled rather
+    than measured; SRS with weak cause certification; birth cohorts small and ageing; NCD portal and PM-JAY claims
+    with data quality caveats; commercial retail panels expensive and opaque.'
+  map_line: 3928
+  gap: 2.4, 2.1
+  why: V-map G8 recommends Poshan Tracker, NNMB and TUS in S54-R1/R2; E-india top gaps 4, 6, 9; V-facts 7 (Tracker
+    codes overweight; access not verified). Line 3928 is the existing home for what each dataset can answer, so
+    this is a revise, not a new concept (V-amend §1).
+  sources:
+  - https://www.pib.gov.in/FactsheetDetails.aspx?id=150744&NoteId=150744&ModuleId=16&reg=6&lang=1
+  - https://nin.res.in/
+  - https://doi.org/10.1186/s12889-025-23731-y
+  - https://www.pib.gov.in/PressReleasePage.aspx?PRID=2106113&reg=48&lang=2
+  verify_at_intake: true
+  note: 'verify_at_intake: whether Tracker data are accessible to researchers (V-facts 7 left it unverified) and
+    the NNMB rounds and states. The contestable "only repeated intake data" claim is removed from the line. TUS
+    also serves S31''s national compositional analysis (S31-R3 build) — not added there.'
+  drafter: fixer
+- id: S54-R4-A01
+  rung: S54-R4
+  kind: revise
+  text: 'What it takes for a dataset to outlive you: core field and data staff kept across funding cycles, a rolling
+    funding plan with bridge money between grants, follow-up and retention operations, expenditure accounted to
+    each funder, and a named successor.'
+  target: What it takes for a dataset to outlive you.
+  map_line: 3966
+  gap: '3.1'
+  why: V-map G5 recommends deepening S54-R4 (an owned cohort, 3974) for team and budget management; D-profession
+    top gap 4 (people, project, financial management ABSENT/PARTIAL).
+  sources: []
+  verify_at_intake: false
+  note: 'Revise, not a new concept: the existing line names the goal and this adds what it takes.'
+  drafter: A4
+- id: S54-R4-A02
+  rung: S54-R4
+  kind: skill
+  text: 'Keep a cohort running across a funding gap: hold a written multi-year funding plan, submit the next grant
+    before the current one ends, and keep the core staff and the follow-up schedule intact through the gap.'
+  gap: '3.1'
+  why: Fundraising and staff continuity for the cohort build (3974); grant writing is already presupposed by S54-R3's
+    'funded protocol' build (3956).
+  sources: []
+  verify_at_intake: false
+  note: ''
+  drafter: A4
+- id: S55-R2-A01
+  rung: S55-R2
+  kind: revise
+  text: 'The four assets recognition is made of: a citable body of work on one named question; custody of data or
+    a cohort; a teaching lineage; institutional position and committee membership — with the fourth manufactured
+    by the first three, except for one form worth building on purpose once they exist: a unit, centre or technical-support
+    group that houses the other three and outlasts you.'
+  target: 'The four assets recognition is made of: a citable body of work on one named question; custody of data
+    or a cohort; a teaching lineage; institutional position and committee membership — with the fourth manufactured
+    by the first three.'
+  map_line: 4013
+  gap: '3.1'
+  why: 'Audit §3 and V-map G5: 4013 treats institutional position as a by-product only; Decision 2 asks that institution
+    building be taught while the caution stays.'
+  sources: []
+  verify_at_intake: false
+  note: Keeps 'manufactured by the first three' as the default. The test that separates building from capture is
+    the S55-R3 concept below.
+  drafter: A4
+- id: S55-R2-A02
+  rung: S55-R2
+  kind: revise
+  text: 'Funding sequence: intramural, then ICMR ad-hoc and task force, DST and DBT, India Alliance fellowships,
+    ICSSR for policy-adjacent work, and international sources including Wellcome, the Gates Foundation nutrition
+    portfolio and NIH Fogarty — each step won mostly on the last one delivered on time; and, for implementation
+    rather than research, company CSR funds, philanthropic and multilateral programme grants and government tenders,
+    each screened for conflict of interest before it is sought, most strictly when the money comes from a food or
+    beverage company.'
+  target: 'Funding sequence: intramural, then ICMR ad-hoc and task force, DST and DBT, India Alliance fellowships,
+    ICSSR for policy-adjacent work, and international sources including Wellcome, the Gates Foundation nutrition
+    portfolio and NIH Fogarty — each step won mostly on the last one delivered on time.'
+  map_line: 4016
+  gap: '3.1'
+  why: 'D-profession X3 (fundraising beyond research grants) PARTIAL: ''fundrais'', ''philanthrop'', ''donor'',
+    ''tender'' 0 hits; ASPHER A10.8 (''draft tenders''); F-blind M4 (''philanthropy thin'').'
+  sources: []
+  verify_at_intake: true
+  note: 'verify_at_intake: the CSR rules under the Companies Act and which funders currently fund implementation
+    should be sourced at intake. The screen is S60-R3''s industry policy applied to money; S60 is outside S55''s
+    chain, so the line states the screen itself. Lands in the S55-R1 bridge only as vocabulary.'
+  drafter: A4
+- id: S55-R3-A01
+  rung: S55-R3
+  kind: concept
+  text: 'Institution building versus administrative capture: founding or running a unit serves the one question
+    when it holds the data, trains the lineage and would survive your departure, and has become capture when administration
+    displaces your own first-author work — a test applied in writing before accepting any headship or founding anything,
+    and again at each annual review.'
+  gap: '3.1'
+  why: Reconciles S55-R3's 'administrative capture' failure mode (4034) with Decision 2 ('a caution, not a ban');
+    D-profession top gap 8 and X5.
+  sources: []
+  verify_at_intake: false
+  note: 4034 is left unchanged, so the caution stands.
+  drafter: A4
+- id: S55-R3-A02
+  rung: S55-R3
+  kind: concept
+  text: 'Sustaining the work for three decades: pacing as a strategic variable, protected recovery, the early signs
+    of burnout — exhaustion, cynicism, a falling sense of effectiveness — in yourself and in the people who work
+    with you, and your own health and relationships treated as infrastructure for the one question rather than competitors
+    to it.'
+  gap: '3.1'
+  why: 'D-profession: GCF G24 (''Manages own health and well-being'') and ASPHER A10.3 ABSENT, A10.2 PARTIAL; V-map
+    G5: ''burnout|wellbeing'' 0 hits; F-blind M12.'
+  sources: []
+  verify_at_intake: false
+  note: Placed with the stopping rules and the annual review (4035, 4043) rather than in S59/S60, because pacing
+    is a strategy decision. S60-R3's 'saviour frame' (4388) is the ethical companion.
+  drafter: A4
+- id: S55-R3-A03
+  rung: S55-R3
+  kind: revise
+  field: build
+  text: An annual written review, scored against the competency checklist, with the previous years' scores kept,
+    and a pacing section — hours, recovery and early signs of burnout — with one change made on its evidence.
+  target: An annual written review, scored against the competency checklist, with the previous years' scores kept.
+  map_line: 4043
+  gap: '3.1'
+  why: Makes the sustaining concept observable in an artefact that already exists.
+  sources: []
+  verify_at_intake: false
+  note: ''
+  drafter: A4
+- id: S57-R1-A01
+  rung: S57-R1
+  kind: concept
+  text: That leading people is a learnable craft, like teaching, and not the same as being the most competent person
+    in the room — and that a teaching lineage, a team you run and an institution that outlives you are three different
+    things, each of which you will be asked to build.
+  gap: '3.1'
+  why: 'V-map G5: ''leader|leadership'' 0 hits in the whole map; D-profession top gap 1 (ASPHER A5.1, A5.7; NMC
+    N-C18 ''Public Health Leadership'' has no matching subject).'
+  sources: []
+  verify_at_intake: false
+  note: Book 8. Recognise level only, no execution. It is the R1 bridge for the S57-R2 leadership concept below.
+  drafter: A4
+- id: S57-R2-A01
+  rung: S57-R2
+  kind: concept
+  text: Leadership and management as different jobs — setting direction, aligning people and earning trust, against
+    planning, staffing, budgeting and control — with power and authority kept distinct; delegation matched to a
+    person's competence and commitment for the specific task; written role clarity about who decides, who does and
+    who is consulted; and conflict inside a team as normal and workable while it stays about the work rather than
+    the person.
+  gap: '3.1'
+  why: 'D-profession: NMC N-S1 (''Administration and Management, Power and Authority'') PARTIAL, N-S4 (''negotiation
+    and conflict management'') PARTIAL; ASPHER A5.4 and CoL C7.11 PARTIAL; GCF G17 (managing tensions and conflicts)
+    PARTIAL. V-map G5: ''team'' appears only as a clinical MDT.'
+  sources: []
+  verify_at_intake: false
+  note: Lands in the S57-R1 bridge (Book 8) as vocabulary. The existing 'feedback models' (4169) are about learners;
+    this line is about staff.
+  drafter: A4
+- id: S57-R2-A02
+  rung: S57-R2
+  kind: skill
+  text: Diagnose how a team you belong to is led and managed — who sets direction, how work is delegated, how feedback
+    travels, where decisions stall — and put one written, reasoned improvement to the person able to make it.
+  gap: '3.1'
+  why: The R2 (read, critique, commission) form of the leadership gap in D-profession top gap 1; gives S57-R2 an
+    observable leadership skill before R3 asks for execution.
+  sources: []
+  verify_at_intake: false
+  note: ''
+  drafter: A4
+- id: S57-R3-A01
+  rung: S57-R3
+  kind: concept
+  text: 'Leading a small team end to end: hiring for the task rather than the CV, with a written job description
+    and a structured, scored interview; onboarding; delegating and supervising; the performance conversation you
+    would rather avoid; leading a change the team did not ask for; and developing juniors as future leaders, not
+    only as researchers.'
+  gap: '3.1'
+  why: 'D-profession top gaps 1 and 4: ASPHER A8.2 (manage people), A8.4 (job descriptions, hiring) and CoL C7.2,
+    C7.3 ABSENT; ASPHER A5.3 (develop others as leaders) and A5.8, CoL C8.6 (change) PARTIAL. V-map G5: ''hire|hiring''
+    0 hits.'
+  sources: []
+  verify_at_intake: false
+  note: Extends the existing 'deliberate training of juniors who become the network' (4188) from researchers to
+    leaders.
+  drafter: A4
+- id: S57-R3-A02
+  rung: S57-R3
+  kind: skill
+  text: Lead a team of at least two people through one piece of work — at least one of them hired by you to a written
+    job description and a scored interview — with written roles, a delegation plan and regular feedback, and resolve
+    one disagreement inside it without escalating it.
+  gap: '3.1'
+  why: Execution of the S57-R3 concept; NMC N-S2 ('Formulate and manage team approach') and N-S3 (human resource
+    management) PARTIAL; F-blind M8 (management) ABSENT.
+  sources: []
+  verify_at_intake: false
+  note: ''
+  drafter: A4
+- id: S57-R3-A03
+  rung: S57-R3
+  kind: skill
+  text: Set up a standing group that does not depend on you — a working group or a teaching network — with written
+    terms of reference, a plan, named roles and a named successor, and show that it has met and delivered without
+    you in the room.
+  gap: '3.1'
+  why: D-profession X5 and top gap 8 (institution building; CoL C2.6 organisational strategic planning) PARTIAL;
+    F-blind M3 ('founding or running a centre, unit or NGO absent'); the map builds assets that outlive you (3966,
+    1390) but not the organisation that holds them.
+  sources: []
+  verify_at_intake: false
+  note: Execution home for institution building under Decision 2, at a scale reachable by Book 129 without district
+    health-system or budgeting content (S57 has no prerequisites). The caution stays in S55 (see the S55-R2 revise
+    and the S55-R3 concept). The S57-R3 build (4197) and gate are unchanged.
+  drafter: A4
+- id: S58-R3-A01
+  rung: S58-R3
+  kind: concept
+  text: 'Communicating in a multilingual country: health messages written in English and then translated lose register,
+    meaning and literacy fit, so plain-language outputs are drafted in the audience''s language, back-translated,
+    and tested for comprehension with the people they are for.'
+  gap: '2.2'
+  why: 'V-map G7: ''linguistic|vernacular|Hindi'' 0 hits; recommendation ''language to S58-R3''; S58-R3''s four-form
+    rule (4256) assumes a plain-language form but never says in which language.'
+  sources: []
+  verify_at_intake: false
+  note: Possible overlap with the drafter handling gap 2.5 (health literacy and label comprehension, S48-R3/S29-R3);
+    this line is about language, not literacy.
+  drafter: A3
+- id: S58-R3-A02
+  rung: S58-R3
+  kind: skill
+  text: Produce the plain-language form of one piece of work in the language its audience speaks — in Chhattisgarh,
+    Hindi or Chhattisgarhi, and a tribal language where the audience needs it — and test its comprehension with
+    that audience before release.
+  gap: '2.2'
+  why: V-map G7 (language absent); gives the four-form rule's plain-language form (4256) an observable language
+    test.
+  sources: []
+  verify_at_intake: false
+  note: ''
+  drafter: A3
+- id: S58-R3-A03
+  rung: S58-R3
+  kind: concept
+  text: 'Crisis and rapid-response communication: the first hours of a food scare, a drug-safety story, a viral
+    attack on your own work or an industry campaign against a policy you support — a holding statement that says
+    only what is known, one spokesperson, coordination with your institution''s media office and co-authors, when
+    to take legal advice, and correcting later without contradicting yourself.'
+  gap: '3.1'
+  why: 'D-profession X1 and top gap 11: ''crisis'' 0 hits; ''No protocol for a rapid-response moment: a viral food
+    scare, a GLP-1 safety story, an industry attack on a tax''. F-blind M15 (litigation, backlash) PARTIAL.'
+  sources: []
+  verify_at_intake: false
+  note: 'S58-R3 total with A3''s two language lines: 4 additions.'
+  drafter: A4
+- id: S58-R3-A04
+  rung: S58-R3
+  kind: skill
+  text: 'Run a rapid-response drill on a realistic scenario: a holding statement within the first hour, a three-minute
+    interview under hostile questioning, and a written correction plan, reviewed afterwards by someone who has handled
+    a real crisis.'
+  gap: '3.1'
+  why: Observable form of the crisis concept; builds on 'calibrated confidence under pressure' (4254).
+  sources: []
+  verify_at_intake: false
+  note: ''
+  drafter: A4
+- id: S61-R1-A01
+  rung: S61-R1
+  kind: concept
+  text: 'Further adjacent fields and who owns them: urban and transport planning — land use, street design, public
+    transport and the master and mobility plans that fix them (urban or transport planner; the municipal town-planning
+    office) — asked ''what would make this ward''s streets walkable and cyclable for the least active, and which
+    plan or budget does that sit in?''; and AYUSH systems (a qualified AYUSH practitioner; the state AYUSH directorate)
+    — asked ''what does this system offer this patient for weight, on what evidence, and what does it interact with
+    in the treatment they already have?'''
+  gap: 2.1, 2.4
+  why: V-map G2 recommends routing 'urban planning / transport planner' in S61; V-map G8 and E-india row 31 (AYUSH
+    ABSENT, 'needs at least recognise-and-route').
+  sources:
+  - https://aam.mohfw.gov.in/
+  verify_at_intake: false
+  note: Written as an additional S61 concept so the conductor can merge it into line 4434 alongside other drafters'
+    routing items (leadership, campaigns).
+  drafter: A3
+- id: S61-R1-A02
+  rung: S61-R1
+  kind: concept
+  text: 'Institutional administration beyond the team you lead — service rules and labour law for staff, statutory
+    accounts and audit, public procurement rules, contracts and memoranda of understanding (your institution''s
+    administrative and finance officers, and a lawyer for contracts): what does this hire, contract or purchase
+    require, and what will audit check?'
+  gap: '3.1'
+  why: V-map G5 recommends routing organisational administration in S61 ('partner with a programme manager'); Decision
+    2 teaches team, project and budget skills in rungs, so only the legal and institutional-finance end is routed.
+  sources: []
+  verify_at_intake: false
+  note: For the conductor to merge into line 4434 with A3's routing items.
+  drafter: A4
+- id: S61-R1-A03
+  rung: S61-R1
+  kind: concept
+  text: 'Campaign production and media buying — creative production, media planning and paid reach (a communications
+    or social-marketing agency, or the state IEC officer): what reach and frequency will this budget buy in this
+    audience, and how will exposure be measured?'
+  gap: '3.2'
+  why: V-map G9 recommends routing campaign craft in S61; Decision 2 moves design, pretesting and evaluation into
+    S34-R3, so only production and media buying are routed.
+  sources: []
+  verify_at_intake: false
+  note: For the conductor to merge into line 4434.
+  drafter: A4
+
+# WITHDRAWN: none — no entry was deleted; S39-R3-A02 and S54-R2-A01 changed kind to revise and kept their ids.
+#
+# COVERAGE (fixer additions; all other gaps as in V-amend.md §2, now with the §1 fixes applied):
+# 1.4g regulation of remedies and nutraceuticals — S48-R2-A03 "The regulation of weight-loss products beyond food labelling…"
+# 1.4g clinical counselling — S23-R2-A01 (unchanged), S22-R2-A01
+# 2.4 CDSCO in the regulatory architecture — S48-R2-A03; clinical chain S24-R1-A01, S22-R3-A01
+# 2.4 NFHS figures at S26-R1 — S26-R1-A03 "That India's obesity problem is arriving through its children, a claim tested…"
+# 2.5 health literacy and label comprehension — S48-R2-A04 (reaches S48-R3 by the chain rule); S29-R3-A01/A02 for the S29 chain
+# 1.1 anganwadi/ICDS design gate — S26-R3-A05 "A paediatrician, a psychiatrist and the head of the platform…"
+# 1.2 government Food-EPI — S39-R3-A01, S39-R3-A02 (revise of 2972), S39-R3-A03 (revise of build 2976)
+

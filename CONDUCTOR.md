@@ -34,7 +34,7 @@ is dropped, and accuracy is not traded for speed.
 
 | Order | Task | Delegated to |
 | --- | --- | --- |
-| 1 | Task 1: inventory and `READY.md` | one Opus subagent |
+| 1 | Task 1: inventory and `READY.md`, from `python check/amendments.py --rung <SUBJECT>` (the map with its approved amendments applied), never the map alone | one Opus subagent |
 | 2 | Source intake, to the checklist under the source gate | the conductor |
 | 3 | Task 2: draft, batches of two or three, with the self-check | one drafter per batch |
 | 4 | Task 5: cut (5a), cold read (5b), restore (5c) | one cutter per section; one cold reader for the book; one restorer |

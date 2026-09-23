@@ -1012,6 +1012,14 @@ def check(recs: dict, subjects: dict, clusters: dict, bibkeys: set):
                    if f"{sid}-R2-P{i+1:02d}" not in discharged]
         if missing:
             warn.append(f"{sid}: bridge test - {len(missing)}/{n_pre} rung-2 presuppositions undischarged")
+
+    # approved map amendments (map/AMENDMENTS-v3.1.yml): valid, and served by every rung that has
+    # records - warning while drafting, blocking once verified or frozen. See check/amendments.py.
+    import amendments as _amend
+    block += [f"amendments: {p}" for p in _amend.problems()]
+    ab, aw = _amend.coverage(recs, lambda rk: book_meta(rk).get("status"))
+    block += ab
+    warn += aw
     return block, warn
 
 

@@ -526,7 +526,7 @@ The map's rung-one bullets are **outcome statements** — descriptors of what th
 
 The scope gate is therefore **not** "is this bullet in v3". It is: **does this concept serve a stated outcome, a rung skill, the build target, the gate, or a bridge requirement?** A concept serving none of those is cut. Every record carries `provenance.outcome_refs` naming what it serves, so this is checkable rather than asserted.
 
-Reading the bullets as outcomes rather than as an inventory is a change of use, not a change of content. The map stays frozen at v3; no v4 is required.
+Reading the bullets as outcomes rather than as an inventory is a change of use, not a change of content. The map stays frozen at v3; no v4 is required. **Since 23 September 2026 the curriculum is the frozen map plus its approved amendments**, `map/AMENDMENTS-v3.1.yml`: 113 additions and in-place revisions across 50 rungs that close the gaps an external audit found (clinical, policy, causal-system, professional and Indian frameworks; `map/audit-2026-09/REPORT.md`, with its evidence and verification beside it). They change no book id, position or count. `check/amendments.py` validates them and prints any rung with them applied.
 
 ---
 
@@ -579,7 +579,7 @@ So `textbook` is now an accepted kind on an `empirical` concept, and the discipl
 
 Repeatable, and it terminates. Run it per subject per rung.
 
-1. **Collect the terminal requirements.** From frozen v3: the rung's outcome statements, its skills, its build target and its gate. For a bridge rung, add everything the **next** rung's concepts and skills presuppose. This union is what the reader must hold or be able to do when the chapter ends.
+1. **Collect the terminal requirements.** From frozen v3 **with its approved amendments applied**: run `python check/amendments.py --rung <SUBJECT>` and work from what it prints, never from the map alone. It gives the rung's outcome statements, its skills, its build target and its gate (revised lines already replaced, added lines labelled by amendment id, such as `S26-R1-A02`), and the rung above for the bridge. For a bridge rung, add everything the **next** rung's concepts and skills presuppose, amendments included. A record serving an amendment names its id in `provenance.outcome_refs` (own rung) or `provenance.bridge_ref` (rung above), and names a revise id alongside the line it revised; the build warns while drafting and blocks a verified or frozen rung that leaves one unserved. An amendment marked `verify_at_intake: true` names an instrument or fact that must be opened at source intake before anything about it is written as fact. This union is what the reader must hold or be able to do when the chapter ends.
 2. **Regress each requirement.** For each, ask: *what must a reader already know for this sentence to mean anything?* Record the answer as a candidate concept. Repeat on each answer.
 3. **Terminate only at the floor.** A chain ends when it reaches the reader floor of section 1 or an existing Book 0 concept. It may not end at "assume familiarity with", at a class-10 topic, or at a medical prerequisite. An unterminated chain is an incomplete inventory.
 4. **Promote shared candidates to Book 0.** A candidate that appears in chains for two or more subjects and is not specific to any of them is Book 0 material, not booklet material. This is the rule that stops arithmetic being written 61 times.

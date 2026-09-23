@@ -136,8 +136,12 @@ a sandbox; they can be reached from a browser.
 
 ## Task 1 — Opus. Structure.
 
-> Read `claude.md` in full. Read `map/subject-map-v3-FROZEN.md` for subject <SUBJECT>, and read
-> `plan/INVENTORY-PILOT.md` to see what a finished inventory looks like.
+> Read `claude.md` in full. Read `map/subject-map-v3-FROZEN.md` for subject <SUBJECT>, then run
+> `python check/amendments.py --rung <SUBJECT>`: the rung's requirements are what it prints (the
+> map with its approved amendments applied, and the rung above for the bridge), not the map alone.
+> Every amendment id it prints must end up in some concept's `outcome_refs` or `bridge_ref`, and
+> every amendment marked `verify_at_intake` in `map/AMENDMENTS-v3.1.yml` goes into `READY.md` as a
+> source to obtain. Read `plan/INVENTORY-PILOT.md` to see what a finished inventory looks like.
 >
 > Produce the rung-1 concept inventory for <SUBJECT>, by the method in the specification: collect
 > the rung's outcomes, skills, build target and gate, add everything rung 2 presupposes, regress
@@ -258,6 +262,10 @@ pass. Fresh contexts, every time.
 >
 > Then check currency: anything with a date, a price, a rate or a cut-point, against the
 > instrument in `sources/`, and flag what needs re-checking against a newer one.
+>
+> Then **the amendments**. For every amendment id a record names in `outcome_refs` or
+> `bridge_ref` (`map/AMENDMENTS-v3.1.yml`), check that the record actually teaches what the
+> amendment says, at the rung's level; naming the id is not serving it.
 >
 > Then **the figures**. Open every PNG the record's `figures:` names in `check/figures/` and look at
 > it. Recompute every value it plots or prints (points, bar heights, labels, caption, the line a
