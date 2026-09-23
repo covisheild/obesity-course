@@ -77,3 +77,4 @@ Auditor: Opus, Task 3. Checked against sources/fss_act_2006.txt (citekey `fss_ac
 ## Round 2 (23 Sep 2026)
 
 - **C43-R2a** · reopens C43-K2 (verifier): 'published for comment' goes beyond s.92(1), which says only 'after previous publication'. Drop 'for comment' (no source for it is held); keep the rest. Check the Ex 1 and Ex 3 answers for the same phrase.
+  Fix: 'for comment' dropped from must_know[0] ("a draft published, the Central Government's approval ...") and from the Ex 3 answer ("publishing a draft amendment, getting ..."); Ex 1 answer never had the phrase. s.92(1) confirmed in sources/fss_act_2006.txt: "after previous publication" only.

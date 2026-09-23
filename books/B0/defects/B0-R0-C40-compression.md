@@ -10,6 +10,7 @@ Auditor: Opus, Task 3. I recomputed all 13 practice answers, the illustration an
    Alternative: reword C5's must-know to scope it to impressions. C5 is released, so which side changes is Harsh's call.
    Support: C5-released line 209 ("neither is dishonest"), and lines 221 and 224.
    Fix: Not applied: awaits Harsh (which side of the C5/F2 zero-baseline conflict changes).
+   Fix: applied in round 2 under Harsh's decision (reword F2, not C5); see C40-R2a.
 
 2. **C40-K2**. Class: CONFIRMED-ERROR. Fields: illustration.body; also practice level 2 answer and practice level 7 (first) answer.
    Sentences: "The page a plate covers is its height times its width." "Area is height times width, and both were multiplied by the same number." (P2) "Area is height times width, and the working added them." (P7)
@@ -70,3 +71,4 @@ Auditor: Opus, Task 3. I recomputed all 13 practice answers, the illustration an
 ## Round 2 (23 Sep 2026)
 
 - **C40-R2a** · HARSH DECISION on C40-K1 (23 Sep): reword F2, not C5. After 'a line chart need not' add, in the section's register, that the earlier section's advice to redraw an alarming line from zero is a check on the impression a slope gives, not a rule of honesty; a line on a printed non-zero axis is honest, a bar on one is not. Change the reference note that says F2 'agrees with B0-R0-C19' to say it agrees with that section's figure caption, and that the redraw-from-zero advice is a check on impression. Make P11 and Ex 3 answers consistent.
+  Fix: simplified_explanation, after "a line chart need not.", adds "The section on graphs told you to redraw an alarming line from zero before you repeat it. Keep doing that. It is a check on the impression a slope gives, not a rule of honesty. A line on a printed non-zero axis is honest; a bar on one is not." definition.references[2] note now says it "agrees with the figure caption of B0-R0-C19. That section's advice to redraw an alarming line from zero is a check on impression, not a rule of honesty."; the openstax_business_stats_2e note now says it follows "the figure caption of B0-R0-C19". P11 (first level-9) answer adds "Redrawing it from zero, as that section advised, checks the impression. It does not make the first drawing dishonest." Ex 3 answer adds "If the line looks alarming, redraw it from zero to check the impression. That is a check, not a sign that the first drawing was dishonest." C5 unchanged.

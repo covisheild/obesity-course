@@ -60,3 +60,4 @@
 ## Round 2 (23 Sep 2026)
 
 - **C25-R2a** · reopens C25-K3 (verifier): the P13 answer's new 'at least 0.25, a floor' does not follow. The prompt's person is in a household of four; the 75 per cent ceiling is for the rural population as a whole, not that subgroup. Make the answer say only what follows from the section (e.g. the ceiling for the whole rural population gives no bound for this subgroup, or state the bound for a person drawn from the whole rural population, if that is what P13 asks). Recompute any number.
+  - Fix: P13 now says 1 minus 0.75 = 0.25 is a floor only for a rural person drawn with nothing else known. It then says the whole-population ceiling puts no bound on people in households of four, the section has no figure for that group, so 'high' has nothing under it and is not ruled out. Recomputed in Python.
