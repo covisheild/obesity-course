@@ -27,7 +27,7 @@ to a block, district, State or "here". The household point in D2 stays (entitlem
 eligible households, so two people from one household are not independent draws), but no bound on
 a household of four may be derived from a ceiling on persons.
 
-**M3 · Odds (D1 odds defects).** A new anchor is held: `openstax_contemporary_math`
+**M3 · Odds (D1 odds defects).** A new anchor is held: `openstax_contemporary_math_odds`
 (`sources/openstax_contemporary_math_7_7.txt`, OpenStax *Contemporary Mathematics* s.7.7). Quote
 it for the definition of odds and for "odds as a ratio of probabilities". Correct the false
 sentences: odds and probability are close for rare events and pull apart as the probability grows;
