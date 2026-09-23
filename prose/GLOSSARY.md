@@ -128,3 +128,139 @@ percentage is a percentage of" — are right for a percentage and do not describ
 teaches it as the number below the line, which is where the reader first meets it, and A4 gives
 the recorded words at the point the percentage sense arrives. The row wants both senses when it is
 next opened.
+
+## Added at the Book 0 glossary merge (CONDUCTOR step 7), 2026-09-23
+
+Parts D, E and F (`B0-R0-C24` to `B0-R0-C43`). This takes in `prose/glossary-inbox-D.md` and
+`prose/glossary-inbox-F2.md`, rechecked against the records as they stood on 23 September after
+compression and the fix rounds, and adds the terms Parts E, F1, F3, F4 and F5 teach. The plain
+words are the record's own, shortened; a formula or standards quote sits beside them where the
+record gives one. Rows are in reading order within each Part.
+
+Inbox rows for terms the records no longer teach were not carried over: sampling bias,
+self-selected sample, nonsampling error, measurand, true on average, contingency table (D), and
+whisker and square law (F2). No existing row above has been changed. Rows above that now point at
+the wrong record, or whose words have drifted from the record, are listed with proposed fixes in
+`books/B0/GLOSSARY-MERGE-REPORT.md`, for the between-rounds pass.
+
+**Where one word has two senses**, both rows carry a label in brackets: *cell* (a living cell,
+above, and the cell of a table, below) and *precision* (the loose sense above, the measurement
+sense below, as ruling M10 teaches it).
+
+### Part D · chance, variation, average and spread, sampling, measurement error
+
+| Term | Plain words it gets at first use | First taught in |
+| --- | --- | --- |
+| probability | a number from 0 to 1 that states how often an outcome would turn up if the same chance process were repeated a great many times | B0-R0-C24 |
+| sample space | the complete list of everything that could happen | B0-R0-C24 |
+| outcome | one member of the sample space | B0-R0-C24 |
+| event | any collection of outcomes from the sample space | B0-R0-C24 |
+| complement | every outcome in the sample space that is not in the event; everything that is not it | B0-R0-C24 |
+| odds | how many times more likely the event is than its opposite: p divided by (1 minus p) | B0-R0-C24 |
+| at random | every member has exactly the same chance of being the one you pick | B0-R0-C24 |
+| independent | finding out one of them happened tells you nothing new about the other | B0-R0-C25 |
+| mutually exclusive | they cannot both happen | B0-R0-C25 |
+| two-way table | a table that sorts the same people twice, one way down the columns and the other way across the rows | B0-R0-C26 |
+| cell (of a table) | where a row meets a column: the count of people who are both | B0-R0-C26 |
+| grand total | what you get when you add up everything in the table | B0-R0-C26 |
+| conditional probability | the same move with a chosen denominator: P(A given B), written P(A\|B), is the count who are both A and B divided by the count who are B | B0-R0-C26 |
+| sensitivity | the share of people with the condition that the test catches, written P(test positive given condition present) | B0-R0-C26 |
+| specificity | the share of people without the condition that the test correctly clears, written P(test negative given condition absent) | B0-R0-C26 |
+| positive predictive value | the share of positive results that are right, written P(condition present given test positive) | B0-R0-C26 |
+| prevalence | how many people in a group have the condition, written P(condition present), with no test involved | B0-R0-C26 |
+| negative predictive value | the share of negative results that are right | B0-R0-C26 |
+| distribution | the set of values a quantity takes, across the people, occasions or measurements counted, together with how often each value turns up | B0-R0-C27 |
+| frequency table | lists each value, or each band of values, against the count of times it occurred | B0-R0-C27 |
+| relative frequency | a count divided by the total number counted; the proportion, under a longer name | B0-R0-C27 |
+| range | the largest value minus the smallest | B0-R0-C27 |
+| shape | where a distribution's values sit relative to each other | B0-R0-C27 |
+| long tail | the side of a distribution that thins out slowly | B0-R0-C27 |
+| mean | the sum of a set of values divided by how many there are | B0-R0-C28 |
+| median | the middle value of the set once it is ordered from smallest to largest; with an even count, the mean of the two middle values | B0-R0-C28 |
+| quartile | the first quartile is the median of the lower half of the ordered values, the third the median of the upper half, the second the median of the whole set | B0-R0-C28 |
+| interquartile range | the third quartile minus the first | B0-R0-C28 |
+| population | the whole group a question is about | B0-R0-C28 |
+| sample | the part of that group that was actually measured | B0-R0-C28 |
+| deviation | a value minus the mean | B0-R0-C28 |
+| variance | worked out from the squared deviations: add them, then divide by the count for a whole population, or by one less than the count for a sample | B0-R0-C28 |
+| standard deviation | the square root of the variance, in the same unit as the original values | B0-R0-C28 |
+| parameter | a number that describes the population, if every member of it could be measured | B0-R0-C29 |
+| statistic | the same kind of number, computed instead from a sample | B0-R0-C29 |
+| estimate | a number made from part of the group and used to stand in for the whole | B0-R0-C29 |
+| random sample | picked at random: every member of the population has exactly the same chance of being the one picked, and an actual chance process decides it, not the person picking | B0-R0-C29 |
+| convenience sample | whoever happens to be available | B0-R0-C29 |
+| sampling variation | a second random sample of the same size from the same population gives a statistic that does not match the first sample's exactly | B0-R0-C29 |
+| square-root law | the spread of a sample's average equals the spread of the individual values in the population, divided by the square root of the sample size | B0-R0-C29 |
+| standard error of the mean | that spread of a random sample's average, over many samples of the same size | B0-R0-C29 |
+| error | what a measurement says minus what is actually true, or minus a trusted reference value (VIM 2.16: "measured quantity value minus a reference quantity value") | B0-R0-C30 |
+| systematic error | pushes every reading the same way, by close to the same amount, every time | B0-R0-C30 |
+| measurement bias | an error that points one way and does not shrink when you collect more (VIM 2.18: an "estimate of a systematic measurement error") | B0-R0-C30 |
+| random error | the part that varies unpredictably from one reading to the next (VIM 2.19) | B0-R0-C30 |
+| accuracy | how close a measured value comes to the true value | B0-R0-C30 |
+| trueness | how close the average of many repeated readings sits to the true value | B0-R0-C30 |
+| precision (measurement sense) | how closely repeated readings agree with each other | B0-R0-C30 |
+| resolution | the smallest step an instrument's display can move by (VIM 4.14: the "smallest change in a quantity being measured that causes a perceptible change in the corresponding indication") | B0-R0-C30 |
+| calibration weight | a weight already checked and trusted to be correct | B0-R0-C30 |
+| zero error | an instrument reading something other than zero where it should read zero, as a thermometer in melting ice reading 0.3 °C | B0-R0-C30 |
+| correction | subtracting a known systematic error, such as a zero error, from the reading (VIM 2.53) | B0-R0-C30 |
+
+### Part E · the physical and biological floor
+
+| Term | Plain words it gets at first use | First taught in |
+| --- | --- | --- |
+| energy | the capacity to supply heat or do work | B0-R0-C31 |
+| work | a force moving something through a distance; lifting a weight is work | B0-R0-C31 |
+| electron | one of the much lighter particles in the cloud round an atom's tiny heavy centre | B0-R0-C31 |
+| ion | an atom left carrying a charge | B0-R0-C31 |
+| net metabolizable energy | metabolizable energy with the energy the body itself spends on digesting the food and handling it taken off | B0-R0-C32 |
+| energy balance | the energy inside the boundary at the end equals the energy inside at the start, plus everything that crossed in, minus everything that crossed out | B0-R0-C33 |
+| cytoplasm | the watery jelly a cell is a bag of | B0-R0-C35 |
+| phospholipid | the one kind of molecule a membrane is built from, with one end that mixes with water and one that does not | B0-R0-C35 |
+| hydrophilic | mixes with water; water-loving | B0-R0-C35 |
+| hydrophobic | does not mix with water; water-hating | B0-R0-C35 |
+| enzyme | a protein that makes one particular reaction go faster | B0-R0-C35 |
+| ligand | the molecule that fits into a protein shaped to hold it | B0-R0-C35 |
+| signal transduction | a signal outside the cell converted into a signal inside it | B0-R0-C35 |
+| free energy | loose energy, of which a cell cannot hold a useful amount | B0-R0-C36 |
+| starch | the stuff rice, wheat and potato are mostly made of | B0-R0-C36 |
+| monosaccharide | a single sugar molecule, which is what breaking a starch gives you | B0-R0-C36 |
+| polysaccharide | a chain of single sugar molecules, such as starch | B0-R0-C36 |
+| small store | glycogen, kept in the liver and the muscles | B0-R0-C36 |
+| large store | fat: triglyceride, held in adipose tissue | B0-R0-C36 |
+| nucleotide | the repeating unit DNA is built from: a base, a sugar and a phosphate group | B0-R0-C37 |
+| diploid | holding two matching copies of each chromosome, one inherited from each parent | B0-R0-C37 |
+| dominant | an allele that shows whenever it is present | B0-R0-C37 |
+| recessive | an allele that shows only when both copies are that version | B0-R0-C37 |
+| capillaries | the smallest blood vessels | B0-R0-C38 |
+| villi | the tiny fingers lining the gut | B0-R0-C38 |
+| hepatic portal vein | the vein along which blood from the gut runs straight to the liver | B0-R0-C38 |
+| lacteals | the lymph vessels of the villi, which take in what dissolves in fat | B0-R0-C38 |
+| general circulation | the blood that goes round the whole body | B0-R0-C38 |
+| alimentary canal | the gut tube | B0-R0-C38 |
+| hepatic portal circulation | the route that takes every drop of blood leaving the gut through the liver before it goes anywhere else | B0-R0-C38 |
+| gallbladder | a small bag next to the liver that holds bile, concentrates it and lets it out | B0-R0-C38 |
+| pancreatic islets | the small islands of another kind of cell scattered through the pancreas | B0-R0-C38 |
+| extracellular fluid | the fluid around a gland's own cells, into which it lets its hormone out | B0-R0-C38 |
+| lipolysis | the breakdown of stored triglycerides into free fatty acids and glycerol | B0-R0-C38 |
+
+### Part F · reading, checking and reasoning
+
+| Term | Plain words it gets at first use | First taught in |
+| --- | --- | --- |
+| table | values set out in a grid, each one identified by the row and the column it sits in | B0-R0-C39 |
+| mark | anything drawn that stands for one number: a bar, a point, a slice, a picture | B0-R0-C40 |
+| value axis | the axis a bar's length is read against: the side axis when bars stand up, the bottom axis when they lie flat | B0-R0-C40 |
+| pie chart | a circle standing for a whole, each slice's share of the circle being its share of the total | B0-R0-C40 |
+| scale factor | the number you multiply every length of a picture by | B0-R0-C40 |
+| bin | a range of values grouped together into one bar | B0-R0-C40 |
+| window | the stretch of time a chart over time shows, starting and ending where somebody chose | B0-R0-C40 |
+| infographic | a chart decorated with pictures | B0-R0-C40 |
+| reference | a pointer from a claim to the place that is supposed to support it | B0-R0-C41 |
+| checking a reference | four acts, each of which can fail on its own: find the source, confirm it is the source named, find the exact passage pointed to, read it to see whether it supports the claim | B0-R0-C41 |
+| argument | reasons, called premises, together with a further statement they are meant to establish | B0-R0-C42 |
+| conclusion | the claim the premises are offered for | B0-R0-C42 |
+| Constitution | the founding law that every statute must fit | B0-R0-C43 |
+| Act | the name each statute passed by Parliament or a State Legislature is called by | B0-R0-C43 |
+| legislature | the body that makes law: Parliament for the country, a State Legislature for its own state | B0-R0-C43 |
+| special majority | a majority of all the members of a House, and two-thirds of those present and voting | B0-R0-C43 |
+| rule | what the Central Government may make; like a regulation, it binds because a statute said it could | B0-R0-C43 |
