@@ -1,0 +1,661 @@
+concept_id: B0-R0-C25
+subject: B0
+rung: 0
+sequence: 25
+name: Counting outcomes; independence
+concept_type: derivable
+clusters:
+- measurement-inference
+- craft-and-integrity
+ground_floor_deps: []
+concept_deps:
+- B0-R0-C24
+- B0-R0-C02
+- B0-R0-C06
+definition:
+  text: |
+    To count the outcomes of two or more steps taken together, list every combination or multiply
+    the count of outcomes at each step. Tossing a coin n times has 2 to the power n outcomes, one
+    factor of 2 for every toss.
+
+    Two events A and B are independent when the knowledge that one has happened tells you nothing
+    about the chance of the other. Independence is checked, not assumed: A and B are independent
+    exactly when P(A and B) — the probability that A and B both happen — equals P(A) times P(B),
+    and dependent otherwise. When they are independent, multiply to get P(A and B).
+
+    When A and B cannot both happen — they are mutually exclusive — P(A or B), the probability
+    that at least one of A or B happens, equals P(A) plus P(B): add. When they can both happen,
+    adding double-counts the outcomes they share, and the correct rule subtracts that overlap
+    back out.
+
+    The probability that at least one of several independent events happens is 1 minus the
+    probability that none of them do: find the complement of "none", and subtract it from 1.
+  references:
+  - citekey: openstax_intro_stats_2e
+    kind: textbook
+    locator: s. 3.2 Independent and Mutually Exclusive Events
+    quote: if the knowledge that one occurred does not affect the chance the other occurs
+    verified:
+      resolved_id: https://openstax.org/books/introductory-statistics-2e/pages/3-2-independent-and-mutually-exclusive-events
+      opened: true
+      claim_located: true
+      checked_on: '2026-09-23'
+      note: ''
+  - citekey: openstax_intro_stats_2e
+    kind: textbook
+    locator: s. 3.2 Independent and Mutually Exclusive Events (mutually exclusive)
+    quote: are mutually exclusive events if they cannot occur at the same time
+    verified:
+      resolved_id: https://openstax.org/books/introductory-statistics-2e/pages/3-2-independent-and-mutually-exclusive-events
+      opened: true
+      claim_located: true
+      checked_on: '2026-09-23'
+      note: ''
+  - citekey: openstax_intro_stats_2e
+    kind: textbook
+    locator: s. 3.2 Independent and Mutually Exclusive Events (assume dependent)
+    quote: assume they are dependent until you can show otherwise
+    verified:
+      resolved_id: https://openstax.org/books/introductory-statistics-2e/pages/3-2-independent-and-mutually-exclusive-events
+      opened: true
+      claim_located: true
+      checked_on: '2026-09-23'
+      note: 'The product rule, 2 to the power n, and the "at least one" complement route are
+        derived in the record from the floor. The anchor gives the mutually-exclusive test and
+        the independence test only as symbols, not in running prose, so those are not quoted.'
+  - citekey: openstax_intro_stats_2e
+    kind: textbook
+    locator: s. 3.3 Two Basic Rules of Probability (the addition rule)
+    quote: If *A* and *B* are mutually exclusive, then *P*(*A* AND *B*) = 0.
+    verified:
+      resolved_id: https://openstax.org/books/introductory-statistics-2e/pages/3-3-two-basic-rules-of-probability
+      opened: true
+      claim_located: true
+      checked_on: '2026-09-23'
+      note: ''
+simplified_explanation: |
+  This section stands on the last one: a probability, and its complement. It adds two moves:
+  listing what can happen, and deciding whether to add or to multiply.
+
+  Listing first. Toss a coin twice and write out every pair: heads-heads, heads-tails, tails-heads,
+  tails-tails. Four outcomes, because each toss has two and there are two tosses. Toss it a third
+  time and each of those four outcomes splits into two again, giving eight. Every extra toss
+  doubles the list. That is the section on powers again. Two tosses give 2 squared outcomes,
+  three tosses give 2 cubed, and n tosses give 2 to the power n.
+
+  Now add or multiply. The word "and" points at multiplying, but only on one condition. The two
+  events have to be independent — meaning that finding out one of them happened tells you nothing
+  new about the other. Two rolls of a fair die are independent, because the first roll leaves no
+  trace on the second. Multiply their probabilities to get the probability of both.
+
+  The word "or" points at adding, and it too has a condition: the two events have to be mutually
+  exclusive, meaning they cannot both happen. If they can both happen, plain adding counts the
+  overlap twice, and the fix is to take the overlap back out once.
+
+  Independence is a claim about the world, not a habit of arithmetic. Never multiply two
+  probabilities together just because a sentence has the word "and" in it. Check first: does
+  knowing one change the chance of the other? If you are not sure, the safe rule is to assume they
+  are not independent until you can show they are.
+
+  One more move, useful whenever a question asks for "at least one". Working out "at least one of
+  several things happens" directly usually means adding up many separate cases. It is almost
+  always faster to work out the probability that none of them happen, and subtract that from 1.
+illustration:
+  body: |
+    Section 3(1) of the National Food Security Act, 2013 entitles every person belonging to a
+    priority household to five kilograms of foodgrains a month. Section 3(2) caps how far that
+    entitlement reaches: up to 75 per cent of the rural population. Treat 0.75 as the probability,
+    at most, that a given rural person is covered — the figure from the section before this one.
+
+    Pick two rural people entirely at random, from two different, unrelated households. Knowing
+    whether the first is covered tells you nothing about the second, so treat the two as
+    independent. Multiply.
+
+    ```working
+        0.75 times 0.75 = 0.5625
+    ```
+
+    At most 0.5625, so a little over half, that both are covered.
+
+    Now pick two people from the same household instead. This is the trap, and it is real:
+    coverage is decided once, for the whole household, not separately for each person in it. If
+    the household is covered, every person belonging to it is covered along with it. Knowing that
+    the first person is covered tells you with certainty that the second one is too. The two
+    outcomes are not independent, and multiplying is the wrong move.
+
+    ```working
+        P(both covered, same household) is at most 0.75
+    ```
+
+    Not 0.5625. The household is covered or it is not; there is one draw, not two, whatever the
+    number of people standing inside it.
+
+    Now try "at least one". Pick three rural people, each from a different household, and ask for
+    the probability that at least one of them is covered. Listing every way "at least one" could
+    happen means separately counting several cases, such as "just the first" or "just the second".
+    That runs to seven cases, "all three" among them. Go by the complement instead: work out the
+    probability that none of the three is covered, and subtract that from 1.
+
+    ```working
+        1 minus 0.75 = 0.25
+    ```
+
+    ```working
+        0.25 times 0.25 = 0.0625
+    ```
+
+    ```working
+        0.0625 times 0.25 = 0.015625
+    ```
+
+    ```working
+        1 minus 0.015625 = 0.984375
+    ```
+
+    At most, about 98.4 per cent that at least one of the three is covered. Two subtractions and
+    two multiplications did the work that listing every case would have taken far longer to do.
+    And it used the same independence you already checked: three people from three different
+    households, each treated as a separate draw.
+  analogy_breaks_when: |
+    The multiplying rule for "and" only holds where independence genuinely holds. The household
+    case above shows how it fails. Two people can look like two separate draws and actually be one
+    draw, counted twice. Before multiplying, name what would have to be true for the two events to
+    be independent. Then check whether it is.
+
+    Every number in this illustration inherits the ceiling from the section before it. "At most
+    0.5625" and "at most 98.4 per cent" are bounds built from a bound, not measured figures. Every
+    extra multiplication carries that same qualification forward. It does not sharpen it.
+
+    And the household model here is a simplification. It treats every household as either wholly
+    covered or wholly not, which is what the Act's wording supports. It says nothing about a
+    household that is only partly reached in practice. That would need data this section does not
+    have.
+  numbers:
+  - value: '75'
+    unit: per cent, ceiling on coverage of the rural population, s.3(2), as enacted in 2013 -
+      not checked against the current India Code consolidation
+    citekey: nfsa_2013
+    as_of: '2013'
+    quote: shall extend up to seventy-five per cent. of the rural population and up to fifty per
+      cent. of the urban population.
+must_know:
+- point: |
+    Independence is a checkable claim, not a default. Test it by asking whether P(A and B) equals
+    P(A) times P(B). If you have not tested it and cannot argue for it directly, assume the events
+    are dependent until you can show otherwise.
+  kind: misconception
+  bearing: methodological
+- point: |
+    Two people drawn from the same unit that a decision is made about are almost never
+    independent. Think of the same household, the same clinic, the same litter. This holds even
+    when the underlying probability looks identical to two people drawn from different units.
+    Ask what the decision was actually made about, before you multiply.
+  kind: trap
+  bearing: methodological
+- point: |
+    The word "and" in a sentence is not permission to multiply, and the word "or" is not permission
+    to add. Both words describe what is being asked for. Whether to multiply, add, or do something
+    else depends on independence, and on whether the events can happen together. You check that
+    separately from the wording.
+  kind: move
+  bearing: methodological
+- point: |
+    "At least one of several things happens" is answered fastest through the complement. Work out
+    the probability that none of them happen, and subtract from 1. Reach for this whenever a
+    question describes "at least one", "some", or "not all" and the direct list would run to many
+    cases.
+  kind: move
+  bearing: methodological
+- point: |
+    A number built by multiplying several ceilings together is a smaller ceiling. It is often
+    tempting to report it as though it had become more precise for having gone through more
+    arithmetic. It has not. Carry the same "at most" or "at least" through every step.
+  kind: consequence
+  bearing: policy
+- point: |
+    When you teach this to a trainee, put the independence check before the arithmetic every time,
+    even in a case where it is obviously true. A trainee who learns to multiply first and ask
+    afterwards will eventually multiply two probabilities that were never independent. The
+    finished number will look exactly as convincing as a correct one.
+  kind: move
+  bearing: teaching
+exercises:
+- type: critique
+  prompt: |
+    A colleague claims that the chance two randomly chosen rural residents are both covered is
+    0.75 times 0.75, which is 0.5625. No further detail about the two residents is given.
+
+    Say what is missing from the claim before it can be checked. Then say what changes if it turns
+    out the two residents live in the same household.
+  answer: |
+    What is missing is any statement about independence. Multiplying is only correct if knowing
+    that the first resident is covered tells you nothing about the second. The sentence does
+    not say whether that holds.
+
+    If the two are from different, unrelated households, the multiplication is a reasonable
+    approximation, at most.
+
+    ```working
+        0.75 times 0.75 = 0.5625
+    ```
+
+    If the two are from the same household, coverage is decided once for the household. So the
+    second resident's status is fixed the moment the first one's is known. The correct figure is
+    not 0.5625. It is the same 0.75 the household itself carries.
+
+    ```working
+        P(both covered, same household) is at most 0.75
+    ```
+
+    So the answer 0.5625 is only right for one of the two cases the sentence could have meant. The
+    sentence gives no way to tell which.
+- type: teaching
+  prompt: |
+    A first-year resident keeps multiplying probabilities together whenever a question uses the
+    word "and". You have ten minutes and a whiteboard.
+
+    Teach them the actual test for independence, so they leave able to catch themselves the next
+    time they reach for multiplication.
+  answer: |
+    Start from something they already trust: two rolls of a fair die. Ask whether the first roll
+    changes anything about the second. They will say no. Write that down as the test in words: does
+    knowing one change the chance of the other?
+
+    Then break the habit on purpose. Describe two people from the same household under the food
+    security law's entitlement, where the household is covered or not as one unit. Ask what
+    happens to the second person's chance once you know the first is covered. Let them work out
+    that it becomes certain, not 0.75 again.
+
+    Write the test as arithmetic once they have felt it. A and B are independent exactly when P(A
+    and B) equals P(A) times P(B), and dependent otherwise. Have them check the household case
+    themselves — P(both covered) is 0.75, and P(A) times P(B) would have been 0.5625. So the two
+    do not match. That mismatch is the proof, not just the arithmetic slip.
+
+    Close with the standing rule: when you do not know whether two events are independent, assume
+    they are not, until you can show it. A resident who defaults to "assume independent" will
+    eventually be wrong in a way that reads as confident.
+quantitative: true
+practice:
+- level: 1
+  prompt: |
+    A coin is tossed 3 times. List every outcome, and say how many there are.
+  answer: |
+    Each toss has two outcomes, and there are three tosses, so list every combination.
+
+    ```table
+    HHH   HHT   HTH   THH
+    HTT   THT   TTH   TTT
+    ```
+
+    Eight outcomes.
+
+    ```working
+        2 times 2 times 2 = 8
+    ```
+
+    Each extra toss doubles the list, which is 2 to the power of the number of tosses: three tosses
+    give 2 cubed.
+- level: 2
+  prompt: |
+    Event A has a probability of 0.6 and event B has a probability of 0.5, and A and B are
+    independent. Work out P(A and B).
+
+    Separately, event C has a probability of 0.3 and event D has a probability of 0.4, and C and D
+    are mutually exclusive. Work out P(C or D).
+  answer: |
+    A and B are independent, so multiply.
+
+    ```working
+        0.6 times 0.5 = 0.3
+    ```
+
+    P(A and B) is 0.3.
+
+    C and D are mutually exclusive, so add.
+
+    ```working
+        0.3 plus 0.4 = 0.7
+    ```
+
+    P(C or D) is 0.7.
+
+    Same shape of question, two different words, two different operations. Multiplying for the
+    second pair, or adding for the first, would both be wrong.
+- level: 2
+  prompt: |
+    Two independent events each have a probability of 0.2. Work out the probability that at least
+    one of them happens.
+  answer: |
+    Go by the complement: the probability that neither happens, subtracted from 1.
+
+    ```working
+        1 minus 0.2 = 0.8
+    ```
+
+    ```working
+        0.8 times 0.8 = 0.64
+    ```
+
+    ```working
+        1 minus 0.64 = 0.36
+    ```
+
+    A probability of 0.36 that at least one happens. Working this out directly would mean adding
+    the probability of "just the first", "just the second" and "both" separately. The complement
+    reaches the same answer in three short steps.
+- level: 3
+  prompt: |
+    You are told P(A) = 0.5, P(B) = 0.4 and P(A and B) = 0.2. Check whether A and B are
+    independent.
+  answer: |
+    The test is whether P(A and B) equals P(A) times P(B).
+
+    ```working
+        0.5 times 0.4 = 0.2
+    ```
+
+    That matches the given P(A and B) of 0.2, so A and B are independent.
+
+    Notice that this is a check, not an assumption. If P(A and B) had been given as, say, 0.3, the
+    same test would have told you the two events are dependent. No amount of the sentence
+    sounding plausible would change that.
+- level: 3
+  prompt: |
+    Two fair coins are tossed. Let A be the event that the first toss is heads, and B be the event
+    that the second toss is heads. List the sample space, then check whether A and B are
+    independent by counting outcomes.
+  answer: |
+    ```table
+    HH   HT   TH   TT
+    ```
+
+    Four outcomes. A is {HH, HT}, so P(A) is 2 divided by 4.
+
+    ```working
+        2 divided by 4 = 0.5
+    ```
+
+    B is {HH, TH}, so P(B) is 0.5 as well, by the same count.
+
+    A and B together is {HH}, one outcome out of four.
+
+    ```working
+        1 divided by 4 = 0.25
+    ```
+
+    Check the independence rule.
+
+    ```working
+        0.5 times 0.5 = 0.25
+    ```
+
+    P(A and B) is 0.25, which matches P(A) times P(B). The two tosses are independent, exactly as
+    common sense says they should be. Now you have the arithmetic to prove it, rather than
+    assert it.
+- level: 4
+  prompt: |
+    Under section 3(2) of the National Food Security Act, 2013, the rural coverage ceiling is 0.75.
+    Pick two rural people at random from two different, unrelated households.
+
+    Work out the probability, at most, that both are covered.
+  answer: |
+    Different households, so treat the two as independent and multiply.
+
+    ```working
+        0.75 times 0.75 = 0.5625
+    ```
+
+    At most 0.5625 that both are covered. Note the "at most" carries through from the ceiling in
+    the Act itself. The multiplication does not make the figure any more exact than it started.
+  refs: [nfsa_2013]
+- level: 5
+  prompt: |
+    Now pick two rural people from the same household. Using the same 0.75 ceiling, work out the
+    probability, at most, that both are covered. Then compare your answer with the previous
+    problem's.
+  answer: |
+    Coverage under section 3(1) is decided for the household as a whole: every person belonging to
+    a priority household is entitled together. If the household is covered, both people are; if it
+    is not, neither is. There is one draw, not two. So the two people's covered-or-not status is
+    not independent.
+
+    ```working
+        P(both covered, same household) is at most 0.75
+    ```
+
+    Not 0.5625. Multiplying 0.75 by itself would have treated the second person's status as a
+    fresh, independent draw. But it is fixed the moment the first person's status is known.
+  refs: [nfsa_2013]
+- level: 6
+  prompt: |
+    Pick three rural people at random, each from a different household. Use the 0.75 coverage
+    ceiling from section 3(2) of the National Food Security Act, 2013.
+
+    Work out the probability, at most, that at least one of the three is covered.
+  answer: |
+    Go by the complement: the chance none of the three is covered, subtracted from 1.
+
+    ```working
+        1 minus 0.75 = 0.25
+    ```
+
+    ```working
+        0.25 times 0.25 = 0.0625
+    ```
+
+    ```working
+        0.0625 times 0.25 = 0.015625
+    ```
+
+    ```working
+        1 minus 0.015625 = 0.984375
+    ```
+
+    At most, about 98.4 per cent. With a ceiling this high on a single person, it takes very few
+    independent draws before "at least one covered" becomes close to certain. This is worth
+    noticing on its own. It is easy to assume "at least one" always needs a large group.
+  refs: [nfsa_2013]
+- level: 7
+  prompt: |
+    Here is a worked answer. Find the step that broke.
+
+    ```working
+        event A has a probability of 0.7, event B has a probability of 0.6, and they are independent
+        the probability of A or B happening is P(A) plus P(B)
+        0.7 plus 0.6 = 1.3
+        so P(A or B) is 1.3
+    ```
+  answer: |
+    The step that broke is the second line. Adding is the rule for "or" only when the two events
+    are mutually exclusive, and independent is not the same claim as mutually exclusive. In fact
+    two independent events with positive probabilities can always happen together. So they are
+    never mutually exclusive.
+
+    The correct rule for "or" subtracts the overlap.
+
+    ```working
+        0.7 times 0.6 = 0.42
+    ```
+
+    ```working
+        0.7 plus 0.6 = 1.3
+    ```
+
+    ```working
+        1.3 minus 0.42 = 0.88
+    ```
+
+    P(A or B) is 0.88, not 1.3.
+
+    There is a check that would have caught this without any of the correct arithmetic. A
+    probability can never exceed 1, and 1.3 already says the working is wrong. Independent events
+    can and usually do overlap. Treating "independent" as though it meant "cannot both happen"
+    is the confusion behind the broken line.
+- level: 7
+  prompt: |
+    Here is a worked answer. Find the step that broke.
+
+    ```working
+        two rural people are picked from the same household
+        the coverage ceiling is 0.75 for each person
+        P(both covered) = 0.75 times 0.75
+        0.75 times 0.75 = 0.5625
+        so at most 0.5625 of same-household pairs have both people covered
+    ```
+  answer: |
+    The step that broke is the third line, where the two people are treated as independent.
+
+    Coverage is decided for the household as a whole under section 3(1), so the two people in the
+    same household are not two separate draws. If one is covered, so is the other, with certainty.
+
+    ```working
+        P(both covered, same household) is at most 0.75
+    ```
+
+    At most 0.75, not 0.5625.
+
+    Why it looks reasonable: the arithmetic of multiplying two 0.75s is the same move that was
+    correct for two different households in an earlier problem. Nothing in "two rural
+    people" on its own tells you which case you are in. The fix is always the same question: what
+    was the decision actually made about? Here it was made about the household, not the person.
+  refs: [nfsa_2013]
+- level: 8
+  prompt: |
+    Here is a worked answer. Find the step that broke.
+
+    ```working
+        three rural people are picked, each from a different household, coverage ceiling 0.75 each
+        the probability that at least one is covered is found by adding the three probabilities
+        0.75 plus 0.75 plus 0.75 = 2.25
+        so at most 2.25 of the three are covered, meaning it is virtually certain at least one is
+    ```
+  answer: |
+    The step that broke is the addition. "At least one" is not found by adding the individual
+    probabilities. The answer itself gives the game away: a probability can never exceed 1. And
+    2.25 already cannot be right, before you even read the conclusion drawn from it.
+
+    Go by the complement instead.
+
+    ```working
+        1 minus 0.75 = 0.25
+    ```
+
+    ```working
+        0.25 times 0.25 = 0.0625
+    ```
+
+    ```working
+        0.0625 times 0.25 = 0.015625
+    ```
+
+    ```working
+        1 minus 0.015625 = 0.984375
+    ```
+
+    At most about 98.4 per cent, not 2.25. The conclusion in the broken answer happens to point
+    the right way — it is indeed close to certain. But it is close to certain because of the
+    correct figure, 0.984, not because of the impossible one.
+
+    The 2.25 is not meaningless, though. Adding the three gives the most people you would expect
+    covered on average, 2.25. That is a real number, and it answers a different question. It is
+    not the chance that at least one is covered.
+
+    Why it looks reasonable: "at least one" sounds like it should be built by combining the three
+    individual chances. Addition is the most familiar way to combine numbers. The combination
+    that is actually needed runs through the complement. The impossible total is the signal
+    that adding was the wrong move here.
+  refs: [nfsa_2013]
+- level: 9
+  prompt: |
+    A note says: "Two rural residents are picked at random; the chance both are covered is
+    0.5625."
+
+    Decide what has to be true for that figure to be correct, and say what your answer does not
+    establish.
+  answer: |
+    What has to be true: the two residents are treated as independent, which means, in this
+    setting, that they come from two different, unrelated households.
+
+    ```working
+        0.75 times 0.75 = 0.5625
+    ```
+
+    The arithmetic is right on that assumption.
+
+    What this does not establish. If the two residents happen to be from the same household, the
+    correct figure is 0.75, not 0.5625, because coverage is decided once per household. The note
+    does not say which case applies. So 0.5625 could be the right answer, or it could be badly
+    wrong for the actual pair being discussed. It also says nothing about how many people are
+    actually covered anywhere real. Every figure here is still built from the Act's "up to"
+    ceiling rather than a count.
+  refs: [nfsa_2013]
+- level: 10
+  prompt: |
+    A district report says coverage is up to 75 per cent of the rural population. Pick one rural
+    person at random. They live in a household of four. The report concludes that the chance at
+    least one member of that household is not covered is high.
+
+    Decide what to compute, compute it, and say what your answer does not establish.
+  answer: |
+    The tempting route treats the four household members as four independent draws and finds the
+    chance at least one is not covered through the complement.
+
+    ```working
+        0.75 times 0.75 = 0.5625
+    ```
+
+    ```working
+        0.5625 times 0.75 = 0.421875
+    ```
+
+    ```working
+        0.421875 times 0.75 = 0.31640625
+    ```
+
+    ```working
+        1 minus 0.31640625 = 0.68359375
+    ```
+
+    That route gives about 68 per cent, and it is wrong, because it repeats the same mistake as the
+    same-household problem earlier in this set. Coverage is decided once for the whole household
+    under section 3(1), not once per member. A household of four is not covered or not covered as
+    one draw, and every member shares that single outcome.
+
+    The question "at least one member is not covered" is therefore the same question as "is the
+    household not covered". The answer is bounded by the household ceiling itself.
+
+    ```working
+        1 minus 0.75 = 0.25
+    ```
+
+    At least 0.25, not about 0.68.
+
+    What this does not establish. A district report cannot quote section 3(2) as a district
+    ceiling. The 75 per cent is national. Section 9 leaves each State's own share to the Central
+    Government, so nothing here is a fact about this particular district.
+
+    It also does not say how many households actually sit on the wrong side of the ceiling. That
+    needs a count, not a probability. And it says nothing about a household reached only partly
+    in practice. The "covered as one unit" model is the Act's own structure. Any real slippage
+    inside a household would need data this section does not have.
+  refs: [nfsa_2013]
+retrieval_items:
+- q: How many outcomes does tossing a fair coin n times give, and why?
+  a: 2 to the power n. Each toss doubles the outcomes of every toss before it, because each of the
+    two new results can follow any earlier outcome.
+- q: What is the actual test for whether two events are independent?
+  a: Whether P(A and B) equals P(A) times P(B). If it does, they are independent; if it does not,
+    they are dependent, whatever the sentence describing them sounds like.
+- q: What is the fastest way to find the probability that at least one of several independent
+    events happens?
+  a: Work out the probability that none of them happen, and subtract that from 1.
+provenance:
+  map_version_id: fc19c8bc-a216-4131-99fb-ebe3f19cec4a
+  outcome_refs:
+  - B0-D2
+  bridge_ref: []
+review:
+  stability: long
+  trigger: '2031-09-23'
+  last_reviewed: '2026-09-23'
+status: drafted

@@ -1,0 +1,1027 @@
+concept_id: B0-R0-C28
+subject: B0
+rung: 0
+sequence: 28
+name: Average and spread, and why the average is not the person
+concept_type: derivable
+clusters:
+- measurement-inference
+- craft-and-integrity
+ground_floor_deps: []
+concept_deps:
+- B0-R0-C27
+- B0-R0-C03
+- B0-R0-C06
+definition:
+  text: |
+    The section on variation already gave you a distribution and a frequency table. This section
+    turns a distribution into two single numbers: a typical value, and how spread out the rest are
+    around it.
+
+    The mean of a set of values is their sum divided by how many there are. Most people call this
+    the average, and this book uses the two words for the same thing from here on. The median is
+    the middle value of the same set once it is ordered from smallest to largest; where the count
+    is even, it is the mean of the two middle values.
+
+    A quartile is one of three values that divide an ordered set into four equal-sized parts. The
+    first quartile is the median of the lower half of the ordered values, and the third quartile is
+    the median of the upper half. The second quartile is the median of the whole set. When the
+    count itself is odd, leave the middle value out of both halves before taking their medians. The
+    interquartile range is the third quartile minus the first, and it describes the spread of the
+    middle half of the values, ignoring anything beyond it. It is one number, not the two quartiles
+    themselves. Software often computes quartiles by a different rule from this one and can print a
+    slightly different number for the same data; that is not a sign either calculation is wrong.
+
+    Two words are worth having exact from here on. The population is the whole group a question is
+    about. The sample is the part of that group that was actually measured. A study can rarely
+    measure a whole population, so it measures a sample and uses it to say something about the
+    population the sample came from.
+
+    The deviation of a value from the mean is that value minus the mean. The variance is the
+    average of the squared deviations of every value in the set. The standard deviation is the
+    square root of the variance, expressed in the same unit as the original values, because taking
+    a square root undoes the squaring. In a distribution with a long tail, the standard deviation
+    can mislead, because the two sides of the distribution spread out by different amounts; the
+    quartiles handle that case better.
+
+    For a whole population, the variance divides the sum of squared deviations by the count of
+    values. For a sample, it divides by one less than the count instead, which is the convention
+    most papers follow, and the one the textbook this book follows uses too.
+
+    A long tail on one side of a distribution moves the mean toward it more than it moves the
+    median, because the mean is built from every value and the median is not. The mean of a set of
+    values says nothing on its own about where any one member of the set actually sits.
+  references:
+  - citekey: openstax_intro_stats_2e
+    kind: textbook
+    locator: s. 2.5 Measures of the Center of the Data
+    quote: The words "mean" and "average" are often used interchangeably.
+    verified:
+      resolved_id: https://openstax.org/books/introductory-statistics-2e/pages/2-5-measures-of-the-center-of-the-data
+      opened: true
+      claim_located: true
+      checked_on: '2026-09-23'
+  - citekey: openstax_intro_stats_2e
+    kind: textbook
+    locator: s. 2.5 Measures of the Center of the Data
+    quote: The median is generally a better measure of the center when there are extreme values or
+      outliers because it is not affected by the precise numerical values of the outliers.
+    verified:
+      resolved_id: https://openstax.org/books/introductory-statistics-2e/pages/2-5-measures-of-the-center-of-the-data
+      opened: true
+      claim_located: true
+      checked_on: '2026-09-23'
+  - citekey: openstax_intro_stats_2e
+    kind: textbook
+    locator: s. 2.3 Measures of the Location of the Data
+    quote: The interquartile range is a number that indicates the spread of the middle half or the
+      middle 50% of the data.
+    verified:
+      resolved_id: https://openstax.org/books/introductory-statistics-2e/pages/2-3-measures-of-the-location-of-the-data
+      opened: true
+      claim_located: true
+      checked_on: '2026-09-23'
+  - citekey: openstax_intro_stats_2e
+    kind: textbook
+    locator: s. 2.7 Measures of the Spread of the Data
+    quote: The standard deviation is a number that measures how far data values are from their mean.
+    verified:
+      resolved_id: https://openstax.org/books/introductory-statistics-2e/pages/2-7-measures-of-the-spread-of-the-data
+      opened: true
+      claim_located: true
+      checked_on: '2026-09-23'
+  - citekey: openstax_intro_stats_2e
+    kind: textbook
+    locator: s. 2.7 Measures of the Spread of the Data, Calculating the Standard Deviation
+    quote: To calculate the standard deviation, we need to calculate the variance first.
+    verified:
+      resolved_id: https://openstax.org/books/introductory-statistics-2e/pages/2-7-measures-of-the-spread-of-the-data
+      opened: true
+      claim_located: true
+      checked_on: '2026-09-23'
+  - citekey: openstax_intro_stats_2e
+    kind: textbook
+    locator: s. 2.7 Measures of the Spread of the Data, Formulas for the Sample Standard Deviation
+    quote: that is the sample size MINUS 1
+    verified:
+      resolved_id: https://openstax.org/books/introductory-statistics-2e/pages/2-7-measures-of-the-spread-of-the-data
+      opened: true
+      claim_located: true
+      checked_on: '2026-09-23'
+  - citekey: openstax_intro_stats_2e
+    kind: textbook
+    locator: s. 2.7 Measures of the Spread of the Data, The Sample Variance and Standard Deviation
+    quote: dividing by (*n* – 1) gives a better estimate of the population variance
+    verified:
+      resolved_id: https://openstax.org/books/introductory-statistics-2e/pages/2-7-measures-of-the-spread-of-the-data
+      opened: true
+      claim_located: true
+      checked_on: '2026-09-23'
+  - citekey: openstax_intro_stats_2e
+    kind: textbook
+    locator: s. 2.7 Measures of the Spread of the Data
+    quote: The reason is that the two sides of a skewed distribution have different spreads.
+    verified:
+      resolved_id: https://openstax.org/books/introductory-statistics-2e/pages/2-7-measures-of-the-spread-of-the-data
+      opened: true
+      claim_located: true
+      checked_on: '2026-09-23'
+simplified_explanation: |
+  Start with the mean and the median on a small set, so the machinery is visible before any real
+  numbers arrive.
+
+  Take six numbers: 5, 8, 12, 15, 20, 40. Add them and divide by how many there are for the mean.
+
+  ```working
+      5 plus 8 plus 12 plus 15 plus 20 plus 40 = 100
+      100 divided by 6 = 16.6666666667...
+  ```
+
+  The mean is about 16.7.
+
+  For the median, put the same six numbers in order, which they already are, and find the middle.
+  With six values there is no single middle one, so take the two in the middle and average them.
+
+  ```working
+      12 plus 15 = 27
+      27 divided by 2 = 13.5
+  ```
+
+  The median is 13.5, noticeably below the mean of 16.7. One number in this set, the 40, sits a
+  long way above the rest. It drags the mean up with it and leaves the median almost where it would
+  have been without it. That is why the two are worth computing together rather than picking one.
+  Whichever one moves more, and by how much, tells you something the other cannot.
+
+  Quartiles use the same ordering. Take eight ordered numbers: 2, 4, 4, 6, 8, 8, 10, 12. The middle
+  value, the second quartile, is the average of the two central values.
+
+  ```working
+      6 plus 8 = 14
+      14 divided by 2 = 7
+  ```
+
+  Now split the set into its lower half and its upper half, four numbers each, and find the middle
+  of each half the same way. The lower half is 2, 4, 4, 6.
+
+  ```working
+      4 plus 4 = 8
+      8 divided by 2 = 4
+  ```
+
+  That gives the first quartile, 4. Now the upper half, 8, 8, 10, 12.
+
+  ```working
+      8 plus 10 = 18
+      18 divided by 2 = 9
+  ```
+
+  That gives the third quartile, 9. The interquartile range is the third quartile minus the first.
+
+  ```working
+      9 minus 4 = 5
+  ```
+
+  Five. It says the middle half of these eight values is spread across five units. It says nothing
+  about the quarter below the first quartile, or the quarter above the third. That is exactly what
+  it is for: a spread that is not dragged around by one extreme value the way the
+  range is.
+
+  Now the standard deviation, step by step, on six more bare numbers: 5, 7, 3, 7, 10, 4.
+
+  First, the mean.
+
+  ```working
+      5 plus 7 plus 3 plus 7 plus 10 plus 4 = 36
+      36 divided by 6 = 6
+  ```
+
+  The mean is 6. Now the deviation of every value: how far it sits from that mean, kept with its
+  sign. A deviation below the mean comes out negative, the kind of number the section on counting
+  introduced.
+
+  ```working
+      5 minus 6 = -1
+      7 minus 6 = 1
+      3 minus 6 = -3
+      7 minus 6 = 1
+      10 minus 6 = 4
+      4 minus 6 = -2
+  ```
+
+  Square every deviation next, which means multiplying each one by itself. The first one below the
+  mean, -1, squared, is -1 times -1. A negative number times a negative number gives a positive
+  number: multiplying by a negative flips a value to the other side of zero, and flipping twice
+  brings it back to the positive side it started on.
+
+  ```working
+      -1 times -1 = 1
+  ```
+
+  Squaring removes the sign this way for every deviation, so a value below the mean counts the same
+  as one the same distance above it.
+
+  ```working
+      -1 times -1 = 1
+      1 times 1 = 1
+      -3 times -3 = 9
+      1 times 1 = 1
+      4 times 4 = 16
+      -2 times -2 = 4
+  ```
+
+  Add the squares.
+
+  ```working
+      1 plus 1 = 2
+      2 plus 9 = 11
+      11 plus 1 = 12
+      12 plus 16 = 28
+      28 plus 4 = 32
+  ```
+
+  Thirty-two. Divide that by one less than the count of values, which is five here, not six. That
+  division is the variance.
+
+  ```working
+      32 divided by 5 = 6.4
+  ```
+
+  The variance is 6.4, and it is in the wrong unit. Squaring every deviation squared the unit too,
+  so a variance worked out from kilograms is really in kilograms squared, which nobody can picture.
+  Take the square root and the unit comes back to the one you started in. That last step is the
+  standard deviation.
+
+  ```working
+      square root of 6.4 = 2.529822128
+  ```
+
+  The standard deviation of these six numbers is about 2.53.
+
+  Go back to the division by five rather than six. Most papers do the same thing: a sample's
+  variance is divided by one less than the count. Distances from the sample's own mean come out a
+  little small on average, because that mean sits in the middle of these particular numbers.
+  Dividing by one less than the count makes the variance come out right on average, which is the
+  same reason the anchor textbook this book follows gives for the rule.
+
+  This holds for the variance, on average, across many samples. It does not mean every single
+  sample's variance is too small before the correction, and taking a square root afterwards does
+  not carry the correction over exactly: the standard deviation, unlike the variance, still runs a
+  little low on average even after dividing by one less than the count.
+
+  If you divide by the full count instead, you will get a slightly smaller number than most
+  published tables use. That is not a mistake in your arithmetic. It is a different, and less
+  usual, convention.
+illustration:
+  body: |
+    Open Table 1 of the paper used in the section on variation: Kiran, Harshitha and Bhargava, 282
+    medical students in Mangaluru. It gives weight, height, body-mass index and more, each as a
+    mean with its standard deviation beside a median with its interquartile range. Papers write the
+    standard deviation (SD) by its two initials. Read the first two rows for the 131 men.
+
+    ```table
+    indicator     mean (SD)      median (interquartile range)
+    weight (kg)   72.0 (13.1)    70.9 (167.7, 177.8)
+    height (cm)   172.2 (6.8)    173 (62.6, 80.9)
+    ```
+
+    Stop on the weight row's interquartile range, and check it yourself. The median has to sit
+    between the two quartiles printed beside it: the first quartile below it, the third above it.
+    Here the median is 70.9, and the two numbers printed beside it are 167.7 and 177.8. 70.9 sits
+    below both of them, not between them.
+
+    Try the same check on the height row underneath it. The median there is 173, and the two
+    numbers printed beside it are 62.6 and 80.9. 173 sits above both of them, not between them
+    either.
+
+    Both rows fail the same way, and each one fails against the other row's numbers. Try swapping
+    the two printed ranges between the rows, and run the check a third time. Put the weight row's
+    median, 70.9, against the height row's printed numbers, 62.6 and 80.9. 70.9 sits between them.
+    Now put the height row's median, 173, against the weight row's printed numbers, 167.7 and
+    177.8. 173 sits between them too. Both checks pass once the two ranges are swapped back to the
+    rows they actually belong to. The numbers fit if the two rows had their interquartile ranges
+    printed in each other's places, and the paper's own table for the 151 women shows the identical
+    pattern in the same two rows.
+
+    You did not need the paper to say this happened. The technique this section teaches, the median
+    against its own two quartiles, found it on its own. This one survived the paper's own
+    reviewers.
+
+    Now the finding this section takes its title from, printed correctly in the same table. Men's
+    mean body-mass index is 24.2 kilograms per square metre, with a standard deviation of 3.9.
+
+    Table 2 of the same paper sorts those same 131 men by body-mass index, the way the section on
+    variation used it already. It uses the World Health Organization's own bands. Forty-two of the
+    men are in the band from 25 to 29.9. Ten more are at 30 or more.
+
+    ```working
+        42 plus 10 = 52
+    ```
+
+    Fifty-two of the 131 men have a body-mass index of 25 or more.
+
+    ```working
+        52 divided by 131 = 0.396946565...
+        0.396946565 times 100 = 39.6946565
+    ```
+
+    That rounds to about 39.7 per cent, close to two in every five. The mean of the group, 24.2,
+    sits under the line at 25. Close to two in five of the individual men in that same group sit at
+    it or above it. The mean describes the group. It was never a description of any one of the 131
+    men. Deciding whether one particular man is above or below 25 needs his own reading, not the
+    group's average.
+
+    The same shape shows up again in body fat. Men's mean body fat is 22.1 per cent and their
+    median is 20.3 per cent. The mean sits above the median.
+
+    ```working
+        22.1 minus 20.3 = 1.8
+    ```
+
+    By the median's own definition, at least half of the 131 men have a body fat percentage at or
+    below 20.3. That is also below the mean of 22.1. A smaller number of men, with a much higher
+    body fat percentage, pull the mean up past them. It is bunched in the middle, with a longer
+    stretch running upward than downward. That is exactly
+    the shape the section on variation described in words.
+  analogy_breaks_when: |
+    Checking a median against its own two quartiles catches a range that sits nowhere near the
+    median. It would not catch a smaller slip, such as one digit typed wrong that still leaves the
+    median sitting inside the range by chance.
+
+    The mean sitting below 25 while many men sit above it is a fact about this one group. It is 131
+    men, measured this way, in this college, in 2019. It says nothing about any other group. It
+    says nothing about any one of these men beyond what his own reading gives you.
+
+    The standard deviation and the interquartile range answer different questions about the same
+    spread. Neither can be worked out from the other. A table that gives you one is not quietly
+    giving you the other as well.
+  numbers:
+  - value: '72.0'
+    unit: kg, men (n=131), mean and SD, Table 1
+    citekey: kiran_2022_muac_nc
+    as_of: '2026-09-23'
+    quote: 72.0 (13.1)
+  - value: '70.9'
+    unit: kg, men (n=131), median and printed interquartile range, Table 1
+    citekey: kiran_2022_muac_nc
+    as_of: '2026-09-23'
+    quote: 70.9 (167.7, 177.8)
+  - value: '172.2'
+    unit: cm, men (n=131), mean and SD, Table 1
+    citekey: kiran_2022_muac_nc
+    as_of: '2026-09-23'
+    quote: 172.2 (6.8)
+  - value: '173'
+    unit: cm, men (n=131), median and printed interquartile range, Table 1
+    citekey: kiran_2022_muac_nc
+    as_of: '2026-09-23'
+    quote: 173 (62.6, 80.9)
+  - value: '24.2'
+    unit: kg/m2, men (n=131), mean and SD, Table 1
+    citekey: kiran_2022_muac_nc
+    as_of: '2026-09-23'
+    quote: 24.2 (3.9)
+  - value: '42'
+    unit: men with body-mass index 25 to 29.9, Table 2
+    citekey: kiran_2022_muac_nc
+    as_of: '2026-09-23'
+    quote: Overweight (25–29.9 kg/m2) 83 (29.4) 42 (32.1)
+  - value: '10'
+    unit: men with body-mass index 30 or more, Table 2
+    citekey: kiran_2022_muac_nc
+    as_of: '2026-09-23'
+    quote: Obese (≥30 kg/m2) 15 (5.3) 10 (7.6)
+  - value: '52'
+    unit: men with body-mass index 25 or more, Table 2, n=131
+    derived: 42 plus 10, Table 2, men's column, body-mass index 25 or more
+    citekey: kiran_2022_muac_nc
+    as_of: '2026-09-23'
+    quote: Overweight (25–29.9 kg/m2) 83 (29.4) 42 (32.1)
+  - value: '39.7'
+    unit: per cent of men with body-mass index 25 or more, n=131
+    derived: 52 divided by 131
+    citekey: kiran_2022_muac_nc
+    as_of: '2026-09-23'
+    quote: Overweight (25–29.9 kg/m2) 83 (29.4) 42 (32.1)
+  - value: '22.1'
+    unit: per cent body fat, men (n=131), mean and SD, Table 1
+    citekey: kiran_2022_muac_nc
+    as_of: '2026-09-23'
+    quote: 22.1 (7.3)
+  - value: '20.3'
+    unit: per cent body fat, men (n=131), median and interquartile range, Table 1
+    citekey: kiran_2022_muac_nc
+    as_of: '2026-09-23'
+    quote: 20.3 (16.7, 28.8)
+  - value: '1.8'
+    unit: percentage points, men, mean body fat minus median body fat, Table 1
+    derived: 22.1 minus 20.3
+    citekey: kiran_2022_muac_nc
+    as_of: '2026-09-23'
+    quote: 22.1 (7.3)
+must_know:
+- point: |
+    A long tail on one side of a distribution pulls the mean toward it. It leaves the median close
+    to where most of the values actually sit. Reading this backwards, "the mean is higher, so most
+    values are higher", is an error.
+  kind: misconception
+  bearing: methodological
+- point: |
+    Compute the median alongside the mean whenever a handful of extreme values might be present.
+    Compare the two before you quote either one on its own. A gap between them is itself a finding,
+    not a rounding difference to ignore.
+  kind: move
+  bearing: methodological
+- point: |
+    A mean, on its own, says nothing about any one person in the group it was computed from. Before
+    you use it to describe the person in front of you, ask where that person sits in the group's
+    spread.
+  kind: boundary
+  bearing: clinical
+- point: |
+    Divide by one less than the count whenever you compute a standard deviation from a sample. Most
+    papers you read will have done the same, on the same sample logic.
+  kind: move
+  bearing: methodological
+- point: |
+    A mean sitting below a cut-off does not mean most of a group is below it. Ask what fraction of
+    individuals actually sit on the other side before you repeat an average as reassurance.
+  kind: trap
+  bearing: public
+- point: |
+    Check a printed median against the two quartiles printed beside it before you trust any of the
+    three: the first quartile has to sit below the median and the third has to sit above it.
+  kind: move
+  bearing: methodological
+- point: |
+    In a lopsided distribution, the standard deviation hides that the two sides spread out
+    differently. Where the mean and median disagree by much, look at the quartiles instead of
+    trusting a single standard deviation to describe both sides.
+  kind: boundary
+  bearing: methodological
+exercises:
+- type: critique
+  prompt: |
+    A report states this. "Average daily step count in our clinic's patients is 6,200, comfortably
+    above the report's own target of 5,000 steps. So inactivity is not a major concern here." (The
+    figures are made up for this exercise.)
+
+    The same report's raw data shows a median of 4,100 steps. Say what the gap between the two
+    numbers tells you. Say what you would ask for before agreeing with the conclusion.
+  answer: |
+    The mean, 6,200, sits well above the median, 4,100. A smaller number of patients with a very
+    high step count are pulling the mean up. More than half of all patients walk at or below 4,100
+    steps, which is already under the report's own target of 5,000.
+
+    "Comfortably above the target" describes the mean, not the typical patient. The typical
+    patient, by the median, sits below it.
+
+    What to ask for instead: the proportion of patients whose own step count sits below 5,000. Work
+    that out directly, rather than inferring it from the average. That number, not the mean,
+    answers the question the report is actually trying to answer.
+- type: teaching
+  prompt: |
+    A first-year resident reads a paper's abstract, sees a mean below a clinical cut-off, and
+    concludes "so this group is fine". You have ten minutes and a whiteboard.
+
+    Teach them why a mean sitting below a cut-off does not mean the group is.
+  answer: |
+    Ten minutes, for somebody who expects a mechanism.
+
+    Write two numbers on the board: a mean of 24.2, from a real study of 131 men, and a cut-off of
+    25, the WHO cut-off that paper used, both kilograms per square metre of body-mass index. Ask
+    the resident what it means for the group.
+
+    They will likely say the group is under the cut-off. Write a second real fact from the same
+    study underneath: 52 of the 131 men individually have a body-mass index of 25 or more.
+
+    ```working
+        52 divided by 131 = 0.396946565...
+        0.396946565 times 100 = 39.6946565
+    ```
+
+    About 39.7 per cent, close to two in five. Let the resident sit with that fact. The mean is
+    under the line. Nearly two in five of the actual men are at it or over.
+
+    Ask what would have to be true for the mean to sit below 25 while some men sit above it. The
+    answer is that other men sit far enough below 25 to balance them out. Nothing about the mean
+    tells you how many are on which side, or by how much.
+
+    Close with the rule to carry into the next chart they read. A mean below a line is a fact about
+    the mean. Whether most of the group is below that same line is a different question. Whether the
+    one patient in front of them is below it is a third. Both need the group's spread, not just its
+    average.
+quantitative: true
+practice:
+- level: 1
+  prompt: |
+    Find the mean and the median of these seven numbers.
+
+    ```working
+        4   9   2   15   7   9   3
+    ```
+  answer: |
+    The mean first.
+
+    ```working
+        4 plus 9 plus 2 plus 15 plus 7 plus 9 plus 3 = 49
+        49 divided by 7 = 7
+    ```
+
+    For the median, order the numbers first.
+
+    ```working
+        2   3   4   7   9   9   15
+    ```
+
+    Seven numbers, so the middle one is the fourth. That is 7.
+
+    The mean and the median both come out at 7 here. They do not have to agree, and the next
+    problem shows a case where they do not.
+- level: 2
+  prompt: |
+    Find the mean and the median of these six numbers.
+
+    ```working
+        6   9   11   14   18   50
+    ```
+  answer: |
+    The mean.
+
+    ```working
+        6 plus 9 plus 11 plus 14 plus 18 plus 50 = 108
+        108 divided by 6 = 18
+    ```
+
+    18.
+
+    The median. The numbers are already ordered. With six of them, average the two in the middle.
+
+    ```working
+        11 plus 14 = 25
+        25 divided by 2 = 12.5
+    ```
+
+    12.5.
+
+    The mean, 18, sits well above the median, 12.5. The single value 50 is pulling the mean upward
+    while the median stays close to where five of the six values actually are.
+- level: 2
+  prompt: |
+    These eight numbers are already ordered.
+
+    ```working
+        3   5   5   9   11   11   15   19
+    ```
+
+    Find the first quartile, the second quartile, the third quartile, and the interquartile range.
+  answer: |
+    The second quartile is the median of the whole set. With eight numbers, average the two in the
+    middle.
+
+    ```working
+        9 plus 11 = 20
+        20 divided by 2 = 10
+    ```
+
+    The second quartile is 10.
+
+    The lower half is 3, 5, 5, 9. Its middle two are the second and third values.
+
+    ```working
+        5 plus 5 = 10
+        10 divided by 2 = 5
+    ```
+
+    The first quartile is 5.
+
+    The upper half is 11, 11, 15, 19.
+
+    ```working
+        11 plus 15 = 26
+        26 divided by 2 = 13
+    ```
+
+    The third quartile is 13. The interquartile range is the third quartile minus the first.
+
+    ```working
+        13 minus 5 = 8
+    ```
+
+    The interquartile range is 8.
+- level: 2
+  prompt: |
+    These seven numbers are already ordered.
+
+    ```working
+        2   5   7   9   12   15   20
+    ```
+
+    Find the first quartile, the second quartile, the third quartile, and the interquartile range.
+  answer: |
+    Seven is odd, so the middle value, the fourth one, is the second quartile on its own. Leave it
+    out of both halves before you take their medians.
+
+    ```working
+        second quartile = 9
+    ```
+
+    The lower half, with the middle value left out, is 2, 5, 7. Its own middle value is the first
+    quartile.
+
+    ```working
+        first quartile = 5
+    ```
+
+    The upper half, with the middle value left out, is 12, 15, 20. Its own middle value is the
+    third quartile.
+
+    ```working
+        third quartile = 15
+    ```
+
+    The interquartile range is the third quartile minus the first.
+
+    ```working
+        15 minus 5 = 10
+    ```
+
+    The interquartile range is 10. Software sometimes computes quartiles by a different rule and
+    can print a slightly different number from this one. That is not a sign either calculation is
+    wrong.
+- level: 3
+  prompt: |
+    Work out the sample standard deviation of these six numbers, step by step.
+
+    ```working
+        8   6   10   4   12   8
+    ```
+  answer: |
+    The mean first.
+
+    ```working
+        8 plus 6 plus 10 plus 4 plus 12 plus 8 = 48
+        48 divided by 6 = 8
+    ```
+
+    The deviation of every value from the mean.
+
+    ```working
+        8 minus 8 = 0
+        6 minus 8 = -2
+        10 minus 8 = 2
+        4 minus 8 = -4
+        12 minus 8 = 4
+        8 minus 8 = 0
+    ```
+
+    Square every deviation.
+
+    ```working
+        0 times 0 = 0
+        -2 times -2 = 4
+        2 times 2 = 4
+        -4 times -4 = 16
+        4 times 4 = 16
+        0 times 0 = 0
+    ```
+
+    Add the squares.
+
+    ```working
+        0 plus 4 = 4
+        4 plus 4 = 8
+        8 plus 16 = 24
+        24 plus 16 = 40
+        40 plus 0 = 40
+    ```
+
+    Divide by one less than the count, which is five.
+
+    ```working
+        40 divided by 5 = 8
+    ```
+
+    The variance is 8. Take its square root for the standard deviation.
+
+    ```working
+        square root of 8 = 2.828427125
+    ```
+
+    The sample standard deviation is about 2.83.
+- level: 3
+  prompt: |
+    Give the variance and the sample standard deviation of a set whose deviations from its own mean
+    are the five values below.
+
+    ```working
+        -2   4   -1   3   -4
+    ```
+  answer: |
+    Square each deviation.
+
+    ```working
+        -2 times -2 = 4
+        4 times 4 = 16
+        -1 times -1 = 1
+        3 times 3 = 9
+        -4 times -4 = 16
+    ```
+
+    Add them.
+
+    ```working
+        4 plus 16 = 20
+        20 plus 1 = 21
+        21 plus 9 = 30
+        30 plus 16 = 46
+    ```
+
+    Divide by one less than the count, which is four.
+
+    ```working
+        46 divided by 4 = 11.5
+    ```
+
+    The variance is 11.5. The standard deviation is its square root.
+
+    ```working
+        square root of 11.5 = 3.391164992
+    ```
+
+    The standard deviation is about 3.39.
+- level: 4
+  prompt: |
+    Table 1 of Kiran et al. (2022) gives men's mean body-mass index as 24.2 kg/m^2 and their median
+    as 23.8 kg/m^2.
+
+    Work out the gap between the two, and say which side of the distribution its tail is likely on.
+  answer: |
+    ```working
+        24.2 minus 23.8 = 0.4
+    ```
+
+    The gap is 0.4 kg/m^2.
+
+    The mean sits a little above the median. That pattern happens when values above the median
+    pull the mean upward more than values below it pull it down. The gap here is small next to the
+    spread of the whole group, so this is only a slight sign of a tail on the high side, not a
+    firm one.
+  refs:
+  - kiran_2022_muac_nc
+- level: 5
+  prompt: |
+    The same table gives women's mean body-mass index as 23.0 kg/m^2 and their median as 22.7
+    kg/m^2.
+
+    Work out the gap between the two, and say which side of the distribution its tail is likely on.
+  answer: |
+    ```working
+        23.0 minus 22.7 = 0.3
+    ```
+
+    The gap is 0.3 kg/m^2, with the mean again a little above the median. A smaller number of women
+    with a body-mass index well above the middle pull the mean up past where most of the group sits.
+    The tail, if there is one worth naming from a gap this size, is on the high side.
+  refs:
+  - kiran_2022_muac_nc
+- level: 5
+  prompt: |
+    Men's body-mass index in the same table has a median of 23.8 kg/m^2 with an interquartile range
+    of 21.2 to 26.8.
+
+    Work out the interquartile range as a single number, and check whether the median sits between
+    the two quartiles it is printed beside.
+  answer: |
+    ```working
+        26.8 minus 21.2 = 5.6
+    ```
+
+    The interquartile range is 5.6 kg/m^2.
+
+    Check the median against the two quartiles. 23.8 sits between 21.2 and 26.8. So this row of the
+    table is internally consistent, unlike the weight row worked through in the illustration above.
+  refs:
+  - kiran_2022_muac_nc
+- level: 6
+  prompt: |
+    Suppose a man in this group had a body-mass index of 30 kg/m^2. The men's mean is 24.2 with a
+    standard deviation of 3.9.
+
+    Work out how many standard deviations above the mean his reading would sit.
+  answer: |
+    Find the deviation first.
+
+    ```working
+        30 minus 24.2 = 5.8
+    ```
+
+    Divide by the standard deviation to express it in standard deviations.
+
+    ```working
+        5.8 divided by 3.9 = 1.487179487
+    ```
+
+    That reading would sit about 1.49 standard deviations above the men's mean.
+  refs:
+  - kiran_2022_muac_nc
+- level: 6
+  prompt: |
+    Table 1 of Kiran et al. (2022) gives the 151 women's body fat as a mean of 33.8 per cent with a
+    median of 34.0 per cent and an interquartile range printed as 28.1 to 39.2.
+
+    Work out the interquartile range as a single number. Check whether the median sits between the
+    two quartiles. Then say which way the mean sitting below the median points.
+  answer: |
+    ```working
+        39.2 minus 28.1 = 11.1
+    ```
+
+    The interquartile range is 11.1 percentage points.
+
+    Check the median against the two quartiles. 34.0 sits between 28.1 and 39.2, so this row is
+    internally consistent.
+
+    Here the mean, 33.8, sits below the median, 34.0, the other way round from the men's rows
+    worked through above. A mean below the median happens when a smaller number of values well
+    below the middle pull it down. If this pattern holds, the tail here points toward the low side
+    rather than the high side.
+  refs:
+  - kiran_2022_muac_nc
+- level: 7
+  prompt: |
+    Five patients were picked from a clinic's much larger patient list. Here is someone's worked
+    sample standard deviation of their ages, in years. Find the step that broke.
+
+    ```working
+        the numbers are 12, 15, 9, 21, 18
+        mean = (12 plus 15 plus 9 plus 21 plus 18) divided by 5 = 15
+        deviations: -3, 0, -6, 6, 3
+        squares: 9, 0, 36, 36, 9
+        sum of squares = 90
+        variance = 90 divided by 5 = 18
+        standard deviation = square root of 18 = 4.242640687
+    ```
+  answer: |
+    The mean, the deviations and the squares are all correct, and so is their sum, 90. The step
+    that broke is the division for the variance.
+
+    These five patients are a sample from the clinic's larger list, and the question asked for the
+    sample standard deviation. Its variance divides the sum of squared deviations by one less than
+    the count, which is four here, not five.
+
+    ```working
+        90 divided by 4 = 22.5
+    ```
+
+    The variance is 22.5, not 18. Take its square root.
+
+    ```working
+        square root of 22.5 = 4.743416490
+    ```
+
+    The correct standard deviation is about 4.74, not 4.24.
+
+    Why it looks reasonable: dividing by the count of values, five, is exactly what the mean itself
+    does two lines earlier. Re-using the same 5 feels consistent. The sample rule uses one less
+    than the count only at this one step. It appears nowhere else in the working, which is exactly
+    what makes it easy to miss.
+- level: 8
+  prompt: |
+    A teammate is about to quote this line from Table 1 of Kiran et al. (2022) in a talk.
+
+    "Median weight among the women was 57.4 kilograms, with an interquartile range of 155.0 to
+    163.0."
+
+    Find what is wrong with the line. Say what you would check before quoting any interquartile
+    range taken from a table you have not read closely.
+  answer: |
+    The median has to sit between the two quartiles printed beside it. Here the median, 57.4, sits
+    below both 155.0 and 163.0, not between them, so the three numbers cannot all describe the same
+    row.
+
+    The height row printed just below it gives a median of 159 with a printed range of 51.3 to
+    63.9. Swap the two rows' ranges and check both medians again. The weight row's median, 57.4,
+    sits between the height row's printed numbers, 51.3 and 63.9. The height row's median, 159,
+    sits between the weight row's printed numbers, 155.0 and 163.0. Both checks pass once the
+    ranges are swapped back to the rows they belong to. The two rows have had their interquartile
+    ranges swapped in the paper's own table, the same slip Table 1 makes in the men's rows above.
+
+    What to check before quoting any interquartile range: does the paired median actually sit
+    between the two quartiles printed with it. That check takes a moment, and it is the one this
+    line fails.
+  refs:
+  - kiran_2022_muac_nc
+- level: 8
+  prompt: |
+    Somebody makes this claim from the body fat figures in Table 1 of Kiran et al. (2022).
+
+    "The mean body fat among the men is 22.1 per cent and the median is 20.3 per cent. Since the
+    mean is higher, most men must have a body fat percentage above 22.1."
+
+    Find the error in the reasoning.
+  answer: |
+    The conclusion has the direction backwards. By the median's own definition, at least half of
+    the men are at or below 20.3. And 20.3 sits below the mean of 22.1. So at least half of the men
+    are below the mean, not above it.
+
+    A smaller number of men, with a much higher body fat percentage, are what pull the mean up.
+    Most men sit near or below the median.
+
+    Why it looks reasonable: "the mean is higher, so more men must be higher" sounds right. It is
+    the wrong direction. A higher mean is the sign of a tail on the high side. A few readings go
+    far up. It is not a sign that most readings sit above the mean.
+- level: 9
+  prompt: |
+    A note about the study says this. "Women's average body-mass index was 23.0, under the cut-off
+    of 25, so weight was not a concern in this group of students."
+
+    Decide what to compute, compute it, and say what your answer does not establish.
+  answer: |
+    What to compute: what fraction of the 151 women individually have a body-mass index at or above
+    25, rather than resting on the group's average.
+
+    ```working
+        41 plus 5 = 46
+        46 divided by 151 = 0.304635762...
+        0.304635762 times 100 = 30.4635762
+    ```
+
+    About 30.5 per cent of the 151 women individually sit at 25 or above, even though the group's
+    mean sits under it.
+
+    What this does not establish. Body-mass index does not measure body fat directly: it cannot
+    tell fat mass from lean mass, so it does not establish anything about any one woman's health.
+    It also does not establish that 25 is where risk actually starts for this group; 25 is the WHO
+    cut-off the paper adopted, and the same paper notes that some Asian populations show
+    metabolic risk at a lower body-mass index than that. And it says nothing about students
+    elsewhere: this figure describes one college in one year.
+  refs:
+  - kiran_2022_muac_nc
+- level: 10
+  prompt: |
+    A colleague says this about the same study. "Body fat in this group of men averages 22 per
+    cent, so most men have a body fat percentage somewhere between 20 and 24."
+
+    Decide what to compute, compute it, and say what your answer does not establish.
+  answer: |
+    What to compute: what the quartiles printed in the same row of Table 1 say about where the men
+    actually sit, rather than guessing a narrow band around the mean.
+
+    Men's body fat is printed as a median of 20.3 per cent with an interquartile range of 16.7 to
+    28.8.
+
+    ```working
+        28.8 minus 16.7 = 12.1
+    ```
+
+    By definition, about a quarter of the men sit at or below 16.7 and about a quarter sit at or
+    above 28.8. So at most about half of the men can lie anywhere between 16.7 and 28.8, and the
+    colleague's "20 to 24" is a narrower band sitting inside that half. The mean, 22.1, also sits
+    above the median, 20.3, by 1.8 points.
+
+    ```working
+        22.1 minus 20.3 = 1.8
+    ```
+
+    That gap says at least half of the men sit at or below 20.3, with a smaller number reading well
+    above 22.1 pulling the mean up past them.
+
+    What this does not establish. Neither the mean nor the quartiles tell you what fraction of men
+    actually fall inside 20 to 24 specifically. That needs a frequency table of the individual
+    readings, the way Table 2 gave one for body-mass index. No such table is given here for body
+    fat, and the quartiles already show that "most men" cannot be packed into a band as narrow as
+    20 to 24.
+  refs:
+  - kiran_2022_muac_nc
+retrieval_items:
+- q: What is the difference between the mean and the median, and what happens to each when one
+    value in a set is far from the rest?
+  a: The mean is the sum divided by the count, and it uses every value, so one far-off value pulls
+    it toward itself. The median is the middle value by position, so a far-off value barely moves
+    it.
+- q: Why does the sample variance divide by one less than the count rather than by the count
+    itself?
+  a: Because measuring each value's distance from a mean built out of the same sample slightly
+    understates the population variance, on average. Dividing by a smaller number makes the
+    variance come out right on average. The standard deviation, its square root, still runs a
+    little low on average even after this correction.
+- q: A group's mean sits below a threshold, and many individuals in the group sit above it. What
+    does the mean establish, and what does it not?
+  a: The mean is a true statement about the group as a whole. It establishes nothing about any one
+    member of the group, who may sit on either side of the threshold regardless of where the mean
+    sits.
+provenance:
+  map_version_id: fc19c8bc-a216-4131-99fb-ebe3f19cec4a
+  outcome_refs:
+  - B0-D5
+  bridge_ref: []
+review:
+  stability: long
+  trigger: '2031-09-23'
+  last_reviewed: '2026-09-23'
+status: drafted
+figures:
+- file: d5-mean-median.png
+  caption: "The six numbers from this section on one line. The median, 13.5, sits in the middle of the crowd. The mean, 16.7, has been pulled towards the single value of 40, which is the only thing that moved it there."
+  alt: "Six dots on a number line at 5, 8, 12, 15, 20 and 40. A solid line marks the median at 13.5, between 12 and 15. A dashed line marks the mean at 16.7, to the right of 15, pulled towards the lone dot at 40."
+  source: draw.py
