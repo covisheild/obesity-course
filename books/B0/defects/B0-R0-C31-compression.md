@@ -12,6 +12,7 @@ Only CONFIRMED and NEW items are listed; the full per-hole verdicts are in `book
 - **Fix:** after "…opposite charges pull." add: "An atom left carrying a charge this way is called an ion."
 - **Support:** held. OpenStax Chemistry 2e §7.2, already quoted in the record: "Ionic bonding results from the electrostatic attraction of oppositely charged ions that are typically produced by the transfer of electrons between metallic and nonmetallic atoms."
 Fix: added "An atom left carrying a charge this way is called an ion." after "…opposite charges pull." in `simplified_explanation`; supported by the §7.2 quote already held.
+Verify: closed
 
 **C31-K2** · CONFIRMED-GAP
 - **Field:** `definition.text`
@@ -20,6 +21,7 @@ Fix: added "An atom left carrying a charge this way is called an ion." after "�
 - **Fix:** add after the sentence: "Work, in this sense, is energy transferred by a force moving something through a distance; lifting a weight is work."
 - **Support:** held. OpenStax College Physics 2e §7.1 (in `openstax_college_physics_2e`): "The work done on a system by a constant force is the product of the component of the force in the direction of motion times the distance through which the force acts." Add as a reference.
 Fix: added to `definition.text` "Work, in this sense, is a force moving something through a distance; lifting a weight is work." (worded without "energy transferred", which the held quote does not say), and added the College Physics 2e §7.1 definition as a reference with its quote.
+Verify: closed
 
 **C31-K3** · CONFIRMED-GAP
 - **Field:** `illustration.body`
@@ -28,6 +30,7 @@ Fix: added to `definition.text` "Work, in this sense, is a force moving somethin
 - **Fix:** "…in kilojoules per mole of bonds: the fixed count of the section on concentration units (B5)." Also in `analogy_breaks_when` "a fixed counted amount of each substance" → "a mole of each". Add B0-R0-C13 (B5) to `concept_deps` (SELFCHECK 8).
 - **Support:** held. Chemistry 2e §7.5: "436 kJ per mole of H–H bonds broken".
 Fix: body now says "in kilojoules per mole of bonds. A mole is the fixed count of things from the section on concentration units (B5)." (B5's own wording); table header "per mole of bonds"; `analogy_breaks_when` "quoted for a mole of each"; B0-R0-C13 added to `concept_deps`.
+Verify: closed
 
 **C31-K4** · CONFIRMED-GAP
 - **Field:** `illustration.analogy_breaks_when`
@@ -36,3 +39,4 @@ Fix: body now says "in kilojoules per mole of bonds. A mole is the fixed count o
 - **Fix:** "Sugar can sit in a jar, in air, for years, unchanged, though burning it releases a great deal. Something, such as a flame, has to start it." This is an everyday observation and needs no source.
 - **Support:** logic. The point is that the size of a bond sum says nothing about whether a reaction starts, and must_know[3] already says so.
 Fix: replaced with "Sugar can sit in a jar, in air, for years, unchanged, though burning it releases a great deal. Something, such as a flame, has to start it." No source asserted (everyday observation).
+Verify: closed

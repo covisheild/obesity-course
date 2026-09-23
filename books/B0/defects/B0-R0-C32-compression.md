@@ -12,6 +12,7 @@ Auditor: Task 3, fresh context. Full per-hole verdicts: `books/B0/compress/TRIAG
 - **Support:** `sources/fao_food_energy.txt`, the NOT OBTAINED VERBATIM record under §2. Alternatively, check the full report and keep the wider claim, but that needs a fetch, which was out of scope here.
 
 Fix: narrowed every whole-report claim to chapters 3 and 4 (definition.text, simplified_explanation, illustration.body, must_know[1] per the suggested wording, retrieval_items[2]); also exercise 1 answer now says "not in the report's cascade".
+Verify: closed
 
 **C32-K2** · CONFIRMED-ERROR
 - **Field:** `illustration.body`. The same pattern is in `practice` L5, L8 and L10.
@@ -21,6 +22,7 @@ Fix: narrowed every whole-report claim to chapters 3 and 4 (definition.text, sim
 - **Support:** A3-released.md, must-know points.
 
 Fix: illustration (kcal and kJ sums), L5, L8 and L10 now carry full precision (0.1142857143, 0.1160885004, 0.1066666667, 0.253968254) through the ×100 line and round once at the end; recomputed in Python, printed figures 11.4, 11.6, 10.7, 25.4 unchanged.
+Verify: closed
 
 **C32-K3** · CONFIRMED-GAP
 - **Field:** `definition.text`
@@ -30,6 +32,7 @@ Fix: illustration (kcal and kJ sums), L5, L8 and L10 now carry full precision (0
 - **Support:** needs a source that is not held.
 
 Fix: no source defining "by difference" is held, so cut the sentence; kept "does not take fibre out" and added a definition reference to FAO s.3.5.1 quoting "carbohydrate is determined by difference, and thus includes fibre" to carry it.
+Verify: closed
 
 **C32-K4** · CONFIRMED-GAP (support)
 - **Field:** `illustration.analogy_breaks_when`
@@ -39,6 +42,7 @@ Fix: no source defining "by difference" is held, so cut the sentence; kept "does
 - **Support:** held. FAO footnote 9: "The precise values for protein, fat, total carbohydrate and alcohol are, respectively, 16.7, 37.4, 16.7 and 28.9 kJ/g."
 
 Fix: analogy_breaks_when now reads "The footnote that gave protein's 16.7 gives fat's precise value as 37.4 kilojoules a gram"; added illustration.numbers entry 37.4, fao_food_energy_2003, footnote 9 quote.
+Verify: closed
 
 **C32-N1** · NEW · CONFIRMED-ERROR
 - **Field:** `practice` L5 answer
@@ -48,6 +52,7 @@ Fix: analogy_breaks_when now reads "The footnote that gave protein's 16.7 gives 
 - **Support:** arithmetic, using nist_sp811's 4.184.
 
 Fix: L5 now gives a working line 450 times 4.184 = 1,882.8 (joules) and says "under two kilojoules".
+Verify: closed
 
 **C32-N2** · NEW · CONFIRMED-ERROR (minor, support)
 - **Field:** `definition.references`
@@ -56,3 +61,4 @@ Fix: L5 now gives a working line 450 times 4.184 = 1,882.8 (joules) and says "un
 - **Support:** held. fssai_labelling_2020 "(H)Dietary fibre 2kcal/g"; FAO §3.5.1.
 
 Fix: restored "The Indian labelling regulations give dietary fibre its own factor, 2 kilocalories a gram" (fssai ref now backed) and added "Some labelling systems do discount fibre, as OpenStax Chemistry describes. Atwater's general system does not."; note added to the OpenStax fibre reference.
+Verify: closed

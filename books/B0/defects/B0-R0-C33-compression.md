@@ -13,6 +13,7 @@ Practice numbering follows the list order: P3 = level 4 (lamp), P6 = level 8 (fa
 - **Support:** logic. The record's own balance line is inside at end = inside at start + in − out.
 
 Fix: applied. Line three now works by crossings (nothing in, 7,000 out: `0 minus 7000 = -7000`), then checks as changes (`42000 plus 11000 minus 60000 = -7000`). L4 (a) now says the kerosene gives up 900,000 J over the hour; L4 (b) works by crossing (`0 minus 60000 = -60000`) and checks as changes (`840000 minus 900000 = -60000`); the old totals line and `840000 plus 60000` check removed. Recomputed in Python.
+Verify: closed
 
 **C33-K2** · CONFIRMED-GAP (support)
 - **Field:** `illustration.body`, `analogy_breaks_when`
@@ -22,6 +23,7 @@ Fix: applied. Line three now works by crossings (nothing in, 7,000 out: `0 minus
 - **Support:** held. `openstax_college_physics_2e` §7.1, exact sentence present.
 
 Fix: applied. Quote now introduced with "OpenStax College Physics 2e, section 7.1, puts it like this."; analogy_breaks_when now names "College Physics 2e section 7.1".
+Verify: closed
 
 **C33-K3** · CONFIRMED-GAP
 - **Field:** `must_know[5]`, `practice` L9 answer
@@ -31,6 +33,7 @@ Fix: applied. Quote now introduced with "OpenStax College Physics 2e, section 7.
 - **Support:** held. College Physics 2e §7.1.
 
 Not applied: the triage's own fix is no change here; it closes when C31-K2 (define work in E1) lands. Released E1 does not yet define work, so this stays open until that fix is in.
+Verify: closed (C31 definition.text now defines work, so the dependency this item waited on has landed; the 'Not applied' note above is superseded)
 
 **C33-K4** · CONFIRMED-ERROR (internal contradiction)
 - **Field:** `must_know[5]` and `practice` L9 against `practice` L10. It also bears on E6 and E8.
@@ -40,6 +43,7 @@ Not applied: the triage's own fix is no change here; it closes when C31-K2 (defi
 - **Support:** logic, from the section's own definition.
 
 Fix: applied. must_know[5] gains the two-lines sentence (mouth and skin vs gut wall, say which). L9 now says its line is drawn at the mouth and skin. L10 now shows both lines give the same net crossing (merged with N1, so the unknown is D rather than U).
+Verify: closed
 
 **C33-K5** · CONFIRMED-GAP
 - **Field:** `practice` L8 answer (P6)
@@ -49,6 +53,7 @@ Fix: applied. must_know[5] gains the two-lines sentence (mouth and skin vs gut w
 - **Support:** logic, and the record's own `definition.text` ("It does not say by which route…").
 
 Fix: applied, with the triage's wording. The answer now says the balance does not say what form the 300,000 J ends in, that it removes the only support for "cannot have got warmer", and that the next section takes up where such energy ends up. No warmth asserted.
+Verify: closed
 
 **C33-N1** · NEW · CONFIRMED-ERROR (contradicts E2)
 - **Field:** `practice` L10 answer
@@ -57,3 +62,4 @@ Fix: applied, with the triage's wording. The answer now says the balance does no
 - **Fix:** "The label's figure was calculated with the Atwater factors, which already take off average losses (the section on the bomb calorimeter). So 1,200 is an estimate of what an average person gets from the packet. The colleague's sentence is about this person. Call the gap between this person's losses and the average D, and nobody in the room has a figure for D." Keep the rest of the argument.
 - **Support:** C32 simplified_explanation; FAO §3.5.1 (held): "based on the heats of combustion … which are corrected for losses in digestion, absorption and urinary excretion of urea."
 Fix: applied. L10 prompt now stipulates the label figure was calculated with the Atwater general factors (part of the made-up scenario). The answer says the section before showed those factors already take off average losses, so 1,200 is an estimate for an average person; the unknown is now D, this person's losses minus the average; 'what to say in the meeting' reworded to match. Added B0-R0-C32 to concept_deps for the pointer. Caveat: the fact that the factors carry average losses rests on E2's FAO citation, not on a source cited in this record; it is stated as a recall of the earlier section, not re-cited here.
+Verify: closed

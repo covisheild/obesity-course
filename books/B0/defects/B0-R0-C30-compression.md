@@ -6,6 +6,7 @@
    - Fix: add jcgm_vim3 references with these quotes: 2.16 "measured quantity value minus a reference quantity value"; 2.17 "remains constant or varies in a predictable manner"; 2.18 "estimate of a systematic measurement error"; 2.19 "varies in an unpredictable manner"; 4.14 "smallest change in a quantity being measured that causes a perceptible change in the corresponding". For trueness and precision, add 2.14 and 2.15 as well.
    - Support: all five strings were found in sources/jcgm_vim3.txt (entries 2.16–2.19 and 4.14).
    - Fix: added eight jcgm_vim3 definition references (kind instrument, held source, quotes confirmed in sources/jcgm_vim3.txt): 2.13, 2.14, 2.15, 2.16, 2.17, 2.18, 2.19, 4.14; updated the openstax note that said the VIM could not sit there.
+   - Verify: closed
 
 2. **C30-K2** — CONFIRMED-ERROR (overstatement) — `must_know[4]`; P12
    - Quoted: "Differences between observers are each observer's own systematic habit."
@@ -13,6 +14,7 @@
    - Fix: "Part of the difference between observers is each observer's own systematic habit."
    - Support: arithmetic on P12's own table (differences 0.4, 0.4, 0.5, 0.3, 0.3: all positive, but not constant).
    - Fix: must_know[4] now opens "Part of the difference between observers is each observer's own systematic habit."
+   - Verify: closed
 
 3. **C30-K3** — CONFIRMED-ERROR (wording, minor) — `illustration.body`
    - Quoted: "Two stated scales are each weighed against it twenty times."
@@ -20,6 +22,7 @@
    - Fix: "Each of two stated scales weighs it twenty times."
    - Support: none needed.
    - Fix: sentence now reads "Each of two stated scales weighs it twenty times."
+   - Verify: closed
 
 4. **C30-K4** — CONFIRMED-GAP (minor) — `illustration.body`
    - Quoted: "half a kilogram out against seven and a half hundredths."
@@ -27,3 +30,4 @@
    - Fix: add working "60.0 minus 59.925 = 0.075" after scale B's average.
    - Support: arithmetic, recomputed: scale B's rows sum to 598.5 and 600.0, and the mean is 59.925. The min 58.7, the max 60.7 and the two readings of 60.0 all check.
    - Fix: added "60.0 minus 59.925 = 0.075" to scale B's working block and the sentence "Its average sits 0.075 kilograms below the truth." (recomputed in Python).
+   - Verify: closed
