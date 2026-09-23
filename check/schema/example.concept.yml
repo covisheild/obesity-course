@@ -160,6 +160,10 @@ figures:
         - {text: "4 kg in 8 weeks", at: [4, 90]}
       derived:
         - {value: "4", from: "92 - 88"}   # printed here, not stated in the prose
+      bands:                              # optional: a shaded horizontal range behind the data
+        - {y0: 88, y1: 90, label: "target range"}   # y0, y1 and label numbers checked like data
+      # On a literal `series:` entry, `marker: none` draws a bare line with no point markers:
+      # use it for a fitted slope, so its ends do not look like observations.
 
 # ---- provenance: what this concept is here to serve ------------------------
 provenance:

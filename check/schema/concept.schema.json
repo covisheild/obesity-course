@@ -562,7 +562,8 @@
                   "required": ["y"],
                   "properties": {
                     "name": {"type": "string"},
-                    "y": {"type": "array", "items": {"type": ["number", "string"]}, "minItems": 1}
+                    "y": {"type": "array", "items": {"type": ["number", "string"]}, "minItems": 1},
+                    "marker": {"enum": ["none"], "description": "Line/step only: draw the series as a line with no point markers (for a fitted line, not observations)."}
                   }
                 }
               },
@@ -603,6 +604,20 @@
                   "properties": {
                     "value": {"type": ["string", "number"]},
                     "from": {"type": "string"}
+                  }
+                }
+              },
+              "bands": {
+                "description": "Shaded horizontal ranges drawn behind the data, e.g. a range the text gives. y0, y1 and any number in label are checked against the text like every plotted number.",
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": ["y0", "y1"],
+                  "properties": {
+                    "y0": {"type": ["number", "string"]},
+                    "y1": {"type": ["number", "string"]},
+                    "label": {"type": "string"}
                   }
                 }
               },

@@ -702,6 +702,13 @@ def draw_spec(rec, fig_entry, out_dir=HERE, book_id=None):
     with plt.rc_context(rc):
         fig, ax = plt.subplots(figsize=tuple(res["size"]))
         n = len(res["series"])
+        # `bands`: a shaded horizontal range behind the data, edged by thin dashed lines, keyed in
+        # the legend. Its bounds pass the same number-in-text check as a plotted point.
+        for b in res.get("bands") or []:
+            ax.axhspan(b["y0"], b["y1"], facecolor=pal["fill"], edgecolor="none", zorder=1,
+                       label=b["label"] or None)
+            for yv in (b["y0"], b["y1"]):
+                ax.axhline(yv, color=pal["muted"], linewidth=0.8, linestyle=(0, (3, 2)), zorder=1)
         if res["kind"] == "bar":
             pos = list(range(len(res["x_raw"]))) if res["x"] is None else res["x"]
             step = min((b - a for a, b in zip(pos, pos[1:])), default=1) if res["x"] else 1
@@ -730,8 +737,10 @@ def draw_spec(rec, fig_entry, out_dir=HERE, book_id=None):
                 if res["kind"] == "step":
                     ax.step(res["x"], s["y"], where="post", color=c, linestyle=styles[i % 3],
                             label=s["name"])
-                ax.plot(res["x"], s["y"], linestyle=styles[i % 3] if joined else "none",
-                        marker=markers[i % 3], color=c, markeredgecolor=pal["surface"],
+                # `marker: none` on a series: a bare line, for a fitted slope rather than observations.
+                mk = "none" if s.get("marker") == "none" else markers[i % 3]
+                ax.plot(res["x"], s["y"], linestyle=styles[i % 3] if joined or mk == "none" else "none",
+                        marker=mk, color=c, markeredgecolor=pal["surface"],
                         markeredgewidth=1.2, label=None if res["kind"] == "step" else s["name"],
                         zorder=3)
                 if res["value_labels"]:
@@ -759,7 +768,8 @@ def draw_spec(rec, fig_entry, out_dir=HERE, book_id=None):
         ax.set_ylabel(res["y_label"])
         if res["title"]:
             ax.set_title(res["title"], loc="left")
-        if n > 1 or any(r.get("draw") for r in res["relations"]):
+        if n > 1 or any(r.get("draw") for r in res["relations"]) or \
+                any(b["label"] for b in res.get("bands") or []):
             ax.legend(loc="best")
         fig.tight_layout()
         os.makedirs(out_dir, exist_ok=True)

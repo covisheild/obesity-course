@@ -77,6 +77,7 @@ definition:
       claim_located: true
       checked_on: '2026-09-23'
       note: |-
+        Narrative review, cited as kind primary (conductor decision).
         Read in the S01-R1 source pack (PMC Article Dataset text, an NIH author
         manuscript). This is the closest held anchor to Hall's own terms "energy intake"
         and "energy expended" for the identity taught here. Hall KD et al., Am J Clin
@@ -220,10 +221,9 @@ exercises:
 
     535 megajoules at the end of the ten days.
 
-    For that to show up as a mass change on a scale, the 5 megajoules lost has to have come out
-    of tissue the scale weighs. You would also need to know how many megajoules a kilogram
-    of that tissue holds before converting. This record does not supply that figure. It is
-    `S01-R1-C02`'s.
+    To see this on a scale, the 5 megajoules must have come out of tissue
+    the scale weighs. You would also need to know how many megajoules a kilogram
+    of that tissue holds before converting. That figure is in `S01-R1-C02`.
   skill_ref: S01-R1-K01
 quantitative: true
 practice:
@@ -282,13 +282,13 @@ practice:
     small, only that they matched.
 - level: 4
   prompt: |
-    A report from three United Nations bodies, the Food and Agriculture Organization (FAO), the
-    World Health Organization (WHO) and the United Nations University (UNU), gives a worked
-    example. It puts a sedentary or lightly active woman's total energy expenditure at 8.26
-    megajoules a day (FAO/WHO/UNU 2004).
+    Three United Nations bodies wrote a report together. They are the Food and Agriculture
+    Organization (FAO), the World Health Organization (WHO) and the United Nations University
+    (UNU). The report gives a worked example. It puts a woman's total energy expenditure at 8.26
+    megajoules a day. That is for a woman who sits a lot or is lightly active (FAO/WHO/UNU 2004).
 
-    On one made-up day, a woman whose expenditure is that figure records a metabolisable intake of 8.80
-    megajoules. Work out the change in her energy stores for that day, in megajoules, and say
+    Take one made-up day. A woman with that expenditure takes in 8.80 megajoules. Count all of it
+    as metabolisable energy. Work out the change in her energy stores that day, in megajoules. Say
     whether her stores rose or fell.
   answer: |
     Apply the identity in megajoules.
@@ -336,25 +336,25 @@ practice:
         so their stores fell by 7,700 kilojoules that day
     ```
   answer: |
-    The step that broke is the second. The bomb-calorimeter figure is not what crossed into this
-    person's stores.
+    The second step broke. The bomb-calorimeter figure is not what crossed into this person's
+    stores.
 
-    `B0-R0-C32` draws the line between the energy a calorimeter reports and the energy that
-    actually reaches a person: gross or ingested energy on one side, metabolisable energy on the
-    other, with faecal, gaseous and urinary losses in between. The identity in this record takes
-    intake at the metabolisable line, not the calorimeter line. Some of the 1,800 kilojoules left
-    the body unabsorbed and never crossed into the stores at all.
+    `B0-R0-C32` draws a line between two kinds of energy. One is gross energy, what a calorimeter
+    reports for the food. The other is metabolisable energy, what actually reaches the body. In
+    between, some is lost in faeces, gases and urine. The identity takes intake at the
+    metabolisable line. So some of the 1,800 kilojoules left the body unused. It never reached
+    the stores.
 
-    So the third and fourth lines are arithmetic done correctly on the wrong number. Nothing is
-    wrong with the subtraction. The 1,800 was never the right figure to subtract from.
+    So the third and fourth lines do a correct sum on the wrong number. The subtraction is fine.
+    The 1,800 was never the right figure to subtract from.
 
-    What the correct working needs: an estimate of what fraction of the 1,800 kilojoules was
-    actually absorbed, which the laboratory's bomb-calorimeter figure does not give. Without it,
-    the change in stores that day cannot be computed at all, only bounded above.
+    What the correct working needs: how much of the 1,800 kilojoules the body took up. The
+    laboratory's figure does not say. Without it, you cannot work out the change in stores that
+    day. You can only set an upper limit on it.
 
-    Why the wrong answer looks reasonable. Every arithmetic step after the second is correct, the
-    units are consistent throughout, and a real energy figure sits at the top of the working. The
-    fault is a line nobody wrote: which boundary "1,800 kilojoules" was measured across.
+    Why the wrong answer looks reasonable. Every step after the second is correct. The units match
+    all the way through. A real energy figure sits at the top. The fault is a line nobody wrote:
+    which boundary the "1,800 kilojoules" was measured across.
 - level: 8
   prompt: |
     Here is a worked answer. Find the step that broke.
@@ -381,9 +381,9 @@ practice:
     a reason to have gone back and checked the third line before trusting the fourth.
 
     Why the wrong answer looks reasonable. Both daily figures are correctly signed, and the
-    working has the shape of a calculation with a "minus" sign in it, which reads as careful. What
-    it is not is the identity's own move: totalling a run of changes is `B0-R0-C22`'s
-    accumulation, addition of the amounts, never subtraction of one day's change from another's.
+    working has the shape of a calculation with a "minus" sign in it, which reads as careful. But
+    it is not the identity's own move. To total a run of changes, you add them, as in `B0-R0-C22`.
+    You never subtract one day's change from another's.
 - level: 9
   prompt: |
     A fitness app tells a user: "Your weight hasn't moved in three months, so your calories in and
@@ -403,17 +403,19 @@ practice:
         the sum of 90 daily changes = 0
     ```
 
-    That sum can be reached by 90 days each near enough to zero. It can equally be reached by 45
-    days each up by 0.3 megajoules and 45 days each down by 0.3 megajoules, or by a large early
-    rise cancelled by a later fall. All three give the same three-month total.
+    That sum can be reached by 90 days each near enough to zero. It can also be reached by 45
+    days each up by 0.3 megajoules and 45 days each down by 0.3 megajoules. Or a large early
+    rise can be cancelled by a later fall. All three give the same three-month total.
 
     What this does not establish. It does not establish that any single day balanced, only that
     the 90 days added to roughly zero. It does not even establish that stores were steady. A
     steady weight can hide fat lost and lean tissue gained, which hold different energy per
-    kilogram (`S01-R1-C02`). It does not establish that intake and expenditure were individually
-    steady either. Both could have moved together and kept their difference near zero throughout.
-    And it says nothing at all about what caused the total to land near zero. That is exactly the
-    question this section's definition says the identity cannot answer.
+    kilogram (`S01-R1-C02`).
+
+    It does not establish that intake and expenditure were each steady either. Both could have
+    moved together and kept their difference near zero throughout. And it says nothing at all
+    about what caused the total to land near zero. That is exactly the question this section's
+    definition says the identity cannot answer.
 
     What to say instead of the app's sentence: a steady weight over three months suggests, at
     most, that the account roughly balanced over three months. It is not a day-by-day claim, and it is not a claim about why.
@@ -428,37 +430,36 @@ practice:
     The figures are made up for this problem. Decide what to compute, compute it, and say what
     your answer does not establish.
   answer: |
-    What to compute: whether "supplying 8.0 megajoules a day" and "her expenditure is 8.5
-    megajoules a day" are the two quantities the identity actually asks for, on the same boundary
-    and the same day.
+    What to compute: are the two figures the ones the identity needs? They must be on the same
+    boundary and for the same day.
 
-    Run the identity as stated, taking both figures at face value.
+    Run the identity with both figures at face value.
 
     ```working
         8.0 minus 8.5 = -0.5
     ```
 
-    Minus 0.5 megajoules a day, exactly the colleague's figure, if both numbers are what the
-    identity needs.
+    You get minus 0.5 megajoules a day. That is the colleague's figure, if both numbers are what
+    the identity needs.
 
-    Now check what each number is. "Supplying 8.0 megajoules" is very likely the energy the diet
-    plan says she is given. That is not necessarily the metabolisable energy that crosses into her
-    stores. Some of what is served is not eaten, and some of what is eaten is not absorbed. And
-    "measured expenditure" of 8.5 megajoules a day, if it comes from a method like doubly labelled
-    water, is itself an average over several days, not a figure for one particular day. Neither
-    gap makes the arithmetic wrong. Both mean the 0.5 megajoules-a-day figure is a modelled
-    expectation dressed as a daily measurement.
+    Now check what each number is. "Supplying 8.0 megajoules" is very likely what the diet plan
+    gives her. That is not always the metabolisable energy that reaches her stores. Some food
+    served is not eaten. Some food eaten is not absorbed.
 
-    What this does not establish. It does not establish that her stores fall by exactly 0.5
-    megajoules on every single day of the diet. This section's illustration shows daily changes
-    from -1.0 to 1.6 megajoules within one week. It does not establish that 0.5 megajoules a day
-    continues once her weight has changed. The 8.5 megajoules is unlikely to stay fixed, because of
-    `S01-R1-C04`'s point about body size and expenditure. And it
-    establishes nothing about which route the shortfall came from, or why intake and expenditure
-    took the values they did.
+    Then the "measured expenditure" of 8.5 megajoules a day. If it comes from a method like doubly
+    labelled water, it is an average over several days. It is not a figure for one day. Neither
+    gap makes the sum wrong. Both mean the 0.5 megajoules a day is a model's guess dressed up as a
+    daily measurement.
 
-    What to say in the meeting: the arithmetic is fine as a same-day estimate. "Every single day"
-    and "must be" are claims the two numbers in hand do not support.
+    What this does not establish. It does not show that her stores fall by exactly 0.5 megajoules
+    on every day of the diet. This section's illustration shows daily changes from -1.0 to 1.6
+    megajoules within one week. It does not show that 0.5 megajoules a day goes on once her weight
+    has changed. The 8.5 megajoules is unlikely to stay fixed, because a smaller body spends less
+    (`S01-R1-C04`). And it shows nothing about where the shortfall came from, or why intake and
+    expenditure took the values they did.
+
+    What to say in the meeting: the sum is fine as a same-day estimate. "Every single day" and
+    "must be" are claims the two numbers do not support.
 retrieval_items:
 - q: State the accounting identity for a body's energy stores, in words, and say what it means for
     the two sides to be equal.

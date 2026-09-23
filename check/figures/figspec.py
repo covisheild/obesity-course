@@ -35,6 +35,9 @@ Spec shape (see check/schema/concept.schema.json, figures[].spec):
         - {text: "0.5 kg a week", at: [4, 90]}
       derived:
         - {value: "4", from: "92 - 88"}      # a printed number the prose does not state
+      bands:                                 # optional: shaded ranges; y0, y1 checked like data
+        - {y0: 88, y1: 90, label: "target range"}
+    and on a literal series, `marker: none` draws it as a bare line (a fitted slope, not points).
 """
 import ast
 import hashlib
@@ -239,7 +242,8 @@ def resolve(rec, fig):
             spec.setdefault("y_label", head[ycs[0]])
     else:
         x_raw = [str(v) for v in (spec.get("x") or [])]
-        series = [{"name": s.get("name", ""), "y_raw": [str(v) for v in s.get("y") or []]}
+        series = [{"name": s.get("name", ""), "y_raw": [str(v) for v in s.get("y") or []],
+                   **({"marker": s["marker"]} if s.get("marker") else {})}
                   for s in spec.get("series") or []]
     if not x_raw or not series:
         raise ValueError("spec has no data: give from_table, or x and series")
@@ -253,12 +257,24 @@ def resolve(rec, fig):
         s["y"] = [_num(v) for v in s["y_raw"]]
         if None in s["y"]:
             raise ValueError(f"series '{s['name']}' has a value that is not a number: {s['y_raw']}")
-    return {"kind": kind, "x_raw": x_raw, "x": None if categorical else xs, "series": series,
+        if s.get("marker") not in (None, "none"):
+            raise ValueError(f"series '{s['name']}': marker must be 'none' or left out")
+    bands = []
+    for b in spec.get("bands") or []:
+        y0, y1 = _num(b.get("y0")), _num(b.get("y1"))
+        if y0 is None or y1 is None:
+            raise ValueError(f"spec.bands: y0 and y1 must be numbers, got {b}")
+        bands.append({"y0": y0, "y1": y1, "y0_raw": str(b.get("y0")), "y1_raw": str(b.get("y1")),
+                      "label": b.get("label", "")})
+    out = {"kind": kind, "x_raw": x_raw, "x": None if categorical else xs, "series": series,
             "x_label": spec.get("x_label", ""), "y_label": spec.get("y_label", ""),
             "title": spec.get("title", ""), "relations": spec.get("relations") or [],
             "labels": spec.get("labels") or [], "derived": spec.get("derived") or [],
             "y_scale": spec.get("y_scale", "linear"), "value_labels": bool(spec.get("value_labels")),
             "y_range": spec.get("y_range"), "size": spec.get("size", [6.2, 3.0])}
+    if bands:            # only when declared, so a spec without bands keeps its fingerprint
+        out["bands"] = bands
+    return out
 
 
 # ---------------------------------------------------------------- safe arithmetic
@@ -349,6 +365,9 @@ def verify(rec, fig):
         need(numbers_in(lab.get("text", "")), f"prints '{lab.get('text', '')}' with")
     for rel in res["relations"]:
         need(numbers_in(rel.get("label", "")), f"prints the key '{rel.get('label', '')}' with")
+    for b in res.get("bands") or []:
+        need({abs(b["y0"]), abs(b["y1"])}, "shades a band from")
+        need(numbers_in(b["label"]), f"prints the band '{b['label']}' with")
     for key in ("x_label", "y_label", "title"):
         need(numbers_in(res[key]), f"prints its {key.replace('_', ' ')} with")
     need(numbers_in(fig.get("caption", "")), "caption states")

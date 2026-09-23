@@ -170,6 +170,11 @@ one. The build blocks when:
 - the PNG was not drawn from the current spec and text (its `.spec.json` fingerprint differs), or a
   figure outside Book 0 has no spec at all.
 
+Two drawing options exist for what points and bars cannot say: `marker: none` on a series draws a
+fitted slope as a bare line, so its ends do not read as observations; `bands: [{y0, y1, label}]`
+shades a range behind the data, and its bounds and label pass the same number check as a plotted
+point.
+
 Never draw a figure by hand, edit a PNG, or type a figure's numbers into a script. The conductor
 looks at every figure as an image before the audit, and the auditor recomputes every value a figure
 plots or prints. Book 0's figures were drawn before specs existed and stay as they are (frozen with
