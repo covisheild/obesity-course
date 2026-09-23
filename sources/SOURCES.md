@@ -103,3 +103,22 @@ Read by searching each file for every occurrence of `by Act N of YYYY` and takin
 
 This does not make any of these files wrong. It makes the date on them knowable, which is the whole
 point of Book 0 F3, and it was not knowable from this file before.
+
+## Added by the Book 0 Part D chat, 2026-09-23
+
+Fetched whole with the TinyFish `fetch_content` tool, which returns page text without a
+summarising model in between. Direct downloads from the sandbox are refused at the proxy for all
+three hosts. Full account of the route in `books/B0/READY-part-D.md`.
+
+| File | What it is | Words | Verified in it |
+| --- | --- | --- | --- |
+| `openstax_intro_stats_2e.txt` | OpenStax *Introductory Statistics 2e* (2023; web version updated 7 Jul 2026), ten sections: 1.1, 1.2, 2.3, 2.5, 2.7, 3.1, 3.2, 3.3, 3.4, 7.1 | 30,703 | Probability as "long-term relative frequency" (3.1); the independence conditions (3.2); "the larger the sample, the smaller the sampling error" and sampling bias (1.2); the median (2.5); the standard deviation and n minus 1 (2.7); "divided by the square root of n" (7.1). Mathematical typesetting is garbled by extraction; quote prose only |
+| `jcgm_vim3.txt` | JCGM 200:2012, the International vocabulary of metrology (VIM3), online edition updated 29 Apr 2017; entries 2.11, 2.13–2.21, 2.53, 4.14, 4.28 only | 1,700 | Measurement error (2.16), systematic (2.17) and random (2.19) error, accuracy (2.13), trueness (2.14), precision (2.15), resolution (4.14), zero error (4.28). The one-line definition of 2.16 came through WebFetch, asked for verbatim, because TinyFish's extractor dropped it |
+| `kiran_2022_muac_nc.txt` | Kiran, Harshitha and Bhargava, *Heliyon* 2022;8:e12173 (PMC9791811), full text with tables, via the Europe PMC full-text service | 4,863 | Tables 1–4. **Eight internal inconsistencies in the paper itself**, listed in the file header — they are in the published paper, not introduced by this copy |
+
+| `openstax_contemporary_math_7_7.txt` | OpenStax *Contemporary Mathematics* (2023; web version updated 23 Apr 2026), section 7.7 *What Are the Odds?* only | 1,691 | Odds for an event as the ratio of outcomes in it to outcomes not in it; odds as a ratio of probabilities; probabilities between zero and one, odds any non-negative number. Added after the D1 audit found odds defined from no source |
+
+**Vintage.** The OpenStax web version is revised in place; the date to recheck against is the
+"web version last updated" line on its details page. The VIM3 online edition is frozen at 2017; the
+trigger is a VIM4 publication by the JCGM. The Kiran paper is a published article; the trigger is
+an erratum or correction notice.

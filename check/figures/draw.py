@@ -473,5 +473,141 @@ def f2_area():
 FIGURES.update({"f2-baseline.png": f2_baseline,
                 "f2-area.png": f2_area})
 
+
+# ---------------------------------------------------------------- Part D
+#
+# Added by the Book 0 Part D chat, 2026-09-23. Three figures, each showing something the prose
+# can only argue: a mean pulled away from a median by one value, a spread of sample means that
+# halves when the sample is four times bigger, and two scales whose readings are wrong in two
+# different ways. Each reads its numbers out of its record and fails loudly if they have gone.
+#
+# D4 was expected to carry a dot plot and does not. Its shape lesson is that the same eleven
+# values look lopsided or balanced depending on where band edges fall, and the record already
+# sets the two bandings side by side as tables. Drawing them again would be a table drawn as a
+# picture, which is the A1 failure recorded above.
+
+import random as _random
+import statistics as _stats
+
+
+def _list_after(text, lead):
+    """The comma-separated numbers that follow `lead` in a record's prose."""
+    m = _re.search(_re.escape(lead) + r"\s*([0-9., ]+?)[.]\s", text)
+    if not m:
+        sys.exit(f"could not find '{lead}' - the figure and the record have diverged")
+    return [float(x) for x in m.group(1).replace(" ", "").split(",") if x]
+
+
+def _derived(cid, value):
+    for n in (load(cid).get("illustration") or {}).get("numbers", []) or []:
+        if str(n.get("value")) == value:
+            return float(value)
+    sys.exit(f"{cid}: number {value} is no longer registered - the figure has diverged")
+
+
+def d5_mean_median():
+    """Six values, one far out. The median stays with the crowd; the mean is pulled after the 40."""
+    rec = load("B0-R0-C28")
+    xs = _list_after(rec["simplified_explanation"], "Take six numbers:")
+    mean, median = sum(xs) / len(xs), _stats.median(xs)
+    if (round(mean, 1), median) != (16.7, 13.5):
+        sys.exit("B0-R0-C28: mean or median no longer 16.7 and 13.5 - the figure has diverged")
+    fig, ax = plt.subplots(figsize=(6.2, 1.9))
+    ax.scatter(xs, [0] * len(xs), s=70, color=BLUE, edgecolor=SURFACE, linewidth=1.4, zorder=3)
+    for x in xs:
+        ax.annotate(f"{x:g}", (x, 0), textcoords="offset points", xytext=(0, -16),
+                    ha="center", fontsize=8, color=MUTED)
+    for val, name, col, dy in ((median, "median 13.5", INK, 0.62), (mean, "mean 16.7", ORANGE, 0.62)):
+        ax.axvline(val, ymin=0.18, ymax=0.82, color=col, linewidth=1.6,
+                   linestyle="-" if col == INK else "--")
+        ax.annotate(name, (val, dy), xycoords=("data", "axes fraction"), xytext=(4 if col == ORANGE else -4, 12),
+                    textcoords="offset points", ha="left" if col == ORANGE else "right",
+                    fontsize=8.5, color=INK)
+    ax.set_xlim(0, 44)
+    ax.set_ylim(-1, 1)
+    ax.set_yticks([])
+    _frame(ax, "value")
+    ax.spines["left"].set_visible(False)
+    fig.tight_layout()
+    save(fig, "d5-mean-median.png")
+
+
+def d6_sample_means():
+    """5,000 means of samples of 10 against 5,000 of samples of 40, from one eight-number population."""
+    rec = load("B0-R0-C29")
+    pop = _list_after(rec["illustration"]["body"], "these eight numbers:")
+    s10, s40 = _derived("B0-R0-C29", "0.633"), _derived("B0-R0-C29", "0.317")
+    # The draw the record's derived fields name: random.seed(110) once, one random.choice per
+    # value, the samples of 10 first and the samples of 40 straight after in the same stream.
+    _random.seed(110)
+    m10 = [sum(_random.choice(pop) for _ in range(10)) / 10 for _ in range(5000)]
+    m40 = [sum(_random.choice(pop) for _ in range(40)) / 40 for _ in range(5000)]
+    got10, got40 = _stats.pstdev(m10), _stats.pstdev(m40)
+    if (round(got10, 3), round(got40, 3)) != (s10, s40):
+        sys.exit(f"B0-R0-C29: the draw gives {got10:.3f} and {got40:.3f}, the record says "
+                 f"{s10} and {s40} - the figure and the record have diverged")
+    bins = [i / 10 for i in range(29, 78, 1)]
+    fig, axes = plt.subplots(2, 1, figsize=(6.2, 3.6), sharex=True, sharey=True)
+    for ax, ms, n, spread, col in ((axes[0], m10, 10, got10, BLUE), (axes[1], m40, 40, got40, BLUE)):
+        ax.hist(ms, bins=bins, color=col, alpha=0.85, edgecolor=SURFACE, linewidth=0.6)
+        ax.axvline(5, color=INK, linewidth=1.2)
+        ax.annotate(f"5,000 samples of {n}\nspread of their means {spread:.3f}",
+                    (0.02, 0.62), xycoords="axes fraction", fontsize=8.5, color=INK)
+        ax.set_yticks([])
+        _frame(ax)
+        ax.spines["left"].set_visible(False)
+    axes[0].annotate("population mean 5", (5, 0.92), xycoords=("data", "axes fraction"),
+                     xytext=(-6, 0), textcoords="offset points", ha="right", fontsize=8, color=MUTED)
+    axes[1].set_xlabel("mean of one sample", fontsize=8.5, color=INK)
+    fig.tight_layout()
+    save(fig, "d6-sample-means.png")
+
+
+def d7_two_scales():
+    """Twenty readings from each of two scales against a weight known to be 60.0 kilograms."""
+    rec = load("B0-R0-C30")
+    blocks = _re.findall(r"```table\n(.*?)```", rec["illustration"]["body"], _re.S)
+    scales = {}
+    for b in blocks:
+        lines = [l.strip() for l in b.strip().split("\n") if l.strip()]
+        m = _re.match(r"scale ([AB]) readings", lines[0])
+        if m:
+            scales[m.group(1)] = [float(v) for l in lines[1:] for v in l.split()]
+    if sorted(scales) != ["A", "B"] or any(len(v) != 20 for v in scales.values()):
+        sys.exit("B0-R0-C30: two tables of twenty readings not found - the figure has diverged")
+    if "exactly 60.0 kilograms" not in rec["illustration"]["body"]:
+        sys.exit("B0-R0-C30: the 60.0 kilogram weight is gone - the figure has diverged")
+    true = 60.0
+    fig, ax = plt.subplots(figsize=(6.2, 2.6))
+    for y, key, col, label in ((1, "A", ORANGE, "scale A"), (0, "B", BLUE, "scale B")):
+        vals = scales[key]
+        counts = {}
+        for v in vals:
+            k = round(v, 1)
+            counts[k] = counts.get(k, 0) + 1
+            ax.scatter(k, y + (counts[k] - 1) * 0.045, s=22, color=col, edgecolor=SURFACE,
+                       linewidth=0.8, zorder=3)
+        mean = sum(vals) / len(vals)
+        ax.plot([mean, mean], [y - 0.14, y - 0.04], color=INK, linewidth=1.6)
+        ax.annotate(f"{label}: average {mean:g}", (58.45, y + 0.02), fontsize=8.5, color=INK,
+                    va="bottom")
+    ax.axvline(true, color=MUTED, linewidth=1.0, linestyle="--")
+    ax.annotate("true weight 60.0", (true, -0.22), xytext=(4, 0), textcoords="offset points",
+                fontsize=8, color=MUTED)
+    ax.annotate("short black mark: each scale's average", (58.45, 1.72), fontsize=8, color=MUTED)
+    ax.set_xlim(58.4, 61.0)
+    ax.set_ylim(-0.3, 1.85)
+    ax.set_yticks([])
+    _frame(ax, "reading (kg)")
+    ax.spines["left"].set_visible(False)
+    fig.tight_layout()
+    save(fig, "d7-two-scales.png")
+
+
+FIGURES.update({"d5-mean-median.png": d5_mean_median,
+                "d6-sample-means.png": d6_sample_means,
+                "d7-two-scales.png": d7_two_scales})
+
+
 if __name__ == "__main__":
     main()

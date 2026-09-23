@@ -1,0 +1,978 @@
+concept_id: B0-R0-C26
+subject: B0
+rung: 0
+sequence: 26
+name: Conditional probability through the two-way table
+concept_type: derivable
+clusters:
+- measurement-inference
+- craft-and-integrity
+ground_floor_deps: []
+concept_deps:
+- B0-R0-C24
+- B0-R0-C25
+- B0-R0-C04
+- B0-R0-C05
+definition:
+  text: |
+    A two-way table — also called a contingency table — sorts one group of people by two
+    categories at once, one down the rows and one across the columns. Each person falls into
+    exactly one row and exactly one column, so the count where a row meets a column — a cell —
+    is the number of people who are both. Adding the cells in a row or a column gives that row's
+    or column's total; adding every cell gives the grand total.
+
+    A conditional probability restricts which total a count is divided by. P(A given B), written
+    P(A|B), is the count of people who are both A and B, divided by the count of people who are B.
+    The row or column total for B stands in as the denominator, in place of the grand total.
+    P(A|B) and P(B|A) divide the same top count by two different totals and are not generally
+    equal.
+
+    Four proportions, each a count divided by a total, cover most reported screening results.
+
+    Sensitivity is the share of people with the condition that the test catches, written
+    P(test positive given condition present).
+
+    Specificity is the share of people without the condition that the test correctly clears,
+    written P(test negative given condition absent).
+
+    The positive predictive value is the share of positive results that are right, written
+    P(condition present given test positive).
+
+    Prevalence is how many people in a group have the condition, written P(condition present),
+    with no test involved.
+
+    The positive predictive value changes with prevalence even when sensitivity and specificity do
+    not, because the same two percentages are applied to a different total.
+  references:
+  - citekey: openstax_intro_stats_2e
+    kind: textbook
+    locator: s. 3.1 Terminology (conditional probability)
+    quote: A conditional reduces the sample space
+    verified:
+      resolved_id: https://openstax.org/books/introductory-statistics-2e/pages/3-1-terminology
+      opened: true
+      claim_located: true
+      checked_on: '2026-09-23'
+      note: ''
+  - citekey: openstax_intro_stats_2e
+    kind: textbook
+    locator: s. 3.4 Contingency Tables
+    quote: A contingency table provides a way of portraying data that can facilitate calculating
+      probabilities.
+    verified:
+      resolved_id: https://openstax.org/books/introductory-statistics-2e/pages/3-4-contingency-tables
+      opened: true
+      claim_located: true
+      checked_on: '2026-09-23'
+      note: 'Sensitivity, specificity, the positive predictive value and prevalence are none of
+        them in this anchor. They are defined in this record as one cell divided by one total,
+        which a derivable concept may do without a further source; the terms themselves are not
+        located in the anchor.'
+simplified_explanation: |
+  This section stands on the proportions from a few sections back. It also stands on the
+  counting and probability moves from the two sections just before this one. It puts them to
+  work on a question every screening result raises. Given a positive result, how likely is the
+  condition actually there?
+
+  Start by building a table, because nobody hands you one ready-made. A two-way table sorts the
+  same people twice. Sort them one way down the columns, by whether they truly have the thing you
+  care about. Sort them the other way across the rows, by what a quick measurement says. Where a
+  row meets a column is a count of people who are both — that count is a cell.
+
+  Add up a row and you get a row total. Add up a column and you get a column total. Add up
+  everything and you get the grand total.
+
+  A percentage is a count divided by a total, and you already know that move. A conditional
+  probability is the same move with a chosen denominator. Instead of dividing by everyone in the
+  table, you divide by one row or one column. "Of those who test positive, how many truly have
+  it" divides by the row of positive results. "Of those who truly have it, how many test
+  positive" divides by the column of people who truly have it. The same top count can appear in
+  both, and the two answers are usually different, because the denominator is different. Ask
+  which one you have been handed before you read anything into it.
+
+  Five names cover almost every screening result you will meet. Sensitivity is the share of
+  people with the condition that the test catches. Specificity is the share of people without
+  the condition that the test correctly clears.
+
+  The positive predictive value is the share of positive results that are right. Its
+  mirror is the negative predictive value, the share of negative results that are right.
+  Prevalence — how many people in a group have the condition — needs no test at all. It is a fact about the
+  group before anyone is measured.
+
+  Knowing that someone tests positive should change how likely you think it is that they truly
+  have it. If it does not, the test and the condition are independent, in the sense the last
+  section gave that word. In practice a working test never behaves like that.
+
+  The one thing worth carrying out of this whole section is this. The positive predictive value
+  belongs to the room the test is used in, not to the test by itself. Run the same test where the
+  condition is rarer, and the positive predictive value falls, even though nothing about the test
+  itself changed.
+illustration:
+  body: |
+    This table is built from a real study. Kiran, Harshitha and Bhargava measured 282 medical
+    students in Mangaluru, including their body-mass index and the circumference of the upper
+    arm. This section uses only the 131 men. It uses the numbers to compute with, not as evidence
+    about what an arm measurement is good for. That question belongs elsewhere.
+
+    The study's Table 3 reports a 31.3 centimetre arm cut-off for men, labelled "overweight,
+    body-mass index 25 or more". It gives sensitivity 86 per cent and specificity 74 per cent.
+    Table 2 gives 42 men with an index from 25 to 29.9, and 10 more at 30 or more.
+
+    ```working
+        42 plus 10 = 52
+    ```
+
+    Fifty-two men have an index of 25 or more, and the rest of the 131 do not.
+
+    ```working
+        131 minus 52 = 79
+    ```
+
+    Try to rebuild the table the label describes: 52 men against 79. Sensitivity of 86 per cent
+    should mean some whole number of the 52 caught by the tape. Try the nearest candidates.
+
+    ```working
+        44 divided by 52 = 0.8461...
+        45 divided by 52 = 0.8653...
+    ```
+
+    Rounded, 44 gives 85 per cent and 45 gives 87 per cent. Neither is 86. No whole number of 52
+    rounds to exactly 86 per cent. Try the 79 the same way, against the specificity of 74 per
+    cent.
+
+    ```working
+        58 divided by 79 = 0.7341...
+        59 divided by 79 = 0.7468...
+    ```
+
+    Fifty-eight gives 73 per cent and 59 gives 75 per cent. Neither is 74 either. The label's own
+    group sizes, 52 and 79, cannot have produced the paper's printed percentages. That is not a
+    rounding slip of one person. No count built from these two totals gets back to 86 and 74 at
+    all.
+
+    This is a denominator question, the kind this whole section teaches. Somewhere else in Table
+    2 is a group of men that does divide back cleanly. Try the 42 men in the 25-to-29.9 band on
+    their own, against the other 89 men in the study.
+
+    ```working
+        131 minus 42 = 89
+    ```
+
+    ```working
+        0.86 times 42 = 36.12
+        36 divided by 42 = 0.8571...
+    ```
+
+    Thirty-six of the 42 rounds to exactly 86 per cent.
+
+    ```working
+        0.74 times 89 = 65.86
+        66 divided by 89 = 0.7415...
+    ```
+
+    Sixty-six of the 89 rounds to exactly 74 per cent. Both round back to the printed figure.
+    The paper's own cut-off, and its own two percentages, fit the 42 men in the narrower
+    25-to-29.9 band, compared against everyone else.
+
+    Table 3's row label, "body-mass index 25 or more", is the paper's own label for its own row.
+    It does not fit the group its own numbers appear to have been computed on. Every row of
+    Table 3 whose group is not in doubt divides back under ordinary rounding, so the paper rounds
+    that way. On that rounding this row fits the 42 and not the 52.
+
+    Build the table on the group that actually works. The rest of each row and column follow by
+    subtraction.
+
+    ```working
+        42 minus 36 = 6
+        89 minus 66 = 23
+        36 plus 23 = 59
+        6 plus 66 = 72
+    ```
+
+    ```table
+    |  | in the 25-29.9 band | not in the band | total |
+    | arm 31.3 cm or more | 36 | 23 | 59 |
+    | arm under 31.3 cm | 6 | 66 | 72 |
+    | total | 42 | 89 | 131 |
+    ```
+
+    This table is rebuilt, not printed by the paper in this form. It applies two rounded
+    percentages to two counts. It is the only whole-person table, built on a group the paper
+    actually prints, that rounds back to both 86 and 74. That is why it is the best estimate
+    here, and the earlier 52-against-79 attempt is not.
+
+    Now put the table to work. Take the row of men the tape flags — arm 31.3 centimetres or
+    more — 59 of them in total.
+
+    ```working
+        36 divided by 59 = 0.6101...
+    ```
+
+    About 61 per cent. This is the positive predictive value: of the men the arm measurement
+    flags, the share who are actually in the 25-to-29.9 band. Notice which total you divided
+    by — the row of 59 who were flagged, not all 131.
+
+    Now reverse the question. Take the column of men in the 25-to-29.9 band — 42 of them. Of
+    those 42, how many also have an arm of 31.3 centimetres or more?
+
+    ```working
+        36 divided by 42 = 0.8571...
+    ```
+
+    About 86 per cent. Same top number, 36, and a completely different bottom number — 42 this
+    time, not 59 — so a completely different answer. This second ratio is the sensitivity, and it
+    is the number the paper itself reports. The two questions sound almost identical in English
+    and they are not the same arithmetic. P(in the band given arm 31.3 or more) is not P(arm 31.3
+    or more given in the band).
+
+    The other two names come off the same table. Specificity is the share of the 89 men outside
+    the band whom the measurement correctly clears.
+
+    ```working
+        66 divided by 89 = 0.7415...
+    ```
+
+    Prevalence is how many of the 131 men are in the band in the first place, no measurement
+    involved. Table 2 already gives it directly: 42 of 131.
+
+    ```working
+        42 divided by 131 = 0.3206...
+    ```
+
+    About 32 per cent, among these 131 men.
+
+    Move the prevalence, and watch the positive predictive value alone move with it. Keep the
+    same cut-off, the same 86 per cent sensitivity and the same 74 per cent specificity. Apply
+    them to a stated group instead: 1,000 young men in which one in five is in the band. The
+    figure of 1,000 keeps the arithmetic in whole people. One in five is a stated condition,
+    chosen for the arithmetic.
+
+    ```working
+        0.20 times 1,000 = 200
+        1,000 minus 200 = 800
+    ```
+
+    ```working
+        0.86 times 200 = 172
+        0.74 times 800 = 592
+    ```
+
+    ```working
+        200 minus 172 = 28
+        800 minus 592 = 208
+        172 plus 208 = 380
+    ```
+
+    ```table
+    |  | in the band | not in the band | total |
+    | arm 31.3 cm or more | 172 | 208 | 380 |
+    | arm under 31.3 cm | 28 | 592 | 620 |
+    | total | 200 | 800 | 1,000 |
+    ```
+
+    ```working
+        172 divided by 380 = 0.4526...
+    ```
+
+    About 45 per cent, against about 61 per cent among the medical students themselves. Same
+    tape, same cut-off, same sensitivity and specificity. A positive result is right less than
+    half the time once the group has fewer people in the band to begin with.
+
+    A formula reaches this same answer in one line instead of a rebuilt table. It is worth
+    knowing by name, even though this section stops short of teaching it. It is called Bayes'
+    theorem. Every move made above — condition, reverse, weigh by how common the condition
+    is — is exactly what that formula does in symbols.
+  analogy_breaks_when: |
+    The 36-23-6-66 table is rebuilt, not measured. It was built by applying two rounded
+    percentages to two counts. Of the two group sizes tried, only one rounds back to both 86 and
+    74. Wherever you see a sensitivity and a specificity with no counts behind them, run the
+    same check before you trust which group they describe.
+
+    The positive predictive value of 61 per cent describes these 131 medical students and nobody
+    else. It is not a fixed property of the arm measurement. It does not carry unchanged into a
+    different group. The move to 1,000 men at one in five just showed that directly. Sensitivity
+    and specificity stayed the same. The positive predictive value fell by about a quarter, from
+    61 to 45 per cent, while the prevalence fell from 32 to 20 per cent. Never quote a positive predictive
+    value without saying whose prevalence produced it.
+
+    This section never says what an arm measurement is good for as a screening tool. It uses the
+    study's real counts to teach how a two-way table and a conditional probability work. Whether
+    the measurement is worth taking in a clinic is a separate question. This course does not
+    settle it here.
+  numbers:
+  - value: '131'
+    unit: men measured, Results
+    citekey: kiran_2022_muac_nc
+    as_of: '2022'
+    quote: We enrolled 282 medical students (131, 46.5% males
+  - value: '282'
+    unit: medical students enrolled in the study, Results
+    citekey: kiran_2022_muac_nc
+    as_of: '2022'
+    quote: We enrolled 282 medical students (131, 46.5% males
+  - value: '42'
+    unit: men in the 25-to-29.9 body-mass-index band, Table 2
+    citekey: kiran_2022_muac_nc
+    as_of: '2022'
+    quote: Overweight (25–29.9 kg/m2) 83 (29.4) 42 (32.1)
+  - value: '10'
+    unit: men with a body-mass index of 30 or more, Table 2
+    citekey: kiran_2022_muac_nc
+    as_of: '2022'
+    quote: Obese (≥30 kg/m2) 15 (5.3) 10 (7.6)
+  - value: '52'
+    unit: men with a body-mass index of 25 or more, the label Table 3 gives its cut-off row
+    citekey: kiran_2022_muac_nc
+    as_of: '2022'
+    derived: '42 in the 25-to-29.9 band plus 10 at 30 or more, Table 2, men'
+    quote: Overweight (25–29.9 kg/m2) 83 (29.4) 42 (32.1)
+  - value: '79'
+    unit: men under a body-mass index of 25, the group Table 3's label implies alongside the 52
+    citekey: kiran_2022_muac_nc
+    as_of: '2022'
+    derived: '131 men in total (Results) minus the 52 with an index of 25 or more'
+    quote: We enrolled 282 medical students (131, 46.5% males
+  - value: '89'
+    unit: men not in the 25-to-29.9 band, the group the cut-off's percentages actually reproduce
+    citekey: kiran_2022_muac_nc
+    as_of: '2022'
+    derived: '131 men in total (Results) minus the 42 in the 25-to-29.9 band (Table 2)'
+    quote: Overweight (25–29.9 kg/m2) 83 (29.4) 42 (32.1)
+  - value: '86'
+    unit: per cent, sensitivity the paper reports for the 31.3 cm arm cut-off in men, Abstract
+    citekey: kiran_2022_muac_nc
+    as_of: '2022'
+    quote: "The MUAC cut-off was 31.3cm for men (sensitivity: 86%; specificity: 74%) to detect
+      overweight"
+  - value: '74'
+    unit: per cent, specificity for the same 31.3 cm arm cut-off, Abstract
+    citekey: kiran_2022_muac_nc
+    as_of: '2022'
+    quote: "The MUAC cut-off was 31.3cm for men (sensitivity: 86%; specificity: 74%) to detect
+      overweight"
+  - value: '31.3'
+    unit: centimetres, the arm-circumference cut-off for men, Abstract
+    citekey: kiran_2022_muac_nc
+    as_of: '2022'
+    quote: "The MUAC cut-off was 31.3cm for men (sensitivity: 86%; specificity: 74%) to detect
+      overweight"
+  - value: '36'
+    unit: men in the 25-to-29.9 band whom the tape flags, the rebuilt table's true-positive cell
+    citekey: kiran_2022_muac_nc
+    as_of: '2022'
+    derived: '0.86 times 42, rounded to the nearest man'
+    quote: "The MUAC cut-off was 31.3cm for men (sensitivity: 86%; specificity: 74%) to detect
+      overweight"
+  - value: '6'
+    unit: men in the 25-to-29.9 band the tape misses, the rebuilt table's false-negative cell
+    citekey: kiran_2022_muac_nc
+    as_of: '2022'
+    derived: '42 minus 36'
+    quote: Overweight (25–29.9 kg/m2) 83 (29.4) 42 (32.1)
+  - value: '66'
+    unit: men outside the band whom the tape correctly clears, the rebuilt table's true-negative
+      cell
+    citekey: kiran_2022_muac_nc
+    as_of: '2022'
+    derived: '0.74 times 89, rounded to the nearest man'
+    quote: "The MUAC cut-off was 31.3cm for men (sensitivity: 86%; specificity: 74%) to detect
+      overweight"
+  - value: '23'
+    unit: men outside the band the tape wrongly flags, the rebuilt table's false-positive cell
+    citekey: kiran_2022_muac_nc
+    as_of: '2022'
+    derived: '89 minus 66'
+    quote: "The MUAC cut-off was 31.3cm for men (sensitivity: 86%; specificity: 74%) to detect
+      overweight"
+  - value: '59'
+    unit: men the tape flags, the rebuilt table's test-positive row total
+    citekey: kiran_2022_muac_nc
+    as_of: '2022'
+    derived: '36 plus 23, the rebuilt table'
+    quote: "The MUAC cut-off was 31.3cm for men (sensitivity: 86%; specificity: 74%) to detect
+      overweight"
+  - value: '72'
+    unit: men the tape clears, the rebuilt table's test-negative row total
+    citekey: kiran_2022_muac_nc
+    as_of: '2022'
+    derived: '6 plus 66, the rebuilt table'
+    quote: "The MUAC cut-off was 31.3cm for men (sensitivity: 86%; specificity: 74%) to detect
+      overweight"
+  - value: '61'
+    unit: per cent, positive predictive value of the rebuilt table
+    citekey: kiran_2022_muac_nc
+    as_of: '2022'
+    derived: '36 divided by 59, the rebuilt table'
+    quote: "The MUAC cut-off was 31.3cm for men (sensitivity: 86%; specificity: 74%) to detect
+      overweight"
+  - value: '32'
+    unit: per cent, men in the 25-to-29.9 band, the prevalence among the 131 men
+    citekey: kiran_2022_muac_nc
+    as_of: '2022'
+    derived: '42 divided by 131, Table 2 and Results'
+    quote: Overweight (25–29.9 kg/m2) 83 (29.4) 42 (32.1)
+must_know:
+- point: |
+    P(A given B) is not P(B given A). Sensitivity and the positive predictive value are built
+    from the same top count. They divide it by different totals. Treating one figure as though it
+    answered the other question is a common error in reading a screening result.
+  kind: misconception
+  bearing: clinical
+- point: |
+    The positive predictive value moves when the group being tested changes, even though the test
+    itself has not. Run the same test where the condition is common, and most positive results
+    are right. Run it where the condition is rare, and most positive results are wrong. A report
+    that a test is "accurate" means nothing until you are told which of the two groups it was
+    measured in.
+  kind: trap
+  bearing: clinical
+- point: |
+    Before dividing anything, say out loud which row or column you are dividing by. "Of those who
+    test positive" and "of those who truly have it" are different totals. Naming the total first
+    stops the reversal error before you compute anything.
+  kind: move
+  bearing: methodological
+- point: |
+    The positive predictive value belongs to the group tested, not to the test. Carrying
+    sensitivity and specificity forward to a new group is itself an assumption. Say so whenever
+    you do it.
+  kind: boundary
+  bearing: methodological
+- point: |
+    Divide back. Try every whole number of the stated group. If none gives the printed
+    percentage, the total you are dividing by is not the one the paper actually used. A row's
+    own label is not proof that it matches the count behind it.
+  kind: move
+  bearing: methodological
+- point: |
+    A headline that reports a test as some per cent "accurate" tells you nothing on its own. It
+    names none of the sensitivity, the specificity or the positive predictive value. Ask which
+    one was meant, then ask for the prevalence the third one needs.
+  kind: consequence
+  bearing: public
+- point: |
+    When two published figures for the same measurement disagree, check whether either one
+    conflicts with something else printed alongside it. A shared total, or rows that must add up,
+    can settle which figure the paper actually computed from. Do this before you assume the more
+    prominent figure is correct.
+  kind: move
+  bearing: methodological
+exercises:
+- type: teaching
+  prompt: |
+    A health secretary has one page and wants an answer first. The briefing says an
+    arm-measurement test for a weight-related condition is "86 per cent accurate". Write the page.
+  answer: |
+    Answer first. Eighty-six per cent of what? "Accurate" could mean three different figures.
+
+    Suppose it is the sensitivity, the share of people with the condition that the test
+    catches. Then it says nothing yet about how often a positive result is right.
+
+    The reason in one line: how many of the test's positive results are actually right depends on
+    the group tested, not only on the test. The more common the condition is there, the more of
+    the positive results are right.
+
+    Here is the number that matters, worked from a real study's own figures. Among these medical
+    students, about 32 per cent of the 131 men are in the band. A positive result there was right
+    about 61 times in 100. In a group where one in five is in the band, the same test's positive
+    results would be right about 45 times in 100.
+
+    What to ask before approving anything: what share of the population actually targeted has the
+    condition. Without that figure, "86 per cent accurate" cannot be turned into a number of
+    people. It cannot say how many a positive result would wrongly reassure or wrongly worry.
+- type: critique
+  prompt: |
+    The paper defines higher percent body fat (PBF) separately for men and women. It measures
+    body fat with a machine that passes a small current through the body. Its abstract states the cut-off in one place as
+    "(men: ≥20%; women: ≥30%)". Its own methods section and Table 2 both use "≥28" per cent for
+    women instead.
+
+    Say how you would check which of the two women's figures, 30 or 28 per cent, the paper's own
+    numbers are actually built on.
+  answer: |
+    There is no arithmetic check here of the kind that settles a count against a percentage. A
+    cut-off is a definition, not a total a percentage can be divided back into.
+
+    What can be checked is how many places in the paper repeat each number. The methods section,
+    Table 2 and Table 3 all give the women's cut-off as 28 per cent. Only the abstract's one sentence
+    gives 30 per cent instead.
+
+    Three places agree on 28, and only one place states 30. That makes 28 the figure the
+    study's own numbers were almost certainly built on, and 30 in the abstract the more likely
+    slip. Report both figures, and say which three places agree, rather than assuming a headline
+    abstract figure is always the right one.
+quantitative: true
+practice:
+- level: 1
+  prompt: |
+    Of 100 people, 20 truly have a condition and 80 do not. A test is positive for 15 of the 20
+    who have it, and positive for 10 of the 80 who do not.
+
+    Build the two-way table, with row and column totals.
+  answer: |
+    Start from what you are given. Fifteen of the 20 with the condition test positive, so 5 of the
+    20 test negative.
+
+    ```working
+        20 minus 15 = 5
+    ```
+
+    Ten of the 80 without the condition test positive, so 70 test negative.
+
+    ```working
+        80 minus 10 = 70
+    ```
+
+    Add across for the two row totals.
+
+    ```working
+        15 plus 10 = 25
+        5 plus 70 = 75
+    ```
+
+    ```table
+    |  | condition present | condition absent | total |
+    | test positive | 15 | 10 | 25 |
+    | test negative | 5 | 70 | 75 |
+    | total | 20 | 80 | 100 |
+    ```
+
+    Every number in the finished table is invented, to practise the move of filling one in.
+- level: 1
+  prompt: |
+    Using the table you built in the previous problem, work out P(test positive given condition
+    present) and P(condition present given test positive). Say which total each one divides by.
+  answer: |
+    P(test positive given condition present) divides by the column of people who have the
+    condition, which totals 20.
+
+    ```working
+        15 divided by 20 = 0.75
+    ```
+
+    P(condition present given test positive) divides by the row of people who test positive,
+    which totals 25.
+
+    ```working
+        15 divided by 25 = 0.6
+    ```
+
+    Same top number, 15. Two different bottom numbers, the column total of 20 and the row total
+    of 25, give 0.75 and 0.6. The two questions are not the same question.
+
+    Separately, check whether the test and the condition are independent, using last section's
+    test. Does P(test positive) equal P(test positive given condition present)?
+
+    ```working
+        25 divided by 100 = 0.25
+    ```
+
+    P(test positive) is 0.25, against 0.75 given the condition is present. They do not match, so
+    the test and the condition are not independent — which is exactly the point of running a test
+    at all.
+- level: 2
+  prompt: |
+    Using the same invented table, work out P(test negative given condition absent).
+  answer: |
+    This divides by the column of people without the condition, which totals 80.
+
+    ```working
+        70 divided by 80 = 0.875
+    ```
+
+    A proportion of 0.875. This, and the P(test positive given condition present) from the
+    previous problem, are the two proportions a table like this is usually built to report.
+- level: 3
+  prompt: |
+    Still using the invented table, name which cell and which total each of these divides by:
+    sensitivity, specificity, and the positive predictive value. Give the value of each.
+  answer: |
+    Sensitivity is the share of people with the condition that the test catches. It is the
+    test-positive cell in the column of people who have the condition, divided by that column's
+    own total.
+
+    ```working
+        15 divided by 20 = 0.75
+    ```
+
+    Specificity is the share of people without the condition that the test correctly clears. It
+    is the test-negative cell in the column of people who do not have it, divided by that
+    column's total.
+
+    ```working
+        70 divided by 80 = 0.875
+    ```
+
+    The positive predictive value is the share of positive results that are right. It is the same
+    condition-present cell as before, but now divided by the row total for everyone who tested
+    positive.
+
+    ```working
+        15 divided by 25 = 0.6
+    ```
+
+    Three questions. Three different totals. The same handful of cells does all the work each
+    time.
+- level: 4
+  prompt: |
+    Kiran, Harshitha and Bhargava's 2022 study found that 52 of 131 men had a body-mass index of
+    25 or more. Work out this share as a percentage, and the percentage of men under 25.
+  answer: |
+    ```working
+        52 divided by 131 = 0.3969...
+    ```
+
+    About 39.7 per cent have an index of 25 or more, among the 131 men.
+
+    ```working
+        131 minus 52 = 79
+    ```
+
+    ```working
+        79 divided by 131 = 0.6031...
+    ```
+
+    About 60.3 per cent are under 25. The two add to 100 per cent, as a group and its complement
+    must.
+  refs: [kiran_2022_muac_nc]
+- level: 5
+  prompt: |
+    Table 3 also reports a women's arm-circumference cut-off. Sensitivity is 88 per cent and
+    specificity 83 per cent, labelled "body-mass index 25 or more" the same way the men's row
+    was. Table 2 gives 41 women in the 25-to-29.9 band and 5 more at 30 or more. Together that
+    is 46 women carrying the label, out of 151 women in the study.
+
+    Try to reproduce 88 per cent from whole numbers of 46, and 83 per cent from whole numbers of
+    105 (151 minus 46). Say what the check shows.
+  answer: |
+    ```working
+        151 minus 46 = 105
+    ```
+
+    Try the nearest whole numbers of 46 against 88 per cent.
+
+    ```working
+        40 divided by 46 = 0.8695...
+        41 divided by 46 = 0.8913...
+    ```
+
+    Forty gives 87 per cent, and 41 gives 89. Neither is 88. No whole number of 46 reproduces the
+    sensitivity exactly.
+
+    Now try 105 against 83 per cent.
+
+    ```working
+        87 divided by 105 = 0.8285...
+    ```
+
+    Eighty-seven of 105 rounds to exactly 83 per cent. This side does reproduce the label's own
+    total. That shows a check can pass by coincidence on one side and still fail on the other.
+    One passing side is not enough to trust the label.
+  refs: [kiran_2022_muac_nc]
+- level: 5
+  prompt: |
+    Table 2's own women's row gives 41 women in the 25-to-29.9 band on its own, and 151 minus 41
+    women outside it. Use these two totals with the same 88 per cent sensitivity and 83 per cent
+    specificity, and work out the positive predictive value.
+  answer: |
+    ```working
+        151 minus 41 = 110
+    ```
+
+    ```working
+        0.88 times 41 = 36.08
+        36 divided by 41 = 0.8780...
+    ```
+
+    Thirty-six of 41 rounds to exactly 88 per cent, the sensitivity the paper reports.
+
+    ```working
+        0.83 times 110 = 91.3
+        91 divided by 110 = 0.8272...
+    ```
+
+    Ninety-one of 110 rounds to exactly 83 per cent, the specificity. Both round back to the printed
+    figure, the same way the men's 42-against-89 split did.
+
+    ```working
+        41 minus 36 = 5
+        110 minus 91 = 19
+        36 plus 19 = 55
+    ```
+
+    ```working
+        36 divided by 55 = 0.6545...
+    ```
+
+    About 65 per cent of the women the arm measurement flags are actually in the 25-to-29.9 band.
+    The women's row appears to carry the same mislabelling problem the men's row did, and the same fix.
+  refs: [kiran_2022_muac_nc]
+- level: 6
+  prompt: |
+    Using the men's rebuilt table — 36, 6, 23 and 66 — work out the negative predictive value.
+    Of the men the arm measurement clears, what share truly are outside the 25-to-29.9 band?
+  answer: |
+    The row of cleared men totals 72.
+
+    ```working
+        6 plus 66 = 72
+    ```
+
+    ```working
+        66 divided by 72 = 0.9166...
+    ```
+
+    About 92 per cent. Being cleared by the tape is a stronger signal, in this group, than being
+    flagged by it.
+  refs: [kiran_2022_muac_nc]
+- level: 7
+  prompt: |
+    Here is a worked answer. Find the step that broke.
+
+    ```working
+        the abstract says 113 had abdominal obesity — the paper's label for a waist of 90
+        centimetres or more in men and 80 or more in women
+        113 divided by 282 = 0.4007...
+        0.4007 rounds to 40.1 per cent, close enough to the abstract's own 38.7 per cent
+        so 113 is confirmed as the paper's count for abdominal obesity
+    ```
+  answer: |
+    The step that broke is calling 40.1 per cent "close enough" to 38.7. A gap of about 1.4
+    percentage points is not rounding noise. It is a real mismatch, on a figure printed to one
+    decimal place.
+
+    Try the paper's other count for the same measurement, 109, from its own results text and
+    Table 2.
+
+    ```working
+        109 divided by 282 = 0.3865...
+    ```
+
+    That rounds to 38.7 per cent exactly, matching the printed figure. The results text and
+    Table 2's own 109 is the count the paper's arithmetic actually supports. The abstract's 113 is
+    the slip.
+
+    Why it looks reasonable: 40.1 and 38.7 both round to about 40. A reader
+    skimming past two similar percentages assumes they are the same claim written two ways.
+    Dividing back and comparing the decimal is the only way to catch that they are not.
+  refs: [kiran_2022_muac_nc]
+- level: 7
+  prompt: |
+    Here is a worked answer. Find the step that broke.
+
+    ```working
+        the abstract reports 186 (66%) had higher percent body fat (PBF), out of 282
+        Table 2 reports the same measure as 185 (65.6%)
+        185 divided by 282 = 0.6560..., which rounds to 66 per cent
+        186 divided by 282 = 0.6596..., which also rounds to 66 per cent
+        both numbers are consistent with their own printed percentages, so nothing in the paper
+        can decide which count is right
+    ```
+  answer: |
+    The step that broke is the conclusion. Both counts do round to 66 per cent, but the paper's
+    own addition settles the question without needing to round anything.
+
+    ```working
+        71 plus 114 = 185
+    ```
+
+    Table 2 gives 71 men and 114 women with high PBF, and they add to 185, not 186.
+
+    ```working
+        97 plus 185 = 282
+    ```
+
+    The normal-range row, 97, plus the high row, 185, gives exactly the study's total of 282.
+
+    ```working
+        97 plus 186 = 283
+    ```
+
+    Adding 186 instead gives 283, one more person than the study actually has. That is
+    impossible, so 185 is the paper's own figure and 186 in the abstract is the slip.
+
+    Why it looks reasonable: both percentages round to the same whole number, so a check that
+    stops at rounding finds nothing wrong. The paper's own row-plus-row arithmetic is a second,
+    independent check, and it is the one that actually decides it.
+  refs: [kiran_2022_muac_nc]
+- level: 8
+  prompt: |
+    Here is a worked answer. Find the step that broke.
+
+    ```working
+        Table 3 gives its 31.2 cm arm cut-off's sensitivity as 85 per cent for spotting the 41 men
+        whose waist is 90 centimetres or more (Table 2)
+        0.85 times 41 = 34.85
+        so 34 of the 41 men were caught by the tape
+        34 divided by 41 rounds to 85 per cent, matching the paper
+    ```
+  answer: |
+    The step that broke is rounding 34.85 down to 34. The nearest whole number is 35. Divide both
+    back to see which one fits.
+
+    ```working
+        34 divided by 41 = 0.8292...
+        35 divided by 41 = 0.8536...
+    ```
+
+    Thirty-four gives 83 per cent, not 85. Thirty-five gives 85, the printed figure. The last line
+    claimed a match it never computed.
+
+    Why it looks reasonable: 34.85 sits between 34 and 35, and cutting it down feels cautious. The
+    last line then states the result it expects instead of dividing. Checking the answer means
+    dividing back and comparing the result with the number you started from.
+  refs: [kiran_2022_muac_nc]
+- level: 9
+  prompt: |
+    A district officer says: "The tape correctly identified men in the 25-to-29.9 body-mass-index
+    band most of the time among these medical students. It will be right about as often wherever
+    I use it."
+
+    Suppose one in three men in the district were in the band. Decide what to compute, compute
+    it, and say what your answer does not establish.
+  answer: |
+    What to compute: the positive predictive value at that one-in-three share. Use
+    the same sensitivity and specificity as before, in a group of 900 men, to keep the arithmetic
+    in whole people.
+
+    ```working
+        900 divided by 3 = 300
+        900 minus 300 = 600
+    ```
+
+    ```working
+        0.86 times 300 = 258
+        0.74 times 600 = 444
+    ```
+
+    ```working
+        600 minus 444 = 156
+        258 plus 156 = 414
+    ```
+
+    ```working
+        258 divided by 414 = 0.6231...
+    ```
+
+    About 62 per cent, close to the 61 per cent found among the medical students.
+
+    What this does not show. The two numbers are close because one in three is close to the
+    students' 32 per cent. At a different share they would not be. The one-in-three figure is
+    supposed, not measured, and nothing here checks it. The sensitivity and specificity are
+    still the students' own figures, used here as if they hold true in a new district too.
+  refs: [kiran_2022_muac_nc]
+- level: 10
+  prompt: |
+    A note says: "Neck circumference correctly identifies men with a body-mass index of 25 or
+    more, most of the time. It should replace body-mass index screening everywhere."
+
+    Table 3 gives a neck-circumference cut-off for men: sensitivity 81 per cent, specificity 71
+    per cent.
+
+    Decide what to compute, compute it, and say what the claim does not show.
+  answer: |
+    What to compute: which split of the 131 men reproduces 81 and 71 as whole counts. Then the
+    positive predictive value each split gives.
+
+    ```working
+        0.81 times 52 = 42.12
+        42 divided by 52 = 0.8076...
+    ```
+
+    Forty-two of 52 rounds to exactly 81 per cent.
+
+    ```working
+        0.71 times 79 = 56.09
+        56 divided by 79 = 0.7088...
+    ```
+
+    Fifty-six of 79 rounds to exactly 71 per cent. Now try the band's split, 42 against 89.
+
+    ```working
+        0.81 times 42 = 34.02
+        34 divided by 42 = 0.8095...
+        0.71 times 89 = 63.19
+        63 divided by 89 = 0.7078...
+    ```
+
+    Both 52 against 79 and 42 against 89 round back to 81 and 71, so this row alone cannot say
+    which group the paper used.
+
+    ```working
+        52 minus 42 = 10
+        79 minus 56 = 23
+        42 plus 23 = 65
+    ```
+
+    ```working
+        42 divided by 65 = 0.6461...
+    ```
+
+    On the 52-against-79 split, about 65 per cent of the men the neck measurement flags are at 25
+    or more, among these medical students.
+
+    ```working
+        89 minus 63 = 26
+        34 plus 26 = 60
+        34 divided by 60 = 0.5666...
+    ```
+
+    On the band's split, 34 of the 60 men flagged are in the band, about 57 per cent. The figure
+    moves with the group.
+
+    ```working
+        0.20 times 1,000 = 200
+        1,000 minus 200 = 800
+    ```
+
+    ```working
+        0.81 times 200 = 162
+        0.71 times 800 = 568
+    ```
+
+    ```working
+        800 minus 568 = 232
+        162 plus 232 = 394
+    ```
+
+    ```working
+        162 divided by 394 = 0.4111...
+    ```
+
+    About 41 per cent in a stated group where one in five is at 25 or more.
+
+    What the claim does not establish. None of 65, 57 or 41 per cent is "most of the time"
+    in a way that supports "everywhere". Each belongs to one group, the students or a stated one, not to the
+    measurement on its own.
+
+    The paper's own running text gives a different specificity for this same row, 82 rather than
+    71. This section has not settled which of the two the paper actually used. Replacing one
+    measurement with another is also not a decision that turns on sensitivity and specificity
+    alone. Cost, ease of use and what the measurement is needed for all matter too. And nothing
+    here establishes that either measurement is a good screening tool in the first place. This
+    section has deliberately not tried to answer that.
+  refs: [kiran_2022_muac_nc]
+retrieval_items:
+- q: What is the difference between P(A given B) and P(B given A)?
+  a: They divide the same joint count by two different totals — the row or column total for B in
+    the first case, for A in the second — and are equal only by coincidence, not by rule.
+- q: Why does the positive predictive value of a test change with prevalence when sensitivity and
+    specificity do not?
+  a: Sensitivity and specificity are proportions within the condition-present and
+    condition-absent columns. The positive predictive value divides by the test-positive row,
+    whose size depends on how many people in the group actually have the condition to begin with.
+- q: A paper prints a sensitivity and a specificity for a named group, but not the underlying
+    counts. What check can tell you whether that group size could actually have produced them?
+  a: Try every whole number of the stated group and see whether dividing it back by the group
+    size rounds to the printed percentage. If none does, the total you have is not the one the
+    paper's percentage was computed from.
+provenance:
+  map_version_id: fc19c8bc-a216-4131-99fb-ebe3f19cec4a
+  outcome_refs:
+  - B0-D3
+  bridge_ref: []
+review:
+  stability: long
+  trigger: '2031-09-23'
+  last_reviewed: '2026-09-23'
+status: drafted
