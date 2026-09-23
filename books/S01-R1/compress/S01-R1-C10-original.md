@@ -1,0 +1,103 @@
+# S01-R1-C10 · Arithmetically true, practically insufficient
+
+**Definition.** "Eat less, move more" is usually offered as an argument with an unstated premise. Written out
+in full it runs: the identity says the rate of change of stored energy equals intake minus
+expenditure (premise one). Cutting intake, with expenditure held fixed, therefore reduces
+stored energy (premise two, which is arithmetic and true). Conclusion: cutting intake and
+raising expenditure is a sufficient instruction for losing weight and keeping it off.
+
+The inference fails, and it fails at premise two's hidden clause: "with expenditure held
+fixed". Intake and expenditure are not fixed once a person acts on the instruction; they move
+in response to the fall in stored energy, in the direction that opposes it, exactly as an
+earlier concept establishes. So the identity is true throughout, and the instruction built on
+top of it does not follow from it, because the argument needs a premise the physiology does
+not supply.
+
+This is not a claim that the accounting is wrong. It is a claim that a true identity was
+turned into an instruction by adding a premise nobody stated and nobody checked, and that the
+unstated premise is false. Treating the resulting difficulty as a failure of a person's
+character repeats the same unlicensed step: it explains a physiological response as though it
+were a moral one.
+
+**In plain terms.** You have met the accounting identity and you have met the two things that push back once
+someone loses weight. This section puts the two together, because "eat less, move more" is
+where they collide in every clinic and every headline.
+
+The instruction sounds like it falls straight out of the identity. Stores go up when intake
+is bigger than expenditure, and down when it is smaller. So cut intake, or raise expenditure,
+and stores must fall. That much is arithmetic, and arithmetic does not need evidence.
+
+But the instruction says more than the arithmetic does. It says cut intake once, and stores
+keep falling on their own, because it quietly assumes expenditure stays where it was. You
+already know that assumption is false. Cut intake, and expenditure itself falls, further than
+the lost weight alone explains. Appetite rises, and pulls harder than expenditure falls. The
+identity never claimed otherwise. The claim that "expenditure stays fixed" was smuggled in
+between the identity and the instruction, by whoever turned one into the other.
+
+So when the scale stops moving, two very different things could be true. The identity broke,
+which is not possible - it is a statement about every route energy can take across the
+boundary of a body, and it always balances. Or the smuggled premise was false, which the
+evidence says it was.
+
+A doctor who tells a patient "the numbers don't lie, so you must not be sticking to it" has
+picked the wrong one of those two. The numbers are not lying. The instruction was never a fair
+reading of them.
+
+You could explain all of this to a health secretary in about three minutes, and it would carry
+no mechanism and no blame: cutting intake works, the body responds by wanting more food and
+burning a bit less, and that response is not a defect in the person doing the cutting.
+
+**Illustration.** A national newspaper runs a quote from a well-known doctor: "Weight loss is just maths.
+Calories in, calories out. If someone isn't losing weight, they aren't sticking to the plan."
+
+Lay the quote out as an argument, the way the earlier section on premises and conclusions
+taught you to.
+
+Premise one: stored energy changes at a rate equal to intake minus expenditure. True; it is
+the identity.
+
+Premise two, left unsaid: once a person cuts intake, expenditure and appetite do not move.
+
+Conclusion: a person not losing weight has not really cut intake.
+
+Grant premise one. Test the inference. Does the conclusion follow even if premise one is
+true? Only if premise two also holds. The evidence in this booklet says premise two is false:
+expenditure falls further than the lost mass explains, and appetite rises by more again. A
+person can cut intake exactly as instructed and still see the scale stall, because the two
+physiological responses this booklet has already quantified are large enough to close most of
+a modest deficit on their own.
+
+The doctor's quote does not misstate the arithmetic. It misstates what follows from it, by
+adding a premise that was never checked and is not true.
+
+Reaching the one-page write-up this rung asks for is the same move, run once, in full. State
+the identity. State that it is an identity - always true, for the same reason a bank balance
+always equals deposits minus withdrawals. State the instruction people draw from it. Name the
+premise the instruction needs and the identity does not supply. Say what the evidence shows
+about that premise. Stop there: no mechanism, no verdict on any one patient's effort.
+
+**Where this picture breaks.** This concept says the naive inference from the identity to the instruction fails; it does not
+say the instruction never works. Many people do lose weight and keep it off by eating less and
+moving more, sometimes with support this booklet has not covered. What fails is the specific
+step from "the identity is true" to "therefore this will happen automatically and without
+resistance", not the possibility of the outcome itself. The three-minute explanation is a
+floor for a conversation, not a complete account of treatment.
+
+**Must know points for you.**
+
+- The identity is never in dispute and is never what breaks. What breaks is a second, unstated premise smuggled between the identity and the instruction built on it: that expenditure and appetite hold still once intake is cut. State the identity and the instruction as two separate claims, every time, so the second one can be checked rather than assumed.
+- "They must not be sticking to it" is the same unlicensed move as the instruction itself: an observation (the scale has stalled) explained by inventing a premise (lack of effort) instead of checking the one already shown to be false. Replace it with the physiological explanation this booklet has given you, by name, before reaching for the behavioural one.
+- You can give this whole argument to a non-specialist in about three minutes, using no mechanism and no moral claim: the accounting is true, the instruction adds an assumption, the assumption is false, and the difficulty that follows is physiological. That is the gate this rung sets, and it is worth rehearsing until it takes three minutes and not ten.
+- This section does not tell you what to do differently in a clinic beyond naming the trap correctly. It gives you an argument to check, not a treatment plan; a plan needs the later rungs of this subject.
+
+**Exercise 1** (teaching). A health secretary has one page and wants the one paragraph they can put in front of a
+minister who has just said "obesity is simple, it's calories in versus calories out."
+Write it. No methods section, answer first.
+
+**Exercise 2** (build). Write the one-page explanation this rung's build target asks for: why energy balance is
+arithmetically true and practically insufficient. State the identity, name the instruction
+people draw from it, name the unstated premise, and say what the evidence in this rung shows
+about that premise. No mechanism, no verdict on any individual's effort. Then read it to a
+non-medical reader and note where they stopped you to ask a question - that is the gate this
+rung sets: you should be able to give the same explanation from memory in about three minutes.
+

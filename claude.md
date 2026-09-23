@@ -139,6 +139,47 @@ citation number and a reference they can open.
 - Worked calculations show every line. A reader who cannot follow line three cannot skip to line four.
 - Real numbers, not invented ones, wherever a real one exists; and every number listed in `illustration.numbers` with its unit and citekey so the numbers register can audit it without re-reading prose.
 
+### Figures
+
+*Standing instruction from Harsh, 23 September 2026. It applies to every book after Book 0.*
+
+**More of them.** Every section gets at least one figure, unless one line in the record's
+`figure_note` says why a figure would teach nothing the prose does not. A quantitative section gets
+a figure of its worked relationship: the line its formula draws, the parts that make its total, the
+two cases its argument sets side by side. Book 0's test still decides *which* figure — one that
+shows what the prose cannot say in the same space, never a table drawn as a picture — but the
+default has moved from "none unless it earns its place" to "one unless it cannot".
+
+**In the book's colours.** A figure uses its book's palette: the Part hue its PDF cover uses
+(`check/pdf/series.yml`, read through `map/BOOKS.yml`), with the PDF's own Inter face, neutral grey
+axes and grid, and marks and text that pass contrast on a white page. `style_for(book_id)` in
+`check/figures/draw.py` gives it; nobody picks colours by hand.
+
+**Correct, and the same numbers as the text.** A figure is drawn by `python check/figures/draw.py
+--book <ID>` from a `spec` declared under its entry in the record's `figures:` (template in
+`check/schema/example.concept.yml`; checks in `check/figures/figspec.py`). The spec is the only
+copy of the figure's data, read from the record's own ```` ```table ```` block wherever there is
+one. The build blocks when:
+
+- a number the figure plots or prints (a point, a bar, a label, an axis title, the caption, the alt
+  text, a constant in a drawn relation) is not stated in the record's reader-facing text and is not
+  worked out under `derived` with arithmetic that gives it;
+- a drawn relation (`fit: "y = 92 - 0.5*x"`) misses a plotted point at the precision the point is
+  written to, or a stated identity (`check: "sum(y) = 91"`, a ratio, a difference) is false;
+- a bar chart does not start at zero, or a log axis holds a value at or below zero;
+- the PNG was not drawn from the current spec and text (its `.spec.json` fingerprint differs), or a
+  figure outside Book 0 has no spec at all.
+
+Two drawing options exist for what points and bars cannot say: `marker: none` on a series draws a
+fitted slope as a bare line, so its ends do not read as observations; `bands: [{y0, y1, label}]`
+shades a range behind the data, and its bounds and label pass the same number check as a plotted
+point.
+
+Never draw a figure by hand, edit a PNG, or type a figure's numbers into a script. The conductor
+looks at every figure as an image before the audit, and the auditor recomputes every value a figure
+plots or prints. Book 0's figures were drawn before specs existed and stay as they are (frozen with
+the book, one build warning); they would be redrawn from specs only in a new Book 0 version.
+
 ## 5. Must-know points for you
 
 Printed under that heading, in the second person, because they are addressed to one reader with one purpose: becoming someone whose analysis, data and testimony cannot be routed around. They are not a summary of the section and not a revision box.
@@ -580,9 +621,9 @@ Records in, booklets out. The build is also the quality gate; these checks are t
 
 **Booklet front matter.** Every booklet carries an edition number and a rung-status line — for example `Rungs 1–2 released · rungs 3–4 in preparation` — so a partially written booklet is releasable rather than permanently unfinished. Institutional content additionally prints its as-of date.
 
-**Blocking checks.** Forward reference inside a subject. Reference `kind` incompatible with `concept_type`. `review.stability` inconsistent with `concept_type`. Missing `locator` on any reference. A citekey, in a reference, in a must-know point or in a practice problem, that is not in `check/references/library.bib`. A concept with no `outcome_refs`. A concept with no must-know points, or with the retired five-slot mapping in place of a list. A prose field authored as a YAML folded scalar. An exercise with no worked answer, or of type `integrative`. **A quantitative concept whose drill set falls outside three to eighteen problems without a `practice_note` saying why, or whose ladder never reaches the mechanical band or the transfer band.** A practice problem with no worked answer. An unknown cluster key. A figure whose file is not in `check/figures/`. **An equation in reader-facing prose whose two sides do not evaluate equal.**
+**Blocking checks.** Forward reference inside a subject. Reference `kind` incompatible with `concept_type`. `review.stability` inconsistent with `concept_type`. Missing `locator` on any reference. A citekey, in a reference, in a must-know point or in a practice problem, that is not in `check/references/library.bib`. A concept with no `outcome_refs`. A concept with no must-know points, or with the retired five-slot mapping in place of a list. A prose field authored as a YAML folded scalar. An exercise with no worked answer, or of type `integrative`. **A quantitative concept whose drill set falls outside three to eighteen problems without a `practice_note` saying why, or whose ladder never reaches the mechanical band or the transfer band.** A practice problem with no worked answer. An unknown cluster key. A figure whose file is not in `check/figures/`. **A figure outside Book 0 with no spec, a number it plots or prints that the record's text does not state or derive, a drawn relation or stated identity that does not hold, or a PNG stale against its spec** (§4, Figures). A section outside Book 0 with neither a figure nor a `figure_note`, once its status is `verified`. **An equation in reader-facing prose whose two sides do not evaluate equal.**
 
-**Warning checks.** A reference with `verified.opened: false` — permitted while drafting, blocking at status `verified`. A bridge presupposition with no `bridge_ref`. A rung skill with no exercise anywhere in the rung. An institutional concept with no `as_of`. A concept past its review trigger. A `ground_floor_deps` entry with no corresponding Book 0 record. More must-know points than the soft cap of nine. A concept with no must-know point tagged `misconception` or `trap`. The sequence-read warnings of the style sheet above §10: an over-long sentence, an over-long paragraph, an illustration that never addresses the reader, and an acronym used in a booklet before anything expands it.
+**Warning checks.** A reference with `verified.opened: false` — permitted while drafting, blocking at status `verified`. A bridge presupposition with no `bridge_ref`. A rung skill with no exercise anywhere in the rung. An institutional concept with no `as_of`. A concept past its review trigger. A `ground_floor_deps` entry with no corresponding Book 0 record. More must-know points than the soft cap of nine. A concept with no must-know point tagged `misconception` or `trap`. A section outside Book 0 with neither a figure nor a `figure_note`, while drafting. The sequence-read warnings of the style sheet above §10: an over-long sentence, an over-long paragraph, an illustration that never addresses the reader, and an acronym used in a booklet before anything expands it.
 
 **Renderer.** Record assembly emits plain markdown and is independent of the renderer, so swapping one for another affects no content.
 

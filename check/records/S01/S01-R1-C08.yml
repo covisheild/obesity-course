@@ -1,0 +1,568 @@
+concept_id: S01-R1-C08
+subject: S01
+rung: 1
+sequence: 8
+name: Spotting a claim that breaks conservation
+
+concept_type: derivable
+
+clusters: [measurement-inference, body-and-person]
+ground_floor_deps: [B0-R0-C33, B0-R0-C08, B0-R0-C42, B0-R0-C36]
+concept_deps: [S01-R1-C02, S01-R1-C03, S01-R1-C05, S01-R1-C07]
+
+definition:
+  text: |
+    A weight-loss claim breaks conservation when the fat change it asserts could not have
+    happened, given the energy that could plausibly have crossed the boundary drawn round the
+    person over the stated time.
+
+    First, draw the boundary and list the routes energy can cross it: in, as food and drink;
+    out, as heat, as work done on things around the person, and in whatever is not absorbed.
+
+    Second, put a number on the claimed fat change. Use the static rule's conversion from
+    `S01-R1-C07`: 3,500 kilocalories (kcal) for each pound, about 7,716 for each kilogram (kg).
+    Use it here because it is kind to the claim. Pure fat holds more, 39.5 megajoules a
+    kilogram, about 9,440 kilocalories (`S01-R1-C02`). So a claim that fails at 7,716 fails at
+    9,440 too.
+
+    Third, compare that amount with the largest deficit the person could plausibly have run
+    over that time. A claim that needs more than the person's whole expenditure over the
+    interval is impossible. One that needs more than any deficit people are known to manage
+    is implausible. Neither verdict depends on the method claimed.
+
+    One case looks alarming and does not fail this test. The body stores some energy as
+    glycogen (`B0-R0-C36`). Hall and colleagues note that the energy stored per
+    unit mass "varies considerably, especially when accounting for the intracellular water
+    associated with stored glycogen and protein". Glycogen holds 17.6 megajoules a kilogram,
+    less than half of fat's 39.5. The water stored with it holds none. Cutting carbohydrate
+    also changes how much salt, and so fluid, the kidneys let go.
+
+    So fast early loss, especially when carbohydrate is cut, can be largely glycogen, its
+    water and that fluid. Glycogen's share comes in the first week. None of this is a
+    violation. It is a different substance leaving, at a far lower energy cost per kilogram
+    than fat.
+  references:
+    - citekey: openstax_college_physics_2e
+      kind: textbook
+      locator: "\xA7 7.6 Conservation of Energy, the law as printed under the heading Law of\
+        \ Conservation of Energy"
+      quote: |-
+        Total energy is constant in any process. It may change in form or be transferred from one system to another, but the total remains the same.
+      verified:
+        resolved_id: https://openstax.org/books/college-physics-2e/pages/7-6-conservation-of-energy
+        opened: true
+        claim_located: true
+        checked_on: '2026-09-23'
+        note: |-
+          The same quote and locator this subject's Book 0 anchor, B0-R0-C33, uses for the
+          law itself. This concept applies that already-taught balance to a person's
+          boundary rather than re-deriving it; the passage is repeated here only so this
+          record carries its own reference of the kind concept_type derivable requires.
+    - citekey: hall_2011_lancet
+      kind: primary
+      locator: 'Panel, "Does diet composition matter?", first paragraph'
+      quote: |-
+        The energy stored per unit mass of carbohydrate, fat, and protein varies considerably, especially when accounting for the intracellular water associated with stored glycogen and protein.
+      verified:
+        resolved_id: https://pmc.ncbi.nlm.nih.gov/articles/PMC3880593/
+        opened: true
+        claim_located: true
+        checked_on: '2026-09-23'
+    - citekey: hall_2011_lancet
+      kind: primary
+      locator: 'Panel, "Does diet composition matter?", first paragraph, the sentence after the one above'
+      quote: |-
+        dietary carbohydrates have an effect on renal sodium excretion via insulin
+      verified:
+        resolved_id: https://pmc.ncbi.nlm.nih.gov/articles/PMC3880593/
+        opened: true
+        claim_located: true
+        checked_on: '2026-09-23'
+        note: |-
+          The same sentence continues "which results in concomitant changes of
+          extracellular fluid". That is the fluid the definition and the answers name
+          alongside glycogen and its water.
+    - citekey: hall_2008_ijo
+      kind: primary
+      locator: Opening paragraphs, on the energy densities of glycogen, protein and fat
+      quote: the metabolizable energy densities of body glycogen, protein and fat are 17.6, 19.7,
+        and 39.5 MJ/ kg, respectively
+      verified:
+        resolved_id: https://pmc.ncbi.nlm.nih.gov/articles/PMC2376744/
+        opened: true
+        claim_located: true
+        checked_on: '2026-09-23'
+    - citekey: hall_2008_ijo
+      kind: primary
+      locator: Opening paragraphs, the sentence before the energy densities
+      quote: Loss of body water results in a significant mass change, but contributes nothing to
+        the metabolizable energy content.
+      verified:
+        resolved_id: https://pmc.ncbi.nlm.nih.gov/articles/PMC2376744/
+        opened: true
+        claim_located: true
+        checked_on: '2026-09-23'
+    - citekey: hall_2008_ijo
+      kind: primary
+      locator: Glycogen, protein and water, first paragraph
+      quote: its effects on weight loss typically occur within the first week
+      verified:
+        resolved_id: https://pmc.ncbi.nlm.nih.gov/articles/PMC2376744/
+        opened: true
+        claim_located: true
+        checked_on: '2026-09-23'
+        note: |-
+          "Its" is glycogen's. The paper does not say early weight loss is mostly glycogen
+          and water, so this record says only that it can be largely so.
+    - citekey: ftc_gut_check_2014
+      kind: primary
+      locator: "The 7 Gut Check Claims, Claim 1 and its explanation"
+      quote: |-
+        Meaningful weight loss requires taking in fewer calories than you use.
+      verified:
+        resolved_id: https://www.ftc.gov/business-guidance/resources/gut-check-reference-guide-media-spotting-false-weight-loss-claims
+        opened: true
+        claim_located: true
+        checked_on: '2026-09-23'
+        note: |-
+          The specimen claim used in the illustration and practice below, "Lose up to 2
+          pounds a day without diet or exercise," is the FTC's own example of a false claim
+          type, quoted from the same page's Claim 1 section, not a real advertisement found
+          in the wild. It is presented to the reader as the regulator's illustration, never
+          as a genuine ad.
+    - citekey: ftc_gut_check_2014
+      kind: primary
+      locator: "Claim #7, the explanation"
+      quote: |-
+        Nothing you wear or apply to the skin can cause substantial weight loss.
+      verified:
+        resolved_id: https://www.ftc.gov/business-guidance/resources/gut-check-reference-guide-media-spotting-false-weight-loss-claims
+        opened: true
+        claim_located: true
+        checked_on: '2026-09-23'
+        note: |-
+          Quoted in exercise 1's answer, about an invented skin patch.
+
+simplified_explanation: |
+  You do not need to know anything about the diet to check. You need three things: a
+  boundary, a number, and a limit.
+
+  Draw the boundary round the person.
+
+  Turn the claimed fat change into an energy number. Use the rate from the previous
+  section: 3,500 kilocalories for a pound, about 7,716 for a kilogram.
+
+  Now the limit. Over any stretch of time, the biggest deficit a person can run is their
+  whole expenditure for that stretch. You cannot eat less than nothing. If a claim needs
+  more than that, it is impossible. If it needs more than any deficit people are known to
+  manage, it is implausible.
+
+  One thing looks like a violation and is not. The body stores some energy as glycogen, and
+  stores it with water. Cut carbohydrate, and glycogen, its water
+  and some extra fluid can leave fast. Glycogen's part comes in the first week. Fast is not
+  the same as impossible.
+illustration:
+  body: |
+    Open the US Federal Trade Commission's (FTC) "Gut Check" guide to spotting false
+    weight-loss claims, at
+    https://www.ftc.gov/business-guidance/resources/gut-check-reference-guide-media-spotting-false-weight-loss-claims.
+    Its examples are the FTC's own specimens of a claim type. They are not real
+    advertisements. Treat each one as a specimen handed to you to test, never as proof that
+    a real product said it.
+
+    Claim 1's own example reads: "Lose up to 2 pounds a day without diet or exercise."
+
+    Turn 2 pounds a day into an energy requirement using the static rule.
+
+    ```working
+        2 times 3500 = 7000
+    ```
+
+    7,000 kilocalories a day, every day, as fat alone.
+
+    Now the hard ceiling. Even eating nothing, your deficit cannot beat your whole
+    expenditure. The worked examples in `S01-R1-C03` put a whole day's expenditure at 1,975 to
+    3,925 kilocalories for their example groups. These are calculated, not measured. 7,000 is
+    more than that. So for anyone like them, the claim is impossible as fat.
+
+    It is also far past what people manage. Thomas and colleagues pooled 103 adults whose
+    intake was supervised or measured. Their average prescribed deficit was 1,439
+    kilocalories a day. The claim needs roughly five times that. And it says this happens
+    "without diet or exercise", naming no route for the energy at all.
+
+    Take a made-up case. A person starting a low-carbohydrate diet loses 3 kilograms in the
+    first five days. Using the static rule, that would require:
+
+    ```working
+        3 times 7716.18 = 23148.54
+        23148.54 divided by 5 = 4629.71
+    ```
+
+    About 4,630 kilocalories a day. That is also above that range, so for anyone like
+    them it is impossible as fat. But the loss need not be fat. Much of it can be glycogen, its water,
+    and fluid the kidneys let go. The fat rate does not apply to those.
+  analogy_breaks_when: |
+    This test rules claims out; it does not rule anything in.
+  numbers:
+    - value: '2'
+      unit: "lb/day, the FTC's own Claim 1 specimen wording, not a real advertisement"
+      quote: |-
+        Lose up to 2 pounds a day without diet or exercise.
+      citekey: ftc_gut_check_2014
+      as_of: '2026-09-23'
+    - value: '7000'
+      unit: "kcal/day the specimen implies as fat, at 3,500 kcal/lb"
+      derived: "2 times 3500"
+      quote: |-
+        Lose up to 2 pounds a day without diet or exercise.
+      citekey: ftc_gut_check_2014
+      as_of: '2026-09-23'
+    - value: '1975'
+      unit: "kcal/day, calculated (not measured) total expenditure of section 3's sedentary or lightly active example group"
+      quote: |-
+        If this PAL was from a female population, 30 to 50 years old, with mean weight of 55 kg and mean BMR of 5.40 MJ/day (1 290 kcal/day), TEE = 1.53 × 5.40 = 8.26 MJ (1 975 kcal), or 150 kJ (36 kcal)/kg/d.
+      citekey: fao_who_unu_2004
+      as_of: '2026-09-23'
+    - value: '3925'
+      unit: "kcal/day, calculated (not measured) total expenditure of section 3's vigorously active example group"
+      quote: |-
+        If this PAL was from a male population, 20 to 25 years old, with mean weight of 70 kg and mean BMR of 7.30 MJ/day (1 745 kcal/day), TEE = 2.25 × 7.30 = 16.42 MJ (3 925 kcal), or 235 kJ (56 kcal)/kg/d.
+      citekey: fao_who_unu_2004
+      as_of: '2026-09-23'
+    - value: '1439'
+      unit: "kcal/day, the cohort's average prescribed deficit, intake supervised or measured"
+      quote: |-
+        Subjects were prescribed a target intake of 1409±569 kcal/d, an average deficit of 1439±784 kcal/d.
+      citekey: thomas_2013_3500kcal
+      as_of: '2026-09-23'
+
+must_know:
+  - point: |
+      A deficit is bounded above by total expenditure for the period, because intake cannot
+      go below zero.
+    kind: boundary
+    bearing: methodological
+  - point: |
+      A claim that names no route — "without diet or exercise" is the common wording — has
+      not said which crossing changed. Ask: did intake fall, and how? Did output rise, and
+      how? If the answer is "neither", conservation (`B0-R0-C33`) rules it out.
+    kind: misconception
+    bearing: public
+  - point: |
+      Fast early weight loss, especially when carbohydrate is cut sharply, is often real. It
+      can be largely glycogen, the water stored with it, and fluid the kidneys let go. It is
+      not all fat.
+    kind: trap
+    bearing: clinical
+    refs: [hall_2008_ijo, hall_2011_lancet]
+  - point: |
+      When a journalist brings you a headline figure, ask for the time period before doing
+      anything else.
+    kind: move
+    bearing: public
+  - point: |
+      This check clears a claim of one specific defect, an energy impossibility. Say what
+      the check did and did not do, every time you report its result.
+    kind: boundary
+    bearing: methodological
+
+exercises:
+  - type: critique
+    prompt: |
+      Here is a magazine advertisement, invented for this exercise. It reads: "Our patch
+      helped users lose 1 pound a day for 10 days — with no change to diet or exercise." Say
+      what is wrong with the claim, and what you would ask the advertiser for.
+    answer: |
+      Two separate things are wrong. The same three-step check finds both.
+
+      First, put a number on it. Ten pounds in ten days, on the static rule, is 3,500
+      kilocalories a day as fat, for ten days straight. That is nearly the whole day's
+      expenditure section 3's worked examples calculate for their most active group, 3,925
+      kilocalories. It is far more than the 1,975 they calculate for the least active.
+
+      Second, ask what route supplies that. The ad says no change to diet and no change to
+      exercise. Read that way, intake did not fall and output did not rise. A boundary drawn
+      round a person has only two kinds of route, in and out. The ad has claimed neither
+      moved.
+
+      What to ask the advertiser for: what, physically, changed at the boundary? What let
+      3,500 kilocalories a day leave the person while intake and expenditure stayed the
+      same? No answer keeps the ad's own wording true. The FTC says so directly about
+      products like this: "Nothing you wear or apply to the skin can cause substantial
+      weight loss."
+    skill_ref: S01-R1-K02
+  - type: teaching
+    prompt: |
+      A first-year resident has ten minutes and a whiteboard. They ask: "A patient tells me
+      they lost 5 kilograms of pure fat in one week eating normally. How do I know if that's
+      even physically possible before I ask about their diet?"
+    answer: |
+      Draw a circle on the board and call it the patient. Write in, for food and drink, and
+      out, for heat, work, and what is not absorbed. Nothing else crosses.
+
+      Turn 5 kilograms of fat into an energy figure using the rate from the previous
+      section, about 7,716 kilocalories a kilogram.
+
+      ```working
+          5 times 7716.18 = 38580.9
+      ```
+
+      About 38,600 kilocalories, over seven days.
+
+      ```working
+          38580.9 divided by 7 = 5511.6
+      ```
+
+      About 5,512 kilocalories a day, as a deficit, if every gram of the five kilograms was
+      fat.
+
+      Now compare that with a whole day's expenditure. Section 3's worked examples calculate
+      1,975 to 3,925 kilocalories a day for their example groups. If "eating normally" means intake stayed about the same, all
+      5,512 must come from extra output. Output would then be several times an ordinary day,
+      for a week. Be skeptical of that number before you ask a single question about the
+      diet. Either the weight lost was not five kilograms of fat, or the week was not really
+      a week, or the history is incomplete.
+    skill_ref: S01-R1-K02
+
+quantitative: true
+practice:
+  - level: 1
+    prompt: |
+      A claimed weight change is 6 units of mass, said to be entirely fat. Using a rate of
+      3,500 for each unit, work out the total energy the claim requires.
+    answer: |
+      Multiply the count by the rate.
+
+      ```working
+          6 times 3500 = 21000
+      ```
+
+      21,000.
+  - level: 2
+    prompt: |
+      A claimed energy crossing totals 24,500. The rate is 3,500 for each unit of mass. Work
+      out how many units of mass that could account for, if the crossing were entirely fat.
+    answer: |
+      Divide the total by the rate.
+
+      ```working
+          24500 divided by 3500 = 7
+      ```
+
+      7 units.
+  - level: 4
+    prompt: |
+      The FTC's own Claim 1 specimen wording reads "Lose up to 2 pounds a day without diet
+      or exercise." This is the regulator's illustration of a false claim type, not a real
+      advertisement. Using the static rule, work out the daily energy requirement the
+      specimen implies, in kilocalories, treating the claimed loss as entirely fat.
+    answer: |
+      Multiply the claimed pounds a day by the rate.
+
+      ```working
+          2 times 3500 = 7000
+      ```
+
+      7,000 kilocalories a day.
+    refs: [ftc_gut_check_2014]
+  - level: 5
+    prompt: |
+      Thomas and colleagues' pooled cohort was prescribed an average deficit of 1,439 kcal a
+      day, with intake supervised or measured. Work out what multiple of that deficit the
+      7,000 kcal a day figure from the previous problem represents, to one decimal place.
+    answer: |
+      Divide the larger figure by the smaller.
+
+      ```working
+          7000 divided by 1439 = 4.864489229
+      ```
+
+      About 4.9 times the cohort's average prescribed deficit.
+    refs: [thomas_2013_3500kcal]
+  - level: 7
+    prompt: |
+      Here is a worked answer. Find the step that broke.
+
+      ```working
+          a claim says a person lost 4 kg of fat in a week eating nothing but water
+          the body obeys the laws of physics, and energy is conserved
+          so wherever the 4 kg's worth of energy went, it had to come from somewhere
+          therefore the claim must be true, because energy cannot simply vanish
+      ```
+    answer: |
+      The step that broke is the last one. The word doing the damage is "therefore".
+
+      Conservation does say the energy had to come from somewhere. For a person eating
+      nothing, that somewhere is the body's own stores. That much is right. It does not
+      follow that the claim is true. Conservation fixes what the numbers must add up to. It
+      says nothing about whether the numbers given are the real ones.
+
+      The missing step is the one this section teaches. Put a figure on the fat, and check it
+      against a ceiling.
+
+      ```working
+          4 times 7716.18 = 30864.72
+          30864.72 divided by 7 = 4409.25
+      ```
+
+      About 4,409 kilocalories a day. Eating nothing, the deficit is at most a whole day's
+      expenditure. Section 3's worked examples calculate that at 1,975 to 3,925 kilocalories a
+      day for their example groups. The claim needs more, so for anyone like them it is
+      impossible as fat.
+
+      Why the wrong answer looks reasonable. It invokes a true law. It rightly says that law
+      rules out energy vanishing. Then it slides from "not impossible in principle" to
+      "true", which conservation could never establish.
+  - level: 8
+    prompt: |
+      Here is a worked answer. Find the step that broke.
+
+      ```working
+          a person starts a strict low-carbohydrate diet and loses 2.5 kg in the first four days
+          the static rule needs 7716.18 kcal per kg
+          2.5 times 7716.18 = 19290.45
+          19290.45 divided by 4 = 4822.61 kcal/day required
+          nobody can run a deficit that size for four days, so the reported loss must be fabricated
+      ```
+    answer: |
+      The step that broke is the last one. The arithmetic to 4,822.61 kcal a day is correct.
+      But it silently assumes every kilogram lost was fat. This section names the case where
+      that fails: the first days of a diet that cuts carbohydrate sharply. Glycogen is stored
+      with water, and using it up releases both. Cutting carbohydrate also makes the kidneys
+      let go of fluid. Water carries no energy, so this loss costs far less than 7,716 kcal a
+      kilogram.
+
+      So the verdict "fabricated" does not follow. The energy check was run on the wrong
+      substance. First ask whether 2.5 kilograms in four days, at the start of a
+      low-carbohydrate diet, could be glycogen, water and fluid. This check alone cannot rule
+      that out.
+
+      Why the wrong answer looks reasonable. Every line of arithmetic is correct. The verdict
+      sounds like the kind of impossibility this section trains you to catch. But the catch
+      depends on asking what the lost mass was made of, before running the fat rate on it.
+      That question was skipped.
+    refs: [hall_2011_lancet, hall_2008_ijo]
+  - level: 9
+    prompt: |
+      An invented social media post says: "I lost 8 kg of pure fat in 10 days on this new
+      plan. That proves calories don't matter, only what you eat does." Decide what to
+      compute, compute it, and say what your answer does not establish.
+    answer: |
+      What to compute: the daily energy the claim needs, if the 8 kilograms were all fat.
+      Compare it with a ceiling before asking anything about what the person ate.
+
+      ```working
+          8 times 7716.18 = 61729.44
+          61729.44 divided by 10 = 6172.94
+      ```
+
+      About 6,173 kilocalories a day. That is over four times the cohort's average prescribed
+      deficit, 1,439 kcal a day. It is also more than the whole day's expenditure section 3's
+      worked examples calculate for any of their groups, 1,975 to 3,925.
+
+      What this does establish. For anyone like those groups, the 8 kg was not pure fat. That
+      would need more than a whole day's expenditure, every day for 10 days.
+
+      What it does not establish. It does not say how much was fat. On a plan that cuts
+      carbohydrate, some could be glycogen, water and fluid. It says nothing about whether
+      "what you eat" matters apart from the energy it supplies. That needs a different kind
+      of evidence from an arithmetic bound.
+    refs: [thomas_2013_3500kcal, fao_who_unu_2004]
+  - level: 10
+    prompt: |
+      A colleague at a conference says: "A patient of mine dropped 12 kg in the first three
+      weeks after weight-loss (bariatric) surgery. With the tiny amount they're eating,
+      that's clearly just calories in versus calories out. Nothing else is going on." The
+      patient weighed 140 kg before surgery (a made-up figure). Decide what to compute, compute
+      it, and say what your answer does not establish.
+    answer: |
+      What to compute: the daily energy 12 kilograms in three weeks would need as fat. Then
+      check it against a whole day's expenditure.
+
+      ```working
+          12 times 7716.18 = 92594.16
+          92594.16 divided by 21 = 4409.25
+      ```
+
+      About 4,409 kilocalories a day, for three straight weeks. That is roughly three times
+      the cohort's average prescribed deficit, 1,439 kcal a day. It is also more than section
+      3's worked examples calculate for any of their groups. But those groups weighed 55 to 70
+      kg. This patient weighed 140.
+
+      So scale the ceiling by weight. Section 3's least active example works out at 36 kcal a
+      kilogram a day. Eating nothing, 21 days at that rate covers this much fat:
+
+      ```working
+          140 times 36 = 5040
+          21 times 5040 = 105840
+          105840 divided by 7716.18 = 13.72
+      ```
+
+      About 5,040 kcal a day, enough for about 13.7 kilograms of fat. So this ceiling does not
+      rule out 12 kilograms of fat. The true ceiling may be lower: body fat adds less to
+      resting expenditure than fat-free mass does (`S01-R1-C01`). The check cannot decide this
+      case.
+
+      What this does not establish. It does not show the colleague is right or wrong about the
+      mechanism. Surgery is meant to cut intake, so a large real deficit is plausible. But early
+      in a sharp cut, glycogen, its water and fluid can leave too. So "nothing else is going
+      on" is an assumption, not a result. The check cannot say how much of the 12 kilograms was
+      fat.
+    refs: [hall_2011_lancet, fao_who_unu_2004]
+
+retrieval_items:
+  - q: What three things does checking a claim against conservation require?
+    a: A boundary drawn round the person with its routes named. The claimed change turned
+      into an energy figure with the static rule's rate. And a comparison of that figure with
+      the largest deficit the person could plausibly run in that time, which can never be
+      more than total expenditure over that time.
+  - q: Why is fast early weight loss on a low-carbohydrate diet not necessarily a violation
+      of conservation?
+    a: Much of it can be glycogen, the water stored with it, and fluid the kidneys let go.
+      These cost far less energy per kilogram than fat, so the fat rate should not be
+      applied to them.
+  - q: A claim gives no route at all for a large energy change ("without diet or exercise").
+      What does that mean for the claim?
+    a: It has not said which crossing changed. Ask whether intake fell or output rose, and
+      how. If the answer is neither, conservation rules the claim out.
+
+provenance:
+  map_version_id: fc19c8bc-a216-4131-99fb-ebe3f19cec4a
+  outcome_refs: [S01-R1-O1, S01-R1-S2]
+  bridge_ref: []
+
+review:
+  stability: long
+  trigger: "2031-09-23"
+  last_reviewed: "2026-09-23"
+
+status: drafted
+
+figures:
+  - file: s01-r1-c08-claims-vs-deficit.png
+    caption: "Daily deficit each claim needs if every kilogram lost were fat. The shaded band is the whole day's expenditure section 3's worked examples calculate for their groups, 1,975 to 3,925 kcal, not a measurement. Every claim needs more, so for anyone like those groups none can be all fat. The US Federal Trade Commission (FTC) specimen needs about 4.9 times the 1,439 kcal a day average prescribed deficit of Thomas's cohort."
+    alt: "Six bars. Five claims need 7,000, 6,173, 5,512, 4,630 and 4,409 kcal a day as fat. The last bar, the cohort's average prescribed deficit, is 1,439. A shaded band from 1,975 to 3,925 marks the calculated whole-day expenditure of section 3's example groups; all five claim bars rise above it."
+    source: draw.py
+    spec:
+      kind: bar
+      y_label: kcal a day, if all fat
+      x:
+        - "FTC specimen\n2 lb a day"
+        - "8 kg\nin 10 days"
+        - "5 kg\nin 7 days"
+        - "3 kg in 5 days\n(may be largely\nglycogen and water)"
+        - "12 kg\nin 21 days"
+        - "cohort's\naverage\nprescribed\ndeficit"
+      series:
+        - name: daily deficit needed
+          y: [7000, 6173, 5512, 4630, 4409, 1439]
+      value_labels: true
+      bands:
+        - {y0: 1975, y1: 3925, label: "whole day's expenditure, section 3's example groups (calculated)"}
+      relations:
+        - check: "y[0] / y[-1] = 4.864489229"
+        - check: "y[0] = 2*3500"
+        - check: "min(y[0], y[1], y[2], y[3], y[4]) - 3925 = 484"
+      derived:
+        - {value: "484", from: "4409 - 3925"}
+      size: [7.2, 3.4]

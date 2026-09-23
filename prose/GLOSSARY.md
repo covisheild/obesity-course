@@ -20,9 +20,13 @@ teaches were deleted. Terms used before their gloss, and terms used for two thin
 | Term | Plain words it gets at first use | First taught in |
 | --- | --- | --- |
 | absorption | a molecule passing through the wall of the gut and into the blood | `B0-R0-C36` |
+| accounting identity (for a body) | the change in body energy stores over an interval equals the energy intake minus the energy expenditure over that same interval | `S01-R1-C05` |
 | accuracy | how close a measured value comes to the true value | `B0-R0-C30` |
 | Act | the name each statute passed by Parliament or a State Legislature is called by | `B0-R0-C43` |
+| adaptive part (of the fall in expenditure) | the extra fall in expenditure after a weight loss, beyond what the loss of fat and lean mass alone accounts for | `S01-R1-C09` |
+| adipocyte | a fat cell | `S01-R1-C01` |
 | adipose tissue | the tissue whose cells hold triglyceride until it is needed | `B0-R0-C36` |
+| adopted requirement | a number a body of experts has set, not measured in the person in front of you | `S01-R1-C03` |
 | ADP | what is left when ATP's last phosphate group is knocked off: the same molecule, one phosphate short | `B0-R0-C36` |
 | alimentary canal | the gut tube | `B0-R0-C38` |
 | allele | one of the versions a gene comes in | `B0-R0-C37` |
@@ -37,6 +41,7 @@ teaches were deleted. Terms used before their gloss, and terms used for two thin
 | ATP | adenosine triphosphate, the small molecule a cell uses to carry energy from one reaction to another | `B0-R0-C35` |
 | Atwater general factors | one fixed energy value for each of protein, fat and carbohydrate, used whatever the food | `B0-R0-C32` |
 | average rate of change | the change between the two ends of an interval divided by its length; it uses nothing in between | `B0-R0-C21` |
+| basal metabolic rate (BMR) | the energy spent lying at rest after a fast | `S01-R1-C03` |
 | base | (1) of a power, the number being multiplied, as the ten in 10^3 (`B0-R0-C06`); (2) in DNA, one of the four units, A, G, C and T, whose order along DNA is the information (`B0-R0-C37`) | `B0-R0-C06`, `B0-R0-C37` |
 | base ten | the counting system in which each place is worth ten times the place to its right | `B0-R0-C01` |
 | base unit | one of the seven units the SI builds on: the second, metre, kilogram, ampere, kelvin, mole and candela | `B0-R0-C09` |
@@ -48,6 +53,7 @@ teaches were deleted. Terms used before their gloss, and terms used for two thin
 | bomb calorimeter | a sealed steel pot in a water tank, used to burn a weighed sample | `B0-R0-C32` |
 | bond | an attraction between two atoms that holds them together | `B0-R0-C31` |
 | boundary | the closed line you draw, with the system inside it and everything else outside | `B0-R0-C33` |
+| breaks conservation (of a claim) | asserts a fat change that could not have happened, given the energy that could plausibly have crossed the boundary drawn round the person over the stated time | `S01-R1-C08` |
 | calibration | measuring a machine against something already known, so its readings mean something | `B0-R0-C32` |
 | calibration weight | a weight already checked and trusted to be correct | `B0-R0-C30` |
 | calorie | a unit of energy outside the SI, whose size in joules was fixed by agreement, and two agreements are in use | `B0-R0-C12` |
@@ -68,14 +74,17 @@ teaches were deleted. Terms used before their gloss, and terms used for two thin
 | conduction | heat moving through matter that is staying put, by contact | `B0-R0-C34` |
 | conservation of energy | energy is never made and never destroyed; it changes form and it moves | `B0-R0-C33` |
 | Constitution | the founding law that every statute must fit | `B0-R0-C43` |
+| consumer unit | the survey's per-head measure that allows for age and sex, as against a plain count per person | `S01-R1-C03` |
 | convection | heat moving because a liquid or a gas moves and takes it along | `B0-R0-C34` |
 | convenience sample | whoever happens to be available | `B0-R0-C29` |
 | conversion factor | a fraction whose top and bottom are the same quantity written in two different units, so it is equal to one | `B0-R0-C10` |
+| conversion table | a table giving the energy in a unit of each food | `S01-R1-C03` |
 | correction | subtracting a known systematic error, such as a zero error, from the reading (VIM 2.53) | `B0-R0-C30` |
 | covalent bond | a bond where two atoms share a pair of electrons | `B0-R0-C31` |
 | crore | ten million, or a hundred lakh | `B0-R0-C01` |
 | cytoplasm | the watery jelly a cell is a bag of | `B0-R0-C35` |
 | decimal | place value carried on past the point: tenths, then hundredths, then thousandths | `B0-R0-C03` |
+| deficit (of energy) | expenditure larger than intake; a surplus is the reverse | `S01-R1-C02` |
 | delta | the standard way of writing "the change in", using the Greek letter written as a triangle | `B0-R0-C34` |
 | denominator | (1) the number below the line, saying how many equal parts the whole was cut into (`B0-R0-C02`); (2) of a percentage, what it is a percentage of (`B0-R0-C39`) | `B0-R0-C02`, `B0-R0-C39` |
 | derivative | the mathematicians' name for the rate at a moment, written dy/dx | `B0-R0-C21` |
@@ -87,6 +96,8 @@ teaches were deleted. Terms used before their gloss, and terms used for two thin
 | DNA | the long molecule a cell's instructions are written in | `B0-R0-C37` |
 | domain | the inputs a rule will accept | `B0-R0-C18` |
 | dominant | an allele that shows whenever it is present | `B0-R0-C37` |
+| doubly labelled water | the method that measures what was actually spent: a person drinks water carrying rare, stable forms of hydrogen and oxygen, and how fast they leave the body over the next 10 to 14 days gives the average energy spent | `S01-R1-C03` |
+| dynamic model | a model built on energy balance, with expenditure allowed to change | `S01-R1-C07` |
 | electron | one of the much lighter particles in the cloud round an atom's tiny heavy centre | `B0-R0-C31` |
 | elimination | adding or subtracting the two equations, after multiplying where needed, so that one letter cancels | `B0-R0-C17` |
 | endocrine | putting a chemical straight into the blood rather than sending it down a tube | `B0-R0-C38` |
@@ -94,6 +105,8 @@ teaches were deleted. Terms used before their gloss, and terms used for two thin
 | energy | the capacity to supply heat or do work | `B0-R0-C31` |
 | energy balance | the energy inside the boundary at the end equals the energy inside at the start, plus everything that crossed in, minus everything that crossed out | `B0-R0-C33` |
 | energy equivalent | how many joules one degree is worth in one particular calorimeter | `B0-R0-C32` |
+| energy expenditure | the energy a body burns, or spends, in a day | `S01-R1-C03` |
+| energy intake | the energy a person eats in a day | `S01-R1-C03` |
 | enzyme | a protein that makes one particular reaction go faster | `B0-R0-C35` |
 | equation | a statement that two expressions are the same number | `B0-R0-C15` |
 | error | what a measurement says minus what is actually true, or minus a trusted reference value (VIM 2.16: "measured quantity value minus a reference quantity value") | `B0-R0-C30` |
@@ -107,6 +120,9 @@ teaches were deleted. Terms used before their gloss, and terms used for two thin
 | exponential | equal steps in the input multiply the output by the same factor every time | `B0-R0-C20` |
 | expression | a piece of algebra that stands for a number, like 2x + 5 | `B0-R0-C15` |
 | extracellular fluid | the fluid around a gland's own cells, into which it lets its hormone out | `B0-R0-C38` |
+| fat mass | the triglyceride held in adipose tissue | `S01-R1-C01` |
+| fat-free mass | everything else the body weighs; some papers call it lean body mass, or lean mass | `S01-R1-C01` |
+| first law of thermodynamics | the physicists' name for one version of conservation of energy: energy is never made or destroyed, only changed in form | `S01-R1-C06` |
 | flow | a rate that changes a stock, with a time on the bottom of its unit | `B0-R0-C23` |
 | fraction | a division that has not yet been carried out; a sum you have not done yet | `B0-R0-C02` |
 | free energy | loose energy, of which a cell cannot hold a useful amount | `B0-R0-C36` |
@@ -131,6 +147,8 @@ teaches were deleted. Terms used before their gloss, and terms used for two thin
 | hormone | a chemical made in one part of the body that affects other parts some distance away | `B0-R0-C38` |
 | hydrophilic | water-loving: mixes with water | `B0-R0-C35` |
 | hydrophobic | water-hating: does not mix with water | `B0-R0-C35` |
+| implausible (of a weight-loss claim) | needs more than any deficit people are known to manage | `S01-R1-C08` |
+| impossible (of a weight-loss claim) | needs more than the person's whole expenditure over the interval | `S01-R1-C08` |
 | independent | finding out one of them happened tells you nothing new about the other | `B0-R0-C25` |
 | inference | the move from the reasons to the conclusion | `B0-R0-C42` |
 | infographic | a chart decorated with pictures | `B0-R0-C40` |
@@ -151,19 +169,25 @@ teaches were deleted. Terms used before their gloss, and terms used for two thin
 | lacteals | the lymph vessels of the villi, which take in what dissolves in fat | `B0-R0-C38` |
 | lakh | a hundred thousand | `B0-R0-C01` |
 | large store | fat: triglyceride, held in adipose tissue | `B0-R0-C36` |
+| lean body mass | what some papers call fat-free mass | `S01-R1-C01` |
 | legislature | the body that makes law: Parliament for the country, a State Legislature for its own state | `B0-R0-C43` |
+| lever | a handle you pull to get a result; the identity gives you none | `S01-R1-C06` |
 | ligand | the molecule that fits into a protein shaped to hold it | `B0-R0-C35` |
 | linear | equal steps in the input add the same amount to the output every time | `B0-R0-C20` |
+| lipid fraction | the proportion of a tissue's mass that is fat | `S01-R1-C02` |
 | lipolysis | the breakdown of stored triglycerides into free fatty acids and glycerol | `B0-R0-C38` |
 | logarithm | the power you have to raise ten to, to get the number | `B0-R0-C07` |
 | logarithmic axis | an axis on which equal distances stand for equal multiplications, not equal additions | `B0-R0-C07` |
 | long tail | the side of a distribution that thins out slowly | `B0-R0-C27` |
+| maintenance requirement | the energy it takes to keep a person at a steady weight | `S01-R1-C04` |
 | mark | anything drawn that stands for one number: a bar, a point, a slice, a picture | `B0-R0-C40` |
 | mass concentration | a weight in a volume, such as milligrams per decilitre (mg/dL): it says how heavy | `B0-R0-C13` |
 | mean | the sum of a set of values divided by how many there are, which everyday speech calls the average | `B0-R0-C28` |
 | measurement | a number together with a unit | `B0-R0-C09` |
 | measurement bias | an error that points one way and does not shrink when you collect more (VIM 2.18: an "estimate of a systematic measurement error") | `B0-R0-C30` |
 | median | the middle value of the set once it is ordered from smallest to largest; with an even count, the mean of the two middle values | `B0-R0-C28` |
+| megajoule | a million joules, a thousand kilojoules; mega means 10^6, a million | `S01-R1-C02` |
+| metabolically active tissue | the tissue that spends most of the energy spent at rest | `S01-R1-C01` |
 | metabolism | the name for every chemical reaction in a body added together | `B0-R0-C36` |
 | metabolizable energy | what is left of a food's energy after the losses in faeces, gas and urine | `B0-R0-C32` |
 | millimole | one thousandth of a mole | `B0-R0-C13` |
@@ -192,6 +216,8 @@ teaches were deleted. Terms used before their gloss, and terms used for two thin
 | percentage point | the plain difference between two percentages, as against per cent, which divides | `B0-R0-C04` |
 | phenotype | what you can see about a person, the traits they show | `B0-R0-C37` |
 | phospholipid | the one kind of molecule a membrane is built from, with one end that mixes with water and one that does not | `B0-R0-C35` |
+| physical activity expenditure | the energy spent moving, whether as deliberate exercise or as the ordinary movement of a day | `S01-R1-C04` |
+| physical activity level (PAL) | a multiplier for how active the group is | `S01-R1-C03` |
 | pie chart | a circle standing for a whole, each slice's share of the circle being its share of the total | `B0-R0-C40` |
 | place value | what a digit is worth because of where it sits | `B0-R0-C01` |
 | plasma membrane | the skin round a cell, which decides what gets in and what stays out | `B0-R0-C35` |
@@ -199,6 +225,7 @@ teaches were deleted. Terms used before their gloss, and terms used for two thin
 | population | the whole group a question is about | `B0-R0-C28` |
 | positive predictive value | the share of positive results that are right, written P(condition present given test positive) | `B0-R0-C26` |
 | potential energy | energy a thing has because of where it is, what it is made of, or what state it is in | `B0-R0-C31` |
+| pound | a unit this course does not use; exactly 0.453 592 37 kilogram | `S01-R1-C02` |
 | power | repeated multiplication of one number by itself, as 10^3 is ten times ten times ten | `B0-R0-C06` |
 | precision | how closely repeated readings agree with each other | `B0-R0-C30` |
 | premise | a reason offered | `B0-R0-C42` |
@@ -218,9 +245,11 @@ teaches were deleted. Terms used before their gloss, and terms used for two thin
 | receptor | the protein a ligand fits into, which changes shape when it does | `B0-R0-C35` |
 | recessive | an allele that shows only when both copies are that version | `B0-R0-C37` |
 | reference | a pointer from a claim to the place that is supposed to support it | `B0-R0-C41` |
+| regulated system | a system that senses body weight, or a signal that tracks it, and pushes back when weight falls | `S01-R1-C09` |
 | regulation | what a body the statute set up may make, not Parliament; it binds because a statute said it could | `B0-R0-C43` |
 | relative frequency | a count divided by the total number counted; the proportion, under a longer name | `B0-R0-C27` |
 | resolution | the smallest step an instrument's display can move by (VIM 4.14: the "smallest change in a quantity being measured that causes a perceptible change in the corresponding indication") | `B0-R0-C30` |
+| resting energy expenditure (REE) | the energy spent at rest | `S01-R1-C01` |
 | ribosome | the machine in a cell that builds proteins | `B0-R0-C35` |
 | rise | the change up, between two points on a line | `B0-R0-C19` |
 | rounding | choosing which place to stop at, and adjusting the last kept digit for what follows it | `B0-R0-C03` |
@@ -252,6 +281,7 @@ teaches were deleted. Terms used before their gloss, and terms used for two thin
 | standard deviation | the square root of the variance, in the same unit as the original values | `B0-R0-C28` |
 | standard error of the mean | that spread of a random sample's average, over many samples of the same size | `B0-R0-C29` |
 | starch | the stuff rice, wheat and potato are mostly made of | `B0-R0-C36` |
+| static rule | a kilogram of body fat is taken to hold a fixed number of kilocalories, so a surplus or deficit summed over time converts into fat at that fixed rate, every other quantity held constant; commonly 3,500 kilocalories a pound | `S01-R1-C07` |
 | statistic | the same kind of number, computed instead from a sample | `B0-R0-C29` |
 | statute | a law enacted by Parliament or a State Legislature, each called an Act | `B0-R0-C43` |
 | stock | a quantity that exists at a moment and can be measured at that moment, such as the water in a tank | `B0-R0-C23` |
@@ -264,10 +294,13 @@ teaches were deleted. Terms used before their gloss, and terms used for two thin
 | table | values set out in a grid, each one identified by the row and the column it sits in | `B0-R0-C39` |
 | tangent | the straight line that touches a curve at one point and runs along it, whose slope is the rate at that point | `B0-R0-C21` |
 | temperature | how hot a thing is - a level, not an amount | `B0-R0-C34` |
+| thermic effect of food | the energy spent digesting, absorbing and processing what was eaten | `S01-R1-C04` |
 | thermochemical calorie | 4.184 joules exactly | `B0-R0-C12` |
+| total energy expenditure (TEE) | the product of physical activity level and basal metabolic rate: what a group spends in a day | `S01-R1-C03` |
 | triglyceride | the molecule fat is made of, in food and in a body alike | `B0-R0-C36` |
 | trueness | how close the average of many repeated readings sits to the true value | `B0-R0-C30` |
 | two-way table | a table that sorts the same people twice, one way down the columns and the other way across the rows | `B0-R0-C26` |
+| type 2 diabetes | a condition in which blood glucose runs high | `S01-R1-C09` |
 | unit | an agreed amount that everybody measures against | `B0-R0-C09` |
 | unit of observation | what one row of a table stands for | `B0-R0-C39` |
 | value axis | the axis a bar's length is read against: the side axis when bars stand up, the bottom axis when they lie flat | `B0-R0-C40` |

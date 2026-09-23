@@ -122,3 +122,46 @@ three hosts. Full account of the route in `books/B0/READY-part-D.md`.
 "web version last updated" line on its details page. The VIM3 online edition is frozen at 2017; the
 trigger is a VIM4 publication by the JCGM. The Kiran paper is a published article; the trigger is
 an erratum or correction notice.
+
+## Added by the S01-R1 source intake, 2026-09-23
+
+Every passage was cut programmatically from the raw text the TinyFish `fetch_content` tool
+returned (saved from the tool's own result file, not retyped), and re-checked afterwards as a
+whitespace-normalised substring of that fetch: 118 of 118. Hall 2008, supplied by Harsh as a PDF,
+was checked the same way against its pdftotext extraction: 17 of 17. Eleven passages added to three files
+after the C09/C10 audit bring the total to 146 of 146. Log in `books/S01-R1/INTAKE.md`.
+
+**How the journal papers were reached, and what that means.** `pmc.ncbi.nlm.nih.gov` now answers
+TinyFish with a reCAPTCHA page, the Europe PMC full-text service returns HTTP 500 for articles
+outside the open-access subset, and the publishers (nature.com, OUP, Elsevier) paywall or
+bot-block. NCBI's own PMC Article Dataset on AWS (`pmc-oa-opendata.s3.amazonaws.com`) serves each
+article's plain text and is reachable. What it serves for these five is the **NIH author
+manuscript**, not the typeset article, and its licence line says: "This file is available for text
+mining. It may also be used consistent with the principles of fair use under the copyright law."
+None of the five is open-licensed. Hall 2008 and Hall et al. 2012 are not in that dataset. Hall et al.
+2012 was later obtained as the publisher PDF through Europe PMC's PDF render
+(`europepmc.org/articles/PMC3302369?pdf=render`); the same route returns an error for Hall 2008,
+which Harsh then supplied as the author-manuscript PDF.
+
+| File | What it is | Words | Verified in it |
+| --- | --- | --- | --- |
+| `hall_2011_lancet.txt` | Hall et al., *Lancet* 2011;378:826 (PMC3880593), author manuscript. Excerpts, not complete | 1822 | Energy per kg change of body fat 39·5 MJ and 7·6 MJ per kg lean mass; the 3500 kcal per pound rule named and its origin in estimating the energy content of weight lost; 2 MJ/day cut predicting 22 kg in year one under the static rule, about double the model; intracellular water with stored glycogen; rule of thumb 100 kJ per day per kg; half times of about 1 year |
+| `hall_guo_2017.txt` | Hall and Guo, *Gastroenterology* 2017;152:1718 (PMC5568065), author manuscript. Excerpts | 2123 | Energy balance "does not provide a causal explanation"; 3 components of expenditure; thermic effect about 10% of intake; metabolic adaptation; intake rises about 100 kcal/d per kg lost; expenditure slope about 20–30 kcal/d per kg; static, settling point, set point models; body fat as several months of expenditure. **Added 2026-09-23 after the C09/C10 audit:** individual weight changes are highly variable even when exercise is supervised; exercise compensated by intake and non-exercise activity |
+| `thomas_2013_3500kcal.txt` | Thomas et al., *Int J Obes* 2013;37:1611 (PMC4024447), author manuscript. Excerpts | 1136 | "Wishnofsky's Rule" (keywords); 3500 kcal per pound (about 0.45 kg) attributed to reference 3, Wishnofsky 1958; 103 adults; lost 20.1±11.3 lb against 27.6±16.0 lb predicted. Does **not** describe how Wishnofsky derived the rule |
+| `rosenbaum_leibel_2010.txt` | Rosenbaum and Leibel, *Int J Obes* 2010;34 Suppl 1:S47 (PMC3673773), author manuscript. Excerpts | 1180 | 20%–25% fall in 24-hour expenditure after 10% or greater loss; 10–15% below that predicted from fat and lean mass; ~300–400 fewer calories per day; over 100,000 kcal stored in a 70-kg man. **Added 2026-09-23 after the C09/C10 audit:** 80%-90% return to their previous weight percentiles; maintenance of a reduced body fatness will probably require a lifetime of meticulous attention to intake and expenditure |
+| `polidori_2016.txt` | Polidori et al., *Obesity* 2016;24:2289 (PMC5108589), author manuscript. Excerpts | 1836 | ~100 kcal/day per kg of lost weight; against ~30 kcal/kg/day in expenditure; self-reported intake inaccurate. **Added 2026-09-23 after the C09/C10 audit:** trial weight reached a new equilibrium "several kilograms lower", intake up ~350 kcal/day at steady state; placebo loss under 1 kg; energy expenditure not directly measured; group means only, individual variability not characterised; proportional controller not known valid "for a range of weight losses"; Methods clause "T = 52 was the number of days between measurements" (flattened formula, check before use); commercial programme (not the trial): plateau at ~8 months with intake back within 100 kcal/day of baseline; reference 1 is Leibel, Rosenbaum and Hirsch 1995 (NEJM), the source of the ~30 kcal/kg/day |
+| `fao_who_unu_2004.txt` | FAO/WHO/UNU, *Human energy requirements*, FAO Food and Nutrition Technical Report Series 1 (2004), HTML edition. Excerpts from the chapter 2 and chapter 5 pages. "All rights reserved", non-commercial educational reproduction authorised with acknowledgement | 2227 | Definition of energy requirement; BMR 45 to 70 percent of TEE; metabolic response to food about 10 percent of BMR; DLW measures TEE over usually 10 to 14 days; gender, age and body weight as main determinants; PAL = TEE/BMR; sustainable PAL about 1.40 to 2.40; 1 kcal = 4.184 kJ; worked example 1 975 kcal for a 55 kg woman. BMR equations **not** held |
+| `hall_2008_ijo.txt` | Hall, *Int J Obes* 2008;32:573 (PMC2376744). NIH author-manuscript PDF (NIHMS47767) **supplied by Harsh** 2026-09-23; its text layer via pdftotext. Excerpts. The PDF states no licence | 2737 | Rule of 3500 kcal per pound, or 32.2 MJ per kg; its origin in a calculation assuming loss of adipose tissue of 87% fat (refs 1, 2); glycogen, protein and fat at 17.6, 19.7 and 39.5 MJ/kg; fat mass change 39.5 MJ/kg, not the same as adipose tissue, which includes fluid and protein; lean mass change 7.6 MJ/kg (h = 1.6 g water per g protein); glycogen's effects on weight loss typically within the first week; 24.7 MJ per kg for a 15 kg loss at 20 kg initial fat. Does **not** state its own adipose lipid fraction, or that early loss is mostly glycogen and water. Equations absent (images) |
+| `hall_2012_ajcn.txt` | Hall et al., *Am J Clin Nutr* 2012;95:989 (PMC3302369), **publisher PDF** text layer via Europe PMC's PDF render (obtained on a second attempt). Excerpts. "© 2012 American Society for Nutrition"; free to read, not open-licensed. Consensus statement funded by ASN and ILSI North America | 2419 | The energy balance equation (ES = EI – EO) as the first law; REE about two-thirds of EO; TEF, AEE; water bound to glycogen; body fat energy content much higher than lean; passive and active compensation; the panel's recommendation that the 3500 kcal per pound rule no longer be used; rule of thumb 10 kcal/d per lb; DLW precision ~5%. Hyphenation and ligatures as in the PDF |
+| `bipm_si_prefixes.txt` | BIPM SI prefixes page, whole table | 503 | kilo, mega, giga rows. Exponents lose their superscript in extraction ("106" is 10^6); read the header |
+| `nist_sp811_pound.txt` | NIST SP 811 Appendix B.8 pound row, and the footnote with the exact factor | 456 | Pound (avoirdupois) 4.535 924 E-01 kg in B.8; exact 4.535 923 7 E-01 in the footnote; footnotes page updated 18 August 2025 |
+| `ftc_gut_check_2014.txt` | US FTC, *Gut Check* (January 2014). Excerpts. No licence statement on the page | 830 | The seven claims; "Meaningful weight loss requires taking in fewer calories than you use"; claims 2 and 7 reasoning. Its example ads are the FTC's own illustrations, **not real published ads** |
+| `icmr_nin_2020_brief.txt` | ICMR-NIN *Brief Note* on Nutrient Requirements for Indians 2020, PDF text layer. The summary note, **not** the full 2020 report | 1036 | TEE = BMR X PAL; sedentary PAL 1.53 to 1.40; BMR reduced a further 5%; requirement lower by 3 to 8 kcal/kg/day; sedentary man 65 kg 2110 kcal/d, woman 55 kg 1660 kcal/d. Its line that BMR is "measured directly (using DLW or HRM methods)" is wrong; do not cite it for that |
+| `nss_594_nutritional_intake.txt` | MoSPI NSS Report 594, *Nutritional Intake in India 2022-23 & 2023-24* (2025), PDF text layer. Successor to Report 560, which is **not** held | 1453 | All-India per capita kcal/day 2233 rural, 2250 urban (2022-23), 2212 and 2240 (2023-24); Table 3.14 with 2011-12 at 2233 rural, 2206 urban; energy computed from a nutrient conversion table revised in 2025 |
+
+**Vintage.** The five papers are published articles; the trigger is an erratum or retraction
+(Europe PMC lists an erratum for Hall et al. 2012, Am J Clin Nutr 2012;96:448; the erratum is not held). FAO/WHO/UNU 2004 is the current
+joint report; the trigger is a new expert consultation. ICMR-NIN 2020 is superseded when ICMR-NIN
+revises its requirements. NSS 594 covers 2022-24; the trigger is the next HCES nutritional-intake
+report. The BIPM prefix table was last extended in 2022 (CGPM Resolution 3); NIST SP 811's
+footnotes page was updated 18 August 2025.

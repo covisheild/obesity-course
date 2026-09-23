@@ -5,6 +5,7 @@ Quarto for pandoc (or back) touches only `render()`. Run from the repo root:
 
     python course/build.py --check          # validation and reports only
     python course/build.py --subject S01    # assemble + render one booklet
+    python course/build.py --subject S01-R1 # one rung as its own book (+ its series PDF)
     python course/build.py --all
 
 The checks are the point. Writing 61 booklets without them produces a corpus
@@ -20,6 +21,8 @@ SCHEMA = os.path.join(ROOT, "schema", "concept.schema.json")
 BIB = os.path.join(ROOT, "references", "library.bib")
 REFDOC = os.path.join(ROOT, "references", "reference.docx")
 FIGURES_DIR = os.path.join(ROOT, "figures")
+sys.path.insert(0, FIGURES_DIR)
+import figspec  # noqa: E402  - figure specs: numbers tied to the text, PNG tied to the spec
 LEVELS = ["Introductory", "Intermediate", "Advanced", "Expert"]
 
 # `textbook` is allowed on an empirical concept, and that is a deliberate widening made on
@@ -254,8 +257,8 @@ def _paragraphs(text: str) -> list[str]:
 
 def _sentences(para: str) -> list[str]:
     flat = re.sub(r"\s+", " ", re.sub(r"[*_`]", "", para)).strip()
-    flat = re.sub(r"\b(e\.g|i\.e|etc|vs|No|Dr|Mr|Ms|Art|s|ss)\.", r"\1<dot>", flat)
-    parts = re.split(r"(?<=[.?!])\s+(?=[A-Z\"'(])", flat)
+    flat = re.sub(r"(?<![\'’])\b(e\.g|i\.e|etc|vs|No|Dr|Mr|Ms|Art|s|ss)\.", r"\1<dot>", flat)
+    parts = re.split(r"(?:(?<=[.?!])|(?<=[.?!][\"'”’)]))\s+(?=[A-Z\"'(“‘])", flat)
     return [p.replace("<dot>", ".").strip() for p in parts if p.strip()]
 
 
@@ -678,11 +681,13 @@ def check_doc_paths() -> list:
 def check(recs: dict, subjects: dict, clusters: dict, bibkeys: set):
     """Returns (blocking, warnings). Blocking failures stop a render."""
     block, warn = [], []
+    block += _bib_structure()
     subj = subjects["subjects"]
     today = dt.date.today().isoformat()
 
     def E(rid, msg): block.append(f"{rid}: {msg}")
     def W(rid, msg): warn.append(f"{rid}: {msg}")
+    legacy_figures = []
 
     # schema validation, if available
     try:
@@ -932,6 +937,29 @@ def check(recs: dict, subjects: dict, clusters: dict, bibkeys: set):
             elif not os.path.exists(os.path.join(FIGURES_DIR, f.get("source", ""))):
                 W(rid, f"figure '{f.get('file')}' names source script '{f.get('source')}', "
                        "which is not in check/figures/ - the picture cannot be redrawn")
+            # Harsh's standing rule (23 Sep 2026): every figure is mathematically correct and
+            # matches the numbers in its text. Outside Book 0 a figure is drawn from a spec in
+            # its record and nothing else; the spec is checked against the record's own prose,
+            # and the PNG against the spec it was drawn from. Book 0's figures predate specs and
+            # are frozen as drawn, so they are counted in one warning below.
+            if f.get("spec"):
+                for p in figspec.verify(r, f):
+                    E(rid, p)
+                if os.path.exists(os.path.join(FIGURES_DIR, f.get("file", ""))):
+                    why = figspec.stale(r, f, figspec.book_of(r), FIGURES_DIR)
+                    if why:
+                        E(rid, f"figure '{f.get('file')}' {why} - run python check/figures/draw.py "
+                               f"--book {figspec.book_of(r)}")
+            elif r.get("subject") == "B0":
+                legacy_figures.append(f.get("file"))
+            else:
+                E(rid, f"figure '{f.get('file')}' has no spec - outside Book 0 every figure is "
+                       "drawn by check/figures/draw.py from data declared in the record")
+        # At least one figure a section, or one line saying why not (outside Book 0).
+        if r.get("subject") != "B0" and not r.get("figures") and not (r.get("figure_note") or "").strip():
+            (E if r.get("status") in ("verified", "released") else W)(
+                rid, "no figure and no figure_note - every section gets a figure drawn from its "
+                     "data unless one line says why a figure would teach nothing the prose does not")
         for p in prac:
             if not (p.get("answer") or "").strip():
                 E(rid, f"practice {p.get('level')} has no worked answer")
@@ -963,6 +991,10 @@ def check(recs: dict, subjects: dict, clusters: dict, bibkeys: set):
             if f"{sid}-R{rung}-K{n+1:02d}" not in covered[(sid, rung)]:
                 warn.append(f"{sid} rung {rung}: skill K{n+1:02d} has no exercise")
 
+    if legacy_figures:
+        warn.append(f"B0: {len(legacy_figures)} figures predate figure specs (frozen with Book 0; "
+                    "their numbers are checked by the functions in check/figures/draw.py, not by "
+                    "the build). Redraw from specs only in a new Book 0 version")
     warn += check_doc_paths()
 
     # bridge sufficiency, where a rung above exists
@@ -1199,6 +1231,28 @@ def _count_word(n: int) -> str:
 # Reader-facing text therefore contains no repository paths: the bibliography carries a
 # resolvable URL, which is what someone who does not have this repository can actually use.
 
+def _bib_structure() -> list:
+    """An entry whose braces do not close swallows the entries after it, silently.
+
+    Found 23 Sep 2026: `fao_food_energy_2003` and `openstax_business_stats_2e` each lacked their
+    closing brace, so the parser read the following entry's fields as theirs, and Book 0 v1.0
+    printed five references under the wrong title. Nothing blocked, because every citekey still
+    existed. Every entry must close before the next `@` begins.
+    """
+    if not os.path.exists(BIB):
+        return []
+    src, bad = open(BIB, encoding="utf-8").read(), []
+    for m in re.finditer(r"@(\w+)\s*\{\s*([^,\s]+)\s*,", src):
+        depth, j = 1, src.index("{", m.start()) + 1
+        while j < len(src) and depth:
+            depth += (src[j] == "{") - (src[j] == "}")
+            j += 1
+        if depth or re.search(r"\n@\w+\s*\{", src[m.end():j]):
+            bad.append(f"library.bib: entry '{m.group(2)}' does not close before the next entry "
+                       "begins - its braces are unbalanced, so it swallows the entries after it")
+    return bad
+
+
 def _bib_entries() -> dict:
     """Parse library.bib into {citekey: {field: value}}, brace-aware."""
     if not os.path.exists(BIB):
@@ -1395,12 +1449,29 @@ def concept_md(r, cites, label=None, sid=None) -> list[str]:
 LEGACY_INDENT = set()
 
 
+RUNG_BOOK = re.compile(r"^(S[0-9]{2})-R([0-9])$")
+
+
 def booklet_md(sid, recs, subjects, clusters) -> tuple[str, list[str]]:
+    """One booklet. `sid` is B0; a subject (S01: every released rung together); or one rung
+    (S01-R1: that rung alone, as its own book - the unit the series prints, and the one
+    check/pdf/make_pdf.py lays out from check/_build/S01-R1.md and books/S01-R1/book.yml)."""
     subj = subjects["subjects"]
-    mine = sorted([r for r in recs.values() if r.get("subject") == sid],
-                  key=lambda r: (r.get("rung", 0), r.get("sequence", 0)))
+    rung_book = RUNG_BOOK.match(sid)
+    if rung_book:
+        subject, rung = rung_book.group(1), int(rung_book.group(2))
+        mine = sorted([r for r in recs.values()
+                       if r.get("subject") == subject and r.get("rung") == rung],
+                      key=lambda r: r.get("sequence", 0))
+    else:
+        mine = sorted([r for r in recs.values() if r.get("subject") == sid],
+                      key=lambda r: (r.get("rung", 0), r.get("sequence", 0)))
     if sid == "B0":
         title, status, target, nr = "Book 0 · Ground floor", "foundations", "-", 0
+    elif rung_book:
+        s = subj[subject]
+        title, target, nr = f"{subject} · {s['title']} · Rung {rung}", s["target"], s["n_rungs"]
+        status = f"{LEVELS[rung - 1]} · rung {rung} of {nr}"
     else:
         s = subj[sid]
         title, target, nr = f"{sid} · {s['title']}", s["target"], s["n_rungs"]
@@ -1429,10 +1500,20 @@ def booklet_md(sid, recs, subjects, clusters) -> tuple[str, list[str]]:
                  if len(mine) < total else [])]
     if sid != "B0":
         ed = f"version {book_meta(sid)['version']}" if book_meta(sid).get("version") else "edition 0.1 (draft)"
-        md += [f"**Target level: {target}** · {status} · {ed}", "",
+        head = (f"**Level: {LEVELS[rung - 1]}** · rung {rung} of {nr} · the subject goes to {target}"
+                if rung_book else f"**Target level: {target}** · {status}")
+        md += [f"{head} · {ed}", "",
                f"*Ground floor: see Book 0. Derived against subject map `{subjects['source_map_version_id']}`.*", ""]
         gf = sorted({d for r in mine for d in (r.get("ground_floor_deps") or [])})
-        if gf:
+        if gf and rung_book:
+            # A printed book names Book 0 sections the way Book 0 prints them (A5), not by id.
+            b0 = {s["index"]: s["id"] for p in load_book0_outline() for s in p["sections"]}
+            md += ["## Before you start", "",
+                   "This book uses the following Book 0 sections. Each is summarised where it is first "
+                   "needed; work through Book 0 itself if a summary is not enough.", ""]
+            md += [f"- Book 0, {b0.get(recs[d].get('sequence'), d)} · {_notation(recs[d]['name'])}" if d in recs
+                   else f"- `{d}`" for d in gf] + [""]
+        elif gf:
             md += ["## Before you start", "",
                    "This booklet uses the following Book 0 sections. Each is summarised where it is first "
                    "needed; work through Book 0 itself if a summary is not enough.", ""]
@@ -1456,6 +1537,8 @@ def booklet_md(sid, recs, subjects, clusters) -> tuple[str, list[str]]:
                     seen_part = part["letter"]
                     md += [f"## Part {part['letter']} · {part['title']}", ""]
                 label = sec["id"] if sec else None
+            elif rung_book:
+                label = str(r.get("sequence"))  # printed section number, what "section 3" points at
             md += concept_md(r, cites, label, sid)
             here = f"{_notation(label + ' · ' if label else '')}{_notation(r['name'])}"
             block = []
@@ -1481,7 +1564,30 @@ def booklet_md(sid, recs, subjects, clusters) -> tuple[str, list[str]]:
         md += cites.flush("References")
     if answers:
         md += ["\\newpage", "", "# Appendix · Worked answers", ""] + answers
-    return "\n".join(md), [r["concept_id"] for r in mine]
+    text = "\n".join(md)
+    if sid != "B0":
+        text = _ids_to_labels(text, recs, {r["concept_id"]: r.get("sequence") for r in mine})
+    return text, [r["concept_id"] for r in mine]
+
+
+def _ids_to_labels(text, recs, own):
+    """A record id is build plumbing; the reader sees the label the book prints.
+
+    `B0-R0-C12` becomes "Book 0, B4" (Book 0's own printed label) and a record of this book
+    becomes "section 3" (its printed number). Found at the first subject book's cold read,
+    where every Book 0 pointer was an id the reader could not look up. The rendered-page check
+    in `_caret_check` reports any id that survives.
+    """
+    b0 = {s["index"]: s["id"] for p in load_book0_outline() for s in p["sections"]}
+
+    def label(m):
+        rid = m.group(1)
+        if rid.startswith("B0-") and rid in recs:
+            return f"Book 0, {b0.get(recs[rid].get('sequence'), rid)}"
+        if rid in own:
+            return f"section {own[rid]}"
+        return m.group(0)
+    return re.sub(r"`?\b((?:B0|S\d\d)-R\d-C\d\d)\b`?", label, text)
 
 
 # ---------------------------------------------------------------- reports
@@ -1710,6 +1816,9 @@ def _caret_check(html_path):
     # happened once in prose and once through a bibliography note ("... is held in sources/"),
     # and a reader does not have this repository, so any such path is a dead instruction.
     paths = sorted(set(re.findall(r"(?<![/\w.])(?:sources|check|books)/[\w./-]+", text)))
+    ids = sorted(set(re.findall(r"\b(?:B0|S\d\d)-R\d-[CK]\d\d\b", text)))
+    if ids:
+        print(f"  [ids] {len(ids)} record id(s) reached the rendered page: " + ", ".join(ids[:6]))
     if paths:
         print(f"  [paths] {len(paths)} repository path(s) reached the rendered page: "
               + ", ".join(paths[:6]))
@@ -1755,6 +1864,10 @@ def main():
     os.makedirs(OUT, exist_ok=True)
     todo = a.subject or (sorted({r.get("subject") for r in recs.values()}) if a.all else [])
     for sid in todo:
+        rb = RUNG_BOOK.match(sid)
+        if sid != "B0" and sid not in subjects["subjects"] and not (rb and rb.group(1) in subjects["subjects"]):
+            print(f"--subject {sid}: not B0, a subject (S01) or a rung book (S01-R1) - skipped")
+            continue
         md, ids = booklet_md(sid, recs, subjects, clusters)
         path = os.path.join(OUT, f"{sid}.md")
         with open(path, "w", encoding="utf-8") as fh:

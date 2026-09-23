@@ -240,6 +240,9 @@ def glossary_rows(book_id):
     except Exception:
         pass
     prefix = "B0-R0-" if book_id == "B0" else f"{book_id}-"
+    if book_id != "B0":
+        # A rung book prints its sections by number ("3"), as its headings do.
+        labels.update({f"{book_id}-C{n:02d}": str(n) for n in range(1, 100)})
     rows = []
     with open(path, encoding="utf-8") as fh:
         for line in fh:

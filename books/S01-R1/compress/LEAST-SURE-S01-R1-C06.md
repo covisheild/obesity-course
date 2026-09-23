@@ -1,0 +1,1 @@
+S01-R1-C06 pass 1, least sure: deleted from "Where this picture breaks" the worked valid inference ("If a person's energy stores fell over a stretch of time, then intake was below expenditure ... does follow from the premise alone"). It is the only example of a conclusion the identity does support, so without it the reader may conclude every inference from the identity fails.

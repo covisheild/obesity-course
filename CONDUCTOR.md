@@ -27,6 +27,8 @@ is dropped, and accuracy is not traded for speed.
 6. Create `books/<SUBJECT>/STATE.md` and update it after every task: which tasks are done, which
    sections are at which task, open defects, and the next action. It is how this chat resumes after
    a usage-limit stop, and how the next chat resumes if this one dies.
+7. Set the unit's row in the Notion Build Tracker as `NOTION.md` says (claimed; branch in Notes).
+   From here on the row is updated at every phase boundary and at finish.
 
 ## 1. Run the tasks, in `PIPELINE.md`'s run order
 
@@ -36,18 +38,25 @@ is dropped, and accuracy is not traded for speed.
 | 2 | Source intake, to the checklist under the source gate | the conductor |
 | 3 | Task 2: draft, batches of two or three, with the self-check | one drafter per batch |
 | 4 | Task 5: cut (5a), cold read (5b), restore (5c) | one cutter per section; one cold reader for the book; one restorer |
-| 5 | Task 3: audit, one defect file per section | one Opus auditor per batch, never a drafter |
-| 6 | Task 4 and 4b: fix, then verify | one fixer per section; a fresh verifier; two rounds, then the conductor |
-| 7 | Glossary: merge the book's new terms into `prose/GLOSSARY.md`, checking them against earlier books | the conductor |
-| 8 | Build: `check/build.py --check` at zero blocking, then `--subject <SUBJECT>` for the docx and the PDF | the conductor |
-| 9 | PDF: set `status: frozen` in `books/<SUBJECT>/book.yml`, run `python check/series.py`, rebuild; look at the cover, contents, one Part opener, the glossary and the series list as page images before sending | the conductor |
+| 5 | Figure plan (`PIPELINE.md`, after Task 5): every section gets at least one figure, or a one-line `figure_note` saying why a figure would teach nothing the prose does not; a quantitative section gets a figure of its worked relationship. Each is a `spec` in its record, drawn by `python check/figures/draw.py --book <SUBJECT>` from the final text in the book's colours, never by hand. **The conductor opens every figure as an image** before the audit | one figure planner per batch (the drafters' proposals are its starting point); the conductor looks |
+| 6 | Task 3: audit, one defect file per section. The auditor also recomputes every value each figure plots or prints | one Opus auditor per batch, never a drafter |
+| 7 | Task 4 and 4b: fix, then verify; a fix that changes a number redraws its figure | one fixer per section; a fresh verifier; two rounds, then the conductor |
+| 8 | Glossary: merge the book's new terms into `prose/GLOSSARY.md`, checking them against earlier books | the conductor |
+| 9 | Build: `check/build.py --check` at zero blocking (it blocks on a figure whose numbers are not in its text, whose stated relation does not hold, or that is stale against its spec), then `--subject <SUBJECT>` for the docx and the PDF | the conductor |
+| 10 | PDF: set `status: frozen` in `books/<SUBJECT>/book.yml`, run `python check/series.py`, rebuild; look at the cover, contents, one Part opener, the glossary and the series list as page images before sending | the conductor |
+
+**Figures, a standing instruction from Harsh (23 Sep 2026):** more figures than Book 0 had, in the
+book's own colours (the Part hue of its cover, via `style_for` in `check/figures/draw.py`), every
+one mathematically correct and carrying exactly the numbers of its text. The specs and the check
+are in `check/figures/figspec.py`; the rule for writers is in `claude.md` §4 ("Figures").
 
 **Every subagent brief** names: the task's prompt from `PIPELINE.md`, the exact files to read (and
 nothing else), the files to write, and the reply limit — at most 150 words: done, still open, file
 path. The conductor never pastes a record or a source into a brief; it names the path.
 
 **While running**, tell Harsh one line at each phase boundary ("drafted 7 sections, compressing
-now"). Nothing else unless something needs him.
+now"). Nothing else unless something needs him. At the same moment, update the unit's row in the
+Notion Build Tracker (Stage, Citations, Concepts, Blocker, Notes) as `NOTION.md` maps it.
 
 ## 2. When to stop and ask Harsh
 
@@ -81,6 +90,9 @@ Only these:
    build; the book's approximate usage, if the chat can see it.
 5. Update the handover: §3 state, §4 next steps, §7 any new mistake worth not repeating, remove
    the §9 claim. Add a cost-per-section line to `MEASUREMENTS.md` if the numbers are available.
+6. Update Notion as `NOTION.md` says: the unit's row to Stage **Released**, Citations **Verified**,
+   Blocker empty, Notes with the main merge commit and the version; and the dashboard page's status
+   line, if it has one.
 
 **One bundle per book.** The single exception: if the chat must stop mid-book and may not come
 back (a usage limit with the workspace at risk), deliver a checkpoint bundle of the book branch so
@@ -92,26 +104,26 @@ the work is not lost, and say that it is a checkpoint.
 
 Fix these at the start of Book 1, in that chat, before Task 5 runs:
 
-- **The compression tools are Book 0 only.** `books/B0/compress/prepare.py` reads records from
-  `check/records/B0` and labels sections from the Book 0 outline; `books/B0/compress/restore.py` and `books/B0/compress/validate.py`
-  work inside that folder. Generalise them to take `--subject`, keep Book 0's behaviour identical,
-  and check that by regenerating one Book 0 section's `-original.md` and diffing it.
+- **Done 23 Sep 2026 (branch `book/S01-R1`): the compression tools take `--subject`.** They are
+  `check/compress/prepare.py`, `check/compress/restore.py` and `check/compress/validate.py`, run as
+  `--subject B0` or `--subject S01-R1`; a rung book works in `books/<ID>/compress/`, labels sections
+  by concept_id, and `release` also writes the Book 0 sections its records list in
+  `ground_floor_deps`. Book 0's old paths are thin wrappers. Tested in `books/S01-R1/TOOLING-NOTES.md`.
 - **Book 1 carries the drafter comparison** (`PIPELINE.md` Task 2): one section drafted by Sonnet
   and by Opus 5.5, read unlabelled by Harsh, defects per section counted by the audit.
 - **Book 1 measures cost per section**, from which the course timeline is projected.
-- **`books/B0/compress/restore.py` restores whole paragraphs.** Naming one sentence brings back its
-  whole original paragraph, although the docstring says sentence by sentence. Book 0's restores
-  were validated as they ran (no mean or longest sentence rose), so nothing is wrong in the
-  records, but the restore put back more than the cold read earned. Make it sentence-level when
-  generalising the tools, and check against one Book 0 section that validation still passes.
+- **Done 23 Sep 2026: `check/compress/restore.py` is sentence-level.** Naming one sentence brings
+  back that sentence only, in its original paragraph and position. `check/compress/validate.py`
+  now also fails a restore that loses anything the cut kept. Book 0's restores (paragraph-level)
+  put back 179 sentences more than their restore lists named across C1–F5; the records were
+  validated at the time and are left as they are.
 - **Budget for holes after compression.** On Parts D–F the cold read found 128 holes the
   original did not fill either, 22 of them errors in text that had already passed audit and
   verification. The triage → fix → verify loop after 5c is part of the task, not an exception.
-- **A rung book needs its own booklet.** The series (`map/BOOKS.yml`) has one book per rung
-  (`S01-R1`), but `check/build.py --subject S01` renders one booklet per subject, all released
-  rungs together. Before the first rung book's PDF: make the build render one rung as its own
-  booklet (`--subject S01-R1`, writing that rung's own markdown into the build folder), so `check/pdf/make_pdf.py` gets
-  exactly one book. Book 0 is not affected.
+- **Done 23 Sep 2026: a rung book has its own booklet.** `check/build.py --subject S01-R1` renders
+  that rung alone to `check/_build/<ID>.md` (and docx, html), and `check/pdf/make_pdf.py` gets
+  exactly that book, with `books/S01-R1/book.yml`. `--subject S01` still renders all released rungs
+  together (no PDF, as there is no subject-level book.yml). Book 0 is unchanged.
 
 ## Versions after a book is frozen
 

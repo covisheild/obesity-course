@@ -46,7 +46,21 @@ When an audit marks a defect **recurring** and it is not on this list, add it he
     alike, in this section or an earlier one. The compression pass found undefined terms in most
     sections of Parts D to F.
 
+## Figures
+
+15. **Every section has a figure or a `figure_note`** saying in one line why a figure would teach
+     nothing the prose does not. A quantitative section's figure draws its worked relationship.
+16. **Every figure is a `spec` in the record**, drawn by `python check/figures/draw.py --book <ID>`;
+     none is drawn by hand and no number is typed into a script. Its data come from the record's own
+     table where there is one.
+17. **Every number the figure plots or prints is in the prose**, or under `derived` with the
+     arithmetic that gives it; the caption and alt text count. Every line it draws is a `fit` that
+     passes through the plotted points, and every total or ratio it shows is a `check` that holds.
+     The build blocks on each of these, and on a PNG older than its spec.
+18. **Look at the PNG.** Recompute what it shows in Python, and read it as a reader would: the
+     same numbers and units as the text, bars from zero, no label over the data.
+
 ## Rendering
 
-15. Exponents as `10^7`, logarithms as `log10`, no markup; no repository path (`sources/…`,
+19. Exponents as `10^7`, logarithms as `log10`, no markup; no repository path (`sources/…`,
     `check/…`) anywhere a reader will see it, including `.bib` notes.

@@ -1,0 +1,80 @@
+definition.text: "A kilojoule, from `B0-R0-C12`, is a thousand joules; kilo means 10^3. The prefix this record\nadds is mega, meaning 10^6, a million. A megajoule is a thousand kilojoules, and the figures\nin this record run to tens of megajoules for each kilogram of tissue, which is why megajoules\nis the unit used from here on.\n\nPure fat's own energy content is well established. The Atwater general factor for fat, from\n`B0-R0-C32`, is 9.0 kilocalories, or 37 kilojoules, for each gram: 9,000 kilocalories, or 37\nmegajoules, for each kilogram. Hall (2008) gives an independent figure for the same\nquantity, the metabolizable energy density of body fat, at 39.5 megajoules for each kilogram.\nThe two are the same order, both close to 9 kilocalories a gram, and neither is in dispute.\n\nAdipose tissue is not pure fat, `S01-R1-C01` already established. So a kilogram of adipose\ntissue holds less energy than a kilogram of pure fat, by however much of that kilogram is not\ntriglyceride. How much less depends on the tissue's lipid fraction, the proportion of its\nmass that is fat, multiplied by fat's own energy per gram.\n\nHere is where this record has to be exact about what its one held source does and does not\ngive. Hall (2008) states that the classic weight-loss rule \"can be traced back to a\ncalculation that assumes exclusive loss of adipose tissue consisting of 87% fat.\" That 87% is\nthe rule's own assumption, not a measurement Hall reports of any adipose tissue. The same\npaper goes on to warn that the change in body fat is \"not equivalent to the loss of adipose\ntissue, which includes a variable contribution of fluid and protein in addition to\ntriglyceride\" — variable, not fixed at 87% or any other number. No source this subject holds\ngives an independently measured lipid fraction for adipose tissue.\n\nRun the rule's own assumption through the arithmetic anyway, once, to see where its number\ncomes from: lipid fraction times energy per gram.\n\n```working\n    0.87 times 37 = 32.19\n```\n\n32.19 megajoules for each kilogram of the rule's assumed adipose tissue, matching Hall's own\nstatement of the same rule as \"equivalently 32.2 MJ per kg.\" In kilocalories a kilogram that\nis about 7,700, the same figure `S01-R1-C07` reaches from the pound side of the rule. The two\nroutes agree because they are the same one assumption, carried through two different pieces\nof arithmetic — not two independent confirmations of it.\n\nLean tissue's own energy density is far lower than fat's. Hall (2008) gives 17.6 and 19.7\nmegajoules a kilogram for glycogen and protein separately, and a combined figure, once the\nwater that moves with them is counted, of 7.6 megajoules for each kilogram of lean mass\nchange. That number is named here only; what it is built from is rung 2's work.\n"
+simplified_explanation: "Ask a simple question: how many kilocalories does a kilogram of body fat hold? There are two\ndifferent honest answers, and mixing them up is the whole trap.\n\nThe first answer is about pure fat, the triglyceride itself. That number is solid. It is about\n9 kilocalories a gram, which is 9,000 a kilogram, or in the unit this record is built on, about\n37 to 39.5 megajoules a kilogram. Two sources agree on it from two different directions, and\nneither is arguing.\n\nThe second answer is about adipose tissue, the actual stuff that is gained or lost. It is not\npure fat — `S01-R1-C01` already told you that. So its energy per kilogram has to be lower. By\nhow much depends on what fraction of it is fat, and here the honesty runs out: the only figure\nfor that fraction in this subject's held sources is 87%, and it is not a measurement. It is the\nnumber a much older rule assumed, and the paper that reports it goes out of its way to say the\nreal figure is variable, not fixed.\n\nDo the sum anyway, because it shows you where the famous 32.2-megajoules-a-kilogram, or roughly\n7,700-kilocalories-a-kilogram, figure comes from. Take the fraction, 0.87, and multiply by fat's\nown energy per gram.\n\n```working\n    the assumed energy per gram of adipose tissue = the assumed lipid fraction, times fat's\n    energy per gram\n```\n\nThat is arithmetic on an assumption. It is not a second, independent measurement, even though\ntwo different routes to it — this one, and the pound conversion `S01-R1-C07` uses — land on the\nsame number. They agree because they are the same assumption, not because two people measured\nthe same thing twice.\n\nOne more figure, named and set aside. Lean tissue holds far less energy for each kilogram than\nfat does — a small fraction of fat's own figure, once its glycogen, protein and the water that\ntravels with them are counted. What that number is built from is not this record's job.\n"
+illustration.body: "Start with the unit. `B0-R0-C12` gave you the kilojoule: kilo means 10^3, a thousand. Open\nBIPM's own table of SI prefixes, \"The International System of Units (SI): Prefixes\", at\nhttps://www.bipm.org/en/measurement-units/si-prefixes, and search the table for mega.\n\n> mega | M | 106\n\nRead the exponent as ten to the sixth, a million — the source's own extraction note says the\nsuperscript formatting is lost in the fetch. A megajoule is a million joules, a thousand\nkilojoules.\n\nNow the two solid figures for pure fat, from two directions.\n\nOpen FAO Food and Nutrition Paper 77, chapter 3, at https://www.fao.org/4/y5022e/y5022e04.htm,\nand search for the word Atwater.\n\n> The energy values are 17 kJ/g (4.0 kcal/g) for protein, 37 kJ/g (9.0 kcal/g) for fat and\n> 17 kJ/g (4.0 kcal/g) for carbohydrates.\n\nFat: 37 kilojoules a gram. Scale that to a kilogram.\n\n```working\n    37 times 1000 = 37000\n    37000 divided by 1000 = 37\n```\n\n37 megajoules a kilogram (the two divisions and multiplications cancel; a kilojoule-per-gram\nfigure is already a megajoule-per-kilogram figure, because both the numerator and the\ndenominator scale by a thousand together).\n\nOpen Hall, \"What is the required energy deficit per unit weight loss?\", *International\nJournal of Obesity* 2008, at https://pmc.ncbi.nlm.nih.gov/articles/PMC2376744/, and search for\nthe word respectively.\n\n> the metabolizable energy densities of body glycogen, protein and fat are 17.6, 19.7, and\n> 39.5 MJ/kg, respectively\n\n39.5 megajoules a kilogram for fat, against FAO's 37. Close, not identical — the two sources\nare measuring slightly different things (a general dietary factor against a physiological\nenergy density), and this record does not need them to match exactly to trust either one for\nwhat it says: pure fat is worth roughly 9 kilocalories, or somewhere from 37 to 39.5\nmegajoules, for a kilogram.\n\nNow search the same paper for 87%.\n\n> The origin of this rule can be traced back to a calculation that assumes exclusive loss of\n> adipose tissue consisting of 87% fat\n\nRead the sentence again and notice what it does not say. It says a calculation assumes 87%.\nIt does not say a measurement found 87%. Search on for the word variable.\n\n> the change of body fat,ΔF, is not equivalent to the loss adipose tissue, which includes a\n> variable contribution of fluid and protein in addition to triglyceride\n\nVariable. Not 87%, not any other fixed number. That is everything this held source gives you\nabout adipose tissue's own composition.\n\nRun the assumed fraction through the arithmetic once, to see the classic rule's number\nappear.\n\n```working\n    0.87 times 37 = 32.19\n```\n\nSearch the same paper, near the start, for MJ per kg.\n\n> a cumulative energy deficit of 3500 kcal is required to lose 1 pound of body weight, or\n> equivalently 32.2 MJ per kg\n\n32.19 against 32.2. The small gap is rounding; the arithmetic reproduces the paper's own\nstatement of the rule. In kilocalories a kilogram that is about 7,700 — the same figure\n`S01-R1-C07` reaches by converting 3,500 kcal a pound directly. Two routes, one assumption:\nthe fraction 0.87 is what both calculations are built on, and neither route checks it against\na measurement.\n\n```table\nquantity                              value                 source\npure fat, FAO Atwater factor          9.0 kcal/g, 37 MJ/kg  fao_food_energy_2003\npure fat, Hall's physiological figure 39.5 MJ/kg            hall_2008_ijo\nadipose tissue, the rule's assumption 32.2 MJ/kg (≈7,700 kcal/kg)  hall_2008_ijo (rule, not a measurement)\nlean mass change                      7.6 MJ/kg             hall_2008_ijo\n```\n\nRead the third row with the parenthetical attached every time you use it. Drop the\nparenthetical and the row reads like a measured property of a tissue; it is not one.\n"
+illustration.analogy_breaks_when: 'The first two rows of the table are not in dispute in this subject''s held sources: pure fat''s
+
+  own energy content is well established from two independent directions. The third row is
+
+  different in kind, not just in size. It is one assumption, 87% fat, carried through one piece
+
+  of arithmetic; the paper that reports the assumption also says the true figure is variable.
+
+  Nothing here gives a range for that variation, a method for measuring it in a person, or a
+
+  reason to expect 87% over some other number for any particular patient''s adipose tissue.
+
+
+  The near-exact match between 32.19 and Hall''s own 32.2 MJ/kg, and between this record''s route
+
+  and `S01-R1-C07`''s pound-conversion route, is not two confirmations. It is the same 87%
+
+  reappearing wherever the same rule is computed. Treat one appearance of it as evidence and the
+
+  second stops being independent evidence.
+
+
+  The fourth row is named, not explained. It says lean tissue holds far less energy for each
+
+  kilogram than fat does, and nothing here says how the 7.6 splits between glycogen, protein and
+
+  water, or how it was measured.
+
+  '
+must_know[0].point: 'Pure fat holds about 9 kilocalories, or 37 to 39.5 megajoules, for each kilogram. This figure
+
+  is well established from two independent sources and is safe to quote on its own, without the
+
+  caution the next point requires.
+
+  '
+must_know[1].point: 'A kilogram of body fat lost or gained is not a kilogram of pure fat; it is adipose tissue, a
+
+  mixture, and holds less energy per kilogram than pure fat does. Never quote 9 kilocalories or
+
+  37-39.5 megajoules a kilogram for a kilogram of weight a patient has lost or gained.
+
+  '
+must_know[2].point: 'The figure of about 32 megajoules, or 7,700 kilocalories, for a kilogram of adipose tissue is
+
+  the classic rule''s own assumed number, built from an assumed 87% lipid fraction that no held
+
+  source measures. It is not an established property of adipose tissue. Say "the rule assumes"
+
+  when you use it, never "adipose tissue is".
+
+  '
+must_know[3].point: 'Reaching the same ~7,700 or ~32.2 figure by two different pieces of arithmetic, as this record
+
+  and `S01-R1-C07` both do, is not two independent confirmations of it. Both routes carry the
+
+  same 87% assumption through different unit conversions. Check what a figure is built on before
+
+  counting a second appearance of it as new evidence.
+
+  '
+must_know[4].point: 'Lean tissue''s energy density, about 7.6 megajoules for a kilogram of lean mass change, is far
+
+  lower than fat''s. This record names the number and does not build it; ask what it is made of
+
+  before using it for anything beyond "much lower than fat".
+
+  '
+must_know[5].point: 'Because fat and lean tissue differ this much, and `S01-R1-C01` already showed a scale cannot
+
+  tell you which compartment moved, no single kilocalories-per-kilogram figure is safe to apply
+
+  to a patient''s weight change without separately knowing, or reasonably assuming, what that
+
+  change was made of.
+
+  '

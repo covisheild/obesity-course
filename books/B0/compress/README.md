@@ -60,3 +60,14 @@ on, against a kept-set built with markers stripped, and never matched table rows
 block quote and table row was silently dropped. D–F outputs were byte-identical after the fix; A7,
 C2 and C9 had lost lines since their own compression, and those were put back.
 
+
+## Tools moved, 23 September 2026
+
+`prepare.py`, `restore.py` and `validate.py` now live in `check/compress/` and take `--subject`
+(`B0`, or a rung book such as `S01-R1`). The three files here are thin wrappers that add
+`--subject B0`, so every command above still works. `restore.py` is now sentence-level and
+`validate.py` checks a `-final-prose.yml` for anything the cut kept and the restore lost. Run
+against the files here, that check flags `A7-final-prose.yml` (it lacks the quote the cut kept,
+the bug fixed on 23 September; the record itself was repaired) and the mean check flags
+`A2-final-prose.yml` (12.18 -> 12.35, from Part A's hand-run pass, before the tools existed).
+Both predate the change, and neither file is read by anything. See `books/S01-R1/TOOLING-NOTES.md`.

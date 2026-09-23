@@ -1,0 +1,96 @@
+HALL ET AL. 2011, LANCET — VERBATIM SOURCE PACK (EXCERPTS)
+============================================================
+
+Transcription rule for this file: every line beneath a block heading that is not
+prefixed with [NOTE] and is not inside a NOT OBTAINED record is an exact, unaltered
+slice of the text returned by the TinyFish fetch_content tool for the URL in that
+heading, cut programmatically from the saved fetch; nothing has been paraphrased,
+smoothed or merged. Prose passages are set in double quotation marks (the marks are
+this file's, not the source's). Tables are set between [TABLE] and [END TABLE] lines
+and keep the line breaks the extraction produced. Where part of a paragraph or table
+is left out, the omission is marked [...] in place. Lines beginning [NOTE] are this
+file's own annotation and are NOT source text.
+
+CITATION: Hall KD, Sacks G, Chandramohan D, Chow CC, Wang YC, Gortmaker SL, Swinburn BA. Quantification of the effect of energy imbalance on bodyweight. Lancet 2011;378(9793):826-837.
+PMID: 21872751   PMCID: PMC3880593   DOI: 10.1016/S0140-6736(11)60812-X   (confirmed via PubMed)
+ARTICLE PAGE: https://pmc.ncbi.nlm.nih.gov/articles/PMC3880593/
+TEXT FETCHED FROM: https://pmc-oa-opendata.s3.amazonaws.com/PMC3880593.1/PMC3880593.1.txt
+RETRIEVED: 2026-09-23
+LICENCE AS STATED IN THE FETCHED FILE: "This file is available for text mining. It may also be used consistent with the principles of fair use under the copyright law."
+
+HOW IT WAS OBTAINED: pmc.ncbi.nlm.nih.gov answers the TinyFish fetch_content tool with a
+reCAPTCHA page, and the Europe PMC full-text service returns HTTP 500 for this article
+(it is not in the open-access subset). The text here comes from NCBI's own PMC Article
+Dataset on AWS (the pmc-oa-opendata bucket), which serves each PMC article's plain-text
+rendering, fetched with TinyFish fetch_content on 2026-09-23. It is the NIH author
+manuscript deposited in PMC, NOT the publisher's typeset version: wording can differ
+slightly from the journal pages, and page numbers are the journal's, not this text's.
+Mathematical typesetting is flattened by the extraction (a fraction or subscript comes
+through as run-together characters); no such passage is stored as a quotation.
+
+WHAT THIS FILE HOLDS: excerpts, not the whole article. The summary; the first two
+paragraphs of the Introduction; the first paragraph of "Quantitative physiology of
+weight change in adults"; two paragraphs of "Modelling of the dynamics of weight change"
+(the 100 kg man and the static rule); the first paragraph of the Panel "Does diet
+composition matter?" (glycogen and water); two of the "Key messages". Everything else
+(the rest of the modelling sections, population model, policy simulation, figure
+captions, references) is omitted. Absence of a passage from this file is not absence
+from the article.
+
+===============================================================================
+1. Summary
+https://pmc-oa-opendata.s3.amazonaws.com/PMC3880593.1/PMC3880593.1.txt
+===============================================================================
+
+"Obesity interventions can result in weight loss, but accurate prediction of the bodyweight time course requires properly accounting for dynamic energy imbalances. In this report, we describe a mathematical modelling approach to adult human metabolism that simulates energy expenditure adaptations during weight loss. We also present a web-based simulator for prediction of weight change dynamics. We show that the bodyweight response to a change of energy intake is slow, with half times of about 1 year. Furthermore, adults with greater adiposity have a larger expected weight loss for the same change of energy intake, and to reach their steady-state weight will take longer than it would for those with less initial body fat. Using a population-averaged model, we calculated the energy-balance dynamics corresponding to the development of the US adult obesity epidemic. A small persistent average daily energy imbalance gap between intake and expenditure of about 30 kJ per day underlies the observed average weight gain. However, energy intake must have risen to keep pace with increased expenditure associated with increased weight. The average increase of energy intake needed to sustain the increased weight (the maintenance energy gap) has amounted to about 0·9 MJ per day and quantifies the public health challenge to reverse the obesity epidemic."
+
+===============================================================================
+2. Introduction, first two paragraphs
+https://pmc-oa-opendata.s3.amazonaws.com/PMC3880593.1/PMC3880593.1.txt
+===============================================================================
+
+"While the complexity of the obesity epidemic is graphically illustrated by the web of interacting variables in the Foresight Obesity Map,1 at the central core of the system map lies a fundamental principle of nutrition and metabolism: bodyweight change is associated with an imbalance between the energy content of food eaten and energy expended by the body to maintain life and perform physical work.2 Any successful intervention targeting obesity (eg, diet, exercise, drugs, bariatric surgery, etc) must tip the balance between energy intake and expenditure. Therefore, to assess the potential of an obesity intervention, its effect on both energy intake and energy expenditure over time needs to be quantified."
+
+[NOTE] The paragraph that names the static rule, where it came from (reference 7 is Hall
+[NOTE] 2008, Int J Obes 32:573) and what it ignores.
+
+"Despite the simplicity of this core energy balance principle, calculation of the dynamics of energy imbalance and translation of the imbalance to a change in bodyweight is not straightforward. Widespread official recommendations from the National Health Service in the UK, the National Institutes of Health and the American Dietetic Association in the USA erroneously state that reduction of energy intake by about 2 MJ per day will result in slow and steady weight loss of about 0·5 kg per week.3–6 This ubiquitous weight-loss rule (also known as the 3500 kcal per pound rule) was derived by estimation of the energy content of weight lost7 but it ignores dynamic physiological adaptations to altered body weight that lead to changes of both the resting metabolic rate as well as the energy cost of physical activity.8 Unfortunately, this static weight-loss rule continues to be used for weight-loss counselling and has been misapplied at the population level to predict the effect of policy interventions on obesity prevalence.9–12 While it is generally recognised that the static weight-loss rule is overly simplistic, there is a dearth of methods for accurate predictions of how changes of diet or physical activity will translate into weight changes over time."
+
+===============================================================================
+3. Quantitative physiology of weight change in adults, first paragraph
+https://pmc-oa-opendata.s3.amazonaws.com/PMC3880593.1/PMC3880593.1.txt
+===============================================================================
+
+[NOTE] Energy content per kg of body fat (39.5 MJ) and of lean mass (7.6 MJ). The page
+[NOTE] prints the decimal point as a raised dot (39·5), kept as fetched. Reference 7 is Hall 2008.
+
+"An imbalance between energy intake and energy expenditure is accounted for by a gain or loss of body fat and lean tissue which generally change in parallel.30,38 Thus, quantification of weight change requires both a dynamic assessment of how energy expenditure changes over time as well as how energy imbalances are partitioned between storage or mobilisation of body fat and lean tissue. The energy content per kg change of body fat is 39·5 MJ and 7·6 MJ for a kg of lean mass.7 Thus, to lose the same mass of fat as lean tissue requires about a 5-fold greater deficit in net energy. Changes of body fat and lean tissue are related by a non-linear function of the initial body fat mass such that people with higher initial adiposity partition a greater proportion of a net energy imbalance towards gain or loss of body fat versus lean tissue than do people with low initial adiposity.30,38 The physiological mechanisms underlying this non-linear relation are complex and involve the regulation of metabolic fuel selection,31,34 but the net result can be described by a simple equation first presented more than 30 years ago38 and subsequently updated and validated.30,37"
+
+===============================================================================
+4. Modelling of the dynamics of weight change: the 100 kg man, and the static rule against it
+https://pmc-oa-opendata.s3.amazonaws.com/PMC3880593.1/PMC3880593.1.txt
+===============================================================================
+
+"Figure 2A shows the predicted bodyweight time course of a 100 kg (220 lb) sedentary man following a step reduction of energy intake by 2 MJ per day (480 kcal per day). This constant diet perturbation was predicted to result in a bodyweight plateau at about 75 kg (165 lb) over a 10-year simulation taking roughly 1 year to reach half of the maximum weight loss and reaching 95% of this value after about 3 years. The dashed curves on figure 2A illustrate the ±4 kg weight-loss variability after several years and show that even seemingly small initial uncertainties can lead to large expected long-term inter-individual variability of weight change. This expected variability will be exacerbated by imperfect adherence to the intervention as well as any differences in physiological variables between individuals."
+
+"By contrast with our dynamic model simulations, the popular dieting rule3–6 predicts that the same 2 MJ per day reduction of energy intake will result in a linear decrease of bodyweight over time with 22 kg lost in the first year (not shown), which is about 100% greater weight loss than our model prediction. This result shows the magnitude of the error introduced by ignoring dynamic changes of energy expenditure with weight loss. Moreover, it might help explain why even the most diligent followers of diet programmes often fail to reach weight loss goals that were set by use of the static weight-loss rule. Although practitioners of the erroneous dieting rule generally acknowledge that weight loss will slow over time, they had no way to estimate the weight-loss time course."
+
+===============================================================================
+5. Panel, "Does diet composition matter?", the paragraph on glycogen, protein and water
+https://pmc-oa-opendata.s3.amazonaws.com/PMC3880593.1/PMC3880593.1.txt
+===============================================================================
+
+"First, energy is stored in the body as protein, fat, and glycogen, which is a form of carbohydrate. Any imbalance between the intake and use of these macronutrients will lead to an alteration of body composition since the stored protein, fat, or glycogen must change to compensate the imbalance. The energy stored per unit mass of carbohydrate, fat, and protein varies considerably, especially when accounting for the intracellular water associated with stored glycogen and protein.7 Furthermore, dietary carbohydrates have an effect on renal sodium excretion via insulin,60 which results in concomitant changes of extracellular fluid. Therefore, weight changes are expected when the macronutrient composition of the diet is altered, even when the energy content of the diets are held constant."
+
+===============================================================================
+6. Key messages, first and third
+https://pmc-oa-opendata.s3.amazonaws.com/PMC3880593.1/PMC3880593.1.txt
+===============================================================================
+
+"Health and nutrition organisations have perpetuated the myth that a reduction of food intake of 2 MJ per day will lead to a steady rate of weight loss of 0·5 kg per week. Because this static weight-loss rule does not account for dynamic physiological adaptations that occur with decreased bodyweight, its widespread use at both the individual and population levels has led to drastically overestimated expectations for weight loss."
+
+[NOTE] The proposed rule of thumb. The article states it as 100 kJ per day per kg
+[NOTE] and in pounds. It gives no per-kilogram figure in kilocalories;
+[NOTE] any such figure is a conversion made outside this source.
+
+"On the basis of our model, we propose an approximate rule of thumb for an average overweight adult: every change of energy intake of 100 kJ per day will lead to an eventual bodyweight change of about 1 kg (equivalently, 10 kcal per day per pound of weight change) with half of the weight change being achieved in about 1 year and 95% of the weight change in about 3 years."

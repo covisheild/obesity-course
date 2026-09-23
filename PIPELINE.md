@@ -1,10 +1,11 @@
 # How to run the pipeline
 
-Seven prompts and then an optional read. Copy them as written. **One book per chat**, run by a
+Seven prompts, the figure plan, and then an optional read. Copy them as written. **One book per chat**, run by a
 conductor that follows `CONDUCTOR.md` and delegates every task below to subagents.
 
-**Run order: 1 → 2 → 5 → 3 → 4 → 4b → 6.** The compression pass (Task 5) runs *before* the audit
-(Task 3). Compression only deletes whole sentences, so every claim the reader will see is still in
+**Run order: 1 → 2 → 5 → figure plan → 3 → 4 → 4b → 6.** The compression pass (Task 5) runs
+*before* the audit (Task 3), and the figure plan runs between them, so figures are drawn from the
+final text and the audit checks them. Compression only deletes whole sentences, so every claim the reader will see is still in
 the text the audit checks, and the roughly 40 per cent that is cut is never audited or fixed.
 Practice problems pass through the cut word for word, so every answer is still recomputed. The
 task numbers are kept as they were so that older handovers and defect files still point at the
@@ -74,6 +75,12 @@ drafter starts. Drafters and fixers never fetch.
 `check/references/library.bib` and `prose/GLOSSARY.md` are shared registries. Two chats adding
 to them at once collide — Part D's odds source had to be renamed on rebase because F2 had taken
 its citekey. Parallel chats are fine only when neither adds a source.
+
+**10. Harsh follows the build in Notion.** At every phase boundary, the moment the conductor sends
+him its one-line progress message, and at finish, it updates the unit's row in the Notion Build
+Tracker. What to set at which step, and the ids, are in `NOTION.md`. It costs one tool call a
+boundary and never blocks the book: if Notion is unreachable, `books/<SUBJECT>/STATE.md` says so and
+the row is caught up at the next boundary.
 
 ---
 
@@ -204,9 +211,17 @@ a batch can contradict itself.
 > first time beside its symbol, then use the symbol.
 >
 > Use `illustrations` (a list) where one illustration does not do the teaching, and
-> `illustration` where it does. If a figure would show something the prose cannot say in the same
-> space, do not draw it here — name it in your handover with the numbers it would use, and the
-> main thread will decide.
+> `illustration` where it does.
+>
+> **Figures: every section gets at least one**, unless one line in `figure_note` says why a figure
+> would teach nothing the prose does not. A quantitative section gets a figure of its worked
+> relationship (the line its formula draws, the total its parts make, the two cases side by side).
+> Read `claude.md` §4, "Figures". Declare each one as a `figures:` entry with a `spec`, as in
+> `check/schema/example.concept.yml`: its data read from your own ```` ```table ```` block where
+> you have one, every number it plots or prints stated in your prose or worked out under
+> `derived`, and every relationship it draws written as a `fit` or a `check`. Never draw one by
+> hand or type its numbers into a script. Run `python check/figures/draw.py --book <SUBJECT>` to
+> see that each spec passes; the figure planner redraws them all from the compressed text.
 >
 > Before you hand back, check your own work as the auditor will. Run
 > `python check/build.py --check` until blocking is zero for your records. Recompute every
@@ -243,6 +258,13 @@ pass. Fresh contexts, every time.
 >
 > Then check currency: anything with a date, a price, a rate or a cut-point, against the
 > instrument in `sources/`, and flag what needs re-checking against a newer one.
+>
+> Then **the figures**. Open every PNG the record's `figures:` names in `check/figures/` and look at
+> it. Recompute every value it plots or prints (points, bar heights, labels, caption, the line a
+> `fit` draws) from the record's text, in Python, and check that the picture says what the prose
+> says: the same numbers, the same units, bars from zero, nothing drawn that the data does not
+> support. The build has checked that each number appears in the text; you check that it is the
+> right number in the right place, and that the figure teaches what the section teaches.
 >
 > Output **one file per section**, `books/<SUBJECT>/defects/<RECORD-ID>.md`: a numbered list.
 > For each — the field, the claim, what the source actually says, and the smallest change that
@@ -312,14 +334,22 @@ The model matters less than anything else here. Measured on F4, two different mo
 same brief landed 24 words apart. Run this chat at low effort; step 2 wants a clean context and
 a clean directory, not a particular model or effort level. The cold reader must be given every
 earlier Part's released text as well as the Part being cut, and the figures' captions and alt
-text (`books/B0/compress/prepare.py release`).
+text (`check/compress/prepare.py --subject <ID> release`; for a rung book it writes the Book 0
+sections in `ground_floor_deps` and every earlier rung of the subject).
+
+The tools, all run with `--subject B0` or `--subject S01-R1` and working in `books/<ID>/compress/`:
+`check/compress/prepare.py` (`extract`, `assemble`, `release`, `writeback`; with no ids, the whole
+book), `check/compress/restore.py <label> <list>` (sentence by sentence: naming a sentence brings
+back that sentence only) and `check/compress/validate.py <file>` (deletion only, sentence length not
+risen, and for a `-final-prose.yml` nothing the cut kept lost). A rung book's section label is its
+concept_id, so its cut is `<concept_id>-pass1-prose.yml` (S01-R1-C03-pass1-prose.yml).
 
 **Setting up the scratch directory**, before any subagent is launched:
 
 ```bash
 rm -rf /tmp/coldread && mkdir -p /tmp/coldread
-cp books/<SUBJECT>/compress/*-pass1.md /tmp/coldread/
-ls /tmp/coldread          # confirm: cut sections only, nothing else
+cp books/<SUBJECT>/compress/*-pass1.md books/<SUBJECT>/compress/*-released.md /tmp/coldread/
+ls /tmp/coldread          # confirm: cut sections and released earlier text only, nothing else
 ```
 
 ### Step 5a — cut hard. Delegate one subagent per section.
@@ -389,6 +419,38 @@ different door.
 > not have risen. If it has, something was compressed rather than deleted, and that is a failure
 > whatever the word count says.
 
+## Figure plan — after Task 5, before Task 3. The conductor runs it.
+
+*Standing instruction from Harsh, 23 September 2026:* more figures than Book 0 had, in each book's
+own colours, every one mathematically correct and matching the data in its text. It runs after the
+compression pass so that figures are drawn from the text the reader will read, and before the audit
+so that the auditor checks them.
+
+One figure planner per batch of sections, starting from the specs the drafters declared:
+
+> Read `claude.md` §4, "Figures", and `check/schema/example.concept.yml` (its `figures:` block).
+> For each record in <RANGE>, which now carries its compressed text:
+>
+> - **At least one figure a section.** Where a figure would teach nothing the prose does not, write
+>   one line in `figure_note` saying why, instead of a figure. A quantitative section always gets a
+>   figure of its worked relationship.
+> - Each figure is a `figures:` entry with a `spec`: data read from the record's own
+>   ```` ```table ```` block where there is one (`from_table`), otherwise listed in the spec; every
+>   number it plots or prints stated in the record's prose or worked out under `derived`; every
+>   relationship drawn written as a `fit` (y = a + b*x ...) or a `check` (a total, a difference, a
+>   ratio). Name files `<book>-<concept number>-<what>.png` in lower case (`s01-r1-c03-energy-line.png`).
+> - A compression that removed a number a spec used is a spec to fix, never a sentence to restore.
+> - Run `python check/figures/draw.py --book <SUBJECT>`: it refuses to draw a figure whose spec fails
+>   its check. Then `python check/build.py --check` until no record in <RANGE> blocks.
+>
+> Return at most 150 words: figures drawn per section, sections with a `figure_note`, file paths.
+
+Then **the conductor looks at every figure as an image** (the Read tool on each PNG) before the
+audit starts: overlapping labels, a legend over the data, an unreadable axis, a line that says
+something the section does not. A layout fault is invisible to every check. Fix the spec and redraw;
+never edit a PNG. The picture is in the book's colours by construction: the drawing script takes its palette
+from the Part hue of the book's PDF cover (`style_for` in `check/figures/draw.py`).
+
 ## Task 6 — you. Optional, and not a gate.
 
 *Changed 23 September 2026, on Harsh's instruction.* The course is for Harsh's own learning, not
@@ -416,6 +478,10 @@ you is a shortlist: the sections whose gap reports came back longest are the one
 
 ## Task 7 — the PDF. Automatic, on every build.
 
+`<ID>` is a book: `B0`, or one rung such as `S01-R1`, which the build renders alone as its own
+booklet (`check/_build/<ID>.md`). `--subject S01` still renders every released rung together
+and makes no PDF, because no subject-level `books/<ID>/book.yml` exists.
+
 `python check/build.py --subject <ID>` ends by running `check/pdf/make_pdf.py`, which lays out
 the series edition: front cover, title page, copyright and licence page (version and date),
 introduction (why this book exists, how to read it, how to send feedback), contents with page
@@ -430,6 +496,7 @@ What it reads, and where to change it:
 | a book's title, subtitle, version, date, why-this-book, back-cover text, status | `books/<ID>/book.yml` |
 | the order of the series, and so each book's number | `ORDER_KEY` in `check/series.py`, then run it |
 | layout, fonts, colours of labels and boxes | `check/pdf/style.css` |
+| a figure's colours and type (from the Part hue above, and the PDF's Inter face) | `style_for` in `check/figures/draw.py` |
 
 It changes no word of a book. It needs WeasyPrint (`pip install weasyprint qrcode`); the fonts are
 in `check/pdf/fonts` so every chat's PDF looks the same. `--check` blocks if `map/BOOKS.yml` is
