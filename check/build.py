@@ -156,6 +156,23 @@ def load_records() -> dict:
     return recs
 
 
+def _long_date(d) -> str:
+    """2026-09-23 -> 23 September 2026, whether YAML gave a date or a string."""
+    import datetime as _dt
+    if isinstance(d, str):
+        d = _dt.date.fromisoformat(d)
+    return f"{d.day} {d.strftime('%B %Y')}"
+
+
+def book_meta(sid: str) -> dict:
+    """books/<ID>/book.yml: version, date and front-matter text for one book. Empty if absent."""
+    path = os.path.join(os.path.dirname(ROOT), "books", sid, "book.yml")
+    if not os.path.exists(path):
+        return {}
+    with open(path, encoding="utf-8") as fh:
+        return _yaml().safe_load(fh) or {}
+
+
 def load_book0_outline() -> list[dict]:
     """Book 0's part structure, read from OUTLINE.md.
 
@@ -1397,17 +1414,22 @@ def booklet_md(sid, recs, subjects, clusters) -> tuple[str, list[str]]:
     where = {s["index"]: (p, s) for p in outline for s in p["sections"]}
     if sid == "B0" and outline:
         total = len(where)
-        md += [f"**Edition 0.1 (draft)** · {len(mine)} of {total} sections written", "",
+        meta = book_meta(sid)
+        edition = (f"**Version {meta['version']}** · last updated {_long_date(meta['last_updated'])}"
+                   if meta.get("version") else "**Edition 0.1 (draft)**")
+        md += [f"{edition} · {len(mine)} of {total} sections written", "",
                "This book teaches the ground floor once, so that every other booklet can stand on "
                "it. It assumes you can read English and use a calculator. It assumes nothing else: "
                "no medicine, no biology, no remembered mathematics.", "",
                "Read it in order. Each section assumes everything before it and nothing after it. "
                "If a section looks easy, read it anyway and read it quickly — it is here because "
                "something later needs it.", "",
-               f"Sections keep the numbering of the full plan of {total}, so a gap in the numbers "
-               "is a section not yet written rather than one you have missed.", ""]
+               *([f"Sections keep the numbering of the full plan of {total}, so a gap in the numbers "
+                  "is a section not yet written rather than one you have missed.", ""]
+                 if len(mine) < total else [])]
     if sid != "B0":
-        md += [f"**Target level: {target}** · {status} · edition 0.1 (draft)", "",
+        ed = f"version {book_meta(sid)['version']}" if book_meta(sid).get("version") else "edition 0.1 (draft)"
+        md += [f"**Target level: {target}** · {status} · {ed}", "",
                f"*Ground floor: see Book 0. Derived against subject map `{subjects['source_map_version_id']}`.*", ""]
         gf = sorted({d for r in mine for d in (r.get("ground_floor_deps") or [])})
         if gf:
@@ -1625,13 +1647,9 @@ def render(md_path, stem):
     made, pandoc = [], shutil.which("pandoc")
     quarto = shutil.which("quarto")
     quarto = quarto if _works(quarto) else None
+    # The PDF is not made here: check/pdf/make_pdf.py lays out the series edition (covers, front
+    # matter, contents, glossary, series list) from this build's markdown, after this returns.
     formats = [("docx", "docx"), ("html", "html")]
-    if _pdf_engine_ok():
-        formats.append(("pdf", "pdf"))
-    elif not getattr(render, "_pdf_warned", False):
-        render._pdf_warned = True
-        print("  [pdf] skipped: no working PDF engine. tectonic runs but cannot resolve Windows "
-              "platform directories inside the sandbox; install a LaTeX engine or convert from docx.")
     # Citations are numbered and listed per Part during assembly, so citeproc is not used.
     # A reference document carries the styles: Working for display arithmetic, a table
     # style that renders as a table, and spacing that does not leave gaps between every
@@ -1716,6 +1734,12 @@ def main():
     subjects, clusters, recs = load_subjects(), load_clusters(), load_records()
     bibkeys = load_bib_keys()
     block, warn = check(recs, subjects, clusters, bibkeys)
+    # The 196-book list the conductor and every PDF read. Stale or inconsistent blocks.
+    import series as _series
+    _subs, _heads, _books = _series.build()
+    block += [f"series: {p}" for p in _series.problems(_subs, _heads, _books)]
+    if not os.path.exists(_series.OUT) or open(_series.OUT, encoding="utf-8").read() != _series.dump(_books):
+        block.append("series: map/BOOKS.yml is stale (a book.yml status changed?) - run python check/series.py")
     counts = reports(recs, subjects, clusters, block, warn)
 
     print(f"records {len(recs)} | clusters {len(clusters)} | blocking {len(block)} | warnings {len(warn)}")
@@ -1754,8 +1778,27 @@ def main():
                     if not re.fullmatch(r"[IVXLC]+", s)]   # Schedule II is a numeral
         if stumbles:
             print(f"  [{sid}] used before anything expands them: {', '.join(stumbles)}")
-        print(f"{sid}: {len(ids)} concepts ->", ", ".join(render(path, sid)) or "markdown only")
+        made = render(path, sid)
+        made += _series_pdf(sid)
+        print(f"{sid}: {len(ids)} concepts ->", ", ".join(made) or "markdown only")
     return 0
+
+
+def _series_pdf(sid):
+    """The series-edition PDF (check/pdf/make_pdf.py). Needs books/<ID>/book.yml and WeasyPrint;
+    says which is missing rather than failing the build, because the docx and html are still good."""
+    if not os.path.exists(os.path.join(os.path.dirname(ROOT), "books", sid, "book.yml")):
+        print(f"  [pdf] {sid}: no books/{sid}/book.yml (version, date, why-this-book) - no PDF")
+        return []
+    try:
+        import weasyprint  # noqa: F401
+    except ImportError:
+        print("  [pdf] WeasyPrint is not installed: pip install weasyprint qrcode")
+        return []
+    sys.path.insert(0, os.path.join(ROOT, "pdf"))
+    import make_pdf
+    make_pdf.make(sid)
+    return [f"{sid}.pdf"]
 
 
 if __name__ == "__main__":

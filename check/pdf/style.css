@@ -1,0 +1,186 @@
+/* The series page style. make_pdf.py fills the --NAME-- colours from the book's Part hue
+   (check/pdf/series.yml), so every book shares this layout and differs in colour. */
+
+:root {
+  --ink: --INK--; --accent: --ACCENT--; --accent2: --ACCENT2--;
+  --tint: --TINT--; --tint2: --TINT2--; --rule: --RULE--;
+  --text: #1d2327; --muted: #5b6770;
+}
+
+@page {
+  size: --PAGE--;
+  margin: 22mm 20mm 22mm 22mm;
+  @top-left { content: string(runtitle); font: 500 7.5pt Inter, sans-serif; color: var(--muted);
+              letter-spacing: .04em; text-transform: uppercase; }
+  @top-right { content: string(part); font: 500 7.5pt Inter, sans-serif; color: var(--accent);
+               letter-spacing: .04em; text-transform: uppercase; }
+  @bottom-center { content: counter(page); font: 600 8.5pt Inter, sans-serif; color: var(--ink); }
+}
+@page cover { margin: 0; @top-left { content: none } @top-right { content: none }
+              @bottom-center { content: none } }
+@page front { @top-right { content: none } }
+@page opener { @top-left { content: none } @top-right { content: none } }
+
+html { font-family: "Source Serif 4", "DejaVu Serif", serif; font-size: 10.4pt; line-height: 1.52;
+       color: var(--text); hyphens: none; hyphenate-character: "-"; }
+main.book p, main.book li { hyphens: auto; }
+body { margin: 0; }
+.runtitle { string-set: runtitle content(); display: none; }
+
+/* ------------------------------------------------ covers */
+.cover, .backcover { page: cover; position: relative; width: 210mm; height: 297mm; overflow: hidden;
+                     color: #fff; break-after: page; font-family: Inter, sans-serif; }
+.backcover { break-before: page; break-after: auto; }
+.cover > svg, .backcover > svg { position: absolute; top: 0; left: 0; width: 210mm; height: 297mm; }
+.cover-top { position: absolute; top: 18mm; left: 18mm; right: 18mm; }
+.cover-series { font-weight: 800; font-size: 13pt; letter-spacing: .22em; text-transform: uppercase; }
+.cover-series-sub { font-weight: 400; font-size: 9.5pt; opacity: .85; margin-top: 1.5mm; }
+.cover-main { position: absolute; left: 18mm; right: 18mm; top: 150mm; }
+.booknum { display: inline-block; background: #fff; color: var(--ink); font-weight: 800; font-size: 11pt;
+           letter-spacing: .12em; text-transform: uppercase; padding: 2mm 4mm; border-radius: 2mm; }
+.booknum span { font-weight: 500; letter-spacing: .02em; text-transform: none; margin-left: 3mm;
+                color: var(--muted); font-size: 9pt; }
+.cover-title { font-family: Inter, sans-serif; font-weight: 800; font-size: 40pt; line-height: 1.04;
+               margin: 7mm 0 4mm; letter-spacing: -.01em; }
+.cover-subtitle { font-size: 13pt; font-weight: 400; line-height: 1.35; opacity: .92; max-width: 150mm; }
+.cover-level { margin-top: 7mm; font-size: 9pt; font-weight: 600; letter-spacing: .14em;
+               text-transform: uppercase; color: var(--tint2); }
+.cover-foot { position: absolute; left: 18mm; right: 18mm; bottom: 16mm; border-top: .4mm solid rgba(255,255,255,.5);
+              padding-top: 4mm; }
+.cover-foot .author { font-weight: 700; font-size: 12pt; }
+.cover-foot .role, .cover-foot .site { font-size: 9pt; opacity: .85; margin-top: 1mm; }
+
+.bc-inner { position: absolute; left: 22mm; right: 22mm; top: 30mm; bottom: 18mm; }
+.bc-series { font-weight: 700; font-size: 9pt; letter-spacing: .2em; text-transform: uppercase; opacity: .85; }
+.bc-title { font-weight: 800; font-size: 26pt; margin: 4mm 0 8mm; line-height: 1.1; }
+.bc-inner p { font-family: "Source Serif 4", serif; font-size: 12pt; line-height: 1.55; max-width: 150mm; }
+.bc-where { margin-top: 8mm; font-size: 9.5pt; font-weight: 600; color: var(--tint2); }
+.bc-bottom { position: absolute; bottom: 0; left: 0; right: 0; display: flex; align-items: flex-end; gap: 8mm; }
+.bc-qr { width: 30mm; height: 30mm; flex: none; }
+.bc-qr svg.qr { width: 30mm; height: 30mm; }
+.bc-meta { font-size: 8.5pt; line-height: 1.5; opacity: .92; }
+.bc-meta .author { font-weight: 700; font-size: 11pt; }
+.bc-meta .lic { margin-top: 2mm; opacity: .75; }
+
+/* ------------------------------------------------ front matter */
+.titlepage, .colophon, .intro, .toc { page: front; }
+.titlepage { break-after: page; padding-top: 55mm; text-align: left; }
+.tp-series { font: 700 9pt Inter, sans-serif; letter-spacing: .2em; text-transform: uppercase; color: var(--accent); }
+.tp-title { font: 800 32pt/1.08 Inter, sans-serif; color: var(--ink); margin: 5mm 0 4mm; }
+.tp-subtitle { font-size: 13pt; color: var(--muted); max-width: 140mm; }
+.tp-author { margin-top: 40mm; font: 700 13pt Inter, sans-serif; color: var(--ink); }
+.tp-role { font-size: 10.5pt; color: var(--muted); margin-top: 1mm; }
+.tp-contact { font: 500 9pt Inter, sans-serif; color: var(--accent); margin-top: 4mm; }
+
+.colophon { break-after: page; font-size: 8.8pt; color: #333; padding-top: 60mm; }
+.colophon .facts { border-collapse: collapse; margin-bottom: 6mm; }
+.colophon .facts th { background: none; text-align: left; font: 600 8pt Inter, sans-serif; color: var(--accent);
+                      padding: .8mm 5mm .8mm 0; text-transform: uppercase; letter-spacing: .06em; vertical-align: top; }
+.colophon .facts td { padding: .8mm 0; background: none !important; border-bottom: .2mm solid var(--rule); }
+.colophon h4 { font: 700 8.5pt Inter, sans-serif; color: var(--ink); margin: 4mm 0 1mm; text-transform: uppercase;
+               letter-spacing: .08em; }
+.colophon p { margin: 0 0 2mm; }
+
+h2.front, h2.back { font: 800 22pt/1.1 Inter, sans-serif; color: var(--ink); margin: 0 0 8mm;
+                    padding-bottom: 3mm; border-bottom: 1.2mm solid var(--accent); string-set: part content(); }
+h3.front { font: 700 12pt Inter, sans-serif; color: var(--accent); margin: 7mm 0 2mm; }
+.intro { break-after: page; }
+.intro p { margin: 0 0 2.6mm; }
+.whereis { margin-top: 8mm; background: var(--tint); border-left: 1.6mm solid var(--accent2); padding: 4mm 5mm;
+         border-radius: 0 2mm 2mm 0; font-size: 9.8pt; }
+.whereis-h { font: 700 8pt Inter, sans-serif; text-transform: uppercase; letter-spacing: .1em; color: var(--accent2);
+           margin-bottom: 1mm; }
+
+.toc { break-after: page; }
+.toc ul { list-style: none; padding: 0; margin: 0; font-family: Inter, sans-serif; }
+.toc li a { color: inherit; text-decoration: none; }
+.toc li a::after { content: leader(dotted) " " target-counter(attr(href), page); color: var(--muted); }
+.toc-part { font-weight: 700; font-size: 10.5pt; color: var(--ink); margin: 4.5mm 0 1.2mm;
+            padding-top: 1.5mm; border-top: .3mm solid var(--rule); }
+.toc-sec { font-size: 9.2pt; margin: .9mm 0 .9mm 5mm; }
+.toc-ref { font-size: 8.6pt; margin: .9mm 0 .9mm 5mm; color: var(--muted); font-style: italic; }
+
+/* ------------------------------------------------ body */
+main.book h2 { page: opener; break-before: page; string-set: part content();
+               font: 800 26pt/1.1 Inter, sans-serif; color: #fff; background: var(--ink);
+               background-image: linear-gradient(135deg, var(--ink), var(--accent));
+               margin: 0 0 10mm; padding: 26mm 8mm 8mm; border-radius: 0 0 4mm 4mm;
+               bookmark-level: 1; }
+main.book h2.appendix { background-image: linear-gradient(135deg, #2b3137, var(--ink)); }
+main.book h3 { break-before: page; font: 800 17pt/1.18 Inter, sans-serif; color: var(--ink);
+               margin: 0 0 6mm; padding: 0 0 3mm; border-bottom: .6mm solid var(--accent);
+               bookmark-level: 2; break-after: avoid; }
+main.book h2 + h3 { break-before: avoid; }
+main.book h4 { font: 700 11pt Inter, sans-serif; color: var(--accent); margin: 6mm 0 2mm; break-after: avoid; }
+main.book p { margin: 0 0 2.4mm; orphans: 2; widows: 2; }
+main.book a { color: var(--accent); text-decoration: none; word-break: break-all; }
+
+p.lab { margin-top: 5mm; }
+p.lab > strong:first-child { display: inline-block; font: 700 7.6pt Inter, sans-serif; letter-spacing: .09em;
+         text-transform: uppercase; color: #fff; background: var(--accent); padding: .7mm 2.2mm;
+         border-radius: 1.2mm; margin-right: 2mm; vertical-align: .3mm; }
+p.lab-plain > strong:first-child { background: var(--accent2); }
+p.lab-illustration > strong:first-child { background: var(--ink); }
+p.lab-breaks > strong:first-child { background: #b5452c; }
+p.lab-mustknow > strong:first-child { background: #1f7a4d; }
+p.lab-exercise > strong:first-child, p.lab-practice > strong:first-child { background: #6b4fa1; }
+p.lab-mustknow + ul { background: #eef7f1; border-left: 1.4mm solid #1f7a4d; padding: 3mm 5mm 3mm 9mm;
+                      border-radius: 0 2mm 2mm 0; margin: 2mm 0 4mm; }
+p.lab-definition { background: var(--tint); border-left: 1.4mm solid var(--accent); padding: 3mm 4mm;
+                   border-radius: 0 2mm 2mm 0; }
+p.lab-definition + p, p.lab-definition + p + p, p.lab-definition + p + p + p {
+                   background: var(--tint); border-left: 1.4mm solid var(--accent); padding: 0 4mm 3mm;
+                   margin-top: -2.4mm; padding-top: 2mm; }
+
+div.working { font-family: "JetBrains Mono", "DejaVu Sans Mono", monospace; font-size: 8.9pt; line-height: 1.5;
+              background: var(--tint); border-left: 1mm solid var(--accent2); padding: 2.2mm 4mm;
+              margin: 2.5mm 0 3.5mm; border-radius: 0 1.5mm 1.5mm 0; break-inside: avoid; }
+div.working p { margin: 0; }
+pre, code { font-family: "JetBrains Mono", "DejaVu Sans Mono", monospace; font-size: 8.6pt; }
+pre { background: #f4f6f7; padding: 3mm 4mm; border-radius: 1.5mm; white-space: pre-wrap; break-inside: avoid; }
+
+blockquote { margin: 3mm 0 3.5mm; padding: 2.5mm 5mm; background: #faf7f0; border-left: 1.2mm solid #d9a441;
+             font-style: italic; border-radius: 0 1.5mm 1.5mm 0; break-inside: avoid; }
+blockquote p { margin: 0 0 1.5mm; }
+
+table { border-collapse: collapse; margin: 3mm 0 4mm; font-family: Inter, sans-serif; font-size: 8.4pt;
+        width: auto !important; max-width: 100%; break-inside: auto; }
+th { background: var(--ink); color: #fff; font-weight: 600; text-align: left; padding: 1.4mm 2.4mm; }
+td { padding: 1.2mm 2.4mm; border-bottom: .25mm solid var(--rule); vertical-align: top; }
+tbody tr:nth-child(even) td { background: var(--tint); }
+tr { break-inside: avoid; }
+col { width: auto !important; }
+
+figure { margin: 4mm 0 5mm; text-align: center; break-inside: avoid; }
+figure img { max-width: 100%; height: auto; width: auto !important; max-height: 110mm; }
+figcaption { font: 400 8.4pt/1.45 Inter, sans-serif; color: var(--muted); margin-top: 2mm; text-align: left; }
+
+ol, ul { padding-left: 6mm; }
+li { margin: 0 0 1.2mm; }
+sup, sub { line-height: 0; }
+
+/* the references after each Part and the answers appendix: denser */
+main.book h3[id^="references"] + ol, main.book h3[id^="references"] ~ p { font-size: 8.6pt; }
+
+/* ------------------------------------------------ back matter */
+.glossary, .series-list { break-before: page; }
+.note { color: var(--muted); font-size: 9pt; margin-bottom: 5mm; }
+table.gloss { width: 100% !important; font-size: 8.2pt; }
+table.gloss td.term { font-weight: 700; color: var(--ink); white-space: nowrap; }
+table.gloss td.where { color: var(--accent); font-weight: 600; white-space: nowrap; }
+table.gloss thead { display: table-header-group; }
+
+.series-list table.series { width: 100% !important; font-size: 7.6pt; }
+table.series td { padding: .55mm 2mm; border-bottom: .2mm solid #e4e8ea; }
+table.series tbody tr:nth-child(even) td { background: transparent; }
+table.series td.n { width: 8mm; text-align: right; color: var(--muted); font-weight: 600; }
+table.series td.st { width: 18mm; color: #1f7a4d; font-weight: 700; }
+table.series tr.lvl td { background: var(--ink) !important; color: #fff; font-weight: 700; letter-spacing: .1em;
+                         text-transform: uppercase; font-size: 7.4pt; padding: 1.2mm 2mm; }
+table.series tr.here td { background: var(--accent2) !important; color: #fff; font-weight: 700; }
+table.series tr.here td.n, table.series tr.here td.st { color: #fff; }
+table.series .mark { font-weight: 800; }
+
+/* the worked-answers appendix: sections run on, no page per section */
+main.book h2.appendix ~ h3 { break-before: auto; font-size: 13pt; margin-top: 8mm; }
+main.book h2.appendix ~ h2 { break-before: page; }

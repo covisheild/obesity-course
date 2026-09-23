@@ -24,8 +24,8 @@ a fact.
 claude.md              the contract: style sheet + specification
 PIPELINE.md            the six pipeline steps, with the prompt for each
 PARALLEL.md            working in more than one chat at once
-map/                   the frozen subject map — 61 subjects, 195 rungs
-check/                 build.py, schema, hard-word list, Book 0 outline
+map/                   the frozen subject map — 61 subjects, 195 rungs; map/BOOKS.yml, all 196 books in build order
+check/                 build.py, schema, hard-word list, Book 0 outline; series.py; pdf/ (the PDF edition)
 check/records/B0/       finished Book 0 concept records (also see check/, below)
 books/<SUBJECT>/       per-subject working directory, one chat at a time
 sources/               opened primary sources; append-only
@@ -37,7 +37,8 @@ plan/                  pilot inventories and verification notes
 
 ```bash
 python check/build.py --check          # schema, citations, plain-language checks
-python check/build.py --subject B0     # assemble a booklet to _build/
+python check/build.py --subject B0     # assemble a booklet to check/_build/: md, docx, html, pdf
+python check/series.py                 # regenerate map/BOOKS.yml after a book.yml status changes
 ```
 
 `check/_build/` is generated and not committed.
