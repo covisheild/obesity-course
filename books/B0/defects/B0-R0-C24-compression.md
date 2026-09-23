@@ -30,3 +30,4 @@ Auditor: Opus, Task 3, fresh context. Record read as it now stands (compressed t
 
 - **C24-R2a** · HARSH DECISION (23 Sep): drop the statute's 'per cent.' full stop in the unquoted paraphrase; write 'per cent'. If the sentence is actually a marked quotation, leave it exactly as the Act has it.
   Fix: Illustration body, s.3(2) paraphrase (unquoted): "per cent." to "per cent" twice. Marked quotes in `numbers` left as the Act has them. Line 199 and the journalist's line keep their full stops; those end sentences.
+  Verify: closed

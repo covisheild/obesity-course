@@ -74,3 +74,4 @@ Not applied: NEEDS-HARSH (store names), awaiting his decision.
 
 - **C36-R2a** · HARSH DECISION on C36-H1 (23 Sep): rename 'near store' → 'small store' and 'far store' → 'large store' everywhere in this record (prose, exercises, answers, practice, retrieval, notes). Keep capitalisation and grammar right. Remove any sentence whose only job was to say the names mean size only, if it now says nothing.
 Fix: renamed everywhere it appeared (definition plain terms, illustration, analogy_breaks_when, exercise answer): 'near store' → 'small store', 'far store' → 'large store', 'the far one' → 'the large one'. Dropped "One is near and small. One is far and large." and "Near store and far store describe the size of the two and nothing else.", which now said nothing; kept "This section gives no rule about which store is drawn on first, or how fast either fills or empties." Grep finds no 'near store' or 'far store' left.
+Verify: closed

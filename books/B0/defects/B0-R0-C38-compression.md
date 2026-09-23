@@ -89,6 +89,13 @@ Verify: closed
 
 - **C38-R2a** · HARSH DECISION on C36-H1 (23 Sep): rename 'near store' → 'small store' and 'far store' → 'large store' everywhere in this record.
 - Fix: the record had one such term, in the plain layer: "It is also the near store" is now "It is also the small store". No 'far store' was present. A case-blind grep finds neither old term.
+- Verify: open, because the renamed sentence "It is also the small store" (simplified_explanation) now says the liver is the small store, while B0-R0-C36 defines the small store as glycogen kept in the liver and the muscles; with a size name this reads as a false identity. Suggest "It also holds part of the small store."
 
 - **C38-R2b** · reopens C38-K6 (verifier): 'interstitial fluid' is still used undefined. If a held source already cited by this record defines it, gloss it with that quote; otherwise cut the term and say what the sentence needs without it.
 - Fix: no held source defines it (the only occurrence in the held A&P text is the §17.1 sentence already quoted), so the term is cut. definition.text now reads "From there the blood vessels transport hormones throughout the body." The plain layer now reads "From there the blood carries it on, and the blood goes everywhere." Both keep only part of the quoted §17.1 claim and add nothing. The reference quote keeps the term verbatim.
+- Verify: closed
+
+
+## Conductor, after round 2
+
+- **C38-R2a (reopened by round-2 verifier), fixed directly by the conductor after two rounds:** "It is also the small store." → "It also holds part of the small store." The small store is glycogen in liver and muscle (C36), so the liver is not the whole of it.

@@ -29,3 +29,4 @@
 
 - **C29-R2a** · follows C29-K3 (verifier caveat): the figure d6-sample-means.png caption still states 0.317 and 0.633, but their illustration.numbers entries were deleted. Either restore those two numbers entries exactly as they were at commit 64547ef^ (git show 64547ef^:check/records/B0/B0-R0-C29.yml), marked as the record's own simulated values, or remove the values from the caption. Prefer restoring the entries; do not redraw the figure.
   Fix: restored the 0.633 and 0.317 illustration.numbers entries byte-for-byte from 64547ef^ (marked as simulation output, not source figures); re-ran the seed-110 simulation, both values reproduce; caption and figure unchanged.
+  Verify: closed

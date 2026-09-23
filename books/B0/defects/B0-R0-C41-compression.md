@@ -54,6 +54,13 @@ Auditor: Opus, Task 3. Checked against sources/constitution_current.txt (citekey
 
 - **C41-R2a** · reopens C41-K5 (verifier): the new line says an out-of-date copy fails at act two; the next paragraph still says an old copy can pass that act and that the example failed at act three. Reconcile so the section says one thing throughout, keeping the up-to-date check inside act two (Harsh did not ask for a fifth act).
   Fix: analogy_breaks_when now says the up-to-date question belongs to act two; the old copy got through act two because that act checked only title and site, and showed its gap at act three. The "can pass locating, then fail at reading" case is kept only for an amended article. Illustration adds: "The second act should have caught it, by checking the newest amendment the copy names." Retrieval item 3 now asks what extra question act two asks for a law.
+  Verify: closed
 
 - **C41-R2b** · HARSH DECISION (23 Sep): Exercise 2's 'something you have written' becomes 'a paper, report or guideline you have to hand'. Adjust its answer to match.
   Fix: prompt now reads "from a paper, report or guideline you have to hand"; answer now says there is no single correct answer "since it depends on the document you chose".
+  Verify: closed
+
+
+## Conductor, after round 2
+
+- **C41-C1 (seen by the round-2 verifier), fixed directly by the conductor:** the old copy names the Ninety-third Amendment, 2005 and the Ninety-fourth, 2006 in its footnotes (sources/constitution.txt lines 443 and 5162), so "The newest one is from 2003 … thirteen years after that" → "from 2006 … ten years after that". The file's own header, INDEX.yml, SOURCES.md and claude.md said "2003" and are corrected to match.
