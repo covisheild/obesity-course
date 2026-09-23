@@ -203,3 +203,57 @@ Part D's standard error. If it goes back, put it in C40 `simplified_explanation`
 If it goes back, also add this row to the glossary: `error bar | a short line through a point,
 showing a spread or an uncertainty, which the caption should name | B0-R0-C40`. "Uncertainty" is
 still never glossed in any record. C29 uses it only in its everyday sense.
+
+## 5. Found in the A–C harvest
+
+The between-rounds pass harvested Parts B and C (`B0-R0-C09` to `B0-R0-C23`) into
+`prose/GLOSSARY.md` and rechecked Part A. No record was edited. These are for a later record pass.
+
+**Used before its gloss**
+
+1. **statute, Act, regulation.** C43 glosses all three. C01 (`must_know`: "Indian statutes"; the
+   illustration opens "the Food Safety and Standards Act, 2006"), C03 (`must_know`: "Five kilograms
+   in an Act"), C10 (`must_know`: "no statute makes it for you") and C12 (`definition`:
+   "Regulation 5(3)(b) … Regulations, 2020") use them first. This is the §3 statute and regulation
+   finding, extended to Act.
+2. **energy.** Used in C02 (illustration), C09 ("the SI unit of energy") and C12, and glossed
+   only in C31.
+3. **molecule, glucose, atom.** C13 `simplified_explanation`: "A mole is a fixed count of things,
+   molecules here"; C13 works a glucose example; C13 practice says "atom by atom". C31 glosses
+   atom and molecule, and C36 glosses glucose.
+4. **average.** Used in C01 and C03 practice, C05 `must_know` ("an average household size"), and
+   in C21's "average rate of change", before C28 says the mean is what everyday speech calls the
+   average.
+5. **precision.** C03 uses it with no gloss ("The digits on a calculator display are not
+   precision", "how precise the number is"), and C12 speaks of "the look of precision". C30 is
+   the first gloss, in its measurement sense. The row now points to C30 only, because C03 gives
+   no words to record.
+6. **error.** Used in its everyday sense in C01, C03, C08 and C22 before C30 defines it as the
+   measured value minus the true one. C22's "the most the rectangle can be wrong by" is an
+   approximation error, not a measurement error.
+7. **axis and scale.** C07 says "an axis marked in logarithms", "an ordinary scale" and "a log
+   scale" before C19 glosses axis and scale.
+8. **term.** C15 says "multiplies every term inside it", and no record glosses *term*.
+9. **exponential.** C07 practice 10 uses it, with its own short gloss, before C20 teaches it. The
+   wording agrees with C20.
+
+**One term for two things**
+
+10. **cell** has a third sense. C06's illustration and practice 6 use it for a spreadsheet cell
+    ("the spreadsheet prints one cell like this"), before C26 (a table cell) and C35 (a living
+    cell). The row carries the C26 and C35 senses.
+11. **base** names four things: base ten (C01), the base of a power (C06), the base units (C09),
+    and a base in DNA (C37). The glossary has one row for *base*, with the C06 and C37 senses,
+    and separate rows for *base ten* and *base unit*.
+12. **range.** C18 means the outputs a rule can give, and C27 means largest minus smallest. C18
+    warns about this itself. The row carries both senses.
+13. **shape.** C20 uses it for the three kinds of relationship ("Three shapes turn up over and
+    over"). C27's row glosses it as where a distribution's values sit relative to each other.
+14. **scale.** C19's axis scale, the weighing scale in C03 (`must_know`: "Five kilograms on a
+    scale") and C30, and "a pair of scales" in C16.
+15. **rule.** C18 defines a function as a rule, and C43 makes *rule* an instrument the Central
+    Government makes. The row carries the C43 sense only.
+16. **function** and **subject.** C18 glosses *function* in the mathematical sense, and C35 and
+    C38 use it in the everyday sense ("its function", "two separate functions"). C16 glosses
+    *subject* as the letter made to stand alone, and C43 uses it for a subject of law ("Food is
+    not one subject").
