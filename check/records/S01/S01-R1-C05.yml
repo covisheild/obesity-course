@@ -1,0 +1,515 @@
+concept_id: S01-R1-C05
+subject: S01
+rung: 1
+sequence: 5
+name: The accounting identity for a body
+concept_type: derivable
+clusters:
+- measurement-inference
+- body-and-person
+- system-and-state
+ground_floor_deps:
+- B0-R0-C33
+- B0-R0-C23
+- B0-R0-C32
+- B0-R0-C21
+- B0-R0-C22
+- B0-R0-C15
+concept_deps: []
+definition:
+  text: |
+    A person's body energy stores are a stock, in the sense Book 0 gives that word. Energy
+    intake and energy expenditure are flows that change that stock: intake adds to it, and
+    expenditure takes from it.
+
+    Draw the boundary at the mouth and skin, as `B0-R0-C33` shows for a person, and count intake
+    at the metabolisable line: the energy that crosses in after the losses in faeces, gas and
+    urine have already left, which `B0-R0-C32` defines. Then the balance line for a stock,
+    `B0-R0-C23`, gives the energy balance equation for a day.
+
+    The rate of change of body energy stores equals energy intake minus energy expenditure, both
+    counted over the same day.
+
+    The word "equals" here means "if and only if". Whenever the two sides are computed correctly
+    for the same boundary and the same interval, they match, with no exception and no remainder.
+    A day on which they appear not to match is a day on which a route was left off one side, not a
+    day on which the identity failed.
+
+    Because it is a balance line applied to one particular stock, the identity carries no
+    direction and no cause. It says what the numbers must do. It does not say why intake or
+    expenditure took the value it did.
+  references:
+  - citekey: openstax_anatphys_2e
+    kind: textbook
+    locator: "§ 24.1 Overview of Metabolic Reactions, the paragraph on catabolic and anabolic balance"
+    quote: |-
+      Because catabolic reactions produce energy and anabolic reactions use energy, ideally, energy usage would balance the energy produced. If the net energy change is positive (catabolic reactions release more energy than the anabolic reactions use), then the body stores the excess energy by building fat molecules for long-term storage. On the other hand, if the net energy change is negative (catabolic reactions release less energy than anabolic reactions use), the body uses stored energy to compensate for the deficiency of energy released by catabolism.
+    verified:
+      resolved_id: https://openstax.org/books/anatomy-and-physiology-2e/pages/24-1-overview-of-metabolic-reactions
+      opened: true
+      claim_located: true
+      checked_on: '2026-09-23'
+      note: |-
+        Read in the Part E / S01 source pack. This paragraph is the textbook anchor for
+        "positive net energy stores it as fat, negative net energy draws on the store":
+        the physiological half of the identity. It does not itself state a daily balance
+        equation for a whole person in energy-intake / energy-expenditure terms, which is
+        why the balance-line half is anchored separately below.
+  - citekey: openstax_chemistry_2e
+    kind: textbook
+    locator: "§ 5.1 Energy Basics, the paragraph naming the law of conservation of energy"
+    quote: |-
+      Energy can be converted from one form into another, but all of the energy present before a change occurs always exists in some form after the change is completed. This observation is expressed in the law of conservation of energy: during a chemical or physical change, energy can be neither created nor destroyed, although it can be changed in form. (This is also one version of the first law of thermodynamics, as you will learn later.)
+    verified:
+      resolved_id: https://openstax.org/books/chemistry-2e/pages/5-1-energy-basics
+      opened: true
+      claim_located: true
+      checked_on: '2026-09-23'
+      note: |-
+        Read on 2026-09-23. This is the law the balance line in `B0-R0-C33` applies at a
+        boundary. It is repeated here because this record is where the boundary is drawn
+        specifically round a person's energy stores rather than round a pan or a room.
+  - citekey: hall_guo_2017
+    kind: textbook
+    locator: "opening paragraphs, the sentence introducing the energy-balance framework"
+    quote: |-
+      Obesity is often described as a disorder of energy balance arising from consuming calories in excess to the energy expended to maintain life and perform physical work.
+    verified:
+      resolved_id: https://pmc.ncbi.nlm.nih.gov/articles/PMC5568065/
+      opened: true
+      claim_located: true
+      checked_on: '2026-09-23'
+      note: |-
+        Read in the S01-R1 source pack (PMC Article Dataset text, an NIH author
+        manuscript). This is the closest held anchor to Hall's own terms "energy intake"
+        and "energy expended" for the identity taught here. Hall KD et al., Am J Clin
+        Nutr 2012;95:989, named in the inventory for this concept, is not held: it
+        cannot be fetched from this environment (PMC gated, publisher paywalled, not in
+        the PMC cloud dataset). The equation in this record is built from the balance
+        line of `B0-R0-C23` and `B0-R0-C33` rather than quoted from Hall 2012, and
+        nothing here depends on that paper's own wording.
+simplified_explanation: |
+  A body holds energy the way a bank account holds money. What you eat and drink is a deposit.
+  Everything your body spends — moving, keeping warm, running your organs — is a withdrawal.
+
+  The balance changes only by deposits and withdrawals. Nothing else moves it.
+
+  So over one day, write it as a single line. How much your stores changed today equals what
+  went in today, minus what went out today.
+
+  ```working
+      the change in body energy stores over the day = energy intake for the day minus energy expenditure for the day
+  ```
+
+  That line is not a guess about how bodies behave. It is what has to be true once you have
+  agreed where the boundary is — round the person, at the mouth and skin — and agreed that
+  "intake" means energy that actually crossed in, past the losses that never got absorbed.
+
+  Two things this line is not. It is not a promise that stores fall smoothly whenever intake is
+  below expenditure on average; day to day, food still sitting in the gut and water still moving
+  in the body can make one day's figure look wrong until you widen the interval. And it is not an
+  explanation of anything. It tells you the two sides must match. It never tells you why intake
+  or expenditure came out the way they did.
+illustration:
+  body: |
+    Take a made-up week, seven days, to see the identity used forwards and then checked
+    backwards.
+
+    A person's energy stores are measured at the start of the week: 620 megajoules. Each day
+    their intake and expenditure, in megajoules, are recorded.
+
+    ```table
+    day  intake (MJ)  expenditure (MJ)
+    1    9.1          8.6
+    2    8.4          8.7
+    3    9.6          8.5
+    4    8.0          9.0
+    5    9.3          8.4
+    6    8.8          8.8
+    7    9.9          8.3
+    ```
+
+    Apply the identity one day at a time. The change on each day is intake minus expenditure.
+
+    ```working
+        day 1: 9.1 minus 8.6 = 0.5
+        day 2: 8.4 minus 8.7 = -0.3
+        day 3: 9.6 minus 8.5 = 1.1
+        day 4: 8.0 minus 9.0 = -1.0
+        day 5: 9.3 minus 8.4 = 0.9
+        day 6: 8.8 minus 8.8 = 0
+        day 7: 9.9 minus 8.3 = 1.6
+    ```
+
+    Sum the seven daily changes to get the change over the week.
+
+    ```working
+        0.5 plus -0.3 plus 1.1 plus -1.0 plus 0.9 plus 0 plus 1.6 = 2.8
+    ```
+
+    Stores rose by 2.8 megajoules over the week. Add that to the starting figure.
+
+    ```working
+        620 plus 2.8 = 622.8
+    ```
+
+    Stores stand at 622.8 megajoules at the end of the week.
+
+    Now check it the other way, the way an auditor would: sum all seven days' intake, sum all
+    seven days' expenditure, and subtract the totals once, rather than day by day.
+
+    ```working
+        intake total: 9.1 plus 8.4 plus 9.6 plus 8.0 plus 9.3 plus 8.8 plus 9.9 = 63.1
+        expenditure total: 8.6 plus 8.7 plus 8.5 plus 9.0 plus 8.4 plus 8.8 plus 8.3 = 60.3
+        63.1 minus 60.3 = 2.8
+    ```
+
+    Same 2.8 megajoules. It has to be: the identity holds on any interval, a day or a week, as
+    long as intake and expenditure are counted over exactly that interval and nothing else
+    changes the boundary.
+
+    Day 6 is worth a second look. Intake and expenditure matched exactly, and stores did not move
+    that day. That is not a day on which nothing was happening in the body — catabolism and
+    anabolism were both still running, as `B0-R0-C23`'s must-know points already warn. It is a
+    day on which the two flows through the stock happened to be equal.
+  analogy_breaks_when: |
+    The bank-account picture breaks where a bank account does not: a body cannot be read like a
+    balance printed on a statement. Body energy stores are not measured directly day to day; what
+    gets measured is body mass, and turning a mass change into an energy change needs a further
+    fact about what the mass is made of, which this record does not supply.
+
+    The week above is invented to show the arithmetic; none of its seven numbers is a real
+    measurement. A day's own intake and expenditure figures, in a real person, are not read off a
+    label. Intake is usually self-reported and runs low; expenditure is measured, when it is
+    measured at all, by doubly labelled water over a stretch of at least several days, not one.
+    Both of those facts belong to `S01-R1-C03`.
+
+    And the identity itself never says whether a particular day's imbalance came from eating more,
+    moving less, or the body's own expenditure shifting in response to the day before. It fixes
+    the arithmetic and leaves every question about cause exactly where it found it.
+  numbers: []
+must_know:
+- point: |
+    Write the day down. "Energy in minus energy out" with no interval attached is not yet a
+    claim you can check. State the day, or the stretch of days, before you accept or quote a
+    figure built from this identity.
+  kind: move
+  bearing: methodological
+- point: |
+    Intake in this identity is metabolisable intake, the figure that survives the losses
+    `B0-R0-C32` names, not the gross energy printed on a label or burned in a bomb calorimeter.
+    Using a gross figure on the left of an "equals" sign that expects a metabolisable one is the
+    commonest way this identity gets misquoted.
+  kind: trap
+  bearing: clinical
+- point: |
+    A day where intake and expenditure match exactly is not a day of biological quiet. It is a
+    day where two flows, both still running, happened to be equal. Do not read a flat scale
+    reading as evidence that nothing is happening in the body.
+  kind: misconception
+  bearing: clinical
+- point: |
+    The identity holds on any interval you choose, provided intake and expenditure are both
+    counted over exactly that interval. A day-to-day mismatch is usually a sign the interval is
+    too short for food still in the gut and water shifts to average out, not a sign the identity
+    has failed.
+  kind: boundary
+  bearing: methodological
+- point: |
+    This identity fixes the arithmetic and answers no question about cause. It cannot tell you
+    whether a day's imbalance came from what was eaten, what was done, or how expenditure itself
+    moved. `S01-R1-C06` is where that limit is made explicit and turned into a rule for what you
+    may and may not infer from it.
+  kind: consequence
+  bearing: methodological
+exercises:
+- type: calculation
+  prompt: |
+    A patient's energy stores are 540 megajoules on the morning you first see them. Over the next
+    ten days their average daily intake is 8.9 megajoules and their average daily expenditure is
+    9.4 megajoules.
+
+    Work out their energy stores at the end of the ten days, and say in words what has to be true
+    of their body mass for that change to show up on a scale.
+  answer: |
+    Find the average daily change first, then multiply by the number of days, the accumulation
+    move from `B0-R0-C22`.
+
+    ```working
+        8.9 minus 9.4 = -0.5
+        -0.5 times 10 = -5
+    ```
+
+    Stores fall by 5 megajoules over the ten days.
+
+    ```working
+        540 minus 5 = 535
+    ```
+
+    535 megajoules at the end of the ten days.
+
+    For that to show up as a mass change on a scale, the 5 megajoules lost has to have come out
+    of tissue the scale weighs, and the reader would need to know how many megajoules a kilogram
+    of that tissue holds before converting. This record does not supply that figure; it is
+    `S01-R1-C02`'s.
+  skill_ref: S01-R1-K01
+quantitative: true
+practice:
+- level: 1
+  prompt: |
+    On a given day, energy intake is 380 and energy expenditure is 410, in the same units.
+
+    Work out the change in energy stores for that day.
+  answer: |
+    Apply the identity: change equals intake minus expenditure.
+
+    ```working
+        380 minus 410 = -30
+    ```
+
+    Minus 30 for the day. Stores fell by 30 units.
+- level: 2
+  prompt: |
+    Each row is one day. Two of the three numbers are given each time. Work out the missing one.
+
+    ```table
+    | intake | expenditure | change in stores |
+    | 500 | 470 | |
+    | 500 | | -20 |
+    | | 460 | 35 |
+    | 500 | 500 | |
+    ```
+  answer: |
+    Use the identity in whichever direction the missing number sits.
+
+    Row 1. Intake minus expenditure.
+
+    ```working
+        500 minus 470 = 30
+    ```
+
+    Row 2. Change equals intake minus expenditure, so expenditure equals intake minus change.
+
+    ```working
+        500 minus -20 = 520
+    ```
+
+    Row 3. Intake equals change plus expenditure.
+
+    ```working
+        35 plus 460 = 495
+    ```
+
+    Row 4. Equal intake and expenditure.
+
+    ```working
+        500 minus 500 = 0
+    ```
+
+    Zero change. Notice that the row 4 answer says nothing about whether either flow was large or
+    small, only that they matched.
+- level: 4
+  prompt: |
+    A reference sedentary or lightly active adult woman has a measured total energy expenditure
+    of 8.26 megajoules a day (FAO/WHO/UNU 2004).
+
+    On one made-up day, a woman matching that reference records a metabolisable intake of 8.80
+    megajoules. Work out the change in her energy stores for that day, in megajoules, and say
+    whether her stores rose or fell.
+  answer: |
+    Apply the identity in megajoules.
+
+    ```working
+        8.80 minus 8.26 = 0.54
+    ```
+
+    Her stores rose by 0.54 megajoules that day.
+  refs:
+  - fao_who_unu_2004
+- level: 5
+  prompt: |
+    The same reference woman's total energy expenditure is 8.26 megajoules a day (FAO/WHO/UNU
+    2004). Over a made-up run of 14 days at that same expenditure, her energy stores fall by 9.8
+    megajoules in total.
+
+    Work out her average daily metabolisable intake over those 14 days.
+  answer: |
+    Find the average daily change first.
+
+    ```working
+        9.8 divided by 14 = 0.7
+    ```
+
+    Her stores fell by an average of 0.7 megajoules a day, so the daily change is minus 0.7.
+
+    Rearrange the identity for intake: intake equals change plus expenditure.
+
+    ```working
+        -0.7 plus 8.26 = 7.56
+    ```
+
+    Her average daily intake was 7.56 megajoules.
+  refs:
+  - fao_who_unu_2004
+- level: 7
+  prompt: |
+    Here is a worked answer. Find the step that broke.
+
+    ```working
+        a packet states it holds 1,800 kilojoules, worked out by burning a sample in a bomb calorimeter
+        a person eats the whole packet, so 1,800 kilojoules crosses into their energy stores
+        their expenditure that day is 9,500 kilojoules
+        1,800 minus 9,500 = -7,700
+        so their stores fell by 7,700 kilojoules that day
+    ```
+  answer: |
+    The step that broke is the second. The bomb-calorimeter figure is not what crossed into this
+    person's stores.
+
+    `B0-R0-C32` draws the line between the energy a calorimeter reports and the energy that
+    actually reaches a person: gross or ingested energy on one side, metabolisable energy on the
+    other, with faecal, gaseous and urinary losses in between. The identity in this record takes
+    intake at the metabolisable line, not the calorimeter line. Some of the 1,800 kilojoules left
+    the body unabsorbed and never crossed into the stores at all.
+
+    So the third and fourth lines are arithmetic done correctly on the wrong number. Nothing wrong
+    with the subtraction; the 1,800 was never the right figure to subtract from.
+
+    What the correct working needs: an estimate of what fraction of the 1,800 kilojoules was
+    actually absorbed, which the packet's own bomb-calorimeter figure does not give. Without it,
+    the change in stores that day cannot be computed at all, only bounded above.
+
+    Why the wrong answer looks reasonable. Every arithmetic step after the second is correct, the
+    units are consistent throughout, and a real energy figure sits at the top of the working. The
+    fault is a line nobody wrote: which boundary "1,800 kilojoules" was measured across.
+- level: 8
+  prompt: |
+    Here is a worked answer. Find the step that broke.
+
+    ```working
+        on Monday, a patient's stores change by -0.4 megajoules
+        on Tuesday, their stores change by -0.6 megajoules
+        change over the two days = -0.4 minus -0.6 = 0.2
+        so their stores rose by 0.2 megajoules over the two days
+    ```
+  answer: |
+    The step that broke is the third. Two daily changes are accumulated by adding them, the move
+    from `B0-R0-C22`, not by subtracting one from the other.
+
+    ```working
+        -0.4 plus -0.6 = -1.0
+    ```
+
+    Stores fell by 1.0 megajoules over the two days, not rose by 0.2.
+
+    The fourth line compounds the error by reading a positive number off an arithmetic slip and
+    reporting it as a rise, when both individual days were already falls. A change over an
+    interval cannot be a rise if every day inside that interval was itself a fall; that alone is
+    a reason to have gone back and checked the third line before trusting the fourth.
+
+    Why the wrong answer looks reasonable. Both daily figures are correctly signed, and the
+    working has the shape of a calculation with a "minus" sign in it, which reads as careful. What
+    it is not is the identity's own move: totalling a run of changes is `B0-R0-C22`'s
+    accumulation, addition of the amounts, never subtraction of one day's change from another's.
+- level: 9
+  prompt: |
+    A fitness app tells a user: "Your weight hasn't moved in three months, so your calories in and
+    calories out are perfectly matched every single day."
+
+    Decide what to compute, compute it, and say what your answer does not establish.
+  answer: |
+    What to compute: whether a steady total over three months requires every day inside it to
+    balance individually. The identity accumulates day by day, `B0-R0-C22`'s move, so the question
+    is whether a zero sum forces every term to be zero.
+
+    It does not. Take three made-up months as 90 days. A steady weight over that stretch means the
+    sum of the 90 daily changes is zero, or close enough to it that no change is detectable on a
+    scale.
+
+    ```working
+        the sum of 90 daily changes = 0
+    ```
+
+    That sum can be reached by 90 days each near enough to zero. It can equally be reached by 45
+    days each up by 0.3 megajoules and 45 days each down by 0.3 megajoules, or by a large early
+    rise cancelled by a later fall. All three give the same three-month total.
+
+    What this does not establish. It does not establish that any single day balanced, only that
+    the 90 days added to roughly zero. It does not establish that intake and expenditure were
+    individually steady either, since both could have moved together and kept their difference
+    near zero throughout. And it says nothing at all about what caused the total to land near
+    zero: that is exactly the question `S01-R1-C06` says this identity cannot answer.
+
+    What to say instead of the app's sentence: a steady weight over three months means the account
+    balanced over three months. It is not a day-by-day claim, and it is not a claim about why.
+- level: 10
+  prompt: |
+    A colleague in a meeting says this.
+
+    > We put her on a diet supplying exactly 8.0 megajoules a day, and her measured expenditure is
+    > 8.5 megajoules a day. So her stores must be falling by 0.5 megajoules every single day of
+    > the diet.
+
+    The figures are made up for this problem. Decide what to compute, compute it, and say what
+    your answer does not establish.
+  answer: |
+    What to compute: whether "supplying 8.0 megajoules a day" and "her expenditure is 8.5
+    megajoules a day" are the two quantities the identity actually asks for, on the same boundary
+    and the same day.
+
+    Run the identity as stated, taking both figures at face value.
+
+    ```working
+        8.0 minus 8.5 = -0.5
+    ```
+
+    Minus 0.5 megajoules a day, exactly the colleague's figure, if both numbers are what the
+    identity needs.
+
+    Now check what each number is. "Supplying 8.0 megajoules" is very likely the energy the diet
+    plan states she is given, not necessarily the metabolisable energy that crosses into her
+    stores; some of what is served is not eaten, and some of what is eaten is not absorbed. And
+    "measured expenditure" of 8.5 megajoules a day, if it comes from a method like doubly labelled
+    water, is itself an average over several days, not a figure for one particular day. Neither
+    gap makes the arithmetic wrong. Both mean the 0.5 megawatts figure is a modelled expectation
+    dressed as a daily measurement.
+
+    What this does not establish. It does not establish that her stores fall by exactly 0.5
+    megajoules on every single day of the diet: `S01-R1-C05`'s own illustration shows daily
+    figures scattering around an average even when the average holds. It does not establish that
+    0.5 megajoules a day continues once her weight has changed, because `B0-R0-C22`'s point about
+    body size and expenditure means the 8.5 megajoules is unlikely to stay fixed. And it
+    establishes nothing about which route the shortfall came from, or why intake and expenditure
+    took the values they did.
+
+    What to say in the meeting: the arithmetic is fine as a same-day estimate. "Every single day"
+    and "must be" are claims the two numbers in hand do not support.
+retrieval_items:
+- q: State the accounting identity for a body's energy stores, in words, and say what it means for
+    the two sides to be equal.
+  a: The rate of change of body energy stores equals energy intake minus energy expenditure, both
+    counted over the same day. Equal means if and only if — correctly computed for the same
+    boundary and interval, the two sides always match; an apparent mismatch means a route was
+    left off one side, not that the identity failed.
+- q: At which line is intake counted in this identity, and why does it matter?
+  a: At the metabolisable line, after faecal, gaseous and urinary losses, not at the gross or
+    ingested line a bomb calorimeter reports. Using the calorimeter figure on the intake side
+    over-states what actually crossed into the person's stores.
+- q: A day's intake exactly equals that day's expenditure. What can and can't you conclude about
+    the body that day?
+  a: You can conclude the day's net change in stores was zero. You cannot conclude that nothing
+    was happening physiologically — catabolism and anabolism both continue regardless — and you
+    cannot conclude anything about the next day or about cause.
+provenance:
+  map_version_id: fc19c8bc-a216-4131-99fb-ebe3f19cec4a
+  outcome_refs:
+  - S01-R1-O1
+  - S01-R1-S1
+  - S01-R1-P4
+  - S01-R1-R2
+  bridge_ref: [S01-R2-P04]
+review:
+  stability: long
+  trigger: '2031-09-23'
+  last_reviewed: '2026-09-23'
+status: drafted

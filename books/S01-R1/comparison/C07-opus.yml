@@ -1,0 +1,1099 @@
+concept_id: S01-R1-C07
+subject: S01
+rung: 1
+sequence: 7
+name: Sizing an imbalance, and the static rule
+concept_type: derivable
+clusters:
+- measurement-inference
+- body-and-person
+- system-and-state
+ground_floor_deps:
+- B0-R0-C05
+- B0-R0-C06
+- B0-R0-C08
+- B0-R0-C10
+- B0-R0-C20
+concept_deps:
+- S01-R1-C02
+- S01-R1-C03
+- S01-R1-C04
+- S01-R1-C05
+definition:
+  text: |
+    An energy imbalance is energy intake minus energy expenditure, stated per day. Held at the
+    same value for a number of days, it adds up to a change in the body's energy stores equal to
+    the daily imbalance times the number of days.
+
+    To express a quantity of energy as a mass of body tissue, divide it by the energy content of
+    one unit of mass of that tissue. The answer is a mass of that tissue and of nothing else.
+
+    The 3,500 kcal per pound rule assigns 3,500 kilocalories to each pound of weight change. The
+    avoirdupois pound is exactly 0.45359237 kilograms. So the rule's figure is 3,500 divided by
+    0.45359237, which is 7,716 kilocalories per kilogram, or 32.3 megajoules per kilogram at
+    4.184 kilojoules to the kilocalorie. That is less than the 9,000 kilocalories a kilogram of
+    fat would carry at the Atwater factor of 9.0 kilocalories a gram. What a kilogram of weight
+    change is actually made of is a separate question.
+
+    Used to size an imbalance, the rule answers how much energy a stated change in weight
+    corresponds to. The National Institute of Nutrition of the Indian Council of Medical Research
+    (ICMR-NIN) adopted daily energy requirements for Indian adults in 2020. A kilogram at the
+    rule's figure is between three and five days of the whole requirement for sedentary work.
+
+    Used to project, the rule divides a cumulative imbalance by 3,500 kilocalories a pound. A
+    constant daily imbalance then gives weight changing in a straight line for as long as the
+    imbalance is held. This projection is the static rule.
+
+    The projection assumes that the daily imbalance stays the same while the body changes. It
+    does not stay the same. Expenditure depends on body size, so a fixed intake produces a
+    shrinking imbalance as mass is lost, and weight change slows towards a plateau. The static
+    rule therefore overestimates weight change on average, and the error grows with time. In seven pooled
+    experiments with intake supervised or objectively measured, 103 adults lost a mean of 20.1
+    pounds against 27.6 pounds predicted by the rule. For a simulated 100 kg man cutting intake by
+    2 MJ a day, the rule predicts 22 kg lost in the first year, about twice what a model that lets
+    expenditure fall with weight predicts.
+  references:
+  - citekey: openstax_chemistry_2e
+    kind: textbook
+    locator: "\xA7 5.2 Calorimetry, Measuring Nutritional Calories, the paragraph defining the\
+      \ nutritional Calorie"
+    quote: One calorie (cal) = exactly 4.184 joules, and one Calorie (note the capitalization) =
+      1000 cal, or 1 kcal.
+    verified:
+      resolved_id: https://openstax.org/books/chemistry-2e/pages/5-2-calorimetry
+      opened: true
+      claim_located: true
+      checked_on: '2026-09-23'
+      note: |-
+        Cited for the kilocalorie and its 4.184 kilojoules, which carry the conversion of
+        the rule's figure into megajoules. The arithmetic of the definition (a daily flow
+        times a number of days, divided by an energy per unit mass) is Book 0's stocks and
+        flows and unit conversion, and is derived on the page rather than cited.
+  - citekey: thomas_2013_3500kcal
+    kind: primary
+    locator: Introduction, first paragraph (author manuscript, PMC4024447)
+    quote: expected weight loss is often guided by the belief that a 3500 kilocalorie (kcal)
+      deficit will result in one pound of weight loss (about 0.45 kilogram)
+    verified:
+      resolved_id: https://doi.org/10.1038/ijo.2013.51
+      opened: true
+      claim_located: true
+      checked_on: '2026-09-23'
+      note: |-
+        The statement of the rule. The same paragraph says it is cited on over 35,000
+        weight-loss educational websites and in textbooks, articles and guidelines; this
+        record does not use that count.
+  - citekey: nist_sp811_pound
+    kind: instrument
+    locator: NIST SP 811, Footnotes page, the footnote to the pound (avoirdupois) row of Appendix B.8
+    quote: The exact conversion factor is 4.535 923 7 E-01. All units in Secs. B.8 and B.9 that
+      contain the pound refer to the avoirdupois pound.
+    verified:
+      resolved_id: https://www.nist.gov/pml/special-publication-811/nist-guide-si-footnotes
+      opened: true
+      claim_located: true
+      checked_on: '2026-09-23'
+      note: |-
+        4.535 923 7 E-01 kilograms is 0.45359237 kilograms. The B.8 row itself prints the
+        factor rounded to seven digits (4.535 924 E-01); the footnote gives the exact one.
+  - citekey: fao_food_energy_2003
+    kind: consensus_statement
+    locator: ch. 3, s.3.5.1, the Atwater general factor system
+    quote: The energy values are 17 kJ/g (4.0 kcal/g) for protein, 37 kJ/g (9.0 kcal/g) for fat
+      and 17 kJ/g (4.0 kcal/g) for carbohydrates.
+    verified:
+      resolved_id: https://www.fao.org/4/y5022e/y5022e04.htm
+      opened: true
+      claim_located: true
+      checked_on: '2026-09-23'
+      note: |-
+        This is a factor for fat eaten in food, used here only as a comparison: the rule's
+        per-kilogram figure is smaller than fat counted at this factor. The record does not
+        state the energy content of a kilogram of adipose tissue or of a kilogram of lost
+        weight. That figure belongs to S01-R1-C02 and rests on Hall 2008 (Int J Obes
+        32:573), which was not held when this record was drafted.
+  - citekey: icmr_nin_2020_brief
+    kind: guideline
+    locator: Table 1b, Energy Requirement, adult men and women, sedentary work
+    quote: Men Sedentary work 65.0 2110 32
+    verified:
+      resolved_id: https://www.nin.res.in/rdabook/brief_note.pdf
+      opened: true
+      claim_located: true
+      checked_on: '2026-09-23'
+      note: |-
+        2110 kcal a day for a reference man of 65.0 kg doing sedentary work. The women's
+        row in the same table reads "Sedentary work 55.0 1660 30". These are requirements
+        the institute adopted, not measured expenditure, and are rounded to the nearest 10
+        kcal per the table's own footnote. 7,716 divided by 2,110 is 3.66 days; 7,716
+        divided by 1,660 is 4.65 days, which is where "between three and five days" comes
+        from.
+  - citekey: hall_2011_lancet
+    kind: primary
+    locator: Introduction, second paragraph (author manuscript, PMC3880593)
+    quote: This ubiquitous weight-loss rule (also known as the 3500 kcal per pound rule) was
+      derived by estimation of the energy content of weight lost
+    verified:
+      resolved_id: https://doi.org/10.1016/S0140-6736(11)60812-X
+      opened: true
+      claim_located: true
+      checked_on: '2026-09-23'
+      note: |-
+        The sentence continues "but it ignores dynamic physiological adaptations to altered
+        body weight that lead to changes of both the resting metabolic rate as well as the
+        energy cost of physical activity", and the next says it "has been misapplied at the
+        population level to predict the effect of policy interventions on obesity
+        prevalence". Both were read at this locator. The reference numbered 7 after
+        "weight lost" is Hall 2008, not held.
+  - citekey: hall_guo_2017
+    kind: primary
+    locator: section on static, settling point and set point models, the paragraph on the static
+      model (author manuscript, PMC5568065)
+    quote: Because expenditure is erroneously considered to be constant, the static model provides
+      unrealistic predictions for the expected weight loss for a given diet intervention.
+    verified:
+      resolved_id: https://pmc.ncbi.nlm.nih.gov/articles/PMC5568065/
+      opened: true
+      claim_located: true
+      checked_on: '2026-09-23'
+      note: |-
+        The definition's "the projection assumes the daily imbalance stays the same". The
+        component-by-component reason expenditure depends on body size is S01-R1-C04's, and
+        this record points to it rather than repeating it.
+  - citekey: thomas_2013_3500kcal
+    kind: primary
+    locator: Methods, the paragraph describing the pooled data
+    quote: Overall, the data presented in Figure 1 represents a total of 103 adults, 71 men and 32
+      women
+    verified:
+      resolved_id: https://doi.org/10.1038/ijo.2013.51
+      opened: true
+      claim_located: true
+      checked_on: '2026-09-23'
+      note: |-
+        The abstract says the seven experiments were "conducted in confinement under total
+        supervision or objectively measured energy intake". The same Methods paragraph gives
+        an average prescribed deficit of 1439 kcal/d and a treatment duration of 31 to 93
+        days.
+  - citekey: thomas_2013_3500kcal
+    kind: primary
+    locator: Results and Discussion, How well does the 3500 kcal rule predict weight loss?, first
+      paragraph
+    quote: Subjects lost 20.1±11.3 lbs, 7.4±12.6 lb less than the 27.6±16.0 lbs predicted by the
+      3500 kcal rule.
+    verified:
+      resolved_id: https://doi.org/10.1038/ijo.2013.51
+      opened: true
+      claim_located: true
+      checked_on: '2026-09-23'
+      note: |-
+        The 7.4 is the mean of the individual shortfalls, so it is not exactly 27.6 minus
+        20.1, which is 7.5. The next paragraph says the dynamic models "result in a
+        curvilinear pattern of weight loss over time rather than the linear pattern
+        predicted by the 3500 kcal rule".
+  - citekey: hall_2011_lancet
+    kind: primary
+    locator: Modelling of the dynamics of weight change, the paragraph contrasting the model with
+      the popular dieting rule
+    quote: predicts that the same 2 MJ per day reduction of energy intake will result in a linear
+      decrease of bodyweight over time with 22 kg lost in the first year (not shown), which is about
+      100% greater weight loss than our model prediction.
+    verified:
+      resolved_id: https://doi.org/10.1016/S0140-6736(11)60812-X
+      opened: true
+      claim_located: true
+      checked_on: '2026-09-23'
+      note: |-
+        The man is described one paragraph earlier: "a 100 kg (220 lb) sedentary man
+        following a step reduction of energy intake by 2 MJ per day (480 kcal per day)",
+        predicted to plateau "at about 75 kg". Both figures are the output of Hall's model,
+        a simulation, not a measurement of any person.
+simplified_explanation: |
+  The section on the accounting identity gave you one line. What your body's energy stores do in a day is intake minus expenditure. This
+  section puts a size on that line, and then shows you the one place people always break it.
+
+  Start with the size. A daily gap between what comes in and what goes out is a flow, in kilocalories a day. Hold it for a number of days
+  and it adds up.
+
+  ```working
+      the change in the stores = the daily gap, times the number of days
+  ```
+
+  A gap of 300 kilocalories a day for 30 days is 9,000 kilocalories. That is a quantity of energy. It is not yet a weight.
+
+  To turn energy into kilograms you need one more number: how much energy one kilogram of the tissue that changed holds. Divide by it.
+
+  ```working
+      the mass = the energy, divided by the energy in one kilogram
+  ```
+
+  The number almost everybody uses comes from a rule. **Three thousand five hundred kilocalories for every pound.** A pound is an older unit
+  of mass, and it is exactly 0.45359237 of a kilogram. A kilogram is bigger than a pound, so a
+  kilogram carries more kilocalories.
+
+  ```working
+      3,500 divided by 0.45359237 = 7,716.18
+  ```
+
+  About 7,700 kilocalories to the kilogram, on the rule's own terms. The section on how much energy a kilogram of body fat holds is
+  where you find out whether that figure is right for the tissue. Here it is just the rule's number.
+
+  Put that against a day. India's figures for how much energy adults need come from the National Institute of Nutrition of the Indian
+  Council of Medical Research, ICMR-NIN for short. For a man of 65 kilograms doing sedentary work, it sets 2,110 kilocalories a day.
+
+  ```working
+      7,716.18 divided by 2,110 = 3.66
+  ```
+
+  A kilogram, at the rule's figure, is three and a half days or more of that man's whole requirement. That is the useful thing the rule
+  does. It tells you how big a change is, measured in days of eating.
+
+  Now the trap. Take the rule and a fixed daily gap, and you can draw a line into the future. A gap of 500 kilocalories a day is 3,500
+  a week. So a pound a week, 52 pounds a year, 104 pounds in two years. Every step is correct arithmetic. The line is still wrong.
+
+  **It assumes the gap stays the same size while the body changes.** It does not. A smaller body spends less, as the section on what
+  expenditure is made of showed. So when weight falls on a fixed intake, expenditure falls with it, and the gap shrinks. A shrinking
+  gap moves weight more slowly. Eventually the gap closes and weight stops at a new level.
+
+  That straight line has a name. It is the static rule, static because it holds everything still except the one number you changed.
+  Measured against people, it promises too much. The longer you run it, the more it promises.
+
+  So use the rule to size an imbalance. Never use it to set a date.
+illustration:
+  body: |
+    Open OpenStax Anatomy and Physiology 2e, section 24.7, Nutrition and Diet, at
+    https://openstax.org/books/anatomy-and-physiology-2e/pages/24-7-nutrition-and-diet. Open your browser's find box and search for 3500.
+
+    > The accumulation of an extra 3500 calories adds one pound of weight. If an excess of 200
+    > calories per day is ingested, one extra pound of body weight will be gained every 18 days.
+    > At that rate, an extra 20 pounds can be gained over the course of a year.
+
+    This is a textbook. Check its arithmetic before you judge it. The 200 is the book's own example, not a measurement of anybody.
+
+    ```working
+        3,500 divided by 200 = 17.5
+    ```
+
+    Seventeen and a half days, which the book rounds to 18. Now the year.
+
+    ```working
+        200 times 365 = 73,000
+        73,000 divided by 3,500 = 20.85714286
+    ```
+
+    About 21 pounds. The book says 20. The arithmetic holds.
+
+    Put it in kilograms. The pound is exactly 0.45359237 kilograms. That is the figure in the Guide to the SI from the United States National
+    Institute of Standards and Technology, at https://www.nist.gov/pml/special-publication-811/nist-guide-si-footnotes.
+
+    ```working
+        20.86 times 0.45359237 = 9.46
+    ```
+
+    About 9.5 kilograms in a year.
+
+    Now take the three words "at that rate" at their word, and run the same line for ten years.
+
+    ```working
+        9.46 times 10 = 94.6
+    ```
+
+    Ninety-five kilograms, from 200 kilocalories a day. Keep that number in mind while you look at what happens when the rule is tested.
+    The arithmetic did not break. Something the arithmetic assumed did.
+
+    The assumption is in "at that rate". It treats the 200 as a fixed thing, like a salary. But the 200 is a gap between intake and
+    expenditure, and expenditure is not fixed. A heavier body spends more. So the same intake leaves a smaller gap each month, and the
+    line bends.
+
+    Now go and see the bend measured. Open the paper by Thomas and colleagues in the International Journal of Obesity, 2013, at
+    https://pmc.ncbi.nlm.nih.gov/articles/PMC4024447/. Search for 3500 kilocalorie.
+
+    > expected weight loss is often guided by the belief that a 3500 kilocalorie (kcal) deficit will
+    > result in one pound of weight loss (about 0.45 kilogram)
+
+    That is the rule, stated by people about to test it. They pooled seven experiments. In each one, intake was supervised or measured, not
+    reported. There were 103 adults, treated for 31 to 93 days. Search for 27.6.
+
+    > Subjects lost 20.1±11.3 lbs, 7.4±12.6 lb less than the 27.6±16.0 lbs predicted by the 3500
+    > kcal rule.
+
+    The rule predicted 27.6 pounds. People lost 20.1. How much of the prediction came true:
+
+    ```working
+        20.1 divided by 27.6 = 0.728
+    ```
+
+    About three quarters, and that is over two months or so, which is short. The shortfall grows as the time gets longer.
+
+    For the long view, open the paper by Hall and colleagues in The Lancet, 2011, at https://pmc.ncbi.nlm.nih.gov/articles/PMC3880593/.
+    Search for 100 kg. It describes a sedentary man of 100 kilograms who cuts his intake by 2 megajoules a day. The paper gives that as 480
+    kilocalories a day.
+
+    Do the rule's sum yourself first.
+
+    ```working
+        480 times 365 = 175,200
+        175,200 divided by 3,500 = 50.05714286
+        50.06 times 0.45359237 = 22.71
+    ```
+
+    About 22.7 kilograms in the first year. Now search the paper for 22 kg.
+
+    > predicts that the same 2 MJ per day reduction of energy intake will result in a linear decrease
+    > of bodyweight over time with 22 kg lost in the first year (not shown), which is about 100%
+    > greater weight loss than our model prediction.
+
+    The paper's model lets expenditure fall as weight falls. It puts this man at a plateau of about 75 kilograms, reached over years. That is
+    about 25 kilograms in all, half of it in roughly the first year. The static rule puts 22.7 kilograms into the first year alone, and then
+    keeps going. Run it for ten years.
+
+    ```working
+        22.71 times 10 = 227.1
+    ```
+
+    Two hundred and twenty-seven kilograms lost, by a man who weighed 100. A straight line through a quantity that has a floor will
+    always, sooner or later, go through the floor.
+
+    Now use the rule for the thing it can do. How many days of eating is one kilogram, at the rule's own figure? Take the requirement
+    ICMR-NIN adopted in 2020 for an Indian man of 65 kilograms doing sedentary work, 2,110 kilocalories a day.
+
+    ```working
+        3,500 divided by 0.45359237 = 7,716.18
+        7,716.18 divided by 2,110 = 3.66
+    ```
+
+    Three and two thirds days of that man's whole requirement. For the woman in the same table, 55 kilograms and sedentary work, 1,660
+    kilocalories:
+
+    ```working
+        7,716.18 divided by 1,660 = 4.65
+    ```
+
+    Between three and five days, whichever row you take. That is what the rule is good for. It sizes a change. It cannot tell you when the
+    change will happen.
+  numbers:
+  - value: '3500'
+    unit: kilocalories per pound of weight change, the rule as stated
+    citekey: thomas_2013_3500kcal
+    quote: expected weight loss is often guided by the belief that a 3500 kilocalorie (kcal)
+      deficit will result in one pound of weight loss (about 0.45 kilogram)
+    as_of: '2026-09-23'
+  - value: '0.45359237'
+    unit: kilograms in one avoirdupois pound, exact
+    citekey: nist_sp811_pound
+    quote: The exact conversion factor is 4.535 923 7 E-01.
+    derived: 4.535 923 7 E-01 is 4.5359237 times 10^-1 kilograms, which is 0.45359237 kilograms
+    as_of: '2026-09-23'
+  - value: '103'
+    unit: adults in the seven pooled experiments
+    citekey: thomas_2013_3500kcal
+    quote: Overall, the data presented in Figure 1 represents a total of 103 adults, 71 men and 32
+      women
+    as_of: '2026-09-23'
+  - value: '31'
+    unit: days, the shortest treatment in the pooled experiments
+    citekey: thomas_2013_3500kcal
+    quote: The duration of treatment was 64.8±23.6 days with a range of 31 to 93 days.
+    as_of: '2026-09-23'
+  - value: '93'
+    unit: days, the longest treatment in the pooled experiments
+    citekey: thomas_2013_3500kcal
+    quote: The duration of treatment was 64.8±23.6 days with a range of 31 to 93 days.
+    as_of: '2026-09-23'
+  - value: '20.1'
+    unit: pounds, mean weight lost in the pooled experiments
+    citekey: thomas_2013_3500kcal
+    quote: Subjects lost 20.1±11.3 lbs, 7.4±12.6 lb less than the 27.6±16.0 lbs predicted by the
+      3500 kcal rule.
+    as_of: '2026-09-23'
+  - value: '27.6'
+    unit: pounds, mean weight loss predicted by the 3,500 kcal rule for the same people
+    citekey: thomas_2013_3500kcal
+    quote: Subjects lost 20.1±11.3 lbs, 7.4±12.6 lb less than the 27.6±16.0 lbs predicted by the
+      3500 kcal rule.
+    as_of: '2026-09-23'
+  - value: '100'
+    unit: kilograms, the starting weight of the simulated sedentary man
+    citekey: hall_2011_lancet
+    quote: Figure 2A shows the predicted bodyweight time course of a 100 kg (220 lb) sedentary man
+      following a step reduction of energy intake by 2 MJ per day (480 kcal per day).
+    as_of: '2026-09-23'
+  - value: '2'
+    unit: megajoules a day, the simulated cut in intake
+    citekey: hall_2011_lancet
+    quote: Figure 2A shows the predicted bodyweight time course of a 100 kg (220 lb) sedentary man
+      following a step reduction of energy intake by 2 MJ per day (480 kcal per day).
+    as_of: '2026-09-23'
+  - value: '480'
+    unit: kilocalories a day, the same cut as the paper states it
+    citekey: hall_2011_lancet
+    quote: Figure 2A shows the predicted bodyweight time course of a 100 kg (220 lb) sedentary man
+      following a step reduction of energy intake by 2 MJ per day (480 kcal per day).
+    as_of: '2026-09-23'
+  - value: '22'
+    unit: kilograms lost in the first year, the static rule's prediction as the paper gives it
+    citekey: hall_2011_lancet
+    quote: predicts that the same 2 MJ per day reduction of energy intake will result in a linear
+      decrease of bodyweight over time with 22 kg lost in the first year (not shown), which is about
+      100% greater weight loss than our model prediction.
+    as_of: '2026-09-23'
+  - value: '75'
+    unit: kilograms, the weight at which the model puts the man's plateau
+    citekey: hall_2011_lancet
+    quote: This constant diet perturbation was predicted to result in a bodyweight plateau at about
+      75 kg (165 lb) over a 10-year simulation taking roughly 1 year to reach half of the maximum
+      weight loss and reaching 95% of this value after about 3 years.
+    as_of: '2026-09-23'
+  - value: '2110'
+    unit: kilocalories a day, ICMR-NIN 2020 requirement, reference man of 65 kg, sedentary work
+    citekey: icmr_nin_2020_brief
+    quote: Men Sedentary work 65.0 2110 32
+    as_of: '2026-09-23'
+  - value: '1660'
+    unit: kilocalories a day, ICMR-NIN 2020 requirement, reference woman of 55 kg, sedentary work
+    citekey: icmr_nin_2020_brief
+    quote: Women Sedentary work 55.0 1660 30
+    as_of: '2026-09-23'
+  analogy_breaks_when: |
+    The 200 kilocalories a day is the textbook's own example and describes nobody. Every other figure is from a source.
+
+    The Hall figures come from a computer model, not from a person followed for ten years. The model is what rung 2 of this subject
+    teaches. Here it is used for one thing only. A line that lets expenditure move bends. A line that holds expenditure still does not.
+
+    The Thomas figures are means over 103 adults. The spread was wide: plus or minus 11.3 pounds on the 20.1 lost. The paper says the majority lost
+    substantially less than predicted, which is not everybody. The rule's failure is a failure on average, not a forecast for each person.
+
+    The ICMR-NIN figures are requirements a body adopted in 2020 for reference adults. They are not anybody's measured expenditure. They
+    will change at the next revision. And they fit a 65 kilogram man or a 55 kilogram woman doing sedentary work, not the person in front
+    of you.
+
+    The rule's 7,716 kilocalories a kilogram is the rule's number. Nothing here says it is the energy in a kilogram of the tissue a person
+    actually loses. Days-of-eating answers built on it inherit that.
+
+    The straight line is not wrong for a short enough time. Over a few days, weight has barely moved, so expenditure has barely moved.
+    That short range is exactly where a change on the scale says least about fat, and a later section takes up why.
+must_know:
+- point: |
+    The 3,500 kcal per pound rule is not a law of physics. It is a figure for the energy in a pound of weight change, joined to the
+    assumption that nothing else changes. Accept it for sizing a change. Refuse any timetable built on it.
+  kind: misconception
+  bearing: methodological
+  refs:
+  - thomas_2013_3500kcal
+  - hall_2011_lancet
+- point: |
+    Convert the pound before you use the rule in India. Divide 3,500 by 0.45359237 and you get about 7,700 kilocalories a kilogram, or
+    about 32 megajoules. If your answer came out smaller than 3,500, you multiplied where you should have divided.
+  kind: trap
+  bearing: teaching
+  refs:
+  - nist_sp811_pound
+- point: |
+    A kilogram of weight change is several days of a person's whole eating. At the rule's figure it is between three and five days of
+    the requirement ICMR-NIN set in 2020 for a sedentary Indian adult. So a person told to lose a kilogram a week is being asked for a
+    daily gap of about 1,100 kilocalories. That is half or more of the whole day's requirement. Say that number out loud before anybody
+    agrees to the target.
+  kind: number
+  bearing: clinical
+  refs:
+  - icmr_nin_2020_brief
+- point: |
+    The rule's straight line is only safe over a time short enough that the body has barely changed. Past a few weeks it overstates, and
+    the overstatement grows. Supervised studies found about three quarters of the predicted loss within two months or so. So when someone
+    needs a weight at a date, do not extend the line. Say that the answer needs a model in which expenditure falls with weight.
+  kind: boundary
+  bearing: methodological
+  refs:
+  - thomas_2013_3500kcal
+- point: |
+    When loss slows on a plan that has not changed, the arithmetic predicted it. A smaller body spends less, so the same intake leaves a
+    smaller gap. Tell the patient that in those words. Do not let anyone read the slowing as a failure to stick to the plan.
+  kind: consequence
+  bearing: clinical
+  refs:
+  - hall_guo_2017
+- point: |
+    Watch for a policy costing that multiplies a change in daily intake by 365 and divides by 3,500. Hall and colleagues name exactly
+    that use of the rule, on whole populations, as a misapplication. In a committee, ask for the same figure from a model that lets
+    expenditure change with weight.
+  kind: move
+  bearing: policy
+  refs:
+  - hall_2011_lancet
+- point: |
+    When a journalist says cutting a small amount a day will take off a set number of kilograms a year, say this. The first year's
+    figure is too big, and every year after it is bigger still. The rule was built to size a change, not to schedule one.
+  kind: move
+  bearing: public
+- point: |
+    Teach the sizing before the trap. A trainee who has worked out that a kilogram is several days of eating understands the rule's number.
+    Then show them the ten-year line through the floor, and they will not trust a straight projection again.
+  kind: move
+  bearing: teaching
+exercises:
+- type: retrieval
+  prompt: |
+    Without looking back, write down the 3,500 kcal per pound rule in kilograms, with the conversion that gets you there.
+
+    Then give one sentence for each of three things. What the rule is good for. What it assumes when it is used to project. Why that
+    assumption fails.
+  answer: |
+    The rule in kilograms. A pound is exactly 0.45359237 kilograms. A kilogram is the bigger unit, so it carries more kilocalories, and
+    you divide.
+
+    ```working
+        3,500 divided by 0.45359237 = 7,716.18
+    ```
+
+    About 7,700 kilocalories a kilogram. At 4.184 kilojoules to the kilocalorie that is about 32.3 megajoules.
+
+    What it is good for: sizing. It tells you how much energy a stated change in weight corresponds to, which you can then put against
+    days of eating.
+
+    What it assumes when used to project: that the daily gap between intake and expenditure never changes size while the line runs.
+
+    Why that fails: expenditure depends on body size. As weight falls on a fixed intake, expenditure falls, the gap shrinks, and weight
+    change slows towards a plateau.
+
+    One check on your own answer. Did you write that the rule is wrong? The number is not what fails. The straight line built on it is.
+  confidence_first: true
+- type: critique
+  prompt: |
+    A clinic's handout says this. The clinic and the handout are made up for this exercise.
+
+    > Cut 500 calories a day and you will lose one pound every week, like clockwork. Keep it up for a year and that is 52 pounds gone. If
+    > the scale stops moving, you have let the calories creep back in.
+
+    Say what is wrong, and say what the handout should say instead.
+  answer: |
+    Three things are wrong, and they get worse in order.
+
+    The first is "calories". The handout means kilocalories. Say so, because a reader who converts to kilojoules needs the right unit.
+
+    The second is "like clockwork" and the 52 pounds. The arithmetic behind them is the 3,500 kcal per pound rule.
+
+    ```working
+        500 times 7 = 3,500
+        500 times 365 = 182,500
+        182,500 divided by 3,500 = 52.14285714
+    ```
+
+    The sums are right. What is wrong is the assumption that the 500 stays 500. As weight falls, expenditure falls with it, so the same
+    intake leaves a smaller gap every month. Loss slows, and it heads for a plateau rather than for 52 pounds. In supervised studies the
+    rule over-predicted loss by about a quarter within two months or so, and the gap grows with time.
+
+    The third is the last sentence, and it is the one that does harm. It turns a result the arithmetic predicts into a claim about the
+    person. When the scale slows on an unchanged plan, a smaller body spending less is the first explanation, not calories creeping back
+    in.
+
+    What the handout should say. A daily cut of 500 kilocalories corresponds to about a pound of body energy a week at first. Loss will
+    slow as your body gets smaller, because a smaller body needs less, and that is expected. Your clinician can estimate where it levels
+    off.
+- type: teaching
+  prompt: |
+    A first-year resident has ten minutes and a whiteboard. They were taught the 3,500 kcal per pound rule and have used it with patients.
+    They ask whether it is wrong.
+
+    Say what you would put on the board, in order.
+  answer: |
+    Ten minutes, a whiteboard, and they want mechanism, so build it rather than assert it.
+
+    First, the rule in kilograms. Write 3,500 divided by 0.45359237 is about 7,700 kilocalories a kilogram. Point out that this is a
+    figure for the energy in a kilogram of weight change, and ask them to hold it.
+
+    Second, what it is good for. Put a kilogram against a day. At the ICMR-NIN 2020 requirement for a sedentary man, 2,110 kilocalories,
+    a kilogram is about three and two thirds days of eating. That is a useful size and they should keep using it for sizing.
+
+    Third, the straight line. Draw weight against time for a fixed daily cut, with the rule's line going down at a constant slope. Extend
+    it for ten years with the Hall 2011 man: 480 kilocalories a day, 22.7 kilograms a year, 227 kilograms in ten. The man weighed 100. The
+    line goes through the floor.
+
+    Fourth, why it bends. Write the accounting identity: the change in the stores is intake minus expenditure. Then write expenditure
+    with an arrow from body size. As weight falls, expenditure falls, so the gap on the right shrinks, so the slope flattens. Draw the
+    curve levelling off.
+
+    Fifth, the measured size of the error. Thomas and colleagues pooled supervised studies: 20.1 pounds lost against 27.6 predicted, over
+    about two months.
+
+    The line to leave on the board: the number sizes a change, the straight line mistimes it. How to compute the curve belongs to rung
+    2, and they should not guess it.
+quantitative: true
+practice:
+- level: 1
+  prompt: |
+    A quantity changes by 350 every day for 21 days, always in the same direction.
+
+    Work out the total change.
+  answer: |
+    The same amount every day, so multiply the daily amount by the number of days.
+
+    ```working
+        350 times 21 = 7,350
+    ```
+
+    Seven thousand three hundred and fifty.
+
+    Check it the long way for the first week, to be sure the move is right.
+
+    ```working
+        350 times 7 = 2,450
+        2,450 times 3 = 7,350
+    ```
+- level: 2
+  prompt: |
+    A factor is 3,500 for each unit A. One unit A is equal to 0.45359237 of unit B.
+
+    Write the factor for each unit B.
+  answer: |
+    One unit A is less than one unit B, since 0.45359237 is less than one. So one unit B holds more than one unit A, and the factor for
+    each unit B has to be bigger than 3,500.
+
+    Write the conversion factor as a fraction equal to one: 1 unit A over 0.45359237 unit B. Multiply by it, and unit A cancels. Unit B
+    is left on the bottom.
+
+    ```working
+        3,500 divided by 0.45359237 = 7,716.18
+    ```
+
+    About 7,716 for each unit B.
+
+    Check the direction. The answer is bigger than 3,500, which is what the first paragraph said it had to be.
+- level: 2
+  prompt: |
+    A total of 7,700 is to be reached by equal daily amounts.
+
+    a) How many days does it take at 550 a day?
+
+    b) What daily amount reaches it in exactly 14 days?
+  answer: |
+    a) The total divided by the daily amount gives the number of days.
+
+    ```working
+        7,700 divided by 550 = 14
+    ```
+
+    Fourteen days.
+
+    b) Now the days are fixed and the daily amount is missing. The total divided by the number of days.
+
+    ```working
+        7,700 divided by 14 = 550
+    ```
+
+    Five hundred and fifty a day.
+
+    The two parts are the same line run in two directions, which is why each one gives back the number the other started from.
+- level: 3
+  prompt: |
+    A quantity changes by 250 each day for 365 days. The total is then divided by 3,500, and the result is multiplied by 0.45359237.
+
+    Give the result of each step.
+  answer: |
+    First the total.
+
+    ```working
+        250 times 365 = 91,250
+    ```
+
+    Then the division.
+
+    ```working
+        91,250 divided by 3,500 = 26.07142857
+    ```
+
+    Then the multiplication.
+
+    ```working
+        26.07142857 times 0.45359237 = 11.83
+    ```
+
+    About 11.8.
+
+    Check it by doing the last two steps as one. Dividing by 3,500 and then multiplying by 0.45359237 is the same as dividing by 7,716.18.
+
+    ```working
+        91,250 divided by 7,716.18 = 11.83
+    ```
+- level: 4
+  prompt: |
+    Thomas and colleagues state the rule as a 3,500 kilocalorie gap for one pound of weight lost. A pound is exactly 0.45359237
+    kilograms. One kilocalorie is 4.184 kilojoules.
+
+    Write the rule's figure per kilogram, in kilocalories and in megajoules.
+
+    The Food and Agriculture Organization gives fat in food an Atwater factor of 9.0 kilocalories a gram. Work out what that factor gives
+    for a kilogram, and compare the two.
+  answer: |
+    The rule per kilogram. A kilogram is the bigger unit, so divide.
+
+    ```working
+        3,500 divided by 0.45359237 = 7,716.18
+    ```
+
+    About 7,716 kilocalories a kilogram. Into kilojoules.
+
+    ```working
+        7,716.18 times 4.184 = 32,284.5
+    ```
+
+    A megajoule is a thousand kilojoules.
+
+    ```working
+        32,284.5 divided by 1,000 = 32.28
+    ```
+
+    About 32.3 megajoules a kilogram.
+
+    Now the Atwater factor for a kilogram. There are a thousand grams in a kilogram.
+
+    ```working
+        9.0 times 1,000 = 9,000
+    ```
+
+    Nine thousand kilocalories a kilogram of fat counted at the food factor. As a share:
+
+    ```working
+        7,716.18 divided by 9,000 = 0.857
+    ```
+
+    The rule's kilogram is about 86 per cent of a kilogram of fat at that factor. Keep the label on each number. One is the energy the
+    rule assigns to a kilogram of weight change. The other is the energy in a kilogram of fat in food. Why the two differ depends on what a
+    kilogram of weight change is made of. The section on how much energy a kilogram of body fat holds is where that is asked.
+  refs:
+  - thomas_2013_3500kcal
+  - nist_sp811_pound
+  - fao_food_energy_2003
+- level: 5
+  prompt: |
+    ICMR-NIN set energy requirements in 2020 for an Indian reference man of 65 kilograms. For sedentary work it is 2,110 kilocalories a
+    day. For moderate work it is 2,710, and for heavy work 3,470.
+
+    Using the 3,500 kcal per pound rule in kilograms, work out how many days of each requirement one kilogram of weight change
+    corresponds to. Then say what your three answers are days of.
+  answer: |
+    The rule's figure first.
+
+    ```working
+        3,500 divided by 0.45359237 = 7,716.18
+    ```
+
+    Now divide it by each requirement.
+
+    ```working
+        7,716.18 divided by 2,110 = 3.66
+    ```
+
+    ```working
+        7,716.18 divided by 2,710 = 2.85
+    ```
+
+    ```working
+        7,716.18 divided by 3,470 = 2.22
+    ```
+
+    About three and two thirds days for sedentary work, just under three for moderate work, and just over two for heavy work.
+
+    What they are days of. They are days of a requirement ICMR-NIN adopted in 2020 for a reference man, not days of anybody's measured
+    expenditure. And they are days of the whole requirement, which is what a person would need to eat nothing at all to cover. So a
+    kilogram of weight change is several days of eating in full. Spread over weeks, it is a daily gap, and the gap is what a person feels.
+  refs:
+  - icmr_nin_2020_brief
+  - thomas_2013_3500kcal
+  - nist_sp811_pound
+- level: 6
+  prompt: |
+    Thomas and colleagues pooled seven experiments in which intake was supervised or measured. On average, intake was set 1,439
+    kilocalories a day below expenditure, and treatment lasted 64.8 days. People lost a mean of 20.1 pounds, and the rule predicted a mean of
+    27.6 pounds.
+
+    Apply the rule to the average deficit and the average duration. Give your prediction in pounds and in kilograms. Then compare it with
+    what people lost, and with the paper's own predicted mean.
+  answer: |
+    The cumulative deficit is the daily deficit times the days.
+
+    ```working
+        1,439 times 64.8 = 93,247.2
+    ```
+
+    About 93,250 kilocalories. Divide by the rule's figure per pound.
+
+    ```working
+        93,247.2 divided by 3,500 = 26.64
+    ```
+
+    About 26.6 pounds. In kilograms:
+
+    ```working
+        26.64 times 0.45359237 = 12.08
+    ```
+
+    About 12.1 kilograms. What people actually lost, in kilograms:
+
+    ```working
+        20.1 times 0.45359237 = 9.12
+    ```
+
+    About 9.1 kilograms, against 12.1 predicted.
+
+    ```working
+        20.1 divided by 26.64 = 0.7545
+    ```
+
+    About three quarters of your prediction came true.
+
+    Your 26.6 is not the paper's 27.6, and nothing is wrong with either. The paper predicted each person's loss from that person's own
+    gap and duration, then averaged the predictions. You multiplied two averages. Those two routes give the same answer only when the
+    size of the gap has nothing to do with how long people were treated. Across seven different experiments, it need not. Use the
+    paper's 27.6 when you quote the comparison, and say that it is a mean.
+  refs:
+  - thomas_2013_3500kcal
+  - nist_sp811_pound
+- level: 7
+  prompt: |
+    Here is a worked answer. Find the step that broke.
+
+    ```working
+        a daily cut of 480 kilocalories, held for a year
+        480 times 365 = 175,200 kilocalories
+        the rule is 3,500 kilocalories for each unit of weight
+        175,200 divided by 3,500 = 50.05714286
+        so the person loses about 50 kilograms in the year
+    ```
+  answer: |
+    The step that broke is the last. The rule is 3,500 kilocalories a pound, so 50.06 is a number of pounds. Writing kilograms beside it
+    changes the unit without changing the number.
+
+    Convert it.
+
+    ```working
+        50.06 times 0.45359237 = 22.71
+    ```
+
+    About 22.7 kilograms, not 50. The wrong answer is more than twice too big.
+
+    ```working
+        50.06 divided by 22.71 = 2.204
+    ```
+
+    Why it looks reasonable. Every line of arithmetic is correct, and the third line even says "unit of weight" to cover the gap. The
+    habit that catches it is the one from Book 0's section on converting units: write the unit on every line. Written in full, line three
+    says kilocalories a pound. Kilocalories divided by kilocalories a pound gives pounds.
+
+    And even the corrected 22.7 kilograms is the static rule's first-year figure. It is the right size for the arithmetic and the wrong
+    size for a body.
+  refs:
+  - thomas_2013_3500kcal
+  - nist_sp811_pound
+- level: 7
+  prompt: |
+    Here is a worked answer. Find the step that broke.
+
+    ```working
+        a daily cut of 500 kilocalories
+        500 times 7 = 3,500, which is one pound, so one pound a week
+        one pound a week is 52 pounds a year
+        52 times 3 = 156, so 156 pounds in three years
+        the person starts at 220 pounds, so they will weigh 64 pounds in three years
+    ```
+  answer: |
+    Every line of arithmetic is right. The step that broke is the third, where one pound a week becomes one pound every week for a year.
+    That step assumes the 500 kilocalorie gap is still 500 in week 52. Everything after it rests on that.
+
+    The gap is intake minus expenditure. Intake was cut and then held. Expenditure was not held, because a smaller body spends less. So
+    each week the same intake leaves a smaller gap, and each week's loss is smaller than the week before. The line bends and heads for a
+    plateau.
+
+    The last line shows the break clearly, which is why it is there. Check it.
+
+    ```working
+        220 minus 156 = 64
+    ```
+
+    Sixty-four pounds is about 29 kilograms, for an adult who started at 220 pounds. The 220 is made up for this problem.
+
+    ```working
+        64 times 0.45359237 = 29.03
+    ```
+
+    The line has no floor in it. Run any straight line long enough and it goes through whatever floor you put under it.
+
+    Why it looks reasonable. Every step copies the one before it, and a pound a week sounds modest. The trap is that the first week's
+    figure is the only one the rule can speak to with any safety.
+  refs:
+  - thomas_2013_3500kcal
+- level: 8
+  prompt: |
+    Here is a worked answer. Find the step that broke.
+
+    ```working
+        the rule gives 32,284 per kilogram of weight change
+        a sedentary man's requirement is 2,110 kilocalories a day
+        32,284 divided by 2,110 = 15.3
+        so a kilogram is about two weeks of that man's whole requirement
+    ```
+  answer: |
+    The step that broke is the third. The 32,284 is in kilojoules. The rule's figure is 7,716 kilocalories a kilogram, which is 32,284
+    kilojoules at 4.184 kilojoules to the kilocalorie. The 2,110 is in kilocalories. Dividing one by the other mixes the two units.
+
+    Put both in kilocalories.
+
+    ```working
+        32,284 divided by 4.184 = 7,716.06
+        7,716.06 divided by 2,110 = 3.66
+    ```
+
+    About three and two thirds days, not two weeks. Or put both in kilojoules, which gives the same answer.
+
+    ```working
+        2,110 times 4.184 = 8,828.24
+        32,284 divided by 8,828.24 = 3.66
+    ```
+
+    The wrong answer is too big by a factor of 4.184, which is exactly the size of the unit mix.
+
+    Why it looks reasonable. The first line drops its unit, and two weeks of eating sounds like a sensible size for a kilogram. The check
+    that catches it: a days answer has to come from dividing an energy by an energy a day in the same unit. Write both units down and the
+    mix shows at once.
+  refs:
+  - icmr_nin_2020_brief
+  - nist_sp811_pound
+- level: 9
+  prompt: |
+    A health page says this. The page is made up for this problem.
+
+    > Skip one 100-calorie biscuit a day and you will lose over 10 pounds a year. Keep it up for five years and that is 50 pounds, without
+    > going hungry.
+
+    Decide what to compute, compute it, and say what your answer does not establish.
+  answer: |
+    What to compute. Check that the page's numbers come from the 3,500 kcal per pound rule, then put them in kilograms. Then compare with
+    what a model that lets expenditure fall says about the same cut.
+
+    The page's arithmetic, reading "calorie" as kilocalorie.
+
+    ```working
+        100 times 365 = 36,500
+        36,500 divided by 3,500 = 10.42857143
+        10.43 times 0.45359237 = 4.73
+    ```
+
+    Just over 10 pounds, about 4.7 kilograms, in the first year. That is the rule. Now five years.
+
+    ```working
+        10.42857143 times 5 = 52.14285714
+        52.14 times 0.45359237 = 23.65
+    ```
+
+    About 52 pounds, or 23.7 kilograms. The page's sums are right.
+
+    Now open the Hall 2011 paper in The Lancet, at https://pmc.ncbi.nlm.nih.gov/articles/PMC3880593/, and search for rule of thumb. The authors propose this for an average overweight adult,
+    from their model.
+
+    > every change of energy intake of 100 kJ per day will lead to an eventual bodyweight change of about 1 kg (equivalently, 10 kcal
+    > per day per pound of weight change)
+
+    One hundred kilocalories a day is 418.4 kilojoules a day.
+
+    ```working
+        100 times 4.184 = 418.4
+        418.4 divided by 100 = 4.184
+    ```
+
+    On their rule of thumb that is about 4 kilograms in all, not per year. The paper says half of it arrives in about a year and 95 per
+    cent in about three. Or in pounds, 10 kilocalories a day for each pound:
+
+    ```working
+        100 divided by 10 = 10
+    ```
+
+    About 10 pounds, eventually. The page promised 10 pounds a year, every year.
+
+    What this does not establish. It does not establish what any one person would lose, because the rule of thumb is for an average
+    overweight adult in a model. It does not establish that skipping the biscuit leaves the rest of the day's eating where it was. That is
+    a separate question, about how appetite responds, which a later section takes up. And "without going hungry" is a claim the
+    arithmetic cannot touch.
+  refs:
+  - hall_2011_lancet
+  - thomas_2013_3500kcal
+  - nist_sp811_pound
+- level: 10
+  prompt: |
+    In a meeting, somebody reads out one sentence from the summary of the Hall 2011 paper in The Lancet.
+
+    > A small persistent average daily energy imbalance gap between intake and expenditure of about 30 kJ per day underlies the
+    > observed average weight gain.
+
+    Then they say this.
+
+    > Thirty kilojoules is a mouthful. So if everyone ate one mouthful less a day, the weight gain would reverse.
+
+    Decide what to compute, compute it, and say what your answer does not establish.
+  answer: |
+    What to compute. First, what 30 kilojoules a day comes to over a year, and what the static rule turns that into. Then, what the same
+    summary says about reversing it.
+
+    The year, in kilocalories.
+
+    ```working
+        30 times 365 = 10,950
+        10,950 divided by 4.184 = 2,617.11
+    ```
+
+    About 2,600 kilocalories a year. At the rule's figure:
+
+    ```working
+        2,617.11 divided by 7,716.18 = 0.339
+    ```
+
+    About a third of a kilogram a year. A small gap, summed over years, is a real weight gain. That part of the speaker's picture is right.
+
+    Now read on in the same summary. It says energy intake "must have risen to keep pace with increased expenditure associated with
+    increased weight". It calls that rise the maintenance energy gap, and says it "has amounted to about 0·9 MJ per day". The raised dot
+    is the Lancet's decimal point, so that is 0.9 megajoules.
+
+    ```working
+        0.9 times 1,000 = 900
+        900 divided by 30 = 30
+    ```
+
+    Nine hundred kilojoules a day, thirty times the 30.
+
+    Here is why the two numbers differ, and it is the whole of this section. The 30 kilojoules is the average daily gap over the years
+    while weight was rising. But a heavier body spends more. So to hold the heavier weight, intake has to stay above where it started by the amount
+    the larger body now spends. Taking one mouthful away closes a 30 kilojoule gap on the day. It does not undo the 900 kilojoule rise in
+    intake that the heavier weight now needs.
+
+    What this does not establish. It does not establish what cutting 900 kilojoules a day would do either. That needs a model in which
+    expenditure falls with weight, and appetite too, which is rung 2's work. It does not establish that the figures apply to India,
+    because the paper computed them for United States adults. And it says nothing about why intake rose.
+  refs:
+  - hall_2011_lancet
+  - thomas_2013_3500kcal
+  - nist_sp811_pound
+retrieval_items:
+- q: What is the 3,500 kcal per pound rule in kilograms, and how do you get there?
+  a: A pound is exactly 0.45359237 kilograms, so divide 3,500 by 0.45359237. That gives about 7,716 kilocalories a kilogram, or about 32.3
+    megajoules at 4.184 kilojoules to the kilocalorie.
+- q: About how many days of eating is one kilogram at the rule's figure?
+  a: Between three and five days of the whole requirement ICMR-NIN adopted in 2020 for a sedentary Indian adult (7,716 divided by 2,110 is
+    3.66 for the reference man; divided by 1,660 it is 4.65 for the reference woman).
+- q: What does the static rule assume when it projects weight change over time, and why is that assumption false?
+  a: That the daily gap between intake and expenditure stays the same while the body changes. Expenditure depends on body size, so as
+    weight falls on a fixed intake, expenditure falls, the gap shrinks and weight change slows towards a plateau.
+- q: How far off was the rule when it was tested against supervised studies?
+  a: In seven pooled experiments with 103 adults over 31 to 93 days, people lost a mean of 20.1 pounds against 27.6 predicted by the rule
+    (Thomas et al. 2013). The shortfall grows with time.
+provenance:
+  map_version_id: fc19c8bc-a216-4131-99fb-ebe3f19cec4a
+  outcome_refs:
+  - S01-R1-O2
+  - S01-R1-S2
+  bridge_ref:
+  - S01-R2-P2
+  - S01-R2-R1
+review:
+  stability: long
+  trigger: '2031-09-23'
+  as_of: '2026-09-23'
+  last_reviewed: '2026-09-23'
+status: drafted
