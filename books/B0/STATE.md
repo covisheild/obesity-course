@@ -1,26 +1,22 @@
 # Book 0 — finishing state
 
-Chat: session_01KfRHN8FLF6Qq7KUNTJgL9a, branch `book/B0-finish` from `25d2ed8`, started 23 Sep 2026.
-Unit of work: handover §4.1 — compress D, E, F1–F5; merge glossary inboxes; render docx; tag frozen.
+Chat: session_01KfRHN8FLF6Qq7KUNTJgL9a, branch `book/B0-finish` from `25d2ed8`, 23 Sep 2026.
+**Done. Book 0 is frozen** (tag `book0-frozen`).
 
 | Step | D1–D7 | E1–E8 | F1–F5 |
 | --- | --- | --- | --- |
-| extract | done | done | done |
-| 5a cut + validate (re-validated by conductor) | done | done | done |
-| 5b cold read (against released earlier Parts) | done, 73 gaps | done, 98 gaps | done, 53 gaps |
-| 5c restore + validate | done, 32–48% cut | done, 35–50% | done, 35–51% |
-| writeback + build (0 blocking) | done `317a94e` | done `4b69bd6` | done `df6a7bf` |
+| 5a cut + validate | done | done | done |
+| 5b cold read | 73 gaps | 98 gaps | 53 gaps |
+| 5c restore (final cut) | 32–48% | 35–50% | 35–51% |
 | holes the original did not fill | 39 | 48 | 41 |
+| triage: errors / gaps / not defects / Harsh | 7/21/10/1 (+10 new) | 9/22/16/1 (+11 new) | 6/20/14/1 (+4 new) |
+| fix + verify | closed | closed | closed |
 
-Tooling fix `df6a7bf`: `restore.py` dropped every kept bullet, block quote and table row. D–F
-unaffected (verified byte-identical after the fix); A7, C2 (C16), C9 (C23) had lost lines since
-their compression and were put back.
+Verification: round 1 closed 106 of 110; round 2 closed 10 of 11; the conductor fixed the rest
+directly (C38, C25, C41 amendment year, C30, C36 ADP). `books/B0/defects/VERIFY-*.md`.
+Harsh's decisions (23 Sep): F2 reworded, not C5; near/far store → small/large store; D1 "per cent"
+without the statute's stop; F3 Ex 2 "a paper, report or guideline you have to hand".
 
-## Open
-
-1. Triage the 128 holes (`books/B0/compress/HOLES-part-{D,E,F}.md`): one auditor per Part →
-   `books/B0/defects/<RECORD-ID>-compression.md`, each item CONFIRMED (error, or a gap that blocks
-   an exercise/problem) or NOT A DEFECT with reason.
-2. Fix confirmed items, one fixer per section; fresh verifier; two rounds, then conductor.
-3. Glossary merge (inboxes D, F2, plus E/F terms); settle "whisker" vs "error bar".
-4. Render docx; merge to main; tag `book0-frozen`; bundle.
+Tooling: `restore.py` dropped every kept bullet, quote and table row — fixed; A7, C2, C9 repaired.
+Glossary: 260 rows, Parts A–F, sorted. 16 A–C consistency items listed, not fixed
+(`books/B0/GLOSSARY-MERGE-REPORT.md` §5). Build: blocking 0, warnings 49.
