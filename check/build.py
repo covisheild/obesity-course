@@ -636,7 +636,7 @@ def check_doc_paths() -> list:
     """
     repo = os.path.dirname(ROOT)
     generic = {"READY.md", "DEFECTS.md", "INVENTORY.md", "HANDOVER.md", "SOURCES.md",
-               "CLAUDE.md", "OUTLINE.md"}
+               "CLAUDE.md", "OUTLINE.md", "READER-NOTES.md"}
     out, pat = [], re.compile(r"`([A-Za-z0-9_][A-Za-z0-9_./-]*\.(?:md|py|yml|yaml|json|bib|docx))`")
     for doc in ("claude.md", "PIPELINE.md", "PARALLEL.md", "MEASUREMENTS.md"):
         full = os.path.join(repo, doc)

@@ -375,19 +375,28 @@ different door.
 > not have risen. If it has, something was compressed rather than deleted, and that is a failure
 > whatever the word count says.
 
-## Task 6 — you
+## Task 6 — you. Optional, and not a gate.
 
-Read each Part as soon as its compression pass lands, not the whole book at the end. You are
-the step that does not parallelise, so a Part waiting for you is the book's real delay.
+*Changed 23 September 2026, on Harsh's instruction.* The course is for Harsh's own learning, not
+for publication, so a Part is finished when Task 5 is: it merges to `main` without waiting for a
+human read. Reading the booklet is studying it, and that happens anyway — so the read is not
+dropped, it moves to where it costs nothing extra.
 
-Read the booklet. The three questions worth asking, in order: did I have to read anything twice,
+Where something is merely unclear, look it up or ask; that is the learning, and nothing needs
+sending back. Where something looks **wrong** — a claim, a number, a rule the whole book follows —
+add one line to `books/<SUBJECT>/READER-NOTES.md`: section, sentence, what is wrong. The next audit
+or contract-change chat treats those lines as defects. This matters more than it sounds: the human
+read of Part A found seven defects no gate could see, four of them rules followed everywhere
+(`MEASUREMENTS.md`).
+
+When you do read, the questions worth asking: The three questions worth asking, in order: did I have to read anything twice,
 is there a point in the must-know list that would not change what I do, and does any claim make
 me want to check it myself. The third one is the important one — if it does, check it, because
 that is the audit working or failing in front of you.
 
 The compression pass does not replace this and cannot. The defect it is built around is "I had to
 read that twice", and re-reading is something a person does, not a property of text. What 5b buys
-you is a shortlist: the sections whose gap reports came back longest are the ones to read hardest.
+you is a shortlist: the sections whose gap reports came back longest are the ones to study most carefully.
 
 ---
 

@@ -42,7 +42,9 @@ that look fine from inside any single chat.
 
 ## The width limit
 
-Task 6 is one person reading a booklet cold, end to end, in one sitting. That step does not
+*Amended 23 September 2026:* Task 6 is now optional and not a gate, so this limit no longer
+holds a booklet back from `main`. It still applies as advice: Task 6 is one person reading a
+booklet cold, end to end, in one sitting. That step does not
 parallelize. Five chats produce five booklets queueing at one reader, and while they queue, later
 work gets built on books whose defects are still undetected.
 
@@ -85,7 +87,7 @@ the base each was written against had already moved.
 ## Branches
 
 One branch per subject: `subject/S48`, or `book0/part-F`. Push it. Merge to `main` only when that
-booklet has passed the human read, so `main` is always the released corpus and never a work front.
+booklet has passed its compression pass (Task 6 is no longer a gate), so `main` is always the released corpus and never a work front.
 
 Two chats never work on the same branch. If a chat needs something another chat is still writing,
 it waits or it works around it — it does not reach into the other branch.
