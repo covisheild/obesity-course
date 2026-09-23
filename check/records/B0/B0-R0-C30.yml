@@ -15,63 +15,36 @@ concept_deps:
 - B0-R0-C09
 definition:
   text: |
-    Some error has nothing to do with how a sample was drawn. A faulty instrument is one source:
-    the statistics textbook this book follows calls this a nonsampling error. This section is about
-    that kind, on a single instrument measuring one thing.
-
     A measurement's error is the value it returns minus the value that is actually true, or, since
     the true value is usually unknown, minus a trusted reference value it is checked against. The
-    International Vocabulary of Metrology (VIM), 3rd edition, 2012, entry 2.16, gives this in
-    its own words: a measurement error is "measured quantity value minus a reference quantity
-    value".
+    International Vocabulary of Metrology (VIM), 3rd edition, 2012, entry 2.16, gives this in its
+    own words: a measurement error is "measured quantity value minus a reference quantity value".
 
     An error can behave in two different ways when the same thing is measured again and again.
 
-    A systematic error is the part of the error that, in the VIM's own words (entry 2.17),
-    "remains constant or varies in a predictable manner". It pushes every reading the same way, by
-    close to the same amount, every time. Averaging repeated readings does not remove it, because
-    every reading it touches is wrong in the same direction.
+    A systematic error is the part of the error that, in the VIM's own words (entry 2.17), "remains
+    constant or varies in a predictable manner". It pushes every reading the same way, by close to
+    the same amount, every time.
 
     A measurement bias is, in the VIM's own words (entry 2.18), an "estimate of a systematic
     measurement error". In plain words, it is an error that points one way and does not shrink when
-    you collect more. The section before this one met sampling bias: a sample in which some members
-    were more likely to be chosen than others. Measurement bias is the same word for the same shape
-    of problem.
+    you collect more.
 
     A random error is the part that, in the VIM's own words (entry 2.19), "varies in an
-    unpredictable manner" from one reading to the next. It pushes readings both above and below the
-    true value, so it partly cancels when readings are averaged, in the same way a sample average
-    settles down as the sample grows.
+    unpredictable manner" from one reading to the next.
 
-    Three further words describe how good a set of measurements is, and the VIM keeps them apart on
-    purpose. Its definitions of them use one more term of its own, the measurand: the quantity
-    being measured.
+    In plain words, accuracy is how close a measured value comes to the true value.
 
-    Measurement accuracy (VIM 2.13) is "closeness of agreement between a measured quantity value and
-    a true quantity value of a measurand". In plain words, accuracy is how close a measured value
-    comes to the true value.
+    In plain words, trueness is how close the average of many repeated readings sits to the true
+    value. That makes trueness about the size of the systematic error alone.
 
-    Measurement trueness (VIM 2.14) is "closeness of agreement between the average of an infinite
-    number of replicate measured quantity values and a reference quantity value". In plain words,
-    trueness is how close the average of many repeated readings sits to the true value. That makes
-    trueness about the size of the systematic error alone.
-
-    A set of readings is called true on average when this closeness is good, which the VIM keeps
-    apart from calling it accurate.
-
-    The section on significant figures already used the word precision, for how many digits a
-    figure can defend. This book's glossary calls precision, more loosely, how tightly a
-    measurement pins the number down. Measurement precision (VIM 2.15) narrows that further:
-    "closeness of agreement between indications or measured quantity values obtained by replicate
-    measurements on the same or similar objects under specified conditions". Precision, in the
-    VIM's sense, is how closely repeated readings agree with each other. That makes it about the
-    size of the random error alone. It says nothing about whether the readings are close to the
-    truth. An instrument can be precise and wrong at the same time.
+    Precision, in the VIM's sense, is how closely repeated readings agree with each other. That
+    makes it about the size of the random error alone. An instrument can be precise and wrong at the
+    same time.
 
     Resolution (VIM 4.14) is a different thing again: the "smallest change in a quantity being
-    measured that causes a perceptible change in the corresponding indication". For a digital
-    display, that is in practice the step of its last digit. A fine resolution says how many digits
-    an instrument can print. It says nothing about whether those digits sit close to the truth.
+    measured that causes a perceptible change in the corresponding indication". It says nothing
+    about whether those digits sit close to the truth.
   references:
   - citekey: openstax_intro_stats_2e
     kind: textbook
@@ -106,63 +79,32 @@ definition:
     quote: Factors not related to the sampling process cause nonsampling errors. A defective counting
       device can cause a nonsampling error.
 simplified_explanation: |
-  The section before this one was about a sample's answer bouncing around from one draw to the
-  next. This section is about a different kind of wobble: the one a single instrument shows when it
-  measures the same thing more than once.
+  Take any measurement. Its error is what it says minus what is actually true. If a scale says 61.2
+  kilograms and the true weight is 60.5, the error is 0.7 kilograms. An error can be positive or negative.
+  Stating it needs you to already know the true value, which in real life usually comes from a trusted
+  reference instrument, not from guessing.
 
-  Take any measurement. Its error is what it says minus what is actually true. If a scale says
-  61.2 kilograms and the true weight is 60.5, the error is 0.7 kilograms. An error can be positive
-  or negative. Stating it needs you to already know the true value, which in real life usually
-  comes from a trusted reference instrument, not from guessing.
+  A systematic error pushes every reading off in the same direction by roughly the same amount. Say a
+  kitchen scale reads 0.5 kilograms with nothing on the pan, instead of nothing. That is a systematic
+  error: everything you weigh on it afterward comes out half a kilogram heavy. Take a hundred readings on
+  this scale and average them. The half-kilogram is still there, because every single reading carried it.
 
-  Measure the same thing over and over on the same instrument. The errors you get behave in one of
-  two ways, or some mixture of both.
+  A random error pushes readings around in a way that is not predictable from one reading to the next.
+  Take a hundred readings from an instrument with only random error, and average them. The average comes
+  out close to the truth.
 
-  A systematic error pushes every reading off in the same direction by roughly the same amount.
-  Say a kitchen scale reads 0.5 kilograms with nothing on the pan, instead of nothing. That is a
-  systematic error: everything you weigh on it afterward comes out half a kilogram heavy. This
-  particular case, an instrument reading something other than zero when it should read zero, has
-  its own name: a zero error (VIM 4.28). Take a hundred readings on this scale and average them.
-  The half-kilogram is still there, because every single reading carried it.
+  Averaging more readings fixes random error. It does nothing at all for systematic error. A very careful,
+  very repeated measurement on a badly calibrated instrument is not a truer measurement. It is a more
+  confident wrong one.
 
-  Once a systematic error's size is known, though, it can be taken back out: subtract it from
-  every reading. The VIM calls this a correction (2.53). Finding the size of the error needs an
-  independent check against a known value. More readings from the same scale cannot supply it.
+  A scale that reads 61.4, 61.4, 61.4 and 61.4 kilograms on the same object agrees with itself to the last
+  digit it shows. If the true weight is 60.0 kilograms, it is also wrong every time. Trueness is how close
+  the average of many repeated readings sits to the true value. Accuracy needs both: small scatter and no
+  push off target.
 
-  A random error pushes readings around in a way that is not predictable from one reading to the
-  next. Sometimes it is a little high, sometimes a little low, for reasons too small and too
-  tangled to track down. Take a hundred readings from an instrument with only random error, and
-  average them.
-  The average comes out close to the truth. The reason is the same one behind a sample's average
-  settling down as the sample grows: the too-high readings and the too-low readings partly cancel.
-
-  This is the one fact worth carrying out of the whole section. Averaging more readings fixes random
-  error. It does nothing at all for systematic error. Calibration is measuring a machine against
-  something already known, so its readings mean something. A very careful, very repeated
-  measurement on a badly calibrated instrument is not a truer measurement. It is a more confident
-  wrong one.
-
-  That is the same mistake the section before this one made about a biased sample. Sampling bias
-  and measurement bias are the same word for the same shape of problem. Each is an error that
-  points one way and does not shrink when you collect more. No amount of repeating the same flawed process
-  will fix that.
-
-  Two more words are easy to mix up, and papers sometimes mix them up, as the VIM itself notes
-  (2.15). The section on significant figures already used precision for how many digits a figure
-  can defend. This book's glossary calls precision, more loosely, how tightly a measurement pins the
-  number down. The exact sense meant here is narrower still: how closely repeated readings agree
-  with each other. It says nothing about whether they agree with the truth.
-
-  A scale that reads 61.4, 61.4, 61.4 and 61.4 kilograms on the same object agrees with itself to
-  the last digit it shows. If the true weight is 60.0 kilograms, it is also wrong every time.
-  Trueness is how close the average of many repeated readings sits to the true value. Accuracy needs
-  both: small scatter and no push off target. An instrument can be precise without being true on
-  average, or true on average without being especially precise.
-
-  A third word gets mistaken for both of these. Resolution is the smallest step an instrument's
-  display can move by. A scale reading to the nearest 100 grams has a resolution of 100 grams.
-  That tells you how many digits it can show you. It tells you nothing about whether those digits
-  are close to being true.
+  Resolution is the smallest step an instrument's display can move by. A scale reading to the nearest 100
+  grams has a resolution of 100 grams. It tells you nothing about whether those digits are close to being
+  true.
 illustration:
   body: |
     Kiran and colleagues' methods section states a figure worth testing before it is used.
@@ -176,14 +118,10 @@ illustration:
     to a true value. That would need the readings checked against a known reference weight, and
     nothing in the paper's methods reports such a check for this scale.
 
-    Was the scale also true on average, against a correctly calibrated reference? That is a separate
-    question. The paper's own wording does not answer it, however natural it is to read "accuracy"
-    and believe it has been.
-
-    This mix-up is common enough to be worth seeing worked through with numbers on a stated case.
-    No real scale's repeated calibration readings are held in this book's sources. Say a
-    calibration weight — a weight already checked and trusted to be correct — is known to be
-    exactly 60.0 kilograms. Two stated scales are each weighed against it twenty times.
+    This mix-up is common enough to be worth seeing worked through with numbers on a stated case. No
+    real scale's repeated calibration readings are held in this book's sources. Say a calibration
+    weight — a weight already checked and trusted to be correct — is known to be exactly 60.0
+    kilograms. Two stated scales are each weighed against it twenty times.
 
     ```table
     scale A readings (kg), tight and shifted
@@ -205,19 +143,15 @@ illustration:
         1210.0 divided by 20 = 60.5
     ```
 
-    Sixty and a half kilograms, and no single reading is more than a tenth of a kilogram from it.
-    Against the known 60.0 kilograms, every reading is 0.4 to 0.6 kilograms high, and the average
-    is 0.5 high.
+    Against the known 60.0 kilograms, every reading is 0.4 to 0.6 kilograms high, and the average is
+    0.5 high.
 
     ```working
         60.5 minus 60.0 = 0.5
     ```
 
-    Say the cause is a zero error, so that with nothing on it the scale already reads 0.5
-    kilograms. These twenty readings, all at one weight, could not show that by themselves. A zero
-    error and an error that grows with load would look the same at a single weight. Either way,
-    the half-kilogram gets added to every reading here. No amount of repeating the weighing removes
-    it, because this part of the error does not vary from reading to reading. It is systematic.
+    No amount of repeating the weighing removes it, because this part of the error does not vary
+    from reading to reading. It is systematic.
 
     Scale B's twenty readings scatter far more widely, from 58.7 up to 60.7, including two readings
     of exactly 60.0. That is wide, so this scale is much less precise than scale A. Average them
@@ -228,44 +162,20 @@ illustration:
         1198.5 divided by 20 = 59.925
     ```
 
-    Fifty-nine point nine two five kilograms, within a tenth of a kilogram of the true 60.0, even
-    though most single readings landed further away. This scale's error is random: it wobbles both
-    above and below the truth from reading to reading. The wobbles partly cancel when averaged, and
-    a few more readings would tend to bring the average closer still.
+    This scale's error is random: it wobbles both above and below the truth from reading to reading.
+    The wobbles partly cancel when averaged, and a few more readings would tend to bring the average
+    closer still.
 
-    Set the two scales side by side and the trap in the paper's sentence is easy to see. Scale A
-    looks better reading by reading: tighter, more repeatable, a more confident-looking number
-    each time. Yet its average sits further from the truth than scale B's average does: half a
-    kilogram out against seven and a half hundredths. Scale B's own worst reading, 58.7 kilograms,
-    sits 1.3 kilograms from the truth, further off than any single reading scale A ever gives.
-    Precision and trueness are not the same property, and a fine resolution tells you about
-    neither one.
-
-    One more real detail from the same paper closes the section. Its authors name the study's
-    strength this way: "was single observer measurements with minimum inter-observer variation."
-
-    That is a genuine strength. Differences between observers are each observer's own systematic
-    habit: one measures a fraction of a centimetre long, another rounds down, and so on. Mixed
-    across many observers, those habits scatter like random error. One observer taking every
-    measurement removes that scatter. It buys nothing against that one observer's own habit. Say
-    this person's technique ran a fraction of a centimetre long on every neck measurement. Then
-    every reading in the study carries it, and nothing in a single-observer dataset can show that
-    it happened.
+    Scale A looks better reading by reading: tighter, more repeatable, a more confident-looking
+    number each time. Yet its average sits further from the truth than scale B's average does: half
+    a kilogram out against seven and a half hundredths. Precision and trueness are not the same
+    property, and a fine resolution tells you about neither one.
   analogy_breaks_when: |
-    The two stated scales were built to show one shape each, on purpose. One has almost no random
-    error. One has almost no systematic error. A real instrument usually carries some of both at
-    once, and untangling the mixture from twenty readings alone is harder than either clean case
-    here.
+    In most real measurement, the true value is exactly what you are trying to find out, so you
+    cannot compute an error this way. Instead, you check an instrument's trueness once, in advance,
+    against a trusted reference standard, using exactly this arithmetic.
 
-    Both scales were checked against a stated true weight known in advance. That is what let their
-    errors be computed directly. In most real measurement, the true value is exactly what you are
-    trying to find out, so you cannot compute an error this way. Instead, you check an instrument's
-    trueness once, in advance, against a trusted reference standard, using exactly this arithmetic.
-    Then you trust that check for the ordinary readings that follow.
-
-    Neither scale's error was shown to be the same at every weight it might read. An instrument
-    that reads true at 60 kilograms can drift at 120. Twenty readings taken at one weight say
-    nothing about its behaviour at another.
+    An instrument that reads true at 60 kilograms can drift at 120.
   numbers:
   - value: '100'
     unit: grams, the step weights were recorded in (the paper calls it "accuracy")
@@ -274,34 +184,26 @@ illustration:
     quote: Weight and height were recorded with accuracy of 100 g and 0.1 cm
 must_know:
 - point: |
-    Averaging more readings on a biased instrument does not get you a truer answer. It gets you a
-    more confident wrong one, because every reading it averages carries the same systematic error.
+    Averaging more readings on a biased instrument does not get you a truer answer.
   kind: misconception
   bearing: methodological
 - point: |
-    The section before this one taught sampling bias: a sample in which some members were more
-    likely to be chosen than others. Measurement bias is the VIM's own word (entry 2.18) for the
-    same shape of problem. It is an error that points one way and does not shrink when you collect
-    more. Repeating the same flawed process cannot fix it. Recognise the shape once and you recognise it in both
-    places.
+    Measurement bias is the VIM's own word (entry 2.18) for the same shape of problem. It is an error that
+    points one way and does not shrink when you collect more.
   kind: consequence
   bearing: methodological
   refs:
   - jcgm_vim3
 - point: |
     An instrument's stated "accuracy" is often a number of grams, millimetres or decimal places.
-    Often that is really its resolution (VIM 4.14): the "smallest change in a quantity being
-    measured that causes a perceptible change in the corresponding indication". It is not a
-    closeness to a known true value. Check which one a paper means.
+    It is not a closeness to a known true value. Check which one a paper means.
   kind: trap
   bearing: methodological
   refs:
   - jcgm_vim3
 - point: |
     Knowing an instrument's precision (VIM 2.15), how closely repeated readings agree with each
-    other, tells you nothing about whether they agree with the truth. That needs a separate
-    comparison against a known correct value, which repetition on the instrument alone cannot
-    supply.
+    other, tells you nothing about whether they agree with the truth.
   kind: boundary
   bearing: methodological
   refs:
@@ -316,9 +218,8 @@ must_know:
   refs:
   - kiran_2022_muac_nc
 - point: |
-    Once a systematic error's size is known, subtract it. The VIM calls this a correction (2.53).
-    Finding the size needs an independent check against a known value, not simply more readings
-    from the same instrument.
+    Once a systematic error's size is known, subtract it. Finding the size needs an independent
+    check against a known value, not simply more readings from the same instrument.
   kind: move
   bearing: methodological
   refs:
@@ -326,9 +227,7 @@ must_know:
 - point: |
     Teach a trainee to ask two separate questions of any instrument. How closely do repeated
     readings agree with each other? That is precision. How close does the average of many repeated
-    readings sit to the true value? That is trueness.
-    Accuracy needs both together. A trainee who checks only the first question will trust a
-    precise, biased instrument completely.
+    readings sit to the true value? That is trueness. Accuracy needs both together.
   kind: move
   bearing: teaching
 exercises:

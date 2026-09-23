@@ -1,0 +1,92 @@
+definition.text: 'Tossing a coin n times has 2 to the power n outcomes, one factor of 2 for every toss.
+
+
+  Independence is checked, not assumed: A and B are independent exactly when P(A and B) — the
+
+  probability that A and B both happen — equals P(A) times P(B), and dependent otherwise. When
+
+  they are independent, multiply to get P(A and B).
+
+
+  When A and B cannot both happen — they are mutually exclusive — P(A or B), the probability
+
+  that at least one of A or B happens, equals P(A) plus P(B): add.
+
+  '
+simplified_explanation: 'Toss a coin twice and write out every pair: heads-heads, heads-tails, tails-heads, tails-tails.
+
+  Four outcomes, because each toss has two and there are two tosses. Every extra toss doubles the
+
+  list. Two tosses give 2 squared outcomes, three tosses give 2 cubed, and n tosses give 2 to the
+
+  power n.
+
+
+  The word "and" points at multiplying, but only on one condition. The two events have to be
+
+  independent — meaning that finding out one of them happened tells you nothing new about the
+
+  other. Multiply their probabilities to get the probability of both.
+
+
+  The word "or" points at adding, and it too has a condition: the two events have to be mutually
+
+  exclusive, meaning they cannot both happen. If they can both happen, plain adding counts the
+
+  overlap twice, and the fix is to take the overlap back out once.
+
+
+  Never multiply two probabilities together just because a sentence has the word "and" in it. Check
+
+  first: does knowing one change the chance of the other?
+
+  '
+illustration.body: "Section 3(1) of the National Food Security Act, 2013 entitles every person belonging to a\npriority household to five kilograms of foodgrains a month. Section 3(2) caps how far that\nentitlement reaches: up to 75 per cent of the rural population. Treat 0.75 as the probability,\nat most, that a rural person picked at random is covered — the figure from the section before\nthis one.\n\nPick two rural people entirely at random, from two different, unrelated households. Knowing\nwhether the first is covered tells you nothing about the second, so treat the two as\nindependent. Multiply.\n\n```working\n    0.75 times 0.75 = 0.5625\n```\n\nAt most 0.5625, so a little over half, that both are covered.\n\nNow pick two people from the same household instead. If the household is covered, every person\nbelonging to it is covered along with it. The two outcomes are not independent, and\nmultiplying is the wrong move.\n\n```working\n    P(both covered, same household) is at most 0.75\n```\n\nNot 0.5625.\n\nPick three rural people, each from a different household, and ask for the probability that at\nleast one of them is covered. Go by the complement instead: work out the probability that none\nof the three is covered, and subtract that from 1.\n\n```working\n    1 minus 0.75 = 0.25\n```\n\n```working\n    0.25 times 0.25 = 0.0625\n```\n\n```working\n    0.0625 times 0.25 = 0.015625\n```\n\n```working\n    1 minus 0.015625 = 0.984375\n```\n\nAt most, about 98.4 per cent that at least one of the three is covered.\n"
+illustration.analogy_breaks_when: 'Two people can look like two separate draws and actually be one draw, counted twice. Before
+
+  multiplying, name what would have to be true for the two events to be independent. Then check
+
+  whether it is.
+
+
+  "At most 0.5625" and "at most 98.4 per cent" are bounds built from a bound, not measured
+
+  figures. Every extra multiplication carries that same qualification forward. It does not
+
+  sharpen it.
+
+  '
+must_know[0].point: 'Independence is a checkable claim, not a default. Test it by asking whether P(A and B) equals
+
+  P(A) times P(B).
+
+  '
+must_know[1].point: 'Two people drawn from the same unit that a decision is made about are almost never
+
+  independent. Think of the same household, the same clinic, the same litter. This holds even
+
+  when the underlying probability looks identical to two people drawn from different units.
+
+  Ask what the decision was actually made about, before you multiply.
+
+  '
+must_know[2].point: 'The word "and" in a sentence is not permission to multiply, and the word "or" is not permission
+
+  to add.
+
+  '
+must_know[3].point: '"At least one of several things happens" is answered fastest through the complement. Work out
+
+  the probability that none of them happen, and subtract from 1.
+
+  '
+must_know[4].point: 'A number built by multiplying several ceilings together is a smaller ceiling. Carry the
+
+  same "at most" or "at least" through every step.
+
+  '
+must_know[5].point: 'When you teach this to a trainee, put the independence check before the arithmetic every time,
+
+  even in a case where it is obviously true.
+
+  '

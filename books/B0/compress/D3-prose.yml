@@ -1,0 +1,207 @@
+definition.text: 'A two-way table — also called a contingency table — sorts one group of people by two
+
+  categories at once, one down the rows and one across the columns. Each person falls into
+
+  exactly one row and exactly one column, so the count where a row meets a column — a cell —
+
+  is the number of people who are both. Adding the cells in a row or a column gives that row''s
+
+  or column''s total; adding every cell gives the grand total.
+
+
+  A conditional probability restricts which total a count is divided by. P(A given B), written
+
+  P(A|B), is the count of people who are both A and B, divided by the count of people who are B.
+
+  The row or column total for B stands in as the denominator, in place of the grand total.
+
+  P(A|B) and P(B|A) divide the same top count by two different totals and are not generally
+
+  equal.
+
+
+  Four proportions, each a count divided by a total, cover most reported screening results.
+
+
+  Sensitivity is the share of people with the condition that the test catches, written
+
+  P(test positive given condition present).
+
+
+  Specificity is the share of people without the condition that the test correctly clears,
+
+  written P(test negative given condition absent).
+
+
+  The positive predictive value is the share of positive results that are right, written
+
+  P(condition present given test positive).
+
+
+  Prevalence is how many people in a group have the condition, written P(condition present),
+
+  with no test involved.
+
+
+  The positive predictive value changes with prevalence even when sensitivity and specificity do
+
+  not, because the same two percentages are applied to a different total.
+
+  '
+simplified_explanation: 'This section stands on the proportions from a few sections back. It also stands on the
+
+  counting and probability moves from the two sections just before this one. It puts them to
+
+  work on a question every screening result raises. Given a positive result, how likely is the
+
+  condition actually there?
+
+
+  Start by building a table, because nobody hands you one ready-made. A two-way table sorts the
+
+  same people twice. Sort them one way down the columns, by whether they truly have the thing you
+
+  care about. Sort them the other way across the rows, by what a quick measurement says. Where a
+
+  row meets a column is a count of people who are both — that count is a cell.
+
+
+  Add up a row and you get a row total. Add up a column and you get a column total. Add up
+
+  everything and you get the grand total.
+
+
+  A percentage is a count divided by a total, and you already know that move. A conditional
+
+  probability is the same move with a chosen denominator. Instead of dividing by everyone in the
+
+  table, you divide by one row or one column. "Of those who test positive, how many truly have
+
+  it" divides by the row of positive results. "Of those who truly have it, how many test
+
+  positive" divides by the column of people who truly have it. The same top count can appear in
+
+  both, and the two answers are usually different, because the denominator is different. Ask
+
+  which one you have been handed before you read anything into it.
+
+
+  Five names cover almost every screening result you will meet. Sensitivity is the share of
+
+  people with the condition that the test catches. Specificity is the share of people without
+
+  the condition that the test correctly clears.
+
+
+  The positive predictive value is the share of positive results that are right. Its
+
+  mirror is the negative predictive value, the share of negative results that are right.
+
+  Prevalence — how many people in a group have the condition — needs no test at all. It is a fact about the
+
+  group before anyone is measured.
+
+
+  Knowing that someone tests positive should change how likely you think it is that they truly
+
+  have it. If it does not, the test and the condition are independent, in the sense the last
+
+  section gave that word. In practice a working test never behaves like that.
+
+
+  The one thing worth carrying out of this whole section is this. The positive predictive value
+
+  belongs to the room the test is used in, not to the test by itself. Run the same test where the
+
+  condition is rarer, and the positive predictive value falls, even though nothing about the test
+
+  itself changed.
+
+  '
+illustration.body: "This table is built from a real study. Kiran, Harshitha and Bhargava measured 282 medical\nstudents in Mangaluru, including their body-mass index and the circumference of the upper\narm. This section uses only the 131 men. It uses the numbers to compute with, not as evidence\nabout what an arm measurement is good for. That question belongs elsewhere.\n\nThe study's Table 3 reports a 31.3 centimetre arm cut-off for men, labelled \"overweight,\nbody-mass index 25 or more\". It gives sensitivity 86 per cent and specificity 74 per cent.\nTable 2 gives 42 men with an index from 25 to 29.9, and 10 more at 30 or more.\n\n```working\n    42 plus 10 = 52\n```\n\nFifty-two men have an index of 25 or more, and the rest of the 131 do not.\n\n```working\n    131 minus 52 = 79\n```\n\nTry to rebuild the table the label describes: 52 men against 79. Sensitivity of 86 per cent\nshould mean some whole number of the 52 caught by the tape. Try the nearest candidates.\n\n```working\n    44 divided by 52 = 0.8461...\n    45 divided by 52 = 0.8653...\n```\n\nRounded, 44 gives 85 per cent and 45 gives 87 per cent. Neither is 86. No whole number of 52\nrounds to exactly 86 per cent. Try the 79 the same way, against the specificity of 74 per\ncent.\n\n```working\n    58 divided by 79 = 0.7341...\n    59 divided by 79 = 0.7468...\n```\n\nFifty-eight gives 73 per cent and 59 gives 75 per cent. Neither is 74 either. The label's own\ngroup sizes, 52 and 79, cannot have produced the paper's printed percentages. That is not a\nrounding slip of one person. No count built from these two totals gets back to 86 and 74 at\nall.\n\nThis is a denominator question, the kind this whole section teaches. Somewhere else in Table\n2 is a group of men that does divide back cleanly. Try the 42 men in the 25-to-29.9 band on\ntheir own, against the other 89 men in the study.\n\n```working\n    131 minus 42 = 89\n```\n\n```working\n    0.86 times 42 = 36.12\n    36 divided by 42 = 0.8571...\n```\n\nThirty-six of the 42 rounds to exactly 86 per cent.\n\n```working\n    0.74 times 89 = 65.86\n    66 divided by 89 = 0.7415...\n```\n\nSixty-six of the 89 rounds to exactly 74 per cent. Both round back to the printed figure.\nThe paper's own cut-off, and its own two percentages, fit the 42 men in the narrower\n25-to-29.9 band, compared against everyone else.\n\nTable 3's row label, \"body-mass index 25 or more\", is the paper's own label for its own row.\nIt does not fit the group its own numbers appear to have been computed on. Every row of\nTable 3 whose group is not in doubt divides back under ordinary rounding, so the paper rounds\nthat way. On that rounding this row fits the 42 and not the 52.\n\nBuild the table on the group that actually works. The rest of each row and column follow by\nsubtraction.\n\n```working\n    42 minus 36 = 6\n    89 minus 66 = 23\n    36 plus 23 = 59\n    6 plus 66 = 72\n```\n\n```table\n|  | in the 25-29.9 band | not in the band | total |\n| arm 31.3 cm or more | 36 | 23 | 59 |\n| arm under 31.3 cm | 6 | 66 | 72 |\n| total | 42 | 89 | 131 |\n```\n\nThis table is rebuilt, not printed by the paper in this form. It applies two rounded\npercentages to two counts. It is the only whole-person table, built on a group the paper\nactually prints, that rounds back to both 86 and 74. That is why it is the best estimate\nhere, and the earlier 52-against-79 attempt is not.\n\nNow put the table to work. Take the row of men the tape flags — arm 31.3 centimetres or\nmore — 59 of them in total.\n\n```working\n    36 divided by 59 = 0.6101...\n```\n\nAbout 61 per cent. This is the positive predictive value: of the men the arm measurement\nflags, the share who are actually in the 25-to-29.9 band. Notice which total you divided\nby — the row of 59 who were flagged, not all 131.\n\nNow reverse the question. Take the column of men in the 25-to-29.9 band — 42 of them. Of\nthose 42, how many also have an arm of 31.3 centimetres or more?\n\n```working\n    36 divided by 42 = 0.8571...\n```\n\nAbout 86 per cent. Same top number, 36, and a completely different bottom number — 42 this\ntime, not 59 — so a completely different answer. This second ratio is the sensitivity, and it\nis the number the paper itself reports. The two questions sound almost identical in English\nand they are not the same arithmetic. P(in the band given arm 31.3 or more) is not P(arm 31.3\nor more given in the band).\n\nThe other two names come off the same table. Specificity is the share of the 89 men outside\nthe band whom the measurement correctly clears.\n\n```working\n    66 divided by 89 = 0.7415...\n```\n\nPrevalence is how many of the 131 men are in the band in the first place, no measurement\ninvolved. Table 2 already gives it directly: 42 of 131.\n\n```working\n    42 divided by 131 = 0.3206...\n```\n\nAbout 32 per cent, among these 131 men.\n\nMove the prevalence, and watch the positive predictive value alone move with it. Keep the\nsame cut-off, the same 86 per cent sensitivity and the same 74 per cent specificity. Apply\nthem to a stated group instead: 1,000 young men in which one in five is in the band. The\nfigure of 1,000 keeps the arithmetic in whole people. One in five is a stated condition,\nchosen for the arithmetic.\n\n```working\n    0.20 times 1,000 = 200\n    1,000 minus 200 = 800\n```\n\n```working\n    0.86 times 200 = 172\n    0.74 times 800 = 592\n```\n\n```working\n    200 minus 172 = 28\n    800 minus 592 = 208\n    172 plus 208 = 380\n```\n\n```table\n|  | in the band | not in the band | total |\n| arm 31.3 cm or more | 172 | 208 | 380 |\n| arm under 31.3 cm | 28 | 592 | 620 |\n| total | 200 | 800 | 1,000 |\n```\n\n```working\n    172 divided by 380 = 0.4526...\n```\n\nAbout 45 per cent, against about 61 per cent among the medical students themselves. Same\ntape, same cut-off, same sensitivity and specificity. A positive result is right less than\nhalf the time once the group has fewer people in the band to begin with.\n\nA formula reaches this same answer in one line instead of a rebuilt table. It is worth\nknowing by name, even though this section stops short of teaching it. It is called Bayes'\ntheorem. Every move made above — condition, reverse, weigh by how common the condition\nis — is exactly what that formula does in symbols.\n"
+illustration.analogy_breaks_when: 'The 36-23-6-66 table is rebuilt, not measured. It was built by applying two rounded
+
+  percentages to two counts. Of the two group sizes tried, only one rounds back to both 86 and
+
+  74. Wherever you see a sensitivity and a specificity with no counts behind them, run the
+
+  same check before you trust which group they describe.
+
+
+  The positive predictive value of 61 per cent describes these 131 medical students and nobody
+
+  else. It is not a fixed property of the arm measurement. It does not carry unchanged into a
+
+  different group. The move to 1,000 men at one in five just showed that directly. Sensitivity
+
+  and specificity stayed the same. The positive predictive value fell by about a quarter, from
+
+  61 to 45 per cent, while the prevalence fell from 32 to 20 per cent. Never quote a positive predictive
+
+  value without saying whose prevalence produced it.
+
+
+  This section never says what an arm measurement is good for as a screening tool. It uses the
+
+  study''s real counts to teach how a two-way table and a conditional probability work. Whether
+
+  the measurement is worth taking in a clinic is a separate question. This course does not
+
+  settle it here.
+
+  '
+must_know[0].point: 'P(A given B) is not P(B given A). Sensitivity and the positive predictive value are built
+
+  from the same top count. They divide it by different totals. Treating one figure as though it
+
+  answered the other question is a common error in reading a screening result.
+
+  '
+must_know[1].point: 'The positive predictive value moves when the group being tested changes, even though the test
+
+  itself has not. Run the same test where the condition is common, and most positive results
+
+  are right. Run it where the condition is rare, and most positive results are wrong. A report
+
+  that a test is "accurate" means nothing until you are told which of the two groups it was
+
+  measured in.
+
+  '
+must_know[2].point: 'Before dividing anything, say out loud which row or column you are dividing by. "Of those who
+
+  test positive" and "of those who truly have it" are different totals. Naming the total first
+
+  stops the reversal error before you compute anything.
+
+  '
+must_know[3].point: 'The positive predictive value belongs to the group tested, not to the test. Carrying
+
+  sensitivity and specificity forward to a new group is itself an assumption. Say so whenever
+
+  you do it.
+
+  '
+must_know[4].point: 'Divide back. Try every whole number of the stated group. If none gives the printed
+
+  percentage, the total you are dividing by is not the one the paper actually used. A row''s
+
+  own label is not proof that it matches the count behind it.
+
+  '
+must_know[5].point: 'A headline that reports a test as some per cent "accurate" tells you nothing on its own. It
+
+  names none of the sensitivity, the specificity or the positive predictive value. Ask which
+
+  one was meant, then ask for the prevalence the third one needs.
+
+  '
+must_know[6].point: 'When two published figures for the same measurement disagree, check whether either one
+
+  conflicts with something else printed alongside it. A shared total, or rows that must add up,
+
+  can settle which figure the paper actually computed from. Do this before you assume the more
+
+  prominent figure is correct.
+
+  '

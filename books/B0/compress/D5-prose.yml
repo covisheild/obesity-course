@@ -1,0 +1,135 @@
+definition.text: 'The section on variation already gave you a distribution and a frequency table. This section
+
+  turns a distribution into two single numbers: a typical value, and how spread out the rest are
+
+  around it.
+
+
+  The mean of a set of values is their sum divided by how many there are. Most people call this
+
+  the average, and this book uses the two words for the same thing from here on. The median is
+
+  the middle value of the same set once it is ordered from smallest to largest; where the count
+
+  is even, it is the mean of the two middle values.
+
+
+  A quartile is one of three values that divide an ordered set into four equal-sized parts. The
+
+  first quartile is the median of the lower half of the ordered values, and the third quartile is
+
+  the median of the upper half. The second quartile is the median of the whole set. When the
+
+  count itself is odd, leave the middle value out of both halves before taking their medians. The
+
+  interquartile range is the third quartile minus the first, and it describes the spread of the
+
+  middle half of the values, ignoring anything beyond it. It is one number, not the two quartiles
+
+  themselves. Software often computes quartiles by a different rule from this one and can print a
+
+  slightly different number for the same data; that is not a sign either calculation is wrong.
+
+
+  Two words are worth having exact from here on. The population is the whole group a question is
+
+  about. The sample is the part of that group that was actually measured. A study can rarely
+
+  measure a whole population, so it measures a sample and uses it to say something about the
+
+  population the sample came from.
+
+
+  The deviation of a value from the mean is that value minus the mean. The variance is worked
+
+  out from the squared deviations: add them, then divide by the count for a whole population, or
+
+  by one less than the count for a sample. The standard deviation is the
+
+  square root of the variance, expressed in the same unit as the original values, because taking
+
+  a square root undoes the squaring. In a distribution with a long tail, the standard deviation
+
+  can mislead, because the two sides of the distribution spread out by different amounts; the
+
+  quartiles handle that case better.
+
+
+  Dividing by one less than the count for a sample is the convention most papers follow, and the
+
+  one the textbook this book follows uses too.
+
+
+  A long tail on one side of a distribution moves the mean toward it more than it moves the
+
+  median, because the mean is built from every value and the median is not. The mean of a set of
+
+  values says nothing on its own about where any one member of the set actually sits.
+
+  '
+simplified_explanation: "Start with the mean and the median on a small set, so the machinery is visible before any real\nnumbers arrive.\n\nTake six numbers: 5, 8, 12, 15, 20, 40. Add them and divide by how many there are for the mean.\n\n```working\n    5 plus 8 plus 12 plus 15 plus 20 plus 40 = 100\n    100 divided by 6 = 16.6666666667...\n```\n\nThe mean is about 16.7.\n\nFor the median, put the same six numbers in order, which they already are, and find the middle.\nWith six values there is no single middle one, so take the two in the middle and average them.\n\n```working\n    12 plus 15 = 27\n    27 divided by 2 = 13.5\n```\n\nThe median is 13.5, noticeably below the mean of 16.7. One number in this set, the 40, sits a\nlong way above the rest. It drags the mean up with it and leaves the median almost where it would\nhave been without it. That is why the two are worth computing together rather than picking one.\nWhichever one moves more, and by how much, tells you something the other cannot.\n\nQuartiles use the same ordering. Take eight ordered numbers: 2, 4, 4, 6, 8, 8, 10, 12. The middle\nvalue, the second quartile, is the average of the two central values.\n\n```working\n    6 plus 8 = 14\n    14 divided by 2 = 7\n```\n\nNow split the set into its lower half and its upper half, four numbers each, and find the middle\nof each half the same way. The lower half is 2, 4, 4, 6.\n\n```working\n    4 plus 4 = 8\n    8 divided by 2 = 4\n```\n\nThat gives the first quartile, 4. Now the upper half, 8, 8, 10, 12.\n\n```working\n    8 plus 10 = 18\n    18 divided by 2 = 9\n```\n\nThat gives the third quartile, 9. The interquartile range is the third quartile minus the first.\n\n```working\n    9 minus 4 = 5\n```\n\nFive. It says the middle half of these eight values is spread across five units. It says nothing\nabout the quarter below the first quartile, or the quarter above the third. That is exactly what\nit is for: a spread that is not dragged around by one extreme value the way the\nrange is.\n\nNow the standard deviation, step by step, on six more bare numbers: 5, 7, 3, 7, 10, 4.\n\nFirst, the mean.\n\n```working\n    5 plus 7 plus 3 plus 7 plus 10 plus 4 = 36\n    36 divided by 6 = 6\n```\n\nThe mean is 6. Now the deviation of every value: how far it sits from that mean, kept with its\nsign. A deviation below the mean comes out negative, the kind of number the section on counting\nintroduced.\n\n```working\n    5 minus 6 = -1\n    7 minus 6 = 1\n    3 minus 6 = -3\n    7 minus 6 = 1\n    10 minus 6 = 4\n    4 minus 6 = -2\n```\n\nSquare every deviation next, which means multiplying each one by itself. The first one below the\nmean, -1, squared, is -1 times -1. A negative number times a negative number gives a positive\nnumber. Multiplying by a negative flips a value to the other side of zero. Flipping twice brings\nit back to the positive side it started on.\n\n```working\n    -1 times -1 = 1\n```\n\nSquaring removes the sign this way for every deviation, so a value below the mean counts the same\nas one the same distance above it.\n\n```working\n    -1 times -1 = 1\n    1 times 1 = 1\n    -3 times -3 = 9\n    1 times 1 = 1\n    4 times 4 = 16\n    -2 times -2 = 4\n```\n\nAdd the squares.\n\n```working\n    1 plus 1 = 2\n    2 plus 9 = 11\n    11 plus 1 = 12\n    12 plus 16 = 28\n    28 plus 4 = 32\n```\n\nThirty-two. Divide that by one less than the count of values, which is five here, not six. That\ndivision is the variance.\n\n```working\n    32 divided by 5 = 6.4\n```\n\nThe variance is 6.4, and it is in the wrong unit. Squaring every deviation squared the unit too,\nso a variance worked out from kilograms is really in kilograms squared, which nobody can picture.\nTake the square root and the unit comes back to the one you started in. That last step is the\nstandard deviation.\n\n```working\n    square root of 6.4 = 2.529822128\n```\n\nThe standard deviation of these six numbers is about 2.53.\n\nGo back to the division by five rather than six. Most papers do the same thing: a sample's\nvariance is divided by one less than the count. Distances from the sample's own mean come out a\nlittle small on average, because that mean sits in the middle of these particular numbers.\nDividing by one less than the count makes the variance come out right on average. The textbook\nthis book follows puts it briefly: dividing by one less 'gives a better estimate of the\npopulation variance'.\n\nThis holds for the variance, on average, across many samples. It does not mean every single\nsample's variance is too small before the correction. Taking a square root afterwards also does\nnot carry the correction over exactly. The standard deviation, unlike the variance, still runs a\nlittle low on average, even after dividing by one less than the count.\n\nIf you divide by the full count instead, you will get a slightly smaller number than most\npublished tables use. That is not a mistake in your arithmetic. It is a different, and less\nusual, convention.\n"
+illustration.body: "Open Table 1 of the paper used in the section on variation: Kiran, Harshitha and Bhargava, 282\nmedical students in Mangaluru. It gives weight, height, body-mass index and more, each as a\nmean with its standard deviation beside a median with its first and third quartiles. Papers\nwrite the standard deviation (SD) by its two initials. The paper labels this pair of quartiles\n\"interquartile range\" (IQR), although the interquartile range itself is one number, the\ndifference between them. Read the first two rows for the 131 men.\n\n```table\nindicator     mean (SD)      median (first and third quartiles)\nweight (kg)   72.0 (13.1)    70.9 (167.7, 177.8)\nheight (cm)   172.2 (6.8)    173 (62.6, 80.9)\n```\n\nStop on the weight row's two quartiles, and check them yourself. The median has to sit\nbetween the two quartiles printed beside it: the first quartile below it, the third above it.\nHere the median is 70.9, and the two numbers printed beside it are 167.7 and 177.8. 70.9 sits\nbelow both of them, not between them.\n\nTry the same check on the height row underneath it. The median there is 173, and the two\nnumbers printed beside it are 62.6 and 80.9. It sits above both of them, not between them\neither.\n\nBoth rows fail the same way, and each one passes against the other row's numbers. Try swapping\nthe two quartiles printed beside each median between the rows, and run the check a third time.\nPut the weight row's median, 70.9, against the height row's printed numbers, 62.6 and 80.9.\n70.9 sits between them. Now put the height row's median, 173, against the weight row's printed\nnumbers, 167.7 and 177.8. 173 sits between them too. Both checks pass with the quartiles\nswapped. The numbers fit if the two rows' quartiles were printed in each other's places.\n\nYou did not need the paper to say this happened. The technique this section teaches, the median\nagainst its own two quartiles, found it on its own. This one survived the paper's own\nreviewers.\n\nNow the finding this section takes its title from, printed correctly in the same table. Men's\nmean body-mass index is 24.2 kilograms per square metre, with a standard deviation of 3.9.\n\nTable 2 of the same paper sorts those same 131 men by body-mass index, the way the section on\nvariation used it already. It uses the World Health Organization's own bands. Forty-two of the\nmen are in the band from 25 to 29.9. Ten more are at 30 or more.\n\n```working\n    42 plus 10 = 52\n```\n\nFifty-two of the 131 men have a body-mass index of 25 or more.\n\n```working\n    52 divided by 131 = 0.396946565...\n    0.396946565 times 100 = 39.6946565\n```\n\nThat rounds to about 39.7 per cent, close to two in every five. The mean of the group, 24.2,\nsits under the line at 25. Close to two in five of the individual men in that same group sit at\nit or above it. The mean describes the group. It was never a description of any one of the 131\nmen. Deciding whether one particular man is above or below 25 needs his own reading, not the\ngroup's average.\n\nBody fat shows the tail directly. Men's mean body fat is 22.1 per cent and their\nmedian is 20.3 per cent. The mean sits above the median.\n\n```working\n    22.1 minus 20.3 = 1.8\n```\n\nBy the median's own definition, at least half of the 131 men have a body fat percentage at or\nbelow 20.3. That is also below the mean of 22.1. A smaller number of men, with a much higher\nbody fat percentage, pull the mean up past them. It is bunched in the middle, with a longer\nstretch running upward than downward. That is exactly\nthe shape the section on variation described in words.\n"
+illustration.analogy_breaks_when: 'Checking a median against its own two quartiles catches a pair of quartiles that sits nowhere
+
+  near the median. It would not catch a smaller slip, such as one digit typed wrong that still
+
+  leaves the median sitting between the two quartiles by chance.
+
+
+  The mean sitting below 25 while many men sit above it is a fact about this one group. It is 131
+
+  men, measured this way, in this college, in 2019. It says nothing about any other group. It
+
+  says nothing about any one of these men beyond what his own reading gives you.
+
+
+  The standard deviation and the interquartile range answer different questions about the same
+
+  spread. Neither can be worked out from the other. A table that gives you one is not quietly
+
+  giving you the other as well.
+
+  '
+must_know[0].point: 'A long tail on one side of a distribution pulls the mean toward it. It leaves the median close
+
+  to where most of the values actually sit. Reading this backwards, "the mean is higher, so most
+
+  values are higher", is an error.
+
+  '
+must_know[1].point: 'Compute the median alongside the mean whenever a handful of extreme values might be present.
+
+  Compare the two before you quote either one on its own. A gap between them is itself a finding,
+
+  not a rounding difference to ignore.
+
+  '
+must_know[2].point: 'A mean, on its own, says nothing about any one person in the group it was computed from. Before
+
+  you use it to describe the person in front of you, ask where that person sits in the group''s
+
+  spread.
+
+  '
+must_know[3].point: 'Divide by one less than the count whenever you compute a standard deviation from a sample. Most
+
+  papers you read will have done the same, on the same sample logic.
+
+  '
+must_know[4].point: 'A mean sitting below a cut-off does not mean most of a group is below it. Ask what fraction of
+
+  individuals actually sit on the other side before you repeat an average as reassurance.
+
+  '
+must_know[5].point: 'Check a printed median against the two quartiles printed beside it before you trust any of the
+
+  three. The first quartile has to sit below the median, and the third above it.
+
+  '
+must_know[6].point: 'In a lopsided distribution, the standard deviation hides that the two sides spread out
+
+  differently. Where the mean and median disagree by much, look at the quartiles instead of
+
+  trusting a single standard deviation to describe both sides.
+
+  '

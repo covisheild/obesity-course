@@ -1,0 +1,50 @@
+definition.text: 'This section turns a distribution into two single numbers: a typical value, and how spread out the rest are around it.
+
+
+  The mean of a set of values is their sum divided by how many there are. The median is the middle value of the same set once it is ordered from smallest to largest; where the count is even, it is the mean of the two middle values.
+
+
+  The first quartile is the median of the lower half of the ordered values, and the third quartile is the median of the upper half. The second quartile is the median of the whole set. When the count itself is odd, leave the middle value out of both halves before taking their medians. The interquartile range is the third quartile minus the first, and it describes the spread of the middle half of the values, ignoring anything beyond it.
+
+
+  The population is the whole group a question is about. The sample is the part of that group that was actually measured.
+
+
+  The deviation of a value from the mean is that value minus the mean. The variance is worked out from the squared deviations: add them, then divide by the count for a whole population, or by one less than the count for a sample. The standard deviation is the square root of the variance, expressed in the same unit as the original values, because taking a square root undoes the squaring.
+
+
+  The mean of a set of values says nothing on its own about where any one member of the set actually sits.
+
+  '
+simplified_explanation: "Take six numbers: 5, 8, 12, 15, 20, 40. Add them and divide by how many there are for the mean.\n\n```working\n    5 plus 8 plus 12 plus 15 plus 20 plus 40 = 100\n    100 divided by 6 = 16.6666666667...\n```\n\nThe mean is about 16.7.\n\nFor the median, put the same six numbers in order, which they already are, and find the middle. With six values there is no single middle one, so take the two in the middle and average them.\n\n```working\n    12 plus 15 = 27\n    27 divided by 2 = 13.5\n```\n\nThe median is 13.5, noticeably below the mean of 16.7. One number in this set, the 40, sits a long way above the rest. It drags the mean up with it and leaves the median almost where it would have been without it.\n\nTake eight ordered numbers: 2, 4, 4, 6, 8, 8, 10, 12. The middle value, the second quartile, is the average of the two central values.\n\n```working\n    6 plus 8 = 14\n    14 divided by 2 = 7\n```\n\nNow split the set into its lower half and its upper half, four numbers each, and find the middle of each half the same way. The lower half is 2, 4, 4, 6.\n\n```working\n    4 plus 4 = 8\n    8 divided by 2 = 4\n```\n\nThat gives the first quartile, 4. Now the upper half, 8, 8, 10, 12.\n\n```working\n    8 plus 10 = 18\n    18 divided by 2 = 9\n```\n\nThat gives the third quartile, 9. The interquartile range is the third quartile minus the first.\n\n```working\n    9 minus 4 = 5\n```\n\nIt says the middle half of these eight values is spread across five units.\n\nNow the standard deviation, step by step, on six more bare numbers: 5, 7, 3, 7, 10, 4.\n\nFirst, the mean.\n\n```working\n    5 plus 7 plus 3 plus 7 plus 10 plus 4 = 36\n    36 divided by 6 = 6\n```\n\nThe mean is 6. Now the deviation of every value: how far it sits from that mean, kept with its sign.\n\n```working\n    5 minus 6 = -1\n    7 minus 6 = 1\n    3 minus 6 = -3\n    7 minus 6 = 1\n    10 minus 6 = 4\n    4 minus 6 = -2\n```\n\nSquare every deviation next, which means multiplying each one by itself. A negative number times a negative number gives a positive number.\n\n```working\n    -1 times -1 = 1\n    1 times 1 = 1\n    -3 times -3 = 9\n    1 times 1 = 1\n    4 times 4 = 16\n    -2 times -2 = 4\n```\n\nAdd the squares.\n\n```working\n    1 plus 1 = 2\n    2 plus 9 = 11\n    11 plus 1 = 12\n    12 plus 16 = 28\n    28 plus 4 = 32\n```\n\nDivide that by one less than the count of values, which is five here, not six. That division is the variance.\n\n```working\n    32 divided by 5 = 6.4\n```\n\nThe variance is 6.4, and it is in the wrong unit. Take the square root and the unit comes back to the one you started in. That last step is the standard deviation.\n\n```working\n    square root of 6.4 = 2.529822128\n```\n\nThe standard deviation of these six numbers is about 2.53.\n"
+illustration.body: "Open Table 1 of the paper used in the section on variation: Kiran, Harshitha and Bhargava, 282 medical students in Mangaluru. It gives weight, height, body-mass index and more, each as a mean with its standard deviation beside a median with its first and third quartiles. Papers write the standard deviation (SD) by its two initials. Read the first two rows for the 131 men.\n\n```table\nindicator     mean (SD)      median (first and third quartiles)\nweight (kg)   72.0 (13.1)    70.9 (167.7, 177.8)\nheight (cm)   172.2 (6.8)    173 (62.6, 80.9)\n```\n\nStop on the weight row's two quartiles, and check them yourself. The median has to sit between the two quartiles printed beside it: the first quartile below it, the third above it. Here the median is 70.9, and the two numbers printed beside it are 167.7 and 177.8. 70.9 sits below both of them, not between them.\n\nTry the same check on the height row underneath it. It sits above both of them, not between them either.\n\nBoth rows fail the same way, and each one passes against the other row's numbers. The numbers fit if the two rows' quartiles were printed in each other's places.\n\nMen's mean body-mass index is 24.2 kilograms per square metre, with a standard deviation of 3.9.\n\nForty-two of the men are in the band from 25 to 29.9. Ten more are at 30 or more.\n\n```working\n    42 plus 10 = 52\n```\n\nFifty-two of the 131 men have a body-mass index of 25 or more.\n\n```working\n    52 divided by 131 = 0.396946565...\n    0.396946565 times 100 = 39.6946565\n```\n\nThat rounds to about 39.7 per cent, close to two in every five. The mean of the group, 24.2, sits under the line at 25. The mean describes the group.\n\nMen's mean body fat is 22.1 per cent and their median is 20.3 per cent. The mean sits above the median.\n\nA smaller number of men, with a much higher body fat percentage, pull the mean up past them.\n"
+illustration.analogy_breaks_when: 'Checking a median against its own two quartiles catches a pair of quartiles that sits nowhere near the median.
+
+
+  It says nothing about any other group.
+
+
+  The standard deviation and the interquartile range answer different questions about the same spread. Neither can be worked out from the other.
+
+  '
+must_know[0].point: 'A long tail on one side of a distribution pulls the mean toward it. Reading this backwards, "the mean is higher, so most values are higher", is an error.
+
+  '
+must_know[1].point: 'Compare the two before you quote either one on its own. A gap between them is itself a finding, not a rounding difference to ignore.
+
+  '
+must_know[2].point: 'A mean, on its own, says nothing about any one person in the group it was computed from.
+
+  '
+must_know[3].point: 'Divide by one less than the count whenever you compute a standard deviation from a sample.
+
+  '
+must_know[4].point: 'A mean sitting below a cut-off does not mean most of a group is below it.
+
+  '
+must_know[5].point: 'Check a printed median against the two quartiles printed beside it before you trust any of the three.
+
+  '
+must_know[6].point: 'Where the mean and median disagree by much, look at the quartiles instead of trusting a single standard deviation to describe both sides.
+
+  '
