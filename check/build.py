@@ -5,6 +5,7 @@ Quarto for pandoc (or back) touches only `render()`. Run from the repo root:
 
     python course/build.py --check          # validation and reports only
     python course/build.py --subject S01    # assemble + render one booklet
+    python course/build.py --subject S01-R1 # one rung as its own book (+ its series PDF)
     python course/build.py --all
 
 The checks are the point. Writing 61 booklets without them produces a corpus
@@ -1395,12 +1396,29 @@ def concept_md(r, cites, label=None, sid=None) -> list[str]:
 LEGACY_INDENT = set()
 
 
+RUNG_BOOK = re.compile(r"^(S[0-9]{2})-R([0-9])$")
+
+
 def booklet_md(sid, recs, subjects, clusters) -> tuple[str, list[str]]:
+    """One booklet. `sid` is B0; a subject (S01: every released rung together); or one rung
+    (S01-R1: that rung alone, as its own book - the unit the series prints, and the one
+    check/pdf/make_pdf.py lays out from check/_build/S01-R1.md and books/S01-R1/book.yml)."""
     subj = subjects["subjects"]
-    mine = sorted([r for r in recs.values() if r.get("subject") == sid],
-                  key=lambda r: (r.get("rung", 0), r.get("sequence", 0)))
+    rung_book = RUNG_BOOK.match(sid)
+    if rung_book:
+        subject, rung = rung_book.group(1), int(rung_book.group(2))
+        mine = sorted([r for r in recs.values()
+                       if r.get("subject") == subject and r.get("rung") == rung],
+                      key=lambda r: r.get("sequence", 0))
+    else:
+        mine = sorted([r for r in recs.values() if r.get("subject") == sid],
+                      key=lambda r: (r.get("rung", 0), r.get("sequence", 0)))
     if sid == "B0":
         title, status, target, nr = "Book 0 · Ground floor", "foundations", "-", 0
+    elif rung_book:
+        s = subj[subject]
+        title, target, nr = f"{subject} · {s['title']} · Rung {rung}", s["target"], s["n_rungs"]
+        status = f"{LEVELS[rung - 1]} · rung {rung} of {nr}"
     else:
         s = subj[sid]
         title, target, nr = f"{sid} · {s['title']}", s["target"], s["n_rungs"]
@@ -1429,10 +1447,20 @@ def booklet_md(sid, recs, subjects, clusters) -> tuple[str, list[str]]:
                  if len(mine) < total else [])]
     if sid != "B0":
         ed = f"version {book_meta(sid)['version']}" if book_meta(sid).get("version") else "edition 0.1 (draft)"
-        md += [f"**Target level: {target}** · {status} · {ed}", "",
+        head = (f"**Level: {LEVELS[rung - 1]}** · rung {rung} of {nr} · the subject goes to {target}"
+                if rung_book else f"**Target level: {target}** · {status}")
+        md += [f"{head} · {ed}", "",
                f"*Ground floor: see Book 0. Derived against subject map `{subjects['source_map_version_id']}`.*", ""]
         gf = sorted({d for r in mine for d in (r.get("ground_floor_deps") or [])})
-        if gf:
+        if gf and rung_book:
+            # A printed book names Book 0 sections the way Book 0 prints them (A5), not by id.
+            b0 = {s["index"]: s["id"] for p in load_book0_outline() for s in p["sections"]}
+            md += ["## Before you start", "",
+                   "This book uses the following Book 0 sections. Each is summarised where it is first "
+                   "needed; work through Book 0 itself if a summary is not enough.", ""]
+            md += [f"- Book 0, {b0.get(recs[d].get('sequence'), d)} · {recs[d]['name']}" if d in recs
+                   else f"- `{d}`" for d in gf] + [""]
+        elif gf:
             md += ["## Before you start", "",
                    "This booklet uses the following Book 0 sections. Each is summarised where it is first "
                    "needed; work through Book 0 itself if a summary is not enough.", ""]
@@ -1755,6 +1783,10 @@ def main():
     os.makedirs(OUT, exist_ok=True)
     todo = a.subject or (sorted({r.get("subject") for r in recs.values()}) if a.all else [])
     for sid in todo:
+        rb = RUNG_BOOK.match(sid)
+        if sid != "B0" and sid not in subjects["subjects"] and not (rb and rb.group(1) in subjects["subjects"]):
+            print(f"--subject {sid}: not B0, a subject (S01) or a rung book (S01-R1) - skipped")
+            continue
         md, ids = booklet_md(sid, recs, subjects, clusters)
         path = os.path.join(OUT, f"{sid}.md")
         with open(path, "w", encoding="utf-8") as fh:

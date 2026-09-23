@@ -312,14 +312,22 @@ The model matters less than anything else here. Measured on F4, two different mo
 same brief landed 24 words apart. Run this chat at low effort; step 2 wants a clean context and
 a clean directory, not a particular model or effort level. The cold reader must be given every
 earlier Part's released text as well as the Part being cut, and the figures' captions and alt
-text (`books/B0/compress/prepare.py release`).
+text (`check/compress/prepare.py --subject <ID> release`; for a rung book it writes the Book 0
+sections in `ground_floor_deps` and every earlier rung of the subject).
+
+The tools, all run with `--subject B0` or `--subject S01-R1` and working in `books/<ID>/compress/`:
+`check/compress/prepare.py` (`extract`, `assemble`, `release`, `writeback`; with no ids, the whole
+book), `check/compress/restore.py <label> <list>` (sentence by sentence: naming a sentence brings
+back that sentence only) and `check/compress/validate.py <file>` (deletion only, sentence length not
+risen, and for a `-final-prose.yml` nothing the cut kept lost). A rung book's section label is its
+concept_id, so its cut is `<concept_id>-pass1-prose.yml` (S01-R1-C03-pass1-prose.yml).
 
 **Setting up the scratch directory**, before any subagent is launched:
 
 ```bash
 rm -rf /tmp/coldread && mkdir -p /tmp/coldread
-cp books/<SUBJECT>/compress/*-pass1.md /tmp/coldread/
-ls /tmp/coldread          # confirm: cut sections only, nothing else
+cp books/<SUBJECT>/compress/*-pass1.md books/<SUBJECT>/compress/*-released.md /tmp/coldread/
+ls /tmp/coldread          # confirm: cut sections and released earlier text only, nothing else
 ```
 
 ### Step 5a — cut hard. Delegate one subagent per section.
@@ -415,6 +423,10 @@ you is a shortlist: the sections whose gap reports came back longest are the one
 ---
 
 ## Task 7 — the PDF. Automatic, on every build.
+
+`<ID>` is a book: `B0`, or one rung such as `S01-R1`, which the build renders alone as its own
+booklet (`check/_build/<ID>.md`). `--subject S01` still renders every released rung together
+and makes no PDF, because no subject-level `books/<ID>/book.yml` exists.
 
 `python check/build.py --subject <ID>` ends by running `check/pdf/make_pdf.py`, which lays out
 the series edition: front cover, title page, copyright and licence page (version and date),

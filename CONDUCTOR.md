@@ -92,26 +92,26 @@ the work is not lost, and say that it is a checkpoint.
 
 Fix these at the start of Book 1, in that chat, before Task 5 runs:
 
-- **The compression tools are Book 0 only.** `books/B0/compress/prepare.py` reads records from
-  `check/records/B0` and labels sections from the Book 0 outline; `books/B0/compress/restore.py` and `books/B0/compress/validate.py`
-  work inside that folder. Generalise them to take `--subject`, keep Book 0's behaviour identical,
-  and check that by regenerating one Book 0 section's `-original.md` and diffing it.
+- **Done 23 Sep 2026 (branch `book/S01-R1`): the compression tools take `--subject`.** They are
+  `check/compress/prepare.py`, `check/compress/restore.py` and `check/compress/validate.py`, run as
+  `--subject B0` or `--subject S01-R1`; a rung book works in `books/<ID>/compress/`, labels sections
+  by concept_id, and `release` also writes the Book 0 sections its records list in
+  `ground_floor_deps`. Book 0's old paths are thin wrappers. Tested in `books/S01-R1/TOOLING-NOTES.md`.
 - **Book 1 carries the drafter comparison** (`PIPELINE.md` Task 2): one section drafted by Sonnet
   and by Opus 5.5, read unlabelled by Harsh, defects per section counted by the audit.
 - **Book 1 measures cost per section**, from which the course timeline is projected.
-- **`books/B0/compress/restore.py` restores whole paragraphs.** Naming one sentence brings back its
-  whole original paragraph, although the docstring says sentence by sentence. Book 0's restores
-  were validated as they ran (no mean or longest sentence rose), so nothing is wrong in the
-  records, but the restore put back more than the cold read earned. Make it sentence-level when
-  generalising the tools, and check against one Book 0 section that validation still passes.
+- **Done 23 Sep 2026: `check/compress/restore.py` is sentence-level.** Naming one sentence brings
+  back that sentence only, in its original paragraph and position. `check/compress/validate.py`
+  now also fails a restore that loses anything the cut kept. Book 0's restores (paragraph-level)
+  put back 179 sentences more than their restore lists named across C1–F5; the records were
+  validated at the time and are left as they are.
 - **Budget for holes after compression.** On Parts D–F the cold read found 128 holes the
   original did not fill either, 22 of them errors in text that had already passed audit and
   verification. The triage → fix → verify loop after 5c is part of the task, not an exception.
-- **A rung book needs its own booklet.** The series (`map/BOOKS.yml`) has one book per rung
-  (`S01-R1`), but `check/build.py --subject S01` renders one booklet per subject, all released
-  rungs together. Before the first rung book's PDF: make the build render one rung as its own
-  booklet (`--subject S01-R1`, writing that rung's own markdown into the build folder), so `check/pdf/make_pdf.py` gets
-  exactly one book. Book 0 is not affected.
+- **Done 23 Sep 2026: a rung book has its own booklet.** `check/build.py --subject S01-R1` renders
+  that rung alone to `check/_build/<ID>.md` (and docx, html), and `check/pdf/make_pdf.py` gets
+  exactly that book, with `books/S01-R1/book.yml`. `--subject S01` still renders all released rungs
+  together (no PDF, as there is no subject-level book.yml). Book 0 is unchanged.
 
 ## Versions after a book is frozen
 
