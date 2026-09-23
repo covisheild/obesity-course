@@ -36,7 +36,7 @@ for it on every later step.
 | (a) inventory, sources, draft | drafter: see Task 2; main thread Opus 5.5 | medium | Opus 5.5's default |
 | (b) audit | Opus 5.5 | high | the accuracy guard; the one place to spend |
 | (c) fix and verify | Opus 5.5 | medium | fixing is correctness work; Sonnet fixers twice reported defects closed that were open |
-| (d) compression | Opus 5.5 | low | every cut is checked mechanically by `validate.py` |
+| (d) compression | Opus 5.5 | low | every cut is checked mechanically by `books/B0/compress/validate.py` |
 
 Never xhigh or max; the evidence is in `MEASUREMENTS.md`.
 
@@ -105,8 +105,8 @@ found wrong at audit in Parts E or F2, and each cost a rebuild:
   (All six OpenStax books used so far are CC BY-NC-SA 4.0, not CC BY.)
 - **The header says exactly what the file holds**: which sections, and every omission marked in
   place. A header must never call an excerpt complete.
-- **The citekey is new**: `grep` `sources/INDEX.yml` and `library.bib` before choosing it.
-- `INDEX.yml`, `library.bib` and `SOURCES.md` all updated in the same commit.
+- **The citekey is new**: `grep` `sources/INDEX.yml` and `check/references/library.bib` before choosing it.
+- `sources/INDEX.yml`, `check/references/library.bib` and `SOURCES.md` all updated in the same commit.
 - No repository path in any reader-facing field of the `.bib` entry.
 
 For S48 three files are missing and they are the three that matter most:
