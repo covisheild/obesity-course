@@ -257,8 +257,8 @@ def _paragraphs(text: str) -> list[str]:
 
 def _sentences(para: str) -> list[str]:
     flat = re.sub(r"\s+", " ", re.sub(r"[*_`]", "", para)).strip()
-    flat = re.sub(r"\b(e\.g|i\.e|etc|vs|No|Dr|Mr|Ms|Art|s|ss)\.", r"\1<dot>", flat)
-    parts = re.split(r"(?<=[.?!])\s+(?=[A-Z\"'(])", flat)
+    flat = re.sub(r"(?<![\'’])\b(e\.g|i\.e|etc|vs|No|Dr|Mr|Ms|Art|s|ss)\.", r"\1<dot>", flat)
+    parts = re.split(r"(?:(?<=[.?!])|(?<=[.?!][\"'”’)]))\s+(?=[A-Z\"'(“‘])", flat)
     return [p.replace("<dot>", ".").strip() for p in parts if p.strip()]
 
 
