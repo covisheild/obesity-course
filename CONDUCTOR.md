@@ -27,6 +27,8 @@ is dropped, and accuracy is not traded for speed.
 6. Create `books/<SUBJECT>/STATE.md` and update it after every task: which tasks are done, which
    sections are at which task, open defects, and the next action. It is how this chat resumes after
    a usage-limit stop, and how the next chat resumes if this one dies.
+7. Set the unit's row in the Notion Build Tracker as `NOTION.md` says (claimed; branch in Notes).
+   From here on the row is updated at every phase boundary and at finish.
 
 ## 1. Run the tasks, in `PIPELINE.md`'s run order
 
@@ -36,18 +38,25 @@ is dropped, and accuracy is not traded for speed.
 | 2 | Source intake, to the checklist under the source gate | the conductor |
 | 3 | Task 2: draft, batches of two or three, with the self-check | one drafter per batch |
 | 4 | Task 5: cut (5a), cold read (5b), restore (5c) | one cutter per section; one cold reader for the book; one restorer |
-| 5 | Task 3: audit, one defect file per section | one Opus auditor per batch, never a drafter |
-| 6 | Task 4 and 4b: fix, then verify | one fixer per section; a fresh verifier; two rounds, then the conductor |
-| 7 | Glossary: merge the book's new terms into `prose/GLOSSARY.md`, checking them against earlier books | the conductor |
-| 8 | Build: `check/build.py --check` at zero blocking, then `--subject <SUBJECT>` for the docx and the PDF | the conductor |
-| 9 | PDF: set `status: frozen` in `books/<SUBJECT>/book.yml`, run `python check/series.py`, rebuild; look at the cover, contents, one Part opener, the glossary and the series list as page images before sending | the conductor |
+| 5 | Figure plan (`PIPELINE.md`, after Task 5): every section gets at least one figure, or a one-line `figure_note` saying why a figure would teach nothing the prose does not; a quantitative section gets a figure of its worked relationship. Each is a `spec` in its record, drawn by `python check/figures/draw.py --book <SUBJECT>` from the final text in the book's colours, never by hand. **The conductor opens every figure as an image** before the audit | one figure planner per batch (the drafters' proposals are its starting point); the conductor looks |
+| 6 | Task 3: audit, one defect file per section. The auditor also recomputes every value each figure plots or prints | one Opus auditor per batch, never a drafter |
+| 7 | Task 4 and 4b: fix, then verify; a fix that changes a number redraws its figure | one fixer per section; a fresh verifier; two rounds, then the conductor |
+| 8 | Glossary: merge the book's new terms into `prose/GLOSSARY.md`, checking them against earlier books | the conductor |
+| 9 | Build: `check/build.py --check` at zero blocking (it blocks on a figure whose numbers are not in its text, whose stated relation does not hold, or that is stale against its spec), then `--subject <SUBJECT>` for the docx and the PDF | the conductor |
+| 10 | PDF: set `status: frozen` in `books/<SUBJECT>/book.yml`, run `python check/series.py`, rebuild; look at the cover, contents, one Part opener, the glossary and the series list as page images before sending | the conductor |
+
+**Figures, a standing instruction from Harsh (23 Sep 2026):** more figures than Book 0 had, in the
+book's own colours (the Part hue of its cover, via `style_for` in `check/figures/draw.py`), every
+one mathematically correct and carrying exactly the numbers of its text. The specs and the check
+are in `check/figures/figspec.py`; the rule for writers is in `claude.md` §4 ("Figures").
 
 **Every subagent brief** names: the task's prompt from `PIPELINE.md`, the exact files to read (and
 nothing else), the files to write, and the reply limit — at most 150 words: done, still open, file
 path. The conductor never pastes a record or a source into a brief; it names the path.
 
 **While running**, tell Harsh one line at each phase boundary ("drafted 7 sections, compressing
-now"). Nothing else unless something needs him.
+now"). Nothing else unless something needs him. At the same moment, update the unit's row in the
+Notion Build Tracker (Stage, Citations, Concepts, Blocker, Notes) as `NOTION.md` maps it.
 
 ## 2. When to stop and ask Harsh
 
@@ -81,6 +90,9 @@ Only these:
    build; the book's approximate usage, if the chat can see it.
 5. Update the handover: §3 state, §4 next steps, §7 any new mistake worth not repeating, remove
    the §9 claim. Add a cost-per-section line to `MEASUREMENTS.md` if the numbers are available.
+6. Update Notion as `NOTION.md` says: the unit's row to Stage **Released**, Citations **Verified**,
+   Blocker empty, Notes with the main merge commit and the version; and the dashboard page's status
+   line, if it has one.
 
 **One bundle per book.** The single exception: if the chat must stop mid-book and may not come
 back (a usage limit with the workspace at risk), deliver a checkpoint bundle of the book branch so

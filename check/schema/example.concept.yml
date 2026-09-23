@@ -133,6 +133,34 @@ retrieval_items:
   - q: Spaced-repetition prompt.
     a: Short answer.
 
+# ---- figures: at least one per section outside Book 0 ----------------------
+# Drawn by `python check/figures/draw.py --book <ID>` from `spec` and nothing else, in the
+# book's own colours. The build blocks unless every number the figure plots or prints
+# (data, labels, caption, alt text, axis titles, relation constants) is stated in this
+# record's reader-facing text or worked out under `derived`, every `fit` passes through
+# every plotted point, every `check` holds, and the PNG was drawn from this exact spec.
+# A quantitative section's figure draws its worked relationship. A section with no
+# figure says why in one line instead:
+# figure_note: "The section is one definition in words; a picture would repeat it."
+figures:
+  - file: s00-c01-weight-line.png     # <book>-<section>-<what>.png
+    caption: "Weight falls by the same 0.5 kg each week, from 92 kg to 88 kg over 8 weeks."
+    alt: "A straight line of nine points falling from 92 at week 0 to 88 at week 8."
+    source: draw.py
+    spec:
+      kind: line                      # line | scatter | bar | step (bars always start at zero)
+      from_table: {block: 0, x: 0, y: [1]}   # the illustration's first ```table; or x: + series:
+      x_label: week
+      y_label: weight (kg)
+      relations:
+        - fit: "y = 92 - 0.5*x"       # the worked relationship, checked at every point
+          draw: true
+        - check: "y[0] - y[-1] = 4"   # a stated total or difference
+      labels:
+        - {text: "4 kg in 8 weeks", at: [4, 90]}
+      derived:
+        - {value: "4", from: "92 - 88"}   # printed here, not stated in the prose
+
 # ---- provenance: what this concept is here to serve ------------------------
 provenance:
   map_version_id: fc19c8bc-a216-4131-99fb-ebe3f19cec4a

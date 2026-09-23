@@ -21,6 +21,8 @@ SCHEMA = os.path.join(ROOT, "schema", "concept.schema.json")
 BIB = os.path.join(ROOT, "references", "library.bib")
 REFDOC = os.path.join(ROOT, "references", "reference.docx")
 FIGURES_DIR = os.path.join(ROOT, "figures")
+sys.path.insert(0, FIGURES_DIR)
+import figspec  # noqa: E402  - figure specs: numbers tied to the text, PNG tied to the spec
 LEVELS = ["Introductory", "Intermediate", "Advanced", "Expert"]
 
 # `textbook` is allowed on an empirical concept, and that is a deliberate widening made on
@@ -684,6 +686,7 @@ def check(recs: dict, subjects: dict, clusters: dict, bibkeys: set):
 
     def E(rid, msg): block.append(f"{rid}: {msg}")
     def W(rid, msg): warn.append(f"{rid}: {msg}")
+    legacy_figures = []
 
     # schema validation, if available
     try:
@@ -933,6 +936,29 @@ def check(recs: dict, subjects: dict, clusters: dict, bibkeys: set):
             elif not os.path.exists(os.path.join(FIGURES_DIR, f.get("source", ""))):
                 W(rid, f"figure '{f.get('file')}' names source script '{f.get('source')}', "
                        "which is not in check/figures/ - the picture cannot be redrawn")
+            # Harsh's standing rule (23 Sep 2026): every figure is mathematically correct and
+            # matches the numbers in its text. Outside Book 0 a figure is drawn from a spec in
+            # its record and nothing else; the spec is checked against the record's own prose,
+            # and the PNG against the spec it was drawn from. Book 0's figures predate specs and
+            # are frozen as drawn, so they are counted in one warning below.
+            if f.get("spec"):
+                for p in figspec.verify(r, f):
+                    E(rid, p)
+                if os.path.exists(os.path.join(FIGURES_DIR, f.get("file", ""))):
+                    why = figspec.stale(r, f, figspec.book_of(r), FIGURES_DIR)
+                    if why:
+                        E(rid, f"figure '{f.get('file')}' {why} - run python check/figures/draw.py "
+                               f"--book {figspec.book_of(r)}")
+            elif r.get("subject") == "B0":
+                legacy_figures.append(f.get("file"))
+            else:
+                E(rid, f"figure '{f.get('file')}' has no spec - outside Book 0 every figure is "
+                       "drawn by check/figures/draw.py from data declared in the record")
+        # At least one figure a section, or one line saying why not (outside Book 0).
+        if r.get("subject") != "B0" and not r.get("figures") and not (r.get("figure_note") or "").strip():
+            (E if r.get("status") in ("verified", "released") else W)(
+                rid, "no figure and no figure_note - every section gets a figure drawn from its "
+                     "data unless one line says why a figure would teach nothing the prose does not")
         for p in prac:
             if not (p.get("answer") or "").strip():
                 E(rid, f"practice {p.get('level')} has no worked answer")
@@ -964,6 +990,10 @@ def check(recs: dict, subjects: dict, clusters: dict, bibkeys: set):
             if f"{sid}-R{rung}-K{n+1:02d}" not in covered[(sid, rung)]:
                 warn.append(f"{sid} rung {rung}: skill K{n+1:02d} has no exercise")
 
+    if legacy_figures:
+        warn.append(f"B0: {len(legacy_figures)} figures predate figure specs (frozen with Book 0; "
+                    "their numbers are checked by the functions in check/figures/draw.py, not by "
+                    "the build). Redraw from specs only in a new Book 0 version")
     warn += check_doc_paths()
 
     # bridge sufficiency, where a rung above exists

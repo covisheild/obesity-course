@@ -13,6 +13,19 @@ corrected and the picture silently keeps the old value, which is worse than no p
 because it carries the authority of having been drawn. Every quantity below is pulled
 out of the concept record that the figure appears in, and the script fails loudly if a
 number it expects is no longer there.
+
+**Book 0's figures are frozen as drawn** (the functions below, with Book 0's own two-hue ink).
+**Every figure for a later book is drawn from a spec** declared in its record (`figures[].spec`,
+checked by `check/figures/figspec.py`) in that book's own colours, by `draw_spec` at the end of
+this file:
+
+    python check/figures/draw.py                  # Book 0's figures, unchanged
+    python check/figures/draw.py --book S01-R1    # every spec figure in that book's records
+    python check/figures/draw.py --book S01-R1 --out <dir>    # somewhere else (a test)
+
+`style_for(book_id)` gives the themed style: the Part hue the book's PDF cover uses
+(`check/pdf/series.yml` via `map/BOOKS.yml`), the PDF's own Inter face loaded from
+`check/pdf/fonts`, neutral grey axes and grid, WCAG-contrast marks and text on a white ground.
 """
 import os, sys, re
 
@@ -609,5 +622,189 @@ FIGURES.update({"d5-mean-median.png": d5_mean_median,
                 "d7-two-scales.png": d7_two_scales})
 
 
+# ---------------------------------------------------------------- every later book: from a spec
+#
+# Added 23 September 2026 on Harsh's standing instruction: more figures, in each book's own colours,
+# every one mathematically correct and matching the numbers in its text. The spec is the only copy
+# of the data (`check/figures/figspec.py`); this function draws exactly what it declares and writes
+# the spec's fingerprint beside the PNG, and `check/build.py --check` blocks when the two part.
+
+import json as _json
+sys.path.insert(0, HERE)
+import figspec  # noqa: E402
+
+FONT_CACHE = os.path.join(os.path.dirname(HERE), "_build", "fonts")   # gitignored
+PDF_FONTS = os.path.join(os.path.dirname(HERE), "pdf", "fonts")
+
+
+def _pdf_font(family="Inter"):
+    """Register the PDF's bundled face with matplotlib; return its family name, or None.
+
+    The bundle is WOFF, which matplotlib's FreeType cannot open, so each face is unpacked once to
+    TTF in check/_build/fonts (fontTools). Without fontTools the figure falls back to DejaVu Sans
+    and says so: a different face, never a failed drawing.
+    """
+    from matplotlib import font_manager as fm
+    stem = family.lower().replace(" ", "-")
+    try:
+        from fontTools.ttLib import TTFont
+    except ImportError:
+        print("  [figures] fontTools not installed (pip install fonttools) - using DejaVu Sans")
+        return None
+    os.makedirs(FONT_CACHE, exist_ok=True)
+    ok = False
+    for weight in ("400", "600", "700"):
+        src = os.path.join(PDF_FONTS, f"{stem}-latin-{weight}-normal.woff")
+        if not os.path.exists(src):
+            continue
+        dst = os.path.join(FONT_CACHE, f"{stem}-latin-{weight}.ttf")
+        if not os.path.exists(dst):
+            f = TTFont(src)
+            f.flavor = None
+            f.save(dst)
+        fm.fontManager.addfont(dst)
+        ok = True
+    return family if ok else None
+
+
+def style_for(book_id):
+    """(palette, rcParams) for a book's figures: pal, rc = style_for(id); with plt.rc_context(rc): ..."""
+    pal = figspec.palette_for(book_id)
+    face = _pdf_font("Inter")
+    rc = {
+        "font.family": [face, "DejaVu Sans"] if face else ["DejaVu Sans"],
+        "font.size": 8.5, "axes.titlesize": 9, "axes.labelsize": 8.5,
+        "xtick.labelsize": 8, "ytick.labelsize": 8, "legend.fontsize": 8,
+        "figure.facecolor": pal["surface"], "axes.facecolor": pal["surface"],
+        "savefig.facecolor": pal["surface"],
+        "text.color": pal["ink"], "axes.labelcolor": pal["ink"], "axes.titlecolor": pal["ink"],
+        "axes.edgecolor": pal["axis"], "axes.linewidth": 0.8,
+        "axes.spines.top": False, "axes.spines.right": False,
+        "axes.grid": True, "axes.grid.axis": "y", "grid.color": pal["grid"], "grid.linewidth": 0.6,
+        "axes.axisbelow": True,
+        "xtick.color": pal["axis"], "ytick.color": pal["axis"],
+        "xtick.labelcolor": pal["muted"], "ytick.labelcolor": pal["muted"],
+        "xtick.major.width": 0.8, "ytick.major.width": 0.8, "xtick.major.size": 3, "ytick.major.size": 3,
+        "lines.linewidth": 1.8, "lines.markersize": 5.5, "patch.linewidth": 0.8,
+        "legend.frameon": False,
+        "axes.prop_cycle": matplotlib.cycler(color=[pal["primary"], pal["secondary"], pal["tertiary"]]),
+    }
+    return pal, rc
+
+
+def draw_spec(rec, fig_entry, out_dir=HERE, book_id=None):
+    """Draw one figure from its record's spec, and write <file>.spec.json with the spec's hash."""
+    book_id = book_id or figspec.book_of(rec)
+    res = figspec.resolve(rec, fig_entry)
+    pal, rc = style_for(book_id)
+    colours = [pal["primary"], pal["secondary"], pal["tertiary"]]
+    styles, markers = ["-", "-", "--"], ["o", "s", "^"]
+    with plt.rc_context(rc):
+        fig, ax = plt.subplots(figsize=tuple(res["size"]))
+        n = len(res["series"])
+        if res["kind"] == "bar":
+            pos = list(range(len(res["x_raw"]))) if res["x"] is None else res["x"]
+            step = min((b - a for a, b in zip(pos, pos[1:])), default=1) if res["x"] else 1
+            width = 0.7 * step / n
+            for i, s in enumerate(res["series"]):
+                off = (i - (n - 1) / 2) * width
+                bars = ax.bar([p + off for p in pos], s["y"], width=width * 0.92,
+                              color=colours[i % 3], label=s["name"], zorder=2)
+                if res["value_labels"]:
+                    for b, raw in zip(bars, s["y_raw"]):
+                        ax.annotate(raw, (b.get_x() + b.get_width() / 2, b.get_height()),
+                                    textcoords="offset points", xytext=(0, 3), ha="center",
+                                    fontsize=7.5, color=pal["muted"])
+            if res["x"] is None:
+                ax.set_xticks(pos)
+                ax.set_xticklabels(res["x_raw"])
+            ax.set_ylim(bottom=0)
+        else:
+            # A series with a drawn relation is shown as points on that line, not joined up, so the
+            # reader sees the stated rule and the data it was checked against as two things.
+            fitted = {r.get("series") or res["series"][0]["name"] for r in res["relations"]
+                      if r.get("fit") and r.get("draw")}
+            for i, s in enumerate(res["series"]):
+                c = colours[i % 3]
+                joined = res["kind"] == "line" and s["name"] not in fitted
+                if res["kind"] == "step":
+                    ax.step(res["x"], s["y"], where="post", color=c, linestyle=styles[i % 3],
+                            label=s["name"])
+                ax.plot(res["x"], s["y"], linestyle=styles[i % 3] if joined else "none",
+                        marker=markers[i % 3], color=c, markeredgecolor=pal["surface"],
+                        markeredgewidth=1.2, label=None if res["kind"] == "step" else s["name"],
+                        zorder=3)
+                if res["value_labels"]:
+                    for xv, yv, raw in zip(res["x"], s["y"], s["y_raw"]):
+                        ax.annotate(raw, (xv, yv), textcoords="offset points", xytext=(0, 6),
+                                    ha="center", fontsize=7.5, color=pal["muted"])
+        names = figspec._names(res)
+        for rel in res["relations"]:
+            if rel.get("fit") and rel.get("draw") and res["x"] is not None:
+                rhs = str(rel["fit"]).partition("=")[2]
+                lo, hi = min(res["x"]), max(res["x"])
+                xs = [lo + (hi - lo) * k / 100 for k in range(101)]
+                ys = [figspec.evaluate(rhs, {**names, "x": xv}) for xv in xs]
+                ax.plot(xs, ys, color=pal["secondary"], linewidth=1.3, linestyle=(0, (4, 2)),
+                        label=rel.get("label") or rel["fit"], zorder=2)
+        for lab in res["labels"]:
+            if lab.get("at"):
+                ax.annotate(lab["text"], tuple(lab["at"]), textcoords="offset points",
+                            xytext=tuple(lab.get("offset", (6, 6))), fontsize=8, color=pal["ink"])
+        if res["y_scale"] == "log":
+            ax.set_yscale("log")
+        if res["y_range"]:
+            ax.set_ylim(*[float(v) for v in res["y_range"]])
+        ax.set_xlabel(res["x_label"])
+        ax.set_ylabel(res["y_label"])
+        if res["title"]:
+            ax.set_title(res["title"], loc="left")
+        if n > 1 or any(r.get("draw") for r in res["relations"]):
+            ax.legend(loc="best")
+        fig.tight_layout()
+        os.makedirs(out_dir, exist_ok=True)
+        path = os.path.join(out_dir, fig_entry["file"])
+        fig.savefig(path, dpi=220, bbox_inches="tight", pad_inches=0.12)
+        plt.close(fig)
+    with open(figspec.sidecar(out_dir, fig_entry["file"]), "w", encoding="utf-8") as fh:
+        _json.dump({"hash": figspec.spec_hash(rec, fig_entry, book_id), "record": rec.get("concept_id"),
+                    "book": book_id, "drawn_by": "check/figures/draw.py"}, fh, indent=1)
+        fh.write("\n")
+    print(f"  wrote {path} ({book_id} palette, hue {pal['hue']})")
+    return path
+
+
+def draw_book(book_id, out_dir=HERE):
+    """Check, then draw, every spec figure in a book's records. A figure that fails its check is not drawn."""
+    import yaml
+    folder = os.path.join(os.path.dirname(HERE), "records", book_id.split("-")[0])
+    bad, n = [], 0
+    for fn in sorted(os.listdir(folder)):
+        if not fn.endswith((".yml", ".yaml")):
+            continue
+        with open(os.path.join(folder, fn), encoding="utf-8") as fh:
+            rec = yaml.safe_load(fh) or {}
+        if figspec.book_of(rec) != book_id:
+            continue
+        for f in rec.get("figures") or []:
+            if not isinstance(f, dict) or not f.get("spec"):
+                continue
+            probs = figspec.verify(rec, f)
+            if probs:
+                bad += [f"{rec.get('concept_id')}: {p}" for p in probs]
+                continue
+            draw_spec(rec, f, out_dir, book_id)
+            n += 1
+    for b in bad:
+        print("  NOT DRAWN", b)
+    print(f"{book_id}: {n} figure(s) drawn, {len(bad)} problem(s)")
+    return 1 if bad else 0
+
+
 if __name__ == "__main__":
-    main()
+    import argparse
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--book", help="draw every spec figure in this book's records (e.g. S01-R1)")
+    ap.add_argument("--out", default=HERE, help="where to write (default check/figures)")
+    a = ap.parse_args()
+    sys.exit(draw_book(a.book, a.out) if a.book else main())
