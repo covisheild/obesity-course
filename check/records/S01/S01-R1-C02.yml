@@ -33,12 +33,27 @@ definition:
     energy per gram is its lipid fraction, the proportion of its mass that is fat, times fat's own
     energy per gram.
 
-    Hall (2008) states that the classic rule, 3,500 kilocalories for each pound of weight lost,
-    "can be traced back to a calculation that assumes exclusive loss of adipose tissue consisting
-    of 87% fat." That 87% is the rule's own assumption, not a measurement Hall reports.
+    A deficit is expenditure larger than intake; a surplus is the reverse. The static rule,
+    named in full in `S01-R1-C07`, says a deficit of 3,500 kilocalories removes a pound of weight.
+    A pound is exactly 0.453 592 37 kilogram. Hall (2008) states that the rule "can be traced
+    back to a calculation that assumes exclusive loss of adipose tissue consisting of 87% fat."
+    That 87% is the rule's own assumption, not a measurement Hall reports.
 
     A kilogram of lean mass lost or gained carries far less energy than a kilogram of fat.
   references:
+  - citekey: nist_sp811_pound
+    kind: instrument
+    locator: "Footnotes page, the pound footnote"
+    quote: |-
+      The exact conversion factor is 4.535 923 7 E-01.
+    verified:
+      resolved_id: https://www.nist.gov/pml/special-publication-811/nist-guide-si-footnotes
+      opened: true
+      claim_located: true
+      checked_on: '2026-09-23'
+      note: |-
+        Read at sources/nist_sp811_pound.txt, block 2: pound to kilogram, 4.535 923 7 x 10^-1,
+        exact. Backs the pound's kilogram equivalent at its first use.
   - citekey: fao_food_energy_2003
     kind: consensus_statement
     locator: ch. 3, s.3.5.1, the Atwater general factor system
@@ -346,7 +361,7 @@ must_know:
   bearing: clinical
 - point: |
     The figure of about 32 megajoules, or 7,700 kilocalories, for a kilogram of adipose tissue is
-    the classic rule's own number, which Hall (2008) traces to an assumed 87% lipid fraction that
+    the static rule's own number, which Hall (2008) traces to an assumed 87% lipid fraction that
     no source this book cites measures. Say "the rule assumes" when you use it, never "adipose tissue is".
   kind: trap
   bearing: methodological
@@ -465,7 +480,7 @@ practice:
   - fao_food_energy_2003
 - level: 6
   prompt: |
-    Hall (2008) traces the classic weight-loss rule to a calculation assuming adipose tissue is
+    Hall (2008) traces the static rule to a calculation assuming adipose tissue is
     87% fat. Take FAO's 37 kilojoules a gram for fat and work out the adipose-tissue energy
     density in kilojoules a gram this assumption produces, and say how it compares with Hall's own statement of the rule as "32.2 MJ per kg".
   answer: |
@@ -528,7 +543,7 @@ practice:
     Here is a worked answer. Find the step that broke.
 
     ```working
-        the classic rule's adipose figure is about 7,700 kcal/kg
+        the static rule's adipose figure is about 7,700 kcal/kg
         FAO's Atwater factor for fat is 9.0 kcal/g, or 9,000 kcal/kg
         7,700 is close to 9,000
         so the two figures confirm each other, and adipose tissue is essentially pure fat
@@ -573,7 +588,7 @@ practice:
     the 5 kilograms in question.
 
     9,000 kilocalories a kilogram is FAO's figure for fat in food. It is not the figure for
-    adipose tissue, which the classic rule puts at about 7,700. Using the adipose figure instead:
+    adipose tissue, which the static rule puts at about 7,700. Using the adipose figure instead:
 
     ```working
         7700 times 5 = 38500
@@ -602,7 +617,7 @@ practice:
     What to compute: whether Hall (2008) reports 7,700 kcal/kg (about 32.2 MJ/kg) as a confirmed
     finding, or as something else, and whether the arithmetic behind it is a measurement.
 
-    Check the figure against the paper's own words. Hall (2008) states the classic rule "can be
+    Check the figure against the paper's own words. Hall (2008) states the static rule "can be
     traced back to a calculation that assumes exclusive loss of adipose tissue consisting of 87%
     fat." Run that assumption through FAO's fat factor, and through Hall's.
 
@@ -638,7 +653,7 @@ retrieval_items:
     in food; Hall 2008's 39.5 is for fat stored in the body. Both are well established.
 - q: Where does the ~7,700 kcal/kg (~32.2 MJ/kg) figure for adipose tissue come from, and what is
     the status of the 87% behind it?
-  a: It is the classic weight-loss rule's own figure. Hall (2008) traces the rule to a calculation
+  a: It is the static rule's own figure. Hall (2008) traces the rule to a calculation
     assuming 87% fat, without saying which figure for fat it used. 87% is an assumption, not a
     measurement, and Hall calls adipose tissue's fluid and protein contribution variable.
 - q: 0.87 times 37 gives 32.19, close to the rule's 32.2 MJ/kg. Does that confirm the rule?
@@ -647,7 +662,7 @@ retrieval_items:
     built.
 figures:
 - file: s01-r1-c02-energy-density-bars.png
-  caption: "Energy in a kilogram, in megajoules: fat in food 37 (FAO); fat in the body 39.5 (Hall 2008); adipose tissue 32.2 only under the classic rule's assumed 87% fat; a lean-mass change 7.6. Hall's body-fat figure is about 5.2 times the lean figure."
+  caption: "Energy in a kilogram, in megajoules: fat in food 37 (FAO); fat in the body 39.5 (Hall 2008); adipose tissue 32.2 only under the static rule's assumed 87% fat; a lean-mass change 7.6. Hall's body-fat figure is about 5.2 times the lean figure."
   alt: "Four bars in megajoules a kilogram: 37 for fat in food, 39.5 for fat in the body, 32.2 for adipose tissue under the rule's assumption, and a much shorter 7.6 for lean mass change."
   source: draw.py
   spec:

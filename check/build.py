@@ -1511,7 +1511,7 @@ def booklet_md(sid, recs, subjects, clusters) -> tuple[str, list[str]]:
             md += ["## Before you start", "",
                    "This book uses the following Book 0 sections. Each is summarised where it is first "
                    "needed; work through Book 0 itself if a summary is not enough.", ""]
-            md += [f"- Book 0, {b0.get(recs[d].get('sequence'), d)} · {recs[d]['name']}" if d in recs
+            md += [f"- Book 0, {b0.get(recs[d].get('sequence'), d)} · {_notation(recs[d]['name'])}" if d in recs
                    else f"- `{d}`" for d in gf] + [""]
         elif gf:
             md += ["## Before you start", "",

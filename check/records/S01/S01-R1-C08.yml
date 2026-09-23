@@ -7,7 +7,7 @@ name: Spotting a claim that breaks conservation
 concept_type: derivable
 
 clusters: [measurement-inference, body-and-person]
-ground_floor_deps: [B0-R0-C33, B0-R0-C08, B0-R0-C42]
+ground_floor_deps: [B0-R0-C33, B0-R0-C08, B0-R0-C42, B0-R0-C36]
 concept_deps: [S01-R1-C02, S01-R1-C03, S01-R1-C05, S01-R1-C07]
 
 definition:
@@ -31,7 +31,7 @@ definition:
     is implausible. Neither verdict depends on the method claimed.
 
     One case looks alarming and does not fail this test. The body stores some energy as
-    glycogen, a form of carbohydrate. Hall and colleagues note that the energy stored per
+    glycogen (`B0-R0-C36`). Hall and colleagues note that the energy stored per
     unit mass "varies considerably, especially when accounting for the intracellular water
     associated with stored glycogen and protein". Glycogen holds 17.6 megajoules a kilogram,
     less than half of fat's 39.5. The water stored with it holds none. Cutting carbohydrate
@@ -157,8 +157,8 @@ simplified_explanation: |
   more than that, it is impossible. If it needs more than any deficit people are known to
   manage, it is implausible.
 
-  One thing looks like a violation and is not. The body stores some energy as a starch-like
-  fuel called glycogen, and stores it with water. Cut carbohydrate, and glycogen, its water
+  One thing looks like a violation and is not. The body stores some energy as glycogen, and
+  stores it with water. Cut carbohydrate, and glycogen, its water
   and some extra fluid can leave fast. Glycogen's part comes in the first week. Fast is not
   the same as impossible.
 illustration:
@@ -540,7 +540,7 @@ status: drafted
 
 figures:
   - file: s01-r1-c08-claims-vs-deficit.png
-    caption: "Daily deficit each claim needs if every kilogram lost were fat. The shaded band is the whole day's expenditure section 3's worked examples calculate for their groups, 1,975 to 3,925 kcal, not a measurement. Every claim needs more, so for anyone like those groups none can be all fat. The FTC specimen needs about 4.9 times the 1,439 kcal a day average prescribed deficit of Thomas's cohort."
+    caption: "Daily deficit each claim needs if every kilogram lost were fat. The shaded band is the whole day's expenditure section 3's worked examples calculate for their groups, 1,975 to 3,925 kcal, not a measurement. Every claim needs more, so for anyone like those groups none can be all fat. The US Federal Trade Commission (FTC) specimen needs about 4.9 times the 1,439 kcal a day average prescribed deficit of Thomas's cohort."
     alt: "Six bars. Five claims need 7,000, 6,173, 5,512, 4,630 and 4,409 kcal a day as fat. The last bar, the cohort's average prescribed deficit, is 1,439. A shaded band from 1,975 to 3,925 marks the calculated whole-day expenditure of section 3's example groups; all five claim bars rise above it."
     source: draw.py
     spec:
