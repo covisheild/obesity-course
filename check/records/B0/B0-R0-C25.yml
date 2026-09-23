@@ -61,11 +61,12 @@ definition:
       claim_located: true
       checked_on: '2026-09-23'
       note: 'The product rule, 2 to the power n, and the "at least one" complement route are
-        derived in the record from the floor. The anchor gives the mutually-exclusive test and
-        the independence test only as symbols, not in running prose, so those are not quoted.'
+        derived in the record from the floor, and the addition rule is derived in the record. The
+        anchor gives the addition rule and the independence test only as symbols, not in running
+        prose, so those are not quoted.'
   - citekey: openstax_intro_stats_2e
     kind: textbook
-    locator: s. 3.3 Two Basic Rules of Probability (the addition rule)
+    locator: s. 3.3 Two Basic Rules of Probability (mutually exclusive means no overlap)
     quote: If *A* and *B* are mutually exclusive, then *P*(*A* AND *B*) = 0.
     verified:
       resolved_id: https://openstax.org/books/introductory-statistics-2e/pages/3-3-two-basic-rules-of-probability
@@ -105,7 +106,8 @@ illustration:
     Section 3(1) of the National Food Security Act, 2013 entitles every person belonging to a
     priority household to five kilograms of foodgrains a month. Section 3(2) caps how far that
     entitlement reaches: up to 75 per cent of the rural population. Treat 0.75 as the probability,
-    at most, that a given rural person is covered — the figure from the section before this one.
+    at most, that a rural person picked at random is covered — the figure from the section before
+    this one.
 
     Pick two rural people entirely at random, from two different, unrelated households. Knowing
     whether the first is covered tells you nothing about the second, so treat the two as
@@ -178,6 +180,12 @@ illustration:
     as_of: '2013'
     quote: shall extend up to seventy-five per cent. of the rural population and up to fifty per
       cent. of the urban population.
+  - value: '5'
+    unit: kilograms of foodgrains per person per month, priority households, s.3(1), as enacted
+      in 2013
+    citekey: nfsa_2013
+    as_of: '2013'
+    quote: five kilograms of foodgrains per person per month
 must_know:
 - point: |
     Independence is a checkable claim, not a default. Test it by asking whether P(A and B) equals
@@ -267,9 +275,9 @@ exercises:
     that it becomes certain, not 0.75 again.
 
     Write the test as arithmetic once they have felt it. A and B are independent exactly when P(A
-    and B) equals P(A) times P(B), and dependent otherwise. Have them check the household case
-    themselves — P(both covered) is 0.75, and P(A) times P(B) would have been 0.5625. So the two
-    do not match. That mismatch is the proof, not just the arithmetic slip.
+    and B) equals P(A) times P(B), and dependent otherwise. Have them check the household case at
+    the ceiling itself: if coverage is 0.75, P(both covered) is 0.75, and P(A) times P(B) would
+    have been 0.5625. So the two do not match. That mismatch is the proof, not just the arithmetic slip.
 
     Close with the standing rule: when you do not know whether two events are independent, assume
     they are not, until you can show it. A resident who defaults to "assume independent" will
@@ -532,7 +540,7 @@ practice:
   answer: |
     The step that broke is the addition. "At least one" is not found by adding the individual
     probabilities. The answer itself gives the game away: a probability can never exceed 1. And
-    2.25 already cannot be right, before you even read the conclusion drawn from it.
+    2.25 already cannot be a probability, before you even read the conclusion drawn from it.
 
     Go by the complement instead.
 
@@ -554,7 +562,7 @@ practice:
 
     At most about 98.4 per cent, not 2.25. The conclusion in the broken answer happens to point
     the right way — it is indeed close to certain. But it is close to certain because of the
-    correct figure, 0.984, not because of the impossible one.
+    correct figure, 0.984, not because of the 2.25.
 
     The 2.25 is not meaningless, though. Adding the three gives the most people you would expect
     covered on average, 2.25. That is a real number, and it answers a different question. It is
@@ -562,7 +570,7 @@ practice:
 
     Why it looks reasonable: "at least one" sounds like it should be built by combining the three
     individual chances. Addition is the most familiar way to combine numbers. The combination
-    that is actually needed runs through the complement. The impossible total is the signal
+    that is actually needed runs through the complement. A total above 1 is the signal
     that adding was the wrong move here.
   refs: [nfsa_2013]
 - level: 9
@@ -622,13 +630,9 @@ practice:
     one draw, and every member shares that single outcome.
 
     The question "at least one member is not covered" is therefore the same question as "is the
-    household not covered". The answer is bounded by the household ceiling itself.
-
-    ```working
-        1 minus 0.75 = 0.25
-    ```
-
-    At least 0.25, not about 0.68.
+    household not covered". So it is one chance, not four. The Act's 75 per cent is a ceiling on
+    all rural people together. It gives no figure for households of four in particular, so the
+    report's 'high' has nothing under it.
 
     What this does not establish. A district report cannot quote section 3(2) as a district
     ceiling. The 75 per cent is national. Section 9 leaves each State's own share to the Central

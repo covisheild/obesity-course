@@ -39,10 +39,10 @@ definition:
     A spread of measured values comes from one or more of three sources. It can be a real
     difference between the people or things measured. It can be a real difference within one
     person or thing from one occasion to another. Or it can be a difference between repeated
-    measurements of the same person or thing at the same moment. That last kind is produced by the
-    instrument and the act of measuring, not by any change in what was measured, and it can hide
-    completely: an instrument that is wrong by the same amount on every reading gives two matching
-    readings, and both are wrong by that same amount.
+    measurements of the same person or thing at the same moment. That last kind comes from the
+    instrument and the act of measuring, not from any change in what was measured. An instrument
+    can also be wrong without producing any difference: if it is wrong by the same amount on every
+    reading, it gives two matching readings, and both are wrong by that same amount.
   references:
   - citekey: openstax_intro_stats_2e
     kind: textbook
@@ -88,7 +88,7 @@ simplified_explanation: |
   out the same way. It is the proportion from the section on ratios, rates and proportions, under a
   longer name.
 
-  The range is the largest value minus the smallest, the statistical meaning the section on
+  The range is the largest value minus the smallest. This is the statistical meaning the section on
   functions warned about, not the range of outputs a rule can give back. It uses two numbers out of
   the whole table and says nothing about the rest.
 
@@ -97,8 +97,8 @@ simplified_explanation: |
   middle. Others thin out slowly on one side and quickly on the other. The side that thins out
   slowly is called a long tail. It points toward the values that sit farthest from the middle.
 
-  Counting how many values sit above some line and how many sit below it only tells you about shape
-  when that line sits in the true middle, with equal room on each side. Watch that fail on eleven
+  Count how many values sit above some line and how many sit below it. That tells you about shape
+  only when the line sits in the true middle, with equal room on each side. Watch that fail on eleven
   bare numbers, as symmetric a set as exists: five below the middle number, five above it, one dead
   centre.
 
@@ -106,7 +106,8 @@ simplified_explanation: |
       1   2   3   4   5   6   7   8   9   10   11
   ```
 
-  Split it into three bands centred on the middle number, each reaching three either side of it.
+  Split it into three bands: a middle band from 4 to 8, two either side of 6, with three numbers
+  left on each side.
 
   ```table
   band          count
@@ -122,17 +123,17 @@ simplified_explanation: |
 
   ```table
   band          count
-  1 to 1        1
+  1             1
   2 to 8        7
   9 to 11       3
   ```
 
   One below the new middle band, three above it. Nothing about the eleven numbers changed. Only
   where the band edges sat changed, and the count on each side changed with it. A set that is
-  perfectly symmetric can be made to look like it has a heavy tail just by moving the bands. A count
-  of how many values sit above a band against how many sit below it only tells you about shape once
-  you already know the band is centred and equally wide on both sides. Otherwise it tells you about
-  the band.
+  perfectly symmetric can be made to look like it has a heavy tail just by moving the bands. Count
+  how many values sit above a band and how many sit below it. That tells you about shape only once
+  you know the band is centred and equally wide on both sides. Otherwise it tells you about the
+  band.
 
   Now the part that matters more than any of the words above. A set of numbers can look spread out
   for three completely different reasons, and telling them apart is the main use of this section.
@@ -147,7 +148,7 @@ simplified_explanation: |
   The third has nothing to do with the person at all. Measure the same person twice, one reading
   right after the other, with nothing about them changing, and you can still get two slightly
   different numbers. The scale, the tape, or the hand holding it produced the difference, not the
-  person. This kind of difference can also hide completely. A scale that is wrong by exactly the
+  person. An error of this kind can also hide completely. A scale that is wrong by exactly the
   same amount every time gives two matching readings, both wrong by that same amount. Two readings
   agreeing is not proof that either one is right. It only shows that whatever produced the error,
   if there is one, was the same both times.
@@ -161,22 +162,31 @@ illustration:
     disagree with its own definition, not with each other.
 
     Open the paper by Kiran, Harshitha and Bhargava, published in Heliyon in 2022, on arm and neck
-    measurements in 282 medical students in Mangaluru. It defines its own terms before it uses
-    them, against the cut-offs set by the World Health Organization, written WHO for short.
+    measurements in 282 medical students in Mangaluru. In its abstract, the paper defines
+    overweight by body-mass index, written BMI.
 
-    > Overweight was defined using the WHO cut-offs (BMI ≥25 kg/m2).
+    > to screen overweight (BMI ≥25 kg/m2)
 
-    By that sentence, every student with a body-mass index of 25 or more counts as overweight.
+    The sign ≥ means "at or above". By that definition, every student with a body-mass index of 25
+    or more counts as overweight.
 
-    A few pages later, the paper reports how many students that word covers.
+    The abstract then reports how many students that word covers.
 
-    > 83 (29.4%) were overweight
+    > Of the 282 participants, 83 (29.4%) were overweight
 
-    Run the check a frequency table always deserves. Does 83 actually match the definition just
-    quoted?
+    Run the check a frequency table always deserves: divide the count by the total.
 
-    Table 2 of the same paper sorts all 282 students into four bands of body-mass index, and it is
-    a frequency table exactly as the section above described.
+    ```working
+        83 divided by 282 = 0.294326241...
+        0.294326241 times 100 = 29.4326241
+    ```
+
+    That rounds to the 29.4 per cent printed, so the division check passes. It takes a second check
+    to find what is wrong here: match each label to the band it covers. Does 83 actually match the
+    definition just quoted?
+
+    Table 2 of the same paper sorts all 282 students into four bands of body-mass index. It is a
+    frequency table exactly as the section above described.
 
     ```table
     band of body-mass index (kg/m^2)   count   relative frequency
@@ -199,7 +209,8 @@ illustration:
 
     Now look at which band the reported 83 actually comes from. It is the count beside the band
     "25 to 29.9", not beside "25 or more". The paper's own bands stop at 29.9 and start a new one
-    at 30. Add the two bands that together cover the definition it quoted.
+    at 30. The results section of the same paper labels this 83 correctly, as the band from 25 to
+    29.9. Add the two bands that together cover the definition the abstract gave.
 
     ```working
         83 plus 15 = 98
@@ -216,15 +227,18 @@ illustration:
     That rounds to 34.8 per cent, not the 29.4 per cent printed beside the reported 83. The paper's
     own definition and its own headline count describe two different groups of students. This is
     not two counts disagreeing with each other, the way the abdominal-obesity figures did. It is a
-    label attached to the wrong slice of its own table, and the fix is the same move either way:
-    divide the count by the total, and check which band it actually belongs to.
+    label attached to the wrong slice of its own table. Dividing the count by the total could not
+    catch it, because 83 out of 282 really is 29.4 per cent. Only matching the label to the band it
+    covers did.
 
     Table 2 also tempts a claim about shape. Ninety-eight students sit in the two bands above the
     middle one, against 24 in the band below it. Resist calling that a tail. The section above
-    showed why a comparison like this proves nothing on its own: these four bands are the World
-    Health Organization's own bands, drawn for its own reasons, not centred on where these 282
-    students' body-mass index actually sits. A count split this way can make a genuinely symmetric
-    group look lopsided, or hide a real skew, depending only on where the edges happen to fall.
+    showed why a comparison like this proves nothing on its own. These four bands are the ones the
+    World Health Organization drew, for its own reasons. They are not centred on where these 282
+    students' body-mass index actually sits.
+
+    A count split this way can make a genuinely symmetric group look lopsided, or hide a real
+    skew. It depends only on where the edges happen to fall.
     Nothing in Table 2 says which is happening here.
 
     Notice what the table cannot give you, either way. It cannot give you the range of body-mass
@@ -240,9 +254,9 @@ illustration:
     That change would be a difference within a person. Now say the same student had been measured
     twice in the same five minutes, on the same scale, with nothing else changing. Any difference
     between those two readings would be a difference between measurements, produced by the act of
-    measuring rather than by the student. And if the scale used that day happened to read half a
-    kilogram heavy for everyone, both of that student's readings would agree with each other and
-    both would be wrong by the same half kilogram. Agreement between the two readings would show
+    measuring rather than by the student. And say the scale used that day read half a kilogram
+    heavy for everyone. Then both of that student's readings would agree with each other, and both
+    would be wrong by the same half kilogram. Agreement between the two readings would show
     nothing.
 
     Table 2 gives you only one reading per student. It cannot tell you which of the three you would
@@ -257,7 +271,7 @@ illustration:
 
     And "more students above the middle band than below it" describes this one table's four bands,
     drawn where the World Health Organization drew them. It says nothing about how far above or
-    below the middle band any one student actually sits, and nothing about whether a different,
+    below the middle band any one student actually sits. Nor does it say whether a different,
     centred set of bands would show the same split. That needs numbers this table does not keep.
   numbers:
   - value: '282'
@@ -289,19 +303,24 @@ illustration:
     unit: students reported overweight, abstract
     citekey: kiran_2022_muac_nc
     as_of: '2026-09-23'
-    quote: 83 (29.4%) were overweight
+    quote: Of the 282 participants, 83 (29.4%) were overweight
+  - value: '25'
+    unit: kg/m2, body-mass index cut-off for overweight as the paper defines it
+    citekey: kiran_2022_muac_nc
+    as_of: '2026-09-23'
+    quote: Overweight was defined using the WHO cut-offs (BMI ≥25 kg/m2)
   - value: '98'
     unit: students with body-mass index 25 or more, Table 2, N=282
     derived: 83 plus 15, Table 2, N column, body-mass index 25 or more
     citekey: kiran_2022_muac_nc
     as_of: '2026-09-23'
-    quote: Overweight (25–29.9 kg/m2) 83 (29.4)
+    quote: Overweight (25–29.9 kg/m2) 83 (29.4) 42 (32.1) 41 (27.2) Obese (≥30 kg/m2) 15 (5.3)
   - value: '34.8'
     unit: per cent of students with body-mass index 25 or more, N=282
     derived: 98 divided by 282
     citekey: kiran_2022_muac_nc
     as_of: '2026-09-23'
-    quote: Overweight (25–29.9 kg/m2) 83 (29.4)
+    quote: Overweight (25–29.9 kg/m2) 83 (29.4) 42 (32.1) 41 (27.2) Obese (≥30 kg/m2) 15 (5.3)
 must_know:
 - point: |
     Two distributions can share exactly the same range and look nothing alike. One set of values
@@ -313,7 +332,8 @@ must_know:
 - point: |
     Before you trust a frequency table's percentages, divide each count by the printed total and
     check you get back the percentage beside it. A table that fails this check should not be used
-    until you know which of its own numbers is the wrong one.
+    until you know which of its own numbers is the wrong one. Then match each label to the band it
+    covers. A count can pass the first check and still sit under the wrong label.
   kind: move
   bearing: methodological
 - point: |
@@ -326,9 +346,9 @@ must_know:
     Before you explain why two readings differ, decide which of three sources produced it. It can
     be a real difference between the people or things measured. It can be a real change within one
     of them over time. Or it can be a difference produced by the measuring itself. Treating one as
-    another has a real cost: call a scale's own error a difference between people and you invent a
-    health difference that is not there; call a real change within a person a measurement glitch
-    and you miss it.
+    another has a real cost. Call a scale's own error a difference between people, and you invent
+    a health difference that is not there. Call a real change within a person a measurement
+    glitch, and you miss it.
   kind: move
   bearing: clinical
 - point: |
@@ -339,7 +359,7 @@ must_know:
   bearing: methodological
 - point: |
     A single figure, such as the share of a group above one band's edge, says nothing about the
-    rest of the group, and the edge itself may not sit where you assume it does. Do not let one
+    rest of the group. The edge itself may not sit where you assume it does. Do not let one
     band, or one comparison between two bands, stand in for a whole distribution.
   kind: trap
   bearing: public
@@ -463,27 +483,27 @@ practice:
     spread almost evenly across the whole distance from 10 to 50. Two sets with the same range can
     have completely different shapes, because the range only ever looks at the two most extreme
     values.
-- level: 3
+- level: 4
   prompt: |
     Three pairs of readings are listed below, each under stated conditions. For each pair, say
-    which of the three sources of difference produced the gap: between people, within a person, or
-    between measurements.
+    which source of difference mainly produced the gap. The three are: between people, within a
+    person, and between measurements.
 
-    (a) Two different patients are weighed once each, on the same scale: 58 kilograms and 71
-    kilograms.
+    (a) Two different patients are weighed once each, on the same scale. The readings are 58
+    kilograms and 71 kilograms.
 
-    (b) The same patient is weighed on Monday morning, 64.0 kilograms, and again on Friday evening,
-    65.2 kilograms.
+    (b) The same patient is weighed on Monday morning and again on Friday evening. The readings are
+    64.0 kilograms and 65.2 kilograms.
 
-    (c) The same patient, on the same scale, is weighed twice within one minute, with nothing about
-    them changing in between: 70.4 kilograms and 70.6 kilograms.
+    (c) The same patient is weighed twice on the same scale, one minute apart. Nothing about them
+    changes in between. The readings are 70.4 kilograms and 70.6 kilograms.
   answer: |
     (a) Between people. Two different patients were weighed, so the 13-kilogram gap is a real
     difference between them. Nothing here says either reading is wrong.
 
-    (b) Within a person. The same patient gave two different numbers days apart. What they ate,
-    what they drank and the time of day can each move a weight reading by more than a kilogram
-    between Monday and Friday.
+    (b) Mostly within a person. The same patient gave two different numbers days apart. What they
+    ate, what they drank and the time of day can each move a weight reading. Part of the 1.2
+    kilograms could still come from the scale, and nothing here separates the two.
 
     (c) Between measurements. The same patient, the same scale, one minute apart, with nothing
     about the patient changing. The 0.2-kilogram gap came from the act of measuring, not from the
@@ -537,7 +557,7 @@ practice:
   - kiran_2022_muac_nc
 - level: 5
   prompt: |
-    The same paper, describing its own limitations, says this.
+    The same paper, describing what it counts as its own strength, says this.
 
     > The strength of the study was single observer measurements with minimum inter-observer
     > variation.
@@ -545,21 +565,19 @@ practice:
     Say which of the three sources of difference having one observer take every measurement
     reduces, and which two it leaves untouched.
   answer: |
-    One observer removes differences between observers: two different people measuring the same
-    student can place the tape or read the scale slightly differently, and that gap is one kind of
-    difference between measurements. A single observer, measuring everyone the same way, removes
-    that particular gap.
+    One observer removes differences between observers. Two different people measuring the same
+    student can place the tape or read the scale a little differently. That gap is one kind of
+    difference between measurements. One observer, measuring everyone the same way, removes it.
 
     It does not touch a real difference between the people being measured. Two students still
     really differ in weight and height, whoever measures them.
 
-    It does not touch a real difference within one person from one occasion to another. The same
-    student would still weigh differently in the morning and the evening, whoever holds the tape.
+    It does not touch a real difference within one person from one occasion to the next. If a student
+    weighs more in the evening than in the morning, one observer does not change that.
 
-    And it does not remove every difference between measurements, either. The same observer, using
-    the same instrument on the same person, can still get two slightly different readings a few
-    minutes apart. One observer only removes the part of the gap that comes from switching who is
-    holding the instrument.
+    And it does not remove every difference between measurements, either. The same observer, with
+    the same tool on the same person, can still get two slightly different readings a few minutes
+    apart. One observer only removes the part of the gap that comes from who holds the tool.
   refs:
   - kiran_2022_muac_nc
 - level: 6
@@ -626,13 +644,13 @@ practice:
     Find the flaw in that reasoning.
   answer: |
     Two bands being close in size is not the same claim as the whole distribution being symmetric.
-    Symmetry is about how far every value sits from the middle, on both sides, not about how many
-    people fall into two chosen bands at the edges.
+    Symmetry is about how far every value sits from the middle, on both sides. It is not about how
+    many people fall into two chosen bands at the edges.
 
     The flaw is that band counts depend on where the band edges fall. The band "under 18.5" and the
     band "30 or more" are both open-ended, and the table does not say how far either one actually
-    reaches. Comparing their sizes tests nothing about shape, because a wide-reaching open band and
-    a narrow one can hold similar counts for reasons that have nothing to do with symmetry.
+    reaches. Comparing their sizes tests nothing about shape. A wide-reaching open band and a
+    narrow one can hold similar counts for reasons that have nothing to do with symmetry.
 
     The comparison also rests on very little of the sample.
 
@@ -666,12 +684,17 @@ practice:
     ```
 
     Well over half of the group, 160 of 282, sits in one single band, from 18.5 to 24.9. Only 24
-    students, 8.5 per cent, are below it, and 98 students, about a third of the group, are above
-    it.
+    students, 8.5 per cent, are below it. Add the two bands above it.
+
+    ```working
+        83 plus 15 = 98
+    ```
+
+    So 98 students, about a third of the group, are above it.
 
     What this does not establish. Naming the two extreme bands says nothing about how many people
     are actually in them. Here it is a small minority on the low side and a larger minority on the
-    high side. Most of the group sits clustered in the middle.
+    high side. Of the 282, 160 sit in the one band from 18.5 to 24.9.
 
     It also does not establish the true range of body-mass index in this sample. Once every value
     has been sorted into one of four bands, the single largest and single smallest values are gone.

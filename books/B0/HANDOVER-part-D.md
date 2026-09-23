@@ -1,5 +1,48 @@
 # Handover · Book 0 Part D (D1–D7)
 
+## Close-out, second chat of 2026-09-23 — read this first
+
+**Part D is fixed and verified: zero defects open.** Tasks 1–4 are done; the compression pass
+(Task 5) has not started. The account below this section is the first chat's and is kept as the
+history; where it says "open", this section supersedes it.
+
+What ran:
+
+1. **D6–D7 verification**, fresh Opus auditor: the fixer's "49 of 49" was false — 34 closed, 15
+   partly. 32 defects open (C29 15, C30 17), including both issues the first chat had found.
+   `DEFECTS-part-D-verification-d6d7.md`.
+2. **Rulings M16–M19** added to `DECISIONS-part-D-fix.md`: stated-case numbers are not registered
+   in `numbers[]`, except the two simulation outputs `draw.py` reads back (M16); every "VIM 4.14"
+   sits beside 4.14's own words (M17); M1's "only table" wording narrowed (M18); no pipeline words
+   such as "the anchor" reach the reader (M19).
+3. **Per-section fix and verify** (Opus fixers, one per record, each given only its defect file,
+   its record and a source-excerpt file; a fresh Opus verifier per record). All 82 open defects
+   were split into `books/B0/defects/B0-R0-C24.md` … `C30.md`. Round 1 closed all 82 and
+   introduced 7 new small defects in changed passages; round 2 closed those 7.
+4. **Glossary pass** found §10 drift: seven terms glossed twice in different words, five first met
+   as a symbol or a standards quote only. Ruling **M20** (one plain-words gloss per term, at first
+   use). Fixed in C24, C26, C29 and C30 and verified: 10 items, all closed.
+5. **`prose/glossary-inbox-D.md`** written from the records as they now stand: 60 rows. Two rows of
+   `GLOSSARY.md` need changing at merge: *calibration* is first taught in C30, not C32; *precision*
+   gets both senses.
+
+Every defect file carries the fixer's and verifier's line under each item. Tally: 99 items across
+the seven files, every one's last verifier line reads closed.
+
+Build after the close-out: **blocking 0, warnings 51** (was 73). No warning names C24–C30 except the
+derived-number notices M13 expects. `d6-sample-means.png` and `d7-two-scales.png` redraw
+byte-identically.
+
+Still true from the first chat and not in this chat's scope: `provenance.bridge_ref` is empty on
+all seven; the Notion Build Tracker has not been updated; the acronym check's coin-toss false
+positives (HH, HTT) in C25 belong in `build.py` between rounds.
+
+**Next:** Task 5, the compression pass, with Parts A to C released into the scratch directory.
+
+---
+
+## First chat
+
 Chat of 2026-09-23. Ran Tasks 1 to 4 of `PIPELINE.md` for Part D, once each, and stopped part-way
 through verifying the fix. **Part D is not finished.** Two of the three batches still have open
 defects, and nobody has verified the third batch's fixes. The compression pass (Task 5) and your

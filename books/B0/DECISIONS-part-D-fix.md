@@ -93,3 +93,35 @@ something, and then says what the answer does not establish. One that computes n
 
 **M15 · Style warnings.** The fix pass also clears the sentence-length and reading-grade warnings on
 C24, C25 and C26 (99 of them at the draft), splitting at natural joints without changing meaning.
+
+## Rulings added in the close-out chat (2026-09-23, second chat)
+
+**M16 · Stated-case and simulated numbers (V6-8, V7-9).** `numbers[]` holds figures about the world.
+A number the section makes up for a worked case ("a scale that reads 100 g heavy") is a stated
+condition under §7a: it needs no source and is **not** registered. Remove such entries. The one
+exception is a simulation output the figure code reads back as its guard (`0.633` and `0.317` in
+C29, read by `draw.py` through `_derived`). Those stay. Their `quote` must be the OpenStax s.7.1
+sentence that states the square-root law, and their `derived:` must say the simulation *checks*
+that law, not that the source states the number.
+
+**M17 · Resolution (M10 and VIM 4.14).** Wherever the text cites "VIM 4.14", the words next to the
+citation are 4.14's own: the smallest change in the quantity being measured that causes a
+perceptible change in the reading. "For a digital display, that is in practice the step of its
+last digit" may follow, uncited, as the book's own gloss. Never attach "VIM 4.14" to "the
+smallest step a display can show".
+
+**M18 · M1's "only table" wording (V3-2).** M1 said the 42-against-89 table "is the only
+whole-person table that fits them". That is true only among the groups the paper prints; many
+other splits of 131 also reproduce 86 and 74. The record says so: the only one of the paper's own
+printed groups that fits.
+
+**M19 · "The anchor" (V6-10, V7-11).** Pipeline vocabulary never reaches the reader. Say "the
+statistics textbook this book follows" or name the book.
+
+**M20 · One gloss per term (§10 rule 2), found by the glossary pass.** Each term of art gets one
+plain-words gloss, at its first use in reading order; that gloss is the row in
+`prose/glossary-inbox-D.md`. A formula or a verbatim source quote may sit beside it. Every later
+mention either reuses the same words or carries no gloss at all — never a second paraphrase. A
+term whose first appearance is a symbol or a standards quote gets its plain words at that same
+place. Ordinary-English uses of a word before its technical gloss ("our sample of 282 students",
+"on average", "an error of this kind", "a better estimate") are not defects.
