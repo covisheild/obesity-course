@@ -371,5 +371,107 @@ FIGURES.update({"c5-two-scales.png": c5_two_scales,
                 "c6-three-shapes.png": c6_three_shapes,
                 "c7-chords.png": c7_chords,
                 "c8-rectangles.png": c8_rectangles})
+# ---------------------------------------------------------------- F2
+#
+# F2 is about how a mark carries a number, so its figures are the argument rather than an aid
+# to it. Both read Schedule II of the National Food Security Act out of B0-R0-C40's own tables,
+# and both keep every printed number correct: what changes between the panels is only how the
+# number is drawn. That is the section's claim, so it is the thing the figures must not cheat on.
+
+def _short(label, width=13):
+    import textwrap
+    return "\n".join(textwrap.wrap(label, width))
+
+
+def f2_baseline():
+    """The same six bars from zero and from 400. Length is value only when it starts at zero."""
+    head, rows = table_rows("B0-R0-C40", 0)
+    # Schedule II's group names are too long to sit under six bars. The short forms are keyed
+    # to the record's exact wording, so a changed row stops the drawing rather than letting a
+    # stale label sit under a new number.
+    short = {"children, 6 months to 3 years": "children\n6 mo–3 yr",
+             "children, 3 to 6 years": "children\n3–6 yr",
+             "children, 6 months to 6 years, who are malnourished": "malnourished\nchildren",
+             "lower primary classes": "lower\nprimary",
+             "upper primary classes": "upper\nprimary",
+             "pregnant women and lactating mothers": "pregnant and\nlactating"}
+    unknown = [r[0] for r in rows if r[0] not in short]
+    if unknown:
+        sys.exit(f"f2-baseline: no short label for {unknown} - the table in B0-R0-C40 changed")
+    names = [short[r[0]] for r in rows]
+    vals = [_num(r[-1]) for r in rows]
+    if None in vals:
+        sys.exit("f2-baseline: a Schedule II value in B0-R0-C40 is not a number")
+    lo, hi = min(vals), max(vals)
+    # Stacked rather than side by side: six labelled bars need the full width, and one panel
+    # above the other puts the two drawings of each bar in the same column for the eye.
+    fig, axes = plt.subplots(2, 1, figsize=(6.6, 5.6), sharey=False)
+    for ax, floor, title in ((axes[0], 0, "side axis from zero"),
+                             (axes[1], 400, "the same bars, side axis from 400")):
+        xs = range(len(vals))
+        ax.bar(xs, vals, width=0.62, color=BLUE, zorder=2)
+        for x, v in zip(xs, vals):
+            ax.annotate(f"{v:g}", (x, v), textcoords="offset points", xytext=(0, 3),
+                        ha="center", fontsize=7.5, color=MUTED)
+        ax.set_ylim(floor, 900)
+        ax.set_xticks(list(xs))
+        ax.set_xticklabels(names, fontsize=7.4, color=INK, linespacing=1.15)
+        _frame(ax, "", "kilocalories per meal")
+        ax.set_title(title, fontsize=8.5, color=INK, loc="left")
+        drawn = [(v - floor) for v in (hi, lo)]
+        # Three significant figures, because the record's text says 1.78: a figure that rounds
+        # to 1.8 beside a caption that says 1.78 is two numbers for one fact.
+        ax.annotate(f"the {hi:g} bar is drawn {drawn[0] / drawn[1]:.3g} times\nas long as the {lo:g} bar",
+                    (0.62, 0.99), xycoords="axes fraction", va="top", fontsize=8,
+                    color=ORANGE if floor else INK, linespacing=1.3)
+    fig.tight_layout()
+    save(fig, "f2-baseline.png")
+
+
+def f2_area():
+    """Two values as bars, then as plates scaled in both directions: area goes as the square."""
+    from matplotlib.patches import Circle
+    head, rows = table_rows("B0-R0-C40", 1)
+    a, b = _num(rows[0][2]), _num(rows[1][2])
+    if None in (a, b):
+        sys.exit("f2-area: a meal energy in B0-R0-C40 is not a number")
+    k = b / a
+    fig, (left, right) = plt.subplots(1, 2, figsize=(7.0, 3.3),
+                                      gridspec_kw={"width_ratios": [1, 1.35]})
+    left.bar([0, 1], [a, b], width=0.55, color=BLUE, zorder=2)
+    for x, v in ((0, a), (1, b)):
+        left.annotate(f"{v:g}", (x, v), textcoords="offset points", xytext=(0, 3),
+                      ha="center", fontsize=8, color=MUTED)
+    left.set_xticks([0, 1])
+    left.set_xticklabels([_short(rows[0][0]), _short(rows[1][0])], fontsize=7.5)
+    left.set_ylim(0, b * 1.25)
+    _frame(left, "", "kilocalories per meal")
+    left.set_title(f"as bars: {k:.4g} times as tall", fontsize=8.5, color=INK, loc="left")
+
+    # Plates whose diameters are the two values, sitting on one line: the heights match the
+    # bars, and the widths come along with them, which is exactly what a picture does.
+    unit = 1 / 100
+    da, db = a * unit, b * unit
+    gap = 0.8
+    for cx, d, v in ((da / 2, da, a), (da + gap + db / 2, db, b)):
+        right.add_patch(Circle((cx, d / 2), d / 2, facecolor=BLUE, edgecolor=SURFACE,
+                               linewidth=1.2, alpha=0.9))
+        right.add_patch(Circle((cx, d / 2), d / 2 * 0.72, facecolor="none",
+                               edgecolor=SURFACE, linewidth=1.0))
+        right.text(cx, d / 2, f"{v:g}", ha="center", va="center", fontsize=9,
+                   color=SURFACE, fontweight="bold")
+    right.set_xlim(-0.3, da + gap + db + 0.3)
+    right.set_ylim(-0.2, db * 1.25)
+    right.set_aspect("equal")
+    right.axis("off")
+    right.set_title(f"as pictures: {k:.4g} times as tall and as wide,\n"
+                    f"so {k * k:.3g} times the area", fontsize=8.5, color=ORANGE, loc="left")
+    fig.tight_layout()
+    save(fig, "f2-area.png")
+
+
+FIGURES.update({"f2-baseline.png": f2_baseline,
+                "f2-area.png": f2_area})
+
 if __name__ == "__main__":
     main()

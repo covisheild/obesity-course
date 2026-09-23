@@ -1614,6 +1614,13 @@ def _caret_check(html_path):
     import html as _html
     with open(html_path, encoding="utf-8") as fh:
         text = _html.unescape(re.sub(r"<[^>]+>", "", fh.read()))
+    # The same check for a second class of leak: a repository path reaching the reader. It
+    # happened once in prose and once through a bibliography note ("... is held in sources/"),
+    # and a reader does not have this repository, so any such path is a dead instruction.
+    paths = sorted(set(re.findall(r"(?<![/\w.])(?:sources|check|books)/[\w./-]+", text)))
+    if paths:
+        print(f"  [paths] {len(paths)} repository path(s) reached the rendered page: "
+              + ", ".join(paths[:6]))
     hits = list(re.finditer(r"[\^~]", text))
     if not hits:
         return
