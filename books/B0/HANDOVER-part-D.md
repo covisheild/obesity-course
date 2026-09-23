@@ -27,7 +27,7 @@ What ran:
    gets both senses.
 
 Every defect file carries the fixer's and verifier's line under each item. Tally: 99 items across
-the seven files, every one's last verifier line reads closed.
+the seven files, plus one found at the merge build (C28 M-1, IQR used before expansion, fixed by the main thread), and every one's last verifier line reads closed.
 
 Build after the close-out: **blocking 0, warnings 51** (was 73). No warning names C24–C30 except the
 derived-number notices M13 expects. `d6-sample-means.png` and `d7-two-scales.png` redraw
@@ -35,7 +35,8 @@ byte-identically.
 
 Still true from the first chat and not in this chat's scope: `provenance.bridge_ref` is empty on
 all seven; the Notion Build Tracker has not been updated; the acronym check's coin-toss false
-positives (HH, HTT) in C25 belong in `build.py` between rounds.
+positives (HH, HTT) in C25 belong in `build.py` between rounds; after the merge they are the only
+names on the booklet's used-before-expansion line.
 
 **Next:** Task 5, the compression pass, with Parts A to C released into the scratch directory.
 
