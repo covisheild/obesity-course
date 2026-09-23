@@ -35,8 +35,8 @@ values, but the figures and the practice answers print them.
   claimed completeness and cut the two sentences that made a source's warning about *bar* charts
   rather than all charts. Nothing mechanical catches that: the quote gate checks the record against
   the file, never the file against the page. Only fetching the live page did.
-- **Check the licence before writing it down.** Most OpenStax books are CC BY; these two are
-  CC BY-NC-SA. I wrote CC BY from habit and caught it on the details page.
+- **Check the licence before writing it down.** Do not assume OpenStax means CC BY: all six OpenStax books this course
+  holds excerpts from are CC BY-NC-SA 4.0, checked on each details page on 23 September 2026. I wrote CC BY from habit and caught it on the details page.
 - **Bibliography `note` fields print in the reader's reference list.** Anything about where a file
   is held belongs in `sources/INDEX.yml`, never in the note.
 - **A figure's numbers must print at the precision the text uses.** 1.8 on the figure beside 1.78 in

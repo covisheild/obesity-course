@@ -22,9 +22,22 @@ REFDOC = os.path.join(ROOT, "references", "reference.docx")
 FIGURES_DIR = os.path.join(ROOT, "figures")
 LEVELS = ["Introductory", "Intermediate", "Advanced", "Expert"]
 
+# `textbook` is allowed on an empirical concept, and that is a deliberate widening made on
+# 23 September 2026 for Book 0 Part E. Parts A to D are mathematics and Part F is reading, so
+# every concept so far has been derivable-from-the-floor or a body's decision. Part E is the
+# first that is neither: a plasma membrane is not rebuildable from arithmetic, so it cannot be
+# `derivable`, and it is not a finding with an effect size either, so demanding `primary` for it
+# would mean citing a research paper for the existence of the cell - worse scholarship than
+# citing a canonical text, not better, and the kind of citation nobody checks.
+#
+# The rule this does NOT relax: a claim carrying an effect size, a risk, a dose-response or any
+# measured quantity still needs `primary` or `systematic_review`, and the unopened-source block
+# below still applies in full. A textbook anchor is for settled science that a specialist would
+# find nothing to correct in. Using one to dress up a contested finding is the failure mode, and
+# it is a judgement the audit has to make because no check can make it.
 KIND_FOR_TYPE = {
     "derivable":     {"textbook"},
-    "empirical":     {"primary", "systematic_review"},
+    "empirical":     {"primary", "systematic_review", "textbook"},
     "institutional": {"instrument", "guideline", "consensus_statement"},
 }
 STABILITY_FOR_TYPE = {"derivable": "long", "empirical": "medium", "institutional": "short"}
@@ -484,9 +497,18 @@ def _numbers_stated(quote: str) -> set:
         if re.match(r"\.\s[A-Z]", tail) or tail.startswith("(") or (head == "(" and tail.startswith(")")):
             continue                      # a list label, or a clause number: 5(3)(b)
         try:
-            found.add(float(m.group(0).replace(",", "").replace(" ", "")))
+            v = float(m.group(0).replace(",", "").replace(" ", ""))
         except ValueError:
-            pass
+            continue
+        found.add(v)
+        # A sign belongs to the number only where it cannot be a subtraction: "= -185 kJ" is
+        # minus 185, "[436 + 243] - 2(432)" is not minus 2. So a minus counts when nothing that
+        # could be the left side of a subtraction - a digit or a closing bracket - sits
+        # before it. Part E's first merge found the gap: an enthalpy of -185 kJ, stated in the
+        # source exactly, blocked because the gate could only read unsigned numbers.
+        pre = q[:m.start()].rstrip(" ")
+        if pre[-1:] in ("-", "\u2212") and not re.search(r"[\d)\]]$", pre[:-1].rstrip(" ")):
+            found.add(-v)
     # Words: "five", "thirty-five", "twenty-five thousand", "ten lakh".
     toks = re.findall(r"[a-z]+", q.lower().replace("-", " "))
     total, cur, live = 0, 0, False
@@ -679,10 +701,34 @@ def check(recs: dict, subjects: dict, clusters: dict, bibkeys: set):
         if r.get("subject") == "B0" and b0_index and r.get("sequence") not in b0_index:
             W(rid, f"sequence {r.get('sequence')} is not a section position in book0/OUTLINE.md")
 
-        # reference kind must match concept type; locator mandatory
-        for ref in (r.get("definition", {}) or {}).get("references", []) or []:
+        # At least one reference must be of the kind the concept type requires; the others may
+        # be any recognised kind. The rule used to demand that *every* reference match, and it
+        # met its first mixed concept in Part E: E2 is measured chemistry (so `empirical`, and it
+        # needs a study or review) that also rests on statutory Atwater factors, whose evidence
+        # is the FSSAI regulation and the NFSA - instruments. Every-reference-matches left those
+        # four sources off the reader's reference list entirely, which is worse than any
+        # mismatch of kind. Each reference is still checked for its locator, its citekey and,
+        # where the file is held, its quote.
+        refs = (r.get("definition", {}) or {}).get("references", []) or []
+        all_kinds = set().union(*KIND_FOR_TYPE.values())
+        for ref in refs:
+            if ref.get("kind") not in all_kinds:
+                E(rid, f"reference kind '{ref.get('kind')}' is not a recognised kind")
+        if ctype and refs and not any(ref.get("kind") in KIND_FOR_TYPE.get(ctype, set()) for ref in refs):
+            E(rid, f"no reference of a kind a '{ctype}' concept requires "
+                   f"({', '.join(sorted(KIND_FOR_TYPE.get(ctype, set())))})")
+        # The objection to allowing mixed kinds, raised by the Part E chat before this rule
+        # existed: it would let any professional-body statement stand behind any empirical
+        # claim. So an off-type reference is admitted only when it is held in sources/ and
+        # carries a quote - tied to specific words the build has found, never to the concept
+        # as a whole.
+        for ref in refs:
             if ctype and ref.get("kind") not in KIND_FOR_TYPE.get(ctype, set()):
-                E(rid, f"reference kind '{ref.get('kind')}' invalid for concept_type '{ctype}'")
+                if _source_text(ref.get("citekey")) is None or not ref.get("quote"):
+                    E(rid, f"reference '{ref.get('citekey')}' is of kind '{ref.get('kind')}', "
+                           f"which a '{ctype}' concept admits only when the source is held in "
+                           "sources/ and the reference quotes the words it relies on")
+        for ref in refs:
             if not (ref.get("locator") or "").strip():
                 E(rid, f"reference '{ref.get('citekey')}' has no locator")
             if bibkeys and ref.get("citekey") not in bibkeys:
@@ -1196,6 +1242,31 @@ class Cites:
             marks.append(str(self.num[ident]))
         return f"[{', '.join(marks)}]" if marks else ""
 
+    def mark_numbers(self, ill) -> str:
+        """Reference marks for the sources of the figures an illustration quotes.
+
+        Until this existed the reader's reference list was built from `definition.references`
+        alone, so the source of every *number* in the book - the NFSA's 5 kilograms, Schedule
+        II's meal energies, NIST's 4.184 joules - reached the audit trail and never the
+        reader. Found on merging Part E, where half of E2 rests on figures from four sources
+        and the Part's reference list had no entry for any of them; the same was silently true
+        of every earlier Part. One entry per source, marked where its figures are used.
+        """
+        marks = []
+        for n in (ill.get("numbers") or []):
+            key = n.get("citekey") if isinstance(n, dict) else None
+            if not key:
+                continue
+            ident = (key, "figures quoted in the text" if (self.entries.get(key) or {}).get("url") else "")
+            if ident not in self.num:
+                self.order.append(ident)
+                self.num[ident] = len(self.order)
+            if not n.get("quote"):
+                self.unverified.add(ident)
+            if str(self.num[ident]) not in marks:
+                marks.append(str(self.num[ident]))
+        return f"[{', '.join(marks)}]" if marks else ""
+
     def _format(self, ident) -> str:
         key, loc = ident
         e = self.entries.get(key)
@@ -1288,7 +1359,10 @@ def concept_md(r, cites, label=None, sid=None) -> list[str]:
     ills = _illustrations(r)
     for n, ill in enumerate(ills, 1):
         head = "**Illustration.** " if len(ills) == 1 else f"**Illustration {n}.** "
+        nmark = cites.mark_numbers(ill)
         md += _block(head, ill["body"], flag=flg)
+        if nmark:
+            md += [f"*Figures quoted in this illustration are from {nmark}.*", ""]
         if (ill.get("analogy_breaks_when") or "").strip():
             md += _block("**Where this picture breaks.** ", ill["analogy_breaks_when"], flag=flg)
     mk = r.get("must_know") if isinstance(r.get("must_know"), list) else []
