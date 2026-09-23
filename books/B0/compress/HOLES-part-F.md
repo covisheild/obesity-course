@@ -1,0 +1,58 @@
+# Holes in Part F (compression pass, step 5c)
+
+Source: COLDREAD-REPORT-part-F.md. Each item below is a gap the cold reader found where the full-length original is also silent or wrong, so nothing could be restored. These go to DEFECTS.md and back through the audit (claude.md §12, "The second output"). Items marked **ERROR** are factual errors or internal/cross-Part contradictions, not teaching gaps.
+
+Structural note from the report: only F2 has a numbered practice set. F1, F3, F4 and F5 have exercises only, so their gaps were found by reading, not by getting stuck on a problem.
+
+Tool note (not a hole, needs Harsh's eye): restore.py drops a kept table or bullet block unless it is named in the list (F1 table, F4 premise bullets; both named so they survive), and brings back a whole **bold**-led paragraph whenever the cutter kept one of its sentences (7 unrequested sentences revived in F2). Tools were not edited.
+
+## F1
+- F1 illustration.body: "Run your finger along the top row. It is one state, not one woman." — the top row is the header row; the first data row is meant. The original has the same wording. Read twice.
+- F1 must_know[0]: "Twenty-four per cent of 42,100 women and twenty-four per cent of two hundred women are not the same evidence." — asserted; nothing shows how the count changes the evidence, and D6 (square-root law) is not linked. D6 also warned that size does not rescue a non-random sample.
+- F1 illustration.analogy_breaks_when: "Two people can build two honest tables from the same underlying numbers and leave two opposite impressions." — never shown. The original names the means (rows, denominator, span of years) but gives no example pair.
+- F1 illustration.body: the table's figures (24.1, 39.6, 42,100, 18,750) are marked neither as real nor as invented, and no source is given. Every earlier Part marked invented figures, and F2 does. Looks like a drafting slip. Needs Harsh's decision.
+- F1 illustration.body: "Overweight or obese (%)" — neither term is defined in F1, and "obese"/"obesity" is defined nowhere in A to F (D4 gives only one paper's "overweight (BMI ≥25 kg/m2)"). B6 and D4 taught that a cut-off must be quoted with whose it is. Affects Ex 1 and Ex 2. (See also F4.)
+- F1 must_know[2]: "Expect state sample sizes to differ several-fold within the same table." — no source, and nothing says what to do with the expectation beyond "check the count".
+- F1 definition/simplified: "Where did the numbers come from? who counted them, and how?" — no picture of what a sufficient answer looks like, or what follows from a partial one.
+- F1 Ex 2: the restored sentences give the reasons (who was surveyed, how chosen, how precise), but F1 must_know[5] says precision and "whether a gap is real" are out of scope, so the reader can name what is missing but not weigh it. Minor.
+
+## F2
+- **ERROR** F2 simplified_explanation and must_know[0]: "So a bar chart must start at zero, and a line chart need not" and "'Every chart must start at zero' is the error" against C5 (released): "A side axis that does not start at zero makes every small wiggle on it look like a cliff" and "When a figure alarms you, redraw it with the side axis starting at zero before you repeat it to a journalist." The original F2 says the same as the cut and never mentions or reconciles C5. Cross-Part contradiction; one of the two needs rewording (C5 likely scoped to bars, or F2 to name C5's advice and narrow it). **Blocks a confident answer to P11 and Ex 3.** Needs Harsh's decision.
+- **ERROR** F2 illustration.body: "The page a plate covers is its height times its width." — false for a round plate (a circle covers π/4 of its bounding box). The ratio 2.42 still holds, because both plates share the shape, but the sentence as stated is wrong and the reader cannot tell whether the rule is exact or a shortcut. The original has the same wording.
+- F2 definition.text: "So the value axis of a bar chart must start at zero." — "value axis" is used once and never defined; everything after says "side axis". Nothing covers bars lying flat.
+- F2 simplified_explanation: "Two pie charts drawn the same size for two years hide any change in the total." — a pie chart is never explained (whole circle = total, slice = share). The restored "By area" paragraph now says a slice carries its value by area, but not that the value is a share. **Ex 2 needs this.** Pies also sit oddly under "Pictures in place of bars".
+- F2 simplified_explanation: "A mark is anything drawn that stands for one number" against P3's "a mark every 20" and "the third mark above the bottom" — two senses of "mark" (data mark, axis tick) in one section. A7 and C5 used the tick sense. The original has both. Affects P3.
+- F2 simplified_explanation: unequal bins — the restored paragraph says a wider bin "cannot be compared with the others", but no method for a fair comparison (count per unit of width) is given, and nothing says which bin holds a value on a shared boundary ("0 to 20, 20 to 40"). **P9's conclusion needs the method; the reader supplied it.**
+- F2 Exercise 1: "describe two honest ways to redraw it" — only one redraw (from zero) is demonstrated in the original. A dot chart or a table is never named. **Ex 1.**
+- F2 simplified_explanation: "Double the height and the width of a picture, and it covers four times the page." — "four times the page" means four times the area. Read twice. Minor.
+- F2 illustration.analogy_breaks_when: "Stretch a picture upward only, and its area grows in step with its value. It will look stretched, which is its own warning." — whether this is an honest fix or another misleading form is left open in the original too.
+- F2 simplified_explanation: "Two side axes on one figure" — reading one height against each axis is never shown. Minor; P10 was doable.
+
+## F3
+- **ERROR** F3 illustration.analogy_breaks_when: "An old copy can pass finding, confirming and locating, then fail at reading." — the original adds "That is exactly what happened above", but above, the old copy failed at *locating* ("search inside the document for '279A'. Nothing comes up."). Internal contradiction in the original.
+- F3 illustration.analogy_breaks_when and must_know[1]: "For a law there is a fifth question the four acts never ask on their own: is this copy up to date?" against the Definition's "four things" — four acts or five, and where the currency check sits, is never settled. In the illustration it does the work of act two. The original's must_know[1] ("add a fifth act") does not settle placement either.
+- F3 illustration.body: "A second copy sits on the same website, marked as up to date, and that one does hold Article 279A." — the worked check stops here in the original too. Act four (does 279A set up the GST Council?) is never done and the claim is never settled. **Blocks Ex 1 ("settle it").**
+- F3 illustration.body: "Article 279A was written into the Constitution in 2016" — the diagnosis rests on this date, which the text supplies; how a reader would find an insertion date is never said.
+- F3 illustration.body: "Constitution" and "Article" are used before F5 introduces them. (GST and Council now glossed by the restore.)
+- F3 Exercise 2: "Take any three references from something you have written" — nothing in the course has had the reader write anything with references. **Ex 2 cannot be done from the material.** Exercise design; needs Harsh's decision.
+- F3 illustration.analogy_breaks_when: "A paper finds that two things move together; someone later cites it as proof that one causes the other." — act-four failure is named, never demonstrated on a real passage. The original's next sentence ("Every one of the four acts passes") also sits uneasily with act four being "does the passage support the claim".
+
+## F4
+- F4 illustration.body: "It does not." — the restored sentences now explain "freely chosen" and name the fault, but no general method for showing an inference fails is taught (for example, find a case where the premises hold and the conclusion fails). Premise one's "energy they use" is not addressed. **Partly blocks Ex 1's justification and Ex 2, and must_know[3] "show the conclusion still does not follow".**
+- F4 must_know[2]: "In Indian food policy debate, the commonest unspoken premise is that people already know what is in their food." — no source and no example argument where it hides.
+- F4 must_know[0]: "True premises do not make a conclusion true." — with the restored second sentence it reads correctly, but the first sentence alone is still loose ("do not by themselves"). Wording; minor.
+- F4 illustration.body, Premise one: "obesity happens when a person takes in more energy than they use." — C9 ("That is the step this book does not take") and E3 ("What it will not do is turn joules into kilograms of a body") decline to establish this. The cut only asks the reader to grant it; the original's cut paragraph goes further ("Premise one holds up as plain accounting"). Not restored. Tension with C9/E3; needs Harsh's decision if the premises paragraph ever comes back.
+- F4 illustration.analogy_breaks_when: "Most arguments you meet in a hostile room" — "hostile room" is not explained. Minor.
+- F4 illustration.body and Exercise 1: "obesity" — the subject of the illustration and Ex 1, and defined nowhere in A to F. (See F1.)
+
+## F5
+- F5 must_know[1] and Exercise 1: "Four levels, hardest to easiest to change" — nothing says who changes the Constitution or a notification, or why the Constitution is hardest. **Blocks Ex 1 for two of the four levels.**
+- F5 must_know[0] against must_know[1]: "a notification in the Gazette" (the act of publishing a regulation) against "a notification" as the lowest separate instrument. The second sense is never defined. Also "Four levels" lists five names if "rule or regulation" is read as two.
+- **ERROR** F5 illustration.body: "The detail sits in a regulation — a rule written by a body, not by Parliament." against definition.text: "The Central Government may make rules. A body that the statute creates may make regulations." — the gloss calls a regulation "a rule" straight after the Definition separates the two. Internal contradiction in the original's terms.
+- F5 simplified_explanation: "Three different jobs, done by three different sets of people." against the Definition's opening, which names two powers ("the power to make law from the power to apply it"). The original's Definition does name the courts later, but the opening count is still two.
+- F5 Exercise 2: "an advisory with no legal force" — "advisory" is used only in the exercise and never taught. **Ex 2.**
+- F5 must_know[0] and must_know[4]: "A regulation needs a meeting and a notification in the Gazette" and "a process with dates you can chase" — a meeting of whom, and how long it takes, are never said. **Ex 3's "next week" needs a timescale.**
+- F5 simplified_explanation: "both bind you, because a statute said they could" — section 23(1) binds sellers; the reader holding the packet is not obviously bound. Minor.
+- F5 illustration.analogy_breaks_when: "Some of the largest programmes shaping health in India rest on nothing but an executive decision and a budget line." — no example named in the original either, so the claim cannot be checked.
+- F5 must_know[2]: "Before repeating a label rule to anyone, open the regulation itself." — the regulation is never named. B4 named it (Food Safety and Standards (Labelling and Display) Regulations, 2020, regulation 5(3)(b)); the link is left to the reader.
+- F5 definition.text: "Parliament and the State Legislatures enact statutes." — nothing says an "Act" (the word used through A to E) is a statute, or what the Constitution is. Minor.
