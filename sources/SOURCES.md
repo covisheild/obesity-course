@@ -127,7 +127,8 @@ an erratum or correction notice.
 
 Every passage was cut programmatically from the raw text the TinyFish `fetch_content` tool
 returned (saved from the tool's own result file, not retyped), and re-checked afterwards as a
-whitespace-normalised substring of that fetch: 102 of 102. Log in `books/S01-R1/INTAKE.md`.
+whitespace-normalised substring of that fetch: 118 of 118. Hall 2008, supplied by Harsh as a PDF,
+was checked the same way against its pdftotext extraction: 17 of 17 (135 of 135 in all). Log in `books/S01-R1/INTAKE.md`.
 
 **How the journal papers were reached, and what that means.** `pmc.ncbi.nlm.nih.gov` now answers
 TinyFish with a reCAPTCHA page, the Europe PMC full-text service returns HTTP 500 for articles
@@ -136,8 +137,10 @@ bot-block. NCBI's own PMC Article Dataset on AWS (`pmc-oa-opendata.s3.amazonaws.
 article's plain text and is reachable. What it serves for these five is the **NIH author
 manuscript**, not the typeset article, and its licence line says: "This file is available for text
 mining. It may also be used consistent with the principles of fair use under the copyright law."
-None of the five is open-licensed. Hall 2008 and Hall et al. 2012 are not in that dataset and were
-not obtained.
+None of the five is open-licensed. Hall 2008 and Hall et al. 2012 are not in that dataset. Hall et al.
+2012 was later obtained as the publisher PDF through Europe PMC's PDF render
+(`europepmc.org/articles/PMC3302369?pdf=render`); the same route returns an error for Hall 2008,
+which Harsh then supplied as the author-manuscript PDF.
 
 | File | What it is | Words | Verified in it |
 | --- | --- | --- | --- |
@@ -147,6 +150,8 @@ not obtained.
 | `rosenbaum_leibel_2010.txt` | Rosenbaum and Leibel, *Int J Obes* 2010;34 Suppl 1:S47 (PMC3673773), author manuscript. Excerpts | 1063 | 20%–25% fall in 24-hour expenditure after 10% or greater loss; 10–15% below that predicted from fat and lean mass; ~300–400 fewer calories per day; over 100,000 kcal stored in a 70-kg man |
 | `polidori_2016.txt` | Polidori et al., *Obesity* 2016;24:2289 (PMC5108589), author manuscript. Excerpts | 788 | ~100 kcal/day per kg of lost weight; against ~30 kcal/kg/day in expenditure; self-reported intake inaccurate |
 | `fao_who_unu_2004.txt` | FAO/WHO/UNU, *Human energy requirements*, FAO Food and Nutrition Technical Report Series 1 (2004), HTML edition. Excerpts from the chapter 2 and chapter 5 pages. "All rights reserved", non-commercial educational reproduction authorised with acknowledgement | 2227 | Definition of energy requirement; BMR 45 to 70 percent of TEE; metabolic response to food about 10 percent of BMR; DLW measures TEE over usually 10 to 14 days; gender, age and body weight as main determinants; PAL = TEE/BMR; sustainable PAL about 1.40 to 2.40; 1 kcal = 4.184 kJ; worked example 1 975 kcal for a 55 kg woman. BMR equations **not** held |
+| `hall_2008_ijo.txt` | Hall, *Int J Obes* 2008;32:573 (PMC2376744). NIH author-manuscript PDF (NIHMS47767) **supplied by Harsh** 2026-09-23; its text layer via pdftotext. Excerpts. The PDF states no licence | 2737 | Rule of 3500 kcal per pound, or 32.2 MJ per kg; its origin in a calculation assuming loss of adipose tissue of 87% fat (refs 1, 2); glycogen, protein and fat at 17.6, 19.7 and 39.5 MJ/kg; fat mass change 39.5 MJ/kg, not the same as adipose tissue, which includes fluid and protein; lean mass change 7.6 MJ/kg (h = 1.6 g water per g protein); glycogen's effects on weight loss typically within the first week; 24.7 MJ per kg for a 15 kg loss at 20 kg initial fat. Does **not** state its own adipose lipid fraction, or that early loss is mostly glycogen and water. Equations absent (images) |
+| `hall_2012_ajcn.txt` | Hall et al., *Am J Clin Nutr* 2012;95:989 (PMC3302369), **publisher PDF** text layer via Europe PMC's PDF render (obtained on a second attempt). Excerpts. "© 2012 American Society for Nutrition"; free to read, not open-licensed. Consensus statement funded by ASN and ILSI North America | 2419 | The energy balance equation (ES = EI – EO) as the first law; REE about two-thirds of EO; TEF, AEE; water bound to glycogen; body fat energy content much higher than lean; passive and active compensation; the panel's recommendation that the 3500 kcal per pound rule no longer be used; rule of thumb 10 kcal/d per lb; DLW precision ~5%. Hyphenation and ligatures as in the PDF |
 | `bipm_si_prefixes.txt` | BIPM SI prefixes page, whole table | 503 | kilo, mega, giga rows. Exponents lose their superscript in extraction ("106" is 10^6); read the header |
 | `nist_sp811_pound.txt` | NIST SP 811 Appendix B.8 pound row, and the footnote with the exact factor | 456 | Pound (avoirdupois) 4.535 924 E-01 kg in B.8; exact 4.535 923 7 E-01 in the footnote; footnotes page updated 18 August 2025 |
 | `ftc_gut_check_2014.txt` | US FTC, *Gut Check* (January 2014). Excerpts. No licence statement on the page | 830 | The seven claims; "Meaningful weight loss requires taking in fewer calories than you use"; claims 2 and 7 reasoning. Its example ads are the FTC's own illustrations, **not real published ads** |
@@ -154,7 +159,7 @@ not obtained.
 | `nss_594_nutritional_intake.txt` | MoSPI NSS Report 594, *Nutritional Intake in India 2022-23 & 2023-24* (2025), PDF text layer. Successor to Report 560, which is **not** held | 1453 | All-India per capita kcal/day 2233 rural, 2250 urban (2022-23), 2212 and 2240 (2023-24); Table 3.14 with 2011-12 at 2233 rural, 2206 urban; energy computed from a nutrient conversion table revised in 2025 |
 
 **Vintage.** The five papers are published articles; the trigger is an erratum or retraction
-(Europe PMC lists an erratum, Am J Clin Nutr 2012;96:448, for Hall et al. 2012, which is not held). FAO/WHO/UNU 2004 is the current
+(Europe PMC lists an erratum for Hall et al. 2012, Am J Clin Nutr 2012;96:448; the erratum is not held). FAO/WHO/UNU 2004 is the current
 joint report; the trigger is a new expert consultation. ICMR-NIN 2020 is superseded when ICMR-NIN
 revises its requirements. NSS 594 covers 2022-24; the trigger is the next HCES nutritional-intake
 report. The BIPM prefix table was last extended in 2022 (CGPM Resolution 3); NIST SP 811's

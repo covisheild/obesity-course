@@ -8,7 +8,7 @@ as a whitespace-normalised substring of the raw fetch. An omission inside a para
 Identifiers were confirmed with the PubMed tools (`lookup_article_by_citation`, `search_articles`,
 `get_article_metadata`). No WebFetch output is stored anywhere.
 
-**Verbatim check: 102 of 102.**
+**Verbatim check: 135 of 135** (102 in the first pass, 16 for Hall 2012 in the second, 17 for Hall 2008 from Harsh's PDF).
 
 | Source | URL fetched | Passages | Check | Licence as stated | Citekey |
 | --- | --- | --- | --- | --- | --- |
@@ -17,6 +17,8 @@ Identifiers were confirmed with the PubMed tools (`lookup_article_by_citation`, 
 | Thomas et al. 2013 *Int J Obes* | …/PMC4024447.1/PMC4024447.1.txt | 8 | 8/8 | same | `thomas_2013_3500kcal` |
 | Rosenbaum & Leibel 2010 *Int J Obes* | …/PMC3673773.1/PMC3673773.1.txt | 4 | 4/4 | same | `rosenbaum_leibel_2010` |
 | Polidori et al. 2016 *Obesity* | …/PMC5108589.1/PMC5108589.1.txt | 6 | 6/6 | same | `polidori_2016` |
+| Hall 2008 *Int J Obes* (PDF supplied by Harsh) | Author-manuscript PDF NIHMS47767, text layer by `pdftotext` (reading order), raw extraction saved in scratch and sliced by script | 17 | 17/17 | the PDF states none; headed "NIH Public Access / Author Manuscript" | `hall_2008_ijo` |
+| Hall et al. 2012 *AJCN* (second attempt) | https://europepmc.org/articles/PMC3302369?pdf=render (redirects to europepmc.org/api/getPdf?pmcid=PMC3302369); publisher PDF text layer | 16 | 16/16 | "© 2012 American Society for Nutrition" (printed as "/C2112012"); free to read, not licensed | `hall_2012_ajcn` |
 | FAO/WHO/UNU 2004 | https://www.fao.org/4/y5686e/y5686e00.htm, y5686e04.htm, y5686e07.htm | 25 | 25/25 | "All rights reserved"; non-commercial educational reproduction authorised with acknowledgement | `fao_who_unu_2004` |
 | BIPM SI prefixes | https://www.bipm.org/en/measurement-units/si-prefixes | 2 | 2/2 | none in the page text | `bipm_si_prefixes` |
 | NIST SP 811 B.8 + footnotes | https://www.nist.gov/pml/special-publication-811/nist-guide-si-appendix-b-conversion-factors/nist-guide-si-appendix-b8 and …/nist-guide-si-footnotes | 5 | 5/5 | none in the page text | `nist_sp811_pound` |
@@ -28,8 +30,6 @@ Identifiers were confirmed with the PubMed tools (`lookup_article_by_citation`, 
 
 | Source | Why | Where Harsh can get it |
 | --- | --- | --- |
-| Hall 2008 *Int J Obes* 32:573 (PMC2376744) | PMC answers the fetch tool with reCAPTCHA; nature.com is paywalled; Europe PMC full-text service returns 500 (not open access); the author manuscript is not in the PMC cloud dataset | https://pmc.ncbi.nlm.nih.gov/articles/PMC2376744/ |
-| Hall et al. 2012 *AJCN* 95:989 (PMC3302369) | PMC gated; academic.oup.com and ajcn.nutrition.org bot-block; the PDF link was unreachable; not in the PMC cloud dataset | https://pmc.ncbi.nlm.nih.gov/articles/PMC3302369/ |
 | ICMR-NIN 2020 full report | Sold in print only (Rs 400) | https://www.nin.res.in/RDA_Full_Report_2024.html |
 | NSS Report 560 (2011-12) | Not attempted after the successor, Report 594, was found; its Table 3.14 gives the 2011-12 figures | https://mospi.gov.in/ (publications, NSS reports), if 560 itself is wanted |
 
@@ -55,3 +55,27 @@ Identifiers were confirmed with the PubMed tools (`lookup_article_by_citation`, 
 - **BIPM exponents** come through without superscript ("106" means 10^6); flagged in the header.
 - The NIST footnote identified as footnote 22 is identified **by its position on the page**, because the page
   prints no footnote numbers.
+
+## Second attempt, 2026-09-23
+
+Routes tried for the two missing papers: OpenAlex and Semantic Scholar open-access locations (Hall 2008:
+only PMC; Hall 2012: PMC and an OUP PDF, which is unreachable); S3 prefix listings of `pmc-oa-opendata`
+(neither PMCID present); Europe PMC abstract, render, getPdf, ptpmcrender and fulltextRepo routes; the
+NIHMS47767 route on PMC; academic.oup.com article-lookup (bot-blocked). **Hall 2012 obtained** through
+Europe PMC's PDF render (publisher version). **Hall 2008 not obtained.** The coordinator's DOI for Hall
+2012 (10.3945/ajcn.111.028977) returns 404 at OpenAlex; the PubMed-confirmed DOI is 10.3945/ajcn.112.036350.
+
+Hall 2012 caveats: a consensus statement funded by the ASN and ILSI North America, not editorially peer
+reviewed by the journal (its own footnotes); the text layer keeps line-end hyphens and ligatures, so quotes
+must copy them as they stand in the file.
+
+## Harsh's PDFs, 2026-09-23
+
+- **Hall 2008**: filed from the author-manuscript PDF he supplied (not a TinyFish fetch, since no session route
+  reached it). Text via `pdftotext`; the layout mode was rejected because it put the margin watermark inside
+  paragraphs. PMID, PMCID and DOI confirmed via PubMed. The paper's two equations are images and absent. It gives
+  no adipose lipid fraction of its own (only the 87% the rule assumes), and does not say early loss is mostly
+  glycogen and water. It prints "32.2 kJ/kg" once for MJ/kg.
+- **Hall 2012**: Harsh's PDF is the same typeset publisher version as the filed copy; all 16 filed passages agree
+  with its text layer once ligatures, hyphenation, spacing and punctuation are set aside. Noted in the file header;
+  not re-filed.

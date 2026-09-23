@@ -18,12 +18,12 @@ Checked against `sources/`, `sources/INDEX.yml` and `sources/SOURCES.md` on 2026
 
 Taken in by the S01-R1 source intake (log: `INTAKE.md`). Identifiers confirmed against PubMed; two
 PMCIDs above were wrong. Every stored passage was cut from the raw TinyFish fetch and re-checked
-against it: 102 of 102.
+against it: 118 of 118; Hall 2008, from Harsh's PDF, 17 of 17 against its text layer (135 of 135).
 
 | Work, section | Kind | Obtained | File, citekey | Confirmed URL | Concepts |
 | --- | --- | --- | --- | --- | --- |
-| Hall KD. *Int J Obes* 2008;32:573 (PMID 17848938, PMC2376744, doi:10.1038/sj.ijo.0803720) | primary | **no** | none | https://pmc.ncbi.nlm.nih.gov/articles/PMC2376744/ (PMCID confirmed). PMC is reCAPTCHA-gated to the fetch tool; nature.com is paywalled; the author manuscript is not in the PMC cloud dataset | C01, C02, C08 |
-| Hall KD et al. *Am J Clin Nutr* 2012;95:989 (PMID 22434603, PMC3302369, doi:10.3945/ajcn.112.036350) | primary (review) | **no** | none | https://pmc.ncbi.nlm.nih.gov/articles/PMC3302369/ (PMCID confirmed). PMC gated; OUP and ajcn.nutrition.org bot-block; not in the PMC cloud dataset | C04, C05, C06, C09 |
+| Hall KD. *Int J Obes* 2008;32:573 (PMID 17848938, PMC2376744, NIHMS47767, doi:10.1038/sj.ijo.0803720) | primary | **yes**: author-manuscript PDF supplied by Harsh 2026-09-23 (no session route reached it), text layer via pdftotext | `hall_2008_ijo.txt`, `hall_2008_ijo` | https://pmc.ncbi.nlm.nih.gov/articles/PMC2376744/ | C01, C02, C07, C08 |
+| Hall KD et al. *Am J Clin Nutr* 2012;95:989 (PMID 22434603, PMC3302369, doi:10.3945/ajcn.112.036350) | primary (review) | **yes** (second attempt): publisher PDF text layer | `hall_2012_ajcn.txt`, `hall_2012_ajcn` | https://pmc.ncbi.nlm.nih.gov/articles/PMC3302369/; text via https://europepmc.org/articles/PMC3302369?pdf=render | C04, C05, C06, C09 |
 | Hall KD, Guo J. *Gastroenterology* 2017;152:1718 (PMC5568065) | primary (review) | **yes** | `hall_guo_2017.txt`, `hall_guo_2017` | https://pmc.ncbi.nlm.nih.gov/articles/PMC5568065/ (text from the PMC Article Dataset) | C04, C06, C09, C10 |
 | Hall KD, Sacks G, Chandramohan D, Chow CC, Wang YC, Gortmaker SL, Swinburn BA. *Lancet* 2011;378:826 (PMC3880593) | primary | **yes** | `hall_2011_lancet.txt`, `hall_2011_lancet` | https://pmc.ncbi.nlm.nih.gov/articles/PMC3880593/ | C02 (39·5 MJ/kg fat, 7·6 MJ/kg lean, citing Hall 2008), C07, C08 (glycogen and water) |
 | Thomas DM, **Martin CK, Lettieri S, Bredlau C, Kaiser K, Church T, Bouchard C,** Heymsfield SB. *Int J Obes* 2013;37:1611 (**PMC4024447**, not PMC3859816, which is Hall and Chow 2013) | primary (commentary) | **yes** | `thomas_2013_3500kcal.txt`, `thomas_2013_3500kcal` | https://pmc.ncbi.nlm.nih.gov/articles/PMC4024447/ | C07 |
@@ -38,16 +38,16 @@ against it: 102 of 102.
 
 ## Gate
 
-**Two lines still say no: Hall 2008 and Hall et al. 2012.** What that leaves open, concept by concept:
+**Every line now says yes or partly.** No source line blocks. What the held sources do and do not give:
 
-- **C01, C02** named Hall 2008 for adipose and lean energy content. Hall 2011 (held) states 39·5 MJ per kg
-  of body fat and 7·6 MJ per kg of lean mass, citing Hall 2008. It does **not** give adipose tissue's lipid
-  fraction or a per-kg figure for adipose tissue (the ~7,700 kcal/kg of the inventory); that needs Hall 2008.
-- **C04, C05, C09** named Hall 2012. Hall and Guo 2017 (held) covers the components of expenditure and
-  their interaction, and FAO/WHO/UNU 2004 (held) states energy balance as input equal to output. Neither
-  gives Hall 2012's equation in Hall's own terms (rate of change of body energy stores), which C05 asks for.
-- **C08** needs a real published claim. The FTC text names the claim type false with its reasoning; a real ad
-  is still to be chosen if the illustration must use one.
-
-Harsh can clear the two Hall papers in a browser: open the PMC links above and save the page text
-(or PDF) into `sources/`.
+- **C01, C02**: Hall 2008 gives fat mass change 39.5 MJ/kg, lean mass change 7.6 MJ/kg, and says fat mass change
+  is not adipose tissue, which includes fluid and protein. It gives **no adipose lipid fraction of its own**: the
+  only figure is the 87% fat assumed by the rule's derivation (Wishnofsky 1958), and the paper's point is that
+  this assumption is wrong. A per-kg energy for adipose tissue (the ~7,700 kcal/kg of the inventory) is stated
+  only as the rule itself (3500 kcal per pound, 32.2 MJ per kg). The drafter must present ~7,700 kcal/kg as the
+  rule's figure, not as a measured property of adipose tissue.
+- **C07**: the rule's derivation is now sourced (Hall 2008, block 3).
+- **C08**: Hall 2008 says glycogen's effects on weight loss "typically occur within the first week"; Hall 2012 says
+  water is bonded to glycogen. Neither says early loss is *mostly* glycogen and water; the drafter should not say
+  so. A real published claim is still Harsh's choice (the FTC examples are illustrations).
+- **ICMR-NIN**: the brief note only; the full 2020 report is print-only.
