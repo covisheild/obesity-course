@@ -47,3 +47,16 @@ of operations and before the Part C close-out. A cold reader given those would t
 a book that no longer exists. All of them, and E1–E8's extracts, were rewritten from the merged
 records. Regenerate again immediately before step 5a in any case — `release` is cheap and a stale
 copy is silent.
+
+## Parts D, E and F, compressed 23 September 2026
+
+All twenty sections cut (5a), cold-read one Part at a time against the released text of every
+earlier Part (5b: `COLDREAD-REPORT-part-{D,E,F}.md`), restored (5c: `restore-lists/`), and written
+back. Holes the original did not fill are in `HOLES-part-{D,E,F}.md`, triaged in
+`TRIAGE-part-{D,E,F}.md`, and fixed and verified through `books/B0/defects/*-compression.md`.
+
+**`restore.py` bug, fixed.** It matched a kept bullet or quote by its sentence with the marker still
+on, against a kept-set built with markers stripped, and never matched table rows. Every kept bullet,
+block quote and table row was silently dropped. D–F outputs were byte-identical after the fix; A7,
+C2 and C9 had lost lines since their own compression, and those were put back.
+

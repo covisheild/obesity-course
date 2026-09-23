@@ -86,6 +86,12 @@ def rebuild(original, cut_text, wanted):
     checks.
     """
     kept = set(sentences_of(cut_text))
+    # Bullets, quotes and table rows are matched as whole lines as well as by sentence. The
+    # sentence set above comes from build._paragraphs, which strips list markers and skips
+    # tables, so a kept bullet's "- adding ..." never matched its own "adding ...", and a
+    # kept table row matched nothing. Every kept bullet, quote and table was silently dropped
+    # (found 23 Sep 2026 in A7, C2 and C9, already written back).
+    kept_lines = {norm(l) for l in str(cut_text).splitlines() if l.strip()}
     kept_fences = {norm(b) for k, b in split_blocks(str(cut_text)) if k == "fence"}
     indent = re.match(r"[ \t]*", str(original).lstrip("\n")).group(0)
     width = max((len(l) for l in str(original).splitlines()), default=96)
@@ -112,7 +118,8 @@ def rebuild(original, cut_text, wanted):
             if asked:
                 restored_here = True
             if atomic:
-                if asked or any(norm(s) in kept for s in sents):
+                if (asked or any(s in kept for s in sentences_of(body))
+                        or any(norm(l) in kept_lines for l in body.splitlines() if l.strip())):
                     pieces.append(body)
                 continue
             if asked:

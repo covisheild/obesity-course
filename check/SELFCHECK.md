@@ -39,8 +39,14 @@ When an audit marks a defect **recurring** and it is not on this list, add it he
 11. **Must-know points are about the reader's behaviour.** None has the section as its subject;
     a `boundary` point names a limit of the technique.
 12. **§9 language** on weight and the people who have it.
+13. **Bounds keep their direction.** Anything worked out from a ceiling ("up to") by taking 1 minus
+    it is a floor, and a bound for a whole population is no bound for a subgroup. Say which it is
+    in the sentence. Found in two sections of Part D by the compression pass (C24, C25).
+14. **Every term is explained at or before its first use**, in prose, exercises and practice prompts
+    alike, in this section or an earlier one. The compression pass found undefined terms in most
+    sections of Parts D to F.
 
 ## Rendering
 
-13. Exponents as `10^7`, logarithms as `log10`, no markup; no repository path (`sources/…`,
+15. Exponents as `10^7`, logarithms as `log10`, no markup; no repository path (`sources/…`,
     `check/…`) anywhere a reader will see it, including `.bib` notes.

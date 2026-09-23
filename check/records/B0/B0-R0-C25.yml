@@ -14,22 +14,16 @@ concept_deps:
 - B0-R0-C06
 definition:
   text: |
-    To count the outcomes of two or more steps taken together, list every combination or multiply
-    the count of outcomes at each step. Tossing a coin n times has 2 to the power n outcomes, one
-    factor of 2 for every toss.
+    Tossing a coin n times has 2 to the power n outcomes, one factor of 2 for every toss.
 
-    Two events A and B are independent when the knowledge that one has happened tells you nothing
-    about the chance of the other. Independence is checked, not assumed: A and B are independent
-    exactly when P(A and B) — the probability that A and B both happen — equals P(A) times P(B),
-    and dependent otherwise. When they are independent, multiply to get P(A and B).
+    Independence is checked, not assumed: A and B are independent exactly when P(A and B) — the
+    probability that A and B both happen — equals P(A) times P(B), and dependent otherwise. Where
+    no joint figure exists, the check is an argument that knowing one tells you nothing about the
+    other. If you can make neither, treat them as dependent. When they are independent, multiply
+    to get P(A and B).
 
     When A and B cannot both happen — they are mutually exclusive — P(A or B), the probability
-    that at least one of A or B happens, equals P(A) plus P(B): add. When they can both happen,
-    adding double-counts the outcomes they share, and the correct rule subtracts that overlap
-    back out.
-
-    The probability that at least one of several independent events happens is 1 minus the
-    probability that none of them do: find the complement of "none", and subtract it from 1.
+    that at least one of A or B happens, equals P(A) plus P(B): add.
   references:
   - citekey: openstax_intro_stats_2e
     kind: textbook
@@ -75,32 +69,21 @@ definition:
       checked_on: '2026-09-23'
       note: ''
 simplified_explanation: |
-  This section stands on the last one: a probability, and its complement. It adds two moves:
-  listing what can happen, and deciding whether to add or to multiply.
+  Toss a coin twice and write out every pair: heads-heads, heads-tails, tails-heads, tails-tails.
+  Four outcomes, because each toss has two and there are two tosses. Every extra toss doubles the
+  list. Two tosses give 2 squared outcomes. Three tosses give 2 cubed, which is 2 to the power 3,
+  and n tosses give 2 to the power n.
 
-  Listing first. Toss a coin twice and write out every pair: heads-heads, heads-tails, tails-heads,
-  tails-tails. Four outcomes, because each toss has two and there are two tosses. Toss it a third
-  time and each of those four outcomes splits into two again, giving eight. Every extra toss
-  doubles the list. That is the section on powers again. Two tosses give 2 squared outcomes,
-  three tosses give 2 cubed, and n tosses give 2 to the power n.
-
-  Now add or multiply. The word "and" points at multiplying, but only on one condition. The two
-  events have to be independent — meaning that finding out one of them happened tells you nothing
-  new about the other. Two rolls of a fair die are independent, because the first roll leaves no
-  trace on the second. Multiply their probabilities to get the probability of both.
+  The word "and" points at multiplying, but only on one condition. The two events have to be
+  independent — meaning that finding out one of them happened tells you nothing new about the
+  other. Multiply their probabilities to get the probability of both.
 
   The word "or" points at adding, and it too has a condition: the two events have to be mutually
   exclusive, meaning they cannot both happen. If they can both happen, plain adding counts the
   overlap twice, and the fix is to take the overlap back out once.
 
-  Independence is a claim about the world, not a habit of arithmetic. Never multiply two
-  probabilities together just because a sentence has the word "and" in it. Check first: does
-  knowing one change the chance of the other? If you are not sure, the safe rule is to assume they
-  are not independent until you can show they are.
-
-  One more move, useful whenever a question asks for "at least one". Working out "at least one of
-  several things happens" directly usually means adding up many separate cases. It is almost
-  always faster to work out the probability that none of them happen, and subtract that from 1.
+  Never multiply two probabilities together just because a sentence has the word "and" in it. Check
+  first: does knowing one change the chance of the other?
 illustration:
   body: |
     Section 3(1) of the National Food Security Act, 2013 entitles every person belonging to a
@@ -119,28 +102,29 @@ illustration:
 
     At most 0.5625, so a little over half, that both are covered.
 
-    Now pick two people from the same household instead. This is the trap, and it is real:
-    coverage is decided once, for the whole household, not separately for each person in it. If
-    the household is covered, every person belonging to it is covered along with it. Knowing that
-    the first person is covered tells you with certainty that the second one is too. The two
-    outcomes are not independent, and multiplying is the wrong move.
+    Now pick two people from the same household instead. If the household is covered, every person
+    belonging to it is covered along with it. The Act gives the entitlement to "every person
+    belonging to priority households". It is households that the State Government
+    identifies. The two outcomes are not independent, and
+    multiplying is the wrong move.
 
     ```working
         P(both covered, same household) is at most 0.75
     ```
 
-    Not 0.5625. The household is covered or it is not; there is one draw, not two, whatever the
-    number of people standing inside it.
+    Not 0.5625.
 
-    Now try "at least one". Pick three rural people, each from a different household, and ask for
-    the probability that at least one of them is covered. Listing every way "at least one" could
-    happen means separately counting several cases, such as "just the first" or "just the second".
-    That runs to seven cases, "all three" among them. Go by the complement instead: work out the
-    probability that none of the three is covered, and subtract that from 1.
+    Pick three rural people, each from a different household, and ask for the probability that at
+    least one of them is covered. Go by the complement instead: work out the probability that none
+    of the three is covered, and subtract that from 1. If the three "covered" events are
+    independent, the three "not covered" events are too. So multiply the three "not covered"
+    chances. Each "1 minus" step turns a ceiling into a floor, or a floor into a ceiling.
 
     ```working
         1 minus 0.75 = 0.25
     ```
+
+    P(not covered) is at least 0.25.
 
     ```working
         0.25 times 0.25 = 0.0625
@@ -150,28 +134,21 @@ illustration:
         0.0625 times 0.25 = 0.015625
     ```
 
+    P(none covered) is at least 0.015625.
+
     ```working
         1 minus 0.015625 = 0.984375
     ```
 
-    At most, about 98.4 per cent that at least one of the three is covered. Two subtractions and
-    two multiplications did the work that listing every case would have taken far longer to do.
-    And it used the same independence you already checked: three people from three different
-    households, each treated as a separate draw.
+    P(at least one covered) is at most 0.984375. At most, about 98.4 per cent that at least one of the three is covered.
   analogy_breaks_when: |
-    The multiplying rule for "and" only holds where independence genuinely holds. The household
-    case above shows how it fails. Two people can look like two separate draws and actually be one
-    draw, counted twice. Before multiplying, name what would have to be true for the two events to
-    be independent. Then check whether it is.
+    Two people can look like two separate draws and actually be one draw, counted twice. Before
+    multiplying, name what would have to be true for the two events to be independent. Then check
+    whether it is.
 
-    Every number in this illustration inherits the ceiling from the section before it. "At most
-    0.5625" and "at most 98.4 per cent" are bounds built from a bound, not measured figures. Every
-    extra multiplication carries that same qualification forward. It does not sharpen it.
-
-    And the household model here is a simplification. It treats every household as either wholly
-    covered or wholly not, which is what the Act's wording supports. It says nothing about a
-    household that is only partly reached in practice. That would need data this section does not
-    have.
+    "At most 0.5625" and "at most 98.4 per cent" are bounds built from a bound, not measured
+    figures. Every extra multiplication carries that same qualification forward. It does not
+    sharpen it.
   numbers:
   - value: '75'
     unit: per cent, ceiling on coverage of the rural population, s.3(2), as enacted in 2013 -
@@ -185,12 +162,18 @@ illustration:
       in 2013
     citekey: nfsa_2013
     as_of: '2013'
-    quote: five kilograms of foodgrains per person per month
+    quote: Every person belonging to priority households, identified under sub-section (1) of
+      section 10, shall be entitled to receive five kilograms of foodgrains per person per month
+  - value: priority households
+    unit: the unit the State Government identifies for coverage, s.10(1)(b), as enacted in 2013
+    citekey: nfsa_2013
+    as_of: '2013'
+    quote: the remaining households as priority households to be covered under the Targeted Public
+      Distribution System
 must_know:
 - point: |
     Independence is a checkable claim, not a default. Test it by asking whether P(A and B) equals
-    P(A) times P(B). If you have not tested it and cannot argue for it directly, assume the events
-    are dependent until you can show otherwise.
+    P(A) times P(B).
   kind: misconception
   bearing: methodological
 - point: |
@@ -202,29 +185,22 @@ must_know:
   bearing: methodological
 - point: |
     The word "and" in a sentence is not permission to multiply, and the word "or" is not permission
-    to add. Both words describe what is being asked for. Whether to multiply, add, or do something
-    else depends on independence, and on whether the events can happen together. You check that
-    separately from the wording.
+    to add.
   kind: move
   bearing: methodological
 - point: |
     "At least one of several things happens" is answered fastest through the complement. Work out
-    the probability that none of them happen, and subtract from 1. Reach for this whenever a
-    question describes "at least one", "some", or "not all" and the direct list would run to many
-    cases.
+    the probability that none of them happen, and subtract from 1.
   kind: move
   bearing: methodological
 - point: |
-    A number built by multiplying several ceilings together is a smaller ceiling. It is often
-    tempting to report it as though it had become more precise for having gone through more
-    arithmetic. It has not. Carry the same "at most" or "at least" through every step.
+    Multiplying ceilings gives a ceiling, and multiplying floors gives a floor. Every "1 minus"
+    step turns one into the other. Label each line "at most" or "at least" as you go.
   kind: consequence
   bearing: policy
 - point: |
     When you teach this to a trainee, put the independence check before the arithmetic every time,
-    even in a case where it is obviously true. A trainee who learns to multiply first and ask
-    afterwards will eventually multiply two probabilities that were never independent. The
-    finished number will look exactly as convincing as a correct one.
+    even in a case where it is obviously true.
   kind: move
   bearing: teaching
 exercises:
@@ -369,7 +345,7 @@ practice:
     sounding plausible would change that.
 - level: 3
   prompt: |
-    Two fair coins are tossed. Let A be the event that the first toss is heads, and B be the event
+    Two fair coins, each equally likely to land heads or tails, are tossed. Let A be the event that the first toss is heads, and B be the event
     that the second toss is heads. List the sample space, then check whether A and B are
     independent by counting outcomes.
   answer: |
@@ -626,16 +602,25 @@ practice:
 
     That route gives about 68 per cent, and it is wrong, because it repeats the same mistake as the
     same-household problem earlier in this set. Coverage is decided once for the whole household
-    under section 3(1), not once per member. A household of four is not covered or not covered as
+    under section 3(1), not once per member. A household of four is covered or not covered as
     one draw, and every member shares that single outcome.
 
     The question "at least one member is not covered" is therefore the same question as "is the
-    household not covered". So it is one chance, not four. The Act's 75 per cent is a ceiling on
-    all rural people together. It gives no figure for households of four in particular, so the
-    report's 'high' has nothing under it.
+    household not covered". So it is one chance, not four: the chance this one person is not
+    covered. The Act's 75 per cent is a ceiling on all rural people together. For a rural person
+    drawn with nothing else known, it gives a floor on that chance.
+
+    ```working
+        1 minus 0.75 = 0.25
+    ```
+
+    But this person is known to live in a household of four. A ceiling on all rural people puts
+    no bound on any one group within them, such as people in households of four. The section has
+    no figure for that group. So the report's 'high' has nothing under it, and nothing here rules
+    it out either.
 
     What this does not establish. A district report cannot quote section 3(2) as a district
-    ceiling. The 75 per cent is national. Section 9 leaves each State's own share to the Central
+    ceiling. Section 3(2) names no State or district. Section 9 leaves each State's own share to the Central
     Government, so nothing here is a fact about this particular district.
 
     It also does not say how many households actually sit on the wrong side of the ceiling. That

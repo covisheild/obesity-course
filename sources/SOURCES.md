@@ -7,7 +7,7 @@ provisions actually located in the text, not the provisions the file is assumed 
 | --- | --- | --- | --- |
 | `fss_act_2006.txt` | Food Safety and Standards Act 2006 (Act 34 of 2006), enacted 23 Aug 2006 | 24,104 | s.4 establishes FSSAI; s.23(1) packaged food must be labelled "in the manner as may be specified by regulations"; s.92 power to make regulations; s.93 regulations laid before Parliament |
 | `constitution_current.txt` | Constitution of India, consolidated 2026 text (handle 123456789/618394) | 135,907 | Articles 21, 32, 47, 53, 79, 226, 245, 246, 279A |
-| `constitution.txt` | **Do not cite.** An older India Code consolidation, latest amendment 2003 | 89,103 | Contains no Article 279A. Kept only because it is the worked example in Book 0 F3 |
+| `constitution.txt` | **Do not cite.** An older India Code consolidation, newest amendment it names 2006 | 89,103 | Contains no Article 279A. Kept only because it is the worked example in Book 0 F3 |
 | `nfsa_2013.txt` | National Food Security Act 2013 (Act 20 of 2013), 10 Sep 2013 | 7,679 | s.5, mid-day meal entitlement |
 | `consumer_prot_2019.txt` | Consumer Protection Act 2019 (Act 35 of 2019), 9 Aug 2019 | 21,568 | Chapter III s.10, the Central Consumer Protection Authority |
 | `bipm_si.txt` | BIPM's statement of the SI definition, in force from 20 May 2019 | 407 | The seven defining constants with their exact values; the relations Hz = s-1, J = kg m2 s-2 |
@@ -91,7 +91,7 @@ Read by searching each file for every occurrence of `by Act N of YYYY` and takin
 | `fss_act_2006.txt` | **Act 13 of 2008**, with effect from 7 February 2008. One amending Act, cited in three footnotes. Nothing later anywhere in the file | Every penalty figure in it is as at 2008 on the face of this copy. Quote it as what this copy says, not as the penalty in force |
 | `nfsa_2013.txt` | **None.** The file carries no amendment footnote at all, so it reads as the Act as enacted in 2013 | Schedule I's prices were fixed for three years from commencement and that window closed in 2016; the file says nothing about what replaced them. Schedule II's nutritional standards carry no such clock in the text |
 | `constitution_current.txt` | Consolidated 2026 text, per the row above; contains Article 279A | Usable |
-| `constitution.txt` | Latest amendment 2003 | **Do not cite**, per the row above |
+| `constitution.txt` | Newest amendment it names: 2006 | **Do not cite**, per the row above |
 | `consumer_prot_2019.txt` | **None.** Checked the same way on 2026-09-20 and the file carries no amendment footnote, so it reads as the Act as enacted in 2019 | Quote s.21, s.34, s.47 and s.58 figures as what this copy says |
 | `bipm_si.txt` | The 2019 revision, named on the page itself. BIPM revises the SI by CGPM resolution, so the trigger is the next CGPM | Usable. The defining constants are exact by definition and do not drift |
 | `nist_sp811.txt` | Page updated 18 August 2025 | Usable. The calorie definitions are fixed conversions, not measurements |

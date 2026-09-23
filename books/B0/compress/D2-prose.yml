@@ -1,0 +1,154 @@
+definition.text: 'To count the outcomes of two or more steps taken together, list every combination or multiply
+
+  the count of outcomes at each step. Tossing a coin n times has 2 to the power n outcomes, one
+
+  factor of 2 for every toss.
+
+
+  Two events A and B are independent when the knowledge that one has happened tells you nothing
+
+  about the chance of the other. Independence is checked, not assumed: A and B are independent
+
+  exactly when P(A and B) — the probability that A and B both happen — equals P(A) times P(B),
+
+  and dependent otherwise. When they are independent, multiply to get P(A and B).
+
+
+  When A and B cannot both happen — they are mutually exclusive — P(A or B), the probability
+
+  that at least one of A or B happens, equals P(A) plus P(B): add. When they can both happen,
+
+  adding double-counts the outcomes they share, and the correct rule subtracts that overlap
+
+  back out.
+
+
+  The probability that at least one of several independent events happens is 1 minus the
+
+  probability that none of them do: find the complement of "none", and subtract it from 1.
+
+  '
+simplified_explanation: 'This section stands on the last one: a probability, and its complement. It adds two moves:
+
+  listing what can happen, and deciding whether to add or to multiply.
+
+
+  Listing first. Toss a coin twice and write out every pair: heads-heads, heads-tails, tails-heads,
+
+  tails-tails. Four outcomes, because each toss has two and there are two tosses. Toss it a third
+
+  time and each of those four outcomes splits into two again, giving eight. Every extra toss
+
+  doubles the list. That is the section on powers again. Two tosses give 2 squared outcomes,
+
+  three tosses give 2 cubed, and n tosses give 2 to the power n.
+
+
+  Now add or multiply. The word "and" points at multiplying, but only on one condition. The two
+
+  events have to be independent — meaning that finding out one of them happened tells you nothing
+
+  new about the other. Two rolls of a fair die are independent, because the first roll leaves no
+
+  trace on the second. Multiply their probabilities to get the probability of both.
+
+
+  The word "or" points at adding, and it too has a condition: the two events have to be mutually
+
+  exclusive, meaning they cannot both happen. If they can both happen, plain adding counts the
+
+  overlap twice, and the fix is to take the overlap back out once.
+
+
+  Independence is a claim about the world, not a habit of arithmetic. Never multiply two
+
+  probabilities together just because a sentence has the word "and" in it. Check first: does
+
+  knowing one change the chance of the other? If you are not sure, the safe rule is to assume they
+
+  are not independent until you can show they are.
+
+
+  One more move, useful whenever a question asks for "at least one". Working out "at least one of
+
+  several things happens" directly usually means adding up many separate cases. It is almost
+
+  always faster to work out the probability that none of them happen, and subtract that from 1.
+
+  '
+illustration.body: "Section 3(1) of the National Food Security Act, 2013 entitles every person belonging to a\npriority household to five kilograms of foodgrains a month. Section 3(2) caps how far that\nentitlement reaches: up to 75 per cent of the rural population. Treat 0.75 as the probability,\nat most, that a rural person picked at random is covered — the figure from the section before\nthis one.\n\nPick two rural people entirely at random, from two different, unrelated households. Knowing\nwhether the first is covered tells you nothing about the second, so treat the two as\nindependent. Multiply.\n\n```working\n    0.75 times 0.75 = 0.5625\n```\n\nAt most 0.5625, so a little over half, that both are covered.\n\nNow pick two people from the same household instead. This is the trap, and it is real:\ncoverage is decided once, for the whole household, not separately for each person in it. If\nthe household is covered, every person belonging to it is covered along with it. Knowing that\nthe first person is covered tells you with certainty that the second one is too. The two\noutcomes are not independent, and multiplying is the wrong move.\n\n```working\n    P(both covered, same household) is at most 0.75\n```\n\nNot 0.5625. The household is covered or it is not; there is one draw, not two, whatever the\nnumber of people standing inside it.\n\nNow try \"at least one\". Pick three rural people, each from a different household, and ask for\nthe probability that at least one of them is covered. Listing every way \"at least one\" could\nhappen means separately counting several cases, such as \"just the first\" or \"just the second\".\nThat runs to seven cases, \"all three\" among them. Go by the complement instead: work out the\nprobability that none of the three is covered, and subtract that from 1.\n\n```working\n    1 minus 0.75 = 0.25\n```\n\n```working\n    0.25 times 0.25 = 0.0625\n```\n\n```working\n    0.0625 times 0.25 = 0.015625\n```\n\n```working\n    1 minus 0.015625 = 0.984375\n```\n\nAt most, about 98.4 per cent that at least one of the three is covered. Two subtractions and\ntwo multiplications did the work that listing every case would have taken far longer to do.\nAnd it used the same independence you already checked: three people from three different\nhouseholds, each treated as a separate draw.\n"
+illustration.analogy_breaks_when: 'The multiplying rule for "and" only holds where independence genuinely holds. The household
+
+  case above shows how it fails. Two people can look like two separate draws and actually be one
+
+  draw, counted twice. Before multiplying, name what would have to be true for the two events to
+
+  be independent. Then check whether it is.
+
+
+  Every number in this illustration inherits the ceiling from the section before it. "At most
+
+  0.5625" and "at most 98.4 per cent" are bounds built from a bound, not measured figures. Every
+
+  extra multiplication carries that same qualification forward. It does not sharpen it.
+
+
+  And the household model here is a simplification. It treats every household as either wholly
+
+  covered or wholly not, which is what the Act''s wording supports. It says nothing about a
+
+  household that is only partly reached in practice. That would need data this section does not
+
+  have.
+
+  '
+must_know[0].point: 'Independence is a checkable claim, not a default. Test it by asking whether P(A and B) equals
+
+  P(A) times P(B). If you have not tested it and cannot argue for it directly, assume the events
+
+  are dependent until you can show otherwise.
+
+  '
+must_know[1].point: 'Two people drawn from the same unit that a decision is made about are almost never
+
+  independent. Think of the same household, the same clinic, the same litter. This holds even
+
+  when the underlying probability looks identical to two people drawn from different units.
+
+  Ask what the decision was actually made about, before you multiply.
+
+  '
+must_know[2].point: 'The word "and" in a sentence is not permission to multiply, and the word "or" is not permission
+
+  to add. Both words describe what is being asked for. Whether to multiply, add, or do something
+
+  else depends on independence, and on whether the events can happen together. You check that
+
+  separately from the wording.
+
+  '
+must_know[3].point: '"At least one of several things happens" is answered fastest through the complement. Work out
+
+  the probability that none of them happen, and subtract from 1. Reach for this whenever a
+
+  question describes "at least one", "some", or "not all" and the direct list would run to many
+
+  cases.
+
+  '
+must_know[4].point: 'A number built by multiplying several ceilings together is a smaller ceiling. It is often
+
+  tempting to report it as though it had become more precise for having gone through more
+
+  arithmetic. It has not. Carry the same "at most" or "at least" through every step.
+
+  '
+must_know[5].point: 'When you teach this to a trainee, put the independence check before the arithmetic every time,
+
+  even in a case where it is obviously true. A trainee who learns to multiply first and ask
+
+  afterwards will eventually multiply two probabilities that were never independent. The
+
+  finished number will look exactly as convincing as a correct one.
+
+  '

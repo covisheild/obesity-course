@@ -129,3 +129,28 @@ Dropping from the cholesterol passage: *It sat below the fold on the screen, and
 # B6 pass 1 — the cut I was least sure about
 
 Deleting the whole last paragraph of `illustration.analogy_breaks_when`: that the arithmetic is exact while the weight and the height going into it are not, and that shoes on or no wall behind moves the answer more than rounding does. Exercise 1 asks the reader to write one sentence on what their index does not tell them. No threshold sentence was cut; those all survive.
+
+## Parts D, E and F — written by each cutter before the cold read (23 Sep 2026)
+
+| Section | The cut its cutter was least sure about |
+| --- | --- |
+| D1 | the equal-likelihood counting sentence in the definition; the rule now lives only in plain terms |
+| D2 | "at least one" = 1 minus none, and subtracting the overlap for non-exclusive events |
+| D3 | why Table 3's row label names the wrong group (rounding argument) |
+| D4 | the Kiran within-person / between-measurement paragraph, the half-kilogram-heavy scale |
+| D5 | why a sample divides by one less than the count |
+| D6 | the simulation of samples of 10 and 40 (0.633 / 0.317) that backs the figure |
+| D7 | the single-observer passage; every naming of "zero error" |
+| E1 | what hydrogen, chlorine and hydrogen chloride are made of, in the bond-energy example |
+| E2 | two of the three FAO loss quotes |
+| E3 | the middle of the balance-line derivation |
+| E4 | the 452 × 9 / 452 × 10 bracketing arithmetic |
+| E5 | the receptor walkthrough and signal-transduction quote |
+| E6 | "Here is what the coin is, physically" — phosphate off, ADP left |
+| E7 | "What you can observe does not fix what is carried." |
+| E8 | the definition's list of cells without insulin receptors |
+| F1 | "a difference between the states, rather than between two surveys" |
+| F2 | the by position / by length / by area paragraphs |
+| F3 | the passing Food Safety example and "Second, check it is the right thing" |
+| F4 | "'is a choice' has quietly turned into 'is only a choice'" |
+| F5 | Article 246, the Seventh Schedule and the three lists; Articles 32 and 226; section 93 |

@@ -93,3 +93,12 @@ Fix these at the start of Book 1, in that chat, before Task 5 runs:
 - **Book 1 carries the drafter comparison** (`PIPELINE.md` Task 2): one section drafted by Sonnet
   and by Opus 5.5, read unlabelled by Harsh, defects per section counted by the audit.
 - **Book 1 measures cost per section**, from which the course timeline is projected.
+- **`books/B0/compress/restore.py` restores whole paragraphs.** Naming one sentence brings back its
+  whole original paragraph, although the docstring says sentence by sentence. Book 0's restores
+  were validated as they ran (no mean or longest sentence rose), so nothing is wrong in the
+  records, but the restore put back more than the cold read earned. Make it sentence-level when
+  generalising the tools, and check against one Book 0 section that validation still passes.
+- **Budget for holes after compression.** On Parts D–F the cold read found 128 holes the
+  original did not fill either, 22 of them errors in text that had already passed audit and
+  verification. The triage → fix → verify loop after 5c is part of the task, not an exception.
+
