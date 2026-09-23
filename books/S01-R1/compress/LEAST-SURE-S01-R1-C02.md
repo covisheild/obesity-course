@@ -1,0 +1,1 @@
+Least sure: cutting the whole "Search on for the word variable" quote and its gloss from the illustration. The "variable, not fixed" point now survives only in one clause of the breaks-when field, and exercise 10 (the clinic brochure) leans on the reader knowing Hall himself calls adipose composition variable, not merely that 87% was assumed.

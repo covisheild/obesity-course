@@ -1514,6 +1514,8 @@ def booklet_md(sid, recs, subjects, clusters) -> tuple[str, list[str]]:
                     seen_part = part["letter"]
                     md += [f"## Part {part['letter']} · {part['title']}", ""]
                 label = sec["id"] if sec else None
+            elif rung_book:
+                label = str(r.get("sequence"))  # printed section number, what "section 3" points at
             md += concept_md(r, cites, label, sid)
             here = f"{_notation(label + ' · ' if label else '')}{_notation(r['name'])}"
             block = []
@@ -1539,7 +1541,30 @@ def booklet_md(sid, recs, subjects, clusters) -> tuple[str, list[str]]:
         md += cites.flush("References")
     if answers:
         md += ["\\newpage", "", "# Appendix · Worked answers", ""] + answers
-    return "\n".join(md), [r["concept_id"] for r in mine]
+    text = "\n".join(md)
+    if sid != "B0":
+        text = _ids_to_labels(text, recs, {r["concept_id"]: r.get("sequence") for r in mine})
+    return text, [r["concept_id"] for r in mine]
+
+
+def _ids_to_labels(text, recs, own):
+    """A record id is build plumbing; the reader sees the label the book prints.
+
+    `B0-R0-C12` becomes "Book 0, B4" (Book 0's own printed label) and a record of this book
+    becomes "section 3" (its printed number). Found at the first subject book's cold read,
+    where every Book 0 pointer was an id the reader could not look up. The rendered-page check
+    in `_caret_check` reports any id that survives.
+    """
+    b0 = {s["index"]: s["id"] for p in load_book0_outline() for s in p["sections"]}
+
+    def label(m):
+        rid = m.group(1)
+        if rid.startswith("B0-") and rid in recs:
+            return f"Book 0, {b0.get(recs[rid].get('sequence'), rid)}"
+        if rid in own:
+            return f"section {own[rid]}"
+        return m.group(0)
+    return re.sub(r"`?\b((?:B0|S\d\d)-R\d-C\d\d)\b`?", label, text)
 
 
 # ---------------------------------------------------------------- reports
@@ -1768,6 +1793,9 @@ def _caret_check(html_path):
     # happened once in prose and once through a bibliography note ("... is held in sources/"),
     # and a reader does not have this repository, so any such path is a dead instruction.
     paths = sorted(set(re.findall(r"(?<![/\w.])(?:sources|check|books)/[\w./-]+", text)))
+    ids = sorted(set(re.findall(r"\b(?:B0|S\d\d)-R\d-[CK]\d\d\b", text)))
+    if ids:
+        print(f"  [ids] {len(ids)} record id(s) reached the rendered page: " + ", ".join(ids[:6]))
     if paths:
         print(f"  [paths] {len(paths)} repository path(s) reached the rendered page: "
               + ", ".join(paths[:6]))

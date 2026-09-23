@@ -1,0 +1,90 @@
+# S01-R1-C09 · Intake and expenditure are outputs of a regulated system
+
+**Definition.** Energy intake and energy expenditure are not two independent dials a person sets and then
+leaves alone. They are outputs of a system that senses body weight, or a signal that tracks
+it, and pushes back when weight falls. Cut intake, and two things move against the cut.
+
+Expenditure falls by more than the loss of fat and lean mass alone accounts for. After a
+person sustains a loss of 10% or more of body weight, 24-hour energy expenditure falls by
+about 20% to 25%, and that fall runs about 10% to 15% below what a change of that size in fat
+and lean mass alone would predict. The extra fall is the adaptive part: a formerly heavier
+person now needs roughly 300 to 400 fewer calories a day than a person of the same weight and
+composition who was never heavier.
+
+Appetite rises. Weight lost pulls intake upward by about 100 kcal a day for every kilogram
+lost, measured from a trial where weight fell without the person knowing a deficit had been
+created. That pull is more than three times the size of the matching fall in expenditure, so
+the appetite response, not the metabolic one, is the larger of the two.
+
+Both responses run in the direction that returns stored energy toward where it was. Neither
+is a failure of the person cutting intake; both are the system doing what it does whenever
+stored energy falls.
+
+**In plain terms.** You already know that the body has organs that sense a level and push back when it moves, the
+section on organs and systems gave you insulin and glucagon doing exactly that around blood
+sugar. Something similar runs around stored energy, and it is why "eat less" does not simply
+subtract calories and stop.
+
+Cut what you eat, and two things start moving against you.
+
+The body's expenditure falls, and it falls by more than the weight lost can explain on its own.
+Lose a tenth of your body weight and keep it off, and your daily expenditure drops by about a
+fifth to a quarter. Some of that drop is exactly what a smaller body should cost to run. The
+rest, about 10 to 15% of the total, is extra. A person who used to weigh more needs several
+hundred fewer calories a day than someone who was always this weight, even once both are
+standing on the scale at the same number.
+
+At the same time your appetite rises. In a trial where people lost weight without dieting at
+all, because a drug made them pass sugar out in their urine, their eating went up anyway, by
+about 100 kcal a day for every kilogram they had lost. That pull on intake is more than three
+times bigger than the drop in expenditure. Appetite, not metabolism, does most of the pushing
+back.
+
+Neither of these is the person's character failing. Both are the same kind of loop you already
+met: something is sensed, and the body responds to bring it back.
+
+How large the pushback is varies between people. Some push back hard; some barely at all. What
+drives that difference is not settled here.
+
+**Illustration.** Take the trial the appetite figure above comes from. It ran for a year, in 153 people with
+type 2 diabetes, on a drug that makes the kidneys pass glucose out in the urine instead of
+keeping it. That is a real energy loss, and the person feels none of it as a diet: nobody
+told them to eat less.
+
+The researchers measured body weight week by week and worked back, from how weight actually
+moved, to how much people must have been eating. They found intake climbing as weight fell:
+close to 100 kcal a day of extra eating for every kilogram already lost.
+
+Set that beside the other number in this section. Rosenbaum and Leibel's patients, after
+losing a tenth of their body weight, needed 300 to 400 fewer calories a day than someone who
+had always weighed that much - the expenditure side of the same loop.
+
+Put a number on both sides for a person 8 kg lighter than they started. The appetite pull is
+about 8 times 100 kcal, close to 800 kcal a day of extra wanting to eat. The expenditure fall
+for a person who lost a full 10% of body weight sits at 300 to 400 kcal a day. The pull on
+intake is the bigger of the two, which is what Polidori's own comparison found: more than
+three times the size.
+
+This is why counselling that only warns "your metabolism will slow down" is telling the
+patient about the smaller of the two forces working against them.
+
+**Where this picture breaks.** The 100 kcal per kg figure is a slope fitted from one trial, in adults with type 2 diabetes
+losing weight slowly over a year through glucose loss in urine, not from dieting. Nothing here
+establishes that the same slope holds at every amount of weight lost, in every population, or
+under every method of losing it. The expenditure figures come from people who had sustained a
+loss of 10% or more; a smaller loss is not shown to produce a proportional share of that fall.
+And Hall and Guo's own closing paragraph says the size of both responses varies from person to
+person - these are averages, not a number for any one patient in front of you.
+
+**Must know points for you.**
+
+- "Cut intake and only fat is lost" is incomplete. The system pushes back on two fronts at once: expenditure falls by more than reduced body mass explains, and appetite rises. Treat a plateau in weight loss as the expected output of this loop, not as the patient having stopped trying.
+- The appetite response is the larger of the two, at more than three times the size of the expenditure response in the trial that measured both. A conversation about "slower metabolism" that never mentions rising hunger is describing the smaller half of what the patient is fighting.
+- A formerly heavier person needs roughly 300 to 400 fewer calories a day than someone who was always that weight, to hold the same weight. Two patients on the scale at an identical number can have different maintenance needs, and a fixed calorie target that ignores this will under-feed the one who lost weight to get there.
+- Both responses vary between people, and the evidence here gives averages, not a number for the patient in the room. Do not quote the 100 kcal per kg or the 300-400 kcal figures to a patient as what will happen to them.
+- This section states that intake and expenditure respond to weight loss. It does not teach the neuroendocrine mechanism that carries the signal; that sits in a later subject.
+
+**Exercise 1** (critique). A colleague says: "This patient's weight loss has stalled because they've stopped sticking
+to the diet. The arithmetic hasn't changed, so the only thing that can have changed is their
+behaviour." Using this section, say what is wrong with that inference.
+
