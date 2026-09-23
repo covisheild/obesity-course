@@ -210,3 +210,22 @@ typical workloads, with cache reads 60% cheaper, and raised subscription usage l
 benchmark task is API pricing, not subscription usage; the two are assumed to move together and
 that is not verified. Sonnet 5.5 is announced for the coming weeks, and the drafter question
 (`PIPELINE.md` Task 2) should be re-settled then, by blind comparison, not by the index.
+
+---
+
+## Why compression now runs before the audit, and one book per chat (23 September 2026)
+
+Harsh fixed three conditions: the compression pass stays (a 40 per cent cut is 40 per cent more
+reading in the same time), no book is dropped, and accuracy is not traded for speed. Within them
+the largest available saving was ordering: auditing and fixing the full draft and then cutting
+about 40 per cent of it paid to check sentences no reader sees. Compression is deletion-only, so
+auditing after it checks every claim the reader will see and none that they will not.
+
+One book per chat replaces one phase per chat because what made long chats expensive was the main
+thread doing work in its own context. A conductor that only delegates keeps its history to a few
+thousand words of subagent results, while the drafting, auditing and fixing happen in subagent
+contexts that are discarded. Book 1 is the test of both changes and records its cost per section
+here.
+
+Bundles stay: the GitHub connector writes from Claude Code but only reads from Cowork. One bundle
+per book, one pasted command.

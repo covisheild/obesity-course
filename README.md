@@ -12,6 +12,7 @@ a fact.
 | Read this | For |
 | --- | --- |
 | `claude.md` | the contract — how prose is written and what a record must contain. Read in full, always. |
+| `CONDUCTOR.md` | what a chat does on "Start working on our next book": one whole book per chat |
 | `PIPELINE.md` | the six steps that take a subject from nothing to released |
 | `PARALLEL.md` | how to work in more than one chat without the corpus drifting apart |
 | `check/records/B0/` | the finished Book 0 records. They are the standard. |

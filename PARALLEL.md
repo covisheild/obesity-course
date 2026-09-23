@@ -25,7 +25,8 @@ different Parts at once. This is where parallelism starts.
 more than it saved: each chat carried its own long history, both added sources at once and
 collided on a citekey, and E's merge forced a build-rule change while D was mid-flight. For the
 rest of Book 0, and for any Part that adds a source, run one writing chat at a time
-(`PIPELINE.md`, rule 9).
+(`PIPELINE.md`, rule 9). From 23 September 2026 each book is one chat run by the conductor
+(`CONDUCTOR.md`), so "one writing chat at a time" means one book at a time.
 
 **2. Freeze Book 0.** Tag it. After that its sections change only through a deliberate amendment
 that names every subject record built on them.

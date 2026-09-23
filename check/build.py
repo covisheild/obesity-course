@@ -638,7 +638,7 @@ def check_doc_paths() -> list:
     generic = {"READY.md", "DEFECTS.md", "INVENTORY.md", "HANDOVER.md", "SOURCES.md",
                "CLAUDE.md", "OUTLINE.md", "READER-NOTES.md"}
     out, pat = [], re.compile(r"`([A-Za-z0-9_][A-Za-z0-9_./-]*\.(?:md|py|yml|yaml|json|bib|docx))`")
-    for doc in ("claude.md", "PIPELINE.md", "PARALLEL.md", "MEASUREMENTS.md"):
+    for doc in ("claude.md", "PIPELINE.md", "PARALLEL.md", "MEASUREMENTS.md", "CONDUCTOR.md"):
         full = os.path.join(repo, doc)
         if not os.path.exists(full):
             continue

@@ -1,7 +1,14 @@
 # How to run the pipeline
 
-Seven prompts and then a read. Copy them as written. A Part runs as four chats, one per phase
-(rule 1 below).
+Seven prompts and then an optional read. Copy them as written. **One book per chat**, run by a
+conductor that follows `CONDUCTOR.md` and delegates every task below to subagents.
+
+**Run order: 1 → 2 → 5 → 3 → 4 → 4b → 6.** The compression pass (Task 5) runs *before* the audit
+(Task 3). Compression only deletes whole sentences, so every claim the reader will see is still in
+the text the audit checks, and the roughly 40 per cent that is cut is never audited or fixed.
+Practice problems pass through the cut word for word, so every answer is still recomputed. The
+task numbers are kept as they were so that older handovers and defect files still point at the
+right prompt.
 
 This file is instruction only. The measurements the method was designed from, and the record of
 which rules changed and why, are in `MEASUREMENTS.md`, and nothing there tells you what to do. A
@@ -23,22 +30,20 @@ defects cost more than drafting, and a long main chat cost as much again just re
 These rules exist to cut that cost without weakening a single check. Nothing here removes the
 independent audit, the quote gate, the arithmetic check or the cold read.
 
-**1. One phase per chat.** A Part runs as four short chats, not one long one:
-(a) inventory, source intake and draft; (b) audit; (c) fix and verify; (d) compression. Each
-ends by committing a handover file and a bundle; the next starts fresh from the repository and
-that file. A chat's history is re-read on every turn, so a chat that lives past its phase pays
-for it on every later step.
+**1. One book per chat, and the chat only conducts.** The conductor (`CONDUCTOR.md`) reads the
+handover, runs Tasks 1–4b by launching subagents, and keeps only their short results. It does not
+read records, sources or rendered booklets itself unless it is fixing something directly (rule 6).
+That is what keeps one chat affordable for a whole book: its own history stays small, and a chat's
+history is re-read on every turn. Progress is written to `books/<SUBJECT>/STATE.md` after every
+task, so a chat stopped by a usage limit resumes from that file, not from memory.
 
-**2. Model and effort per chat.**
-
-| Chat | Model | Effort | Why |
-| --- | --- | --- | --- |
-| (a) inventory, sources, draft | drafter: see Task 2; main thread Opus 5.5 | medium | Opus 5.5's default |
-| (b) audit | Opus 5.5 | high | the accuracy guard; the one place to spend |
-| (c) fix and verify | Opus 5.5 | medium | fixing is correctness work; Sonnet fixers twice reported defects closed that were open |
-| (d) compression | Opus 5.5 | low | every cut is checked mechanically by `books/B0/compress/validate.py` |
-
-Never xhigh or max; the evidence is in `MEASUREMENTS.md`.
+**2. Model and effort.** Opus 5.5 for the conductor and every subagent, except drafters, which
+stay on Sonnet until the Book 1 comparison (Task 2). Run the book chat at **medium** effort, the
+model's default. Effort is set per chat and cannot be set per subagent, so accuracy rests on the
+structural guards, not on effort: the quote gate, the arithmetic check, an audit by a subagent
+that did not draft, and a verifier that did not fix. If a book's verifier or reader notes show
+the audit missing things, run the audit of the next book in its own chat at high effort. Never
+xhigh or max; the evidence is in `MEASUREMENTS.md`.
 
 **3. Read only what the job needs.** Subagents do not read `claude.md` in full; each role reads
 the sections listed in its task below. A drafter reads two exemplar records the orchestrator
@@ -61,7 +66,7 @@ an earlier Part also had, the handover names it, and the next contract-change ch
 the build or to the drafter's self-check (Task 2, last paragraph). Catching it at draft time is
 the cheapest place it will ever be caught.
 
-**8. Sources are taken in once, before drafting.** The main thread of chat (a) fetches and
+**8. Sources are taken in once, before drafting.** The conductor fetches and
 files every source the inventory needs, to the checklist under the source gate, before any
 drafter starts. Drafters and fixers never fetch.
 
@@ -211,6 +216,10 @@ a batch can contradict itself.
 
 ## Task 3 — Opus. Audit. Delegate, and not to whoever drafted it.
 
+*Runs after Task 5.* The records it audits already carry the compressed prose. Holes the cold
+reader found that the original did not fill either are in `books/<SUBJECT>/DEFECTS.md` under
+"Found by the compression pass"; audit them with the rest.
+
 One subagent per batch, and none of them may be the subagent that wrote the records it is
 auditing. A context that wrote a claim will read its own words back as obviously supported; that
 is the same self-consultation §12 describes, arriving at the audit instead of the compression
@@ -270,6 +279,11 @@ main thread writes `books/<SUBJECT>/HANDOVER.md`: what was written, what is stil
 why, and every number that will need re-checking with its trigger.
 
 ## Task 5 — the compression pass. One task, three delegated steps.
+
+*Runs after Task 2 and before Task 3.* It writes the final prose back into the records, so the
+audit that follows checks exactly what the reader will read. For a subject book, the cold reader's
+directory also gets the released text of every Book 0 section the book's records list in
+`ground_floor_deps`, because a reader of a subject book has read Book 0.
 
 Full rule in `claude.md` §12. Step 2 works only if the reader doing it has never seen the
 full-length text **and cannot reach it**. Both conditions are load-bearing and they are met

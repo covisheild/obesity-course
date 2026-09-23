@@ -1,0 +1,95 @@
+# The conductor: one book per chat
+
+What a chat does when Harsh says **"Start working on our next book"** or **"Continue what's
+next"**. It produces one whole book in this one chat, delegating every task in `PIPELINE.md` to
+subagents, and ends with a docx, one bundle and one command. Harsh's part is: drop in any PDF the
+chat asks for, and paste the command at the end.
+
+Three conditions are fixed and nothing here trades them away: the compression pass stays, no book
+is dropped, and accuracy is not traded for speed.
+
+---
+
+## 0. Start
+
+1. Read the project docs *claude/MASTER-HANDOVER.md* and *claude/efficiency-rules.md* (project docs, not repository files).
+2. Clone `covisheild/obesity-course`. GitHub's `main` is the truth; if the handover disagrees with
+   it, say so in one line and go by GitHub.
+3. **Choose the unit of work.** The first open, unclaimed step in the handover's §4. If Book 0 is
+   not yet frozen, that is finishing Book 0. Otherwise it is the next subject in the build order
+   the handover names; if the handover names none, take the next subject in
+   `map/subject-map-v3-FROZEN.md` order and say which.
+4. Tell Harsh in two lines what you are building and why that one. Claim it in the handover's §9.
+5. Create `books/<SUBJECT>/STATE.md` and update it after every task: which tasks are done, which
+   sections are at which task, open defects, and the next action. It is how this chat resumes after
+   a usage-limit stop, and how the next chat resumes if this one dies.
+
+## 1. Run the tasks, in `PIPELINE.md`'s run order
+
+| Order | Task | Delegated to |
+| --- | --- | --- |
+| 1 | Task 1: inventory and `READY.md` | one Opus subagent |
+| 2 | Source intake, to the checklist under the source gate | the conductor |
+| 3 | Task 2: draft, batches of two or three, with the self-check | one drafter per batch |
+| 4 | Task 5: cut (5a), cold read (5b), restore (5c) | one cutter per section; one cold reader for the book; one restorer |
+| 5 | Task 3: audit, one defect file per section | one Opus auditor per batch, never a drafter |
+| 6 | Task 4 and 4b: fix, then verify | one fixer per section; a fresh verifier; two rounds, then the conductor |
+| 7 | Glossary: merge the book's new terms into `prose/GLOSSARY.md`, checking them against earlier books | the conductor |
+| 8 | Build: `check/build.py --check` at zero blocking, then `--subject <SUBJECT>` for the docx | the conductor |
+
+**Every subagent brief** names: the task's prompt from `PIPELINE.md`, the exact files to read (and
+nothing else), the files to write, and the reply limit — at most 150 words: done, still open, file
+path. The conductor never pastes a record or a source into a brief; it names the path.
+
+**While running**, tell Harsh one line at each phase boundary ("drafted 7 sections, compressing
+now"). Nothing else unless something needs him.
+
+## 2. When to stop and ask Harsh
+
+Only these:
+
+- **A source only he can get** (a PDF, anything behind a login or CAPTCHA). List every such file
+  for this book and, where the inventory makes it cheap, for the next two books, in one message.
+  He drops them into the project's files; read them from there with `project_read`. Draft every
+  concept that does not depend on them meanwhile.
+- **A defect that two fix rounds and a direct fix cannot close.** It blocks the merge; never ship a
+  known error. Say what it is and what would close it.
+- **A rule in `claude.md` or `PIPELINE.md` that the book cannot follow.** Write it in the
+  handover's §7 and ask; do not change the contract on your own judgement (`PARALLEL.md`).
+
+## 3. Finish
+
+1. Commit on branch `book/<SUBJECT>`, merge to `main` with `--no-ff`, run the build once more.
+2. Bundle **only** what GitHub does not have: `git bundle create <SUBJECT>.bundle origin/main..main`,
+   then `git bundle verify` it against a fresh clone of GitHub.
+3. Send the docx and the bundle with `SendUserFile`, and give exactly this, with the real names:
+
+   ```cmd
+   cd C:\Users\harsh\obesity-course
+   git checkout main
+   git pull "C:\Users\harsh\Downloads\<SUBJECT>.bundle" main
+   git push origin main
+   ```
+
+4. Report caveats: anything unverified, skipped or needing his decision; warnings added to the
+   build; the book's approximate usage, if the chat can see it.
+5. Update the handover: §3 state, §4 next steps, §7 any new mistake worth not repeating, remove
+   the §9 claim. Add a cost-per-section line to `MEASUREMENTS.md` if the numbers are available.
+
+**One bundle per book.** The single exception: if the chat must stop mid-book and may not come
+back (a usage limit with the workspace at risk), deliver a checkpoint bundle of the book branch so
+the work is not lost, and say that it is a checkpoint.
+
+---
+
+## Known gaps before the first subject book
+
+Fix these at the start of Book 1, in that chat, before Task 5 runs:
+
+- **The compression tools are Book 0 only.** `books/B0/compress/prepare.py` reads records from
+  `check/records/B0` and labels sections from the Book 0 outline; `books/B0/compress/restore.py` and `books/B0/compress/validate.py`
+  work inside that folder. Generalise them to take `--subject`, keep Book 0's behaviour identical,
+  and check that by regenerating one Book 0 section's `-original.md` and diffing it.
+- **Book 1 carries the drafter comparison** (`PIPELINE.md` Task 2): one section drafted by Sonnet
+  and by Opus 5.5, read unlabelled by Harsh, defects per section counted by the audit.
+- **Book 1 measures cost per section**, from which the course timeline is projected.

@@ -31,6 +31,7 @@ around, and that rests entirely on every citation holding when somebody hostile 
 | 2 | Sonnet until the Book 1 comparison (`PIPELINE.md` Task 2) | Draft. The four reader-facing blocks per concept, written to the register below, into the record YAML. Plus, on every quantitative concept, the ten practice problems of section 7a. |
 | 3 | Opus | Audit. Open every source in `sources/` and check every claim against it. Recompute every practice answer. Check currency. Output: a numbered defect list, not a rewrite. |
 | 4 | Opus 5.5 | Fix, one section per fixer. Apply the defect list. Run `python check/build.py --check` until blocking is zero. A fresh subagent then verifies each defect closed; a fixer's own report closes nothing. |
+| — | — | **Run order** (`PIPELINE.md`): structure, draft, compression, audit, fix, verify. Compression runs before the audit, so only what the reader will see is audited. One book per chat, run by the conductor in `CONDUCTOR.md`. |
 | 5 | Human, optional | Read it while studying; note anything confusing in `READER-NOTES.md`. Not a gate: the course is for Harsh's own learning. |
 
 **Step 3 audits the practice answers too**, by recomputing them rather than by reading them. Eighty worked answers is eighty chances to ship a wrong one, and a wrong answer in the appendix is worse than a wrong sentence in the prose, because the reader who disagrees with it assumes they are the one who erred.
