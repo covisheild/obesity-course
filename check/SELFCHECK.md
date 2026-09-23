@@ -1,0 +1,46 @@
+# Drafter's self-check
+
+Run this on your own records before handing back. Every item is a kind of defect that audits of
+Parts A to F found more than once. The build catches some things mechanically; everything below is
+what it does not catch. An auditor will still check all of it — this list exists so that the audit
+finds little, because a defect fixed at draft time costs a fraction of one fixed after an audit.
+
+When an audit marks a defect **recurring** and it is not on this list, add it here.
+
+## Support
+
+1. **Each quote carries the claim it is cited for**, not merely a nearby one. The commonest
+   serious defect: a quote genuinely in the source, made to stand behind something it does not
+   say. Read the quote alone and ask whether it says your sentence.
+2. **A quote cited for a number states that number.** A table of contents or a heading does not.
+3. **Every figure about the world has a citekey** — in prose, in practice prompts and in practice
+   answers alike — and appears in `illustration.numbers` where it is an illustration's number.
+   A made-up figure is said to be made up in the sentence that introduces it, and the count is
+   right ("both figures are made up" when there are two).
+4. **No conclusion the source does not license**, especially a policy conclusion, and nothing that
+   pre-empts what a later section establishes.
+
+## Consistency
+
+5. **The record never does what it says cannot be done.** If the section refuses a claim (a rate
+   from two points, energy matched from steady weight), no answer, analogy or exercise makes it.
+6. **One number, one value, throughout a calculation.** Do not use 4186 in one line and 4184 in
+   the next.
+7. **One term for one thing, across sections.** Check `prose/GLOSSARY.md` and the earlier
+   sections your record depends on before naming anything; do not rename what they named.
+8. **Pointers are right.** "The last section" is the section immediately before this one in the
+   outline. Any section you mention is in `concept_deps`.
+
+## Teaching
+
+9. **Derivations do not skip.** Every step a reader must take is on the page.
+10. **Worked answers are recomputed in Python**, every line, and each answer answers the question
+    that was asked, at the precision it asked for.
+11. **Must-know points are about the reader's behaviour.** None has the section as its subject;
+    a `boundary` point names a limit of the technique.
+12. **§9 language** on weight and the people who have it.
+
+## Rendering
+
+13. Exponents as `10^7`, logarithms as `log10`, no markup; no repository path (`sources/…`,
+    `check/…`) anywhere a reader will see it, including `.bib` notes.

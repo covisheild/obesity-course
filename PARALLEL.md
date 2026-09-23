@@ -21,6 +21,12 @@ to tell which records leaned on the old version. Book 0's own 43 sections are la
 of each other — `check/book0/OUTLINE.md` carries the few chains — so several chats can take
 different Parts at once. This is where parallelism starts.
 
+*Amended 23 September 2026, on Harsh's instruction.* Parts D and E ran in parallel and it cost
+more than it saved: each chat carried its own long history, both added sources at once and
+collided on a citekey, and E's merge forced a build-rule change while D was mid-flight. For the
+rest of Book 0, and for any Part that adds a source, run one writing chat at a time
+(`PIPELINE.md`, rule 9).
+
 **2. Freeze Book 0.** Tag it. After that its sections change only through a deliberate amendment
 that names every subject record built on them.
 

@@ -158,3 +158,55 @@ the file is a faithful slice of the page *as fetched on 23 September 2026*. It d
 page still says that, and a failed check does not show the passage is absent from the book, since
 these are excerpts from named sections. `sources/INDEX.yml` names the sections held, for that
 reason.
+
+---
+
+## What Parts D and E cost, and the model evidence of 23 September 2026
+
+Each chat's own usage summary, in weighted tokens (weighted by what each kind of token costs).
+
+**Part E chat, about 87M in total** (this total also covers a Part A compression run):
+
+| Work | Weighted tokens |
+| --- | --- |
+| Drafting eight sections, 7 subagents | 20.5M |
+| Re-reading instructions and history, main chat, every turn | 15.3M |
+| Applying 57 audit fixes, 3 subagents | 15.1M |
+| Checking and rebuilding sources, 2 subagents | 10.5M |
+| Auditing, 3 subagents | 5.7M |
+| Compression cutting, 12 subagents | 5.6M |
+| Main-chat thinking and replies | 5.1M |
+| Fetching source texts, 4 subagents | 3.9M |
+| Git, builds and checks | 3.1M |
+| Everything else | 2.5M |
+
+**Part D chat, about 57M in total**, nine subagents using about 90% of it: fixers 22.7M, drafters
+21.8M, auditors 7.7M, main chat about 5M, sources about 0.4M. One fixer given two sections (D6–D7)
+used 9.6M alone. First drafts carried about 150 defects. The two fixers whose work was checked
+both reported every defect closed; 27 and 23 were still open.
+
+**What this showed.** Dealing with defects (fixing, verifying, rebuilding sources) cost more than
+drafting in both chats. A long main chat cost as much again as all the fixing, just by re-reading
+itself. Fixer self-reports could not be trusted. Two chats adding sources at once collided on a
+citekey. Hence `PIPELINE.md`'s "Running a Part without waste", `check/SELFCHECK.md`, per-section
+defect files, and Task 4b.
+
+**The model evidence**, checked on 23 September 2026 against Artificial Analysis's Claude Opus
+5.5 vs Claude Sonnet 5 comparison (Intelligence Index v4.3.2; Opus 5.5 scores marked as
+estimates pending independent evaluation) and Anthropic's Opus 5.5 announcement of 22 September:
+
+| Effort | Opus 5.5 index | Opus 5.5 cost/task | Sonnet 5 index | Sonnet 5 cost/task |
+| --- | --- | --- | --- | --- |
+| low | 42 | $0.55 | 24 | $0.51 |
+| medium | 51 | $1.34 | 28 | $1.00 |
+| high | 54 | $1.82 | 32 | $1.79 |
+| xhigh | 56 | $3.46 | 34 | $2.87 |
+| max | 58 | $5.98 | 38 | $5.09 |
+
+Opus 5.5 at low effort outscores Sonnet 5 at max for about a ninth of the cost; there is no
+effort level at which Sonnet 5 is the better buy. Max costs about 3.3 times high for four
+points. Anthropic reports Opus 5.5 costs 40% less than Opus 5 at default (medium) effort on
+typical workloads, with cache reads 60% cheaper, and raised subscription usage limits. Cost per
+benchmark task is API pricing, not subscription usage; the two are assumed to move together and
+that is not verified. Sonnet 5.5 is announced for the coming weeks, and the drafter question
+(`PIPELINE.md` Task 2) should be re-settled then, by blind comparison, not by the index.

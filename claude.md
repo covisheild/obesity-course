@@ -28,9 +28,9 @@ around, and that rests entirely on every citation holding when somebody hostile 
 | Step | Who | What |
 | --- | --- | --- |
 | 1 | Opus | Structure. Which concepts a rung needs, in what order, what each must cover, which sources each will need, and which of them are quantitative and so owe ten practice problems. Output: an inventory table, no prose. |
-| 2 | Sonnet | Draft. The four reader-facing blocks per concept, written to the register below, into the record YAML. Plus, on every quantitative concept, the ten practice problems of section 7a. |
+| 2 | Sonnet until the Book 1 comparison (`PIPELINE.md` Task 2) | Draft. The four reader-facing blocks per concept, written to the register below, into the record YAML. Plus, on every quantitative concept, the ten practice problems of section 7a. |
 | 3 | Opus | Audit. Open every source in `sources/` and check every claim against it. Recompute every practice answer. Check currency. Output: a numbered defect list, not a rewrite. |
-| 4 | Sonnet | Fix. Apply the defect list. Run `python check/build.py --check` until blocking is zero. |
+| 4 | Opus 5.5 | Fix, one section per fixer. Apply the defect list. Run `python check/build.py --check` until blocking is zero. A fresh subagent then verifies each defect closed; a fixer's own report closes nothing. |
 | 5 | Human | Read it. |
 
 **Step 3 audits the practice answers too**, by recomputing them rather than by reading them. Eighty worked answers is eighty chances to ship a wrong one, and a wrong answer in the appendix is worse than a wrong sentence in the prose, because the reader who disagrees with it assumes they are the one who erred.

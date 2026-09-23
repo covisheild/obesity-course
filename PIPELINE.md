@@ -1,6 +1,7 @@
 # How to run the pipeline
 
-Six prompts and then a read. Copy them as written. Each is one Cowork task.
+Seven prompts and then a read. Copy them as written. A Part runs as four chats, one per phase
+(rule 1 below).
 
 This file is instruction only. The measurements the method was designed from, and the record of
 which rules changed and why, are in `MEASUREMENTS.md`, and nothing there tells you what to do. A
@@ -12,6 +13,62 @@ thread. This is not only for speed. A subagent's work happens in its own context
 result comes back, so a Part's eight sections can be drafted, audited and cut inside one task
 instead of exhausting one window by the third section. For Task 5 the delegation is also what
 makes the method sound, for the reason given there.
+
+---
+
+## Running a Part without waste
+
+Measured on Parts D and E (`MEASUREMENTS.md`, "What Parts D and E cost"): finding and fixing
+defects cost more than drafting, and a long main chat cost as much again just re-reading itself.
+These rules exist to cut that cost without weakening a single check. Nothing here removes the
+independent audit, the quote gate, the arithmetic check or the cold read.
+
+**1. One phase per chat.** A Part runs as four short chats, not one long one:
+(a) inventory, source intake and draft; (b) audit; (c) fix and verify; (d) compression. Each
+ends by committing a handover file and a bundle; the next starts fresh from the repository and
+that file. A chat's history is re-read on every turn, so a chat that lives past its phase pays
+for it on every later step.
+
+**2. Model and effort per chat.**
+
+| Chat | Model | Effort | Why |
+| --- | --- | --- | --- |
+| (a) inventory, sources, draft | drafter: see Task 2; main thread Opus 5.5 | medium | Opus 5.5's default |
+| (b) audit | Opus 5.5 | high | the accuracy guard; the one place to spend |
+| (c) fix and verify | Opus 5.5 | medium | fixing is correctness work; Sonnet fixers twice reported defects closed that were open |
+| (d) compression | Opus 5.5 | low | every cut is checked mechanically by `validate.py` |
+
+Never xhigh or max; the evidence is in `MEASUREMENTS.md`.
+
+**3. Read only what the job needs.** Subagents do not read `claude.md` in full; each role reads
+the sections listed in its task below. A drafter reads two exemplar records the orchestrator
+names, not every finished record. A fixer reads its own section's defect file and its own
+record, and its own section of the rendered booklet — never the whole booklet.
+
+**4. Results come back short.** A subagent writes its details to a file in the repository and
+returns at most 150 words: what it changed, what is still open, and the file path. The main
+thread does not re-read records it has not been told are wrong.
+
+**5. A self-report closes nothing.** "All defects closed" from a fixer is a claim, not a result.
+Only Task 4b's verifier closes a defect.
+
+**6. Two fix rounds, then the main thread.** If a defect is still open after two
+fix-and-verify rounds, the main thread fixes it directly rather than launching a third fixer
+that reloads everything to try again.
+
+**7. Every defect type found twice becomes a check.** When an audit finds a kind of defect that
+an earlier Part also had, the handover names it, and the next contract-change chat adds it to
+the build or to the drafter's self-check (Task 2, last paragraph). Catching it at draft time is
+the cheapest place it will ever be caught.
+
+**8. Sources are taken in once, before drafting.** The main thread of chat (a) fetches and
+files every source the inventory needs, to the checklist under the source gate, before any
+drafter starts. Drafters and fixers never fetch.
+
+**9. One writing chat at a time on shared files.** `sources/INDEX.yml`,
+`check/references/library.bib` and `prose/GLOSSARY.md` are shared registries. Two chats adding
+to them at once collide — Part D's odds source had to be renamed on rebase because F2 had taken
+its citekey. Parallel chats are fine only when neither adds a source.
 
 ---
 
@@ -40,6 +97,17 @@ still needs a person. Find that out at the gate, before the inventory, not at th
 
 The style sheet §7b lists where to look, and prefers HTML primary sources for exactly this reason. Get that
 file, drop it in `sources/`, add a line to `SOURCES.md` saying what it is, then begin.
+
+**The intake checklist**, for every source filed, by the main thread and once. Each of these was
+found wrong at audit in Parts E or F2, and each cost a rebuild:
+
+- **Licence** read from the work's own details or copyright page, not assumed from the publisher.
+  (All six OpenStax books used so far are CC BY-NC-SA 4.0, not CC BY.)
+- **The header says exactly what the file holds**: which sections, and every omission marked in
+  place. A header must never call an excerpt complete.
+- **The citekey is new**: `grep` `sources/INDEX.yml` and `library.bib` before choosing it.
+- `INDEX.yml`, `library.bib` and `SOURCES.md` all updated in the same commit.
+- No repository path in any reader-facing field of the `.bib` entry.
 
 For S48 three files are missing and they are the three that matter most:
 
@@ -72,17 +140,26 @@ a sandbox; they can be reached from a browser.
 > Then write `books/<SUBJECT>/READY.md` listing every source, with obtained yes or no, checking
 > `sources/` for what is already there.
 
-## Task 2 — Sonnet. Draft. Delegate in batches.
+## Task 2 — Draft. Delegate in batches.
 
-Split the inventory into batches of three or four concepts and give each batch to its own
+**Which model drafts is an open question, to be settled once at the start of Book 1.** An
+earlier blind comparison (`claude.md`, end) preferred a Sonnet-class draft's prose; that was
+before Opus 5.5, which on the published index outscores Sonnet 5 at every effort level
+(`MEASUREMENTS.md`). Settle it the same way: one
+section drafted by each, read unlabelled by Harsh, correctness defects counted by the audit.
+Until then drafters run on Sonnet as before.
+
+Split the inventory into batches of two or three concepts and give each batch to its own
 subagent, running them together. Each gets the prompt below with its own `<RANGE>`. They write
 disjoint files, so they do not collide. The main thread collects the records and checks that the
 glossary rows they added agree with each other before anything is written to
 `prose/GLOSSARY.md` — two subagents cannot see each other's additions, and that is the one place
 a batch can contradict itself.
 
-> Read `claude.md` in full. Read the finished records in `check/records/B0/` before writing a
-> word: they are the standard, and matching them matters more than following the rules in the
+> Read `claude.md`: "The one rule that matters", the whole authoring style sheet (§1–§11a), and
+> specification §1 and §4. Skip §12 and the rest of the specification. Read the two exemplar
+> records <EXEMPLARS> before writing a word — one of the same concept type, one with a drill
+> set: they are the standard, and matching them matters more than following the rules in the
 > abstract.
 >
 > Write records for concepts <RANGE> of `books/<SUBJECT>/INVENTORY.md`, one YAML file each, using
@@ -125,6 +202,12 @@ a batch can contradict itself.
 > `illustration` where it does. If a figure would show something the prose cannot say in the same
 > space, do not draw it here — name it in your handover with the numbers it would use, and the
 > main thread will decide.
+>
+> Before you hand back, check your own work as the auditor will. Run
+> `python check/build.py --check` until blocking is zero for your records. Recompute every
+> practice answer in Python, not by reading it. For every quote, confirm it is in the source
+> file and states the number it is cited for. Check each item of `check/SELFCHECK.md`. Then
+> return at most 150 words: records written, anything unsourced, anything you are unsure of.
 
 ## Task 3 — Opus. Audit. Delegate, and not to whoever drafted it.
 
@@ -133,7 +216,8 @@ auditing. A context that wrote a claim will read its own words back as obviously
 is the same self-consultation §12 describes, arriving at the audit instead of the compression
 pass. Fresh contexts, every time.
 
-> Read `claude.md`. You are auditing, not rewriting.
+> Read `claude.md`: "The one rule that matters", §7a, §7b, §8, §9, §10, and specification §4.
+> You are auditing, not rewriting.
 >
 > For every claim in `books/<SUBJECT>/records/*.yml`: open the file `sources/INDEX.yml` maps
 > the citekey to, search it for the words the record relies on, and **write those words into
@@ -151,22 +235,39 @@ pass. Fresh contexts, every time.
 > Then check currency: anything with a date, a price, a rate or a cut-point, against the
 > instrument in `sources/`, and flag what needs re-checking against a newer one.
 >
-> Output `books/<SUBJECT>/DEFECTS.md`: a numbered list. For each — the concept id, the field, the
-> claim, what the source actually says, and the smallest change that fixes it. Do not edit records.
+> Output **one file per section**, `books/<SUBJECT>/defects/<RECORD-ID>.md`: a numbered list.
+> For each — the field, the claim, what the source actually says, and the smallest change that
+> fixes it. Do not edit records other than their `quote` fields. Mark any defect whose *kind*
+> you have seen in an earlier Part's defect files as **recurring**.
 
-## Task 4 — Sonnet. Fix.
+## Task 4 — Opus 5.5. Fix. One subagent per section.
 
-> Read `claude.md` and `books/<SUBJECT>/DEFECTS.md`. Apply every item. Then run
-> `python check/build.py --check` and fix until blocking is zero. The arithmetic check runs
-> here: it evaluates both sides of every equation in reader-facing prose, so a blocking
-> failure from it is a genuine slip in a worked answer and never a formatting complaint. Warnings about unopened
-> references are expected and stay.
+Never one fixer for two sections: the one fixer that took two in Part D used as much as a
+whole batch of drafters.
+
+> Read `books/<SUBJECT>/defects/<RECORD-ID>.md` and the record it names. Read the parts of
+> `claude.md` the defects cite, and nothing else of it. Apply every item. Then run
+> `python check/build.py --check` and fix until blocking is zero for this record. The arithmetic
+> check runs here: it evaluates both sides of every equation in reader-facing prose, so a
+> blocking failure from it is a genuine slip in a worked answer and never a formatting
+> complaint. Warnings about unopened references are expected and stay.
 >
-> Then run `python check/build.py --subject <SUBJECT>` and read the assembled booklet from the
-> first line to the last. Every place you have to read a sentence twice is a defect: fix it.
+> Then run `python check/build.py --subject <SUBJECT>` and read **your section only** in the
+> rendered output. Every place you have to read a sentence twice is a defect: fix it.
 >
-> Write `books/<SUBJECT>/HANDOVER.md`: what was written, what is still unsourced and why, and
-> every number that will need re-checking with its trigger.
+> Under each defect in the defects file, write one line: what you changed. Return at most 150
+> words.
+
+## Task 4b — Opus 5.5. Verify. A fresh subagent that did not fix.
+
+> For each defect in `books/<SUBJECT>/defects/<RECORD-ID>.md`, read the fixer's line, then read
+> the record and check the defect is actually gone — recompute any number, search the source
+> for any quote. Check nothing else. Mark each defect **closed** or **open, because …**. Return
+> the count of open defects.
+
+Repeat Task 4 and 4b for any section with open defects, at most twice (rule 6 above). Then the
+main thread writes `books/<SUBJECT>/HANDOVER.md`: what was written, what is still unsourced and
+why, and every number that will need re-checking with its trigger.
 
 ## Task 5 — the compression pass. One task, three delegated steps.
 
@@ -194,8 +295,10 @@ reading the whole Part's cut text in one sitting — a checker that has not seen
 cold whether it reads one section or eight, and batching turns 3n tasks into 3.
 
 The model matters less than anything else here. Measured on F4, two different models cutting on the
-same brief landed 24 words apart. Use whatever is to hand for steps 1 and 3; step 2 wants a clean
-context and a clean directory, not a particular model.
+same brief landed 24 words apart. Run this chat at low effort; step 2 wants a clean context and
+a clean directory, not a particular model or effort level. The cold reader must be given every
+earlier Part's released text as well as the Part being cut, and the figures' captions and alt
+text (`books/B0/compress/prepare.py release`).
 
 **Setting up the scratch directory**, before any subagent is launched:
 
@@ -273,6 +376,9 @@ different door.
 > whatever the word count says.
 
 ## Task 6 — you
+
+Read each Part as soon as its compression pass lands, not the whole book at the end. You are
+the step that does not parallelise, so a Part waiting for you is the book's real delay.
 
 Read the booklet. The three questions worth asking, in order: did I have to read anything twice,
 is there a point in the must-know list that would not change what I do, and does any claim make
