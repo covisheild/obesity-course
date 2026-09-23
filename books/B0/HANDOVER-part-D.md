@@ -27,10 +27,14 @@ What ran:
    gets both senses.
 
 Every defect file carries the fixer's and verifier's line under each item. Tally: 99 items across
-the seven files, plus one found at the merge build (C28 M-1, IQR used before expansion, fixed by the main thread), and every one's last verifier line reads closed.
+the seven files, plus two found at the merge build and fixed by the main thread (C28 M-1, IQR used
+before expansion; C25 M-1, a 26-word sentence), 101 in all, and every one's last verifier line
+reads closed. **Lesson:** a verifier must read `check/_build/check_report.md`, not the build's
+summary line, which does not list warnings.
 
-Build after the close-out: **blocking 0, warnings 51** (was 73). No warning names C24–C30 except the
-derived-number notices M13 expects. `d6-sample-means.png` and `d7-two-scales.png` redraw
+Build after the close-out, on main: **blocking 0, warnings 50** (main alone gives 29; Part D was 44
+of the 73 before). Part D's 21 are all derived-number notices, which M13 expects; no style, grade,
+acronym or quote warning names C24–C30. `d6-sample-means.png` and `d7-two-scales.png` redraw
 byte-identically.
 
 Still true from the first chat and not in this chat's scope: `provenance.bridge_ref` is empty on
