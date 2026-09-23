@@ -449,6 +449,43 @@ retrieval_items:
   a: You can conclude the day's net change in stores was zero. You cannot conclude that nothing
     was happening physiologically — catabolism and anabolism both continue regardless — and you
     cannot conclude anything about the next day or about cause.
+figures:
+- file: s01-r1-c05-daily-flows.png
+  caption: "The made-up week's two sides of the identity, in megajoules a day. On days where intake is above expenditure stores rose, where it is below they fell; the seven gaps add to 2.8 megajoules."
+  alt: "Two lines over days 1 to 7: intake between 8.0 and 9.9 megajoules and expenditure between 8.3 and 9.0, crossing several times and meeting on day 6."
+  source: draw.py
+  spec:
+    kind: line
+    from_table: {block: 0, x: 0, y: [1, 2]}
+    x_label: day
+    y_label: MJ a day
+    relations:
+    - check: "sum(y1) - sum(y2) = 2.8"
+- file: s01-r1-c05-stores-week.png
+  caption: "The same week as a stock. Stores start at 620 megajoules and each day move by that day's intake minus expenditure, ending at 622.8, 2.8 higher. A day of zero change, day 6, leaves the line flat."
+  alt: "A line of eight points from 620 megajoules at day 0 to 622.8 at day 7, rising and falling day by day and flat between days 5 and 6."
+  source: draw.py
+  spec:
+    kind: line
+    x: [0, 1, 2, 3, 4, 5, 6, 7]
+    series:
+    - name: energy stores at the end of the day
+      y: ["620", "620.5", "620.2", "621.3", "620.3", "621.2", "621.2", "622.8"]
+    x_label: day (0 is the start of the week)
+    y_label: energy stores (MJ)
+    y_range: [619.5, 623.2]
+    relations:
+    - check: "y[-1] - y[0] = 2.8"
+    labels:
+    - {text: "620", at: [0, 620], offset: [8, -12]}
+    - {text: "622.8", at: [7, 622.8], offset: [-34, 4]}
+    derived:
+    - {value: "620.5", from: "620 + 0.5"}
+    - {value: "620.2", from: "620.5 - 0.3"}
+    - {value: "621.3", from: "620.2 + 1.1"}
+    - {value: "620.3", from: "621.3 - 1.0"}
+    - {value: "621.2", from: "620.3 + 0.9"}
+    - {value: "622.8", from: "621.2 + 1.6"}
 provenance:
   map_version_id: fc19c8bc-a216-4131-99fb-ebe3f19cec4a
   outcome_refs:

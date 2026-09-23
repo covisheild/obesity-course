@@ -378,3 +378,9 @@ The renderer now prints those ids as "Book 0, B4" and "section 3".
     phrase the conclusion in stored energy.
 
 Totals: 68 items, 29 errors and 39 gaps.
+
+## Found by the conductor looking at the figures (23 Sep 2026)
+
+- F1. C07 `thomas-shortfall`: the static-rule point is 1,439 × 64.8 / 3,500 = 26.64 lb, but the label and legend speak of "the paper's 27.6 lb" prediction; the measured point is 27.6 − 7.4 = 20.2 lb while the prose says 20.1. Reconcile the record's own static calculation with the paper's stated prediction, and the prose's measured figure with the paper's numbers. **error**
+- F2. C04 `activity-cost-line`: draws activity cost strictly in proportion to body weight; confirm the source supports "in proportion" before the figure stands. **check**
+- F3. C07 `static-vs-dynamic`: confirm the dynamic-model points (about 87.5 kg at one year, plateau about 75 kg) are stated in the held Hall 2011 text, and that the static line (22.61 kg a year) follows from the record's own numbers. **check**

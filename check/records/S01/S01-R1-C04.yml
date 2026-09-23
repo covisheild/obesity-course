@@ -219,6 +219,33 @@ retrieval_items:
 - q: What happens to physical activity expenditure when a person loses weight, and why?
   a: It declines, unless the activity's quantity or intensity is increased to compensate,
     because the energy cost of a given movement is set in proportion to overall body weight.
+figures:
+- file: s01-r1-c04-activity-cost-line.png
+  caption: "If the cost of an activity is in proportion to body weight, as Hall and Guo (2017) put it, the same walk costs the 95 kg patient 95/55, about 1.73 times what it costs the 55 kg patient. After losing ten kilograms, at 85 kg, it costs about 1.55 times: less, for the same activity."
+  alt: "A straight line through three points: 1 at 55 kg, about 1.55 at 85 kg and about 1.73 at 95 kg, the cost of the same activity relative to the 55 kg patient."
+  source: draw.py
+  spec:
+    kind: line
+    x: ["55", "85", "95"]
+    series:
+    - name: the same activity
+      y: ["1", "1.55", "1.73"]
+    x_label: body weight (kg)
+    y_label: cost, relative to the 55 kg patient
+    y_range: [0, 2]
+    relations:
+    - fit: "y = x/55"
+      draw: true
+      label: "cost in proportion to weight"
+    labels:
+    - {text: "95 kg: about 1.73", at: [95, 1.73], offset: [-78, 6]}
+    - {text: "85 kg, after losing ten: about 1.55", at: [85, 1.55], offset: [-165, 4]}
+    - {text: "55 kg: 1", at: [55, 1], offset: [6, -14]}
+    derived:
+    - {value: "1", from: "55/55"}
+    - {value: "85", from: "95 - 10"}
+    - {value: "1.55", from: "85/55"}
+    - {value: "1.73", from: "95/55"}
 provenance:
   map_version_id: fc19c8bc-a216-4131-99fb-ebe3f19cec4a
   outcome_refs:

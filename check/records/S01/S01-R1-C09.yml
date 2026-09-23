@@ -197,3 +197,27 @@ review:
   as_of: ''
   last_reviewed: '2026-09-23'
 status: drafted
+figures:
+- file: s01-r1-c09-appetite-slope.png
+  caption: "Polidori's fitted slope: about 100 kcal a day of extra eating for every kilogram already lost, about 800 kcal a day at 8 kg. Rosenbaum and Leibel's adaptive fall in expenditure, at a 10% loss, is 300 to 400 kcal a day."
+  alt: "A straight line rising from 0 at 0 kg lost through 100 at 1 kg to 800 kcal a day at 8 kg lost."
+  source: draw.py
+  spec:
+    kind: line
+    x_label: kg already lost
+    y_label: extra eating (kcal a day)
+    x: [0, 1, 8]
+    series:
+    - name: appetite pull
+      y: [0, 100, 800]
+    relations:
+    - fit: "y = 100*x"
+      draw: true
+      label: "100 kcal a day per kg lost"
+    - check: "y[-1] / 400 = 2"
+    - check: "y[-1] / 300 = 8/3"
+    labels:
+    - {text: "about 800 kcal a day at 8 kg", at: [8, 800], offset: [-150, 0]}
+    y_range: [0, 900]
+    derived:
+    - {value: "0", from: "100 - 100"}

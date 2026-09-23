@@ -538,6 +538,45 @@ retrieval_items:
   a: No. Both routes carry the same 87% assumption through different unit conversions (the pound
     conversion in C07, the lipid-fraction multiplication here), so the agreement is the same
     assumption reappearing, not two independent confirmations of it.
+figures:
+- file: s01-r1-c02-energy-density-bars.png
+  caption: "Energy in a kilogram, in megajoules: pure fat 37 (FAO) or 39.5 (Hall 2008); adipose tissue 32.2 only under the classic rule's assumed 87% fat; a lean-mass change 7.6. Hall's pure-fat figure is about 5.2 times the lean figure."
+  alt: "Four bars in megajoules a kilogram: 37 and 39.5 for pure fat, 32.2 for adipose tissue under the rule's assumption, and a much shorter 7.6 for lean mass change."
+  source: draw.py
+  spec:
+    kind: bar
+    x: ["pure fat\n(FAO)", "pure fat\n(Hall 2008)", "adipose tissue\n(rule assumes 87% fat)", "lean mass\nchange"]
+    series:
+    - name: energy density
+      y: ["37", "39.5", "32.2", "7.6"]
+    x_label: ""
+    y_label: MJ a kilogram
+    value_labels: true
+    y_range: [0, 44]
+    relations:
+    - check: "y[1] / y[3] = 5.2"
+- file: s01-r1-c02-lipid-fraction-line.png
+  caption: "Counting only the fat in adipose tissue, its energy per kilogram is the lipid fraction times fat's 37 megajoules a kilogram. The classic rule sits at one assumed fraction, 0.87, giving 32.19; Hall (2008) calls the real composition variable, so the true point could lie anywhere along the line."
+  alt: "A straight line rising from 22.2 megajoules a kilogram at a lipid fraction of 0.60 to 37 at a fraction of 1, with the rule's assumed point marked at 0.87 and 32.19."
+  source: draw.py
+  spec:
+    kind: line
+    x: ["0.60", "0.80", "0.87", "1.0"]
+    series:
+    - name: adipose tissue at that lipid fraction
+      y: ["22.2", "29.6", "32.19", "37"]
+    x_label: lipid fraction (share of the tissue's mass that is fat)
+    y_label: MJ a kilogram
+    y_range: [0, 40]
+    relations:
+    - fit: "y = 37*x"
+      draw: true
+      label: "37 × lipid fraction"
+    labels:
+    - {text: "the rule's assumed 0.87 → 32.19", at: [0.87, 32.19], offset: [4, -14]}
+    derived:
+    - {value: "22.2", from: "0.60*37"}
+    - {value: "29.6", from: "0.80*37"}
 provenance:
   map_version_id: fc19c8bc-a216-4131-99fb-ebe3f19cec4a
   outcome_refs:

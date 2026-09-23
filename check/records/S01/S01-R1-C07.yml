@@ -487,3 +487,59 @@ review:
   last_reviewed: "2026-09-23"
 
 status: drafted
+
+figures:
+  - file: s01-r1-c07-static-vs-dynamic.png
+    caption: "Hall's 100 kg man cutting 2 MJ a day: the static rule's straight line loses about 22.61 kg every year; the dynamic model loses half of its 25 kg in year 1 and levels off at about 75 kg over about three years."
+    alt: "Body weight against years. A dashed straight line falls from 100 kg through 77.39 at year 1 to 32.17 at year 3. A second line falls from 100 to 87.5 at year 1 and 75 at year 3, slowing as it goes."
+    source: draw.py
+    spec:
+      kind: line
+      x_label: years on the same 2 MJ a day cut
+      y_label: body weight (kg)
+      x: [0, 1, 3]
+      series:
+        - name: dynamic model (points the paper states)
+          y: [100, 87.5, 75]
+        - name: static rule
+          y: [100, 77.39, 32.17]
+      relations:
+        - fit: "y = 100 - 22.61*x"
+          series: static rule
+          draw: true
+          label: "static rule: 22.61 kg a year, every year"
+        - check: "(y1[0] - y1[1]) / (y1[0] - y1[-1]) = 0.5"
+        - check: "y1[0] - y1[-1] = 25"
+      labels:
+        - {text: "plateau about 75 kg", at: [3, 75], offset: [-90, -16]}
+      y_range: [20, 105]
+      derived:
+        - {value: "0", from: "100 - 100"}
+        - {value: "77.39", from: "100 - 22.61"}
+        - {value: "32.17", from: "100 - 3*22.61"}
+        - {value: "87.5", from: "100 - 0.5*25"}
+  - file: s01-r1-c07-thomas-shortfall.png
+    caption: "Thomas's cohort: 1,439 kcal a day for 64.8 days gives 26.64 lb on the static rule; measured loss was 7.4 lb less than the paper's own 27.6 lb prediction."
+    alt: "Pounds lost against days on the diet. A dashed line rises from 0 to 26.64 lb at day 64.8. A single measured point at day 64.8 sits about 20 lb up, well below the line."
+    source: draw.py
+    spec:
+      kind: scatter
+      x_label: days on the diet
+      y_label: weight lost (lb)
+      x: [0, 64.8]
+      series:
+        - name: "static rule, 1,439 kcal a day / 3,500 kcal a pound"
+          y: [0, 26.64]
+        - name: measured (paper's 27.6 lb prediction minus its 7.4 lb shortfall)
+          y: [0, 20.2]
+      relations:
+        - fit: "y = 1439*x/3500"
+          draw: true
+          label: "static rule: 1,439 x days / 3,500"
+        - check: "y2[-1] = 27.6 - 7.4"
+      labels:
+        - {text: "7.4 lb short of the paper's 27.6 lb", at: [64.8, 20.2], offset: [-122, -38]}
+      y_range: [0, 30]
+      derived:
+        - {value: "0", from: "1439 - 1439"}
+        - {value: "20.2", from: "27.6 - 7.4"}

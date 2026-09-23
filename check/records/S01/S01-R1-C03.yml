@@ -239,6 +239,23 @@ retrieval_items:
     ate?
   a: Self-reported intake is known to be unreliable, so a method that measures expenditure
     directly in a free-living person, without relying on their own account, is needed instead.
+figures:
+- file: s01-r1-c03-icmr-requirement-bars.png
+  caption: "India's adopted adult energy requirement as of 2020 (ICMR-NIN), in kilocalories a day: 2,110 for a sedentary man and 1,660 for a sedentary woman, 3,470 and 2,720 for heavy work. It is a committee's figure for a group, set by sex and activity, not one fixed number and not a measurement of any patient."
+  alt: "Grouped bars: sedentary work, men 2,110 and women 1,660; heavy work, men 3,470 and women 2,720 kilocalories a day."
+  source: draw.py
+  spec:
+    kind: bar
+    x: ["sedentary work", "heavy work"]
+    series:
+    - name: men
+      y: ["2110", "3470"]
+    - name: women
+      y: ["1660", "2720"]
+    x_label: ""
+    y_label: kcal a day (ICMR-NIN 2020)
+    value_labels: true
+    y_range: [0, 3900]
 provenance:
   map_version_id: fc19c8bc-a216-4131-99fb-ebe3f19cec4a
   outcome_refs:

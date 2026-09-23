@@ -436,3 +436,27 @@ review:
   last_reviewed: "2026-09-23"
 
 status: drafted
+
+figures:
+  - file: s01-r1-c08-claims-vs-deficit.png
+    caption: "Daily deficit each claim needs if every kilogram lost were fat, against the 1,439 kcal a day average deficit of Thomas's supervised cohort. The FTC specimen needs about 4.9 times that average."
+    alt: "Six bars. Five claims need 7,000, 6,173, 5,512, 4,630 and 4,409 kcal a day as fat. The last bar, the supervised cohort's average deficit, is 1,439."
+    source: draw.py
+    spec:
+      kind: bar
+      y_label: kcal a day, if all fat
+      x:
+        - "FTC specimen\n2 lb a day"
+        - "8 kg\nin 10 days"
+        - "5 kg\nin 7 days"
+        - "3 kg in 5 days\n(mostly glycogen\nand water)"
+        - "12 kg\nin 21 days"
+        - "cohort's average\ndeficit, supervised"
+      series:
+        - name: kcal a day
+          y: [7000, 6173, 5512, 4630, 4409, 1439]
+      value_labels: true
+      relations:
+        - check: "y[0] / y[-1] = 4.864489229"
+        - check: "y[0] = 2*3500"
+      size: [6.6, 3.2]
