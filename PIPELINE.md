@@ -414,6 +414,28 @@ you is a shortlist: the sections whose gap reports came back longest are the one
 
 ---
 
+## Task 7 — the PDF. Automatic, on every build.
+
+`python check/build.py --subject <ID>` ends by running `check/pdf/make_pdf.py`, which lays out
+the series edition: front cover, title page, copyright and licence page (version and date),
+introduction (why this book exists, how to read it, how to send feedback), contents with page
+numbers, the book, the worked answers, the book's glossary rows, the list of all 196 books with
+this one marked, and a back cover with a QR code to the website.
+
+What it reads, and where to change it:
+
+| To change | Edit |
+| --- | --- |
+| author, role, email, website, licence, how-to-read, feedback wording, Part colours | `check/pdf/series.yml` |
+| a book's title, subtitle, version, date, why-this-book, back-cover text, status | `books/<ID>/book.yml` |
+| the order of the series, and so each book's number | `ORDER_KEY` in `check/series.py`, then run it |
+| layout, fonts, colours of labels and boxes | `check/pdf/style.css` |
+
+It changes no word of a book. It needs WeasyPrint (`pip install weasyprint qrcode`); the fonts are
+in `check/pdf/fonts` so every chat's PDF looks the same. `--check` blocks if `map/BOOKS.yml` is
+stale. Before sending a PDF, look at its cover, contents, one Part opener, glossary and series
+list as page images: a layout fault is invisible to every gate.
+
 ## Running it without watching
 
 Cowork's scheduled tasks run in the cloud and do not need your computer awake. Two practical
