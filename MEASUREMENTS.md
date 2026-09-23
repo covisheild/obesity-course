@@ -229,3 +229,20 @@ here.
 
 Bundles stay: the GitHub connector writes from Claude Code but only reads from Cowork. One bundle
 per book, one pasted command.
+
+## What Book 1 (S01-R1) cost, and the drafter comparison (23 September 2026)
+
+Ten sections, one Cowork chat. Subagent usage as reported by the harness (unweighted tokens, the
+conductor's own context not included, a few short follow-up turns not included): about 6.1M in
+total, so about 0.6M a section. By step: tooling gaps 0.16M; inventory 0.13M; source intake 0.34M+;
+drafting 1.18M; figure and Notion machinery 0.18M; cut 0.67M; cold read 0.15M; restore 0.17M;
+figure plan 0.30M; audit 0.82M; fix 1.10M; verify, two rounds 0.42M; round-2 fix 0.18M; glossary
+and consistency 0.20M; post-verification check 0.08M. As in Parts D and E, finding and fixing
+(audit + fix + verify, 2.5M) cost about twice the drafting.
+
+**Drafter comparison.** Section 7 was drafted once by a Sonnet drafter and once by an Opus 5.5
+drafter, and a blind auditor counted correctness defects before compression
+(`books/S01-R1/comparison/AUDIT-COUNT.md`): Opus 1 error, 3 gaps, 3 style; Sonnet 8 errors,
+6 gaps, 6 style. Across the whole book the Sonnet drafts carried about 170 defects at audit, 60 of
+them errors. One section is one data point; Harsh's unlabelled read of the two drafts is the other
+half of the comparison.
