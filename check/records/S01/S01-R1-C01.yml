@@ -18,8 +18,10 @@ definition:
     together make up adipose tissue.
 
     Body weight is not one substance on a scale. Split it into two compartments. Fat mass is
-    the triglyceride held in adipose tissue. Fat-free mass, also called lean mass, is
-    everything else the body weighs: muscle, bone, organs, blood and the water inside them.
+    the triglyceride held in adipose tissue. Fat-free mass is everything else the body weighs.
+    Some papers call it lean body mass.
+
+    Adipose tissue also holds fluid and protein. On this split, those count as fat-free mass.
 
     Naming a change in body weight is not yet naming a change in fat.
   references:
@@ -43,6 +45,48 @@ definition:
       opened: true
       claim_located: true
       checked_on: '2026-09-23'
+  - citekey: hall_2008_ijo
+    kind: primary
+    locator: Energy density of fat mass change, the paragraph on adipose tissue
+    quote: the change of body fat,ΔF, is not equivalent to the loss adipose tissue, which includes
+      a variable contribution of fluid and protein in addition to triglyceride
+    verified:
+      resolved_id: https://pmc.ncbi.nlm.nih.gov/articles/PMC2376744/
+      opened: true
+      claim_located: true
+      checked_on: '2026-09-23'
+      note: |-
+        Read on 2026-09-23 from sources/hall_2008_ijo.txt block 4. Backs "Adipose tissue also
+        holds fluid and protein"; that these count as fat-free mass follows from this section's
+        own split.
+  - citekey: hall_2008_ijo
+    kind: primary
+    locator: Energy density of fat mass change, the paragraph before it, on the Forbes equation
+    quote: the metabolizable energy densities for the lean body mass loss, ΔL, and body fat mass
+      loss, ΔF, have been determined
+    verified:
+      resolved_id: https://pmc.ncbi.nlm.nih.gov/articles/PMC2376744/
+      opened: true
+      claim_located: true
+      checked_on: '2026-09-23'
+      note: |-
+        Read on 2026-09-23 from sources/hall_2008_ijo.txt block 4. Backs only "Some papers call
+        it lean body mass": Hall splits weight into lean body mass and body fat mass. No held
+        source defines fat-free mass or lists what it contains; a textbook definition is on the
+        citation backlog.
+  - citekey: hall_2008_ijo
+    kind: primary
+    locator: Opening paragraphs, on what an energy deficit draws on
+    quote: the deficit is accounted for by metabolism of stored energy in the form of body fat,
+      protein, and glycogen
+    verified:
+      resolved_id: https://pmc.ncbi.nlm.nih.gov/articles/PMC2376744/
+      opened: true
+      claim_located: true
+      checked_on: '2026-09-23'
+      note: |-
+        Read on 2026-09-23 from sources/hall_2008_ijo.txt block 3. Backs the illustration's
+        sentence that protein and glycogen are the other stores.
   - citekey: hall_guo_2017
     kind: primary
     locator: Figure 1 caption
@@ -55,7 +99,7 @@ definition:
       checked_on: '2026-09-23'
       note: |-
         Read on 2026-09-23 from the excerpt held at sources/hall_guo_2017.txt (Figure 1
-        caption block). This is a review, not the primary measurement behind it, and this
+        caption block). This is a narrative review, not the primary measurement behind it, and this
         record does not use the caption's "several months of energy expenditure" figure as a
         number - it is used here only for the words "vast majority of energy stores" and "body
         fat" as against "body protein and glycogen".
@@ -69,6 +113,19 @@ definition:
       opened: true
       claim_located: true
       checked_on: '2026-09-23'
+      note: |-
+        A narrative review. Also backs the illustration's gloss of "metabolically active".
+  - citekey: hall_guo_2017
+    kind: primary
+    locator: Components of Daily Energy Expenditure, opening sentence
+    quote: resting energy expenditure (REE)
+    verified:
+      resolved_id: https://pmc.ncbi.nlm.nih.gov/articles/PMC5568065/
+      opened: true
+      claim_located: true
+      checked_on: '2026-09-23'
+      note: |-
+        A narrative review. Backs the expansion of REE.
   - citekey: hall_guo_2017
     kind: primary
     locator: Resting Energy Expenditure, first paragraph, on obesity
@@ -80,8 +137,8 @@ definition:
       claim_located: true
       checked_on: '2026-09-23'
       note: |-
-        This is the sentence the definition's "alongside more fat mass, not in place of it"
-        rests on. Read on 2026-09-23.
+        A narrative review. This is the sentence `simplified_explanation` paragraph 3 and
+        must_know[1] rest on. Read on 2026-09-23.
 simplified_explanation: |
   Pack enough fat cells together and you have adipose tissue, the fatty layer and the pockets
   of fat scattered round a body. That is the store.
@@ -90,7 +147,7 @@ simplified_explanation: |
   energy than anything else in the body does.
 
   A person carrying more body fat is not simply carrying fat mass in place of fat-free mass.
-  They carry more of both.
+  They generally carry more of both.
 
   So weight on a scale is one number covering two different things. A kilogram gained or lost
   could be mostly fat, mostly the other compartment, or some mixture, and the scale alone
@@ -106,6 +163,9 @@ illustration:
     > It has long been recognized that fat-free mass comprises the metabolically active tissues
     > of the body and therefore contributes more to REE than body fat.
 
+    REE is resting energy expenditure, the energy spent at rest. Metabolically active tissue is
+    the tissue that spends most of that energy.
+
     Read on, in the same paragraph.
 
     > Fat-free mass is elevated in obesity, along with body fat, resulting in increased REE
@@ -118,12 +178,12 @@ illustration:
 
     > Body fat represents the vast majority of energy stores in the body compared with the
     > energy content of body protein and glycogen.
-  analogy_breaks_when: |
-    It does not say how much of adipose tissue's own weight is fat rather than water and other
-    tissue: that needs a source this book does not hold, and no figure for it is given here.
 
-    It does not say how much energy either compartment holds for each kilogram. That is the
-    next concept.
+    Protein and glycogen are the other stores. When intake falls short, the body draws on all
+    three.
+  analogy_breaks_when: |
+    It does not say how much of adipose tissue's own weight is fat, or how much energy either
+    compartment holds for each kilogram. That is the next section.
 must_know:
 - point: |
     A kilogram of body weight is not a kilogram of fat.
@@ -134,14 +194,14 @@ must_know:
   kind: misconception
   bearing: clinical
 - point: |
-    Ask for a method before you accept a number for either compartment.
-  kind: boundary
+    Ask how a fat-mass or fat-free-mass figure was measured before you accept it. A scale
+    alone cannot give it.
+  kind: move
   bearing: methodological
 retrieval_items:
 - q: What are body weight's two compartments, and which one is the metabolically active one?
-  a: Fat mass, the triglyceride held in adipose tissue, and fat-free (lean) mass, everything
-    else the body weighs - muscle, bone, organs, blood and water. Fat-free mass is the
-    metabolically active compartment.
+  a: Fat mass, the triglyceride held in adipose tissue, and fat-free mass, everything else the
+    body weighs. Fat-free mass is the metabolically active compartment.
 - q: Does more body fat mean less fat-free mass?
   a: No. Fat-free mass is generally elevated in obesity alongside body fat, not displaced by
     it.

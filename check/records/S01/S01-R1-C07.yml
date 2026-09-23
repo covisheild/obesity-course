@@ -12,15 +12,18 @@ concept_deps: [S01-R1-C05]
 
 definition:
   text: |
-    A kilogram of body fat is proposed to hold a fixed number of kilocalories, so that a
-    surplus or a deficit of energy intake, summed over time, converts into a change in fat
-    mass at that fixed rate. Every other quantity is held constant for the interval this is
+    A kilogram of body fat is proposed to hold a fixed number of kilocalories. A surplus or a
+    deficit of energy intake, summed over time, then converts into a change in fat mass at
+    that fixed rate. Every other quantity is held constant for the interval this is
     applied to: the day's intake, the day's expenditure, and the energy content of a
     kilogram of fat itself. This is the static rule.
 
-    Its common English form states the rate as 3,500 kilocalories removed or added for each
-    pound of body weight changed, a figure this subject's held sources trace to Wishnofsky
-    (1958) and describe as "derived by estimation of the energy content of weight lost".
+    Its common English form is 3,500 kilocalories removed or added for each pound of body
+    weight changed. The rule is stated for body weight, and it assumes every kilogram of that
+    weight is fat tissue. The sources this book cites trace it to Wishnofsky (1958), cited by
+    Thomas (2013) and Hall (2008). Hall and colleagues (2011) say it was "derived by estimation
+    of the energy content of weight lost". Wishnofsky's estimate is the calculation
+    `S01-R1-C02` describes: tissue taken to be 87% fat, times fat's energy per gram.
 
     ```working
         3500 divided by 0.45359237 = 7716.18
@@ -33,9 +36,9 @@ definition:
     Because D is held fixed, the predicted change is a straight line against time: the same
     daily D always predicts the same rate of change, on day one and on day one thousand.
 
-    The rule fails for two separate reasons, and only the second is this concept's subject.
-    First, real tissue lost is not pure fat, so a single fixed kilocalories-per-kilogram
-    figure cannot hold for every kilogram lost; that is C02's territory. Second, and the
+    The rule fails for two separate reasons, and this section covers the second. First, real
+    tissue lost is not all fat tissue, so no single kilocalories-per-kilogram figure holds for
+    every kilogram lost; `S01-R1-C02` covers that. Second, and the
     reason a straight line is the wrong shape, intake and expenditure are not constant
     through a period of weight loss: both respond to the loss itself.
   references:
@@ -59,6 +62,19 @@ definition:
         opened: true
         claim_located: true
         checked_on: '2026-09-23'
+    - citekey: hall_2008_ijo
+      kind: primary
+      locator: "Opening paragraph"
+      quote: |-
+        The origin of this rule can be traced back to a calculation that assumes exclusive loss of adipose tissue consisting of 87% fat
+      verified:
+        resolved_id: https://pmc.ncbi.nlm.nih.gov/articles/PMC2376744/
+        opened: true
+        claim_located: true
+        checked_on: '2026-09-23'
+        note: |-
+          Read at the held author manuscript, block 3. The paper's reference 2 is Wishnofsky
+          1958, so this is the same origin Hall 2011 and Thomas 2013 point to.
     - citekey: nist_sp811_pound
       kind: instrument
       locator: "Footnotes page, the pound footnote"
@@ -100,7 +116,7 @@ simplified_explanation: |
       3500 divided by 0.45359237 = 7716.18
   ```
 
-  About 7,716 kilocalories for a kilogram. It is not a fact anybody measured about fat.
+  About 7,716 kilocalories for a kilogram. It is a calculation, not something anybody measured.
 
   Pick a daily surplus or deficit, and hold it the same size every day. Multiply it by the
   number of days, and divide by 7,716.
@@ -110,9 +126,9 @@ simplified_explanation: |
   A smaller body spends less.
 illustration:
   body: |
-    Take the scenario the *Lancet* paper by Hall and colleagues uses to make this point. A
+    Take the scenario Hall and colleagues (2011) use in the *Lancet* to make this point. A
     sedentary man weighing 100 kilograms cuts his energy intake by 2 megajoules a day and
-    keeps it cut.
+    keeps it cut. One kilocalorie is 0.004184 megajoules, so divide by that.
 
     ```working
         2 divided by 0.004184 = 478.01
@@ -127,40 +143,44 @@ illustration:
 
     About 22.6 kilograms in the first year.
 
-    Now the failure. The paper's own dynamic model, built from the first law of
-    thermodynamics rather than from a fixed rate, predicts something different for the same
-    100-kilogram man on the same cut: a bodyweight plateau at about 75 kilograms, reached
-    over about three years, "taking roughly 1 year to reach half of the maximum weight loss".
+    Now the failure. The paper's own dynamic model is built on energy balance, with
+    expenditure allowed to change. For the same man on the same cut, it predicts weight
+    levelling off towards about 75 kilograms. The model takes "roughly 1 year to reach half of the
+    maximum weight loss". It is 95% of the way there after about three years.
 
     ```table
     model                weight change after one year
     the static rule       about 22.6 kg
-    the dynamic model      about half of 25 kg, so roughly 12 to 13 kg
+    the dynamic model      roughly 11 to 12.5 kg (the paper: the static rule's 22 kg is about double)
     ```
 
     The static rule is not merely optimistic here. It has the wrong shape. It says every
     year should look like the first, for as long as the deficit is kept up. The dynamic
-    model says the loss slows and levels off, because the man's expenditure falls as his
-    body gets smaller, which shrinks the deficit that is actually driving further loss even
-    though intake has not changed again.
+    model says the loss slows and levels off. The man's expenditure falls as his body gets
+    smaller. That shrinks the real deficit, even though his intake has not changed again.
 
-    Thomas and colleagues pooled 103 adults on supervised diets averaging a 1,439 kcal per
-    day deficit. Work out what the static rule predicts they should lose over their average
-    64.8 days on the diet.
+    Thomas and colleagues (2013) pooled 103 adults whose diets were supervised or whose
+    intake was measured. Their prescribed deficit averaged 1,439 kcal a day. Work out what
+    the static rule predicts they should lose over their average 64.8 days on the diet.
 
     ```working
         1439 times 64.8 = 93247.2
         93247.2 divided by 3500 = 26.64
     ```
 
-    About 26.6 pounds predicted, close to the 27.6 pounds the rule in fact predicted for this
-    cohort in the paper. What they actually lost, measured, was 20.1 pounds: "7.4±12.6 lb
-    less than the 27.6±16.0 lbs predicted by the 3500 kcal rule."
+    About 26.6 pounds. The paper's own figure is 27.6 pounds. The paper worked the rule out
+    person by person and averaged. Multiplying two averages gives a slightly different
+    number.
+
+    What they actually lost was 20.1 pounds: "Subjects lost 20.1±11.3 lbs, 7.4±12.6 lb less
+    than the 27.6±16.0 lbs predicted by the 3500 kcal rule." The number after ± shows how
+    widely people varied around the average. (27.6 minus 7.4 is 20.2. The 0.1 is rounding in
+    the paper's figures.)
   analogy_breaks_when: |
-    The straight-line projection is reliable only over an interval short enough that intake
-    and expenditure have not yet responded to the loss, and both sources here agree that
-    response starts working against the deficit within the first year, not after several
-    years.
+    The straight line holds only until intake and expenditure respond to the loss. No source
+    here gives an interval over which it is safe. The Hall model puts half the eventual loss
+    in the first year. Thomas's dieters already fell about a quarter short of the rule within
+    about nine weeks.
   numbers:
     - value: '3500'
       unit: "kcal per pound, the static rule's own rate"
@@ -182,10 +202,76 @@ illustration:
       citekey: hall_2011_lancet
       as_of: '2026-09-23'
     - value: '1439'
-      unit: "kcal/day, average deficit achieved under total supervision"
+      unit: "kcal/day, prescribed average deficit, diets supervised or with measured intake"
       quote: |-
         Subjects were prescribed a target intake of 1409±569 kcal/d, an average deficit of 1439±784 kcal/d.
       citekey: thomas_2013_3500kcal
+      as_of: '2026-09-23'
+    - value: '100'
+      unit: "kg, the starting weight of Hall's modelled man"
+      quote: |-
+        Figure 2A shows the predicted bodyweight time course of a 100 kg (220 lb) sedentary man following a step reduction of energy intake by 2 MJ per day (480 kcal per day).
+      citekey: hall_2011_lancet
+      as_of: '2026-09-23'
+    - value: '2'
+      unit: "MJ/day, the modelled cut in intake"
+      quote: |-
+        Figure 2A shows the predicted bodyweight time course of a 100 kg (220 lb) sedentary man following a step reduction of energy intake by 2 MJ per day (480 kcal per day).
+      citekey: hall_2011_lancet
+      as_of: '2026-09-23'
+    - value: '75'
+      unit: "kg, the dynamic model's plateau"
+      quote: |-
+        This constant diet perturbation was predicted to result in a bodyweight plateau at about 75 kg (165 lb) over a 10-year simulation taking roughly 1 year to reach half of the maximum weight loss and reaching 95% of this value after about 3 years.
+      citekey: hall_2011_lancet
+      as_of: '2026-09-23'
+    - value: '1'
+      unit: "year, the dynamic model's time to half the maximum loss"
+      quote: |-
+        This constant diet perturbation was predicted to result in a bodyweight plateau at about 75 kg (165 lb) over a 10-year simulation taking roughly 1 year to reach half of the maximum weight loss and reaching 95% of this value after about 3 years.
+      citekey: hall_2011_lancet
+      as_of: '2026-09-23'
+    - value: '95'
+      unit: "% of the maximum loss reached after about 3 years in the dynamic model"
+      quote: |-
+        This constant diet perturbation was predicted to result in a bodyweight plateau at about 75 kg (165 lb) over a 10-year simulation taking roughly 1 year to reach half of the maximum weight loss and reaching 95% of this value after about 3 years.
+      citekey: hall_2011_lancet
+      as_of: '2026-09-23'
+    - value: '103'
+      unit: "adults pooled by Thomas and colleagues"
+      quote: |-
+        Overall, the data presented in Figure 1 represents a total of 103 adults, 71 men and 32 women
+      citekey: thomas_2013_3500kcal
+      as_of: '2026-09-23'
+    - value: '64.8'
+      unit: "days, mean duration of treatment"
+      quote: |-
+        The duration of treatment was 64.8±23.6 days with a range of 31 to 93 days.
+      citekey: thomas_2013_3500kcal
+      as_of: '2026-09-23'
+    - value: '27.6'
+      unit: "lb, mean loss the 3,500 kcal rule predicted, person by person"
+      quote: |-
+        Subjects lost 20.1±11.3 lbs, 7.4±12.6 lb less than the 27.6±16.0 lbs predicted by the 3500 kcal rule.
+      citekey: thomas_2013_3500kcal
+      as_of: '2026-09-23'
+    - value: '7.4'
+      unit: "lb, mean shortfall of measured loss against the rule"
+      quote: |-
+        Subjects lost 20.1±11.3 lbs, 7.4±12.6 lb less than the 27.6±16.0 lbs predicted by the 3500 kcal rule.
+      citekey: thomas_2013_3500kcal
+      as_of: '2026-09-23'
+    - value: '20.1'
+      unit: "lb, mean measured loss"
+      quote: |-
+        Subjects lost 20.1±11.3 lbs, 7.4±12.6 lb less than the 27.6±16.0 lbs predicted by the 3500 kcal rule.
+      citekey: thomas_2013_3500kcal
+      as_of: '2026-09-23'
+    - value: '87'
+      unit: "% fat assumed in the tissue lost, in the rule's derivation"
+      quote: |-
+        The origin of this rule can be traced back to a calculation that assumes exclusive loss of adipose tissue consisting of 87% fat
+      citekey: hall_2008_ijo
       as_of: '2026-09-23'
 
 must_know:
@@ -199,16 +285,19 @@ must_know:
     kind: trap
     bearing: methodological
   - point: |
-      The straight line from the static rule is not wrong on day one.
+      The static rule's assumption that expenditure stays put is closest to true in the first
+      days. Its assumption that the loss is fat is furthest from true then. Trust it for
+      neither the first week nor the long run.
     kind: boundary
     bearing: clinical
   - point: |
-      When you tell a patient a target using this rule, say over what interval it holds.
+      When you tell a patient a target using this rule, say that it over-predicts from the
+      first weeks.
     kind: consequence
     bearing: clinical
   - point: |
-      A kilogram of fat is several days of a person's total daily expenditure, not a few
-      hours of it.
+      At the rule's 7,716 kcal, a kilogram of fat is two to four whole days of a person's
+      total expenditure. That uses `S01-R1-C03`'s 8 to 16 megajoules a day.
     kind: number
     bearing: public
     refs: [thomas_2013_3500kcal]
@@ -239,38 +328,35 @@ exercises:
       A health secretary has one page and wants an answer first. They have asked: "Is the
       3,500-calorie rule good enough to put in a public information leaflet?"
     answer: |
-      Answer first: only with a stated time limit attached, and it should not go in without
-      one.
+      Answer first: not as a bare rule. If it goes in at all, it needs a warning that it
+      promises too much.
 
-      Why. The rule is correct arithmetic and it is a well-known one, cited in tens of
-      thousands of weight-loss materials and in nutrition textbooks. Over the first several
-      weeks of a diet it gives a usable, roughly correct estimate; published data from
-      supervised diets land within a plausible range of what it predicts. Past the first
-      year it does not, because the rule assumes intake and expenditure never change, and a
-      published model built from the same physics predicts a slowing, plateauing loss
-      instead of the rule's straight line — about half the rule's number by the end of the
-      first year, in the published worked example.
+      Why. The rule is simple arithmetic, and it is printed widely, including in nutrition
+      textbooks. Even over the first two months it over-predicts: dieters whose intake was checked lost about
+      three-quarters of what it promised. Past the first year it is further off. The rule
+      assumes intake and expenditure never change. A published model built on energy balance
+      predicts a loss that slows and levels off. In that model's worked example, the rule's
+      first-year number is about double the model's.
 
-      What to print instead of the bare rule: a range for the first few months, with a
-      sentence saying the rate slows after that and a smaller body needs less to maintain
-      itself. No specific week-fifty-two number should be quoted from this rule at all.
+      What to print instead of the bare rule. Real loss falls short of the rule from the
+      start. It slows over time. A smaller body needs less to maintain itself.
+      Quote no week-fifty-two number from this rule at all.
     skill_ref: S01-R1-K02
 
 quantitative: true
 practice:
   - level: 1
     prompt: |
-      A rule states that 3,500 removes one unit of weight for every 0.45359237 of a
-      different unit that measures the same thing. Work out the rate per whole unit of the
-      second measure.
+      A rule says 3,500 kcal removes one pound. One pound is 0.45359237 kilogram. How many
+      kcal per kilogram is that?
     answer: |
-      Divide the first number by the second.
+      Divide the kilocalories by the kilograms.
 
       ```working
           3500 divided by 0.45359237 = 7716.18
       ```
 
-      7,716.18, to two decimal places.
+      7,716.18 kcal per kilogram, to two decimal places.
   - level: 2
     prompt: |
       Using a rate of 3,500 for one unit, work out the total for 5 units, and separately for
@@ -286,10 +372,10 @@ practice:
       17,500 and 42,000.
   - level: 4
     prompt: |
-      Thomas and colleagues' pooled dieters were prescribed a target intake giving them an
-      average deficit of 1,439 kcal a day, over an average of 64.8 days on the diet. Using
-      the static rule's rate of 3,500 kcal a pound, work out the predicted loss in pounds,
-      then convert it to kilograms using the exact factor 1 pound equals 0.45359237 kg.
+      Thomas and colleagues' pooled dieters were prescribed an average deficit of 1,439 kcal a
+      day. They were on the diet for an average of 64.8 days. Use the static rule's 3,500 kcal
+      a pound to work out the predicted loss in pounds. Then convert it to kilograms. One pound
+      is exactly 0.45359237 kg.
     answer: |
       Total the deficit over the days, then divide by 3,500.
 
@@ -308,15 +394,13 @@ practice:
     refs: [thomas_2013_3500kcal]
   - level: 5
     prompt: |
-      Hall and colleagues model a 100 kg sedentary man cutting his intake by 2 megajoules a
-      day and holding that cut for a year. Using the thermochemical kilocalorie, 1 kcal
-      equals 0.004184 megajoules, convert the daily cut to kilocalories. Then run the static
-      rule forward for 365 days using 7,716.18 kcal per kilogram, and compare your figure
-      with the paper's own reported prediction for the static rule of "22 kg lost in the
-      first year".
+      Hall and colleagues model a 100 kg sedentary man. He cuts his intake by 2 megajoules a
+      day and holds that cut for a year. One kilocalorie is 0.004184 megajoules. Use that to
+      turn the daily cut into kilocalories. Then run the static rule forward for 365 days at
+      7,716.18 kcal per kilogram. Compare your figure with the paper's static-rule prediction
+      of "22 kg lost in the first year".
     answer: |
-      Convert the megajoules to kilocalories by dividing by the size of one kilocalorie in
-      megajoules.
+      Divide the megajoules by the size of one kilocalorie in megajoules.
 
       ```working
           2 divided by 0.004184 = 478.01
@@ -329,17 +413,17 @@ practice:
           174473.65 divided by 7716.18 = 22.61
       ```
 
-      About 22.6 kilograms, against the paper's reported 22 kilograms. The two figures are
-      close; the small gap is rounding in the conversion and in the paper's own numbers, and
-      it confirms this arithmetic is reproducing the same static-rule prediction the paper
-      describes, not the different figure its dynamic model gives for the same scenario.
+      About 22.6 kilograms, against the paper's 22 kilograms. The two are close. The small gap
+      is rounding, in the conversion and in the paper's own figures. So this arithmetic
+      reproduces the paper's static-rule prediction. It is not the figure the paper's dynamic
+      model gives.
     refs: [hall_2011_lancet]
   - level: 7
     prompt: |
       A textbook states: "The accumulation of an extra 3500 calories adds one pound of
       weight. If an excess of 200 calories per day is ingested, one extra pound of body
       weight will be gained every 18 days. At that rate, an extra 20 pounds can be gained
-      over the course of a year." A student extends the reasoning: "So anyone eating 200
+      over the course of a year." A student extends the reasoning. "So anyone eating 200
       calories over their needs, every day, for the rest of their life, will gain 20 pounds
       a year, every year, forever." Find the step that broke.
     answer: |
@@ -351,20 +435,17 @@ practice:
       ```
 
       About 21 pounds a year on 200 extra kilocalories a day, matching the textbook's
-      rounded "20 pounds" closely enough. That part holds.
+      rounded "20 pounds" closely enough. The arithmetic holds.
 
-      The break is the student's word "forever". The static rule was run forward for one
-      year using a fixed daily surplus. Nothing in that calculation licenses running it
-      forward for a second year, a tenth year, or a fiftieth, because the calculation never
-      asked whether a body that is now 20 pounds heavier still needs the same daily amount
-      to stay in the same surplus. A heavier body spends more at rest and more to move
-      itself, so the same 200-calorie habit produces a shrinking surplus as the weight comes
-      on, not the same 200 every year. The straight line is only ever a statement about the
-      interval it was computed over.
+      The first break is the textbook's own step to a whole year. The body starts to respond
+      well inside a year. "Forever" repeats the same mistake. The rule was run forward on a fixed daily
+      surplus. It never asked whether a heavier body needs more each day. A heavier body
+      spends more at rest and more to move itself. So the same 200-calorie habit gives a
+      shrinking surplus as the weight comes on.
 
-      Why the wrong answer looks reasonable. The arithmetic for one year is genuinely
-      correct, and repeating a correct calculation feels like a safe way to extend it. What
-      breaks is an assumption carried silently past the point where it stops holding.
+      Why the wrong answer looks reasonable. The arithmetic for one year is correct, and
+      repeating a correct calculation feels safe. What breaks is an assumption carried
+      silently past the point where it stops holding.
     refs: [openstax_anatphys_2e]
   - level: 8
     prompt: |
@@ -377,34 +458,31 @@ practice:
           so the patient needs a total deficit of 28,000 kcal
       ```
     answer: |
-      The step that broke is the second-to-last one, and it is a unit swap rather than a
-      wrong multiplication. The static rule's 3,500 figure is a rate for one pound, not one
-      kilogram. Multiplying a count of kilograms by the pound rate treats a kilogram as if
-      it were a pound, understating the true deficit needed by a factor of about 2.2, since
-      one kilogram is about 2.2 pounds.
+      The step that broke is the second-to-last one. It is a unit swap, not a wrong
+      multiplication. The static rule's 3,500 is a rate for one pound, not one kilogram.
+      Multiplying kilograms by the pound rate treats a kilogram as a pound. That understates
+      the deficit by a factor of about 2.2, since one kilogram is about 2.2 pounds.
 
-      The correct version converts first.
+      The correct version uses the rate per kilogram.
 
       ```working
-          8 divided by 0.45359237 = 17.64
-          17.64 times 3500 = 61,740
+          8 times 7716.18 = 61729.44
       ```
 
-      About 61,740 kcal, not 28,000: more than double the wrong figure.
+      About 61,730 kcal, not 28,000: more than double the wrong figure.
 
-      Why the wrong answer looks reasonable. The arithmetic 8 times 3,500 is correct
-      multiplication and the number it produces is plausible-looking for a clinical target.
-      Nothing in the arithmetic itself signals an error; the mistake is entirely in which
-      rate got attached to which unit, which is exactly the check the level 1 problem in
-      this set trains.
+      Why the wrong answer looks reasonable. 8 times 3,500 is correct multiplication, and
+      28,000 looks like a plausible target. Nothing in the arithmetic signals an error. The
+      mistake is which rate got attached to which unit. Problem 1 trains exactly that
+      check.
   - level: 9
     prompt: |
       A slimming programme's leaflet says: "Cut 500 calories a day and you will lose about a
       pound a week — in six months, that is 26 pounds off." Decide what to compute, compute
       it, and say what your answer does not establish.
     answer: |
-      What to compute: whether the leaflet's own numbers are consistent with the static rule
-      it is implicitly using, and over what interval that rule is being trusted.
+      What to compute: whether the leaflet's numbers fit the static rule it quietly uses.
+      Then, over what interval that rule is being trusted.
 
       Check the weekly figure first.
 
@@ -423,23 +501,23 @@ practice:
       Six months is about 26 weeks, so 26 pounds is what a straight line through the weekly
       figure gives. The leaflet's arithmetic is internally consistent.
 
-      What this does not establish. It does not establish that a person following the diet
-      for six months actually loses 26 pounds, because the static rule assumes the same
-      500-kcal deficit keeps producing the same weekly loss the whole time, and the
-      real-world data in this section's illustration show that assumption failing well
-      inside a year. It does not establish that 500 kcal a day is achievable or sustained for
-      26 weeks, which is a behavioural question this arithmetic cannot touch. And it says
-      nothing about whether the pounds lost are fat, since the rule fixes a kilocalorie rate
-      per pound without asking what the pound is made of.
+      What this does not establish. It does not show that a person on the diet for six
+      months actually loses 26 pounds. The static rule assumes the same 500-kcal deficit keeps
+      giving the same weekly loss. The data in this section's illustration show that failing
+      within about nine weeks.
+
+      It does not show that 500 kcal a day can be kept up for 26
+      weeks. That is a question about behaviour, which this arithmetic cannot touch. And it
+      says nothing about whether the pounds lost are fat. The rule fixes a rate per pound
+      without asking what the pound is made of.
   - level: 10
     prompt: |
       A dietitian tells a patient: "Keep to 500 kcal under your target and you'll reliably
       lose a pound a week — do the maths yourself if you don't believe me." Decide what to
       compute, compute it, and say what your answer does not establish.
     answer: |
-      What to compute: how the dietitian's promised rate compares with what was actually
-      achieved in a real supervised cohort managing an even larger average deficit, since
-      that is the closest real check available among this subject's held sources.
+      What to compute: how the promised rate compares with a real cohort on a bigger
+      deficit. That is the closest real check among the sources this book cites.
 
       The patient's promised deficit, in the same terms Thomas and colleagues report.
 
@@ -447,19 +525,22 @@ practice:
           500 times 7 = 3500
       ```
 
-      3,500 kcal a week, or exactly one pound a week by the static rule, before anything
-      about the body responds.
+      3,500 kcal a week, or exactly one pound a week by the static rule, before the body
+      responds. Thomas and colleagues' dieters were prescribed a bigger deficit: 1,439 kcal a
+      day. In a week, that is:
 
-      Thomas and colleagues' cohort managed a larger deficit than this, 1,439 kcal a day, or
-      10,073 kcal a week, under total dietary supervision, and their observed loss still fell
-      short of what the static rule predicted for their own deficit, by 7.4 pounds on
-      average out of a predicted 27.6.
+      ```working
+          1439 times 7 = 10073
+      ```
 
-      What this does not establish. It does not establish that this particular patient, on a
-      smaller deficit and without total supervision, will do any better relative to
-      prediction than a cohort that was more tightly controlled and still undershot. It does
-      not establish a number for how much this patient will fall short, only that "reliably"
-      is not a word the static rule, on its own, is entitled to.
+      Their intake was supervised or measured. Their loss still fell short of the rule's
+      prediction for their own deficit. On average they lost 7.4 pounds less than the
+      predicted 27.6.
+
+      What this does not establish. It does not show that this patient will do better,
+      relative to prediction, than that cohort. The patient has a smaller deficit and less
+      control over intake. Nor does it give a number for how far this patient will fall
+      short. It shows only that "reliably" is not a word the static rule has earned.
     refs: [thomas_2013_3500kcal]
 
 retrieval_items:
@@ -473,8 +554,8 @@ retrieval_items:
   - q: In Hall and colleagues' worked example, how did the static rule's one-year prediction
       compare with their dynamic model's prediction for the same 100 kg man?
     a: The static rule predicted about 22 kg lost in the first year; the dynamic model
-      predicted roughly half that by the same point, plateauing at about 75 kg only after
-      several years.
+      predicted roughly half that, and was 95% of the way to its plateau near 75 kg only
+      after about three years.
 
 provenance:
   map_version_id: fc19c8bc-a216-4131-99fb-ebe3f19cec4a
@@ -490,8 +571,8 @@ status: drafted
 
 figures:
   - file: s01-r1-c07-static-vs-dynamic.png
-    caption: "Hall's 100 kg man cutting 2 MJ a day: the static rule's straight line loses about 22.61 kg every year; the dynamic model loses half of its 25 kg in year 1 and levels off at about 75 kg over about three years."
-    alt: "Body weight against years. A dashed straight line falls from 100 kg through 77.39 at year 1 to 32.17 at year 3. A second line falls from 100 to 87.5 at year 1 and 75 at year 3, slowing as it goes."
+    caption: "Hall's 100 kg man cutting 2 MJ a day: the static rule's straight line loses about 22.61 kg every year. The dynamic model loses half of its 25 kg in year 1 and is 95% of the way to about 75 kg by year 3."
+    alt: "Body weight against years. A dashed straight line falls from 100 kg through 77.39 at year 1 to 32.17 at year 3. A second line falls from 100 to 87.5 at year 1 and 76.25 at year 3, slowing as it goes."
     source: draw.py
     spec:
       kind: line
@@ -499,8 +580,8 @@ figures:
       y_label: body weight (kg)
       x: [0, 1, 3]
       series:
-        - name: dynamic model (points the paper states)
-          y: [100, 87.5, 75]
+        - name: dynamic model, worked from the fractions the paper states
+          y: [100, 87.5, 76.25]
         - name: static rule
           y: [100, 77.39, 32.17]
       relations:
@@ -508,19 +589,19 @@ figures:
           series: static rule
           draw: true
           label: "static rule: 22.61 kg a year, every year"
-        - check: "(y1[0] - y1[1]) / (y1[0] - y1[-1]) = 0.5"
-        - check: "y1[0] - y1[-1] = 25"
       labels:
-        - {text: "plateau about 75 kg", at: [3, 75], offset: [-90, -16]}
+        - {text: "95% of the way to about 75 kg", at: [3, 76.25], offset: [-150, -16]}
       y_range: [20, 105]
       derived:
         - {value: "0", from: "100 - 100"}
+        - {value: "25", from: "100 - 75"}
         - {value: "77.39", from: "100 - 22.61"}
         - {value: "32.17", from: "100 - 3*22.61"}
         - {value: "87.5", from: "100 - 0.5*25"}
+        - {value: "76.25", from: "100 - 95*25/100"}
   - file: s01-r1-c07-thomas-shortfall.png
-    caption: "Thomas's cohort: 1,439 kcal a day for 64.8 days gives 26.64 lb on the static rule; measured loss was 7.4 lb less than the paper's own 27.6 lb prediction."
-    alt: "Pounds lost against days on the diet. A dashed line rises from 0 to 26.64 lb at day 64.8. A single measured point at day 64.8 sits about 20 lb up, well below the line."
+    caption: "Thomas's cohort: 1,439 kcal a day for 64.8 days gives 26.64 lb on the static rule. Measured loss was 20.1 lb, 7.4 lb less than the paper's own 27.6 lb prediction."
+    alt: "Pounds lost against days on the diet. A dashed line rises from 0 to 26.64 lb at day 64.8. A single measured point at day 64.8 sits at 20.1 lb, below the line."
     source: draw.py
     spec:
       kind: scatter
@@ -528,18 +609,18 @@ figures:
       y_label: weight lost (lb)
       x: [0, 64.8]
       series:
+        - name: measured, as the paper reports it
+          y: [0, 20.1]
         - name: "static rule, 1,439 kcal a day / 3,500 kcal a pound"
           y: [0, 26.64]
-        - name: measured (paper's 27.6 lb prediction minus its 7.4 lb shortfall)
-          y: [0, 20.2]
       relations:
         - fit: "y = 1439*x/3500"
+          series: "static rule, 1,439 kcal a day / 3,500 kcal a pound"
           draw: true
           label: "static rule: 1,439 x days / 3,500"
-        - check: "y2[-1] = 27.6 - 7.4"
       labels:
-        - {text: "7.4 lb short of the paper's 27.6 lb", at: [64.8, 20.2], offset: [-122, -38]}
+        - {text: "measured 20.1 lb:\n6.5 below this line,\n7.4 below the paper's own 27.6", at: [64.8, 20.1], offset: [-125, -62]}
       y_range: [0, 30]
       derived:
         - {value: "0", from: "1439 - 1439"}
-        - {value: "20.2", from: "27.6 - 7.4"}
+        - {value: "6.5", from: "26.64 - 20.1"}

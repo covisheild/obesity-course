@@ -30,10 +30,20 @@ Mathematical typesetting is flattened by the extraction (a fraction or subscript
 through as run-together characters); no such passage is stored as a quotation.
 
 WHAT THIS FILE HOLDS: excerpts, not the whole article. The structured abstract (Methods,
-Results, Conclusions); the Introduction paragraph on self-reported intake; one Results
-paragraph stating the effect size; the summary paragraph of the Discussion. Omitted:
-the model equations and parameters (flattened by the extraction), the rest of the
-Results and Discussion, figure captions, references.
+Results, Conclusions); the Introduction paragraph on self-reported intake; from Methods, the
+sentence on the model inputs and the clause giving the measurement interval; from Results, the
+paragraph on the trial's weight and intake changes, the paragraph stating the effect size, and
+the two paragraphs on a commercial weight-loss programme (Figure 3, reference 19 - NOT the
+canagliflozin trial); from the Discussion, the paragraph on the range of weight losses and
+individual variability, the limitations paragraphs (expenditure not measured; group means
+only), and the summary paragraph; reference 1 (the source of the ~30 kcal/kg/day expenditure
+figure). Omitted: the model equations and parameters (flattened by the extraction), the
+feedback-model derivations, the rest of the Results and Discussion, figure captions, the
+other references. Added 2026-09-23 after the C09/C10 audit read the full text.
+ON THE MEASUREMENT INTERVAL: the Methods clause reads "T = 52 was the number of days between
+measurements" as fetched; the formula before it is flattened by the extraction (its "*" is
+escaped with a backslash in the fetch and is left out of the slice). Check the typeset article
+before stating the interval to a reader.
 
 ===============================================================================
 1. Abstract: Methods, Results, Conclusions
@@ -63,8 +73,56 @@ https://pmc-oa-opendata.s3.amazonaws.com/PMC5108589.1/PMC5108589.1.txt
 "By modeling the mean changes in energy intake obtained with SGLT2 inhibitor treatment using the proportional feedback model, our results quantify the strength of energy intake feedback control in humans. On average, energy intake increased by ~100 kcal/day per kg of weight lost—an effect substantially greater than the ~30 kcal/kg/day changes in energy expenditure observed with 10 to 20% weight loss in subjects with obesity (1)."
 
 ===============================================================================
-4. Discussion, summary paragraph
+4. Methods: model inputs and the measurement interval
+https://pmc-oa-opendata.s3.amazonaws.com/PMC5108589.1/PMC5108589.1.txt
+===============================================================================
+
+"The inputs to the model were the change of body weight versus baseline over each interval, (BWi − BW0), and the moving average of the measured body weight time course was used to calculate the rate of change of body weight over each interval, dBWi/dt. [...]"
+
+"[...] where N = 2 was the number of body weight measurements per interval and T = 52 was the number of days between measurements. [...]"
+
+===============================================================================
+5. Results: the trial's weight change and intake change
+https://pmc-oa-opendata.s3.amazonaws.com/PMC5108589.1/PMC5108589.1.txt
+===============================================================================
+
+"Table 2 represents the characteristics of the type 2 diabetic subjects who completed the 52 week study and had body weight measurements throughout. The full study cohort was previously reported (8). In response to the sustained increase in UGE with canagliflozin treatment, mean body weight declined and reached a new equilibrium several kilograms lower and significantly more than the placebo group whose mean body weight loss was less than 1 kg (Figure 1A). To explain the measured body weight changes in the treatment group given the estimated increases in UGE, energy intake was calculated to have increased by ~350 kcal/day at steady state (Figure 1B) which is similar to recent estimates of the mean energy intake changes during 90 weeks of empagliflozin treatment, another SGLT2 inhibitor (18). In the placebo group, mean energy intake was calculated to transiently decrease by ~100 kcal/day over the first several weeks and return to baseline after 15 weeks (Figure 1B)"
+
+===============================================================================
+6. Results: a commercial weight-loss programme (Figure 3), not the canagliflozin trial
+https://pmc-oa-opendata.s3.amazonaws.com/PMC5108589.1/PMC5108589.1.txt
+===============================================================================
+
+"To illustrate the importance of our results for obesity treatment, consider the body weight trajectory depicted in Figure 3A that resulted from long-term participation in a structured commercial weight loss program (19) and illustrates the ubiquitous body weight time course characterized by initial weight loss, a plateau after 6–8 months, followed by slow weight regain (20). The calculated energy intake corresponding to this mean body weight trajectory is illustrated in Figure 3B showing an initial reduction of ~700 kcal/day from baseline followed by an exponential relaxation towards baseline intake over the ensuing months. The estimated energy expenditure corresponding to this intervention is also shown in Figure 3B and indicates relatively minor changes in comparison to the changes in energy intake."
+
+"Note that at the point of maximum weight loss occurring at the ~8 month plateau, energy intake had already returned to within 100 kcal/day of baseline. After 1 year, the average energy intake was practically at baseline levels while body weight was still reduced by ~5 kg. [...]"
+
+===============================================================================
+7. Discussion: range of weight losses, and individual variability
+https://pmc-oa-opendata.s3.amazonaws.com/PMC5108589.1/PMC5108589.1.txt
+===============================================================================
+
+"[...] We do not yet know whether the simple proportional controller represented by Equation 4 is valid for a range of weight losses. For example, it may be possible that small weight changes are uncompensated by changes in energy intake such that the control system engages only after sufficient weight loss to cross some threshold (35). Furthermore, larger weight losses may result in energy intake adaptations corresponding to a nonlinear function of body weight change. Future research is required to address these questions and more fully characterize the energy intake feedback control system, characterize its variability between individuals, and identify its physiological mediators in humans."
+
+===============================================================================
+8. Discussion: limitations (expenditure not measured; group means only)
+https://pmc-oa-opendata.s3.amazonaws.com/PMC5108589.1/PMC5108589.1.txt
+===============================================================================
+
+"An important limitation of our study is that we did not have direct measurements of energy expenditure following SGLT2 inhibition. Rather, we calculated the expected energy expenditure changes using our mathematical model that was previously validated to accurately simulate the response to weight changes resulting from controlled changes in energy intake (12, 13, 14). Therefore, the calculated energy intake changes assumed that SGLT2 inhibition did not directly influence energy expenditure which is consistent with data from a 4 week study in humans showing no significant changes in pre- or post-meal energy expenditure after 4 weeks of treatment with the SGLT2 inhibitor empagliflozin (10) and data showing no significant changes in oxygen consumption in rodents treated with canagliflozin (11)."
+
+"We restricted our analysis to the group mean rather than attempt to characterize individual responses since UGE was not directly measured in each subject but was assumed to be ~90 g/day based on previous measurements in people with type 2 diabetes treated with 300 mg/day canagliflozin (9, 37, 38). A subset of subjects in this study underwent a meal tolerance test where UGE was measured; their mean increase in UGE over the 3h meal test was 14.7 g (39); this is similar to the value observed following meals in other studies where mean 24h UGE was measured to be ~90 g/day and suggests that the mean daily UGE in this study is unlikely to be substantially different than what was assumed. Therefore, there is a correspondingly small uncertainty in the mean calculated proportional control of energy intake (~100 kcal/day per kg of body weight lost) at the group level. Measuring daily UGE in individuals during long-term studies with SGLT2 inhibitors would enable the individual subject variability in the magnitude of the compensatory energy intake responses to be characterized."
+
+===============================================================================
+9. Discussion, summary paragraph
 https://pmc-oa-opendata.s3.amazonaws.com/PMC5108589.1/PMC5108589.1.txt
 ===============================================================================
 
 "In summary, our results provide the first quantification of the energy intake feedback control system in free-living humans. We found that appetite increased by ~100 kcal/day above baseline per kilogram of lost weight – an effect several-fold larger than the corresponding energy expenditure adaptations. The few who successfully maintain weight loss over the long term do so by heroic and vigilant efforts to maintain behavior changes in the face of increased appetite along with persistent suppression of energy expenditure (40) in an omnipresent obesogenic environment. Permanently subverting or countering this feedback control system poses a major challenge for the development of effective obesity therapies."
+
+===============================================================================
+10. Reference 1 (cited for the ~30 kcal/kg/day change in expenditure)
+https://pmc-oa-opendata.s3.amazonaws.com/PMC5108589.1/PMC5108589.1.txt
+===============================================================================
+
+"1 Leibel RL Rosenbaum M Hirsch J Changes in energy expenditure resulting from altered body weight N Engl J Med 1995 332 621 628 7632212 10.1056/NEJM199503093321001"

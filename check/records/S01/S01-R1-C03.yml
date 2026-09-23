@@ -11,30 +11,64 @@ ground_floor_deps:
 - B0-R0-C12
 - B0-R0-C03
 - B0-R0-C08
-concept_deps: []
+concept_deps:
+- S01-R1-C02
 definition:
   text: |
     An adult's daily energy intake and daily energy expenditure are both, for most people,
-    somewhere in the low thousands of kilocalories, a few megajoules to about ten of them.
+    somewhere in the low thousands of kilocalories: from about 7 to about 16 megajoules.
     Three kinds of number carry that claim, and they are not the same kind of number.
 
-    The first kind is a measurement of what a group of people actually spent. Worked examples
-    given for three populations put total energy expenditure at 8.26 megajoules a day (1,975
-    kilocalories) for a sedentary or lightly active group of women, 9.86 megajoules (2,355
-    kilocalories) for an active group, and 16.42 megajoules (3,925 kilocalories) for a
-    vigorously active group of men.
+    The first kind is a calculation of what a typical group would spend. The Food and
+    Agriculture Organization (FAO), the World Health Organization (WHO) and the United Nations
+    University (UNU) give worked examples in their 2004 report. Each multiplies a physical
+    activity level (PAL), a multiplier for how active the group is, by a basal metabolic rate
+    (BMR), the energy spent lying at rest after a fast. The product is total energy expenditure
+    (TEE). The examples give 8.26 megajoules a day (1,975 kilocalories) for sedentary or lightly
+    active 55 kg women, 9.86 megajoules (2,355 kilocalories) for active women, and 16.42
+    megajoules (3,925 kilocalories) for vigorously active men. None of these is a measurement.
+    The method that would measure what a group actually spent is doubly labelled water.
 
     The second kind is an adopted requirement: a number a body of experts has set, not measured
     in the person in front of you. India's Indian Council of Medical Research and National
-    Institute of Nutrition set the adult energy requirement, as of 2020, at 2,110 kilocalories a
-    day for a sedentary man and 1,660 for a sedentary woman, rising to 3,470 and 2,720 for heavy
-    work.
+    Institute of Nutrition (ICMR-NIN) set the adult energy requirement in 2020. It is 2,110
+    kilocalories a day for a sedentary man and 1,660 for a sedentary woman. It rises to 3,470
+    and 2,720 for heavy work. These are for a reference man of 65 kg and woman of 55 kg. They are
+    calculated the same way, BMR times PAL.
 
-    The third kind is a survey estimate of what households acquired, converted to energy through
-    a nutrient conversion table. India's National Sample Survey puts the all-India average
-    acquisition at 2,233 kilocalories a person a day in rural areas and 2,250 in urban areas for
-    2022-23.
+    The third kind is a survey estimate of consumption. India's National Sample Survey (NSS)
+    takes the food each household recorded as consumed and converts it to energy with a
+    conversion table, a table giving the energy in a unit of each food. It puts the all-India
+    average at 2,212 kilocalories a person a day in rural areas and 2,240 in urban areas for
+    2023-24. The report warns that actual intake "depends on how these foods are processed
+    and/or cooked". It calls its per consumer unit figures, which allow for age and sex, a
+    sharper indicator of adequacy than the per person ones.
   references:
+  - citekey: fao_who_unu_2004
+    kind: consensus_statement
+    locator: Chapter 2 page, glossary, physical activity level
+    quote: 'Physical activity level (PAL): TEE for 24 hours expressed as a multiple of BMR, and
+      calculated as TEE/BMR for 24 hours. In adult men and non-pregnant, non-lactating women,
+      BMR times PAL is equal to TEE or the daily energy requirement.'
+    verified:
+      resolved_id: https://www.fao.org/4/y5686e/y5686e04.htm
+      opened: true
+      claim_located: true
+      checked_on: '2026-09-23'
+      note: |-
+        Expands PAL, BMR and TEE, and says BMR times PAL is TEE "or the daily energy
+        requirement": the worked examples below are that product, not measurements.
+  - citekey: fao_who_unu_2004
+    kind: consensus_statement
+    locator: Chapter 2 page, glossary, basal metabolic rate
+    quote: 'Basal metabolic rate (BMR): The minimal rate of energy expenditure compatible with
+      life. It is measured in the supine position under standard conditions of rest, fasting,
+      immobility, thermoneutrality and mental relaxation.'
+    verified:
+      resolved_id: https://www.fao.org/4/y5686e/y5686e04.htm
+      opened: true
+      claim_located: true
+      checked_on: '2026-09-23'
   - citekey: fao_who_unu_2004
     kind: consensus_statement
     locator: Chapter 5 page, PAL, the worked example under Table 5.1, sedentary or light
@@ -47,6 +81,9 @@ definition:
       opened: true
       claim_located: true
       checked_on: '2026-09-23'
+      note: |-
+        "If this PAL was from a female population": a hypothetical group. The TEE is a PAL
+        times a BMR, not a measured group mean. Same for the next two examples.
   - citekey: fao_who_unu_2004
     kind: consensus_statement
     locator: Chapter 5 page, PAL, the worked example under Table 5.1, active or moderately
@@ -107,9 +144,90 @@ definition:
       checked_on: '2026-09-23'
       note: |-
         The record uses only the 2020 column: 1,660 and 2,720.
+  - citekey: icmr_nin_2020_brief
+    kind: guideline
+    locator: Table 1b, adult rows (body weight kg, kcal/d, kcal/kg/day)
+    quote: Men Sedentary work 65.0 2110 32 Moderate work 65.0 2710 42 Heavy work 65.0 3470 53
+      Women Sedentary work 55.0 1660 30 Moderate work 55.0 2130 39 Heavy work 55.0 2720 49
+    verified:
+      resolved_id: https://www.nin.res.in/rdabook/brief_note.pdf
+      opened: true
+      claim_located: true
+      checked_on: '2026-09-23'
+      note: |-
+        The reference body weights: 65.0 kg for men and 55.0 kg for women, at every
+        activity level.
+  - citekey: icmr_nin_2020_brief
+    kind: guideline
+    locator: Table 1b, footnote *
+    quote: '*The actual requirement in specific population groups should be adjusted for the
+      actual weight and physical activity of that population'
+    verified:
+      resolved_id: https://www.nin.res.in/rdabook/brief_note.pdf
+      opened: true
+      claim_located: true
+      checked_on: '2026-09-23'
+  - citekey: icmr_nin_2020_brief
+    kind: guideline
+    locator: Recommendation on energy requirement, opening sentence
+    quote: 'The total energy requirement or the total energy expenditure (TEE) is calculated
+      based on a multiplication of basal metabolic rate (BMR) to physical activity level (PAL):
+      TEE = BMR X PAL.'
+    verified:
+      resolved_id: https://www.nin.res.in/rdabook/brief_note.pdf
+      opened: true
+      claim_located: true
+      checked_on: '2026-09-23'
+  - citekey: icmr_nin_2020_brief
+    kind: guideline
+    locator: Recommendation on energy requirement, physical activity level paragraph
+    quote: showed that the PA R was lower from 1.53 that was used in the previous
+      recommendation ( RDA- 2010) to 1.40 for sedentary population
+    verified:
+      resolved_id: https://www.nin.res.in/rdabook/brief_note.pdf
+      opened: true
+      claim_located: true
+      checked_on: '2026-09-23'
+      note: |-
+        "PA R" and "( RDA- 2010)" are as the text layer prints them. The same 1.53 is the PAL
+        in the FAO/WHO/UNU sedentary worked example.
+  - citekey: icmr_nin_2020_brief
+    kind: guideline
+    locator: Recommendation on energy requirement, BMR paragraph
+    quote: The earlier ICMR-NIN committee used 5% reduction in BMR calculation from FAO/WHO/UNU
+      equations for deriving energy requirements for Indian adults, while the present committee
+      reviewed the literature on BMR and based on the evidence, further reduced the BMR by
+      another 5 % for adults.
+    verified:
+      resolved_id: https://www.nin.res.in/rdabook/brief_note.pdf
+      opened: true
+      claim_located: true
+      checked_on: '2026-09-23'
   - citekey: nss_594_2025
     kind: primary
-    locator: Table 3.1, All-India row, 2022-23
+    locator: Chapter Two, 2.9.6.0, how household intake of energy is calculated
+    quote: The quantities of food recorded as consumed by the household are converted into the
+      equivalent amounts of energy, protein and fat on the basis of a Nutrition Conversion
+      Table
+    verified:
+      resolved_id: https://www.mospi.gov.in/sites/default/files/publication_reports/Nutritional_Intake_in_India_L.pdf
+      opened: true
+      claim_located: true
+      checked_on: '2026-09-23'
+  - citekey: nss_594_2025
+    kind: primary
+    locator: Chapter Two, 2.9.6.0, what the conversion table gives, and the caution
+    quote: gives the amount of energy, protein and fat content per unit of different foods in
+      the Indian diet. However, the actual intake of nutrients depends on how these foods are
+      processed and/or cooked in the surveyed households.
+    verified:
+      resolved_id: https://www.mospi.gov.in/sites/default/files/publication_reports/Nutritional_Intake_in_India_L.pdf
+      opened: true
+      claim_located: true
+      checked_on: '2026-09-23'
+  - citekey: nss_594_2025
+    kind: primary
+    locator: Table 3.1, All-India row, 2023-24
     quote: All-India 2233 2250 2212 2240 2407 2488 2383 2472
     verified:
       resolved_id: https://www.mospi.gov.in/sites/default/files/publication_reports/Nutritional_Intake_in_India_L.pdf
@@ -119,7 +237,19 @@ definition:
       note: |-
         Table 3.1's columns for the All-India row are, in order, per capita 2022-23 rural,
         2022-23 urban, 2023-24 rural, 2023-24 urban, then the same four per consumer unit. The
-        definition uses the first two: 2,233 kcal/day rural and 2,250 kcal/day urban, 2022-23.
+        definition uses the third and fourth, the latest year held: 2,212 kcal/day rural and
+        2,240 kcal/day urban, 2023-24.
+  - citekey: nss_594_2025
+    kind: primary
+    locator: Chapter Three, 3.1.1.0, per consumer unit against per capita
+    quote: The ‘per consumer unit’ calorie intake estimate considers the difference in calorie
+      requirements among persons on account of age and gender differences, and thereby serve as
+      a sharper indicator of adequacy of intake than the ‘per capita’ figures.
+    verified:
+      resolved_id: https://www.mospi.gov.in/sites/default/files/publication_reports/Nutritional_Intake_in_India_L.pdf
+      opened: true
+      claim_located: true
+      checked_on: '2026-09-23'
   - citekey: polidori_2016
     kind: primary
     locator: Introduction, on self-reported intake
@@ -137,23 +267,28 @@ definition:
 simplified_explanation: |
   How much energy does one adult eat and burn in a day?
 
-  The first question is what somebody actually burned. There is a way to measure this directly,
-  called doubly labelled water, and it tracks real people going about a real fortnight. In three
-  groups it measured, the number came out between about 8 and 16 megajoules a day, which is
-  roughly 2,000 to 4,000 kilocalories.
+  The first question is what a typical group burns. Experts work it out: an activity multiplier
+  times the energy spent at rest. For three example groups the answer came out between about 8
+  and 16 megajoules a day, roughly 2,000 to 4,000 kilocalories. That is a calculation, not a
+  measurement.
+
+  The method that measures it is called doubly labelled water. A person drinks water carrying
+  rare, stable forms of hydrogen and oxygen. How fast they leave the body over the next 10 to 14
+  days gives the average energy spent.
 
   The second question is what a committee recommends somebody eat. This is a target, set by
   experts as of a particular year, not a measurement of any one person on any one day.
 
-  The third question is what a household survey says people are getting hold of. India's
-  National Sample Survey estimates that, on average, a person in the country acquires a bit over
-  2,200 kilocalories a day, in food bought or grown by their household.
+  The third question is what a household survey says people consume. India's National Sample
+  Survey estimates that, on average, a person in the country gets a bit over 2,200 kilocalories
+  a day. The figure is the food each household recorded as consumed, converted to energy with a
+  conversion table.
 
   There is a fourth thing worth knowing before you trust any number a person tells you
   themselves. Ask somebody to report what they ate and the answer is known to be unreliable.
 
-  So when somebody says "an adult needs about 2,000 kilocalories a day," hold onto the order of
-  magnitude and let go of the idea that it is one fixed number.
+  So be careful when somebody says "an adult needs about 2,000 kilocalories a day." Keep the
+  order of magnitude. Drop the idea that it is one fixed number.
 illustration:
   body: |
     A clinic in an Indian town sees a sedentary adult man and a sedentary adult woman on the same
@@ -162,52 +297,64 @@ illustration:
     Open the ICMR-NIN Brief Note on Nutrient Requirements for Indians, 2020, at
     https://www.nin.res.in/rdabook/brief_note.pdf, and search for sedentary work.
 
+    > Age group Category ICMR 2020 ICMR 2010 Difference
+    > Kcal/d
+    > Adult Men
     > Sedentary work 2110 2320 -210
+    > [...]
+    > Adult Women
     > Sedentary work 1660 1900 -240
 
-    The first row is men, the second women, and the number under ICMR 2020 is the one to use: 2,110
-    kilocalories a day for him, 1,660 for her.
+    The number under ICMR 2020 is the committee's figure for a 65 kg man and a 55 kg woman doing
+    sedentary work: 2,110 kilocalories a day for him, 1,660 for her.
 
-    Now put a number on what doubly labelled water would find in a comparable population. Open
-    the FAO/WHO/UNU 2004 report's chapter 5 at https://www.fao.org/4/y5686e/y5686e07.htm and
-    search for sedentary or light activity.
+    Now open the FAO/WHO/UNU 2004 report's chapter 5 at https://www.fao.org/4/y5686e/y5686e07.htm
+    and search for sedentary or light activity.
 
     > If this PAL was from a female population, 30 to 50 years old, with mean weight of 55 kg
-    > and mean BMR of 5.40 MJ/day (1 290 kcal/day), TEE = 1.53 x 5.40 = 8.26 MJ (1 975 kcal), or
+    > and mean BMR of 5.40 MJ/day (1 290 kcal/day), TEE = 1.53 × 5.40 = 8.26 MJ (1 975 kcal), or
     > 150 kJ (36 kcal)/kg/d.
 
-    A measured group of sedentary or lightly active women averaged 1,975 kilocalories a day, within
-    about three hundred kilocalories of the Indian committee's 1,660 for the same activity band.
+    Both figures are for 55 kg women. ICMR-NIN's is lower for two reasons. The committee lowered
+    the sedentary PAL from 1.53, the value in this example, to 1.40. And it set the BMR for
+    Indians 5% below the FAO/WHO/UNU equations, then another 5% below that. Both are BMR times
+    PAL. Neither is a measurement.
 
     Now open the NSS Report 594 highlight at
     https://www.mospi.gov.in/sites/default/files/publication_reports/Nutritional_Intake_in_India_L.pdf
     and search for the All-India row of Table 3.1.
 
+    > 2022-23 2023-24 2022-23 2023-24
+    > Rural Urban Rural Urban Rural Urban Rural Urban
+    > [...]
     > All-India 2233 2250 2212 2240 2407 2488 2383 2472
 
-    The first figure, 2,233 kilocalories a day, is what an average Indian household's recorded food
-    purchases convert to per person, rural, 2022-23.
+    The first four columns are per person, the last four per consumer unit. The third figure,
+    2,212 kilocalories a day, is rural, 2023-24: the food households recorded as consumed,
+    converted to energy with a conversion table.
 
-    Three numbers, all near 2,000 kilocalories, none of them answering the same question as the
-    other two. Before you use any one of them, say out loud which of the three it is.
+    Three numbers, all near 2,000 kilocalories. The first two are the same sum with different
+    inputs: one a worked example, one a country's adopted figure. The third counts food. None
+    of them measures the patient in front of you. Before you use any one of them, say out loud
+    which kind it is.
   analogy_breaks_when: |
     Every figure quoted here belongs to a specific group, at a specific activity level, in a
     specific year.
 
-    This record does not say how the three kinds of number ought to be reconciled when they
-    disagree, or which one to trust for an individual patient.
+    This section does not say how to reconcile the three kinds when they disagree. Nor does it
+    say which one to trust for one patient.
 must_know:
 - point: |
-    A daily energy figure is one of at least three different kinds of number: a direct
-    measurement of what a group actually spent, a committee's adopted recommendation, or a
-    survey's estimate of what households acquired. Before you repeat a figure, say which kind
-    it is.
+    "An adult needs 2,000 kilocalories a day" treats three different kinds of number as one. A
+    daily energy figure is a calculated or measured spend, a committee's requirement, or a
+    survey's estimate of consumption. Say which before you repeat it.
   kind: misconception
   bearing: methodological
 - point: |
-    India's adopted adult energy requirement is set by activity level and sex, and it is
-    current as of 2020: roughly 1,660 to 2,720 kilocalories a day for a woman, sedentary to
-    heavy work, and 2,110 to 3,470 for a man.
+    India's adopted adult energy requirement is set by activity level and sex, as of 2020. A
+    woman's runs from roughly 1,660 to 2,720 kilocalories a day, sedentary to heavy work. A
+    man's runs from 2,110 to 3,470. These are for a reference man of 65 kg and woman
+    of 55 kg.
   kind: india_deviation
   bearing: clinical
   refs:
@@ -219,43 +366,73 @@ must_know:
   refs:
   - polidori_2016
 - point: |
-    This record gives you the order of magnitude and the different kinds of source. Do not use
-    a population figure as an individual's prescription.
+    Do not use a population's figure as one patient's prescription: ICMR-NIN's own table says to
+    adjust for actual weight and activity.
   kind: boundary
   bearing: clinical
+  refs:
+  - icmr_nin_2020_brief
 retrieval_items:
 - q: Name three different kinds of number that can each be called "daily energy" and say what
-    each one actually measures.
-  a: A doubly labelled water measurement of what a group of free-living people actually spent
-    over ten to fourteen days; a committee's adopted energy requirement, a recommendation set
-    for a population as of a stated year; and a household survey's estimate of energy acquired,
-    converted from recorded food purchases.
+    each one is.
+  a: A calculated spend, an activity multiplier times a resting rate, as in the FAO/WHO/UNU
+    worked examples (doubly labelled water would measure it instead, over ten to fourteen
+    days); a committee's adopted requirement, set for a reference person as of a stated year;
+    and a household survey's estimate of consumption, the food households recorded as consumed,
+    converted to energy with a conversion table.
 - q: What does India's National Sample Survey estimate, and what does it not measure?
-  a: It estimates the energy a household's recorded food purchases convert to, per person per
-    day, using a nutrient conversion table; all-India per capita figures for 2022-23 were about
-    2,233 kcal/day rural and 2,250 urban. It does not measure what any individual actually ate
-    or burned.
+  a: It estimates the energy in the food households recorded as consumed, per person per day,
+    converted with a conversion table; all-India per capita figures for 2023-24 were about
+    2,212 kcal/day rural and 2,240 urban. It does not measure what any individual actually ate
+    or burned, and actual intake depends on how the food is processed and cooked.
 - q: Why does doubly labelled water exist, given that a person could just be asked what they
     ate?
-  a: Self-reported intake is known to be unreliable, so a method that measures expenditure
-    directly in a free-living person, without relying on their own account, is needed instead.
+  a: Self-reported intake is known to be unreliable. Doubly labelled water measures what was
+    spent, without relying on the person's own account. When weight is steady, what was spent
+    equals what was eaten, so it also checks a reported intake.
+exercises:
+- type: interpretation
+  prompt: |
+    Three sentences reach you in one week.
+
+    (a) "An Indian woman needs 1,660 kilocalories a day."
+
+    (b) "Urban Indians eat 2,240 kilocalories a day."
+
+    (c) "A sedentary woman burns 1,975 kilocalories a day."
+
+    For each, say which kind of number it is and one thing it does not tell you.
+  answer: |
+    (a) An adopted requirement: ICMR-NIN 2020, for a 55 kg reference woman doing sedentary
+    work, calculated as BMR times PAL. It does not tell you what a particular woman needs. The
+    committee's own table says to adjust for actual weight and activity, and the sentence has
+    dropped "sedentary" as well.
+
+    (b) A survey estimate of consumption: NSS Report 594, all-India urban, per person, 2023-24.
+    It is the food households recorded as consumed, converted to energy with a conversion
+    table. It does not tell you what any one person ate, and the report says actual intake
+    depends on how the food is processed and cooked. It is also per person, not per consumer
+    unit, so it does not allow for age and sex.
+
+    (c) A calculated spend: the FAO/WHO/UNU worked example. It multiplies a PAL of 1.53 by a
+    BMR of 5.40 megajoules, for a hypothetical group of 55 kg women aged 30 to 50. It is not a
+    measurement, and it is a group's average, not one woman's day. Measuring it would take
+    doubly labelled water.
 figures:
 - file: s01-r1-c03-icmr-requirement-bars.png
-  caption: "India's adopted adult energy requirement as of 2020 (ICMR-NIN), in kilocalories a day: 2,110 for a sedentary man and 1,660 for a sedentary woman, 3,470 and 2,720 for heavy work. It is a committee's figure for a group, set by sex and activity, not one fixed number and not a measurement of any patient."
-  alt: "Grouped bars: sedentary work, men 2,110 and women 1,660; heavy work, men 3,470 and women 2,720 kilocalories a day."
+  caption: "The same sum for a sedentary 55 kg woman, with different inputs, in kilocalories a day. FAO/WHO/UNU's worked example multiplies its BMR by a PAL of 1.53 and gets 1,975. ICMR-NIN 2020 uses a PAL of 1.40 and a BMR set lower for Indians, and gets 1,660. Both are BMR times PAL; neither is a measurement."
+  alt: "Two bars: FAO/WHO/UNU worked example, PAL 1.53, 1,975 kilocalories a day; ICMR-NIN 2020, PAL 1.40, 1,660 kilocalories a day."
   source: draw.py
   spec:
     kind: bar
-    x: ["sedentary work", "heavy work"]
+    x: ["FAO/WHO/UNU example, PAL 1.53", "ICMR-NIN 2020, PAL 1.40"]
     series:
-    - name: men
-      y: ["2110", "3470"]
-    - name: women
-      y: ["1660", "2720"]
+    - name: sedentary 55 kg woman
+      y: ["1975", "1660"]
     x_label: ""
-    y_label: kcal a day (ICMR-NIN 2020)
+    y_label: kcal a day (BMR × PAL)
     value_labels: true
-    y_range: [0, 3900]
+    y_range: [0, 2200]
 provenance:
   map_version_id: fc19c8bc-a216-4131-99fb-ebe3f19cec4a
   outcome_refs:
@@ -265,7 +442,7 @@ review:
   stability: medium
   trigger: 'On event: the next revision of the ICMR-NIN adult energy requirement tables, or the
     next NSS/HCES nutritional-intake report superseding Report 594; otherwise 2029-09-23.'
-  as_of: '2020'
+  as_of: '2026-09-23'
   last_reviewed: '2026-09-23'
 quantitative: false
 status: drafted

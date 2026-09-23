@@ -8,7 +8,7 @@ as a whitespace-normalised substring of the raw fetch. An omission inside a para
 Identifiers were confirmed with the PubMed tools (`lookup_article_by_citation`, `search_articles`,
 `get_article_metadata`). No WebFetch output is stored anywhere.
 
-**Verbatim check: 135 of 135** (102 in the first pass, 16 for Hall 2012 in the second, 17 for Hall 2008 from Harsh's PDF).
+**Verbatim check: 146 of 146** (102 in the first pass, 16 for Hall 2012 in the second, 17 for Hall 2008 from Harsh's PDF, 11 added after the C09/C10 audit).
 
 | Source | URL fetched | Passages | Check | Licence as stated | Citekey |
 | --- | --- | --- | --- | --- | --- |
@@ -79,3 +79,19 @@ must copy them as they stand in the file.
 - **Hall 2012**: Harsh's PDF is the same typeset publisher version as the filed copy; all 16 filed passages agree
   with its text layer once ligatures, hyphenation, spacing and punctuation are set aside. Noted in the file header;
   not re-filed.
+
+## Extension after the C09/C10 audit, 2026-09-23
+
+The auditor read Polidori 2016 in full on PMC and relied on passages the held file lacked. All came from the
+same saved raw fetch (PMC Article Dataset text), sliced by script and re-verified.
+
+| File | Passages added | Check | What they carry |
+| --- | --- | --- | --- |
+| `polidori_2016.txt` | 9 | 15/15 (file) | Methods inputs and measurement interval; trial weight "several kilograms lower" and ~350 kcal/day; commercial-programme plateau (Figure 3, not the trial); range of weight losses and individual variability; expenditure not measured; group means only; reference 1 (Leibel et al. 1995, source of the ~30 kcal/kg/day) |
+| `rosenbaum_leibel_2010.txt` | 1 | 5/5 (file) | 80%-90% regain; maintainers need lifelong attention |
+| `hall_guo_2017.txt` | 1 | 16/16 (file) | Individual variation in weight change under supervised exercise |
+
+Caveats: the Methods clause gives "T = 52 was the number of days between measurements" after a formula the
+extraction flattened; check the typeset article before telling a reader the interval. The "~8 month plateau"
+and "~5 kg" passage is about a commercial weight-loss programme (reference 19), not the canagliflozin trial.
+Polidori does not give the trial's mean loss as a number beyond "several kilograms lower".
