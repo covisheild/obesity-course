@@ -33,7 +33,7 @@ teaches were deleted. Terms used before their gloss, and terms used for two thin
 | anabolism | reactions that join small molecules into bigger ones, which costs energy | `B0-R0-C36` |
 | argument | reasons, called premises, together with a further statement they are meant to establish | `B0-R0-C42` |
 | at random | every member has exactly the same chance of being the one you pick | `B0-R0-C24` |
-| atom | the smallest piece of an element: a tiny heavy centre with much lighter electrons around it | `B0-R0-C31` |
+| atom | a tiny heavy centre with much lighter electrons around it | `B0-R0-C31` |
 | ATP | adenosine triphosphate, the small molecule a cell uses to carry energy from one reaction to another | `B0-R0-C35` |
 | Atwater general factors | one fixed energy value for each of protein, fat and carbohydrate, used whatever the food | `B0-R0-C32` |
 | average rate of change | the change between the two ends of an interval divided by its length; it uses nothing in between | `B0-R0-C21` |
