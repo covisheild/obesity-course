@@ -681,6 +681,7 @@ def check_doc_paths() -> list:
 def check(recs: dict, subjects: dict, clusters: dict, bibkeys: set):
     """Returns (blocking, warnings). Blocking failures stop a render."""
     block, warn = [], []
+    block += _bib_structure()
     subj = subjects["subjects"]
     today = dt.date.today().isoformat()
 
@@ -1229,6 +1230,28 @@ def _count_word(n: int) -> str:
 # exactly what was consulted and the reader never carries a locator through the prose.
 # Reader-facing text therefore contains no repository paths: the bibliography carries a
 # resolvable URL, which is what someone who does not have this repository can actually use.
+
+def _bib_structure() -> list:
+    """An entry whose braces do not close swallows the entries after it, silently.
+
+    Found 23 Sep 2026: `fao_food_energy_2003` and `openstax_business_stats_2e` each lacked their
+    closing brace, so the parser read the following entry's fields as theirs, and Book 0 v1.0
+    printed five references under the wrong title. Nothing blocked, because every citekey still
+    existed. Every entry must close before the next `@` begins.
+    """
+    if not os.path.exists(BIB):
+        return []
+    src, bad = open(BIB, encoding="utf-8").read(), []
+    for m in re.finditer(r"@(\w+)\s*\{\s*([^,\s]+)\s*,", src):
+        depth, j = 1, src.index("{", m.start()) + 1
+        while j < len(src) and depth:
+            depth += (src[j] == "{") - (src[j] == "}")
+            j += 1
+        if depth or re.search(r"\n@\w+\s*\{", src[m.end():j]):
+            bad.append(f"library.bib: entry '{m.group(2)}' does not close before the next entry "
+                       "begins - its braces are unbalanced, so it swallows the entries after it")
+    return bad
+
 
 def _bib_entries() -> dict:
     """Parse library.bib into {citekey: {field: value}}, brace-aware."""
