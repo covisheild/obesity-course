@@ -10,8 +10,10 @@ clusters:
 - system-and-state
 ground_floor_deps: []
 concept_deps:
+- B0-R0-C01
 - B0-R0-C04
 - B0-R0-C12
+- B0-R0-C15
 - B0-R0-C16
 - B0-R0-C23
 definition:
@@ -58,11 +60,16 @@ definition:
       note: |-
         Read on 2026-09-23 in the Part E source pack. Note for the auditor: section 7.6
         states the law and refers to transfer "from one system to another" and to "the
-        system of interest", and it nowhere defines a system or a system boundary. The
-        same was checked and not found in College Physics 1e 7.6, in College Physics 2e
-        15.1, and in University Physics Volume 1 sections 8.1 and 8.3. The boundary in
-        this record is therefore cited to OpenStax Chemistry 2e section 5.2 below, and
-        the illustration is built on that gap because it is real and reproducible.
+        system of interest", and it nowhere defines a system or a system boundary. Two
+        further blocks in the same source file were opened. University Physics Volume 1
+        section 8.3 states conservation of mechanical energy and does not define a system
+        either. University Physics Volume 2 section 3.1, Thermodynamic Systems, does
+        define it, in the opening paragraph transcribed there, and the illustration names
+        that book in prose. Nothing else was opened for this: the source file's own note
+        records College Physics 1e 7.6, College Physics 2e 15.1 and University Physics
+        Volume 1 8.1 as checked and not found, and none of those three pages is
+        transcribed in the pack. The system and boundary of this record are cited to
+        OpenStax Chemistry 2e section 5.2 below, which is a citekey with a file behind it.
   - citekey: openstax_college_physics_2e
     kind: textbook
     locator: "\xA7 7.6 Conservation of Energy, under the heading Some of the Many Forms of Energy"
@@ -179,8 +186,20 @@ simplified_explanation: |
 
   **Step three. Take the starting amounts off both sides.** This is the move from the section on
   rearranging an equation, done twice. Take away "the amount inside at the start", then take away
-  "the amount outside at the start". What is left on the left-hand side is two changes, because a
-  change is an end value minus a start value.
+  "the amount outside at the start". The right-hand side becomes nothing at all. The left-hand side
+  now has four pieces in it.
+
+  You may write those four pieces in any order you like. A run of adding and taking away comes out
+  the same whatever order you do it in. Adding 3 and then taking away 5 lands you where taking away
+  5 and then adding 3 lands you. So put each end value next to its own start value.
+
+  ```working
+      the amount inside at the end, minus the amount inside at the start,
+      plus the amount outside at the end, minus the amount outside at the start = 0
+  ```
+
+  Now read each pair on its own. An end value minus its own start value is a change. So the first
+  pair is the change inside, and the second pair is the change outside.
 
   ```working
       the change inside, plus the change outside = 0
@@ -193,21 +212,40 @@ simplified_explanation: |
   line inwards. Energy that went the other way crossed it outwards. There is no third possibility,
   because step one used up the whole world in two pieces.
 
+  So write down what the outside did. It lost everything that crossed in, because that energy came
+  out of it. It gained everything that crossed out, because that energy went into it.
+
+  ```working
+      the change outside = the total that crossed out, minus the total that crossed in
+  ```
+
+  Put that into step three's line, in place of "the change outside".
+
+  ```working
+      the change inside, plus the total that crossed out, minus the total that crossed in = 0
+  ```
+
+  Now clear the last two pieces off the left, the same way step three cleared the start values.
+  Take away "the total that crossed out" from both sides. Then add "the total that crossed in" to
+  both sides.
+
   ```working
       the change inside = the total that crossed in, minus the total that crossed out
   ```
 
-  Write that out with the start value put back and you have the line you will actually use.
+  Last, put the start value back. The change inside is the energy inside at the end minus the
+  energy inside at the start. So add "the energy inside at the start" to both sides. That gives the
+  line you will actually use.
 
   ```working
       the energy inside at the end = the energy inside at the start, plus everything that crossed in, minus everything that crossed out
   ```
 
-  Nothing was assumed there except the one rule at the top. That is the whole derivation, and you
-  have written the last line before. It is the balance line from the section on stocks and flows,
-  with energy as the stock. That section said a body gains or loses weight only by mass crossing
-  its edge. This says the same thing about energy and a boundary: a system gains or loses energy
-  only by energy crossing the line.
+  Nothing was assumed there except the one rule at the top and the fact that your line is closed.
+  That is the whole derivation, and you have written the last line before. It is the balance line
+  from the section on stocks and flows, with energy as the stock. That section gave you the line.
+  This section gives you the rule that makes it true of energy: a system gains or loses energy only
+  by energy crossing the boundary.
 
   Now the part that surprises people, and it is the reason this section exists.
 
@@ -228,12 +266,13 @@ simplified_explanation: |
   is about what you spend lifting a small apple from the floor to the table.
 
   The warning is about what this line does not do. It tells you that the numbers have to add up.
-  It does not tell you which way energy went, or why a flow changed, or what a heap of joules is
-  worth in kilograms of anything. That last one matters here. The section on stocks and flows kept
-  the weight balance and the energy balance apart on purpose, and this section keeps them apart
-  too. Joining them means saying how much energy a kilogram of a body holds, which depends on what
-  the kilogram is made of. Nothing in Book 0 gives you that figure, and you should be suspicious of
-  anyone who hands you one as if it were arithmetic.
+  It does not tell you which way energy went. It does not tell you why a flow changed. And it does
+  not tell you what a heap of joules is worth in kilograms of anything.
+
+  That last one matters here. Nothing in this section puts the energy balance together with a
+  balance in kilograms. Doing that means saying how much energy a kilogram of a body holds, which
+  depends on what the kilogram is made of. Nothing in Book 0 gives you that figure, and you should
+  be suspicious of anyone who hands you one as if it were arithmetic.
 illustration:
   body: |
     Start where the search failed, because the failure is the section.
@@ -254,12 +293,14 @@ illustration:
     Read that again. Determine the system of interest. It tells you to decide what the system is.
     It never tells you what a system is.
 
-    Widen the search and the same thing happens. The first-law section of the same book does not define
-    it. Neither do two sections of University Physics Volume 1. Four pages that use the word, and
-    not one of them says what the word names.
+    Widen the search and College Physics 2e still does not define it. The book that does is
+    University Physics Volume 2, in its thermodynamics chapter — section 3.1, Thermodynamic
+    Systems. It says a system is embedded in its environment. It says the system exchanges heat
+    with that environment through a boundary.
 
-    Where the word does get defined is worth noticing. It is defined in chapters about setting up a
-    measurement, not in chapters about stating the law.
+    Now notice where that definition sits. It is in a chapter about setting up a measurement, not
+    in a chapter about stating the law. The pages that state the law use the word and leave it
+    undefined.
 
     Now stop and ask why a careful book would leave that out, because the answer is the idea you
     came for.
@@ -344,7 +385,7 @@ illustration:
     where the line is drawn  change in the energy inside
     the water                plus 42,000 joules
     the water and the pan    plus 53,000 joules
-    the burner and the pan   minus 7,000 joules
+    the burner, the gas, the pan and the water  minus 7,000 joules
     the whole kitchen        0 joules
     ```
 
@@ -386,9 +427,11 @@ illustration:
     it is not fair, and over a day it is wrong. Every sealed boundary in this course is sealed for
     a stated stretch of time.
 
-    Every route across the line has to be on your paper. Miss one — a window left open, a wire, a drain, light going out through glass. The energy that went
-    that way then turns up in your arithmetic as an error in a route you did count. The balance cannot tell you which of the two
-    happened.
+    Every route across the line has to be on your paper. Miss one — a window left open, a wire, a
+    drain, light going out through glass. The energy that went that way then turns up in your
+    arithmetic as an error in a route you did count. So a balance that does not close has two
+    possible causes. Either a route was left off the paper, or a figure on the paper is wrong. The
+    balance cannot tell you which.
 
     Conservation is exact and it is not the whole story about energy. The 7,000 joules spread
     through the kitchen air is every bit as real as the 42,000 in the water, and it will not cook
@@ -396,10 +439,10 @@ illustration:
 
     The balance holds for a person exactly as it holds for a pan. What it will not do is turn
     joules into kilograms of a body. That conversion needs to know what the kilograms are made of,
-    which is a question about bodies and not about arithmetic. The section on stocks and flows ran
-    the weight balance and the energy balance separately and refused to join them, and this section
-    refuses in the same place. If a figure in kilocalories for each kilogram is offered to you as
-    though it followed from conservation, it does not follow from anything here.
+    which is a question about bodies and not about arithmetic. Nothing in this course has given you
+    that figure, and nothing in this section can produce one. If a figure in kilocalories for each
+    kilogram is offered to you as though it followed from conservation, it does not follow from
+    anything here.
 must_know:
 - point: |
     An energy figure with no boundary attached is not a measurement yet. Ask "round what?" before
@@ -428,8 +471,8 @@ must_know:
   kind: boundary
   bearing: methodological
 - point: |
-    This section gives you no way to turn joules into kilograms of a body. That is a limit of the
-    tool, not a gap to be filled from somewhere handy. How much energy a kilogram of change holds
+    Nothing turns joules into kilograms of a body. That is a limit of the tool, not a gap to be
+    filled from somewhere handy. How much energy a kilogram of change holds
     depends on what the change is made of. So a single conversion figure, handed to you as
     arithmetic, carries a claim about composition that nobody has said out loud. Say so when you
     meet one.
@@ -461,8 +504,9 @@ exercises:
 
     Then say, in one sentence each, what it rules out and what it cannot tell you.
   answer: |
-    The balance line. The energy inside the boundary at the end is the energy inside at the start,
-    plus everything that crossed the boundary inwards, minus everything that crossed it outwards.
+    The balance line, in words. Start with the energy inside the boundary at the start. Add
+    everything that crossed the boundary inwards. Take away everything that crossed it outwards.
+    What you are left with is the energy inside the boundary at the end.
 
     What it rules out: any change in the energy inside that did not happen by something crossing
     the line. There is no other route, so a proposed mechanism that adds no crossing cannot change
@@ -488,13 +532,14 @@ exercises:
   answer: |
     Two separate things are wrong, and the first one is a word.
 
-    The word "lost" is doing damage. Energy does not leave the accounts. The third that did not reach the food went somewhere. The note has not said where. So it has
+    The word "lost" is doing damage. Energy does not leave the accounts. The third of the energy that did not reach the food went somewhere. The note has not said where. So it has
     reported that the writer stopped counting, dressed up as a finding.
 
-    Redraw the line and the sentence changes. Put the boundary round the food and the third
-    crossed out of it. Put the boundary round the whole kitchen and nothing crossed at all. The third is in the air, in the
-    steel of the pans, in the walls, and in whatever went up the flue.
-    Name those routes and you have an account. Do not name them and you have a gap.
+    Redraw the line and the sentence changes. Put the boundary round the food, and that third
+    crossed out of it. Put it round the whole kitchen, and the flue is a hole in your line, so
+    somebody has to say how much went up it. That third is in the air, in the steel of the pans, in
+    the walls, and in whatever went up the flue. Name those routes and you have an account. Do not
+    name them and you have a gap.
 
     The second thing wrong is the conclusion. A fraction reaching the food is not by itself evidence
     of a fault, because no figure has been given for what a working burner does. A number becomes a
@@ -503,17 +548,16 @@ exercises:
     What to ask for. First, the routes: how much went up the flue, how much into the pans, how much
     into the room, measured or at least estimated separately. Second, the same measurement on a
     burner known to be in good order, so that the two thirds has something to be worse than. Third,
-    the time over which each figure was taken, because a boundary that is treated as sealed is only
-    sealed for a stated stretch of time.
+    the time over which each figure was taken. A boundary treated as sealed is only sealed for a
+    stated stretch of time.
 
     And one thing to say out loud. The energy in the room is real energy and it is no use for
     cooking. That is a fair complaint about a kitchen. It is not the same complaint as energy going
     missing, and only one of the two is possible.
 - type: teaching
   prompt: |
-    A journalist has three minutes and no jargon. They have read that "the body obeys the laws of
-    physics, so weight is just energy in minus energy out", and they want to know whether that is
-    true.
+    A journalist has three minutes and no jargon. They have read this: "the body obeys the laws of
+    physics, so weight is just energy in minus energy out". They want to know whether it is true.
 
     Say what you would tell them, and give them one quotable sentence.
   answer: |
@@ -527,15 +571,16 @@ exercises:
     Now the no, and keep it concrete. That sentence has two words in it that are not doing what
     they look like they are doing.
 
-    The first is "out". Energy leaves a person by several routes at once — as heat, as work done on
-    things around them, and in what leaves the body without being absorbed. "Out" is a list, not a
-    number, and the list has to be measured route by route.
+    The first is "out". Energy leaves a person by several routes at once. It leaves as heat. It
+    leaves as work done on things around them. And it leaves in what passes through the body
+    without being absorbed. "Out" is a list, not a number, and the list has to be measured route by
+    route.
 
     The second is "weight". Weight is measured in kilograms and energy is measured in joules, and
     the balance line never converts one into the other. To do that you would have to say what a
-    kilogram of change in a body is made of, which is a question about bodies and not about
-    physics. So the physics does not hand you the sentence they read; something else has to, and
-    that something else is evidence.
+    kilogram of change in a body is made of. That is a question about bodies, not about physics. So
+    the physics does not hand them the sentence they read. Something else has to, and that
+    something else is evidence.
 
     The quotable sentence: "Energy in minus energy out is a ledger, not an explanation. It tells you
     the numbers have to add up. It never tells you why one of them moved."
@@ -567,7 +612,8 @@ practice:
         450 minus 610 = -160
     ```
 
-    Minus 160 over the interval. It is negative, and the amount inside fell by exactly that much.
+    Minus 160 over the interval. It is negative, in the way the section on counting showed you, and
+    the amount inside fell by exactly that much.
 
     Check it in one line.
 
@@ -638,7 +684,7 @@ practice:
     energy in that hour. Of that, 840,000 joules ends up warming the air and the walls of the room,
     and the rest leaves through the window as light. The room is otherwise shut.
 
-    The lamp, the room and all three figures are made up for this problem.
+    The lamp, the room and both figures are made up for this problem.
 
     Work out how much energy leaves through the window. Then give the change in the energy inside
     each of these three boundaries, with its unit, and say for each one what crossed.
@@ -816,7 +862,7 @@ practice:
 
     Why the wrong answer looks reasonable. The first two lines are correct, the law quoted is the
     right law, and the conclusion has the shape of a conservation argument. The check that catches
-    it is the one this section asks for every time: draw the line, then walk round it naming every
+    it is the one this section asks for every time. Draw the line, then walk round it naming every
     route that crosses. A cable through a wall is easy to miss precisely because it is not a door.
 - level: 9
   prompt: |
@@ -853,18 +899,18 @@ practice:
 
     What this does not establish. It does not establish that the answer is 400 rather than some
     other figure, because the three numbers are invented and this section measures nothing. The
-    shape is the finding; the size is not.
+    shape is the finding. The size is not.
 
     It does not establish anything about weight. The answer is in kilojoules. Weight is in
-    kilograms. Nothing in the balance converts one to the other, and doing so would mean saying
-    what a kilogram of change in a body is made of.
+    kilograms. Nothing in the balance converts one to the other. Doing so would mean saying what a
+    kilogram of change in a body is made of.
 
     And it does not establish that the crossings are independent of each other. The balance holds
     whatever they do. Whether changing one of them leaves the others where they were is a question
-    about bodies, and the subject booklet on energy balance is where it is asked.
+    about bodies. The subject booklet on energy balance is where it is asked.
 
     What to say instead of the page's sentence. Energy in food that is not stored has left the
-    person by a route you can name, and naming the routes is the entire content of the claim.
+    person by a route you can name. Naming the routes is the entire content of the claim.
 - level: 10
   prompt: |
     A colleague says this in a meeting.
@@ -895,18 +941,18 @@ practice:
     ```
 
     Now the only honest computation available. If U is zero the two lines give the same answer, and
-    if U is anything at all they do not. Nobody in the meeting has a value for U, so the correct
-    output of this computation is the sentence "we do not have that figure", not a number.
+    if U is anything at all they do not. Nobody in the meeting has a value for U. So the correct
+    output of this computation is a sentence, not a number: we do not have that figure.
 
     What this does not establish. It does not establish that 1,200 is wrong. It is very likely the
     right answer to the question the label was answering.
 
-    It does not establish how big U is. This section gives you no way to find out; it only shows you
-    that the two boundaries differ, so a figure is needed.
+    It does not establish how big U is. This section gives you no way to find out. It only shows
+    you that the two boundaries differ, so a figure is needed.
 
     And it does not establish anything at all about the person's weight. That would need a second
-    balance, in kilograms, and a claim about what any change is made of — and the ground floor does
-    not carry that claim.
+    balance, in kilograms. It would also need a claim about what any change is made of, and the
+    ground floor does not carry that claim.
 
     What to say in the meeting. The number is fine and the sentence is not. The label measures what
     crossed out of a food sample. The claim is about what crossed into a person. Those are two

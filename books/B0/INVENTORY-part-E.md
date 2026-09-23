@@ -36,7 +36,7 @@ independent sections, with two real dependencies inside the Part and one awkward
 ```
 E1 atoms and bonds ─── E2 chemical energy and the calorimeter
                   └─── E6 metabolism
-E3 conservation and the boundary   (stands on Book 0 C9, not on E1)
+E3 conservation and the boundary   (stands on Book 0 section C9, record B0-R0-C23)
 E4 heat and temperature            (stands on E2, and repairs it)
 E5 the cell ─── E6 metabolism ─── E8 organs
 E7 genes                           (stands on E5)
@@ -69,8 +69,8 @@ quantitative and therefore owes a drill set.
 | # | Record | Concept | Type | Q | Book 0 deps | Source it needs | Serves |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | E1 | `B0-R0-C31` | Atoms, molecules and bonds, and that a bond is where chemical energy sits | e | no | A6, B1 | `openstax_chemistry_2e` 2.3, 2.4, 7.2, 7.5 | S01 C03, C05 |
-| E2 | `B0-R0-C32` | Burning a food releases its chemical energy; a calibrated bomb calorimeter measures how much; and not all of it reaches a person | e | **yes** | A4, A5, B2, B4, E1 | `openstax_chemistry_2e` 5.2, 5.3; `fao_food_energy_2003` 3.2, 3.3, 3.5.1; `nist_sp811`; `nfsa_2013` Sch II | S01 C05, C06, C07 |
-| E3 | `B0-R0-C33` | Energy is conserved; drawing a boundary is what makes that countable | d | **yes** | A4, C9 | `openstax_college_physics_2e` 7.6; `openstax_chemistry_2e` 5.2 | S01 C09, C10 |
+| E2 | `B0-R0-C32` | Burning a food releases its chemical energy; a calibrated bomb calorimeter measures how much; and not all of it reaches a person | e | **yes** | A4, A5, B2, B4, C9 (`B0-R0-C23`), E1 | `openstax_chemistry_2e` 5.2, 5.3; `fao_food_energy_2003` 3.2, 3.3, 3.5.1; `nist_sp811`; `nfsa_2013` Sch II | S01 C05, C06, C07 |
+| E3 | `B0-R0-C33` | Energy is conserved; drawing a boundary is what makes that countable | d | **yes** | A4, C9 (`B0-R0-C23`) | `openstax_college_physics_2e` 7.6; `openstax_chemistry_2e` 5.2 | S01 C09, C10 |
 | E4 | `B0-R0-C34` | Heat is not temperature; heat capacity relates them; heat moves three ways | e | **yes** | A5, B1, B2, E2 | `openstax_college_physics_2e` 14.1, 14.2, 14.4 | E2's calibration constant; S01 later rungs |
 | E5 | `B0-R0-C35` | A cell, its membrane, the proteins in it, and what a receptor does | e | no | — | `openstax_biology_2e` 4.1, 4.3, 5.1, 5.3, 3.4, 9.1 | floor for every drug and hormone concept |
 | E6 | `B0-R0-C36` | Metabolism is chemistry happening in a body: catabolism releases, anabolism builds, ATP carries | e | no | E1, E5 | `openstax_anatphys_2e` 24.1, 24.2, 24.3; `openstax_biology_2e` 7.1 | S01 C07 |
@@ -81,8 +81,7 @@ quantitative and therefore owes a drill set.
 
 The specification's own example list for `derivable` names conservation of energy. It is there
 because the reader really can rebuild it: once a boundary is drawn, "what is inside changes by what
-crossed in minus what crossed out" is an accounting identity, and Book 0 C9 has already taught
-stocks and flows. E3 derives it and shows the steps. Everything else in the Part is a fact about
+crossed in minus what crossed out" is an accounting identity, and Book 0 section C9, record `B0-R0-C23`, has already taught stocks and flows. E3 derives it and shows the steps. Everything else in the Part is a fact about
 how the world turned out.
 
 ### Why three sections are quantitative when Part E derives to false
@@ -138,3 +137,28 @@ do. E6 and E8 are about fat storage, appetite and the organs involved, and the p
 vocabulary is strongest exactly where the biology is being explained. Adipose tissue stores
 triglyceride; that is a function, not a failing. No example in this Part turns on a person's
 willpower, and regain, when it is mentioned at all, is a physiological outcome with a mechanism.
+
+---
+
+## Two errors this document introduced, corrected after the audit
+
+Recorded rather than quietly fixed, because both propagated into records before anyone caught
+them and the propagation is the lesson.
+
+**1. The FAO cascade.** This inventory and `READY-part-E.md` both said FAO 77 carries a two-step
+cascade, gross or ingested energy to metabolizable energy. It carries three: §3.3 names **net
+metabolizable energy** below ME. The real finding was only ever that the report has no
+*digestible energy* step — one word absent from one source — and it was generalised into a claim
+about the whole cascade. E2 then built a must-know point arming the reader to say in public that a
+three-step citation of FAO "does not hold", which would have misfired against somebody citing the
+report correctly. A reader armed to object is harder to correct than a reader merely misinformed.
+
+**2. Outline labels against record ids.** This document wrote "C9" for the ninth section of Part C,
+which is record `B0-R0-C23`. Book 0 also has a record `B0-R0-C09`, which is Part B's first section,
+"What a unit is". Two drafters read the label as the record id, and E3 shipped a paragraph
+attributing to C9 a refusal that lives in `B0-R0-C23` — and E6 inherited the same error.
+
+The rule that follows, for every later Part: **an inventory names a record by its id the first time
+it names it at all**, and a bare section label like "C9" or "A4" is only safe in a column whose
+heading says it is an outline position. The two namespaces overlap for thirty-eight of the
+forty-three sections and nothing in the build distinguishes them.

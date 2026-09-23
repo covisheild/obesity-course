@@ -14,6 +14,7 @@ concept_deps:
 - B0-R0-C05
 - B0-R0-C10
 - B0-R0-C12
+- B0-R0-C23
 - B0-R0-C31
 definition:
   text: |
@@ -53,8 +54,11 @@ definition:
     energy and as gaseous energy in combustible gases. Some of the energy that is absorbed is
     then lost as urinary energy, mainly as nitrogenous waste compounds from incomplete breakdown
     of protein. A small amount is lost from the body surface. What remains after those losses is
-    metabolizable energy. That is the whole cascade the Organization's 2003 report carries, and
-    it has no digestible-energy step in it.
+    metabolizable energy.
+
+    Below that the Organization's 2003 report carries one further step, net metabolizable energy.
+    It takes off the energy the body itself spends on digesting the food and on handling what is
+    absorbed. What the report has no step for anywhere is digestible energy.
 
     The energy figure on a food label is not a burning measurement. It is derived using the
     Atwater system, which uses the average caloric content of protein, carbohydrate and fat. Those
@@ -65,8 +69,14 @@ definition:
 
     The three values are 17 kilojoules for each gram of protein, 37 for each gram of fat and 17
     for each gram of carbohydrate. In kilocalories for each gram the same three values are 4.0,
-    9.0 and 4.0. The carbohydrate amount is discounted a certain amount for the fibre content,
-    which is indigestible carbohydrate.
+    9.0 and 4.0.
+
+    One thing the general system does not do is take fibre out. Atwater's carbohydrate is
+    determined by difference, and thus includes fibre. Label systems differ from that and from
+    each other. On a US label the carbohydrate amount is discounted a certain amount for the fibre
+    content, which is indigestible carbohydrate. On an Indian label dietary fibre has its own
+    factor of 2 kilocalories a gram, under regulation 5(3)(e)(i) of the labelling regulations of
+    2020.
 
     To work out the energy content of a food, the quantities of carbohydrate, protein and fat are
     each multiplied by the factor for that one, and the products are added.
@@ -165,8 +175,10 @@ definition:
         calorimeter. This record calls the same quantity the calorimeter's energy
         equivalent, in joules for each degree, and never uses the book's phrase in
         front of the reader, because heat capacity is defined two sections later and
-        nothing may be assumed forward. The quantity is identical; only the name
-        differs. Whoever writes the later section should say so there.
+        nothing may be assumed forward. The book uses the phrase both ways on the same
+        page - for the calibrated whole in the calibration sentence, and for the bomb
+        alone in Example 5.7, where 893 J/degC sits beside 775 g of water counted
+        separately. Whoever writes E4 has to say which one the phrase means there.
   - citekey: openstax_chemistry_2e
     kind: textbook
     locator: "\xA7 5.2 Calorimetry, the bomb calorimeter paragraph, on how calibration is done"
@@ -263,8 +275,37 @@ definition:
         empirical concept. The citekey fao_food_energy_2003 therefore carries the
         cascade on the must-know points and on the illustration's numbers, where it is
         checked, and the report is named with its title, year and public URL in the
-        illustration so the reader can open it. Whoever audits this should read that
-        gap as a limit of the schema and not as an unsourced claim.
+        illustration so the reader can open it. The same applies to the two instrument
+        sources: nfsa_2013 carries Schedule II's 700 and 20, and fssai_labelling_2020
+        carries regulation 5(3)(e)(i) and its 2 kcal/g factor for dietary fibre, and
+        neither kind is legal on an empirical concept either.
+
+        Two consequences follow that this note does not fix, and the audit of 23
+        September 2026 is right that no edit inside this record can reach them.
+
+        First, definition.text now holds a block of claims with no reference of any
+        kind behind it: the FAO naming of ingested and gross energy, the four named
+        losses, metabolizable energy, net metabolizable energy, the absence of a
+        digestible-energy step, the six Atwater values, the correction "for losses in
+        digestion, absorption and urinary excretion of urea", the FAO statement that
+        Atwater's carbohydrate is determined by difference and so includes fibre, and
+        the Indian fibre factor. All fourteen references listed here are OpenStax, and
+        OpenStax 5.2 carries none of that material.
+
+        Second, Cites.mark (check/build.py) builds the reader's numbered reference list
+        from definition.references and from nowhere else. So FAO 77 gets no bracketed
+        number in Part E, no entry in the Part's bibliography, and no line in the
+        outstanding list underneath it. The reader meets it only as a title, a year and
+        a URL inside the illustration's prose.
+
+        The decision this needs is above the record level and is left open here,
+        deliberately, rather than papered over: claude.md section 4 already classifies
+        Atwater's 4/9/4 as institutional, so either the Atwater and cascade material
+        becomes its own institutional concept, or this concept's type changes and the
+        bomb calorimeter is taken from a textbook on the other side. Both change the
+        contract, so neither was made by the fix pass. Widening the empirical kinds to
+        admit consensus_statement is the route to refuse: it would let any
+        professional-body statement stand behind any empirical claim in the corpus.
 simplified_explanation: |
   The last section left you with the idea that the energy in a food is the difference between two
   sums. This section is about measuring that difference, and about what the number you get is
@@ -312,20 +353,23 @@ simplified_explanation: |
   Food and Agriculture Organization of the United Nations calls it the gross energy. It is the
   most the food could ever supply.
 
-  A person is not a furnace. Three things happen to that energy on the way through, and each one
+  A person is not a furnace. Several things happen to that energy on the way through, and each one
   takes some of it away.
 
   Some food is not digested and absorbed at all, and leaves in the faeces, carrying its energy
   with it. Some unabsorbed carbohydrate is fermented in the large intestine and leaves as gas,
-  which also carries energy. And some of what is absorbed leaves in the urine, mostly as the waste
-  left when protein is broken down and not finished off.
+  which also carries energy. Some of what is absorbed leaves in the urine, mostly as the waste
+  left when protein is broken down and not finished off. And a small amount is lost from the body
+  surface.
 
   What is left after those losses has a name. It is called metabolizable energy, spelt with a z in
   the report that names it.
 
-  Two steps, then, and only two: gross energy, then metabolizable energy. You may hear somebody
-  put a third step in the middle and call it digestible energy. The report has no such step. If
-  they say the report does, they have not opened it.
+  So the cascade is gross energy, then metabolizable energy. Below that the report carries one
+  more step, called net metabolizable energy. It takes off the energy the body itself spends on
+  digesting the food and handling it. What the report has no step for anywhere is digestible
+  energy. You may hear somebody put one in the middle and say the report has it. If they do, they
+  have not opened it.
 
   One more thing, and it undoes an assumption almost everybody carries.
 
@@ -388,8 +432,8 @@ illustration:
     water is round it, how it is put together. So somebody has to go and find that number out, and they find it out by
     burning something whose energy they already know.
 
-    So do that, with a machine and some figures. All the numbers from here to the end of this part
-    are made up for the example. No real calorimeter and no real food is being described.
+    So do that, with a machine and some figures. Every figure in this calorimeter example is made
+    up. No real calorimeter and no real food is being described.
 
     The known sample releases 26,400 joules. The thermometer goes up by 2.2 degrees Celsius, which
     is the ordinary degree marked on a kitchen thermometer.
@@ -472,8 +516,17 @@ illustration:
     > The energy that remains after accounting for the important losses is known as
     > “metabolizable energy” (ME) (see Figure 3.1).
 
-    Two steps. Gross energy, then metabolizable energy, with named losses in between. The middle step you were looking for does not exist. Cite this report for a three-way split and
-    you have cited a page that says something else.
+    Now read one paragraph further. There is a third step, and it is not the one you went looking
+    for. Some energy is spent on digesting the food and handling it afterwards, and some is lost
+    to microbes. Take those off metabolizable energy and the report names what is left.
+
+    > ...the result is an expression of the energy content of food, which is referred to as net
+    > metabolizable energy (NME).
+
+    So the report's cascade runs gross energy, then metabolizable energy, then net metabolizable
+    energy. The third step sits below metabolizable energy, not above it. The digestible-energy
+    step is nowhere in the report at all. Cite this report for a gross, digestible and
+    metabolisable split and you have cited a page that says something else.
 
     Now find where the numbers on packets come from. Search the same chapter for Atwater.
 
@@ -530,6 +583,12 @@ illustration:
         340 divided by 2,928.8 = 0.116
     ```
 
+    Multiply by a hundred, exactly as you did before.
+
+    ```working
+        0.116 times 100 = 11.6
+    ```
+
     Eleven point six per cent this time, against eleven point four the other way. Same Act, same
     report, same protein.
 
@@ -553,8 +612,10 @@ illustration:
     You do not have a measurement of any meal. Schedule II says what a meal must meet, not what any
     meal contained.
 
-    You do not have what reaches a child either, even if a meal met the standard exactly. Between the energy in the food and the energy available to the body sit three losses. They are the
-    faecal, gaseous and urinary losses you have just read the report name.
+    You do not have what reaches a child either, even if a meal met the standard exactly. Between
+    the energy in the food and the energy available to the body sit the losses you have just read
+    the report name. They are the faecal, the gaseous and the urinary losses, and a small loss
+    from the body surface.
 
     And you have nothing at all about what any one child spends, or about what a change in anybody's
     body would be made of. This book does not carry either number, and you should not supply one
@@ -598,10 +659,12 @@ illustration:
     unit: kilocalories per hot cooked meal, upper primary classes, Schedule II
     citekey: nfsa_2013
     quote: Upper primary classes Hot Cooked Meal 700 20
+    as_of: '2026-09-23'
   - value: '20'
     unit: grams of protein per hot cooked meal, upper primary classes, Schedule II
     citekey: nfsa_2013
     quote: Upper primary classes Hot Cooked Meal 700 20
+    as_of: '2026-09-23'
   - value: '4.184'
     unit: joules per thermochemical calorie, fixed by definition
     citekey: nist_sp811
@@ -623,6 +686,19 @@ illustration:
     prepared any way. So the method cannot tell apart two foods with the same grams of protein, fat and carbohydrate. It
     was never built to, whatever the body does with them.
 
+    The two printed columns pair up for protein and for carbohydrate. They do not pair up for
+    fat. Fat's precise value is 37.4 kilojoules a gram, and the report prints 9.0 kilocalories
+    beside it. Try the conversion both ways round.
+
+    ```working
+        37.4 divided by 4.184 = 8.9388
+        9.0 times 4.184 = 37.656
+    ```
+
+    Neither line lands on a figure the report prints. So fat's two numbers are not conversions of
+    one another in either direction. Read each column as its own set of numbers and do not work
+    one out from the other.
+
     The eleven per cent figure is a share of two numbers the Act sets, not a share of anything a
     child ate. It holds for a meal that exactly met both standards and for nothing else.
 
@@ -631,19 +707,20 @@ illustration:
     three separate questions. This book answers none of them.
 must_know:
 - point: |
-    A bomb calorimeter figure is the food's total combustible energy, not the energy a person
-    gets. Between the two sit losses in the faeces, in gas from the large intestine, and in the urine. The
-    Food and Agriculture Organization's 2003 report names all three. So never quote a
-    burning figure as what somebody received.
+    A bomb calorimeter figure is the food's total combustible energy. It is not the energy a
+    person gets. Between the two sit losses in the faeces, in gas from the large intestine, and in
+    the urine. The 2003 report from the Food and Agriculture Organization names those three. It
+    names a small surface loss too. So never quote a burning figure as what somebody received.
   kind: misconception
   bearing: methodological
   refs:
   - fao_food_energy_2003
 - point: |
-    That report has no digestible-energy step. Its cascade runs gross or ingested energy straight
-    to metabolizable energy, with faecal, gaseous, urinary and surface losses named along the way.
-    If somebody offers you a three-way gross, digestible and metabolisable split and cites this
-    report, the citation does not hold. Say so.
+    That report has no digestible-energy step anywhere. Its cascade runs from gross or ingested
+    energy to metabolizable energy. The losses named are faecal, gaseous, urinary and surface. A
+    third step sits below, net metabolizable energy. So do not object to a three-step reading of
+    this report. Object to the word digestible, which is not in it anywhere. Name the step that
+    was made up.
   kind: trap
   bearing: methodological
   refs:
@@ -660,7 +737,6 @@ must_know:
     be handed. They are 17 kilojoules, or 4.0 kilocalories, for each gram of protein. For fat they
     are 37 or 9.0, and for carbohydrate 17 or 4.0. Knowing them means you can recompute any label yourself
     instead of trusting it.
-  kind: number
   bearing: clinical
   refs:
   - fao_food_energy_2003
@@ -723,6 +799,9 @@ exercises:
     gas, from unabsorbed carbohydrate fermented in the colon. Energy is lost in the urine, mostly
     as nitrogenous waste from protein that was not fully broken down. A small amount is lost from
     the body surface. What remains is metabolizable energy.
+
+    Below that the report carries one more step, net metabolizable energy. It takes off the energy
+    the body itself spends on digesting the food and handling it.
 
     One thing to check in your own answer. Did you write a digestible-energy step in the middle?
     It is not in the report, and the habit of putting it there is exactly what this section is
@@ -821,12 +900,14 @@ practice:
     Check the direction before you move on. The answer came out smaller than the number you started with, and that is right. One kilocalorie
     is worth more than four kilojoules. So any amount of energy is a smaller number when it is
     counted in kilocalories.
+  refs:
+  - nist_sp811
 - level: 2
   prompt: |
     A calorimeter's energy equivalent is 9,500 joules for each degree.
 
     In one run the thermometer rises by 3.4 degrees. Work out the energy released, first in joules
-    and then in kilojoules.
+    and then in kilojoules. The figures in this problem are made up.
   answer: |
     The energy equivalent is a number of joules for each degree, so multiply it by the number of
     degrees.
@@ -849,7 +930,8 @@ practice:
     A sample whose energy is known to be 44,000 joules is burned in a calorimeter. The thermometer
     rises by 4.00 degrees.
 
-    Work out how many joules one degree is worth in that calorimeter.
+    Work out how many joules one degree is worth in that calorimeter. The figures in this problem
+    are made up.
   answer: |
     This is the calibration, and it runs the other way from the last problem. There you had the
     constant and wanted the energy. Here you have the energy and want the constant.
@@ -901,6 +983,8 @@ practice:
 
     Look at the three parts before you leave it. The fat is a fifth of the weight of the carbohydrate. It gives almost half as much energy. That is
     what a factor of nine does against a factor of four.
+  refs:
+  - fao_food_energy_2003
 - level: 4
   prompt: |
     Food and Nutrition Paper 77 is a report on food energy. The Food and Agriculture Organization
@@ -932,9 +1016,9 @@ practice:
     Which one the 4.0 came from: the second. Three point nine nine rounds to four point zero. Four
     point zero six does not, at least not without throwing away a digit you were given.
 
-    So the report's two columns are not exact conversions of one another. The kilojoule column has
-    been rounded to whole numbers and the kilocalorie column to one decimal place, separately.
-    Convert one into the other and you will land near the printed figure, not on it.
+    So the report's two columns are not exact conversions of one another. They were set down
+    separately, and for protein the precise kilojoule figure does round to the printed kilocalorie
+    one. Convert the rounded 17 instead and you land near the printed figure, not on it.
 
     What to do about it in practice. Use whichever unit the source you are quoting used, and
     convert only when you have to. Every conversion of a rounded figure moves the answer. A move of a few parts in a thousand is
@@ -1102,9 +1186,12 @@ practice:
 
     What the size of the gap does not tell you. It is not a measurement of anybody's losses. The corrections inside the factors are averages, taken over foods and over people. So the 0.17 is
     the gap between one measurement and one average. It is not a finding about this food.
+  refs:
+  - fao_food_energy_2003
+  - nist_sp811
 - level: 7
   prompt: |
-    Here is a worked answer. Find the step that broke.
+    Here is a worked answer. Find the step that broke. The figures in this problem are made up.
 
     ```working
         the calorimeter is worth 10,000 joules for each degree
@@ -1209,6 +1296,8 @@ practice:
     The habit that catches it. Before you add anything from a panel, check whether the weights you
     are adding could come to more than the packet does. Thirty plus twelve plus six plus five is fifty-three grams of material. The packet holds thirty
     grams of carbohydrate in all. The sum has invented twelve grams of food.
+  refs:
+  - fao_food_energy_2003
 - level: 9
   prompt: |
     A packet in a shop carries this line. The packet and the figure are made up for this problem.
@@ -1331,9 +1420,10 @@ retrieval_items:
     which is the most the food could ever supply. It does not measure what reaches a person, because
     energy is lost in the faeces, as gas, and in the urine.
 - q: What is the cascade the Food and Agriculture Organization's 2003 report gives for food energy?
-  a: Two steps. Gross or ingested energy, then metabolizable energy, with faecal, gaseous, urinary
-    and surface losses named in between. There is no digestible-energy step; the phrase does not
-    occur in the report.
+  a: Gross or ingested energy, then metabolizable energy, with faecal, gaseous, urinary and surface
+    losses named in between. Below metabolizable energy the report carries a third step, net
+    metabolizable energy, which takes off what the body spends on digesting and handling the food.
+    There is no digestible-energy step anywhere; the phrase does not occur in the report.
 - q: What are the Atwater general factors, and what are they used for?
   a: One energy value for each of protein, fat and carbohydrate, used regardless of the food it is
     found in. They are 17 kilojoules or 4.0 kilocalories a gram for protein, 37 or 9.0 for fat, and
@@ -1352,6 +1442,10 @@ provenance:
   bridge_ref: []
 review:
   stability: medium
-  trigger: '2029-09-23'
+  trigger: 'Date 2029-09-23; and on event, whichever comes first: the next notification amending
+    Schedule II of the National Food Security Act, 2013 under its section 37; the next amendment
+    of the Food Safety and Standards (Labelling and Display) Regulations, 2020; or a successor to
+    FAO Food and Nutrition Paper 77 on food-energy conversion factors.'
+  as_of: '2026-09-23'
   last_reviewed: '2026-09-23'
 status: drafted
