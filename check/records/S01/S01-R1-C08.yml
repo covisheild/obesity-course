@@ -142,6 +142,32 @@ definition:
         checked_on: '2026-09-23'
         note: |-
           Quoted in exercise 1's answer, about an invented skin patch.
+    - citekey: fao_who_unu_2004
+      kind: primary
+      locator: "Chapter 5 page, Table 5.2 (Schofield BMR equations), Males, rows 18-30 and 30-60; kcal/day column, kg = body weight"
+      quote: |-
+        18-30 2879 0.063kg + 2.896 0.641 15.057kg + 692.2 153 30-60 646 0.048kg + 3.653 0.700 11.472kg + 873.1 167
+      verified:
+        resolved_id: https://www.fao.org/4/y5686e/y5686e07.htm
+        opened: true
+        claim_located: true
+        checked_on: '2026-09-24'
+        note: |-
+          Practice 10. At 140 kg: 2,800.18 and 2,479.18 kcal/day.
+    - citekey: fao_who_unu_2004
+      kind: primary
+      locator: "Chapter 5 page, Table 5.2 (Schofield BMR equations), Females, rows 18-30 and 30-60; kcal/day column, kg = body weight"
+      quote: |-
+        18-30 829 0.062kg + 2.036 0.497 14.818kg + 486.6 119 30-60 372 0.034kg + 3.538 0.465 8.126kg + 845.6 111
+      verified:
+        resolved_id: https://www.fao.org/4/y5686e/y5686e07.htm
+        opened: true
+        claim_located: true
+        checked_on: '2026-09-24'
+        note: |-
+          Practice 10. At 140 kg: 2,561.12 and 1,983.24 kcal/day. The rows 60 and over (lower
+          still: 2,227.24 men, 1,929.98 women) are not used; their age band needs checking
+          against the PDF.
 
 simplified_explanation: |
   You do not need to know anything about the diet to check. You need three things: a
@@ -489,19 +515,41 @@ practice:
       3's worked examples calculate for any of their groups. But those groups weighed 55 to 70
       kg. This patient weighed 140.
 
-      So scale the ceiling by weight. Section 3's least active example works out at 36 kcal a
-      kilogram a day. Eating nothing, 21 days at that rate covers this much fat:
+      Do not scale their per-kilogram rate up to 140 kg. Body fat adds less to resting
+      expenditure than fat-free mass does (`S01-R1-C01`). Use an equation in weight instead.
+      The report section 3 drew on gives Schofield's equations for basal metabolic rate, in its
+      Table 5.2. Age and sex are not given, so take the adult row that gives the most, men 18 to
+      30. Multiply by section 3's sedentary multiplier, 1.53. Let intake be zero.
 
       ```working
-          140 times 36 = 5040
-          21 times 5040 = 105840
-          105840 divided by 7716.18 = 13.72
+          15.057 times 140 plus 692.2 = 2800.18
+          2800.18 times 1.53 = 4284.2754
+          21 times 4284.2754 = 89969.7834
+          89969.7834 divided by 7716.18 = 11.66
       ```
 
-      About 5,040 kcal a day, enough for about 13.7 kilograms of fat. So this ceiling does not
-      rule out 12 kilograms of fat. The true ceiling may be lower: body fat adds less to
-      resting expenditure than fat-free mass does (`S01-R1-C01`). The check cannot decide this
-      case.
+      At most about 11.7 kilograms of fat. The other adult rows, ages 18 to 60, give less,
+      down to women 30 to 60:
+
+      ```working
+          8.126 times 140 plus 845.6 = 1983.24
+      ```
+
+      So even the most generous row falls just short of 12 kilograms of fat. The margin is
+      small. The table also lists 153 kcal a day beside that row, the usual spread of real
+      people around the equation. Add it once:
+
+      ```working
+          2800.18 plus 153 = 2953.18
+          2953.18 times 1.53 = 4518.3654
+          21 times 4518.3654 = 94885.6734
+          94885.6734 divided by 7716.18 = 12.30
+      ```
+
+      About 12.3 kilograms, just over 12. So the check makes 12 kilograms of pure fat unlikely,
+      not impossible: intake above zero after surgery makes it less likely, a more active
+      patient more. Check one assumption too: that Schofield's equations still hold at 140 kg.
+      Nothing here shows they do.
 
       What this does not establish. It does not show the colleague is right or wrong about the
       mechanism. Surgery is meant to cut intake, so a large real deficit is plausible. But early

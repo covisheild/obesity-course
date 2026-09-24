@@ -25,9 +25,9 @@ definition:
     value, and the two do not convert exactly. For a kilogram: 9,000 kilocalories, or 37
     megajoules.
 
-    FAO's factors are corrected for what is lost in digestion, absorption and urine. They describe
-    fat eaten. Fat already stored in the body is not digested again. Hall (2008) gives fat in the
-    body 39.5 megajoules a kilogram. For body fat, use 39.5.
+    FAO's factors are corrected for energy lost in the faeces, and, for protein, in the urine.
+    They describe fat eaten. Fat already stored in the body is not digested again. Hall (2008)
+    gives fat in the body 39.5 megajoules a kilogram. For body fat, use 39.5.
 
     Adipose tissue is not pure fat, `S01-R1-C01` already established. Counting only its fat, its
     energy per gram is its lipid fraction, the proportion of its mass that is fat, times fat's own
@@ -94,6 +94,30 @@ definition:
       note: |-
         Read at sources/fao_food_energy.txt, s.3.5.1. Backs "FAO's factors describe fat
         eaten"; the section does not claim this correction alone explains 37 against 39.5.
+  - citekey: fao_food_energy_2003
+    kind: consensus_statement
+    locator: ch. 3, s.3.2, on why not all combustible energy is available
+    quote: First, foods are not completely digested and absorbed, and consequently food energy is
+      lost in the faeces.
+    verified:
+      resolved_id: https://www.fao.org/4/y5022e/y5022e04.htm
+      opened: true
+      claim_located: true
+      checked_on: '2026-09-24'
+      note: |-
+        Read at sources/fao_food_energy.txt, s.3.2. Backs "energy lost in the faeces".
+  - citekey: fao_food_energy_2003
+    kind: consensus_statement
+    locator: ch. 3, s.3.2, the next sentence but one
+    quote: Second, compounds derived from incomplete catabolism of protein are lost in the urine.
+    verified:
+      resolved_id: https://www.fao.org/4/y5022e/y5022e04.htm
+      opened: true
+      claim_located: true
+      checked_on: '2026-09-24'
+      note: |-
+        Read at sources/fao_food_energy.txt, s.3.2. The urinary loss is protein's, so the
+        section does not say fat's factor is corrected for urine.
   - citekey: hall_2008_ijo
     kind: primary
     locator: Opening paragraphs, on the energy densities of glycogen, protein and fat
@@ -151,8 +175,9 @@ definition:
       checked_on: '2026-09-23'
       note: |-
         Read at sources/hall_2008_ijo.txt, block 3. Set beside the 0.87 times 37 working.
-        Hall does not say which fat figure the original calculation used, so the section
-        calls the closeness of 32.19 to 32.2 partly luck, not a reconstruction.
+        "Equivalently": 32.2 is the rule itself in SI units, not a second estimate. Hall does
+        not say which fat figure the original calculation used, so the section treats 32.19
+        landing near 32.2 as neither a confirmation nor a reconstruction.
   - citekey: hall_2008_ijo
     kind: primary
     locator: Glycogen, protein and water, closing sentence of that section
@@ -245,7 +270,9 @@ simplified_explanation: |
   cites is 87%, and it is not a measurement.
 
   Do the sum anyway, to see the size of the effect. Multiply 0.87 by fat's 37 kilojoules a gram.
-  You get 32.19 megajoules a kilogram, close to the famous rule's 32.2, but partly by luck.
+  You get 32.19 megajoules a kilogram, near the famous rule's 32.2. That confirms nothing. Hall
+  gives 32.2 as the same rule, 3,500 kilocalories a pound, written "equivalently" in megajoules a
+  kilogram. He does not say which figure for fat the 87% calculation used.
   Start from 9,000 kilocalories instead and the same sum gives 7,830, not the rule's 7,700.
 
   That is arithmetic on an assumption.
@@ -307,8 +334,9 @@ illustration:
     > a cumulative energy deficit of 3500 kcal is required to lose 1 pound of body weight, or
     > equivalently 32.2 MJ per kg
 
-    32.19 lands close to 32.2. That is partly luck. FAO's footnote gives fat's precise value as
-    37.4 kilojoules a gram; 37 is its rounding. Try 37.4, Hall's 39.5, and 9,000 kilocalories.
+    "Equivalently": 32.2 is the rule itself, in megajoules a kilogram. 32.19 landing near it
+    proves nothing. FAO's footnote gives fat's precise value as 37.4 kilojoules a gram; 37 is
+    its rounding. Try 37.4, Hall's 39.5, and 9,000 kilocalories.
 
     ```working
         0.87 times 37.4 = 32.538
@@ -492,8 +520,8 @@ practice:
 
     32.19 kilojoules a gram, which is the same number in megajoules a kilogram: 32.19 MJ/kg.
 
-    Hall's own figure for the rule is 32.2 MJ per kg. 32.19 lands close to it, but that is partly
-    luck. Try FAO's precise 37.4, and Hall's 39.5.
+    Hall's 32.2 MJ per kg is the rule itself in megajoules ("equivalently"). 32.19 lands near it,
+    but that confirms nothing. Try FAO's precise 37.4, and Hall's 39.5.
 
     ```working
         0.87 times 37.4 = 32.538
@@ -626,9 +654,9 @@ practice:
         0.87 times 39.5 = 34.365
     ```
 
-    32.19 megajoules a kilogram lands close to the paper's "32.2 MJ per kg" for the rule, about
-    7,700 kilocalories a kilogram. That is partly luck: with Hall's 39.5 the same sum gives 34.4,
-    and Hall does not say which figure for fat the original calculation used. The sum shows the
+    32.19 megajoules a kilogram lands near the paper's "32.2 MJ per kg", which is the rule itself
+    in megajoules. That confirms nothing: with Hall's 39.5 the same sum gives 34.4, and Hall does
+    not say which figure for fat the original calculation used. The sum shows the
     size of the effect an 87% assumption has, not how the rule was built.
 
     The word "traced" is doing the opposite of the word "confirmed". Hall (2008) is explaining
@@ -657,8 +685,9 @@ retrieval_items:
     assuming 87% fat, without saying which figure for fat it used. 87% is an assumption, not a
     measurement, and Hall calls adipose tissue's fluid and protein contribution variable.
 - q: 0.87 times 37 gives 32.19, close to the rule's 32.2 MJ/kg. Does that confirm the rule?
-  a: No. The closeness is partly luck. With FAO's precise 37.4 the sum gives 32.5, and with Hall's
-    39.5 it gives 34.4. It shows the size of an 87% assumption's effect, not how the rule was
+  a: No. Hall gives 32.2 as the rule, 3,500 kcal a pound, restated in megajoules a kilogram. With FAO's
+    precise 37.4 the sum gives 32.5, and with Hall's 39.5 it gives 34.4. It shows the size of
+    an 87% assumption's effect, not how the rule was
     built.
 figures:
 - file: s01-r1-c02-energy-density-bars.png
