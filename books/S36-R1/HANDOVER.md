@@ -28,12 +28,10 @@ named from other editions) and three **OCR text layers** of scanned 1995 BMJ pap
 
 ## Still unverified — needs a person
 
-- **OCR quotes against the page images.** Quotes from the three 1995 BMJ files pass the quote gate
-  against the OCR text (unspaced), but no one has seen the pages. Five defect items are marked
-  `Verifier: deferred, page image` (C01-6, C02-9, C03-8, C08-14, C09-11), and the drafters' notes list
-  every OCR quote with its page (`draft-notes-b1..b5.md`, "OCR quotes"). Close them when Harsh
-  attaches the three PDFs: open each page, check each listed quote, note the result here.
-- **C08 locators** for Britten's Boxes 3–4 read "p. 252 or 253" until the page is seen.
+- **OCR quotes: checked 25 Sep 2026** against the three PDFs Harsh supplied. All 67 quotes match the
+  PDFs' text layer (four differ only by column interleaving, checked on the page image), with no
+  garbled words; Britten's Boxes 3–5 are on p. 253 (C08 locators corrected, C14 locator tidied).
+  The five deferred defect items are closed.
 
 ## Numbers and rules to re-check, with triggers
 
