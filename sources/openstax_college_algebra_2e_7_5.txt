@@ -1,0 +1,5886 @@
+OPENSTAX COLLEGE ALGEBRA 2E — VERBATIM SOURCE PACK (EXCERPTS)
+============================================================
+
+Transcription rule for this file: every line beneath a SECTION heading that is not
+prefixed with [NOTE] and is not a line reading [...] is an exact, unaltered slice of the text
+returned by the TinyFish fetch_content tool (markdown format, no model between page and text)
+for the URL in that heading, cut programmatically from the saved fetch (raw[i:j]); nothing has
+been paraphrased, smoothed, merged or re-wrapped. A section is stored as runs of whole
+subsections, so it is not set in quotation marks. A line reading [...] marks text left out at
+that point, and the [NOTE] line under it says what. Lines beginning [NOTE] are this file's own
+annotation and are NOT source text.
+
+SOURCE: College Algebra 2e. Senior contributing author Jay Abramson (Arizona State University).
+OpenStax, Rice University, Houston, Texas.
+DETAILS PAGE: https://openstax.org/details/books/college-algebra-2e (read 2026-09-24)
+PUBLISHED: "Publish Date: Dec 21, 2021"; "Web Version Last Updated: Jun 12, 2026"; ISBN-13
+978-1-711494-02-9 (color), as printed on the details page.
+LICENCE AS STATED ON THE DETAILS PAGE: "by OpenStax is licensed under Creative Commons
+Attribution-NonCommercial-ShareAlike License v4.0".
+RETRIEVED: 2026-09-24, with TinyFish fetch_content.
+CITEKEY: openstax_college_algebra_2e_7_5 (section 7.5 only, after the section-suffix precedent of
+openstax_contemporary_math_7_7). It does NOT back Book 0's key openstax_college_algebra_2e, which is
+left as it was, with no file.
+
+MATHEMATICS IN THIS FILE: OpenStax typesets formulas as MathML, and the extraction
+flattens them. An inline formula usually comes through twice, run together ("f′(x)=0.f′(x)=0."
+is f′(x) = 0; "ddx(c)=0.ddx(c)=0." is d/dx(c) = 0); a fraction loses its bar ("12x" can be
+1/(2 sqrt x)); superscripts drop to the baseline ("xn" is x^n); and a display equation often
+comes through one symbol per line, twice. Read a formula from the prose around it or from the
+book page; quote running prose, never a formula, and never state a number read out of a
+flattened formula without checking the page. Matrices are the worst case: a matrix's entries come
+through run together or one per line.
+
+WHAT THIS FILE HOLDS: one section, not the book.
+  7.5 Matrices and Matrix Operations: from its heading through Finding the Sum and Difference of
+      Two Matrices (describing matrices; dimensions; row and column matrices), Finding Scalar
+      Multiples of a Matrix, and Finding the Product of Two Matrices up to and including the
+      example "Using Matrices in Real-World Problems". The calculator example and the section
+      exercises are omitted.
+Absence of a passage from this file is not absence from the book.
+
+====================================================================================================
+SECTION: 7.5 Matrices and Matrix Operations
+URL: https://openstax.org/books/college-algebra-2e/pages/7-5-matrices-and-matrix-operations
+====================================================================================================
+
+## 7.5 Matrices and Matrix Operations
+
+In this section, you will:
+
+* Find the sum and difference of two matrices.
+* Find scalar multiples of a matrix.
+* Find the product of two matrices.
+
+Figure 
+1
+ 
+(credit: “SD Dirk,” Flickr)
+
+Two club soccer teams, the Wildcats and the Mud Cats, are hoping to obtain new equipment for an upcoming season. Table 1 shows the needs of both teams.
+
+|  | Wildcats | Mud Cats |
+| --- | --- | --- |
+| **Goals** | 6 | 10 |
+| **Balls** | 30 | 24 |
+| **Jerseys** | 14 | 20 |
+
+Table 
+1
+
+A goal costs $300; a ball costs $10; and a jersey costs $30. How can we find the total cost for the equipment needed for each team? In this section, we discover a method in which the data in the soccer equipment table can be displayed and used for calculating other information. Then, we will be able to calculate the cost of the equipment.
+
+### Finding the Sum and Difference of Two Matrices
+
+To solve a problem like the one described for the soccer teams, we can use a matrix, which is a rectangular array of numbers. A row in a matrix is a set of numbers that are aligned horizontally. A column in a matrix is a set of numbers that are aligned vertically. Each number is an entry, sometimes called an element, of the matrix. Matrices (plural) are enclosed in [ ] or ( ), and are usually named with capital letters. For example, three matrices named 
+A,B,
+A,B,
+ and 
+
+C
+C
+ are shown below.
+
+A=[ 
+
+
+
+1
+
+2
+
+
+3
+
+4
+ ],B=[ 
+
+
+
+1
+
+2
+
+7
+
+
+0
+
+
+−5
+
+6
+
+
+7
+
+8
+
+2
+ ],C=[ 
+
+
+
+
+−1
+
+
+
+0
+
+
+
+3
+
+3
+
+
+2
+
+
+1
+ ]
+A=[ 
+
+
+
+1
+
+2
+
+
+3
+
+4
+ ],B=[ 
+
+
+
+1
+
+2
+
+7
+
+
+0
+
+
+−5
+
+6
+
+
+7
+
+8
+
+2
+ ],C=[ 
+
+
+
+
+−1
+
+
+
+0
+
+
+
+3
+
+3
+
+
+2
+
+
+1
+ ]
+
+#### Describing Matrices
+
+A matrix is often referred to by its size or dimensions: 
+
+m×n
+m×n
+ indicating 
+
+m
+m
+ rows and 
+
+n
+n
+ columns. Matrix entries are defined first by row and then by column. For example, to locate the entry in matrix 
+
+A
+A
+ identified as 
+
+
+a
+
+ij
+,
+
+a
+
+ij
+,
+ we look for the entry in row 
+
+i,
+i,
+ column 
+
+j.
+j.
+ In matrix 
+
+A,  
+A,  
+ shown below, the entry in row 2, column 3 is 
+
+
+a
+
+23
+.
+
+a
+
+23
+.
+
+A=[ 
+
+
+
+
+
+a
+
+11
+
+
+
+a
+
+12
+
+
+
+a
+
+13
+
+
+
+
+a
+
+21
+
+
+
+a
+
+22
+
+
+
+a
+
+23
+
+
+
+
+a
+
+31
+
+
+
+a
+
+32
+
+
+
+a
+
+33
+ ]
+A=[ 
+
+
+
+
+
+a
+
+11
+
+
+
+a
+
+12
+
+
+
+a
+
+13
+
+
+
+
+a
+
+21
+
+
+
+a
+
+22
+
+
+
+a
+
+23
+
+
+
+
+a
+
+31
+
+
+
+a
+
+32
+
+
+
+a
+
+33
+ ]
+
+A square matrix is a matrix with dimensions 
+
+n×n,
+n×n,
+ meaning that it has the same number of rows as columns. The 
+
+3×3
+3×3
+ matrix above is an example of a square matrix.
+
+A row matrix is a matrix consisting of one row with dimensions 
+
+1×n.
+1×n.
+
+[ 
+
+
+
+
+
+a
+
+11
+
+
+
+a
+
+12
+
+
+
+a
+
+13
+ ]
+[ 
+
+
+
+
+
+a
+
+11
+
+
+
+a
+
+12
+
+
+
+a
+
+13
+ ]
+
+A column matrix is a matrix consisting of one column with dimensions 
+
+m×1.
+m×1.
+
+[ 
+
+
+
+
+
+a
+
+11
+
+
+
+
+a
+
+21
+
+
+
+
+a
+
+31
+ ]
+[ 
+
+
+
+
+
+a
+
+11
+
+
+
+
+a
+
+21
+
+
+
+
+a
+
+31
+ ]
+
+A matrix may be used to represent a system of equations. In these cases, the numbers represent the coefficients of the variables in the system. Matrices often make solving systems of equations easier because they are not encumbered with variables. We will investigate this idea further in the next section, but first we will look at basic matrix operations.
+
+A matrix is a rectangular array of numbers that is usually named by a capital letter: 
+
+A,B,C,
+A,B,C,
+ and so on. Each entry in a matrix is referred to as 
+
+
+a
+
+ij
+,
+
+a
+
+ij
+,
+ such that 
+
+i
+i
+ represents the row and 
+
+j
+j
+ represents the column. Matrices are often referred to by their dimensions: 
+
+m×n
+m×n
+ indicating 
+
+m
+m
+ rows and 
+
+n
+n
+ columns.
+
+#### Finding the Dimensions of the Given Matrix and Locating Entries
+
+Given matrix 
+
+A:
+A:
+
+1. ⓐWhat are the dimensions of matrix 
+
+   A?
+   A?
+2. ⓑWhat are the entries at 
+
+
+   a
+
+   31
+
+   a
+
+   31
+    and 
+
+
+   a
+
+   22
+   ?
+
+   a
+
+   22
+   ?
+
+   A=[ 
+
+
+
+   2
+
+
+
+
+   1
+
+   0
+
+
+   2
+
+
+
+
+   4
+
+   7
+
+
+   3
+
+
+
+
+   1
+
+
+   −2
+    ]
+   A=[ 
+
+
+
+   2
+
+
+
+
+   1
+
+   0
+
+
+   2
+
+
+
+
+   4
+
+   7
+
+
+   3
+
+
+
+
+   1
+
+
+   −2
+    ]
+
+#### Solution
+
+1. ⓐThe dimensions are 
+
+   3×3
+   3×3
+    because there are three rows and three columns.
+2. ⓑEntry 
+
+
+   a
+
+   31
+
+   a
+
+   31
+    is the number at row 3, column 1, which is 3. The entry 
+
+
+   a
+
+   22
+
+   a
+
+   22
+    is the number at row 2, column 2, which is 4. Remember, the row comes first, then the column.
+
+#### Adding and Subtracting Matrices
+
+We use matrices to list data or to represent systems. Because the entries are numbers, we can perform operations on matrices. We add or subtract matrices by adding or subtracting corresponding entries.
+
+In order to do this, the entries must correspond. Therefore, *addition and subtraction of matrices is only possible when the matrices have the same dimensions*. We can add or subtract a 
+
+3×3
+3×3
+ matrix and another 
+
+3×3
+3×3
+ matrix, but we cannot add or subtract a 
+
+2×3
+2×3
+ matrix and a 
+
+3×3
+3×3
+ matrix because some entries in one matrix will not have a corresponding entry in the other matrix.
+
+Given matrices 
+
+A
+A
+ and 
+
+B
+B
+ of like dimensions, addition and subtraction of 
+
+A
+A
+ and 
+
+B
+B
+ will produce matrix 
+
+C
+C
+ or   
+matrix 
+
+D
+D
+ of the same dimension.
+
+A+B=Csuch that 
+a
+
+ij
++
+b
+
+ij
+=
+c
+
+ij
+A+B=Csuch that 
+a
+
+ij
++
+b
+
+ij
+=
+c
+
+ij
+
+A−B=Dsuch that 
+a
+
+ij
+−
+b
+
+ij
+=
+d
+
+ij
+A−B=Dsuch that 
+a
+
+ij
+−
+b
+
+ij
+=
+d
+
+ij
+
+Matrix addition is commutative.
+
+A+B=B+A
+A+B=B+A
+
+It is also associative.
+
+(
+
+A+B
+)+C=A+(
+
+B+C
+)
+(
+
+A+B
+)+C=A+(
+
+B+C
+)
+
+#### Finding the Sum of Matrices
+
+Find the sum of 
+
+A
+A
+ and 
+
+B,
+B,
+ given
+
+A=[ 
+
+
+
+a
+
+b
+
+
+c
+
+d
+ ]  and  B=[ 
+
+
+
+e
+
+f
+
+
+g
+
+h
+ ]
+A=[ 
+
+
+
+a
+
+b
+
+
+c
+
+d
+ ]  and  B=[ 
+
+
+
+e
+
+f
+
+
+g
+
+h
+ ]
+
+#### Solution
+
+Add corresponding entries.
+
+A+B=[ 
+
+
+
+a
+
+b
+
+
+c
+
+d
+ ]+[ 
+
+
+
+e
+
+f
+
+
+g
+
+h
+ ]
+
+
+
+        =[ 
+
+
+
+
+a+e
+
+
+
+
+
+b+f
+
+
+
+c+g
+
+
+
+
+
+d+h
+ ]
+
+A+B=[ 
+
+
+
+a
+
+b
+
+
+c
+
+d
+ ]+[ 
+
+
+
+e
+
+f
+
+
+g
+
+h
+ ]
+
+
+
+        =[ 
+
+
+
+
+a+e
+
+
+
+
+
+b+f
+
+
+
+c+g
+
+
+
+
+
+d+h
+ ]
+
+#### Adding Matrix *A* and Matrix *B*
+
+Find the sum of 
+
+A
+A
+ and 
+
+B.
+B.
+
+A=[ 
+
+
+
+4
+
+1
+
+
+3
+
+2
+ ] and  B=[ 
+
+
+
+5
+
+9
+
+
+0
+
+7
+ ]
+A=[ 
+
+
+
+4
+
+1
+
+
+3
+
+2
+ ] and  B=[ 
+
+
+
+5
+
+9
+
+
+0
+
+7
+ ]
+
+#### Solution
+
+Add corresponding entries. Add the entry in row 1, column 1, 
+
+
+a
+
+11
+,
+
+a
+
+11
+,
+ of matrix 
+
+A
+A
+ to the entry in row 1, column 1, 
+
+
+b
+
+11
+,
+
+b
+
+11
+,
+ of 
+
+B.
+B.
+ Continue the pattern until all entries have been added.
+
+A+B=[ 
+
+
+
+4
+
+1
+
+
+3
+
+2
+ ]+[ 
+
+
+
+5
+
+9
+
+
+0
+
+7
+ ]
+
+
+
+        =[ 
+
+
+
+
+4+5
+
+
+
+
+
+1+9
+
+
+
+3+0
+
+
+
+
+
+2+7
+ ]
+
+
+
+        =[ 
+
+
+
+9
+
+
+10
+
+
+3
+
+9
+ ]
+
+A+B=[ 
+
+
+
+4
+
+1
+
+
+3
+
+2
+ ]+[ 
+
+
+
+5
+
+9
+
+
+0
+
+7
+ ]
+
+
+
+        =[ 
+
+
+
+
+4+5
+
+
+
+
+
+1+9
+
+
+
+3+0
+
+
+
+
+
+2+7
+ ]
+
+
+
+        =[ 
+
+
+
+9
+
+
+10
+
+
+3
+
+9
+ ]
+
+#### Finding the Difference of Two Matrices
+
+Find the difference of 
+
+A
+A
+ and 
+
+B.
+B.
+
+A=[ 
+
+
+
+
+−2
+
+3
+
+
+0
+
+1
+ ] and  B=[ 
+
+
+
+8
+
+1
+
+
+5
+
+4
+ ]
+A=[ 
+
+
+
+
+−2
+
+3
+
+
+0
+
+1
+ ] and  B=[ 
+
+
+
+8
+
+1
+
+
+5
+
+4
+ ]
+
+#### Solution
+
+We subtract the corresponding entries of each matrix.
+
+A−B=[ 
+
+
+
+
+−2
+
+3
+
+
+0
+
+1
+ ]−[ 
+
+
+
+8
+
+1
+
+
+5
+
+4
+ ]
+
+
+
+        =[ 
+
+
+
+
+−2−8
+
+
+
+
+
+3−1
+
+
+
+0−5
+
+
+
+
+
+1−4
+ ]
+
+
+
+        =[ 
+
+
+
+
+−10
+
+
+
+
+2
+
+
+
+−5
+
+
+
+
+
+−3
+ ]
+
+A−B=[ 
+
+
+
+
+−2
+
+3
+
+
+0
+
+1
+ ]−[ 
+
+
+
+8
+
+1
+
+
+5
+
+4
+ ]
+
+
+
+        =[ 
+
+
+
+
+−2−8
+
+
+
+
+
+3−1
+
+
+
+0−5
+
+
+
+
+
+1−4
+ ]
+
+
+
+        =[ 
+
+
+
+
+−10
+
+
+
+
+2
+
+
+
+−5
+
+
+
+
+
+−3
+ ]
+
+#### Finding the Sum and Difference of Two 3 x 3 Matrices
+
+Given 
+
+A
+A
+ and 
+
+B:
+B:
+
+1. ⓐFind the sum.
+2. ⓑFind the difference.
+
+A=[ 
+
+
+
+2
+
+
+−10
+
+
+−2
+
+
+
+14
+
+
+12
+
+
+10
+
+
+4
+
+
+−2
+
+2
+ ]and B=[ 
+
+
+
+6
+
+
+10
+
+
+−2
+
+
+0
+
+
+−12
+
+
+−4
+
+
+
+−5
+
+2
+
+
+−2
+ ]
+A=[ 
+
+
+
+2
+
+
+−10
+
+
+−2
+
+
+
+14
+
+
+12
+
+
+10
+
+
+4
+
+
+−2
+
+2
+ ]and B=[ 
+
+
+
+6
+
+
+10
+
+
+−2
+
+
+0
+
+
+−12
+
+
+−4
+
+
+
+−5
+
+2
+
+
+−2
+ ]
+
+#### Solution
+
+1. ⓐAdd the corresponding entries.
+
+   A+B=[ 
+
+
+
+   2
+
+
+   −10
+
+
+   −2
+
+
+
+   14
+
+
+   12
+
+
+   10
+
+
+   4
+
+
+   −2
+
+
+   2
+    ]+[ 
+
+
+
+   6
+
+
+   10
+
+
+   −2
+
+
+   0
+
+
+   −12
+
+
+   −4
+
+
+
+   −5
+
+
+   2
+
+
+   −2
+    ]
+
+
+
+   =[ 
+
+
+
+
+   2+6
+
+
+   −10+10
+
+
+   −2−2
+
+
+
+   14+0
+
+
+   12−12
+
+
+   10−4
+
+
+
+   4−5
+
+
+   −2+2
+
+
+   2−2
+    ]
+
+
+
+   =[ 
+
+
+
+   8
+
+
+   0
+
+
+   −4
+
+
+
+   14
+
+
+   0
+
+
+   6
+
+
+
+   −1
+
+
+   0
+
+
+   0
+    ]
+
+   A+B=[ 
+
+
+
+   2
+
+
+   −10
+
+
+   −2
+
+
+
+   14
+
+
+   12
+
+
+   10
+
+
+   4
+
+
+   −2
+
+
+   2
+    ]+[ 
+
+
+
+   6
+
+
+   10
+
+
+   −2
+
+
+   0
+
+
+   −12
+
+
+   −4
+
+
+
+   −5
+
+
+   2
+
+
+   −2
+    ]
+
+
+
+   =[ 
+
+
+
+
+   2+6
+
+
+   −10+10
+
+
+   −2−2
+
+
+
+   14+0
+
+
+   12−12
+
+
+   10−4
+
+
+
+   4−5
+
+
+   −2+2
+
+
+   2−2
+    ]
+
+
+
+   =[ 
+
+
+
+   8
+
+
+   0
+
+
+   −4
+
+
+
+   14
+
+
+   0
+
+
+   6
+
+
+
+   −1
+
+
+   0
+
+
+   0
+    ]
+2. ⓑSubtract the corresponding entries.
+
+   A−B=[ 
+
+
+
+   2
+
+
+   −10
+
+
+   −2
+
+
+
+   14
+
+
+   12
+
+
+   10
+
+
+   4
+
+
+   −2
+
+   2
+    ]−[ 
+
+
+
+   6
+
+
+   10
+
+
+   −2
+
+
+   0
+
+
+   −12
+
+
+   −4
+
+
+
+   −5
+
+   2
+
+
+   −2
+    ]
+
+
+
+   =[ 
+
+
+
+
+   2−6
+
+
+   −10−10
+
+
+   −2+2
+
+
+
+   14−0
+
+
+   12+12
+
+
+   10+4
+
+
+
+   4+5
+
+
+   −2−2
+
+
+   2+2
+    ]
+
+
+
+   =[ 
+
+
+
+
+   −4
+
+
+   −20
+
+
+   0
+
+
+
+   14
+
+
+   24
+
+
+   14
+
+
+   9
+
+
+   −4
+
+
+   4
+    ]
+
+   A−B=[ 
+
+
+
+   2
+
+
+   −10
+
+
+   −2
+
+
+
+   14
+
+
+   12
+
+
+   10
+
+
+   4
+
+
+   −2
+
+   2
+    ]−[ 
+
+
+
+   6
+
+
+   10
+
+
+   −2
+
+
+   0
+
+
+   −12
+
+
+   −4
+
+
+
+   −5
+
+   2
+
+
+   −2
+    ]
+
+
+
+   =[ 
+
+
+
+
+   2−6
+
+
+   −10−10
+
+
+   −2+2
+
+
+
+   14−0
+
+
+   12+12
+
+
+   10+4
+
+
+
+   4+5
+
+
+   −2−2
+
+
+   2+2
+    ]
+
+
+
+   =[ 
+
+
+
+
+   −4
+
+
+   −20
+
+
+   0
+
+
+
+   14
+
+
+   24
+
+
+   14
+
+
+   9
+
+
+   −4
+
+
+   4
+    ]
+
+Add matrix 
+
+A
+A
+ and matrix 
+
+B.
+B.
+
+A=[ 
+
+
+
+2
+
+6
+
+
+1
+
+0
+
+
+1
+
+
+−3
+ ] and  B=[ 
+
+
+
+3
+
+
+−2
+
+
+1
+
+5
+
+
+
+−4
+
+3
+ ]
+A=[ 
+
+
+
+2
+
+6
+
+
+1
+
+0
+
+
+1
+
+
+−3
+ ] and  B=[ 
+
+
+
+3
+
+
+−2
+
+
+1
+
+5
+
+
+
+−4
+
+3
+ ]
+
+### Finding Scalar Multiples of a Matrix
+
+Besides adding and subtracting whole matrices, there are many situations in which we need to multiply a matrix by a constant called a scalar. Recall that a scalar is a real number quantity that has magnitude, but not direction. For example, time, temperature, and distance are scalar quantities. The process of scalar multiplication involves multiplying each entry in a matrix by a scalar. A scalar multiple is any entry of a matrix that results from scalar multiplication.
+
+Consider a real-world scenario in which a university needs to add to its inventory of computers, computer tables, and chairs in two of the campus labs due to increased enrollment. They estimate that 15% more equipment is needed in both labs. The school’s current inventory is displayed in Table 2.
+
+|  | Lab A | Lab B |
+| --- | --- | --- |
+| **Computers** | 15 | 27 |
+| **Computer Tables** | 16 | 34 |
+| **Chairs** | 16 | 34 |
+
+Table 
+2
+
+Converting the data to a matrix, we have
+
+C
+
+2013
+=[ 
+
+
+
+
+15
+
+
+
+16
+
+
+
+16
+
+27
+
+
+
+34
+
+
+
+34
+ ]
+
+C
+
+2013
+=[ 
+
+
+
+
+15
+
+
+
+16
+
+
+
+16
+
+27
+
+
+
+34
+
+
+
+34
+ ]
+
+To calculate how much computer equipment will be needed, we multiply all entries in matrix 
+
+C
+C
+ by 0.15.
+
+(0.15)
+C
+
+2013
+=[ 
+
+
+
+
+(0.15)15
+
+
+
+(0.15)16
+
+
+
+(0.15)16
+
+(0.15)27
+
+
+
+(0.15)34
+
+
+
+(0.15)34
+ ]=[ 
+
+
+
+
+2.25
+
+
+
+2.4
+
+
+
+2.4
+
+4.05
+
+
+
+5.1
+
+
+
+5.1
+ ]
+(0.15)
+C
+
+2013
+=[ 
+
+
+
+
+(0.15)15
+
+
+
+(0.15)16
+
+
+
+(0.15)16
+
+(0.15)27
+
+
+
+(0.15)34
+
+
+
+(0.15)34
+ ]=[ 
+
+
+
+
+2.25
+
+
+
+2.4
+
+
+
+2.4
+
+4.05
+
+
+
+5.1
+
+
+
+5.1
+ ]
+
+We must round up to the next integer, so the amount of new equipment needed is
+
+[ 
+
+
+
+3
+
+
+3
+
+
+3
+
+5
+
+
+6
+
+
+6
+ ]
+[ 
+
+
+
+3
+
+
+3
+
+
+3
+
+5
+
+
+6
+
+
+6
+ ]
+
+Adding the two matrices as shown below, we see the new inventory amounts.
+
+[ 
+
+
+
+
+15
+
+
+
+16
+
+
+
+16
+
+27
+
+
+
+34
+
+
+
+34
+ ]+[ 
+
+
+
+3
+
+
+3
+
+
+3
+
+5
+
+
+6
+
+
+6
+ ]=[ 
+
+
+
+
+18
+
+
+
+19
+
+
+
+19
+
+32
+
+
+
+40
+
+
+
+40
+ ]
+[ 
+
+
+
+
+15
+
+
+
+16
+
+
+
+16
+
+27
+
+
+
+34
+
+
+
+34
+ ]+[ 
+
+
+
+3
+
+
+3
+
+
+3
+
+5
+
+
+6
+
+
+6
+ ]=[ 
+
+
+
+
+18
+
+
+
+19
+
+
+
+19
+
+32
+
+
+
+40
+
+
+
+40
+ ]
+
+This means
+
+C
+
+2014
+=[ 
+
+
+
+
+18
+
+
+
+19
+
+
+
+19
+
+32
+
+
+
+40
+
+
+
+40
+ ]
+
+C
+
+2014
+=[ 
+
+
+
+
+18
+
+
+
+19
+
+
+
+19
+
+32
+
+
+
+40
+
+
+
+40
+ ]
+
+Thus, Lab A will have 18 computers, 19 computer tables, and 19 chairs; Lab B will have 32 computers, 40 computer tables, and 40 chairs.
+
+Scalar multiplication involves finding the product of a constant by each entry in the matrix. Given
+
+A=[ 
+
+
+
+
+
+a
+
+11
+
+
+
+
+
+
+
+
+
+a
+
+12
+
+
+
+
+a
+
+21
+
+
+
+
+
+
+
+
+
+a
+
+22
+ ]
+A=[ 
+
+
+
+
+
+a
+
+11
+
+
+
+
+
+
+
+
+
+a
+
+12
+
+
+
+
+a
+
+21
+
+
+
+
+
+
+
+
+
+a
+
+22
+ ]
+
+the scalar multiple 
+
+cA
+cA
+ is
+
+cA=c[ 
+
+
+
+
+
+a
+
+11
+
+
+
+
+
+
+a
+
+12
+
+
+
+
+a
+
+21
+
+
+
+
+
+
+a
+
+22
+ ]
+
+
+
+   =[ 
+
+
+
+
+c
+a
+
+11
+
+
+
+
+
+c
+a
+
+12
+
+
+
+c
+a
+
+21
+
+
+
+
+
+c
+a
+
+22
+ ]
+
+cA=c[ 
+
+
+
+
+
+a
+
+11
+
+
+
+
+
+
+a
+
+12
+
+
+
+
+a
+
+21
+
+
+
+
+
+
+a
+
+22
+ ]
+
+
+
+   =[ 
+
+
+
+
+c
+a
+
+11
+
+
+
+
+
+c
+a
+
+12
+
+
+
+c
+a
+
+21
+
+
+
+
+
+c
+a
+
+22
+ ]
+
+Scalar multiplication is distributive. For the matrices 
+
+A,B,
+A,B,
+ and 
+
+C
+C
+ with scalars 
+
+a
+a
+ and 
+
+b,
+b,
+
+a(A+B)=aA+aB
+
+
+
+(a+b)A=aA+bA
+
+a(A+B)=aA+aB
+
+
+
+(a+b)A=aA+bA
+
+#### Multiplying the Matrix by a Scalar
+
+Multiply matrix 
+
+A
+A
+ by the scalar 3.
+
+A=[ 
+
+
+
+8
+
+1
+
+
+5
+
+4
+ ]
+A=[ 
+
+
+
+8
+
+1
+
+
+5
+
+4
+ ]
+
+#### Solution
+
+Multiply each entry in 
+
+A
+A
+ by the scalar 3.
+
+3A=3[ 
+
+
+
+8
+
+
+1
+
+
+5
+
+
+4
+ ]
+
+
+
+= [ 
+
+
+
+
+3⋅8
+
+
+3⋅1
+
+
+
+3⋅5
+
+
+3⋅4
+ ]
+
+
+
+= [ 
+
+
+
+
+24
+
+3
+
+
+
+15
+
+
+12
+ ]
+
+3A=3[ 
+
+
+
+8
+
+
+1
+
+
+5
+
+
+4
+ ]
+
+
+
+= [ 
+
+
+
+
+3⋅8
+
+
+3⋅1
+
+
+
+3⋅5
+
+
+3⋅4
+ ]
+
+
+
+= [ 
+
+
+
+
+24
+
+3
+
+
+
+15
+
+
+12
+ ]
+
+Given matrix 
+
+B,
+B,
+ find 
+
+−2B
+−2B
+ where
+
+B=[ 
+
+
+
+4
+
+1
+
+
+3
+
+2
+ ]
+B=[ 
+
+
+
+4
+
+1
+
+
+3
+
+2
+ ]
+
+#### Finding the Sum of Scalar Multiples
+
+Find the sum 
+
+3A+2B.
+3A+2B.
+
+A=[ 
+
+
+
+1
+
+
+−2
+
+0
+
+
+0
+
+
+−1
+
+2
+
+
+4
+
+3
+
+
+−6
+ ]and B=[ 
+
+
+
+
+−1
+
+2
+
+1
+
+
+0
+
+
+−3
+
+2
+
+
+0
+
+1
+
+
+−4
+ ]
+A=[ 
+
+
+
+1
+
+
+−2
+
+0
+
+
+0
+
+
+−1
+
+2
+
+
+4
+
+3
+
+
+−6
+ ]and B=[ 
+
+
+
+
+−1
+
+2
+
+1
+
+
+0
+
+
+−3
+
+2
+
+
+0
+
+1
+
+
+−4
+ ]
+
+#### Solution
+
+First, find 
+
+3A,
+3A,
+ then 
+
+2B.
+2B.
+
+3A=[ 
+
+
+
+
+3⋅1
+
+
+3(−2)
+
+
+3⋅0
+
+
+
+3⋅0
+
+
+3(−1)
+
+
+3⋅2
+
+
+
+3⋅4
+
+
+3⋅3
+
+
+3(−6)
+ ]
+
+
+
+=[ 
+
+
+
+3
+
+
+−6
+
+
+0
+
+
+0
+
+
+−3
+
+
+6
+
+
+
+12
+
+
+9
+
+
+−18
+ ]
+
+3A=[ 
+
+
+
+
+3⋅1
+
+
+3(−2)
+
+
+3⋅0
+
+
+
+3⋅0
+
+
+3(−1)
+
+
+3⋅2
+
+
+
+3⋅4
+
+
+3⋅3
+
+
+3(−6)
+ ]
+
+
+
+=[ 
+
+
+
+3
+
+
+−6
+
+
+0
+
+
+0
+
+
+−3
+
+
+6
+
+
+
+12
+
+
+9
+
+
+−18
+ ]
+
+2B=[ 
+
+
+
+
+2(−1)
+
+
+2⋅2
+
+
+2⋅1
+
+
+
+2⋅0
+
+
+2(−3)
+
+
+2⋅2
+
+
+
+2⋅0
+
+
+2⋅1
+
+
+2(−4)
+ ]
+
+
+
+=[ 
+
+
+
+
+−2
+
+4
+
+2
+
+
+0
+
+
+−6
+
+4
+
+
+0
+
+2
+
+
+−8
+ ]
+
+2B=[ 
+
+
+
+
+2(−1)
+
+
+2⋅2
+
+
+2⋅1
+
+
+
+2⋅0
+
+
+2(−3)
+
+
+2⋅2
+
+
+
+2⋅0
+
+
+2⋅1
+
+
+2(−4)
+ ]
+
+
+
+=[ 
+
+
+
+
+−2
+
+4
+
+2
+
+
+0
+
+
+−6
+
+4
+
+
+0
+
+2
+
+
+−8
+ ]
+
+Now, add 
+
+3A+2B.
+3A+2B.
+
+3A+2B=[ 
+
+
+
+3
+
+
+−6
+
+0
+
+
+0
+
+
+−3
+
+6
+
+
+
+12
+
+9
+
+
+−18
+ ]+[ 
+
+
+
+
+−2
+
+4
+
+2
+
+
+0
+
+
+−6
+
+4
+
+
+0
+
+2
+
+
+−8
+ ]
+
+
+
+            =[ 
+
+
+
+
+3−2
+
+
+−6+4
+
+
+0+2
+
+
+
+0+0
+
+
+−3−6
+
+
+6+4
+
+
+
+12+0
+
+
+9+2
+
+
+−18−8
+ ]
+
+
+
+            =[ 
+
+
+
+1
+
+
+−2
+
+2
+
+
+0
+
+
+−9
+
+
+10
+
+
+
+12
+
+
+11
+
+
+−26
+ ]
+
+3A+2B=[ 
+
+
+
+3
+
+
+−6
+
+0
+
+
+0
+
+
+−3
+
+6
+
+
+
+12
+
+9
+
+
+−18
+ ]+[ 
+
+
+
+
+−2
+
+4
+
+2
+
+
+0
+
+
+−6
+
+4
+
+
+0
+
+2
+
+
+−8
+ ]
+
+
+
+            =[ 
+
+
+
+
+3−2
+
+
+−6+4
+
+
+0+2
+
+
+
+0+0
+
+
+−3−6
+
+
+6+4
+
+
+
+12+0
+
+
+9+2
+
+
+−18−8
+ ]
+
+
+
+            =[ 
+
+
+
+1
+
+
+−2
+
+2
+
+
+0
+
+
+−9
+
+
+10
+
+
+
+12
+
+
+11
+
+
+−26
+ ]
+
+### Finding the Product of Two Matrices
+
+In addition to multiplying a matrix by a scalar, we can multiply two matrices. Finding the product of two matrices is only possible when the inner dimensions are the same, meaning that the number of columns of the first matrix is equal to the number of rows of the second matrix. If 
+
+A
+A
+ is an 
+
+m×r
+m×r
+ matrix and 
+
+B
+B
+ is an 
+
+r×n
+r×n
+ matrix, then the product matrix 
+
+AB
+AB
+ is an 
+
+m×n
+m×n
+ matrix. For example, the product 
+
+AB
+AB
+ is possible because the number of columns in 
+
+A
+A
+ is the same as the number of rows in 
+
+B.
+B.
+ If the inner dimensions do not match, the product is not defined.
+
+
+
+We multiply entries of 
+
+A
+A
+ with entries of 
+
+B
+B
+ according to a specific pattern as outlined below. The process of matrix multiplication becomes clearer when working a problem with real numbers.
+
+To obtain the entries in row 
+
+i
+i
+ of 
+
+AB,
+AB,
+ we multiply the entries in row 
+
+i
+i
+ of 
+
+A
+A
+ by column 
+
+j
+j
+ in 
+
+B
+B
+ and add. For example, given matrices 
+
+A
+A
+ and 
+
+B,
+B,
+ where the dimensions of 
+
+A
+A
+ are 
+
+2×3
+2×3
+ and the dimensions of 
+
+B
+B
+ are 
+
+3×3,
+3×3,
+ the product of 
+
+AB
+AB
+ will be a 
+
+2×3
+2×3
+ matrix.
+
+A=[ 
+
+
+
+
+
+a
+
+11
+
+
+
+a
+
+12
+
+
+
+a
+
+13
+
+
+
+
+a
+
+21
+
+
+
+a
+
+22
+
+
+
+a
+
+23
+ ]and B=[ 
+
+
+
+
+
+b
+
+11
+
+
+
+b
+
+12
+
+
+
+b
+
+13
+
+
+
+
+b
+
+21
+
+
+
+b
+
+22
+
+
+
+b
+
+23
+
+
+
+
+b
+
+31
+
+
+
+b
+
+32
+
+
+
+b
+
+33
+ ]
+A=[ 
+
+
+
+
+
+a
+
+11
+
+
+
+a
+
+12
+
+
+
+a
+
+13
+
+
+
+
+a
+
+21
+
+
+
+a
+
+22
+
+
+
+a
+
+23
+ ]and B=[ 
+
+
+
+
+
+b
+
+11
+
+
+
+b
+
+12
+
+
+
+b
+
+13
+
+
+
+
+b
+
+21
+
+
+
+b
+
+22
+
+
+
+b
+
+23
+
+
+
+
+b
+
+31
+
+
+
+b
+
+32
+
+
+
+b
+
+33
+ ]
+
+Multiply and add as follows to obtain the first entry of the product matrix 
+
+AB.
+AB.
+
+1. To obtain the entry in row 1, column 1 of 
+
+   AB,
+   AB,
+    multiply the first row in 
+
+   A
+   A
+    by the first column in 
+
+   B,
+   B,
+    and add.
+
+   [ 
+
+
+
+
+
+   a
+
+   11
+
+
+
+   a
+
+   12
+
+
+
+   a
+
+   13
+    ][ 
+
+
+
+
+
+   b
+
+   11
+
+
+
+
+   b
+
+   21
+
+
+
+
+   b
+
+   31
+    ]=
+   a
+
+   11
+   ⋅
+   b
+
+   11
+   +
+   a
+
+   12
+   ⋅
+   b
+
+   21
+   +
+   a
+
+   13
+   ⋅
+   b
+
+   31
+   [ 
+
+
+
+
+
+   a
+
+   11
+
+
+
+   a
+
+   12
+
+
+
+   a
+
+   13
+    ][ 
+
+
+
+
+
+   b
+
+   11
+
+
+
+
+   b
+
+   21
+
+
+
+
+   b
+
+   31
+    ]=
+   a
+
+   11
+   ⋅
+   b
+
+   11
+   +
+   a
+
+   12
+   ⋅
+   b
+
+   21
+   +
+   a
+
+   13
+   ⋅
+   b
+
+   31
+2. To obtain the entry in row 1, column 2 of 
+
+   AB,
+   AB,
+    multiply the first row of 
+
+   A
+   A
+    by the second column in 
+
+   B,
+   B,
+    and add.
+
+   [ 
+
+
+
+
+
+   a
+
+   11
+
+
+
+   a
+
+   12
+
+
+
+   a
+
+   13
+    ][ 
+
+
+
+
+
+   b
+
+   12
+
+
+
+
+   b
+
+   22
+
+
+
+
+   b
+
+   32
+    ]=
+   a
+
+   11
+   ⋅
+   b
+
+   12
+   +
+   a
+
+   12
+   ⋅
+   b
+
+   22
+   +
+   a
+
+   13
+   ⋅
+   b
+
+   32
+   [ 
+
+
+
+
+
+   a
+
+   11
+
+
+
+   a
+
+   12
+
+
+
+   a
+
+   13
+    ][ 
+
+
+
+
+
+   b
+
+   12
+
+
+
+
+   b
+
+   22
+
+
+
+
+   b
+
+   32
+    ]=
+   a
+
+   11
+   ⋅
+   b
+
+   12
+   +
+   a
+
+   12
+   ⋅
+   b
+
+   22
+   +
+   a
+
+   13
+   ⋅
+   b
+
+   32
+3. To obtain the entry in row 1, column 3 of 
+
+   AB,
+   AB,
+    multiply the first row of 
+
+   A
+   A
+    by the third column in 
+
+   B,
+   B,
+    and add.
+
+   [ 
+
+
+
+
+
+   a
+
+   11
+
+
+
+   a
+
+   12
+
+
+
+   a
+
+   13
+    ][ 
+
+
+
+
+
+   b
+
+   13
+
+
+
+
+   b
+
+   23
+
+
+
+
+   b
+
+   33
+    ]=
+   a
+
+   11
+   ⋅
+   b
+
+   13
+   +
+   a
+
+   12
+   ⋅
+   b
+
+   23
+   +
+   a
+
+   13
+   ⋅
+
+   b
+
+   33
+   [ 
+
+
+
+
+
+   a
+
+   11
+
+
+
+   a
+
+   12
+
+
+
+   a
+
+   13
+    ][ 
+
+
+
+
+
+   b
+
+   13
+
+
+
+
+   b
+
+   23
+
+
+
+
+   b
+
+   33
+    ]=
+   a
+
+   11
+   ⋅
+   b
+
+   13
+   +
+   a
+
+   12
+   ⋅
+   b
+
+   23
+   +
+   a
+
+   13
+   ⋅
+
+   b
+
+   33
+
+We proceed the same way to obtain the second row of 
+
+AB.
+AB.
+ In other words, row 2 of 
+
+A
+A
+ times column 1 of 
+
+B;
+B;
+ row 2 of 
+
+A
+A
+ times column 2 of 
+
+B;
+B;
+ row 2 of 
+
+A
+A
+ times column 3 of 
+
+B.
+B.
+ When complete, the product matrix will be
+
+AB=[ 
+
+
+
+
+
+
+
+a
+
+11
+⋅
+b
+
+11
++
+a
+
+12
+⋅
+b
+
+21
++
+a
+
+13
+⋅
+b
+
+31
+
+
+
+
+
+a
+
+21
+⋅
+b
+
+11
++
+a
+
+22
+⋅
+b
+
+21
++
+a
+
+23
+⋅
+b
+
+31
+
+a
+
+11
+⋅
+b
+
+12
++
+a
+
+12
+⋅
+b
+
+22
++
+a
+
+13
+⋅
+b
+
+32
+
+
+
+
+
+a
+
+21
+⋅
+b
+
+12
++
+a
+
+22
+⋅
+b
+
+22
++
+a
+
+23
+⋅
+b
+
+32
+
+a
+
+11
+⋅
+b
+
+13
++
+a
+
+12
+⋅
+b
+
+23
++
+a
+
+13
+⋅
+b
+
+33
+
+
+
+
+
+a
+
+21
+⋅
+b
+
+13
++
+a
+
+22
+⋅
+b
+
+23
++
+a
+
+23
+⋅
+b
+
+33
+ ]
+AB=[ 
+
+
+
+
+
+
+
+a
+
+11
+⋅
+b
+
+11
++
+a
+
+12
+⋅
+b
+
+21
++
+a
+
+13
+⋅
+b
+
+31
+
+
+
+
+
+a
+
+21
+⋅
+b
+
+11
++
+a
+
+22
+⋅
+b
+
+21
++
+a
+
+23
+⋅
+b
+
+31
+
+a
+
+11
+⋅
+b
+
+12
++
+a
+
+12
+⋅
+b
+
+22
++
+a
+
+13
+⋅
+b
+
+32
+
+
+
+
+
+a
+
+21
+⋅
+b
+
+12
++
+a
+
+22
+⋅
+b
+
+22
++
+a
+
+23
+⋅
+b
+
+32
+
+a
+
+11
+⋅
+b
+
+13
++
+a
+
+12
+⋅
+b
+
+23
++
+a
+
+13
+⋅
+b
+
+33
+
+
+
+
+
+a
+
+21
+⋅
+b
+
+13
++
+a
+
+22
+⋅
+b
+
+23
++
+a
+
+23
+⋅
+b
+
+33
+ ]
+
+For the matrices 
+
+A,B,
+A,B,
+ and 
+
+C
+C
+ the following properties hold.
+
+* Matrix multiplication is associative: 
+
+  (
+
+  AB
+  )C=A(
+
+  BC
+  ).
+  (
+
+  AB
+  )C=A(
+
+  BC
+  ).
+* Matrix multiplication is distributive: 
+
+
+
+
+
+
+
+
+
+
+
+
+  C(A+B)=CA+CB,
+
+
+
+  (A+B)C=AC+BC.
+
+  C(A+B)=CA+CB,
+
+
+
+  (A+B)C=AC+BC.
+
+Note that matrix multiplication is not commutative.
+
+#### Multiplying Two Matrices
+
+Multiply matrix 
+
+A
+A
+ and matrix 
+
+B.
+B.
+
+A=[ 
+
+
+
+1
+
+2
+
+
+3
+
+4
+ ] and  B=[ 
+
+
+
+5
+
+6
+
+
+7
+
+8
+ ]
+A=[ 
+
+
+
+1
+
+2
+
+
+3
+
+4
+ ] and  B=[ 
+
+
+
+5
+
+6
+
+
+7
+
+8
+ ]
+
+#### Solution
+
+First, we check the dimensions of the matrices. Matrix 
+
+A 
+A  has dimensions 
+
+2×2 
+2×2  and matrix 
+
+B 
+B  has dimensions 
+
+2×2. 
+2×2.  The inner dimensions are the same so we can perform the multiplication. The product will have the dimensions 
+
+2×2.
+2×2.
+
+We perform the operations outlined previously.
+
+#### Multiplying Two Matrices
+
+Given 
+
+A
+A
+ and 
+
+B:
+B:
+
+1. ⓐ
+   Find 
+
+   AB.
+   AB.
+2. ⓑ
+   Find 
+
+   BA.
+   BA.
+
+A=[ 
+
+
+
+
+
+
+
+
+−1
+
+2
+
+3
+
+
+
+
+
+
+
+4
+
+0
+
+5
+ ]and  B=[ 
+
+
+
+
+5
+
+
+
+−4
+
+
+
+2
+
+−1
+
+
+
+0
+
+
+
+3
+ ]
+A=[ 
+
+
+
+
+
+
+
+
+−1
+
+2
+
+3
+
+
+
+
+
+
+
+4
+
+0
+
+5
+ ]and  B=[ 
+
+
+
+
+5
+
+
+
+−4
+
+
+
+2
+
+−1
+
+
+
+0
+
+
+
+3
+ ]
+
+#### Solution
+
+1. ⓐAs the dimensions of 
+
+   A
+   A
+    are 
+
+   2×3
+   2×3
+    and the dimensions of 
+
+   B
+   B
+    are 
+
+   3×2,
+   3×2,
+    these matrices can be multiplied together because the number of columns in 
+
+   A
+   A
+    matches the number of rows in 
+
+   B.
+   B.
+    The resulting product will be a 
+
+   2×2
+   2×2
+    matrix, the number of rows in 
+
+   A
+   A
+    by the number of columns in 
+
+   B.
+   B.
+
+   AB=[ 
+
+
+
+
+   −1
+
+   2
+
+   3
+
+
+   4
+
+   0
+
+   5
+    ]  [ 
+
+
+
+   5
+
+
+   −1
+
+
+
+   −4
+
+   0
+
+
+   2
+
+   3
+    ]
+
+
+
+   =[ 
+
+
+
+
+   −1(5)+2(−4)+3(2)
+
+
+   −1(−1)+2(0)+3(3)
+
+
+
+   4(5)+0(−4)+5(2)
+
+
+   4(−1)+0(0)+5(3)
+    ]
+
+
+
+   =[ 
+
+
+
+
+   −7
+
+
+   10
+
+
+
+   30
+
+
+   11
+    ]
+
+   AB=[ 
+
+
+
+
+   −1
+
+   2
+
+   3
+
+
+   4
+
+   0
+
+   5
+    ]  [ 
+
+
+
+   5
+
+
+   −1
+
+
+
+   −4
+
+   0
+
+
+   2
+
+   3
+    ]
+
+
+
+   =[ 
+
+
+
+
+   −1(5)+2(−4)+3(2)
+
+
+   −1(−1)+2(0)+3(3)
+
+
+
+   4(5)+0(−4)+5(2)
+
+
+   4(−1)+0(0)+5(3)
+    ]
+
+
+
+   =[ 
+
+
+
+
+   −7
+
+
+   10
+
+
+
+   30
+
+
+   11
+    ]
+2. ⓑThe dimensions of 
+
+   B
+   B
+    are 
+
+   3 × 2
+   3 × 2
+    and the dimensions of 
+
+   A
+   A
+    are 
+
+   2 × 3.
+   2 × 3.
+    The inner dimensions match so the product is defined and will be a 
+
+   3 × 3
+   3 × 3
+    matrix.
+
+   BA=[ 
+
+
+
+   5
+
+
+   −1
+
+
+
+   −4
+
+   0
+
+
+   2
+
+   3
+    ]  [ 
+
+
+
+
+   −1
+
+   2
+
+   3
+
+
+   4
+
+   0
+
+   5
+    ]
+
+
+
+   =[ 
+
+
+
+
+   5(−1)+−1(4)
+
+
+   5(2)+−1(0)
+
+
+   5(3)+−1(5)
+
+
+
+   −4(−1)+0(4)
+
+
+   −4(2)+0(0)
+
+
+   −4(3)+0(5)
+
+
+
+   2(−1)+3(4)
+
+
+   2(2)+3(0)
+
+
+   2(3)+3(5)
+    ]
+
+
+
+   =[ 
+
+
+
+
+   −9
+
+
+   10
+
+
+   10
+
+
+   4
+
+
+   −8
+
+
+   −12
+
+
+
+   10
+
+   4
+
+
+   21
+    ]
+
+   BA=[ 
+
+
+
+   5
+
+
+   −1
+
+
+
+   −4
+
+   0
+
+
+   2
+
+   3
+    ]  [ 
+
+
+
+
+   −1
+
+   2
+
+   3
+
+
+   4
+
+   0
+
+   5
+    ]
+
+
+
+   =[ 
+
+
+
+
+   5(−1)+−1(4)
+
+
+   5(2)+−1(0)
+
+
+   5(3)+−1(5)
+
+
+
+   −4(−1)+0(4)
+
+
+   −4(2)+0(0)
+
+
+   −4(3)+0(5)
+
+
+
+   2(−1)+3(4)
+
+
+   2(2)+3(0)
+
+
+   2(3)+3(5)
+    ]
+
+
+
+   =[ 
+
+
+
+
+   −9
+
+
+   10
+
+
+   10
+
+
+   4
+
+
+   −8
+
+
+   −12
+
+
+
+   10
+
+   4
+
+
+   21
+    ]
+
+#### Analysis
+
+Notice that the products 
+
+AB
+AB
+ and 
+
+BA
+BA
+ are not equal.
+
+AB=[ 
+
+
+
+
+−7
+
+
+10
+
+
+
+30
+
+
+11
+ ]≠[ 
+
+
+
+
+−9
+
+
+10
+
+
+10
+
+
+4
+
+
+−8
+
+
+−12
+
+
+
+10
+
+4
+
+
+21
+ ]=BA
+AB=[ 
+
+
+
+
+−7
+
+
+10
+
+
+
+30
+
+
+11
+ ]≠[ 
+
+
+
+
+−9
+
+
+10
+
+
+10
+
+
+4
+
+
+−8
+
+
+−12
+
+
+
+10
+
+4
+
+
+21
+ ]=BA
+
+This illustrates the fact that matrix multiplication is not commutative.
+
+**Is it possible for *AB* to be defined but not *BA*?**
+
+*Yes, consider a matrix A with dimension 
+
+3×4
+3×4
+ and matrix B with dimension 
+
+4×2.
+4×2.
+ For the product AB the inner dimensions are 4 and the product is defined, but for the product BA the inner dimensions are 2 and 3 so the product is undefined.*
+
+#### Using Matrices in Real-World Problems
+
+Let’s return to the problem presented at the opening of this section. We have Table 3, representing the equipment needs of two soccer teams.
+
+|  | Wildcats | Mud Cats |
+| --- | --- | --- |
+| **Goals** | 6 | 10 |
+| **Balls** | 30 | 24 |
+| **Jerseys** | 14 | 20 |
+
+Table 
+3
+
+We are also given the prices of the equipment, as shown in Table 4.
+
+|  |  |
+| --- | --- |
+| **Goal** | $300 |
+| **Ball** | $10 |
+| **Jersey** | $30 |
+
+Table 
+4
+
+We will convert the data to matrices. Thus, the equipment need matrix is written as
+
+E=[ 
+
+
+
+6
+
+
+
+30
+
+
+
+14
+
+10
+
+
+
+24
+
+
+
+20
+ ]
+E=[ 
+
+
+
+6
+
+
+
+30
+
+
+
+14
+
+10
+
+
+
+24
+
+
+
+20
+ ]
+
+The cost matrix is written as
+
+C=[ 
+
+
+
+
+300
+
+
+10
+
+
+30
+ ]
+C=[ 
+
+
+
+
+300
+
+
+10
+
+
+30
+ ]
+
+We perform matrix multiplication to obtain costs for the equipment.
+
+CE=[ 
+
+
+
+
+300
+
+
+10
+
+
+30
+ ][ 
+
+
+
+6
+
+
+10
+
+
+
+30
+
+
+24
+
+
+
+14
+
+
+20
+ ]
+
+
+
+=[ 
+
+
+
+
+300(6)+10(30)+30(14)
+
+
+300(10)+10(24)+30(20)
+ ]
+
+
+
+=[ 
+
+
+
+
+2,520
+
+
+3,840
+ ]
+
+CE=[ 
+
+
+
+
+300
+
+
+10
+
+
+30
+ ][ 
+
+
+
+6
+
+
+10
+
+
+
+30
+
+
+24
+
+
+
+14
+
+
+20
+ ]
+
+
+
+=[ 
+
+
+
+
+300(6)+10(30)+30(14)
+
+
+300(10)+10(24)+30(20)
+ ]
+
+
+
+=[ 
+
+
+
+
+2,520
+
+
+3,840
+ ]
+
+The total cost for equipment for the Wildcats is $2,520, and the total cost for equipment for the Mud Cats is $3,840.
+
+**Given a matrix operation, evaluate using a calculator.**
+
+1. Save each matrix as a matrix variable 
+
+   [ A ],[ B ],[ C ],...
+   [ A ],[ B ],[ C ],...
+2. Enter the operation into the calculator, calling up each matrix variable as needed.
+3. If the operation is defined, the calculator will present the solution matrix; if the operation is undefined, it will display an error message.
+
+[...]
+[NOTE] Omitted here: the example Using a Calculator to Perform Matrix Operations, and the end-of-section exercise set (Verbal, Algebraic, Technology, Extensions).
+

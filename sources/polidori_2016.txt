@@ -37,8 +37,8 @@ the two paragraphs on a commercial weight-loss programme (Figure 3, reference 19
 canagliflozin trial); from the Discussion, the paragraph on the range of weight losses and
 individual variability, the limitations paragraphs (expenditure not measured; group means
 only), and the summary paragraph; reference 1 (the source of the ~30 kcal/kg/day expenditure
-figure). Omitted: the model equations and parameters (flattened by the extraction), the
-feedback-model derivations, the rest of the Results and Discussion, figure captions, the
+figure). Omitted (the model equations 1-5
+were added 2026-09-24 as blocks 11-13): the feedback-model derivations, the rest of the Results and Discussion, figure captions, the
 other references. Added 2026-09-23 after the C09/C10 audit read the full text.
 ON THE MEASUREMENT INTERVAL: the Methods clause reads "T = 52 was the number of days between
 measurements" as fetched; the formula before it is flattened by the extraction (its "*" is
@@ -126,3 +126,96 @@ https://pmc-oa-opendata.s3.amazonaws.com/PMC5108589.1/PMC5108589.1.txt
 ===============================================================================
 
 "1 Leibel RL Rosenbaum M Hirsch J Changes in energy expenditure resulting from altered body weight N Engl J Med 1995 332 621 628 7632212 10.1056/NEJM199503093321001"
+
+[NOTE] ---- Added 2026-09-24 by the S02-R1 intake ----
+[NOTE] Blocks 11-13 hold the model equations (Equations 1-5) and the Methods prose around them,
+[NOTE] which the 2026-09-23 excerpt left out. They come from the article's JATS XML in the same
+[NOTE] PMC Article Dataset (https://pmc-oa-opendata.s3.amazonaws.com/PMC5108589.1/PMC5108589.1.xml),
+[NOTE] fetched 2026-09-24 with TinyFish fetch_content twice: in markdown format for the prose, and
+[NOTE] in html format, which keeps the XML's MathML. Each equation is stored as that MathML,
+[NOTE] verbatim, with a plain-text rendering made by a deterministic script (element by element:
+[NOTE] mi/mn/mo as written, msub as base_sub, mfrac as (numerator/denominator), munderover on an
+[NOTE] integral sign as ∫_lower^upper). The rendering is marked as this file's notation. The XML
+[NOTE] carries the same author manuscript and the same licence line as the .txt fetched on
+[NOTE] 2026-09-23. Block 11 also settles the measurement-interval caveat in the header above: the
+[NOTE] XML reads "The interval length was t = (N−1)*T", so with N = 2 the interval is T = 52 days.
+
+===============================================================================
+11. Methods: Equation 1 (the change in energy intake) and its inputs (added 2026-09-24)
+https://pmc-oa-opendata.s3.amazonaws.com/PMC5108589.1/PMC5108589.1.xml
+===============================================================================
+
+"We calculated the changes in energy intake, ΔEI, for each subject using a validated mathematical method (6) using the following equation:"
+
+[MATHML] Equation 1, verbatim from the JATS XML at https://pmc-oa-opendata.s3.amazonaws.com/PMC5108589.1/PMC5108589.1.xml (TinyFish fetch_content, html format):
+<mml:math><mml:mi>Δ</mml:mi><mml:mi>E</mml:mi><mml:msub><mml:mi>I</mml:mi><mml:mi>i</mml:mi></mml:msub><mml:mo>=</mml:mo><mml:mi>ρ</mml:mi><mml:mfrac><mml:mrow><mml:mi>d</mml:mi><mml:mi>B</mml:mi><mml:msub><mml:mi>W</mml:mi><mml:mi>i</mml:mi></mml:msub></mml:mrow><mml:mrow><mml:mi>d</mml:mi><mml:mi>t</mml:mi></mml:mrow></mml:mfrac><mml:mo>+</mml:mo><mml:mi>ε</mml:mi><mml:mo>(</mml:mo><mml:mi>B</mml:mi><mml:msub><mml:mi>W</mml:mi><mml:mi>i</mml:mi></mml:msub><mml:mo>−</mml:mo><mml:mi>B</mml:mi><mml:msub><mml:mi>W</mml:mi><mml:mn>0</mml:mn></mml:msub><mml:mo>)</mml:mo><mml:mo>+</mml:mo><mml:mfrac><mml:mrow><mml:mi>Δ</mml:mi><mml:mi>δ</mml:mi></mml:mrow><mml:mrow><mml:mo>(</mml:mo><mml:mn>1</mml:mn><mml:mo>−</mml:mo><mml:mi>β</mml:mi><mml:mo>)</mml:mo></mml:mrow></mml:mfrac><mml:mi>B</mml:mi><mml:msub><mml:mi>W</mml:mi><mml:mn>0</mml:mn></mml:msub><mml:mo>+</mml:mo><mml:mi>U</mml:mi><mml:mi>G</mml:mi><mml:mi>E</mml:mi></mml:math>
+[NOTE] Equation 1 in plain text, CONVERTED BY SCRIPT from the MathML above (this file's
+[NOTE] notation, not source text; a fraction is written (a/b), a subscript _x, and
+[NOTE] juxtaposed symbols multiply):
+[NOTE]     ΔEI_i = ρ (dBW_i/dt) + ε(BW_i − BW_0) + (Δδ/(1 − β)) BW_0 + UGE
+
+[NOTE] In the next passage "\*" is the markdown fetch's escaped asterisk: the html-format fetch of the
+[NOTE] same XML reads "t = (N−1)*T", a product. With N = 2 the interval is T = 52 days. This settles
+[NOTE] the caveat in block 4 above: the formula was not lost, only escaped.
+
+"The inputs to the model were the change of body weight versus baseline over each interval, (BWi − BW0), and the moving average of the measured body weight time course was used to calculate the rate of change of body weight over each interval, dBWi/dt. The interval length was t = (N−1)\*T, where N = 2 was the number of body weight measurements per interval and T = 52 was the number of days between measurements. Three subjects treated canagliflozin and 2 subjects treated with placebo had missing body weight data at one time point and linear interpolation was used to impute the missing data."
+
+
+===============================================================================
+12. Methods: Equations 2 and 3 (the parameters ρ and ε) (added 2026-09-24)
+https://pmc-oa-opendata.s3.amazonaws.com/PMC5108589.1/PMC5108589.1.xml
+===============================================================================
+
+"Equation 1 is a linearization of a mathematical model of adult body weight dynamics that was developed and validated using data obtained primarily from controlled feeding studies in adult humans with longitudinal measurements of changes in body composition as well as both resting and total energy expenditure (12, 13, 14). The model parameter ρ was the effective energy density associated with the body weight change:"
+
+[MATHML] Equation 2, verbatim from the JATS XML at https://pmc-oa-opendata.s3.amazonaws.com/PMC5108589.1/PMC5108589.1.xml (TinyFish fetch_content, html format):
+<mml:math><mml:mi>ρ</mml:mi><mml:mo>=</mml:mo><mml:mfrac><mml:mrow><mml:msub><mml:mi>η</mml:mi><mml:mrow><mml:mi>F</mml:mi><mml:mi>M</mml:mi></mml:mrow></mml:msub><mml:mo>+</mml:mo><mml:msub><mml:mi>ρ</mml:mi><mml:mrow><mml:mi>F</mml:mi><mml:mi>M</mml:mi></mml:mrow></mml:msub><mml:mo>+</mml:mo><mml:mi>α</mml:mi><mml:msub><mml:mi>η</mml:mi><mml:mrow><mml:mi>F</mml:mi><mml:mi>F</mml:mi><mml:mi>M</mml:mi></mml:mrow></mml:msub><mml:mo>+</mml:mo><mml:mi>α</mml:mi><mml:msub><mml:mi>ρ</mml:mi><mml:mrow><mml:mi>F</mml:mi><mml:mi>F</mml:mi><mml:mi>M</mml:mi></mml:mrow></mml:msub></mml:mrow><mml:mrow><mml:mo>(</mml:mo><mml:mn>1</mml:mn><mml:mo>−</mml:mo><mml:mi>β</mml:mi><mml:mo>)</mml:mo><mml:mo>(</mml:mo><mml:mn>1</mml:mn><mml:mo>+</mml:mo><mml:mi>α</mml:mi><mml:mo>)</mml:mo></mml:mrow></mml:mfrac></mml:math>
+[NOTE] Equation 2 in plain text, CONVERTED BY SCRIPT from the MathML above (this file's
+[NOTE] notation, not source text; a fraction is written (a/b), a subscript _x, and
+[NOTE] juxtaposed symbols multiply):
+[NOTE]     ρ = ((η_FM + ρ_FM + αη_FFM + αρ_FFM)/((1 − β)(1 + α)))
+
+"and ε defined how energy expenditure depends on body weight:"
+
+[MATHML] Equation 3, verbatim from the JATS XML at https://pmc-oa-opendata.s3.amazonaws.com/PMC5108589.1/PMC5108589.1.xml (TinyFish fetch_content, html format):
+<mml:math><mml:mi>ε</mml:mi><mml:mo>=</mml:mo><mml:mfrac><mml:mn>1</mml:mn><mml:mrow><mml:mo>(</mml:mo><mml:mn>1</mml:mn><mml:mo>−</mml:mo><mml:mi>β</mml:mi><mml:mo>)</mml:mo></mml:mrow></mml:mfrac><mml:mo>[</mml:mo><mml:mfrac><mml:mrow><mml:msub><mml:mi>γ</mml:mi><mml:mi>F</mml:mi></mml:msub><mml:mo>+</mml:mo><mml:mi>α</mml:mi><mml:msub><mml:mi>γ</mml:mi><mml:mi>L</mml:mi></mml:msub></mml:mrow><mml:mrow><mml:mo>(</mml:mo><mml:mn>1</mml:mn><mml:mo>+</mml:mo><mml:mi>α</mml:mi><mml:mo>)</mml:mo></mml:mrow></mml:mfrac><mml:mo>+</mml:mo><mml:msub><mml:mi>δ</mml:mi><mml:mn>0</mml:mn></mml:msub><mml:mo>+</mml:mo><mml:mi>Δ</mml:mi><mml:mi>δ</mml:mi><mml:mo>]</mml:mo><mml:mo>.</mml:mo></mml:math>
+[NOTE] Equation 3 in plain text, CONVERTED BY SCRIPT from the MathML above (this file's
+[NOTE] notation, not source text; a fraction is written (a/b), a subscript _x, and
+[NOTE] juxtaposed symbols multiply):
+[NOTE]     ε = (1/(1 − β)) [ ((γ_F + αγ_L)/(1 + α)) + δ_0 + Δδ].
+
+[NOTE] Equation 3's MathML writes the resting-metabolic-rate coefficients as γ_F and γ_L; the prose below
+[NOTE] names them γFFM and γFM. That is how the XML has it; this file does not reconcile them.
+
+"The model parameters γFFM and γFM are the regression coefficients relating resting metabolic rate to fat-free mass (FFM) and fat mass (FM), respectively. Parameters ρFM and ρFFM are the energy densities associated with changes in FM and FFM, respectively. Most physical activities involve locomotion and have an energy cost that is proportional to body weight for a given intensity and duration of activity. The baseline physical activity parameter was δ0 and Δδ represents changes in physical activity that can be informed by objective measurements, if available. Without such measurements, physical activity changes are often assumed to be zero (Δδ=0) with the realization that the calculated energy intake changes may be in error, especially at the individual level where substantial physical activity changes can occur throughout a study. Averaging over many individuals with the assumption that Δδ=0 can also result in a biased mean energy intake change of the group, but our previous validation study demonstrated that this bias is likely to be <40 kcal/day when studying >100 individuals (6)."
+
+
+===============================================================================
+13. Methods: Equation 4 (proportional control) and Equation 5 (integral control) (added 2026-09-24)
+https://pmc-oa-opendata.s3.amazonaws.com/PMC5108589.1/PMC5108589.1.xml
+===============================================================================
+
+"[...] In this model, the aggregate effect of different feedback signals regulating body weight are described by the equation:"
+
+[MATHML] Equation 4, verbatim from the JATS XML at https://pmc-oa-opendata.s3.amazonaws.com/PMC5108589.1/PMC5108589.1.xml (TinyFish fetch_content, html format):
+<mml:math><mml:mi>Δ</mml:mi><mml:mi>E</mml:mi><mml:mi>I</mml:mi><mml:mo>(</mml:mo><mml:mi>t</mml:mi><mml:mo>)</mml:mo><mml:mo>=</mml:mo><mml:mo>−</mml:mo><mml:msub><mml:mi>k</mml:mi><mml:mi>P</mml:mi></mml:msub><mml:mo>×</mml:mo><mml:mi>Δ</mml:mi><mml:mi>B</mml:mi><mml:mi>W</mml:mi><mml:mo>(</mml:mo><mml:mi>t</mml:mi><mml:mo>)</mml:mo></mml:math>
+[NOTE] Equation 4 in plain text, CONVERTED BY SCRIPT from the MathML above (this file's
+[NOTE] notation, not source text; a fraction is written (a/b), a subscript _x, and
+[NOTE] juxtaposed symbols multiply):
+[NOTE]     ΔEI(t) = − k_P × ΔBW(t)
+
+"where the parameter kP>0 quantifies the feedback strength. To simulate how proportional control of energy intake affects body weight kinetics during canagliflozin treatment, we added a UGE term to a validated mathematical model of adult human body weight dynamics (14) and calculated the mean ΔEI time course during placebo treatment to capture the typical transient weight loss effect of being in the trial (see Figure 1). Equation 4 was then added to the placebo energy intake to simulate the mean proportional control of ΔEI during canagliflozin treatment. The best fit parameter kP was determined by a downhill simplex algorithm implemented using Berkeley Madonna software (version 8.3; http://www.berkeleymadonna.com) to minimize the sum of squares residuals between the simulation outputs and the measured mean body weight and the calculated mean ΔEI."
+
+"We also investigated another possible model for body weight regulation that was previously suggested (17) such that changes in energy intake also depend on how long body weight has deviated from baseline, which is expressed as an integral term quantified by a parameter kI >0:"
+
+[MATHML] Equation 5, verbatim from the JATS XML at https://pmc-oa-opendata.s3.amazonaws.com/PMC5108589.1/PMC5108589.1.xml (TinyFish fetch_content, html format):
+<mml:math><mml:mi>Δ</mml:mi><mml:mi>E</mml:mi><mml:mi>I</mml:mi><mml:mo>(</mml:mo><mml:mi>t</mml:mi><mml:mo>)</mml:mo><mml:mo>=</mml:mo><mml:mo>−</mml:mo><mml:msub><mml:mi>k</mml:mi><mml:mi>P</mml:mi></mml:msub><mml:mo>×</mml:mo><mml:mi>Δ</mml:mi><mml:mi>B</mml:mi><mml:mi>W</mml:mi><mml:mo>(</mml:mo><mml:mi>t</mml:mi><mml:mo>)</mml:mo><mml:mo>−</mml:mo><mml:msub><mml:mi>k</mml:mi><mml:mi>I</mml:mi></mml:msub><mml:munderover><mml:mo>∫</mml:mo><mml:mn>0</mml:mn><mml:mi>t</mml:mi></mml:munderover><mml:mi>Δ</mml:mi><mml:mi>B</mml:mi><mml:mi>W</mml:mi><mml:mo>(</mml:mo><mml:mi>τ</mml:mi><mml:mo>)</mml:mo><mml:mi>d</mml:mi><mml:mi>τ</mml:mi></mml:math>
+[NOTE] Equation 5 in plain text, CONVERTED BY SCRIPT from the MathML above (this file's
+[NOTE] notation, not source text; a fraction is written (a/b), a subscript _x, and
+[NOTE] juxtaposed symbols multiply):
+[NOTE]     ΔEI(t) = − k_P × ΔBW(t) − k_I ∫_0^t ΔBW(τ)dτ
+
+[NOTE] "kcal/kg/d2" below is kcal/kg/d² (the superscript is flattened); "kP" is k_P.
+
+"The integral feedback control was simulated using Equation 5 with the best fit value of kP from Equation 4 and kI = 1 kcal/kg/d2."
+
