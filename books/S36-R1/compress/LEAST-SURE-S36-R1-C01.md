@@ -1,0 +1,1 @@
+simplified_explanation: cut "You may have met a ladder of study designs, called the evidence hierarchy..." and the trial sentence after it, keeping "That ladder ranks designs for one question...". With the definition's evidence-hierarchy paragraph also cut, "That ladder" now has no antecedent, and Exercise 2 and must_know[2] depend on the reader knowing what the hierarchy is.

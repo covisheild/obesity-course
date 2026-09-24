@@ -213,3 +213,40 @@ line on each details page. *Understanding Linear Algebra* is revised in place to
 2026 when fetched; its numbering may shift). OpenIntro's fourth-edition PDF is dated 21 October
 2022; the trigger is a fifth edition. Chow and Hall 2008 is a published article; the trigger is a
 correction notice.
+
+## Added by the S36-R1 source intake, 2026-09-24
+
+Same method as S02-R1: TinyFish `fetch_content` only, each passage a contiguous slice of the saved
+raw result, re-checked as a whitespace-normalised substring of that fetch: **21 of 21**. Log in
+`books/S36-R1/INTAKE.md`. Most files hold whole articles as one run, not excerpts.
+
+**Three files are OCR, not text.** Kitzinger 1995, Britten 1995 and Pope & Mays 1995 exist in PMC
+only as scanned pages. Europe PMC's PDF of the scans carries an OCR text layer, and that is what the
+three files hold. The OCR has dropped nearly every space between words and has visible misreadings,
+so a quote must be written unspaced to pass the check, and a person must check each one against the
+page image. Passing the machine check proves only that the OCR says it.
+
+**Licences.** DeJonckheere & Vaughn is CC BY-NC 4.0. McMullin is copyright ISTR, shown in PMC under
+PMC's time-limited COVID-19 permission, which is not an open licence. The five BMJ articles show no
+licence statement on their PMC pages: free to read, short quotation only. ICMR permits
+non-commercial use with acknowledgement.
+
+| File | What it is | Words | Verified in it |
+| --- | --- | --- | --- |
+| `dejonckheere_vaughn_2019.txt` | DeJonckheere and Vaughn, *Fam Med Community Health* 2019;7:e000057 (PMC6910737), PMC OA XML. CC BY-NC 4.0. **Whole body**, Tables 1-6 as text; Figure 1 (image) and the appendix guide not held | 5,215 | Eleven steps (Table 3); audio-recording suggestions (Table 4); grand tour, core and follow-up questions (Table 5); probing techniques: wait time, echo, verbal agreement, expansion, explanation (Table 6); "start with an easy, context-setting question"; pilot testing the guide; memoing; "prioritising listening over talking". **No sentence saying the participant should do most of the talking** |
+| `pope_ziebland_mays_2000.txt` | Pope, Ziebland and Mays, *BMJ* 2000;320:114 (PMC1117368), PMC page. **Whole article** without references. No licence stated | 2,465 | Transcribing one interview "takes several hours and can generate 20-40 pages"; transcripts as raw data; analysis begins during collection; deviant or negative cases; "expressing results in relative frequencies may be misleading"; indexing; constant comparison; framework approach |
+| `mays_pope_2000.txt` | Mays and Pope, *BMJ* 2000;320:50 (PMC1117321), PMC page. **Whole article** without references. No licence stated | 2,376 | Triangulation; respondent validation; clear exposition of methods; reflexivity; attention to negative cases ("deviant case analysis"); fair dealing; the box of quality questions ("more than convenience sampling") |
+| `green_britten_1998.txt` | Green and Britten, *BMJ* 1998;316:1230 (PMC1112988), PMC page. **Whole article** without references. No licence stated | 1,421 | Qualitative research addresses questions different from clinical epidemiology's; "different research questions require different kinds of research"; generalisability "conceptual rather than numerical"; anecdote against rigorous qualitative research |
+| `mcmullin_2023.txt` | McMullin, *Voluntas* 2023;34:140 (PMC8432276), PMC OA XML. PMC COVID-19 permission, **not CC**. **Whole body** without appendix and references | 4,741 | Naturalized against denaturalized transcription; three to eight hours per hour of audio; intelligent verbatim; the framework (before transcribing, whether to transcribe, how, who, writing about it); 41% of *Voluntas* interview papers do not mention transcription. Translation only in passing |
+| `icmr_ethical_guidelines_2017.txt` | ICMR *National Ethical Guidelines* 2017, PDF text layer. Non-commercial use with acknowledgement. **Excerpts** | 9,266 | Table 2.1 risk categories ("routine questioning or history taking" as minimal risk); 2.2.2 audio-visual recording of consent "in certain clinical trials as notified by CDSCO"; 3.5.1 authorship of course research (not review); Table 4.2 exemption, expedited, full review; 4.8.3 "A researcher cannot decide" the review category; 5.2 and Box 5.1 essential information; 5.4 documentation; 5.7 waiver; Section 9 whole, including EC permission for audio/video recording |
+| `kitzinger_1995.txt` | Kitzinger, *BMJ* 1995;311:299 (PMC2550365). **OCR text layer** of scans, whole article. No licence stated | (OCR, unspaced) | Title and headings located: rationale and uses of focus groups; sampling and group composition; running the groups; analysis and writing up; the sampling-advantages box (people who cannot read or write); seven main aims. Not checked against the page image |
+| `britten_1995.txt` | Britten, *BMJ* 1995;311:251 (PMC2550292). **OCR text layer** of scans, whole article. Licence not seen | (OCR, unspaced) | Box 1 types of interviews; Box 2 question types; Box 3 Whyte's directiveness scale; Box 4 control; Box 5 pitfalls; "Researcher as research instrument"; recording interviews. Not checked against the page image |
+| `pope_mays_1995.txt` | Pope and Mays, *BMJ* 1995;311:42 (PMC2550091). **OCR text layer** of scans, whole article. No licence stated | (OCR, unspaced) | Box 1 glossary; Box 2 the overstated dichotomy; Box 3 two-stage tonsillectomy investigation. Not checked against the page image |
+
+**Textbook added the same day (S36-R1, second intake).** A research-methods textbook was added so that
+derivable records can cite a `textbook` reference. The BMJ methods papers are articles, not textbooks.
+Same method: **12 of 12** passages verbatim against the fetch.
+
+| File | What it is | Words | Verified in it |
+| --- | --- | --- | --- |
+| `blackstone_2012.txt` | *Principles of Sociological Inquiry: Qualitative and Quantitative Methods* v1.0, Saylor Academy 2012 (Amy Blackstone; the Saylor edition omits her name at her request). CC BY-NC-SA 3.0 (licence page). One page per section, fetched with body scope. **Excerpts: eleven whole sections, exercises omitted** | 28,440 | 1.2 qualitative methods "yield results such as words or pictures", quantitative "can be represented by and condensed into numbers", "complementary rather than competing"; 2.3 inductive and deductive; 3.1 IRBs; 3.2 informed consent, anonymity and confidentiality; 5.2 idiographic and nomothetic; 7.2 purposive, snowball, quota and convenience samples (Table 7.1); 9.1 when to interview; 9.2 interview guide, open-ended and non-leading questions, recording, transcription, open and focused coding (Table 9.1); 9.4 power, location, rapport; 12.1 focus groups (Table 12.1). Figures (the sample consent form and the two interview guides) are images and not held |

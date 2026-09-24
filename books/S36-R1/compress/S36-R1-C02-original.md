@@ -1,0 +1,72 @@
+# S36-R1-C02 · Who you talk to, and what the answers can claim
+
+**Definition.** In a qualitative study the people who answer, called respondents, are chosen on purpose, for what
+they can tell the researcher about the question. They are not drawn at random, and the study does not try to make them
+statistically representative: a group whose make-up matches the whole population's in known
+proportions. The choice and its reasons are written down.
+
+A deliberate choice is not a convenience sample. A convenience sample takes whoever is available. A
+deliberate choice is made to include the full range of people and settings the question touches,
+including the people hardest to reach.
+
+Because the people were chosen and not drawn, the findings describe the range of experiences,
+reasons and meanings among them, and how these connect. They do not estimate how common any of
+these is in a population. Turning the number of respondents who said something into a share of a
+population treats a chosen group as a random sample, and results expressed as such relative
+frequencies can mislead. What carries beyond the study is an idea, a reason and how it works, that a
+reader can test in another setting. This is conceptual, not statistical, generalisation.
+
+Such a study is judged by its own tests. It gives a clear account of how people were chosen and how
+the data were gathered and analysed. It searches for cases that contradict the emerging
+explanation, and reports them. It includes several perspectives, so that one group's view is not
+presented as the whole truth. The number of people interviewed is not the test, and there is no
+power calculation, the sum a survey or trial does to decide how many people it needs.
+
+The named ways of choosing, purposive and theoretical sampling, and the question of when to stop,
+called saturation, are taught in the next book of this subject.
+
+**In plain terms.** Book 0 taught you two ways to get a sample. A random sample lets chance pick who is in it. A
+convenience sample takes whoever is easy to reach. A qualitative study uses a third way. You choose
+people on purpose, for what they can tell you.
+
+Suppose you want to know why patients stop coming to a clinic. The people who can tell you are the
+ones who stopped, so you go and find them. You choose some who live far away and some who live
+near, men and women, younger and older. You are after the widest spread of reasons, not an average.
+
+That choice has a price. You built the group, so it does not mirror the clinic's patients in any
+known proportion. Say seven of your twelve respondents, the people who answer, mention the bus fare.
+That does not mean 58 per cent of patients stop because of the fare. You might have picked more
+people from far villages. Pick differently, and the seven changes.
+
+What the study can claim is different, and it is still worth having. It can say what the reasons
+are, how each one works, and how they connect. A reader in another district can take that idea and
+test it against their own clinic. It cannot say how common each reason is.
+
+So a qualitative study is not judged by how many people it asked. Ask three things instead. Did the
+authors say how they chose people, and why? Did they say how they gathered and read what was said?
+Did they look for people whose story did not fit, and report them?
+
+**Must know points for you.**
+
+- A count of respondents is not a rate. "Seven of twelve mentioned the fare" describes the twelve you chose. Turning it into 58 per cent of patients treats a chosen group as a random sample. The figure then moves every time you change whom you choose.
+- When you read a qualitative study, find the account of how people were chosen before you read the findings. If it says only "patients were interviewed", you cannot tell which reasons ever had a chance to appear.
+- A reviewer trained on trials will ask for your sample-size or power calculation. There is none to give, because the study does not estimate a rate. Answer with what you did instead: whom you chose, why, and how you looked for people whose story would not fit.
+- DeJonckheere and Vaughn write that a primary care researcher can run a highly meaningful interview project with as few as 8 to 12 participants. A small number is not, by itself, a weakness in this kind of study.
+- The easiest people to reach can be the ones your question is not about. Before you recruit, ask who could not possibly be in the room, such as the patients who stopped coming, and go and find them.
+- A qualitative study tells you which reasons exist and how they work among the people you chose. It cannot tell you how common any reason is. If a budget or a target depends on "how many", ask for a count from a random sample or a complete register.
+- When a trainee writes percentages into the results of an interview study, have them replace each one with what was said and how it works. Then have them add the case that did not fit.
+
+**Exercise 1** (critique). Here is a made-up newspaper line. "A study interviewed 15 women with obesity in Raipur. It found that
+60 per cent avoid clinic visits because of long waiting times."
+
+Say what is wrong with the sentence, and rewrite it so that it claims only what an interview study
+can support.
+
+**Exercise 2** (design). You want to know why men with obesity in your district stop coming to follow-up at an NCD clinic.
+Write the list of the kinds of men you would choose to interview, at least five, with one line on
+why you chose each. Then say which row is there because it might break your first guess.
+
+**Exercise 3** (teaching). A health secretary has asked for one page. A qualitative study of 20 patients found that bus fares
+keep some of them from the clinic. An officer wants to use "14 of 20 said fares" to size a bus-pass
+budget for the whole district. Write the page: answer first.
+
