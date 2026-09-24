@@ -47,9 +47,9 @@ definition:
     same.
 
     A study that predicts an outcome from several columns (its predictors) chooses one weight for
-    each from the rows. The weight on one column is its "effect with the others accounted for":
-    the change in the prediction for one more unit of that column, with every other column held
-    fixed, as in `S02-R1-C10`.
+    each from the rows. The weight on one column is an association, not a cause. It is the change
+    in the prediction for one more unit of that column, with every other column held fixed, as in
+    `S02-R1-C10`.
 
     A column that is nearly, but not exactly, a weighted sum of others is a harder problem. The
     next rung takes it up.
@@ -335,8 +335,8 @@ must_know:
   bearing: methodological
 - point: |
     When you hear that a model "found no effect of fat once calories were accounted for", ask how
-    the calories were worked out. If they came from the grams, the model had no way to find an
-    effect of fat.
+    the calories were worked out. If they came from the grams, the model had no way to fix a
+    weight for fat.
   kind: consequence
   bearing: public
 exercises:
@@ -774,6 +774,8 @@ practice:
     > With energy intake, protein and carbohydrate in the model, fat intake had no effect on
     > weight gain.
 
+    The study's "effect" means the fitted weight on fat, not a cause.
+
     Decide what to compute, compute it, and say what your answer does not establish.
   answer: |
     What to compute: whether fat is a weighted sum of energy, protein and carbohydrate in this
@@ -796,8 +798,8 @@ practice:
     contain. Whatever number the model printed for fat is one of infinitely many that fit the
     table equally well.
 
-    What this does not establish. It does not show that fat has an effect on weight gain, and it
-    does not show that it has none. The study's sentence says nothing about fat either way. To ask
+    What this does not establish. It does not show that fat is tied to weight gain, and it does
+    not show that it is not. The study's sentence says nothing about fat either way. To ask
     about fat, drop energy and keep protein, fat and carbohydrate. Then the weight on fat answers
     "fat, with protein and carbohydrate held fixed", which lets energy move with fat. Say that out
     loud, because it is a different question.
