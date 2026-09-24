@@ -198,6 +198,22 @@ def release(letters):
     for r in sorted(earlier, key=lambda r: (r.get("rung", 0), r.get("sequence", 0))):
         _write_released(r["concept_id"], r)
         made += 1
+    # Other books the reader has already read: concepts of other subjects named in `concept_deps`
+    # (S02-R1 builds on S01-R1). Added 24 Sep 2026; before this, a cold reader of a book that
+    # depends on an earlier subject book never saw that book's text.
+    cross = []
+    if not BOOK.is_b0:
+        ids = {d for _, r in BOOK.mine() for d in (r.get("concept_deps") or [])
+               if not d.startswith("B0-") and not d.startswith(BOOK.subject + "-")}
+        rec_root = os.path.dirname(BOOK.records_dir)
+        for cid in sorted(ids):
+            path = os.path.join(rec_root, cid.split("-")[0], cid + ".yml")
+            if os.path.exists(path):
+                with open(path, encoding="utf-8") as fh:
+                    cross.append(yaml.safe_load(fh) or {})
+        for r in cross:
+            _write_released(r["concept_id"], r)
+            made += 1
     if BOOK.is_b0:
         print(f"  {made} released sections for Part(s) {', '.join(letters)}")
     else:
@@ -205,7 +221,8 @@ def release(letters):
         print(f"  {made} released sections: {len(found)} from Book 0"
               + (f" (Parts {', '.join(letters)} and ground-floor deps)" if letters
                  else " (ground-floor deps)")
-              + f", {len(earlier)} from earlier rungs of {BOOK.subject}")
+              + f", {len(earlier)} from earlier rungs of {BOOK.subject}"
+              + f", {len(cross)} from other subject books (concept_deps)")
         if missing:
             print(f"  MISSING - ground_floor_deps with no Book 0 record: {', '.join(missing)}")
 
