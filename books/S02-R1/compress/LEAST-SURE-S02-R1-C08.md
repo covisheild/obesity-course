@@ -1,0 +1,1 @@
+Least sure: deleting the Polidori drug-trial check (350 kcal a day ÷ kP = 3.5 kg) from the Illustration. Exercise 10 is exactly that calculation, and the only remaining statement of how intake change relates to weight at steady state is the Definition's kP line. A reader may not see that the steady-state intake rise is kP times the weight lost.

@@ -1,0 +1,1 @@
+Least sure (cut-b1): deleting the whole seven-day sigma block in illustration.body (the Book 1 week table, the Σ[i = 1 to 7] sum to 2.8 MJ, and the split-sum check). The section's figure still draws that sum, so the figure may now read as orphaned, and the reader loses the only worked sigma over real data.

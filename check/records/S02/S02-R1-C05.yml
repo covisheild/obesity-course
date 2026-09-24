@@ -20,34 +20,19 @@ definition:
     draw a rectangle whose height is the rate in that interval. The integral is the limit of the
     sum of the rectangles' areas as the widths shrink towards zero.
 
-    The sign ∫ is a stretched S, for sum. The numbers a and b are the limits of integration: a is
-    where the interval starts and b where it ends. The function f(t) is the integrand. The dt
-    names the variable that runs from a to b and stands for the width of the thin intervals.
-
-    Where f(t) is below zero, each rectangle's height times width is negative. So the integral is
-    the net signed area: the area between the rate line and the time axis above the axis, minus
-    the area between them below the axis.
-
     If f is the rate of change of a quantity Q, then ∫ from a to b of f(t) dt equals Q(b) minus
     Q(a). This is the net change theorem: the integral of a rate over an interval is the change in
-    the stock over that interval. Its unit is the rate's unit times the unit of time, which is the
-    stock's unit.
+    the stock over that interval.
 
     Two cases can be done exactly with no limit. A constant rate c gives a rectangle, c times (b
     minus a). A rate that changes along a straight line gives a trapezium, the average of the two
-    end rates times (b minus a). The trapezium rule holds with the signs kept, including when the
-    line crosses zero. A triangle is the case where one end rate is zero.
+    end rates times (b minus a).
 
-    The average value of f from a to b is the integral divided by (b minus a). It is the height of
-    the one rectangle over the same interval with the same net signed area. For a straight-line
-    rate it is halfway between the two end rates.
+    The average value of f from a to b is the integral divided by (b minus a).
 
     Applied to a body, with stored energy ES, energy intake EI and energy expenditure EE, the
     identity of `S01-R1-C05` written as rates is dES/dt = EI minus EE. So ES(b) minus ES(a) = ∫ from
-    a to b of (EI minus EE) dt. A sum of daily differences is the rectangle version of that
-    integral, with each rectangle one day wide. It is exact when each day's figures are that day's
-    totals. It is an estimate, with the error bound of `B0-R0-C22`, when each is a rate read at one
-    moment and applied to the whole day.
+    a to b of (EI minus EE) dt.
   references:
   - citekey: openstax_calculus_v1_s02
     kind: textbook
@@ -120,55 +105,39 @@ definition:
         conservation." So in that equation ES is a rate. This record writes the stores as ES and
         their rate as dES/dt, which is the book's shared notation.
 simplified_explanation: |
-  Book 0 drew rectangles under a rate line and added them up (`B0-R0-C22`). It called the total
-  under the line an integral, and said nothing in that book would ask you to work one out. This
-  section asks you to.
-
   Here is how a paper writes one.
 
   ```working
   ∫ from a to b of f(t) dt
   ```
 
-  Read it from left to right. The ∫ is a stretched S, for sum. The a at its foot is where the time
-  starts, and the b at its top is where it stops. Those two are the limits of integration.
+  The ∫ is a stretched S, for sum. The a at its foot is where the time starts, and the b at its top
+  is where it stops. Those two are the limits of integration.
 
   Next comes f(t), the rate being added up. Its name is the integrand. Last, dt says the adding
-  runs over time t. It stands for the width of each thin slice, the Δt of `S02-R1-C01`, made very
-  small.
+  runs over time t.
 
-  Say it aloud as "the integral from a to b of f of t, d t". It means this. Cut the time from a
-  to b into thin slices. Multiply the rate in each slice by its width. Add them all. Then let the
-  slices get thinner, until the total stops changing.
+  It means this. Cut the time from a to b into thin slices. Multiply the rate in each slice by its
+  width. Add them all. Then let the slices get thinner, until the total stops changing.
 
-  One thing is new since Book 0. There, every rate was above zero. Here a rate can drop below
-  zero, because a stock can lose as well as gain. A rectangle below the time axis has a negative
-  height, so its area counts as negative. Area below the axis is subtracted. The result is called
-  the net signed area.
+  Here a rate can drop below zero, because a stock can lose as well as gain. A rectangle below the
+  time axis has a negative height, so its area counts as negative. Area below the axis is
+  subtracted. The result is called the net signed area.
 
-  Why bother with any of this? Because of one fact. The integral of a rate over an interval equals
-  the change in the stock over that interval. This is called the net change theorem.
+  The integral of a rate over an interval equals the change in the stock over that interval. This
+  is called the net change theorem.
 
   ```working
   the stock at b minus the stock at a = ∫ from a to b of the rate dt
   ```
 
   For a body's energy stores, the rate is intake minus expenditure (`S01-R1-C05`). Write the stores
-  as ES, intake as EI and expenditure as EE. In words: the rate of change of ES with respect to t
-  equals EI minus EE.
+  as ES, intake as EI and expenditure as EE.
 
   ```working
   dES/dt = EI minus EE
   ES(b) minus ES(a) = ∫ from a to b of (EI minus EE) dt
   ```
-
-  Two shapes can be done exactly, with no slices at all. A steady rate gives a rectangle: the rate
-  times the time. A rate that changes along a straight line gives a trapezium, a four-sided shape
-  with two parallel sides. Its area is the average of the two end rates, times the time. A
-  triangle is the case where one end is zero.
-
-  The average value of a rate over an interval is its integral divided by the length of the
-  interval. It is the one steady rate that would have given the same change.
 illustration:
   body: |
     Take a made-up case, with numbers chosen so that the rate is a straight line. A person's net
@@ -197,17 +166,14 @@ illustration:
 
     They report a gain of 6,500 kilocalories. Find the flaw before you read on.
 
-    From day 30 to day 50 the rate is below zero. Expenditure is higher than intake on each of
-    those days, so the stores fall. The 2,000 kilocalories under the axis is energy taken out, not
-    put in. It has to be subtracted.
+    From day 30 to day 50 the rate is below zero. The 2,000 kilocalories under the axis is energy
+    taken out, not put in. It has to be subtracted.
 
     ```working
     4500 minus 2000 = 2500
     ```
 
-    The stores rose by 2,500 kilocalories over the 50 days. The trainee's 6,500 is correct
-    arithmetic on a real area. It answers a question nobody asked: how much energy moved in either
-    direction.
+    The stores rose by 2,500 kilocalories over the 50 days.
 
     Now the one-line way. The rate is a straight line, so the whole shape counts as one trapezium.
     Take the average of the two end rates, keeping the minus sign, and multiply by the time.
@@ -218,82 +184,55 @@ illustration:
     50 times 50 = 2500
     ```
 
-    The same 2,500 kilocalories. The minus sign did the subtraction for you. The middle number, 50
-    kilocalories a day, is the average value of the rate. A steady 50 a day for 50 days would have
-    changed the stores by the same amount.
+    The same 2,500 kilocalories. The middle number, 50 kilocalories a day, is the average value of
+    the rate.
 
-    Now write what you did the way a paper would. The rate is 300 minus 10t, with t in days.
+    The rate is 300 minus 10t, with t in days.
 
     ```working
     ∫ from 0 to 50 of (300 minus 10t) dt = 2500
     ```
 
-    Read it aloud: the integral from 0 to 50 of 300 minus 10t, d t, is 2,500. Check its unit. It
-    is kilocalories a day times days, which is kilocalories. A change in a stock carries the
-    stock's unit.
+    Check its unit. It is kilocalories a day times days, which is kilocalories.
 
-    The same idea runs through a record you already have. The week in `S01-R1-C05` added seven
-    daily differences to get 2.8 megajoules. Each day was a rectangle one day wide, with height
-    that day's intake minus expenditure. The week's sum was the rectangle version of this
-    integral.
-
-    ```working
-    ES(day 7) minus ES(day 0) = ∫ from 0 to 7 of (EI minus EE) dt
-    ```
-
-    There, each day's figure was that day's total. So each rectangle was exact, whatever happened
-    between meals. Suppose instead each figure had been a rate read at one moment and stretched
-    across 24 hours. Then each rectangle would carry the error `B0-R0-C22` taught you to bound.
-
-    One trap waits when you read where this equation comes from. Hall and colleagues' consensus
-    statement (*American Journal of Clinical Nutrition* 2012) writes it as ES = EI minus EO. The
-    O stands for output, which this book writes EE. They say "all of these terms are expressed as
-    energy per unit of time". So in their equation ES is the rate of change of the stores, not the
-    stores. The stores themselves come only from the integral.
+    Hall and colleagues' consensus statement (*American Journal of Clinical Nutrition* 2012)
+    writes it as ES = EI minus EO. The O stands for output, which this book writes EE. So in their
+    equation ES is the rate of change of the stores, not the stores.
   analogy_breaks_when: |
-    The straight-line rate is made up. It was chosen so that the trapezium is exact. A real
-    person's net rate does not change in a straight line and is never measured at every moment.
-    Two readings joined by a straight line give an estimate, not the integral.
+    The straight-line rate is made up. A real person's net rate does not change in a straight line
+    and is never measured at every moment.
 
-    Stored energy is not body weight. Turning 2,500 kilocalories into kilograms needs to know what
-    tissue was gained or lost, which `S01-R1-C02` covers and this section does not.
+    Stored energy is not body weight.
   numbers: []
 must_know:
 - point: |
-    Area below the time axis is subtracted. A total that adds it instead answers "how much energy
-    moved either way", not "how much did the stores change". Before you accept a change in
-    stores, check that the days of loss were taken away.
+    Area below the time axis is subtracted. Before you accept a change in stores, check that the
+    days of loss were taken away.
   kind: misconception
   bearing: methodological
 - point: |
     A shrinking surplus is still a surplus. While intake minus expenditure stays above zero, the
-    stores rise, however fast the surplus is shrinking. They start to fall only once the rate
-    crosses zero.
+    stores rise, however fast the surplus is shrinking.
   kind: trap
   bearing: clinical
 - point: |
     The trapezium is exact only for a rate that changes in a straight line between the two
-    readings. For any other rate it is an estimate. Readings far apart can hide a bend, so ask how
-    often the rate was measured before you trust an exact-looking total.
+    readings. For any other rate it is an estimate.
   kind: boundary
   bearing: methodological
 - point: |
     Hall's ES = EI minus EO is an equation between rates. Before you quote any figure called ES,
-    ask whether its unit is kilocalories or kilocalories a day. The first is a change in stores,
-    the second is how fast they are changing.
+    ask whether its unit is kilocalories or kilocalories a day.
   kind: trap
   bearing: methodological
   refs: [hall_2012_ajcn]
 - point: |
-    Check the unit of every integral: the rate's unit times the time's unit. If your answer still
-    carries "per day", you have a rate or an average, not a change in the stock.
+    Check the unit of every integral: the rate's unit times the time's unit.
   kind: move
   bearing: teaching
 - point: |
     A small error in a daily rate grows in the integral. Hall and colleagues put the uncertainty
-    of doubly labelled water at more than 100 kilocalories a day. Held in one direction for a
-    year, 100 a day is 36,500 kilocalories. So a stores change built from measured rates can be
-    far less certain than each rate looks.
+    of doubly labelled water at more than 100 kilocalories a day.
   kind: consequence
   bearing: methodological
   refs: [hall_2012_ajcn]

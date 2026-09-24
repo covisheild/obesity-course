@@ -1,0 +1,1 @@
+Least sure (cut-b1): deleting the energy check on the one-day rate (Hall's 39.5 MJ/kg, the FAO 8.26 MJ day, 0.6 × 39.5 = 23.7 MJ, nearly three days' expenditure). Only "The one-day rate is measuring water, not stores" survives, so Exercise 10 may lose the arithmetic that shows why 0.6 kg of fat a day is impossible.

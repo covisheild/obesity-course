@@ -17,35 +17,21 @@ concept_deps: [S02-R1-C01, S02-R1-C02, S02-R1-C03]
 definition:
   text: |
     The number e is the base of the one exponential curve, e^(t), whose slope where it crosses the
-    vertical axis, at t = 0, is exactly 1. To five decimal places e = 2.71828. It is also the value
-    that (1 plus 1/m) raised to the power m approaches as m grows without limit.
+    vertical axis, at t = 0, is exactly 1. To five decimal places e = 2.71828.
 
     The natural logarithm of a positive number x, written ln x, is the power to which e must be
-    raised to give x. So ln(e^(x)) = x for every x, and e^(ln x) = x for every x above zero. It is
-    defined only for numbers above zero, and ln 1 = 0. Like the logarithm to base ten, it turns
-    multiplication into addition: ln(ab) = ln a plus ln b, for a and b above zero.
+    raised to give x. It is defined only for numbers above zero, and ln 1 = 0.
 
-    For constants A and k, the function y = A e^(kt) has derivative dy/dt = k A e^(kt), which is
-    k times y. Its rate of change is proportional to its own value. The constant k is the rate
-    constant: the rate of change divided by the amount, with the unit one over time. A quantity
-    whose rate of change is always k times its own value follows this curve, with A its value at
-    t = 0.
+    For constants A and k, the function y = A e^(kt) has derivative dy/dt = k A e^(kt), which is k
+    times y.
 
-    Where the quantity shrinks, write y = A e^(-kt) with k above zero. The time it takes to fall
-    to half of any starting value is the half-time, ln 2 divided by k, which is about 0.693
-    divided by k. The time to fall to one twentieth, 5% of the start, is ln 20 divided by k, about
-    3.00 divided by k. For every such curve the second time is ln 20 divided by ln 2, about 4.32,
-    times the first.
+    Where the quantity shrinks, write y = A e^(-kt) with k above zero. The time it takes to fall to
+    half of any starting value is the half-time, ln 2 divided by k, which is about 0.693 divided by
+    k. The time to fall to one twentieth, 5% of the start, is ln 20 divided by k, about 3.00
+    divided by k.
 
     A quantity W that approaches a level L in this way follows W = L plus (W0 minus L) times
-    e^(-kt), where W0 is its value at t = 0. The gap W minus L is the shrinking exponential. Its
-    rate of change is dW/dt = -k times (W minus L), and the share of the eventual change reached
-    by time t is 1 minus e^(-kt).
-
-    Read at equal steps of time h, the gap is multiplied by the same factor, e^(-kh), at every
-    step, and so is each successive change. That is the saturating pattern with a constant ratio
-    of differences taught in `B0-R0-C20`, and the ratio gives k back as minus ln(ratio) divided
-    by h.
+    e^(-kt), where W0 is its value at t = 0. The gap W minus L is the shrinking exponential.
   references:
   - citekey: openstax_calculus_v1_s02
     kind: textbook
@@ -118,11 +104,10 @@ definition:
         to 5% of the start, ln 20 divided by k, is not in the book; it is derived in this record
         by the same steps with one twentieth in place of one half.
 simplified_explanation: |
-  Book 0 built powers and logarithms on ten (`B0-R0-C06`, `B0-R0-C07`). Papers on body weight use
-  a different base, a number written e. Here is where it comes from, and why it earns its place.
+  Papers on body weight use a different base, a number written e.
 
-  Take a base, say 2, and ask how steep the curve 2^(t) is where it starts, at t = 0. `S02-R1-C02`
-  gave you the way to ask. Take a very short step, 0.0001, and divide the change by the step.
+  Take a base, say 2, and ask how steep the curve 2^(t) is where it starts, at t = 0. Take a very
+  short step, 0.0001, and divide the change by the step.
 
   ```working
   2^0.0001 = 1.0000693
@@ -133,9 +118,9 @@ simplified_explanation: |
   between 2 and 3 is a base whose curve starts with a slope of exactly 1. That base is e, and it
   is 2.71828 to five decimal places. Your calculator has a key for it, usually marked e^(x).
 
-  Now the property that makes e worth having. Take y = e^(kt), where k is a fixed number, and find
-  its rate at any time t. Step forward a short time h. Multiplying two powers of the same base adds
-  their exponents (`B0-R0-C06`), so read that rule backwards.
+  Take y = e^(kt), where k is a fixed number, and find its rate at any time t. Step forward a short
+  time h. Multiplying two powers of the same base adds their exponents (`B0-R0-C06`), so read that
+  rule backwards.
 
   ```working
   e^(kt plus kh) = e^(kt) times e^(kh)
@@ -144,23 +129,20 @@ simplified_explanation: |
   the change divided by h = e^(kt) times (e^(kh) minus 1) divided by h
   ```
 
-  As h shrinks, (e^(kh) minus 1) divided by h settles on k. Here is why. Call kh by one letter, u.
-  Then (e^(kh) minus 1) divided by h is k times (e^(u) minus 1) divided by u. And (e^(u) minus 1)
-  divided by u, for u close to zero, is the slope of e^(t) at the start, which is 1.
+  As h shrinks, (e^(kh) minus 1) divided by h settles on k. Call kh by one letter, u. Then (e^(kh)
+  minus 1) divided by h is k times (e^(u) minus 1) divided by u. And (e^(u) minus 1) divided by u,
+  for u close to zero, is the slope of e^(t) at the start, which is 1.
 
   So the rate of e^(kt) is k times e^(kt). Put a constant A in front, and by the constant-multiple
   rule (`S02-R1-C03`) the rate of A e^(kt) is k times A e^(kt).
 
-  Read that sentence again, because it is the whole point. The rate is k times the amount
-  itself. Double the amount and the rate doubles. The number k is the rate constant, the rate
-  divided by the amount. Its unit is one over time: per day, or per year.
+  The rate is k times the amount itself. The number k is the rate constant, the rate divided by the
+  amount. Its unit is one over time: per day, or per year.
 
-  A logarithm undoes a power. The natural logarithm, written ln, undoes a power of e. Ask "e to
-  what power gives this number?" and ln answers. So ln(e^3) = 3, ln e = 1 and ln 1 = 0. It works
-  only for numbers above zero, like log10.
+  A logarithm undoes a power. The natural logarithm, written ln, undoes a power of e. So ln(e^3) =
+  3, ln e = 1 and ln 1 = 0.
 
-  It turns multiplication into addition, for the same reason log10 does. Multiplying powers of e
-  adds their exponents, and the exponents are the logarithms.
+  It turns multiplication into addition, for the same reason log10 does.
 
   ```working
   ln(ab) = ln a plus ln b
@@ -185,25 +167,14 @@ simplified_explanation: |
   That time is the half-time. It does not depend on A, so the quantity halves in the same time
   from any starting point. Put one twentieth in place of one half and the same steps work. They
   give the time to fall to 5% of the start, which is 95% of the way to zero.
-
-  ```working
-  ln 2 = 0.693
-  ln 20 = 2.996
-  2.996 divided by 0.693 = 4.32
-  ```
-
-  So the time to 95% is always about 4.32 half-times, for any curve of this kind.
 illustration:
   body: |
     Here is a claim you will meet, and a test it fails.
 
-    Hall and colleagues modelled a man weighing 100 kilograms who cuts his intake by 2 megajoules
-    a day and keeps it cut (*Lancet* 2011). Their model has his weight level off at about 75
-    kilograms. It takes "roughly 1 year to reach half of the maximum weight loss", and reaches "95%
-    of this value after about 3 years". The same paper turns this into a rule of thumb. Half the
-    change comes "in about 1 year and 95% of the weight change in about 3 years". A consensus statement
-    the next year repeats it (Hall and colleagues, *American Journal of Clinical Nutrition* 2012).
-    It gives nearly one year to 50%, and about three years to 95%.
+    Hall and colleagues modelled a man weighing 100 kilograms who cuts his intake by 2 megajoules a day
+    and keeps it cut (*Lancet* 2011). Their model has his weight level off at about 75 kilograms. It
+    takes "roughly 1 year to reach half of the maximum weight loss", and reaches "95% of this value
+    after about 3 years".
 
     The tempting reading is that the weight closes its gap as one exponential with a half-time of
     one year. Test it. Start from the half-time and work out k.
@@ -220,14 +191,12 @@ illustration:
 
     About 4.3 years, not 3.
 
-    Go the other way. Start from 95% at 3 years and work out k, then the half-time.
+    Start from 95% at 3 years and work out k, then the half-time.
 
     ```working
     2.996 divided by 3 = 0.999
     0.693 divided by 0.999 = 0.694
     ```
-
-    A half-time of 0.694 years, about 8 months, not 1 year.
 
     Now put the two curves side by side. The share of the eventual change reached by time t is 1
     minus e^(-kt). Work each row out on your calculator, times 100 for a percentage.
@@ -246,31 +215,9 @@ illustration:
     exponential the time to 95% is always 4.32 half-times. The papers' figures give 3 divided by
     1, which is 3.
 
-    The papers never said the curve was one exponential. The two figures are rounded outputs of
-    their model. So two readings are left. The model's curve may not be a single exponential. Or
-    "roughly 1 year" may be rounding something shorter, near 8 months. From the rounded figures
-    alone you cannot tell which.
-
-    What you must not do is pick one of these curves and read months off it as if the paper had
-    said them. At one year the two columns differ by this much.
-
-    ```working
-    63.2 minus 50.0 = 13.2
-    ```
-
-    That is 13.2 percentage points. On the man's eventual loss of about 25 kilograms, it is 3.3
-    kilograms.
-
-    ```working
-    100 minus 75 = 25
-    0.132 times 25 = 3.3
-    ```
-
-    Now look at the same curve another way. Book 0 gave you a test for a shape that flattens
-    against a ceiling (`B0-R0-C20`). Take values
-    at equal steps, subtract each from the next, then divide each difference by the one before. A
-    ratio that holds steady below one means a ceiling you can work out. This is that test, run on
-    a curve you already know.
+    Book 0 gave you a test for a shape that flattens against a ceiling (`B0-R0-C20`). Take values at
+    equal steps, subtract each from the next, then divide each difference by the one before. A ratio
+    that holds steady below one means a ceiling you can work out.
 
     Take the first column of the table above, the curve with a one-year half-time. Read it once a
     year: 0.0, 50.0, 75.0, 87.5. Subtract each from the next.
@@ -288,18 +235,10 @@ illustration:
     12.5 divided by 25.0 = 0.5
     ```
 
-    A steady ratio of 0.5. Book 0's rule says the gap still left above any value is the next
-    difference divided by one minus the ratio. The next difference is half of 12.5.
+    A steady ratio of 0.5.
 
-    ```working
-    12.5 times 0.5 = 6.25
-    6.25 divided by (1 minus 0.5) = 12.5
-    87.5 plus 12.5 = 100
-    ```
-
-    The ceiling is 100%, as it must be. Book 0's steady ratio and this section's e^(-kt) are the
-    same shape, seen at equal steps. The ratio is what the curve is multiplied by over one step, so
-    it is e^(-k) for a step of one year. Take ln of both sides to get k back.
+    The ratio is what the curve is multiplied by over one step, so it is e^(-k) for a step of one year.
+    Take ln of both sides to get k back.
 
     ```working
     e^(-k) = 0.5
@@ -307,18 +246,13 @@ illustration:
     k = 0.693 per year
     ```
 
-    That is the k you started from. So a set of weights taken at equal intervals, whose
-    differences shrink by a steady ratio, gives you the rate constant without any curve-fitting.
-    Divide minus ln of the ratio by the length of the step.
+    That is the k you started from. Divide minus ln of the ratio by the length of the step.
   analogy_breaks_when: |
     Both columns are what one exponential would give. Neither is the model's own curve, which the
-    papers do not print as a formula. The 25 kilograms is a rounded plateau for one modelled man,
-    with a spread of about 4 kilograms either way that the paper itself shows. Nothing here says a
-    real person follows either column.
+    papers do not print as a formula. Nothing here says a real person follows either column.
 
-    The ratio holds steady only if the curve really is one exponential and the readings are
-    exact. Rounded or noisy readings make the ratios wobble, and one wobbling ratio is not evidence
-    of any shape. Three readings give only two ratios, which is too few to call anything steady.
+    Rounded or noisy readings make the ratios wobble, and one wobbling ratio is not evidence of any
+    shape.
   numbers:
   - value: '100'
     unit: "kg, the modelled man's starting weight"
@@ -378,8 +312,7 @@ illustration:
 must_know:
 - point: |
     For any single exponential, the time to 95% of the way is 4.32 half-times, because ln 20
-    divided by ln 2 is 4.32. Hall's "about 1 year" and "about 3 years" are in another ratio. So
-    either the curve is not one exponential, or the figures are loosely rounded. Stop there. Do
+    divided by ln 2 is 4.32. Hall's "about 1 year" and "about 3 years" are in another ratio. Do
     not fill in the months between with an exponential you chose yourself.
   kind: boundary
   bearing: methodological
@@ -392,25 +325,23 @@ must_know:
   bearing: methodological
 - point: |
     Write the unit beside k every time. A k of 0.693 per year used with t in days gives an answer
-    365 times too fast. The fix is a conversion before the calculation, never after it.
+    365 times too fast.
   kind: trap
   bearing: methodological
 - point: |
     To test whether a claimed curve is exponential, divide its rate by its value at two or more
-    times. The answer must be the same constant every time. With readings at equal steps, divide
-    each difference by the one before; the ratio must hold steady.
+    times. With readings at equal steps, divide each difference by the one before; the ratio
+    must hold steady.
   kind: move
   bearing: methodological
 - point: |
-    "Exponential" is not a synonym for fast or for runaway. A gap closing exponentially closes
-    fastest at the start and ever more slowly, because its rate is k times what is left.
+    "Exponential" is not a synonym for fast or for runaway.
   kind: misconception
   bearing: public
 - point: |
     A patient may ask how long a change in intake takes to show in full. Give the model's figures
     as rough figures. Roughly a year to half, and about three years to most of it, for the model's
-    average adult (Hall 2011). Do not give month-by-month figures from one exponential. Those are
-    yours, not the paper's. Pick a different exponential and they move by kilograms.
+    average adult (Hall 2011). Do not give month-by-month figures from one exponential.
   kind: consequence
   bearing: clinical
   refs: [hall_2011_lancet]

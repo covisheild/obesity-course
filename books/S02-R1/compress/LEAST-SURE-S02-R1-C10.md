@@ -1,0 +1,1 @@
+Least sure: deleting the whole patient-row passage in the illustration (age, weight, height, waist; the nonsense sum and doubling; the one-year change vector). It was the only worked case of rows that must not be added or scaled, and the source of "change vector", which must_know[1] and must_know[3] still use. The kJ and FSSAI label paragraphs went too.

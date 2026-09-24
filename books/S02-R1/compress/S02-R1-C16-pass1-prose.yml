@@ -1,0 +1,167 @@
+definition.text: |
+  A derivation is a chain of equations in which each line follows from the line before it by
+  one move that can be named. The moves this book uses are these.
+
+  - Substitute: replace a symbol by something stated to be equal to it.
+  - Rearrange: do the same thing to both sides, by the four operations of `B0-R0-C16`.
+  - Differentiate both sides, or integrate both sides over an interval, as `S02-R1-C03` and
+    `S02-R1-C05` do.
+  - Assume: bring in a new premise.
+
+  An assumed line carries nothing from above.
+
+  A where-clause fixes each symbol's meaning, its unit and its sign. The same printed equation
+  can say opposite things under two readings of its where-clause.
+simplified_explanation: |
+  A derivation is a staircase. Each step down is one small move you could make yourself.
+
+  Some steps are not moves at all. The author brings in something new: "suppose expenditure stays
+  fixed". That line is a premise. Everything below it depends on it, however careful the steps that
+  follow.
+
+  So read a derivation with a pencil. Beside every line, write the move that got you there.
+illustration.body: |
+  Start with the rule Book 1 called the static rule, as Thomas and colleagues print it (Thomas
+  2013). They write W(t) for the expected weight, in pounds, on day t, and W0, said "W nought",
+  for the weight at the start. They write ΔEB for "the change in energy balance in kcal/d".
+
+  ```working
+  W(t) = W0 − ΔEB × t / 3500
+  ```
+
+  Rebuild it from the identity, one move per line.
+
+  Line 1 is the identity as a rate.
+
+  ```working
+  dES/dt = EI − EE (line 1: the identity, taken as given)
+  ```
+
+  Line 2 brings in something new. The rule assumes every 3,500 kcal of stored energy gained or
+  lost is one pound of body weight.
+
+  ```working
+  dES/dt = 3500 × dW/dt (line 2: assumed, 3,500 kcal in every pound)
+  ```
+
+  ```working
+  3500 × dW/dt = EI − EE (line 3: substitute)
+  ```
+
+  Line 4 is a second assumption. Intake minus expenditure stays the same number on every day.
+  Call that number ΔEB.
+
+  ```working
+  3500 × dW/dt = ΔEB (line 4: assumed, the gap never changes)
+  ```
+
+  ```working
+  dW/dt = ΔEB / 3500 (line 5: rearrange)
+  ```
+
+  ```working
+  W(t) − W0 = ΔEB × t / 3500 (line 6: integrate both sides from 0 to t)
+  ```
+
+  ```working
+  W(t) = W0 + ΔEB × t / 3500 (line 7: rearrange)
+  ```
+
+  Now set your line 7 beside the printed equation. Yours has a plus where theirs has a minus.
+  The difference sits in the where-clause. Thomas and colleagues define
+  ΔEB as "the difference between the rate of energy intake and the rate of energy expenditure".
+  That phrase does not say which is taken from which.
+
+  The printed equation predicts a fall only if
+  ΔEB is expenditure minus intake: the deficit, written as a positive number.
+
+  Start at 180 pounds, with a deficit of 500 kcal a day.
+
+  ```table
+  day  ΔEB read as expenditure minus intake (lb)  ΔEB read as intake minus expenditure (lb)
+  0  180  180
+  35  175  185
+  70  170  190
+  105  165  195
+  140  160  200
+  ```
+
+  Lines 1, 3, 5, 6 and 7 are safe moves. Lines 2 and 4 are assumptions. Hall and colleagues
+  reject line 4. Expenditure falls as weight
+  falls, so the gap in line 4 shrinks.
+
+  Polidori and colleagues work out the change in each
+  person's energy intake from their weights alone, with their Equation 1 (Polidori 2016).
+
+  ```working
+  ΔEI = ρ × dW/dt + ε × (W − W0)
+  ```
+
+  The Greek letter rho, ρ, is "the effective energy density associated with the body weight
+  change", in kcal per kg. The Greek letter epsilon, ε, sets "how energy expenditure depends on
+  body weight", in kcal a day per kg.
+
+  Line 1 is the model of `S02-R1-C07`.
+
+  ```working
+  ρ × dW/dt = EI − EE(W) (line 1: the model, taken as given)
+  ```
+
+  Line 2 assumes expenditure is a straight line in weight near the start. It is its starting
+  value, EE0, plus ε times the change in weight.
+
+  ```working
+  EE(W) = EE0 + ε × (W − W0) (line 2: assumed, a straight line near the start)
+  ```
+
+  Line 3 writes intake as its starting value, EI0, plus a change, ΔEI. This defines ΔEI. It
+  assumes nothing.
+
+  ```working
+  EI = EI0 + ΔEI (line 3: definition)
+  ```
+
+  ```working
+  ρ × dW/dt = EI0 + ΔEI − EE0 − ε × (W − W0) (line 4: substitute)
+  ```
+
+  Line 5 needs a premise. At the start, weight was steady, so its rate was zero. That is the
+  equilibrium of `S02-R1-C08`: intake equalled expenditure, and EI0 minus EE0 is zero.
+
+  ```working
+  ρ × dW/dt = ΔEI − ε × (W − W0) (line 5: assumed, steady at the start)
+  ```
+
+  ```working
+  ΔEI = ρ × dW/dt + ε × (W − W0) (line 6: rearrange)
+  ```
+
+  The equation that turns weights into intake is the balance
+  of `S02-R1-C07` plus premises. Each premise is a place a reader can push.
+illustration.analogy_breaks_when: |
+  The two straight lines in the table hold
+  only while lines 2 and 4 hold.
+
+  The rebuild also takes ρ and ε as given.
+must_know[0].point: |
+  Beside every line of a derivation, write the move that produced it. If you cannot name one, the
+  line is a skipped step or a premise.
+must_know[1].point: |
+  A result derived from the first law is not thereby proved. When someone says an equation "comes from physics", ask which lines are physics and which
+  are assumptions.
+must_know[2].point: |
+  Test a printed equation on a case whose answer you know. A deficit must lower
+  weight. If your reading makes it raise weight, your reading is wrong.
+must_know[3].point: |
+  Check the unit of every term on every line.
+must_know[4].point: |
+  Following a derivation tells you whether each line follows. It cannot tell you whether an
+  assumed line is true; that needs evidence, as the passive fall in expenditure is for the 3500
+  kcal rule.
+must_know[5].point: |
+  When you teach a derivation, have the trainee mark assumed lines differently from derived ones,
+  before they say anything about the result.
+must_know[6].point: |
+  When a press line says a diet "must" produce a steady loss "because of physics", the accurate
+  reply is short. The physics gives one line. The steady loss needs a second line, that
+  expenditure stays fixed, and it does not.

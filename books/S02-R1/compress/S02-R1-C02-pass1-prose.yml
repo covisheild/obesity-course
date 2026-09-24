@@ -1,0 +1,157 @@
+"definition.text": |
+  The average rate of change of f over the
+  interval from a to a + h is f(a + h) minus f(a), divided by h, for h not zero.
+
+  The derivative of f at a is the single number these averages settle on as h is made smaller
+  and smaller, through positive values and through negative values alike.
+
+  The derivative at a is written f′(a), said "f prime of a".
+
+  The derivative carries the unit of f divided by the unit of the input.
+
+  The derivative belongs to a smooth curve. Repeated measurements are separate points with
+  error in them.
+
+"simplified_explanation": |
+  This section works the number out with arithmetic, no ruler needed.
+
+  A shorter interval gives a closer answer. So take the
+  average rate over shorter and shorter intervals, all starting at the moment you care about.
+  They settle on one number. That number is the rate at that instant.
+
+  Here is the procedure for a function f at an input a.
+
+  1. Pick a small step, h. Work out f(a + h) minus f(a), and divide by h.
+  2. Make h smaller: 1, then 0.1, then 0.01, then 0.001.
+  3. Do the same with h below zero: minus 1, minus 0.1, and so on.
+  4. If both lists close in on the same number, that number is the derivative at a.
+
+  You never set h to zero. The number they
+  close in on is called the limit.
+
+  The derivative has three names you will meet. f′(a), said "f prime of a". dS/dt, said "dee S
+  by dee t". And in words, the rate of change of S with respect to t.
+
+  A weight in kilograms against time in days
+  gives kilograms per day.
+
+  Its sign tells you the direction. Positive means rising at that instant. Negative means
+  falling. Zero means neither, at that instant.
+
+  dES/dt is the rate of change of stored
+  energy, in kilocalories a day. It is not the stored energy itself.
+
+"illustration.body": |
+  A quantity follows the rule S(t) = 5 t^2,
+  which is 5 times t times t. A
+  note says this.
+
+  > S went from 20 at t = 2 to 45 at t = 3. So at t = 2 it is rising at 25 a unit of time.
+
+  The 25 is the average over a whole unit of time, from t = 2 to t = 3. Test that by shrinking the interval.
+
+  Each row takes a step h from t = 2. Work out S(2 + h), subtract S(2), and divide by h.
+
+  ```table
+  | step h | S(2 + h) | S(2 + h) minus S(2) | average rate |
+  | 1 | 45 | 25 | 25 |
+  | 0.1 | 22.05 | 2.05 | 20.5 |
+  | 0.01 | 20.2005 | 0.2005 | 20.05 |
+  | 0.001 | 20.020005 | 0.020005 | 20.005 |
+  | -0.001 | 19.980005 | -0.019995 | 19.995 |
+  | -0.01 | 19.8005 | -0.1995 | 19.95 |
+  | -0.1 | 18.05 | -1.95 | 19.5 |
+  | -1 | 5 | -15 | 15 |
+  ```
+
+  Read down the last column. Both lists close in on 20. So the rate at t = 2 is 20 a unit of time, not 25.
+
+  Now see why it is exactly 20, with algebra. Multiply out the bracket
+  with the rule from `B0-R0-C15`, once for each term.
+
+  ```working
+      (2 + h) times (2 + h) = 2 times (2 + h) + h times (2 + h)
+      = 4 + 2h + 2h + h^2
+      = 4 + 4h + h^2
+      S(2 + h) = 5 times (4 + 4h + h^2) = 20 + 20h + 5 h^2
+  ```
+
+  Subtract S(2), which is 20. Then divide by h.
+
+  ```working
+      S(2 + h) minus S(2) = 20h + 5 h^2
+      (20h + 5 h^2) divided by h = 20 + 5h
+  ```
+
+  The average rate over a step h is 20 + 5h, for any h. As h shrinks, 5h shrinks with it, and what is left is 20.
+
+  Now the same move on real measurements, where it breaks. A person weighs themselves each
+  morning for fifteen days.
+
+  ```table
+  day  weight (kg)
+  0    80.3
+  1    79.8
+  2    80.1
+  3    79.6
+  4    80.2
+  5    79.5
+  6    79.9
+  7    79.4
+  8    79.9
+  9    79.2
+  10   79.6
+  11   79.5
+  12   79.0
+  13   79.6
+  14   79.8
+  ```
+
+  Shrink the interval to one day, as you did for S. Take the last two days, then the two days
+  before them.
+
+  ```working
+      79.8 minus 79.6 = 0.2, over 1 day: 0.2 kg a day
+      79.6 minus 79.0 = 0.6, over 1 day: 0.6 kg a day
+  ```
+
+  Rising at 0.6 kg a day. The one-day rate is measuring water, not stores.
+
+  So with weighings, shrink the interval the other way. Average the
+  first five days and the last five. Each average belongs to its middle day.
+
+  ```working
+      80.3 plus 79.8 plus 80.1 plus 79.6 plus 80.2 = 400.0
+      400.0 divided by 5 = 80.0, the average weight at day 2
+      79.6 plus 79.5 plus 79.0 plus 79.6 plus 79.8 = 397.5
+      397.5 divided by 5 = 79.5, the average weight at day 12
+      79.5 minus 80.0 = -0.5
+      -0.5 divided by 10 = -0.05
+  ```
+
+  Falling at about 0.05 kg a day over those ten days. Even this is still an average over an
+  interval.
+
+"illustration.analogy_breaks_when": |
+  Below the interval over which water swings, a shorter interval gives
+  a worse rate, not a better one.
+
+  The fifteen weights are made up.
+
+"must_know[0].point": |
+  Before you call a rate "the rate now", ask how long the interval was.
+
+"must_know[1].point": |
+  A rate of weight change taken from two weighings a day apart is mostly water. Take a rate from averages over weeks, not from neighbouring readings.
+
+"must_know[2].point": |
+  A shorter interval is better only for a smooth curve.
+
+"must_know[3].point": |
+  Never set h to zero to get the derivative. Let h shrink and watch where the answers go.
+
+"must_know[4].point": |
+  Read dW/dt as a rate with a unit, kilograms per day, and read its sign first. It says nothing about how much has been lost so far.
+
+"must_know[5].point": |
+  When a trial reports a rate of weight change, look in the Methods for the interval and the averaging used.

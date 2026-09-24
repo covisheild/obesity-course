@@ -26,16 +26,10 @@ definition:
       `S02-R1-C05` do.
     - Assume: bring in a new premise.
 
-    The first four moves carry the truth of the line before them to the line after. An assumed
-    line carries nothing from above. It is a new premise, in the sense of `B0-R0-C42`, and every
-    line below it holds only as far as it does.
+    An assumed line carries nothing from above.
 
     A where-clause fixes each symbol's meaning, its unit and its sign. The same printed equation
     can say opposite things under two readings of its where-clause.
-
-    Following a derivation means three things. Write the move beside every line. Fill in any line
-    the author skipped, one move at a time. And find any line that no named move produces, or that
-    rests on an assumption nobody stated.
   references:
   - citekey: openstax_calculus_v1_s02
     kind: textbook
@@ -206,50 +200,37 @@ definition:
         27.6 lbs from the Results sentence "Subjects lost 20.1±11.3 lbs, 7.4±12.6 lb less than
         the 27.6±16.0 lbs predicted by the 3500 kcal rule."
 simplified_explanation: |
-  A derivation is a staircase. Each step down is one small move you could make yourself. You put
-  one thing in place of another, or do the same to both sides. Or you turn a change into a rate, or
-  a rate into a change. If you can name the move, the step is safe, and the line below is as true as the line
-  above.
+  A derivation is a staircase. Each step down is one small move you could make yourself.
 
   Some steps are not moves at all. The author brings in something new: "suppose expenditure stays
   fixed". That line is a premise. Everything below it depends on it, however careful the steps that
   follow.
 
-  So read a derivation with a pencil. Beside every line, write the move that got you there. When
-  you cannot name one, stop. Either the author skipped steps, and you fill them in, or the author
-  slipped in a premise, and you write it down as one.
+  So read a derivation with a pencil. Beside every line, write the move that got you there.
 illustration:
   body: |
-    Start with the rule Book 1 called the static rule, as Thomas and colleagues print it (Thomas
-    2013). They write W(t) for the expected weight, in pounds, on day t, and W0, said "W nought",
-    for the weight at the start. They write ΔEB for "the change in energy balance in kcal/d". Their
-    equation says: the weight on day t is the starting weight minus ΔEB times t, divided by 3,500.
+    Start with the rule Book 1 called the static rule, as Thomas and colleagues print it (Thomas 2013).
+    They write W(t) for the expected weight, in pounds, on day t, and W0, said "W nought", for the weight
+    at the start. They write ΔEB for "the change in energy balance in kcal/d".
 
     ```working
     W(t) = W0 − ΔEB × t / 3500
     ```
 
-    Rebuild it from the identity, one move per line. Write the move beside each line as you go.
+    Rebuild it from the identity, one move per line.
 
-    Line 1 is the identity as a rate. Hall and colleagues state it this way (Hall 2012). The rate
-    of change of the body's energy stores ES equals the rate of energy intake (EI) minus the rate
-    of energy expenditure (EE). They write it ES = EI − EO. As `S02-R1-C01` showed, this book
-    writes the rate of change of ES as dES/dt, and expenditure as EE.
+    Line 1 is the identity as a rate.
 
     ```working
     dES/dt = EI − EE (line 1: the identity, taken as given)
     ```
 
-    Line 2 brings in something new. The rule assumes every 3,500 kcal of stored energy gained or
-    lost is one pound of body weight. So the rate of change of stored energy is 3,500 times the
-    rate of change of weight, W in pounds a day. Check the unit: kcal a pound times pounds a day
-    is kcal a day, the unit of dES/dt.
+    Line 2 brings in something new. The rule assumes every 3,500 kcal of stored energy gained or lost is
+    one pound of body weight.
 
     ```working
     dES/dt = 3500 × dW/dt (line 2: assumed, 3,500 kcal in every pound)
     ```
-
-    Line 3 puts line 2 in place of dES/dt in line 1.
 
     ```working
     3500 × dW/dt = EI − EE (line 3: substitute)
@@ -262,41 +243,27 @@ illustration:
     3500 × dW/dt = ΔEB (line 4: assumed, the gap never changes)
     ```
 
-    Line 5 divides both sides by 3,500.
-
     ```working
     dW/dt = ΔEB / 3500 (line 5: rearrange)
     ```
-
-    Line 6 integrates both sides from day 0 to day t. The rate is the same every day, so the area
-    under it is a rectangle, rate times time, as in `S02-R1-C05`. The left side becomes the change
-    in weight.
 
     ```working
     W(t) − W0 = ΔEB × t / 3500 (line 6: integrate both sides from 0 to t)
     ```
 
-    Line 7 adds W0 to both sides.
-
     ```working
     W(t) = W0 + ΔEB × t / 3500 (line 7: rearrange)
     ```
 
-    Now set your line 7 beside the printed equation. Yours has a plus where theirs has a minus. No
-    line of yours is wrong. The difference sits in the where-clause. Thomas and colleagues define
-    ΔEB as "the difference between the rate of energy intake and the rate of energy expenditure".
-    That phrase does not say which is taken from which.
+    Now set your line 7 beside the printed equation. Yours has a plus where theirs has a minus. The
+    difference sits in the where-clause. Thomas and colleagues define ΔEB as "the difference between the
+    rate of energy intake and the rate of energy expenditure". That phrase does not say which is taken
+    from which.
 
-    Your line 4 took intake minus expenditure. On that reading a deficit makes ΔEB negative, and
-    the printed minus sign would make weight rise. The printed equation predicts a fall only if
-    ΔEB is expenditure minus intake: the deficit, written as a positive number.
+    The printed equation predicts a fall only if ΔEB is expenditure minus intake: the deficit, written as
+    a positive number.
 
-    Test both readings on made-up numbers. Start at 180 pounds, with a deficit of 500 kcal a day.
-    At day 70, the change is:
-
-    ```working
-    500 times 70 divided by 3500 = 10
-    ```
+    Start at 180 pounds, with a deficit of 500 kcal a day.
 
     ```table
     day  ΔEB read as expenditure minus intake (lb)  ΔEB read as intake minus expenditure (lb)
@@ -307,30 +274,21 @@ illustration:
     140  160  200
     ```
 
-    The derivation told you which reading the equation needs. It also shows you where the rule goes
-    wrong. Lines 1, 3, 5, 6 and 7 are safe moves. Lines 2 and 4 are assumptions. Hall and colleagues
-    reject line 4. In their words, "weight change will slow over time due to passive compensatory
-    changes in energy expenditure that occur with the weight change." Expenditure falls as weight
-    falls, so the gap in line 4 shrinks.
+    Lines 1, 3, 5, 6 and 7 are safe moves. Lines 2 and 4 are assumptions. Hall and colleagues reject line
+    4. Expenditure falls as weight falls, so the gap in line 4 shrinks.
 
-    Now a derivation the paper leaves out. Polidori and colleagues work out the change in each
-    person's energy intake from their weights alone, with their Equation 1 (Polidori 2016). They
-    write body weight as BW; here it is W. Set aside, for now, two terms this book comes back to
-    below. The equation then says this. The change in intake since the start equals ρ times the
-    rate of change of weight, plus ε times the change in weight since the start.
+    Polidori and colleagues work out the change in each person's energy intake from their weights alone,
+    with their Equation 1 (Polidori 2016).
 
     ```working
     ΔEI = ρ × dW/dt + ε × (W − W0)
     ```
 
-    The Greek letter rho, ρ, is "the effective energy density associated with the body weight
-    change", in kcal per kg. The Greek letter epsilon, ε, sets "how energy expenditure depends on
-    body weight", in kcal a day per kg. The paper calls Equation 1 a linearization. Here that means
-    expenditure is drawn as a straight line in weight. Rebuild it.
+    The Greek letter rho, ρ, is "the effective energy density associated with the body weight change", in
+    kcal per kg. The Greek letter epsilon, ε, sets "how energy expenditure depends on body weight", in
+    kcal a day per kg.
 
-    Line 1 is the model of `S02-R1-C07`. That section wrote the result of this rebuild without the
-    steps between. Its model says that ρ times the rate of change of weight equals intake minus
-    expenditure, and that expenditure depends on weight.
+    Line 1 is the model of `S02-R1-C07`.
 
     ```working
     ρ × dW/dt = EI − EE(W) (line 1: the model, taken as given)
@@ -350,8 +308,6 @@ illustration:
     EI = EI0 + ΔEI (line 3: definition)
     ```
 
-    Line 4 puts lines 2 and 3 into line 1.
-
     ```working
     ρ × dW/dt = EI0 + ΔEI − EE0 − ε × (W − W0) (line 4: substitute)
     ```
@@ -363,29 +319,16 @@ illustration:
     ρ × dW/dt = ΔEI − ε × (W − W0) (line 5: assumed, steady at the start)
     ```
 
-    Line 6 adds ε × (W − W0) to both sides and swaps the sides.
-
     ```working
     ΔEI = ρ × dW/dt + ε × (W − W0) (line 6: rearrange)
     ```
 
-    The paper's full Equation 1 has two more terms. One is multiplied by Δδ, the change in
-    physical activity; δ is the Greek small letter delta. The paper says that without measurements this is
-    "often assumed to be zero", and then the term vanishes. The other, written UGE, is the energy
-    lost as glucose in the urine, which the drug in their trial increases. A practice problem adds
-    it.
-
-    Look at what your six lines show. The equation that turns weights into intake is the balance
-    of `S02-R1-C07` plus premises. Expenditure is a straight line, the start is steady, and the
-    activity change is assumed to be zero. Each premise is a place a reader can push.
+    The equation that turns weights into intake is the balance of `S02-R1-C07` plus premises. Each premise
+    is a place a reader can push.
   analogy_breaks_when: |
-    The 180 pounds and the 500 kcal a day are made up. The two straight lines in the table hold
-    only while lines 2 and 4 hold. Hall and colleagues say line 4 does not hold for long.
+    The two straight lines in the table hold only while lines 2 and 4 hold.
 
-    The rebuild of Polidori's Equation 1 shows its shape and the premises it needs. It is not the
-    paper's own route: the paper cites an earlier study for its method, which this book has not
-    opened. The rebuild also takes ρ and ε as given. The paper builds each from further quantities
-    in its Equations 2 and 3, and those steps are not checked here.
+    The rebuild also takes ρ and ε as given.
   numbers:
   - value: "3500"
     unit: "kcal of stored energy assumed in each pound of body weight (the rule's own figure)"
@@ -395,38 +338,32 @@ illustration:
 must_know:
 - point: |
     Beside every line of a derivation, write the move that produced it. If you cannot name one, the
-    line is a skipped step or a premise. Fill in the step, or write the premise down as one.
+    line is a skipped step or a premise.
   kind: move
   bearing: methodological
 - point: |
-    A result derived from the first law is not thereby proved. The 3500 kcal rule follows
-    correctly from the energy-balance identity plus two assumptions, and it fails because of one of
-    them. When someone says an equation "comes from physics", ask which lines are physics and which
-    are assumptions.
+    A result derived from the first law is not thereby proved. When someone says an equation "comes
+    from physics", ask which lines are physics and which are assumptions.
   kind: misconception
   bearing: methodological
 - point: |
-    A where-clause fixes signs, and "the difference between A and B" does not say which is taken
-    from which. Test a printed equation on a case whose answer you know. A deficit must lower
-    weight. If your reading makes it raise weight, your reading is wrong.
+    Test a printed equation on a case whose answer you know. A deficit must lower weight. If
+    your reading makes it raise weight, your reading is wrong.
   kind: trap
   bearing: methodological
 - point: |
-    Check the unit of every term on every line. A line whose terms carry different units did not
-    follow from the line above, however tidy it looks.
+    Check the unit of every term on every line.
   kind: move
   bearing: methodological
 - point: |
     Following a derivation tells you whether each line follows. It cannot tell you whether an
     assumed line is true; that needs evidence, as the passive fall in expenditure is for the 3500
-    kcal rule. Where a paper cites another paper for its steps, say you could not rebuild them,
-    rather than trusting them because the result looks tidy.
+    kcal rule.
   kind: boundary
   bearing: methodological
 - point: |
     When you teach a derivation, have the trainee mark assumed lines differently from derived ones,
-    before they say anything about the result. A trainee who can point to the assumed lines can say
-    what a model's prediction rests on.
+    before they say anything about the result.
   kind: move
   bearing: teaching
 - point: |

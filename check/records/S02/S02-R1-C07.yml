@@ -11,25 +11,14 @@ ground_floor_deps: [B0-R0-C16, B0-R0-C18, B0-R0-C21, B0-R0-C22, B0-R0-C23]
 concept_deps: [S01-R1-C02, S01-R1-C04, S01-R1-C05, S01-R1-C09, S02-R1-C01, S02-R1-C02, S02-R1-C03, S02-R1-C04, S02-R1-C05, S02-R1-C06]
 definition:
   text: |
-    A differential equation is an equation involving an unknown function and one or more of
-    its derivatives. The equations in this book are first order: they hold the first
-    derivative and no higher one. Each gives the rate of change of a quantity at a moment as a
-    rule in the value the quantity has at that moment, its state, and sometimes in the time as
-    well. For body weight W in kilograms and time t in days, the form is dW/dt = f(W, t).
+    A differential equation is an equation involving an unknown function and one or more of its
+    derivatives. Each gives the rate of change of a quantity at a moment as a rule in the value
+    the quantity has at that moment, its state, and sometimes in the time as well. For body
+    weight W in kilograms and time t in days, the form is dW/dt = f(W, t).
 
-    A solution is a function of time that makes the two sides equal at every time in the range
-    considered, when the function and its derivative are put into the equation. Such an
-    equation has many solutions. An initial value, the state at one stated time, picks out one
-    of them. The equation and the initial value together are an initial-value problem, and a
-    function solves it only if it satisfies both.
-
-    The energy balance identity in rate form says the rate of change of stored energy equals
-    energy intake EI minus energy expenditure EE, each in kilocalories a day. Take rho, written
-    ρ, as the energy stored or released per kilogram of weight change, in kilocalories per
-    kilogram. The identity becomes ρ × dW/dt = EI − EE. This is not yet a rule that can be run
-    forward, because it does not say what EE will be. It becomes a differential equation once
-    expenditure is written as a function of weight, EE(W), and intake is either fixed or also
-    written as a function of weight.
+    Such an equation has many solutions. An initial value, the state at one stated time, picks
+    out one of them. The equation and the initial value together are an initial-value problem,
+    and a function solves it only if it satisfies both.
 
     With expenditure a straight line in weight, rising by epsilon, written ε, kilocalories a day
     for each kilogram, and a step change ΔEI in intake from a steady starting weight W0, the
@@ -40,8 +29,7 @@ definition:
     ```
 
     This is Equation 1 of Polidori and colleagues (2016) with its physical activity and urinary
-    glucose terms set to zero, rearranged. The paper calls that equation a linearization, a
-    straight-line version, of a fuller model of body weight.
+    glucose terms set to zero, rearranged.
 
     A forward step, which is Euler's method taken one step at a time, approximates a solution.
     From the state at time t, compute the rate from the equation. Then take the state at t + h
@@ -205,9 +193,7 @@ definition:
         checked_on: '2026-09-24'
 
 simplified_explanation: |
-  Book 1 gave you the energy balance identity. Over a day, the change in the body's stored energy
-  is what came in minus what went out. The section on the derivative let you shrink that day to
-  a moment. Then it reads as rates.
+  Over a day, the change in the body's stored energy is what came in minus what went out.
 
   ```working
   rate of change of stored energy = EI − EE
@@ -215,48 +201,35 @@ simplified_explanation: |
 
   EI is energy intake and EE is energy expenditure, both in kilocalories a day.
 
-  Now turn stored energy into kilograms. Say each kilogram of weight gained or lost carries a
-  fixed amount of energy. Call it rho, written ρ, in kilocalories per kilogram. Then the rate of
-  change of stored energy is ρ times the rate of change of weight.
+  Say each kilogram of weight gained or lost carries a fixed amount of energy. Call it rho,
+  written ρ, in kilocalories per kilogram.
 
   ```working
   ρ × dW/dt = EI − EE
   ```
 
-  That line is always true. It is still no use for predicting anything. To run it forward from
-  today, you need tomorrow's EE, and nobody hands you that. A smaller body spends less, so EE
-  depends on the weight itself.
+  That line is always true. It is still no use for predicting anything. A smaller body spends
+  less, so EE depends on the weight itself.
 
-  So write EE as a rule in W. The simplest rule is a straight line. It says each kilogram of
-  weight adds a fixed number of kilocalories a day to expenditure. Call that number epsilon,
-  written ε.
+  So write EE as a rule in W. It says each kilogram of weight adds a fixed number of kilocalories
+  a day to expenditure. Call that number epsilon, written ε.
 
-  Now the equation gives the rate from the weight. Tell it the weight today, and it tells you
-  how fast the weight is moving today. That is what a differential equation is: a rule that
-  gives the rate from the state.
-
-  Two things follow from that.
+  That is what a differential equation is: a rule that gives the rate from the state.
 
   - An answer to it is not a number. It is a whole curve of weight against time. You check a
     curve by putting it into the equation. The two sides have to agree at every moment, not
     only at the start.
   - Many curves obey the same rule. The starting weight picks out the one that is yours.
 
-  You can also walk the curve without a formula. Work out today's rate from today's weight.
-  Move one day at that rate. Work out the new rate from the new weight. Move again. That is the
-  running total of rectangles from an earlier section, run forwards one day at a time.
+  You can also walk the curve without a formula. Work out today's rate from today's weight. Move
+  one day at that rate. Work out the new rate from the new weight. Move again.
 illustration:
   body: |
-    Go back to Hall and colleagues' man from Book 1. He weighs 100 kilograms and cuts his energy
-    intake by 2 megajoules a day. The paper converts that for you: "2 MJ per day (480 kcal per
-    day)". So ΔEI, the change in intake, is minus 480 kilocalories a day. Book 1's static rule
-    predicted about 22.6 kilograms off in the first year, and the paper's own model predicted
-    about half that.
+    Go back to Hall and colleagues' man from Book 1. He weighs 100 kilograms and cuts his energy intake by 2
+    megajoules a day. The paper converts that for you: "2 MJ per day (480 kcal per day)". So ΔEI, the change in
+    intake, is minus 480 kilocalories a day.
 
-    You now need a value for ρ. Use 7,716.18 kilocalories per kilogram, the static rule's own
-    figure from Book 1. It is a stand-in that makes the arithmetic comparable with Book 1. Book
-    1 showed it is the rule's assumption, not a measurement of what this man's weight is made
-    of.
+    Use 7,716.18 kilocalories per kilogram, the static rule's own figure from Book 1.
 
     For ε, Hall and Guo (2017) give expenditure rising with weight "with a slope of about 20–30
     kcal/d per kg". Take the lower end, 20 kilocalories a day for each kilogram. The man's
@@ -266,9 +239,8 @@ illustration:
     7716.18 × dW/dt = −480 − 20 × (W − 100),   with W = 100 at t = 0
     ```
 
-    Read it in words. On the left, the rate at which his stored energy changes. On the right,
-    the cut in intake, plus the fall in expenditure since the start. When W is below 100,
-    W − 100 is negative. So minus 20 times it is positive, and it eats into the deficit.
+    On the right, the cut in intake, plus the fall in expenditure since the start. When W is below 100, W − 100 is
+    negative. So minus 20 times it is positive, and it eats into the deficit.
 
     Start with the curve that fails. The static rule says his weight falls in a straight line.
 
@@ -284,7 +256,7 @@ illustration:
     7716.18 times 0.06221 = 480.02
     ```
 
-    About minus 480. The small gap is rounding. Now the right side needs the weight at day 365.
+    About minus 480. Now the right side needs the weight at day 365.
 
     ```working
     0.06221 times 365 = 22.71
@@ -298,20 +270,17 @@ illustration:
     480 minus 454.2 = 25.8
     ```
 
-    The right side is about minus 25.8. The left side is minus 480. The two sides disagree by
-    more than 450 kilocalories a day. The straight line starts at the right weight and is not a
-    solution. It solves the equation only when ε is 0, that is, when expenditure ignores weight.
-    That is the static rule, written as a differential equation.
+    The right side is about minus 25.8. The left side is minus 480. The two sides disagree by more than 450
+    kilocalories a day. The straight line starts at the right weight and is not a solution. It solves the equation
+    only when ε is 0, that is, when expenditure ignores weight.
 
-    Now the curve that works. Here it is, handed to you. Finding it from the equation takes more
-    than the antiderivatives of the last section. That is the work of the second book of this
-    subject.
+    Now the curve that works.
 
     ```working
     W(t) = 100 − 24 × (1 − e^(-t/385.809))
     ```
 
-    Where do 24 and 385.809 come from? Each is a ratio of the equation's own numbers.
+    Each is a ratio of the equation's own numbers.
 
     ```working
     480 divided by 20 = 24
@@ -329,32 +298,7 @@ illustration:
     24 divided by 385.809 = 0.06221
     ```
 
-    So dW/dt is −0.06221 × e^(-t/385.809). Take t = 365 again.
-
-    ```working
-    365 divided by 385.809 = 0.9461
-    e^(-0.9461) = 0.3883
-    ```
-
-    The left side, rounded:
-
-    ```working
-    0.06221 times 0.3883 = 0.024156
-    7716.18 times 0.024156 = 186.39
-    ```
-
-    About minus 186.4. The right side needs the weight at day 365.
-
-    ```working
-    1 minus 0.3883 = 0.6117
-    24 times 0.6117 = 14.68
-    100 minus 14.68 = 85.32
-    20 times 14.68 = 293.6
-    480 minus 293.6 = 186.4
-    ```
-
-    The right side is minus 186.4 as well. The two sides agree, and they would at any t you
-    tried. In symbols the check is two lines, both using the rule for e^(kt):
+    In symbols the check is two lines, both using the rule for e^(kt):
 
     ```working
     left:  7716.18 × dW/dt = −480 × e^(-t/385.809)
@@ -381,13 +325,11 @@ illustration:
     99.937793 minus 0.062046 = 99.875747
     ```
 
-    About 99.8757 on day 2. The formula gives 99.8759. The steps drift a little from the curve,
-    because each one holds the rate fixed for a whole day while the true rate keeps falling. A
-    smaller step drifts less. How small is small enough is also the second book's work.
+    About 99.8757 on day 2. The formula gives 99.8759. The steps drift a little from the curve, because each one
+    holds the rate fixed for a whole day while the true rate keeps falling. A smaller step drifts less.
 
-    Run the formula for three years and put the static line beside it. A second curve uses the
-    top of Hall and Guo's range, ε = 30. Its two numbers come the same way: 480 divided by 30 is
-    16, and 7,716.18 divided by 30 is 257.206.
+    Run the formula for three years and put the static line beside it. A second curve uses the top of Hall and
+    Guo's range, ε = 30.
 
     ```table
     day   static rule, ε = 0  ε = 20 kcal/day per kg  ε = 30 kcal/day per kg
@@ -400,33 +342,20 @@ illustration:
     1095  31.88               77.40                   84.23
     ```
 
-    All three columns come from one equation. Only ε differs. With ε at 0, the loss never
-    slows. With any ε above 0, the loss slows and flattens. The next section finds the level
-    each curve flattens at, without walking to it.
+    All three columns come from one equation. Only ε differs. With ε at 0, the loss never slows. With any ε above
+    0, the loss slows and flattens.
 
-    The same equation can also be run backwards. Polidori and colleagues (2016) had weights and
-    no reliable intake. So they worked out "the rate of change of body weight over each
-    interval, dBWi/dt", from the weighings. The weighings were 52 days apart: "T = 52 was the
-    number of days between measurements". Then they put the weight and its rate into their Equation 1 and read off
-    ΔEI. The intake change they report is an output of the equation, not a measurement.
+    The same equation can also be run backwards. Polidori and colleagues (2016) had weights and no reliable
+    intake. Then they put the weight and its rate into their Equation 1 and read off ΔEI. The intake change they
+    report is an output of the equation, not a measurement.
   analogy_breaks_when: |
     The value of ρ here is the static rule's 7,716.18 kilocalories per kilogram, borrowed as a
     stand-in. For a real body, ρ "need not be a constant", as Chow and Hall (2008) put it. It
     changes with what the weight lost is made of. So the curves in the table have the right
-    shape and not Hall's timing. Hall's model takes "roughly 1 year to reach half of the
-    maximum weight loss". The ε = 20 curve here gets halfway, 12 of its 24 kilograms, sooner.
-    Its half-time, from the section on e, is 385.809 times ln 2.
+    shape and not Hall's timing.
 
-    ```working
-    385.809 times 0.6931 = 267.4
-    ```
-
-    About 267 days.
-
-    The straight line for expenditure is an approximation. Polidori and colleagues call their
-    Equation 1 "a linearization" of a fuller model. It is safest for changes small enough that
-    one slope describes them. It says nothing about intake rising as weight falls, which the
-    next section adds.
+    The straight line for expenditure is an approximation. It is safest for changes small
+    enough that one slope describes them.
   numbers:
     - value: '480'
       unit: "kcal/day, the modelled cut in intake (2 MJ/day), as the paper converts it"
@@ -482,49 +411,40 @@ must_know:
   - point: |
       The energy balance identity predicts nothing on its own. A prediction appears only when
       someone writes expenditure, and perhaps intake, as a rule in weight. When you read a
-      projection built "on energy balance", find that rule. The prediction lives in it, and so
-      does every assumption worth arguing about.
+      projection built "on energy balance", find that rule.
     kind: move
     bearing: methodological
     refs: [hall_2012_ajcn, thomas_2013_3500kcal]
   - point: |
-      A curve that starts at the right weight is not thereby a solution. The static rule's
-      straight line starts at the right weight. A year later it is wrong by more than 450
-      kilocalories a day, once expenditure falls with weight. Check a claimed solution at the start
-      and at a later time, on both sides of the equation.
+      A curve that starts at the right weight is not thereby a solution. Check a claimed solution
+      at the start and at a later time, on both sides of the equation.
     kind: trap
     bearing: methodological
   - point: |
-      "Cut 480 kilocalories and you run a 480 deficit every day" is the static rule. In the
-      equation the deficit is the whole right side, and it shrinks as the weight falls, because
-      expenditure falls with it. Correct a trainee who carries the day-one deficit forward: the
-      cut stays the same; the deficit does not.
+      "Cut 480 kilocalories and you run a 480 deficit every day" is the static rule. Correct a
+      trainee who carries the day-one deficit forward: the cut stays the same; the deficit does
+      not.
     kind: misconception
     bearing: teaching
   - point: |
       When you step an equation forward, work the rate out again from the new state at every
-      step. A rate worked out once and multiplied by the whole time is the static rule again,
-      however the working is dressed.
+      step.
     kind: move
     bearing: methodological
   - point: |
       Keep the units in step: ρ in kilocalories per kilogram and intake in kilocalories a day
-      give kilograms a day. Put intake in megajoules against ρ in kilocalories and the rate
-      comes out about 240 times too small, which no reader would catch by eye.
+      give kilograms a day.
     kind: trap
     bearing: methodological
   - point: |
-      This equation has one ρ and one straight-line slope. Polidori and colleagues call it a
-      linearization, and Chow and Hall warn that ρ changes with body composition. Use it for the
-      shape of a response and for modest changes. For one person's timetable over years, use a
-      validated model, and say in writing which one you used.
+      Use it for the shape of a response and for modest changes. For one person's timetable over
+      years, use a validated model, and say in writing which one you used.
     kind: boundary
     bearing: clinical
     refs: [polidori_2016, chow_hall_2008]
   - point: |
       When a paper reports intake "calculated" from repeated weighings, read it as the output of
-      an equation. It moves with the ρ and the ε put in. Do not quote it as though someone
-      measured what people ate.
+      an equation. It moves with the ρ and the ε put in.
     kind: consequence
     bearing: methodological
     refs: [polidori_2016]

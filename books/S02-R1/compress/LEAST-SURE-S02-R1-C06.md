@@ -1,0 +1,1 @@
+Least sure: deleting the closed-form total D0 times (1 minus e^(-kT)) divided by k from the Definition. Exercise 1 asks the reader to derive it, and Exercises 4, 6 and 9 lean on it; only the worked 730 e^(-0.693t) case and must_know's "at most D0 divided by k" remain. A reader may not be able to generalise from one numeric case.

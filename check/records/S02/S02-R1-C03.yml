@@ -30,17 +30,10 @@ definition:
     The sum and difference rules: the derivative of a sum or difference of two functions is the
     sum or difference of their derivatives.
 
-    Together these give the derivative of a straight line, y = a + bx, as b at every x. The
-    derivative of a straight line is its slope.
+    The derivative of a straight line is its slope.
 
-    The derivative of the derivative is the second derivative, written f″(x), said "f double
-    prime of x", or d^2y/dx^2. It is the rate of change of the rate. Where it is positive the
-    rate is rising, and where it is negative the rate is falling. So for a quantity that is
-    falling, a positive second derivative means the fall is slowing.
-
-    The derivative of a product of two functions is not the product of their derivatives. It
-    needs the product rule. A function of a function needs the chain rule. The power rule does
-    not apply to a constant raised to a power that varies, such as 2^(t).
+    The derivative of a product of two functions is not the product of their derivatives. The power
+    rule does not apply to a constant raised to a power that varies, such as 2^(t).
   references:
   - citekey: openstax_calculus_v1_s02
     kind: textbook
@@ -145,15 +138,12 @@ definition:
         Anchor for the shape the second illustration's made-up curve is given: falling, with the
         fall slowing.
 simplified_explanation: |
-  The last section found a derivative by shrinking an interval. It worked, and it took a page.
   Four rules do the same job in a line, for any rule made of powers of the input.
 
   First, a symbol. d/dx, said "dee by dee x", means "the derivative with respect to x of what
-  follows". So d/dx (x^3) is the derivative of x cubed. The input can have any letter: d/dt for
-  time, d/dW for weight.
+  follows". The input can have any letter: d/dt for time, d/dW for weight.
 
-  **The constant rule.** A constant has derivative zero. A number that never changes has a rate
-  of change of zero.
+  **The constant rule.** A constant has derivative zero.
 
   ```working
       d/dx (7) = 0
@@ -169,7 +159,7 @@ simplified_explanation: |
       d/dx (x) = 1 times x^0 = 1
   ```
 
-  The last line uses x^0 = 1, from `B0-R0-C06`. So x on its own has derivative 1.
+  So x on its own has derivative 1.
 
   **The constant multiple rule.** A number multiplying a function stays where it is. Take the
   derivative of the function, then multiply.
@@ -185,17 +175,16 @@ simplified_explanation: |
       d/dx (x^3 + 5 x^2 minus 4) = 3 x^2 + 10x minus 0 = 3 x^2 + 10x
   ```
 
-  Put the rules together on a straight line, y = a + bx. The constant a goes to zero. The term bx
-  becomes b times 1. So the derivative is b, the slope, at every x. That matches Book 0: a
-  straight line has one steepness everywhere (`B0-R0-C21`).
+  Put the rules together on a straight line, y = a + bx. The constant a goes to zero. So the
+  derivative is b, the slope, at every x.
 
   **The second derivative.** A derivative is itself a function, so you can take its derivative
   too. The result is the second derivative, the rate of change of the rate. It is written f″(x),
   said "f double prime of x", or d^2y/dx^2, said "dee two y by dee x squared".
 
-  Its sign says whether the rate is rising or falling. Here is the trap. When a quantity is
-  falling, its rate is below zero. A positive second derivative then means the rate is rising
-  towards zero. The quantity is still falling, only more slowly.
+  Its sign says whether the rate is rising or falling. When a quantity is falling, its rate is
+  below zero. A positive second derivative then means the rate is rising towards zero. The
+  quantity is still falling, only more slowly.
 
   Two rules are not in this book. The derivative of a product is not the product of the
   derivatives: it needs the product rule. A rule applied to the output of another rule needs the
@@ -203,8 +192,7 @@ simplified_explanation: |
   before you differentiate.
 illustration:
   body: |
-    Start with the cost of the last section. It took a page of shrinking steps to find that
-    S(t) = 5 t^2 changes at 20 a unit of time when t = 2. Now use the rules.
+    Now use the rules.
 
     ```working
         S′(t) = 5 times 2t = 10t
@@ -212,18 +200,18 @@ illustration:
         S′(3) = 10 times 3 = 30
     ```
 
-    The same 20, in two lines. And you now have the rate at every t at once. At t = 3 it is 30.
+    The same 20, in two lines.
 
-    Next, a line from a real paper. Hall and Guo (2017) describe expenditure rising with body
-    weight "with a slope of about 20–30 kcal/d per kg". Take the low end and write it as a rule.
-    W is body weight in kilograms, and EE is energy expenditure in kilocalories a day.
+    Hall and Guo (2017) describe expenditure rising with body weight "with a slope of about 20–30
+    kcal/d per kg". Take the low end and write it as a rule. W is body weight in kilograms, and
+    EE is energy expenditure in kilocalories a day.
 
     ```working
         EE(W) = a + 20W
     ```
 
-    Here a is where the line meets the side axis. The quoted sentence does not give it. That
-    looks like a problem. It is not. Differentiate term by term with respect to W.
+    Here a is where the line meets the side axis. The quoted sentence does not give it.
+    Differentiate term by term with respect to W.
 
     ```working
         d/dW (a) = 0, by the constant rule
@@ -232,16 +220,14 @@ illustration:
     ```
 
     Expenditure changes by 20 kcal a day for each kilogram of weight, at the low end of their
-    range. At the high end it is 30. You found the rate without knowing a, because a constant
-    contributes nothing to a rate.
+    range. You found the rate without knowing a, because a constant contributes nothing to a
+    rate.
 
-    Read the unit off the division. Kilocalories a day divided by kilograms is kcal a day per kg.
-    This rate is not against time. It says how expenditure moves as weight moves.
+    Kilocalories a day divided by kilograms is kcal a day per kg. This rate is not against time.
 
-    Now the second derivative, and a misreading of it. Hall and colleagues (2012) write that
-    "weight change will slow over time due to passive compensatory changes in energy
-    expenditure". Here is a made-up curve with that shape, for 100 days of weight loss. Its
-    numbers stand for nobody.
+    Hall and colleagues (2012) write that "weight change will slow over time due to passive
+    compensatory changes in energy expenditure". Here is a made-up curve with that shape, for 100
+    days of weight loss.
 
     ```working
         W(t) = 90 minus 0.2t + 0.001 t^2
@@ -264,8 +250,6 @@ illustration:
         W″(t) = 0 + 0.002 = 0.002
     ```
 
-    Now put in some days.
-
     ```table
     | day t | W(t) (kg) | W′(t) (kg a day) |
     | 0 | 90 | -0.2 |
@@ -276,26 +260,15 @@ illustration:
     | 100 | 80 | 0 |
     ```
 
-    Here is one row in full, day 20.
-
-    ```working
-        W(20) = 90 minus 0.2 times 20 + 0.001 times 20 times 20 = 86.4
-        W′(20) = -0.2 + 0.002 times 20 = -0.16
-    ```
-
     The first derivative is below zero on every row until day 100. Weight is falling the whole
     time. The second derivative is positive, 0.002 kg a day per day. That says the rate is
-    rising: from minus 0.2 towards zero. The fall is slowing. Weight is not going back up.
-
-    The note read the sign of the second derivative as if it were the sign of the first.
+    rising: from minus 0.2 towards zero. The fall is slowing.
   analogy_breaks_when: |
     The straight line EE = a + 20W holds only over the range of weights the slope was measured
-    on. Hall and Guo give it as "about 20–30", a range, not one person's value.
+    on.
 
     The curve W(t) is made up to fall and slow for 100 days, and holds nowhere else. Run it past
-    day 100 and it turns. At day 150 it gives a rate of plus 0.1 kg a day, and weight climbing
-    back to 82.5 kg. That is a property of this made-up curve, not a prediction about anyone. A
-    curve with two powers of t has no reason to follow a body beyond the days it was made for.
+    day 100 and it turns.
   numbers:
   - value: '20'
     unit: kcal a day per kg, the low end of the slope of expenditure against body weight
@@ -309,39 +282,31 @@ illustration:
       with a slope of about 20–30 kcal/d per kg
 must_know:
 - point: |
-    The derivative of a straight line is its slope, and the constant drops out. So you can read
-    how fast expenditure changes with weight, 20 to 30 kcal a day per kg, without knowing where
-    the line starts.
+    The derivative of a straight line is its slope, and the constant drops out.
   kind: move
   bearing: clinical
   refs: [hall_guo_2017]
 - point: |
     A positive second derivative does not mean the quantity is rising. When weight is falling, a
-    positive second derivative means the fall is slowing. Read the sign of the first derivative
-    for the direction, and the second for whether it is speeding up or slowing down.
+    positive second derivative means the fall is slowing.
   kind: misconception
   bearing: clinical
 - point: |
     Slowing weight loss is what passive compensation predicts, even with no change in the
-    treatment. A positive second derivative is not by itself evidence that a treatment has
-    stopped working.
+    treatment.
   kind: consequence
   bearing: public
 - point: |
-    The derivative of a product is not the product of the derivatives. Multiply the product out
-    first, or wait for the product rule. The same care applies to a power with the variable up
-    in the exponent, such as 2^(t): the power rule does not reach it.
+    The derivative of a product is not the product of the derivatives.
   kind: trap
   bearing: methodological
 - point: |
     These rules differentiate a formula exactly. They say nothing about whether the formula fits
-    the body. Fit a curve with t^2 in it to 100 days, and it will turn round after that. The
-    turn comes from its form, not from anything in the patient.
+    the body.
   kind: boundary
   bearing: methodological
 - point: |
     Check a derivative you worked out by rule with the shrinking-interval method at one point.
-    One row of that table catches a wrong rule faster than rereading the algebra.
   kind: move
   bearing: teaching
 exercises:

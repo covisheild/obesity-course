@@ -1,0 +1,1 @@
+Least sure: deleting the Definition's sentence that introduces the model equation ("With expenditure a straight line in weight, rising by epsilon ... the equation is:"). The fenced ρ × dW/dt = ΔEI − ε × (W − W0) now stands with ΔEI and W0 named nowhere before it; only the Illustration's worked numbers show what they mean. Exercises 8 and 12 use this exact form.

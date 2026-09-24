@@ -1,0 +1,1 @@
+Least sure: deleting the whole Definition paragraph on a closed range (overall maximum and minimum sit at an end or at a critical point; work out f at both ends and every critical point, and compare). The rule now survives only in a simplified-explanation warning, the worked x³ − 3x case and must_know. Exercises 5, 12 and 15 depend on it.

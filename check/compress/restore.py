@@ -33,8 +33,10 @@ The units that are not plain paragraphs, and the rule for each:
     half-quoted source says something the source did not.
   - a **table row** or **heading** outside a fence is kept if the cut kept that exact line
     or the restore list names it.
-  - a **fenced block** (```working, ```table) comes back only if the cutter kept it, or if the
-    prose paragraph immediately before it got a sentence restored. A block belongs to the
+  - a **fenced block** (```working, ```table) comes back only if the cutter kept it, if the
+    prose paragraph immediately before it got a sentence restored, or if the restore list names
+    words inside it (added 24 Sep 2026: a table that follows another fence directly has no
+    introducing paragraph, so it could not be restored at all; S02-R1 C15). It comes back whole. A block belongs to the
     sentence that introduces it, and restoring an introduction without its arithmetic - or
     arithmetic without its introduction - is how this step produces something neither version
     ever said.
@@ -209,9 +211,10 @@ def rebuild(original, cut_text, wanted):
     out, prev_restored = [], False
     for kind, raw in split_blocks(str(original)):
         if kind == "fence":
-            if norm(raw) in kept_fences or prev_restored:
+            named = asked(raw) and norm(raw) not in kept_fences
+            if norm(raw) in kept_fences or prev_restored or named:
                 out.append(raw.rstrip("\n"))
-            prev_restored = False
+            prev_restored = named
             continue
 
         pieces, restored_here = [], False

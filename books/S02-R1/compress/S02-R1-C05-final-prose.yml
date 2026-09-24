@@ -1,0 +1,230 @@
+definition.text: 'Let f(t) be a rate that depends on time t. The definite integral of f from a to b is written ∫
+
+  from a to b of f(t) dt. Cover the time from a to b with thin intervals of width Δt. Over each,
+
+  draw a rectangle whose height is the rate in that interval. The integral is the limit of the
+
+  sum of the rectangles'' areas as the widths shrink towards zero.
+
+
+  If f is the rate of change of a quantity Q, then ∫ from a to b of f(t) dt equals Q(b) minus
+
+  Q(a). This is the net change theorem: the integral of a rate over an interval is the change in
+
+  the stock over that interval.
+
+
+  Two cases can be done exactly with no limit. A constant rate c gives a rectangle, c times (b
+
+  minus a). A rate that changes along a straight line gives a trapezium, the average of the two
+
+  end rates times (b minus a).
+
+
+  The average value of f from a to b is the integral divided by (b minus a).
+
+
+  Applied to a body, with stored energy ES, energy intake EI and energy expenditure EE, the
+
+  identity of `S01-R1-C05` written as rates is dES/dt = EI minus EE. So ES(b) minus ES(a) = ∫ from
+
+  a to b of (EI minus EE) dt.
+
+  '
+simplified_explanation: 'Here is how a paper writes one.
+
+
+  ```working
+
+  ∫ from a to b of f(t) dt
+
+  ```
+
+
+  The ∫ is a stretched S, for sum. The a at its foot is where the time starts, and the b at its top
+
+  is where it stops. Those two are the limits of integration.
+
+
+  Next comes f(t), the rate being added up. Its name is the integrand. Last, dt says the adding
+
+  runs over time t.
+
+
+  It means this. Cut the time from a to b into thin slices. Multiply the rate in each slice by its
+
+  width. Add them all. Then let the slices get thinner, until the total stops changing.
+
+
+  Here a rate can drop below zero, because a stock can lose as well as gain. A rectangle below the
+
+  time axis has a negative height, so its area counts as negative. Area below the axis is
+
+  subtracted. The result is called the net signed area.
+
+
+  The integral of a rate over an interval equals the change in the stock over that interval. This
+
+  is called the net change theorem.
+
+
+  ```working
+
+  the stock at b minus the stock at a = ∫ from a to b of the rate dt
+
+  ```
+
+
+  For a body''s energy stores, the rate is intake minus expenditure (`S01-R1-C05`). Write the stores
+
+  as ES, intake as EI and expenditure as EE.
+
+
+  ```working
+
+  dES/dt = EI minus EE
+
+  ES(b) minus ES(a) = ∫ from a to b of (EI minus EE) dt
+
+  ```
+
+  '
+illustration.body: 'Take a made-up case, with numbers chosen so that the rate is a straight line. A person''s net
+
+  rate, intake minus expenditure, is 300 kilocalories a day on day 0. It falls by 10
+
+  kilocalories a day, every day, for 50 days.
+
+
+  ```table
+
+  day  EI minus EE (kcal/day)
+
+  0    300
+
+  10   200
+
+  20   100
+
+  30   0
+
+  40   -100
+
+  50   -200
+
+  ```
+
+
+  A trainee is asked how much the person''s energy stores changed over the 50 days. They draw
+
+  the line and shade everything between it and the time axis. There are two triangles, and a
+
+  triangle''s area is half its base times its height. They work out both and add them.
+
+
+  ```working
+
+  0.5 times 30 times 300 = 4500
+
+  0.5 times 20 times 200 = 2000
+
+  4500 plus 2000 = 6500
+
+  ```
+
+
+  They report a gain of 6,500 kilocalories. Find the flaw before you read on.
+
+
+  From day 30 to day 50 the rate is below zero. The 2,000 kilocalories under the axis is energy
+
+  taken out, not put in. It has to be subtracted.
+
+
+  ```working
+
+  4500 minus 2000 = 2500
+
+  ```
+
+
+  The stores rose by 2,500 kilocalories over the 50 days.
+
+
+  Now the one-line way. The rate is a straight line, so the whole shape counts as one trapezium.
+
+  Take the average of the two end rates, keeping the minus sign, and multiply by the time.
+
+
+  ```working
+
+  300 plus -200 = 100
+
+  100 divided by 2 = 50
+
+  50 times 50 = 2500
+
+  ```
+
+
+  The same 2,500 kilocalories. The middle number, 50 kilocalories a day, is the average value of
+
+  the rate.
+
+
+  The rate is 300 minus 10t, with t in days.
+
+
+  ```working
+
+  ∫ from 0 to 50 of (300 minus 10t) dt = 2500
+
+  ```
+
+
+  Check its unit. It is kilocalories a day times days, which is kilocalories.
+
+
+  Hall and colleagues'' consensus statement (*American Journal of Clinical Nutrition* 2012)
+
+  writes it as ES = EI minus EO. The O stands for output, which this book writes EE. So in their
+
+  equation ES is the rate of change of the stores, not the stores.
+
+  '
+illustration.analogy_breaks_when: 'The straight-line rate is made up. A real person''s net rate does not change in a straight line
+
+  and is never measured at every moment.
+
+
+  Stored energy is not body weight.
+
+  '
+must_know[0].point: 'Area below the time axis is subtracted. Before you accept a change in stores, check that the
+
+  days of loss were taken away.
+
+  '
+must_know[1].point: 'A shrinking surplus is still a surplus. While intake minus expenditure stays above zero, the
+
+  stores rise, however fast the surplus is shrinking.
+
+  '
+must_know[2].point: 'The trapezium is exact only for a rate that changes in a straight line between the two
+
+  readings. For any other rate it is an estimate.
+
+  '
+must_know[3].point: 'Hall''s ES = EI minus EO is an equation between rates. Before you quote any figure called ES,
+
+  ask whether its unit is kilocalories or kilocalories a day.
+
+  '
+must_know[4].point: 'Check the unit of every integral: the rate''s unit times the time''s unit.
+
+  '
+must_know[5].point: 'A small error in a daily rate grows in the integral. Hall and colleagues put the uncertainty
+
+  of doubly labelled water at more than 100 kilocalories a day.
+
+  '

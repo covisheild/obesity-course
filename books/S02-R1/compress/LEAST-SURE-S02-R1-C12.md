@@ -1,0 +1,1 @@
+Least sure: deleting the whole "score" passage (1 times energy, all weight on the grams, half and half, all giving 460). It was the only worked demonstration that weights on a table with a redundant column are not fixed. Problem 9 and Exercise 1 depend on it, and only the definition's one abstract sentence about moving weight now carries the idea.

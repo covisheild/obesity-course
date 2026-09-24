@@ -14,19 +14,14 @@ ground_floor_deps:
 concept_deps: [S02-R1-C10, S02-R1-C11]
 definition:
   text: |
-    Take a table whose rows are cases and whose columns are variables, as `S02-R1-C11` sets one
-    up. Read each column as a vector, with one entry for each row.
+    Read each column as a vector, with one entry for each row.
 
-    A column y is a weighted sum of the columns a1, a2, ..., ak when there are fixed numbers
-    w1, w2, ..., wk, called the weights, that make the following true on every row. The entry of
-    y equals w1 times the entry of a1, plus w2 times the entry of a2, and so on up to wk times
-    the entry of ak. The same weights must hold on every row. In the
-    notation of `S02-R1-C11`, this is y = Xb: X is the matrix whose columns are a1 to ak, and b is
-    the vector of weights (w1, w2, ..., wk). Textbooks call y a linear combination of the columns
-    of X.
+    A column y is a weighted sum of the columns a1, a2, ..., ak when there are fixed numbers w1,
+    w2, ..., wk, called the weights, that make the following true on every row. The entry of y
+    equals w1 times the entry of a1, plus w2 times the entry of a2, and so on up to wk times the
+    entry of ak. The same weights must hold on every row.
 
-    A column of 1s counts as a column. So a column y that equals 2 times a, plus 5, on every row
-    is a weighted sum of a and the column of 1s, with weights 2 and 5.
+    A column of 1s counts as a column.
 
     Such a column is redundant: once the other columns are known, it says nothing about any row
     that they did not already say.
@@ -44,19 +39,10 @@ definition:
     When a table holds a column beside the columns it is a weighted sum of, the table no longer
     fixes the weights on a weighted sum of all of them together. Weight can be moved from that
     column onto its parts, in proportion, in infinitely many ways, and every row's total stays the
-    same. This is the case in `B0-R0-C17` of two equations that repeat each other and so have
-    infinitely many solutions.
+    same.
 
-    A food table whose energy was worked out from the grams with the Atwater general factors of
-    `B0-R0-C32` has such a column. Its energy, in kilocalories, is the weighted sum of protein,
-    fat and carbohydrate, in grams, with weights 4, 9 and 4.
-
-    The test finds weighted sums and nothing else. A column made from others by multiplying them
-    together is fixed by them and still fails it.
-
-    How many of a table's columns are not redundant is its rank. A column that is nearly, but not
-    exactly, a weighted sum of others is the problem called collinearity. Both belong to the next
-    rung of this subject, and this section computes neither.
+    A column that is nearly, but not exactly, a weighted sum of others is the problem called
+    collinearity.
   references:
   - citekey: austin_ula
     kind: textbook
@@ -161,23 +147,11 @@ simplified_explanation: |
   Suppose an idli costs 20 rupees and a dosa costs 50. Then on every row the amount paid is 20
   times the idlis plus 50 times the dosas. The prices are the weights. The amount column adds
   nothing: cover it with your hand and you can still write it back in.
-
-  To find out whether a column is like that, treat the prices as unknowns. Two orders give you
-  two equations, and you solve them as in Book 0. Then check the prices on every other order. If
-  one order does not fit, perhaps because of a discount, the column is not a fixed weighted sum.
-
-  Now try asking, "Among orders with the same idlis and dosas, which paid more?" There is no such
-  pair of orders to compare. The question looks sensible and asks for something the sheet cannot
-  hold.
 illustration:
   body: |
     Here is a question that sounds reasonable and has no answer. "Among foods with the same
     protein, fat and carbohydrate, what goes with an extra 100 kilocalories?" Try to answer it
     from this table.
-
-    The table is made up, with round numbers chosen so the arithmetic shows. Each row is an item,
-    and each column is grams in 100 grams of it, except energy, which is kilocalories (kcal) in
-    100 grams.
 
     ```table
     item  protein (g)  fat (g)  carbohydrate (g)  energy (kcal)
@@ -187,13 +161,10 @@ illustration:
     4     25           5        50                345
     ```
 
-    Look for two items that match in protein, fat and carbohydrate and differ in energy. There
-    are none. Add a thousand more rows made the same way and there will still be none. The test
-    shows why.
+    Look for two items that match in protein, fat and carbohydrate and differ in energy. There are none. The test shows why.
 
-    Write the energy column as unknown weights times the other three. Call the weight on protein
-    p, on fat f and on carbohydrate c. On every row, energy must equal p times protein, plus f
-    times fat, plus c times carbohydrate. The same p, f and c must serve every row.
+    Write the energy column as unknown weights times the other three. Call the weight on protein p, on fat f and on carbohydrate c. On
+    every row, energy must equal p times protein, plus f times fat, plus c times carbohydrate.
 
     Row 1 has no protein and no carbohydrate, so it holds f alone: 100 times f is 900.
 
@@ -221,11 +192,7 @@ illustration:
     4 times 25 plus 9 times 5 plus 4 times 50 = 345
     ```
 
-    The table says 345. The weights (4, 9, 4) hold on every row, so the energy column is a
-    weighted sum of the other three. They are the Atwater general factors of `B0-R0-C32`: 4
-    kilocalories for each gram of protein and of carbohydrate, and 9 for each gram of fat. The
-    column was made from the other three by that arithmetic, which is how a label's energy is
-    made.
+    The table says 345. The weights (4, 9, 4) hold on every row, so the energy column is a weighted sum of the other three.
 
     Now go back to the question. Energy is 4 times protein plus 9 times fat plus 4 times
     carbohydrate. For it to rise while the grams stay fixed, one of those three parts would have
@@ -250,19 +217,14 @@ illustration:
     2 times 10 plus 4.5 times 20 plus 2 times 60 plus 0.5 times 460 = 460
     ```
 
-    All three give 460 on row 3, and they agree on every other row too. So do infinitely many
-    splits in between. Handed only the table and the scores, nobody can say whether the score
-    "comes from" energy or from the grams. This is Book 0's pair of equations that repeat each
-    other, now sitting inside a table.
+    All three give 460 on row 3, and they agree on every other row too. Handed only the table and the scores, nobody can say whether the
+    score "comes from" energy or from the grams.
 
     Now the other way round: a column that is fixed by two others and still fails the test.
 
-    Three United Nations bodies wrote the report *Human energy requirements* together in 2004.
-    They are the Food and Agriculture Organization (FAO), the World Health Organization (WHO) and
-    the United Nations University (UNU). The report defines the physical activity level, PAL, as a person's total energy expenditure for
-    the day, TEE, divided by their basal metabolic rate, BMR. BMR is the energy spent lying at
-    rest after a fast. So, in the report's words, "BMR times PAL is equal to TEE". BMR and TEE are in
-    megajoules a day (MJ/day); PAL has no unit.
+    Three United Nations bodies wrote the report *Human energy requirements* together in 2004. The report defines the physical activity
+    level, PAL, as a person's total energy expenditure for the day, TEE, divided by their basal metabolic rate, BMR. So, in the report's
+    words, "BMR times PAL is equal to TEE".
 
     Take three made-up adults.
 
@@ -283,18 +245,7 @@ illustration:
 
     Subtract row 1 from row 2, the elimination move of `B0-R0-C17`. The u terms cancel.
 
-    ```working
-    2.0 minus 1.5 = 0.5
-    12.0 minus 9.0 = 3.0
-    3.0 divided by 0.5 = 6
-    ```
-
     So 0.5 times v is 3.0, and v is 6. Put v back into row 1.
-
-    ```working
-    1.5 times 6 = 9
-    9.0 minus 9 = 0
-    ```
 
     So 6.0 times u is 0, and u is 0. Now check row 3, the row you did not use.
 
@@ -316,21 +267,11 @@ illustration:
     passes straight through it, and "not a weighted sum" must never be read as "carries
     something new".
   analogy_breaks_when: |
-    The weights come out exactly (4, 9, 4) only because this table's energy was worked out from
-    these exact grams. A real label also rounds its figures. The check then holds only to within
-    the rounding. A row that misses by a fraction of a kilocalorie is not a sign of a separate
-    column.
+    A real label also rounds its figures. The check then holds only to within the rounding. A row
+    that misses by a fraction of a kilocalorie is not a sign of a separate column.
 
-    Energy measured by burning the food in a bomb calorimeter is not made by the Atwater
-    arithmetic. A table of measured energy is close to a weighted sum of the grams, not exactly
-    one. How close is too close is a question for the next rung.
-
-    The three adults are made up, and the relation holds exactly only because the report defines
-    PAL as TEE divided by BMR. In a table where TEE was measured and PAL was estimated some other
-    way, the three would not tie together exactly.
-
-    Add a column of 1s and there are three weights for three rows. The weights would then fit
-    all three rows and leave nothing to check. The practice problems return to this.
+    Add a column of 1s and there are three weights for three rows. The weights would then fit all
+    three rows and leave nothing to check.
   numbers:
   - value: "4"
     unit: kilocalories a gram, the Atwater general factor for protein and for carbohydrate
@@ -346,43 +287,35 @@ illustration:
       and 17 kJ/g (4.0 kcal/g) for carbohydrates.
 must_know:
 - point: |
-    Before you read meaning into the weight on any column of a table, test whether that column is
-    a weighted sum of the others. Find the weights from some rows, then check every other row. One
-    row that fails settles it: the column is not a weighted sum.
+    Find the weights from some rows, then check every other row. One row that fails settles it:
+    the column is not a weighted sum.
   kind: move
   bearing: methodological
 - point: |
     A table that carries energy beside protein, fat and carbohydrate, with energy worked out from
-    the Atwater factors, carries one column too many. "Energy, with the three held fixed" and "fat,
-    with energy and the other two held fixed" both ask about rows that cannot exist. Refuse the
-    question, or drop one column and say which one you dropped.
+    the Atwater factors, carries one column too many. Refuse the question, or drop one column and
+    say which one you dropped.
   kind: trap
   bearing: methodological
 - point: |
-    A column that looks like no other column can still be redundant. Energy matches none of
-    protein, fat or carbohydrate on its own; it is fixed by the three together. Comparing columns
-    two at a time will never find it.
+    A column that looks like no other column can still be redundant. Comparing columns two at a
+    time will never find it.
   kind: misconception
   bearing: methodological
 - point: |
     The check needs rows to spare. With as many rows as weights, almost any column fits exactly.
-    Count the rows you used to find the weights, and believe the result only once rows beyond them
-    hold too.
   kind: trap
   bearing: methodological
 - point: |
-    The test finds weighted sums and nothing else. A column made by multiplying others, like TEE as
-    BMR times PAL in the FAO/WHO/UNU report, fails it and is still fixed by them. A column worked
-    out and then rounded, like a label's energy, passes only to within the rounding. When a column
-    is nearly but not exactly a weighted sum, this test cannot say whether that matters. Say so,
-    and leave it to the next rung's collinearity.
+    When a column is nearly but not exactly a weighted sum, this test cannot say whether that
+    matters. Say so, and leave it to the next rung's collinearity.
   kind: boundary
   bearing: methodological
   refs: [fao_who_unu_2004]
 - point: |
     When you hear that a model "found no effect of fat once calories were accounted for", ask how
     the calories were worked out. If they came from the grams, the model had no way to find an
-    effect of fat. The claim is about the table, not about fat.
+    effect of fat.
   kind: consequence
   bearing: public
 exercises:

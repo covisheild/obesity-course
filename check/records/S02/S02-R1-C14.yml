@@ -17,46 +17,26 @@ ground_floor_deps:
 concept_deps: [S01-R1-C05, S02-R1-C01, S02-R1-C13]
 definition:
   text: |
-    Let X be a discrete random variable, as in `S02-R1-C13`, taking the values x1, x2, ..., xk.
-    Its expected value, or expectation, is written E[X]. It is each value times its probability,
-    all added up: x1 times P(X = x1), plus x2 times P(X = x2), and so on up to xk times
-    P(X = xk). In
-    the sigma notation of `S02-R1-C01`, E[X] = Σ x P(X = x), the sum running over every value x
-    that X can take. It carries the unit of X. It is also written with the Greek letter mu, μ.
+    Let X be a discrete random variable, as in `S02-R1-C13`, taking the values x1, x2, ..., xk. Its expected value, or
+    expectation, is written E[X]. It is each value times its probability, all added up: x1 times P(X = x1), plus x2 times P(X
+    = x2), and so on up to xk times P(X = xk). In the sigma notation of `S02-R1-C01`, E[X] = Σ x P(X = x), the sum running
+    over every value x that X can take. It carries the unit of X.
 
     E[X] is a probability-weighted average. It is the ordinary mean of `B0-R0-C28` only when all
     the values are equally likely. It need not be a value X can take.
 
-    It is the long-run average. Repeat the chance process many times, and the average of the
-    values X takes settles towards E[X]. That is the law of large numbers. It is a property of the probability distribution, a
-    parameter in the sense of `B0-R0-C29`. The mean of a sample of observed values is a statistic.
-    It estimates E[X] and differs from it from one sample to the next.
+    It is the long-run average. It is a property of the probability distribution, a parameter in the sense of `B0-R0-C29`. The
+    mean of a sample of observed values is a statistic. It estimates E[X] and differs from it from one sample to the next.
 
     Two rules follow from the definition. For fixed numbers a and b, E[aX + b] = aE[X] + b. For
     any two random variables X and Y, E[X + Y] = E[X] + E[Y], whether or not X and Y are
     independent. Together they give E[aX + bY] = aE[X] + bE[Y].
 
-    The first rule follows in three moves. Each value x of X becomes a times x, plus b, with the
-    same probability as before. So E[aX + b] is the sum of (a times x plus b) times P(X = x).
-    Multiply out the bracket, as in `B0-R0-C15`. That gives a times the sum of x times P(X = x),
-    plus b times the sum of P(X = x). The first sum is E[X], and the second is 1.
-
-    The second rule follows by working outcome by outcome. E[X] can also be found as the sum, over
-    every outcome in the sample space, of the value X gives that outcome times the probability of
-    that outcome. Grouping the outcomes that give the same value turns this back into the
-    value-by-value sum. Now X + Y gives each outcome the value X gives it plus the value Y gives
-    it. So the outcome-by-outcome sum for X + Y splits into the sum for X plus the sum for Y. No
-    step asks whether X and Y are independent.
-
     Neither rule reaches products, ratios or squares. E[XY] is not in general E[X] times E[Y], and
     E[X/Y] is not in general E[X] divided by E[Y]. For those, go back to the distribution.
 
-    For a continuous random variable the sum becomes an integral of x times the probability
-    density. This book works only the discrete case.
-
-    A clash of letters. In papers on energy balance, E with a label, as in EI, EE or ES, is energy.
-    E followed by square brackets around a random variable, E[X], is expectation. Some books write
-    E(X) with round brackets.
+    In papers on energy balance, E with a label, as in EI, EE or ES, is energy. E followed by square brackets around a random
+    variable, E[X], is expectation. Some books write E(X) with round brackets.
   references:
   - citekey: openintro_stats_4e
     kind: textbook
@@ -189,21 +169,11 @@ simplified_explanation: |
   Take a chance process that gives a number, and imagine running it a very large number of
   times. The average of all those numbers is the expected value.
 
-  To work it out, you do not need the long run. Multiply each value by its chance and add. A
-  value with a big chance counts for a lot, and a rare value counts for little.
-
-  Picture the values as weights hung along a ruler, each as heavy as its chance. The expected
-  value is where the ruler balances. It can sit between the weights, at a value that never
-  happens.
-
-  Two shortcuts save a lot of work. Double every value and the expected value doubles. Add 5 to
-  every value and it goes up by 5. And the expected value of a total is the total of the expected
-  values. That last one holds even when the parts are tied to each other.
+  Multiply each value by its chance and add.
 illustration:
   body: |
-    Start with the mistake. Suppose a person's energy surplus on a day, intake minus expenditure
-    as in `S01-R1-C05`, is a random variable X, in kilocalories a day. The distribution below is
-    made up.
+    Suppose a person's energy surplus on a day, intake minus expenditure as in `S01-R1-C05`, is a random variable
+    X, in kilocalories a day. The distribution below is made up.
 
     ```table
     surplus x (kcal/day)  P(X = x)
@@ -221,8 +191,7 @@ illustration:
     400 divided by 4 = 100
     ```
 
-    That gives 100, and it is wrong. The values are not equally likely, and the ordinary mean
-    treats them as if they were. Weight each value by its probability instead.
+    That gives 100, and it is wrong. Weight each value by its probability instead.
 
     ```working
     -300 times 0.2 = -60
@@ -232,8 +201,7 @@ illustration:
     -60 plus 0 plus 80 plus 50 = 70
     ```
 
-    E[X] is 70 kcal a day. You will never see a day with a surplus of 70 in this model. The 70 is the balance point
-    of the four values, pulled towards 200 by its 0.4 and held back by the 0.2 at minus 300.
+    E[X] is 70 kcal a day. You will never see a day with a surplus of 70 in this model.
 
     Now a week. Let W be the surplus over seven days: X1 for day 1, plus X2 for day 2, and so on
     to X7. If each day has this same distribution, each has expected value 70. The sum rule gives
@@ -243,13 +211,7 @@ illustration:
     7 times 70 = 490
     ```
 
-    E[W] is 490 kcal. The week itself could land anywhere from seven days at minus 300 to seven
-    days at 500.
-
-    ```working
-    7 times -300 = -2100
-    7 times 500 = 3500
-    ```
+    E[W] is 490 kcal.
 
     So 490 is the long-run average of weeks. It is not what any one week will show.
 
@@ -288,83 +250,69 @@ illustration:
     7 times 190 = 1330
     ```
 
-    Over a week the log expects 1,330 kcal against a true 490. Logging more weeks will not close
-    that gap. The shift moves the expected value itself.
+    Over a week the log expects 1,330 kcal against a true 490. Logging more weeks will not close that gap.
 
-    Last, the expected value set beside a sample's mean. Go back to the made-up village of
-    `S02-R1-C13`: ten households of 2, 3, 4, 4, 5, 5, 5, 6, 7 and 9 people. Pick one at random,
-    and let X be its size. Each household has probability 0.1, so E[X] is 0.1 times the sum of
-    the sizes.
+    Go back to the made-up village of `S02-R1-C13`: ten households of 2, 3, 4, 4, 5, 5, 5, 6, 7 and 9 people. Pick
+    one at random, and let X be its size. Each household has probability 0.1, so E[X] is 0.1 times the sum of the
+    sizes.
 
     ```working
     2 plus 3 plus 4 plus 4 plus 5 plus 5 plus 5 plus 6 plus 7 plus 9 = 50
     0.1 times 50 = 5.0
     ```
 
-    E[X] is 5.0 people, the same as the village's ordinary mean, because every household was
-    equally likely. The survey's four households held 5, 9, 4 and 5 people.
+    The survey's four households held 5, 9, 4 and 5 people.
 
     ```working
     5 plus 9 plus 4 plus 5 = 23
     23 divided by 4 = 5.75
     ```
 
-    The sample mean is 5.75. It is a statistic that estimates E[X], and it misses by 0.75. A
-    bigger random sample would tend to land closer. E[X] itself does not move.
+    The sample mean is 5.75. It is a statistic that estimates E[X], and it misses by 0.75. A bigger random sample
+    would tend to land closer.
   analogy_breaks_when: |
     The surplus distribution is made up, and it is the same on every day only because this model
     says so. A real person's daily surplus has no known distribution. It also drifts as their
     weight and habits change, and then "7 times 70" no longer describes the week. The sum rule
-    still holds with seven different expectations. It is the "same every day" that fails.
+    still holds with seven different expectations.
 
-    The day-2 rule, 140 minus day 1, is invented to show that dependence does not matter for the
-    expected value. It will matter a great deal for the spread, in the next section.
-
-    The village is made up. Its E[X] equals its mean only because each household was equally
-    likely to be picked.
+    The village is made up.
   numbers: []
 must_know:
 - point: |
-    The expected value is not what any one person or day will show. It is the long-run average,
-    and it may be a value that never happens. Never tell a patient "you can expect to lose 4 kg"
-    as if it were their outcome. Say what happened on average, and how widely people differed.
+    The expected value is not what any one person or day will show. Never tell a patient "you
+    can expect to lose 4 kg" as if it were their outcome. Say what happened on average, and how
+    widely people differed.
   kind: misconception
   bearing: clinical
 - point: |
     Averaging the possible values without their probabilities gives the expected value only when
-    every value is equally likely. Otherwise it is wrong, sometimes badly. Weight each value by
-    its probability, every time.
+    every value is equally likely. Weight each value by its probability, every time.
   kind: trap
   bearing: methodological
 - point: |
     The expected value of a sum is the sum of the expected values, with no condition of
-    independence. So a week's expected surplus is seven times a day's, when every day has the same
-    expected value, however the days are tied together. Do not refuse the sum because the days
-    are dependent. Keep that objection for the spread, where it matters.
+    independence. Do not refuse the sum because the days are dependent.
   kind: move
   bearing: methodological
 - point: |
     The rules stop at sums and fixed multiples. The expected BMI is not the expected weight
-    divided by the square of the expected height. The expected TEE is not the expected PAL times
-    the expected BMR when the two vary together. For a product, a ratio or a square, go back to
+    divided by the square of the expected height. For a product, a ratio or a square, go back to
     the distribution and work value by value.
   kind: boundary
   bearing: methodological
 - point: |
-    A fixed error of b in every reading moves the expected value by exactly b. Averaging more
-    readings does not remove it; it only pins down the shifted value more closely. Find the size
-    of the shift against a known reference, as in `B0-R0-C30`, and subtract it.
+    A fixed error of b in every reading moves the expected value by exactly b. Find the size of
+    the shift against a known reference, as in `B0-R0-C30`, and subtract it.
   kind: consequence
   bearing: methodological
 - point: |
-    E[X] belongs to the model. A sample mean is a statistic that estimates it, and misses by an
-    amount that changes from sample to sample. Before you quote a paper's "expected value", ask
-    whether it was computed from a stated distribution or averaged from data.
+    E[X] belongs to the model. Before you quote a paper's "expected value", ask whether it was
+    computed from a stated distribution or averaged from data.
   kind: boundary
   bearing: methodological
 - point: |
-    In an energy-balance paper, check which E you are reading. E with a label, such as EI or ES, is
-    energy. E with square or round brackets around a random variable is an expected value.
+    In an energy-balance paper, check which E you are reading.
   kind: move
   bearing: methodological
 exercises:

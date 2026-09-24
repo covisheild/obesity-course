@@ -262,7 +262,14 @@ def _paragraphs(text: str) -> list[str]:
 def _sentences(para: str) -> list[str]:
     flat = re.sub(r"\s+", " ", re.sub(r"[*_`]", "", para)).strip()
     flat = re.sub(r"(?<![\'’])\b(e\.g|i\.e|etc|vs|No|Dr|Mr|Ms|Art|s|ss)\.", r"\1<dot>", flat)
-    parts = re.split(r"(?:(?<=[.?!])|(?<=[.?!][\"'”’)]))\s+(?=[A-Z\"'(“‘])", flat)
+    # A sentence may open with a symbol written in lower case: "dES/dt is the rate...", "d/dx,
+    # said...", "ρ is...". Until 24 Sep 2026 the splitter never broke before one, so a cut that
+    # kept only that sentence and the restore that rebuilt its paragraph measured it differently
+    # (S01-R1 C02/C07, S02-R1 C02/C03). A lower-case opening counts as a new sentence when its
+    # first token is a Greek letter or carries a slash, caret, digit or capital (a symbol, not a
+    # word); abbreviations are already protected above.
+    parts = re.split(r"(?:(?<=[.?!])|(?<=[.?!][\"'”’)]))\s+"
+                     r"(?=[A-Z\"'(“‘Α-Ωα-ω]|[a-z][^\s]*?[/^0-9A-Z])", flat)
     return [p.replace("<dot>", ".").strip() for p in parts if p.strip()]
 
 

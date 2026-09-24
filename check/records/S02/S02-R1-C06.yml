@@ -15,9 +15,6 @@ concept_deps: [S02-R1-C02, S02-R1-C03, S02-R1-C04, S02-R1-C05]
 definition:
   text: |
     An antiderivative of a function f is a function F whose derivative is f, so that dF/dt = f(t).
-    If F is one antiderivative, F plus any constant C is another, and on an interval every
-    antiderivative of f has that form. The family is written ∫ f(t) dt = F(t) plus C, with no
-    limits on the sign, and is called the indefinite integral.
 
     Each of these is checked by differentiating back, with the rules of `S02-R1-C03` and
     `S02-R1-C04`:
@@ -29,21 +26,11 @@ definition:
     e^(kt), for k not zero        e^(kt) divided by k
     ```
 
-    Sums and constant multiples are done term by term. The same form holds for most other powers
-    as well, but never for n = -1, where it would divide by zero. Checking it for powers that are
-    not whole numbers needs a power rule this book does not teach.
+    Sums and constant multiples are done term by term.
 
-    The fundamental theorem of calculus, in the part called the evaluation theorem, says this.
-    If f is continuous from a to b and F is any antiderivative of f, then ∫ from a to b of f(t) dt
-    = F(b) minus F(a). The constant C cancels in the subtraction, so any antiderivative gives the
-    same answer.
-
-    Put together with the net change theorem of `S02-R1-C05`, the change in a stock over an
-    interval is found from any function whose rate is the given rate, evaluated at the two ends.
-
-    For a deficit D(t) = D0 e^(-kt), with D0 its value at t = 0 and k above zero, the total from
-    0 to T is D0 times (1 minus e^(-kT)) divided by k. That is less than D0 times T, the total of
-    a deficit held at D0. However long T runs, it never exceeds D0 divided by k.
+    The fundamental theorem of calculus, in the part called the evaluation theorem, says this. If
+    f is continuous from a to b and F is any antiderivative of f, then ∫ from a to b of f(t) dt =
+    F(b) minus F(a).
   references:
   - citekey: openstax_calculus_v1_s02
     kind: textbook
@@ -101,9 +88,7 @@ simplified_explanation: |
   for a rate that is steady or changes in a straight line. Most rates bend. This section gives a
   way that does not need a shape.
 
-  Start from what you already know. `S02-R1-C03` and `S02-R1-C04` take a function and give its
-  rate. Now run that backwards. Given a rate, find a function whose rate it is. That function is
-  called an antiderivative.
+  Given a rate, find a function whose rate it is. That function is called an antiderivative.
 
   Say the rate is 2t. Which function has the rate 2t? The power rule says t^2 does. So t^2 is an
   antiderivative of 2t.
@@ -113,7 +98,6 @@ simplified_explanation: |
   end, where C is any constant.
 
   You never have to trust an antiderivative. Differentiate it and see whether the rate comes back.
-  Three rules cover this book.
 
   ```table
   the rate                  an antiderivative
@@ -122,15 +106,8 @@ simplified_explanation: |
   e^(kt)                    e^(kt) divided by k
   ```
 
-  Check the middle one on t^2. Its antiderivative should be t^3 divided by 3. Differentiate that.
-  The power rule brings down the 3 and takes one off the power, giving 3 t^2 divided by 3, which
-  is t^2. It comes back.
-
-  Check the last one. The rate of e^(kt) is k times e^(kt) (`S02-R1-C04`). Divide by k and you
-  get e^(kt) back.
-
-  Now the step that makes this worth doing. The fundamental theorem of calculus says an integral
-  is the antiderivative at the end minus the antiderivative at the start.
+  The fundamental theorem of calculus says an integral is the antiderivative at the end minus the
+  antiderivative at the start.
 
   ```working
   ∫ from a to b of f(t) dt = F(b) minus F(a)
@@ -138,10 +115,6 @@ simplified_explanation: |
 
   Here F is any antiderivative of f. The C cancels, because it is added at both ends and then
   subtracted. So leave it out when you work out an integral.
-
-  Why is this true? `S02-R1-C05` said the integral of a rate is the change in the stock. An
-  antiderivative is a stock with that rate. Its change from a to b is F(b) minus F(a). That is
-  the whole idea.
 illustration:
   body: |
     Hall and colleagues model a man who cuts his intake by 2 megajoules a day (*Lancet* 2011).
@@ -152,8 +125,7 @@ illustration:
     2 times 365 = 730
     ```
 
-    Seven hundred and thirty megajoules in the first year. So a deficit of 2 megajoules a day is
-    730 megajoules a year.
+    So a deficit of 2 megajoules a day is 730 megajoules a year.
 
     His expenditure falls as his weight falls, so his real deficit shrinks. Suppose, to see the
     arithmetic, that it halves every year. This shape is made up here, and it is not the paper's
@@ -164,21 +136,8 @@ illustration:
     D(t) = 730 e^(-0.693t)
     ```
 
-    A trainee works out the first year's total. They remember that e^(t) is its own rate, so they
-    take the antiderivative of 730 e^(-0.693t) to be 730 e^(-0.693t) itself. At the end of the
-    year that is 730 times 0.5.
-
-    ```working
-    730 times 0.5 = 365
-    365 minus 730 = -365
-    ```
-
-    Minus 365 megajoules. But the deficit stayed above zero all year. A rate that never drops
-    below zero cannot add up to a total below zero.
-
-    Find the break by differentiating back. The rate of 730 e^(-0.693t) is -0.693 times 730
-    e^(-0.693t). That is not the deficit. It is -0.693 times the deficit. So divide by -0.693 to
-    cancel that factor.
+    The rate of 730 e^(-0.693t) is -0.693 times 730 e^(-0.693t). That is not the deficit. It is
+    -0.693 times the deficit. So divide by -0.693 to cancel that factor.
 
     ```working
     730 divided by 0.693 = 1053.4
@@ -195,70 +154,16 @@ illustration:
     1053.4 times 0.4999 = 526.6
     ```
 
-    About 526.6 megajoules in the first year, against 730 for the steady deficit. Run the same
-    sum at other times and set the two side by side.
+    About 526.6 megajoules in the first year, against 730 for the steady deficit.
 
-    ```table
-    | years | steady deficit, total so far (MJ) | halving deficit, total so far (MJ) |
-    | 0 | 0 | 0.0 |
-    | 0.5 | 365 | 308.5 |
-    | 1 | 730 | 526.6 |
-    | 1.5 | 1095 | 680.9 |
-    | 2 | 1460 | 790.0 |
-    | 2.5 | 1825 | 867.1 |
-    | 3 | 2190 | 921.7 |
-    ```
+    As T grows, e^(-0.693T) shrinks towards zero, so its total creeps up towards 1053.4 megajoules
+    and never passes it.
 
-    The steady deficit's total climbs in a straight line, 730 more every year for ever. The
-    halving deficit's total bends. As T grows, e^(-0.693T) shrinks towards zero, so its total
-    creeps up towards 1053.4 megajoules and never passes it.
+    A deficit that shrinks adds up to less.
 
-    Hall and colleagues' own model puts the static rule's first-year loss at "about 100% greater
-    weight loss than our model prediction". This made-up halving deficit gives a smaller gap:
-    526.6 against 730. It is not their model. What it shows is the direction and the reason. A
-    deficit that shrinks adds up to less. How much less depends on how fast it shrinks, and working
-    that out is the model's job, in `S02-R1-C07`.
-
-    Last, a check that the theorem agrees with the shapes you already trust. Take a different
-    made-up deficit that falls in a straight line, from 730 to 365 megajoules a year over the first
-    year.
-
-    ```working
-    D(t) = 730 minus 365t
-    ```
-
-    Use the power rule term by term. The steady 730 gives 730t. The 365t gives 365 times t^2
-    divided by 2.
-
-    ```working
-    365 divided by 2 = 182.5
-    F(t) = 730t minus 182.5 t^2
-    ```
-
-    Differentiate back: 730 minus 2 times 182.5t, which is 730 minus 365t. It comes back. Now the
-    first year.
-
-    ```working
-    730 times 1 minus 182.5 times 1 = 547.5
-    ```
-
-    Now the trapezium from `S02-R1-C05`.
-
-    ```working
-    730 plus 365 = 1095
-    1095 divided by 2 = 547.5
-    ```
-
-    Both give 547.5 megajoules. The theorem does what the trapezium did. It also works where no
-    shape has an area formula, as the halving deficit showed.
+    It comes back.
   analogy_breaks_when: |
-    Both shrinking deficits are made up, one halving each year and one falling in a straight line.
-    They show how an integral treats a shrinking rate. They do not say how a real person's
-    deficit shrinks. The straight line would reach zero at two years and then go below it, so it
-    means nothing beyond the first year.
-
-    Every total here is energy, in megajoules. Turning it into kilograms needs to know what tissue
-    was lost (`S01-R1-C02`), and that is part of why Hall's model differs from the static rule.
+    Every total here is energy, in megajoules.
   numbers:
   - value: '2'
     unit: "MJ/day, the modelled cut in intake"
@@ -280,35 +185,29 @@ must_know:
   bearing: methodological
 - point: |
     The antiderivative of e^(kt) is e^(kt) divided by k, not e^(kt). Dropping the k gives the wrong
-    size. For a shrinking curve, where k is negative, it also gives the wrong sign. The unit is a
-    second check. Dividing by a rate constant in per year multiplies by years, which turns a rate
-    into an amount.
+    size. For a shrinking curve, where k is negative, it also gives the wrong sign.
   kind: trap
   bearing: methodological
 - point: |
     "The deficit never quite reaches zero, so the loss keeps going for ever" is wrong as
-    arithmetic. A deficit D0 e^(-kt) adds up to at most D0 divided by k, however long it runs. A
-    rate that never reaches zero can still have a total that stops growing.
+    arithmetic. A deficit D0 e^(-kt) adds up to at most D0 divided by k, however long it runs.
   kind: misconception
   bearing: public
 - point: |
     These rules cover steady rates, whole-number powers of t, e^(kt), and sums and multiples of
-    them. A model's real rate is often none of these. When no antiderivative is at hand, go back to
-    rectangles and bound the error as `B0-R0-C22` does. Do not force a formula that does not fit.
-    The other techniques belong to the next rung.
+    them. When no antiderivative is at hand, go back to rectangles and bound the error as
+    `B0-R0-C22` does.
   kind: boundary
   bearing: methodological
 - point: |
     A figure made by multiplying a daily deficit by 365, and then by a number of years, is a
-    steady-deficit total. It grows in a straight line for as long as you let it. Any deficit that
-    shrinks adds up to less. In a committee, call such a figure an upper limit that holds only if
-    the deficit never shrinks.
+    steady-deficit total. Any deficit that shrinks adds up to less. In a committee, call such a
+    figure an upper limit that holds only if the deficit never shrinks.
   kind: consequence
   bearing: policy
 - point: |
     Take F at the upper limit minus F at the lower limit, in that order. The reverse gives the
-    right size with the wrong sign. A positive rate must give a positive total, so check the sign
-    before the number leaves your page.
+    right size with the wrong sign.
   kind: move
   bearing: teaching
 exercises:

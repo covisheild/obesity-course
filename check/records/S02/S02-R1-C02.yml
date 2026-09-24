@@ -20,25 +20,19 @@ ground_floor_deps:
 concept_deps: [S01-R1-C05, S02-R1-C01]
 definition:
   text: |
-    Let f be a function and a an input it accepts. The average rate of change of f over the
-    interval from a to a + h is f(a + h) minus f(a), divided by h, for h not zero.
+    The average rate of change of f over the interval from a to a + h is f(a + h) minus f(a),
+    divided by h, for h not zero.
 
     The derivative of f at a is the single number these averages settle on as h is made smaller
     and smaller, through positive values and through negative values alike. Where the two sides
-    do not settle on one number, f has no derivative at a. The number the averages settle on is
-    called the limit, written lim with h → 0 beneath it.
+    do not settle on one number, f has no derivative at a.
 
-    The derivative at a is written f′(a), said "f prime of a". For a quantity S that changes
-    with time t it is also written dS/dt, said "dee S by dee t", the rate of change of S with
-    respect to t. Found at every input, the derivatives make a new function, f′.
+    The derivative at a is written f′(a), said "f prime of a".
 
-    The derivative carries the unit of f divided by the unit of the input. A positive derivative
-    means f is rising at a, a negative one that it is falling, and zero that at that instant it
-    is doing neither.
+    The derivative carries the unit of f divided by the unit of the input.
 
     The derivative belongs to a smooth curve. Repeated measurements are separate points with
-    error in them. A rate taken from them is an average over an interval, and an interval
-    shorter than the error can resolve makes the estimate worse, not better.
+    error in them.
   references:
   - citekey: openstax_calculus_v1_s02
     kind: textbook
@@ -96,33 +90,28 @@ definition:
         Anchor for the boundary: a short-interval rate of weight change carries water, not only
         stored energy. The quote keeps the text layer's line-end hyphen.
 simplified_explanation: |
-  Book 0 showed you the rate at an instant as the slope of a tangent, laid on a curve with a
-  ruler. It named that rate the derivative (`B0-R0-C21`). The last section read the symbol dES/dt in
-  a paper. This section works the number out with arithmetic, no ruler needed.
+  Book 0 showed you the rate at an instant as the slope of a tangent, laid on a curve with a ruler.
+  It named that rate the derivative (`B0-R0-C21`). This section works the number out with
+  arithmetic, no ruler needed.
 
-  The idea is one you already have. A shorter interval gives a closer answer. So take the
-  average rate over shorter and shorter intervals, all starting at the moment you care about.
-  Watch the answers. They settle on one number. That number is the rate at that instant.
+  A shorter interval gives a closer answer. So take the average rate over shorter and shorter
+  intervals, all starting at the moment you care about. They settle on one number. That number is
+  the rate at that instant.
 
   Here is the procedure for a function f at an input a.
 
-  1. Pick a small step, h. Work out f(a + h) minus f(a), and divide by h. That is the average
-     rate over the interval from a to a + h.
-  2. Make h smaller: 1, then 0.1, then 0.01, then 0.001. Work the average out each time.
+  1. Pick a small step, h. Work out f(a + h) minus f(a), and divide by h.
+  2. Make h smaller: 1, then 0.1, then 0.01, then 0.001.
   3. Do the same with h below zero: minus 1, minus 0.1, and so on. Those intervals end at a
      instead of starting there.
   4. If both lists close in on the same number, that number is the derivative at a.
 
-  You never set h to zero. At zero the interval has no length, and dividing by zero is not
-  allowed (`B0-R0-C16`). You only let h shrink, and watch where the answers go. The number they
-  close in on is called the limit.
+  You never set h to zero. The number they close in on is called the limit.
 
-  The derivative has three names you will meet. f′(a), said "f prime of a". dS/dt, said "dee S
-  by dee t". And in words, the rate of change of S with respect to t. All three mean the same
-  thing.
+  The derivative has three names you will meet. f′(a), said "f prime of a". dS/dt, said "dee S by
+  dee t". And in words, the rate of change of S with respect to t.
 
-  Its unit comes from the division, as in Book 0. A weight in kilograms against time in days
-  gives kilograms per day.
+  A weight in kilograms against time in days gives kilograms per day.
 
   Its sign tells you the direction. Positive means rising at that instant. Negative means
   falling. Zero means neither, at that instant.
@@ -131,21 +120,12 @@ simplified_explanation: |
   energy, in kilocalories a day. It is not the stored energy itself.
 illustration:
   body: |
-    Start with a claim that uses the wrong interval. A quantity follows the rule S(t) = 5 t^2,
-    which is 5 times t times t. The rule is made up for this example, and there are no units. A
-    note says this.
+    A quantity follows the rule S(t) = 5 t^2, which is 5 times t times t. A note says this.
 
     > S went from 20 at t = 2 to 45 at t = 3. So at t = 2 it is rising at 25 a unit of time.
 
-    Check the two values first.
-
-    ```working
-        S(2) = 5 times 2 times 2 = 20
-        S(3) = 5 times 3 times 3 = 45
-    ```
-
-    The 25 is the average over a whole unit of time, from t = 2 to t = 3. That is a chord.
-    The note calls it the rate at t = 2. Test that by shrinking the interval.
+    The 25 is the average over a whole unit of time, from t = 2 to t = 3. Test that by shrinking
+    the interval.
 
     Each row takes a step h from t = 2. Work out S(2 + h), subtract S(2), and divide by h.
 
@@ -161,23 +141,11 @@ illustration:
     | -1 | 5 | -15 | 15 |
     ```
 
-    Here is one row in full, h = 0.1.
+    Read down the last column. Both lists close in on 20. So the rate at t = 2 is 20 a unit of
+    time, not 25.
 
-    ```working
-        S(2.1) = 5 times 2.1 times 2.1 = 22.05
-        22.05 minus 20 = 2.05
-        2.05 divided by 0.1 = 20.5
-    ```
-
-    Read down the last column. From above, 25, then 20.5, 20.05, 20.005. From below, 15, 19.5,
-    19.95, 19.995. Both lists close in on 20. So the rate at t = 2 is 20 a unit of time, not 25.
-
-    ```working
-        S′(2) = 20
-    ```
-
-    Now see why it is exactly 20, with algebra. Write S(2 + h) out. Multiply out the bracket
-    with the rule from `B0-R0-C15`, once for each term.
+    Now see why it is exactly 20, with algebra. Multiply out the bracket with the rule from
+    `B0-R0-C15`, once for each term.
 
     ```working
         (2 + h) times (2 + h) = 2 times (2 + h) + h times (2 + h)
@@ -186,20 +154,18 @@ illustration:
         S(2 + h) = 5 times (4 + 4h + h^2) = 20 + 20h + 5 h^2
     ```
 
-    Subtract S(2), which is 20. Then divide by h. That is allowed, because h is never zero.
+    Subtract S(2), which is 20. Then divide by h.
 
     ```working
         S(2 + h) minus S(2) = 20h + 5 h^2
         (20h + 5 h^2) divided by h = 20 + 5h
     ```
 
-    The average rate over a step h is 20 + 5h, for any h. Check it against the table: h = 0.1
-    gives 20.5. As h shrinks, 5h shrinks with it, and what is left is 20.
+    The average rate over a step h is 20 + 5h, for any h. As h shrinks, 5h shrinks with it, and
+    what is left is 20.
 
     Now the same move on real measurements, where it breaks. A person weighs themselves each
-    morning for fifteen days. The weights below are made up, but day-to-day swings of this size
-    are normal. Hall and colleagues (2012) warn that "weight change may not directly represent
-    energy imbalances, particularly over the short term", because body water moves.
+    morning for fifteen days.
 
     ```table
     day  weight (kg)
@@ -240,10 +206,8 @@ illustration:
     Adding 0.6 kg of fat in a day would take 23.7 MJ more than she spent. That is nearly three
     whole days of her expenditure. The one-day rate is measuring water, not stores.
 
-    So with weighings, shrink the interval the other way. Polidori and colleagues (2016) did
-    this. They used "the moving average of the measured body weight time course" to get the rate
-    over each interval. Their weighings were 52 days apart. Try a small version. Average the
-    first five days and the last five. Each average belongs to its middle day.
+    So with weighings, shrink the interval the other way. Average the first five days and the
+    last five. Each average belongs to its middle day.
 
     ```working
         80.3 plus 79.8 plus 80.1 plus 79.6 plus 80.2 = 400.0
@@ -255,15 +219,12 @@ illustration:
     ```
 
     Falling at about 0.05 kg a day over those ten days. Even this is still an average over an
-    interval. It is the best a scale can give you. The derivative itself belongs to a smooth
-    curve that nobody measured.
+    interval.
   analogy_breaks_when: |
-    The rule S(t) = 5 t^2 is smooth all the way down, so its averages keep settling as h shrinks.
-    Real weighings are not. Below the interval over which water swings, a shorter interval gives
-    a worse rate, not a better one.
+    Below the interval over which water swings, a shorter interval gives a worse rate, not a
+    better one.
 
-    The fifteen weights are made up. They show the size of day-to-day swings, not any person's
-    trend. The 0.05 kg a day holds for these ten days only.
+    The fifteen weights are made up.
   numbers:
   - value: '39.5'
     unit: MJ per kg, the energy density of a change in body fat
@@ -283,38 +244,30 @@ illustration:
       T = 52 was the number of days between measurements
 must_know:
 - point: |
-    Before you call a rate "the rate now", ask how long the interval was. A rate over a long
-    interval is an average across it. The rate at an instant is what those averages settle on as
-    the interval shrinks.
+    Before you call a rate "the rate now", ask how long the interval was.
   kind: move
   bearing: methodological
 - point: |
-    A rate of weight change taken from two weighings a day apart is mostly water. It can come
-    out as a gain of 0.6 kg a day in a person who is losing weight. Take a rate from averages
-    over weeks, not from neighbouring readings.
+    A rate of weight change taken from two weighings a day apart is mostly water. Take a rate
+    from averages over weeks, not from neighbouring readings.
   kind: trap
   bearing: clinical
 - point: |
-    A shorter interval is better only for a smooth curve. For measurements with error, shrinking
-    the interval below the size of the swings makes the rate worse. So the derivative in a
-    paper's equation is always estimated, from an interval the Methods should state.
+    A shorter interval is better only for a smooth curve.
   kind: boundary
   bearing: methodological
 - point: |
-    Never set h to zero to get the derivative. The average has h on the bottom. Let h shrink and
-    watch where the answers go.
+    Never set h to zero to get the derivative. Let h shrink and watch where the answers go.
   kind: misconception
   bearing: teaching
 - point: |
-    Read dW/dt as a rate with a unit, kilograms per day, and read its sign first. A figure of
-    minus 0.05 means weight is falling by 0.05 kg a day at that instant. It says nothing about
-    how much has been lost so far.
+    Read dW/dt as a rate with a unit, kilograms per day, and read its sign first. It says
+    nothing about how much has been lost so far.
   kind: move
   bearing: clinical
 - point: |
     When a trial reports a rate of weight change, look in the Methods for the interval and the
-    averaging used. Polidori's rates came from moving averages over 52-day intervals. A rate
-    from single weighings a week apart is a different, noisier number.
+    averaging used.
   kind: move
   bearing: methodological
   refs: [polidori_2016]
