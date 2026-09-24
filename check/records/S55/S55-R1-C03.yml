@@ -493,7 +493,21 @@ retrieval_items:
 - q: How does a case-control study differ from a cohort study?
   a: A cohort study starts from the exposure and follows people forward to the outcome. A case-control
     study starts from the outcome (cases and controls) and compares past exposures.
-figure_note: "The only real numbers are one pair, 94% against 39%, already in a two-row table; the wanted figure, a timeline of when each design measures exposure and outcome, is not a chart the tool can draw honestly."
+figures:
+- file: s55-r1-c03-salsa-cases-controls.png
+  caption: "The hepatitis A outbreak in Pennsylvania, 2003 (CDC textbook): the share who ate salsa among people who fell ill (cases) and among people who ate at the same restaurant and did not fall ill (controls). The cases' 94% alone could mean only that salsa was popular; the controls' 39% is what shows that salsa went with falling ill."
+  alt: "A bar chart with two bars. People who fell ill, the cases: 94% ate salsa. People who did not fall ill, the controls: 39% ate salsa."
+  source: draw.py
+  spec:
+    kind: bar
+    x: ["people who fell ill (cases)", "people who did not fall ill (controls)"]
+    series:
+    - {name: share who ate salsa, y: [94, 39]}
+    x_label: group
+    y_label: share who ate salsa (%)
+    y_range: [0, 100]
+    value_labels: true
+    size: [5.0, 3.0]
 provenance:
   map_version_id: fc19c8bc-a216-4131-99fb-ebe3f19cec4a
   outcome_refs:

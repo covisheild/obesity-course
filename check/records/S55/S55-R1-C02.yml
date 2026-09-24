@@ -718,7 +718,7 @@ retrieval_items:
     possible result of a chance process.
 figures:
 - file: s55-r1-c02-parts-named.png
-  caption: "The five made-up first drafts and their rewrites in the second illustration, counted by which part each names. All five drafts name an outcome, but only 1 fences its population and none names a comparison. After rewriting, all 5 fence the population and 4 name an exposure and a comparison; the fifth is a how-common question."
+  caption: "The five made-up first drafts and their rewrites in the second illustration, counted by which part each names. All five drafts name an outcome, but only 1 fences its population and none names a comparison. After rewriting, all 5 fence the population and 4 name an exposure and a comparison; rewrite 1 has neither, because it is a how-common question."
   alt: "A bar chart with four parts, each with two bars. Fenced population: 1 in the first drafts, 5 in the rewrites. Exposure, counting an intervention as one: 3 and 4. Comparison: 0 and 4. Outcome: 5 and 5."
   source: draw.py
   spec:
@@ -726,6 +726,8 @@ figures:
     from_table: {block: 3, x: 0, y: [1, 2]}
     x_label: part of the question
     y_label: number of the five questions naming it
+    y_range: [0, 6]
+    value_labels: true
     relations:
     - check: "y1[3] = 5"
     - check: "y2[0] = 5"

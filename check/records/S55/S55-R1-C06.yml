@@ -998,6 +998,35 @@ figures:
     x_label: study design named in the title
     y_label: median citations in 2 years
     value_labels: true
+- file: s55-r1-c06-uncited-shares.png
+  caption: "The six shares uncited in the first example's table, each a count of something different. The 55% counted all items, letters and meeting abstracts included, over 5 years; the 4% counted biomedical research articles and reviews of 2006 until December 2017. The two Scopus rows differ only in what was counted: 23 in every 100 with letters and notes, 18 with articles alone. None counts descriptive cross-sectional studies. Line them up to see how much the choices matter, never to rank them."
+  alt: "A bar chart of six shares uncited, with a dashed line at half. All items published 1981 to 1985, counted for 5 years: 55%. Biomedical articles and reviews of 2006, Web of Science: 4%. All fields 1900 to 2015, Web of Science: 21%. Medical science papers of 1990, after 27 years: 12%. Medicine in Scopus, seven document types, 1996 to 2015: 23%. Medical articles only, same Scopus count: 18%."
+  source: draw.py
+  spec:
+    kind: bar
+    x: ["all items\n1981 to 1985, 5 yrs", "biomedical\n2006, WoS", "all fields\n1900 to 2015, WoS", "medical\n1990, 27 yrs", "medicine, Scopus\nletters, notes", "medicine, Scopus\narticles only"]
+    series:
+    - {name: share uncited, y: [55, 4, 21, 12, 23, 18]}
+    x_label: what was counted, and when
+    y_label: share uncited (%)
+    y_range: [0, 60]
+    value_labels: true
+    refs:
+    - {y: 50, label: half}
+    size: [7.0, 3.4]
+- file: s55-r1-c06-heneberg-check.png
+  caption: "Heneberg's check of the Web of Science records of 13 Nobel prizewinners. At first glance about 1.6% of their papers looked uncited; after about 20 hours of checking by hand, 0.3%. The rest had been cited, and the database had missed it."
+  alt: "A bar chart with two bars: share of papers that looked uncited, about 1.6% at first glance in Web of Science and 0.3% after about 20 hours of checking by hand."
+  source: draw.py
+  spec:
+    kind: bar
+    x: ["at first glance", "after checking by hand"]
+    series:
+    - {name: share looking uncited, y: [1.6, 0.3]}
+    x_label: Web of Science records of 13 Nobel prizewinners
+    y_label: share looking uncited (%)
+    value_labels: true
+    size: [4.6, 2.8]
 provenance:
   map_version_id: fc19c8bc-a216-4131-99fb-ebe3f19cec4a
   outcome_refs:
