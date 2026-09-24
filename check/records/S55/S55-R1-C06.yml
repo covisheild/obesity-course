@@ -9,6 +9,7 @@ clusters:
 - evidence-to-action
 ground_floor_deps:
 - B0-R0-C04
+- B0-R0-C28
 - B0-R0-C41
 - B0-R0-C42
 concept_deps:
@@ -19,8 +20,8 @@ definition:
     A citation is an entry in the reference list of a later published work that points to an earlier
     one. A citation database records the reference lists of the journals it indexes. For each paper
     it holds, it counts how many of those later works cite it. Web of Science, owned by Clarivate, is
-    the database behind most of the figures below. A paper is uncited, in a given database, when that
-    count is zero.
+    the database behind most of the figures below; Scopus is another. A paper is uncited, in a given
+    database, when that count is zero.
 
     Every count of uncited papers rests on three choices. The first is the database, and which kinds
     of document in it are counted. The second is the set of papers, usually all those published in
@@ -39,9 +40,16 @@ definition:
     not released.
 
     From Sugimoto and Larivière's 2018 book, Golosovsky and Larivière report that 12% of
-    medical-science papers published in 1990 were uncited after 27 years. In five leading general
-    medical journals, counted in Web of Science, the mean share uncited 5 years after publication was
-    8.3% for papers of 1990 and 0.7% for papers of 2010.
+    medical-science papers published in 1990 were uncited after 27 years.
+
+    Nicolaisen and Frandsen counted in Scopus. They took seven document types published from 1996 to
+    2015, among them articles, reviews, letters and notes, and counted citations up to 6 December
+    2018. So the window is open: a paper of 1996 had about 22 years to be cited, and a paper of 2015
+    about 3. They give each result as an uncitedness ratio, a share written as a fraction of 1, so
+    0.23 means 23 in every 100. For medicine, all seven types together, the ratio was 0.23. For
+    medical articles alone it was 0.18, and for medical notes 0.64. The authors treat such 20-year
+    totals only as overall indications, because younger papers generally have a higher uncited ratio
+    than older ones.
 
     A database misses citations: a paper it records as uncited may have been cited in a journal or book
     it does not index, or missed through an error. So the true share uncited is probably lower than the
@@ -51,8 +59,16 @@ definition:
     A citation records that one work referred to another. It does not record whether the earlier work
     was used, and many citations are superficial. An uncited paper may still be read and used.
 
-    No open study found for this course measures how often papers are cited according to their study
-    design. So no figure here says how often descriptive cross-sectional studies go uncited.
+    One study held for this course sorts papers by design.
+
+    Patsopoulos, Analatos and Ioannidis took
+    2646 articles published in 1991 and 2001 from the Science Citation Index in Web of Science. They
+    sorted them into seven designs by the design named in the title; the second example below shows
+    five of them. They counted each article's citations to the end of the second year after
+    publication and gave the median for each design, not a share uncited. Meta-analyses, which
+    combine earlier studies, had the highest medians. Case reports, on one patient or a few, received
+    negligible citations. The study has no cross-sectional category. So no held measurement says how
+    often descriptive cross-sectional studies are cited, or go uncited.
   references:
   - citekey: van_noorden_2017
     kind: primary
@@ -393,50 +409,181 @@ definition:
       opened: true
       claim_located: true
       checked_on: '2026-09-25'
-  - citekey: nowroozzadeh_2019
+  - citekey: nicolaisen_frandsen_2019
     kind: primary
-    locator: 'Methods: five journals, Web of Science, four years of papers'
+    locator: 'Method, first paragraph: Scopus, the retrieval date, the window and the seven document types'
     quote: |-
-      Using Web of Science (WOS), 2 we calculated the rate of uncitedness in the aforementioned journals in 1990, 2000, 2010, and 2015.
+      Data for the analysis was retrieved from Scopus. December 6, 2018 there was a total of
     verified:
-      resolved_id: https://doi.org/10.1007/s11606-019-05290-2
+      resolved_id: https://doi.org/10.1007/s11192-019-03064-5
       opened: true
       claim_located: true
       checked_on: '2026-09-25'
       note: |-
-        The five journals are named in the preceding sentence: Annals of Internal Medicine, BMJ,
-        JAMA, the Lancet and the New England Journal of Medicine. No open licence; short quotation
-        only.
-  - citekey: nowroozzadeh_2019
+        Publisher-copyright excerpt (Akadémiai Kiadó), no licence: short quotation for audit only.
+        The same paragraph continues: "The publication window was set to 1996–2015 and limited to seven
+        of the most common document types".
+  - citekey: nicolaisen_frandsen_2019
     kind: primary
-    locator: 'Results, first sentence: five years after publication'
+    locator: 'Method, first paragraph: the publication window and document types'
     quote: |-
-      The mean rate of uncitedness at five years after publication progressively improved from 8.3 for the 1990 cohort to 7.1 and 0.7 for the 2000 and 2010 cohorts, respectively
+      The publication window was set to 1996–2015 and limited to seven of the most common document types1 (articles, books, book chapters, conference papers, letters, notes, and reviews).
     verified:
-      resolved_id: https://doi.org/10.1007/s11606-019-05290-2
+      resolved_id: https://doi.org/10.1007/s11192-019-03064-5
       opened: true
       claim_located: true
       checked_on: '2026-09-25'
       note: |-
-        The letter prints these rates without a unit. Its chart axis reads "Uncited articles,
-        percent", so the record gives them as per cent.
-  - citekey: nowroozzadeh_2019
+        The "1" after "types" is the footnote mark, copied as the text has it.
+  - citekey: nicolaisen_frandsen_2019
     kind: primary
-    locator: 'Results, second sentence: the first and second years'
+    locator: 'Method, continued: the open citation window'
     quote: |-
-      The same pattern was observed for the mean rate of uncited researches in the first year of publication (46.0, 38.0, 18.9, and 15.5 for 1990, 2000, 2010, and 2015 cohorts, respectively) and in the second year (16.1, 13.4, 2.7, and 1.7, respectively).
+      Thus, an uncited document is a document that has not received any citations in Scopus at time of retrieval (December 6, 2018).
     verified:
-      resolved_id: https://doi.org/10.1007/s11606-019-05290-2
+      resolved_id: https://doi.org/10.1007/s11192-019-03064-5
       opened: true
       claim_located: true
       checked_on: '2026-09-25'
-  - citekey: nowroozzadeh_2019
+  - citekey: nicolaisen_frandsen_2019
     kind: primary
-    locator: 'Discussion, limitation: one database'
+    locator: 'Method, continued: totals treated as overall indications'
     quote: |-
-      As a limitation, our results should be interpreted with cau- tion, since it relied on the WOS.
+      Totals are given, but treated as overall indications.
     verified:
-      resolved_id: https://doi.org/10.1007/s11606-019-05290-2
+      resolved_id: https://doi.org/10.1007/s11192-019-03064-5
+      opened: true
+      claim_located: true
+      checked_on: '2026-09-25'
+  - citekey: nicolaisen_frandsen_2019
+    kind: primary
+    locator: 'Introduction: zero in Scopus is not zero everywhere'
+    quote: |-
+      an uncited document equals a document with zero citations in Scopus, which is not necessarily the same as a document with no citations at all.
+    verified:
+      resolved_id: https://doi.org/10.1007/s11192-019-03064-5
+      opened: true
+      claim_located: true
+      checked_on: '2026-09-25'
+  - citekey: nicolaisen_frandsen_2019
+    kind: primary
+    locator: 'Table 1, Selected subject areas (1996–2015), Medicine row: 0 citations, total, uncitedness ratio'
+    quote: |-
+      Medicine                2,221,845     9,666,622   0.23
+    verified:
+      resolved_id: https://doi.org/10.1007/s11192-019-03064-5
+      opened: true
+      claim_located: true
+      checked_on: '2026-09-25'
+      note: |-
+        The column heads are "Subject area", "0 citations", "Total" and "Uncitedness ratio"; the
+        ratio covers all seven document types.
+  - citekey: nicolaisen_frandsen_2019
+    kind: primary
+    locator: 'Appendix 4, Table 6, Medicine, Total row: articles 0.18 (first column), notes 0.64 (sixth)'
+    quote: |-
+      Total 0.18       0.33   0.66          0.36      0.44   0.64   0.18
+    verified:
+      resolved_id: https://doi.org/10.1007/s11192-019-03064-5
+      opened: true
+      claim_located: true
+      checked_on: '2026-09-25'
+      note: |-
+        Table 6's column heads, in order: Articles, Books, Book chapters, Conference papers, Letters,
+        Notes, Reviews. The row is the Medicine block's Total. Table 2 gives the same totals in
+        brackets: "Medicine 74.31 (0.18) ... 4.34 (0.64)".
+  - citekey: nicolaisen_frandsen_2019
+    kind: primary
+    locator: 'Discussion and conclusion: younger documents have a higher uncited ratio'
+    quote: |-
+      It is therefore no surprise that younger documents generally have a higher uncited ratio than older documents.
+    verified:
+      resolved_id: https://doi.org/10.1007/s11192-019-03064-5
+      opened: true
+      claim_located: true
+      checked_on: '2026-09-25'
+  - citekey: patsopoulos_2005
+    kind: primary
+    locator: 'Abstract, Design and Setting: the designs, the years, the sample'
+    quote: |-
+      published in 1991 and in 2001 for a sample of 2646 articles.
+    verified:
+      resolved_id: https://doi.org/10.1001/jama.293.19.2362
+      opened: true
+      claim_located: true
+      checked_on: '2026-09-25'
+      note: |-
+        JAMA, all rights reserved: short quotation for audit only. The designs listed in the same
+        sentence: meta-analyses, randomized controlled trials, cohort studies, case-control studies,
+        case reports, nonsystematic reviews, and decision analysis or cost-effectiveness analysis.
+        The study has no cross-sectional category.
+  - citekey: patsopoulos_2005
+    kind: primary
+    locator: 'Methods, Identification and Eligibility: the database'
+    quote: |-
+      We searched the Institute for Scientific Information (ISI) Science Citation Index at the Web of Science Database
+    verified:
+      resolved_id: https://doi.org/10.1001/jama.293.19.2362
+      opened: true
+      claim_located: true
+      checked_on: '2026-09-25'
+  - citekey: patsopoulos_2005
+    kind: primary
+    locator: 'Methods: design classified from the title'
+    quote: |-
+      The search strategies for each type of publication sought the appearance of the relevant study design terms in the article title (TI).
+    verified:
+      resolved_id: https://doi.org/10.1001/jama.293.19.2362
+      opened: true
+      claim_located: true
+      checked_on: '2026-09-25'
+  - citekey: patsopoulos_2005
+    kind: primary
+    locator: 'Abstract, Main Outcome Measure: the window'
+    quote: |-
+      The citation count through the end of the second year after the year of publication and the total received citations.
+    verified:
+      resolved_id: https://doi.org/10.1001/jama.293.19.2362
+      opened: true
+      claim_located: true
+      checked_on: '2026-09-25'
+  - citekey: patsopoulos_2005
+    kind: primary
+    locator: 'Methods, Analysis: medians'
+    quote: |-
+      Citation counts per publication type and year were summarized with medians and interquartile ranges
+    verified:
+      resolved_id: https://doi.org/10.1001/jama.293.19.2362
+      opened: true
+      claim_located: true
+      checked_on: '2026-09-25'
+  - citekey: patsopoulos_2005
+    kind: primary
+    locator: 'Abstract, Results: case reports'
+    quote: |-
+      case reports received negligible citations.
+    verified:
+      resolved_id: https://doi.org/10.1001/jama.293.19.2362
+      opened: true
+      claim_located: true
+      checked_on: '2026-09-25'
+  - citekey: patsopoulos_2005
+    kind: primary
+    locator: 'Results, Early Citations: meta-analyses highest'
+    quote: |-
+      Both in 1991 and 2001, metaanalyses received the highest number of citations and RCTs were second
+    verified:
+      resolved_id: https://doi.org/10.1001/jama.293.19.2362
+      opened: true
+      claim_located: true
+      checked_on: '2026-09-25'
+  - citekey: patsopoulos_2005
+    kind: primary
+    locator: 'Comment, caveats: citation and clinical impact'
+    quote: |-
+      citation impact does not necessarily translate into clinical or scientific impact
+    verified:
+      resolved_id: https://doi.org/10.1001/jama.293.19.2362
       opened: true
       claim_located: true
       checked_on: '2026-09-25'
@@ -480,8 +627,9 @@ simplified_explanation: |
   The outline this course was planned from carried the sentence "most descriptive cross-sectional
   studies are never cited". A cross-sectional study, as an earlier section showed, measures a group
   once, at one time. That sentence was checked before this book was written. The measurements below
-  do not support it as written, and no open study was found that counts citations by study design.
-  So this book does not state it as a fact.
+  do not support it as written. The one study held that sorts papers by design has no
+  cross-sectional category, so it cannot test the sentence either. This book does not state it as a
+  fact.
 illustrations:
 - body: |
     Start with a sentence you may already have heard: "more than half of all research papers are
@@ -504,29 +652,31 @@ illustrations:
     | 4% | biomedical research articles and reviews | Web of Science | 2006 | December 2017 |
     | 21% | research papers from all fields, 39 million of them | Web of Science | 1900 to 2015 | December 2017 |
     | 12% | medical-science papers | not named in the paper that reports it | 1990 | 27 years after publication |
-    | 8.3% | papers in five leading general medical journals | Web of Science | 1990 | 5 years after publication |
-    | 0.7% | papers in the same five journals | Web of Science | 2010 | 5 years after publication |
+    | 0.23 as a ratio (23%) | medicine, seven document types including letters and notes | Scopus | 1996 to 2015 | 6 December 2018 |
+    | 0.18 as a ratio (18%) | medical articles only | Scopus | 1996 to 2015 | 6 December 2018 |
     ```
 
     Look at where the numbers come from, too. The 4% and 21% were worked out by Larivière, an
     information scientist, and Sugimoto, at Indiana University, for Van Noorden's feature. A feature
     is journalism, not a peer-reviewed paper, and the data behind its charts were later withdrawn from public view. The
     12% reaches us through a 2021 paper by Golosovsky and Larivière, who report it from a 2018 book
-    by Sugimoto and Larivière. This course has not been able to check that book. The 8.3% and 0.7%
-    come from a short research letter by Nowroozzadeh and Salehi-Marzijarani, which names its
-    database and its journals.
+    by Sugimoto and Larivière. This course has not been able to check that book. The 0.23 and 0.18
+    come from a peer-reviewed study by Nicolaisen and Frandsen, which names its database, its
+    document types and its dates. Their two rows differ only in what was counted: take out letters,
+    notes and the other document types, and the share uncited falls from 23 to 18 in every 100.
 
     Now test the sentence from the course outline: "most descriptive cross-sectional studies are
     never cited". Which row measures descriptive cross-sectional studies? None of them. Every row
-    counts papers by field, journal or year, never by study design. The nearest row for medicine
-    gives 12% after 27 years, and that is nowhere near "most". The sentence has no row to stand on.
+    counts papers by field, document type or year, never by study design. The rows for medicine give
+    12% after 27 years and 18% of articles in Scopus, and neither is anywhere near "most". The
+    sentence has no row to stand on.
   analogy_breaks_when: |
-    The table holds only what the held sources give. Most of the counts come from one database, Web
-    of Science, and most were reported rather than published with their data. A careful count in
-    another database, of the same kinds of document over the same windows, could give different
-    shares. A study that sorted papers by design could show that some designs are cited much less
-    than the field as a whole. Either would change what this section can say. Neither is held, so
-    neither is described here.
+    The table holds only what the held sources give. The counts come from two databases, Web of
+    Science and Scopus, and several were reported rather than published with their data. The two
+    Scopus rows run over an open window: a paper of 2015 had about 3 years to be cited, a paper of
+    1996 about 22, and the ratio lumps them together. A count by study design could show that some
+    designs are cited much less than the field as a whole; the next example shows the one such count
+    held, and what it leaves out.
 
     The rows are also not comparable with one another. Each answers its own question. Line them up to
     see how much the choices matter, never to rank the fields.
@@ -573,18 +723,18 @@ illustrations:
     as_of: '2026-09-25'
     quote: |-
       In particular, for the papers published in 1990 and for a citation window of 27 years, the uncit- edness ratio ranged from 12% for Medical Sciences to 70% for Arts & Humanities.
-  - value: '8.3'
-    unit: per cent, mean share of 1990 papers uncited 5 years after publication, five leading general medical journals, Web of Science
-    citekey: nowroozzadeh_2019
+  - value: '0.23'
+    unit: uncitedness ratio, medicine, seven document types, Scopus, papers of 1996 to 2015, citations to 6 December 2018
+    citekey: nicolaisen_frandsen_2019
     as_of: '2026-09-25'
     quote: |-
-      The mean rate of uncitedness at five years after publication progressively improved from 8.3 for the 1990 cohort to 7.1 and 0.7 for the 2000 and 2010 cohorts, respectively
-  - value: '0.7'
-    unit: per cent, mean share of 2010 papers uncited 5 years after publication, same five journals, Web of Science
-    citekey: nowroozzadeh_2019
+      Medicine                2,221,845     9,666,622   0.23
+  - value: '0.18'
+    unit: uncitedness ratio, medical articles only, Scopus, papers of 1996 to 2015, citations to 6 December 2018
+    citekey: nicolaisen_frandsen_2019
     as_of: '2026-09-25'
     quote: |-
-      The mean rate of uncitedness at five years after publication progressively improved from 8.3 for the 1990 cohort to 7.1 and 0.7 for the 2000 and 2010 cohorts, respectively
+      Total 0.18       0.33   0.66          0.36      0.44   0.64   0.18
   - value: '13'
     unit: Nobel prizewinners whose Web of Science records Heneberg checked
     citekey: van_noorden_2017
@@ -610,90 +760,116 @@ illustrations:
     quote: |-
       But it has been viewed more than 1,500 times and downloaded almost 500 times
 - body: |
-    Now watch the window change the answer, with everything else held still. Nowroozzadeh and
-    Salehi-Marzijarani counted papers in five leading general medical journals in Web of Science.
-    The journals are Annals of Internal Medicine, BMJ, JAMA, the Lancet and the New England Journal
-    of Medicine. They gave the mean share uncited in the first year after publication, in the second
-    year, and at five years.
+    Now look at the one held count that sorts papers by design. Patsopoulos, Analatos and Ioannidis
+    searched the Science Citation Index in Web of Science for articles published in 1991 and in 2001
+    whose titles named their design. For each design they gave the median number of citations an
+    article received by the end of the second year after publication. The median is the middle value
+    once the counts are put in order, as Book 0's section on average and spread showed.
+
+    A meta-analysis combines the results of earlier studies of the same question into one answer. A
+    case report describes one patient, or a few. The table shortens randomised controlled trial to randomised trial. It gives five of the study's seven
+    designs; the other two, nonsystematic reviews and decision or cost-effectiveness analyses, are
+    left out to keep it short. Each cell is a median number of citations in the first two years.
 
     ```table
-    | Year after publication | Papers of 1990 (%) | Papers of 2010 (%) |
-    | 1 | 46.0 | 18.9 |
-    | 2 | 16.1 | 2.7 |
-    | 5 | 8.3 | 0.7 |
+    | Design | Articles of 1991 | Articles of 2001 |
+    | Meta-analysis | 5 | 9 |
+    | Randomised trial | 4 | 6 |
+    | Cohort | 3 | 5 |
+    | Case-control | 3 | 4 |
+    | Case report | 0 | 1 |
     ```
 
-    Answer this before you read on: what share of these journals' 1990 papers were uncited? All three
-    numbers in the first column are correct answers. They differ only in how long the count ran.
+    Read the labels first. The database is Web of Science. The papers are articles of 1991 and of
+    2001 whose design is in the title. The window is two years after the year of publication. And
+    the figure is a median count of citations, not a share uncited.
 
-    Work out how much the window matters. Divide the first-year share by the five-year share. For the
-    papers of 1990:
+    A median can still tell you something about uncited papers. The median for case reports of 1991
+    is 0. The middle of the ordered counts is 0, so at least half of those case reports had no
+    citation in their first two years. That is a floor, not the share itself: it could be more than
+    half.
 
-    ```working
-    46.0 divided by 8.3 = 5.5
-    ```
-
-    So the same papers look five and a half times as uncited if you stop counting after one year
-    instead of five.
-
-    Now hold the window at five years and change the year of publication instead. The share falls from
-    8.3% for papers of 1990 to 0.7% for papers of 2010. Anyone who quotes you "the" share of uncited
-    papers in these journals has chosen both the year and the window, whether they say so or not.
+    Now the question this section keeps asking. Which row is the descriptive cross-sectional study?
+    None. The study has no cross-sectional category. The cohort and case-control rows are studies
+    that relate an exposure to an outcome, and their medians sit between the meta-analyses and the
+    case reports. Nothing in the table tells you where a cross-sectional study would sit.
   analogy_breaks_when: |
-    These are five journals that almost everyone in medicine reads. The authors themselves warn that
-    their results rest on one database and may not carry to other journals. A study in a small journal
-    that one database does not cover would look quite different. So would a count in a database that
-    covers it.
-
-    The letter prints its rates without a unit. The chart beside them is labelled in per cent, and the
-    section reads them that way.
+    A study was counted only if its design was named in its title, and most studies do not name
+    their design there. The authors did not remove self-citations. The two-year window is short, and
+    the counts come from one database. The authors add that citation impact does not necessarily
+    translate into clinical or scientific impact. So the table ranks designs by early citations in
+    one database, and nothing more.
   numbers:
-  - value: '46.0'
-    unit: per cent, mean share of 1990 papers uncited in the first year, five journals, Web of Science
-    citekey: nowroozzadeh_2019
+  - value: '5'
+    unit: median citations by the end of the second year after publication, meta-analyses published in 1991, Web of Science
+    citekey: patsopoulos_2005
     as_of: '2026-09-25'
     quote: |-
-      The same pattern was observed for the mean rate of uncited researches in the first year of publication (46.0, 38.0, 18.9, and 15.5 for 1990, 2000, 2010, and 2015 cohorts, respectively) and in the second year (16.1, 13.4, 2.7, and 1.7, respectively).
-  - value: '18.9'
-    unit: per cent, mean share of 2010 papers uncited in the first year, five journals, Web of Science
-    citekey: nowroozzadeh_2019
+      Meta-analysis 71 (171) 266 (608) 40 (56) 135 (51) 7 (10) 19 (7) 5 (2-15) 9 (4-20) .004
+  - value: '9'
+    unit: median citations by the end of the second year after publication, meta-analyses published in 2001, Web of Science
+    citekey: patsopoulos_2005
     as_of: '2026-09-25'
     quote: |-
-      The same pattern was observed for the mean rate of uncited researches in the first year of publication (46.0, 38.0, 18.9, and 15.5 for 1990, 2000, 2010, and 2015 cohorts, respectively) and in the second year (16.1, 13.4, 2.7, and 1.7, respectively).
-  - value: '16.1'
-    unit: per cent, mean share of 1990 papers uncited in the second year, five journals, Web of Science
-    citekey: nowroozzadeh_2019
+      Meta-analysis 71 (171) 266 (608) 40 (56) 135 (51) 7 (10) 19 (7) 5 (2-15) 9 (4-20) .004
+  - value: '4'
+    unit: median citations by the end of the second year after publication, randomised controlled trials published in 1991, Web of Science
+    citekey: patsopoulos_2005
     as_of: '2026-09-25'
     quote: |-
-      The same pattern was observed for the mean rate of uncited researches in the first year of publication (46.0, 38.0, 18.9, and 15.5 for 1990, 2000, 2010, and 2015 cohorts, respectively) and in the second year (16.1, 13.4, 2.7, and 1.7, respectively).
-  - value: '2.7'
-    unit: per cent, mean share of 2010 papers uncited in the second year, five journals, Web of Science
-    citekey: nowroozzadeh_2019
+      Randomized controlled trials 328 (513) 264 (420) 127 (39) 85 (32) 35 (11) 39 (15) 4 (1-10) 6 (2-14) .001
+  - value: '6'
+    unit: median citations by the end of the second year after publication, randomised controlled trials published in 2001, Web of Science
+    citekey: patsopoulos_2005
     as_of: '2026-09-25'
     quote: |-
-      The same pattern was observed for the mean rate of uncited researches in the first year of publication (46.0, 38.0, 18.9, and 15.5 for 1990, 2000, 2010, and 2015 cohorts, respectively) and in the second year (16.1, 13.4, 2.7, and 1.7, respectively).
-  - value: '8.3'
-    unit: per cent, mean share of 1990 papers uncited at five years, five journals, Web of Science
-    citekey: nowroozzadeh_2019
+      Randomized controlled trials 328 (513) 264 (420) 127 (39) 85 (32) 35 (11) 39 (15) 4 (1-10) 6 (2-14) .001
+  - value: '3'
+    unit: median citations by the end of the second year after publication, cohort studies published in 1991, Web of Science
+    citekey: patsopoulos_2005
     as_of: '2026-09-25'
     quote: |-
-      The mean rate of uncitedness at five years after publication progressively improved from 8.3 for the 1990 cohort to 7.1 and 0.7 for the 2000 and 2010 cohorts, respectively
-  - value: '0.7'
-    unit: per cent, mean share of 2010 papers uncited at five years, five journals, Web of Science
-    citekey: nowroozzadeh_2019
+      Cohort 92 (224) 401 (1023) 45 (49) 131 (33) 5 (5) 18 (4) 3 (1-9) 5 (2-10) .14
+  - value: '5'
+    unit: median citations by the end of the second year after publication, cohort studies published in 2001, Web of Science
+    citekey: patsopoulos_2005
     as_of: '2026-09-25'
     quote: |-
-      The mean rate of uncitedness at five years after publication progressively improved from 8.3 for the 1990 cohort to 7.1 and 0.7 for the 2000 and 2010 cohorts, respectively
+      Cohort 92 (224) 401 (1023) 45 (49) 131 (33) 5 (5) 18 (4) 3 (1-9) 5 (2-10) .14
+  - value: '3'
+    unit: median citations by the end of the second year after publication, case-control studies published in 1991, Web of Science
+    citekey: patsopoulos_2005
+    as_of: '2026-09-25'
+    quote: |-
+      Case-control 172 (302) 361 (659) 57 (33) 118 (33) 5 (3) 13 (4) 3 (1-7) 4 (2-9) .02
+  - value: '4'
+    unit: median citations by the end of the second year after publication, case-control studies published in 2001, Web of Science
+    citekey: patsopoulos_2005
+    as_of: '2026-09-25'
+    quote: |-
+      Case-control 172 (302) 361 (659) 57 (33) 118 (33) 5 (3) 13 (4) 3 (1-7) 4 (2-9) .02
+  - value: '0'
+    unit: median citations by the end of the second year after publication, case reports published in 1991, Web of Science
+    citekey: patsopoulos_2005
+    as_of: '2026-09-25'
+    quote: |-
+      Case report 167 (320) 249 (463) 44 (26) 57 (23) 0 (0) 1 (0) 0 (0-1) 1 (0-1)
+  - value: '1'
+    unit: median citations by the end of the second year after publication, case reports published in 2001, Web of Science
+    citekey: patsopoulos_2005
+    as_of: '2026-09-25'
+    quote: |-
+      Case report 167 (320) 249 (463) 44 (26) 57 (23) 0 (0) 1 (0) 0 (0-1) 1 (0-1)
 must_know:
 - point: |
     Never quote a share of uncited papers without its three labels. Name the database and what it
-    counted. Name the year the papers were published. Name how long the count ran. In the same five medical
-    journals, 46.0% of papers from 1990 were uncited in their first year and 8.3% at five years (Web
-    of Science). Both are true. Without the labels, neither means anything.
+    counted. Name the year the papers were published. Name how long the count ran. In Scopus, for
+    medical papers of 1996 to 2015 counted to 6 December 2018, the uncitedness ratio was 0.18 for
+    articles and 0.64 for notes. Both are true. Without the labels, neither means anything.
   kind: number
   bearing: methodological
   refs:
-  - nowroozzadeh_2019
+  - nicolaisen_frandsen_2019
 - point: |
     The belief that more than half of all papers are never cited is an error. It goes back to a 1990
     count that included letters, corrections and meeting abstracts, over only 5 years. A later count
@@ -732,10 +908,13 @@ must_know:
 - point: |
     When someone says a kind of study, such as a descriptive cross-sectional study, is "never cited",
     ask for the study that counted it. It should name its database, how it sorted papers by design,
-    the years and the window. No open study found for this course does that. Until you see one, the
-    claim is an impression, not a finding.
+    the years and the window. The one held count by design, of Web of Science articles of 1991 and
+    2001, has no cross-sectional category. Until you see one that has, the claim is an impression,
+    not a finding.
   kind: dispute
   bearing: teaching
+  refs:
+  - patsopoulos_2005
 - point: |
     A paper's title is not its finding. Golosovsky and Larivière's paper is called "Uncited papers are
     not useless". It shows that uncited papers follow the same statistical pattern as cited ones.
@@ -748,13 +927,14 @@ must_know:
 - point: |
     What would overturn these figures is a peer-reviewed count in another database that gave very
     different shares. It would have to count the same kinds of document over the same windows. Until then, quote them as what
-    they are: counts in one database, mostly reported through a news feature whose data were not
-    released.
+    they are: counts in Web of Science and Scopus. Several of them were reported through a news
+    feature whose data were not released.
   kind: boundary
   bearing: methodological
   refs:
   - van_noorden_2017
   - golosovsky_lariviere_2021
+  - nicolaisen_frandsen_2019
 exercises:
 - type: critique
   prompt: |
@@ -775,8 +955,10 @@ exercises:
     sciences, a count reported by Golosovsky and Larivière gives 12% of papers from 1990 uncited after
     27 years.
 
-    Premise 2 has no measurement behind it. None of the counts in this section sorts papers by study
-    design. So nobody can tell you from these figures how often a descriptive study goes uncited.
+    Premise 2 has no measurement behind it. The one count in this section that sorts papers by
+    design, Patsopoulos and colleagues' count in Web of Science, has no cross-sectional category.
+    The lowest design in it is the case report. So nobody can tell you from these figures how often
+    a descriptive study goes uncited.
 
     Now grant both premises, as Book 0's section on argument taught you to. The conclusion still does
     not follow. Being uncited does not mean being useless. A public-health paper in Van Noorden's
@@ -819,10 +1001,11 @@ exercises:
     letters and corrections, which almost nobody cites, and it waited only five years.
 
     Counts of real research papers give much smaller shares. In one large database, Web of Science,
-    about 4% of biomedical papers published in 2006 had no citation by the end of 2017. In five of the
-    best-known medical journals, under 1% of papers published in 2010 had none after five years.
+    about 4% of biomedical papers published in 2006 had no citation by the end of 2017. In another,
+    Scopus, about 18 in every 100 medical research articles published from 1996 to 2015 had none by
+    December 2018.
 
-    Say how sure you are. These are counts in one database, and the database misses some citations.
+    Say how sure you are. Each is a count in one database, and every database misses some citations.
     So the true shares are probably lower. Several of the figures come from a magazine
     feature, not a peer-reviewed study.
 
@@ -846,16 +1029,20 @@ retrieval_items:
 - q: In Web of Science, what share of biomedical papers published in 2006 were uncited by December 2017?
   a: 4%, counting research articles and reviews, from an analysis by Larivière and Sugimoto reported in
     a Nature news feature.
+- q: Does any held study measure how often descriptive cross-sectional studies are cited?
+  a: No. The one held count by design (Patsopoulos and colleagues, Web of Science, articles of 1991
+    and 2001, citations in 2 years) has no cross-sectional category; case reports were lowest.
 figures:
-- file: s55-r1-c06-window.png
-  caption: "Five leading general medical journals, counted in Web of Science: the mean share of papers still uncited in the first year after publication, the second year, and at 5 years. Papers of 1990: 46.0%, 16.1%, 8.3%. Papers of 2010: 18.9%, 2.7%, 0.7%. The same papers give different answers as the count runs longer."
-  alt: "A line chart with two falling lines against years after publication, 1, 2 and 5. Papers of 1990 fall from 46.0 to 16.1 to 8.3 per cent uncited. Papers of 2010 fall from 18.9 to 2.7 to 0.7 per cent."
+- file: s55-r1-c06-medians-by-design.png
+  caption: "Median citations by the end of the second year after publication, for articles whose title named their design, Web of Science (Patsopoulos and colleagues). Articles of 1991: meta-analysis 5, randomised controlled trial 4, cohort 3, case-control 3, case report 0. Articles of 2001: 9, 6, 5, 4 and 1. There is no cross-sectional category."
+  alt: "A bar chart with two bars for each of five study designs. Median citations in 2 years for articles of 1991 and of 2001: meta-analysis 5 and 9, randomised controlled trial 4 and 6, cohort 3 and 5, case-control 3 and 4, case report 0 and 1."
   source: draw.py
   spec:
-    kind: line
+    kind: bar
     from_table: {block: 1, x: 0, y: [1, 2]}
-    x_label: year after publication
-    y_label: papers uncited (%)
+    x_label: study design named in the title
+    y_label: median citations in 2 years
+    value_labels: true
 provenance:
   map_version_id: fc19c8bc-a216-4131-99fb-ebe3f19cec4a
   outcome_refs:
