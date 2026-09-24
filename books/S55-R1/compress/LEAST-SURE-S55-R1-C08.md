@@ -1,0 +1,1 @@
+Least sure (S55-R1-C08): cut the worked trap example (2,2,2,2,0 totals 8 and may beat a question someone is waiting for) and the lines saying items 4 and 5 are the two halves of the who-is-waiting test. "A total can hide a zero" now stands bare; a cold reader may not see why the rejection rule outranks the total.

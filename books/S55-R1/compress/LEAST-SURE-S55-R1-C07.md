@@ -1,0 +1,1 @@
+Least sure (S55-R1-C07): cut the simplified_explanation sentences stating the argument's premises ("this person faces this decision", "they told me...") and conclusion, keeping only "Check the premises / Check the inference". The illustration still lays out Premise/Premise/Conclusion, but a cold reader may not know how to build the argument for a new candidate.
