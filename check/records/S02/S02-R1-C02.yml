@@ -9,6 +9,7 @@ clusters:
 - system-and-state
 ground_floor_deps:
 - B0-R0-C21
+- B0-R0-C01
 - B0-R0-C18
 - B0-R0-C19
 - B0-R0-C05
@@ -23,15 +24,16 @@ definition:
     The average rate of change of f over the interval from a to a + h is f(a + h) minus f(a),
     divided by h, for h not zero.
 
-    The derivative of f at a is the single number these averages settle on as h is made smaller
-    and smaller, through positive values and through negative values alike. Where the two sides
+    The derivative of f at a is the single number these averages settle on as h is taken closer
+    and closer to zero, from above and from below. Where the two sides
     do not settle on one number, f has no derivative at a.
 
     The derivative at a is written f′(a), said "f prime of a".
 
     The derivative carries the unit of f divided by the unit of the input.
 
-    The derivative belongs to a smooth curve. Repeated measurements are separate points with
+    The derivative belongs to a smooth curve, one with no jumps or corners, so that the averages
+    settle. Repeated measurements are separate points with
     error in them.
   references:
   - citekey: openstax_calculus_v1_s02
@@ -101,10 +103,11 @@ simplified_explanation: |
   Here is the procedure for a function f at an input a.
 
   1. Pick a small step, h. Work out f(a + h) minus f(a), and divide by h.
-  2. Make h smaller: 1, then 0.1, then 0.01, then 0.001.
+  2. Make h closer to zero: 1, then 0.1, then 0.01, then 0.001.
   3. Do the same with h below zero: minus 1, minus 0.1, and so on. Those intervals end at a
-     instead of starting there.
-  4. If both lists close in on the same number, that number is the derivative at a.
+     instead of starting there. (A negative divided by a negative is positive, `B0-R0-C01`.)
+  4. If both lists close in on the same number, that number is very likely the derivative at a.
+     The algebra, as below, settles it.
 
   You never set h to zero. The number they close in on is called the limit.
 
@@ -116,7 +119,7 @@ simplified_explanation: |
   Its sign tells you the direction. Positive means rising at that instant. Negative means
   falling. Zero means neither, at that instant.
 
-  Read the paper's equation again in these terms. dES/dt is the rate of change of stored
+  Read Hall and colleagues' equation from the last section again in these terms. dES/dt is the rate of change of stored
   energy, in kilocalories a day. It is not the stored energy itself.
 illustration:
   body: |
@@ -144,8 +147,9 @@ illustration:
     Read down the last column. Both lists close in on 20. So the rate at t = 2 is 20 a unit of
     time, not 25.
 
-    Now see why it is exactly 20, with algebra. Multiply out the bracket with the rule from
-    `B0-R0-C15`, once for each term.
+    Now see why it is exactly 20, with algebra. Each term of the first bracket multiplies the
+    whole second bracket. That is the rule from `B0-R0-C15`, used twice. The first working line
+    shows it.
 
     ```working
         (2 + h) times (2 + h) = 2 times (2 + h) + h times (2 + h)
@@ -164,7 +168,7 @@ illustration:
     The average rate over a step h is 20 + 5h, for any h. As h shrinks, 5h shrinks with it, and
     what is left is 20.
 
-    Now the same move on real measurements, where it breaks. A person weighs themselves each
+    Now the same move on real measurements, where it breaks. A made-up person weighs themselves each
     morning for fifteen days.
 
     ```table
@@ -186,28 +190,32 @@ illustration:
     14   79.8
     ```
 
-    Shrink the interval to one day, as you did for S. Take the last two days, then the two days
-    before them.
+    Shrink the interval to one day, as you did for S. Take the last two days, then the pair one
+    day earlier.
 
     ```working
         79.8 minus 79.6 = 0.2, over 1 day: 0.2 kg a day
         79.6 minus 79.0 = 0.6, over 1 day: 0.6 kg a day
     ```
 
-    Rising at 0.6 kg a day. Test that against the body. Hall (2008) gives body fat 39.5 MJ a
-    kilogram. The FAO/WHO/UNU report's worked example puts one woman's whole day's expenditure
-    at 8.26 MJ.
+    Rising at 0.6 kg a day. Test that against the body. Hall (2008) gives body fat 39.5
+    megajoules (MJ) a kilogram. A joint report of the Food and Agriculture Organization, the
+    World Health Organization and the United Nations University (FAO/WHO/UNU) has a worked
+    example. It puts the daily expenditure of an average lightly active woman of 30 to 50 at
+    8.26 MJ.
 
     ```working
         0.6 times 39.5 = 23.7
         23.7 divided by 8.26 = 2.87
     ```
 
-    Adding 0.6 kg of fat in a day would take 23.7 MJ more than she spent. That is nearly three
-    whole days of her expenditure. The one-day rate is measuring water, not stores.
+    Adding 0.6 kg of fat in a day would take 23.7 MJ more than was spent. That is nearly three
+    whole days of that expenditure. The one-day rate is measuring swings, not stores.
 
-    So with weighings, shrink the interval the other way. Average the first five days and the
-    last five. Each average belongs to its middle day.
+    So with weighings, widen the interval instead. Average the first five days and the last
+    five. Each average is placed at its middle day, the centre of the five days it covers. An
+    average of neighbouring weighings, worked out again at each step along the series, is called
+    a moving average.
 
     ```working
         80.3 plus 79.8 plus 80.1 plus 79.6 plus 80.2 = 400.0
@@ -222,7 +230,8 @@ illustration:
     interval.
   analogy_breaks_when: |
     Below the interval over which water swings, a shorter interval gives a worse rate, not a
-    better one.
+    better one. No source in this book gives that interval. Look for it in the Methods of the
+    paper in front of you.
 
     The fifteen weights are made up.
   numbers:
@@ -248,8 +257,9 @@ must_know:
   kind: move
   bearing: methodological
 - point: |
-    A rate of weight change taken from two weighings a day apart is mostly water. Take a rate
-    from averages over weeks, not from neighbouring readings.
+    A rate of weight change taken from two weighings a day apart can be mostly water, not stored
+    energy. This book's rule of thumb: take a rate from averages over weeks, not from
+    neighbouring readings.
   kind: trap
   bearing: clinical
 - point: |
@@ -284,17 +294,18 @@ exercises:
 
     Their weighings were 52 days apart.
 
-    Say what dBWi/dt denotes and what unit it carries. Then say why the authors did not take the
-    rate from two weighings made on neighbouring days, and what their choice gives up.
+    Say what dBWi/dt denotes and what unit it carries. Then say why a rate taken over 52 days is
+    safer than one taken from two weighings a day apart would be, and what it gives up.
   answer: |
     dBWi/dt, said "dee B W sub i by dee t", is the rate of change of body weight over interval i.
     Weight is in kilograms and time in days, so it is in kilograms a day. A negative value means
     weight was falling over that interval.
 
-    Why not neighbouring days. Weight moves from day to day with body water, food in the gut and
-    the time of weighing. Over one day those swings can be larger than the whole trend. A rate
-    from two neighbouring days would mostly measure the swings. Averaging many weighings, and
-    spreading the rate over 52 days, lets the swings cancel and leaves the trend.
+    Why not a day apart. Weight moves from day to day with body water, which Hall and colleagues
+    (2012) call "variable", and, most likely, with food in the gut. In this section's made-up
+    weighings, one day's swing was larger than the whole trend. A rate from two weighings a day
+    apart could mostly measure the swings. Over 52 days the trend adds up and a day's swing does
+    not, so the swing is small beside the trend.
 
     What it gives up. The rate is an average over each interval. It cannot show a change that
     happens inside the interval, such as weight falling fast for two weeks and then stopping. In
@@ -336,7 +347,8 @@ practice:
 
     From above: 7, 6.1, 6.01. From below: 5.9, 5.99. Both close in on 6.
 
-    The derivative at t = 3 is 6. In symbols, f′(3) = 6.
+    The derivative at t = 3 is very likely 6. The algebra in problem 9 gives exactly 6:
+    f′(3) = 6.
 - level: 2
   prompt: |
     Say each of these aloud in words, and give its unit.
@@ -427,8 +439,9 @@ practice:
   - polidori_2016
 - level: 5
   prompt: |
-    The FAO/WHO/UNU report (2004) gives a woman's total energy expenditure as 8.26 MJ a day. Take
-    a made-up day on which her metabolizable intake is 7.80 MJ.
+    The FAO/WHO/UNU report (2004) puts the daily expenditure of an average lightly active woman
+    of 30 to 50 at 8.26 MJ. Take a made-up woman with that expenditure, on a day when her
+    metabolizable intake is 7.80 MJ.
 
     Work out dES/dt, the rate of change of her energy stores, in MJ a day and then in kcal a day.
     Use 1 kcal = 4.184 kJ. Say what the sign means.
@@ -533,8 +546,8 @@ practice:
     Two steps broke, the third and the fourth.
 
     The third takes a rule that holds for a smooth curve and applies it to two weighings. Weight
-    on a scale swings from day to day with water and gut contents. A one-day interval sits inside
-    those swings, so the rate it gives is mostly swing.
+    on a scale swings from day to day with water and, most likely, gut contents. A one-day
+    interval sits inside those swings, so the rate it gives can be mostly swing.
 
     The fourth turns a change in weight into a change in fat. Hall and colleagues (2012) warn
     that "weight change may not directly represent energy imbalances, particularly over the short
@@ -545,7 +558,8 @@ practice:
     ```
 
     Adding 0.6 kg of fat would take 23.7 MJ of stored energy in one day. That is nearly three
-    days of the 8.26 MJ a day the FAO/WHO/UNU report gives as one woman's total expenditure.
+    days of the 8.26 MJ a day the FAO/WHO/UNU report gives for an average lightly active woman
+    of 30 to 50.
 
     What to do instead: take the rate from averages of several weighings, over weeks.
 
@@ -622,8 +636,8 @@ practice:
   - hall_2012_ajcn
 retrieval_items:
 - q: How do you work out the derivative of f at a without a ruler?
-  a: Take the average rate f(a + h) minus f(a), divided by h, for smaller and smaller h, above
-    zero and below it. If both lists close in on one number, that is the derivative, f′(a).
+  a: Take the average rate f(a + h) minus f(a), divided by h, for h closer and closer to zero,
+    above it and below it. If both lists close in on one number, that is the derivative, f′(a).
 - q: Why is h never set to zero?
   a: The average divides by h, and dividing by zero is not allowed. The derivative is the number
     the averages close in on as h shrinks, not the average at h = 0.
@@ -631,20 +645,27 @@ retrieval_items:
   a: Kilograms per day. Positive means weight is rising at that instant, negative falling, zero
     neither.
 - q: Why is a rate from two weighings a day apart not a good estimate of dW/dt?
-  a: Day-to-day swings in body water and gut contents are larger than the trend. A rate from
+  a: Day-to-day swings in body water can be larger than the trend. A rate from
     averages over weeks is better. The derivative belongs to a smooth curve, not to noisy points.
 figures:
 - file: s02-r1-c02-settling.png
-  caption: "The average rate of S(t) = 5 t^2 from t = 2 over a step h, for steps from -1 to 1. Every average lies on the line 20 + 5h. As the step shrinks towards zero from either side, the averages close in on 20, the derivative at t = 2; the point h = 0 itself is never computed."
-  alt: "Points on a rising straight line, with the step h along the bottom from -1 to 1 and the average rate up the side from 15 to 25. Points at h = -1, -0.1, -0.01 and -0.001 sit at 15, 19.5, 19.95 and 19.995; points at 0.001, 0.01, 0.1 and 1 sit at 20.005, 20.05, 20.5 and 25. The line passes through 20 at h = 0, where there is no point."
+  caption: "The average rate of S(t) = 5 t^2 from t = 2 over a step h, for six steps from -1 to 1. Every average lies on the line 20 + 5h. As the step shrinks towards zero from either side, the averages close in on 20, the derivative at t = 2. The dashed line marks h = 0, which is never computed. The closer steps, down to 0.001, are in the table."
+  alt: "Six points on a rising straight line, with the step h along the bottom from -1 to 1 and the average rate up the side from 15 to 25. Points at h = -1, -0.5 and -0.1 sit at 15, 17.5 and 19.5; points at 0.1, 0.5 and 1 sit at 20.5, 22.5 and 25. A dashed upright line marks h = 0, where the straight line passes 20 and there is no point."
   source: draw.py
   spec:
     kind: scatter
-    from_table: {block: 0, x: 0, y: [3]}
+    x: [-1, -0.5, -0.1, 0.1, 0.5, 1]
+    series:
+    - {name: "average rate", y: [15, 17.5, 19.5, 20.5, 22.5, 25]}
     x_label: step h
     y_label: average rate over the step
     relations:
     - {fit: "y = 20 + 5*x", draw: true, label: "average rate = 20 + 5h"}
+    derived:
+    - {value: "17.5", from: "20 + 5*(-0.5)"}
+    - {value: "22.5", from: "20 + 5*0.5"}
+    refs:
+    - {x: 0, label: "h = 0: never computed"}
     labels:
     - {text: "20 at h = 0", at: [0, 20], offset: [8, -14]}
 - file: s02-r1-c02-chord-tangent.png

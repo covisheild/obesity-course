@@ -692,7 +692,7 @@ def style_for(book_id):
     return pal, rc
 
 
-_SUP = str.maketrans("0123456789-−+()n", "⁰¹²³⁴⁵⁶⁷⁸⁹⁻⁻⁺⁽⁾ⁿ")
+_SUP = str.maketrans("0123456789-−+()nitkx", "⁰¹²³⁴⁵⁶⁷⁸⁹⁻⁻⁺⁽⁾ⁿⁱᵗᵏˣ")
 
 
 def _superscripts(fig):
@@ -700,7 +700,7 @@ def _superscripts(fig):
     notation layer does for prose. Display only: specs and their checks keep `^`. Added 24 Sep 2026,
     when S02-R1 legends printed raw carets."""
     import matplotlib.text as mtext
-    pat = re.compile(r"\^(\((?:[0-9+\-−n ]+)\)|[0-9]+|n)")
+    pat = re.compile(r"\^(\((?:[0-9+\-−a-z ]+)\)|[0-9]+|[a-z](?![a-z]))")
     for t in fig.findobj(mtext.Text):
         raw = t.get_text()
         if "^" in raw:

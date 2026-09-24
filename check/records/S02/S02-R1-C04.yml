@@ -31,7 +31,8 @@ definition:
     divided by k.
 
     A quantity W that approaches a level L in this way follows W = L plus (W0 minus L) times
-    e^(-kt), where W0 is its value at t = 0. The gap W minus L is the shrinking exponential.
+    e^(-kt), where W0 is its value at t = 0. The gap W minus L is the shrinking exponential. Its
+    rate of change is dW/dt = -k times (W minus L).
   references:
   - citekey: openstax_calculus_v1_s02
     kind: textbook
@@ -52,6 +53,20 @@ definition:
         can be checked on any calculator's e^(x) key.
   - citekey: openstax_calculus_v1_s02
     kind: textbook
+    locator: "§1.5 Exponential and Logarithmic Functions, subsection The Number e, the paragraph on the tangent line at x = 0"
+    quote: |-
+      is the only exponential function bxbx with tangent line at x=0x=0 that has a slope of 1
+    verified:
+      resolved_id: https://openstax.org/books/calculus-volume-1/pages/1-5-exponential-and-logarithmic-functions
+      opened: true
+      claim_located: true
+      checked_on: '2026-09-24'
+      note: |-
+        The extraction flattens the inline symbols, doubling each: "bxbx" is b^(x) and "x=0x=0"
+        is x = 0 on the page. The sentence opens "The function f(x) = e^(x)". The same
+        subsection gives e to six places, "e≈2.718282", flattened the same way.
+  - citekey: openstax_calculus_v1_s02
+    kind: textbook
     locator: "§1.5 Exponential and Logarithmic Functions, subsection Logarithmic Functions, the paragraph naming the natural logarithm"
     quote: |-
       Since this function uses natural ee as its base, it is called the natural logarithm.
@@ -67,7 +82,7 @@ definition:
         rebuilt in this record from the rule for multiplying powers (`B0-R0-C06`).
   - citekey: openstax_calculus_v1_s02
     kind: textbook
-    locator: "§3.9, Example on the mosquito population A(t) = 1000e^(0.3t), the closing sentence of its solution"
+    locator: "§3.9, Example on the mosquito population, the closing sentence of its solution"
     quote: |-
       The ratio of the rate of change of the population to the population is the constant 0.3.
     verified:
@@ -104,7 +119,8 @@ definition:
         to 5% of the start, ln 20 divided by k, is not in the book; it is derived in this record
         by the same steps with one twentieth in place of one half.
 simplified_explanation: |
-  Papers on body weight use a different base, a number written e.
+  Book 0 built powers and logarithms on ten (`B0-R0-C06` and `B0-R0-C07`). Papers on body weight use
+  a different base, a number written e.
 
   Take a base, say 2, and ask how steep the curve 2^(t) is where it starts, at t = 0. Take a very
   short step, 0.0001, and divide the change by the step.
@@ -137,7 +153,9 @@ simplified_explanation: |
   rule (`S02-R1-C03`) the rate of A e^(kt) is k times A e^(kt).
 
   The rate is k times the amount itself. The number k is the rate constant, the rate divided by the
-  amount. Its unit is one over time: per day, or per year.
+  amount. Its unit is the rate's unit divided by the amount's: (kilograms a day) divided by
+  kilograms is per day. For a quantity that shrinks, written A e^(-kt) with k above zero, the rate
+  is -k times the amount, so the rate divided by the amount is -k.
 
   A logarithm undoes a power. The natural logarithm, written ln, undoes a power of e. So ln(e^3) =
   3, ln e = 1 and ln 1 = 0.
@@ -198,11 +216,21 @@ illustration:
     0.693 divided by 0.999 = 0.694
     ```
 
-    Now put the two curves side by side. The share of the eventual change reached by time t is 1
-    minus e^(-kt). Work each row out on your calculator, times 100 for a percentage.
+    A half-time of 0.694 years, about 8 months, not 1 year.
+
+    Now put the two curves side by side. The change so far, divided by the whole change W0 minus L,
+    is the share reached.
+
+    ```working
+    W0 minus W = (W0 minus L) times (1 minus e^(-kt))
+    (W0 minus W) divided by (W0 minus L) = 1 minus e^(-kt)
+    ```
+
+    So the share of the eventual change reached by time t is 1 minus e^(-kt). Work each row out on
+    your calculator, times 100 for a percentage.
 
     ```table
-    | years | half-time 1 year (k = 0.693) | 95% at 3 years (k = 0.999) | the papers' rounded figures |
+    | years | half-time 1 year (k = 0.693) | 95% at 3 years (k = 0.999) | the paper's rounded figures |
     | 0 | 0.0 | 0.0 | |
     | 1 | 50.0 | 63.2 | about 50 |
     | 2 | 75.0 | 86.4 | |
@@ -212,7 +240,7 @@ illustration:
     ```
 
     Neither column passes through both figures. One exponential cannot give both, because for one
-    exponential the time to 95% is always 4.32 half-times. The papers' figures give 3 divided by
+    exponential the time to 95% is always 4.32 half-times. The paper's figures give 3 divided by
     1, which is 3.
 
     Book 0 gave you a test for a shape that flattens against a ceiling (`B0-R0-C20`). Take values at
@@ -237,7 +265,8 @@ illustration:
 
     A steady ratio of 0.5.
 
-    The ratio is what the curve is multiplied by over one step, so it is e^(-k) for a step of one year.
+    The ratio is what the gap to the ceiling, and each year's gain, is multiplied by over one
+    step, so it is e^(-k) for a step of one year.
     Take ln of both sides to get k back.
 
     ```working
@@ -249,7 +278,7 @@ illustration:
     That is the k you started from. Divide minus ln of the ratio by the length of the step.
   analogy_breaks_when: |
     Both columns are what one exponential would give. Neither is the model's own curve, which the
-    papers do not print as a formula. Nothing here says a real person follows either column.
+    paper does not print as a formula. Nothing here says a real person follows either column.
 
     Rounded or noisy readings make the ratios wobble, and one wobbling ratio is not evidence of any
     shape.
@@ -290,24 +319,12 @@ illustration:
     quote: |-
       with half of the weight change being achieved in about 1 year and 95% of the weight change in about 3 years
     as_of: '2026-09-24'
-  - value: '50'
-    unit: "% of the eventual change, nearly 1 year, in the 2012 consensus statement"
-    citekey: hall_2012_ajcn
-    quote: |-
-      It will take nearly 1 y to achieve 50% and ;3 y to achieve 95% of this weight loss (20).
-    as_of: '2026-09-24'
   - value: '25'
     unit: "kg, the eventual loss, 100 kg minus the 75 kg plateau"
     citekey: hall_2011_lancet
     quote: |-
       This constant diet perturbation was predicted to result in a bodyweight plateau at about 75 kg (165 lb) over a 10-year simulation taking roughly 1 year to reach half of the maximum weight loss and reaching 95% of this value after about 3 years.
     derived: "100 kg starting weight minus the 75 kg plateau, both from the same paragraph"
-    as_of: '2026-09-24'
-  - value: '4'
-    unit: "kg, the spread either way around the modelled loss after several years"
-    citekey: hall_2011_lancet
-    quote: |-
-      The dashed curves on figure 2A illustrate the ±4 kg weight-loss variability after several years
     as_of: '2026-09-24'
 must_know:
 - point: |
@@ -329,13 +346,15 @@ must_know:
   kind: trap
   bearing: methodological
 - point: |
-    To test whether a claimed curve is exponential, divide its rate by its value at two or more
-    times. With readings at equal steps, divide each difference by the one before; the ratio
+    To test whether a claimed curve is exponential, divide its rate by its value, or, for a curve
+    levelling off at L, by its gap to L, at two or more times. With readings at equal steps, divide each difference by the one before; the ratio
     must hold steady.
   kind: move
   bearing: methodological
 - point: |
-    "Exponential" is not a synonym for fast or for runaway.
+    A gap that closes exponentially closes fastest at the start and slowest at the end. When a
+    claim calls weight loss "exponential", ask whether it means growth or a closing gap, and for
+    its k with a unit.
   kind: misconception
   bearing: public
 - point: |
@@ -483,8 +502,8 @@ practice:
     unit t was measured in.
 - level: 3
   prompt: |
-    A quantity falls exponentially with a half-time of 14. Work out its rate constant k. Then work
-    out the share of the starting value left after 28, and after 10.
+    A quantity falls exponentially with a half-time of 14 days. Work out its rate constant k. Then
+    work out the share of the starting value left after 28 days, and after 10.
   answer: |
     Turn the half-time formula round: k is ln 2 divided by the half-time.
 
@@ -492,7 +511,9 @@ practice:
     0.693 divided by 14 = 0.0495
     ```
 
-    After 28, two half-times have passed, so a half of a half is left, one quarter. Check it with
+    So k is 0.0495 per day.
+
+    After 28 days, two half-times have passed, so a half of a half is left, one quarter. Check it with
     the formula.
 
     ```working
@@ -502,7 +523,7 @@ practice:
 
     A quarter, 0.250.
 
-    After 10, less than one half-time has passed, so more than half is left.
+    After 10 days, less than one half-time has passed, so more than half is left.
 
     ```working
     0.0495 times 10 = 0.495
@@ -534,7 +555,7 @@ practice:
 
     So t = 6.02. Check: e^(-0.2 times 6.02) is e^(-1.204), which is 0.300, and 100 times 0.300 is
     30.
-- level: 3
+- level: 4
   prompt: |
     A quantity is read at equal steps of 2 units of time: 60, 70, 75, 77.5. Find the level it is
     approaching, its rate constant k, and its half-time.
@@ -857,7 +878,8 @@ practice:
     ```
 
     An eventual loss near 25 kilograms, and about 12.6 by the end of the year. Take instead the
-    exponential that is 95% of the way at 3 years, with k = 0.999 per year.
+    exponential that is 95% of the way at 3 years, with k = 0.999 per year. At one year this curve
+    is 63.2% of the way (the table above).
 
     ```working
     0.999 times 0.25 = 0.2498
@@ -921,8 +943,8 @@ figures:
     - {fit: "y = 100*(1 - exp(-0.693*x))", series: "half-time 1 year (k = 0.693)", draw: true, label: "curve through the circles"}
     - {fit: "y = 100*(1 - exp(-0.999*x))", series: "95% at 3 years (k = 0.999)", draw: true, label: "curve through the squares"}
     labels:
-    - {text: "the papers: about 50% at 1 year", at: [1, 50], offset: [10, -14]}
-    - {text: "the papers: about 95% at 3 years", at: [3, 95], offset: [-70, 12]}
+    - {text: "the paper: about 50% at 1 year", at: [1, 50], offset: [10, -14]}
+    - {text: "the paper: about 95% at 3 years", at: [3, 95], offset: [-70, 12]}
 - file: s02-r1-c04-ratio-steps.png
   caption: "The one-year half-time curve read once a year, 0.0, 50.0, 75.0 and 87.5, drawn as the gain in each year. Each gain is half the one before: 25.0 divided by 50.0 and 12.5 divided by 25.0 are both 0.5. That steady ratio is e^(-k) for a step of one year, and gives back k = 0.693 per year."
   alt: "Three bars for each year's gain: 50.0 from year 0 to 1, 25.0 from year 1 to 2 and 12.5 from year 2 to 3, each half the height of the one before."

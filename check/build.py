@@ -1070,7 +1070,9 @@ WORKING_OPEN = '::: {custom-style="Working"}'
 # `10^5 times 10^2 = 10^(5 plus 2)` with the last caret raw on the page while the two before
 # it had become superscripts - the exact defect this whole layer exists to prevent.
 _SUP = re.compile(r"(?<![\w^~])([A-Za-z]{1,3}|\d[\d,.]*)\s*\^\s*"
-                  r"(\(\s*-?[\w][\w\s./,+-]{0,38}\)|-?\d+(?:\.\d+)?)(?!\^)")
+                  r"(\(\s*-?[\w][\w\s./,+-]{0,38}\)|-?\d+(?:\.\d+)?|[A-Za-z](?![\w(]))(?!\^)")
+# A single-letter exponent (x^n, 2^t) was added 24 Sep 2026 for S02-R1, whose rules are stated
+# for a general power; before, the caret reached the page raw.
 _LOGB = re.compile(r"\blog\s?(10|2|e)\b")
 _FENCE = re.compile(r"^\s*```+\s*(working|calc|table)?\s*$")
 
@@ -1602,6 +1604,18 @@ def booklet_md(sid, recs, subjects, clusters) -> tuple[str, list[str]]:
     return text, [r["concept_id"] for r in mine]
 
 
+def _book_numbers():
+    """{'S01-R1': 1, ...} from map/BOOKS.yml, the series in print order."""
+    path = os.path.join(os.path.dirname(ROOT), "map", "BOOKS.yml")
+    try:
+        with open(path, encoding="utf-8") as fh:
+            data = _yaml().safe_load(fh) or {}
+    except OSError:
+        return {}
+    books = data.get("books") if isinstance(data, dict) else data
+    return {b.get("id"): b.get("number") for b in books or [] if isinstance(b, dict)}
+
+
 def _ids_to_labels(text, recs, own):
     """A record id is build plumbing; the reader sees the label the book prints.
 
@@ -1618,6 +1632,12 @@ def _ids_to_labels(text, recs, own):
             return f"Book 0, {b0.get(recs[rid].get('sequence'), rid)}"
         if rid in own:
             return f"section {own[rid]}"
+        # Another subject book (S02-R1 cites Book 1, S01-R1): "Book 1, section 5". Added
+        # 24 Sep 2026; before, those ids reached the page raw.
+        if rid in recs and not rid.startswith("B0-"):
+            n = _book_numbers().get(rid.rsplit("-C", 1)[0])
+            if n is not None:
+                return f"Book {n}, section {recs[rid].get('sequence')}"
         return m.group(0)
     return re.sub(r"`?\b((?:B0|S\d\d)-R\d-C\d\d)\b`?", label, text)
 

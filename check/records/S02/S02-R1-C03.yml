@@ -14,7 +14,7 @@ ground_floor_deps:
 - B0-R0-C20
 - B0-R0-C21
 - B0-R0-C16
-concept_deps: [S02-R1-C01, S02-R1-C02]
+concept_deps: [S01-R1-C09, S02-R1-C01, S02-R1-C02]
 definition:
   text: |
     Four rules give the derivative of any sum of constant multiples of whole-number powers of
@@ -137,8 +137,24 @@ definition:
       note: |-
         Anchor for the shape the second illustration's made-up curve is given: falling, with the
         fall slowing.
+  - citekey: hall_2012_ajcn
+    kind: primary
+    locator: "Question 2, the passive and active compensation passage"
+    quote: |-
+      These include passive com-
+      pensatory changes such as an increase in energy expenditure with an
+      increase in body size and active compensation such as changes in
+      food intake after exercise.
+    verified:
+      resolved_id: https://pmc.ncbi.nlm.nih.gov/articles/PMC3302369/
+      opened: true
+      claim_located: true
+      checked_on: '2026-09-24'
+      note: |-
+        Defines passive compensation, which the illustration glosses at first use.
 simplified_explanation: |
-  Four rules do the same job in a line, for any rule made of powers of the input.
+  The last section found a derivative by shrinking the interval. Four rules do the same job in a
+  line, for any rule made of whole-number powers of the input, each times a number, added up.
 
   First, a symbol. d/dx, said "dee by dee x", means "the derivative with respect to x of what
   follows". The input can have any letter: d/dt for time, d/dW for weight.
@@ -186,13 +202,15 @@ simplified_explanation: |
   below zero. A positive second derivative then means the rate is rising towards zero. The
   quantity is still falling, only more slowly.
 
+  For values at equal steps, take the differences (`B0-R0-C20`), then the differences of those. Their sign plays the part of the second derivative's.
+
   Two rules are not in this book. The derivative of a product is not the product of the
   derivatives: it needs the product rule. A rule applied to the output of another rule needs the
   chain rule. Both come in the rung-2 book of this subject. Until then, multiply a product out
   before you differentiate.
 illustration:
   body: |
-    Now use the rules.
+    Take S(t) = 5 t^2 from the last section, where shrinking the interval gave 20 at t = 2.
 
     ```working
         S′(t) = 5 times 2t = 10t
@@ -226,14 +244,16 @@ illustration:
     Kilocalories a day divided by kilograms is kcal a day per kg. This rate is not against time.
 
     Hall and colleagues (2012) write that "weight change will slow over time due to passive
-    compensatory changes in energy expenditure". Here is a made-up curve with that shape, for 100
-    days of weight loss.
+    compensatory changes in energy expenditure". Passive means it happens with no change in what
+    the person does. A smaller body spends less, so the same intake leaves a smaller gap.
+
+    Here is a made-up curve with that shape, for 100 days of weight loss.
 
     ```working
         W(t) = 90 minus 0.2t + 0.001 t^2
     ```
 
-    W is in kilograms and t is in days. A note on this curve says this.
+    W is in kilograms and t is in days. A note on this curve, for a made-up patient, says this.
 
     > The second derivative is positive, so her weight is going back up.
 
@@ -282,7 +302,8 @@ illustration:
       with a slope of about 20–30 kcal/d per kg
 must_know:
 - point: |
-    The derivative of a straight line is its slope, and the constant drops out.
+    When a paper gives expenditure as a straight line in weight, the change for a given weight
+    change is the slope times that change. You need no intercept to work it out.
   kind: move
   bearing: clinical
   refs: [hall_guo_2017]
@@ -292,10 +313,11 @@ must_know:
   kind: misconception
   bearing: clinical
 - point: |
-    Slowing weight loss is what passive compensation predicts, even with no change in the
-    treatment.
+    Slowing weight loss is what the body's own responses predict: expenditure falls and appetite
+    rises, even with no change in the treatment.
   kind: consequence
   bearing: public
+  refs: [hall_2012_ajcn, polidori_2016]
 - point: |
     The derivative of a product is not the product of the derivatives.
   kind: trap
@@ -323,17 +345,17 @@ exercises:
     Start with what slowing means. Weight is still going down. It is going down more slowly than
     before.
 
-    Then say why that is expected. A smaller body burns less energy a day. So the same eating
-    that caused a loss at the start causes a smaller loss later. Hall and colleagues (2012) put it
+    Then say why that is expected. A smaller body burns less energy a day. Appetite also rises as
+    weight falls. So the same drug that caused a loss at the start causes a smaller loss later. Hall and colleagues (2012) put it
     this way: weight change "will slow over time" because expenditure falls as weight falls. That
     happens even if the drug keeps working exactly as it did on day one.
 
     Then say what would tell you the effect wears off. You would need a comparison: people on
-    the drug against people on a dummy pill, over the same months. Or weight rising while on the
-    drug.
+    the drug against people on a dummy pill, over the same months.
 
-    The sentence to quote: "Weight loss slows on any treatment that works, because a smaller body
-    burns less. A slowing curve does not show the drug has stopped working."
+    The sentence to quote: "Weight loss slows on any treatment that keeps working, because a
+    smaller body burns less and appetite rises as weight falls. A slowing curve does not show the
+    drug has stopped working."
 
     Calibrate it. The slowing is well established. Whether this drug's effect fades is a
     separate question the curve cannot answer.
@@ -528,12 +550,15 @@ practice:
 
     What it does not show. It does not confirm either figure. The 1.75 is a PAL chosen for an
     example, and here it is held fixed as weight changes. The Table 5.2 line is for one age band
-    of men.
+    of men. The Indian Council of Medical Research's National Institute of Nutrition (ICMR-NIN)
+    says in 2020 that these equations can overestimate BMR by 10 to 12% for Indians. Scaling BMR
+    by 0.9 scales the slope by 0.9, to about 23.7, by the constant multiple rule.
     Hall and Guo's slope comes from other people and other methods. Agreement in size is a
     reason to take both seriously, not proof that either is right for a given patient.
   refs:
   - fao_who_unu_2004
   - hall_guo_2017
+  - icmr_nin_2020_brief
 - level: 6
   prompt: |
     A made-up weight curve is W(t) = 84 minus 0.15t + 0.0005 t^2, with W in kg and t in days.
@@ -621,7 +646,7 @@ practice:
     The average rate near t = 1 is about 1.39, not 1. The rule gave a wrong answer.
 
     Why the wrong answer looks reasonable. It has the exact form of the power rule, with the
-    power brought down and one taken off. The two symbols simply swapped roles.
+    power brought down and one taken off. The two symbols swapped roles.
 - level: 8
   prompt: |
     Here is a worked answer. Find the step that broke.
@@ -712,7 +737,7 @@ practice:
     after weight loss that Book 1 described (`S01-R1-C09`).
 
     And it leaves out appetite. Polidori
-    and colleagues (2016) found eating rose by "~100 kcal/day per kg of lost weight". That pushes
+    and colleagues (2016) found eating rose by about 100 kcal a day per kg of weight lost. That pushes
     intake up by far more than the expenditure line moves. Holding intake down is the harder
     part, and this sum says nothing about it.
   refs:
@@ -743,8 +768,8 @@ practice:
     Decide what to compute, compute it, and say what your answer does not establish.
   answer: |
     What to compute: the change each month, which is the rate over each month. Then the change in
-    that change, which is the discrete version of the second derivative, as in Book 0's
-    differences test (`B0-R0-C20`).
+    that change, which is the discrete version of the second derivative, as in the plain-terms
+    text.
 
     ```working
         97 minus 100 = -3
@@ -836,4 +861,5 @@ review:
   stability: long
   trigger: '2031-09-24'
   last_reviewed: '2026-09-24'
+  as_of: 'ICMR-NIN 2020 brief note (practice 9); re-check against the ICMR-NIN 2024 revised summary'
 status: drafted

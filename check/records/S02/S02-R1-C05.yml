@@ -12,7 +12,7 @@ ground_floor_deps:
 - B0-R0-C21
 - B0-R0-C22
 - B0-R0-C23
-concept_deps: [S01-R1-C02, S01-R1-C05, S01-R1-C07, S02-R1-C01, S02-R1-C02]
+concept_deps: [S01-R1-C02, S01-R1-C03, S01-R1-C05, S02-R1-C01, S02-R1-C02]
 definition:
   text: |
     Let f(t) be a rate that depends on time t. The definite integral of f from a to b is written ∫
@@ -24,7 +24,8 @@ definition:
     Q(a). This is the net change theorem: the integral of a rate over an interval is the change in
     the stock over that interval.
 
-    Two cases can be done exactly with no limit. A constant rate c gives a rectangle, c times (b
+    Two cases can be done exactly with no limit. In both, every slicing gives the same total, so
+    letting the slices shrink changes nothing. A constant rate c gives a rectangle, c times (b
     minus a). A rate that changes along a straight line gives a trapezium, the average of the two
     end rates times (b minus a).
 
@@ -104,8 +105,32 @@ definition:
         energy balance equation (ES = EI - EO) is a statement of the principle of energy
         conservation." So in that equation ES is a rate. This record writes the stores as ES and
         their rate as dES/dt, which is the book's shared notation.
+  - citekey: hall_2012_ajcn
+    kind: primary
+    locator: "Question 4, the measurement-error paragraph, sentence on doubly labelled water"
+    quote: |-
+      For example, the doubly labeled water method has a precision of;5%, which translates to an uncertainty of energy expenditure of .100 kcal/d (420 kJ/d).
+    verified:
+      resolved_id: https://pmc.ncbi.nlm.nih.gov/articles/PMC3302369/
+      opened: true
+      claim_located: true
+      checked_on: '2026-09-24'
+      note: |-
+        The text layer prints "~" as ";" and ">" as ".": the paper reads "an uncertainty of
+        energy expenditure of >100 kcal/d". So the record says "more than 100".
+  - citekey: hall_2012_ajcn
+    kind: primary
+    locator: "Question 4, the measurement-error paragraph, sentence on combined error"
+    quote: |-
+      Thus, the combined error of assessing energy imbalance can easily reach 1000 kcal/d (4200 kJ/d) (21).
+    verified:
+      resolved_id: https://pmc.ncbi.nlm.nih.gov/articles/PMC3302369/
+      opened: true
+      claim_located: true
+      checked_on: '2026-09-24'
 simplified_explanation: |
-  Here is how a paper writes one.
+  Here is how a paper writes an integral, the total under a rate line that Book 0 drew as
+  rectangles (`B0-R0-C22`).
 
   ```working
   ∫ from a to b of f(t) dt
@@ -130,6 +155,9 @@ simplified_explanation: |
   ```working
   the stock at b minus the stock at a = ∫ from a to b of the rate dt
   ```
+
+  Run the time backwards, from b to a, and the same change is undone. So the integral from b to a
+  is minus the integral from a to b.
 
   For a body's energy stores, the rate is intake minus expenditure (`S01-R1-C05`). Write the stores
   as ES, intake as EI and expenditure as EE.
@@ -196,13 +224,14 @@ illustration:
     Check its unit. It is kilocalories a day times days, which is kilocalories.
 
     Hall and colleagues' consensus statement (*American Journal of Clinical Nutrition* 2012)
-    writes it as ES = EI minus EO. The O stands for output, which this book writes EE. So in their
-    equation ES is the rate of change of the stores, not the stores.
+    writes it as ES = EI minus EO. EO is the expenditure this book writes EE (`S02-R1-C01`). So in
+    their equation ES is the rate of change of the stores, not the stores.
   analogy_breaks_when: |
     The straight-line rate is made up. A real person's net rate does not change in a straight line
     and is never measured at every moment.
 
-    Stored energy is not body weight.
+    Stored energy is not body weight. Turning 2,500 kilocalories into kilograms needs to know what
+    tissue was gained or lost (`S01-R1-C02`).
   numbers: []
 must_know:
 - point: |
@@ -402,11 +431,11 @@ practice:
     32. Swapping the limits always flips the sign.
 - level: 4
   prompt: |
-    Doubly labelled water measures what a person spends (`S01-R1-C03`). Hall and colleagues say
-    its figure for expenditure can be off by more than 100 kilocalories a day (*American Journal
-    of Clinical Nutrition* 2012). Take a measuring period of 14 days. That is the upper end of the
-    range in `S01-R1-C03`. Suppose the error runs the same way on every day. Work out the smallest
-    error this gives in the total spent over the 14 days.
+    Doubly labelled water measures what a person spends (`S01-R1-C03`). Hall and colleagues put
+    the uncertainty of its figure for expenditure at more than 100 kilocalories a day (*American
+    Journal of Clinical Nutrition* 2012). Take a measuring period of 14 days. That is the upper
+    end of the range in `S01-R1-C03`. Work out what that uncertainty becomes in the total spent
+    over the 14 days.
   answer: |
     A steady uncertainty in a rate, held over a time, is a rectangle.
 
@@ -414,11 +443,12 @@ practice:
     100 times 14 = 1400
     ```
 
-    At least 1,400 kilocalories over the 14 days. The unit is kilocalories a day times days,
+    More than 1,400 kilocalories over the 14 days. The unit is kilocalories a day times days,
     which is kilocalories.
 
-    It is "at least" because the paper says more than 100 a day. Whether the error really runs
-    the same way every day is your assumption, not the paper's.
+    The method gives one average rate for the whole period (`S01-R1-C03`). So the uncertainty in
+    that average is multiplied by the 14 days. It is "more than" because the paper says more than
+    100 a day.
   refs: [hall_2012_ajcn]
 - level: 5
   prompt: |
@@ -451,7 +481,8 @@ practice:
   refs: [hall_2011_lancet]
 - level: 6
   prompt: |
-    A person's energy stores fall by 9,000 kilocalories over 30 days. Work out their average net
+    A person's energy stores fall by 9,000 kilocalories over 30 days. The figures are made up for
+    this problem. Work out their average net
     rate. Then suppose the rate changed along a straight line and started at minus 500 kilocalories
     a day. Work out where it ended.
   answer: |
