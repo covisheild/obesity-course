@@ -40,6 +40,11 @@ only), and the summary paragraph; reference 1 (the source of the ~30 kcal/kg/day
 figure). Omitted (the model equations 1-5
 were added 2026-09-24 as blocks 11-13): the feedback-model derivations, the rest of the Results and Discussion, figure captions, the
 other references. Added 2026-09-23 after the C09/C10 audit read the full text.
+ADDED 2026-09-24 (follow-up to the S02-R1 audit), blocks 14-17: the Methods sentence defining β;
+the Methods sentences making UGE an energy loss and pointing to Table 1; Table 1's caption,
+header and its rows for δ0, Δδ, β (0.24) and UGE (360 kcal/d, the paper's energy figure for the
+~90 g/day; no per-gram conversion is stated); and the Results paragraph giving the fitted
+k_P = 95 kcal/day per kg. δ's prose definition was already held in block 12.
 ON THE MEASUREMENT INTERVAL: the Methods clause reads "T = 52 was the number of days between
 measurements" as fetched; the formula before it is flattened by the extraction (its "*" is
 escaped with a backslash in the fetch and is left out of the slice). Check the typeset article
@@ -219,3 +224,71 @@ https://pmc-oa-opendata.s3.amazonaws.com/PMC5108589.1/PMC5108589.1.xml
 
 "The integral feedback control was simulated using Equation 5 with the best fit value of kP from Equation 4 and kI = 1 kcal/kg/d2."
 
+[NOTE] ---- Added 2026-09-24 (follow-up) by the S02-R1 audit intake ----
+[NOTE] Blocks 14-17 hold what the S02-R1 audit (defects C01 items 3, 4, 6 and 12) found missing:
+[NOTE] the sentence defining β, the sentence making UGE an energy loss, Table 1's rows for δ0, Δδ,
+[NOTE] β and UGE (the only place the paper gives UGE in kcal), and the Results sentence giving the
+[NOTE] fitted k_P. Cut by script from a TinyFish fetch_content fetch (markdown format) of the same
+[NOTE] JATS XML as blocks 11-13, re-fetched 2026-09-24. δ's definition in prose was already held:
+[NOTE] block 12, "The baseline physical activity parameter was δ0 and Δδ represents changes in
+[NOTE] physical activity [...]", with the locomotion sentence before it. The paper has no other
+[NOTE] sentence defining δ; block 16 adds its Table 1 rows (value, unit and description).
+
+===============================================================================
+14. Methods: the parameter β (added 2026-09-24, follow-up)
+https://pmc-oa-opendata.s3.amazonaws.com/PMC5108589.1/PMC5108589.1.xml
+===============================================================================
+
+"The parameter β accounts for the adaptation of energy expenditure during a diet perturbation, ΔEI, and was determined using data from eight human studies that measured changes in body composition as well as both total and resting energy expenditure before and after achieving a period of long-term stability at a lower weight. [...]"
+
+[NOTE] The paragraph goes on to the parameters ηFM and ηFFM; omitted.
+
+===============================================================================
+15. Methods: the UGE term as an energy loss (added 2026-09-24, follow-up)
+https://pmc-oa-opendata.s3.amazonaws.com/PMC5108589.1/PMC5108589.1.xml
+===============================================================================
+
+"[...] The parameter UGE represents the energy losses as a result of increased urinary excretion of glucose with canagliflozin treatment. Model parameter values are given in Table 1."
+
+[NOTE] Left out before it: the paragraph on the parameter α (the Forbes relation).
+
+===============================================================================
+16. Table 1, Mathematical model parameters: the rows for δ0, Δδ, β and UGE (added 2026-09-24, follow-up)
+https://pmc-oa-opendata.s3.amazonaws.com/PMC5108589.1/PMC5108589.1.xml
+===============================================================================
+
+[NOTE] Three slices of Table 1, in the table's order: caption and header; the δ0 and Δδ rows; the
+[NOTE] β and UGE rows. Left out between them: the γFM and γFFM rows, and the ηFM, ηFFM, ρFM and ρFFM
+[NOTE] rows. "urinaryglucose" and "canagliflozin(300" are run together in the fetch and kept so.
+[NOTE] The paper states UGE in energy (360 kcal/d) here; it gives no per-gram conversion from the
+[NOTE] ~90 g/day of block 8, and this file does not supply one.
+
+[TABLE]
+Table 1Mathematical model parameters.
+
+| Parameter | Value | Description |
+| --- | --- | --- |
+[END TABLE]
+
+[...]
+
+[TABLE]
+| δ0 | 10 kcal/kg/d | Physical activity at baseline |
+| Δδ | 0 kcal/kg/d | Physical activity changes |
+[END TABLE]
+
+[...]
+
+[TABLE]
+| β | 0.24 | Dietary and adaptive thermogenesis |
+| UGE | 360 kcal/d | Energy loss due to increased urinaryglucose excretion with canagliflozin(300 mg/d) |
+[END TABLE]
+
+===============================================================================
+17. Results: the fitted value of k_P (added 2026-09-24, follow-up)
+https://pmc-oa-opendata.s3.amazonaws.com/PMC5108589.1/PMC5108589.1.xml
+===============================================================================
+
+"Note that as body weight declined during SGLT2 inhibition, energy intake increased above baseline until it compensated for the loss of calories via UGE, after which, a new equilibrium was reached. This general pattern of response, in which a sustained perturbation (caloric loss via UGE) leads to a new equilibrium at a lower body weight, suggests that the endocrine signals responding to weight loss (such as leptin) act as part of a proportional feedback control system as shown in the curves depicted in Figure 2 illustrating that proportional feedback control (as defined by Equation 4 with the parameter kP = 95 kcal/day per kg) mimics the observed body weight and energy intake patterns in humans receiving SGLT2 inhibitors."
+
+[NOTE] "kP" is k_P of Equation 4 (block 13).

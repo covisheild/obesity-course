@@ -88,3 +88,41 @@ FAO/WHO/UNU Table 5.2 is held as the page's own text, not MathML: each equation 
 - **Older `.bib` entries** (`openstax_chemistry_2e`, `openstax_biology_2e`, `openstax_anatphys_2e`,
   `openstax_college_physics_2e`, `fao_food_energy_2003`) carry `sources/…txt` paths in their `note` field. They
   were not written by this intake and were left alone. The six entries this intake wrote or edited carry none.
+
+## Addendum, 2026-09-24: audit follow-up (Polidori extension; ICMR-NIN 2024)
+
+Same method as above: TinyFish `fetch_content` only, raw results saved from the tool's own result files to
+`/home/claude/intake-s02b/` (`fetch1.json`: the PMC5108589 .txt and .xml in markdown format, and the ICMR-NIN
+2024 page; `fetch2_xml_html.json`: the .xml in html format, for the MathML), passages cut by script
+(`cut_polidori.py`), no WebFetch text stored, no curl, wget or Python HTTP.
+
+**Polidori 2016, blocks 14-17** (for defects C01 items 3, 4, 6, 12; C16; C17), from
+https://pmc-oa-opendata.s3.amazonaws.com/PMC5108589.1/PMC5108589.1.xml:
+
+| Block | What | Passage (start) |
+| --- | --- | --- |
+| 14 | Methods, β | "The parameter β accounts for the adaptation of energy expenditure during a diet perturbation, ΔEI, …" (one sentence; the η sentence after it omitted) |
+| 15 | Methods, UGE as energy | "The parameter UGE represents the energy losses as a result of increased urinary excretion of glucose with canagliflozin treatment. Model parameter values are given in Table 1." |
+| 16 | Table 1, three slices | caption and header; δ0 10 kcal/kg/d "Physical activity at baseline", Δδ 0 kcal/kg/d; β 0.24 "Dietary and adaptive thermogenesis", UGE 360 kcal/d |
+| 17 | Results, fitted k_P | the paragraph ending "(as defined by Equation 4 with the parameter kP = 95 kcal/day per kg) mimics …" |
+
+δ was already defined in prose in block 12 ("The baseline physical activity parameter was δ0 and Δδ represents
+changes in physical activity …"); the paper has no other defining sentence, so block 16's Table 1 rows are the
+addition. The paper states UGE as energy only in Table 1 (360 kcal/d); it gives **no per-gram conversion**
+from the ~90 g/day, and the file supplies none.
+
+**Verbatim check, whole file** (`verify_polidori.py`, every block 1-17 against the fresh fetch for its URL):
+**35 of 35** (blocks 1-10: 15 against the .txt; blocks 11-13: 14, five of them MathML; blocks 14-17: 6). The
+MathML re-converts to the same five renderings as before. `INDEX.yml` and `SOURCES.md` rows updated; no
+`.bib` change.
+
+**ICMR-NIN 2024: not obtained.** https://nin.res.in/RDA_short_Report_2024.html (the "Short Report New" link on
+the nin.res.in home page) was fetched in markdown and html: it is a price list for the printed "Short Summary
+of RDA" (₹150) and the full RDA book (₹400), with the 2020 citation, and links no PDF. The "Full Book" link
+(RDA_Full_Report_2024.html) is the same list. Guessed paths `…/RDA_short_Report_2024.pdf`,
+`…/downloads/RDA_short_Report_2024.pdf` and `…/rdabook/RDA_short_Report_2024.pdf` were unreachable. Web
+search found only unofficial copies (a Scribd upload, whose page returned no document text; coaching-class
+slides), which were not used or filed. So no new citekey. The 2024 vs 2020 comparison (the 10-12%
+overestimate, the two 5% BMR cuts, PAL 1.53 → 1.40) is **unchecked**; the book's figures rest on
+`icmr_nin_2020_brief` as before. To settle it, Harsh needs the printed Short Summary (ICMR-NIN publications
+counter) or an official PDF.
