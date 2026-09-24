@@ -18,7 +18,8 @@ concept_deps:
 definition:
   text: |
     A turn is one unbroken stretch of speech by one speaker in a transcript. A word, for this
-    count, is whatever stands between two spaces in the transcript being counted.
+    count, is whatever stands between two spaces in the transcript being counted. Speaker labels and
+    bracketed marks are not counted. A broken-off word and an "Mm-hm" are.
 
     The interviewer's talk share for one interview is the number of words the interviewer says,
     divided by the number of words everyone says, multiplied by one hundred. The respondent's talk
@@ -27,22 +28,9 @@ definition:
 
     Across several interviews, the mean share is the sum of the interviewers' shares divided by the
     number of interviews. The pooled share is all the interviewer's words across the interviews
-    divided by all the words. The two differ whenever the interviews differ in length.
+    divided by all the words. The two can differ when the interviews differ in length. When every
+    interview is the same length, they are equal.
   references:
-  - citekey: openstax_prealgebra_2e
-    kind: textbook
-    locator: ch. 6, Percents
-    verified:
-      resolved_id: https://openstax.org/books/prealgebra-2e/pages/1-introduction
-      opened: false
-      claim_located: false
-      checked_on: '2026-09-24'
-      note: |-
-        Not opened for this record. It is the anchor Book 0's section on percentages uses, named
-        here for the arithmetic of a share, which the reader rebuilds from that Book 0 section. No
-        held source states the talk share or its gate: the gate is the course map's (S36 rung 1,
-        "the respondent speaks more than you do"). DeJonckheere and Vaughn, below, are cited only
-        for the nearest thing they do say, not for the rule.
   - citekey: blackstone_2012
     kind: textbook
     locator: s. 12.1 Focus Groups, first paragraph after the learning objectives
@@ -77,7 +65,7 @@ definition:
       claim_located: true
       checked_on: '2026-09-24'
 simplified_explanation: |
-  This rung ends with a simple test. In your interview, did the respondent speak more than you did?
+  This book ends with a simple test. In your interview, did the respondent speak more than you did?
 
   Your words divided by all the words, times a hundred, is your share. If it is under 50 per cent,
   the respondent spoke more.
@@ -88,7 +76,8 @@ simplified_explanation: |
   questions pushed the answers in one direction. For that you read the questions.
 illustrations:
 - body: |
-    Suppose you have interviewed two women at the district hospital NCD clinic in Chhattisgarh.
+    Suppose you have interviewed two women at the district hospital non-communicable disease (NCD)
+    clinic in Chhattisgarh.
     Both have stopped coming back for follow-up. Here are two made-up stretches of those
     interviews, put into English from Chhattisgarhi. `I` is you.
 
@@ -161,6 +150,13 @@ illustrations:
     In the first, R1 said 7.2 words for each one of yours. In the second, R2 said less than a
     tenth of a word for each of yours. Above 1 means the respondent spoke more.
 
+    The ratio gives your share back. For each 1 word of yours, R1 said 7.2. So all the words come in
+    parts of 1 plus 7.2, and your part is 1 of them.
+
+    ```working
+    100 divided by (1 plus 7.2) = 12.2 per cent, your share again
+    ```
+
     Look at what the second interviewer did with all those words. The answers are offered inside
     the questions, the distance or the cost, and R2 picks one. The section on open, closed and
     leading questions showed why that happens.
@@ -172,7 +168,7 @@ illustrations:
     numbers. The two speakers' counts need not change by the same amount, so compare shares only
     when both were counted on the same version.
 - body: |
-    Now suppose you have done all five pilot interviews for this rung and transcribed them. The
+    Now suppose you have done all five pilot interviews for this book and transcribed them. The
     word counts below are made up, to show the move.
 
     ```table
@@ -210,12 +206,24 @@ illustrations:
     Why aim well below half, and not just below it? Your counts depend on choices from the last
     section. A cleaned transcript drops your "Mm-hm"s and her repeats. A count on the English
     version differs from a count on the Chhattisgarhi one. A share of 48 per cent can become 52 per
-    cent under a different counting rule. A share of 25 per cent will not. The gate asks only that
+    cent under a different counting rule. A share of 25 per cent is very unlikely to. The gate asks only that
     the respondent speak more. A wide margin means the answer does not depend on how you counted.
+
+    You can also work backwards, from a share and one count to the other count. Suppose you know
+    only that in interview 2 the respondent said 3,200 words and your share was 20 per cent. Her
+    words are the other 80 per cent of all the words.
+
+    ```working
+    100 minus 20 = 80 per cent
+    3,200 divided by 0.80 = 4,000 words in all
+    4,000 minus 3,200 = 800 words, yours
+    ```
+
+    That is interview 2's row in the table.
 
     You will not find this rule in the methods papers. DeJonckheere and Vaughn advise "prioritising
     listening over talking", and they set no number. The 50 per cent line is this course's own
-    gate for this rung.
+    gate for this book.
   analogy_breaks_when: |
     The five counts are made up. Real pilot interviews vary more in length than these, and the
     more they vary, the further the mean share can sit from the share of all your words taken
@@ -259,8 +267,8 @@ exercises:
 - type: interpretation
   skill_ref: S36-R1-K01
   prompt: |
-    Take the transcript of your own first practice interview. Count your words and the
-    respondent's, and work out your talk share. Then find your three longest turns and read them.
+    Do this on the transcript of your first pilot interview (`S36-R1-C14`). Until then, use the two
+    excerpts above. Count your words and the respondent's, and work out your talk share. Then find your three longest turns and read them.
     For each, say what you were doing with those words, and whether the respondent's next answer
     took up your words or her own.
   answer: |
@@ -271,8 +279,8 @@ exercises:
     words. Your words divided by all the words, times a hundred, is your share. Write beside it
     which transcript you counted, full verbatim or cleaned, and in which language.
 
-    Then the three longest turns. Long interviewer turns in a first interview are usually one of
-    four things. The first is a question with its possible answers built in ("was it the distance or
+    Then the three longest turns. Long interviewer turns in a first interview are often one of
+    these four things. The first is a question with its possible answers built in ("was it the distance or
     the cost"). The second is an explanation or advice, which is the clinician coming back. The
     third is a summary of what the respondent said, which invites her to agree. The fourth is a
     story of your own. Name which one each turn is.
@@ -589,7 +597,7 @@ practice:
     ```
 
     The trainee said more than half the words in this stretch. "Barely spoke" is wrong, and so is
-    "nearly all the talking". R3 did not pass the gate here.
+    "nearly all the talking". The trainee did not meet the gate here.
 
     What the count does not establish is the bigger problem. Suppose the numbers had come out the
     other way, with R3 saying most of the words. The stretch would still be steered. The first
@@ -650,17 +658,6 @@ figures:
     refs:
     - {y: 50, label: "half of all words: the gate"}
     - {y: 27.2, label: "mean of the five, 27.2"}
-- file: s36-r1-c11-turns-and-words.png
-  caption: "The two made-up excerpts, three turns each for you and for the respondent. Counted in words, you said 15 and R1 said 108 in the first; you said 104 and R2 said 8 in the second."
-  alt: "Two pairs of bars. First excerpt: your words 15, respondent's words 108. Second excerpt: your words 104, respondent's words 8."
-  source: draw.py
-  spec:
-    kind: bar
-    from_table: {block: 2, x: 0, y: [3, 4]}
-    x_label: excerpt (three turns each)
-    y_label: words
-    value_labels: true
-    y_range: [0, 140]
 - file: s36-r1-c11-share-and-ratio.png
   caption: "The share and the ratio are two readings of the same count. Your share is 100 divided by 1 plus the respondent's ratio. A ratio of 1 is a share of 50 per cent, the gate. R1's 7.2 is your 12.2 per cent; R2's 0.0769 is your 92.9."
   alt: "A curve falling steeply from left to right. It passes through the second excerpt at ratio 0.0769 and share 92.9, the gate at ratio 1 and share 50, a respondent's share of 64 per cent at ratio 1.78 and share 36, the 450-and-1,350 transcript at ratio 3 and share 25, and the first excerpt at ratio 7.2 and share 12.2. A dashed line marks 50 per cent."
