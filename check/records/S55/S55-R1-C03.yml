@@ -17,25 +17,26 @@ definition:
   text: |
     A research question is one of three kinds, and its kind decides which study can answer it.
 
-    A descriptive question asks how common an outcome is, or how much of it there is, in a stated
-    population at a stated place and time, and in which people it is commoner. It names no exposure.
+    A describe question asks how common an outcome is, or how much of it there is, in a stated
+    population at a stated place and time, and in which people it is commoner. It is what the last
+    section called a how-common question. It names no exposure. Counting the outcome by age, sex or place is
+    still describing. A trait becomes an exposure when the question sets two groups side by side to ask
+    whether the trait goes with the outcome.
 
-    A relational question asks whether an exposure is associated with an outcome.
+    A relate question asks whether an exposure is associated with an outcome.
 
-    A causal question asks whether changing the exposure would change the outcome. An association is
+    A cause question asks whether changing the exposure would change the outcome. An association is
     needed for this and is not enough.
 
     A cross-sectional study enrols a sample of a population and measures exposure and outcome at the
-    same time. It answers a descriptive question. For a relational question it can show an
+    same time. It answers a describe question. For a relate question it can show an
     association, but it usually cannot show which of the two came first.
 
-    Studies built to answer relational questions have a comparison group.
+    Studies built to answer relate questions have a comparison group.
 
     In a randomised controlled trial the investigator sets the exposure, and chance decides who
-    receives it. This is the design that answers a causal question directly, wherever the exposure
+    receives it. This is the design that answers a cause question directly, wherever the exposure
     can be assigned.
-
-    A systematic review is a study of studies.
   references:
   - citekey: cdc_ss1978_lesson1
     kind: textbook
@@ -149,6 +150,20 @@ definition:
       note: |-
         That chance assignment keeps a third thing from deciding who is exposed is the record's own
         derivation, from the two sentences on chance in the definition, not a claim quoted from CDC.
+  - citekey: cdc_ss1978_lesson1
+    kind: textbook
+    locator: 'Lesson 1, Section 6 "Descriptive Epidemiology", "Person": age and sex as person characteristics'
+    quote: Age and sex are included in almost all data sets and are the two most commonly analyzed “person”
+      characteristics.
+    verified:
+      resolved_id: https://archive.cdc.gov/www_cdc_gov/csels/dsepd/ss1978/lesson1/section6.html
+      opened: true
+      claim_located: true
+      checked_on: '2026-09-25'
+      note: |-
+        Section 6 opens: "Descriptive epidemiology covers time, place, and person." So a count by age,
+        sex or place is description. Where a trait stops being description and becomes an exposure is
+        the record's own reasoning, from the comparison group of section 7.
   - citekey: blackstone_2012
     kind: textbook
     locator: '5.2 Qualitative or Quantitative? Some Specific Considerations, "Causality": the three criteria'
@@ -221,12 +236,14 @@ simplified_explanation: |
   ```
 
   A describe question has no exposure. You answer it with a cross-sectional study. You take a sample, visit
-  once, and count. The count is the prevalence — how many people in a group have the condition.
+  once, and count. The answer is a share: of the people in the group, how many have the condition at
+  that time. That share is the prevalence.
 
   A relate question asks whether an exposure and an outcome go together. To see that, you need a comparison
   group: people without the exposure, or without the outcome.
 
-  - A cohort study starts from the exposure. You record who is exposed and who is not. You follow
+  - A cohort study starts from the exposure. You start with people who do not yet have the outcome.
+    You record who is exposed and who is not. You follow
     both groups over time and count who develops the outcome.
   - A case-control study starts from the outcome. You enrol people who have it (cases) and people
     who do not (controls). Then you compare what each group was exposed to in the past.
@@ -241,13 +258,15 @@ simplified_explanation: |
   is exposed.
 
   Now the weak spot of the one-visit study. It measures the exposure and the outcome on the same
-  day. So it can find that they go together. It cannot tell you which came first.
+  day. So it can find that they go together. It usually cannot tell you which came first. The
+  exception is an exposure fixed long before, such as sex.
 
   Surveying more people does not repair this. Ten times the sample, measured on one day, is still silent about
   which came first.
 
-  A systematic review is a study of studies. It collects and combines the results of all the studies already
-  done on one question.
+  A systematic review is a study of studies. It collects and combines the results of the studies already
+  done on one question, in a planned and careful way. Because it pools studies, it answers the same kind
+  of question as the studies it pools.
 illustrations:
 - body: |
     Suppose your first idea, made up for this section, is about college students' meal timing. You
@@ -280,7 +299,7 @@ illustrations:
     | Among first-year students, does eating dinner before 8 pm, compared with after 10 pm, change weight gain over one year? | cause | a randomised controlled trial: chance decides which students are asked to eat early | whether students outside a trial would keep to the change |
     ```
 
-    Look at the first row. For a how-common question, the one-day survey is exactly the right tool.
+    Look at the first row. For a describe question, the one-day survey is exactly the right tool.
     Its weakness was never a weakness for this question.
 
     Look at the second row. The cohort study records dinner time before it measures weight gain. So
@@ -393,7 +412,7 @@ must_know:
   refs:
   - cdc_ss1978_lesson1
 - point: |
-    When a trainee proposes a trial for a how-common question, ask them what chance would decide. If
+    When a trainee proposes a trial for a describe question, ask them what chance would decide. If
     nothing is being assigned, there is nothing for chance to do, and the question needs a count.
   kind: move
   bearing: teaching
@@ -403,20 +422,24 @@ exercises:
     Here are five made-up questions from the running setting. For each, say whether it is a describe,
     relate or cause question, and name the study that answers it.
 
-    1. What share of adults screened at the district screening camp in 2027 had obesity?
+    1. What share of adults aged 30 and over screened at the district screening camp in 2027 had
+       obesity, as the camp protocol defines it?
     2. In two government schools in Raipur city, are children aged 10 to 14 who play a sport after
        school less likely to develop obesity over two years?
     3. Does a weekly class on cooking with less oil, given to one adult in each household, change the
        weight of the adults in urban slum households over one year?
-    4. Were adults with obesity at the NCD clinic more likely than adults without it to have worked
-       night shifts in the past ten years?
-    5. In which age groups of women attending the NCD clinic in 2027 is obesity commonest?
+    4. Were adults aged 30 to 60 at the non-communicable disease (NCD) clinic in 2027 with obesity,
+       as the clinic protocol defines it, more likely than those without it to have worked night
+       shifts in the past ten years?
+    5. In which age groups of women aged 18 and over attending the NCD clinic in 2027 is obesity,
+       as the clinic protocol defines it, commonest?
   answer: |
     1. Describe. It asks how common, and names no exposure. A cross-sectional study: count from the
        camp's records, or from a sample of them.
     2. Relate. It asks whether an exposure (after-school sport) goes with an outcome (developing
        obesity), with time in it: "over two years". A cohort study. Record who plays sport now,
-       weigh the children at the start, and weigh them again in two years.
+       weigh the children at the start, leave out children who already have obesity at the start, and
+       weigh the rest again in two years.
     3. Cause. It asks whether changing something changes the outcome, and the class is something you
        can assign. A randomised controlled trial: chance decides which households get the class.
     4. Relate. It starts from the outcome (obesity or not) and looks back at a past exposure (night
@@ -463,8 +486,8 @@ exercises:
     not change any of this.
 - type: teaching
   prompt: |
-    A journalist has three minutes. Their press release says "Survey finds late dinners linked to
-    obesity in college students". They ask whether they can write "late dinners cause obesity".
+    A journalist has three minutes. Their press release, made up for this exercise, says "Survey
+    finds late dinners linked to obesity in college students". They ask whether they can write "late dinners cause obesity".
     Answer without jargon, and give one sentence they could quote.
   answer: |
     Start with what "linked" means. The survey found that students who eat late and students with
@@ -495,7 +518,7 @@ retrieval_items:
     study starts from the outcome (cases and controls) and compares past exposures.
 figures:
 - file: s55-r1-c03-salsa-cases-controls.png
-  caption: "The hepatitis A outbreak in Pennsylvania, 2003 (CDC textbook): the share who ate salsa among people who fell ill (cases) and among people who ate at the same restaurant and did not fall ill (controls). The cases' 94% alone could mean only that salsa was popular; the controls' 39% is what shows that salsa went with falling ill."
+  caption: "The hepatitis A outbreak in Pennsylvania, 2003, from the textbook of the Centers for Disease Control and Prevention (CDC): the share who ate salsa among people who fell ill (cases) and among people who ate at the same restaurant and did not fall ill (controls). The cases' 94% alone could mean only that salsa was popular; the controls' 39% is what shows that salsa went with falling ill."
   alt: "A bar chart with two bars. People who fell ill, the cases: 94% ate salsa. People who did not fall ill, the controls: 39% ate salsa."
   source: draw.py
   spec:

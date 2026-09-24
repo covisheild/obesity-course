@@ -17,8 +17,8 @@ definition:
   text: |
     A research question can be written as one sentence with up to four parts.
 
-    The population is the group the answer is about. It is bounded by place, by person (age, and
-    any other trait that decides who is in) and by time.
+    The population is the group the answer is about. It is bounded by place, by person (an age
+    band, and any other trait that decides who is in) and by time.
 
     The exposure is what differs between the people being compared: something they have, do or
     meet. When a researcher or a programme gives it on purpose, as the thing being tested, it is
@@ -26,7 +26,8 @@ definition:
 
     The comparison is the group, or the level of exposure, that the exposed group is set against.
 
-    The outcome is what is measured to answer the question. A question has one main outcome.
+    The outcome is what is measured to answer the question. A question has one main outcome and
+    at most one main exposure. "Risk factors" names many possible exposures, so it is not yet an exposure.
   references:
   - citekey: cdc_ss1978_lesson1
     kind: textbook
@@ -94,6 +95,18 @@ definition:
       opened: true
       claim_located: true
       checked_on: '2026-09-25'
+  - citekey: aslam_emmanuel_2010
+    kind: primary
+    locator: 'Summary, on one research question driving the study design'
+    quote: |-
+      It is always good to focus on a single research question based on its relevance to patient’s health or one primary objective to drive the study design.
+    verified:
+      resolved_id: https://doi.org/10.4103/0253-7184.69003
+      opened: true
+      claim_located: true
+      checked_on: '2026-09-25'
+      note: |-
+        Carries the one-main-thing rule: one question, so one main exposure and one main outcome.
   - citekey: aslam_emmanuel_2010
     kind: primary
     locator: 'Formulating the research question, before Table 1: the PICO format'
@@ -185,6 +198,18 @@ definition:
         states it only as Morgan and colleagues' report.
   - citekey: morgan_peco_2018
     kind: primary
+    locator: 'References, entry 6: the review behind the 54% figure, and its year'
+    quote: |-
+      Thabane L, Thomas T, Ye C, Paul J: Posing the research question: not so simple. Canadian Journal of Anesthesia/Journal canadien d’anesthésie 2009, 56(1):71–79.
+    verified:
+      resolved_id: https://doi.org/10.1016/j.envint.2018.07.015
+      opened: true
+      claim_located: true
+      checked_on: '2026-09-25'
+      note: |-
+        Dates the cited review to 2009. The review itself is not held.
+  - citekey: morgan_peco_2018
+    kind: primary
     locator: 'Summary and conclusions, first paragraph: the PECO and search criteria'
     quote: |-
       The PECO approach to question formulation supports the conduct of a systematic review, including formulating search and eligibility criteria
@@ -197,7 +222,7 @@ simplified_explanation: |
   **Population** — who the answer is about.
 
   Here the population needs a
-  fence round it on three sides. Place: which district, which schools. Person: what ages, and
+  fence round it on three sides. Place: which district, which schools. Person: an age band, and
   anything else that decides who is in. Time: which year. "School children" has no fence.
   "Children aged 10 to 14 in government schools in Raipur district in the 2027–28 school year" has
   all three.
@@ -212,7 +237,7 @@ simplified_explanation: |
   **Outcome** — what you measure to answer the question. Obesity judged from measured weight and
   height is an outcome.
 
-  The four parts have short names made from their first letters. PICO is population,
+  The set of four parts has two short names, made from their first letters. PICO is population,
   intervention, comparison, outcome. Use it when someone gives the thing being tested. PECO is
   population, exposure, comparison, outcome. Use it when people meet the exposure in their
   ordinary lives.
@@ -221,11 +246,13 @@ simplified_explanation: |
   and an outcome, and nothing else. It asks how common something is.
 
   Writing the question this way has a second use, later. When you search for what others have
-  already found, you build the search from these same parts.
+  already found, you build the search from these same parts. How to search properly is taught in
+  the next level of this subject.
 illustrations:
 - body: |
     Start with a first draft that fails. Suppose your guide names the topic "obesity in school
-    children", and you write this at the top of your made-up protocol:
+    children", and you write this at the top of your made-up protocol, the written plan of a study
+    drawn up before it starts:
 
     "To study obesity and its risk factors among school children."
 
@@ -276,9 +303,9 @@ illustrations:
     meals, and each would be a different question. The one-sentence form shows that you picked one.
     It does not show that you picked the right one.
 
-    "Judged from measured weight and height" is still a placeholder. A real protocol must name the
-    cut-off it uses for children, and say where that cut-off comes from. This section does not
-    teach that.
+    "Judged from measured weight and height" is still a placeholder. A real protocol must say how
+    it defines obesity in children, and where that definition comes from. This section does not
+    teach that. The subject on obesity in children, adolescents and pregnancy does.
 - body: |
     Now run the check on a whole set. Here are five first drafts, made up, of the kind a batch of
     postgraduates might bring to a department meeting. Each one is marked for whether it names each
@@ -290,7 +317,7 @@ illustrations:
     | 2 | Prevalence and risk factors of obesity in urban slums. | no | no | no | yes |
     | 3 | Effect of mobile phone use on obesity in college students. | no | yes | no | yes |
     | 4 | Does eating dinner late cause weight gain? | no | yes | no | yes |
-    | 5 | Role of text-message reminders in follow-up at the district hospital NCD clinic, 2027. | yes | yes | no | yes |
+    | 5 | Role of text-message reminders in follow-up of adults aged 30 to 60 at the district hospital's non-communicable disease (NCD) clinic, 2027. | yes | yes | no | yes |
     ```
 
     Draft 5 marks "yes" for its outcome, but loosely. "Follow-up" could mean coming to the next
@@ -302,9 +329,9 @@ illustrations:
     | No. | Rewrite | Fenced population | Exposure or intervention | Comparison | Outcome |
     | 1 | What share of children aged 10 to 14 in government schools in Raipur district, in the 2027–28 school year, have obesity, judged from measured weight and height? | yes | no | no | yes |
     | 2 | Among women aged 20 to 45 in slum households in Bilaspur city in 2027, do those who work outside the home, compared with those who do not, have obesity less often? | yes | yes | yes | yes |
-    | 3 | Among first-year students at one medical college in Chhattisgarh in 2027, do those who spend more than 3 hours a day on a phone screen, compared with those who spend less than 1 hour, have obesity more often? | yes | yes | yes | yes |
+    | 3 | Among first-year students aged 17 to 20 at one medical college in Chhattisgarh in 2027, do those who spend more than 3 hours a day on a phone screen, compared with those who spend less than 1 hour, have obesity more often? | yes | yes | yes | yes |
     | 4 | Among students aged 18 to 22 at one medical college in Chhattisgarh, do those who usually eat dinner after 10 pm, compared with those who eat before 8 pm, gain more weight, in kilograms, over one academic year? | yes | yes | yes | yes |
-    | 5 | Among adults with obesity attending the NCD clinic of the district hospital in Durg between January and June 2027, does a text-message reminder the day before each visit, compared with no reminder, raise the share who come to their next visit? | yes | yes | yes | yes |
+    | 5 | Among adults aged 30 to 60 with obesity attending the NCD clinic of the district hospital in Durg between January and June 2027, does a text-message reminder the day before each visit, compared with no reminder, raise the share who come to their next visit? | yes | yes | yes | yes |
     ```
 
     Rewrite 1 has no exposure on purpose. It is a how-common question, and that is allowed.
@@ -357,8 +384,8 @@ must_know:
   refs:
   - aslam_emmanuel_2010
 - point: |
-    Morgan and colleagues report, from an earlier review they cite, that over half (54%) of 313
-    research studies did not report all four PICO parts. This course has not read that review. So
+    Morgan and colleagues report, from a 2009 review they cite, that over half (54%) of 313
+    research studies did not report on the four PICO parts. This course has not read that review. So
     when you read a paper, find its population, exposure, comparison and outcome yourself. Do this before you accept what it says it answered.
   kind: number
   bearing: methodological
@@ -394,23 +421,23 @@ exercises:
        Exposure: none. Comparison: none. Outcome: obesity from measured weight and height. A
        how-common question.
 
-    2. "Among adults aged 18 and over screened at the district screening camp in 2025, did those
+    2. "Among adults aged 18 and over screened at the district screening camp in 2026, did those
        living in the town, compared with those living in villages, have obesity more often?"
 
-       Population: adults aged 18 and over screened at that camp in 2025. Exposure: living in the
+       Population: adults aged 18 and over screened at that camp in 2026. Exposure: living in the
        town. Comparison: living in a village. Outcome: obesity. PECO.
 
-    3. "Among first-year students at your medical college in 2027, do those who usually eat dinner
-       after 10 pm, compared with those who eat before 8 pm, gain more weight, in kilograms, over
+    3. "Among first-year students aged 17 to 20 at your medical college in 2027, do those who
+       usually eat dinner after 10 pm, compared with those who eat before 8 pm, gain more weight, in kilograms, over
        one academic year?"
 
-       Population: first-year students at your college, 2027. Exposure: dinner after 10 pm.
+       Population: first-year students aged 17 to 20 at your college, 2027. Exposure: dinner after 10 pm.
        Comparison: dinner before 8 pm. Outcome: weight gained over the year, in kilograms. PECO.
 
-    4. "Among adults attending the NCD clinic of the district hospital between January and March
+    4. "Among adults aged 18 and over attending the NCD clinic of the district hospital between January and March
        2027, what share can state their own weight to within 2 kilograms of the clinic's reading?"
 
-       Population: adults at that clinic, January to March 2027. Exposure: none. Comparison:
+       Population: adults aged 18 and over at that clinic, January to March 2027. Exposure: none. Comparison:
        none. Outcome: stating one's own weight to within 2 kilograms. A how-common question. The
        rewrite had to turn "know their weight" into something you can measure.
   skill_ref: S55-R1-K01
@@ -423,8 +450,8 @@ exercises:
     Write the four labels down the left of the board: population, exposure, comparison, outcome.
     Ask the resident to fill each from their title.
 
-    They will write "college students" for the population. Ask: which college, which year of study,
-    which academic year? Add the fence.
+    They will write "college students" for the population. Ask: which college, which ages, which
+    academic year? Add the fence.
 
     They will write "risk factors" for the exposure. Ask them to name one. They may name five:
     sleep, screen time, meals, hostel food, stress. Point out that each one gives a different pair
@@ -463,14 +490,14 @@ practice:
     Label the parts of each question. Say where a part is missing.
 
     a. Among children aged 6 to 10 in the schools of one block in 2026, what share have obesity?
-    b. Among patients of one clinic in 2026, does a weekly phone call from a nurse, compared with
+    b. Among patients aged 30 to 60 at one clinic in 2026, does a weekly phone call from a nurse, compared with
        no call, raise the share who come to their next visit?
     c. Do people who sleep less weigh more?
   answer: |
     ```table
     | Question | Population | Exposure or intervention | Comparison | Outcome |
     | a | children aged 6 to 10 in the schools of one block, 2026 | none | none | obesity |
-    | b | patients of one clinic, 2026 | a weekly phone call from a nurse (intervention) | no call | coming to the next visit |
+    | b | patients aged 30 to 60 at one clinic, 2026 | a weekly phone call from a nurse (intervention) | no call | coming to the next visit |
     | c | missing | sleeping less | not stated | weight |
     ```
 
@@ -484,14 +511,14 @@ practice:
        whom? It needs both before it can be planned.
 - level: 3
   prompt: |
-    Label the parts of this question. The parts are not in the usual order.
+    Label the parts of this question.
 
-    Is the weight gained over one year by first-year students of one college in 2027 greater among
+    Is the weight gained over one year by first-year students aged 17 to 20 of one college in 2027 greater among
     those living in the hostel than among those living at home?
   answer: |
     ```table
     | Part | In the question |
-    | population | first-year students of one college in 2027 |
+    | population | first-year students aged 17 to 20 of one college in 2027 |
     | exposure | living in the hostel |
     | comparison | living at home |
     | outcome | weight gained over one year |
@@ -572,7 +599,7 @@ practice:
     age range. You cannot tell whom the answer is about until the report says both.
 - level: 7
   prompt: |
-    Here is a worked answer. Find the step that broke.
+    Here is a worked answer. Find what broke.
 
     ```working
     question: Among adults aged 30 to 60 attending the district hospital's NCD clinic in 2026, do those with obesity, compared with those without, miss more follow-up visits?
@@ -683,12 +710,12 @@ practice:
     Each is a different outcome, and so a different question. Pick the first, because the clinic's
     register can count it. One answer:
 
-    "Among adults found to have obesity at the district's screening camps between January and June
+    "Among adults aged 18 and over found to have obesity at the district's screening camps between January and June
     2027, what share attended the NCD clinic within three months of their camp?"
 
     ```table
     | Part | In the question |
-    | population | adults found to have obesity at the district's camps, January to June 2027 |
+    | population | adults aged 18 and over found to have obesity at the district's camps, January to June 2027 |
     | exposure | none |
     | comparison | none |
     | outcome | attending the NCD clinic within three months |
