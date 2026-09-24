@@ -1,0 +1,760 @@
+concept_id: S02-R1-C10
+subject: S02
+rung: 1
+sequence: 10
+name: Vectors as data rows, and the weighted sum
+concept_type: derivable
+clusters:
+- measurement-inference
+- diet-movement-timing
+ground_floor_deps:
+- B0-R0-C12
+- B0-R0-C15
+- B0-R0-C27
+- B0-R0-C32
+- B0-R0-C39
+concept_deps: [S02-R1-C01, S02-R1-C02]
+definition:
+  text: |
+    A vector is an ordered list of numbers, called its entries. Its length is the number of
+    entries it has. In this book a vector is named by a lowercase letter and written in round
+    brackets, so x = (2, 5, 1) is a vector of length three. The order is part of the vector:
+    (2, 5, 1) and (5, 2, 1) are different vectors.
+
+    One row of a data table is a vector, with one entry for each column, in the order of the
+    columns. Textbooks often write a vector as a column instead of a row. It is the same list.
+
+    Two vectors of the same length are added entry by entry. A vector is multiplied by a single
+    number by multiplying every entry by that number. A single number used this way is called a
+    scalar. Vectors of different lengths cannot be added.
+
+    A weighted sum of vectors v and w, with numbers c and d, is the vector cv + dw. The numbers c
+    and d are its weights. Textbooks also call it a linear combination.
+
+    The dot product of two vectors of the same length, written a · b and said "a dot b", is a
+    single number. Multiply the entries in matching positions, then add the products. For two
+    vectors of length three, (p, q, r) · (s, t, u) = ps + qt + ru. The dot product is a weighted
+    sum of the entries of one vector, with the entries of the other as the weights.
+
+    Suppose a total T is found as a · x, for a fixed vector of weights a. Raise one entry of x by
+    one unit and hold every other entry fixed. Then T changes by the matching entry of a. Rung 2
+    of this subject calls that number a partial derivative.
+  references:
+  - citekey: austin_ula
+    kind: textbook
+    locator: "§2.1 Vectors and linear combinations, subsection 2.1.1 Vectors, first paragraph"
+    quote: |-
+      The entries in a vector are called its components.
+    verified:
+      resolved_id: https://understandinglinearalgebra.org/sec-vectors-lin-combs.html
+      opened: true
+      claim_located: true
+      checked_on: '2026-09-24'
+      note: |-
+        Austin's first sentence of 2.1.1 is "A vector is most simply thought of as a matrix with
+        a single column", which is where the record's note that textbooks write a vector as a
+        column comes from. This book says "entry" for what Austin calls a component, following
+        College Algebra 2e §7.5, so that vectors and matrices share one word.
+  - citekey: austin_ula
+    kind: textbook
+    locator: "§2.1 Vectors and linear combinations, subsection 2.1.1, Scalar Multiplication"
+    quote: |-
+      We multiply a vector \(\vvec\) by a real number \(c\) by multiplying each of the components of \(\vvec\) by \(c\text{.}\)
+    verified:
+      resolved_id: https://understandinglinearalgebra.org/sec-vectors-lin-combs.html
+      opened: true
+      claim_located: true
+      checked_on: '2026-09-24'
+  - citekey: austin_ula
+    kind: textbook
+    locator: "§2.1 Vectors and linear combinations, subsection 2.1.1, Vector Addition"
+    quote: |-
+      We add two vectors of the same dimension by adding their components.
+    verified:
+      resolved_id: https://understandinglinearalgebra.org/sec-vectors-lin-combs.html
+      opened: true
+      claim_located: true
+      checked_on: '2026-09-24'
+      note: |-
+        Austin's "dimension" of a vector is its number of entries. This record says "length",
+        because Book 0 (`B0-R0-C11`) has already given "dimension" another meaning: the kind of
+        thing a quantity is.
+  - citekey: austin_ula
+    kind: textbook
+    locator: "§2.1 Vectors and linear combinations, subsection 2.1.2, Definition 2.1.10"
+    quote: |-
+      The scalars \(c\_1,c\_2,\ldots,c\_n\) are called the *weights* of the linear combination.
+    verified:
+      resolved_id: https://understandinglinearalgebra.org/sec-vectors-lin-combs.html
+      opened: true
+      claim_located: true
+      checked_on: '2026-09-24'
+  - citekey: openstax_college_algebra_2e_7_5
+    kind: textbook
+    locator: "§7.5 Matrices and Matrix Operations, Finding the Product of Two Matrices, the rule for the entries of AB"
+    quote: |-
+      we multiply the entries in row i i of A A by column j j in B B and add.
+    verified:
+      resolved_id: https://openstax.org/books/college-algebra-2e/pages/7-5-matrices-and-matrix-operations
+      opened: true
+      claim_located: true
+      checked_on: '2026-09-24'
+      note: |-
+        The doubled letters ("i i", "A A") are how the held file's extraction flattens the
+        page's inline mathematics; the page reads "we multiply the entries in row i of A by
+        column j in B and add". This is the multiply-and-add move this record calls the dot
+        product. Neither held textbook section uses the name "dot product" (Austin gives it in a
+        later chapter that is not held); the name is used here as the ordinary one for the move.
+  - citekey: openstax_college_algebra_2e_7_5
+    kind: textbook
+    locator: "§7.5 Matrices and Matrix Operations, Using Matrices in Real-World Problems, the soccer equipment costs"
+    quote: |-
+      The total cost for equipment for the Wildcats is $2,520, and the total cost for equipment for the Mud Cats is $3,840.
+    verified:
+      resolved_id: https://openstax.org/books/college-algebra-2e/pages/7-5-matrices-and-matrix-operations
+      opened: true
+      claim_located: true
+      checked_on: '2026-09-24'
+      note: |-
+        The worked example multiplies a row of prices (300, 10, 30) by each team's column of
+        counts and adds: 300(6) + 10(30) + 30(14) = 2,520. It is cited as the textbook's own
+        instance of a total built as a weighted sum, prices as the weights.
+  - citekey: fao_food_energy_2003
+    kind: consensus_statement
+    locator: "ch. 3, §3.5.1 The Atwater general factor system"
+    quote: |-
+      The energy values are 17 kJ/g (4.0 kcal/g) for protein, 37 kJ/g (9.0 kcal/g) for fat and 17 kJ/g (4.0 kcal/g) for carbohydrates.
+    verified:
+      resolved_id: https://www.fao.org/4/y5022e/y5022e04.htm
+      opened: true
+      claim_located: true
+      checked_on: '2026-09-24'
+simplified_explanation: |
+  Write down a food's grams of protein, fat and carbohydrate, always in that order. That list is a
+  vector. The list (10, 30, 50) means 10 g of protein, 30 g of fat and 50 g of carbohydrate.
+
+  Book 0 gave the energy each gram supplies (`B0-R0-C32`). A gram of protein gives about 4 kcal.
+  A gram of fat gives about 9, and a gram of carbohydrate about 4. So multiply each count of grams by its
+  factor, and add.
+
+  ```working
+  4 times 10 plus 9 times 30 plus 4 times 50 = 510
+  ```
+
+  That multiply-and-add is called the dot product of the factor list (4, 9, 4) with the gram list
+  (10, 30, 50). The answer is 510 kcal.
+
+  Each factor is a weight. It says how much one more gram of that nutrient adds to the total,
+  with the other two left alone. "Weight" here means a multiplier, not body weight. The clash is
+  in the textbooks. This book writes "body weight" whenever it means the person.
+illustration:
+  body: |
+    Start with a row that does not behave like numbers you can add up. A clinic records four
+    things about each patient, always in the same order. They are age in years, body weight in kg,
+    height in cm and waist in cm. One patient's row, made up for this example, is a vector.
+
+    ```working
+    x = (40, 68, 162, 88)
+    ```
+
+    Swap two entries and you have a different patient, not the same patient written another way.
+    The order is part of the meaning.
+
+    Now try the two operations on it. Add a second patient's row to this one, and you get a list
+    of four numbers that describes nobody. Multiply this row by 2 and you get a person of 80 years
+    and 136 kg, which is not a doubled version of anyone. The arithmetic runs, and the answer means
+    nothing.
+
+    One operation on these rows does mean something. Take the same patient a year later, with the
+    new row y = (41, 65, 162, 84), also made up. Subtract entry by entry.
+
+    ```working
+    41 minus 40 = 1
+    65 minus 68 = -3
+    162 minus 162 = 0
+    84 minus 88 = -4
+    ```
+
+    The change vector y − x is (1, −3, 0, −4). It says one year older, 3 kg lighter, no change in
+    height and 4 cm less at the waist. Subtraction works because the two rows describe one person,
+    in the same order and the same units.
+
+    Food rows are different. Adding and scaling them is the whole point. A packaged snack's label
+    gives its grams per 100 g. Take one made up for this example.
+
+    ```working
+    g = (10, 30, 50)
+    ```
+
+    The entries are grams of protein, fat and carbohydrate in 100 g of the snack. A serving is
+    30 g, which is 0.3 of 100 g. Scale the vector by 0.3.
+
+    ```working
+    0.3 times 10 = 3
+    0.3 times 30 = 9
+    0.3 times 50 = 15
+    ```
+
+    A serving holds (3, 9, 15): 3 g of protein, 9 g of fat and 15 g of carbohydrate. That is 27 g
+    of the three together. The other 3 g of the serving are whatever else the snack contains,
+    such as water or minerals.
+
+    Now the energy. The Food and Agriculture Organization (FAO) of the United Nations gives the
+    Atwater general factors. They are 4.0 kcal/g for protein, 9.0 for fat and 4.0 for
+    carbohydrate. You can find them in FAO Food and Nutrition Paper 77, 2003, §3.5.1
+    (https://www.fao.org/4/y5022e/y5022e04.htm).
+    Write them as a vector in the same order as the grams.
+
+    ```working
+    a = (4, 9, 4)
+    ```
+
+    The energy in a serving is a · (3, 9, 15). Multiply matching entries and add.
+
+    ```working
+    4 times 3 = 12
+    9 times 9 = 81
+    4 times 15 = 60
+    12 plus 81 plus 60 = 153
+    ```
+
+    A serving gives 153 kcal. The energy in the whole 100 g is a · g.
+
+    ```working
+    4 times 10 plus 9 times 30 plus 4 times 50 = 510
+    0.3 times 510 = 153
+    ```
+
+    Scaling the grams by 0.3 scaled the energy by 0.3. That is no accident. Every product in the
+    dot product was scaled by 0.3, so their sum was too.
+
+    Adding works the same way. A second item eaten with the snack, a biscuit, gives (2, 5, 20) per
+    serving, also made up. The meal is the sum of the two vectors.
+
+    ```working
+    3 plus 2 = 5
+    9 plus 5 = 14
+    15 plus 20 = 35
+    ```
+
+    The meal holds (5, 14, 35). Its energy can be found two ways, and they must agree.
+
+    ```working
+    4 times 5 plus 9 times 14 plus 4 times 35 = 286
+    4 times 2 plus 9 times 5 plus 4 times 20 = 133
+    153 plus 133 = 286
+    ```
+
+    Dot the meal's vector once, or dot each item and add the energies. Both give 286 kcal. Use
+    that as a check on any diet app that shows a meal's total.
+
+    Now read the weights. Add 1 g of fat to the serving and hold the other two entries fixed.
+
+    ```working
+    4 times 3 plus 9 times 10 plus 4 times 15 = 162
+    162 minus 153 = 9
+    ```
+
+    The total rose by 9 kcal, the weight on fat. Each weight in a is the change in the total for one
+    more unit of its own entry, with the others held fixed.
+
+    The same grams dotted with a different vector of weights give a total in a different unit. FAO
+    gives the factors in kilojoules as 17, 37 and 17 kJ/g.
+
+    ```working
+    17 times 10 plus 37 times 30 plus 17 times 50 = 2130
+    ```
+
+    The 100 g of snack gives 2,130 kJ. The grams did not change. Only the weights did.
+
+    In India this is not only a textbook exercise. Look at the Food Safety and Standards (Labelling
+    and Display) Regulations, 2020, regulation 5(3)(e)(i). It says a packaged food's label energy
+    is to be calculated with fixed conversion factors. Among them are 4 kcal/g for carbohydrates
+    and protein, and 9 kcal/g for fat. So the energy printed on a packet is a dot product
+    of its declared grams with those factors.
+  analogy_breaks_when: |
+    The factors are general factors: one value for each nutrient, whatever the food. So a · g gives
+    the energy a label would declare. It is not the energy a particular person absorbs from that
+    food (`B0-R0-C32`).
+
+    Adding and scaling rows is meaningful only when the entries match in order and in unit. Food
+    grams add. Patients' rows do not.
+
+    "One more gram of fat, with the others held fixed" describes the formula. A real food rarely
+    lets you change one nutrient alone, so a real swap changes several entries at once.
+
+    The snack, the biscuit and the patient are made up. Only the factors 4, 9 and 4 kcal/g, and 17,
+    37 and 17 kJ/g, come from the sources.
+  numbers:
+  - value: "4.0"
+    unit: kcal/g, Atwater general factor for protein (and for carbohydrate)
+    citekey: fao_food_energy_2003
+    as_of: '2026-09-24'
+    quote: The energy values are 17 kJ/g (4.0 kcal/g) for protein
+  - value: "9.0"
+    unit: kcal/g, Atwater general factor for fat
+    citekey: fao_food_energy_2003
+    as_of: '2026-09-24'
+    quote: 37 kJ/g (9.0 kcal/g) for fat
+  - value: "17"
+    unit: kJ/g, Atwater general factor for protein and for carbohydrate
+    citekey: fao_food_energy_2003
+    as_of: '2026-09-24'
+    quote: The energy values are 17 kJ/g (4.0 kcal/g) for protein
+  - value: "37"
+    unit: kJ/g, Atwater general factor for fat
+    citekey: fao_food_energy_2003
+    as_of: '2026-09-24'
+    quote: 37 kJ/g (9.0 kcal/g) for fat
+  - value: "4"
+    unit: kcal/g, FSSAI labelling conversion factor for protein, regulation 5(3)(e)(i)(D)
+    citekey: fssai_labelling_2020
+    as_of: '2025-09-09'
+    quote: (D) Protein 4 kcal/g
+  - value: "4"
+    unit: kcal/g, FSSAI labelling conversion factor for carbohydrates, regulation 5(3)(e)(i)(A)
+    citekey: fssai_labelling_2020
+    as_of: '2025-09-09'
+    quote: (A) Carbohydrates 4 kcal/g
+  - value: "9"
+    unit: kcal/g, FSSAI labelling conversion factor for fat, regulation 5(3)(e)(i)(E)
+    citekey: fssai_labelling_2020
+    as_of: '2025-09-09'
+    quote: (E) Fat 9 kcal/g
+must_know:
+- point: |
+    Before you take a dot product, line up the two vectors' orders. If a label lists fat, then
+    protein, then carbohydrate, and your factors run protein, fat, carbohydrate, the arithmetic
+    still gives a number. It is the wrong number, and nothing on the page will warn you.
+  kind: trap
+  bearing: methodological
+- point: |
+    The misconception is that a weight tells you what happens when you change one thing in a real
+    food. It tells you the change with every other entry held fixed. Swapping fat for sugar changes
+    two entries at once. Write the whole change vector and dot that.
+  kind: misconception
+  bearing: clinical
+- point: |
+    A weighted sum throws information away. Many different gram vectors give the same total
+    energy. So two foods with the same kilocalories per 100 g can differ in every nutrient. Never
+    infer a food's make-up from its energy figure.
+  kind: boundary
+  bearing: public
+- point: |
+    Add or scale rows only when every entry means the same thing, in the same unit, in the same
+    place. Food grams add. Two patients' rows do not. The difference between one patient's rows at
+    two visits does mean something: it is the change in each measurement.
+  kind: boundary
+  bearing: methodological
+- point: |
+    Check a meal's energy in an app or a diet chart two ways. Add the foods' gram vectors and dot
+    the total once. Then dot each food and add the energies. The two answers must agree. If they do not, one of the
+    rows or one of the factors is wrong.
+  kind: move
+  bearing: clinical
+- point: |
+    When you teach this, say "weights" for the multipliers and "body weight" for the person, every
+    time. A trainee who hears "the weight on fat is 9" beside a patient's weight of 68 kg will
+    otherwise hear one word doing two jobs.
+  kind: move
+  bearing: teaching
+exercises:
+- type: interpretation
+  prompt: |
+    The FAO report gives the Atwater general factors in kilojoules as 17 kJ/g for protein, 37 kJ/g
+    for fat and 17 kJ/g for carbohydrate. Write the energy E of a food, in kJ, as an equation in
+    its grams of protein p, fat f and carbohydrate c. Say what each symbol stands for, with its
+    unit. Then write the same equation as a dot product of two named vectors, and say which vector
+    holds the weights.
+  answer: |
+    In words first. The energy is 17 times the grams of protein, plus 37 times the grams of fat,
+    plus 17 times the grams of carbohydrate.
+
+    ```working
+    E = 17p + 37f + 17c
+    ```
+
+    E is the food's energy in kJ. The letters p, f and c are the grams of protein, fat and
+    carbohydrate, each in g. The numbers 17, 37 and 17 are in kJ/g, so each product is in kJ, and
+    the three can be added.
+
+    As a dot product, name the factors k = (17, 37, 17) and the grams g = (p, f, c), in the same
+    order.
+
+    ```working
+    E = k · g
+    ```
+
+    The vector k holds the weights. Each entry of k is the change in E, in kJ, for one more gram
+    of its nutrient with the other two held fixed.
+  skill_ref: S02-R1-K01
+quantitative: true
+practice:
+- level: 1
+  prompt: |
+    u = (2, 5, 1) and v = (3, −1, 4). Work out u + v and 3u.
+  answer: |
+    Add entry by entry.
+
+    ```working
+    2 plus 3 = 5
+    5 plus -1 = 4
+    1 plus 4 = 5
+    ```
+
+    u + v = (5, 4, 5). Now multiply every entry of u by 3.
+
+    ```working
+    3 times 2 = 6
+    3 times 5 = 15
+    3 times 1 = 3
+    ```
+
+    3u = (6, 15, 3).
+- level: 2
+  prompt: |
+    With the same u = (2, 5, 1) and v = (3, −1, 4), work out the weighted sum 2u − 3v.
+  answer: |
+    Scale each vector first.
+
+    ```working
+    2u = (4, 10, 2)
+    3v = (9, -3, 12)
+    ```
+
+    Then subtract entry by entry.
+
+    ```working
+    4 minus 9 = -5
+    10 minus -3 = 13
+    2 minus 12 = -10
+    ```
+
+    2u − 3v = (−5, 13, −10).
+- level: 2
+  prompt: |
+    Work out u · v for u = (2, 5, 1) and v = (3, −1, 4). Then work out (4, 9, 4) · (0, 1, 0) and
+    (4, 9, 4) · (1, 1, 1).
+  answer: |
+    Multiply matching entries and add.
+
+    ```working
+    2 times 3 plus 5 times -1 plus 1 times 4 = 5
+    ```
+
+    u · v = 5.
+
+    ```working
+    4 times 0 plus 9 times 1 plus 4 times 0 = 9
+    4 times 1 plus 9 times 1 plus 4 times 1 = 17
+    ```
+
+    Dotting with (0, 1, 0) picks out the middle weight, 9. Dotting with (1, 1, 1) adds all the
+    weights, 17.
+- level: 3
+  prompt: |
+    For each, say whether it can be worked out. Where it can, work it out.
+
+    1. (1, 2, 3) · (4, 5)
+    2. (1, 2) + (3, 4, 5)
+    3. 2.5 times (4, 0, −2)
+    4. (1, 2, 3) · (4, 5, 6)
+  answer: |
+    1. Cannot. A dot product needs two vectors of the same length, and these have three entries
+       and two.
+    2. Cannot. Vectors of different lengths cannot be added.
+    3. Can. Any vector can be multiplied by a scalar.
+
+    ```working
+    2.5 times 4 = 10
+    2.5 times 0 = 0
+    2.5 times -2 = -5
+    ```
+
+    The result is (10, 0, −5).
+
+    4. Can. Both have length three.
+
+    ```working
+    1 times 4 plus 2 times 5 plus 3 times 6 = 32
+    ```
+
+    The dot product is 32.
+- level: 4
+  prompt: |
+    A packaged food's label, made up for this problem, gives per 100 g: protein 7 g, fat 18 g,
+    carbohydrate 66 g. Use the Atwater general factors of 4.0, 9.0 and 4.0 kcal/g (FAO 2003) to
+    work out the energy in 100 g, in kcal.
+  answer: |
+    Write the grams as g = (7, 18, 66) and the factors as a = (4, 9, 4), in the same order. The
+    energy is a · g.
+
+    ```working
+    4 times 7 = 28
+    9 times 18 = 162
+    4 times 66 = 264
+    28 plus 162 plus 264 = 454
+    ```
+
+    100 g gives 454 kcal.
+  refs:
+  - fao_food_energy_2003
+- level: 4
+  prompt: |
+    Take the same food, (7, 18, 66) grams per 100 g. Work out its energy in kJ with the FAO factors
+    of 17, 37 and 17 kJ/g. Then divide the kJ figure by the kcal figure from the last problem.
+  answer: |
+    Dot the grams with (17, 37, 17).
+
+    ```working
+    17 times 7 = 119
+    37 times 18 = 666
+    17 times 66 = 1122
+    119 plus 666 plus 1122 = 1907
+    ```
+
+    100 g gives 1,907 kJ.
+
+    ```working
+    1907 divided by 454 = 4.200...
+    ```
+
+    The ratio is about 4.2. A kilocalorie is about 4.18 kJ (`B0-R0-C12`), and the rounded factors (17 for 4.0, 37
+    for 9.0) move the ratio a little off that.
+  refs:
+  - fao_food_energy_2003
+- level: 5
+  prompt: |
+    The food in the last two problems, (7, 18, 66) grams per 100 g, is eaten in a 25 g serving.
+    Work out the grams in the serving, then the energy in the serving in kcal. Check the answer
+    against the 454 kcal per 100 g.
+  answer: |
+    A 25 g serving is 0.25 of 100 g. Scale the gram vector.
+
+    ```working
+    0.25 times 7 = 1.75
+    0.25 times 18 = 4.5
+    0.25 times 66 = 16.5
+    ```
+
+    The serving holds (1.75, 4.5, 16.5) g. Dot with (4, 9, 4).
+
+    ```working
+    4 times 1.75 plus 9 times 4.5 plus 4 times 16.5 = 113.5
+    0.25 times 454 = 113.5
+    ```
+
+    The serving gives 113.5 kcal. Scaling the grams by 0.25 scaled the energy by 0.25.
+  refs:
+  - fao_food_energy_2003
+- level: 5
+  prompt: |
+    FAO's Atwater system also gives alcohol a rounded factor of 7.0 kcal/g. A drink, made up for
+    this problem, holds no protein, no fat, 10 g of carbohydrate and 14 g of alcohol. Write the
+    grams and the factors as two vectors of length four, and work out the drink's energy in kcal.
+  answer: |
+    Choose an order and keep it for both vectors: protein, fat, carbohydrate, alcohol.
+
+    ```working
+    g = (0, 0, 10, 14)
+    a = (4, 9, 4, 7)
+    4 times 0 plus 9 times 0 plus 4 times 10 plus 7 times 14 = 138
+    ```
+
+    The drink gives 138 kcal, and 98 of them come from the alcohol.
+  refs:
+  - fao_food_energy_2003
+- level: 6
+  prompt: |
+    A label, made up for this problem, gives 480 kcal per 100 g, 8 g of protein and 24 g of fat.
+    The carbohydrate figure is smudged. Taking the energy as the dot product with (4, 9, 4), find
+    the grams of carbohydrate.
+  answer: |
+    The energy is 4 times protein plus 9 times fat plus 4 times carbohydrate. Two of the three
+    products are known.
+
+    ```working
+    4 times 8 = 32
+    9 times 24 = 216
+    480 minus 32 minus 216 = 232
+    ```
+
+    So 4 times the carbohydrate is 232 kcal.
+
+    ```working
+    232 divided by 4 = 58
+    ```
+
+    The label should read 58 g of carbohydrate. Check it.
+
+    ```working
+    4 times 8 plus 9 times 24 plus 4 times 58 = 480
+    ```
+  refs:
+  - fao_food_energy_2003
+- level: 6
+  prompt: |
+    A meal is one serving of each of three made-up foods. In grams of protein, fat and
+    carbohydrate they are (4, 2, 30), (9, 6, 12) and (1, 8, 22). Work out the meal's energy in kcal in two
+    ways, with the factors (4, 9, 4), and show that they agree.
+  answer: |
+    First way: add the three vectors, then dot once.
+
+    ```working
+    4 plus 9 plus 1 = 14
+    2 plus 6 plus 8 = 16
+    30 plus 12 plus 22 = 64
+    4 times 14 plus 9 times 16 plus 4 times 64 = 456
+    ```
+
+    Second way: dot each food, then add the energies.
+
+    ```working
+    4 times 4 plus 9 times 2 plus 4 times 30 = 154
+    4 times 9 plus 9 times 6 plus 4 times 12 = 138
+    4 times 1 plus 9 times 8 plus 4 times 22 = 164
+    154 plus 138 plus 164 = 456
+    ```
+
+    Both give 456 kcal.
+  refs:
+  - fao_food_energy_2003
+- level: 7
+  prompt: |
+    Here is a worked answer. Find the step that broke.
+
+    ```working
+    a made-up label lists, per 100 g: fat 30 g, protein 10 g, carbohydrate 50 g
+    grams, as read off the label: (30, 10, 50)
+    factors for protein, fat, carbohydrate: (4, 9, 4)
+    energy = 4 times 30 plus 9 times 10 plus 4 times 50 = 410 kcal
+    ```
+  answer: |
+    The second step broke. The grams were copied in the label's order, fat first. The factors are
+    in the order protein, fat, carbohydrate. So the 30 g of fat was multiplied by the protein
+    factor, 4, and the 10 g of protein by the fat factor, 9.
+
+    Put the grams in the factors' order: (10, 30, 50).
+
+    ```working
+    4 times 10 plus 9 times 30 plus 4 times 50 = 510
+    ```
+
+    The food gives 510 kcal per 100 g, not 410.
+
+    Why the wrong answer looks reasonable: every multiplication and the addition are correct. And
+    410 kcal per 100 g is a believable figure for a snack. The error is in which number sat in
+    which place, and a dot product has no way to notice.
+- level: 8
+  prompt: |
+    Here is a worked answer for the energy in a 30 g serving of this section's made-up snack. Its
+    grams per 100 g are (10, 30, 50). Find the step that broke.
+
+    ```working
+    the serving is 0.3 of 100 g
+    grams in the serving: 0.3 times (10, 30, 50) = (3, 9, 15)
+    factors for a serving: 0.3 times (4, 9, 4) = (1.2, 2.7, 1.2)
+    energy = 1.2 times 3 plus 2.7 times 9 plus 1.2 times 15 = 45.9 kcal
+    ```
+  answer: |
+    The third step broke. The grams had already been scaled to the serving. Scaling the factors as
+    well applied the 0.3 twice. The factors are kcal per gram, and a gram gives the same energy
+    whatever the size of the serving.
+
+    Dot the serving's grams with the unscaled factors.
+
+    ```working
+    4 times 3 plus 9 times 9 plus 4 times 15 = 153
+    ```
+
+    The serving gives 153 kcal. The wrong answer is 0.3 times 0.3 times 510, which is 45.9.
+
+    Why it looks reasonable: scaling one vector by 0.3 is right. It is easy to feel that "for a
+    serving" should apply to everything on the line. Scale either the grams or the factors, never
+    both.
+- level: 9
+  prompt: |
+    A food blog says: "Replace 10 g of fat in your recipe with 10 g of sugar. You cut 90 kcal,
+    because fat carries 9 kcal a gram."
+
+    Decide what to compute, compute it, and say what your answer does not establish.
+  answer: |
+    What to compute: the change in energy from the whole swap. The swap removes 10 g of fat and
+    adds 10 g of sugar, which counts as carbohydrate. In the order protein, fat, carbohydrate, the
+    change vector is (0, −10, 10). Dot it with (4, 9, 4).
+
+    ```working
+    4 times 0 plus 9 times -10 plus 4 times 10 = -50
+    ```
+
+    The energy falls by 50 kcal, not 90. The blog used the weight on fat, which gives the change
+    with everything else held fixed. The swap did not hold carbohydrate fixed. It added 10 g of
+    it, worth 40 kcal.
+
+    What this does not establish. It gives the change in the recipe's calculated energy. It does
+    not say how much a person eating it absorbs, since the factors are general ones. It says
+    nothing about how full the food leaves someone, or what they eat later. It does not say that
+    the swap is a good idea at all.
+- level: 10
+  prompt: |
+    A colleague says: "These two snacks both give 510 kcal per 100 g, so nutritionally they are
+    the same food."
+
+    Decide what to compute, compute it, and say what your answer does not establish.
+  answer: |
+    What to compute: whether one energy total can come from different gram vectors. Try three
+    made-up snacks, in the order protein, fat, carbohydrate, and dot each with (4, 9, 4).
+
+    ```working
+    4 times 10 plus 9 times 30 plus 4 times 50 = 510
+    4 times 5 plus 9 times 30 plus 4 times 55 = 510
+    4 times 10 plus 9 times 20 plus 4 times 72.5 = 510
+    ```
+
+    All three give 510 kcal per 100 g. The first and third differ by 10 g of fat and 22.5 g of
+    carbohydrate. The weighted sum gathered three numbers into one and threw the rest away. So
+    the energy figure alone cannot tell you what is in the food.
+
+    What this does not establish. It does not say either snack is better. It does not say the two
+    real snacks differ: they may, or may not. To know, you need the grams on each label, not the
+    total. And "nutritionally the same" would need far more than three macronutrients: fibre,
+    salt, vitamins and more.
+retrieval_items:
+- q: What is the dot product of two vectors, and when can it be taken?
+  a: Multiply the entries in matching positions and add the products, giving one number. It can
+    be taken only when the two vectors have the same length, and it means something only when their
+    entries are in matching order.
+- q: What does a weight in a weighted sum tell you?
+  a: How much the total changes for one more unit of its own entry, with every other entry held
+    fixed. Rung 2 of this subject calls it a partial derivative.
+- q: Why can the energy on a food label not tell you the food's protein, fat and carbohydrate?
+  a: Energy is a weighted sum of the grams, with weights 4, 9 and 4 kcal/g. Many different gram
+    vectors give the same weighted sum, so the total cannot be turned back into the grams.
+figures:
+- file: s02-r1-c10-energy-parts.png
+  caption: "Where the 153 kcal in a 30 g serving of the made-up snack come from. Each bar is one term of the dot product (4, 9, 4) · (3, 9, 15): 12 kcal from protein, 81 from fat and 60 from carbohydrate."
+  alt: "Three bars starting at zero: protein 12 kcal, fat 81 kcal, carbohydrate 60 kcal. The fat bar is the tallest."
+  source: draw.py
+  spec:
+    kind: bar
+    x: [protein, fat, carbohydrate]
+    series:
+    - name: energy in one serving
+      y: ["12", "81", "60"]
+    x_label: nutrient
+    y_label: kcal
+    value_labels: true
+    relations:
+    - check: "sum(y) = 153"
+provenance:
+  map_version_id: fc19c8bc-a216-4131-99fb-ebe3f19cec4a
+  outcome_refs:
+  - S02-R1-O2
+  - S02-R2-P01
+  - S02-R2-P02
+  bridge_ref: [S02-R2-P01, S02-R2-P02]
+review:
+  stability: long
+  trigger: '2031-09-24'
+  last_reviewed: '2026-09-24'
+status: drafted

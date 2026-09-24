@@ -825,10 +825,16 @@ def check(recs: dict, subjects: dict, clusters: dict, bibkeys: set):
 
         readability(rid, r, W, hard)
 
-        # illustration failure boundary
-        ill = r.get("illustration") or {}
-        if not (ill.get("analogy_breaks_when") or "").strip():
-            E(rid, "illustration.analogy_breaks_when is empty")
+        # illustration failure boundary: every illustration, whether one (`illustration`) or a
+        # list (`illustrations`, which the schema and claude.md allow). Until 24 Sep 2026 this read
+        # `illustration` only, so a record using the list alone was blocked as if it had none.
+        ills = _illustrations(r)
+        if not ills:
+            E(rid, "no illustration: write 'illustration', or 'illustrations' as a list of two or more")
+        for i, ill in enumerate(ills):
+            if not (ill.get("analogy_breaks_when") or "").strip():
+                where = "illustration" if len(ills) == 1 and r.get("illustration") else f"illustrations[{i}]"
+                E(rid, f"{where}.analogy_breaks_when is empty")
 
         # scope gate
         if not ((r.get("provenance") or {}).get("outcome_refs") or []):

@@ -1,0 +1,804 @@
+concept_id: S02-R1-C13
+subject: S02
+rung: 1
+sequence: 13
+name: A random variable and its distribution
+concept_type: derivable
+clusters:
+- measurement-inference
+ground_floor_deps:
+- B0-R0-C24
+- B0-R0-C25
+- B0-R0-C27
+- B0-R0-C29
+- B0-R0-C30
+- B0-R0-C18
+concept_deps: [S02-R1-C01, S02-R1-C05]
+definition:
+  text: |
+    A random variable is a rule that gives a number to each outcome of a chance process. In the
+    language of `B0-R0-C18`, it is a function: its inputs are the outcomes in the sample space,
+    and its outputs are numbers. Two outcomes may share a number. A random variable is written as
+    a capital letter, such as X. A value it can take is written as the same letter in lower case,
+    x. P(X = x) is the probability that X takes the value x.
+
+    A random variable is discrete when the values it can take can be listed, one by one. Its
+    probability distribution is the list of every value it can take, each paired with its
+    probability. The values listed must not overlap. Each probability is between 0 and 1,
+    inclusive, and the probabilities add to 1.
+
+    For a discrete random variable, the probability that X lands in a range is the sum of P(X = x)
+    over the values in that range. Adding is allowed because two different values of X cannot
+    both happen, so the events are mutually exclusive, as in `B0-R0-C25`.
+
+    A random variable is continuous when it can take any value in an interval, like a weight
+    measured with perfect precision. The probability of any one exact value is then 0. Its
+    probability distribution is given instead by a probability density: a curve that never goes
+    below zero and has a total area of 1 beneath it. The probability that X lands between a and b
+    is the area under the probability density from a to b. That area is the integral from a to b
+    of the probability density, in the sense of `S02-R1-C05`. The height of a probability density
+    is a probability per unit of X, not a probability, and it can be larger than 1.
+
+    A probability distribution is a model. It states the probabilities themselves. A frequency
+    table of data, as in `B0-R0-C27`, gives relative frequencies from the cases actually counted.
+    Those estimate the probabilities, and differ from them from one sample to the next.
+
+    Families of distributions with names, such as the binomial, belong to the next subject,
+    probability and statistical inference. This section names none of them.
+  references:
+  - citekey: openintro_stats_4e
+    kind: textbook
+    locator: "§3.4.1 Expectation, the boxed definition RANDOM VARIABLE"
+    quote: |-
+      A random process or variable with a numerical outcome.
+    verified:
+      resolved_id: https://www.openintro.org/book/os/
+      opened: true
+      claim_located: true
+      checked_on: '2026-09-24'
+      note: |-
+        Read in the S02-R1 source pack (the screen-reader PDF's text layer). The capital-letter
+        convention is in the sentence before the box: "we usually represent this random variable
+        with a capital letter such as X, Y , or Z." The record's "a rule that gives a number to
+        each outcome" is the same idea put in Book 0's function language, not a quotation.
+  - citekey: openstax_intro_stats_2e
+    kind: textbook
+    locator: "§4.1 Probability Distribution Function (PDF) for a Discrete Random Variable, opening list"
+    quote: |-
+      Each probability is between zero and one, inclusive. 2. The sum of the probabilities is one.
+    verified:
+      resolved_id: https://openstax.org/books/introductory-statistics-2e/pages/4-1-probability-distribution-function-pdf-for-a-discrete-random-variable
+      opened: true
+      claim_located: true
+      checked_on: '2026-09-24'
+      note: |-
+        The two rules of a discrete probability distribution. The "2." is the page's own list
+        label, kept because the quote spans both items.
+  - citekey: openintro_stats_4e
+    kind: textbook
+    locator: "§3.1.5 Probability distributions, the box RULES FOR PROBABILITY DISTRIBUTIONS, rule 1"
+    quote: |-
+      The outcomes listed must be disjoint.
+    verified:
+      resolved_id: https://www.openintro.org/book/os/
+      opened: true
+      claim_located: true
+      checked_on: '2026-09-24'
+      note: |-
+        "Disjoint" is OpenIntro's word for what Book 0 calls mutually exclusive; the record says
+        "must not overlap".
+  - citekey: openintro_stats_4e
+    kind: textbook
+    locator: "§3.5.1 From histograms to continuous distributions"
+    quote: |-
+      A density has a special property: the total area under the density’s curve is 1.
+    verified:
+      resolved_id: https://www.openintro.org/book/os/
+      opened: true
+      claim_located: true
+      checked_on: '2026-09-24'
+      note: |-
+        The total area of 1. The quote carries the source's curly apostrophe.
+  - citekey: openintro_stats_4e
+    kind: textbook
+    locator: "§3.5.2 Probabilities from continuous distributions, the paragraph before Figure 3.27"
+    quote: |-
+      Similarly, we can use the area in the shaded region under the curve to ﬁnd a probability
+    verified:
+      resolved_id: https://www.openintro.org/book/os/
+      opened: true
+      claim_located: true
+      checked_on: '2026-09-24'
+      note: |-
+        Probability as the area under the density between two values. The quote keeps the PDF's
+        "fi" ligature as one character, as the file holds it.
+  - citekey: openintro_stats_4e
+    kind: textbook
+    locator: "§3.5.2, Example 3.74 (probability of exactly 180 cm)"
+    quote: |-
+      This probability is zero. A person might be close to 180 cm, but not exactly 180 cm tall.
+    verified:
+      resolved_id: https://www.openintro.org/book/os/
+      opened: true
+      claim_located: true
+      checked_on: '2026-09-24'
+      note: |-
+        The probability of one exact value of a continuous variable is 0.
+  - citekey: openintro_stats_4e
+    kind: textbook
+    locator: "§3.5.2, the sentence after the area 0.1157 (a sample's proportion against the density's area)"
+    quote: |-
+      This is very close to the estimate from Example 3.72: 0.1172.
+    verified:
+      resolved_id: https://www.openintro.org/book/os/
+      opened: true
+      claim_located: true
+      checked_on: '2026-09-24'
+      note: |-
+        OpenIntro's own word "estimate" for the relative frequency from a sample, set beside the
+        probability from the density (0.1157). The record uses the contrast, not the figures.
+  - citekey: openintro_stats_4e
+    kind: textbook
+    locator: "§3.5.2, footnote 61 to Guided Practice 3.75 (a measured height rounded to the nearest centimetre)"
+    quote: |-
+      Anyone between 179.5 cm and 180.5 cm will have a measured height of 180 cm.
+    verified:
+      resolved_id: https://www.openintro.org/book/os/
+      opened: true
+      claim_located: true
+      checked_on: '2026-09-24'
+      note: |-
+        The rounding logic the illustration applies to a scale that shows 0.1 kg. The spread of
+        the rounding error evenly across its range is the record's model, stated as an assumption
+        there; OpenIntro does not say it.
+simplified_explanation: |
+  Toss two coins and count the heads. The count is 0, 1 or 2. That count is a random variable:
+  a rule that turns each way the tosses can land into a number. Both "heads then tails" and
+  "tails then heads" give the number 1, and that is allowed.
+
+  Its probability distribution lists each number beside its chance. Here that is 0.25 for no
+  heads, 0.5 for one and 0.25 for two. Check any such list two ways. Every chance must be from 0
+  to 1, and the chances must add to 1.
+
+  To get the chance of a range, such as "at least one head", add the chances inside it.
+
+  Some quantities can land anywhere in a range, like the tiny amount a scale is out by when it
+  rounds. Then no single exact value has any chance at all, and only ranges do. The chances are
+  areas under a curve, and the whole area is 1.
+
+  A list of chances is a model. A count of what happened in a survey is data. The data estimate
+  the chances. They do not equal them.
+illustration:
+  body: |
+    Start with a mistake that is easy to make. A made-up village has ten households. A survey
+    visits four of them, picked at random, and finds households of 5, 9, 4 and 5 people. The note
+    reads: "The probability that a household here has 5 people is 0.5." Two of the four had 5
+    people, and 2 divided by 4 is 0.5. See why that is not the probability.
+
+    Here is the whole village. Its ten households hold 2, 3, 4, 4, 5, 5, 5, 6, 7 and 9 people.
+
+    The chance process is "pick one household at random", with each household equally likely, as
+    in `B0-R0-C29`. The outcome is which household you picked. The random variable X is the rule
+    "give the number of people in it". Three different households give the value 5. That is
+    allowed, because a function may give two inputs the same output.
+
+    Each household has a chance of 1 in 10.
+
+    ```working
+    1 divided by 10 = 0.1
+    ```
+
+    Three households hold 5 people, so P(X = 5) is 3 times 0.1.
+
+    ```working
+    3 times 0.1 = 0.3
+    ```
+
+    Do the same for every value. Here is the probability distribution of X, and beside it the
+    relative frequencies from the survey's four households.
+
+    ```table
+    household size (x)  households  P(X = x)  relative frequency in the survey
+    2                   1           0.1       0
+    3                   1           0.1       0
+    4                   2           0.2       0.25
+    5                   3           0.3       0.5
+    6                   1           0.1       0
+    7                   1           0.1       0
+    9                   1           0.1       0.25
+    ```
+
+    Check the two rules. Every probability is between 0 and 1. Then add them.
+
+    ```working
+    0.1 plus 0.1 plus 0.2 plus 0.3 plus 0.1 plus 0.1 plus 0.1 = 1.0
+    ```
+
+    They add to 1. The values do not overlap, because no household has two sizes.
+
+    Now the chance of a range. The probability of a household of 6 or more is the sum over 6, 7
+    and 9.
+
+    ```working
+    0.1 plus 0.1 plus 0.1 = 0.3
+    ```
+
+    Now the note. P(X = 5) is 0.3. The survey's 0.5 is a relative frequency from four households.
+    It estimates 0.3, and misses it. A second survey of four would give different numbers. Neither
+    changes the village. The value 8 has probability 0, because no household holds 8, and nothing
+    in any survey can move that.
+
+    Now a variable that is not a list. A clinic scale shows weight to 0.1 kg. A person whose true
+    weight is anywhere from 69.95 kg to 70.05 kg sees 70.0 on it. Let X be the displayed weight
+    minus the true weight, in kilograms. That is the error the rounding makes. X can be any number
+    from −0.05 to 0.05, so it is continuous.
+
+    Say nothing makes one part of that range more likely than another. That is an assumption you
+    are choosing, not a fact about the scale. Then the probability density is flat across a width
+    of 0.1 kg, and zero outside it. At −0.1 kg or at 0.1 kg, for instance, the density is 0. Its
+    total area must be 1, so its height is 1 divided by the width.
+
+    ```working
+    1 divided by 0.1 = 10
+    ```
+
+    The height is 10 per kilogram. It is bigger than 1, and that is fine, because it is not a
+    probability. It is probability per kilogram of error.
+
+    The probability that the error lies between 0 and 0.02 kg is the area of a rectangle, 0.02 kg
+    wide and 10 per kilogram high. It is the integral of a constant, which `S02-R1-C05` computes
+    exactly.
+
+    ```working
+    0.02 times 10 = 0.2
+    ```
+
+    The kilograms cancel, and a probability is left: 0.2. Now ask for the probability that the
+    error is exactly 0.02. That rectangle has no width, so its area is 0. Only ranges carry
+    probability here.
+  analogy_breaks_when: |
+    The village is made up, and the distribution is exact only because the whole village was
+    listed. For a real place you never have the list; you have a survey, and the survey only
+    estimates the distribution.
+
+    The flat density is a model chosen for want of anything better. It describes only the
+    rounding. A scale that reads 0.3 kg heavy every time has a systematic error, as in
+    `B0-R0-C30`. That error shifts every reading by the same amount and is no part of this X at
+    all. The model holds only for errors between −0.05 and 0.05 kg on a scale that rounds to the
+    nearest 0.1 kg.
+  numbers: []
+must_know:
+- point: |
+    A relative frequency from data is not the probability. It is an estimate of it. When a paper
+    says "the probability was 0.3" and the 0.3 came from counting a sample, read "a sample gave
+    0.3". Then ask how big the sample was.
+  kind: misconception
+  bearing: methodological
+- point: |
+    Before you use a table that a paper calls a distribution, check it. Every probability is
+    between 0 and 1, and they add to 1. No two rows overlap: bands of "under 60 kg" and "50 to 70
+    kg" count the same people twice. A table that fails any of these is not a probability
+    distribution, however it is labelled.
+  kind: move
+  bearing: methodological
+- point: |
+    For a continuous measurement, the chance of any single exact value is zero. A probability
+    density's height is not a probability and can be larger than 1. Ask for the chance of a range,
+    such as 69.95 to 70.05 kg, never of "exactly 70 kg".
+  kind: trap
+  bearing: clinical
+- point: |
+    Every probability you work out from a distribution is only as good as the distribution. If its
+    shape was assumed, such as a flat density "for want of anything better", every answer carries
+    that assumption. Say so in the same sentence, or get data that shows the shape.
+  kind: boundary
+  bearing: methodological
+- point: |
+    A zero in a small sample does not make a value impossible. Four households with no 3-person
+    household do not show that the village has none. Say "not seen in this sample", never
+    "probability zero", unless you hold the whole list.
+  kind: trap
+  bearing: methodological
+- point: |
+    When you give a journalist a chance, say which kind it is. "One in three, in our model" and
+    "one in three of the people we counted" are different claims, and only the second is a count.
+  kind: consequence
+  bearing: public
+exercises:
+- type: teaching
+  prompt: |
+    A journalist has three minutes. They have read "the probability that a household has five
+    members is 0.5" in a survey report of four households, and want to print it.
+
+    Explain the difference between a probability and a relative frequency from a survey. Give
+    them one sentence they can quote.
+  answer: |
+    Open with what they saw. The survey counted four households, and two had five members. Two
+    out of four is a half. That is a fact about those four households.
+
+    Then the difference. The probability is a fact about the whole village: the share of all its
+    households that have five members. The survey's half is an estimate of that share, and four
+    households is a very small sample. Another four could easily give a quarter, or none.
+
+    Calibrate them. With only four households, the report cannot say whether the true share is
+    nearer a quarter or a half. It can say five-member households were seen.
+
+    The sentence to quote: "Two of the four households surveyed had five members. A sample that
+    small tells us little about how common that is in the village."
+quantitative: true
+practice:
+- level: 1
+  prompt: |
+    X takes the values 0, 1, 2 and 3, with probabilities 0.1, 0.3, 0.4 and 0.2.
+
+    Is this a probability distribution?
+  answer: |
+    Check both rules. Each probability is between 0 and 1. Now add them.
+
+    ```working
+    0.1 plus 0.3 plus 0.4 plus 0.2 = 1.0
+    ```
+
+    They add to 1, and the four values do not overlap. Yes, it is a probability distribution.
+- level: 1
+  prompt: |
+    X takes the values 1, 2, 3 and 4. P(X = 1) is 0.25, P(X = 2) is 0.35 and P(X = 4) is 0.15.
+
+    Work out P(X = 3).
+  answer: |
+    The four probabilities must add to 1. Add the three you have, and take the total from 1.
+
+    ```working
+    0.25 plus 0.35 plus 0.15 = 0.75
+    1 minus 0.75 = 0.25
+    ```
+
+    P(X = 3) is 0.25.
+- level: 2
+  prompt: |
+    Toss two fair coins. Let X be the number of heads.
+
+    List the outcomes, and write out the probability distribution of X.
+  answer: |
+    Each coin lands heads (H) or tails (T), so there are four outcomes, each equally likely.
+
+    ```table
+    HH   HT   TH   TT
+    ```
+
+    Each outcome has probability 1 in 4.
+
+    ```working
+    1 divided by 4 = 0.25
+    ```
+
+    Now apply the rule "count the heads" to each outcome. HH gives 2. HT and TH both give 1. TT
+    gives 0.
+
+    ```table
+    x  P(X = x)
+    0  0.25
+    1  0.5
+    2  0.25
+    ```
+
+    P(X = 1) is 0.5 because two outcomes give 1.
+
+    ```working
+    0.25 plus 0.25 = 0.5
+    0.25 plus 0.5 plus 0.25 = 1
+    ```
+
+    The probabilities add to 1.
+- level: 2
+  prompt: |
+    X takes the values 0, 1, 2, 3 and 4, with probabilities 0.1, 0.2, 0.4, 0.2 and 0.1.
+
+    Work out P(X ≥ 3), the probability that X is 3 or more. Then work out P(1 ≤ X ≤ 3), the
+    probability that X is from 1 to 3. Then work out P(X = 0) by the complement.
+  answer: |
+    Add the probabilities of the values in each range.
+
+    ```working
+    0.2 plus 0.1 = 0.3
+    0.2 plus 0.4 plus 0.2 = 0.8
+    ```
+
+    P(X ≥ 3) is 0.3, and P(1 ≤ X ≤ 3) is 0.8.
+
+    The complement of "X is 0" is "X is 1 or more". Its probability is the sum over 1, 2, 3 and
+    4. Take that from 1.
+
+    ```working
+    0.2 plus 0.4 plus 0.2 plus 0.1 = 0.9
+    1 minus 0.9 = 0.1
+    ```
+
+    P(X = 0) is 0.1, which matches the table.
+- level: 3
+  prompt: |
+    Three tables are offered as probability distributions for a variable taking the values 1, 2
+    and 3.
+
+    ```table
+    table  P(X = 1)  P(X = 2)  P(X = 3)
+    a      0.3       0.3       0.3
+    b      0.5       -0.1      0.6
+    c      0.2       0.5       0.3
+    ```
+
+    Which are probability distributions? For each that is not, name the rule it breaks.
+  answer: |
+    Add each row.
+
+    ```working
+    0.3 plus 0.3 plus 0.3 = 0.9
+    0.5 plus -0.1 plus 0.6 = 1.0
+    0.2 plus 0.5 plus 0.3 = 1.0
+    ```
+
+    Table a adds to 0.9, not 1. It breaks the rule that the probabilities add to 1.
+
+    Table b adds to 1, but P(X = 2) is minus 0.1. It breaks the rule that each probability is
+    between 0 and 1. Adding to 1 does not rescue it.
+
+    Table c passes both rules. It is the only probability distribution of the three.
+- level: 3
+  prompt: |
+    A continuous random variable X has a flat probability density from 0 to 4, and zero density
+    outside that range.
+
+    Work out the height of the density. Then work out P(1 ≤ X ≤ 2.5) and P(X = 3).
+  answer: |
+    The area under the density must be 1. The rectangle is 4 wide, so its height is 1 divided by
+    4.
+
+    ```working
+    1 divided by 4 = 0.25
+    ```
+
+    The probability of a range is the area over it: a rectangle 1.5 wide and 0.25 high.
+
+    ```working
+    2.5 minus 1 = 1.5
+    1.5 times 0.25 = 0.375
+    ```
+
+    P(1 ≤ X ≤ 2.5) is 0.375. P(X = 3) is 0, because a single value has no width and so no area.
+- level: 3
+  prompt: |
+    A continuous random variable X has a probability density that is zero outside the range from
+    0 to 2. Inside it, the density rises in a straight line, from 0 at x = 0 to 1 at x = 2.
+
+    Check that the total area is 1. Then work out P(X ≤ 1).
+  answer: |
+    The density makes a triangle with base 2 and height 1. A triangle's area is half the base
+    times the height, as in `S02-R1-C05`.
+
+    ```working
+    0.5 times 2 times 1 = 1
+    ```
+
+    The total area is 1.
+
+    At x = 1, halfway along, the straight line has risen halfway, to 0.5. So the area up to x = 1
+    is a smaller triangle with base 1 and height 0.5.
+
+    ```working
+    0.5 times 1 times 0.5 = 0.25
+    ```
+
+    P(X ≤ 1) is 0.25. Half the range holds only a quarter of the probability, because the
+    density is low on that side.
+- level: 4
+  prompt: |
+    A made-up ward has 20 patients. Eight stayed 2 days, six stayed 3 days, four stayed 4 days
+    and two stayed 7 days. Pick one patient at random. Let X be their length of stay, in days.
+
+    Write out the probability distribution of X. Then work out the probability of a stay of 4
+    days or more.
+  answer: |
+    Each patient has a chance of 1 in 20. The probability of each value is the number of patients
+    with it, divided by 20.
+
+    ```working
+    8 divided by 20 = 0.4
+    6 divided by 20 = 0.3
+    4 divided by 20 = 0.2
+    2 divided by 20 = 0.1
+    ```
+
+    ```table
+    x (days)  P(X = x)
+    2         0.4
+    3         0.3
+    4         0.2
+    7         0.1
+    ```
+
+    Check the total.
+
+    ```working
+    0.4 plus 0.3 plus 0.2 plus 0.1 = 1.0
+    ```
+
+    A stay of 4 days or more is X = 4 or X = 7.
+
+    ```working
+    0.2 plus 0.1 = 0.3
+    ```
+
+    The probability is 0.3. The values of X are in days; the probabilities have no unit.
+- level: 5
+  prompt: |
+    A scale shows weight to the nearest 0.2 kg. Let X be the displayed weight minus the true
+    weight, in kilograms. Model X as spread evenly, with a flat probability density, across its
+    whole range.
+
+    Work out the range of X and the height of the density, with its unit. Then work out the
+    probability that the error is more than 0.05 kg away from zero, in either direction.
+  answer: |
+    Rounding to the nearest 0.2 kg can be out by at most half of 0.2 either way.
+
+    ```working
+    0.2 divided by 2 = 0.1
+    ```
+
+    X runs from −0.1 kg to 0.1 kg, a width of 0.2 kg. The height makes the area 1.
+
+    ```working
+    1 divided by 0.2 = 5
+    ```
+
+    The height is 5 per kilogram.
+
+    "More than 0.05 away from zero" is two strips: from 0.05 to 0.1, and from −0.1 to −0.05. Each
+    strip is 0.05 kg wide.
+
+    ```working
+    0.1 minus 0.05 = 0.05
+    0.05 times 5 = 0.25
+    0.25 plus 0.25 = 0.5
+    ```
+
+    The probability is 0.5, under the flat model. Half the time, the rounding alone moves the
+    reading by more than 50 grams.
+- level: 6
+  prompt: |
+    Go back to the made-up ward of 20 patients: eight stayed 2 days, six 3 days, four 4 days and
+    two 7 days. A student picks five patients at random and finds stays of 2, 2, 7, 3 and 2 days.
+
+    Work out the relative frequency of a 2-day stay in the student's five. Set it beside P(X = 2)
+    for the ward, and say which is the model and which is the estimate.
+  answer: |
+    Three of the five stayed 2 days.
+
+    ```working
+    3 divided by 5 = 0.6
+    ```
+
+    The relative frequency is 0.6. For the whole ward, P(X = 2) is 8 divided by 20.
+
+    ```working
+    8 divided by 20 = 0.4
+    ```
+
+    The ward's 0.4 is the probability, fixed by the whole list of 20. The student's 0.6 is a
+    relative frequency from five patients, an estimate of 0.4. It misses by 0.2, and another five
+    would give a different figure. None of the student's five stayed 4 days, yet P(X = 4) is 0.2
+    in the ward.
+- level: 7
+  prompt: |
+    Here is a worked answer. Find the step that broke.
+
+    ```working
+    a scale rounds to the nearest 0.1 kg; the error X is modelled as flat from −0.05 to 0.05 kg
+    height of the density = 1 divided by 0.1 = 10
+    so P(X = 0.02) = 10
+    that is, an error of exactly 0.02 kg is very likely
+    ```
+  answer: |
+    The third line broke. The height of a probability density is not a probability. It is
+    probability per kilogram, and the first sign of trouble is that 10 is bigger than 1, which no
+    probability can be.
+
+    For a continuous variable, the probability of one exact value is the area over a strip of no
+    width, which is 0.
+
+    ```working
+    0 times 10 = 0
+    ```
+
+    P(X = 0.02) is 0. Ask about a range instead. For example, the chance of an error between
+    0.015 and 0.025 kg is a strip 0.01 kg wide.
+
+    ```working
+    0.025 minus 0.015 = 0.01
+    0.01 times 10 = 0.1
+    ```
+
+    Why the wrong answer looks reasonable: the height is the only number the density gives at a
+    point. So it is tempting to read it as "the chance at that point". It is how thickly the
+    probability is packed there.
+- level: 8
+  prompt: |
+    Here is a worked answer. Find the step that broke.
+
+    ```working
+    the made-up ward: 8 patients stayed 2 days, 6 stayed 3 days, 4 stayed 4 days, 2 stayed 7 days
+    a student samples five patients at random: stays 2, 2, 7, 3, 2
+    no patient in the sample stayed 4 days
+    so P(X = 4) = 0 for this ward: a 4-day stay does not happen here
+    ```
+  answer: |
+    The fourth line broke. It treats a relative frequency from five patients as the probability
+    for the ward. The ward's list says four patients stayed 4 days.
+
+    ```working
+    4 divided by 20 = 0.2
+    ```
+
+    P(X = 4) is 0.2. Missing a value in a sample of five is not surprising. The chance that one
+    random pick is not a 4-day patient is 0.8. If the five picks were independent, the chance of
+    seeing no 4-day stay would be about a third.
+
+    ```working
+    0.8 times 0.8 times 0.8 times 0.8 times 0.8 = 0.32768
+    ```
+
+    (The student picked five different patients, so the picks are not quite independent. The
+    figure is a rough guide, not the exact chance.)
+
+    Why the wrong answer looks reasonable: "not seen" and "cannot happen" sound alike, and the
+    sample was random. A random sample is fair. It is not complete.
+- level: 8
+  prompt: |
+    Here is a worked answer. Find the step that broke.
+
+    ```working
+    a report gives weights in three bands: under 60 kg, 0.3; 50 to 70 kg, 0.5; over 70 kg, 0.3
+    P(under 70 kg) = P(under 60 kg) plus P(50 to 70 kg)
+    0.3 plus 0.5 = 0.8
+    so the probability of weighing under 70 kg is 0.8
+    ```
+  answer: |
+    The second line broke, and the table was broken before it. The bands "under 60 kg" and "50 to
+    70 kg" overlap: anyone from 50 to 60 kg is in both. The values of a probability distribution
+    must not overlap.
+
+    You can see it in the total.
+
+    ```working
+    0.3 plus 0.5 plus 0.3 = 1.1
+    ```
+
+    The three add to 1.1, not 1, because the people from 50 to 60 kg are counted twice. Adding
+    the first two bands counts them twice again. The table cannot give P(under 70 kg) at all
+    without the share from 50 to 60 kg, which it does not print.
+
+    Why the wrong answer looks reasonable: adding probabilities over a range is the right move for
+    bands that do not overlap. It was applied to bands that do.
+- level: 9
+  prompt: |
+    A clinic note says this. The counts are made up.
+
+    > In our survey, 12 of 40 patients weighed between 80 and 90 kg. So the probability that the
+    > next patient weighs between 80 and 90 kg is 0.3.
+
+    Decide what to compute, compute it, and say what your answer does not establish.
+  answer: |
+    What to compute: the relative frequency the note is quoting.
+
+    ```working
+    12 divided by 40 = 0.3
+    ```
+
+    The arithmetic is right: 0.3 of the patients surveyed weighed 80 to 90 kg.
+
+    What this does not establish. It is not the probability. It is an estimate of it, from 40
+    patients, and another 40 would give a different figure.
+
+    It is not even an estimate for "the next patient" unless the next patient comes from the same
+    population, picked the same way. The survey may have been of one clinic, one season or one
+    referral route. A sample says nothing about a population it was not drawn from, as
+    `B0-R0-C29` warns.
+
+    And "between 80 and 90 kg" needs its ends settled. Does 90.0 on the scale count? With a scale
+    that rounds, a displayed 90.0 covers true weights on both sides of 90.
+
+    What to write instead: "Of 40 patients surveyed, 12 (0.3) weighed 80 to 90 kg."
+- level: 10
+  prompt: |
+    PAL is the physical activity level: total energy expenditure divided by basal metabolic rate.
+    The FAO/WHO/UNU report on energy needs says this about it.
+
+    > The PAL values that can be sustained for a long period of time by free-living adult
+    > populations range from about 1.40 to 2.40.
+
+    A slide then says:
+
+    > So a randomly chosen adult has a 50 per cent chance of a PAL above 1.90.
+
+    Decide what to compute, compute it, and say what your answer does not establish.
+  answer: |
+    What to compute: the slide's figure only follows if PAL is spread evenly, with a flat density,
+    from 1.40 to 2.40. Under that model, the density's height is 1 divided by the width.
+
+    ```working
+    2.40 minus 1.40 = 1.00
+    1 divided by 1.00 = 1
+    ```
+
+    The height is 1 per unit of PAL. The area above 1.90 is a rectangle 0.50 wide.
+
+    ```working
+    2.40 minus 1.90 = 0.50
+    0.50 times 1 = 0.5
+    ```
+
+    Under a flat model, the chance is 0.5. So the slide's arithmetic is right for the model it
+    silently chose.
+
+    What this does not establish. The report gives a range, not a distribution. Nothing in the
+    sentence says PAL values are spread evenly across it. The flat shape is the slide's
+    assumption.
+
+    Worse, the sentence is about populations, not people. It says what "free-living adult
+    populations" can sustain over a long time. A random adult's PAL is a different random variable
+    from a population's PAL. Whether single adults sit inside or outside the range, the sentence
+    does not say, and it gives no distribution for them at all.
+
+    And "about" means the ends themselves are rounded. What to say instead: "The report gives a
+    range of about 1.40 to 2.40 for the PAL that adult populations can sustain. It gives no
+    chance for any one adult."
+  refs: [fao_who_unu_2004]
+retrieval_items:
+- q: What is a random variable?
+  a: A rule that gives a number to each outcome of a chance process, a function from the sample
+    space to numbers. It is written with a capital letter, X, and its values with lower case, x.
+- q: What two rules must a discrete probability distribution meet, and what must be true of its values?
+  a: Each probability is between 0 and 1, and the probabilities add to 1. The values listed must
+    not overlap.
+- q: For a continuous random variable, where does probability live?
+  a: In areas under the probability density. The probability of a range is the area over it, the
+    integral of the density across it. Any single exact value has probability 0, and the
+    density's height is a probability per unit, not a probability.
+figures:
+- file: s02-r1-c13-village-distribution.png
+  caption: "The made-up village's household sizes. The first bar of each pair is the probability for one household picked at random; the second is the relative frequency in a survey of four. The survey puts 0.5 on 5 people where the probability is 0.3, and sees none of five other sizes."
+  alt: "Paired bars for household sizes 2 to 9. Probabilities are 0.1 for sizes 2, 3, 6, 7 and 9, 0.2 for size 4 and 0.3 for size 5. The survey bars are 0.25 at size 4, 0.5 at size 5, 0.25 at size 9 and zero elsewhere."
+  source: draw.py
+  spec:
+    kind: bar
+    from_table: {block: 0, x: 0, y: [2, 3]}
+    y_label: probability, or relative frequency
+    relations:
+    - check: "sum(y1) = 1.0"
+    - check: "sum(y2) = 1.0"
+- file: s02-r1-c13-rounding-density.png
+  caption: "The flat probability density for a scale's rounding error, 10 per kilogram from -0.05 to 0.05 kg and zero outside. The probability of an error between 0 and 0.02 kg is the area of the strip over that range, 0.02 times 10, which is 0.2."
+  alt: "A step line at zero from -0.1 to -0.05, at height 10 from -0.05 to 0.05, and at zero again up to 0.1. A second line outlines the strip from 0 to 0.02 under the top of the step."
+  source: draw.py
+  spec:
+    kind: step
+    x: ["-0.1", "-0.05", "0", "0.02", "0.05", "0.1"]
+    series:
+    - name: probability density of the rounding error
+      y: ["0", "10", "10", "10", "0", "0"]
+    - name: the strip from 0 to 0.02 kg
+      y: ["0", "0", "10", "0", "0", "0"]
+    x_label: displayed weight minus true weight (kg)
+    y_label: density (per kg)
+    y_range: [0, 11]
+    labels:
+    - {text: "area of the strip = 0.02 times 10 = 0.2", at: [0.0, 10.3]}
+provenance:
+  map_version_id: fc19c8bc-a216-4131-99fb-ebe3f19cec4a
+  outcome_refs:
+  - S02-R1-O3
+  bridge_ref: [S02-R2-P04]
+review:
+  stability: long
+  trigger: '2031-09-24'
+  last_reviewed: '2026-09-24'
+status: drafted

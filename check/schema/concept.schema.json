@@ -497,6 +497,16 @@
                 },
                 "as_of": {
                   "type": "string"
+                },
+                "quote": {
+                  "type": "string",
+                  "minLength": 4,
+                  "description": "The words in the source that state this number. Checked against sources/."
+                },
+                "derived": {
+                  "type": "string",
+                  "minLength": 10,
+                  "description": "For a number counted or derived from the quoted words rather than stated in them: say how. Reported, never silent."
                 }
               }
             }
@@ -538,32 +548,93 @@
             "type": "object",
             "additionalProperties": false,
             "properties": {
-              "kind": {"enum": ["line", "scatter", "bar", "step"]},
-              "title": {"type": "string"},
-              "x_label": {"type": "string"},
-              "y_label": {"type": "string"},
+              "kind": {
+                "enum": [
+                  "line",
+                  "scatter",
+                  "bar",
+                  "step"
+                ]
+              },
+              "title": {
+                "type": "string"
+              },
+              "x_label": {
+                "type": "string"
+              },
+              "y_label": {
+                "type": "string"
+              },
               "from_table": {
                 "description": "Read the data from the record's own nth ```table block (counted across its illustrations, from 0); x and y are column indexes.",
                 "type": "object",
                 "additionalProperties": false,
                 "properties": {
-                  "block": {"type": "integer", "minimum": 0},
-                  "x": {"type": "integer", "minimum": 0},
-                  "y": {"oneOf": [{"type": "integer", "minimum": 0}, {"type": "array", "items": {"type": "integer", "minimum": 0}, "minItems": 1}]}
+                  "block": {
+                    "type": "integer",
+                    "minimum": 0
+                  },
+                  "x": {
+                    "type": "integer",
+                    "minimum": 0
+                  },
+                  "y": {
+                    "oneOf": [
+                      {
+                        "type": "integer",
+                        "minimum": 0
+                      },
+                      {
+                        "type": "array",
+                        "items": {
+                          "type": "integer",
+                          "minimum": 0
+                        },
+                        "minItems": 1
+                      }
+                    ]
+                  }
                 }
               },
-              "x": {"type": "array", "items": {"type": ["number", "string"]}, "minItems": 1},
+              "x": {
+                "type": "array",
+                "items": {
+                  "type": [
+                    "number",
+                    "string"
+                  ]
+                },
+                "minItems": 1
+              },
               "series": {
                 "type": "array",
                 "minItems": 1,
                 "items": {
                   "type": "object",
                   "additionalProperties": false,
-                  "required": ["y"],
+                  "required": [
+                    "y"
+                  ],
                   "properties": {
-                    "name": {"type": "string"},
-                    "y": {"type": "array", "items": {"type": ["number", "string"]}, "minItems": 1},
-                    "marker": {"enum": ["none"], "description": "Line/step only: draw the series as a line with no point markers (for a fitted line, not observations)."}
+                    "name": {
+                      "type": "string"
+                    },
+                    "y": {
+                      "type": "array",
+                      "items": {
+                        "type": [
+                          "number",
+                          "string"
+                        ]
+                      },
+                      "minItems": 1
+                    },
+                    "marker": {
+                      "enum": [
+                        "none"
+                      ],
+                      "description": "Line/step only: draw the series as a line with no point markers (for a fitted line, not observations)."
+                    }
                   }
                 }
               },
@@ -573,11 +644,23 @@
                   "type": "object",
                   "additionalProperties": false,
                   "properties": {
-                    "fit": {"type": "string", "description": "y = <expression in x>; every plotted point must satisfy it at the precision the value is written to."},
-                    "series": {"type": "string"},
-                    "draw": {"type": "boolean"},
-                    "label": {"type": "string"},
-                    "check": {"type": "string", "description": "An identity over the data, e.g. 'sum(y) = 91' or 'y[0] / y[-1] = 1.78'."}
+                    "fit": {
+                      "type": "string",
+                      "description": "y = <expression in x>; every plotted point must satisfy it at the precision the value is written to."
+                    },
+                    "series": {
+                      "type": "string"
+                    },
+                    "draw": {
+                      "type": "boolean"
+                    },
+                    "label": {
+                      "type": "string"
+                    },
+                    "check": {
+                      "type": "string",
+                      "description": "An identity over the data, e.g. 'sum(y) = 91' or 'y[0] / y[-1] = 1.78'."
+                    }
                   }
                 }
               },
@@ -586,11 +669,29 @@
                 "items": {
                   "type": "object",
                   "additionalProperties": false,
-                  "required": ["text"],
+                  "required": [
+                    "text"
+                  ],
                   "properties": {
-                    "text": {"type": "string"},
-                    "at": {"type": "array", "items": {"type": "number"}, "minItems": 2, "maxItems": 2},
-                    "offset": {"type": "array", "items": {"type": "number"}, "minItems": 2, "maxItems": 2}
+                    "text": {
+                      "type": "string"
+                    },
+                    "at": {
+                      "type": "array",
+                      "items": {
+                        "type": "number"
+                      },
+                      "minItems": 2,
+                      "maxItems": 2
+                    },
+                    "offset": {
+                      "type": "array",
+                      "items": {
+                        "type": "number"
+                      },
+                      "minItems": 2,
+                      "maxItems": 2
+                    }
                   }
                 }
               },
@@ -600,10 +701,20 @@
                 "items": {
                   "type": "object",
                   "additionalProperties": false,
-                  "required": ["value", "from"],
+                  "required": [
+                    "value",
+                    "from"
+                  ],
                   "properties": {
-                    "value": {"type": ["string", "number"]},
-                    "from": {"type": "string"}
+                    "value": {
+                      "type": [
+                        "string",
+                        "number"
+                      ]
+                    },
+                    "from": {
+                      "type": "string"
+                    }
                   }
                 }
               },
@@ -613,18 +724,54 @@
                 "items": {
                   "type": "object",
                   "additionalProperties": false,
-                  "required": ["y0", "y1"],
+                  "required": [
+                    "y0",
+                    "y1"
+                  ],
                   "properties": {
-                    "y0": {"type": ["number", "string"]},
-                    "y1": {"type": ["number", "string"]},
-                    "label": {"type": "string"}
+                    "y0": {
+                      "type": [
+                        "number",
+                        "string"
+                      ]
+                    },
+                    "y1": {
+                      "type": [
+                        "number",
+                        "string"
+                      ]
+                    },
+                    "label": {
+                      "type": "string"
+                    }
                   }
                 }
               },
-              "y_scale": {"enum": ["linear", "log"]},
-              "y_range": {"type": "array", "items": {"type": "number"}, "minItems": 2, "maxItems": 2},
-              "value_labels": {"type": "boolean"},
-              "size": {"type": "array", "items": {"type": "number"}, "minItems": 2, "maxItems": 2}
+              "y_scale": {
+                "enum": [
+                  "linear",
+                  "log"
+                ]
+              },
+              "y_range": {
+                "type": "array",
+                "items": {
+                  "type": "number"
+                },
+                "minItems": 2,
+                "maxItems": 2
+              },
+              "value_labels": {
+                "type": "boolean"
+              },
+              "size": {
+                "type": "array",
+                "items": {
+                  "type": "number"
+                },
+                "minItems": 2,
+                "maxItems": 2
+              }
             }
           }
         }

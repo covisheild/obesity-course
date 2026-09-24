@@ -1,0 +1,756 @@
+concept_id: S02-R1-C06
+subject: S02
+rung: 1
+sequence: 6
+name: 'Undoing a derivative: antiderivatives and the fundamental theorem'
+concept_type: derivable
+clusters:
+- measurement-inference
+- system-and-state
+ground_floor_deps:
+- B0-R0-C06
+- B0-R0-C22
+- B0-R0-C23
+concept_deps: [S02-R1-C02, S02-R1-C03, S02-R1-C04, S02-R1-C05]
+definition:
+  text: |
+    An antiderivative of a function f is a function F whose derivative is f, so that dF/dt = f(t).
+    If F is one antiderivative, F plus any constant C is another, and on an interval every
+    antiderivative of f has that form. The family is written ∫ f(t) dt = F(t) plus C, with no
+    limits on the sign, and is called the indefinite integral.
+
+    Each of these is checked by differentiating back, with the rules of `S02-R1-C03` and
+    `S02-R1-C04`:
+
+    ```table
+    the function f(t)             an antiderivative F(t)
+    a constant c                  c times t
+    t^(n), for n a whole number   t^(n plus 1) divided by (n plus 1)
+    e^(kt), for k not zero        e^(kt) divided by k
+    ```
+
+    Sums and constant multiples are done term by term. The same form holds for most other powers
+    as well, but never for n = -1, where it would divide by zero. Checking it for powers that are
+    not whole numbers needs a power rule this book does not teach.
+
+    The fundamental theorem of calculus, in the part called the evaluation theorem, says this.
+    If f is continuous from a to b and F is any antiderivative of f, then ∫ from a to b of f(t) dt
+    = F(b) minus F(a). The constant C cancels in the subtraction, so any antiderivative gives the
+    same answer.
+
+    Put together with the net change theorem of `S02-R1-C05`, the change in a stock over an
+    interval is found from any function whose rate is the given rate, evaluated at the two ends.
+
+    For a deficit D(t) = D0 e^(-kt), with D0 its value at t = 0 and k above zero, the total from
+    0 to T is D0 times (1 minus e^(-kT)) divided by k. That is less than D0 times T, the total of
+    a deficit held at D0. However long T runs, it never exceeds D0 divided by k.
+  references:
+  - citekey: openstax_calculus_v1_s02
+    kind: textbook
+    locator: "§5.3 The Fundamental Theorem of Calculus, subsection Fundamental Theorem of Calculus, Part 2: The Evaluation Theorem, the paragraph after the theorem"
+    quote: |-
+      The Fundamental Theorem of Calculus, Part 2 (also known as the evaluation theorem) states that if we can find an antiderivative for the integrand, then we can evaluate the definite integral by evaluating the antiderivative at the endpoints of the interval and subtracting.
+    verified:
+      resolved_id: https://openstax.org/books/calculus-volume-1/pages/5-3-the-fundamental-theorem-of-calculus
+      opened: true
+      claim_located: true
+      checked_on: '2026-09-24'
+  - citekey: openstax_calculus_v1_s02
+    kind: textbook
+    locator: "§5.3, the paragraph after the first worked example of Part 2, on the constant C"
+    quote: |-
+      If we had chosen another antiderivative, the constant term would have canceled out. This always happens when evaluating a definite integral.
+    verified:
+      resolved_id: https://openstax.org/books/calculus-volume-1/pages/5-3-the-fundamental-theorem-of-calculus
+      opened: true
+      claim_located: true
+      checked_on: '2026-09-24'
+  - citekey: openstax_calculus_v1_s02
+    kind: textbook
+    locator: "§5.4 Integration Formulas and the Net Change Theorem, opening paragraph, on definite and indefinite integrals"
+    quote: |-
+      An indefinite integral represents a family of functions, all of which differ by a constant.
+    verified:
+      resolved_id: https://openstax.org/books/calculus-volume-1/pages/5-4-integration-formulas-and-the-net-change-theorem
+      opened: true
+      claim_located: true
+      checked_on: '2026-09-24'
+      note: |-
+        The book defines an antiderivative, and gives its power rule and table of formulas, in
+        §4.10 Antiderivatives, which is not in the held excerpt. §5.3 recalls the power rule for
+        antiderivatives as a flattened formula. Each rule in this record's table is checked in
+        the record by differentiating back, which is the test the book itself uses, so the
+        content does not rest on the unheld section.
+  - citekey: hall_2011_lancet
+    kind: primary
+    locator: "Modelling of the dynamics of weight change, the paragraph comparing the static rule with the dynamic model"
+    quote: |-
+      which is about 100% greater weight loss than our model prediction. This result shows the magnitude of the error introduced by ignoring dynamic changes of energy expenditure with weight loss.
+    verified:
+      resolved_id: https://pmc.ncbi.nlm.nih.gov/articles/PMC3880593/
+      opened: true
+      claim_located: true
+      checked_on: '2026-09-24'
+      note: |-
+        Cited for the direction of the gap between a constant deficit and one that shrinks, and
+        for its size in the paper's own model. The shrinking deficits in this record are made up
+        to show the arithmetic. Neither is the paper's model, and the record says so where each
+        appears.
+simplified_explanation: |
+  `S02-R1-C05` worked out integrals from shapes: rectangles, triangles, trapeziums. That works only
+  for a rate that is steady or changes in a straight line. Most rates bend. This section gives a
+  way that does not need a shape.
+
+  Start from what you already know. `S02-R1-C03` and `S02-R1-C04` take a function and give its
+  rate. Now run that backwards. Given a rate, find a function whose rate it is. That function is
+  called an antiderivative.
+
+  Say the rate is 2t. Which function has the rate 2t? The power rule says t^2 does. So t^2 is an
+  antiderivative of 2t.
+
+  So is t^2 plus 5, and t^2 plus any fixed number. A fixed number has a rate of zero, so adding
+  one changes nothing about the rate. That is why an antiderivative is written with plus C on the
+  end, where C is any constant.
+
+  You never have to trust an antiderivative. Differentiate it and see whether the rate comes back.
+  Three rules cover this book.
+
+  ```table
+  the rate                  an antiderivative
+  a steady rate c           c times t
+  t^(n), n a whole number   t^(n plus 1) divided by (n plus 1)
+  e^(kt)                    e^(kt) divided by k
+  ```
+
+  Check the middle one on t^2. Its antiderivative should be t^3 divided by 3. Differentiate that.
+  The power rule brings down the 3 and takes one off the power, giving 3 t^2 divided by 3, which
+  is t^2. It comes back.
+
+  Check the last one. The rate of e^(kt) is k times e^(kt) (`S02-R1-C04`). Divide by k and you
+  get e^(kt) back.
+
+  Now the step that makes this worth doing. The fundamental theorem of calculus says an integral
+  is the antiderivative at the end minus the antiderivative at the start.
+
+  ```working
+  ∫ from a to b of f(t) dt = F(b) minus F(a)
+  ```
+
+  Here F is any antiderivative of f. The C cancels, because it is added at both ends and then
+  subtracted. So leave it out when you work out an integral.
+
+  Why is this true? `S02-R1-C05` said the integral of a rate is the change in the stock. An
+  antiderivative is a stock with that rate. Its change from a to b is F(b) minus F(a). That is
+  the whole idea.
+illustration:
+  body: |
+    Hall and colleagues model a man who cuts his intake by 2 megajoules a day (*Lancet* 2011).
+    Keep the deficit at 2 megajoules a day, as the static rule of `S01-R1-C07` does. Then one year
+    of it is a rectangle.
+
+    ```working
+    2 times 365 = 730
+    ```
+
+    Seven hundred and thirty megajoules in the first year. So a deficit of 2 megajoules a day is
+    730 megajoules a year.
+
+    His expenditure falls as his weight falls, so his real deficit shrinks. Suppose, to see the
+    arithmetic, that it halves every year. This shape is made up here, and it is not the paper's
+    model. A half-time of 1 year means k = 0.693 per year (`S02-R1-C04`). With t in years, the
+    deficit in megajoules a year is this.
+
+    ```working
+    D(t) = 730 e^(-0.693t)
+    ```
+
+    A trainee works out the first year's total. They remember that e^(t) is its own rate, so they
+    take the antiderivative of 730 e^(-0.693t) to be 730 e^(-0.693t) itself. At the end of the
+    year that is 730 times 0.5.
+
+    ```working
+    730 times 0.5 = 365
+    365 minus 730 = -365
+    ```
+
+    Minus 365 megajoules. But the deficit stayed above zero all year. A rate that never drops
+    below zero cannot add up to a total below zero.
+
+    Find the break by differentiating back. The rate of 730 e^(-0.693t) is -0.693 times 730
+    e^(-0.693t). That is not the deficit. It is -0.693 times the deficit. So divide by -0.693 to
+    cancel that factor.
+
+    ```working
+    730 divided by 0.693 = 1053.4
+    F(t) = -1053.4 e^(-0.693t)
+    ```
+
+    Check it. The rate of F is -0.693 times -1053.4 e^(-0.693t), which is 730 e^(-0.693t). It
+    comes back. Now take F at the end of the year minus F at the start. On the calculator,
+    e^(-0.693) is 0.5001, and e^0 is 1.
+
+    ```working
+    F(1) minus F(0) = -1053.4 times 0.5001 plus 1053.4
+    1053.4 times (1 minus 0.5001) = 1053.4 times 0.4999
+    1053.4 times 0.4999 = 526.6
+    ```
+
+    About 526.6 megajoules in the first year, against 730 for the steady deficit. Run the same
+    sum at other times and set the two side by side.
+
+    ```table
+    | years | steady deficit, total so far (MJ) | halving deficit, total so far (MJ) |
+    | 0 | 0 | 0.0 |
+    | 0.5 | 365 | 308.5 |
+    | 1 | 730 | 526.6 |
+    | 1.5 | 1095 | 680.9 |
+    | 2 | 1460 | 790.0 |
+    | 2.5 | 1825 | 867.1 |
+    | 3 | 2190 | 921.7 |
+    ```
+
+    The steady deficit's total climbs in a straight line, 730 more every year for ever. The
+    halving deficit's total bends. As T grows, e^(-0.693T) shrinks towards zero, so its total
+    creeps up towards 1053.4 megajoules and never passes it.
+
+    Hall and colleagues' own model puts the static rule's first-year loss at "about 100% greater
+    weight loss than our model prediction". This made-up halving deficit gives a smaller gap:
+    526.6 against 730. It is not their model. What it shows is the direction and the reason. A
+    deficit that shrinks adds up to less. How much less depends on how fast it shrinks, and working
+    that out is the model's job, in `S02-R1-C07`.
+
+    Last, a check that the theorem agrees with the shapes you already trust. Take a different
+    made-up deficit that falls in a straight line, from 730 to 365 megajoules a year over the first
+    year.
+
+    ```working
+    D(t) = 730 minus 365t
+    ```
+
+    Use the power rule term by term. The steady 730 gives 730t. The 365t gives 365 times t^2
+    divided by 2.
+
+    ```working
+    365 divided by 2 = 182.5
+    F(t) = 730t minus 182.5 t^2
+    ```
+
+    Differentiate back: 730 minus 2 times 182.5t, which is 730 minus 365t. It comes back. Now the
+    first year.
+
+    ```working
+    730 times 1 minus 182.5 times 1 = 547.5
+    ```
+
+    Now the trapezium from `S02-R1-C05`.
+
+    ```working
+    730 plus 365 = 1095
+    1095 divided by 2 = 547.5
+    ```
+
+    Both give 547.5 megajoules. The theorem does what the trapezium did. It also works where no
+    shape has an area formula, as the halving deficit showed.
+  analogy_breaks_when: |
+    Both shrinking deficits are made up, one halving each year and one falling in a straight line.
+    They show how an integral treats a shrinking rate. They do not say how a real person's
+    deficit shrinks. The straight line would reach zero at two years and then go below it, so it
+    means nothing beyond the first year.
+
+    Every total here is energy, in megajoules. Turning it into kilograms needs to know what tissue
+    was lost (`S01-R1-C02`), and that is part of why Hall's model differs from the static rule.
+  numbers:
+  - value: '2'
+    unit: "MJ/day, the modelled cut in intake"
+    citekey: hall_2011_lancet
+    quote: |-
+      Figure 2A shows the predicted bodyweight time course of a 100 kg (220 lb) sedentary man following a step reduction of energy intake by 2 MJ per day (480 kcal per day).
+    as_of: '2026-09-24'
+  - value: '100'
+    unit: "%, how much greater the static rule's first-year loss is than the model's"
+    citekey: hall_2011_lancet
+    quote: |-
+      which is about 100% greater weight loss than our model prediction
+    as_of: '2026-09-24'
+must_know:
+- point: |
+    Check every antiderivative by differentiating it. If the rate you started with does not come
+    back, the antiderivative is wrong, however reasonable it looks. It takes one line.
+  kind: move
+  bearing: methodological
+- point: |
+    The antiderivative of e^(kt) is e^(kt) divided by k, not e^(kt). Dropping the k gives the wrong
+    size. For a shrinking curve, where k is negative, it also gives the wrong sign. The unit is a
+    second check. Dividing by a rate constant in per year multiplies by years, which turns a rate
+    into an amount.
+  kind: trap
+  bearing: methodological
+- point: |
+    "The deficit never quite reaches zero, so the loss keeps going for ever" is wrong as
+    arithmetic. A deficit D0 e^(-kt) adds up to at most D0 divided by k, however long it runs. A
+    rate that never reaches zero can still have a total that stops growing.
+  kind: misconception
+  bearing: public
+- point: |
+    These rules cover steady rates, whole-number powers of t, e^(kt), and sums and multiples of
+    them. A model's real rate is often none of these. When no antiderivative is at hand, go back to
+    rectangles and bound the error as `B0-R0-C22` does. Do not force a formula that does not fit.
+    The other techniques belong to the next rung.
+  kind: boundary
+  bearing: methodological
+- point: |
+    A figure made by multiplying a daily deficit by 365, and then by a number of years, is a
+    steady-deficit total. It grows in a straight line for as long as you let it. Any deficit that
+    shrinks adds up to less. In a committee, call such a figure an upper limit that holds only if
+    the deficit never shrinks.
+  kind: consequence
+  bearing: policy
+- point: |
+    Take F at the upper limit minus F at the lower limit, in that order. The reverse gives the
+    right size with the wrong sign. A positive rate must give a positive total, so check the sign
+    before the number leaves your page.
+  kind: move
+  bearing: teaching
+exercises:
+- type: calculation
+  prompt: |
+    A deficit shrinks as D(t) = D0 e^(-kt), where D0 is its size at t = 0 and k is above zero.
+    Derive the total from t = 0 to t = T. Write beside each line the move you made. Then say what
+    the total approaches as T grows, and why.
+  answer: |
+    Find an antiderivative, check it, then take the end minus the start.
+
+    ```working
+    F(t) = D0 e^(-kt) divided by -k        (the rule for e^(kt), with -k in place of k)
+    the rate of F = -k times D0 e^(-kt) divided by -k = D0 e^(-kt)        (check by differentiating back)
+    total = F(T) minus F(0)        (the fundamental theorem)
+    F(0) = D0 divided by -k        (e^0 is 1)
+    total = D0 e^(-kT) divided by -k minus D0 divided by -k        (substitute)
+    total = D0 times (1 minus e^(-kT)) divided by k        (multiply top and bottom by -1 and collect)
+    ```
+
+    As T grows, e^(-kT) shrinks towards zero. So 1 minus e^(-kT) climbs towards 1, and the total
+    climbs towards D0 divided by k. It never gets there and never passes it.
+
+    For example, take D0 = 730 and k = 0.693, as in the illustration.
+
+    ```working
+    730 divided by 0.693 = 1053.4
+    ```
+
+    The total over all time is at most 1053.4, however long the deficit runs.
+  skill_ref: S02-R1-K02
+quantitative: true
+practice:
+- level: 1
+  prompt: |
+    Write an antiderivative of each: 6, 4t, 3 t^2, and t^3 plus 2t. Check each by differentiating
+    it.
+  answer: |
+    Use the table's rules term by term.
+
+    ```working
+    6 gives 6t
+    4t gives 4 times t^2 divided by 2, which is 2 t^2
+    3 t^2 gives 3 times t^3 divided by 3, which is t^3
+    t^3 plus 2t gives t^4 divided by 4 plus t^2
+    ```
+
+    Now differentiate each back with the power rule.
+
+    ```working
+    the rate of 6t is 6
+    the rate of 2 t^2 is 2 times 2t, which is 4t
+    the rate of t^3 is 3 t^2
+    the rate of t^4 divided by 4 plus t^2 is t^3 plus 2t
+    ```
+
+    Each rate comes back. Any of these plus a constant would do as well.
+- level: 1
+  prompt: |
+    Work out ∫ from 1 to 3 of 3 t^2 dt.
+  answer: |
+    An antiderivative of 3 t^2 is t^3. Take it at the upper limit minus the lower limit.
+
+    ```working
+    3^3 = 27
+    1^3 = 1
+    27 minus 1 = 26
+    ```
+
+    The integral is 26.
+- level: 2
+  prompt: |
+    Work out ∫ from 0 to 2 of e^(3t) dt, to two decimal places.
+  answer: |
+    An antiderivative of e^(3t) is e^(3t) divided by 3. At t = 2 the exponent is 6. At t = 0 it is
+    0, and e^0 is 1.
+
+    On the calculator, e^6 is 403.43. Take the antiderivative at 2 minus the antiderivative at 0.
+
+    ```working
+    403.43 divided by 3 minus 1 divided by 3 = (403.43 minus 1) divided by 3
+    403.43 minus 1 = 402.43
+    402.43 divided by 3 = 134.14
+    ```
+
+    The integral is 134.14.
+- level: 2
+  prompt: |
+    Work out ∫ from 0 to 4 of 10 e^(-0.5t) dt, to two decimal places.
+  answer: |
+    An antiderivative of 10 e^(-0.5t) is 10 e^(-0.5t) divided by -0.5, which is -20 e^(-0.5t).
+    Check: its rate is -0.5 times -20 e^(-0.5t), which is 10 e^(-0.5t).
+
+    At t = 4 the exponent is -2. At t = 0, e^0 is 1.
+
+    ```working
+    e^(-2) = 0.1353
+    -20 times 0.1353 = -2.706
+    -20 times 1 = -20
+    -2.706 minus -20 = 17.294
+    ```
+
+    The integral is about 17.29.
+- level: 3
+  prompt: |
+    Work out ∫ from 2 to 5 of 2t dt twice: once with the antiderivative t^2, and once with t^2
+    plus 5. Say what happened to the 5.
+  answer: |
+    With t^2:
+
+    ```working
+    5^2 = 25
+    2^2 = 4
+    25 minus 4 = 21
+    ```
+
+    With t^2 plus 5:
+
+    ```working
+    25 plus 5 = 30
+    4 plus 5 = 9
+    30 minus 9 = 21
+    ```
+
+    Both give 21. The 5 is added at the upper limit and again at the lower limit, and the
+    subtraction takes it away. That is why the plus C is left out when you work out an integral
+    between two limits.
+- level: 3
+  prompt: |
+    A rate is 10 e^(-0.5t). Work out its total from t = 0 onwards, over all time. Then work out
+    how long it takes to add up to 95% of that.
+  answer: |
+    The total from 0 to T is 10 times (1 minus e^(-0.5T)) divided by 0.5. As T grows, e^(-0.5T)
+    shrinks towards zero.
+
+    ```working
+    10 divided by 0.5 = 20
+    ```
+
+    Over all time the total approaches 20.
+
+    It reaches 95% of 20 when 1 minus e^(-0.5T) is 0.95. That is when e^(-0.5T) is 0.05, which is
+    one twentieth. From `S02-R1-C04`, that happens at ln 20 divided by k.
+
+    ```working
+    2.996 divided by 0.5 = 5.992
+    ```
+
+    At about T = 5.99.
+- level: 4
+  prompt: |
+    Hall and colleagues (*Lancet* 2011) model a cut in intake of 480 kilocalories a day. Suppose
+    a person's net deficit starts at 480 and falls by 0.5 kilocalories a day every day. That fall
+    is made up for this problem. Use an antiderivative to work out the total deficit over 200 days.
+    Then check it with the trapezium.
+  answer: |
+    The deficit is 480 minus 0.5t, with t in days. Take it term by term.
+
+    ```working
+    0.5 divided by 2 = 0.25
+    F(t) = 480t minus 0.25 t^2
+    ```
+
+    Check: the rate of F is 480 minus 2 times 0.25t, which is 480 minus 0.5t. Now F at 200 minus F
+    at 0. F at 0 is 0.
+
+    ```working
+    480 times 200 = 96000
+    200 times 200 = 40000
+    0.25 times 40000 = 10000
+    96000 minus 10000 = 86000
+    ```
+
+    The total deficit is 86,000 kilocalories.
+
+    Check with the trapezium. On day 200 the deficit is 480 minus 100, which is 380.
+
+    ```working
+    480 plus 380 = 860
+    860 divided by 2 = 430
+    430 times 200 = 86000
+    ```
+
+    The same 86,000 kilocalories.
+  refs: [hall_2011_lancet]
+- level: 5
+  prompt: |
+    Take the same deficit of 480 kilocalories a day (*Lancet* 2011). Over the first 90 days,
+    compare two totals. In the first, the deficit holds steady. In the second, it halves every
+    365 days, which is made up for this problem. Give the second as a share of the first.
+  answer: |
+    Steady: a rectangle.
+
+    ```working
+    480 times 90 = 43200
+    ```
+
+    Halving every 365 days: the rate constant is ln 2 divided by 365, per day.
+
+    ```working
+    0.693 divided by 365 = 0.001899
+    0.001899 times 90 = 0.1709
+    ```
+
+    On the calculator, e^(-0.1709) is 0.8429. The total is 480 times (1 minus 0.8429) divided by
+    0.001899.
+
+    ```working
+    1 minus 0.8429 = 0.1571
+    480 times 0.1571 = 75.408
+    75.408 divided by 0.001899 = 39709.3
+    ```
+
+    About 39,700 kilocalories.
+
+    ```working
+    39709.3 divided by 43200 = 0.919
+    ```
+
+    The halving deficit gives about 92% of the steady one over 90 days. Over three months the
+    shrinking hardly shows. It grows with time, which is why a rule tested only in the first
+    weeks can look better than it is.
+  refs: [hall_2011_lancet]
+- level: 6
+  prompt: |
+    A deficit shrinks as D0 e^(-0.693t), with t in years, so it halves every year. Over the first
+    year it adds up to 400 megajoules. Work out D0, in megajoules a year and then in megajoules a
+    day.
+  answer: |
+    Run the total backwards. Over the first year the total is D0 times (1 minus e^(-0.693))
+    divided by 0.693. On the calculator, e^(-0.693) is 0.5001, so the bracket is 0.4999.
+
+    ```working
+    D0 times 0.4999 divided by 0.693 = 400
+    ```
+
+    Multiply both sides by 0.693, then divide both sides by 0.4999.
+
+    ```working
+    400 times 0.693 = 277.2
+    277.2 divided by 0.4999 = 554.5
+    ```
+
+    D0 is about 554.5 megajoules a year. Divide by 365 for a daily figure.
+
+    ```working
+    554.5 divided by 365 = 1.519
+    ```
+
+    About 1.52 megajoules a day at the start.
+- level: 7
+  prompt: |
+    Here is a worked answer. Find the step that broke.
+
+    ```working
+    ∫ from 0 to 3 of (12 minus 2t) dt
+    an antiderivative is F(t) = 12t minus t^2
+    the integral = F(0) minus F(3)
+    F(0) = 0 and F(3) = 36 minus 9 = 27
+    0 minus 27 = -27
+    ```
+  answer: |
+    The third line broke. The theorem takes F at the upper limit minus F at the lower limit, so it
+    is F(3) minus F(0).
+
+    ```working
+    27 minus 0 = 27
+    ```
+
+    The integral is 27.
+
+    Why it looks reasonable: the antiderivative is right, and so are both values of F. Only the
+    order is wrong. The check that catches it: the rate 12 minus 2t is above zero all the way
+    from 0 to 3. So its total must be above zero.
+- level: 7
+  prompt: |
+    Here is a worked answer. Find the step that broke.
+
+    ```working
+    ∫ from 0 to 3 of t^2 dt
+    raise the power by one: an antiderivative is t^3
+    3^3 minus 0^3 = 27
+    ```
+  answer: |
+    The second line broke. Raising the power by one is half the rule. The other half divides by
+    the new power. An antiderivative of t^2 is t^3 divided by 3.
+
+    ```working
+    27 divided by 3 = 9
+    ```
+
+    The integral is 9.
+
+    Differentiating back catches it at once. The rate of t^3 is 3 t^2, not t^2. The broken answer
+    is three times too big.
+
+    Why it looks reasonable: the power went up by one, which is the part of the rule people
+    remember. Nothing on the page is checked.
+- level: 8
+  prompt: |
+    Here is a worked answer. Find the step that broke.
+
+    ```working
+    a deficit of 480 kcal/day halves every year, so k = 0.693
+    the total over the first 30 days = 480 times (1 minus e^(-0.693 times 30)) divided by 0.693
+    e^(-20.79) is almost 0
+    480 divided by 0.693 = 692.6
+    so the deficit adds up to about 693 kcal over the month
+    ```
+  answer: |
+    The second line broke. The rate constant is 0.693 per year, and 30 is in days. The deficit is
+    also per day. Put everything in days first.
+
+    ```working
+    0.693 divided by 365 = 0.001899
+    0.001899 times 30 = 0.05697
+    ```
+
+    On the calculator, e^(-0.05697) is 0.9446.
+
+    ```working
+    1 minus 0.9446 = 0.0554
+    480 times 0.0554 = 26.592
+    26.592 divided by 0.001899 = 14003.2
+    ```
+
+    About 14,000 kilocalories over the month. A steady 480 a day would give 14,400, so the
+    shrinking barely shows yet.
+
+    Why it looks reasonable: the formula is the right one, and each line after the second is
+    correct arithmetic. But a total of 693 kilocalories over a month is less than two days of the
+    starting deficit. A deficit that halves over a year cannot have shrunk that fast.
+- level: 9
+  prompt: |
+    A patient information leaflet says this. The wording is made up for this problem.
+
+    > Your deficit gets smaller as you lose weight, but it never reaches zero. So the weight loss
+    > keeps going for ever, and in the end you lose what the old calorie rule said you would.
+
+    Decide what to compute, compute it, and say what your answer does not establish.
+  answer: |
+    What to compute: the total a shrinking deficit adds up to over all time, against the total of
+    a steady one.
+
+    Take a deficit D0 e^(-kt) that never reaches zero. Its total from 0 to T is D0 times (1 minus
+    e^(-kT)) divided by k, and that approaches D0 divided by k. Put in the numbers from this
+    section's illustration: 730 megajoules a year at the start, halving each year.
+
+    ```working
+    730 divided by 0.693 = 1053.4
+    ```
+
+    However long it runs, the total stays below 1,053.4 megajoules. The steady deficit, the old
+    rule's picture, passes that within a year and a half.
+
+    ```working
+    730 times 1.5 = 1095
+    ```
+
+    So "never reaches zero" does not mean "adds up to anything". A rate can stay above zero for
+    ever and still have a total that stops growing.
+
+    What this does not establish. It does not establish that a real deficit shrinks as an
+    exponential. That was an assumption, chosen to show the arithmetic. It says nothing about
+    kilograms, which need what the lost tissue was made of. And it does not say the loss stops at
+    a fixed date. It says the total levels off, which is a different claim.
+- level: 10
+  prompt: |
+    A journalist tells you this.
+
+    > A modelling paper says the old rule overstates first-year weight loss by about 100%. So to
+    > correct any figure from the old rule, just halve it.
+
+    Hall and colleagues (*Lancet* 2011) do say the static rule's first-year loss is "about 100%
+    greater" than their model's. Decide what to compute, compute it, and say what your answer does
+    not establish.
+  answer: |
+    What to compute: whether the gap between a steady deficit and a shrinking one is the same at
+    every time. Use the made-up halving deficit from this section, 730 megajoules a year at the
+    start, halving each year. It is not the paper's model, but it shows how such a gap behaves.
+
+    Take the shrinking total as a share of the steady total, at 1, 3 and 10 years. At 10 years,
+    e^(-6.93) is 0.001, so the shrinking total is 1053.4 times 0.999.
+
+    ```working
+    526.6 divided by 730 = 0.721
+    921.7 divided by 2190 = 0.421
+    1053.4 times 0.999 = 1052.3
+    730 times 10 = 7300
+    1052.3 divided by 7300 = 0.144
+    ```
+
+    The share falls from about 72% at one year to 42% at three years and 14% at ten. The gap
+    grows with time. So no single factor corrects a steady-deficit figure. Halving is wrong at
+    year three and badly wrong at year ten.
+
+    What this does not establish. It does not give the paper's own correction for any year but the
+    first, for the one modelled man. The "about 100%" is a first-year comparison. It does not
+    establish that halving is right even at one year for a different person or deficit. And the
+    made-up halving deficit is not the paper's model, so its percentages are not the paper's.
+
+    What to say instead: the old rule's error is not a fixed factor. It grows with time, because a
+    shrinking deficit adds up to less and less of what a steady one would.
+  refs: [hall_2011_lancet]
+retrieval_items:
+- q: What is an antiderivative, and how do you check one?
+  a: A function F whose rate is the given function f. Check it by differentiating F and seeing
+    whether f comes back. Any constant can be added to it.
+- q: What does the fundamental theorem of calculus let you do with an integral?
+  a: Work it out as F(b) minus F(a), for any antiderivative F of the integrand. The constant cancels,
+    so no area formula or rectangles are needed.
+- q: Why does a deficit D0 e^(-kt) add up to less than a steady deficit D0, and what is the most it
+    can ever add up to?
+  a: Because it shrinks, each later slice adds less. Its total from 0 to T is D0 times (1 minus
+    e^(-kT)) divided by k, which never exceeds D0 divided by k. The steady deficit's total grows by
+    D0 every unit of time for ever.
+figures:
+- file: s02-r1-c06-steady-and-halving.png
+  caption: "The total of a steady deficit of 730 megajoules a year climbs in a straight line. A made-up deficit that halves each year adds up to 526.6 in the first year and levels off towards 1053.4 megajoules, which it never passes."
+  alt: "Two lines over 0 to 3 years. A straight line rises from 0 to 2190. A curve rises from 0 through 526.6 at year 1 to 921.7 at year 3, bending under a dashed level at 1053.4."
+  source: draw.py
+  spec:
+    kind: line
+    from_table: {block: 0, x: 0, y: [1, 2]}
+    x_label: years
+    y_label: total deficit so far (MJ)
+    relations:
+    - fit: "y = 730*x"
+      series: steady deficit, total so far (MJ)
+    - fit: "y = 730/0.693*(1 - exp(-0.693*x))"
+      series: halving deficit, total so far (MJ)
+      draw: true
+      label: "curve through the squares"
+    bands:
+    - {y0: 1053.4, y1: 1053.4, label: "1053.4 MJ, the most the halving deficit ever adds up to"}
+provenance:
+  map_version_id: fc19c8bc-a216-4131-99fb-ebe3f19cec4a
+  outcome_refs:
+  - S02-R1-O1
+  bridge_ref: [S02-R2-P03]
+review:
+  stability: long
+  trigger: '2031-09-24'
+  last_reviewed: '2026-09-24'
+status: drafted
