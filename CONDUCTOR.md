@@ -109,8 +109,8 @@ Fix these at the start of Book 1, in that chat, before Task 5 runs:
   `--subject B0` or `--subject S01-R1`; a rung book works in `books/<ID>/compress/`, labels sections
   by concept_id, and `release` also writes the Book 0 sections its records list in
   `ground_floor_deps`. Book 0's old paths are thin wrappers. Tested in `books/S01-R1/TOOLING-NOTES.md`.
-- **Book 1 carries the drafter comparison** (`PIPELINE.md` Task 2): one section drafted by Sonnet
-  and by Opus 5.5, read unlabelled by Harsh, defects per section counted by the audit.
+- **Done 24 Sep 2026: drafter comparison settled.** Book 1 section 7 drafted by Sonnet and by
+  Opus 5.5 and audited blind: 8 errors against 1. Harsh chose Opus 5.5 drafters (`PIPELINE.md` Task 2).
 - **Book 1 measures cost per section**, from which the course timeline is projected.
 - **Done 23 Sep 2026: `check/compress/restore.py` is sentence-level.** Naming one sentence brings
   back that sentence only, in its original paragraph and position. `check/compress/validate.py`

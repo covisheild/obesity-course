@@ -38,8 +38,8 @@ That is what keeps one chat affordable for a whole book: its own history stays s
 history is re-read on every turn. Progress is written to `books/<SUBJECT>/STATE.md` after every
 task, so a chat stopped by a usage limit resumes from that file, not from memory.
 
-**2. Model and effort.** Opus 5.5 for the conductor and every subagent, except drafters, which
-stay on Sonnet until the Book 1 comparison (Task 2). Run the book chat at **medium** effort, the
+**2. Model and effort.** Opus 5.5 for the conductor and every subagent, drafters included
+(decided 24 Sep 2026 on the Book 1 comparison, Task 2). Run the book chat at **medium** effort, the
 model's default. Effort is set per chat and cannot be set per subagent, so accuracy rests on the
 structural guards, not on effort: the quote gate, the arithmetic check, an audit by a subagent
 that did not draft, and a verifier that did not fix. If a book's verifier or reader notes show
@@ -158,12 +158,12 @@ a sandbox; they can be reached from a browser.
 
 ## Task 2 — Draft. Delegate in batches.
 
-**Which model drafts is an open question, to be settled once at the start of Book 1.** An
-earlier blind comparison (`claude.md`, end) preferred a Sonnet-class draft's prose; that was
-before Opus 5.5, which on the published index outscores Sonnet 5 at every effort level
-(`MEASUREMENTS.md`). Settle it the same way: one
-section drafted by each, read unlabelled by Harsh, correctness defects counted by the audit.
-Until then drafters run on Sonnet as before.
+**Drafters run on Opus 5.5** (Harsh, 24 Sep 2026). Book 1 section 7 was drafted once by each
+model and audited blind (`books/S01-R1/comparison/AUDIT-COUNT.md`): Opus 5.5 had 1 error, 3 gaps,
+3 style; Sonnet 8 errors, 6 gaps, 6 style. Across Book 1 the Sonnet drafts carried about 170
+defects at audit, and finding and fixing cost about twice the drafting (`MEASUREMENTS.md`). An
+earlier Book 0 comparison (`claude.md`, end) had preferred a Sonnet-class draft's prose; it
+predates Opus 5.5 and counted no defects. Revisit when a new Sonnet ships.
 
 Split the inventory into batches of two or three concepts and give each batch to its own
 subagent, running them together. Each gets the prompt below with its own `<RANGE>`. They write
