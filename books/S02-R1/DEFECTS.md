@@ -460,3 +460,8 @@ Fixed in the tool: raw carets in legends (`5 t^2`, `0.001 t^2`, `t^2`) now print
 4. `s02-r1-c16-two-readings.png`, `s02-r1-c14-dependent-days.png`: legends are the tables' column
    headers ("ΔEB read as expenditure minus intake (lb)"); accurate, terse.
 5. `s02-r1-c08-settling-point.png`: "15 kg down" label sits on the expenditure line.
+6. Rendered page (conductor, 24 Sep): figure captions now pass through the notation layer (build fix).
+   Still reaching the page: a caret in a reference locator ("§3.9, Example on the mosquito population
+   A(t) = 1000e^(0.3t)") — reader-facing, fix the locator text; and "~" inside four verbatim quotes
+   ("~90 g/day", "~100 kcal/day", "~5 kg", "~350 kcal/day"), which is the source's own mark: keep, but
+   the prose around each must say "about" once so the reader is not left to guess what ~ means.

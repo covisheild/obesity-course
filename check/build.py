@@ -1435,7 +1435,9 @@ def _figures(r, sid) -> list[str]:
         # goes there and nothing else does. Putting the alt text in the brackets and the
         # caption on a line below printed both, one above the other, under every figure.
         # `alt` stays in the record: it is the accessible description, not a second caption.
-        cap = " ".join((f.get("caption") or "").split())
+        # The caption carries notation like any prose (`5 t^2`); without this its caret reached
+        # the rendered page raw (S02-R1, 24 Sep 2026).
+        cap = _notation(" ".join((f.get("caption") or "").split()))
         md += [f"![{cap}]({path}){{width=6in}}", ""]
     return md
 
