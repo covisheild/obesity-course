@@ -1,0 +1,1 @@
+Least sure (cut-b1): deleting Hall and colleagues' (2012) quote that "weight change will slow over time due to passive compensatory changes in energy expenditure". It is the only source in the prose for passive compensation, which Exercise 1 and problem 16 depend on; must_know[2] now asserts it unsupported, and "a made-up curve with that shape" has lost its antecedent.

@@ -1,0 +1,1382 @@
+AUSTIN, UNDERSTANDING LINEAR ALGEBRA — VERBATIM SOURCE PACK (EXCERPTS)
+============================================================
+
+Transcription rule for this file: every line beneath a SECTION heading that is not
+prefixed with [NOTE] and is not a line reading [...] is an exact, unaltered slice of the text
+returned by the TinyFish fetch_content tool (markdown format, no model between page and text)
+for the URL in that heading, cut programmatically from the saved fetch (raw[i:j]); nothing has
+been paraphrased, smoothed, merged or re-wrapped. A section is stored as runs of whole
+subsections, so it is not set in quotation marks. A line reading [...] marks text left out at
+that point, and the [NOTE] line under it says what. Lines beginning [NOTE] are this file's own
+annotation and are NOT source text.
+
+SOURCE: David Austin, Understanding Linear Algebra (Grand Valley State University). Open-access
+textbook written in PreTeXt, online edition at understandinglinearalgebra.org; the front page
+fetched is dated "August 15, 2026".
+HOME PAGE: https://understandinglinearalgebra.org/home.html (read 2026-09-24)
+LICENCE AS STATED ON THE HOME PAGE: "This work is licensed under a Creative Commons Attribution 4.0
+International License." with "© David Austin 2017 - 2025" (link: creativecommons.org/licenses/by/4.0/).
+RETRIEVED: 2026-09-24, with TinyFish fetch_content.
+NUMBERING WARNING: the home page's "August 2026 updates" note says "there has been some
+maintenance and reorganization of the textbook's PreTeXt source that may affect the numbering of
+subsections". The numbers below are as the pages printed them on 2026-09-24. Cite by section
+title as well as number.
+
+MATHEMATICS IN THIS FILE: this site gives its mathematics as TeX, so it survives extraction as
+TeX source: "\(\vvec\)" is an inline v, "\begin{equation\*} ... \end{equation\*}" a
+display, "\left[\begin{array}{r} 2 \\ 1 \end{array}\right]" a column vector with
+entries 2 and 1. The book's own macros (\vvec, \twovec, \real ...) are expanded in the block
+"Notation" below, taken from the book's front page. The TeX is the page's; nothing was retyped.
+
+WHAT THIS FILE HOLDS: excerpts, not the whole book.
+  Front page: title and date.
+  Notation: the TeX macro definitions every page loads.
+  2.1 Vectors and linear combinations: whole to the end of 2.1.3 Summary (2.1.1 Vectors, with
+      scalar multiplication and vector addition; 2.1.2 Linear combinations, Definition 2.1.10,
+      Proposition 2.1.14). Exercises 2.1.4 omitted.
+  2.2 Matrix multiplication and linear combinations: whole to the end of 2.2.5 Summary (2.2.1
+      scalar multiplication and addition of matrices; 2.2.2 Matrix-vector multiplication and
+      linear combinations, Definition 2.2.3, Proposition 2.2.6; 2.2.3 Matrix-vector
+      multiplication and linear systems; 2.2.4 Matrix-matrix products, Definition 2.2.10).
+      Exercises 2.2.6 omitted.
+  Everywhere, the site's "Diagram Exploration Keyboard Controls" help table (page furniture for
+  the interactive figures) is left out and marked [...]. The figures themselves are not held;
+  their alt text and captions are, where the page gives them as text. Embedded Sage cells come
+  through as code where the page shows it.
+
+====================================================================================================
+SECTION: Front page: title and version date
+URL: https://understandinglinearalgebra.org/frontmatter.html
+====================================================================================================
+
+# Understanding Linear Algebra
+
+August 15, 2026
+
+
+====================================================================================================
+SECTION: Notation: the TeX macro definitions the book's pages load (front page)
+URL: https://understandinglinearalgebra.org/frontmatter.html
+====================================================================================================
+
+[NOTE] The sections above write vectors and matrices with these macros: \vvec is a bold v, \twovec{a}{b} a column of two entries, \real the real numbers. Kept so a reader can expand a macro from the source rather than guess it.
+
+\(\newcommand{\avec}{{\mathbf a}}
+\newcommand{\bvec}{{\mathbf b}}
+\newcommand{\cvec}{{\mathbf c}}
+\newcommand{\dvec}{{\mathbf d}}
+\newcommand{\dtil}{\widetilde{\mathbf d}}
+\newcommand{\evec}{{\mathbf e}}
+\newcommand{\fvec}{{\mathbf f}}
+\newcommand{\nvec}{{\mathbf n}}
+\newcommand{\pvec}{{\mathbf p}}
+\newcommand{\qvec}{{\mathbf q}}
+\newcommand{\svec}{{\mathbf s}}
+\newcommand{\tvec}{{\mathbf t}}
+\newcommand{\uvec}{{\mathbf u}}
+\newcommand{\vvec}{{\mathbf v}}
+\newcommand{\wvec}{{\mathbf w}}
+\newcommand{\xvec}{{\mathbf x}}
+\newcommand{\yvec}{{\mathbf y}}
+\newcommand{\zvec}{{\mathbf z}}
+\newcommand{\rvec}{{\mathbf r}}
+\newcommand{\mvec}{{\mathbf m}}
+\newcommand{\zerovec}{{\mathbf 0}}
+\newcommand{\onevec}{{\mathbf 1}}
+\newcommand{\real}{{\mathbb R}}
+\newcommand{\twovec}[2]{\left[\begin{array}{r}#1 \\ #2
+\end{array}\right]}
+\newcommand{\ctwovec}[2]{\left[\begin{array}{c}#1 \\ #2
+\end{array}\right]}
+\newcommand{\threevec}[3]{\left[\begin{array}{r}#1 \\ #2 \\ #3
+\end{array}\right]}
+\newcommand{\cthreevec}[3]{\left[\begin{array}{c}#1 \\ #2 \\ #3
+\end{array}\right]}
+\newcommand{\fourvec}[4]{\left[\begin{array}{r}#1 \\ #2 \\ #3 \\ #4
+\end{array}\right]}
+\newcommand{\cfourvec}[4]{\left[\begin{array}{c}#1 \\ #2 \\ #3 \\ #4
+\end{array}\right]}
+\newcommand{\fivevec}[5]{\left[\begin{array}{r}#1 \\ #2 \\ #3 \\
+#4 \\ #5 \\ \end{array}\right]}
+\newcommand{\cfivevec}[5]{\left[\begin{array}{c}#1 \\ #2 \\ #3 \\
+#4 \\ #5 \\ \end{array}\right]}
+\newcommand{\mattwo}[4]{\left[\begin{array}{rr}#1 \amp #2 \\ #3 \amp #4 \\ \end{array}\right]}
+\newcommand{\laspan}[1]{\text{Span}\left\{#1\right\}}
+\newcommand{\bcal}{{\cal B}}
+\newcommand{\ccal}{{\cal C}}
+\newcommand{\scal}{{\cal S}}
+\newcommand{\wcal}{{\cal W}}
+\newcommand{\ecal}{{\cal E}}
+\newcommand{\coords}[2]{\left\{#1\right\}\_{#2}}
+\newcommand{\gray}[1]{\color{gray}{#1}}
+\newcommand{\lgray}[1]{\color{lightgray}{#1}}
+\newcommand{\rank}{\operatorname{rank}}
+\newcommand{\row}{\text{Row}}
+\newcommand{\col}{\text{Col}}
+\renewcommand{\row}{\text{Row}}
+\newcommand{\nul}{\text{Nul}}
+\newcommand{\var}{\text{Var}}
+\newcommand{\corr}{\text{corr}}
+\newcommand{\len}[1]{\left|#1\right|}
+\newcommand{\xbar}{\bar{\xvec}}
+\newcommand{\bbar}{\overline{\bvec}}
+\newcommand{\bhat}{\widehat{\bvec}}
+\newcommand{\bperp}{\bvec^\perp}
+\newcommand{\xhat}{\widehat{\xvec}}
+\newcommand{\vhat}{\widehat{\vvec}}
+\newcommand{\uhat}{\widehat{\uvec}}
+\newcommand{\what}{\widehat{\wvec}}
+\newcommand{\Sighat}{\widehat{\Sigma}}
+\newcommand{\basis}[2]{#1\_1,#1\_2,\ldots,#1\_{#2}}
+\newcommand{\lt}{<}
+\newcommand{\gt}{>}
+\newcommand{\amp}{&}
+\definecolor{fillinmathshade}{gray}{0.9}
+\newcommand{\fillinmath}[1]{\mathchoice{\colorbox{fillinmathshade}{$\displaystyle \phantom{\,#1\,}$}}{\colorbox{fillinmathshade}{$\textstyle \phantom{\,#1\,}$}}{\colorbox{fillinmathshade}{$\scriptstyle \phantom{\,#1\,}$}}{\colorbox{fillinmathshade}{$\scriptscriptstyle\phantom{\,#1\,}$}}}
+\)
+
+
+====================================================================================================
+SECTION: 2.1 Vectors and linear combinations
+URL: https://understandinglinearalgebra.org/sec-vectors-lin-combs.html
+====================================================================================================
+
+# Section 2.1 Vectors and linear combinations
+
+It is a remarkable fact that algebra, which is about symbolic equations and their solutions, and geometry are intimately connected. For instance, the solution set of a linear equation in two unknowns, such as \(2x + y = 1\text{,}\) can be represented graphically by a straight line. The aim of this section is to further this connection by introducing vectors, which will help us to apply geometric intuition to our thinking about linear systems.
+
+## Subsection 2.1.1 Vectors
+
+A *vector* is most simply thought of as a matrix with a single column. For instance, \(\vvec = \left[
+\begin{array}{r}
+2 \\
+1 \\
+\end{array}
+\right]\) and \(\wvec = \left[
+\begin{array}{r}
+-3 \\
+1 \\
+0 \\
+2 \\
+\end{array}
+\right]\) are both vectors. The entries in a vector are called its components. Since the vector \(\vvec\) has two components, we say that it is a two-dimensional vector; in the same way, the vector \(\wvec\) is a four-dimensional vector.
+
+We denote the set of all \(m\)-dimensional vectors by \(\real^m\text{.}\) Consequently, if \(\uvec\) is a 3-dimensional vector, we say that \(\uvec\) is in \(\real^3\text{.}\)
+
+While it can be difficult to visualize a four-dimensional vector, we can draw a simple picture describing the two-dimensional vector \(\vvec\text{,}\) as shown in Figure 2.1.1.
+
+[...]
+[NOTE] Omitted here: the site's 'Diagram Exploration Keyboard Controls' help table for the interactive figure (page furniture, not text of the book).
+
+An arrow is drawn to represent the two-dimensional vector \(\vvec = \twovec21\text{.}\) The diagram contains a \(1\times1\) coordinate grid and a set of labelled axes. The arrow representing \(\vvec\) is drawn so that it begins at the origin \((0,0)\) and extends two unit horizontally and one unit vertically so that its tip is at the point \((2,1)\text{.}\)
+
+Figure 2.1.1. A graphical representation of the vector \(\vvec = \twovec21\text{.}\)
+
+We can think of \(\vvec\) as describing a walk in the plane where we move two units horizontally and one unit vertically. Though we allow ourselves to begin walking from any point in the plane, we will most frequently begin at the origin in which case we arrive at the the point \((2,1)\text{,}\) as shown in the figure.
+
+There are two simple algebraic operations we often perform on vectors.
+
+**Scalar Multiplication**:   We multiply a vector \(\vvec\) by a real number \(c\) by multiplying each of the components of \(\vvec\) by \(c\text{.}\) For instance,
+
+    \begin{equation\*}
+    -3\left[\begin{array}{r} 2 \\ -4 \\ 1 \\ \end{array}\right]
+    = \left[\begin{array}{r} -6 \\ 12 \\ -3 \\
+    \end{array}\right].
+    \end{equation\*}
+
+    We will frequently refer to real numbers, such as -3 in this example, as *scalars* to distinguish them from vectors.
+**Vector Addition**:   We add two vectors of the same dimension by adding their components. For instance,
+
+    \begin{equation\*}
+    \left[\begin{array}{r} 2 \\ -4 \\ 3 \\ \end{array}\right]
+    +
+    \left[\begin{array}{r} -5 \\ 6 \\ -3 \\ \end{array}\right]
+    =
+    \left[\begin{array}{r} -3 \\ 2 \\ 0 \\ \end{array}\right].
+    \end{equation\*}
+
+### Preview Activity 2.1.2. Scalar Multiplication and Vector Addition.
+
+Suppose that
+
+\begin{equation\*}
+\vvec = \left[\begin{array}{r} 3 \\ 1 \end{array}
+\right],
+\wvec = \left[\begin{array}{r} -1 \\ 2 \end{array}
+\right].
+\end{equation\*}
+
+#### (a)
+
+Find expressions for the vectors
+
+\begin{equation\*}
+\begin{array}{cccc}
+\vvec, \amp 2\vvec, \amp -\vvec, \amp -2\vvec, \\
+\wvec, \amp 2\wvec, \amp -\wvec, \amp -2\wvec\text{.} \\
+\end{array}
+\end{equation\*}
+
+and sketch them using Figure 2.1.3.
+
+[...]
+[NOTE] Omitted here: the site's 'Diagram Exploration Keyboard Controls' help table for the interactive figure (page furniture, not text of the book).
+
+A coordinate grid and axes where the horizontal and vertical coordinates range from -6 to 6. There are no other features as the reader is asked to sketch a set of eight vectors.
+
+Figure 2.1.3. Sketch the vectors on this grid.
+
+#### (b)
+
+What geometric effect does scalar multiplication have on a vector? Also, describe the effect that multiplying by a negative scalar has.
+
+#### (c)
+
+Sketch the vectors \(\vvec, \wvec, \vvec + \wvec\) using Figure 2.1.4.
+
+[...]
+[NOTE] Omitted here: the site's 'Diagram Exploration Keyboard Controls' help table for the interactive figure (page furniture, not text of the book).
+
+A coordinate grid and axes where the horizontal and vertical coordinates range from -6 to 6. There are no other features as the reader is asked to sketch vectors \(\vvec\) and \(\wvec\) and their sum \(\vvec+\wvec\text{.}\)
+
+Figure 2.1.4. Sketch the vectors on this grid.
+
+#### (d)
+
+Consider vectors that have the form \(\vvec +
+c\wvec\) where \(c\) is any scalar. Sketch a few of these vectors when, say, \(c = -2, -1, 0, 1, \) and \(2\text{.}\) Give a geometric description of this set of vectors.
+
+[...]
+[NOTE] Omitted here: the site's 'Diagram Exploration Keyboard Controls' help table for the interactive figure (page furniture, not text of the book).
+
+A coordinate grid and axes where the horizontal and vertical coordinates range from -6 to 6. There are no other features as the reader is asked to sketch vectors of the form \(\vvec+c\wvec\) where the scalar \(c\) takes on five different values.
+
+Figure 2.1.5. Sketch the vectors on this grid.
+
+#### (e)
+
+If \(c\) and \(d\) are two scalars, then the vector
+
+\begin{equation\*}
+c \vvec + d \wvec
+\end{equation\*}
+
+is called a *linear combination* of the vectors \(\vvec\) and \(\wvec\text{.}\) Find the vector that is the linear combination when \(c = -2\) and \(d = 1\text{.}\)
+
+#### (f)
+
+Can the vector \(\left[\begin{array}{r} -31 \\ 37
+\end{array}\right]\) be represented as a linear combination of \(\vvec\) and \(\wvec\text{?}\) Asked differently, can we find scalars \(c\) and \(d\) such that \(c\vvec+d\wvec = \twovec{-31}{37}\text{.}\)
+
+The preview activity demonstrates how we may interpret scalar multiplication and vector addition geometrically.
+
+First, we see that scalar multiplication has the effect of stretching or compressing a vector. Multiplying by a negative scalar changes the direction of the vector. In either case, Figure 2.1.6 shows that a scalar multiple of a vector \(\vvec\) lies on the same line defined by \(\vvec\text{.}\)
+
+[...]
+[NOTE] Omitted here: the site's 'Diagram Exploration Keyboard Controls' help table for the interactive figure (page furniture, not text of the book).
+
+The vector \(\vvec=\twovec21\) is represented graphically along with scalar multiples \(2\vvec\text{,}\) \(-\vvec\) and \(-2\vvec\text{.}\) These vectors lie on the same line, which is also indicated as extending infinitely far in both directions.
+
+Figure 2.1.6. Scalar multiples of the vector \(\vvec=\twovec21\text{.}\)
+
+To represent the sum \(\vvec + \wvec\text{,}\) we imagine walking from the origin with the appropriate horizontal and vertical changes given by \(\vvec\text{.}\) From there, we continue our walk using the horizontal and vertical changes prescribed by \(\wvec\text{,}\) after which we arrive at the sum \(\vvec
++ \wvec\text{.}\) This is illustrated on the left of Figure 2.1.7 where the tail of \(\wvec\) is placed on the tip of \(\vvec\text{.}\)
+
+A vector \(\vvec\) is drawn starting at the origin, and a second vector \(\wvec\) is drawn starting from the tip of \(\vvec\text{.}\) Then the vector sum \(\vvec+\wvec\) is drawn from the origin to the tip of \(\wvec\text{.}\)
+
+Two vectors \(\vvec\) and \(\wvec\) are shown forming a parallelogram.
+
+One half of the parallelogram is formed by placing an arrow that starts at the origin and represents \(\vvec\text{.}\) From the tip of \(\vvec\text{,}\) a second arrow is shown representing \(\wvec\text{.}\)
+
+The second half of the parallelogram is formed by placing an arrow that starts at the origin and represents \(\wvec\text{.}\) From the tip of this vector, another arrow is shown representing \(\vvec\text{.}\)
+
+One set of opposite sides of the parallelogram are representations of \(\vvec\) while the other set of opposite sides are representations of \(\wvec\text{.}\)
+
+The vector sum \(\vvec+\wvec\) is shown as an arrow that begins at the origin and has its tip at the opposite corner of the parallelogram.
+
+[...]
+[NOTE] Omitted here: the site's 'Diagram Exploration Keyboard Controls' help table for the interactive figure (page furniture, not text of the book).
+
+Figure 2.1.7. Vector addition as a simple walk in the plane is illustrated on the left. The vector sum is represented as the diagonal of a parallelogram on the right.
+
+Alternatively, we may construct the parallelogram with \(\vvec\) and \(\wvec\) as two sides. The sum is then the diagonal of the parallelogram, as illustrated on the right of Figure 2.1.7.
+
+We have now seen that the set of vectors having the form \(c\vvec\) is a line. To form the set of vectors \(c\vvec+\wvec\text{,}\) we can begin with the vector \(\wvec\) and add multiples of \(\vvec\text{.}\) Geometrically, this means that we begin from the tip of \(\wvec\) and move in a direction parallel to \(\vvec\text{.}\) The effect is to translate the line \(c\vvec\) by the vector \(\wvec\text{,}\) as shown in Figure 2.1.8.
+
+[...]
+[NOTE] Omitted here: the site's 'Diagram Exploration Keyboard Controls' help table for the interactive figure (page furniture, not text of the book).
+
+Two vectors \(\vvec\) and \(\wvec\) are shown, both of which begin at the origin. The line defined by \(\vvec\) is also shown as extending infinitely far in both direction, while a second infinite line parallel to \(\vvec\) is drawn passing through the tip of \(\wvec\text{.}\) The vectors obtained as \(c\vvec+\wvec\) for scalars \(c=-2,-1,0,1,2\) are shown starting at the origin with their tips on the second line parallel to \(\vvec\text{.}\)
+
+Figure 2.1.8. The set of vectors \(c\vvec + \wvec\) form a line.
+
+At times, it will be useful for us to think of vectors and points interchangeably. That is, we may wish to think of the vector \(\left[\begin{array}{r} 2 \\ 1 \end{array}\right]\) as describing the point \((2,1)\) and vice-versa. When we say that the vectors having the form \(c\vvec + \wvec\) form a line, we really mean that the tips of the vectors all lie on the line passing through \(\wvec\) and parallel to \(\vvec\text{.}\)
+
+### Observation 2.1.9.
+
+Even though these vector operations are new, it is straightforward to check that some familiar properties hold.
+
+**Commutativity**:   \(\vvec + \wvec = \wvec + \vvec\text{.}\)
+**Distributivity**:   \(a(\vvec + \wvec) = a\vvec + a\wvec\text{.}\)
+
+Sage can perform scalar multiplication and vector addition. We define a vector using the `vector` command; then `*` and `+` denote scalar multiplication and vector addition.
+
+## Subsection 2.1.2 Linear combinations
+
+Linear combinations, which we encountered in the preview activity, provide the link between vectors and linear systems. In particular, they will help us apply geometric intuition to problems involving linear systems.
+
+### Definition 2.1.10.
+
+The *linear combination* of the vectors \(\vvec\_1,\vvec\_2,\ldots,\vvec\_n\) with scalars \(c\_1,c\_2,\ldots,c\_n\) is the vector
+
+\begin{equation\*}
+c\_1\vvec\_1 + c\_2\vvec\_2 + \ldots + c\_n\vvec\_n\text{.}
+\end{equation\*}
+
+The scalars \(c\_1,c\_2,\ldots,c\_n\) are called the *weights* of the linear combination.
+
+### Activity 2.1.11.
+
+In this activity, we will look at linear combinations of a pair of vectors, \(\vvec = \left[\begin{array}{r} 2 \\ 1 \end{array}\right]\) and \(\wvec = \left[\begin{array}{r} 1 \\ 2 \end{array}\right]
+\text{.}\)
+
+In the background of this interactive diagram is a coordinate grid and a set of labelled axes. There are also two vectors \(\vvec\) and \(\wvec\) shown, both starting at the origin. There is also a set of lines, each of which is parallel to \(\vvec\text{,}\) passing through integer multiples of \(\wvec\text{.}\) In the same way, there is a second set of lines, each of which is parallel to \(\wvec\text{,}\) passing through integer multiples of \(\vvec\text{.}\) These two sets of parallel lines form a skewed coordinate grid.
+
+Across the top of the diagram are two sliders, which can be used to vary two parameters labelled \(c\) and \(d\text{.}\) When one of those parameters is varied, the vector \(c\vvec+d\wvec\) shown moving parallel to one of the sets of skewed grid lines.
+
+#### Instructions.
+
+The diagram below can be used to construct linear combinations whose weights \(c\) and \(d\) may be varied using the sliders at the top. The vectors \(\vvec\) and \(\wvec\) are outlined while the linear combination
+
+\begin{equation\*}
+c\vvec + d\wvec
+\end{equation\*}
+
+is shaded red.
+
+Figure 2.1.12. Linear combinations of vectors \(\vvec\) and \(\wvec\text{.}\)
+
+1. The weight \(d\) is initially set to 0. Explain what happens as you vary \(c\) while keeping \(d=0\text{.}\) How is this related to scalar multiplication?
+2. What is the linear combination of \(\vvec\) and \(\wvec\) when \(c = 1\) and \(d=-2\text{?}\) You may find this result using the diagram, but you should also verify it by computing the linear combination.
+3. Describe the vectors that arise when the weight \(d\) is set to 1 and \(c\) is varied. How is this related to our investigations in the preview activity?
+4. Can the vector \(\left[\begin{array}{r} 0 \\ 0 \end{array} \right]\) be expressed as a linear combination of \(\vvec\) and \(\wvec\text{?}\) If so, what are the weights \(c\) and \(d\text{?}\)
+5. Can the vector \(\left[\begin{array}{r} 3 \\ 0 \end{array} \right]\) be expressed as a linear combination of \(\vvec\) and \(\wvec\text{?}\) If so, what are the weights \(c\) and \(d\text{?}\)
+6. Verify the result from the previous part by algebraically finding the weights \(c\) and \(d\) that form the linear combination \(\left[\begin{array}{r} 3 \\ 0 \end{array} \right]\text{.}\)
+7. Can the vector \(\left[\begin{array}{r} 1.3 \\ -1.7 \end{array} \right]\) be expressed as a linear combination of \(\vvec\) and \(\wvec\text{?}\) What about the vector \(\left[\begin{array}{r} 15.2 \\ 7.1 \end{array} \right]\text{?}\)
+8. Are there any two-dimensional vectors that cannot be expressed as linear combinations of \(\vvec\) and \(\wvec\text{?}\)
+
+This activity illustrates how linear combinations are constructed geometrically: the linear combination \(c\vvec +
+d\wvec\) is found by walking along \(\vvec\) a total of \(c\) times followed by walking along \(\wvec\) a total of \(d\) times. When one of the weights is held constant while the other varies, the vector moves along a line.
+
+### Example 2.1.13.
+
+The previous activity also shows that questions about linear combinations lead naturally to linear systems. Suppose we have vectors \(\vvec = \twovec3{-1}\) and \(\wvec=\twovec43\text{.}\) Let’s determine whether we can describe the vector \(\bvec=\twovec{-11}{-18}\) as a linear combination of \(\vvec\) and \(\wvec\text{.}\) In other words, we would like to know whether there are weights \(c\) and \(d\) such that
+
+\begin{equation\*}
+c\vvec + d\wvec= \bvec.
+\end{equation\*}
+
+This leads to the equations
+
+\begin{equation\*}
+\begin{aligned}
+c\twovec3{-1} + d\twovec43
+\amp =
+\twovec{-11}{-18} \\ \\
+\twovec{3c}{-c} + \twovec{4d}{3d}
+\amp =
+\twovec{-11}{-18} \\ \\
+\twovec{3c+4d}{-c+3d}
+\amp =
+\twovec{-11}{-18} \\ \\
+\end{aligned}
+\end{equation\*}
+
+Equating the components of the vectors on each side of the equation, we arrive at the linear system
+
+\begin{equation\*}
+\begin{alignedat}{3}
+3c \amp {}+{} \amp 4d \amp {}={} \amp -11 \\
+-c \amp {}+{} \amp 3d \amp {}={} \amp -18 \
+\end{alignedat}
+\end{equation\*}
+
+This means that \(\bvec\) is a linear combination of \(\vvec\) and \(\wvec\) if this linear system is consistent.
+
+To solve this linear system, we construct its corresponding augmented matrix and find its reduced row echelon form,
+
+\begin{equation\*}
+\left[
+\begin{array}{rr|r}
+3 \amp 4 \amp -11 \\
+-1 \amp 3 \amp -18
+\end{array}
+\right]
+\sim
+\left[
+\begin{array}{rr|r}
+1 \amp 0 \amp 3 \\
+0 \amp 1 \amp -5
+\end{array}
+\right],
+\end{equation\*}
+
+giving us the weights \(c=3\) and \(d=-5\text{;}\) that is,
+
+\begin{equation\*}
+3\vvec -5 \wvec = \bvec\text{.}
+\end{equation\*}
+
+In fact, we know more because the reduced row echelon matrix tells us that these are the only possible weights. Therefore, \(\bvec\) may be expressed as a linear combination of \(\vvec\) and \(\wvec\) in exactly one way.
+
+This example demonstrates the connection between linear combinations and linear systems. Asking whether a vector \(\bvec\) is a linear combination of vectors \(\vvec\_1,\vvec\_2,\ldots,\vvec\_n\) is equivalent to asking whether an associated linear system is consistent.
+
+In fact, we may easily describe the associated linear system in terms of the vectors \(\vvec\text{,}\) \(\wvec\text{,}\) and \(\bvec\text{.}\) Notice that the augmented matrix we found in our example was \(\left[
+\begin{array}{rr|r}
+3 \amp 4 \amp -11 \\
+-1 \amp 3 \amp -18
+\end{array}
+\right].\) The first two columns of this matrix are \(\vvec\) and \(\wvec\) and the rightmost column is \(\bvec\text{.}\) As shorthand, we will write this augmented matrix replacing the columns with their vector representation:
+
+\begin{equation\*}
+\left[
+\begin{array}{rr|r}
+\vvec \amp \wvec \amp \bvec
+\end{array}
+\right]\text{.}
+\end{equation\*}
+
+This fact is generally true so we record it in the following proposition.
+
+### Proposition 2.1.14.
+
+The vector \(\bvec\) is a linear combination of the vectors \(\vvec\_1,\vvec\_2,\ldots,\vvec\_n\) if and only if the linear system corresponding to the augmented matrix
+
+\begin{equation\*}
+\left[
+\begin{array}{rrrr|r}
+\vvec\_1 \amp \vvec\_2 \amp \ldots \amp \vvec\_n \amp
+\bvec
+\end{array}
+\right]
+\end{equation\*}
+
+is consistent. A solution to this linear system gives weights \(c\_1,c\_2,\ldots,c\_n\) such that
+
+\begin{equation\*}
+c\_1\vvec\_1 + c\_2\vvec\_2 + \ldots + c\_n\vvec\_n = \bvec\text{.}
+\end{equation\*}
+
+The next activity puts this proposition to use.
+
+### Activity 2.1.15. Linear combinations and linear systems.
+
+1. Given the vectors
+
+   \begin{equation\*}
+   \vvec\_1 = \left[\begin{array}{r} 4 \\ 0 \\ 2 \\ 1
+   \end{array} \right],
+   \vvec\_2 = \left[\begin{array}{r} 1 \\ -3 \\ 3 \\ 1
+   \end{array} \right],
+   \vvec\_3 = \left[\begin{array}{r} -2 \\ 1 \\ 1 \\ 0
+   \end{array} \right],
+   \bvec = \left[\begin{array}{r} 0 \\ 1 \\ 2 \\ -2
+   \end{array} \right]\text{,}
+   \end{equation\*}
+
+   can \(\bvec\) be expressed as a linear combination of \(\vvec\_1\text{,}\) \(\vvec\_2\text{,}\) and \(\vvec\_3\text{?}\) Rephrase this question by writing a linear system for the weights \(c\_1\text{,}\) \(c\_2\text{,}\) and \(c\_3\) and use the Sage cell below to answer this question.
+2. Consider the following linear system.
+
+   \begin{equation\*}
+   \begin{alignedat}{4}
+   3x\_1 \amp {}+{} \amp 2x\_2 \amp {}-{} x\_3 \amp {}={} \amp 4 \\
+   x\_1 \amp \amp \amp {}+{} 2x\_3 \amp {}={} \amp 0 \\
+   -x\_1 \amp {}-{} \amp x\_2 \amp {}+{} 3x\_3 \amp {}={} \amp 1
+   \\
+   \end{alignedat}
+   \end{equation\*}
+
+   Identify vectors \(\vvec\_1\text{,}\) \(\vvec\_2\text{,}\) \(\vvec\_3\text{,}\) and \(\bvec\) such that the question "Is this linear system consistent?" is equivalent to the question "Can \(\bvec\) be expressed as a linear combination of \(\vvec\_1\text{,}\) \(\vvec\_2\text{,}\) and \(\vvec\_3\text{?}\)"
+3. Consider the vectors
+
+   \begin{equation\*}
+   \vvec\_1 = \left[\begin{array}{r} 0 \\ -2 \\ 1 \\
+   \end{array} \right],
+   \vvec\_2 = \left[\begin{array}{r} 1 \\ 1 \\ -1 \\
+   \end{array} \right],
+   \vvec\_3 = \left[\begin{array}{r} 2 \\ 0 \\ -1 \\
+   \end{array} \right],
+   \bvec = \left[\begin{array}{r} -1 \\ 3 \\ -1 \\
+   \end{array} \right]\text{.}
+   \end{equation\*}
+
+   Can \(\bvec\) be expressed as a linear combination of \(\vvec\_1\text{,}\) \(\vvec\_2\text{,}\) and \(\vvec\_3\text{?}\) If so, can \(\bvec\) be written as a linear combination of these vectors in more than one way?
+4. Considering the vectors \(\vvec\_1\text{,}\) \(\vvec\_2\text{,}\) and \(\vvec\_3\) from the previous part, can we write every three-dimensional vector \(\bvec\) as a linear combination of these vectors? Explain how the pivot positions of the matrix \(\left[\begin{array}{rrr} \vvec\_1 \amp
+   \vvec\_2 \amp \vvec\_3 \end{array} \right]\) help answer this question.
+5. Now consider the vectors
+
+   \begin{equation\*}
+   \vvec\_1 = \left[\begin{array}{r} 0 \\ -2 \\ 1 \\
+   \end{array} \right],
+   \vvec\_2 = \left[\begin{array}{r} 1 \\ 1 \\ -1 \\
+   \end{array} \right],
+   \vvec\_3 = \left[\begin{array}{r} 1 \\ -1 \\ -2 \\
+   \end{array} \right],
+   \bvec = \left[\begin{array}{r} 0 \\ 8 \\ -4 \\
+   \end{array} \right]\text{.}
+   \end{equation\*}
+
+   Can \(\bvec\) be expressed as a linear combination of \(\vvec\_1\text{,}\) \(\vvec\_2\text{,}\) and \(\vvec\_3\text{?}\) If so, can \(\bvec\) be written as a linear combination of these vectors in more than one way?
+6. Considering the vectors \(\vvec\_1\text{,}\) \(\vvec\_2\text{,}\) and \(\vvec\_3\) from the previous part, can we write every three-dimensional vector \(\bvec\) as a linear combination of these vectors? Explain how the pivot positions of the matrix \(\left[\begin{array}{rrr} \vvec\_1 \amp
+   \vvec\_2 \amp \vvec\_3 \end{array} \right]\) help answer this question.
+
+### Example 2.1.16.
+
+Consider the vectors \(\vvec=\twovec{-1}1\) and \(\wvec=\twovec{2}{-2}\text{,}\) as shown in Figure 2.1.17.
+
+[...]
+[NOTE] Omitted here: the site's 'Diagram Exploration Keyboard Controls' help table for the interactive figure (page furniture, not text of the book).
+
+Two vectors, \(\vvec=\twovec{-1}1\) and \(\wvec=\twovec2{-2}\) are represented by arrows starting at the origin. These arrows lie on the same line, and that line is also shown extending infinitely far in both directions.
+
+Figure 2.1.17. Vectors \(\vvec\) and \(\wvec\text{.}\)
+
+These vectors appear to lie on the same line, a fact that becomes apparent once we notice that \(\wvec =
+-2\vvec\text{.}\) Intuitively, we think of the linear combination
+
+\begin{equation\*}
+c\vvec + d\wvec
+\end{equation\*}
+
+as the result of walking \(c\) times in the \(\vvec\) direction and \(d\) times in the \(\wvec\) direction. With these vectors, we are always walking along the same line so it would seem that any linear combination of these vectors should lie on the same line. In addition, a vector that is not on the line, say \(\bvec = \twovec30\text{,}\) should be not be expressible as a linear combination of \(\vvec\) and \(\wvec\text{.}\)
+
+We can verify this by checking
+
+\begin{equation\*}
+\left[
+\begin{array}{rr|r}
+-1 \amp 2 \amp 3 \\
+1 \amp -2 \amp 0 \\
+\end{array}
+\right]
+\sim
+\left[
+\begin{array}{rr|r}
+1 \amp -2 \amp 0 \\
+0 \amp 0 \amp 1 \\
+\end{array}
+\right].
+\end{equation\*}
+
+This shows that the associated linear system is inconsistent, which means that the vector \(\bvec=\twovec30\) cannot be written as a linear combination of \(\vvec\) and \(\wvec\text{.}\)
+
+Notice that the reduced row echelon form of the coefficient matrix
+
+\begin{equation\*}
+\begin{bmatrix}
+\vvec \amp \wvec \\
+\end{bmatrix}
+=
+\begin{bmatrix}
+-1 \amp 2 \\
+1 \amp -2 \\
+\end{bmatrix}
+\sim
+\begin{bmatrix}
+1 \amp -2 \\
+0 \amp 0 \\
+\end{bmatrix}
+\end{equation\*}
+
+tells us to expect this. Since there is not a pivot position in the second row of the coefficient matrix \(\begin{bmatrix}\vvec
+\amp \wvec \end{bmatrix}\text{,}\) it is possible for a pivot position to appear in the rightmost column of the augmented matrix
+
+\begin{equation\*}
+\left[
+\begin{array}{rr|r} \vvec \amp \wvec \amp \bvec \end{array}
+\right]
+\end{equation\*}
+
+for some choice of \(\bvec\text{.}\)
+
+## Subsection 2.1.3 Summary
+
+This section has introduced vectors, linear combinations, and their connection to linear systems.
+
+* There are two operations we can perform with vectors: scalar multiplication and vector addition. Both of these operations have geometric meaning.
+* Given a set of vectors and a set of scalars we call weights, we can create a linear combination using scalar multiplication and vector addition.
+* A solution to the linear system whose augmented matrix is
+
+  \begin{equation\*}
+  \left[\begin{array}{rrrr|r} \vvec\_1 \amp \vvec\_2 \amp \ldots
+  \amp \vvec\_n \amp \bvec \end{array}\right]
+  \end{equation\*}
+
+  is a set of weights that expresses \(\bvec\) as a linear combination of \(\vvec\_1,\vvec\_2,\ldots,\vvec\_n\text{.}\)
+
+[...]
+[NOTE] Omitted here: Exercises 2.1.4 (eight exercises).
+
+
+====================================================================================================
+SECTION: 2.2 Matrix multiplication and linear combinations
+URL: https://understandinglinearalgebra.org/sec-matrices-lin-combs.html
+====================================================================================================
+
+# Section 2.2 Matrix multiplication and linear combinations
+
+The previous section introduced vectors and linear combinations and demonstrated how they provide a way to think about linear systems geometrically. In particular, we saw that the vector \(\bvec\) is a linear combination of the vectors \(\vvec\_1,\vvec\_2,\ldots,\vvec\_n\) precisely when the linear system corresponding to the augmented matrix
+
+\begin{equation\*}
+\left[\begin{array}{rrrr|r}
+\vvec\_1 \amp \vvec\_2 \amp \cdots \amp \vvec\_n \amp \bvec
+\end{array}\right]
+\end{equation\*}
+
+is consistent.
+
+Our goal in this section is to introduce matrix multiplication, another algebraic operation that deepens the connection between linear systems and linear combinations.
+
+## Subsection 2.2.1 Scalar multiplication and addition of matrices
+
+We first thought of a matrix as a rectangular array of numbers. If we say that the *shape* of a matrix is \(m\times
+n\text{,}\) we mean that it has \(m\) rows and \(n\) columns. For instance, the shape of the matrix below is \(3\times4\text{:}\)
+
+\begin{equation\*}
+\left[
+\begin{array}{rrrr}
+0 \amp 4 \amp -3 \amp 1 \\
+3 \amp -1 \amp 2 \amp 0 \\
+2 \amp 0 \amp -1 \amp 1 \\
+\end{array}
+\right]\text{.}
+\end{equation\*}
+
+We may also think of the columns of a matrix as a set of vectors. For instance, the matrix above may be represented as
+
+\begin{equation\*}
+\left[
+\begin{array}{rrrr}
+\vvec\_1 \amp \vvec\_2 \amp \vvec\_3 \amp \vvec\_4
+\end{array}
+\right]
+\end{equation\*}
+
+where
+
+\begin{equation\*}
+\vvec\_1=\left[\begin{array}{r}0\\3\\2\\ \end{array}\right],
+\vvec\_2=\left[\begin{array}{r}4\\-1\\0\\ \end{array}\right],
+\vvec\_3=\left[\begin{array}{r}-3\\2\\-1\\ \end{array}\right],
+\vvec\_4=\left[\begin{array}{r}1\\0\\1\\ \end{array}\right]\text{.}
+\end{equation\*}
+
+In this way, we see that the \(3\times 4\) matrix is equivalent to an ordered set of 4 vectors in \(\real^3\text{.}\)
+
+This means that we may define scalar multiplication and matrix addition operations using the corresponding column-wise vector operations. For instance,
+
+\begin{equation\*}
+\begin{aligned}
+c\left[\begin{array}{rrrr}
+\vvec\_1 \amp \vvec\_2 \amp \cdots \amp \vvec\_n
+\end{array}
+\right]
+{}={} \amp
+\left[\begin{array}{rrrr}
+c\vvec\_1 \amp c\vvec\_2 \amp \cdots \amp c\vvec\_n
+\end{array}
+\right] \\
+\left[\begin{array}{rrrr}
+\vvec\_1 \amp \vvec\_2 \amp \cdots \amp \vvec\_n
+\end{array}
+\right]
+{}+{} \amp
+\left[\begin{array}{rrrr}
+\wvec\_1 \amp \wvec\_2 \amp \cdots \amp \wvec\_n
+\end{array}
+\right]
+\\
+{}={} \amp
+\left[\begin{array}{rrrr}
+\vvec\_1+\wvec\_1 \amp \vvec\_2+\wvec\_2 \amp \cdots \amp
+\vvec\_n+\wvec\_n
+\end{array}
+\right]. \\
+\end{aligned}
+\end{equation\*}
+
+### Preview Activity 2.2.1. Matrix operations.
+
+#### (a)
+
+Compute the scalar multiple
+
+\begin{equation\*}
+-3\left[
+\begin{array}{rrr}
+3 \amp 1 \amp 0 \\
+-4 \amp 3 \amp -1 \\
+\end{array}
+\right]\text{.}
+\end{equation\*}
+
+#### (b)
+
+Find the sum
+
+\begin{equation\*}
+\left[
+\begin{array}{rr}
+0 \amp -3 \\
+1 \amp -2 \\
+3 \amp 4 \\
+\end{array}
+\right]
++
+\left[
+\begin{array}{rrr}
+4 \amp -1 \\
+-2 \amp 2 \\
+1 \amp 1 \\
+\end{array}
+\right]\text{.}
+\end{equation\*}
+
+#### (c)
+
+Suppose that \(A\) and \(B\) are two matrices. What do we need to know about their shapes before we can form the sum \(A+B\text{?}\)
+
+#### (d)
+
+The matrix \(I\_n\text{,}\) which we call the *identity* matrix, is the \(n\times n\) matrix whose entries are zero except for the diagonal entries, all of which are 1. For instance,
+
+\begin{equation\*}
+I\_3 =
+\left[
+\begin{array}{rrr}
+1 \amp 0 \amp 0 \\
+0 \amp 1 \amp 0 \\
+0 \amp 0 \amp 1 \\
+\end{array}
+\right]\text{.}
+\end{equation\*}
+
+If we can form the sum \(A+I\_n\text{,}\) what must be true about the matrix \(A\text{?}\)
+
+#### (e)
+
+Find the matrix \(A - 2I\_3\) where
+
+\begin{equation\*}
+A =
+\left[
+\begin{array}{rrr}
+1 \amp 2 \amp -2 \\
+2 \amp -3 \amp 3 \\
+-2 \amp 3 \amp 4 \\
+\end{array}
+\right]\text{.}
+\end{equation\*}
+
+As this preview activity shows, the operations of scalar multiplication and addition of matrices are natural extensions of their vector counterparts. Some care, however, is required when adding matrices. Since we need the same number of vectors to add and since those vectors must be of the same dimension, two matrices must have the same shape if we wish to form their sum.
+
+## Subsection 2.2.2 Matrix-vector multiplication and linear combinations
+
+A more important operation will be matrix multiplication as it allows us to compactly express linear systems. We now introduce the product of a matrix and a vector with an example.
+
+### Example 2.2.2. Matrix-vector multiplication.
+
+Suppose we have the matrix \(A\) and vector \(\xvec\text{:}\)
+
+\begin{equation\*}
+A = \left[\begin{array}{rr}
+-2 \amp 3 \\
+0 \amp 2 \\
+3 \amp 1 \\
+\end{array}\right],~~~
+\xvec = \left[\begin{array}{r}
+2 \\ 3 \\ \end{array}\right]\text{.}
+\end{equation\*}
+
+Their product will be defined to be the linear combination of the columns of \(A\) using the components of \(\xvec\) as weights. This means that
+
+\begin{equation\*}
+\begin{aligned}
+A\xvec =
+\left[\begin{array}{rr}
+-2 \amp 3 \\
+0 \amp 2 \\
+3 \amp 1 \\
+\end{array}\right]
+\left[\begin{array}{r} 2 \\ 3 \\ \end{array}\right]
+{}={} \amp
+2 \left[\begin{array}{r} -2 \\ 0 \\ 3 \\ \end{array}\right] +
+3 \left[\begin{array}{r} 3 \\ 2 \\ 1 \\ \end{array}\right]
+\\ \\
+{}={} \amp
+\left[\begin{array}{r} -4 \\ 0 \\ 6 \\ \end{array}\right] +
+\left[\begin{array}{r} 9 \\ 6 \\ 3 \\ \end{array}\right] \\ \\
+{}={} \amp
+\left[\begin{array}{r} 5 \\ 6 \\ 9 \\ \end{array}\right]. \\
+\end{aligned}
+\end{equation\*}
+
+Because \(A\) has two columns, we need two weights to form a linear combination of those columns, which means that \(\xvec\) must have two components. In other words, the number of columns of \(A\) must equal the dimension of the vector \(\xvec\text{.}\)
+
+Similarly, the columns of \(A\) are 3-dimensional so any linear combination of them is 3-dimensional as well. Therefore, \(A\xvec\) will be 3-dimensional.
+
+We then see that if \(A\) is a \(3\times2\) matrix, \(\xvec\) must be a 2-dimensional vector and \(A\xvec\) will be 3-dimensional.
+
+More generally, we have the following definition.
+
+### Definition 2.2.3. Matrix-vector multiplication.
+
+The product of a matrix \(A\) by a vector \(\xvec\) will be the linear combination of the columns of \(A\) using the components of \(\xvec\) as weights. More specifically, if
+
+\begin{equation\*}
+A=\left[\begin{array}{rrrr}
+\vvec\_1 \amp \vvec\_2 \amp \ldots \amp \vvec\_n
+\end{array}\right],~~~
+\xvec = \left[\begin{array}{r}
+c\_1 \\ c\_2 \\ \vdots \\ c\_n \end{array}\right],
+\end{equation\*}
+
+then
+
+\begin{equation\*}
+A\xvec = c\_1\vvec\_1 + c\_2\vvec\_2 + \ldots + c\_n\vvec\_n\text{.}
+\end{equation\*}
+
+If \(A\) is an \(m\times n\) matrix, then \(\xvec\) must be an \(n\)-dimensional vector, and the product \(A\xvec\) will be an \(m\)-dimensional vector.
+
+The next activity explores some properties of matrix multiplication.
+
+### Activity 2.2.4. Matrix-vector multiplication.
+
+1. Find the matrix product
+
+   \begin{equation\*}
+   \left[
+   \begin{array}{rrrr}
+   1 \amp 2 \amp 0 \amp -1 \\
+   2 \amp 4 \amp -3 \amp -2 \\
+   -1 \amp -2 \amp 6 \amp 1 \\
+   \end{array}
+   \right]
+   \left[
+   \begin{array}{r}
+   3 \\ 1 \\ -1 \\ 1 \\
+   \end{array}
+   \right]\text{.}
+   \end{equation\*}
+2. Suppose that \(A\) is the matrix
+
+   \begin{equation\*}
+   \left[
+   \begin{array}{rrr}
+   3 \amp -1 \amp 0 \\
+   0 \amp -2 \amp 4 \\
+   2 \amp 1 \amp 5 \\
+   1 \amp 0 \amp 3 \\
+   \end{array}
+   \right]\text{.}
+   \end{equation\*}
+
+   If \(A\xvec\) is defined, what is the dimension of the vector \(\xvec\) and what is the dimension of \(A\xvec\text{?}\)
+3. A vector whose entries are all zero is denoted by \(\zerovec\text{.}\) If \(A\) is a matrix, what is the product \(A\zerovec\text{?}\)
+4. Suppose that \(I = \left[\begin{array}{rrr}
+   1 \amp 0 \amp 0 \\
+   0 \amp 1 \amp 0 \\
+   0 \amp 0 \amp 1 \\
+   \end{array}\right]\) is the identity matrix and \(\xvec=\threevec{x\_1}{x\_2}{x\_3}\text{.}\) Find the product \(I\xvec\) and explain why \(I\) is called the identity matrix.
+5. Suppose we write the matrix \(A\) in terms of its columns as
+
+   \begin{equation\*}
+   A = \left[
+   \begin{array}{rrrr}
+   \vvec\_1 \amp \vvec\_2 \amp \cdots \amp \vvec\_n \\
+   \end{array}
+   \right]\text{.}
+   \end{equation\*}
+
+   If the vector \(\evec\_1 = \left[\begin{array}{c} 1 \\ 0 \\
+   \vdots \\ 0 \end{array}\right]\text{,}\) what is the product \(A\evec\_1\text{?}\)
+6. Suppose that
+
+   \begin{equation\*}
+   A = \left[
+   \begin{array}{rrrr}
+   1 \amp 2 \\
+   -1 \amp 1 \\
+   \end{array}
+   \right],
+   \bvec = \left[
+   \begin{array}{r}
+   6 \\ 0
+   \end{array}
+   \right]\text{.}
+   \end{equation\*}
+
+   Is there a vector \(\xvec\) such that \(A\xvec = \bvec\text{?}\)
+
+Multiplication of a matrix \(A\) and a vector is defined as a linear combination of the columns of \(A\text{.}\) However, there is a shortcut for computing such a product. Let’s look at our previous example and focus on the first row of the product.
+
+\begin{equation\*}
+\left[\begin{array}{rr}
+-2 \amp 3 \\
+0 \amp 2 \\
+3 \amp 1 \\
+\end{array}\right]
+\left[\begin{array}{r} 2 \\ 3 \\ \end{array}\right]
+=
+2 \left[\begin{array}{r} -2 \\ \* \\ \* \\ \end{array}\right] +
+3 \left[\begin{array}{r} 3 \\ \* \\ \* \\ \end{array}\right]
+=
+\left[\begin{array}{c} 2(-2)+3(3) \\ \* \\ \* \\ \end{array}\right]
+=
+\left[\begin{array}{r} 5 \\ \* \\ \* \\ \end{array}\right]\text{.}
+\end{equation\*}
+
+To find the first component of the product, we consider the first row of the matrix. We then multiply the first entry in that row by the first component of the vector, the second entry by the second component of the vector, and so on, and add the results. In this way, we see that the third component of the product would be obtained from the third row of the matrix by computing \(2(3) + 3(1) = 9\text{.}\)
+
+You are encouraged to evaluate the product Item a of the previous activity using this shortcut and compare the result to what you found while completing that activity.
+
+### Activity 2.2.5.
+
+Sage can find the product of a matrix and vector using the `*` operator. For example,
+
+1. Use Sage to evaluate the product
+
+   \begin{equation\*}
+   \left[
+   \begin{array}{rrrr}
+   1 \amp 2 \amp 0 \amp -1 \\
+   2 \amp 4 \amp -3 \amp -2 \\
+   -1 \amp -2 \amp 6 \amp 1 \\
+   \end{array}
+   \right]
+   \left[
+   \begin{array}{r}
+   3 \\ 1 \\ -1 \\ 1 \\
+   \end{array}
+   \right]
+   \end{equation\*}
+
+   from Item a of the previous activity.
+2. In Sage, define the matrix and vectors
+
+   \begin{equation\*}
+   A = \left[
+   \begin{array}{rrr}
+   -2 \amp 0 \\
+   3 \amp 1 \\
+   4 \amp 2 \\
+   \end{array}
+   \right],
+   \zerovec = \left[
+   \begin{array}{r} 0 \\ 0 \end{array}
+   \right],
+   \vvec = \left[
+   \begin{array}{r} -2 \\ 3 \end{array}
+   \right],
+   \wvec = \left[
+   \begin{array}{r} 1 \\ 2 \end{array}
+   \right]\text{.}
+   \end{equation\*}
+3. What do you find when you evaluate \(A\zerovec\text{?}\)
+4. What do you find when you evaluate \(A(3\vvec)\) and \(3(A\vvec)\) and compare your results?
+5. What do you find when you evaluate \(A(\vvec+\wvec)\) and \(A\vvec + A\wvec\) and compare your results?
+
+This activity demonstrates several general properties satisfied by matrix multiplication that we record here.
+
+### Proposition 2.2.6. Linearity of matrix multiplication.
+
+If \(A\) is a matrix, \(\vvec\) and \(\wvec\) vectors of the appropriate dimensions, and \(c\) a scalar, then
+
+* \(A\zerovec = \zerovec\text{.}\)
+* \(A(c\vvec) = cA\vvec\text{.}\)
+* \(A(\vvec+\wvec) = A\vvec + A\wvec\text{.}\)
+
+## Subsection 2.2.3 Matrix-vector multiplication and linear systems
+
+So far, we have begun with a matrix \(A\) and a vector \(\xvec\) and formed their product \(A\xvec = \bvec\text{.}\) We would now like to turn this around: beginning with a matrix \(A\) and a vector \(\bvec\text{,}\) we will ask if we can find a vector \(\xvec\) such that \(A\xvec = \bvec\text{.}\) This will naturally lead back to linear systems.
+
+To see the connection between the matrix equation \(A\xvec =
+\bvec\) and linear systems, let’s write the matrix \(A\) in terms of its columns \(\vvec\_i\) and \(\xvec\) in terms of its components.
+
+\begin{equation\*}
+A = \left[
+\begin{array}{rrrr}
+\vvec\_1 \amp \vvec\_2 \amp \ldots \vvec\_n
+\end{array}
+\right],
+\xvec = \left[
+\begin{array}{c}
+c\_1 \\ c\_2 \\ \vdots \\ c\_n \\
+\end{array}
+\right]\text{.}
+\end{equation\*}
+
+We know that the matrix product \(A\xvec\) forms a linear combination of the columns of \(A\text{.}\) Therefore, the equation \(A\xvec = \bvec\) is merely a compact way of writing the equation for the weights \(c\_i\text{:}\)
+
+\begin{equation\*}
+c\_1\vvec\_1 + c\_2\vvec\_2 + \ldots + c\_n\vvec\_n = \bvec\text{.}
+\end{equation\*}
+
+We have seen this equation before: Remember that Proposition 2.1.14 says that the solutions of this equation are the same as the solutions to the linear system whose augmented matrix is
+
+\begin{equation\*}
+\left[\begin{array}{rrrr|r}
+\vvec\_1 \amp \vvec\_2 \amp \ldots \amp \vvec\_n \amp \bvec
+\end{array}\right]\text{.}
+\end{equation\*}
+
+This gives us three different ways of looking at the same solution space.
+
+### Proposition 2.2.7.
+
+If \(A=\left[\begin{array}{rrrr}
+\vvec\_1\amp\vvec\_2\amp\ldots\vvec\_n
+\end{array}\right]\) and \(\xvec=\left[
+\begin{array}{c}
+x\_1 \\ x\_2 \\ \vdots \\ x\_n \\
+\end{array}\right]
+\text{,}\) then the following statements are equivalent.
+
+* The vector \(\xvec\) satisfies the equation \(A\xvec = \bvec
+  \text{.}\)
+* The vector \(\bvec\) is a linear combination of the columns of \(A\) with weights \(x\_j\text{:}\)
+
+  \begin{equation\*}
+  x\_1\vvec\_1 + x\_2\vvec\_2 + \ldots + x\_n\vvec\_n = \bvec\text{.}
+  \end{equation\*}
+* The components of \(\xvec\) form a solution to the linear system corresponding to the augmented matrix
+
+  \begin{equation\*}
+  \left[\begin{array}{rrrr|r}
+  \vvec\_1 \amp \vvec\_2 \amp \cdots \amp \vvec\_n \amp \bvec
+  \end{array}\right]\text{.}
+  \end{equation\*}
+
+When the matrix \(A = \left[\begin{array}{rrrr}
+\vvec\_1\amp\vvec\_2\amp\cdots\amp\vvec\_n\end{array}\right]\text{,}\) we will frequently write
+
+\begin{equation\*}
+\left[\begin{array}{rrrr|r}
+\vvec\_1\amp\vvec\_2\amp\cdots\amp\vvec\_n\amp\bvec\end{array}\right]
+= \left[ \begin{array}{r|r} A \amp \bvec \end{array}\right]
+\end{equation\*}
+
+and say that the matrix \(A\) is augmented by the vector \(\bvec\text{.}\)
+
+The equation \(A\xvec = \bvec\) gives a notationally compact way to write a linear system. Moreover, this notation will allow us to focus on important features of the system that determine its solution space.
+
+### Example 2.2.8.
+
+We will describe the solution space of the equation
+
+\begin{equation\*}
+\left[\begin{array}{rrr}
+2 \amp 0 \amp 2 \\
+4 \amp -1 \amp 6 \\
+1 \amp 3 \amp -5 \\
+\end{array}\right]
+\xvec
+=
+\left[\begin{array}{r}
+0 \\ -5 \\ 15
+\end{array}\right].
+\end{equation\*}
+
+By Proposition 2.2.7, this equation may be equivalently expressed as
+
+\begin{equation\*}
+x\_1\left[\begin{array}{r}2\\4\\1\end{array}\right] +
+x\_2\left[\begin{array}{r}0\\-1\\3\end{array}\right]+
+x\_3\left[\begin{array}{r}2\\6\\-5\end{array}\right]=
+\left[\begin{array}{r}0\\-5\\15\end{array}\right]\text{,}
+\end{equation\*}
+
+which is the linear system corresponding to the augmented matrix
+
+\begin{equation\*}
+\left[\begin{array}{rrr|r}
+2 \amp 0 \amp 2 \amp 0 \\
+4 \amp -1 \amp 6 \amp -5 \\
+1 \amp 3 \amp -5 \amp 15 \\
+\end{array} \right]\text{.}
+\end{equation\*}
+
+The reduced row echelon form of the augmented matrix is
+
+\begin{equation\*}
+\left[\begin{array}{rrr|r}
+2 \amp 0 \amp 2 \amp 0 \\
+4 \amp -1 \amp 6 \amp -5 \\
+1 \amp 3 \amp -5 \amp 15 \\
+\end{array} \right]
+\sim
+\left[\begin{array}{rrr|r}
+1 \amp 0 \amp 1 \amp 0 \\
+0 \amp 1 \amp -2 \amp 5 \\
+0 \amp 0 \amp 0 \amp 0 \\
+\end{array} \right],
+\end{equation\*}
+
+which corresponds to the linear system
+
+\begin{equation\*}
+\begin{alignedat}{4}
+x\_1 \amp \amp \amp {}+{} \amp x\_3 \amp {}={} \amp 0 \\
+\amp \amp x\_2 \amp {}-{} \amp 2x\_3 \amp {}={} \amp 5. \\
+\end{alignedat}
+\end{equation\*}
+
+The variable \(x\_3\) is free so we may write the solution space parametrically as
+
+\begin{equation\*}
+\begin{aligned}
+x\_1 \amp {}={} -x\_3 \\
+x\_2 \amp {}={} 5+2x\_3. \\
+\end{aligned}
+\end{equation\*}
+
+Since we originally asked to describe the solutions to the equation \(A\xvec = \bvec\text{,}\) we will express the solution in terms of the vector \(\xvec\text{:}\)
+
+\begin{equation\*}
+\xvec
+=\left[
+\begin{array}{r}
+x\_1 \\ x\_2 \\ x\_3
+\end{array}
+\right]
+=
+\left[
+\begin{array}{r}
+-x\_3 \\ 5 + 2x\_3 \\ x\_3
+\end{array}
+\right]
+=\left[\begin{array}{r}0\\5\\0\end{array}\right]
++x\_3\left[\begin{array}{r}-1\\2\\1\end{array}\right]
+\end{equation\*}
+
+As before, we call this a parametric description of the solution space.
+
+This shows that the solutions \(\xvec\) may be written in the form \(\vvec + x\_3\wvec\text{,}\) for appropriate vectors \(\vvec\) and \(\wvec\text{.}\) Geometrically, the solution space is a line in \(\real^3\) through \(\vvec\) moving parallel to \(\wvec\text{.}\)
+
+### Activity 2.2.9. The equation \(A\xvec = \bvec\).
+
+1. Consider the linear system
+
+   \begin{equation\*}
+   \begin{alignedat}{4}
+   2x \amp {}+{} \amp y \amp {}-{} \amp 3z \amp {}={} \amp 4 \\
+   -x \amp {}+{} \amp 2y \amp {}+{} \amp z \amp {}={} \amp 3 \\
+   3x \amp {}-{} \amp y \amp \amp \amp {}={} \amp -4. \\
+   \end{alignedat}
+   \end{equation\*}
+
+   Identify the matrix \(A\) and vector \(\bvec\) to express this system in the form \(A\xvec = \bvec\text{.}\)
+2. If \(A\) and \(\bvec\) are as below, write the linear system corresponding to the equation \(A\xvec=\bvec\) and describe its solution space, using a parametric description if appropriate:
+
+   \begin{equation\*}
+   A = \left[\begin{array}{rrr}
+   3 \amp -1 \amp 0 \\
+   -2 \amp 0 \amp 6
+   \end{array}
+   \right],~~~
+   \bvec = \left[\begin{array}{r}
+   -6 \\ 2
+   \end{array}
+   \right]\text{.}
+   \end{equation\*}
+3. Describe the solution space of the equation
+
+   \begin{equation\*}
+   \left[
+   \begin{array}{rrrr}
+   1 \amp 2 \amp 0 \amp -1 \\
+   2 \amp 4 \amp -3 \amp -2 \\
+   -1 \amp -2 \amp 6 \amp 1 \\
+   \end{array}
+   \right]
+   \xvec
+   =
+   \left[\begin{array}{r}
+   -1 \\ 1 \\ 5
+   \end{array}
+   \right]\text{.}
+   \end{equation\*}
+4. Suppose \(A\) is an \(m\times n\) matrix. What can you guarantee about the solution space of the equation \(A\xvec
+   = \zerovec\text{?}\)
+
+## Subsection 2.2.4 Matrix-matrix products
+
+In this section, we have developed some algebraic operations on matrices with the aim of simplifying our description of linear systems. We now introduce a final operation, the product of two matrices, that will become important when we study linear transformations in Section 2.5.
+
+### Definition 2.2.10. Matrix-matrix multiplication.
+
+Given matrices \(A\) and \(B\text{,}\) we form their product \(AB\) by first writing \(B\) in terms of its columns
+
+\begin{equation\*}
+B = \left[\begin{array}{rrrr}
+\vvec\_1 \amp \vvec\_2 \amp \cdots \amp \vvec\_p
+\end{array}\right]
+\end{equation\*}
+
+and then defining
+
+\begin{equation\*}
+AB = \left[\begin{array}{rrrr}
+A\vvec\_1 \amp A\vvec\_2 \amp \cdots \amp A\vvec\_p
+\end{array}\right].
+\end{equation\*}
+
+### Example 2.2.11.
+
+Given the matrices
+
+\begin{equation\*}
+A = \left[\begin{array}{rr}
+4 \amp 2 \\
+0 \amp 1 \\
+-3 \amp 4 \\
+2 \amp 0 \\
+\end{array}\right],~~~
+B = \left[\begin{array}{rrr}
+-2 \amp 3 \amp 0 \\
+1 \amp 2 \amp -2 \\
+\end{array}\right]\text{,}
+\end{equation\*}
+
+we have
+
+\begin{equation\*}
+AB = \left[\begin{array}{rrr}
+A \twovec{-2}{1} \amp
+A \twovec{3}{2} \amp
+A \twovec{0}{-2}
+\end{array}\right]
+= \left[\begin{array}{rrr}
+-6 \amp 16 \amp -4 \\
+1 \amp 2 \amp -2 \\
+10 \amp -1 \amp -8 \\
+-4 \amp 6 \amp 0
+\end{array}\right]\text{.}
+\end{equation\*}
+
+### Observation 2.2.12.
+
+It is important to note that we can only multiply matrices if the shapes of the matrices are compatible. More specifically, when constructing the product \(AB\text{,}\) the matrix \(A\) multiplies the columns of \(B\text{.}\) Therefore, the number of columns of \(A\) must equal the number of rows of \(B\text{.}\) When this condition is met, the number of rows of \(AB\) is the number of rows of \(A\text{,}\) and the number of columns of \(AB\) is the number of columns of \(B\text{.}\)
+
+### Activity 2.2.13.
+
+Consider the matrices
+
+\begin{equation\*}
+A = \left[\begin{array}{rrr}
+1 \amp 3 \amp 2 \\
+-3 \amp 4 \amp -1 \\
+\end{array}\right],~~~
+B = \left[\begin{array}{rr}
+3 \amp 0 \\
+1 \amp 2 \\
+-2 \amp -1 \\
+\end{array}\right]\text{.}
+\end{equation\*}
+
+1. Before computing, first explain why the shapes of \(A\) and \(B\) enable us to form the product \(AB\text{.}\) Then describe the shape of \(AB\text{.}\)
+2. Compute the product \(AB\text{.}\)
+3. Sage can multiply matrices using the `*` operator. Define the matrices \(A\) and \(B\) in the Sage cell below and check your work by computing \(AB\text{.}\)
+4. Are we able to form the matrix product \(BA\text{?}\) If so, use the Sage cell above to find \(BA\text{.}\) Is it generally true that \(AB = BA\text{?}\)
+5. Suppose we form the three matrices.
+
+   \begin{equation\*}
+   A = \left[\begin{array}{rr}
+   1 \amp 2 \\
+   3 \amp -2 \\
+   \end{array}\right],
+   B = \left[\begin{array}{rr}
+   0 \amp 4 \\
+   2 \amp -1 \\
+   \end{array}\right],
+   C = \left[\begin{array}{rr}
+   -1 \amp 3 \\
+   4 \amp 3 \\
+   \end{array}\right]\text{.}
+   \end{equation\*}
+
+   Compare what happens when you compute \(A(B+C)\) and \(AB
+   + AC\text{.}\) State your finding as a general principle.
+6. Compare the results of evaluating \(A(BC)\) and \((AB)C\) and state your finding as a general principle.
+7. When we are dealing with real numbers, we know if \(a\neq 0\) and \(ab = ac\text{,}\) then \(b=c\text{.}\) Define matrices
+
+   \begin{equation\*}
+   A = \left[\begin{array}{rr}
+   1 \amp 2 \\
+   -2 \amp -4 \\
+   \end{array}\right],
+   B = \left[\begin{array}{rr}
+   3 \amp 0 \\
+   1 \amp 3 \\
+   \end{array}\right],
+   C = \left[\begin{array}{rr}
+   1 \amp 2 \\
+   2 \amp 2 \\
+   \end{array}\right]
+   \end{equation\*}
+
+   and compute \(AB\) and \(AC\text{.}\)
+
+   If \(AB = AC\text{,}\) is it necessarily true that \(B = C\text{?}\)
+8. Again, with real numbers, we know that if \(ab =
+   0\text{,}\) then either \(a = 0\) or \(b=0\text{.}\) Define
+
+   \begin{equation\*}
+   A = \left[\begin{array}{rr}
+   1 \amp 2 \\
+   -2 \amp -4 \\
+   \end{array}\right],
+   B = \left[\begin{array}{rr}
+   2 \amp -4 \\
+   -1 \amp 2 \\
+   \end{array}\right]
+   \end{equation\*}
+
+   and compute \(AB\text{.}\)
+
+   If \(AB = 0\text{,}\) is it necessarily true that either \(A=0\) or \(B=0\text{?}\)
+
+This activity demonstrated some general properties about products of matrices, which mirror some properties about operations with real numbers.
+
+### Properties of Matrix-matrix Multiplication.
+
+If \(A\text{,}\) \(B\text{,}\) and \(C\) are matrices such that the following operations are defined, it follows that
+
+**Associativity:**:   \(A(BC) = (AB)C\text{.}\)
+**Distributivity:**:   \(A(B+C) = AB+AC\text{.}\)
+
+    \((A+B)C = AC+BC\text{.}\)
+
+At the same time, there are a few properties that hold for real numbers that do not hold for matrices.
+
+### Caution.
+
+The following properties hold for real numbers but not for matrices.
+
+**Commutativity:**:   It is *not* generally true that \(AB = BA\text{.}\)
+**Cancellation:**:   It is *not* generally true that \(AB = AC\) implies that \(B = C\text{.}\)
+**Zero divisors:**:   It is *not* generally true that \(AB = 0\) implies that either \(A=0\) or \(B=0\text{.}\)
+
+## Subsection 2.2.5 Summary
+
+In this section, we have found an especially simple way to express linear systems using matrix multiplication.
+
+* If \(A\) is an \(m\times n\) matrix and \(\xvec\) an \(n\)-dimensional vector, then \(A\xvec\) is the linear combination of the columns of \(A\) using the components of \(\xvec\) as weights. The vector \(A\xvec\) is \(m\)-dimensional.
+* The solution space to the equation \(A\xvec =
+  \bvec\) is the same as the solution space to the linear system corresponding to the augmented matrix \(\left[ \begin{array}{r|r} A \amp \bvec \end{array}\right]\text{.}\)
+* If \(A\) is an \(m\times n\) matrix and \(B\) is an \(n\times p\) matrix, we can form the product \(AB\text{,}\) which is an \(m\times p\) matrix whose columns are the products of \(A\) and the columns of \(B\text{.}\)
+
+[...]
+[NOTE] Omitted here: Exercises 2.2.6 (thirteen exercises).
+

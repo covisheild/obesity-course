@@ -1,0 +1,1 @@
+Least sure: deleting the whole derivation in In plain terms (the slope-of-2^t and 3^t search for e, and the short-step working showing why the rate of e^(kt) is k times e^(kt)). The kept text now asserts "So the rate of e^(kt) is k times e^(kt)" with nothing before it. Exercise 3 only needs the result, but the reader may not trust or recognise it.

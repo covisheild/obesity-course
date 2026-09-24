@@ -14,6 +14,8 @@ the picture from that spec alone. This module is the part both sides share:
                               - a `fit` relation (y = a + b*x ...) that a plotted point breaks
                               - a `check` identity (a total, a ratio) that does not hold
                               - a bar chart whose bars do not start at zero
+                              - a `curves` formula that misses its series or is not finite
+                                on its range; an `areas` entry whose `equals` is not its integral
     spec_hash(rec, fig)     fingerprint of the resolved spec and the book's palette; draw.py
                             writes it beside the PNG as <file>.spec.json, and the build blocks
                             when the two differ (the text changed and the picture did not)
@@ -24,7 +26,7 @@ Pure Python and PyYAML, so `check/build.py --check` needs no matplotlib.
 Spec shape (see check/schema/concept.schema.json, figures[].spec):
 
     spec:
-      kind: line                 # line | scatter | bar | step
+      kind: line                 # line | scatter | bar (bars may be negative) | step
       x_label: weeks
       y_label: weight (kg)
       from_table: {block: 0, x: 0, y: [1]}   # or literal  x: [...]  series: [{name, y: [...]}]
@@ -37,7 +39,16 @@ Spec shape (see check/schema/concept.schema.json, figures[].spec):
         - {value: "4", from: "92 - 88"}      # a printed number the prose does not state
       bands:                                 # optional: shaded ranges; y0, y1 checked like data
         - {y0: 88, y1: 90, label: "target range"}
+      curves:                                # optional: a formula over its own x range
+        - {y: "y = 92 - 0.5*x", x0: 0, x1: 8, label: "the rule", series: <name>}   # series: checked like a fit
+      areas:                                 # optional: shaded between y and `to` (default the axis)
+        - {y: "y = 300 - 10*x", x0: 0, x1: 30, to: 0, equals: 4500, label: "4,500 kcal gained"}
+      refs:                                  # optional: a reference line at a stated value
+        - {x: 70, label: "expected value 70"}   # or {y: ...}
     and on a literal series, `marker: none` draws it as a bare line (a fitted slope, not points).
+    Every constant, x0/x1, `to`, `equals`, ref value and label number is checked like data; `equals`
+    is the signed integral of (y - to) over [x0, x1]. Bars may be negative (drawn from a zero line);
+    two or more drawn fits each take their series' colour.
 """
 import ast
 import hashlib
@@ -272,9 +283,85 @@ def resolve(rec, fig):
             "labels": spec.get("labels") or [], "derived": spec.get("derived") or [],
             "y_scale": spec.get("y_scale", "linear"), "value_labels": bool(spec.get("value_labels")),
             "y_range": spec.get("y_range"), "size": spec.get("size", [6.2, 3.0])}
-    if bands:            # only when declared, so a spec without bands keeps its fingerprint
+    # Everything below is added only when it is declared or used, so a spec without it keeps the
+    # fingerprint it was drawn with (added 24 September 2026 for S02-R1).
+    if bands:
         out["bands"] = bands
+    curves = [_curve(c, "curves", series) for c in spec.get("curves") or []]
+    areas = [_area(a) for a in spec.get("areas") or []]
+    refs = [_ref(r) for r in spec.get("refs") or []]
+    if (curves or areas) and categorical:
+        raise ValueError("spec.curves and spec.areas need numeric x")
+    for key, val in (("curves", curves), ("areas", areas), ("refs", refs)):
+        if val:
+            out[key] = val
+    if kind == "bar" and any(v < 0 for s in series for v in s["y"]):
+        out["signed_bars"] = True       # drawn from a zero line, not a zero floor
+    if sum(1 for r in out["relations"] if r.get("fit") and r.get("draw")) > 1:
+        out["fit_colours"] = "series"   # two or more drawn fits: each in its own series' colour
     return out
+
+
+def _rhs(expr, where):
+    """The expression after '=' in 'y = ...', or a bare number/expression as given."""
+    s = str(expr).strip()
+    lhs, eq, rhs = s.partition("=")
+    if eq and lhs.strip() != "y":
+        raise ValueError(f"{where}: '{s}' must read 'y = <expression in x>'")
+    return (rhs if eq else s).strip()
+
+
+def _span(d, where):
+    x0, x1 = _num(d.get("x0")), _num(d.get("x1"))
+    if x0 is None or x1 is None or not x0 < x1:
+        raise ValueError(f"{where}: x0 and x1 must be numbers with x0 < x1, got {d}")
+    return {"x0": x0, "x1": x1, "x0_raw": str(d.get("x0")), "x1_raw": str(d.get("x1"))}
+
+
+def _curve(c, key, series):
+    if not c.get("y"):
+        raise ValueError(f"spec.{key}: each curve needs y: 'y = <expression in x>'")
+    if c.get("series") and c["series"] not in [s["name"] for s in series]:
+        raise ValueError(f"spec.{key}: series '{c['series']}' is not a series of this figure")
+    return {"y": str(c["y"]), "rhs": _rhs(c["y"], f"spec.{key}"), **_span(c, f"spec.{key}"),
+            "label": c.get("label", ""), "series": c.get("series", "")}
+
+
+def _area(a):
+    if not a.get("y"):
+        raise ValueError("spec.areas: each area needs y: 'y = <expression in x>' (its upper edge)")
+    to = a.get("to", 0)
+    out = {"y": str(a["y"]), "rhs": _rhs(a["y"], "spec.areas"), "to": str(to),
+           "to_rhs": _rhs(to, "spec.areas"), **_span(a, "spec.areas"), "label": a.get("label", "")}
+    if a.get("equals") is not None:
+        if _num(a["equals"]) is None:
+            raise ValueError(f"spec.areas: equals must be a number, got {a['equals']}")
+        out["equals"] = str(a["equals"])
+    return out
+
+
+def _ref(r):
+    axis = [k for k in ("x", "y") if r.get(k) is not None]
+    if len(axis) != 1 or _num(r[axis[0]]) is None:
+        raise ValueError(f"spec.refs: each reference line needs exactly one of x or y, a number; got {r}")
+    return {"axis": axis[0], "at": _num(r[axis[0]]), "raw": str(r[axis[0]]), "label": r.get("label", "")}
+
+
+def samples(rhs, names, x0, x1, n=200):
+    """(xs, ys) of a formula over [x0, x1], for drawing a curve or shading an area."""
+    xs = [x0 + (x1 - x0) * k / n for k in range(n + 1)]
+    return xs, [float(evaluate(rhs, {**names, "x": xv})) for xv in xs]
+
+
+def integral(rhs, to_rhs, names, x0, x1, n=2000):
+    """Signed area of (rhs - to_rhs) over [x0, x1], by Simpson's rule on n (even) strips."""
+    h = (x1 - x0) / n
+    tot = 0.0
+    for k in range(n + 1):
+        xv = x0 + k * h
+        f = evaluate(rhs, {**names, "x": xv}) - evaluate(to_rhs, {**names, "x": xv})
+        tot += f * (1 if k in (0, n) else 4 if k % 2 else 2)
+    return tot * h / 3
 
 
 # ---------------------------------------------------------------- safe arithmetic
@@ -368,6 +455,20 @@ def verify(rec, fig):
     for b in res.get("bands") or []:
         need({abs(b["y0"]), abs(b["y1"])}, "shades a band from")
         need(numbers_in(b["label"]), f"prints the band '{b['label']}' with")
+    for c in res.get("curves") or []:
+        need(_expr_numbers(c["rhs"]), f"draws the curve '{c['y']}' with constants")
+        need({abs(c["x0"]), abs(c["x1"])}, f"draws the curve '{c['y']}' from x =")
+        need(numbers_in(c["label"]), f"prints the key '{c['label']}' with")
+    for a in res.get("areas") or []:
+        need(_expr_numbers(a["rhs"]) | _expr_numbers(a["to_rhs"]),
+             f"shades the area under '{a['y']}' with constants")
+        need({abs(a["x0"]), abs(a["x1"])}, f"shades the area under '{a['y']}' from x =")
+        need(numbers_in(a["label"]), f"prints the area '{a['label']}' with")
+        if "equals" in a:
+            need({abs(_num(a["equals"]))}, f"states the area under '{a['y']}' as")
+    for r in res.get("refs") or []:
+        need({abs(r["at"])}, f"draws a reference line at {r['axis']} =")
+        need(numbers_in(r["label"]), f"prints the reference line '{r['label']}' with")
     for key in ("x_label", "y_label", "title"):
         need(numbers_in(res[key]), f"prints its {key.replace('_', ' ')} with")
     need(numbers_in(fig.get("caption", "")), "caption states")
@@ -408,6 +509,13 @@ def verify(rec, fig):
                 except Exception as e:
                     probs.append(f"{tag}: check '{rel['check']}' cannot be evaluated ({e})")
                     continue
+            elif _num(want) == 0:
+                # A difference asserted to be zero. The right side "0" carries no decimals, so
+                # _close would allow +-0.5 and pass a difference of 0.4 (found 24 Sep 2026). The
+                # precision comes from the constants on the left instead; with none, it is exact.
+                places = max([_decimals(c) for c in re.findall(r"\d+\.\d+", lhs)] or [None]) \
+                    if re.search(r"\d+\.\d+", lhs) else None
+                ok = abs(got) <= (0.5 * 10 ** -places if places is not None else 1e-9 * max(1, abs(got)))
             else:
                 ok = _close(got, want)
             if not ok:
@@ -415,8 +523,48 @@ def verify(rec, fig):
         else:
             probs.append(f"{tag}: a relation must be a `fit` or a `check`")
 
+    # 3a. A curve is a drawn relation over its own range: it must evaluate everywhere on that range,
+    #     and when it names a series, pass through every point of it inside the range, like a `fit`.
+    #     An area's `equals` is its signed integral, (y - to) over [x0, x1], at the written precision.
+    for c in res.get("curves") or []:
+        try:
+            _, ys = samples(c["rhs"], names, c["x0"], c["x1"])
+        except Exception as e:
+            probs.append(f"{tag}: curve '{c['y']}' cannot be evaluated over [{c['x0_raw']}, {c['x1_raw']}] ({e})")
+            continue
+        if not all(math.isfinite(v) for v in ys):
+            probs.append(f"{tag}: curve '{c['y']}' is not finite everywhere on [{c['x0_raw']}, {c['x1_raw']}]")
+        if res["y_scale"] == "log" and any(v <= 0 for v in ys):
+            probs.append(f"{tag}: curve '{c['y']}' reaches zero or below, which a log axis cannot show")
+        if c["series"]:
+            s = next(s for s in res["series"] if s["name"] == c["series"])
+            for xv, yraw in zip(res["x"], s["y_raw"]):
+                if c["x0"] <= xv <= c["x1"]:
+                    got = evaluate(c["rhs"], {**names, "x": xv})
+                    if not _close(got, yraw):
+                        probs.append(f"{tag}: curve '{c['y']}' gives {got:.6g} at x = {xv:g}, "
+                                     f"but the figure plots {yraw}")
+    for a in res.get("areas") or []:
+        try:
+            samples(a["rhs"], names, a["x0"], a["x1"])
+            samples(a["to_rhs"], names, a["x0"], a["x1"])
+            got = integral(a["rhs"], a["to_rhs"], names, a["x0"], a["x1"])
+        except Exception as e:
+            probs.append(f"{tag}: area under '{a['y']}' cannot be evaluated ({e})")
+            continue
+        if "equals" in a and not _close(got, a["equals"]):
+            probs.append(f"{tag}: area under '{a['y']}' from {a['x0_raw']} to {a['x1_raw']} is "
+                         f"{got:.6g}, not {a['equals']} (equals is the signed area, y minus to)")
+
     # 4. Honest geometry.
-    if res["kind"] == "bar" and res["y_range"] and float(res["y_range"][0]) != 0:
+    if res.get("signed_bars"):
+        lo = min(v for s in res["series"] for v in s["y"])
+        hi = max(v for s in res["series"] for v in s["y"])
+        if res["y_range"] and not (float(res["y_range"][0]) <= min(lo, 0)
+                                   and float(res["y_range"][1]) >= max(hi, 0)):
+            probs.append(f"{tag}: a bar chart with negative bars needs an axis that holds zero and "
+                         "every bar whole (a bar's length is its value)")
+    elif res["kind"] == "bar" and res["y_range"] and float(res["y_range"][0]) != 0:
         probs.append(f"{tag}: a bar chart's axis must start at zero (a bar's length is its value)")
     if res["y_scale"] == "log" and any(v <= 0 for s in res["series"] for v in s["y"]):
         probs.append(f"{tag}: a log axis cannot show a value at or below zero")

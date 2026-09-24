@@ -1,9 +1,16 @@
 SOURCE: Introductory Statistics 2e - OpenStax (Illowsky, B. and Dean, S., senior contributing authors)
 URL: https://openstax.org/details/books/introductory-statistics-2e
-PUBLISHED: 13 December 2023; web version last updated 7 July 2026 (details page, read 2026-09-23)
-LICENCE: CC BY-NC-SA 4.0
+PUBLISHED: 13 December 2023; web version last updated 7 July 2026 (details page, read 2026-09-23;
+re-read 2026-09-24, unchanged: "Web Version Last Updated: Jul 07, 2026")
+LICENCE: CC BY-NC-SA 4.0. The details page, read 2026-09-24, says: "by OpenStax is licensed under
+Creative Commons Attribution-NonCommercial-ShareAlike License v4.0"
 RETRIEVED: 2026-09-23, each section page fetched whole from openstax.org and stored as extracted text
-WHAT IT IS: The textbook anchor for Book 0 Part D. Ten sections are held, listed below. Mathematical
+WHAT IT IS: The textbook anchor for Book 0 Part D. Ten sections are held, listed below.
+EXTENDED 2026-09-24 by the S02-R1 intake: sections 4.1 (Probability Distribution Function (PDF)
+for a Discrete Random Variable) and 4.2 (Mean or Expected Value and Standard Deviation) are
+appended at the end of the file, each the whole page as fetched on 2026-09-24 with TinyFish
+fetch_content and cut by script, NOT re-wrapped (the ten earlier sections are wrapped at 100
+columns; these keep the extraction's own line breaks). Twelve sections are now held. Mathematical
 typesetting does not survive text extraction: a fraction such as 2/6 can appear as "2626" or split
 across lines. Quote from running prose, never from a formula.
 
@@ -5678,3 +5685,556 @@ x
  = 16.01 ounces. If the cans are filled so that *μ* = 16.00 ounces (as labeled) and *σ* = 0.143
 ounces, find the probability that a sample of 34 cans will have an average amount greater than 16.01
 ounces. Do the results suggest that cans are filled with an amount greater than 16 ounces?
+
+[NOTE] Sections 4.1 and 4.2 below were added 2026-09-24 (S02-R1 intake).
+
+====================================================================================================
+SECTION: 4.1 Probability Distribution Function (PDF) for a Discrete Random Variable
+URL: https://openstax.org/books/introductory-statistics-2e/pages/4-1-probability-distribution-function-pdf-for-a-discrete-random-variable
+====================================================================================================
+
+[NOTE] The whole page as fetched: the section text, its examples and its Try It items. The fetched page carries no end-of-section exercises.
+
+## 4.1 Probability Distribution Function (PDF) for a Discrete Random Variable
+
+A discrete probability distribution function has two characteristics:
+
+1. Each probability is between zero and one, inclusive.
+2. The sum of the probabilities is one.
+
+A child psychologist is interested in the number of times a newborn baby's crying wakes its mother after midnight. For a random sample of 50 mothers, the following information was obtained. Let *X* = the number of times per week a newborn baby's crying wakes its mother after midnight. For this example, *x* = 0, 1, 2, 3, 4, 5.
+
+*P*(*x*) = probability that *X* takes on a value *x*.
+
+| *x* | *P*(*x*) |
+| --- | --- |
+| 0 | *P*(*x* = 0) =    2  50  2  50 |
+| 1 | *P*(*x* = 1) =    11  50  11  50 |
+| 2 | *P*(*x* = 2) =    23  50  23  50 |
+| 3 | *P*(*x* = 3) =    9  50  9  50 |
+| 4 | *P*(*x* = 4) =    4  50  4  50 |
+| 5 | *P*(*x* = 5) =    1  50  1  50 |
+
+Table 
+4.2
+
+*X* takes on the values 0, 1, 2, 3, 4, 5. This is a discrete PDF because:
+
+1. Each *P*(*x*) is between zero and one, inclusive.
+2. The sum of the probabilities is one, that is,
+
+2
+
+50
++
+
+11
+
+50
++
+
+23
+
+50
++
+9
+
+50
++
+4
+
+50
++
+1
+
+50
+=1
+
+2
+
+50
++
+
+11
+
+50
++
+
+23
+
+50
++
+9
+
+50
++
+4
+
+50
++
+1
+
+50
+=1
+
+A hospital researcher is interested in the number of times the average post-op patient will ring the nurse during a 12-hour shift. For a random sample of 50 patients, the following information was obtained. Let *X* = the number of times a patient rings the nurse during a 12-hour shift. For this exercise, *x* = 0, 1, 2, 3, 4, 5. *P*(*x*) = the probability that *X* takes on value *x*. Why is this a discrete probability distribution function (two reasons)?
+
+| *x* | *P*(*x*) |
+| --- | --- |
+| 0 | *P*(*x* = 0) = 450450 |
+| 1 | *P*(*x* = 1) = 850850 |
+| 2 | *P*(*x* = 2) = 16501650 |
+| 3 | *P*(*x* = 3) = 1450 1450 |
+| 4 | *P*(*x* = 4) = 650650 |
+| 5 | *P*(*x* = 5) = 250250 |
+
+Table 
+4.3
+
+Suppose Nancy has classes **three days** a week. She attends classes three days a week **80%** of the time, **two days 15%** of the time, **one day 4%** of the time, and **no days 1%** of the time. Suppose one week is randomly selected.
+
+#### Problem
+
+a. Let *X* = the number of days Nancy \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_.
+
+b. *X* takes on what values?
+
+c. Suppose one week is randomly chosen. Construct a probability distribution table (called a PDF table) like the one in Example 4.1. The table should have two columns labeled *x* and *P*(*x*). What does the *P*(*x*) column sum to?
+
+#### Solution
+
+a. Let *X* = the number of days Nancy attends class per week.
+
+b. 0, 1, 2, and 3
+
+c.
+
+| *x* | *P*(*x*) |
+| --- | --- |
+| 0 | 0.01 |
+| 1 | 0.04 |
+| 2 | 0.15 |
+| 3 | 0.80 |
+
+Table 
+4.4
+
+Jeremiah has basketball practice two days a week. Ninety percent of the time, he attends both practices. Eight percent of the time, he attends one practice. Two percent of the time, he does not attend either practice. What is *X* and what values does it take on?
+
+
+====================================================================================================
+SECTION: 4.2 Mean or Expected Value and Standard Deviation
+URL: https://openstax.org/books/introductory-statistics-2e/pages/4-2-mean-or-expected-value-and-standard-deviation
+====================================================================================================
+
+[NOTE] The whole page as fetched: the section text, its examples and its Try It items. The fetched page carries no end-of-section exercises.
+
+## 4.2 Mean or Expected Value and Standard Deviation
+
+The expected value is often referred to as the **"long-term" average or mean**. This means that over the long term of doing an experiment over and over, you would **expect** this average.
+
+You toss a coin and record the result. What is the probability that the result is heads? If you flip a coin two times, does probability tell you that these flips will result in one heads and one tail? You might toss a fair coin ten times and record nine heads. As you learned in Probability Topics, probability does not describe the short-term results of an experiment. It gives information about what can be expected in the long term. To demonstrate this, Karl Pearson once tossed a fair coin 24,000 times! He recorded the results of each toss, obtaining heads 12,012 times. **In his experiment, Pearson illustrated the Law of Large Numbers**.
+
+**The Law of Large Numbers** states that, as the number of trials in a probability experiment increases, the difference between the theoretical probability of an event and the relative frequency approaches zero **(the theoretical probability and the relative frequency get closer and closer together)**. When evaluating the long-term results of statistical experiments, we often want to know the “average” outcome. This “long-term average” is known as the mean or expected value of the experiment and is denoted by the Greek letter *μ*. In other words, after conducting many trials of an experiment, you would expect this average value.
+
+The mean, *μ*, of a discrete probability function is the expected value.
+
+μ=∑(x∙Px)μ=∑(x∙Px)
+
+The standard deviation, *σ*, of the PDF is the square root of the variance.
+
+σ=∑[x – μ2 ∙ Ρx] σ=∑[x – μ2 ∙ Ρx]
+
+When all outcomes in the probability distribution are equally likely, these formulas coincide with the mean and standard deviation of the set of possible outcomes.
+
+To find the expected value or long term average, *μ*, simply multiply each value of the random variable by its probability and add the products.
+
+A soccer team plays soccer zero, one, or two days a week. The probability that they play zero days is 0.2, the probability that they play one day is 0.5, and the probability that they play two days is 0.3. Find the long-term average or expected value, *μ*, of the number of days per week the soccer team plays soccer.
+
+To do the problem, first let the random variable *X* = the number of days the soccer team plays soccer per week. *X* takes on the values 0, 1, 2. Construct a PDF table adding a column *x*\**P*(*x*). In this column, you will multiply each *x* value by its probability.
+
+| *x* | *P*(*x*) | *x*\**P*(*x*) |
+| --- | --- | --- |
+| 0 | 0.2 | (0)(0.2) = 0 |
+| 1 | 0.5 | (1)(0.5) = 0.5 |
+| 2 | 0.3 | (2)(0.3) = 0.6 |
+
+Table 
+4.5
+ 
+Expected Value Table This table is called an expected value table. The table helps you calculate the expected value or long-term average.
+
+Add the last column *x*\**P*(*x*) to find the long term average or expected value: (0)(0.2) + (1)(0.5) + (2)(0.3) = 0 + 0.5 + 0.6 = 1.1.
+
+The expected value is 1.1. The soccer team would, on the average, expect to play soccer 1.1 days per week. The number 1.1 is the long-term average or expected value if the soccer team plays soccer week after week after week. We say *μ* = 1.1.
+
+A customer orders 1, 2, or 3 bottles of water. The probability of ordering 1 bottle is 0.6, the probability of ordering 2 bottles is 0.3, and the probability of ordering 3 bottles is 0.1. Find the long-term average or expected value, μ, of the number of bottles a customer will order.
+
+Find the expected value of the number of times a newborn baby's crying wakes its parents after midnight. The expected value is the expected number of times per week a newborn baby's crying wakes its parents after midnight. Calculate the standard deviation of the variable as well.
+
+| *x* | *P*(*x*) | *x*\**P*(*x*) | (*x* – *μ*)2 ⋅ *P*(*x*) |
+| --- | --- | --- | --- |
+| 0 | *P*(*x* = 0) =    2  50  2  50 | (0)  (   2  50 ) (   2  50 )  = 0 | (0 – 2.1)2 ⋅ 0.04 = 0.1764 |
+| 1 | *P*(*x* = 1) =   (    11  50 ) (    11  50 ) | (1)  (    11  50 ) (    11  50 )  =     11  50  11  50 | (1 – 2.1)2 ⋅ 0.22 = 0.2662 |
+| 2 | *P*(*x* = 2) =     23  50  23  50 | (2)  (    23  50 ) (    23  50 )  =     46  50  46  50 | (2 – 2.1)2 ⋅ 0.46 = 0.0046 |
+| 3 | *P*(*x* = 3) =     9  50  9  50 | (3)  (   9  50 ) (   9  50 )  =     27  50  27  50 | (3 – 2.1)2 ⋅ 0.18 = 0.1458 |
+| 4 | *P*(*x* = 4) =    4  50  4  50 | (4)  (   4  50 ) (   4  50 )  =     16  50  16  50 | (4 – 2.1)2 ⋅ 0.08 = 0.2888 |
+| 5 | *P*(*x* = 5) =    1  50  1  50 | (5)  (   1  50 ) (   1  50 )  =    5  50  5  50 | (5 – 2.1)2 ⋅ 0.02 = 0.1682 |
+
+Table 
+4.6
+ 
+You expect a newborn to wake its parents after midnight 2.1 times per week, on the average.
+
+Add the values in the third column of the table to find the expected value of *X*:   
+*μ* = Expected Value = 
+
+
+
+105
+
+50
+
+105
+
+50
+ = 2.1
+
+Use *μ* to complete the table. The fourth column of this table will provide the values you need to calculate the standard deviation. For each value *x*, multiply the square of its deviation by its probability. (Each deviation has the format *x* – *μ*).
+
+Add the values in the fourth column of the table:
+
+0.1764 + 0.2662 + 0.0046 + 0.1458 + 0.2888 + 0.1682 = 1.05
+
+The standard deviation of *X* is the square root of this sum: *σ* = 
+
+
+
+1.05
+
+1.05
+ ≈ 1.0247
+
+A hospital researcher is interested in the number of times the average post-op patient will ring the nurse during a 12-hour shift. For a random sample of 50 patients, the following information was obtained. What is the expected value?
+
+| *x* | *P*(*x*) |
+| --- | --- |
+| 0 | *P*(*x* = 0) =    4  50  4  50 |
+| 1 | *P*(*x* = 1) =    8  50  8  50 |
+| 2 | *P*(*x* = 2) =     16  50  16  50 |
+| 3 | *P*(*x* = 3) =     14  50  14  50 |
+| 4 | *P*(*x* = 4) =    6  50  6  50 |
+| 5 | *P*(*x* = 5) =    2  50  2  50 |
+
+Table 
+4.7
+
+Suppose you play a game of chance in which five numbers are chosen from 0, 1, 2, 3, 4, 5, 6, 7, 8, 9. A computer randomly selects five numbers from zero to nine with replacement. You pay $2 to play and could profit $100,000 if you match all five numbers in order (you get your $2 back plus $100,000). Over the long term, what is your **expected** profit of playing the game?
+
+To do this problem, set up an expected value table for the amount of money you can profit.
+
+Let *X* = the amount of money you profit. The values of *x* are not 0, 1, 2, 3, 4, 5, 6, 7, 8, 9. Since you are interested in your profit (or loss), the values of *x* are 100,000 dollars and −2 dollars.
+
+To win, you must get all five numbers correct, in order. The probability of choosing one correct number is 110110 because there are ten numbers. You may choose a number more than once. The probability of choosing all five numbers correctly and in order is
+
+(
+
+
+1
+
+10
+)(
+
+
+1
+
+10
+)(
+
+
+1
+
+10
+)(
+
+
+1
+
+10
+)(
+
+
+1
+
+10
+)=(1)(
+
+10
+
+−5
+)=0.00001.
+(
+
+
+1
+
+10
+)(
+
+
+1
+
+10
+)(
+
+
+1
+
+10
+)(
+
+
+1
+
+10
+)(
+
+
+1
+
+10
+)=(1)(
+
+10
+
+−5
+)=0.00001.
+
+Therefore, the probability of winning is 0.00001 and the probability of losing is
+
+1−0.00001=0.99999.
+1−0.00001=0.99999.
+
+The expected value table is as follows:
+
+|  | *x* | *P*(*x*) | *x*\**P*(*x*) |
+| --- | --- | --- | --- |
+| Loss | –2 | 0.99999 | (–2)(0.99999) = –1.99998 |
+| Profit | 100,000 | 0.00001 | (100000)(0.00001) = 1 |
+
+Table 
+4.8
+ 
+Αdd the last column. –1.99998 + 1 = –0.99998
+
+Since –0.99998 is about –1, you would, on average, expect to lose approximately $1 for each game you play. However, each time you play, you either lose $2 or profit $100,000. The $1 is the average or expected LOSS per game after playing this game over and over.
+
+You are playing a game of chance in which four cards are drawn from a standard deck of 52 cards. You guess the suit of each card before it is drawn. The cards are replaced in the deck on each draw. You pay $1 to play. If you guess the right suit every time, you get your money back and $256. What is your expected profit of playing the game over the long term?
+
+Suppose you play a game with a biased coin. You play each game by tossing the coin once. *P*(heads) = 
+
+
+2
+3
+
+2
+3
+ and *P*(tails) = 
+
+
+1
+3
+
+1
+3
+. If you toss a head, you pay $6. If you toss a tail, you win $10. If you play this game many times, will you come out ahead?
+
+#### Problem
+
+a. Define a random variable *X*.
+
+b. Complete the following expected value table.
+
+|  | *x* |  |  |
+| --- | --- | --- | --- |
+| WIN | 10 | 1313 |  |
+| LOSE |  |  | –123–123 |
+
+Table 
+4.9
+
+c. What is the expected value, *μ*? Do you come out ahead?
+
+#### Solution
+
+a. *X* = amount of profit
+
+b.
+
+|  | *x* | *P*(*x*) | *xP*(*x*) |
+| --- | --- | --- | --- |
+| WIN | 10 | 1313 | 103103 |
+| LOSE | –6 | 2323 | –123–123 |
+
+Table 
+4.10
+
+c. Add the last column of the table. The expected value *μ* = 
+
+
+
+–2
+3
+
+–2
+3
+. You lose, on average, about 67 cents each time you play the game so you do not come out ahead.
+
+Suppose you play a game with a spinner. You play each game by spinning the spinner once. *P*(red) = 
+
+
+2
+5
+
+2
+5
+, *P*(blue) = 
+
+
+2
+5
+
+2
+5
+, and *P*(green) = 
+
+
+1
+5
+
+1
+5
+. If you land on red, you pay $10. If you land on blue, you don't pay or win anything. If you land on green, you win $10. Complete the following expected value table.
+
+|  | *x* | *P*(*x*) |  |
+| --- | --- | --- | --- |
+| Red |  |  | –  20 5 –  20 5 |
+| Blue |  | 2 5  2 5 |  |
+| Green | 10 |  |  |
+
+Table 
+4.11
+
+Like data, probability distributions have standard deviations. To calculate the standard deviation (*σ*) of a probability distribution, find each deviation from its expected value, square it, multiply it by its probability, add the products, and take the square root. To understand how to do the calculation, look at the table for the number of days per week a men's soccer team plays soccer. To find the standard deviation, add the entries in the column labeled (*x* – *μ*)2*P*(*x*) and take the square root.
+
+| *x* | *P*(*x*) | *x*\**P*(*x*) | (*x* – *μ*)2*P*(*x*) |
+| --- | --- | --- | --- |
+| 0 | 0.2 | (0)(0.2) = 0 | (0 – 1.1)2(0.2) = 0.242 |
+| 1 | 0.5 | (1)(0.5) = 0.5 | (1 – 1.1)2(0.5) = 0.005 |
+| 2 | 0.3 | (2)(0.3) = 0.6 | (2 – 1.1)2(0.3) = 0.243 |
+
+Table 
+4.12
+
+Add the last column in the table. 0.242 + 0.005 + 0.243 = 0.490. The standard deviation is the square root of 0.49, or *σ* = 
+
+
+
+0.49
+
+0.49
+ = 0.7
+
+Generally for probability distributions, we use a calculator or a computer to calculate *μ* and *σ* to reduce roundoff error. For some probability distributions, there are short-cut formulas for calculating *μ* and *σ*.
+
+#### Problem
+
+Toss a fair, six-sided die twice. Let *X* = the number of faces that show an even number. Construct a table like Table 4.11 and calculate the mean *μ* and standard deviation *σ* of *X*.
+
+#### Solution
+
+Tossing one fair six-sided die twice has the same sample space as tossing two fair six-sided dice. The sample space has 36 outcomes:
+
+|  |  |  |  |  |  |
+| --- | --- | --- | --- | --- | --- |
+| (1, 1) | (1, 2) | (1, 3) | (1, 4) | (1, 5) | (1, 6) |
+| (2, 1) | (2, 2) | (2, 3) | (2, 4) | (2, 5) | (2, 6) |
+| (3, 1) | (3, 2) | (3, 3) | (3, 4) | (3, 5) | (3, 6) |
+| (4, 1) | (4, 2) | (4, 3) | (4, 4) | (4, 5) | (4, 6) |
+| (5, 1) | (5, 2) | (5, 3) | (5, 4) | (5, 5) | (5, 6) |
+| (6, 1) | (6, 2) | (6, 3) | (6, 4) | (6, 5) | (6, 6) |
+
+Table 
+4.13
+
+Use the sample space to complete the following table:
+
+| *x* | *P*(*x*) | *x**P*(*x*) | (*x* – *μ*)2  ⋅ ⋅ *P*(*x*) |
+| --- | --- | --- | --- |
+| 0 | 9  36  9  36 | 0 | (0 – 1)2 ⋅    9  36  9  36  =    9  36  9  36 |
+| 1 | 18  36  18  36 | 18  36  18  36 | (1 – 1)2 ⋅     18  36  18  36  = 0 |
+| 2 | 9  36  9  36 | 18  36  18  36 | (2 – 1)2 ⋅    9  36  9  36  =    9  36  9  36 |
+
+Table 
+4.14
+ 
+Calculating *μ* and *σ*.
+
+Add the values in the third column to find the expected value: *μ* = 
+
+
+
+36
+
+36
+
+36
+
+36
+ = 1. Use this value to complete the fourth column.
+
+Add the values in the fourth column and take the square root of the sum: σ = 1836 1836 ≈ 0.7071.
+
+Two stacks of cards are placed on a table. Each stack has cards number 1 to 8. One card from each stack is picked up. Let *X* = number of cards showing an odd number. Construct a table like Table 4.11 and calculate the mean µ and standard deviation σ of *X*.
+
+#### Problem
+
+On May 11, 2013 at 9:30 PM, the probability that moderate seismic activity (one moderate earthquake) would occur in the next 48 hours in Iran was about 21.42%. Suppose you make a bet that a moderate earthquake will occur in Iran during this period. If you win the bet, you win $50. If you lose the bet, you pay $20. Let *X* = the amount of profit from a bet.
+
+*P*(win) = *P*(one moderate earthquake will occur) = 21.42%
+
+*P*(loss) = *P*(one moderate earthquake will *not* occur) = 100% – 21.42%
+
+If you bet many times, will you come out ahead? Explain your answer in a complete sentence using numbers. What is the standard deviation of *X*? Construct a table similar to Table 4.12 and Table 4.13 to help you answer these questions.
+
+#### Solution
+
+|  | *x* | *P(x)* | *x**(Px)* | (*x* – *μ*)2*P*(*x*) |
+| --- | --- | --- | --- | --- |
+| win | 50 | 0.2142 | 10.71 | [50 – (–5.006)]2(0.2142) = 648.0964 |
+| loss | –20 | 0.7858 | –15.716 | [–20 – (–5.006)]2(0.7858) = 176.6636 |
+
+Table 
+4.15
+
+Mean = Expected Value = 10.71 + (–15.716) = –5.006.
+
+If you make this bet many times under the same conditions, your long term outcome will be an average *loss* of $5.01 per bet.
+
+Standard Deviation = 
+
+648.0964+176.6636
+≈28.7186
+
+
+Standard Deviation = 
+
+648.0964+176.6636
+≈28.7186
+
+On May 11, 2013 at 9:30 PM, the probability that moderate seismic activity (one moderate earthquake) would occur in the next 48 hours in Japan was about 1.08%. As in Example 4.8, you bet that a moderate earthquake will occur in Japan during this period. If you win the bet, you win $100. If you lose the bet, you pay $10. Let *X* = the amount of profit from a bet. Find the mean and standard deviation of *X*.
+
+Some of the more common discrete probability functions are binomial, geometric, hypergeometric, and Poisson. Most elementary courses do not cover the geometric, hypergeometric, and Poisson. Your instructor will let you know if they wish to cover these distributions.
+
+A probability distribution function is a pattern. You try to fit a probability problem into a **pattern** or distribution in order to perform the necessary calculations. These distributions are tools to make solving probability problems easier. Each distribution has its own special characteristics. Learning the characteristics enables you to distinguish among the different distributions.
+

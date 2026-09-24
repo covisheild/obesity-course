@@ -34,8 +34,8 @@ WHAT THIS FILE HOLDS: excerpts, not the whole commentary. The keywords line; the
 the opening of the Introduction; the paragraph describing the pooled data; the two
 paragraphs under "How well does the 3500 kcal rule predict weight loss?"; the first
 sentence of "Downloadable weight change predictor"; the reference-list entry for
-Wishnofsky 1958. Omitted: the Methods equation (its typesetting is flattened by the
-extraction), the study-selection paragraphs, the software description, figure captions,
+Wishnofsky 1958. Omitted: the study-selection paragraphs,
+(the Methods equation was added 2026-09-24 as block 7), the software description, figure captions,
 acknowledgements and the other references.
 ON THE ORIGIN OF THE RULE: this paper attributes the rule to reference 3 (Wishnofsky 1958)
 and names it "Wishnofsky's Rule" in its keywords, but it does not describe how Wishnofsky
@@ -91,3 +91,33 @@ https://pmc-oa-opendata.s3.amazonaws.com/PMC4024447.1/PMC4024447.1.txt
 ===============================================================================
 
 "3 Wishnofsky M Caloric equivalents of gained or lost weight Am J Clin Nutr 1958 Sep-Oct 6 5 542 6 13594881 10.1093/ajcn/6.5.542"
+
+[NOTE] ---- Added 2026-09-24 by the S02-R1 intake ----
+[NOTE] Block 7 holds the Methods equation, which the 2026-09-23 excerpt left out. It was taken from
+[NOTE] the article's JATS XML in the same PMC Article Dataset
+[NOTE] (https://pmc-oa-opendata.s3.amazonaws.com/PMC4024447.1/PMC4024447.1.xml), fetched 2026-09-24
+[NOTE] with TinyFish fetch_content twice: in markdown format for the prose, and in html format,
+[NOTE] which keeps the XML's MathML. The equation is stored as that MathML, verbatim, with a
+[NOTE] plain-text rendering made by a deterministic script (element by element: mi/mn/mo as
+[NOTE] written, msub as base_sub, mfrac as (numerator/denominator)). The rendering is marked as this
+[NOTE] file's notation. The XML carries the same author manuscript and the same licence line as
+[NOTE] the .txt fetched on 2026-09-23.
+
+===============================================================================
+7. Methods: the equation for the 3500 kcal rule's prediction (added 2026-09-24)
+https://pmc-oa-opendata.s3.amazonaws.com/PMC4024447.1/PMC4024447.1.xml
+===============================================================================
+
+[NOTE] The prose is sliced from the markdown fetch of the XML; the equation from the MathML in the
+[NOTE] html-format fetch of the same XML. In the markdown fetch the equation is flattened to
+[NOTE] "W(t)=W0-ΔEBt3500", which is left out of the quoted prose and marked [...].
+
+"Predictions of weight in pounds by the 3500 kcal rule were determined from the following equation: [...] where t represents the day of negative energy balance, ΔEB is the change in energy balance in kcal/d defined as the difference between the rate of energy intake and the rate of energy expenditure, W0 is baseline weight in pounds, and W(t) represents the expected weight (pounds) on day t."
+
+[MATHML] The equation (unnumbered), verbatim from the JATS XML at https://pmc-oa-opendata.s3.amazonaws.com/PMC4024447.1/PMC4024447.1.xml (TinyFish fetch_content, html format):
+<mml:math><mml:mi>W</mml:mi><mml:mo>(</mml:mo><mml:mi>t</mml:mi><mml:mo>)</mml:mo><mml:mo>=</mml:mo><mml:msub><mml:mi>W</mml:mi><mml:mn>0</mml:mn></mml:msub><mml:mo>-</mml:mo><mml:mi>Δ</mml:mi><mml:mi>E</mml:mi><mml:mi>B</mml:mi><mml:mfrac><mml:mi>t</mml:mi><mml:mn>3500</mml:mn></mml:mfrac></mml:math>
+[NOTE] The equation (unnumbered) in plain text, CONVERTED BY SCRIPT from the MathML above (this file's
+[NOTE] notation, not source text; a fraction is written (a/b), a subscript _x, and
+[NOTE] juxtaposed symbols multiply):
+[NOTE]     W(t) = W_0 - ΔEB (t/3500)
+

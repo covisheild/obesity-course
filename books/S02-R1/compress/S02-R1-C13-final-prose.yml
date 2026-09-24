@@ -1,0 +1,217 @@
+definition.text: 'A random variable is a rule that gives a number to each outcome of a chance process. A random
+
+  variable is written as a capital letter, such as X. P(X = x) is the probability that X takes
+
+  the value x.
+
+
+  A random variable is discrete when the values it can take can be listed, one by one. Its
+
+  probability distribution is the list of every value it can take, each paired with its
+
+  probability. The values listed must not overlap. Each probability is between 0 and 1,
+
+  inclusive, and the probabilities add to 1.
+
+
+  A random variable is continuous when it can take any value in an interval, like a weight
+
+  measured with perfect precision. The probability of any one exact value is then 0. Its
+
+  probability distribution is given instead by a probability density: a curve that never goes
+
+  below zero and has a total area of 1 beneath it. The probability that X lands between a and b
+
+  is the area under the probability density from a to b. The height of a probability density is
+
+  a probability per unit of X, not a probability, and it can be larger than 1.
+
+
+  A probability distribution is a model. A frequency table of data, as in `B0-R0-C27`, gives
+
+  relative frequencies from the cases actually counted. Those estimate the probabilities, and
+
+  differ from them from one sample to the next.
+
+  '
+simplified_explanation: 'Toss two coins and count the heads. The count is 0, 1 or 2. That count is a random variable: a
+
+  rule that turns each way the tosses can land into a number.
+
+
+  Its probability distribution lists each number beside its chance. Here that is 0.25 for no
+
+  heads, 0.5 for one and 0.25 for two.
+
+
+  A list of chances is a model. A count of what happened in a survey is data.
+
+  '
+illustration.body: 'A made-up village has ten households. A survey visits four of them, picked at random, and
+
+  finds households of 5, 9, 4 and 5 people. The note reads: "The probability that a household
+
+  here has 5 people is 0.5." Two of the four had 5 people, and 2 divided by 4 is 0.5.
+
+
+  Here is the whole village. Its ten households hold 2, 3, 4, 4, 5, 5, 5, 6, 7 and 9 people.
+
+
+  The chance process is "pick one household at random", with each household equally likely, as
+
+  in `B0-R0-C29`. The random variable X is the rule "give the number of people in it".
+
+
+  Each household has a chance of 1 in 10.
+
+
+  ```working
+
+  1 divided by 10 = 0.1
+
+  ```
+
+
+  Three households hold 5 people, so P(X = 5) is 3 times 0.1.
+
+
+  ```working
+
+  3 times 0.1 = 0.3
+
+  ```
+
+
+  Here is the probability distribution of X, and beside it the relative frequencies from the
+
+  survey''s four households.
+
+
+  ```table
+
+  household size (x)  households  P(X = x)  relative frequency in the survey
+
+  2                   1           0.1       0
+
+  3                   1           0.1       0
+
+  4                   2           0.2       0.25
+
+  5                   3           0.3       0.5
+
+  6                   1           0.1       0
+
+  7                   1           0.1       0
+
+  9                   1           0.1       0.25
+
+  ```
+
+
+  Check the two rules. Every probability is between 0 and 1. Then add them.
+
+
+  ```working
+
+  0.1 plus 0.1 plus 0.2 plus 0.3 plus 0.1 plus 0.1 plus 0.1 = 1.0
+
+  ```
+
+
+  They add to 1.
+
+
+  The probability of a household of 6 or more is the sum over 6, 7 and 9.
+
+
+  ```working
+
+  0.1 plus 0.1 plus 0.1 = 0.3
+
+  ```
+
+
+  P(X = 5) is 0.3. The survey''s 0.5 is a relative frequency from four households. It estimates
+
+  0.3, and misses it.
+
+
+  A clinic scale shows weight to 0.1 kg. A person whose true weight is anywhere from 69.95 kg to
+
+  70.05 kg sees 70.0 on it. Let X be the displayed weight minus the true weight, in kilograms.
+
+  That is the error the rounding makes. X can be any number from −0.05 to 0.05, so it is
+
+  continuous.
+
+
+  Say nothing makes one part of that range more likely than another. Then the probability
+
+  density is flat across a width of 0.1 kg, and zero outside it. Its total area must be 1, so
+
+  its height is 1 divided by the width.
+
+
+  ```working
+
+  1 divided by 0.1 = 10
+
+  ```
+
+
+  The height is 10 per kilogram.
+
+
+  The probability that the error lies between 0 and 0.02 kg is the area of a rectangle, 0.02 kg
+
+  wide and 10 per kilogram high.
+
+
+  ```working
+
+  0.02 times 10 = 0.2
+
+  ```
+
+
+  Now ask for the probability that the error is exactly 0.02. That rectangle has no width, so
+
+  its area is 0.
+
+  '
+illustration.analogy_breaks_when: 'The village is made up, and the distribution is exact only because the whole village was
+
+  listed.
+
+
+  The flat density is a model chosen for want of anything better.
+
+  '
+must_know[0].point: 'A relative frequency from data is not the probability. It is an estimate of it.
+
+  '
+must_know[1].point: 'Before you use a table that a paper calls a distribution, check it. Every probability is
+
+  between 0 and 1, and they add to 1. No two rows overlap: bands of "under 60 kg" and "50 to 70
+
+  kg" count the same people twice.
+
+  '
+must_know[2].point: 'For a continuous measurement, the chance of any single exact value is zero. Ask for the chance
+
+  of a range, such as 69.95 to 70.05 kg, never of "exactly 70 kg".
+
+  '
+must_know[3].point: 'Every probability you work out from a distribution is only as good as the distribution. Say so
+
+  in the same sentence, or get data that shows the shape.
+
+  '
+must_know[4].point: 'A zero in a small sample does not make a value impossible. Say "not seen in this sample",
+
+  never "probability zero", unless you hold the whole list.
+
+  '
+must_know[5].point: 'When you give a journalist a chance, say which kind it is.
+
+  '

@@ -1,0 +1,93 @@
+definition.text: 'An equilibrium, or steady state, of a differential equation dW/dt = f(W) is a constant value
+
+  of the state at which the rule gives a rate of zero. It is written W*, read "W star", so
+
+  f(W*) = 0. To find the equilibria, set the right-hand side equal to
+
+  zero and solve for the state.
+
+
+  Take the equation of the last section, ρ × dW/dt = ΔEI − ε × (W − W0). Setting its right
+
+  side to zero gives ε × (W* − W0) = ΔEI. So W* − W0 = ΔEI ÷ ε.
+
+
+  When intake also depends on weight, it rises by a fixed number of kilocalories a day for
+
+  each kilogram lost. Polidori and colleagues write that number kP, k with a P for
+
+  proportional. The model is then ρ × dW/dt = ΔEI − (ε + kP) × (W − W0). The two slopes add, and the shift
+
+  becomes ΔEI ÷ (ε + kP). Hall and Guo call a model with feedback on both intake and
+
+  expenditure a set point model. The name is theirs; the equilibrium still moves when intake
+
+  is shifted.
+
+
+  In either model, a weight that starts away from the equilibrium approaches it along an
+
+  exponential. Its time constant, written tau (τ), is ρ divided by the total slope, in days. The gap
+
+  halves every τ × ln 2 days.
+
+
+  An equilibrium is stable if a state pushed a little away from it returns to it, and
+
+  unstable if the state moves further away.
+
+  '
+simplified_explanation: "A weight stops moving when its rate of change is zero. So take the\nequation, put zero where the rate is, and solve for the weight. That weight is the\nequilibrium.\n\nPicture it as two lines on one graph, with weight along the bottom and kilocalories a day up\nthe side.\n\n- Expenditure rises as weight rises.\n- Intake is a flat line, if it ignores weight.\n\nWhere the two lines cross, intake equals expenditure, and the weight stops moving. Cut\nintake, and the flat line drops. The crossing slides to a lower weight. How far it slides is\nthe cut divided by the slope of the expenditure line.\n\nNow let intake rise as weight falls, which is what appetite does. The two slopes add, and the crossing slides a much\nshorter way.\n\n- The weight does not arrive at the crossing on a date. It closes the gap by the same\n  fraction every day, fast at first and then ever more slowly.\n- Push the weight a little either side of the crossing, and the rate sends it back. That is\n  what stable means here.\n- At the crossing, intake and expenditure are equal. Both are still large.\n"
+illustration.body: "Start with the model that has no sensible equilibrium: the static rule. Its expenditure\nignores weight, so ε is 0. Hall and colleagues' man cuts 480 kilocalories a day. Set the\nrate to zero in his equation and see what is left.\n\n```working\n0 = −480 − 0 × (W* − 100)\n0 = −480\n```\n\nThat is false for every weight. There is no equilibrium, so the weight falls for ever,\nwhich is the static rule's straight line. Now let him go back to his old intake, so ΔEI is\n0.\n\n```working\n0 = 0 − 0 × (W* − 100)\n```\n\nThis is true for every weight. Every weight is an equilibrium, so whatever he weighs, he\nstays there.\n\nNow use the equation of the last section, with ε = 20 kilocalories a day per kilogram.\n\n```working\n0 = −480 − 20 × (W* − 100)\n20 × (W* − 100) = −480\nW* − 100 = −480 ÷ 20 = −24\nW* = 76\n```\n\nThe\nequilibrium is 76 kilograms.\n\nYou can check that 76 is stable. Put the man 4 kilograms above it, at 80, and 4 below it,\nat 72.\n\n```working\nat 80:  −480 − 20 × (80 − 100) = −480 + 400 = −80\nat 72:  −480 − 20 × (72 − 100) = −480 + 560 = 80\n```\n\nAbove 76 the rate is negative, so the weight falls back. Below 76 it is positive, so the\nweight rises back.\n\nNow the two models Hall and Guo (2017) draw side by side.\n\nIn the settling point model, intake is flat and expenditure rises \"with a slope of about\n20–30 kcal/d per kg\". The shift in the equilibrium is the cut divided by the slope.\n\n```working\n300 divided by 20 = 15\n300 divided by 30 = 10\n```\n\nTen to 15 kilograms lower.\n\nIn the set point model, intake also depends on weight, \"with a slope of about -100 kcal/d\nper kg\". Write the model with both slopes.\n\n```working\nρ × dW/dt = −300 − 100 × (W − W0) − ε × (W − W0)\n         = −300 − (100 + ε) × (W − W0)\n```\n\nThe two slopes add, because both push the same way. Losing weight lowers what goes out and\nraises what comes in. Set the rate to zero.\n\n```working\n300 divided by 120 = 2.5\n300 divided by 130 = 2.307692308\n```\n\nAbout 2.3 to 2.5 kilograms, against 10 to 15.\n\nThe last section's solution can be written as a gap that shrinks.\n\n```working\nW(t) − W* = (W0 − W*) × e^(-t/τ),   with τ = ρ ÷ (total slope)\n```\n\nTake ρ = 7,716.18 kilocalories per kilogram, the stand-in of the last section. For the\nsettling point model with slope 20 the total slope is 20. For the set point model it is\n100 + 20 = 120.\n\n```working\n7716.18 divided by 20 = 385.809\n7716.18 divided by 120 = 64.3015\n```\n\nTime constants of about 386 and 64 days. Each gap halves every τ × ln 2 days. From the\nsection on e, ln 2 is 0.6931.\n\n```working\n385.809 times 0.6931 = 267.4\n64.3015 times 0.6931 = 44.57\n```\n\nHere is the loss, in kilograms, with each model.\n\n```table\nday   settling point, slope 20  set point, slopes 100 + 20\n0     0                         0\n30    1.12                      0.93\n60    2.16                      1.52\n90    3.12                      1.88\n180   5.59                      2.35\n365   9.18                      2.49\n730   12.74                     2.50\n1095  14.12                     2.50\n```\n\nThe set\npoint curve flattens sooner and lower.\n\nAnd if the man goes back to his old intake, the equilibrium goes back to 100. The weight\nfollows it, along the same kind of curve. Regain here is the equation\nworking, not a person failing.\n"
+illustration.analogy_breaks_when: 'Every equilibrium here comes from straight lines. The slopes are group
+
+  averages, and Hall and Guo expect "a wide degree of individual variation".
+
+
+  The time constants use the static rule''s ρ as a stand-in, so their sizes are illustrative.
+
+
+  A scale does not show an equilibrium over a few weeks.
+
+  '
+must_know[0].point: 'To find where a model says weight will settle, set the rate to zero and solve for the
+
+  weight. Do not run the model forward and read off where it seems to stop.
+
+  '
+must_know[1].point: 'In the settling point model, a lasting cut of 300 kilocalories a day moves the equilibrium
+
+  down 10 to 15 kilograms. Before you give a patient a target from a cut in food, say which model it came
+
+  from.
+
+  '
+must_know[2].point: '"Keep eating what got you to the new weight and you will stay there" is the static model.
+
+  When expenditure falls with weight, going back to
+
+  the old intake moves the equilibrium back to the old weight. Tell a patient that regain is
+
+  this equation at work.
+
+  '
+must_know[3].point: 'A steady weight means intake equals expenditure, not that either is small.
+
+  '
+must_know[4].point: 'A weight that stops falling for a few weeks is not thereby at an equilibrium. The rate is
+
+  zero at an equilibrium and stays zero. It can pass through zero for a moment while intake
+
+  is still moving, and water shifts can hide the true rate for weeks.
+
+  '
+must_know[5].point: 'An equilibrium worked out from straight lines is only as good as the lines. So quote such a figure as the
+
+  model''s answer for a group, and name the slopes.
+
+  '
+must_know[6].point: 'When a trainee adds up the slopes, check the signs first. Both push the weight back, so their slopes add. Subtract them,
+
+  and the pull looks weaker and the shift looks larger.
+
+  '

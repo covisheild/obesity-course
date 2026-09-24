@@ -1,0 +1,752 @@
+concept_id: S02-R1-C01
+subject: S02
+rung: 1
+sequence: 1
+name: Reading the symbols in a methods section
+concept_type: derivable
+clusters:
+- measurement-inference
+- craft-and-integrity
+ground_floor_deps:
+- B0-R0-C15
+- B0-R0-C16
+- B0-R0-C09
+- B0-R0-C11
+- B0-R0-C12
+- B0-R0-C18
+- B0-R0-C21
+- B0-R0-C34
+- B0-R0-C22
+concept_deps: [S01-R1-C02, S01-R1-C05]
+definition:
+  text: |
+    A symbol in an equation stands for a quantity, and the paper fixes which quantity in words:
+    in a clause beginning "where" after the equation, or in the sentences around it.
+
+    A subscript is a small letter or number set low after a symbol, and it is part of the
+    symbol's name. A subscript never multiplies.
+
+    Every term added to or subtracted from another, and each side of an equals sign, carries the
+    same unit.
+  references:
+  - citekey: openstax_calculus_v1_s02
+    kind: textbook
+    locator: "§ 5.1 Approximating Areas, subsection Sigma (Summation) Notation, opening paragraph"
+    quote: |-
+      To make it easier to write down these lengthy sums, we look at some new notation here, called sigma notation (also known as summation notation).
+    verified:
+      resolved_id: https://openstax.org/books/calculus-volume-1/pages/5-1-approximating-areas
+      opened: true
+      claim_located: true
+      checked_on: '2026-09-24'
+      note: |-
+        Read in the S02-R1 source pack. The rule "evaluate each term, then add" is stated in
+        the same subsection beside a flattened formula, so the prose is quoted and the formula
+        is not.
+  - citekey: openstax_calculus_v1_s02
+    kind: textbook
+    locator: "§ 5.1 Approximating Areas, subsection Sigma (Summation) Notation, the paragraph on the index"
+    quote: |-
+      Note that the index is used only to keep track of the terms to be added; it does not factor into the calculation of the sum itself.
+    verified:
+      resolved_id: https://openstax.org/books/calculus-volume-1/pages/5-1-approximating-areas
+      opened: true
+      claim_located: true
+      checked_on: '2026-09-24'
+      note: |-
+        Anchor for "the counter only keeps track of the terms; any letter may be used for it".
+  - citekey: hall_2012_ajcn
+    kind: primary
+    locator: "Question 1, the energy balance equation paragraph (p. 989)"
+    quote: |-
+      All of these terms are expressed as energy per unit of time.
+    verified:
+      resolved_id: https://pmc.ncbi.nlm.nih.gov/articles/PMC3302369/
+      opened: true
+      claim_located: true
+      checked_on: '2026-09-24'
+      note: |-
+        Consensus statement, cited as kind primary as in Book 1. Read in the held text layer.
+        This is the paper's own "where" clause for the units of ES, EI and EO, used in the first
+        illustration.
+  - citekey: hall_2012_ajcn
+    kind: primary
+    locator: "Question 1, the energy balance equation paragraph (p. 989)"
+    quote: |-
+      ES is the rate of change in the body’s macronutrient stores. The energy balance equation (ES =E I –E O) is a statement
+      of the principle of energy conservation.
+    verified:
+      resolved_id: https://pmc.ncbi.nlm.nih.gov/articles/PMC3302369/
+      opened: true
+      claim_located: true
+      checked_on: '2026-09-24'
+      note: |-
+        The text layer splits the subscripts ("E I", "E O") and the quote copies them as they
+        stand. In the paper ES names the stores ("the rate of change in body ES") and then the
+        rate of change of the stores; the first illustration turns on that switch.
+  - citekey: polidori_2016
+    kind: primary
+    locator: "Methods, the sentence introducing Equation 2 (the parameter ρ)"
+    quote: |-
+      The model parameter ρ was the effective energy density associated with the body weight change:
+    verified:
+      resolved_id: https://pmc.ncbi.nlm.nih.gov/articles/PMC5108589/
+      opened: true
+      claim_located: true
+      checked_on: '2026-09-24'
+      note: |-
+        Read in the held author manuscript (JATS XML prose). Equation 1 is held as MathML with
+        a scripted plain-text rendering; the record prints that rendering with each subscript written
+        straight after its symbol (BW0), the book's convention.
+  - citekey: polidori_2016
+    kind: primary
+    locator: "Methods, the sentence introducing Equation 3 (the parameter ε)"
+    quote: |-
+      and ε defined how energy expenditure depends on body weight:
+    verified:
+      resolved_id: https://pmc.ncbi.nlm.nih.gov/articles/PMC5108589/
+      opened: true
+      claim_located: true
+      checked_on: '2026-09-24'
+  - citekey: polidori_2016
+    kind: primary
+    locator: "Methods, the paragraph on Equations 2 and 3 (the parameters δ0 and Δδ)"
+    quote: |-
+      Most physical activities involve locomotion and have an energy cost that is proportional to body weight for a given intensity and duration of activity.
+    verified:
+      resolved_id: https://pmc.ncbi.nlm.nih.gov/articles/PMC5108589/
+      opened: true
+      claim_located: true
+      checked_on: '2026-09-24'
+      note: |-
+        Held file block 12. Anchor for the δ row and for "activity costs energy in proportion
+        to body weight" after the unit working.
+  - citekey: polidori_2016
+    kind: primary
+    locator: "Methods, the sentence defining the parameter β"
+    quote: |-
+      The parameter β accounts for the adaptation of energy expenditure during a diet perturbation, ΔEI,
+    verified:
+      resolved_id: https://pmc.ncbi.nlm.nih.gov/articles/PMC5108589/
+      opened: true
+      claim_located: true
+      checked_on: '2026-09-24'
+      note: |-
+        Held file block 14, added by the audit intake. Table 1 gives β = 0.24 with no unit,
+        which agrees with the unit working.
+  - citekey: polidori_2016
+    kind: primary
+    locator: "Methods, the sentence defining the UGE term"
+    quote: |-
+      The parameter UGE represents the energy losses as a result of increased urinary excretion of glucose with canagliflozin treatment.
+    verified:
+      resolved_id: https://pmc.ncbi.nlm.nih.gov/articles/PMC5108589/
+      opened: true
+      claim_located: true
+      checked_on: '2026-09-24'
+      note: |-
+        Held file block 15. The paper gives UGE as an energy in Table 1 (block 16, 360 kcal/d)
+        and states no energy per gram of glucose.
+simplified_explanation: |
+  Each symbol stands for a quantity, and the paper says which one, in words, somewhere near the
+  equation. Often that sentence starts with the word "where". Find it before you read the
+  equation.
+
+  Two symbols side by side are multiplied: 2i is 2 times i. Papers also write times as × or *.
+  They write "greater than" as >, so x > 0 says x is above zero.
+
+  f(x) is the output of a rule called f, not f times x (`B0-R0-C18`). A letter before brackets
+  can mean either. If the paper calls the letter a parameter, a fixed number, it multiplies. If
+  the brackets hold the input, such as t, it is a rule's output.
+
+  **Subscripts.** A subscript is a small letter or number set low after a symbol. It is part of
+  the symbol's name, and it does one of two jobs.
+
+  It can label. Hall and colleagues write E for energy and set a small I, O or S after it. E with
+  I is energy intake (EI). E with O is energy output (EO). E with S is energy stored (ES).
+
+  For output this book writes energy expenditure (EE), the name Book 1 used. EE and Hall's EO
+  are the same quantity.
+
+  Or it can count. BW with a small i after it is the body weight in interval number i. BW with a
+  small 0 is the weight at the start, the baseline.
+
+  This book writes a subscript on the line, straight after the symbol: EI, BWi, BW0. A letter or
+  digit written after a symbol is a label. BW0 is the starting weight, not BW times 0.
+
+  So side by side means multiply, with exceptions. A name of several letters (EI, BW, UGE) is one
+  name. Δ or d in front of a symbol is part of it. A subscript is a label. A rule name before
+  brackets gives the rule's output. The "where" clause tells you which.
+
+  **Greek letters.** They are letters like x and y, with names. Say the name out loud as you
+  read.
+
+  ```table
+  | letter | its name | say it | what one paper in this book uses it for |
+  | ρ | rho | "roe" | an energy density, energy per kilogram |
+  | Δ | capital delta | "delta" | the change in whatever follows it |
+  | δ | small delta | "delta" | a physical activity parameter: the energy cost of activity per kg of body weight (Polidori) |
+  | ε | epsilon | "ep-sih-lon" | how expenditure depends on weight (Polidori) |
+  | Σ | capital sigma | "sigma" | add up |
+  ```
+
+  Each paper decides what its letters mean, in its own "where" clause.
+
+  **Sigma.** Σ means "add up". It comes with a counter, usually i, and the counter's first and
+  last values. On one line this book writes them in square brackets after it. Say the sum in
+  words, then write it out.
+
+  ```working
+      Σ[i = 1 to 4] 2i
+      = the sum, for i from 1 to 4, of 2 times i
+      = 2 times 1 plus 2 times 2 plus 2 times 3 plus 2 times 4
+      = 2 plus 4 plus 6 plus 8
+      = 20
+  ```
+
+  **Units.** Every term that is added or subtracted must carry the same unit, and so must the two
+  sides of an equals sign (`B0-R0-C11`). Use that to find the unit of a symbol the paper never
+  states.
+illustration:
+  body: |
+    Hall and colleagues (2012) wrote a consensus statement on energy balance — a text a panel of experts agreed on together. In it they write the energy
+    balance equation like this.
+
+    ```working
+        ES = EI minus EO
+    ```
+
+    ES is the energy stored in the body. The same paper puts the energy held in a lean adult's fat cells at about 130,000 kcal. So the stores are well over
+    130,000 kcal, and the equation seems to say intake minus output is too.
+
+    Run the unit check before you believe that. The paragraph says what the terms are measured in: "All of these terms are expressed as energy per unit of
+    time." So EI and EO are in kilocalories a day.
+
+    The left side has to match. So ES here cannot be the stores. Their unit, kcal, has no time in it.
+
+    The paper says it in words: "ES is the rate of change in the body's macronutrient stores." The unit check caught the switch before the words did.
+
+    This book keeps the two apart. ES is the store, in kilocalories. Its rate of change is dES/dt, said "dee ES by dee t". In this book's letters Hall's
+    equation says this. The rate of change of stored energy equals energy intake minus energy expenditure.
+
+    ```working
+        dES/dt = EI minus EE
+    ```
+
+    Polidori and colleagues (2016) worked out how much people's eating changed during a trial of a drug. The drug raises urinary glucose excretion (UGE):
+    the body loses glucose in the urine. Here is their Equation 1.
+
+    ```working
+        ΔEIi = ρ (dBWi/dt) + ε(BWi − BW0) + (Δδ/(1 − β)) BW0 + UGE
+    ```
+
+    Do not read it left to right. Make a table with one row for each symbol. Fill the "words"
+    column from the paper's own sentences. Leave a cell empty rather than guess.
+
+    The words are in the Methods. "We calculated the changes in energy intake, ΔEI, for each
+    subject". One input was "the change of body weight versus baseline over each interval,
+    (BWi − BW0)". The other was "the rate of change of body weight over each interval, dBWi/dt".
+    That rate is an average over the whole interval, not a rate at one instant.
+
+    Then "The model parameter ρ was the effective energy density associated with the body weight
+    change". Here a parameter is a number the paper keeps the same for every person and every interval. (`B0-R0-C29` used the word for a number describing a whole population; papers use both senses.) Then "ε defined how energy expenditure depends on body weight". And "Δδ represents
+    changes in physical activity". And "The parameter β accounts for the adaptation of energy
+    expenditure during a diet perturbation".
+
+    UGE is not spelled out beside the equation. When a short form is not spelled out, search the paper for words that fit its letters.
+
+    Start with the ones you know. The results give changes in intake in kilocalories a day, so ΔEIi is in kcal a day. Body weight is in kilograms. Time
+    between weighings was counted in days, so dBWi/dt is in kilograms a day.
+
+    Every term on the right must also be in kcal a day. Work out each unknown unit from that.
+
+    ```working
+        ρ times (kg a day) = kcal a day, so ρ is in kcal per kg
+        ε times (kg) = kcal a day, so ε is in kcal a day per kg
+        1 minus β: a bare 1 can only lose a bare number, so β has no unit
+        Δδ times (kg) = kcal a day, so Δδ is in kcal a day per kg
+    ```
+
+    That fits the paper's words: activity has "an energy cost that is proportional to body weight".
+
+    ```table
+    | symbol | say it | the paper's words | unit |
+    | ΔEIi | delta E I sub i | change in energy intake, interval i | kcal a day |
+    | BWi | B W sub i | body weight, interval i | kg |
+    | BW0 | B W sub zero | body weight at baseline | kg |
+    | dBWi/dt | dee B W sub i by dee t | rate of change of body weight, interval i | kg a day |
+    | ρ | rho | effective energy density of the weight change | kcal per kg (worked out) |
+    | ε | epsilon | how expenditure depends on weight | kcal a day per kg (worked out) |
+    | Δδ | delta delta | change in physical activity | kcal a day per kg (worked out) |
+    | β | beta | adaptation of expenditure to a diet change | none (worked out) |
+    | UGE | U G E | energy lost in urinary glucose excretion | kcal a day |
+    ```
+
+    Elsewhere the paper says urinary glucose excretion "was assumed to be ~90 g/day", about 90 grams a day. Grams a day cannot be added to kcal a day.
+    The paper says what the term holds: "UGE represents the energy losses". Its Table 1 gives that loss as 360 kcal a day. It gives no energy per gram, so
+    do not put 90 into this equation.
+
+    Now go the other way, from a written-out sum back to sigma. Take 3 plus 6 plus 9 plus 12.
+    Each term is 3 times its place in the list, so it is Σ[i = 1 to 4] 3i. Check it by writing it
+    out again.
+
+    ```working
+        3 times 1 plus 3 times 2 plus 3 times 3 plus 3 times 4 = 30
+        3 plus 6 plus 9 plus 12 = 30
+    ```
+  analogy_breaks_when: |
+    The unit check shows that ES must be a rate in Hall's equation.
+
+    The table tells you what each symbol denotes and what unit it must carry. It does not tell you
+    that the model is a good description of anyone.
+  numbers:
+  - value: '130,000'
+    unit: kcal, the energy held as triglyceride in a lean adult's fat cells
+    citekey: hall_2012_ajcn
+    quote: |-
+      each containing ;0.4–0.6 lg triglyceride and totaling
+      130,000 kcal stored energy.
+  - value: '90'
+    unit: g/day, urinary glucose excretion assumed in the trial
+    citekey: polidori_2016
+    quote: |-
+      UGE was not directly measured in each subject but was assumed to be ~90 g/day
+  - value: '360'
+    unit: kcal/d, the energy lost in urinary glucose (Polidori's Table 1)
+    citekey: polidori_2016
+    quote: |-
+      | UGE | 360 kcal/d | Energy loss due to increased urinaryglucose excretion
+  - value: '95'
+    unit: kcal a day per kg, the fitted value of kP (Polidori's Results)
+    citekey: polidori_2016
+    quote: |-
+      with the parameter kP = 95 kcal/day per kg
+must_know:
+- point: |
+    Find the "where" clause before you read an equation. Then write a table: each symbol, its
+    words from the paper, and its unit.
+  kind: move
+  bearing: methodological
+- point: |
+    One paper can use the same letters for two things. When the words are unclear, let the unit
+    decide.
+  kind: trap
+  bearing: methodological
+- point: |
+    A subscript is part of a name and never multiplies. Read it as "B W sub zero", out loud,
+    until the habit holds.
+  kind: misconception
+  bearing: methodological
+- point: |
+    Work out a unit the paper does not print from the terms beside it. Whatever is subtracted
+    from a bare 1 has no unit.
+  kind: move
+  bearing: methodological
+- point: |
+    A figure quoted in the text in one unit may enter the equation in another. Find the
+    conversion before you put a number in.
+  kind: trap
+  bearing: methodological
+- point: |
+    Matching units show that an equation is not malformed. They never show it is right, and they
+    cannot tell apart two quantities with the same unit.
+  kind: boundary
+  bearing: methodological
+- point: |
+    Teach a trainee to read Σ aloud as "the sum, for i from 1 to n, of". Then have them write out
+    the first two terms and the last.
+  kind: move
+  bearing: teaching
+exercises:
+- type: interpretation
+  prompt: |
+    Polidori and colleagues (2016) model the change in eating after weight loss with this
+    equation, their Equation 4.
+
+    ```working
+        ΔEI(t) = − kP × ΔBW(t)
+    ```
+
+    The sentence after it reads: "where the parameter kP>0 quantifies the feedback strength".
+    Their abstract reports eating "above baseline by ~100 kcal/day per kg of lost weight".
+
+    Write the symbol table for Equation 4: each symbol, how you say it, what it denotes, and its
+    unit. Then say in one sentence what the minus sign does, and what number kP took.
+  answer: |
+    Go symbol by symbol.
+
+    ```table
+    | symbol | say it | what it denotes | unit |
+    | ΔEI(t) | delta E I of t | the change in energy intake from baseline, at time t | kcal a day |
+    | t | t | time | days |
+    | ΔBW(t) | delta B W of t | the change in body weight from baseline, at time t | kg |
+    | kP | k sub P | the strength of the feedback, a number greater than zero | kcal a day per kg |
+    ```
+
+    The (t) is function notation from `B0-R0-C18`. ΔEI(t) is the change in intake at time t. It
+    is not ΔEI times t.
+
+    The unit of kP comes from the unit check. The left side is in kcal a day. ΔBW(t) is in kg.
+    So kP must be in kcal a day per kg.
+
+    The minus sign reverses the direction. Weight lost makes ΔBW(t) negative. Minus a positive
+    kP times a negative number is positive, so intake rises above baseline when weight falls.
+
+    The abstract's figure is kP, and its unit is exactly the one the check predicts: about 100
+    kcal a day per kg of lost weight. That is the paper's rounded figure. The Results give the
+    fitted value, 95.
+
+    ```working
+        a loss of 1 kg: ΔBW = -1
+        ΔEI = minus 100 times -1 = 100
+    ```
+
+    About 100 kcal a day more eating for each kilogram lost, on this model and for the group
+    average.
+  skill_ref: S02-R1-K01
+quantitative: true
+practice:
+- level: 1
+  prompt: |
+    Write this sum out term by term, then work it out.
+
+    ```working
+        Σ[i = 1 to 4] 3i
+    ```
+  answer: |
+    Put i = 1, 2, 3 and 4 into 3i in turn, then add.
+
+    ```working
+        3 times 1 plus 3 times 2 plus 3 times 3 plus 3 times 4
+        3 plus 6 plus 9 plus 12 = 30
+    ```
+
+    The sum is 30.
+- level: 1
+  prompt: |
+    Write this sum in sigma notation.
+
+    ```working
+        2 plus 4 plus 6 plus 8 plus 10
+    ```
+  answer: |
+    Each term is 2 times its place in the list: the first is 2 times 1, the fifth is 2 times 5.
+    So the counter runs from 1 to 5 and each term is 2i.
+
+    ```working
+        Σ[i = 1 to 5] 2i
+    ```
+
+    Check by writing it out again.
+
+    ```working
+        2 times 1 plus 2 times 2 plus 2 times 3 plus 2 times 4 plus 2 times 5 = 30
+        2 plus 4 plus 6 plus 8 plus 10 = 30
+    ```
+- level: 2
+  prompt: |
+    Four values are x1 = 4, x2 = 7, x3 = 1 and x4 = 8.
+
+    Work out Σ[i = 1 to 4] xi, then Σ[i = 2 to 3] xi, then Σ[i = 1 to 4] 5xi.
+  answer: |
+    The first adds all four.
+
+    ```working
+        4 plus 7 plus 1 plus 8 = 20
+    ```
+
+    The second starts at i = 2 and stops at i = 3, so it adds only x2 and x3.
+
+    ```working
+        7 plus 1 = 8
+    ```
+
+    The third multiplies each value by 5 before adding.
+
+    ```working
+        5 times 4 plus 5 times 7 plus 5 times 1 plus 5 times 8
+        20 plus 35 plus 5 plus 40 = 100
+    ```
+
+    That is 5 times the first sum, 5 times 20. A number that multiplies every term can be taken
+    outside the sum.
+- level: 3
+  prompt: |
+    An equation reads A = B + C × D. B is in kilocalories a day. D is in kilograms.
+
+    Work out the unit of A and the unit of C.
+  answer: |
+    A term added to B must carry B's unit. So C × D is in kilocalories a day, and A, which equals
+    the sum, is in kilocalories a day too.
+
+    C times kilograms gives kilocalories a day. So C is kilocalories a day divided by kilograms.
+
+    ```working
+        C = (kcal a day) divided by (kg)
+        = kcal a day per kg
+    ```
+
+    A is in kcal a day, and C is in kcal a day per kg.
+- level: 4
+  prompt: |
+    Three United Nations bodies wrote a report on human energy requirements (2004). They are the
+    Food and Agriculture Organization (FAO), the World Health Organization (WHO) and the United
+    Nations University (UNU). The report divides total energy expenditure (TEE) by basal
+    metabolic rate (BMR), both in megajoules a day. The result is the physical activity level
+    (PAL).
+
+    ```working
+        PAL = TEE/BMR
+    ```
+
+    The same passage gives a man with a PAL of 1.75 and a mean BMR of 7.10 MJ/day.
+
+    Work out his TEE. Then give the unit of PAL, and say why it has that unit.
+  answer: |
+    Rearrange PAL = TEE/BMR for TEE by multiplying both sides by BMR (`B0-R0-C16`).
+
+    ```working
+        TEE = PAL times BMR
+        1.75 times 7.10 = 12.425
+    ```
+
+    12.425 MJ a day, which the report prints cut to 12.42.
+
+    Now the unit of PAL. It is TEE divided by BMR.
+
+    ```working
+        (MJ a day) divided by (MJ a day)
+    ```
+
+    The two units cancel, so PAL has no unit. It says how many times the basal rate the day's
+    total is. A multiplier that turns one energy a day into another has to be a bare number.
+  refs:
+  - fao_who_unu_2004
+- level: 5
+  prompt: |
+    Hall (2008) writes: "The energy density of the body fat mass change, ρF = 39.5 MJ/kg". He
+    uses ΔF for the change in body fat.
+
+    Say both symbols in words. Then take ΔF = -3 kg, a made-up figure. Work out ρF times ΔF, with
+    its unit, and say what the sign means.
+  answer: |
+    ρF is "rho sub F": the energy density of the body fat mass change, in megajoules per
+    kilogram. The F labels which energy density, the one for fat. ΔF is "delta F": the change in
+    body fat, in kilograms.
+
+    ```working
+        39.5 times -3 = -118.5
+        (MJ per kg) times (kg) = MJ
+    ```
+
+    Minus 118.5 megajoules. The kilograms cancel and leave energy.
+
+    The minus sign comes from ΔF. Fat fell by 3 kg, so the energy held in that fat fell by 118.5
+    megajoules.
+  refs:
+  - hall_2008_ijo
+- level: 6
+  prompt: |
+    Polidori and colleagues (2016) define the length of each interval. They write "The interval
+    length was t = (N−1)*T". Then they say what the letters are. "N = 2 was the number of body
+    weight measurements per interval". And "T = 52 was the number of days between
+    measurements".
+
+    Say what t, N and T each stand for, with their units. Work out t. Then work out what t would
+    be with three measurements per interval, the same distance apart.
+  answer: |
+    N is a count of weighings in one interval, with no unit. T is the number of days between two
+    weighings, so it is in days. t is the length of the interval, in days.
+
+    The asterisk is a times sign, as on a keyboard.
+
+    ```working
+        t = (N minus 1) times T
+        (2 minus 1) times 52 = 52
+    ```
+
+    Each interval is 52 days long. Two weighings mark out one gap. Here t is a length of time,
+    not a moment.
+
+    With three weighings there are two gaps.
+
+    ```working
+        (3 minus 1) times 52 = 104
+    ```
+
+    104 days.
+  refs:
+  - polidori_2016
+- level: 7
+  prompt: |
+    Here is a worked answer. Find the step that broke.
+
+    ```working
+        Equation 1 of Polidori and colleagues ends in "+ UGE"
+        UGE was assumed to be about 90 g/day
+        so the last term adds 90 to the change in energy intake
+        the other terms come to 250 kcal a day for this interval
+        250 plus 90 = 340, so ΔEI is 340 kcal a day
+    ```
+
+    The 250 is made up for this problem.
+  refs:
+  - polidori_2016
+  answer: |
+    The third step broke. It puts 90 grams a day into a sum of kilocalories a day.
+
+    Every term in Equation 1 must carry the unit of the left side, kcal a day. A figure in grams
+    of glucose a day is not yet an energy. It has to be an energy in kilocalories a day first.
+
+    So 340 is not a number of anything. It adds two quantities of different kinds. The right
+    answer needs UGE as an energy, which the paper gives in its Table 1.
+
+    Why the wrong answer looks reasonable. The 90 is the paper's own figure, and the addition is
+    correct arithmetic. The unit was left off the third line, and a number with no unit beside it
+    looks like any other number.
+- level: 8
+  prompt: |
+    Here is a worked answer. Find the step that broke.
+
+    ```working
+        one term of an equation is ε(BWi − BW0)
+        two symbols side by side are multiplied
+        so BW0 is BW times 0, which is 0
+        so the term is ε times BWi
+        with ε = 20 and BWi = 80, the term is 1600
+    ```
+
+    Both numbers are made up for this problem.
+  answer: |
+    The third step broke. BW0 is not BW times 0. The 0 is a subscript, part of the name. BW0 is
+    body weight at baseline, the weight at the start.
+
+    The rule in the second line is right for most symbols side by side. A subscript is one of the
+    exceptions.
+
+    The term is ε times the change in weight since baseline. For that you need BW0 as a weight.
+    Say the baseline was 84 kg, a made-up figure.
+
+    ```working
+        80 minus 84 = -4
+        20 times -4 = -80
+    ```
+
+    Minus 80, not 1600. The broken reading turned a change of 4 kg into a weight of 80 kg.
+
+    Why the wrong answer looks reasonable. It applies a rule you were right to learn, and every
+    later line follows from the third. Written on the line, a subscript 0 looks like a number.
+- level: 9
+  prompt: |
+    A colleague reads Hall and colleagues' (2012) equation and says this.
+
+    > ES = EI − EO. The paper also says a lean adult's fat cells hold about 130,000 kcal. So a
+    > lean adult has eaten 130,000 kcal more than they have spent.
+
+    Decide what to check, check it, and say what your answer does not establish.
+  answer: |
+    What to check: whether ES in the equation is the store, which the colleague assumes. Use the
+    unit check, and then the paper's words.
+
+    The paper says of the terms: "All of these terms are expressed as energy per unit of time."
+
+    ```working
+        EI minus EO: (kcal a day) minus (kcal a day) = kcal a day
+        the stores: kcal, with no time in the unit
+    ```
+
+    The two sides cannot match if ES is the store. And the paper says so in words: "ES is the
+    rate of change in the body's macronutrient stores."
+
+    So the equation says nothing directly about the 130,000 kcal. It says how fast the stores
+    change on a given day. To reach a store from rates you would have to add up the daily
+    differences over the whole of a life, from a starting store.
+
+    What this does not establish. It does not say the colleague's conclusion is false. Stores do
+    reflect intake minus expenditure added up over time. But it says the equation, read as
+    written, is not the step that gets you there. It also says nothing about how the stores were
+    built, or when.
+  refs:
+  - hall_2012_ajcn
+- level: 10
+  prompt: |
+    A trainee's notes on two papers say this.
+
+    > Hall (2008) gives ρ = 39.5 MJ/kg. Polidori and colleagues (2016) have a ρ in Equation 1.
+    > So in their model each kilogram of weight change carries 39.5 MJ. That is about 9,441
+    > kcal.
+
+    Decide what to check, check it, and say what your answer does not establish.
+  answer: |
+    What to check: the arithmetic, then the units, then whether the two ρ symbols are the same
+    quantity.
+
+    The arithmetic first. A megajoule is 1,000 kilojoules, and 1 kcal is 4.184 kJ.
+
+    ```working
+        39.5 times 1,000 = 39,500
+        39,500 divided by 4.184 = 9,440.7
+    ```
+
+    About 9,441 kcal. The sum is right.
+
+    The units. Both symbols are energy per kilogram, so the unit check passes. That is the trap:
+    it cannot tell them apart.
+
+    The names. Hall's symbol is ρF, rho sub F, "the energy density of the body fat mass change".
+    The subscript F says it is for fat alone. Polidori's ρ has no subscript and is "the effective
+    energy density associated with the body weight change", all of it. Hall (2008) also reports
+    Forbes's point that "lean body mass is lost in concert with body fat during weight loss". So a kilogram
+    of weight change is not a kilogram of fat, and the two ρ symbols are different quantities.
+
+    What this does not establish. It does not give you Polidori's value of ρ. That comes from
+    their Equation 2, which needs quantities this section has not read. It shows only that 39.5
+    belongs to fat, and that the note borrowed it by matching a letter.
+  refs:
+  - hall_2008_ijo
+  - polidori_2016
+retrieval_items:
+- q: What two jobs can a subscript do, and what can it never do?
+  a: It can label which of several related quantities is meant (E with I for intake) or count
+    through a list (BWi, the weight in interval i; BW0, the baseline weight). It never
+    multiplies.
+- q: How do you work out the unit of a symbol a paper does not state?
+  a: Every term added or subtracted, and each side of the equals sign, carries the same unit. Put
+    the known units in and solve for the missing one. Anything subtracted from a bare 1 has no
+    unit.
+- q: What does Σ[i = 1 to 7] (EIi − EEi) say in words?
+  a: The sum, for i from 1 to 7, of energy intake on day i minus energy expenditure on day i. With
+    each day's kcal a day counted over one day, it is the change in stores over the seven days, in
+    kcal.
+- q: In Hall and colleagues' (2012) equation ES = EI − EO, is ES the store or its rate of change?
+  a: Its rate of change. The paper says all terms are energy per unit of time, and that ES is the
+    rate of change in the body's stores. This book writes that rate as dES/dt.
+figures:
+- file: s02-r1-c01-sigma-terms.png
+  caption: "Two sigma sums drawn as their terms. The term for each i stands at i, so the counter only says where a term sits. The sum is the heights added up: 2 + 4 + 6 + 8 = 20 for Σ[i = 1 to 4] 2i, and 3 + 6 + 9 + 12 = 30 for Σ[i = 1 to 4] 3i."
+  alt: "Paired bars at i = 1, 2, 3 and 4. The first bar of each pair is 2, 4, 6 and 8 high; the second is 3, 6, 9 and 12 high."
+  source: draw.py
+  spec:
+    kind: bar
+    x: ["i = 1", "i = 2", "i = 3", "i = 4"]
+    series:
+    - {name: "terms of Σ[i = 1 to 4] 2i", y: [2, 4, 6, 8]}
+    - {name: "terms of Σ[i = 1 to 4] 3i", y: [3, 6, 9, 12]}
+    x_label: the counter i
+    y_label: the term for that i
+    value_labels: true
+    relations:
+    - check: "sum(y1) = 20"
+    - check: "sum(y2) = 30"
+provenance:
+  map_version_id: fc19c8bc-a216-4131-99fb-ebe3f19cec4a
+  outcome_refs:
+  - S02-R1-S1
+  - S02-R1-B
+  - S02-R1-G
+  bridge_ref: []
+review:
+  stability: long
+  trigger: '2031-09-24'
+  last_reviewed: '2026-09-24'
+status: drafted

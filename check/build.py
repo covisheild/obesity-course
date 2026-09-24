@@ -59,6 +59,10 @@ MUST_KNOW_SOFT_CAP = 9
 # it, and carries it somewhere new. A concept with one move reaches that in four problems; a
 # concept with several may need eighteen. Outside the range, `practice_note` must say why.
 PRACTICE_MIN, PRACTICE_MAX = 3, 18
+# A book whose techniques compose heavily may raise the ceiling in its books/<ID>/book.yml
+# (`practice_max`, at most 25). Harsh, 24 Sep 2026: easy concepts get fewer problems, hard ones
+# more; up to 25 per concept in the mathematics book S02-R1.
+PRACTICE_MAX_CEILING = 25
 PRACTICE_BANDS = [(1, 3, "mechanical"), (4, 6, "applied"), (7, 8, "diagnostic"), (9, 10, "transfer")]
 
 
@@ -258,7 +262,14 @@ def _paragraphs(text: str) -> list[str]:
 def _sentences(para: str) -> list[str]:
     flat = re.sub(r"\s+", " ", re.sub(r"[*_`]", "", para)).strip()
     flat = re.sub(r"(?<![\'’])\b(e\.g|i\.e|etc|vs|No|Dr|Mr|Ms|Art|s|ss)\.", r"\1<dot>", flat)
-    parts = re.split(r"(?:(?<=[.?!])|(?<=[.?!][\"'”’)]))\s+(?=[A-Z\"'(“‘])", flat)
+    # A sentence may open with a symbol written in lower case: "dES/dt is the rate...", "d/dx,
+    # said...", "ρ is...". Until 24 Sep 2026 the splitter never broke before one, so a cut that
+    # kept only that sentence and the restore that rebuilt its paragraph measured it differently
+    # (S01-R1 C02/C07, S02-R1 C02/C03). A lower-case opening counts as a new sentence when its
+    # first token is a Greek letter or carries a slash, caret, digit or capital (a symbol, not a
+    # word); abbreviations are already protected above.
+    parts = re.split(r"(?:(?<=[.?!])|(?<=[.?!][\"'”’)]))\s+"
+                     r"(?=[A-Z\"'(“‘Α-Ωα-ω]|[a-z][^\s]*?[/^0-9A-Z])", flat)
     return [p.replace("<dot>", ".").strip() for p in parts if p.strip()]
 
 
@@ -821,10 +832,16 @@ def check(recs: dict, subjects: dict, clusters: dict, bibkeys: set):
 
         readability(rid, r, W, hard)
 
-        # illustration failure boundary
-        ill = r.get("illustration") or {}
-        if not (ill.get("analogy_breaks_when") or "").strip():
-            E(rid, "illustration.analogy_breaks_when is empty")
+        # illustration failure boundary: every illustration, whether one (`illustration`) or a
+        # list (`illustrations`, which the schema and claude.md allow). Until 24 Sep 2026 this read
+        # `illustration` only, so a record using the list alone was blocked as if it had none.
+        ills = _illustrations(r)
+        if not ills:
+            E(rid, "no illustration: write 'illustration', or 'illustrations' as a list of two or more")
+        for i, ill in enumerate(ills):
+            if not (ill.get("analogy_breaks_when") or "").strip():
+                where = "illustration" if len(ills) == 1 and r.get("illustration") else f"illustrations[{i}]"
+                E(rid, f"{where}.analogy_breaks_when is empty")
 
         # scope gate
         if not ((r.get("provenance") or {}).get("outcome_refs") or []):
@@ -857,9 +874,14 @@ def check(recs: dict, subjects: dict, clusters: dict, bibkeys: set):
         prac = [p for p in (r.get("practice") or []) if isinstance(p, dict)]
         if quant:
             excused = (r.get("practice_note") or "").strip()
-            if not PRACTICE_MIN <= len(prac) <= PRACTICE_MAX and not excused:
+            pmax = PRACTICE_MAX
+            if r.get("subject") and r.get("subject") != "B0" and r.get("rung"):
+                bm = book_meta(f"{r.get('subject')}-R{r.get('rung')}")
+                if isinstance(bm.get("practice_max"), int):
+                    pmax = max(PRACTICE_MAX, min(bm["practice_max"], PRACTICE_MAX_CEILING))
+            if not PRACTICE_MIN <= len(prac) <= pmax and not excused:
                 E(rid, f"quantitative concept carries {len(prac)} practice problems; the range is "
-                       f"{PRACTICE_MIN} to {PRACTICE_MAX} (the style sheet §7a). Judge it by the technique: "
+                       f"{PRACTICE_MIN} to {pmax} (the style sheet §7a). Judge it by the technique: "
                        "one move needs few, several moves need many. Outside this range, say why "
                        "in 'practice_note' and the build will accept it.")
             levels = [p.get("level") for p in prac if isinstance(p.get("level"), int)]
@@ -1048,7 +1070,9 @@ WORKING_OPEN = '::: {custom-style="Working"}'
 # `10^5 times 10^2 = 10^(5 plus 2)` with the last caret raw on the page while the two before
 # it had become superscripts - the exact defect this whole layer exists to prevent.
 _SUP = re.compile(r"(?<![\w^~])([A-Za-z]{1,3}|\d[\d,.]*)\s*\^\s*"
-                  r"(\(\s*-?[\w][\w\s./,+-]{0,38}\)|-?\d+(?:\.\d+)?)(?!\^)")
+                  r"(\(\s*-?[\w][\w\s./,+-]{0,38}\)|-?\d+(?:\.\d+)?|[A-Za-z](?![\w(]))(?!\^)")
+# A single-letter exponent (x^n, 2^t) was added 24 Sep 2026 for S02-R1, whose rules are stated
+# for a general power; before, the caret reached the page raw.
 _LOGB = re.compile(r"\blog\s?(10|2|e)\b")
 _FENCE = re.compile(r"^\s*```+\s*(working|calc|table)?\s*$")
 
@@ -1413,7 +1437,9 @@ def _figures(r, sid) -> list[str]:
         # goes there and nothing else does. Putting the alt text in the brackets and the
         # caption on a line below printed both, one above the other, under every figure.
         # `alt` stays in the record: it is the accessible description, not a second caption.
-        cap = " ".join((f.get("caption") or "").split())
+        # The caption carries notation like any prose (`5 t^2`); without this its caret reached
+        # the rendered page raw (S02-R1, 24 Sep 2026).
+        cap = _notation(" ".join((f.get("caption") or "").split()))
         md += [f"![{cap}]({path}){{width=6in}}", ""]
     return md
 
@@ -1578,6 +1604,18 @@ def booklet_md(sid, recs, subjects, clusters) -> tuple[str, list[str]]:
     return text, [r["concept_id"] for r in mine]
 
 
+def _book_numbers():
+    """{'S01-R1': 1, ...} from map/BOOKS.yml, the series in print order."""
+    path = os.path.join(os.path.dirname(ROOT), "map", "BOOKS.yml")
+    try:
+        with open(path, encoding="utf-8") as fh:
+            data = _yaml().safe_load(fh) or {}
+    except OSError:
+        return {}
+    books = data.get("books") if isinstance(data, dict) else data
+    return {b.get("id"): b.get("number") for b in books or [] if isinstance(b, dict)}
+
+
 def _ids_to_labels(text, recs, own):
     """A record id is build plumbing; the reader sees the label the book prints.
 
@@ -1594,6 +1632,12 @@ def _ids_to_labels(text, recs, own):
             return f"Book 0, {b0.get(recs[rid].get('sequence'), rid)}"
         if rid in own:
             return f"section {own[rid]}"
+        # Another subject book (S02-R1 cites Book 1, S01-R1): "Book 1, section 5". Added
+        # 24 Sep 2026; before, those ids reached the page raw.
+        if rid in recs and not rid.startswith("B0-"):
+            n = _book_numbers().get(rid.rsplit("-C", 1)[0])
+            if n is not None:
+                return f"Book {n}, section {recs[rid].get('sequence')}"
         return m.group(0)
     return re.sub(r"`?\b((?:B0|S\d\d)-R\d-C\d\d)\b`?", label, text)
 

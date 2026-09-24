@@ -692,6 +692,21 @@ def style_for(book_id):
     return pal, rc
 
 
+_SUP = str.maketrans("0123456789-−+()nitkx", "⁰¹²³⁴⁵⁶⁷⁸⁹⁻⁻⁺⁽⁾ⁿⁱᵗᵏˣ")
+
+
+def _superscripts(fig):
+    """Show `t^2` as t² in every text of a drawn figure (labels, legend, notes), as the book's
+    notation layer does for prose. Display only: specs and their checks keep `^`. Added 24 Sep 2026,
+    when S02-R1 legends printed raw carets."""
+    import matplotlib.text as mtext
+    pat = re.compile(r"\^(\((?:[0-9+\-−a-z ]+)\)|[0-9]+|[a-z](?![a-z]))")
+    for t in fig.findobj(mtext.Text):
+        raw = t.get_text()
+        if "^" in raw:
+            t.set_text(pat.sub(lambda m: m.group(1).strip("()").replace(" ", "").translate(_SUP), raw))
+
+
 def draw_spec(rec, fig_entry, out_dir=HERE, book_id=None):
     """Draw one figure from its record's spec, and write <file>.spec.json with the spec's hash."""
     book_id = book_id or figspec.book_of(rec)
@@ -719,13 +734,25 @@ def draw_spec(rec, fig_entry, out_dir=HERE, book_id=None):
                               color=colours[i % 3], label=s["name"], zorder=2)
                 if res["value_labels"]:
                     for b, raw in zip(bars, s["y_raw"]):
+                        if b.get_height() < 0:    # a negative bar: its value just below its end
+                            ax.annotate(raw, (b.get_x() + b.get_width() / 2, b.get_height()),
+                                        textcoords="offset points", xytext=(0, -3), ha="center",
+                                        va="top", fontsize=7.5, color=pal["muted"])
+                            continue
                         ax.annotate(raw, (b.get_x() + b.get_width() / 2, b.get_height()),
                                     textcoords="offset points", xytext=(0, 3), ha="center",
                                     fontsize=7.5, color=pal["muted"])
             if res["x"] is None:
                 ax.set_xticks(pos)
                 ax.set_xticklabels(res["x_raw"])
-            ax.set_ylim(bottom=0)
+            if res.get("signed_bars"):
+                # Bars below zero: drawn from a zero line, not cut off by a zero floor.
+                ax.axhline(0, color=pal["axis"], linewidth=0.8, zorder=2.5)
+                if res["value_labels"]:     # room under the lowest bar for its value
+                    lo, hi = ax.get_ylim()
+                    ax.set_ylim(lo - 0.08 * (hi - lo), hi)
+            else:
+                ax.set_ylim(bottom=0)
         else:
             # A series with a drawn relation is shown as points on that line, not joined up, so the
             # reader sees the stated rule and the data it was checked against as two things.
@@ -748,14 +775,54 @@ def draw_spec(rec, fig_entry, out_dir=HERE, book_id=None):
                         ax.annotate(raw, (xv, yv), textcoords="offset points", xytext=(0, 6),
                                     ha="center", fontsize=7.5, color=pal["muted"])
         names = figspec._names(res)
+        snames = [s["name"] for s in res["series"]]
         for rel in res["relations"]:
             if rel.get("fit") and rel.get("draw") and res["x"] is not None:
                 rhs = str(rel["fit"]).partition("=")[2]
                 lo, hi = min(res["x"]), max(res["x"])
                 xs = [lo + (hi - lo) * k / 100 for k in range(101)]
                 ys = [figspec.evaluate(rhs, {**names, "x": xv}) for xv in xs]
-                ax.plot(xs, ys, color=pal["secondary"], linewidth=1.3, linestyle=(0, (4, 2)),
+                # One drawn fit keeps the contrasting colour; two or more each take their series'.
+                c = pal["secondary"]
+                if res.get("fit_colours") == "series":
+                    i = snames.index(rel["series"]) if rel.get("series") in snames else 0
+                    c = colours[i % 3]
+                ax.plot(xs, ys, color=c, linewidth=1.3, linestyle=(0, (4, 2)),
                         label=rel.get("label") or rel["fit"], zorder=2)
+        # `areas`: the region between a formula and `to` (the axis unless given) over [x0, x1], in
+        # the palette's colours at a light tint, one per area, keyed in the legend.
+        for k, a in enumerate(res.get("areas") or []):
+            xs, top = figspec.samples(a["rhs"], names, a["x0"], a["x1"])
+            _, bot = figspec.samples(a["to_rhs"], names, a["x0"], a["x1"])
+            ax.fill_between(xs, top, bot, facecolor=colours[k % 3], alpha=0.22, edgecolor="none",
+                            zorder=1.5, label=a["label"] or None)
+        # `curves`: a formula over its own range. Tied to a series, it is drawn like a fit in that
+        # series' colour; otherwise each takes the next palette colour and its own line style.
+        free = 0
+        for c in res.get("curves") or []:
+            xs, ys = figspec.samples(c["rhs"], names, c["x0"], c["x1"])
+            if c["series"]:
+                col, ls, lw = colours[snames.index(c["series"]) % 3], (0, (4, 2)), 1.3
+            else:
+                col = colours[(n + free) % 3]
+                ls, lw = ["-", "--", ":", "-."][free % 4], 1.6
+                free += 1
+            ax.plot(xs, ys, color=col, linewidth=lw, linestyle=ls, zorder=2.4,
+                    label=c["label"] or None)
+        # `refs`: a thin dashed line at a stated value, labelled beside it rather than in the key.
+        for r in res.get("refs") or []:
+            if r["axis"] == "x":
+                ax.axvline(r["at"], color=pal["ink"], linewidth=1.0, linestyle=(0, (3, 2)), zorder=2.6)
+                if r["label"]:
+                    ax.annotate(r["label"], (r["at"], 1), xycoords=("data", "axes fraction"),
+                                textcoords="offset points", xytext=(4, -2), ha="left", va="top",
+                                fontsize=8, color=pal["ink"])
+            else:
+                ax.axhline(r["at"], color=pal["ink"], linewidth=1.0, linestyle=(0, (3, 2)), zorder=2.6)
+                if r["label"]:
+                    ax.annotate(r["label"], (1, r["at"]), xycoords=("axes fraction", "data"),
+                                textcoords="offset points", xytext=(-2, 3), ha="right", va="bottom",
+                                fontsize=8, color=pal["ink"])
         for lab in res["labels"]:
             if lab.get("at"):
                 ax.annotate(lab["text"], tuple(lab["at"]), textcoords="offset points",
@@ -769,8 +836,10 @@ def draw_spec(rec, fig_entry, out_dir=HERE, book_id=None):
         if res["title"]:
             ax.set_title(res["title"], loc="left")
         if n > 1 or any(r.get("draw") for r in res["relations"]) or \
-                any(b["label"] for b in res.get("bands") or []):
+                any(b["label"] for b in res.get("bands") or []) or \
+                any(e["label"] for e in (res.get("curves") or []) + (res.get("areas") or [])):
             ax.legend(loc="best")
+        _superscripts(fig)
         fig.tight_layout()
         os.makedirs(out_dir, exist_ok=True)
         path = os.path.join(out_dir, fig_entry["file"])

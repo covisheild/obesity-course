@@ -150,7 +150,7 @@ a sandbox; they can be reached from a browser.
 > Output one table: concept id, name, type (derivable / empirical / institutional), the Book 0
 > sections it needs, what it must cover in one line, the source it will need, and whether it is
 > **quantitative** — that is, whether the reader has to be able to carry the technique out rather
-> than state it. Every quantitative concept owes ten practice problems at step 2 and the build
+> than state it. Every quantitative concept owes a drill set at step 2 (§7a: 3–18 problems, sized to the technique) and the build
 > blocks without them, so getting this column right here is what stops the drill sets being
 > discovered late. No prose.
 > Then write `books/<SUBJECT>/READY.md` listing every source, with obtained yes or no, checking
@@ -254,10 +254,10 @@ pass. Fresh contexts, every time.
 > at all rather than assert that it checked.
 > A claim that reads plausibly and is not in the file is the failure you are looking for.
 >
-> Then **recompute every practice answer**, line by line, rather than reading it. Ten problems a
-> concept is ten chances to ship a wrong answer into an appendix where the reader has nobody to
+> Then **recompute every practice answer**, line by line, rather than reading it. Every problem
+> is a chance to ship a wrong answer into an appendix where the reader has nobody to
 > ask, and a reader who disagrees with a worked answer assumes they are the one who erred. Check
-> also that each set actually climbs: ten problems at the same difficulty with different numbers
+> also that each set actually climbs: problems at the same difficulty with different numbers
 > satisfy the build and fail the reader.
 >
 > Then check currency: anything with a date, a price, a rate or a cut-point, against the
@@ -372,7 +372,7 @@ ls /tmp/coldread          # confirm: cut sections and released earlier text only
 > Remove words by deleting whole sentences and whole paragraphs. Never fuse two sentences into one.
 > Never push a second idea into a sentence that had one. Keep every heading in order even where
 > almost nothing survives under it. Keep the second person and the physical instructions. Add
-> nothing. The exercises stay word for word, and so do all ten practice problems: they are what
+> nothing. The exercises stay word for word, and so does every practice problem: they are what
 > the reader can do, not what the reader has to read, and cutting one changes the first.
 >
 > Then say, in under eighty words, the one cut you were least sure about.
@@ -391,7 +391,7 @@ knows where the originals live is one helpful impulse away from reading them.
 > You are an intelligent adult with no prior background in this subject, who has read these
 > sections once, in this order, and nothing before them.
 >
-> Take each file in turn. Answer its exercises as that reader, and work its ten practice
+> Take each file in turn. Answer its exercises as that reader, and work its practice
 > problems. The practice set is the sharpest gap detector in this step: a hole in the teaching
 > shows up as a problem you cannot start, and it shows up at a known level rather than as a
 > vague unease. <Where a concept has bridge_ref

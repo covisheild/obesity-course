@@ -1,0 +1,642 @@
+OPENINTRO STATISTICS, FOURTH EDITION — VERBATIM SOURCE PACK (EXCERPTS)
+============================================================
+
+Transcription rule for this file: every line beneath a SECTION heading that is not
+prefixed with [NOTE] and is not a line reading [...] is an exact, unaltered slice of the text
+returned by the TinyFish fetch_content tool (no model between page and text)
+for the URL in that heading, cut programmatically from the saved fetch (raw[i:j]); nothing has
+been paraphrased, smoothed, merged or re-wrapped. A section is stored as runs of whole
+subsections, so it is not set in quotation marks. A line reading [...] marks text left out at
+that point, and the [NOTE] line under it says what. Lines beginning [NOTE] are this file's own
+annotation and are NOT source text.
+Here the fetched item is a PDF, so the text is the PDF's own text layer as the tool returned it.
+
+SOURCE: David M Diez, Mine Çetinkaya-Rundel, Christopher D Barr. OpenIntro Statistics, Fourth
+Edition. OpenIntro, 2019. The copy fetched says "Copyright © 2019. Fourth Edition." and "Updated:
+Oct 21st, 2022." (block 1).
+BOOK PAGE: https://www.openintro.org/book/os/ (read 2026-09-24)
+TEXT FETCHED FROM: the book page's "FREE -- Book PDF Best for Screen Readers" link,
+https://www.openintro.org/go?id=os4_for_screen_reader&referrer=/book/os/index.php (a PDF; its text
+layer, 1.1 million characters, returned by TinyFish fetch_content). The screen-reader edition
+spells out "EXAMPLE 3.54 START" / "HAS ENDED" around boxed items; those markers are the PDF's.
+LICENCE: the PDF's copyright page (block 1) says only "This textbook is also available under a
+Creative Commons license, with the source files hosted on Github." OpenIntro's licence page
+(https://www.openintro.org/license) says: "Most of OpenIntro's resources, including the
+Statistics textbooks, are released under a Creative Commons BY-SA 3.0 license." The Open Textbook
+Library listing (https://open.umn.edu/opentextbooks/textbooks/60) gives "Attribution-ShareAlike
+CC BY-SA" with no version. Taken here as CC BY-SA 3.0, on the publisher's licence page. The same
+page forbids titling a derivative as an OpenIntro product.
+RETRIEVED: 2026-09-24.
+
+SECTION NUMBER CONFIRMED: random variables are section 3.4, "Random variables", pages 128-139 of
+the PDF, with subsections 3.4.1 Expectation, 3.4.2 Variability in random variables, 3.4.3 Linear
+combinations of random variables, 3.4.4 Variability in linear combinations of random variables
+(table of contents, block 2). 3.5 is "Continuous distributions".
+
+MATHEMATICS IN THIS FILE: the PDF text layer keeps most formulas legible but flattens
+superscripts and subscripts (a variance can read "σ2" for sigma squared) and splits a fraction
+onto separate lines. Ligatures come through as single characters ("ﬁ"); line-end hyphens are
+kept ("probabili-" / "ties"). Running page headers ("128 CHAPTER 3. PROBABILITY") are in the
+text layer and are kept. Quote prose; check any formula against the PDF.
+
+WHAT THIS FILE HOLDS: excerpts, not the whole book. The title page and copyright line; the
+chapter-3 entries of the table of contents; subsection 3.1.5 Probability distributions (the
+three rules); section 3.4 Random variables whole, without its exercises 3.29-3.36; section 3.5
+Continuous distributions (3.5.1, 3.5.2) whole, without its exercises and the chapter
+exercises. Footnotes that fall inside these pages are kept where the text layer puts them.
+Absence of a passage from this file is not absence from the book.
+
+====================================================================================================
+SECTION: Title page and copyright line
+URL: https://www.openintro.org/go?id=os4_for_screen_reader&referrer=/book/os/index.php
+====================================================================================================
+
+OpenIntro Statistics
+Fourth Edition
+David Diez
+Data Scientist
+OpenIntro
+Mine C ¸ etinkaya-Rundel
+Associate Professor of the Practice, Duke University
+Professional Educator, RStudio
+Christopher D Barr
+Investment Analyst
+Varadero Capital
+
+Copyright © 2019. Fourth Edition.
+Updated: Oct 21st, 2022.
+This book may be downloaded as a free PDF at openintro.org/os. This textbook is also available
+under a Creative Commons license, with the source ﬁles hosted on Github.
+
+
+====================================================================================================
+SECTION: Table of contents, chapter 3 entries
+URL: https://www.openintro.org/go?id=os4_for_screen_reader&referrer=/book/os/index.php
+====================================================================================================
+
+3 Probability 89
+3.1 Deﬁning probability . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 91
+3.1.1 Introductory examples . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 91
+3.1.2 Probability . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 92
+3.1.3 Disjoint or mutually exclusive outcomes . . . . . . . . . . . . . . . . . . . . . 93
+3.1.4 Probabilities when events are not disjoint . . . . . . . . . . . . . . . . . . . . 96
+3.1.5 Probability distributions . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 98
+3.1.6 Complement of an event . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 98
+3.1.7 Independence . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 101
+3.2 Conditional probability . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 107
+3.2.1 Exploring probabilities with a contingency table . . . . . . . . . . . . . . . . 107
+3.2.2 Marginal and joint probabilities . . . . . . . . . . . . . . . . . . . . . . . . . . 108
+3.2.3 Deﬁning conditional probability . . . . . . . . . . . . . . . . . . . . . . . . . . 109
+3.2.4 Smallpox in Boston, 1721 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 111
+3.2.5 General multiplication rule . . . . . . . . . . . . . . . . . . . . . . . . . . . . 112
+3.2.6 Independence considerations in conditional probability . . . . . . . . . . . . . 113
+3.2.7 Tree diagrams . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 115
+3.2.8 Bayes’ Theorem . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 117
+3.3 Sampling from a small population . . . . . . . . . . . . . . . . . . . . . . . . . . . . 125
+3.4 Random variables . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 128
+3.4.1 Expectation . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 129
+3.4.2 Variability in random variables . . . . . . . . . . . . . . . . . . . . . . . . . . 132
+3.4.3 Linear combinations of random variables . . . . . . . . . . . . . . . . . . . . . 133
+3.4.4 Variability in linear combinations of random variables . . . . . . . . . . . . . 137
+3.5 Continuous distributions . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 140
+3.5.1 From histograms to continuous distributions . . . . . . . . . . . . . . . . . . . 141
+3.5.2 Probabilities from continuous distributions . . . . . . . . . . . . . . . . . . . 142
+
+
+====================================================================================================
+SECTION: 3.1.5 Probability distributions
+URL: https://www.openintro.org/go?id=os4_for_screen_reader&referrer=/book/os/index.php
+====================================================================================================
+
+3.1.5 Probability distributions
+A probability distribution is a table of all disjoint outcomes and their associated probabili-
+ties. Figure 3.5 shows the probability distribution for the sum of two dice.
+Dice sum 2 3 4 5 6 7 8 9 10 11 12
+Probability 1
+36
+2
+36
+3
+36
+4
+36
+5
+36
+6
+36
+5
+36
+4
+36
+3
+36
+2
+36
+1
+36
+Figure 3.5: Probability distribution for the sum of two dice.
+RULES FOR PROBABILITY DISTRIBUTIONS
+A probability distribution is a list of the possible outcomes with corresponding probabilities
+that satisﬁes three rules:
+1. The outcomes listed must be disjoint.
+2. Each probability must be between 0 and 1.
+3. The probabilities must total 1.
+GUIDED PRACTICE 3.16 START
+Figure 3.6 suggests three distributions for household income in the United States. Only one is
+correct. Which one must it be? What is wrong with the other two? 12 Go to the preceding footnote
+link for the Guided Practice solution.
+GUIDED PRACTICE 3.16 HAS ENDED.
+Income Range $0-25k $25k-50k $50k-100k $100k+
+(a) 0.18 0.39 0.33 0.16
+(b) 0.38 -0.27 0.52 0.37
+(c) 0.28 0.27 0.29 0.16
+Figure 3.6: Proposed distributions of US household incomes (Guided Prac-
+tice 3.16).
+Chapter 1 emphasized the importance of plotting data to provide quick summaries. Probability
+distributions can also be summarized in a bar plot. For instance, the distribution of US household
+incomes is shown in Figure 3.7 as a bar plot. The probability distribution for the sum of two dice is
+shown in Figure 3.5 and plotted in Figure 3.8.
+In these bar plots, the bar heights represent the probabilities of outcomes. If the outcomes
+are numerical and discrete, it is usually (visually) convenient to make a bar plot that resembles a
+histogram, as in the case of the sum of two dice. Another example of plotting the bars at their
+respective locations is shown in Figure 3.18 on page 129.
+
+
+====================================================================================================
+SECTION: 3.4 Random variables (3.4.1 Expectation; 3.4.2 Variability in random variables; 3.4.3 Linear combinations of random variables; 3.4.4 Variability in linear combinations)
+URL: https://www.openintro.org/go?id=os4_for_screen_reader&referrer=/book/os/index.php
+====================================================================================================
+
+128 CHAPTER 3. PROBABILITY
+3.4 Random variables
+It’s often useful to model a process using what’s called a random variable. Such a model allows us
+to apply a mathematical framework and statistical principles for better understanding and predicting
+outcomes in the real world.
+EXAMPLE 3.54 START
+Example problem: Two books are assigned for a statistics class: a textbook and its corresponding
+study guide. The university bookstore determined 20% of enrolled students do not buy either book,
+55% buy the textbook only, and 25% buy both books, and these percentages are relatively constant
+from one term to another. If there are 100 students enrolled, how many books should the bookstore
+expect to sell to this class?
+Solution to the example: Around 20 students will not buy either book (0 books total), about 55
+will buy one book (55 books total), and approximately 25 will buy two books (totaling 50 books for
+these 25 students). The bookstore should expect to sell about 105 books for this class.
+EXAMPLE 3.54 HAS ENDED.
+GUIDED PRACTICE 3.55 START
+Would you be surprised if the bookstore sold slightly more or less than 105 books? 49 Go to the
+preceding footnote link for the Guided Practice solution.
+GUIDED PRACTICE 3.55 HAS ENDED.
+EXAMPLE 3.56 START
+Example problem: The textbook costs $137 and the study guide $33. How much revenue should the
+bookstore expect from this class of 100 students?
+Solution to the example: About 55 students will just buy a textbook, providing revenue of
+$137× 55 = $7, 535
+The roughly 25 students who buy both the textbook and the study guide would pay a total of
+($137 + $33)× 25 = $170× 25 = $4, 250
+Thus, the bookstore should expect to generate about $7 , 535 + $4, 250 = $11, 785 from these 100
+students for this one class. However, there might be some sampling variability so the actual amount
+may diﬀer by a little bit.
+EXAMPLE 3.56 HAS ENDED.
+49If they sell a little more or a little less, this should not be a surprise. Hopefully Chapter 1 helped make clear
+that there is natural variability in observed data. For example, if we would ﬂip a coin 100 times, it will not usually
+come up heads exactly half the time, but it will probably be close.
+
+3.4. RANDOM VARIABLES 129
+Cost
+$0 $137 $170
+0.0
+0.2
+0.4
+Probability
+Figure 3.18: Probability distribution for the bookstore’s revenue from one student.
+The triangle represents the average revenue per student.
+EXAMPLE 3.57 START
+Example problem: What is the average revenue per student for this course?
+Solution to the example: The expected total revenue is $11,785, and there are 100 students. There-
+fore the expected revenue per student is $11 , 785/100 = $117.85.
+EXAMPLE 3.57 HAS ENDED.
+3.4.1 Expectation
+We call a variable or process with a numerical outcome a random variable, and we usually
+represent this random variable with a capital letter such as X, Y , or Z. The amount of money a
+single student will spend on her statistics books is a random variable, and we represent it by X.
+RANDOM VARIABLE
+A random process or variable with a numerical outcome.
+The possible outcomes ofX are labeled with a corresponding lower case letterx and subscripts.
+For example, we writex1 = $0,x2 = $137, andx3 = $170, which occur with probabilities 0.20, 0.55,
+and 0.25. The distribution of X is summarized in Figure 3.18 and Figure 3.19.
+i 1 2 3 Total
+xi $0 $137 $170 –
+P (X =xi) 0.20 0.55 0.25 1.00
+Figure 3.19: The probability distribution for the random variable X, representing
+the bookstore’s revenue from a single student.
+We computed the average outcome of X as $117.85 in Example 3.57. We call this average the
+expected value ofX, denoted by E(X). The expected value of a random variable is computed by
+adding each outcome weighted by its probability:
+E(X) = 0×P (X = 0) + 137×P (X = 137) + 170×P (X = 170)
+= 0× 0.20 + 137× 0.55 + 170× 0.25 = 117.85
+
+130 CHAPTER 3. PROBABILITY
+EXPECTED VALUE OF A DISCRETE RANDOM VARIABLE
+If X takes outcomes x1, ..., xk with probabilities P (X = x1), ..., P (X = xk), the expected
+value of X is the sum of each outcome multiplied by its corresponding probability:
+E(X) =x1×P (X =x1) +··· +xk×P (X =xk)
+=
+k∑
+i=1
+xiP (X =xi)
+The Greek letter µ may be used in place of the notation E(X).
+
+3.4. RANDOM VARIABLES 131
+0 137 170
+117.85
+Figure 3.20: A weight system representing the probability distribution for X. The
+string holds the distribution at the mean to keep the system balanced.
+μ
+Figure 3.21: A continuous distribution can also be balanced at its mean.
+The expected value for a random variable represents the average outcome. For example,E(X) =
+117.85 represents the average amount the bookstore expects to make from a single student, which
+we could also write as µ = 117.85.
+It is also possible to compute the expected value of a continuous random variable (see Sec-
+tion 3.5). However, it requires a little calculus and we save it for a later class. 50
+In physics, the expectation holds the same meaning as the center of gravity. The distribution
+can be represented by a series of weights at each outcome, and the mean represents the balancing
+point. This is represented in Figures 3.18 and 3.20. The idea of a center of gravity also expands
+to continuous probability distributions. Figure 3.21 shows a continuous probability distribution
+balanced atop a wedge placed at the mean.
+50µ =
+∫
+xf(x)dx where f(x) represents a function for the density curve.
+
+132 CHAPTER 3. PROBABILITY
+3.4.2 Variability in random variables
+Suppose you ran the university bookstore. Besides how much revenue you expect to generate,
+you might also want to know the volatility (variability) in your revenue.
+The variance and standard deviation can be used to describe the variability of a random variable.
+Section 2.1.4 introduced a method for ﬁnding the variance and standard deviation for a data set. We
+ﬁrst computed deviations from the mean (xi−µ), squared those deviations, and took an average to
+get the variance. In the case of a random variable, we again compute squared deviations. However,
+we take their sum weighted by their corresponding probabilities, just like we did for the expectation.
+This weighted sum of squared deviations equals the variance, and we calculate the standard deviation
+by taking the square root of the variance, just as we did in Section 2.1.4.
+GENERAL VARIANCE FORMULA
+IfX takes outcomesx1, ...,xk with probabilitiesP (X =x1), ...,P (X =xk) and expected value
+µ =E(X), then the variance of X, denoted by Var (X) or the symbol σ2, is
+σ2 = (x1−µ)2×P (X =x1) +···
+··· + (xk−µ)2×P (X =xk)
+=
+k∑
+j=1
+(xj−µ)2P (X =xj)
+The standard deviation of X, labeled σ, is the square root of the variance.
+EXAMPLE 3.58 START
+Example problem: Compute the expected value, variance, and standard deviation of X, the revenue
+of a single statistics student for the bookstore.
+Solution to the example: It is useful to construct a table that holds computations for each outcome
+separately, then add up the results.
+i 1 2 3 Total
+xi $0 $137 $170
+P (X =xi) 0.20 0.55 0.25
+xi×P (X =xi) 0 75.35 42.50 117.85
+Thus, the expected value isµ = 117.85, which we computed earlier. The variance can be constructed
+by extending this table:
+i 1 2 3 Total
+xi $0 $137 $170
+P (X =xi) 0.20 0.55 0.25
+xi×P (X =xi) 0 75.35 42.50 117.85
+xi−µ -117.85 19.15 52.15
+(xi−µ)2 13888.62 366.72 2719.62
+(xi−µ)2×P (X =xi) 2777.7 201.7 679.9 3659.3
+The variance of X is σ2 = 3659.3, which means the standard deviation is σ =
+√
+3659.3 = $60.49.
+EXAMPLE 3.58 HAS ENDED.
+
+3.4. RANDOM VARIABLES 133
+GUIDED PRACTICE 3.59 START
+The bookstore also oﬀers a chemistry textbook for $159 and a book supplement for $41. From past
+experience, they know about 25% of chemistry students just buy the textbook while 60% buy both
+the textbook and supplement. 51
+(a) What proportion of students don’t buy either book? Assume no students buy the supplement
+without the textbook.
+(b) Let Y represent the revenue from a single student. Write out the probability distribution of
+Y , i.e. a table for each outcome and its associated probability.
+(c) Compute the expected revenue from a single chemistry student.
+(d) Find the standard deviation to describe the variability associated with the revenue from a
+single student.
+Go to the preceding footnote link for the Guided Practice solution.
+GUIDED PRACTICE 3.59 HAS ENDED.
+3.4.3 Linear combinations of random variables
+So far, we have thought of each variable as being a complete story in and of itself. Sometimes
+it is more appropriate to use a combination of variables. For instance, the amount of time a person
+spends commuting to work each week can be broken down into several daily commutes. Similarly,
+the total gain or loss in a stock portfolio is the sum of the gains and losses in its components.
+EXAMPLE 3.60 START
+Example problem: John travels to work ﬁve days a week. We will use X1 to represent his travel
+time on Monday, X2 to represent his travel time on Tuesday, and so on. Write an equation using
+X1, ..., X5 that represents his travel time for the week, denoted by W .
+Solution to the example: His total weekly travel time is the sum of the ﬁve daily values:
+W =X1 +X2 +X3 +X4 +X5
+Breaking the weekly travel time W into pieces provides a framework for understanding each source
+of randomness and is useful for modeling W .
+EXAMPLE 3.60 HAS ENDED.
+51(a) 100% - 25% - 60% = 15% of students do not buy any books for the class. Part (b) is represented by the ﬁrst
+two lines in the table below. The expectation for part (c) is given as the total on the line yi×P (Y =yi). The result
+of part (d) is the square-root of the variance listed on in the total on the last line: σ =
+√
+Var (Y ) = $69.28.
+i (scenario) 1 ( noBook) 2 ( textbook) 3 ( both) Total
+yi 0.00 159.00 200.00
+P (Y =yi) 0.15 0.25 0.60
+yi×P (Y =yi) 0.00 39.75 120.00 E(Y ) = 159.75
+yi−E(Y ) -159.75 -0.75 40.25
+(yi−E(Y ))2 25520.06 0.56 1620.06
+(yi−E(Y ))2×P (Y ) 3828.0 0.1 972.0 Var (Y )≈ 4800
+
+134 CHAPTER 3. PROBABILITY
+EXAMPLE 3.61 START
+Example problem: It takes John an average of 18 minutes each day to commute to work. What
+would you expect his average commute time to be for the week?
+Solution to the example: We were told that the average (i.e. expected value) of the commute time
+is 18 minutes per day: E(Xi) = 18. To get the expected time for the sum of the ﬁve days, we can
+add up the expected time for each individual day:
+E(W ) =E(X1 +X2 +X3 +X4 +X5)
+=E(X1) +E(X2) +E(X3) +E(X4) +E(X5)
+= 18 + 18 + 18 + 18 + 18 = 90 minutes
+The expectation of the total time is equal to the sum of the expected individual times. More
+generally, the expectation of a sum of random variables is always the sum of the expectation for
+each random variable.
+EXAMPLE 3.61 HAS ENDED.
+GUIDED PRACTICE 3.62 START
+Elena is selling a TV at a cash auction and also intends to buy a toaster oven in the auction. If
+X represents the proﬁt for selling the TV and Y represents the cost of the toaster oven, write an
+equation that represents the net change in Elena’s cash. 52 Go to the preceding footnote link for the
+Guided Practice solution.
+GUIDED PRACTICE 3.62 HAS ENDED.
+GUIDED PRACTICE 3.63 START
+Based on past auctions, Elena ﬁgures she should expect to make about $175 on the TV and pay
+about $23 for the toaster oven. In total, how much should she expect to make or spend? 53 Go to
+the preceding footnote link for the Guided Practice solution.
+GUIDED PRACTICE 3.63 HAS ENDED.
+GUIDED PRACTICE 3.64 START
+Would you be surprised if John’s weekly commute wasn’t exactly 90 minutes or if Elena didn’t make
+exactly $152? Explain. 54 Go to the preceding footnote link for the Guided Practice solution.
+GUIDED PRACTICE 3.64 HAS ENDED.
+Two important concepts concerning combinations of random variables have so far been in-
+troduced. First, a ﬁnal value can sometimes be described as the sum of its parts in an equation.
+Second, intuition suggests that putting the individual average values into this equation gives the
+average value we would expect in total. This second point needs clariﬁcation – it is guaranteed to
+be true in what are called linear combinations of random variables .
+A linear combination of two random variables X and Y is a fancy phrase to describe a
+combination
+aX +bY
+wherea andb are some ﬁxed and known numbers. For John’s commute time, there were ﬁve random
+variables – one for each work day – and each random variable could be written as having a ﬁxed
+coeﬃcient of 1:
+1X1 + 1X2 + 1X3 + 1X4 + 1X5
+52She will make X dollars on the TV but spend Y dollars on the toaster oven: X−Y .
+53E(X−Y ) =E(X)−E(Y ) = 175− 23 = $152. She should expect to make about $152.
+54No, since there is probably some variability. For example, the traﬃc will vary from one day to next, and auction
+prices will vary depending on the quality of the merchandise and the interest of the attendees.
+
+3.4. RANDOM VARIABLES 135
+For Elena’s net gain or loss, the X random variable had a coeﬃcient of +1 and the Y random
+variable had a coeﬃcient of -1.
+
+136 CHAPTER 3. PROBABILITY
+When considering the average of a linear combination of random variables, it is safe to plug
+in the mean of each random variable and then compute the ﬁnal result. For a few examples of
+nonlinear combinations of random variables – cases where we cannot simply plug in the means – see
+the footnote.55
+LINEAR COMBINATIONS OF RANDOM VARIABLES AND THE AVERAGE RESULT
+IfX andY are random variables, then a linear combination of the random variables is given by
+aX +bY
+where a and b are some ﬁxed numbers. To compute the average value of a linear combination
+of random variables, plug in the average of each individual random variable and compute the
+result:
+a×E(X) +b×E(Y )
+Recall that the expected value is the same as the mean, e.g. E(X) =µX.
+EXAMPLE 3.65 START
+Example problem: Leonard has invested $6000 in Caterpillar Inc (stock ticker: CAT) and $2000
+in Exxon Mobil Corp (XOM). If X represents the change in Caterpillar’s stock next month and Y
+represents the change in Exxon Mobil’s stock next month, write an equation that describes how
+much money will be made or lost in Leonard’s stocks for the month.
+Solution to the example: For simplicity, we will suppose X and Y are not in percents but are
+in decimal form (e.g. if Caterpillar’s stock increases 1%, then X = 0.01; or if it loses 1%, then
+X =−0.01). Then we can write an equation for Leonard’s gain as
+$6000×X + $2000×Y
+If we plug in the change in the stock value for X and Y , this equation gives the change in value of
+Leonard’s stock portfolio for the month. A positive value represents a gain, and a negative value
+represents a loss.
+EXAMPLE 3.65 HAS ENDED.
+GUIDED PRACTICE 3.66 START
+Caterpillar stock has recently been rising at 2.0% and Exxon Mobil’s at 0.2% per month, respectively.
+Compute the expected change in Leonard’s stock portfolio for next month. 56 Go to the preceding
+footnote link for the Guided Practice solution.
+GUIDED PRACTICE 3.66 HAS ENDED.
+GUIDED PRACTICE 3.67 START
+You should have found that Leonard expects a positive gain in Guided Practice 3.66. However,
+would you be surprised if he actually had a loss this month? 57 Go to the preceding footnote link for
+the Guided Practice solution.
+GUIDED PRACTICE 3.67 HAS ENDED.
+55If X and Y are random variables, consider the following combinations: X1+Y , X×Y , X/Y . In such cases,
+plugging in the average value for each random variable and computing the result will not generally lead to an accurate
+average value for the end result.
+56E($6000×X + $2000×Y ) = $6000× 0.020 + $2000× 0.002 = $124.
+57No. While stocks tend to rise over time, they are often volatile in the short term.
+
+3.4. RANDOM VARIABLES 137
+3.4.4 Variability in linear combinations of random variables
+Quantifying the average outcome from a linear combination of random variables is helpful, but
+it is also important to have some sense of the uncertainty associated with the total outcome of that
+combination of random variables. The expected net gain or loss of Leonard’s stock portfolio was
+considered in Guided Practice 3.66. However, there was no quantitative discussion of the volatility
+of this portfolio. For instance, while the average monthly gain might be about $124 according to
+the data, that gain is not guaranteed. Figure 3.22 shows the monthly changes in a portfolio like
+Leonard’s during a three year period. The gains and losses vary widely, and quantifying these
+ﬂuctuations is important when investing in stocks.
+Monthly Returns Over 3 Y ears
+−1000 −500 0 500 1000
+Figure 3.22: The change in a portfolio like Leonard’s for 36 months, where $6000
+is in Caterpillar’s stock and $2000 is in Exxon Mobil’s.
+Just as we have done in many previous cases, we use the variance and standard deviation to
+describe the uncertainty associated with Leonard’s monthly returns. To do so, the variances of each
+stock’s monthly return will be useful, and these are shown in Figure 3.23. The stocks’ returns are
+nearly independent.
+Here we use an equation from probability theory to describe the uncertainty of Leonard’s
+monthly returns; we leave the proof of this method to a dedicated probability course. The variance
+of a linear combination of random variables can be computed by plugging in the variances of the
+individual random variables and squaring the coeﬃcients of the random variables:
+Var (aX +bY ) =a2×Var (X) +b2×Var (Y )
+It is important to note that this equality assumes the random variables are independent; if inde-
+pendence doesn’t hold, then a modiﬁcation to this equation would be required that we leave as a
+topic for a future course to cover. This equation can be used to compute the variance of Leonard’s
+monthly return:
+Var (6000×X + 2000×Y ) = 60002×Var (X) + 20002×Var (Y )
+= 36, 000, 000× 0.0057 + 4, 000, 000× 0.0021
+≈ 213, 600
+The standard deviation is computed as the square root of the variance: √213, 600 = $463. While an
+average monthly return of $124 on an $8000 investment is nothing to scoﬀ at, the monthly returns
+are so volatile that Leonard should not expect this income to be very stable.
+Mean (¯x) Standard deviation ( s) Variance ( s2)
+CAT 0.0204 0.0757 0.0057
+XOM 0.0025 0.0455 0.0021
+Figure 3.23: The mean, standard deviation, and variance of the CAT and XOM
+stocks. These statistics were estimated from historical stock data, so notation used
+for sample statistics has been used.
+
+138 CHAPTER 3. PROBABILITY
+VARIABILITY OF LINEAR COMBINATIONS OF RANDOM VARIABLES
+The variance of a linear combination of random variables may be computed by squaring the
+constants, substituting in the variances for the random variables, and computing the result:
+Var (aX +bY ) =a2×Var (X) +b2×Var (Y )
+This equation is valid as long as the random variables are independent of each other. The
+standard deviation of the linear combination may be found by taking the square root of the
+variance.
+EXAMPLE 3.68 START
+Example problem: Suppose John’s daily commute has a standard deviation of 4 minutes. What is
+the uncertainty in his total commute time for the week?
+Solution to the example: The expression for John’s commute time was
+X1 +X2 +X3 +X4 +X5
+Each coeﬃcient is 1, and the variance of each day’s time is 4 2 = 16. Thus, the variance of the total
+weekly commute time is
+variance = 1 2× 16 + 12× 16 + 12× 16 + 12× 16 + 12× 16 = 5× 16 = 80
+standard deviation =
+√
+variance =
+√
+80 = 8.94
+The standard deviation for John’s weekly work commute time is about 9 minutes.
+EXAMPLE 3.68 HAS ENDED.
+GUIDED PRACTICE 3.69 START
+The computation in Example 3.68 relied on an important assumption: the commute time for each
+day is independent of the time on other days of that week. Do you think this is valid? Explain. 58
+Go to the preceding footnote link for the Guided Practice solution.
+GUIDED PRACTICE 3.69 HAS ENDED.
+GUIDED PRACTICE 3.70 START
+Consider Elena’s two auctions from Guided Practice 3.62 on page 134. Suppose these auctions are
+approximately independent and the variability in auction prices associated with the TV and toaster
+oven can be described using standard deviations of $25 and $8. Compute the standard deviation of
+Elena’s net gain. 59 Go to the preceding footnote link for the Guided Practice solution.
+GUIDED PRACTICE 3.70 HAS ENDED.
+Consider again Guided Practice 3.70. The negative coeﬃcient for Y in the linear combination
+was eliminated when we squared the coeﬃcients. This generally holds true: negatives in a linear
+combination will have no impact on the variability computed for a linear combination, but they do
+impact the expected value computations.
+58One concern is whether traﬃc patterns tend to have a weekly cycle (e.g. Fridays may be worse than other days).
+If that is the case, and John drives, then the assumption is probably not reasonable. However, if John walks to work,
+then his commute is probably not aﬀected by any weekly traﬃc cycle.
+59The equation for Elena can be written as
+(1)×X + (−1)×Y
+The variances of X and Y are 625 and 64. We square the coeﬃcients and plug in the variances:
+(1)2×Var (X) + (−1)2×Var (Y ) = 1× 625 + 1× 64 = 689
+The variance of the linear combination is 689, and the standard deviation is the square root of 689: about $26.25.
+
+3.4. RANDOM VARIABLES 139
+
+[...]
+[NOTE] Omitted here: the section's exercises 3.29 to 3.36.
+
+
+====================================================================================================
+SECTION: 3.5 Continuous distributions (3.5.1 From histograms to continuous distributions; 3.5.2 Probabilities from continuous distributions)
+URL: https://www.openintro.org/go?id=os4_for_screen_reader&referrer=/book/os/index.php
+====================================================================================================
+
+140 CHAPTER 3. PROBABILITY
+3.5 Continuous distributions
+So far in this chapter we’ve discussed cases where the outcome of a variable is discrete. In this
+section, we consider a context where the outcome is a continuous numerical variable.
+EXAMPLE 3.71 START
+Example problem: Figure 3.24 shows a few diﬀerent hollow histograms for the heights of US adults.
+How does changing the number of bins allow you to make diﬀerent interpretations of the data?
+Solution to the example: Adding more bins provides greater detail. This sample is extremely large,
+which is why much smaller bins still work well. Usually we do not use so many bins with smaller
+sample sizes since small counts per bin mean the bin heights are very volatile.
+EXAMPLE 3.71 HAS ENDED.
+height (cm)
+140 160 180 200
+height (cm)
+frequency
+140 160 180 200
+height (cm)
+140 160 180 200
+height (cm)
+frequency
+140 160 180 200
+Figure 3.24: Four hollow histograms of US adults heights with varying bin widths.
+EXAMPLE 3.72 START
+Example problem: What proportion of the sample is between 180 cm and 185 cm tall (about 5’11”
+to 6’1”)?
+Solution to the example: We can add up the heights of the bins in the range 180 cm and 185
+and divide by the sample size. For instance, this can be done with the two shaded bins shown in
+Figure 3.25. The two bins in this region have counts of 195,307 and 156,239 people, resulting in the
+following estimate of the probability:
+195307 + 156239
+3,000,000 = 0.1172
+This fraction is the same as the proportion of the histogram’s area that falls in the range 180 to 185
+cm.
+EXAMPLE 3.72 HAS ENDED.
+
+3.5. CONTINUOUS DISTRIBUTIONS 141
+height (cm)
+140 160 180 200
+Figure 3.25: A histogram with bin sizes of 2.5 cm. The shaded region represents
+individuals with heights between 180 and 185 cm.
+3.5.1 From histograms to continuous distributions
+Examine the transition from a boxy hollow histogram in the top-left of Figure 3.24 to the much
+smoother plot in the lower-right. In this last plot, the bins are so slim that the hollow histogram is
+starting to resemble a smooth curve. This suggests the population height as a continuous numerical
+variable might best be explained by a curve that represents the outline of extremely slim bins.
+This smooth curve represents a probability density function (also called a density or
+distribution), and such a curve is shown in Figure 3.26 overlaid on a histogram of the sample. A
+density has a special property: the total area under the density’s curve is 1.
+height (cm)
+140 160 180 200
+Figure 3.26: The continuous probability distribution of heights for US adults.
+
+142 CHAPTER 3. PROBABILITY
+3.5.2 Probabilities from continuous distributions
+We computed the proportion of individuals with heights 180 to 185 cm in Example 3.72 as a
+fraction:
+number of people between 180 and 185
+total sample size
+We found the number of people with heights between 180 and 185 cm by determining the fraction
+of the histogram’s area in this region. Similarly, we can use the area in the shaded region under the
+curve to ﬁnd a probability (with the help of a computer):
+P (height between 180 and 185) = area between 180 and 185 = 0.1157
+The probability that a randomly selected person is between 180 and 185 cm is 0.1157. This is very
+close to the estimate from Example 3.72: 0.1172.
+height (cm)
+140 160 180 200
+Figure 3.27: Density for heights in the US adult population with the area between
+180 and 185 cm shaded. Compare this plot with Figure 3.25.
+GUIDED PRACTICE 3.73 START
+Three US adults are randomly selected. The probability a single adult is between 180 and 185 cm
+is 0.1157.60
+(a) What is the probability that all three are between 180 and 185 cm tall?
+(b) What is the probability that none are between 180 and 185 cm?
+Go to the preceding footnote link for the Guided Practice solution.
+GUIDED PRACTICE 3.73 HAS ENDED.
+EXAMPLE 3.74 START
+Example problem: What is the probability that a randomly selected person is exactly 180 cm?
+Assume you can measure perfectly.
+Solution to the example: This probability is zero. A person might be close to 180 cm, but not
+exactly 180 cm tall. This also makes sense with the deﬁnition of probability as area; there is no area
+captured between 180 cm and 180 cm.
+EXAMPLE 3.74 HAS ENDED.
+60Brief answers: (a) 0.1157× 0.1157× 0.1157 = 0.0015. (b) (1− 0.1157)3 = 0.692
+
+3.5. CONTINUOUS DISTRIBUTIONS 143
+GUIDED PRACTICE 3.75 START
+Suppose a person’s height is rounded to the nearest centimeter. Is there a chance that a random
+person’s measured height will be 180 cm?61 Go to the preceding footnote link for the Guided
+Practice solution.
+GUIDED PRACTICE 3.75 HAS ENDED.
+61This has positive probability. Anyone between 179.5 cm and 180.5 cm will have a measured height of 180 cm.
+This is probably a more realistic scenario to encounter in practice versus Example 3.74.
+
+144 CHAPTER 3. PROBABILITY
+
+[...]
+[NOTE] Omitted here: the section's exercises 3.37 and 3.38, and the chapter exercises.
+

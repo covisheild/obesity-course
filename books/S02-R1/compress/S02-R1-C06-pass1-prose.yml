@@ -1,0 +1,112 @@
+definition.text: |
+  An antiderivative of a function f is a function F whose derivative is f, so that dF/dt = f(t).
+
+  Each of these is checked by differentiating back, with the rules of `S02-R1-C03` and
+  `S02-R1-C04`:
+
+  ```table
+  the function f(t)             an antiderivative F(t)
+  a constant c                  c times t
+  t^(n), for n a whole number   t^(n plus 1) divided by (n plus 1)
+  e^(kt), for k not zero        e^(kt) divided by k
+  ```
+
+  Sums and constant multiples are done term by term.
+
+  The fundamental theorem of calculus, in the part called the evaluation theorem, says this.
+  If f is continuous from a to b and F is any antiderivative of f, then ∫ from a to b of f(t) dt
+  = F(b) minus F(a).
+simplified_explanation: |
+  Most rates bend. This section gives a
+  way that does not need a shape.
+
+  Given a rate, find a function whose rate it is. That function is
+  called an antiderivative.
+
+  Say the rate is 2t. Which function has the rate 2t? The power rule says t^2 does. So t^2 is an
+  antiderivative of 2t.
+
+  So is t^2 plus 5, and t^2 plus any fixed number. A fixed number has a rate of zero, so adding
+  one changes nothing about the rate. That is why an antiderivative is written with plus C on the
+  end, where C is any constant.
+
+  You never have to trust an antiderivative. Differentiate it and see whether the rate comes back.
+
+  The fundamental theorem of calculus says an integral
+  is the antiderivative at the end minus the antiderivative at the start.
+
+  ```working
+  ∫ from a to b of f(t) dt = F(b) minus F(a)
+  ```
+
+  Here F is any antiderivative of f. The C cancels, because it is added at both ends and then
+  subtracted. So leave it out when you work out an integral.
+illustration.body: |
+  Hall and colleagues model a man who cuts his intake by 2 megajoules a day (*Lancet* 2011).
+  Keep the deficit at 2 megajoules a day, as the static rule of `S01-R1-C07` does. Then one year
+  of it is a rectangle.
+
+  ```working
+  2 times 365 = 730
+  ```
+
+  So a deficit of 2 megajoules a day is
+  730 megajoules a year.
+
+  His expenditure falls as his weight falls, so his real deficit shrinks. Suppose, to see the
+  arithmetic, that it halves every year. This shape is made up here, and it is not the paper's
+  model. A half-time of 1 year means k = 0.693 per year (`S02-R1-C04`). With t in years, the
+  deficit in megajoules a year is this.
+
+  ```working
+  D(t) = 730 e^(-0.693t)
+  ```
+
+  The rate of 730 e^(-0.693t) is -0.693 times 730
+  e^(-0.693t). That is not the deficit. It is -0.693 times the deficit. So divide by -0.693 to
+  cancel that factor.
+
+  ```working
+  730 divided by 0.693 = 1053.4
+  F(t) = -1053.4 e^(-0.693t)
+  ```
+
+  Check it. The rate of F is -0.693 times -1053.4 e^(-0.693t), which is 730 e^(-0.693t). It
+  comes back. Now take F at the end of the year minus F at the start. On the calculator,
+  e^(-0.693) is 0.5001, and e^0 is 1.
+
+  ```working
+  F(1) minus F(0) = -1053.4 times 0.5001 plus 1053.4
+  1053.4 times (1 minus 0.5001) = 1053.4 times 0.4999
+  1053.4 times 0.4999 = 526.6
+  ```
+
+  About 526.6 megajoules in the first year, against 730 for the steady deficit.
+
+  As T grows, e^(-0.693T) shrinks towards zero, so its total
+  creeps up towards 1053.4 megajoules and never passes it.
+
+  A deficit that shrinks adds up to less.
+illustration.analogy_breaks_when: |
+  Every total here is energy, in megajoules.
+must_know[0].point: |
+  Check every antiderivative by differentiating it. If the rate you started with does not come
+  back, the antiderivative is wrong, however reasonable it looks. It takes one line.
+must_know[1].point: |
+  The antiderivative of e^(kt) is e^(kt) divided by k, not e^(kt). Dropping the k gives the wrong
+  size. For a shrinking curve, where k is negative, it also gives the wrong sign.
+must_know[2].point: |
+  "The deficit never quite reaches zero, so the loss keeps going for ever" is wrong as
+  arithmetic. A deficit D0 e^(-kt) adds up to at most D0 divided by k, however long it runs.
+must_know[3].point: |
+  These rules cover steady rates, whole-number powers of t, e^(kt), and sums and multiples of
+  them. When no antiderivative is at hand, go back to
+  rectangles and bound the error as `B0-R0-C22` does.
+must_know[4].point: |
+  A figure made by multiplying a daily deficit by 365, and then by a number of years, is a
+  steady-deficit total. Any deficit that
+  shrinks adds up to less. In a committee, call such a figure an upper limit that holds only if
+  the deficit never shrinks.
+must_know[5].point: |
+  Take F at the upper limit minus F at the lower limit, in that order. The reverse gives the
+  right size with the wrong sign.

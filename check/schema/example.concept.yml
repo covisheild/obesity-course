@@ -162,8 +162,16 @@ figures:
         - {value: "4", from: "92 - 88"}   # printed here, not stated in the prose
       bands:                              # optional: a shaded horizontal range behind the data
         - {y0: 88, y1: 90, label: "target range"}   # y0, y1 and label numbers checked like data
+      curves:                             # optional: a formula over its own x range (chord, tangent)
+        - {y: "y = 92 - 0.5*x", x0: 0, x1: 8, label: "the rule"}   # + series: <name> to check it like a fit
+      areas:                              # optional: shaded between y and `to` (default 0) over [x0, x1]
+        - {y: "y = 92 - 0.5*x", x0: 0, x1: 8, to: 88, equals: 16, label: "area 16"}  # equals = signed integral
+      refs:                               # optional: a labelled dashed line at a stated value
+        - {y: 90, label: "90 kg"}         # or {x: ...}; every constant, x0, x1, to, equals, ref and
+                                          # label number above is checked against the text like data
       # On a literal `series:` entry, `marker: none` draws a bare line with no point markers:
       # use it for a fitted slope, so its ends do not look like observations.
+      # Bars may be negative (drawn from a zero line); two or more drawn fits each take their series' colour.
 
 # ---- provenance: what this concept is here to serve ------------------------
 provenance:

@@ -1,0 +1,254 @@
+definition.text: 'A vector is an ordered list of numbers, called its entries. Its length is the number of
+
+  entries it has. The order is part of the vector: (2, 5, 1) and (5, 2, 1) are different
+
+  vectors.
+
+
+  One row of a data table is a vector, with one entry for each column, in the order of the
+
+  columns.
+
+
+  Two vectors of the same length are added entry by entry. A vector is multiplied by a single
+
+  number by multiplying every entry by that number. A single number used this way is called a
+
+  scalar. Vectors of different lengths cannot be added.
+
+
+  A weighted sum of vectors v and w, with numbers c and d, is the vector cv + dw. The numbers c
+
+  and d are its weights.
+
+
+  The dot product of two vectors of the same length, written a · b and said "a dot b", is a
+
+  single number. Multiply the entries in matching positions, then add the products. The dot
+
+  product is a weighted sum of the entries of one vector, with the entries of the other as the
+
+  weights.
+
+  '
+simplified_explanation: 'Write down a food''s grams of protein, fat and carbohydrate, always in that order. That list is a
+
+  vector. The list (10, 30, 50) means 10 g of protein, 30 g of fat and 50 g of carbohydrate.
+
+
+  A gram of protein gives about 4 kcal. A gram of fat gives about 9, and a gram of carbohydrate about 4.
+
+  So multiply each count of grams by its factor, and add.
+
+
+  ```working
+
+  4 times 10 plus 9 times 30 plus 4 times 50 = 510
+
+  ```
+
+
+  That multiply-and-add is called the dot product of the factor list (4, 9, 4) with the gram list
+
+  (10, 30, 50). The answer is 510 kcal.
+
+
+  Each factor is a weight. "Weight" here means a multiplier, not body weight.
+
+  '
+illustration.body: 'A clinic records four things about each patient, always in the same order. They are age in
+
+  years, body weight in kg, height in cm and waist in cm. One patient''s row, made up for this
+
+  example, is a vector.
+
+
+  ```working
+
+  x = (40, 68, 162, 88)
+
+  ```
+
+
+  Take the same patient a year later, with the new row y = (41, 65, 162, 84), also made up.
+
+  Subtract entry by entry.
+
+
+  ```working
+
+  41 minus 40 = 1
+
+  65 minus 68 = -3
+
+  162 minus 162 = 0
+
+  84 minus 88 = -4
+
+  ```
+
+
+  The change vector y − x is (1, −3, 0, −4).
+
+
+  A packaged snack''s label gives its grams per 100 g. Take one made up for this example.
+
+
+  ```working
+
+  g = (10, 30, 50)
+
+  ```
+
+
+  The entries are grams of protein, fat and carbohydrate in 100 g of the snack. A serving is
+
+  30 g, which is 0.3 of 100 g. Scale the vector by 0.3.
+
+
+  ```working
+
+  0.3 times 10 = 3
+
+  0.3 times 30 = 9
+
+  0.3 times 50 = 15
+
+  ```
+
+
+  A serving holds (3, 9, 15): 3 g of protein, 9 g of fat and 15 g of carbohydrate.
+
+
+  Now the energy. The Food and Agriculture Organization (FAO) of the United Nations gives the
+
+  Atwater general factors. They are 4.0 kcal/g for protein, 9.0 for fat and 4.0 for carbohydrate.
+
+  Write them as a vector in the same order as the grams.
+
+
+  ```working
+
+  a = (4, 9, 4)
+
+  ```
+
+
+  The energy in a serving is a · (3, 9, 15). Multiply matching entries and add.
+
+
+  ```working
+
+  4 times 3 = 12
+
+  9 times 9 = 81
+
+  4 times 15 = 60
+
+  12 plus 81 plus 60 = 153
+
+  ```
+
+
+  A serving gives 153 kcal. The energy in the whole 100 g is a · g.
+
+
+  ```working
+
+  4 times 10 plus 9 times 30 plus 4 times 50 = 510
+
+  0.3 times 510 = 153
+
+  ```
+
+
+  Scaling the grams by 0.3 scaled the energy by 0.3. Every product in the dot product was scaled
+
+  by 0.3, so their sum was too.
+
+
+  Adding works the same way. A second item eaten with the snack, a biscuit, gives (2, 5, 20) per
+
+  serving, also made up. The meal is the sum of the two vectors.
+
+
+  ```working
+
+  3 plus 2 = 5
+
+  9 plus 5 = 14
+
+  15 plus 20 = 35
+
+  ```
+
+
+  The meal holds (5, 14, 35). Its energy can be found two ways, and they must agree.
+
+
+  ```working
+
+  4 times 5 plus 9 times 14 plus 4 times 35 = 286
+
+  4 times 2 plus 9 times 5 plus 4 times 20 = 133
+
+  153 plus 133 = 286
+
+  ```
+
+
+  Dot the meal''s vector once, or dot each item and add the energies. Both give 286 kcal.
+
+
+  Now read the weights. Add 1 g of fat to the serving and hold the other two entries fixed.
+
+
+  ```working
+
+  4 times 3 plus 9 times 10 plus 4 times 15 = 162
+
+  162 minus 153 = 9
+
+  ```
+
+
+  The total rose by 9 kcal, the weight on fat. Each weight in a is the change in the total for one
+
+  more unit of its own entry, with the others held fixed.
+
+  '
+illustration.analogy_breaks_when: 'The factors are general factors: one value for each nutrient, whatever the food. So a · g gives
+
+  the energy a label would declare. It is not the energy a particular person absorbs from that
+
+  food (`B0-R0-C32`).
+
+  '
+must_know[0].point: 'Before you take a dot product, line up the two vectors'' orders.
+
+  '
+must_know[1].point: 'The misconception is that a weight tells you what happens when you change one thing in a real
+
+  food. It tells you the change with every other entry held fixed. Swapping fat for sugar changes
+
+  two entries at once. Write the whole change vector and dot that.
+
+  '
+must_know[2].point: 'Many different gram vectors give the same total energy. Never infer a food''s make-up from its
+
+  energy figure.
+
+  '
+must_know[3].point: 'Add or scale rows only when every entry means the same thing, in the same unit, in the same
+
+  place. Food grams add. Two patients'' rows do not.
+
+  '
+must_know[4].point: 'Check a meal''s energy in an app or a diet chart two ways. The two answers must agree.
+
+  '
+must_know[5].point: 'When you teach this, say "weights" for the multipliers and "body weight" for the person, every
+
+  time.
+
+  '

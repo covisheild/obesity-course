@@ -1,0 +1,1 @@
+Least sure: deleting the two paragraphs tying the S01-R1-C05 week (seven daily differences, 2.8 MJ) to the integral, including when a daily sum is exact and when it carries the B0-R0-C22 error. That link is the section's bridge from the stock-flow identity to the integral; Exercise 1 and must_know[5] may now feel unsupported to a cold reader.

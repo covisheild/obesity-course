@@ -1,0 +1,1014 @@
+concept_id: S02-R1-C09
+subject: S02
+rung: 1
+sequence: 9
+name: "Highest and lowest points: slope zero and curvature"
+concept_type: derivable
+clusters:
+- measurement-inference
+- system-and-state
+ground_floor_deps:
+- B0-R0-C15
+- B0-R0-C18
+- B0-R0-C19
+- B0-R0-C21
+- B0-R0-C28
+concept_deps: [S02-R1-C01, S02-R1-C02, S02-R1-C03, S02-R1-C08]
+definition:
+  text: |
+    A critical point of f is an input c inside the domain, not at one of its ends, at which the
+    derivative f′(c) is zero or does not exist.
+
+    The first derivative test sorts a critical point c by the sign of f′ on either side. If f′
+    changes from positive to negative as x rises through c, f has a local maximum at c. If it
+    changes from negative to positive, f has a local minimum. If it keeps the same sign, neither.
+
+    Suppose f′(c) = 0, and f″ is continuous near c. If the second derivative f″(c) is greater than
+    zero, f has a local minimum at c. If f″(c) is less than zero, f has a local maximum. If
+    f″(c) = 0, this test decides nothing, and the first derivative test has to be used instead.
+    This is the second derivative test.
+  references:
+  - citekey: openstax_calculus_v1_s02
+    kind: textbook
+    locator: "§4.3 Maxima and Minima, Local Extrema and Critical Points, Definition"
+    quote: |-
+      be an interior point in the domain of
+    verified:
+      resolved_id: https://openstax.org/books/calculus-volume-1/pages/4-3-maxima-and-minima
+      opened: true
+      claim_located: true
+      checked_on: '2026-09-24'
+      note: |-
+        The held file flattens the formulas in this definition ("Let cc be an interior point in
+        the domain of f.f. We say that cc is a critical number of ff if f′(c)=0f′(c)=0 or
+        f′(c)f′(c) is undefined."), so only the prose run is quoted.
+  - citekey: openstax_calculus_v1_s02
+    kind: textbook
+    locator: "§4.3 Maxima and Minima, Local Extrema and Critical Points, the paragraph after the proof of Fermat's theorem"
+    quote: |-
+      is undefined. In other words, local extrema can only occur at critical points.
+    verified:
+      resolved_id: https://openstax.org/books/calculus-volume-1/pages/4-3-maxima-and-minima
+      opened: true
+      claim_located: true
+      checked_on: '2026-09-24'
+  - citekey: openstax_calculus_v1_s02
+    kind: textbook
+    locator: "§4.3 Maxima and Minima, Local Extrema and Critical Points, the paragraph on f(x) = x³"
+    quote: |-
+      Rather, it states that critical points are candidates for local extrema.
+    verified:
+      resolved_id: https://openstax.org/books/calculus-volume-1/pages/4-3-maxima-and-minima
+      opened: true
+      claim_located: true
+      checked_on: '2026-09-24'
+  - citekey: openstax_calculus_v1_s02
+    kind: textbook
+    locator: "§4.3 Maxima and Minima, Locating Absolute Extrema over a Closed Interval, step 3"
+    quote: |-
+      Therefore, the largest of these values is the absolute maximum of
+    verified:
+      resolved_id: https://openstax.org/books/calculus-volume-1/pages/4-3-maxima-and-minima
+      opened: true
+      claim_located: true
+      checked_on: '2026-09-24'
+  - citekey: openstax_calculus_v1_s02
+    kind: textbook
+    locator: "§4.3 Maxima and Minima, Locating Absolute Extrema, first paragraph"
+    quote: |-
+      As shown in Figure 4.13, one or both of these absolute extrema could occur at an endpoint.
+    verified:
+      resolved_id: https://openstax.org/books/calculus-volume-1/pages/4-3-maxima-and-minima
+      opened: true
+      claim_located: true
+      checked_on: '2026-09-24'
+  - citekey: openstax_calculus_v1_s02
+    kind: textbook
+    locator: "§4.5 Derivatives and the Shape of a Graph, The Second Derivative Test, first paragraph"
+    quote: |-
+      The first derivative test provides an analytical tool for finding local extrema, but the second derivative can also be used to locate extreme values.
+    verified:
+      resolved_id: https://openstax.org/books/calculus-volume-1/pages/4-5-derivatives-and-the-shape-of-a-graph
+      opened: true
+      claim_located: true
+      checked_on: '2026-09-24'
+  - citekey: openstax_calculus_v1_s02
+    kind: textbook
+    locator: "§4.5 Derivatives and the Shape of a Graph, Second Derivative Test, the condition"
+    quote: |-
+      is continuous over an interval containing
+    verified:
+      resolved_id: https://openstax.org/books/calculus-volume-1/pages/4-5-derivatives-and-the-shape-of-a-graph
+      opened: true
+      claim_located: true
+      checked_on: '2026-09-24'
+  - citekey: openstax_calculus_v1_s02
+    kind: textbook
+    locator: "§4.5 Derivatives and the Shape of a Graph, Second Derivative Test, case 3"
+    quote: |-
+      then the test is inconclusive.
+    verified:
+      resolved_id: https://openstax.org/books/calculus-volume-1/pages/4-5-derivatives-and-the-shape-of-a-graph
+      opened: true
+      claim_located: true
+      checked_on: '2026-09-24'
+      note: |-
+        The held file flattens the formula in this line ("If f″(c)=0,f″(c)=0, then the test is
+        inconclusive."), so only its prose tail is quoted. Case 3 of the boxed test on the page
+        is f″(c) = 0.
+  - citekey: openstax_intro_stats_2e
+    kind: textbook
+    locator: "§2.5 Measures of the Center of the Data, first paragraph"
+    quote: |-
+      To calculate the **mean weight** of 50 people, add the 50 weights together and divide by 50.
+    verified:
+      resolved_id: https://openstax.org/books/introductory-statistics-2e/pages/2-5-measures-of-the-center-of-the-data
+      opened: true
+      claim_located: true
+      checked_on: '2026-09-24'
+  - citekey: openstax_intro_stats_2e
+    kind: textbook
+    locator: "§2.7 Measures of the Spread of the Data, Calculating the Standard Deviation"
+    quote: |-
+      If *x* is a number, then the difference "*x* – mean" is called its **deviation**.
+    verified:
+      resolved_id: https://openstax.org/books/introductory-statistics-2e/pages/2-7-measures-of-the-spread-of-the-data
+      opened: true
+      claim_located: true
+      checked_on: '2026-09-24'
+      note: |-
+        The held sections define the mean, the deviation and the variance. Neither they nor
+        Calculus Vol 1 §4.3 and §4.5 state that the mean minimises the sum of squared
+        deviations, or the exact rule for a quadratic that a step h from the lowest point
+        raises it by half of f″ times h². Both are derived on the page, line by line, from the
+        rules of `S02-R1-C03` and the bracket rule of `B0-R0-C15`; nothing in this record
+        depends on a source for them.
+simplified_explanation: |
+  Picture a smooth hill. At the very top, the ground is level for an instant. The same is true at
+  the bottom of a smooth valley.
+
+  So to find a top or a bottom, look for where the slope is zero. In the words of `S02-R1-C02`,
+  look for where the derivative is zero.
+
+  Level ground does not tell you which of the two you are standing on. Walk across a hilltop and
+  the slope goes from uphill to downhill, so the slope is falling. The second derivative from
+  `S02-R1-C03` is the rate at which the slope changes. Positive means a valley floor. Negative
+  means a hilltop.
+
+  Ground can be level without being a top or a bottom. A flat landing on a staircase is level,
+  and the stairs keep climbing after it. And suppose you may walk only part of the hill. Then the
+  highest place you can reach may be the edge of that part, where the ground is still sloping
+  upward.
+
+  A top that is higher than the ground near it is a local maximum. The highest point over the
+  whole stretch is the overall maximum.
+
+  You have several readings of one thing and want a single number to stand for them. Choose the
+  number that makes the misses, each squared and then added up, as small as they can be. That
+  number turns out to be the mean.
+illustration:
+  body: |
+    Start with the way this goes wrong. Take f(x) = x³ − 3x, and suppose you want its highest
+    and lowest values for x anywhere from −2 to 3. Differentiate with the power, constant-multiple
+    and sum rules of `S02-R1-C03`.
+
+    ```working
+    f′(x) = 3x² − 3
+    ```
+
+    Set the derivative to zero and solve.
+
+    ```working
+    3x² − 3 = 0
+    3x² = 3
+    x² = 1
+    1 times 1 = 1
+    -1 times -1 = 1
+    x = 1 or x = −1
+    ```
+
+    The second derivative sorts them.
+
+    ```working
+    f″(x) = 6x
+    f″(−1) = −6, less than zero, so a local maximum
+    f″(1) = 6, greater than zero, so a local minimum
+    ```
+
+    It is tempting to stop here and write "the maximum is at x = −1". Do not. Work out f at both
+    critical points and at both ends of the interval.
+
+    ```table
+    x   f(x)
+    -2  -2
+    -1  2
+    0   0
+    1   -2
+    2   2
+    3   18
+    ```
+
+    The overall maximum over this interval is 18, at x = 3. That is an end of the interval, and
+    the slope there is nowhere near zero. The overall minimum is −2. It is reached twice: at the
+    local minimum x = 1, and at the end x = −2.
+
+    The local maximum at x = −1 is only a peak among its neighbours, with a value of 2.
+
+    Some problems tie two unknowns by a fixed amount, such as a total length of fence. Write one
+    unknown in terms of the other before you differentiate.
+
+    One more trap sits at x = 0 for the plain cube, g(x) = x³. There g′(x) = 3x² is zero, and g″(x)
+    = 6x is zero too, so the second derivative test decides nothing. Go back to the sign of g′ on
+    each side. 3x² is positive for every x except 0. So g rises before 0 and rises after it.
+
+    A person is weighed on five mornings of one week, on the same scale. The readings are made up
+    for this example: 70.4, 70.6, 70.2, 70.8 and 71.0 kg.
+
+    One answer: choose the number m that makes the misses, squared and added up, as small as they
+    can be. Call that total S(m), said "S of m".
+
+    ```working
+    S(m) = Σ[i = 1 to n] (xi − m)²
+    ```
+
+    The capital sigma, Σ, from `S02-R1-C01`, says: add this up for i from 1 to n, over the n
+    readings x1 to xn. From here on the counter is left off: Σ x means Σ[i = 1 to n] xi.
+
+    S(70.4) is 0.60 square kilograms, written kg². The unit is squared because each miss, in
+    kilograms, was multiplied by itself.
+
+    ```table
+    m (kg)  S(m) (kg²)
+    70.2    1.20
+    70.4    0.60
+    70.6    0.40
+    70.8    0.60
+    71.0    1.20
+    ```
+
+    The smallest S in the table is at 70.6. A table only tests the candidates in it. The derivative
+    shows that no m anywhere does better, for any set of n readings.
+
+    Open the square first.
+
+    ```working
+    (x − m)² = (x − m) times (x − m)
+    (x − m)² = x times x − x times m − m times x + m times m
+    (x − m)² = x² − 2mx + m²
+    ```
+
+    Now add that up over all n readings. The candidate m is the same number in every term, so it
+    comes outside the sum. And m² is added once for each reading, n times in all. On the five
+    weighings, the two moves look like this.
+
+    ```working
+    −2m times 70.4 − 2m times 70.6 − ... − 2m times 71.0 = −2m times (70.4 + 70.6 + ... + 71.0)
+    m² + m² + m² + m² + m² = 5m²
+    ```
+
+    For any n readings, this gives the following.
+
+    ```working
+    S(m) = Σ x² − 2m Σ x + n m²
+    ```
+
+    Read the formula term by term: the number in front of m² is n, and the number in front of m
+    is −2 Σ x.
+
+    Differentiate with respect to m, using the rules of `S02-R1-C03`. The first term, Σ x², has no
+    m in it, so its derivative is zero. The second is the fixed number −2 Σ x times m, so its
+    derivative is −2 Σ x. The third is n times m², so its derivative is 2n times m.
+
+    ```working
+    S′(m) = −2 Σ x + 2nm
+    ```
+
+    Set it to zero and solve for m.
+
+    ```working
+    2nm = 2 Σ x
+    m = Σ x divided by n
+    ```
+
+    Σ x divided by n is the sum of the readings divided by how many there are. That is the mean of
+    `B0-R0-C28`. Differentiate once more to see which kind of critical point it is.
+
+    ```working
+    S″(m) = 2n
+    ```
+
+    2n is positive for any count of readings, so the mean is a minimum. It is the only critical
+    point, so it is the overall minimum as well.
+
+    Choosing a number by making squared misses as small as possible is called least squares. The
+    mean is the least-squares answer when the thing you choose is a single number.
+
+    Next, the size of the second derivative. Take any quadratic, f(x) = px² + qx + r, with its
+    level point at c. Step a distance h away from c and expand.
+
+    ```working
+    f(c + h) = p(c + h)² + q(c + h) + r
+    f(c + h) = pc² + 2pch + ph² + qc + qh + r
+    f(c + h) = f(c) + (2pc + q)h + ph²
+    ```
+
+    The bracket 2pc + q is f′(c), which is zero at a level point, so the middle term drops out.
+    And f″ is 2p, so p is half of f″.
+
+    ```working
+    f(c + h) = f(c) + half of f″(c) times h²
+    ```
+
+    For the weighings, S″ is 2n, which is 10, so half of it is 5. S rises from its lowest value of
+    0.40 by 5 times the square of the step.
+
+    A step of 0.4 kg, to 70.2 or 71.0, raises S by 5 times 0.16, which is 0.80, as the table
+    shows.
+
+    ```working
+    0.4 times 0.4 = 0.16
+    5 times 0.16 = 0.80
+    0.40 plus 0.80 = 1.20
+    ```
+
+    With 20 readings instead of 5, S″ would be 40. The same step would then raise S by 20 times
+    0.16, not 5 times 0.16.
+
+    The more readings, the sharper the valley. A sharp valley pins the best value down: a small step
+    off it costs a lot.
+
+    Last, the lowest value of S itself, 0.40 kg². That is the sum of squared deviations from the
+    mean. `B0-R0-C28` divided it by one less than the count to get the sample variance.
+
+    ```working
+    0.40 divided by 4 = 0.1
+    ```
+
+    The sample variance of the five weighings is 0.1 kg², and their standard deviation is its
+    square root, about 0.32 kg.
+
+    Keep all this apart from the equilibrium of `S02-R1-C08`. Suppose a person's body weight rose
+    for some weeks after a change in their life, then turned and fell. At the top of that curve, the
+    rate of change of body weight with respect to time was zero for an instant. The weight did not
+    stay there. A zero slope for an instant marks a turning point. A rate held at zero marks an
+    equilibrium.
+  analogy_breaks_when: |
+    The hill picture needs a smooth curve. At a sharp corner, a top can have no slope at all. That
+    is the other kind of critical point, where the derivative does not exist, and setting a
+    derivative to zero will never find it.
+
+    The rule that a step h raises f by half of f″(c) times h² is exact only for a quadratic. For
+    other curves it is close for small steps and drifts for larger ones.
+
+    The mean wins only because the misses were squared before they were added. Squaring makes one
+    big miss count for a great deal. Add up the sizes of the misses without squaring them, and the
+    median of `B0-R0-C28` can come out best.
+  numbers: []
+must_know:
+- point: |
+    A derivative of zero marks a candidate, not an answer. It can be a minimum, or a level step
+    with neither. Check the second derivative, or the sign of f′ on each side, before you name
+    what you found.
+  kind: misconception
+  bearing: methodological
+- point: |
+    Over an interval of inputs, work out the value at both ends as well as at every critical
+    point. When a study reports that the best dose was the highest dose it tested, that is an end
+    of the tested doses. It is not a peak, and higher doses remain untested.
+  kind: trap
+  bearing: methodological
+- point: |
+    The derivative test finds local answers: a point lower than its near neighbours. Compare
+    every candidate before you call one the overall minimum.
+  kind: boundary
+  bearing: methodological
+- point: |
+    Because the misses are squared, one far-off reading pulls the answer toward itself. Look at
+    the readings before you accept a least-squares figure.
+  kind: move
+  bearing: methodological
+- point: |
+    When a paper reports a best-fit value, ask how fast the fit gets worse away from it. A flat
+    valley means the data barely pin the value down.
+  kind: consequence
+  bearing: methodological
+- point: |
+    A slope of zero on a weight curve is not an equilibrium. Call a weight an equilibrium only
+    when the rule that gives the rate stays at zero there.
+  kind: misconception
+  bearing: clinical
+exercises:
+- type: interpretation
+  prompt: |
+    Below is the derivation from this section that the mean makes the sum of squared deviations
+    smallest. The move taken at each line has been left out, and one line has been removed.
+
+    ```working
+    S(m) = Σ[i = 1 to n] (xi − m)²
+    S(m) = Σ x² − 2m Σ x + n m²
+    S′(m) = −2 Σ x + 2nm
+    m = Σ x divided by n
+    S″(m) = 2n
+    ```
+
+    Write beside each line the one move that produced it from the line before. Then write the
+    missing line in its place, with its move.
+  answer: |
+    Line 1 is the definition: the misses from m, squared and added over every reading.
+
+    Line 2 opens each square into x² − 2mx + m². It multiplies every term of one bracket by
+    every term of the other. It then adds over the n readings. The candidate m is the same in
+    every term, so it comes outside the sum, and m² is added n times.
+
+    Line 3 differentiates with respect to m, term by term. Σ x² has no m, so it gives zero. The
+    fixed number −2 Σ x times m gives −2 Σ x. And n m² gives 2nm by the power rule.
+
+    The missing line sets the derivative to zero and moves one term across.
+
+    ```working
+    2nm = 2 Σ x
+    ```
+
+    Line 4 divides both sides by 2n.
+
+    Line 5 differentiates line 3 once more. The first term has no m and gives zero, and 2nm gives
+    2n. Because 2n is positive, the critical point in line 4 is a minimum.
+  skill_ref: S02-R1-K02
+quantitative: true
+practice:
+- level: 1
+  prompt: |
+    f(x) = x² − 6x + 11. Find the input at which f′(x) is zero. Say whether f has a local maximum
+    or a local minimum there, and give the value of f at that point.
+  answer: |
+    Differentiate.
+
+    ```working
+    f′(x) = 2x − 6
+    f″(x) = 2
+    ```
+
+    Set the first to zero: 2x = 6.
+
+    ```working
+    6 divided by 2 = 3
+    ```
+
+    The critical point is x = 3. The second derivative is 2, which is positive, so it is a local
+    minimum. Now the value.
+
+    ```working
+    3 times 3 minus 6 times 3 plus 11 = 2
+    ```
+
+    A local minimum of 2, at x = 3.
+- level: 2
+  prompt: |
+    g(x) = −2x² + 8x + 1. Find the critical point, say which kind it is, and give its value.
+  answer: |
+    Differentiate.
+
+    ```working
+    g′(x) = −4x + 8
+    g″(x) = −4
+    ```
+
+    Set g′ to zero: 4x = 8.
+
+    ```working
+    8 divided by 4 = 2
+    ```
+
+    The critical point is x = 2. The second derivative is −4, less than zero, so it is a local
+    maximum.
+
+    ```working
+    -2 times 2 times 2 plus 8 times 2 plus 1 = 9
+    ```
+
+    A local maximum of 9, at x = 2.
+- level: 2
+  prompt: |
+    h(x) = x³ − 12x. Find both critical points, sort each with the second derivative, and give
+    the value of h at each.
+  answer: |
+    Differentiate.
+
+    ```working
+    h′(x) = 3x² − 12
+    h″(x) = 6x
+    ```
+
+    Set h′ to zero: 3x² = 12, so x² = 4. Both 2 times 2 and −2 times −2 are 4, so x = 2 or
+    x = −2.
+
+    At x = 2 the second derivative is 12, positive, so a local minimum.
+
+    ```working
+    2 times 2 times 2 minus 12 times 2 = -16
+    ```
+
+    At x = −2 the second derivative is −12, negative, so a local maximum.
+
+    ```working
+    -2 times -2 times -2 minus 12 times -2 = 16
+    ```
+
+    A local minimum of −16 at x = 2, and a local maximum of 16 at x = −2.
+- level: 3
+  prompt: |
+    f(x) = x⁴. Show that x = 0 is a critical point and that the second derivative test decides
+    nothing there. Then decide what kind of point it is.
+  answer: |
+    Differentiate twice.
+
+    ```working
+    f′(x) = 4x³
+    f″(x) = 12x²
+    ```
+
+    Both are zero at x = 0. So x = 0 is a critical point, and the second derivative test decides
+    nothing.
+
+    Use the sign of f′ on each side instead. Try x = −1 and x = 1.
+
+    ```working
+    4 times -1 times -1 times -1 = -4
+    4 times 1 times 1 times 1 = 4
+    ```
+
+    The slope is negative before 0 and positive after it. The function falls and then rises, so
+    x = 0 is a local minimum, with f(0) = 0.
+- level: 3
+  prompt: |
+    f(x) = x² − 4x + 5, for x from 0 to 5. Find the overall maximum and the overall minimum over
+    that interval, and where each occurs.
+  answer: |
+    Find the critical point.
+
+    ```working
+    f′(x) = 2x − 4
+    ```
+
+    It is zero at x = 2, which lies inside the interval. Now work out f there and at both ends.
+
+    ```working
+    0 times 0 minus 4 times 0 plus 5 = 5
+    2 times 2 minus 4 times 2 plus 5 = 1
+    5 times 5 minus 4 times 5 plus 5 = 10
+    ```
+
+    Compare the three values: 5 at x = 0, 1 at x = 2, and 10 at x = 5. The overall minimum is 1,
+    at the critical point x = 2. The overall maximum is 10, at the end x = 5, where the slope is not
+    zero.
+- level: 3
+  prompt: |
+    The five values are 3, 7, 8, 12 and 5. Find the number m that makes Σ (x − m)² smallest.
+    Give the smallest value of that sum, and the second derivative of the sum with respect to m.
+  answer: |
+    The sum is smallest at the mean.
+
+    ```working
+    3 plus 7 plus 8 plus 12 plus 5 = 35
+    35 divided by 5 = 7
+    ```
+
+    So m = 7. Find the misses from 7, square them and add.
+
+    ```working
+    3 minus 7 = -4
+    7 minus 7 = 0
+    8 minus 7 = 1
+    12 minus 7 = 5
+    5 minus 7 = -2
+    -4 times -4 plus 0 times 0 plus 1 times 1 plus 5 times 5 plus -2 times -2 = 46
+    ```
+
+    The smallest value of the sum is 46. The second derivative is 2n, with n = 5.
+
+    ```working
+    2 times 5 = 10
+    ```
+
+    It is 10, positive, as a minimum needs.
+- level: 4
+  prompt: |
+    A nurse measures one patient's waist three times in a row. The readings are made up for this
+    problem: 88.4, 89.0 and 88.7 cm.
+
+    Find the single value that makes the sum of squared misses smallest, and that smallest sum,
+    with its unit. Then find the sum of squared misses if 89.0 cm were reported instead.
+  answer: |
+    The least-squares value is the mean.
+
+    ```working
+    88.4 plus 89.0 plus 88.7 = 266.1
+    266.1 divided by 3 = 88.7
+    ```
+
+    The mean is 88.7 cm. The misses from it are −0.3, 0.3 and 0 cm.
+
+    ```working
+    -0.3 times -0.3 plus 0.3 times 0.3 plus 0 times 0 = 0.18
+    ```
+
+    The smallest sum is 0.18 square centimetres, cm².
+
+    Reporting 89.0 cm is a step of 0.3 cm off the mean. The sum rises by n times the square of the
+    step, with n = 3.
+
+    ```working
+    3 times 0.3 times 0.3 = 0.27
+    0.18 plus 0.27 = 0.45
+    ```
+
+    Check it directly. The misses from 89.0 are −0.6, 0 and −0.3 cm.
+
+    ```working
+    -0.6 times -0.6 plus 0 times 0 plus -0.3 times -0.3 = 0.45
+    ```
+
+    Both routes give 0.45 cm².
+- level: 5
+  prompt: |
+    A municipality has 400 metres of fencing for a rectangular walking ground in a park. One long
+    side runs along an existing wall and needs no fence. The figures are made up for this problem.
+
+    Which side lengths give the largest area, and what is that area?
+  answer: |
+    Let x be the length, in metres, of each of the two sides that meet the wall. The fence covers
+    those two sides and the side opposite the wall, so that side is 400 − 2x metres long. The area
+    A, in square metres, is one side times the other.
+
+    ```working
+    A(x) = x times (400 − 2x)
+    A(x) = 400x − 2x²
+    ```
+
+    Differentiate and set to zero.
+
+    ```working
+    A′(x) = 400 − 4x
+    A″(x) = −4
+    ```
+
+    A′ is zero when 4x = 400.
+
+    ```working
+    400 divided by 4 = 100
+    400 minus 2 times 100 = 200
+    100 times 200 = 20000
+    ```
+
+    The second derivative is −4, negative, so x = 100 is a maximum. x can run from 0 to 200, and
+    at both ends the area is zero, so this is the overall maximum. The ground should be
+    100 m out from the wall and 200 m along it, for an area of 20,000 square metres.
+- level: 6
+  prompt: |
+    Two people are weighed repeatedly on the same scale. Person A is weighed 4 times and person B
+    16 times. Each set of readings has a mean of 70.0 kg. The figures are made up for this problem.
+
+    Someone reports 70.5 kg for each person instead of the mean. By how much does each person's sum
+    of squared misses rise? Say what the difference between the two answers shows.
+  answer: |
+    The sum of squared misses is a quadratic in the reported value m. Its lowest point is at the
+    mean, and its second derivative is 2n. A step h from the lowest point raises it by half of 2n
+    times h², which is n times h². Here the step is 0.5 kg.
+
+    ```working
+    70.5 minus 70.0 = 0.5
+    4 times 0.5 times 0.5 = 1
+    16 times 0.5 times 0.5 = 4
+    ```
+
+    A's sum rises by 1 kg², and B's by 4 kg².
+
+    The same step off the mean costs four times as much for B, because B has four times as many
+    readings. B's valley is sharper. The more readings there are, the more firmly they pin the best
+    single value down.
+- level: 6
+  prompt: |
+    A paper's supplement gives, for one person's repeated body weights in kg, the sum of squared
+    misses as a function of a candidate centre m. The formula is made up for this problem.
+
+    ```working
+    S(m) = 4m² − 560m + 19,601
+    ```
+
+    How many readings were there? What was their mean? What is S at the mean, and what is the
+    sample variance?
+  answer: |
+    Compare with the general form S(m) = Σ x² − 2m Σ x + n m². The number in front of m² is n,
+    so there were 4 readings. The number in front of m is −2 Σ x, so Σ x is 280.
+
+    ```working
+    560 divided by 2 = 280
+    280 divided by 4 = 70
+    ```
+
+    The mean is 70 kg. Check it by the derivative instead.
+
+    ```working
+    S′(m) = 8m − 560
+    560 divided by 8 = 70
+    ```
+
+    The two routes agree. Now S at the mean.
+
+    ```working
+    4 times 70 times 70 minus 560 times 70 plus 19,601 = 1
+    ```
+
+    The smallest sum of squared deviations is 1 kg². Divide it by one less than the count.
+
+    ```working
+    1 divided by 3 = 0.333...
+    ```
+
+    The sample variance is about 0.333 kg².
+- level: 7
+  prompt: |
+    Here is a worked answer. Find the step that broke.
+
+    ```working
+    f(x) = −x² + 6x
+    f′(x) = −2x + 6, which is zero at x = 3
+    f(3) = −9 + 18 = 9
+    so the smallest value f ever takes is 9
+    ```
+  answer: |
+    The last step broke. The working found a critical point and never asked which kind it was.
+
+    ```working
+    f″(x) = −2
+    ```
+
+    The second derivative is negative, so x = 3 is a maximum, not a minimum. The largest value f
+    takes is 9. It has no smallest value: as x moves far from 3 in either direction, −x² takes
+    over and f falls without end.
+
+    Why the wrong answer looks reasonable: the first three lines are all correct. Setting the
+    derivative to zero is the right first move, and it produces a tidy number. The error is the
+    word "smallest", which the working assumed and never checked.
+- level: 7
+  prompt: |
+    Here is a worked answer for f(x) = 2x³ − 3x² on the interval from −1 to 2. Find the step that
+    broke.
+
+    ```working
+    f′(x) = 6x² − 6x = 6x(x − 1), zero at x = 0 and x = 1
+    f″(x) = 12x − 6
+    f″(0) = −6, so a local maximum, f(0) = 0
+    f″(1) = 6, so a local minimum, f(1) = −1
+    so over the interval, the largest value is 0 and the smallest is −1
+    ```
+  answer: |
+    The last step broke. Everything before it is right, but it compared only the critical points
+    and left out the two ends of the interval.
+
+    ```working
+    2 times -1 times -1 times -1 minus 3 times -1 times -1 = -5
+    2 times 2 times 2 times 2 minus 3 times 2 times 2 = 4
+    ```
+
+    f(−1) is −5 and f(2) is 4. Set these beside the critical values of 0 and −1. The overall
+    maximum is 4, at the end x = 2. The overall minimum is −5, at the end x = −1. Both overall
+    answers sit at ends, and neither is at a critical point.
+
+    Why the wrong answer looks reasonable: each critical point was found and sorted correctly, and
+    "local maximum" sounds like "the maximum". The second derivative test only compares a point
+    with its near neighbours. It says nothing about the ends.
+- level: 8
+  prompt: |
+    Here is a worked derivation of the value of m that makes Σ (x − m)² smallest. Find the step
+    that broke.
+
+    ```working
+    (x − m)² = x² − 2mx + m²
+    S(m) = Σ x² − 2m Σ x + m²
+    S′(m) = −2 Σ x + 2m
+    setting S′(m) = 0 gives m = Σ x
+    ```
+  answer: |
+    The second line broke. When the square is added up over all n readings, m² appears once in
+    every term, so it is added n times. The line should read as follows.
+
+    ```working
+    S(m) = Σ x² − 2m Σ x + n m²
+    ```
+
+    Then S′(m) = −2 Σ x + 2nm, and setting it to zero gives m = Σ x divided by n, the mean.
+
+    The wrong answer, m = Σ x, fails a simple check. For the readings 3, 7, 8, 12 and 5 it gives
+    m = 35. That is larger than every reading, which no centre of those readings can be.
+
+    Why it looks reasonable: the m came out of the sum correctly in the middle term. It is easy to
+    treat m² the same way without counting how many times it was added.
+- level: 8
+  prompt: |
+    Here is a worked argument about a patient. The figures are made up. Find the step that broke.
+
+    ```working
+    her body weight rose for six weeks after she changed jobs, then fell
+    at week 6 her body weight was 82 kg, and its rate of change was zero
+    a rate of change of zero means an equilibrium
+    so 82 kg is her settling point
+    ```
+  answer: |
+    The third step broke. A rate of change of zero at one instant marks a turning point. An
+    equilibrium, in the sense of `S02-R1-C08`, is different. It is a weight at which the rule that
+    gives the rate gives zero and keeps giving zero, so the weight stays.
+
+    Her weight did not stay at 82 kg. The first line says it fell afterwards. So at week 6 the
+    rate was zero only for an instant. That happens at the top of any smooth curve that turns. 82 kg is
+    the highest point of her weight over those weeks. It is not an equilibrium.
+
+    Why it looks reasonable: both an equilibrium and a maximum are found by setting a derivative to
+    zero. The words "rate of change is zero" fit both. What separates them is whether the zero
+    lasts.
+- level: 9
+  prompt: |
+    A press release says: "Weight loss rose with every dose we tested, so our top dose, 30 units,
+    is the optimal dose." The trial's table, made up for this problem, gives the average weight
+    loss at each dose.
+
+    ```table
+    dose (units)  weight loss (kg)
+    10            2.0
+    20            3.5
+    30            4.5
+    ```
+
+    Decide what to compute, compute it, and say what your answer does not establish.
+  answer: |
+    What to compute: whether the loss had levelled off by the top dose, which is what a peak inside
+    the tested doses would need. Work out the average rate of change between neighbouring doses.
+
+    ```working
+    3.5 minus 2.0 = 1.5
+    1.5 divided by 10 = 0.15
+    4.5 minus 3.5 = 1.0
+    1.0 divided by 10 = 0.1
+    ```
+
+    Between 10 and 20 units, loss rose by 0.15 kg per unit. Between 20 and 30, it rose by 0.1 kg
+    per unit. The slope is smaller but still positive at the top of the tested doses.
+
+    So 30 units gave the most loss among the doses tested. That largest value sits at an end of
+    the tested doses, where the slope has not reached zero. It is not a peak found inside them.
+
+    What this does not establish. It does not show that 30 units is the best dose. A higher dose
+    might give more loss, since the slope had not reached zero, or it might give less. Three points
+    cannot locate a peak that lies outside them. "Optimal" also needs a statement of what is being
+    made best. The table measures loss only. It says nothing about side effects, cost, or how long
+    the loss lasts.
+- level: 10
+  prompt: |
+    A colleague says: "The mean is the best single number to report for a patient's repeated
+    weighings. That is a mathematical fact."
+
+    Here are five weighings of one person, made up for this problem. The last was taken in outdoor
+    clothes: 70.2, 70.4, 70.3, 70.5 and 72.6 kg.
+
+    Decide what to compute, compute it, and say what your answer does not establish.
+  answer: |
+    What to compute: best by what measure. The mean is best when the misses are squared and added.
+    Compare the mean with the median by that measure and by the plain sizes of the misses.
+
+    ```working
+    70.2 plus 70.4 plus 70.3 plus 70.5 plus 72.6 = 354
+    354 divided by 5 = 70.8
+    ```
+
+    The mean is 70.8 kg. In order, the readings are 70.2, 70.3, 70.4, 70.5 and 72.6, so the median
+    is 70.4 kg.
+
+    Squared misses from each.
+
+    ```working
+    -0.6 times -0.6 plus -0.4 times -0.4 plus -0.5 times -0.5 plus -0.3 times -0.3 plus 1.8 times 1.8 = 4.10
+    -0.2 times -0.2 plus 0 times 0 plus -0.1 times -0.1 plus 0.1 times 0.1 plus 2.2 times 2.2 = 4.90
+    ```
+
+    By squared misses the mean wins, 4.10 kg² against 4.90. Now the sizes of the misses, not
+    squared.
+
+    ```working
+    0.6 plus 0.4 plus 0.5 plus 0.3 plus 1.8 = 3.6
+    0.2 plus 0 plus 0.1 plus 0.1 plus 2.2 = 2.6
+    ```
+
+    By plain sizes the median wins, 2.6 kg against 3.6. The mean is best only under the squared
+    measure. Squaring made the one reading in outdoor clothes count for most of the total, and it
+    pulled the mean above four of the five readings.
+
+    What this does not establish. It does not say which number is the person's true weight. Neither
+    calculation knows that the last reading was taken in clothes. Dropping it or keeping it is a
+    decision about the measurement, made before any arithmetic. It also does not say the median is
+    always better. With no far-off reading, the two sit close together.
+retrieval_items:
+- q: What does a derivative of zero at an input tell you, and what does it not?
+  a: That the input is a critical point, a candidate for a local maximum or minimum. It does not
+    say which, or whether it is either. Check the second derivative or the sign of the slope on each
+    side. Over an interval, compare with the ends as well.
+- q: Which single number makes the sum of squared deviations of a set of readings smallest, and
+    what is the second derivative of that sum?
+  a: The mean. The sum is Σ (x − m)², its derivative −2 Σ x + 2nm is zero at m = Σ x divided by n,
+    and its second derivative is 2n, which is positive.
+- q: How is a maximum or minimum different from an equilibrium, when both are found by setting a
+    derivative to zero?
+  a: A maximum or minimum is an input at which a function's slope with respect to that input is
+    zero. An equilibrium is a state at which the rate of change over time is zero and stays zero. A
+    weight curve's peak has a zero rate for an instant only.
+figures:
+- file: s02-r1-c09-cubic-critical-points.png
+  caption: "f(x) = x³ − 3x for x from −2 to 3. The slope is zero at x = −1 and at x = 1, but the highest value over the interval, 18, is at the end x = 3."
+  alt: "A smooth curve through six points: (−2, −2), (−1, 2), (0, 0), (1, −2), (2, 2) and (3, 18). It has a small peak at x = −1, a dip at x = 1, then climbs steeply to 18 at x = 3."
+  source: draw.py
+  spec:
+    kind: line
+    from_table: {block: 0, x: 0, y: [1]}
+    x_label: x
+    y_label: f(x)
+    y_range: [-5, 20]
+    relations:
+    - fit: "y = x^3 - 3*x"
+      draw: true
+      label: "f(x) = x³ − 3x"
+    labels:
+    - {text: "local maximum, 2", at: [-1, 2], offset: [-20, 10]}
+    - {text: "local minimum, −2", at: [1, -2], offset: [10, -14]}
+    - {text: "−2 at the end", at: [-2, -2], offset: [6, -14]}
+    - {text: "overall maximum, 18", at: [3, 18], offset: [-110, -4]}
+- file: s02-r1-c09-least-squares-valley.png
+  caption: "The five made-up weighings. For each candidate centre m, S(m) is the sum of squared misses. It is lowest, 0.40 square kilograms, at the mean of 70.6 kg, and rises by 5 times the square of the step on either side."
+  alt: "Five points on a U-shaped curve: 1.20 at 70.2 kg, 0.60 at 70.4, 0.40 at 70.6, 0.60 at 70.8 and 1.20 at 71.0."
+  source: draw.py
+  spec:
+    kind: line
+    from_table: {block: 1, x: 0, y: [1]}
+    x_label: candidate centre m (kg)
+    y_label: S(m), square kilograms
+    relations:
+    - fit: "y = 0.40 + 5*(x - 70.6)^2"
+      draw: true
+      label: "S(m) = 0.40 + 5 (m − 70.6)²"
+    labels:
+    - {text: "mean, 70.6 kg", at: [70.6, 0.40], offset: [-30, 10]}
+- file: s02-r1-c09-level-not-turning.png
+  caption: "The plain cube g(x) = x³ and its slope g′(x) = 3x². The slope is zero at x = 0 and positive on both sides of it, so g rises before 0 and after it. Level ground, and neither a top nor a bottom."
+  alt: "Two curves for x from −2 to 2. The cube rises from −8 through 0 to 8, flattening for an instant at x = 0. The slope curve is a U that touches zero at x = 0 and reaches 12 at each end, never going below zero."
+  source: draw.py
+  spec:
+    kind: scatter
+    x: [-2, -1, 0, 1, 2]
+    series:
+    - name: "g(x) = x³"
+      y: [-8, -1, 0, 1, 8]
+    - name: "slope g′(x) = 3x²"
+      y: [12, 3, 0, 3, 12]
+    x_label: x
+    y_label: value
+    curves:
+    - {y: "y = x^3", x0: -2, x1: 2, series: "g(x) = x³"}
+    - {y: "y = 3*x^2", x0: -2, x1: 2, series: "slope g′(x) = 3x²"}
+    refs:
+    - {y: 0, label: "zero"}
+    derived:
+    - {value: "8", from: "2^3"}
+    - {value: "12", from: "3*2^2"}
+- file: s02-r1-c09-valley-sharpness.png
+  caption: "How far S climbs above its lowest value as the centre steps away from the best one. With the five weighings S″ is 10, so a step of 0.4 kg costs 5 times 0.16, which is 0.80 kg². With 20 readings S″ would be 40, and the same step would cost 20 times 0.16, which is 3.2 kg²."
+  alt: "Two U-shaped curves through zero at a step of 0. The shallow one, for five readings, reaches 0.20 at a step of 0.2 kg and 0.80 at 0.4 kg. The steep one, for 20 readings, reaches 0.8 at 0.2 kg and 3.2 at 0.4 kg."
+  source: draw.py
+  spec:
+    kind: scatter
+    x: [-0.4, -0.2, 0, 0.2, 0.4]
+    series:
+    - name: "5 readings, S″ = 10"
+      y: [0.80, 0.20, 0, 0.20, 0.80]
+    - name: "20 readings, S″ = 40"
+      y: [3.2, 0.8, 0, 0.8, 3.2]
+    x_label: step away from the best centre (kg)
+    y_label: rise in S above its lowest (kg²)
+    curves:
+    - {y: "y = 5*x^2", x0: -0.4, x1: 0.4, series: "5 readings, S″ = 10"}
+    - {y: "y = 20*x^2", x0: -0.4, x1: 0.4, series: "20 readings, S″ = 40"}
+    derived:
+    - {value: "0.2", from: "70.8 - 70.6"}
+    - {value: "0.80", from: "1.20 - 0.40"}
+    - {value: "0.20", from: "0.60 - 0.40"}
+    - {value: "3.2", from: "20*0.16"}
+    - {value: "0.8", from: "20*0.2*0.2"}
+provenance:
+  map_version_id: fc19c8bc-a216-4131-99fb-ebe3f19cec4a
+  outcome_refs:
+  - S02-R1-O1
+  - S02-R2-P04
+  - S02-R2-R1
+  bridge_ref: [S02-R2-P04, S02-R2-P01]
+review:
+  stability: long
+  trigger: '2031-09-24'
+  last_reviewed: '2026-09-24'
+status: drafted

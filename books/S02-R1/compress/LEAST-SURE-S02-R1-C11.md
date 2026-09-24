@@ -1,0 +1,1 @@
+Least sure: deleting the column-by-column working of Bw (65 lots of the slope column plus 1 lot of the intercept column). Problem 3 asks for Ax as a weighted sum of columns, and now only the one-line definition sentence teaches that reading, with no worked example. ICMR-NIN is also never spelled out now.

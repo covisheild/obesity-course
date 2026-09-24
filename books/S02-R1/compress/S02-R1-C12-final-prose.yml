@@ -1,0 +1,307 @@
+definition.text: 'Read each column as a vector, with one entry for each row.
+
+
+  A column y is a weighted sum of the columns a1, a2, ..., ak when there are fixed numbers w1,
+
+  w2, ..., wk, called the weights, that make the following true on every row. The entry of y
+
+  equals w1 times the entry of a1, plus w2 times the entry of a2, and so on up to wk times the
+
+  entry of ak. The same weights must hold on every row.
+
+
+  A column of 1s counts as a column.
+
+
+  Such a column is redundant: once the other columns are known, it says nothing about any row
+
+  that they did not already say.
+
+
+  The test for it treats the weights as unknowns. Each row gives one equation in them. Find the
+
+  weights from as many rows as there are weights. With two weights, that is two equations in
+
+  two unknowns, solved as in `B0-R0-C17`. With more, look for rows in which every column but
+
+  one is zero, because each such row gives one weight on its own.
+
+
+  Then put the weights into every other row. If every row holds, y is a weighted sum of those
+
+  columns. If the equations have no solution, or a single leftover row fails, it is not. If the
+
+  rows you picked repeat each other, so that their equations have infinitely many solutions,
+
+  pick another row.
+
+
+  When a table holds a column beside the columns it is a weighted sum of, the table no longer
+
+  fixes the weights on a weighted sum of all of them together. Weight can be moved from that
+
+  column onto its parts, in proportion, in infinitely many ways, and every row''s total stays the
+
+  same.
+
+
+  A column that is nearly, but not exactly, a weighted sum of others is the problem called
+
+  collinearity.
+
+  '
+simplified_explanation: 'Picture an order sheet at a tiffin stall. Each row is one order. One column counts the idlis,
+
+  one counts the dosas, and the last column is the amount paid.
+
+
+  Suppose an idli costs 20 rupees and a dosa costs 50. Then on every row the amount paid is 20
+
+  times the idlis plus 50 times the dosas. The prices are the weights. The amount column adds
+
+  nothing: cover it with your hand and you can still write it back in.
+
+  '
+illustration.body: 'Here is a question that sounds reasonable and has no answer. "Among foods with the same
+
+  protein, fat and carbohydrate, what goes with an extra 100 kilocalories?" Try to answer it
+
+  from this table.
+
+
+  ```table
+
+  item  protein (g)  fat (g)  carbohydrate (g)  energy (kcal)
+
+  1     0            100      0                 900
+
+  2     0            0        100               400
+
+  3     10           20       60                460
+
+  4     25           5        50                345
+
+  ```
+
+
+  Look for two items that match in protein, fat and carbohydrate and differ in energy. There are none. The test shows why.
+
+
+  Write the energy column as unknown weights times the other three. Call the weight on protein p, on fat f and on carbohydrate c. On
+
+  every row, energy must equal p times protein, plus f times fat, plus c times carbohydrate.
+
+
+  Row 1 has no protein and no carbohydrate, so it holds f alone: 100 times f is 900.
+
+
+  ```working
+
+  900 divided by 100 = 9
+
+  ```
+
+
+  So f is 9. Row 2 holds c alone: 100 times c is 400.
+
+
+  ```working
+
+  400 divided by 100 = 4
+
+  ```
+
+
+  So c is 4. Row 3 now has one unknown left, p. Put in the two weights you have.
+
+
+  ```working
+
+  20 times 9 plus 60 times 4 = 420
+
+  460 minus 420 = 40
+
+  40 divided by 10 = 4
+
+  ```
+
+
+  So p is 4. Three rows went into finding three weights. Row 4 is the check.
+
+
+  ```working
+
+  4 times 25 plus 9 times 5 plus 4 times 50 = 345
+
+  ```
+
+
+  The table says 345. The weights (4, 9, 4) hold on every row, so the energy column is a weighted sum of the other three.
+
+
+  Now go back to the question. Energy is 4 times protein plus 9 times fat plus 4 times
+
+  carbohydrate. For it to rise while the grams stay fixed, one of those three parts would have
+
+  to move. None can. The question asks about a row this table cannot contain.
+
+
+  Here is what that does to any sum built from all four columns. Take a made-up score for each
+
+  item that equals its energy: 1 times energy, and no weight on the grams. Row 3 gives this.
+
+
+  ```working
+
+  1 times 460 = 460
+
+  ```
+
+
+  Now put all the weight on the grams instead, and none on energy.
+
+
+  ```working
+
+  4 times 10 plus 9 times 20 plus 4 times 60 = 460
+
+  ```
+
+
+  Now split it half and half: 2, 4.5 and 2 on the grams, and 0.5 on energy.
+
+
+  ```working
+
+  2 times 10 plus 4.5 times 20 plus 2 times 60 plus 0.5 times 460 = 460
+
+  ```
+
+
+  All three give 460 on row 3, and they agree on every other row too. Handed only the table and the scores, nobody can say whether the
+
+  score "comes from" energy or from the grams.
+
+
+  Now the other way round: a column that is fixed by two others and still fails the test.
+
+
+  Three United Nations bodies wrote the report *Human energy requirements* together in 2004. The report defines the physical activity
+
+  level, PAL, as a person''s total energy expenditure for the day, TEE, divided by their basal metabolic rate, BMR. So, in the report''s
+
+  words, "BMR times PAL is equal to TEE".
+
+
+  Take three made-up adults.
+
+
+  ```table
+
+  adult  BMR (MJ/day)  PAL  TEE (MJ/day)
+
+  1      6.0           1.5  9.0
+
+  2      6.0           2.0  12.0
+
+  3      8.0           1.5  12.0
+
+  ```
+
+
+  Test whether TEE is a weighted sum of BMR and PAL. Call the weights u and v. Rows 1 and 2
+
+  give two equations.
+
+
+  ```working
+
+  row 1: 6.0 times u plus 1.5 times v = 9.0
+
+  row 2: 6.0 times u plus 2.0 times v = 12.0
+
+  ```
+
+
+  Subtract row 1 from row 2, the elimination move of `B0-R0-C17`. The u terms cancel.
+
+
+  So 0.5 times v is 3.0, and v is 6. Put v back into row 1.
+
+
+  So 6.0 times u is 0, and u is 0. Now check row 3, the row you did not use.
+
+
+  ```working
+
+  0 times 8.0 plus 6 times 1.5 = 9
+
+  ```
+
+
+  The table says 12.0, not 9. Row 3 fails, so TEE is not a weighted sum of BMR and PAL.
+
+
+  Yet every TEE in the table is fixed by the other two columns.
+
+
+  ```working
+
+  6.0 times 1.5 = 9
+
+  6.0 times 2.0 = 12
+
+  8.0 times 1.5 = 12
+
+  ```
+
+
+  The test finds weighted sums and only weighted sums. A column made by multiplying two others
+
+  passes straight through it, and "not a weighted sum" must never be read as "carries
+
+  something new".
+
+  '
+illustration.analogy_breaks_when: 'A real label also rounds its figures. The check then holds only to within the rounding. A row
+
+  that misses by a fraction of a kilocalorie is not a sign of a separate column.
+
+
+  Add a column of 1s and there are three weights for three rows. The weights would then fit all
+
+  three rows and leave nothing to check.
+
+  '
+must_know[0].point: 'Find the weights from some rows, then check every other row. One row that fails settles it:
+
+  the column is not a weighted sum.
+
+  '
+must_know[1].point: 'A table that carries energy beside protein, fat and carbohydrate, with energy worked out from
+
+  the Atwater factors, carries one column too many. Refuse the question, or drop one column and
+
+  say which one you dropped.
+
+  '
+must_know[2].point: 'A column that looks like no other column can still be redundant. Comparing columns two at a
+
+  time will never find it.
+
+  '
+must_know[3].point: 'The check needs rows to spare. With as many rows as weights, almost any column fits exactly.
+
+  '
+must_know[4].point: 'When a column is nearly but not exactly a weighted sum, this test cannot say whether that
+
+  matters. Say so, and leave it to the next rung''s collinearity.
+
+  '
+must_know[5].point: 'When you hear that a model "found no effect of fat once calories were accounted for", ask how
+
+  the calories were worked out. If they came from the grams, the model had no way to find an
+
+  effect of fat.
+
+  '

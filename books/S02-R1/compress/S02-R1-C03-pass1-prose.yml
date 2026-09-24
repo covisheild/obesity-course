@@ -1,0 +1,150 @@
+"definition.text": |
+  Four rules give the derivative of any sum of constant multiples of whole-number powers of
+  the input, without the shrinking-interval calculation.
+
+  The constant rule: the derivative of a constant is zero.
+
+  The power rule: for a positive whole number n, the derivative of x^(n) is n times x^(n minus 1).
+
+  The derivative of a straight line is its slope.
+
+  The derivative of a product of two functions is not the product of their derivatives. The power rule does
+  not apply to a constant raised to a power that varies, such as 2^(t).
+
+"simplified_explanation": |
+  Four rules do the same job in a line, for any rule made of powers of the input.
+
+  d/dx, said "dee by dee x", means "the derivative with respect to x of what
+  follows". The input can have any letter: d/dt for
+  time, d/dW for weight.
+
+  **The constant rule.** A constant has derivative zero.
+
+  ```working
+      d/dx (7) = 0
+  ```
+
+  **The power rule.** For x raised to a whole number n, bring the n down in front and take one
+  off the power.
+
+  ```working
+      d/dx (x^(n)) = n times x^(n minus 1)
+      d/dx (x^3) = 3 x^2
+      d/dx (x^2) = 2x
+      d/dx (x) = 1 times x^0 = 1
+  ```
+
+  So x on its own has derivative 1.
+
+  **The constant multiple rule.** A number multiplying a function stays where it is. Take the
+  derivative of the function, then multiply.
+
+  ```working
+      d/dx (5 x^2) = 5 times 2x = 10x
+  ```
+
+  **The sum and difference rules.** Take each term's derivative on its own, then add or
+  subtract.
+
+  ```working
+      d/dx (x^3 + 5 x^2 minus 4) = 3 x^2 + 10x minus 0 = 3 x^2 + 10x
+  ```
+
+  Put the rules together on a straight line, y = a + bx. The constant a goes to zero. So the derivative is b, the slope, at every x.
+
+  **The second derivative.** The result is the second derivative, the rate of change of the rate. It is written f″(x),
+  said "f double prime of x", or d^2y/dx^2, said "dee two y by dee x squared".
+
+  Its sign says whether the rate is rising or falling. When a quantity is
+  falling, its rate is below zero. A positive second derivative then means the rate is rising
+  towards zero. The quantity is still falling, only more slowly.
+
+  Two rules are not in this book. The derivative of a product is not the product of the
+  derivatives: it needs the product rule. Until then, multiply a product out
+  before you differentiate.
+
+"illustration.body": |
+  Hall and Guo (2017) describe expenditure rising with body
+  weight "with a slope of about 20–30 kcal/d per kg". Take the low end and write it as a rule.
+  W is body weight in kilograms, and EE is energy expenditure in kilocalories a day.
+
+  ```working
+      EE(W) = a + 20W
+  ```
+
+  Here a is where the line meets the side axis. The quoted sentence does not give it. Differentiate term by term with respect to W.
+
+  ```working
+      d/dW (a) = 0, by the constant rule
+      d/dW (20W) = 20 times 1 = 20, by the constant multiple and power rules
+      dEE/dW = 0 + 20 = 20
+  ```
+
+  Expenditure changes by 20 kcal a day for each kilogram of weight, at the low end of their
+  range. You found the rate without knowing a, because a constant
+  contributes nothing to a rate.
+
+  Kilocalories a day divided by kilograms is kcal a day per kg.
+  This rate is not against time.
+
+  Here is a made-up curve with that shape, for 100 days of weight loss.
+
+  ```working
+      W(t) = 90 minus 0.2t + 0.001 t^2
+  ```
+
+  W is in kilograms and t is in days. A note on this curve says this.
+
+  > The second derivative is positive, so her weight is going back up.
+
+  Differentiate once, term by term.
+
+  ```working
+      W′(t) = 0 minus 0.2 + 0.001 times 2t
+      W′(t) = -0.2 + 0.002t
+  ```
+
+  Differentiate again.
+
+  ```working
+      W″(t) = 0 + 0.002 = 0.002
+  ```
+
+  ```table
+  | day t | W(t) (kg) | W′(t) (kg a day) |
+  | 0 | 90 | -0.2 |
+  | 20 | 86.4 | -0.16 |
+  | 40 | 83.6 | -0.12 |
+  | 60 | 81.6 | -0.08 |
+  | 80 | 80.4 | -0.04 |
+  | 100 | 80 | 0 |
+  ```
+
+  The first derivative is below zero on every row until day 100. Weight is falling the whole
+  time. The second derivative is positive, 0.002 kg a day per day. That says the rate is
+  rising: from minus 0.2 towards zero. The fall is slowing.
+
+"illustration.analogy_breaks_when": |
+  The straight line EE = a + 20W holds only over the range of weights the slope was measured
+  on.
+
+  The curve W(t) is made up to fall and slow for 100 days, and holds nowhere else. Run it past
+  day 100 and it turns.
+
+"must_know[0].point": |
+  The derivative of a straight line is its slope, and the constant drops out.
+
+"must_know[1].point": |
+  A positive second derivative does not mean the quantity is rising. When weight is falling, a positive second derivative means the fall is slowing.
+
+"must_know[2].point": |
+  Slowing weight loss is what passive compensation predicts, even with no change in the treatment.
+
+"must_know[3].point": |
+  The derivative of a product is not the product of the derivatives.
+
+"must_know[4].point": |
+  These rules differentiate a formula exactly. They say nothing about whether the formula fits the body.
+
+"must_know[5].point": |
+  Check a derivative you worked out by rule with the shrinking-interval method at one point.

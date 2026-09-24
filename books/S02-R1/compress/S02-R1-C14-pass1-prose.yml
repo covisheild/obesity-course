@@ -1,0 +1,231 @@
+definition.text: 'Let X be a discrete random variable, as in `S02-R1-C13`, taking the values x1, x2, ..., xk.
+
+  Its expected value, or expectation, is written E[X]. It is each value times its probability,
+
+  all added up: x1 times P(X = x1), plus x2 times P(X = x2), and so on up to xk times
+
+  P(X = xk). In
+
+  the sigma notation of `S02-R1-C01`, E[X] = Σ x P(X = x), the sum running over every value x
+
+  that X can take. It carries the unit of X.
+
+
+  E[X] is a probability-weighted average. It is the ordinary mean of `B0-R0-C28` only when all
+
+  the values are equally likely. It need not be a value X can take.
+
+
+  It is the long-run average. It is a property of the probability distribution, a
+
+  parameter in the sense of `B0-R0-C29`. The mean of a sample of observed values is a statistic.
+
+  It estimates E[X] and differs from it from one sample to the next.
+
+
+  Two rules follow from the definition. For fixed numbers a and b, E[aX + b] = aE[X] + b. For
+
+  any two random variables X and Y, E[X + Y] = E[X] + E[Y], whether or not X and Y are
+
+  independent. Together they give E[aX + bY] = aE[X] + bE[Y].
+
+
+  Neither rule reaches products, ratios or squares. E[XY] is not in general E[X] times E[Y], and
+
+  E[X/Y] is not in general E[X] divided by E[Y]. For those, go back to the distribution.
+
+
+  In papers on energy balance, E with a label, as in EI, EE or ES, is energy.
+
+  E followed by square brackets around a random variable, E[X], is expectation. Some books write
+
+  E(X) with round brackets.
+
+  '
+simplified_explanation: 'Take a chance process that gives a number, and imagine running it a very large number of
+
+  times. The average of all those numbers is the expected value.
+
+
+  Multiply each value by its chance and add.
+
+  '
+illustration.body: 'Suppose a person''s energy surplus on a day, intake minus expenditure
+
+  as in `S01-R1-C05`, is a random variable X, in kilocalories a day. The distribution below is
+
+  made up.
+
+
+  ```table
+
+  surplus x (kcal/day)  P(X = x)
+
+  -300                  0.2
+
+  0                     0.3
+
+  200                   0.4
+
+  500                   0.1
+
+  ```
+
+
+  The move you will reach for first is to average the four values, as if each were equally
+
+  likely.
+
+
+  ```working
+
+  -300 plus 0 plus 200 plus 500 = 400
+
+  400 divided by 4 = 100
+
+  ```
+
+
+  That gives 100, and it is wrong. Weight each value by its probability instead.
+
+
+  ```working
+
+  -300 times 0.2 = -60
+
+  0 times 0.3 = 0
+
+  200 times 0.4 = 80
+
+  500 times 0.1 = 50
+
+  -60 plus 0 plus 80 plus 50 = 70
+
+  ```
+
+
+  E[X] is 70 kcal a day. You will never see a day with a surplus of 70 in this model.
+
+
+  Now a week. Let W be the surplus over seven days: X1 for day 1, plus X2 for day 2, and so on
+
+  to X7. If each day has this same distribution, each has expected value 70. The sum rule gives
+
+  the week.
+
+
+  ```working
+
+  7 times 70 = 490
+
+  ```
+
+
+  E[W] is 490 kcal. So 490 is the long-run average of weeks. It is not what any one week will show.
+
+
+  Now a fixed shift. Say an app adds a fixed 120 kcal to every day''s logged intake, a
+
+  systematic error as in `B0-R0-C30`. The logged surplus is X + 120. By the first rule its
+
+  expected value is E[X] + 120.
+
+
+  ```working
+
+  70 plus 120 = 190
+
+  7 times 190 = 1330
+
+  ```
+
+
+  Over a week the log expects 1,330 kcal against a true 490. Logging more weeks will not close
+
+  that gap.
+
+
+  Go back to the made-up village of
+
+  `S02-R1-C13`: ten households of 2, 3, 4, 4, 5, 5, 5, 6, 7 and 9 people. Pick one at random,
+
+  and let X be its size. Each household has probability 0.1, so E[X] is 0.1 times the sum of
+
+  the sizes.
+
+
+  ```working
+
+  2 plus 3 plus 4 plus 4 plus 5 plus 5 plus 5 plus 6 plus 7 plus 9 = 50
+
+  0.1 times 50 = 5.0
+
+  ```
+
+
+  The survey''s four households held 5, 9, 4 and 5 people.
+
+
+  ```working
+
+  5 plus 9 plus 4 plus 5 = 23
+
+  23 divided by 4 = 5.75
+
+  ```
+
+
+  The sample mean is 5.75. It is a statistic that estimates E[X], and it misses by 0.75. A
+
+  bigger random sample would tend to land closer.
+
+  '
+illustration.analogy_breaks_when: 'The surplus distribution is made up, and it is the same on every day only because this model
+
+  says so. The sum rule
+
+  still holds with seven different expectations.
+
+
+  The village is made up.
+
+  '
+must_know[0].point: 'The expected value is not what any one person or day will show. Never tell a patient "you can expect to lose 4 kg"
+
+  as if it were their outcome. Say what happened on average, and how widely people differed.
+
+  '
+must_know[1].point: 'Averaging the possible values without their probabilities gives the expected value only when
+
+  every value is equally likely. Weight each value by
+
+  its probability, every time.
+
+  '
+must_know[2].point: 'The expected value of a sum is the sum of the expected values, with no condition of
+
+  independence. Do not refuse the sum because the days
+
+  are dependent.
+
+  '
+must_know[3].point: 'The rules stop at sums and fixed multiples. The expected BMI is not the expected weight
+
+  divided by the square of the expected height. For a product, a ratio or a square, go back to
+
+  the distribution and work value by value.
+
+  '
+must_know[4].point: 'A fixed error of b in every reading moves the expected value by exactly b. Find the size
+
+  of the shift against a known reference, as in `B0-R0-C30`, and subtract it.
+
+  '
+must_know[5].point: 'E[X] belongs to the model. Before you quote a paper''s "expected value", ask
+
+  whether it was computed from a stated distribution or averaged from data.
+
+  '
+must_know[6].point: 'In an energy-balance paper, check which E you are reading.
+
+  '

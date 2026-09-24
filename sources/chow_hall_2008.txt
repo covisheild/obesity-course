@@ -1,0 +1,119 @@
+CHOW AND HALL 2008, PLOS COMPUTATIONAL BIOLOGY — VERBATIM SOURCE PACK (EXCERPTS)
+============================================================
+
+Transcription rule for this file: every line beneath a block heading that is not
+prefixed with [NOTE] or [MATHML] and is not inside a NOT OBTAINED record is an exact, unaltered
+slice of the text returned by the TinyFish fetch_content tool for the URL in that heading, cut
+programmatically from the saved fetch; nothing has been paraphrased, smoothed or merged. Prose
+passages are set in double quotation marks (the marks are this file's, not the source's). Tables
+are set between [TABLE] and [END TABLE] lines and keep the line breaks the extraction produced.
+Where part of a paragraph or table is left out, the omission is marked [...] in place. Lines
+beginning [NOTE] are this file's own annotation and are NOT source text.
+
+CITATION: Chow CC, Hall KD. The dynamics of human body weight change. PLoS Comput Biol
+2008;4(3):e1000045.
+PMID: 18369435   PMCID: PMC2266991   DOI: 10.1371/journal.pcbi.1000045   (confirmed via PubMed,
+2026-09-24)
+ARTICLE PAGE: https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1000045
+TEXT FETCHED FROM: the article page above (TinyFish fetch_content, markdown), 2026-09-24. This is
+the publisher's typeset article, not an author manuscript.
+LICENCE AS STATED ON THE ARTICLE PAGE (block 1): "This is an open-access article distributed under
+the terms of the Creative Commons Public Domain declaration which stipulates that, once placed in
+the public domain, this work may be freely reproduced, distributed, transmitted, modified, built
+upon, or otherwise used by anyone for any lawful purpose." The PMC XML adds the link
+https://creativecommons.org/publicdomain/zero/1.0/ (CC0).
+
+EQUATIONS: NONE IS HELD. Every numbered equation in this paper is an image. The article page
+drops them (the text reads "expressed as(1)where ..."); the PLoS JATS XML
+(journals.plos.org/ploscompbiol/article/file?id=10.1371/journal.pcbi.1000045&type=manuscript) and
+the PMC JATS XML (pmc-oa-opendata.s3.amazonaws.com/PMC2266991.1/PMC2266991.1.xml) both carry each
+<disp-formula> as a <graphic> with no MathML or TeX. So no equation was transcribed: see NOT
+OBTAINED at the end. The prose that states each equation in words and defines its symbols is held.
+Subscripts in the prose are flattened ("ρM" is rho with subscript M).
+
+WHAT THIS FILE HOLDS: excerpts, not the whole article. The licence statement; the abstract; from
+Results, the first three paragraphs of "General Model of Macronutrient and Energy Flux Balance"
+(Equations 1-5 in words), the constant-p paragraph of "One-dimensional models" (Equations 22-23),
+and three paragraphs of "Existence and Stability of Body Weight Fixed Points" (fixed points,
+nullclines, stability). Omitted: the author summary, introduction, the rest of Results
+(reduced models, implications, numerical simulations), Discussion, Methods, figures, references.
+Absence of a passage from this file is not absence from the article.
+
+===============================================================================
+1. Licence statement (article page)
+https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1000045
+===============================================================================
+
+"This is an open-access article distributed under the terms of the Creative Commons Public Domain declaration which stipulates that, once placed in the public domain, this work may be freely reproduced, distributed, transmitted, modified, built upon, or otherwise used by anyone for any lawful purpose."
+
+
+===============================================================================
+2. Abstract
+https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1000045
+===============================================================================
+
+"An imbalance between energy intake and energy expenditure will lead to a change in body weight (mass) and body composition (fat and lean masses). A quantitative understanding of the processes involved, which currently remains lacking, will be useful in determining the etiology and treatment of obesity and other conditions resulting from prolonged energy imbalance. Here, we show that a mathematical model of the macronutrient flux balances can capture the long-term dynamics of human weight change; all previous models are special cases of this model. We show that the generic dynamic behavior of body composition for a clamped diet can be divided into two classes. In the first class, the body composition and mass are determined uniquely. In the second class, the body composition can exist at an infinite number of possible states. Surprisingly, perturbations of dietary energy intake or energy expenditure can give identical responses in both model classes, and existing data are insufficient to distinguish between these two possibilities. Nevertheless, this distinction has important implications for the efficacy of clinical interventions that alter body composition and mass."
+
+
+===============================================================================
+3. Results, General Model of Macronutrient and Energy Flux Balance: Equations 1 and 2 in words
+https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1000045
+===============================================================================
+
+[NOTE] "(1)" and "(2)" below mark where the typeset Equations 1 and 2 stand. The equations are
+[NOTE] images on the article page and in both XML versions fetched (PLoS and PMC), so they are NOT
+[NOTE] in this file; see the NOT OBTAINED record at the end. The prose defining their symbols is.
+
+"The human body obeys the law of energy conservation [20], which can be expressed as(1)where ΔU is the change in stored energy in the body, ΔQ is a change in energy input or intake, and ΔW is a change in energy output or expenditure. The intake is provided by the energy content of the food consumed. Combustion of dietary macronutrients yields chemical energy and Hess's law states that the energy released is the same regardless of whether the process takes place inside a bomb calorimeter or via the complex process of oxidative phosphorylation in the mitochondria. Thus, the energy released from oxidation of food in the body can be precisely measured in the laboratory. However, there is an important caveat. Not all macronutrients in food are completely absorbed by the body. Furthermore, the dietary protein that is absorbed does not undergo complete combustion in the body, but rather produces urea and ammonia. In accounting for these effects, we refer to the metabolizable energy content of dietary carbohydrate, fat, and protein, which is slightly less than the values obtained by bomb calorimetry. The energy expenditure rate includes the work to maintain basic metabolic function (resting metabolic rate), to digest, absorb and transport the nutrients in food (thermic effect of feeding), to synthesize or break down tissue, and to perform physical activity, together with the heat generated. The energy is stored in the form of fat as well as in lean body tissue such as glycogen and protein. The body need not be in equilibrium for Equation 1 to hold. While we are primarily concerned with adult weight change, Equation 1 is also valid for childhood growth."
+
+"In order to express a change of stored energy ΔU in terms of body mass M we must determine the energy content per unit body mass change, i.e. the energy density ρM. We can then set ΔU = Δ(ρMM). To model the dynamics of body mass change, we divide Equation 1 by some interval of time and take the limit of infinitesimal change to obtain a one dimensional energy flux balance equation:(2)where I = dQ/dt is the rate of metabolizable energy intake and E = dW/dt is the rate of energy expenditure. It is important to note that ρM is the energy density of body mass change, which need not be a constant but could be a function of body composition and time. Thus, in order to use Equation 2, the dynamics of ρM must also be established."
+
+
+===============================================================================
+4. Results, General Model: the macronutrient flux balances (Equations 3-5 in words)
+https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1000045
+===============================================================================
+
+[NOTE] "(3)(4)(5)" marks three typeset equations (images, not held). Subscripts are flattened:
+[NOTE] "ρF" is rho with subscript F, "IF,IC,IP" are I_F, I_C, I_P.
+
+"When the body changes mass, that change will be composed of water, protein, carbohydrates (in the form of glycogen), fat, bone, and trace amounts of micronutrients, all having their own energy densities. Hence, a means of determining the dynamics of ρM is to track the dynamics of the components. The extracellular water and bone mineral mass have no metabolizable energy content and change little when body mass changes in adults under normal conditions [21]. The change in intracellular water can be specified by changes in the tissue protein and glycogen. Thus the main components contributing to the dynamics of ρM are the macronutrients - protein, carbohydrates, and fat, where we distinguish body fat (e.g. free fatty acids and triglycerides) from adipose tissue, which includes water and protein in addition to triglycerides. We then represent Equation 2 in terms of macronutrient flux balance equations for body fat F, glycogen G, and protein P:(3)(4)(5)where ρF = 39.5 MJ/kg, ρG = 17.6 MJ/kg, ρP = 19.7 MJ/kg are the energy densities [3], IF,IC,IP are the intake rates, and fF, fC, 1−fF−fC are the fractions of the energy expenditure rate obtained from the combustion of fat, carbohydrates (glycogen) and protein respectively. The fractions and energy expenditure rate are functions of body composition and intake rates. They can be estimated from indirect calorimetry, which measures the oxygen consumed and carbon dioxide produced by a subject [22]. The intake rates are determined by the macronutrient composition of the consumed food, and the efficiency of the conversion of the food into a utilizable form. Transfer between compartments such as de novo lipogenesis where carbohydrates are converted to fat or gluconeogenesis where amino acids are converted into carbohydrates can be accounted for in the forms of fF and fC. The sum of Equations 3, 4, and 5 recovers the energy flux balance Equation 2, where the body mass M is the sum of the macronutrients F, G, P, with the associated intracellular water, and the inert mass that does not change such as the extracellular water, bones, and minerals, and ρM = (ρFF+ρGG+ρPP)/M."
+
+
+===============================================================================
+5. Results, One-dimensional models: constant p, and the linearised equation
+https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1000045
+===============================================================================
+
+[NOTE] "(22)" and "(23)" mark typeset equations (images, not held). The text reads "and ." where an
+[NOTE] inline formula (an image) was dropped by the page; nothing is missing from this copy that the page gives as text.
+
+"As an example, assume p to be a constant, which was used in [6], [12]–[18]. This implies that the phase orbits are a family of straight lines of the form F = βL+C≡ φ(L) where β = ρL(1−p)/(ρFp) and C is a constant that is specified by the initial body composition. This results in(22)Linearizing Equation 22 around a mass M0 gives(23)where ρM = ρFρL/(ρL+(ρF−ρL)p), μ = I−E(F(M0),L(M0)), and . This is the form used in [18]."
+
+
+===============================================================================
+6. Results, Existence and Stability of Body Weight Fixed Points
+https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1000045
+===============================================================================
+
+[NOTE] Fixed points defined as where the time derivatives are zero; equilibrium as the crossing of the
+[NOTE] nullclines; stability. "(26)(27)" mark typeset equations (images, not held).
+
+"The various flux balance models can be analyzed using the methods of dynamical systems theory, which aims to understand dynamics in terms of the geometric structure of possible trajectories (time courses of the body components). If the models are smooth and continuous then the global dynamics can be inferred from the local dynamics of the model near fixed points (i.e. where the time derivatives of the variables are zero). To simplify the analysis, we consider the intake rates to be clamped to constant values or set to predetermined functions of time. We do not consider the control and variation of food intake rate that may arise due to feedback from the body composition or from exogenous influences. We focus only on what happens to the food once it is ingested, which is a problem independent of the control of intake. We also assume that the averaged energy expenditure rate does not depend on time explicitly. Hence, we do not account for the effects of development, aging or gradual changes in lifestyle, which could lead to an explicit slow time dependence of energy expenditure rate. Thus, our ensuing analysis is mainly applicable to understanding the slow dynamics of body mass and composition for clamped food intake and physical activity over a time course of months to a few years."
+
+"Physical viability constrains L and F to be positive and finite. For differentiable f and E, the possible trajectories for fixed intake rates are completely specified by the dynamics near fixed points of the system. Geometrically, the fixed points are given by the intersections of the nullclines in the L–F plane, which are given by the solutions of IF−fE = 0 and IL = (1−f)E = 0. Example nullclines and phase plane portraits of the macronutrient model are shown in Figure 1. If the nullclines intersect once then there will be a single fixed point and if it is stable then the steady state body composition and mass are uniquely determined. Multiple intersections can yield multiple stable fixed points implying that body composition is not unique [4]. If the nullclines are collinear then there can be an attracting one dimensional invariant manifold (continuous curve of fixed points) in the L–F plane. In this case, there are an infinite number of possible body compositions for a fixed diet. As we will show, the energy partition model implicitly assumes an invariant manifold. If a single fixed point exists but is unstable then a stable limit cycle may exist around it."
+
+"The fixed point conditions of Equations 8 and 9 can be expressed in terms of the solutions of(26)(27)where I = IF+IL, and we have suppressed the functional dependence on intake rates. These fixed point conditions correspond to a state of flux balance of the lean and fat components. Equation 26 indicates a state of energy balance while Equation 27 indicates that the fraction of fat utilized must equal the fraction of fat in the diet. Stability of a fixed point is determined by the dynamics of small perturbations of body composition away from the fixed point. If the perturbed body composition returns to the original fixed point then the fixed point is deemed stable. We give the stability conditions in Methods."
+
+
+===============================================================================
+NOT OBTAINED: Equations 1 and 2 (and every other numbered equation)
+===============================================================================
+
+[NOTE] The typeset equations exist only as images. Not transcribed from an image, because the
+[NOTE] quote check cannot see an image and a model reading one is a model between page and file.
+[NOTE] Equation 1 image: https://journals.plos.org/ploscompbiol/article/file?type=thumbnail&id=10.1371/journal.pcbi.1000045.e001
+[NOTE] Equation 2 image: https://journals.plos.org/ploscompbiol/article/file?type=thumbnail&id=10.1371/journal.pcbi.1000045.e002
+[NOTE] (the thumbnail links the article page gives; the same page offers the full article PDF).
+[NOTE] Needed: a person to copy Equations 1 and 2 symbol by symbol from the article PDF, and a
+[NOTE] second reader to check them, before any drafter quotes them.

@@ -1,0 +1,118 @@
+definition.text: 'A symbol in an equation stands for a quantity, and the paper fixes which quantity in words:
+
+  in a clause beginning "where" after the equation, or in the sentences around it. Until that
+
+  clause is found, the symbol has no meaning that can be relied on.
+
+
+  A subscript is a small letter or number set low after a symbol, and it is part of the
+
+  symbol''s name. It labels which of several related quantities is meant: E with I for intake,
+
+  O for output, S for storage. Or it counts through a list: body weight (BW) with i is the
+
+  weight in interval i, and BW with 0 is the baseline value. A subscript never multiplies.
+
+
+  A Greek letter is a symbol like any other and is read by its name: ρ (rho), Δ (capital
+
+  delta), δ (small delta), ε (epsilon), Σ (capital sigma). A capital Δ written before a symbol
+
+  means "the change in" that quantity and is not a quantity of its own.
+
+
+  Capital sigma, Σ, with a counter and its first and last values attached, means: put each
+
+  value of the counter in turn into the expression after it, and add the results. The counter
+
+  only keeps track of the terms; any letter may be used for it.
+
+
+  Every term added to or subtracted from another, and each side of an equals sign, carries the
+
+  same unit. So the unit of a symbol the paper does not state can be worked out from the terms
+
+  beside it. A term whose unit differs from its neighbours signals a misread symbol, or a
+
+  conversion the equation does not show.
+
+  '
+simplified_explanation: "An equation in a paper is a sentence written in symbols. Each symbol stands for a quantity, and\nthe paper says which one, in words, somewhere near the equation. Often that sentence starts\nwith the word \"where\". Find it before you read the equation. Until you have found it, you are\nguessing.\n\nBook 0 gave you most of the tools. A letter stands for a number (`B0-R0-C15`). Two symbols\nside by side are multiplied. f(x) is the output of a rule called f, not f times x\n(`B0-R0-C18`). The triangle Δ, delta, means \"the change in\" (`B0-R0-C34`).\n\nAnd dy/dx, \"dee y by dee x\", is the rate at an instant (`B0-R0-C21`). Methods sections add\nfour more things.\n\n**Subscripts.** A subscript is a small letter or number set low after a symbol. It is part of\nthe symbol's name, and it does one of two jobs.\n\nIt can label. Hall and colleagues write E for energy and set a small I, O or S after it. E with\nI is energy intake (EI). E with O is energy output (EO). E with S is energy stored (ES). The\nsmall letter says which energy.\n\nThis book writes these on the line, as EI and ES. For output it writes energy expenditure\n(EE), the name Book 1 used. EE and Hall's EO are the same quantity.\n\nOr it can count. BW with a small i after it is the body weight in interval number i. BW with a\nsmall 0 is the weight at the start, the baseline. When a subscript counts, this book writes it\nafter an underscore, BW_i, so you can see where the name stops.\n\nHere is the one exception to Book 0's rule. Side by side means multiply, except for a\nsubscript. BW_0 is the starting weight. It is not BW times zero.\n\n**Greek letters.** They are letters like x and y, with names. Say the name out loud as you\nread. These are the ones the papers in this book use.\n\n```table\n| letter | its name | say it | what one paper in this book uses it for |\n| ρ | rho | \"roe\" | an energy density, energy per kilogram |\n| Δ | capital delta | \"delta\" | the change in whatever follows it |\n| δ | small delta | \"delta\" | a physical activity quantity (Polidori) |\n| ε | epsilon | \"ep-sih-lon\" | how expenditure depends on weight (Polidori) |\n| Σ | capital sigma | \"sigma\" | add up |\n```\n\nThe last column is not fixed. Each paper decides what its letters mean, in its own \"where\"\nclause.\n\n**Sigma.** Σ means \"add up\". It comes with a counter, usually i, and the counter's first and\nlast values. On the page the first value sits under the Σ and the last sits over it. On one\nline this book writes them in square brackets after it. Say the sum in words, then write\nit out.\n\n```working\n    Σ[i = 1 to 4] 2i\n    = the sum, for i from 1 to 4, of 2 times i\n    = 2 times 1 plus 2 times 2 plus 2 times 3 plus 2 times 4\n    = 2 plus 4 plus 6 plus 8\n    = 20\n```\n\nThe counter only keeps track of which term you are on. It does not appear in the answer.\n\n**Units.** Every term that is added or subtracted must carry the same unit, and so must the\ntwo sides of an equals sign (`B0-R0-C11`). Use that to find the unit of a symbol the paper\nnever states. If a line adds kilocalories a day to kilograms, you have misread a symbol, or a\nconversion is hidden somewhere.\n"
+illustration.body: "Start with a sentence that trips a careful reader. Hall and colleagues (2012) wrote a\nconsensus statement on energy balance — a text a panel of experts agreed on together. In it\nthey write the energy balance equation like this.\n\n```working\n    ES = EI minus EO\n```\n\nHere is a first reading. ES is the energy stored in the body. The same paper puts the energy\nheld in a lean adult's fat cells at about 130,000 kcal. So ES is about 130,000 kcal, and the\nequation says intake minus output is about 130,000 kcal.\n\nRun the unit check before you believe that. The paragraph says what the terms are measured\nin: \"All of these terms are expressed as energy per unit of time.\" So EI and EO are in\nkilocalories a day. Subtract one from the other and you get kilocalories a day.\n\nThe left side has to match. So ES here cannot be the 130,000 kcal, which has no time in its\nunit. It must be kilocalories a day as well.\n\nNow read the next sentences. The paper says it in words: \"ES is the rate of change in the\nbody's macronutrient stores.\" Two sentences earlier, the same two letters named the stores\nthemselves. The unit check caught the switch before the words did.\n\nThis book keeps the two apart. ES is the store, in kilocalories. Its rate of change is\ndES/dt, said \"dee ES by dee t\". That is the rate of change of ES with respect to t, with t\nin days.\nIn this book's letters Hall's equation says this. The rate of change of stored energy equals\nenergy intake minus energy expenditure.\n\n```working\n    dES/dt = EI minus EE\n```\n\nEO has become EE. Hall calls expenditure \"output\". Book 1 called it expenditure. Two papers,\ntwo letters, one quantity, and the \"where\" clause is what tells you so.\n\nNow a full equation from a methods section. Polidori and colleagues (2016) worked out how\nmuch people's eating changed during a trial of a drug. The drug raises urinary glucose\nexcretion (UGE): the body loses glucose in the urine. Here is their Equation 1. Subscripts are printed after an underscore. Symbols\nside by side multiply, except for subscripts.\n\n```working\n    ΔEI_i = ρ (dBW_i/dt) + ε(BW_i − BW_0) + (Δδ/(1 − β)) BW_0 + UGE\n```\n\nDo not read it left to right. Make a table with one row for each symbol. Fill the \"words\"\ncolumn from the paper's own sentences. Leave a cell empty rather than guess.\n\nThe words are in the Methods. \"We calculated the changes in energy intake, ΔEI, for each\nsubject\". One input was \"the change of body weight versus baseline over each interval,\n(BWi − BW0)\". The other was \"the rate of change of body weight over each interval, dBWi/dt\".\n\nThen \"The model parameter ρ was the effective energy density associated with the body weight\nchange\". A parameter is a number the model holds fixed while it runs. Then \"ε defined how energy expenditure depends on body weight\". And \"Δδ represents\nchanges in physical activity\".\n\nUGE is not spelled out beside the equation. That is common. When a short form is not spelled\nout, search the paper for words that fit its letters. Here the abstract has them: a drug\n\"that increases urinary glucose excretion\".\n\nβ is harder. Search the Methods for the sentence that says what β is. If you cannot find\none, write \"not found\" in its row.\n\nNow the units. Start with the ones you know. The results give changes in intake in\nkilocalories a day, so ΔEI_i is in kcal a day. Body weight is in kilograms. Time between\nweighings was counted in days, so dBW_i/dt is in kilograms a day.\n\nEvery term on the right must also be in kcal a day. Work out each unknown unit from that.\n\n```working\n    ρ times (kg a day) = kcal a day, so ρ is in kcal per kg\n    ε times (kg) = kcal a day, so ε is in kcal a day per kg\n    1 minus β: a bare 1 can only lose a bare number, so β has no unit\n    Δδ times (kg) = kcal a day, so Δδ is in kcal a day per kg\n```\n\nThe first row agrees with the words. An energy density is energy per kilogram, and the unit\ncheck gave kcal per kg.\n\n```table\n| symbol | say it | the paper's words | unit |\n| ΔEI_i | delta E I sub i | change in energy intake, interval i | kcal a day |\n| BW_i | B W sub i | body weight, interval i | kg |\n| BW_0 | B W sub zero | body weight at baseline | kg |\n| dBW_i/dt | dee B W sub i by dee t | rate of change of body weight, interval i | kg a day |\n| ρ | rho | effective energy density of the weight change | kcal per kg (worked out) |\n| ε | epsilon | how expenditure depends on weight | kcal a day per kg (worked out) |\n| Δδ | delta delta | change in physical activity | kcal a day per kg (worked out) |\n| β | beta | not found | none (worked out) |\n| UGE | U G E | urinary glucose excretion | must be kcal a day |\n```\n\nLook at the last row. Elsewhere the paper says urinary glucose excretion \"was assumed to be\n~90 g/day\". That is grams a day. Grams a day cannot be added to kcal a day. So somewhere the\nauthors turned grams of glucose into energy, and the equation does not show it. Before you\nput 90 into this equation, find that conversion.\n\nLook at Δδ too. The capital delta and the small delta are two different symbols. Read it as\n\"the change in δ\", where δ is the physical activity quantity.\n\nLast, sigma on a real stretch of days. Book 1 (`S01-R1-C05`) worked through a made-up week of\nintake and expenditure. Here are that week's seven daily changes, intake minus expenditure,\nin megajoules.\n\n```table\nday i  EI_i minus EE_i (MJ)\n1      0.5\n2      -0.3\n3      1.1\n4      -1.0\n5      0.9\n6      0\n7      1.6\n```\n\nBook 1 added them in a line. A paper would write the same sum with sigma. Say it first: the\nsum, for i from 1 to 7, of EI_i minus EE_i.\n\n```working\n    Σ[i = 1 to 7] (EI_i − EE_i)\n    = (EI_1 − EE_1) + (EI_2 − EE_2) + ... + (EI_7 − EE_7)\n    0.5 plus -0.3 plus 1.1 plus -1.0 plus 0.9 plus 0 plus 1.6 = 2.8\n```\n\nStores rose by 2.8 megajoules over the week, as Book 1 found.\n\nBook 1 then checked it the other way. It added the seven intakes, added the seven\nexpenditures, and subtracted once. In sigma that check reads as follows.\n\n```working\n    Σ[i = 1 to 7] (EI_i − EE_i) = Σ[i = 1 to 7] EI_i − Σ[i = 1 to 7] EE_i\n```\n\nThe two ways agree for any list of numbers. Adding is done in any order. So all the intakes\ncan be added first, and then all the expenditures taken away.\n\nNow go the other way, from a written-out sum back to sigma. Take 3 plus 6 plus 9 plus 12.\nEach term is 3 times its place in the list, so it is Σ[i = 1 to 4] 3i. Check it by writing it\nout again.\n\n```working\n    3 times 1 plus 3 times 2 plus 3 times 3 plus 3 times 4 = 30\n    3 plus 6 plus 9 plus 12 = 30\n```\n"
+illustration.analogy_breaks_when: 'The unit check shows that ES must be a rate in Hall''s equation. It cannot show that the
+
+  equation is right, because a wrong number in front of a term changes no unit (`B0-R0-C11`).
+
+
+  Other papers use ES for the store itself. The unit settles it only inside one paper, and only
+
+  once you have found what the other terms are measured in.
+
+
+  The table tells you what each symbol denotes and what unit it must carry. It does not tell you
+
+  that the model is a good description of anyone. Polidori''s own Methods call Equation 1 "a
+
+  linearization" of a larger model. That is a straight-line stand-in for it, close only for
+
+  small changes in weight. The authors also ran it on the group mean only.
+
+
+  A unit worked out from the terms beside it is only as sure as the units you started from. If
+
+  you misread ΔEI''s unit, every unit worked out from it is wrong in the same way.
+
+
+  The week''s numbers are made up, in Book 1, to show the arithmetic. A sum over days is exact
+
+  only for quantities counted day by day.
+
+
+  Sigma adds a list of separate terms. A quantity that changes smoothly inside each day is added
+
+  up another way, with the integral sign that Book 0 named in `B0-R0-C22`.
+
+  '
+must_know[0].point: 'Find the "where" clause before you read an equation. Then write a table: each symbol, its
+
+  words from the paper, and its unit. Leave a row empty rather than guess, and mark it "not
+
+  found".
+
+  '
+must_know[1].point: 'One paper can use the same letters for two things. Hall''s ES names the stores in one sentence
+
+  and their rate of change in the next. When the words are unclear, let the unit decide.
+
+  '
+must_know[2].point: 'A subscript is part of a name and never multiplies. BW_0 is the starting weight, not BW times
+
+  zero. Read it as "B W sub zero", out loud, until the habit holds.
+
+  '
+must_know[3].point: 'Work out a unit the paper does not print from the terms beside it. Whatever is subtracted
+
+  from a bare 1 has no unit. Whatever multiplies kilograms to give kilocalories a day is in
+
+  kilocalories a day per kilogram.
+
+  '
+must_know[4].point: 'A figure quoted in the text in one unit may enter the equation in another. Polidori''s
+
+  glucose loss is quoted in grams a day and sits in an equation of kilocalories a day. Find the
+
+  conversion before you put a number in.
+
+  '
+must_know[5].point: 'Matching units show that an equation is not malformed. They never show it is right, and they
+
+  cannot tell apart two quantities with the same unit. Hall''s ρF and Polidori''s ρ are both
+
+  energy per kilogram, and they are different quantities from different models.
+
+  '
+must_know[6].point: 'Teach a trainee to read Σ aloud as "the sum, for i from 1 to n, of". Then have them write out
+
+  the first two terms and the last. A sum they have written out is a sum they can check.
+
+  '

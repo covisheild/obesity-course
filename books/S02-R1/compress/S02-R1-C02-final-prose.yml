@@ -1,0 +1,57 @@
+definition.text: 'The average rate of change of f over the interval from a to a + h is f(a + h) minus f(a),
+
+  divided by h, for h not zero.
+
+
+  The derivative of f at a is the single number these averages settle on as h is made smaller
+
+  and smaller, through positive values and through negative values alike. Where the two sides
+
+  do not settle on one number, f has no derivative at a.
+
+
+  The derivative at a is written f′(a), said "f prime of a".
+
+
+  The derivative carries the unit of f divided by the unit of the input.
+
+
+  The derivative belongs to a smooth curve. Repeated measurements are separate points with
+
+  error in them.
+
+  '
+simplified_explanation: "Book 0 showed you the rate at an instant as the slope of a tangent, laid on a curve with a ruler.\nIt named that rate the derivative (`B0-R0-C21`). This section works the number out with\narithmetic, no ruler needed.\n\nA shorter interval gives a closer answer. So take the average rate over shorter and shorter\nintervals, all starting at the moment you care about. They settle on one number. That number is\nthe rate at that instant.\n\nHere is the procedure for a function f at an input a.\n\n1. Pick a small step, h. Work out f(a + h) minus f(a), and divide by h.\n2. Make h smaller: 1, then 0.1, then 0.01, then 0.001.\n3. Do the same with h below zero: minus 1, minus 0.1, and so on. Those intervals end at a\n   instead of starting there.\n4. If both lists close in on the same number, that number is the derivative at a.\n\nYou never set h to zero. The number they close in on is called the limit.\n\nThe derivative has three names you will meet. f′(a), said \"f prime of a\". dS/dt, said \"dee S by\ndee t\". And in words, the rate of change of S with respect to t.\n\nA weight in kilograms against time in days gives kilograms per day.\n\nIts sign tells you the direction. Positive means rising at that instant. Negative means\nfalling. Zero means neither, at that instant.\n\nRead the paper's equation again in these terms. dES/dt is the rate of change of stored\nenergy, in kilocalories a day. It is not the stored energy itself.\n"
+illustration.body: "A quantity follows the rule S(t) = 5 t^2, which is 5 times t times t. A note says this.\n\n> S went from 20 at t = 2 to 45 at t = 3. So at t = 2 it is rising at 25 a unit of time.\n\nThe 25 is the average over a whole unit of time, from t = 2 to t = 3. Test that by shrinking\nthe interval.\n\nEach row takes a step h from t = 2. Work out S(2 + h), subtract S(2), and divide by h.\n\n```table\n| step h | S(2 + h) | S(2 + h) minus S(2) | average rate |\n| 1 | 45 | 25 | 25 |\n| 0.1 | 22.05 | 2.05 | 20.5 |\n| 0.01 | 20.2005 | 0.2005 | 20.05 |\n| 0.001 | 20.020005 | 0.020005 | 20.005 |\n| -0.001 | 19.980005 | -0.019995 | 19.995 |\n| -0.01 | 19.8005 | -0.1995 | 19.95 |\n| -0.1 | 18.05 | -1.95 | 19.5 |\n| -1 | 5 | -15 | 15 |\n```\n\nRead down the last column. Both lists close in on 20. So the rate at t = 2 is 20 a unit of\ntime, not 25.\n\nNow see why it is exactly 20, with algebra. Multiply out the bracket with the rule from\n`B0-R0-C15`, once for each term.\n\n```working\n    (2 + h) times (2 + h) = 2 times (2 + h) + h times (2 + h)\n    = 4 + 2h + 2h + h^2\n    = 4 + 4h + h^2\n    S(2 + h) = 5 times (4 + 4h + h^2) = 20 + 20h + 5 h^2\n```\n\nSubtract S(2), which is 20. Then divide by h.\n\n```working\n    S(2 + h) minus S(2) = 20h + 5 h^2\n    (20h + 5 h^2) divided by h = 20 + 5h\n```\n\nThe average rate over a step h is 20 + 5h, for any h. As h shrinks, 5h shrinks with it, and\nwhat is left is 20.\n\nNow the same move on real measurements, where it breaks. A person weighs themselves each\nmorning for fifteen days.\n\n```table\nday  weight (kg)\n0    80.3\n1    79.8\n2    80.1\n3    79.6\n4    80.2\n5    79.5\n6    79.9\n7    79.4\n8    79.9\n9    79.2\n10   79.6\n11   79.5\n12   79.0\n13   79.6\n14   79.8\n```\n\nShrink the interval to one day, as you did for S. Take the last two days, then the two days\nbefore them.\n\n```working\n    79.8 minus 79.6 = 0.2, over 1 day: 0.2 kg a day\n    79.6 minus 79.0 = 0.6, over 1 day: 0.6 kg a day\n```\n\nRising at 0.6 kg a day. Test that against the body. Hall (2008) gives body fat 39.5 MJ a\nkilogram. The FAO/WHO/UNU report's worked example puts one woman's whole day's expenditure\nat 8.26 MJ.\n\n```working\n    0.6 times 39.5 = 23.7\n    23.7 divided by 8.26 = 2.87\n```\n\nAdding 0.6 kg of fat in a day would take 23.7 MJ more than she spent. That is nearly three\nwhole days of her expenditure. The one-day rate is measuring water, not stores.\n\nSo with weighings, shrink the interval the other way. Average the first five days and the\nlast five. Each average belongs to its middle day.\n\n```working\n    80.3 plus 79.8 plus 80.1 plus 79.6 plus 80.2 = 400.0\n    400.0 divided by 5 = 80.0, the average weight at day 2\n    79.6 plus 79.5 plus 79.0 plus 79.6 plus 79.8 = 397.5\n    397.5 divided by 5 = 79.5, the average weight at day 12\n    79.5 minus 80.0 = -0.5\n    -0.5 divided by 10 = -0.05\n```\n\nFalling at about 0.05 kg a day over those ten days. Even this is still an average over an\ninterval.\n"
+illustration.analogy_breaks_when: 'Below the interval over which water swings, a shorter interval gives a worse rate, not a
+
+  better one.
+
+
+  The fifteen weights are made up.
+
+  '
+must_know[0].point: 'Before you call a rate "the rate now", ask how long the interval was.
+
+  '
+must_know[1].point: 'A rate of weight change taken from two weighings a day apart is mostly water. Take a rate
+
+  from averages over weeks, not from neighbouring readings.
+
+  '
+must_know[2].point: 'A shorter interval is better only for a smooth curve.
+
+  '
+must_know[3].point: 'Never set h to zero to get the derivative. Let h shrink and watch where the answers go.
+
+  '
+must_know[4].point: 'Read dW/dt as a rate with a unit, kilograms per day, and read its sign first. It says
+
+  nothing about how much has been lost so far.
+
+  '
+must_know[5].point: 'When a trial reports a rate of weight change, look in the Methods for the interval and the
+
+  averaging used.
+
+  '

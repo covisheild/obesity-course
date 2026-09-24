@@ -27,8 +27,8 @@ around, and that rests entirely on every citation holding when somebody hostile 
 
 | Step | Who | What |
 | --- | --- | --- |
-| 1 | Opus | Structure. Which concepts a rung needs, in what order, what each must cover, which sources each will need, and which of them are quantitative and so owe ten practice problems. Output: an inventory table, no prose. |
-| 2 | Opus 5.5 (decided 24 Sep 2026 on the Book 1 comparison, `PIPELINE.md` Task 2) | Draft. The four reader-facing blocks per concept, written to the register below, into the record YAML. Plus, on every quantitative concept, the ten practice problems of section 7a. |
+| 1 | Opus | Structure. Which concepts a rung needs, in what order, what each must cover, which sources each will need, and which of them are quantitative and so owe a drill set (§7a: 3–18 problems, sized to the technique). Output: an inventory table, no prose. |
+| 2 | Opus 5.5 (decided 24 Sep 2026 on the Book 1 comparison, `PIPELINE.md` Task 2) | Draft. The four reader-facing blocks per concept, written to the register below, into the record YAML. Plus, on every quantitative concept, the drill set of section 7a (3–18 problems, fewer for easy concepts, more for hard ones). |
 | 3 | Opus | Audit. Open every source in `sources/` and check every claim against it. Recompute every practice answer. Check currency. Output: a numbered defect list, not a rewrite. |
 | 4 | Opus 5.5 | Fix, one section per fixer. Apply the defect list. Run `python check/build.py --check` until blocking is zero. A fresh subagent then verifies each defect closed; a fixer's own report closes nothing. |
 | — | — | **Run order** (`PIPELINE.md`): structure, draft, compression, audit, fix, verify. Compression runs before the audit, so only what the reader will see is audited. One book per chat, run by the conductor in `CONDUCTOR.md`. |
@@ -173,7 +173,13 @@ one. The build blocks when:
 Two drawing options exist for what points and bars cannot say: `marker: none` on a series draws a
 fitted slope as a bare line, so its ends do not read as observations; `bands: [{y0, y1, label}]`
 shades a range behind the data, and its bounds and label pass the same number check as a plotted
-point.
+point. For mathematics: `curves: [{y: "y = 5*x^2", x0, x1, label, series?}]` draws a formula over its
+own range (a chord, a tangent, an exact curve over a staircase), and with `series` must pass through
+that series' points like a `fit`; `areas: [{y, x0, x1, to?, equals?, label}]` shades between the formula
+and `to` (default the axis), and `equals` must be the signed integral; `refs: [{x or y, label}]` draws a
+labelled reference line (an expected value, an equilibrium). Every constant, endpoint, `to`, `equals`,
+reference value and label number is checked like a plotted point. Bars may be negative (drawn from a
+zero line), and two or more drawn fits each take their series' colour in the legend.
 
 Never draw a figure by hand, edit a PNG, or type a figure's numbers into a script. The conductor
 looks at every figure as an image before the audit, and the auditor recomputes every value a figure
@@ -241,7 +247,9 @@ A teaching exercise names which audience it is for. Prompts that would produce t
 **Every concept that teaches a mathematical technique carries a set of practice problems, in
 ascending difficulty, unsolved in the text, answered in the appendix. This is mandatory. The
 count is between three and eighteen, chosen from the technique, and the build blocks outside
-that range unless `practice_note` says why.**
+that range unless `practice_note` says why.** Easy concepts get fewer, hard ones more (Harsh, 24 Sep
+2026). A mathematics-heavy book may raise the ceiling to at most 25 with `practice_max` in its
+`books/<ID>/book.yml`; S02-R1 does.
 
 A reader who has worked one example of a technique has not learned it. A section can be read,
 agreed with, and found impossible to use twenty minutes later; the drill set is what closes that
@@ -469,7 +477,7 @@ That result is kept, and the measure is demoted, because the measure was answeri
 
 **What a fresh context requires, and what it does not.** The checker must not hold the full-length text, and must not be able to reach it. Those are two conditions, not one, and only the first is about context. A separate session that clones the repository can open `_build/` and read the original at will, so splitting the steps across sessions buys the first condition and leaves the second resting on an instruction the checker is free to disregard. The second is therefore enforced by what the checker can reach rather than by what it is told: the cut sections are copied into a directory holding nothing else, and that directory is what the checker is given. The first is satisfied by any context that has not seen the original, which a delegated subagent is by construction — it does not inherit the conversation that cut the text. The steps may therefore run inside one session, provided the thread that did the cutting never performs the cold read itself and the checker's directory is clean. A thread that has read the original cannot check it, whatever it has been instructed.
 
-**The constraints, which bind every step.** Words are removed by deleting whole sentences and whole paragraphs, never by compressing. Two sentences are not fused into one longer one. A second idea is not pushed into a sentence that had one. §11a rule 9 stands: length is not won back by re-stacking clauses, and a compression pass that raised the mean sentence length has failed whatever its word count says. In the comparison the mean sentence ran 12.4 words in the original and 11.6 in the chosen version, with the longest sentence at 25 in both. The headings survive even where almost nothing survives under them. The exercises are not touched, and neither is the practice set: ten problems are ten problems after compression as before it, and a pass that cut two of them has changed what the reader can do rather than how much they had to read.
+**The constraints, which bind every step.** Words are removed by deleting whole sentences and whole paragraphs, never by compressing. Two sentences are not fused into one longer one. A second idea is not pushed into a sentence that had one. §11a rule 9 stands: length is not won back by re-stacking clauses, and a compression pass that raised the mean sentence length has failed whatever its word count says. In the comparison the mean sentence ran 12.4 words in the original and 11.6 in the chosen version, with the longest sentence at 25 in both. The headings survive even where almost nothing survives under them. The exercises are not touched, and neither is the practice set: a drill set has as many problems after compression as before it, and a pass that cut two of them has changed what the reader can do rather than how much they had to read.
 
 **The test set, and the constraint that §6 places on it.** Step 2 tests the cut against the section's own exercises. That is sufficient only for a concept nothing is built on. Where `provenance.bridge_ref` records that a later concept discharges a presupposition against this one, the cold reader's test set **must also include that presupposition**, stated as a task: *from this text alone, can you do the thing the dependent concept will assume you can do?* A cut that satisfies a section's own exercises can still strand the concept two rungs above it, and nothing in the section itself would show that. The bridge-sufficiency test is what makes this checkable; a compression pass run without it is safe for standalone sections and unsafe everywhere else.
 
