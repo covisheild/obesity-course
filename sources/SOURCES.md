@@ -249,4 +249,49 @@ Same method: **12 of 12** passages verbatim against the fetch.
 
 | File | What it is | Words | Verified in it |
 | --- | --- | --- | --- |
-| `blackstone_2012.txt` | *Principles of Sociological Inquiry: Qualitative and Quantitative Methods* v1.0, Saylor Academy 2012 (Amy Blackstone; the Saylor edition omits her name at her request). CC BY-NC-SA 3.0 (licence page). One page per section, fetched with body scope. **Excerpts: eleven whole sections, exercises omitted** | 28,440 | 1.2 qualitative methods "yield results such as words or pictures", quantitative "can be represented by and condensed into numbers", "complementary rather than competing"; 2.3 inductive and deductive; 3.1 IRBs; 3.2 informed consent, anonymity and confidentiality; 5.2 idiographic and nomothetic; 7.2 purposive, snowball, quota and convenience samples (Table 7.1); 9.1 when to interview; 9.2 interview guide, open-ended and non-leading questions, recording, transcription, open and focused coding (Table 9.1); 9.4 power, location, rapport; 12.1 focus groups (Table 12.1). Figures (the sample consent form and the two interview guides) are images and not held |
+| `blackstone_2012.txt` | *Principles of Sociological Inquiry: Qualitative and Quantitative Methods* v1.0, Saylor Academy 2012 (Amy Blackstone; the Saylor edition omits her name at her request). CC BY-NC-SA 3.0 (licence page). One page per section, fetched with body scope. **Excerpts: eleven whole sections, exercises omitted** | 28,440 | 1.2 qualitative methods "yield results such as words or pictures", quantitative "can be represented by and condensed into numbers", "complementary rather than competing"; 2.3 inductive and deductive; 3.1 IRBs; 3.2 informed consent, anonymity and confidentiality; 5.2 idiographic and nomothetic; 7.2 purposive, snowball, quota and convenience samples (Table 7.1); 9.1 when to interview; 9.2 interview guide, open-ended and non-leading questions, recording, transcription, open and focused coding (Table 9.1); 9.4 power, location, rapport; 12.1 focus groups (Table 12.1). Figures (the sample consent form and the two interview guides) are images and not held. **Chapter 4 added 2026-09-25 by the S55-R1 intake** (see below) |
+
+## Added by the S55-R1 source intake, 2026-09-25
+
+Same method as S02-R1 and S36-R1: TinyFish `fetch_content` only, each passage a contiguous slice of
+the saved raw result, re-checked as a whitespace-normalised substring of that fetch: **31 of 31**
+(25 runs in the twelve new files, 6 in Blackstone chapter 4). Log in `books/S55-R1/INTAKE.md`. Most
+files hold whole articles as one run.
+
+**Licences.** Jhangiani and Ratan are CC BY-NC-SA 4.0; Aslam is CC BY 2.0; Ioannidis 2016 and
+Golosovsky & Larivière are CC BY 4.0. The CDC pages state no licence; CDC's own reuse page, held in
+the file, says most of its web material is public domain, with exceptions for third-party material
+and images. Morgan 2018 (EPA author manuscript), Farrugia 2010 and Nowroozzadeh 2019 state no open
+licence. Ioannidis 2014 is a Lancet author manuscript, "available for text mining" and fair use only.
+**Van Noorden 2017 is all rights reserved**: held for audit quotation only. India Code's terms of use
+allow personal, non-commercial use and forbid automated access without permission; see the file
+header and the intake log.
+
+**Van Noorden 2017 is a news feature.** Its uncitedness figures come from an analysis Larivière and
+Sugimoto ran on Web of Science for the feature. They are not peer-reviewed primary data, and the
+file says so. Golosovsky & Larivière's 12% to 70% range is their report of Sugimoto & Larivière
+(2018), a book that is not held.
+
+**Farrugia 2010's text layer is damaged.** Spaces fall inside words in the running text ("m edicine",
+"FIN E R"). A correctly spelled quotation of the running text will fail the check. Its Boxes 1-3
+(FINER, PICOT, tips) are clean.
+
+| File | What it is | Words | Verified in it |
+| --- | --- | --- | --- |
+| `blackstone_2012.txt` (extended) | Blackstone 2012, **chapter 4 appended** as blocks 13-18: chapter introduction and 4.1-4.5, each without exercises | +8,169 | 4.1 starting where you already are; 4.2 empirical against ethical questions; 4.4 the five features of a strong research question ("written in the form of a question, clearly focused, beyond yes/no, more than one plausible answer, and consider relationships among concepts") and Table 4.2, sample questions with strengths, weaknesses and alternatives; 4.5 feasibility (identity, access, time and money) and the library |
+| `jhangiani_2019_methods.txt` | Jhangiani, Chiang, Cuttler & Leighton, *Research Methods in Psychology* 4e (KPU 2019), CC BY-NC-SA 4.0. **One whole chapter**, "Generating Good Research Questions" (Pressbooks numbers it 9; `READY.md` calls it 2.3) | 1,829 | Empirically testable questions "expressed in terms of a single variable or relationship between variables"; looking at the discussion section of a recent article; causes, effects, types of people, types of situations; interestingness (answer in doubt, fills a gap, practical implications); feasibility (time, money, equipment, skill, access to participants) |
+| `cdc_ss1978_lesson1.txt` | CDC, *Principles of Epidemiology in Public Health Practice* 3e (SS1978), Lesson 1 §6 and §7 (archive pages, last reviewed 18 May 2012; book published October 2006, updated November 2011), exercises omitted, with CDC's reuse page. **Excerpts** | 6,442 | §6 time, place and person; §7 the comparison group as the key feature of analytic epidemiology; exposure and health outcome; experimental against observational studies; cohort, case-control and cross-sectional studies, and why the cross-sectional study "usually cannot disentangle risk factors for occurrence of disease (incidence) from risk factors for survival with the disease" |
+| `aslam_emmanuel_2010.txt` | Aslam & Emmanuel, *Indian J Sex Transm Dis AIDS* 2010;31:47 (PMC3140151), PMC OA XML, CC BY 2.0. **Whole article** without references | 2,264 | Background and foreground questions; PICO, with Table 1 (PICO and FINER); the otitis media worked example; characteristics of a good research question |
+| `morgan_peco_2018.txt` | Morgan, Whaley, Thayer & Schünemann, *Environ Int* 2018;121:1027 (PMC6908441), EPA author manuscript, Europe PMC PDF text layer. No licence stated. **Whole manuscript**; Figure 1 not held | 4,594 | PECO (population, exposure, comparator, outcome) as the exposure analogue of PICO; five scenarios with P/E/C/O examples on hearing impairment; Table 1; "54%" of 313 studies not reporting the four PICO components (their citation) |
+| `ratan_2019.txt` | Ratan, Anand & Ratan, *J Indian Assoc Pediatr Surg* 2019;24:15 (PMC6322175), PMC page, CC BY-NC-SA 4.0. **Whole article** without references; Tables 1-2 are images, not held | 2,879 | FINERMAPS, letter by letter; types of research question (existence, description and classification, composition, relationship, comparative, causality); steps to develop a question; research question and study design (incidence leads to a survey, risk factors to case-control or cohort). **No PICO** |
+| `ioannidis_2016_useful.txt` | Ioannidis, *PLoS Med* 2016;13:e1002049 (PMC4915619), PMC page, CC BY 4.0. **Whole essay** without references | 3,484 | Summary points; Table 1, the features and questions to ask; problem base; context placement and information gain; pragmatism; patient centeredness; value for money; feasibility; transparency; Table 2's estimates are the author's |
+| `ioannidis_2014_waste.txt` | Ioannidis et al., *Lancet* 2014;383:166 (PMC4697939), HHS author manuscript, PMC OA XML. Text mining and fair use only. **Whole body** without references | 5,917 | "Problem 2: poor utility of information"; "Problem 4: insufficient consideration of other evidence"; options for improvement; Panels 1-2 |
+| `van_noorden_2017.txt` | Van Noorden, *Nature* 2017;552:162, news feature, publisher PDF text layer. **All rights reserved.** Whole, with its correction | 2,654 | The 1990 *Science* claim (Hamilton) and Pendlebury's 1991 correction as the feature reports them; the Larivière–Sugimoto Web of Science figures; database coverage; uncited is not useless; the correction removing the data link |
+| `golosovsky_lariviere_2021.txt` | Golosovsky & Larivière, *Quant Sci Stud* 2021;2:899, Montréal repository copy of the published PDF, CC BY 4.0. **Whole article** to the data statement, references omitted | 5,670 | The uncitedness ratio and its dependence on time since publication; the 12%-70% range attributed to Sugimoto & Larivière 2018; the Poisson model. Equations flattened; figures not held |
+| `farrugia_2010.txt` (optional) | Farrugia et al., *Can J Surg* 2010;53:278 (PMC2912019), Europe PMC PDF text layer. No licence. **Whole article**; running text damaged | 3,823 | Box 1 FINER criteria; Box 2 PICOT (T for time); Box 3 tips; research hypothesis and objectives |
+| `nowroozzadeh_2019.txt` (optional) | Nowroozzadeh & Salehi-Marzijarani, *J Gen Intern Med* 2019;34:2695 (PMC6854350), Europe PMC PDF text layer. No open licence. **Whole letter** | 1,275 | Web of Science uncitedness in five top general medical journals (anonymised A-E) for 1990, 2000, 2010 and 2015 cohorts; five-year uncitedness falling from 8.3 (1990) to 0.7 (2010) |
+
+**Vintage.** The Pressbooks and Saylor books are revised in place (recheck the page). The CDC lesson is
+an archived page (last reviewed 18 May 2012).
+The Companies Act s.135 was fetched from India Code and then withdrawn by the conductor: India Code's
+Term of Use forbids automated access without written permission. Not held.
