@@ -246,3 +246,15 @@ drafter, and a blind auditor counted correctness defects before compression
 6 gaps, 6 style. Across the whole book the Sonnet drafts carried about 170 defects at audit, 60 of
 them errors. One section is one data point; Harsh's unlabelled read of the two drafts is the other
 half of the comparison.
+
+## What Book 2 (S02-R1) cost (24 September 2026)
+
+Seventeen sections, one Cowork chat, **Opus 5.5 drafters** (the first book after the switch).
+Subagent tokens as reported by the harness (unweighted, conductor not included): about 9.2M, so
+about 0.54M a section against Book 1's 0.6M. By step: inventory 0.21M; source intake 0.44M;
+drafting 2.24M; figure tool 0.14M; cut 0.67M; cold read 0.64M; restore 0.37M; figure plan 0.57M;
+audit 1.48M; fix 1.84M; verify 0.49M; glossary 0.12M. Finding and fixing (audit + fix + verify,
+3.8M) cost about 1.7 times the drafting, down from twice in Book 1. The audit found about 230
+defects (47 errors) in 17 sections, about 14 a section against Book 1's 17, on a book with four
+times as many quantitative sections. One book does not settle the drafter question; it is
+consistent with the blind comparison.
