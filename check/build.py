@@ -59,6 +59,10 @@ MUST_KNOW_SOFT_CAP = 9
 # it, and carries it somewhere new. A concept with one move reaches that in four problems; a
 # concept with several may need eighteen. Outside the range, `practice_note` must say why.
 PRACTICE_MIN, PRACTICE_MAX = 3, 18
+# A book whose techniques compose heavily may raise the ceiling in its books/<ID>/book.yml
+# (`practice_max`, at most 25). Harsh, 24 Sep 2026: easy concepts get fewer problems, hard ones
+# more; up to 25 per concept in the mathematics book S02-R1.
+PRACTICE_MAX_CEILING = 25
 PRACTICE_BANDS = [(1, 3, "mechanical"), (4, 6, "applied"), (7, 8, "diagnostic"), (9, 10, "transfer")]
 
 
@@ -857,9 +861,14 @@ def check(recs: dict, subjects: dict, clusters: dict, bibkeys: set):
         prac = [p for p in (r.get("practice") or []) if isinstance(p, dict)]
         if quant:
             excused = (r.get("practice_note") or "").strip()
-            if not PRACTICE_MIN <= len(prac) <= PRACTICE_MAX and not excused:
+            pmax = PRACTICE_MAX
+            if r.get("subject") and r.get("subject") != "B0" and r.get("rung"):
+                bm = book_meta(f"{r.get('subject')}-R{r.get('rung')}")
+                if isinstance(bm.get("practice_max"), int):
+                    pmax = max(PRACTICE_MAX, min(bm["practice_max"], PRACTICE_MAX_CEILING))
+            if not PRACTICE_MIN <= len(prac) <= pmax and not excused:
                 E(rid, f"quantitative concept carries {len(prac)} practice problems; the range is "
-                       f"{PRACTICE_MIN} to {PRACTICE_MAX} (the style sheet §7a). Judge it by the technique: "
+                       f"{PRACTICE_MIN} to {pmax} (the style sheet §7a). Judge it by the technique: "
                        "one move needs few, several moves need many. Outside this range, say why "
                        "in 'practice_note' and the build will accept it.")
             levels = [p.get("level") for p in prac if isinstance(p.get("level"), int)]
