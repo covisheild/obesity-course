@@ -53,12 +53,15 @@ verbatim; never quote a `[NOTE]` line or a header.
   Foundation Course module (`mci_cbme_ug_curriculum_2018_vol1`, `mci_foundation_course_2019`) are
   history; quote them sparingly (they carry MCI copyright lines).
 - C13/C15: Kirkpatrick's levels are held only in Frich 2015's wording ("reaction, knowledge,
-  behavioral change, system results") — use that wording when quoting. Kotter is NOT held; the
-  leadership-vs-management table is Stoller 2020's adaptation "after Kotter" (`stoller_2020_leadership`):
-  attribute it to Stoller, never quote it as Kotter's words.
-- C06: Pashler 2008 is held as its abstract only; the crossover criterion is stated there in words.
-  A 2×2 table of means that illustrates it must be labelled as invented numbers, not data.
-- C07: Rozenblit & Keil 2002 is held as abstract only; `fisher_keil_2015_ioed` restates the result.
+  behavioral change, system results") — use that wording when quoting. **Kotter is now held**
+  (`kotter_1990_what_leaders_do`, the 2001 HBR reprint, supplied by Harsh): quote Kotter in his own words;
+  Stoller 2020 (`stoller_2020_leadership`) is a physician-leadership adaptation "after Kotter", cite it as Stoller's.
+- C06: **Pashler 2008 is now held in full** (body, the crossover-interaction criterion, the acceptable and
+  unacceptable patterns of Figure 1 described in text; the plotted panels are not held). A 2×2 table of
+  means that illustrates the criterion must still be labelled as invented numbers, not data.
+- C07: **Rozenblit & Keil 2002 is now held in full** (author manuscript: Studies 1-12, statistics, Table 8;
+  mean ratings exist only as graphs, so no mean rating can be quoted). `fisher_keil_2015_ioed` restates it.
+- The PDF-derived files keep ligatures (ﬁ, ﬂ) as extracted: a quote must copy them exactly.
 - C01: Deslauriers 2019's test of learning was taken at the end of the class period, not days later;
   it shows the gap between feeling of learning and measured learning, not long-term retention.
   Its licence is CC BY-NC-ND: quote, never adapt its figures or tables into a new figure.

@@ -107,3 +107,44 @@ paraphrase and quote briefly. Harsh to confirm that this is acceptable for the r
 - Currency (C14): GMER 2023 is in force; the curriculum in force is NMC's CBME Curriculum 2024; the Basic Course in
   Medical Education requirement sits in the Medical Institutions (Qualifications of Faculty) Regulations, 2025,
   which superseded TEQ 2022 (`nmc_teq_2022`, filed for history only, marked superseded).
+
+## Harsh's PDFs (2026-09-25)
+
+Harsh supplied three PDFs he downloaded himself. Each was copied unchanged into `intake/raw/` and its text layer
+extracted with `pdftotext` (poppler, default reading-order mode). `pdftotext -layout` was also run (kept as
+`*.layout.txt`, **not used**): for Pashler and Kotter it set the two columns side by side on each line, and for
+Rozenblit and Keil it added only indentation. The default-mode `.txt` is the raw every passage is checked against. The
+raw was not corrected: ligatures (ﬁ, ﬂ) stay as extracted, line-end hyphenated words stay joined as pdftotext joined
+them, and running heads and footers stay inside passages. Every file header says so. Passages were cut by
+`intake/build-harsh.py` (`raw[i:j]` between literal anchors; manifest `intake/manifest-harsh.json`) and re-checked by
+`intake/verify-harsh.py` as whitespace-normalised substrings of the raw named in each block heading.
+Reference lists are not held.
+
+**Verbatim check: 29 of 29** (24 new blocks, plus the 5 earlier blocks from the USF record and efetch, re-checked).
+
+| Source | PDF (raw) | Held | Blocks | Check | Copyright as printed | Citekey |
+| --- | --- | --- | --- | --- | --- | --- |
+| Pashler, McDaniel, Rohrer, Bjork, *PSPI* 9(3):105-119 | `raw/pashler_2008_learning_styles-harsh.pdf` → `-harsh.txt` (15 pp.; SAGE download filename) | whole body: the crossover criterion, Fig. 1 caption and in-figure text (acceptable A-C, unacceptable D-I), Fig. 2 caption, review, ATI literature, conclusions, Summary. Figure panels (scattered axis labels), acknowledgments and references omitted | 5 new (4-8) + 2 kept | 7/7 | "Copyright r 2009 Association for Psychological Science" ("r" is ©) | `pashler_2008_learning_styles` (extended) |
+| Rozenblit & Keil, *Cogn Sci* 26(5):521-562, NIH author manuscript | `raw/rozenblit_keil_2002_ioed-harsh-nihms268518.pdf` → `.txt` (47 pp.; PMC) | title through General discussion (Studies 1-12, methods, results with ANOVA statistics), captions of Figs. 1-6, Table 8. Tables 1-7 (scrambled cells), appendices, acknowledgments and references omitted | 7 new (4-10) + 3 kept | 10/10 | "© 2002 Published by Cognitive Science Society, Inc." | `rozenblit_keil_2002_ioed` (extended) |
+| Kotter, "What Leaders Really Do", *HBR* 1990; Best of HBR reprint Dec 2001 (R0111F) | `raw/kotter_1990_what_leaders_do-harsh.pdf` → `-harsh.txt` (9 pp., printed pp. 3-11) | whole article with the 2001 editor's introduction, author note, three case boxes, three pull quotes. Only the ordering lines after the reprint number omitted | 12 | 12/12 | "COPYRIGHT © 2001 HARVARD BUSINESS SCHOOL PUBLISHING CORPORATION. ALL RIGHTS RESERVED." Held for private study and quotation only | `kotter_1990_what_leaders_do` (new) |
+
+Findings:
+
+- **Pashler's printed citation.** The PDF prints "Volume 9—Number 3", pages 105-119, and a 2009 copyright; it prints
+  no issue date. The catalogue year (PubMed, USF) is 2008; the DOI stem is 2009. Citekey and bib year stay 2008, and the
+  file header and bib note record the 2009 copyright.
+- **Rozenblit & Keil numbers.** The mean self-ratings at T1-T5 are plotted (Figs. 3-6), not printed. The text
+  gives the tests: Study 1 (16 Yale graduate students) time F(4, 56) = 16.195, p < .001, η2 = .536, T1 vs T2, T3, T4
+  all p < .002; Study 2 (33 undergraduates) F(4, 124) = 38.9, p < .001. Table 8 summarises the domains: facts, a
+  smaller drop; procedures and narratives, no drop; natural phenomena, the same as devices; the explicit warning in
+  Study 6 still gives a significant drop, but not as big. A claim needing a mean rating value cannot be quoted from
+  this file.
+- **Kotter.** The text held is the 2001 reprint. The 1990 volume, issue and pages (68(3):103-111) are not printed on
+  it; they come from READY.md and were not re-verified here. The reprint's own 2001 volume and pages are not printed
+  either.
+- **Ligatures.** A record quoting these files must copy the ligature characters as they stand ("signiﬁcant",
+  "ﬁrst"), or the build's quote check (whitespace-normalised, lower-cased, no ligature folding) will not find the words.
+- Registries updated directly: `sources/INDEX.yml` (`what:` for pashler, rozenblit and stoller; new kotter entry),
+  `check/references/library.bib` (pashler and rozenblit notes; new `@article{kotter_1990_what_leaders_do}`, year
+  1990, reprint and copyright in the note, no repository path), `sources/SOURCES.md`, `READY.md` (three lines to
+  yes, and a gate note). The stoller bib note did not claim Kotter was unavailable and is unchanged.
