@@ -100,3 +100,26 @@ against the page image. A machine pass proves only that the OCR says it. The hea
   characters between words, and some words are split ("Address ing"). Boxes are interleaved out of visual order:
   3.5.1's course sentence begins "Research performed" before Box 3.3 and continues after it.
 - **Raw fetches** are in the session scratchpad (`intake-raw/`), not in the repository, as for S02-R1.
+
+## Addendum, 2026-09-24: a research-methods textbook (`blackstone_2012`)
+
+Asked for by the conductor: derivable records need a `textbook` reference, and the BMJ methods papers are
+articles. The method is the same as above (TinyFish `fetch_content` only, raw saved to `intake-raw/blackstone_2012__<section>.txt`,
+passages cut by script, re-checked). **Verbatim check: 12 of 12.**
+
+| Source | URL fetched | Passages | Check | Licence as stated | Citekey |
+| --- | --- | --- | --- | --- | --- |
+| *Principles of Sociological Inquiry: Qualitative and Quantitative Methods* v1.0 (Saylor Academy 2012; Amy Blackstone): licence page; sections 1.1, 1.2, 2.3, 3.1, 3.2, 5.2, 7.2, 9.1, 9.2, 9.4, 12.1, each whole without its exercises | https://saylordotorg.github.io/text_principles-of-sociological-inquiry-qualitative-and-quantitative-methods/ and one page per section (markdown, `include_selectors: ["body"]`) | 12 | 12/12 | "This text was adapted by Saylor Academy under a Creative Commons Attribution-NonCommercial-ShareAlike 3.0 License without attribution as requested by the work's original creator or licensor." (licence page) | `blackstone_2012` (new) |
+
+- **Edition.** The first choice, the University of Minnesota edition (open.lib.umn.edu/sociologicalinquiry),
+  returned HTTP 404 on every path tried. Saylor Academy's own HTML copy of the 2012 book was used instead.
+- **Author attribution.** The Saylor edition names no author, at the creator's request. The author is Amy
+  Blackstone, going by the UMN and LibreTexts editions; the LibreTexts one was seen only as a search result.
+  Her own name appears in the text as a citation ("Uggen & Blackstone, 2004"). The `.bib` gives her as author,
+  and its note records the caveat.
+- **Extraction.** Unscoped markdown silently dropped headings, lists and the Learning Objectives and Key
+  Takeaways boxes. For example, 1.2's "the following considerations:" was followed by nothing. Every
+  section was therefore refetched scoped to `body`, which returns them. Glossary definitions and footnotes
+  are run into the text, as the header warns.
+- **Not held.** Figures (Figure 3.6 sample consent form; Figures 9.4 and 9.5 sample interview guides) are
+  images. 9.3 (quantitative interviews), the chapter introductions and all exercise sets were not taken.
