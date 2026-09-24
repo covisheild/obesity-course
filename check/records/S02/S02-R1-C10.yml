@@ -31,8 +31,8 @@ definition:
     and d are its weights.
 
     The dot product of two vectors of the same length, written a · b and said "a dot b", is a
-    single number. Multiply the entries in matching positions, then add the products. The dot
-    product is a weighted sum of the entries of one vector, with the entries of the other as the
+    single number. Multiply the entries in matching positions, then add the products. Two vectors of different lengths have no dot product.
+    The dot product is a weighted sum of the entries of one vector, with the entries of the other as the
     weights.
   references:
   - citekey: austin_ula
@@ -149,7 +149,11 @@ illustration:
     x = (40, 68, 162, 88)
     ```
 
-    Take the same patient a year later, with the new row y = (41, 65, 162, 84), also made up.
+    Add a second patient's row to this one, and you get a list of four numbers that describes
+    nobody. Multiply this row by 2 and you get a person of 80 years and 136 kg, which is not a
+    doubled version of anyone.
+
+    One operation on these rows does mean something. Take the same patient a year later, with the new row y = (41, 65, 162, 84), also made up.
     Subtract entry by entry.
 
     ```working
@@ -225,17 +229,25 @@ illustration:
     Dot the meal's vector once, or dot each item and add the energies. Both give 286 kcal.
 
     Now read the weights. Add 1 g of fat to the serving and hold the other two entries fixed.
+    Watch what the total does.
 
     ```working
     4 times 3 plus 9 times 10 plus 4 times 15 = 162
     162 minus 153 = 9
     ```
 
-    The total rose by 9 kcal, the weight on fat. Each weight in a is the change in the total for one
-    more unit of its own entry, with the others held fixed.
+    You see the total rise by 9 kcal, the weight on fat. Each weight in a is the change in the total
+    for one more unit of its own entry, with the others held fixed.
+
+    In India this is not only a textbook exercise. The Food Safety and Standards (Labelling and
+    Display) Regulations, 2020, regulation 5(3)(e)(i), say a packaged food's label energy is
+    calculated with fixed conversion factors. Among them are 4 kcal/g for carbohydrates and
+    protein, and 9 kcal/g for fat. It lists others too, such as 2 kcal/g for dietary fibre. So the
+    energy printed on a packet is a dot product of its declared grams with those factors.
   analogy_breaks_when: |
     The factors are general factors: one value for each nutrient, whatever the food. So a · g gives
-    the energy a label would declare. It is not the energy a particular person absorbs from that
+    the energy a label would declare for a food whose only energy-giving parts are protein, fat and
+    carbohydrate. It is not the energy a particular person absorbs from that
     food (`B0-R0-C32`).
   numbers:
   - value: "4.0"
@@ -273,6 +285,11 @@ illustration:
     citekey: fssai_labelling_2020
     as_of: '2025-09-09'
     quote: (E) Fat 9 kcal/g
+  - value: "2"
+    unit: kcal/g, FSSAI labelling conversion factor for dietary fibre, regulation 5(3)(e)(i)(H)
+    citekey: fssai_labelling_2020
+    as_of: '2025-09-09'
+    quote: (H)Dietary fibre 2kcal/g
 must_know:
 - point: |
     Before you take a dot product, line up the two vectors' orders.
@@ -290,12 +307,16 @@ must_know:
   kind: boundary
   bearing: public
 - point: |
-    Add or scale rows only when every entry means the same thing, in the same unit, in the same
-    place. Food grams add. Two patients' rows do not.
+    Add or scale rows only when the sum, entry by entry, is itself an amount of something, such as
+    the grams in a meal. Food grams add. Two patients' rows do not: their total age describes
+    nobody. The difference between one patient's rows a year apart is a change, and that does mean
+    something.
   kind: boundary
   bearing: methodological
 - point: |
-    Check a meal's energy in an app or a diet chart two ways. The two answers must agree.
+    Check a meal's energy in an app or a diet chart two ways. The two answers must agree. If they
+    disagree by more than rounding, one item's grams or energy was entered wrong. Find it before
+    you use the total.
   kind: move
   bearing: clinical
 - point: |

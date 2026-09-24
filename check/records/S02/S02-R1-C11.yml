@@ -14,6 +14,7 @@ ground_floor_deps:
 concept_deps: [S01-R1-C04, S02-R1-C01, S02-R1-C10]
 definition:
   text: |
+    A matrix does for many rows at once what the dot product of the last section did for one.
     A matrix is a rectangular table of numbers, named by a capital letter. Its size is written
     rows by columns. A matrix with 3 rows and 2 columns is a 3 × 2 matrix, said "3 by 2". An entry
     is found by its row first and its column second.
@@ -119,7 +120,7 @@ definition:
       checked_on: '2026-09-24'
   - citekey: fao_who_unu_2004
     kind: consensus_statement
-    locator: "ch. 5, §5.3 (energy requirements of adults), the paragraph before Table 5.2"
+    locator: "ch. 5 (energy requirements of adults), the paragraph before Table 5.2"
     quote: |-
       For the time being, it was decided to retain the equations proposed in 1985 by Schofield (Table 5.2)
     verified:
@@ -131,7 +132,8 @@ definition:
         The source of the equations used in the illustration. Table 5.2 is held as the page's
         own cells (block 9 of the held file); the rows used are quoted under the illustration's
         numbers. The table's age band "≥ 60" comes through the extraction as "³ 60"; no row for
-        that band is used here.
+        that band is used here. Re-check at the next FAO/WHO/UNU energy-requirements
+        consultation.
   - citekey: icmr_nin_2020_brief
     kind: guideline
     locator: "Recommendation on energy requirement, the BMR paragraph"
@@ -151,10 +153,11 @@ definition:
         equations "were derived from a large international dataset by the FAO/WHO/UNU", and that
         they "can overestimate the BMR by 10 -12%" for Indians. The same paragraph's statement that
         BMR is "measured directly (using DLW or HRM methods)" is flagged in the held file as
-        wrong and is not used.
+        wrong and is not used. Re-check at the next ICMR-NIN RDA revision; the 2024 revised
+        summary is not held and not checked.
 simplified_explanation: |
-  A matrix is a table of numbers with the labels taken off. Each row is one case. Each column is
-  one kind of measurement, always in the same place.
+  A matrix is a table of numbers with the labels taken off. In a data matrix, each row is one
+  case and each column is one kind of measurement, always in the same place.
 
   Multiplying a matrix by a vector does one dot product for each row.
 
@@ -165,7 +168,7 @@ simplified_explanation: |
 illustration:
   body: |
     Book 1 met the basal metabolic rate (BMR): the energy spent lying at rest after a fast. Three United Nations bodies wrote
-    a joint report on it in 2004. It predicts BMR from body weight with one straight line for each sex and age band. Here are
+    a joint report on human energy requirements in 2004. The report predicts BMR from body weight with one straight line for each sex and age band. Here are
     the two rows for adult men, in kcal/day, as the report prints them.
 
     ```table
@@ -177,19 +180,19 @@ illustration:
     Each row says the same thing with its own numbers: BMR is the slope times body weight, plus the intercept. Take the
     labels off and keep the four numbers. That is a 2 × 2 matrix. Call it B.
 
-    Now you can run both equations on a man of 65 kg. That is the reference man of the Indian Council of
-    Medical Research and National Institute of Nutrition (ICMR-NIN), in its 2020 requirements.
-    Write his vector as w = (65, 1). The 1 lines up with the intercept column, so the intercept is
+    Now you can run both equations on a man of 65 kg. That is the body weight the 2020 requirements of the
+    Indian Council of Medical Research and National Institute of Nutrition (ICMR-NIN) use for an
+    adult man. Write his vector as x = (65, 1). The 1 lines up with the intercept column, so the intercept is
     added once.
 
-    Row by row, each row of B dotted with w:
+    Row by row, each row of B dotted with x:
 
     ```working
     15.057 times 65 plus 692.2 times 1 = 1670.905
     11.472 times 65 plus 873.1 times 1 = 1618.78
     ```
 
-    So Bw = (1670.905, 1618.78).
+    So Bx = (1670.905, 1618.78).
 
     Column by column, 65 lots of the slope column plus 1 lot of the intercept column:
 
@@ -202,7 +205,7 @@ illustration:
 
     The same vector comes out.
 
-    Now three men, of 52, 65 and 80 kg. Put each man in a row, with his body weight and a 1: (52, 1), (65, 1) and (80, 1).
+    Now three men, of 52, 65 and 80 kg; the 52 and 80 are made up. Put each man in a row, with his body weight and a 1: (52, 1), (65, 1) and (80, 1).
     That is a 3 × 2 data matrix. Call it X. Its rows are people.
 
     To run both equations on all three men at once, put each equation in a column instead. This
@@ -239,6 +242,13 @@ illustration:
 
     The note does not say whether the second 5% comes off the original figure or off the figure already cut. The two readings
     give two scalars.
+
+    ```working
+    1 minus 0.05 minus 0.05 = 0.90
+    0.95 times 0.95 = 0.9025
+    ```
+
+    Multiplying XC by 0.90 or by 0.9025 gives the two sets of reduced predictions.
   analogy_breaks_when: |
     The matrix product is exact arithmetic on the numbers it is given. It does not make the
     equations right for any one person. They were fitted to a large international set of
@@ -300,8 +310,9 @@ must_know:
   kind: trap
   bearing: methodological
 - point: |
-    The column of 1s is what carries the intercept. Leave it out of a data matrix, and every
-    prediction silently loses the intercept.
+    The column of 1s is what carries the intercept. Leave it out of a data matrix, and the sizes
+    no longer fit. Shorten the coefficients to make them fit, and every prediction silently loses
+    the intercept.
   kind: trap
   bearing: clinical
 - point: |
@@ -445,12 +456,12 @@ practice:
     FAO/WHO/UNU Table 5.2 gives these BMR equations for women, in kcal/day. For ages 18 to 30, the
     slope is 14.818 and the intercept 486.6. For ages 30 to 60, the slope is 8.126 and the
     intercept 845.6. ICMR-NIN's
-    reference woman weighs 55.0 kg.
+    2020 requirements use a body weight of 55.0 kg for an adult woman.
 
     Write the equations as a 2 × 2 matrix, one equation in each row, and multiply it by the vector
-    for the reference woman. Say what each entry of the answer is.
+    for a 55 kg woman. Say what each entry of the answer is.
   answer: |
-    The matrix has rows (14.818, 486.6) and (8.126, 845.6). The reference woman's vector is
+    The matrix has rows (14.818, 486.6) and (8.126, 845.6). Her vector is
     (55, 1), with the 1 lined up with the intercepts.
 
     ```working
@@ -545,8 +556,12 @@ practice:
 
     Why the wrong answer looks reasonable: a dot product of two vectors of length two is correct
     arithmetic whatever the order. The error shows only when you read the answer back as a
-    quantity. 45,008 kcal/day is more than ten times any adult's daily energy use. Read every answer
+    quantity. 45,008 kcal/day is more than twelve times the 3,470 kcal/day ICMR-NIN
+    gives for a man doing heavy work. Read every answer
     back before you use it.
+  refs:
+  - fao_who_unu_2004
+  - icmr_nin_2020_brief
 - level: 7
   prompt: |
     Here is a worked answer for PQ, with P rows (1, 2) and (3, 4), and Q rows (5, 6) and (7, 8).
@@ -692,7 +707,7 @@ retrieval_items:
     intercept.
 figures:
 - file: s02-r1-c11-schofield-columns.png
-  caption: "The product XC drawn. Each column of XC is one FAO/WHO/UNU equation for men, run on the three men of 52, 65 and 80 kg. The side axis does not start at zero, so the gap between the lines looks larger than it is."
+  caption: "The two FAO/WHO/UNU equations for men, run on three men of 52, 65 and 80 kg (the product XC of the illustration below). The side axis does not start at zero, so the gap between the lines looks larger than it is."
   alt: "Two rising straight lines of three points each. The 18-30 equation runs from 1475.2 kcal/day at 52 kg to 1896.8 at 80 kg. The 30-60 equation runs from 1469.6 to 1790.9, and is flatter."
   source: draw.py
   spec:
@@ -706,7 +721,7 @@ figures:
     - fit: "y = 873.1 + 11.472*x"
       series: "30-60 equation (kcal/day)"
 - file: s02-r1-c11-column-view.png
-  caption: "Bw read column by column for the 65 kg man: 65 lots of each equation's slope plus 1 lot of its intercept. The 18-30 equation gets more from body weight (978.705 against 745.68) and less from its intercept (692.2 against 873.1), and its total is higher, 1670.905 against 1618.78 kcal/day."
+  caption: "Both equations run on a 65 kg man, read column by column (the product Bx of the illustration below): 65 lots of each equation's slope plus 1 lot of its intercept. The 18-30 equation gets more from body weight (978.705 against 745.68) and less from its intercept (692.2 against 873.1), and its total is higher, 1670.905 against 1618.78 kcal/day."
   alt: "Grouped bars for the 18-30 and 30-60 equations. 65 times the slope: 978.705 and 745.68. The intercept: 692.2 and 873.1. Their sums: 1670.905 and 1618.78 kcal/day."
   source: draw.py
   spec:
@@ -717,7 +732,7 @@ figures:
       y: ["978.705", "745.68"]
     - name: 1 times the intercept
       y: ["692.2", "873.1"]
-    - name: the entry of Bw
+    - name: the entry of Bx
       y: ["1670.905", "1618.78"]
     y_label: kcal/day
     value_labels: true
@@ -738,4 +753,5 @@ review:
   stability: long
   trigger: '2031-09-24'
   last_reviewed: '2026-09-24'
+  as_of: 'ICMR-NIN 2020 brief note; re-check against the ICMR-NIN 2024 revised summary'
 status: drafted

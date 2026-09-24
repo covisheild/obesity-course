@@ -11,7 +11,7 @@ ground_floor_deps:
 - B0-R0-C06
 - B0-R0-C22
 - B0-R0-C23
-concept_deps: [S02-R1-C02, S02-R1-C03, S02-R1-C04, S02-R1-C05]
+concept_deps: [S01-R1-C02, S01-R1-C07, S02-R1-C02, S02-R1-C03, S02-R1-C04, S02-R1-C05]
 definition:
   text: |
     An antiderivative of a function f is a function F whose derivative is f, so that dF/dt = f(t).
@@ -29,7 +29,8 @@ definition:
     Sums and constant multiples are done term by term.
 
     The fundamental theorem of calculus, in the part called the evaluation theorem, says this. If
-    f is continuous from a to b and F is any antiderivative of f, then ∫ from a to b of f(t) dt =
+    f is continuous from a to b (its graph has no jumps; every rate in this book is) and F is any
+    antiderivative of f, then ∫ from a to b of f(t) dt =
     F(b) minus F(a).
   references:
   - citekey: openstax_calculus_v1_s02
@@ -117,7 +118,8 @@ simplified_explanation: |
   subtracted. So leave it out when you work out an integral.
 illustration:
   body: |
-    Hall and colleagues model a man who cuts his intake by 2 megajoules a day (*Lancet* 2011).
+    Hall and colleagues model a man who cuts his intake by 2 megajoules a day, which is 480
+    kilocalories a day (*Lancet* 2011).
     Keep the deficit at 2 megajoules a day, as the static rule of `S01-R1-C07` does. Then one year
     of it is a rectangle.
 
@@ -144,9 +146,9 @@ illustration:
     F(t) = -1053.4 e^(-0.693t)
     ```
 
-    Check it. The rate of F is -0.693 times -1053.4 e^(-0.693t), which is 730 e^(-0.693t). It
-    comes back. Now take F at the end of the year minus F at the start. On the calculator,
-    e^(-0.693) is 0.5001, and e^0 is 1.
+    Check it: differentiate F and see whether 730 e^(-0.693t) comes back. The rate of F is -0.693
+    times -1053.4 e^(-0.693t), which is 730 e^(-0.693t). Now work out F(1) minus F(0) on your
+    calculator. e^(-0.693) is 0.5001, and e^0 is 1.
 
     ```working
     F(1) minus F(0) = -1053.4 times 0.5001 plus 1053.4
@@ -156,26 +158,20 @@ illustration:
 
     About 526.6 megajoules in the first year, against 730 for the steady deficit.
 
-    As T grows, e^(-0.693T) shrinks towards zero, so its total creeps up towards 1053.4 megajoules
-    and never passes it.
+    Take the total up to any later time T. It is F(T) minus F(0), which is 1053.4 times (1 minus
+    e^(-0.693T)). As T grows, e^(-0.693T) shrinks towards zero, so the total creeps up towards
+    1053.4 megajoules and never passes it.
 
     A deficit that shrinks adds up to less.
-
-    It comes back.
   analogy_breaks_when: |
-    Every total here is energy, in megajoules.
+    Every total here is energy, in megajoules. Turning it into kilograms needs to know what
+    tissue was lost (`S01-R1-C02`).
   numbers:
   - value: '2'
     unit: "MJ/day, the modelled cut in intake"
     citekey: hall_2011_lancet
     quote: |-
       Figure 2A shows the predicted bodyweight time course of a 100 kg (220 lb) sedentary man following a step reduction of energy intake by 2 MJ per day (480 kcal per day).
-    as_of: '2026-09-24'
-  - value: '100'
-    unit: "%, how much greater the static rule's first-year loss is than the model's"
-    citekey: hall_2011_lancet
-    quote: |-
-      which is about 100% greater weight loss than our model prediction
     as_of: '2026-09-24'
 must_know:
 - point: |
@@ -185,12 +181,14 @@ must_know:
   bearing: methodological
 - point: |
     The antiderivative of e^(kt) is e^(kt) divided by k, not e^(kt). Dropping the k gives the wrong
-    size. For a shrinking curve, where k is negative, it also gives the wrong sign.
+    size. For a shrinking curve, e^(-kt), dropping the k also gives the wrong sign: the
+    antiderivative is e^(-kt) divided by -k.
   kind: trap
   bearing: methodological
 - point: |
     "The deficit never quite reaches zero, so the loss keeps going for ever" is wrong as
-    arithmetic. A deficit D0 e^(-kt) adds up to at most D0 divided by k, however long it runs.
+    arithmetic. A deficit D0 e^(-kt), where D0 is its value at the
+    start, adds up to at most D0 divided by k, however long it runs.
   kind: misconception
   bearing: public
 - point: |
@@ -202,7 +200,7 @@ must_know:
 - point: |
     A figure made by multiplying a daily deficit by 365, and then by a number of years, is a
     steady-deficit total. Any deficit that shrinks adds up to less. In a committee, call such a
-    figure an upper limit that holds only if the deficit never shrinks.
+    figure an upper limit, reached only if the deficit never shrinks.
   kind: consequence
   bearing: policy
 - point: |
@@ -589,7 +587,8 @@ practice:
     every time. Use the made-up halving deficit from this section, 730 megajoules a year at the
     start, halving each year. It is not the paper's model, but it shows how such a gap behaves.
 
-    Take the shrinking total as a share of the steady total, at 1, 3 and 10 years. At 10 years,
+    Take the shrinking total as a share of the steady total, at 1, 3 and 10 years. At 3 years,
+    e^(-2.079) is 0.125, so the shrinking total is 1053.4 times 0.875, which is 921.7. At 10 years,
     e^(-6.93) is 0.001, so the shrinking total is 1053.4 times 0.999.
 
     ```working
@@ -600,9 +599,8 @@ practice:
     1052.3 divided by 7300 = 0.144
     ```
 
-    The share falls from about 72% at one year to 42% at three years and 14% at ten. The gap
-    grows with time. So no single factor corrects a steady-deficit figure. Halving is wrong at
-    year three and badly wrong at year ten.
+    For this made-up deficit, the share falls from about 72% at one year to 42% at three years
+    and 14% at ten. The gap grows with time. So no one factor fits every year.
 
     What this does not establish. It does not give the paper's own correction for any year but the
     first, for the one modelled man. The "about 100%" is a first-year comparison. It does not
@@ -638,12 +636,14 @@ figures:
     x_label: t
     y_label: F(t)
     relations:
+    - {fit: "y = x^2", series: "t^2"}
+    - {fit: "y = x^2 + 5", series: "t^2 plus 5"}
     - check: "y2[0] - y1[0] = 5"
     - check: "y2[3] - y1[3] = 5"
     curves:
-    - {y: "y = x^2", x0: 0, x1: 3, label: "", series: "t^2"}
-    - {y: "y = x^2 + 5", x0: 0, x1: 3, label: "", series: "t^2 plus 5"}
     - {y: "y = 4 + 4*(x - 2)", x0: 1, x1: 3, label: "tangent to t^2 at t = 2: slope 4"}
+    - {y: "y = x^2", x0: 0, x1: 3, label: ""}
+    - {y: "y = x^2 + 5", x0: 0, x1: 3, label: ""}
     - {y: "y = 9 + 4*(x - 2)", x0: 1, x1: 3, label: "tangent to t^2 plus 5 at t = 2: slope 4"}
 - file: s02-r1-c06-halving-deficit.png
   caption: "The made-up deficit D(t) = 730 e^(-0.693t) megajoules a year, which halves each year, against a steady 730. Over the first year the area under the halving deficit is F(1) minus F(0) = 526.6 megajoules. The steady rectangle is 730, and the strip between them, 203.4, is what the steady rule over-counts."

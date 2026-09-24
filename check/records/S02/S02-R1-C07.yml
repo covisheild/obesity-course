@@ -12,8 +12,8 @@ concept_deps: [S01-R1-C02, S01-R1-C04, S01-R1-C05, S01-R1-C09, S02-R1-C01, S02-R
 definition:
   text: |
     A differential equation is an equation involving an unknown function and one or more of its
-    derivatives. Each gives the rate of change of a quantity at a moment as a rule in the value
-    the quantity has at that moment, its state, and sometimes in the time as well. For body
+    derivatives. The ones in this book are first-order: each gives the rate of change of a
+    quantity at a moment as a rule in its state, in the time, or in both. For body
     weight W in kilograms and time t in days, the form is dW/dt = f(W, t).
 
     Such an equation has many solutions. An initial value, the state at one stated time, picks
@@ -196,10 +196,11 @@ simplified_explanation: |
   Over a day, the change in the body's stored energy is what came in minus what went out.
 
   ```working
-  rate of change of stored energy = EI − EE
+  dES/dt = EI − EE
   ```
 
-  EI is energy intake and EE is energy expenditure, both in kilocalories a day.
+  ES is the energy stored in the body, in kilocalories. EI is energy intake and EE is energy
+  expenditure, both in kilocalories a day.
 
   Say each kilogram of weight gained or lost carries a fixed amount of energy. Call it rho,
   written ρ, in kilocalories per kilogram.
@@ -208,11 +209,22 @@ simplified_explanation: |
   ρ × dW/dt = EI − EE
   ```
 
-  That line is always true. It is still no use for predicting anything. A smaller body spends
+  That line is true whenever ρ is fixed. The line above it is always true. Neither predicts
+  anything. A smaller body spends
   less, so EE depends on the weight itself.
 
   So write EE as a rule in W. It says each kilogram of weight adds a fixed number of kilocalories
   a day to expenditure. Call that number epsilon, written ε.
+
+  ```working
+  EE = EE0 + ε × (W − W0)
+  EI = EI0 + ΔEI
+  EI0 = EE0, because the weight was steady at the start
+  so ρ × dW/dt = EI − EE = ΔEI − ε × (W − W0)
+  ```
+
+  EE0 and EI0 are expenditure and intake at the start, when the weight was W0. ΔEI is the
+  change in intake.
 
   That is what a differential equation is: a rule that gives the rate from the state.
 
@@ -287,18 +299,22 @@ illustration:
     7716.18 divided by 20 = 385.809
     ```
 
+    This is `S02-R1-C04`'s W = L plus (W0 minus L) e^(-kt), with L = 76, W0 − L = 24 and
+    k = 1 divided by 385.809.
+
     Check it the way any candidate is checked: the start, then both sides. At t = 0, e^(0) is 1.
     So 1 − 1 is 0, and W is 100. The initial value holds.
 
-    For the rate, use the rule from the section on e: the derivative of e^(kt) is k times
-    e^(kt). Here k is minus 1 divided by 385.809. The derivative of W is then this.
+    For the rate, use `S02-R1-C04`'s rule: the derivative of e^(-kt) is −k × e^(-kt). The
+    derivative of W is then this.
 
     ```working
     dW/dt = −24 × (1 divided by 385.809) × e^(-t/385.809)
     24 divided by 385.809 = 0.06221
     ```
 
-    In symbols the check is two lines, both using the rule for e^(kt):
+    In symbols the check is two lines. The left side uses the rule for e^(-kt); the right side
+    is algebra.
 
     ```working
     left:  7716.18 × dW/dt = −480 × e^(-t/385.809)
@@ -346,7 +362,7 @@ illustration:
     0, the loss slows and flattens.
 
     The same equation can also be run backwards. Polidori and colleagues (2016) had weights and no reliable
-    intake. Then they put the weight and its rate into their Equation 1 and read off ΔEI. The intake change they
+    intake. They put the weight and its rate into their Equation 1 and read off ΔEI. The intake change they
     report is an output of the equation, not a measurement.
   analogy_breaks_when: |
     The value of ρ here is the static rule's 7,716.18 kilocalories per kilogram, borrowed as a
@@ -393,18 +409,6 @@ illustration:
       quote: |-
         T = 52 was the number of days between measurements
       citekey: polidori_2016
-      as_of: '2026-09-24'
-    - value: '1'
-      unit: "year, roughly, for Hall's model to reach half of this man's maximum loss"
-      quote: |-
-        This constant diet perturbation was predicted to result in a bodyweight plateau at about 75 kg (165 lb) over a 10-year simulation taking roughly 1 year to reach half of the maximum weight loss and reaching 95% of this value after about 3 years.
-      citekey: hall_2011_lancet
-      as_of: '2026-09-24'
-    - value: '22'
-      unit: "kg in the first year, the static rule's prediction for the same man"
-      quote: |-
-        predicts that the same 2 MJ per day reduction of energy intake will result in a linear decrease of bodyweight over time with 22 kg lost in the first year
-      citekey: hall_2011_lancet
       as_of: '2026-09-24'
 
 must_know:
@@ -453,8 +457,8 @@ exercises:
   - type: interpretation
     prompt: |
       Polidori and colleagues (2016) calculate a change in energy intake from repeated
-      weighings with their Equation 1. The paper writes it with BW for body weight, and an i
-      after a symbol marks the interval.
+      weighings with their Equation 1. The paper writes BW for body weight. A letter or digit
+      after a symbol is a label: i marks the interval, and 0 the start.
 
       ```working
       ΔEIi = ρ × (dBWi/dt) + ε × (BWi − BW0) + (Δδ divided by (1 − β)) × BW0 + UGE
@@ -476,18 +480,19 @@ exercises:
       - BWi − BW0: the weight in the interval minus the weight at the start. Kilograms.
       - Δδ: the change in physical activity. The paper says it is "often assumed to be zero"
         when there are no measurements of activity.
-      - β: a constant of the model. The passages of the paper this book holds do not define it.
-        Write "not defined in what I read" in your notebook rather than guessing.
-      - UGE: urinary glucose excretion, the energy the drug made the body lose in urine. For it
-        to be added to kilocalories a day, it has to be in kilocalories a day.
+      - β: beta, which "accounts for the adaptation of energy expenditure during a diet
+        perturbation". Table 1 gives it as 0.24, with no unit.
+      - UGE: urinary glucose excretion, "the energy losses as a result of increased urinary
+        excretion of glucose with canagliflozin treatment". Table 1 gives it in kcal/d, so
+        kilocalories a day.
 
       Check the units of the first two terms on the right. Kilocalories per kilogram times
       kilograms a day is kilocalories a day. Kilocalories a day per kilogram times kilograms is
       kilocalories a day. Both match the left side.
 
       This section set the activity term and the glucose term to zero. Setting Δδ to zero
-      assumes physical activity did not change. Setting UGE to zero assumes no energy was lost in
-      urine, which is true for a person not taking a drug of this kind. What remains, rearranged,
+      assumes physical activity did not change. Setting UGE to zero assumes no extra glucose is
+      lost in the urine, as for a person not taking a drug that raises it. What remains, rearranged,
       is ρ × dW/dt = ΔEI − ε × (W − W0).
     skill_ref: S02-R1-K01
   - type: teaching
@@ -502,7 +507,7 @@ exercises:
       ρ × dW/dt = EI − EE
       ```
 
-      It is always true, and it cannot predict tomorrow. Tomorrow's EE is not known today.
+      It is true whenever ρ is fixed, and it cannot predict tomorrow. Tomorrow's EE is not known today.
 
       Then add the one piece of physiology. A smaller body spends less. Draw expenditure as a
       straight line rising with weight, slope ε. Rewrite the right side as the cut in intake
@@ -607,7 +612,7 @@ practice:
 
       The initial value holds.
 
-      The left side. The derivative of e^(kt) is k × e^(kt), with k = −0.5 here.
+      The left side. With k = 0.5, the derivative of e^(-kt) is −k × e^(-kt).
 
       ```working
       dy/dt = −8 × (−0.5) × e^(-0.5t) = 4 × e^(-0.5t)
@@ -754,7 +759,7 @@ practice:
       average energy intake was practically at baseline levels while body weight was still
       reduced by ~5 kg."
 
-      Take ΔEI = 0 and W − W0 = −5 kilograms. Use ρ = 7,716.18 kilocalories per kilogram and ε at
+      Take ΔEI = 0 and W − W0 = −5 kilograms (the ~ means about). Use ρ = 7,716.18 kilocalories per kilogram and ε at
       each end of Hall and Guo's 20 to 30 kilocalories a day per kilogram. Work out dW/dt, and
       the change over the next 30 days if it held. Say which way the weight is heading.
     answer: |
@@ -829,7 +834,8 @@ practice:
 
       About 94.40 kilograms. The two differ by about 0.4 kilograms at 90 days, and the gap
       widens every month after. The curve formula from the illustration gives 95.01 at day 90.
-      Thirty-day steps are coarse enough to fall a little short of it.
+      Thirty-day steps overshoot the loss a little, 94.83 against 95.01, because each holds its
+      first rate for 30 days.
     refs: [hall_2011_lancet, hall_guo_2017]
   - level: 7
     prompt: |
@@ -909,11 +915,11 @@ practice:
       Why the wrong answer looks reasonable. Every line is correct arithmetic, and a small
       number after a division feels plausible. A unit check on line three catches it:
       megajoules a day divided by kilocalories per kilogram is not kilograms a day. So does a
-      size check. A cut of about a fifth of a day's food moving weight by 95 grams in a year
+      size check. A cut of 480 kilocalories a day moving weight by 95 grams in a year
       should stop anyone.
   - level: 8
     prompt: |
-      Here is a worked answer to the Polidori-style problem at level 5. The person weighed 98.0
+      Here is a worked answer to problem 8. The person weighed 98.0
       kilograms at the start, then 96.4 and 95.8 kilograms at weighings 52 days apart. Take
       ρ = 7,716.18 and ε = 30. Find the step that broke.
 
@@ -992,7 +998,7 @@ practice:
       Decide what to compute, compute it, and say what your answer does not establish.
     answer: |
       What to compute: whether the number depends on anything besides the weighings. Use the
-      made-up person from the Polidori-style problem at level 5: dW/dt = −0.011538 kilograms a day and W − W0 =
+      made-up person from problem 8: dW/dt = −0.011538 kilograms a day and W − W0 =
       −2.2 kilograms. Compute ΔEI = ρ × dW/dt + ε × (W − W0) three ways.
 
       ρ = 7,716.18 and ε = 30, as before:
@@ -1093,7 +1099,8 @@ figures:
       refs:
         - {y: 12, label: "rate zero at y = 12"}
       labels:
-        - {text: "9.06 at t = 2", at: [2, 9.0568], offset: [2, -14]}
+        - {text: "●", at: [2, 9.0568], offset: [-3.5, -2]}
+        - {text: "9.06 at t = 2", at: [2, 9.0568], offset: [4, -13]}
       y_range: [0, 22]
   - file: s02-r1-c07-thirty-day-steps.png
     caption: "The first 90 days of the 480 kcal a day cut, with ε = 20. Thirty-day forward steps reach 94.83 kg at day 90, a little below the curve formula's 95.01. The static rule's straight line is lower again, at 94.40."

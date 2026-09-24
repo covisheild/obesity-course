@@ -20,13 +20,16 @@ definition:
 
     When intake also depends on weight, it rises by a fixed number of kilocalories a day for
     each kilogram lost. Polidori and colleagues write that number kP, k with a P for
-    proportional. The model is then ρ × dW/dt = ΔEI − (ε + kP) × (W − W0). The two slopes add, and the shift
+    proportional. They measured it in people with type 2 diabetes taking a drug that makes them
+    lose glucose in urine. The model is then ρ × dW/dt = ΔEI − (ε + kP) × (W − W0). Here ΔEI is the
+    shift the diet makes; the change appetite makes is the kP term. The two slopes add, and the shift
     becomes ΔEI ÷ (ε + kP). Hall and Guo call a model with feedback on both intake and
     expenditure a set point model. The name is theirs; the equilibrium still moves when intake
     is shifted.
 
     In either model, a weight that starts away from the equilibrium approaches it along an exponential. Its
-    time constant, written tau (τ), is ρ divided by the total slope, in days. The gap halves every τ × ln 2
+    time constant, written tau (τ), is ρ divided by the total slope, in days. The gap shrinks as
+    e^(-t/τ), so τ is 1 divided by k, the rate constant of `S02-R1-C04`. The gap halves every τ × ln 2
     days.
 
     An equilibrium is stable if a state pushed a little away from it returns to it, and unstable if the
@@ -145,6 +148,29 @@ definition:
         opened: true
         claim_located: true
         checked_on: '2026-09-24'
+    - citekey: hall_2012_ajcn
+      kind: primary
+      locator: "Question 1, Components of storage, the paragraph on long-term stability of body weight"
+      quote: |-
+        changes in body weight also include changes in body water, which may be variable
+      verified:
+        resolved_id: https://pmc.ncbi.nlm.nih.gov/articles/PMC3302369/
+        opened: true
+        claim_located: true
+        checked_on: '2026-09-24'
+    - citekey: polidori_2016
+      kind: primary
+      locator: "Results, the paragraph on the trial's weight and intake changes (block 5 of the held excerpt)"
+      quote: |-
+        Table 2 represents the characteristics of the type 2 diabetic subjects who completed the 52 week study
+      verified:
+        resolved_id: https://pmc.ncbi.nlm.nih.gov/articles/PMC5108589/
+        opened: true
+        claim_located: true
+        checked_on: '2026-09-24'
+        note: |-
+          The population behind kP: people with type 2 diabetes on canagliflozin. Hall and Guo's
+          -100 cites the same paper (their ref. 88). Recheck kP against later estimates at review.
 
 simplified_explanation: |
   A weight stops moving when its rate of change is zero. So take the equation, put zero where
@@ -230,12 +256,16 @@ illustration:
              = −300 − (100 + ε) × (W − W0)
     ```
 
-    The two slopes add, because both push the same way. Losing weight lowers what goes out and
-    raises what comes in. Set the rate to zero.
+    Hall and Guo's −100 is intake against weight, so a fall in weight raises intake by 100 a
+    kilogram. In intake minus expenditure it enters as −100 × (W − W0), and expenditure's +20 enters
+    as −20 × (W − W0). The two terms have the same sign, so their sizes add. Set the rate to zero,
+    with ε = 20 and then 30.
 
     ```working
-    300 divided by 120 = 2.5
-    300 divided by 130 = 2.307692308
+    0 = −300 − 120 × (W* − W0)
+    120 × (W* − W0) = −300
+    W* − W0 = −300 ÷ 120 = −2.5
+    W* − W0 = −300 ÷ 130 = −2.307692308
     ```
 
     About 2.3 to 2.5 kilograms, against 10 to 15.
@@ -263,7 +293,7 @@ illustration:
     64.3015 times 0.6931 = 44.57
     ```
 
-    Here is the loss, in kilograms, with each model.
+    Here is the loss, in kilograms, after Hall and Guo's 300 kilocalorie cut, with each model.
 
     ```table
     day   settling point, slope 20  set point, slopes 100 + 20
@@ -279,7 +309,7 @@ illustration:
 
     The set point curve flattens sooner and lower.
 
-    And if the man goes back to his old intake, the equilibrium goes back to 100. The weight follows it, along the same kind of
+    And if intake goes back to where it was, the equilibrium goes back to the starting weight. The weight follows it, along the same kind of
     curve. Regain here is the equation working, not a person failing.
   analogy_breaks_when: |
     Every equilibrium here comes from straight lines. The slopes are group averages, and Hall
@@ -287,7 +317,7 @@ illustration:
 
     The time constants use the static rule's ρ as a stand-in, so their sizes are illustrative.
 
-    A scale does not show an equilibrium over a few weeks. Hall and colleagues (2012) warn that
+    A scale does not show an equilibrium over the short term. Hall and colleagues (2012) warn that
     "changes in body weight also include changes in body water, which may be variable".
   numbers:
     - value: '480'
@@ -354,13 +384,13 @@ must_know:
     bearing: methodological
   - point: |
       In the settling point model, a lasting cut of 300 kilocalories a day moves the equilibrium
-      down 10 to 15 kilograms. Before you give a patient a target from a cut in food, say which
-      model it came from.
+      down 10 to 15 kilograms, by Hall and Guo's slopes. Before you give a patient a target from a
+      cut in food, say which model it came from.
     kind: number
     bearing: clinical
-    refs: [hall_guo_2017, polidori_2016]
+    refs: [hall_guo_2017]
   - point: |
-      "Keep eating what got you to the new weight and you will stay there" is the static model.
+      "Go back to your old intake and you will stay at your new weight" is the static model.
       When expenditure falls with weight, going back to the old intake moves the equilibrium
       back to the old weight. Tell a patient that regain is this equation at work.
     kind: misconception
@@ -373,7 +403,7 @@ must_know:
   - point: |
       A weight that stops falling for a few weeks is not thereby at an equilibrium. The rate is
       zero at an equilibrium and stays zero. It can pass through zero for a moment while intake
-      is still moving, and water shifts can hide the true rate for weeks.
+      is still moving, and water shifts can hide the true rate over the short term.
     kind: trap
     bearing: clinical
     refs: [polidori_2016, hall_2012_ajcn]
@@ -438,8 +468,8 @@ exercises:
       crossing goes back to where it was. The body drifts back up to it. Nobody has to lose
       discipline for that to happen. It is where the lines cross.
 
-      Then the second push. Appetite rises as weight falls. The first study to measure it in
-      people living normally found about 100 kilocalories a day for each kilogram lost. That tilts the eating line and pulls
+      Then the second push. Appetite rises as weight falls. The first study to measure it, in 2016,
+      in people living normally, found about 100 kilocalories a day for each kilogram lost. That tilts the eating line and pulls
       the crossing back toward the old weight.
 
       The quotable sentence: "A body settles where what it eats meets what it spends. Go back to
@@ -660,8 +690,8 @@ practice:
   - level: 6
     prompt: |
       Polidori and colleagues ran a drug trial. At steady state, "energy intake was calculated
-      to have increased by ~350 kcal/day". Their Equation 4 says the change in intake is minus kP
-      times the change in weight. kP is about 100 kilocalories a day per kilogram. Work out the
+      to have increased by ~350 kcal/day" (about 350). Their Equation 4 says the change in intake
+      that appetite makes, which they write ΔEI, is minus kP times the change in weight. kP is about 100 kilocalories a day per kilogram. Work out the
       weight change at steady state. Compare it with the paper's "new equilibrium several
       kilograms lower".
     answer: |
@@ -675,9 +705,8 @@ practice:
       ΔW is about minus 3.5 kilograms. The paper says the new equilibrium was "several kilograms
       lower". The sizes agree.
 
-      This uses only the intake side. It leaves out the fall in expenditure, which the paper's
-      full model includes. It checks that the two reported figures fit together. It does not
-      replace the paper's own weight curve.
+      Both figures are rounded ("~350", about 100), so this checks that the paper's numbers fit
+      together. It does not replace the paper's own weight curve.
     refs: [polidori_2016]
   - level: 6
     prompt: |
@@ -698,10 +727,9 @@ practice:
       About 80 kilograms by the rule of thumb, against about 75 from the paper's model. The
       model's loss is about 25 kilograms, the rule's about 20.
 
-      The rule of thumb is for "an average overweight adult". A 100 kg sedentary man probably
-      carries more body fat than that average. The paper says more body fat means a larger loss
-      for the same cut. So the rule of thumb's single slope is too steep for him. Its equilibrium comes
-      out too high.
+      The rule of thumb is for "an average overweight adult". If he carries more body fat than the
+      average overweight adult the rule was built for, the paper says his loss will be larger.
+      Then the rule's single slope is too steep for him, and its equilibrium comes out too high.
 
       A single slope is the simplification. The model lets the slope depend on the body.
     refs: [hall_2011_lancet]
@@ -750,8 +778,8 @@ practice:
 
       A unit check finds it. Kilocalories per kilogram divided by kilocalories a day per kilogram
       leaves days. The inverted ratio has the unit one over days: it is a rate, 0.00259 of the
-      gap closed per day, not a time. Reading it as days turns "about a year" into "a quarter of
-      an hour".
+      gap closed per day, not a time. Reading it as days turns "about a year" into "under four
+      minutes".
 
       Why the wrong answer looks reasonable. Both numbers are the right ones, and dividing them
       is the right operation. Only the order is wrong, and a small answer then looks like a
@@ -774,7 +802,7 @@ practice:
 
       Check with the settling point model. A year in, the paper has intake "practically at
       baseline levels while body weight was still reduced by ~5 kg". With ΔEI = 0 the
-      equilibrium is the starting weight. At 5 kilograms below it, with ε = 20:
+      equilibrium is the starting weight. At about 5 kilograms below it, with ε = 20:
 
       ```working
       20 times 5 = 100
@@ -870,7 +898,7 @@ practice:
       the model, in which both flows push back. It does not name a weight that cannot change.
 
       What this does not establish. It does not show that two flat months are an equilibrium.
-      Water shifts alone can hide a slow trend for weeks, and a flat stretch can be a turning
+      Water shifts alone can hide a slow trend over the short term, and a flat stretch can be a turning
       point while intake is still moving. It does not give her own slopes, which may differ
       widely from the averages. It does not show that a 200 kilocalorie shift is something she
       can sustain, or what it would cost her in hunger. And the straight lines may not hold
@@ -892,8 +920,7 @@ retrieval_items:
     a: ρ divided by the total slope, in days. After one time constant the gap is multiplied by
       e^(-1), so about 37% of it is left.
   - q: Why is a steady weight not a sign that nothing is happening?
-    a: At equilibrium intake equals expenditure. Both are still thousands of kilocalories a day;
-      only their difference is zero.
+    a: At equilibrium intake equals expenditure. Both are still large; only their difference is zero.
 
 provenance:
   map_version_id: fc19c8bc-a216-4131-99fb-ebe3f19cec4a
@@ -904,6 +931,7 @@ review:
   stability: long
   trigger: "2031-09-24"
   last_reviewed: "2026-09-24"
+  as_of: 'Polidori 2016 kP (~100 kcal/day per kg, type 2 diabetes on canagliflozin); re-check against later estimates of the appetite slope'
 
 status: drafted
 
@@ -932,7 +960,7 @@ figures:
         - fit: "y = 30*x"
           series: expenditure, slope 30
       labels:
-        - {text: "15 kg down", at: [-15, -300], offset: [4, 10]}
+        - {text: "15 kg down", at: [-15, -300], offset: [4, -16]}
         - {text: "10 kg down", at: [-10, -300], offset: [4, -16]}
       y_range: [-470, 30]
       derived:
