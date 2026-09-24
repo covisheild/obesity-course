@@ -811,10 +811,35 @@ figures:
     relations:
     - fit: "y = 180 - 500*x/3500"
       series: ΔEB read as expenditure minus intake (lb)
-      draw: false
+      draw: true
+      label: "W(t) = 180 − 500 × t / 3500"
     - fit: "y = 180 + 500*x/3500"
       series: ΔEB read as intake minus expenditure (lb)
-      draw: false
+      draw: true
+      label: "W(t) = 180 − (−500) × t / 3500"
+    y_range: [150, 215]
+- file: s02-r1-c16-line-six.png
+  caption: "Line 5 makes the rate of change of weight a constant: minus 500 divided by 3,500 pounds a day, for a deficit of 500 kcal a day. Line 6 integrates it from day 0 to day 140. The shaded area, 140 times that rate, is minus 20 pounds, the fall from 180 to 160 in the table. The area is a rectangle only because line 4 assumed the gap never changes."
+  alt: "A flat line just below zero, at minus 500 divided by 3,500 pounds a day, from day 0 to day 140, with the rectangle between it and zero shaded."
+  source: draw.py
+  spec:
+    kind: line
+    x: ["0", "140"]
+    series:
+    - name: "dW/dt = −500 / 3500, about −0.143 lb a day"
+      y: ["-0.143", "-0.143"]
+      marker: none
+    x_label: day
+    y_label: dW/dt (lb a day)
+    y_range: [-0.2, 0.06]
+    relations:
+    - fit: "y = -500/3500"
+    areas:
+    - {y: "y = -500/3500", x0: 0, x1: 140, equals: -20, label: "area = W(140) − W0 = 160 − 180 = −20 lb"}
+    refs:
+    - {y: 0}
+    derived:
+    - {value: "20", from: "180 - 160"}
 provenance:
   map_version_id: fc19c8bc-a216-4131-99fb-ebe3f19cec4a
   outcome_refs:

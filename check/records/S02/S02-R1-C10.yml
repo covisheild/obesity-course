@@ -691,6 +691,37 @@ figures:
     value_labels: true
     relations:
     - check: "sum(y) = 153"
+- file: s02-r1-c10-meal-sum.png
+  caption: "The meal's energy, nutrient by nutrient. Each bar for the meal (5, 14, 35) is the snack serving's plus the biscuit's: 20 = 12 + 8, 126 = 81 + 45 and 140 = 60 + 80. So the meal's 286 kcal is 153 plus 133, whichever way it is worked out."
+  alt: "Grouped bars for protein, fat and carbohydrate. Snack serving 12, 81 and 60 kcal. Biscuit 8, 45 and 80 kcal. Meal 20, 126 and 140 kcal, each the sum of the two bars beside it."
+  source: draw.py
+  spec:
+    kind: bar
+    x: [protein, fat, carbohydrate]
+    series:
+    - name: "snack serving (3, 9, 15)"
+      y: ["12", "81", "60"]
+    - name: "biscuit (2, 5, 20)"
+      y: ["8", "45", "80"]
+    - name: "meal (5, 14, 35)"
+      y: ["20", "126", "140"]
+    x_label: nutrient
+    y_label: kcal
+    value_labels: true
+    relations:
+    - check: "sum(y1) = 153"
+    - check: "sum(y2) = 133"
+    - check: "sum(y3) = 286"
+    - check: "y3[0] = y1[0] + y2[0]"
+    - check: "y3[1] = y1[1] + y2[1]"
+    - check: "y3[2] = y1[2] + y2[2]"
+    derived:
+    - {value: "8", from: "4*2"}
+    - {value: "45", from: "9*5"}
+    - {value: "80", from: "4*20"}
+    - {value: "20", from: "4*5"}
+    - {value: "126", from: "9*14"}
+    - {value: "140", from: "4*35"}
 provenance:
   map_version_id: fc19c8bc-a216-4131-99fb-ebe3f19cec4a
   outcome_refs:

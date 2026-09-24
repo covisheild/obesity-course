@@ -1063,15 +1063,57 @@ figures:
     alt: "Body weight against days, 0 to 1095. A straight line falls from 100 through 77.29 at day 365 to 31.88 at day 1095. Two curves fall from 100 and flatten: one through 85.32 and 79.62 to 77.40, the other through 87.87 and 84.94 to 84.23."
     source: draw.py
     spec:
-      kind: line
+      kind: scatter
       from_table: {block: 0, x: 0, y: [1, 2, 3]}
       x_label: day of the 480 kcal a day cut
       y_label: body weight (kg)
-      relations:
-        - fit: "y = 100 - 480*x/7716.18"
-          series: "static rule, ε = 0"
-        - fit: "y = 100 - 24*(1 - exp(-x/385.809))"
-          series: "ε = 20 kcal/day per kg"
-        - fit: "y = 100 - 16*(1 - exp(-x/257.206))"
-          series: "ε = 30 kcal/day per kg"
+      curves:
+        - {y: "y = 100 - 480*x/7716.18", x0: 0, x1: 1095, series: "static rule, ε = 0"}
+        - {y: "y = 100 - 24*(1 - exp(-x/385.809))", x0: 0, x1: 1095, series: "ε = 20 kcal/day per kg"}
+        - {y: "y = 100 - 16*(1 - exp(-x/257.206))", x0: 0, x1: 1095, series: "ε = 30 kcal/day per kg"}
+      derived:
+        - {value: "16", from: "480/30"}
+        - {value: "257.206", from: "7716.18/30"}
       y_range: [25, 105]
+  - file: s02-r1-c07-forward-steps.png
+    caption: "dy/dt = 6 − 0.5 × y. Forward steps of size 1 from y = 4 reach 8, 10 and 11, running ahead of the exact solution 12 − 8 × e^(-0.5t), which is 9.06 at t = 2. Started at 20, the exact solution falls instead. Both close on 12, where the rate is zero."
+    alt: "y against t from 0 to 3. A jointed line of forward steps rises from 4 through 8 and 10 to 11. Below it a smooth curve rises from 4 towards 12. A second smooth curve falls from 20 towards 12. A dashed line marks y = 12."
+    source: draw.py
+    spec:
+      kind: line
+      x: [0, 1, 2, 3]
+      series:
+        - name: forward steps of size 1
+          y: [4, 8, 10, 11]
+      x_label: t
+      y_label: y
+      curves:
+        - {y: "y = 12 - 8*exp(-0.5*x)", x0: 0, x1: 3, label: "exact solution from y = 4"}
+        - {y: "y = 12 + 8*exp(-0.5*x)", x0: 0, x1: 3, label: "exact solution from y = 20"}
+      refs:
+        - {y: 12, label: "rate zero at y = 12"}
+      labels:
+        - {text: "9.06 at t = 2", at: [2, 9.0568], offset: [2, -14]}
+      y_range: [0, 22]
+  - file: s02-r1-c07-thirty-day-steps.png
+    caption: "The first 90 days of the 480 kcal a day cut, with ε = 20. Thirty-day forward steps reach 94.83 kg at day 90, a little below the curve formula's 95.01. The static rule's straight line is lower again, at 94.40."
+    alt: "Body weight falling from 100 kg at day 0. A jointed line of steps through 98.13379 at day 30 and 96.41269 at day 60 to 94.82542 at day 90. A smooth curve ends at 95.01, and a straight line ends at 94.40."
+    source: draw.py
+    spec:
+      kind: line
+      x: [0, 30, 60, 90]
+      series:
+        - name: forward steps of 30 days
+          y: [100, 98.13379, 96.41269, 94.82542]
+      x_label: day of the 480 kcal a day cut
+      y_label: body weight (kg)
+      curves:
+        - {y: "y = 100 - 24*(1 - exp(-x/385.809))", x0: 0, x1: 90, label: "curve formula, ε = 20"}
+        - {y: "y = 100 - 480*x/7716.18", x0: 0, x1: 90, label: "static rule"}
+      labels:
+        - {text: "95.01", at: [90, 95.01], offset: [7, 0]}
+        - {text: "94.83", at: [90, 94.82542], offset: [7, -5]}
+        - {text: "94.40", at: [90, 94.40], offset: [7, -3]}
+      y_range: [94.0, 100.2]
+      derived:
+        - {value: "60", from: "30 + 30"}

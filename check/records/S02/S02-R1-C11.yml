@@ -705,6 +705,27 @@ figures:
       series: "18-30 equation (kcal/day)"
     - fit: "y = 873.1 + 11.472*x"
       series: "30-60 equation (kcal/day)"
+- file: s02-r1-c11-column-view.png
+  caption: "Bw read column by column for the 65 kg man: 65 lots of each equation's slope plus 1 lot of its intercept. The 18-30 equation gets more from body weight (978.705 against 745.68) and less from its intercept (692.2 against 873.1), and its total is higher, 1670.905 against 1618.78 kcal/day."
+  alt: "Grouped bars for the 18-30 and 30-60 equations. 65 times the slope: 978.705 and 745.68. The intercept: 692.2 and 873.1. Their sums: 1670.905 and 1618.78 kcal/day."
+  source: draw.py
+  spec:
+    kind: bar
+    x: ["18-30 equation", "30-60 equation"]
+    series:
+    - name: 65 times the slope
+      y: ["978.705", "745.68"]
+    - name: 1 times the intercept
+      y: ["692.2", "873.1"]
+    - name: the entry of Bw
+      y: ["1670.905", "1618.78"]
+    y_label: kcal/day
+    value_labels: true
+    relations:
+    - check: "y1[0] = 65*15.057"
+    - check: "y1[1] = 65*11.472"
+    - check: "y3[0] = y1[0] + y2[0]"
+    - check: "y3[1] = y1[1] + y2[1]"
 provenance:
   map_version_id: fc19c8bc-a216-4131-99fb-ebe3f19cec4a
   outcome_refs:

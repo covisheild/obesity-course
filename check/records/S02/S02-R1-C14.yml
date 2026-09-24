@@ -649,8 +649,8 @@ retrieval_items:
     value has to be worked out value by value from the distribution.
 figures:
 - file: s02-r1-c14-surplus-balance.png
-  caption: "The made-up distribution of a day's energy surplus, in kilocalories a day. The expected value, 70, is the balance point of the four bars. No bar sits at 70, and averaging the four values without their probabilities gives 100."
-  alt: "Four bars: 0.2 at minus 300, 0.3 at 0, 0.4 at 200 and 0.1 at 500 kilocalories a day, with a label at 70 marking the expected value."
+  caption: "The made-up distribution of a day's energy surplus, in kilocalories a day. The expected value, 70, is where the four bars would balance, each weighted by its probability. No bar sits at 70. Averaging the four values as if each were equally likely gives 100, pulled right by the 500 that has probability only 0.1."
+  alt: "Four bars: 0.2 at minus 300, 0.3 at 0, 0.4 at 200 and 0.1 at 500 kilocalories a day. A dashed line at 70 marks the expected value, and a second dashed line at 100 marks the unweighted average."
   source: draw.py
   spec:
     kind: bar
@@ -660,11 +660,16 @@ figures:
     relations:
     - check: "sum(y) = 1.0"
     - check: "x[0]*y[0] + x[1]*y[1] + x[2]*y[2] + x[3]*y[3] = 70"
-    y_range: [0, 0.5]
+    - check: "mean(x) = 100"
+    y_range: [0, 0.6]
+    refs:
+    - {x: 70}
+    - {x: 100}
     labels:
-    - {text: "E[X] = 70, the balance point", at: [70, 0.44], offset: [-60, 0]}
+    - {text: "E[X] = 70", at: [70, 0.53], offset: [-58, 0]}
+    - {text: "unweighted average, 100 (wrong)", at: [100, 0.53], offset: [5, 0]}
 - file: s02-r1-c14-week-expected.png
-  caption: "The expected running total of surplus over a week grows by 70 kilocalories a day, to 490 by day 7. The possible totals fan out much wider, from seven days at minus 300 (minus 2,100) to seven days at 500 (3,500)."
+  caption: "The expected running total of surplus over a week grows by 70 kilocalories a day, to 490 by day 7. The possible totals fan out much wider, from seven days at minus 300 (minus 2,100) to seven days at 500 (3,500), so 490 is not what any one week will show."
   alt: "Three lines from zero at day 0: the expected total rising to 490 at day 7, the highest possible total rising to 3,500 and the lowest falling to minus 2,100."
   source: draw.py
   spec:
@@ -675,8 +680,10 @@ figures:
       y: ["0", "70", "490"]
     - name: highest possible total
       y: ["0", "500", "3500"]
+      marker: none
     - name: lowest possible total
       y: ["0", "-300", "-2100"]
+      marker: none
     x_label: day
     y_label: running total of surplus (kcal)
     relations:
@@ -685,6 +692,56 @@ figures:
       series: highest possible total
     - fit: "y = -300*x"
       series: lowest possible total
+    derived:
+    - {value: "3500", from: "7*500"}
+    - {value: "2100", from: "7*300"}
+- file: s02-r1-c14-dependent-days.png
+  caption: "Day 2's surplus is always 140 minus day 1's, so the four possible pairs all lie on the line x + y = 140, as dependent as two days can be. The expected values, 70 for each day, meet on the same line: E[X + Y] is 70 plus 70, which is 140, and the sum rule needs no independence."
+  alt: "Four points on a falling line: (minus 300, 440), (0, 140), (200, minus 60) and (500, minus 360). Dashed lines at x = 70 and y = 70 cross on the line."
+  source: draw.py
+  spec:
+    kind: scatter
+    from_table: {block: 1, x: 0, y: [1]}
+    x_label: "day 1's surplus, x (kcal/day)"
+    y_label: "day 2's surplus, y (kcal/day)"
+    relations:
+    - fit: "y = 140 - x"
+      draw: true
+      label: "x + y = 140 on every row"
+    - check: "x[0]*0.2 + x[1]*0.3 + x[2]*0.4 + x[3]*0.1 = 70"
+    - check: "y[0]*0.2 + y[1]*0.3 + y[2]*0.4 + y[3]*0.1 = 70"
+    refs:
+    - {x: 70, label: "E[X] = 70"}
+    - {y: 70, label: "E[Y] = 70"}
+- file: s02-r1-c14-logged-shift.png
+  caption: "A fixed 120 kcal added to every logged day moves the expected surplus from 70 to 190 kcal a day. Over the week the expected log reaches 1,330 kcal against a true 490: 840 apart, which is 7 times 120. More days of logging widen the gap; they never close it."
+  alt: "Two straight lines from zero at day 0: the true expected total rising through 70 at day 1 to 490 at day 7, and the logged expected total rising through 190 to 1,330."
+  source: draw.py
+  spec:
+    kind: line
+    x: ["0", "1", "7"]
+    series:
+    - name: true expected total
+      y: ["0", "70", "490"]
+    - name: logged expected total
+      y: ["0", "190", "1330"]
+    x_label: day
+    y_label: expected running total of surplus (kcal)
+    relations:
+    - fit: "y = 70*x"
+      series: true expected total
+      draw: true
+      label: "true: 70 kcal a day"
+    - fit: "y = 190*x"
+      series: logged expected total
+      draw: true
+      label: "logged: 70 plus 120 = 190 kcal a day"
+    - check: "y2[2] - y1[2] = 840"
+    - check: "y2[2] - y1[2] = 7*120"
+    labels:
+    - {text: "840 kcal apart at day 7", at: [7, 700], offset: [-120, 0]}
+    derived:
+    - {value: "840", from: "1330 - 490"}
 provenance:
   map_version_id: fc19c8bc-a216-4131-99fb-ebe3f19cec4a
   outcome_refs:

@@ -797,19 +797,23 @@ retrieval_items:
     needs the product rule, not the product of the derivatives.
 figures:
 - file: s02-r1-c03-weight-curve.png
-  caption: "The made-up curve W(t) = 90 minus 0.2t + 0.001 t^2 over 100 days. Weight falls from 90 kg to 80 kg, and the fall slows as it goes: the curve flattens because its second derivative, 0.002, is positive."
-  alt: "Six points from day 0 to day 100 on a falling curve that flattens: 90, 86.4, 83.6, 81.6, 80.4 and 80 kilograms."
+  caption: "The made-up curve W(t) = 90 minus 0.2t + 0.001 t^2 over 100 days. Weight falls from 90 kg to 80 kg, and the fall slows as it goes: the tangent at day 0 has slope -0.2 kg a day and the tangent at day 60 only -0.08. The curve flattens because its second derivative, 0.002, is positive."
+  alt: "Six points from day 0 to day 100 on a falling curve that flattens: 90, 86.4, 83.6, 81.6, 80.4 and 80 kilograms. A steep straight line touches the curve at day 0 and a shallower one touches it at day 60."
   source: draw.py
   spec:
-    kind: line
+    kind: scatter
     from_table: {block: 0, x: 0, y: [1]}
     x_label: day t
     y_label: weight W(t) (kg)
     relations:
     - fit: "y = 90 - 0.2*x + 0.001*x^2"
+    curves:
+    - {y: "y = 90 - 0.2*x + 0.001*x^2", x0: 0, x1: 100, label: "W(t) = 90 − 0.2t + 0.001 t^2", series: "W(t) (kg)"}
+    - {y: "y = 90 - 0.2*x", x0: 0, x1: 30, label: "tangent at day 0: slope −0.2 kg a day"}
+    - {y: "y = 81.6 - 0.08*(x - 60)", x0: 40, x1: 80, label: "tangent at day 60: slope −0.08 kg a day"}
 - file: s02-r1-c03-rate-line.png
   caption: "The same curve's first derivative, W′(t) = -0.2 + 0.002t. It is below zero on every day before day 100, so weight is falling throughout. It climbs towards zero at 0.002 kg a day per day, the second derivative, so the fall is slowing."
-  alt: "A rising straight line of six points from minus 0.2 kilograms a day at day 0 to 0 at day 100, passing minus 0.16, minus 0.12, minus 0.08 and minus 0.04."
+  alt: "A rising straight line of six points from minus 0.2 kilograms a day at day 0 to 0 at day 100, passing minus 0.16, minus 0.12, minus 0.08 and minus 0.04, below a dashed line at zero."
   source: draw.py
   spec:
     kind: line
@@ -818,6 +822,8 @@ figures:
     y_label: rate W′(t) (kg a day)
     relations:
     - fit: "y = -0.2 + 0.002*x"
+    refs:
+    - {y: 0, label: "rate zero: neither falling nor rising"}
 provenance:
   map_version_id: fc19c8bc-a216-4131-99fb-ebe3f19cec4a
   outcome_refs:

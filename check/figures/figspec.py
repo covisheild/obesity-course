@@ -509,6 +509,13 @@ def verify(rec, fig):
                 except Exception as e:
                     probs.append(f"{tag}: check '{rel['check']}' cannot be evaluated ({e})")
                     continue
+            elif _num(want) == 0:
+                # A difference asserted to be zero. The right side "0" carries no decimals, so
+                # _close would allow +-0.5 and pass a difference of 0.4 (found 24 Sep 2026). The
+                # precision comes from the constants on the left instead; with none, it is exact.
+                places = max([_decimals(c) for c in re.findall(r"\d+\.\d+", lhs)] or [None]) \
+                    if re.search(r"\d+\.\d+", lhs) else None
+                ok = abs(got) <= (0.5 * 10 ** -places if places is not None else 1e-9 * max(1, abs(got)))
             else:
                 ok = _close(got, want)
             if not ok:

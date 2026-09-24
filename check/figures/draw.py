@@ -692,6 +692,21 @@ def style_for(book_id):
     return pal, rc
 
 
+_SUP = str.maketrans("0123456789-−+()n", "⁰¹²³⁴⁵⁶⁷⁸⁹⁻⁻⁺⁽⁾ⁿ")
+
+
+def _superscripts(fig):
+    """Show `t^2` as t² in every text of a drawn figure (labels, legend, notes), as the book's
+    notation layer does for prose. Display only: specs and their checks keep `^`. Added 24 Sep 2026,
+    when S02-R1 legends printed raw carets."""
+    import matplotlib.text as mtext
+    pat = re.compile(r"\^(\((?:[0-9+\-−n ]+)\)|[0-9]+|n)")
+    for t in fig.findobj(mtext.Text):
+        raw = t.get_text()
+        if "^" in raw:
+            t.set_text(pat.sub(lambda m: m.group(1).strip("()").replace(" ", "").translate(_SUP), raw))
+
+
 def draw_spec(rec, fig_entry, out_dir=HERE, book_id=None):
     """Draw one figure from its record's spec, and write <file>.spec.json with the spec's hash."""
     book_id = book_id or figspec.book_of(rec)
@@ -824,6 +839,7 @@ def draw_spec(rec, fig_entry, out_dir=HERE, book_id=None):
                 any(b["label"] for b in res.get("bands") or []) or \
                 any(e["label"] for e in (res.get("curves") or []) + (res.get("areas") or [])):
             ax.legend(loc="best")
+        _superscripts(fig)
         fig.tight_layout()
         os.makedirs(out_dir, exist_ok=True)
         path = os.path.join(out_dir, fig_entry["file"])

@@ -953,22 +953,77 @@ figures:
     relations:
     - check: "sum(y1) = 1"
     - check: "sum(y2) = 1"
+    - check: "x[1]^2*y1[1] + x[3]^2*y1[3] = 50"
+    - check: "x[0]^2*y2[0] + x[1]^2*y2[1] + x[3]^2*y2[3] + x[4]^2*y2[4] = 100"
+- file: s02-r1-c15-variance-parts.png
+  caption: "Each bar is one error's square times its probability: its share of the variance. One reading's two shares add to 50 square grams. The dal's four add to 100. Its errors of 10 grams either way carry the same 25 each as one reading's, and the new tails at minus 20 and 20 carry another 25 each, so subtracting doubles the variance."
+  alt: "Paired bars at errors of minus 20, minus 10, 0, 10 and 20 grams. One reading has bars of 25 at minus 10 and 10 and nothing elsewhere. The dal has bars of 25 at minus 20, minus 10, 10 and 20, and nothing at 0."
+  source: draw.py
+  spec:
+    kind: bar
+    x: ["-20", "-10", "0", "10", "20"]
+    series:
+    - name: one reading
+      y: ["0", "25", "0", "25", "0"]
+    - name: the dal, by difference
+      y: ["25", "25", "0", "25", "25"]
+    x_label: error (g)
+    y_label: error squared times probability (square grams)
+    y_range: [0, 36]
+    relations:
+    - check: "sum(y1) = 50"
+    - check: "sum(y2) = 100"
+    - check: "sum(y2) = sum(y1) + sum(y1)"
+    derived:
+    - {value: "25", from: "100*0.25"}
+    - {value: "25", from: "400*0.0625"}
 - file: s02-r1-c15-days.png
   caption: "The error in a total of n days, from made-up daily errors of 300 kcal. Independent errors grow as 300 times the square root of n, reaching 1200 at 16 days. The same under-count every day grows as 300 times n, reaching 4800."
-  alt: "Two lines over 1, 4, 9 and 16 days. The independent-error line rises 300, 600, 900, 1200. The repeated under-count line rises 300, 1200, 2700, 4800, pulling far above it."
+  alt: "Points at 1, 4, 9 and 16 days on two curves. The independent-error points, 300, 600, 900 and 1200, sit on a curve that bends over. The repeated under-count points, 300, 1200, 2700 and 4800, sit on a straight line pulling far above it."
   source: draw.py
   spec:
     kind: line
     from_table: {block: 1, x: 0, y: [1, 2]}
     x_label: days recorded
     y_label: error in the total (kcal)
+    y_range: [0, 5200]
     relations:
     - fit: "y = 300*sqrt(x)"
       series: independent daily errors (kcal)
-      draw: false
+      draw: true
+      label: "300 times the square root of n"
     - fit: "y = 300*x"
       series: same under-count every day (kcal)
-      draw: false
+      draw: true
+      label: "300 times n"
+- file: s02-r1-c15-average-day.png
+  caption: "Divide each total by the days to get the error in the average day. Independent errors shrink as 300 divided by the square root of n, to 75 kcal a day at 16 days: the square-root law. The same under-count every day stays at 300 kcal a day however long you record."
+  alt: "Points at 1, 4, 9 and 16 days. The independent-error points fall 300, 150, 100, 75 along a curve that flattens. The repeated under-count points stay at 300 on a flat line."
+  source: draw.py
+  spec:
+    kind: line
+    x: ["1", "4", "9", "16"]
+    series:
+    - name: independent daily errors
+      y: ["300", "150", "100", "75"]
+    - name: same under-count every day
+      y: ["300", "300", "300", "300"]
+    x_label: days recorded
+    y_label: error in the average day (kcal/day)
+    y_range: [0, 560]
+    relations:
+    - fit: "y = 300/sqrt(x)"
+      series: independent daily errors
+      draw: true
+      label: "300 divided by the square root of n"
+    - fit: "y = 300 + 0*x"
+      series: same under-count every day
+      draw: true
+      label: "300, whatever n"
+    derived:
+    - {value: "150", from: "600/4"}
+    - {value: "100", from: "900/9"}
+    - {value: "75", from: "1200/16"}
 provenance:
   map_version_id: fc19c8bc-a216-4131-99fb-ebe3f19cec4a
   outcome_refs:

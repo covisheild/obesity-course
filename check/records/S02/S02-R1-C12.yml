@@ -843,6 +843,10 @@ figures:
     - fit: "y = x"
       draw: true
       label: the two are equal
+    - check: "x[0] = 4*25 + 9*5 + 4*50"
+    - check: "x[1] = 4*0 + 9*0 + 4*100"
+    - check: "x[2] = 4*10 + 9*20 + 4*60"
+    - check: "x[3] = 4*0 + 9*100 + 4*0"
 - file: s02-r1-c12-tee-not-weighted-sum.png
   caption: "The three made-up adults' TEE against the weights found from adults 1 and 2, 0 times BMR plus 6 times PAL, in megajoules a day. The weights fit the two adults they were found from and miss adult 3, whose TEE is 12.0, by 3."
   alt: "Paired bars for adults 1, 2 and 3: TEE 9.0, 12.0 and 12.0 against the weighted sum 9, 12 and 9. Only adult 3's pair differs."
@@ -857,8 +861,34 @@ figures:
       y: ["9", "12", "9"]
     y_label: MJ a day
     value_labels: true
+    y_range: [0, 14]
     relations:
     - check: "y1[2] - y2[2] = 3"
+- file: s02-r1-c12-three-weightings.png
+  caption: "Three made-up scores built from the four columns: 1 times energy; 4, 9 and 4 on the grams with none on energy; and 2, 4.5 and 2 on the grams with 0.5 on energy. They give the same total on every item, so the table cannot say which one a score comes from."
+  alt: "Grouped bars for items 1 to 4, three bars each, all the same height within an item: 900 for item 1, 400 for item 2, 460 for item 3 and 345 for item 4."
+  source: draw.py
+  spec:
+    kind: bar
+    x: ["item 1", "item 2", "item 3", "item 4"]
+    series:
+    - name: 1 times energy
+      y: ["900", "400", "460", "345"]
+    - name: 4, 9, 4 on the grams
+      y: ["900", "400", "460", "345"]
+    - name: 2, 4.5, 2 on the grams and 0.5 on energy
+      y: ["900", "400", "460", "345"]
+    y_label: score (kcal)
+    y_range: [0, 1150]
+    relations:
+    - check: "y2[0] = 4*0 + 9*100 + 4*0"
+    - check: "y2[1] = 4*0 + 9*0 + 4*100"
+    - check: "y2[2] = 4*10 + 9*20 + 4*60"
+    - check: "y2[3] = 4*25 + 9*5 + 4*50"
+    - check: "y3[0] = 2*0 + 4.5*100 + 2*0 + 0.5*900"
+    - check: "y3[1] = 2*0 + 4.5*0 + 2*100 + 0.5*400"
+    - check: "y3[2] = 2*10 + 4.5*20 + 2*60 + 0.5*460"
+    - check: "y3[3] = 2*25 + 4.5*5 + 2*50 + 0.5*345"
 provenance:
   map_version_id: fc19c8bc-a216-4131-99fb-ebe3f19cec4a
   outcome_refs:

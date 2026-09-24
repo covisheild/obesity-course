@@ -724,8 +724,8 @@ retrieval_items:
     density's height is a probability per unit, not a probability.
 figures:
 - file: s02-r1-c13-village-distribution.png
-  caption: "The made-up village's household sizes. The first bar of each pair is the probability for one household picked at random; the second is the relative frequency in a survey of four. The survey puts 0.5 on 5 people where the probability is 0.3, and sees none of five other sizes."
-  alt: "Paired bars for household sizes 2 to 9. Probabilities are 0.1 for sizes 2, 3, 6, 7 and 9, 0.2 for size 4 and 0.3 for size 5. The survey bars are 0.25 at size 4, 0.5 at size 5, 0.25 at size 9 and zero elsewhere."
+  caption: "The made-up village's household sizes. For each size, the first bar is the probability for one household picked at random and the second is the relative frequency in the survey of four. The survey puts 0.5 on 5 people where the probability is 0.3, and sees no household of 2, 3, 6 or 7 people, though each has probability 0.1."
+  alt: "Paired bars at household sizes 2, 3, 4, 5, 6, 7 and 9. Probabilities are 0.1 for sizes 2, 3, 6, 7 and 9, 0.2 for size 4 and 0.3 for size 5. The survey bars are 0.25 at size 4, 0.5 at size 5, 0.25 at size 9 and zero elsewhere."
   source: draw.py
   spec:
     kind: bar
@@ -734,23 +734,26 @@ figures:
     relations:
     - check: "sum(y1) = 1.0"
     - check: "sum(y2) = 1.0"
+    - check: "y1[4] + y1[5] + y1[6] = 0.3"
 - file: s02-r1-c13-rounding-density.png
-  caption: "The flat probability density for a scale's rounding error, 10 per kilogram from -0.05 to 0.05 kg and zero outside. The probability of an error between 0 and 0.02 kg is the area of the strip over that range, 0.02 times 10, which is 0.2."
-  alt: "A step line at zero from -0.1 to -0.05, at height 10 from -0.05 to 0.05, and at zero again up to 0.1. A second line outlines the strip from 0 to 0.02 under the top of the step."
+  caption: "The flat probability density for a scale's rounding error: 10 per kilogram from -0.05 to 0.05 kg, and zero outside. The whole rectangle has area 0.1 times 10, which is 1. The probability of an error between 0 and 0.02 kg is the strip over that range, 0.02 times 10, which is 0.2. The dashed line at exactly 0.02 has no width, so its probability is 0."
+  alt: "A rectangle of height 10 from -0.05 to 0.05 on an axis running from -0.1 to 0.1, shaded lightly, with a darker strip from 0 to 0.02 and a dashed vertical line at 0.02."
   source: draw.py
   spec:
-    kind: step
-    x: ["-0.1", "-0.05", "0", "0.02", "0.05", "0.1"]
+    kind: line
+    x: ["-0.1", "-0.05", "-0.05", "0.05", "0.05", "0.1"]
     series:
     - name: probability density of the rounding error
-      y: ["0", "10", "10", "10", "0", "0"]
-    - name: the strip from 0 to 0.02 kg
-      y: ["0", "0", "10", "0", "0", "0"]
+      y: ["0", "0", "10", "10", "0", "0"]
+      marker: none
     x_label: displayed weight minus true weight (kg)
     y_label: density (per kg)
-    y_range: [0, 11]
-    labels:
-    - {text: "area of the strip = 0.02 times 10 = 0.2", at: [0.0, 10.3]}
+    y_range: [0, 17]
+    areas:
+    - {y: "y = 10", x0: "-0.05", x1: "0.05", equals: 1, label: "total area: 0.1 times 10 = 1"}
+    - {y: "y = 10", x0: 0, x1: "0.02", equals: "0.2", label: "P(0 ≤ X ≤ 0.02) = 0.02 times 10 = 0.2"}
+    refs:
+    - {x: "0.02", label: "exactly 0.02: no width, area 0"}
 provenance:
   map_version_id: fc19c8bc-a216-4131-99fb-ebe3f19cec4a
   outcome_refs:

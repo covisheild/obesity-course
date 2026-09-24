@@ -647,20 +647,45 @@ retrieval_items:
     time. Area below the axis counts as negative, so a loss is subtracted automatically.
 figures:
 - file: s02-r1-c05-net-rate-line.png
-  caption: "A made-up net rate falling in a straight line from 300 to minus 200 kilocalories a day over 50 days. The triangle above the axis is 4500 kilocalories gained, the one below is 2000 lost, and the change in stores is 2500."
-  alt: "A straight line falling from 300 at day 0 to minus 200 at day 50, crossing zero at day 30, with the gain above the axis and the loss below it labelled."
+  caption: "A made-up net rate falling in a straight line from 300 to minus 200 kilocalories a day over 50 days, crossing zero at day 30. The area above the axis is 4500 kilocalories gained, the area below is 2000 lost, and the change in stores is the net signed area, 4500 minus 2000 = 2500."
+  alt: "A straight line falling from 300 at day 0 to minus 200 at day 50 through six points, crossing zero at day 30. The triangle between the line and the axis from day 0 to day 30 is shaded as a gain; the triangle below the axis from day 30 to day 50 is shaded in a second colour as a loss."
   source: draw.py
   spec:
-    kind: line
+    kind: scatter
     from_table: {block: 0, x: 0, y: [1]}
     x_label: day
     y_label: EI minus EE (kcal/day)
     relations:
+    - fit: "y = 300 - 10*x"
     - check: "(y[0] + y[-1])/2*50 = 2500"
     - check: "0.5*30*y[0] - 0.5*20*abs(y[-1]) = 2500"
-    labels:
-    - {text: "4500 kcal gained", at: [5, 60]}
-    - {text: "2000 kcal lost", at: [38, -50]}
+    curves:
+    - {y: "y = 300 - 10*x", x0: 0, x1: 50, label: "EI minus EE = 300 − 10t", series: "EI minus EE (kcal/day)"}
+    areas:
+    - {y: "y = 300 - 10*x", x0: 0, x1: 30, equals: 4500, label: "4500 kcal gained (counts plus)"}
+    - {y: "y = 300 - 10*x", x0: 30, x1: 50, equals: -2000, label: "2000 kcal lost (counts minus)"}
+    refs:
+    - {y: 0, label: ""}
+- file: s02-r1-c05-average-rate.png
+  caption: "The same net rate with its average value, 50 kilocalories a day, the mean of the end rates 300 and minus 200. A rectangle 50 high and 50 days wide has area 2500 kilocalories, the same as the net signed area under the line: that is the trapezium's one-line way."
+  alt: "The falling line from 300 at day 0 to minus 200 at day 50, with a dashed level line at 50 and the rectangle under that level, from day 0 to day 50, shaded."
+  source: draw.py
+  spec:
+    kind: scatter
+    x: [0, 50]
+    series:
+    - {name: "the end rates, 300 and −200", y: [300, -200]}
+    x_label: day
+    y_label: EI minus EE (kcal/day)
+    relations:
+    - check: "(y[0] + y[1])/2 = 50"
+    curves:
+    - {y: "y = 300 - 10*x", x0: 0, x1: 50, label: "EI minus EE = 300 − 10t", series: "the end rates, 300 and −200"}
+    areas:
+    - {y: "y = 50", x0: 0, x1: 50, equals: 2500, label: "50 kcal a day × 50 days = 2500 kcal"}
+    refs:
+    - {y: 50, label: "average value, 50 kcal a day"}
+    - {y: 0, label: ""}
 provenance:
   map_version_id: fc19c8bc-a216-4131-99fb-ebe3f19cec4a
   outcome_refs:

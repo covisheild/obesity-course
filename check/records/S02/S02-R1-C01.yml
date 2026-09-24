@@ -660,18 +660,35 @@ retrieval_items:
   a: Its rate of change. The paper says all terms are energy per unit of time, and that ES is the
     rate of change in the body's stores. This book writes that rate as dES/dt.
 figures:
-- file: s02-r1-c01-sigma-week.png
-  caption: "Σ[i = 1 to 7] (EI_i − EE_i) drawn as its seven terms, one point a day, in megajoules. The points below zero, days 2 and 4, count as minus when you add, and day 6 adds nothing. The seven terms add to 2.8 megajoules, the change in stores over the week."
-  alt: "Seven labelled points for days 1 to 7 at 0.5, -0.3, 1.1, -1.0, 0.9, 0 and 1.6 megajoules: two below zero on days 2 and 4, one at zero on day 6, and the highest, 1.6, on day 7."
+- file: s02-r1-c01-sigma-terms.png
+  caption: "Two sigma sums drawn as their terms. The term for each i stands at i, so the counter only says where a term sits. The sum is the heights added up: 2 + 4 + 6 + 8 = 20 for Σ[i = 1 to 4] 2i, and 3 + 6 + 9 + 12 = 30 for Σ[i = 1 to 4] 3i."
+  alt: "Paired bars at i = 1, 2, 3 and 4. The first bar of each pair is 2, 4, 6 and 8 high; the second is 3, 6, 9 and 12 high."
+  source: draw.py
+  spec:
+    kind: bar
+    x: ["i = 1", "i = 2", "i = 3", "i = 4"]
+    series:
+    - {name: "terms of Σ[i = 1 to 4] 2i", y: [2, 4, 6, 8]}
+    - {name: "terms of Σ[i = 1 to 4] 3i", y: [3, 6, 9, 12]}
+    x_label: the counter i
+    y_label: the term for that i
+    value_labels: true
+    relations:
+    - check: "sum(y1) = 20"
+    - check: "sum(y2) = 30"
+- file: s02-r1-c01-feedback-line.png
+  caption: "Polidori's Equation 4, ΔEI(t) = − k_P × ΔBW(t), with k_P about 100 kcal a day per kg. The minus sign turns a weight change below zero into an intake change above zero: a loss of 1 kg puts eating about 100 kcal a day above baseline, on this model and for the group average."
+  alt: "A straight line through the point where both changes are zero, rising to the left as weight change goes below zero. The point at a weight change of minus 1 kg sits at 100 kcal a day."
   source: draw.py
   spec:
     kind: scatter
-    from_table: {block: 1, x: 0, y: [1]}
-    x_label: day i
-    y_label: that day's intake minus expenditure (MJ)
-    value_labels: true
-    relations:
-    - check: "sum(y) = 2.8"
+    x: [-1, 0]
+    series:
+    - {name: "ΔBW = −1 kg gives ΔEI = 100 kcal a day", y: [100, 0]}
+    curves:
+    - {y: "y = -100*x", x0: -3, x1: 0, label: "ΔEI = − k_P × ΔBW, k_P = 100", series: "ΔBW = −1 kg gives ΔEI = 100 kcal a day"}
+    x_label: "ΔBW(t), change in body weight from baseline (kg)"
+    y_label: "ΔEI(t), change in intake (kcal a day)"
 provenance:
   map_version_id: fc19c8bc-a216-4131-99fb-ebe3f19cec4a
   outcome_refs:

@@ -446,3 +446,17 @@ step 5c, which writes nothing new. "As it stands" quotes the final text
 - **To close it:** either a general derivation of Var(X + Y) = Var(X) + Var(Y) for independent X
   and Y in C15 (the √n law then follows in two lines from the a² rule, which is derived), or a
   sentence saying that the book checks the rule and does not prove it.
+
+# Figure observations (conductor, looking at all 45 figures, 24 Sep 2026)
+
+Fixed in the tool: raw carets in legends (`5 t^2`, `0.001 t^2`, `t^2`) now print as superscripts
+(`draw._superscripts`, display only). Left for the audit and fixers (layout, not arithmetic):
+
+1. `s02-r1-c12-tee-not-weighted-sum.png`: legend "0 times BMR plus 6 times PAL" is cryptic without
+   the section's working; bar labels mix "9.0" and "9". Say what the weights are and why they fail.
+2. `s02-r1-c02-settling.png`: the marker at h = 0 is drawn as a broken glyph beside "20 at h = 0".
+3. `s02-r1-c13-rounding-density.png`: y axis runs to 16 for a density of height 10; the headroom
+   is for the legend but reads as a scale error.
+4. `s02-r1-c16-two-readings.png`, `s02-r1-c14-dependent-days.png`: legends are the tables' column
+   headers ("ΔEB read as expenditure minus intake (lb)"); accurate, terse.
+5. `s02-r1-c08-settling-point.png`: "15 kg down" label sits on the expenditure line.

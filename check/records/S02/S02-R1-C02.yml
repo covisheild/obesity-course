@@ -644,14 +644,27 @@ figures:
     x_label: step h
     y_label: average rate over the step
     relations:
-    - fit: "y = 20 + 5*x"
-      draw: true
-      label: "average rate = 20 + 5h"
+    - {fit: "y = 20 + 5*x", draw: true, label: "average rate = 20 + 5h"}
     labels:
     - {text: "20 at h = 0", at: [0, 20], offset: [8, -14]}
+- file: s02-r1-c02-chord-tangent.png
+  caption: "S(t) = 5 t^2 near t = 2. The note's 25 is the slope of the chord from t = 2 to t = 3, an average over a whole unit of time. The tangent at t = 2 has slope 20, the rate at that instant, and the curve bends away above it."
+  alt: "A rising, steepening curve from 5 at t = 1 to 45 at t = 3, with points at 20 when t = 2 and 45 when t = 3. A steeper straight line joins the two points; a shallower straight line touches the curve at t = 2."
+  source: draw.py
+  spec:
+    kind: scatter
+    x: [2, 3]
+    series:
+    - {name: "S(2) = 20, S(3) = 45", y: [20, 45]}
+    curves:
+    - {y: "y = 5*x^2", x0: 1, x1: 3, label: "S(t) = 5 t^2", series: "S(2) = 20, S(3) = 45"}
+    - {y: "y = 20 + 25*(x - 2)", x0: 2, x1: 3, label: "chord, t = 2 to 3: slope 25"}
+    - {y: "y = 20 + 20*(x - 2)", x0: 1, x1: 3, label: "tangent at t = 2: slope 20"}
+    x_label: t
+    y_label: S(t)
 - file: s02-r1-c02-weighings.png
-  caption: "Fifteen made-up morning weighings. Day to day the weight jumps by as much as 0.7 kg, while the average of days 0 to 4, 80.0 kg, and of days 10 to 14, 79.5 kg, fall by 0.5 kg over ten days. The side axis does not start at zero, so the swings look larger than they are."
-  alt: "Fifteen points from day 0 to day 14, zigzagging between 79.0 and 80.3 kilograms, drifting slowly downwards."
+  caption: "Fifteen made-up morning weighings. The one-day rate from day 12 to day 13 is 0.6 kg a day upwards, and day to day the weight jumps by as much as 0.7 kg. The line from the average of days 0 to 4, 80.0 kg at day 2, to the average of days 10 to 14, 79.5 kg at day 12, falls at 0.05 kg a day. The side axis does not start at zero, so the swings look larger than they are."
+  alt: "Fifteen points from day 0 to day 14, zigzagging between 79.0 and 80.3 kilograms and drifting slowly downwards. A short steep line rises from 79.0 at day 12 to 79.6 at day 13. A long gentle line falls from 80.0 at day 2 to 79.5 at day 12."
   source: draw.py
   spec:
     kind: scatter
@@ -662,6 +675,10 @@ figures:
     relations:
     - check: "mean(y[0:5]) = 80.0"
     - check: "mean(y[10:15]) = 79.5"
+    - check: "y[13] - y[12] = 0.6"
+    curves:
+    - {y: "y = 79.0 + 0.6*(x - 12)", x0: 12, x1: 13, label: "day 12 to 13: 0.6 kg a day", series: "weight (kg)"}
+    - {y: "y = 80.0 - 0.05*(x - 2)", x0: 2, x1: 12, label: "five-day averages, day 2 to 12: −0.05 kg a day"}
     derived:
     - {value: "0.7", from: "y[4] - y[5]"}
 provenance:

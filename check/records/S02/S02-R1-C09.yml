@@ -898,6 +898,51 @@ figures:
       label: "S(m) = 0.40 + 5 (m − 70.6)²"
     labels:
     - {text: "mean, 70.6 kg", at: [70.6, 0.40], offset: [-30, 10]}
+- file: s02-r1-c09-level-not-turning.png
+  caption: "The plain cube g(x) = x³ and its slope g′(x) = 3x². The slope is zero at x = 0 and positive on both sides of it, so g rises before 0 and after it. Level ground, and neither a top nor a bottom."
+  alt: "Two curves for x from −2 to 2. The cube rises from −8 through 0 to 8, flattening for an instant at x = 0. The slope curve is a U that touches zero at x = 0 and reaches 12 at each end, never going below zero."
+  source: draw.py
+  spec:
+    kind: scatter
+    x: [-2, -1, 0, 1, 2]
+    series:
+    - name: "g(x) = x³"
+      y: [-8, -1, 0, 1, 8]
+    - name: "slope g′(x) = 3x²"
+      y: [12, 3, 0, 3, 12]
+    x_label: x
+    y_label: value
+    curves:
+    - {y: "y = x^3", x0: -2, x1: 2, series: "g(x) = x³"}
+    - {y: "y = 3*x^2", x0: -2, x1: 2, series: "slope g′(x) = 3x²"}
+    refs:
+    - {y: 0, label: "zero"}
+    derived:
+    - {value: "8", from: "2^3"}
+    - {value: "12", from: "3*2^2"}
+- file: s02-r1-c09-valley-sharpness.png
+  caption: "How far S climbs above its lowest value as the centre steps away from the best one. With the five weighings S″ is 10, so a step of 0.4 kg costs 5 times 0.16, which is 0.80 kg². With 20 readings S″ would be 40, and the same step would cost 20 times 0.16, which is 3.2 kg²."
+  alt: "Two U-shaped curves through zero at a step of 0. The shallow one, for five readings, reaches 0.20 at a step of 0.2 kg and 0.80 at 0.4 kg. The steep one, for 20 readings, reaches 0.8 at 0.2 kg and 3.2 at 0.4 kg."
+  source: draw.py
+  spec:
+    kind: scatter
+    x: [-0.4, -0.2, 0, 0.2, 0.4]
+    series:
+    - name: "5 readings, S″ = 10"
+      y: [0.80, 0.20, 0, 0.20, 0.80]
+    - name: "20 readings, S″ = 40"
+      y: [3.2, 0.8, 0, 0.8, 3.2]
+    x_label: step away from the best centre (kg)
+    y_label: rise in S above its lowest (kg²)
+    curves:
+    - {y: "y = 5*x^2", x0: -0.4, x1: 0.4, series: "5 readings, S″ = 10"}
+    - {y: "y = 20*x^2", x0: -0.4, x1: 0.4, series: "20 readings, S″ = 40"}
+    derived:
+    - {value: "0.2", from: "70.8 - 70.6"}
+    - {value: "0.80", from: "1.20 - 0.40"}
+    - {value: "0.20", from: "0.60 - 0.40"}
+    - {value: "3.2", from: "20*0.16"}
+    - {value: "0.8", from: "20*0.2*0.2"}
 provenance:
   map_version_id: fc19c8bc-a216-4131-99fb-ebe3f19cec4a
   outcome_refs:
