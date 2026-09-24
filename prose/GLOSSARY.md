@@ -66,16 +66,23 @@ teaches were deleted. Terms used before their gloss, and terms used for two thin
 | ceiling | the level a saturating shape heads for and flattens against | `B0-R0-C20` |
 | cell | (1) of a table: where a row meets a column, the count of people who are both (`B0-R0-C26`); (2) a living cell: the smallest unit of a living thing (`B0-R0-C35`) | `B0-R0-C26`, `B0-R0-C35` |
 | checking a reference | four acts, each of which can fail on its own: find the source, confirm it is the source named, find the exact passage pointed to, read it to see whether it supports the claim | `B0-R0-C41` |
+| cherry-picking | choosing only the quotations that fit a claim, or cutting a quotation so that it fits; the first you catch only by reading the other transcripts for what runs against the claim | `S36-R1-C13` |
 | chord | the straight line laid across two points on a curve, whose slope is the average rate between them | `B0-R0-C21` |
 | chromosome | one of the structures genes sit along, in a fixed order; a person gets two copies of each, one from each parent | `B0-R0-C37` |
+| cleaned transcription (intelligent verbatim) | a transcript that tidies speech into readable sentences and drops the fillers and repeats | `S36-R1-C10` |
+| closed question | a question that fixes the possible answers before the respondent speaks: yes or no, a number, or one of a set of options the question supplies | `S36-R1-C05` |
+| closing question (in a topic guide) | the last question of a topic guide, such as "Is there anything I have not asked about that I should have?" | `S36-R1-C06` |
+| code (in a transcript) | a short label written beside a passage of a transcript that bears on the study question, saying what it is about; the reader's own label for finding and comparing passages, not yet a finding | `S36-R1-C12` |
 | coefficients | the fixed numbers that a formula multiplies by | `S02-R1-C11` |
 | combustion | burning, a substance joining with oxygen | `B0-R0-C32` |
 | complement | every outcome in the sample space that is not in the event; everything that is not it | `B0-R0-C24` |
 | complementary | each one completes the other; A always faces T and C always faces G | `B0-R0-C37` |
 | concentration | an amount of something held in a volume of something else | `B0-R0-C13` |
+| conceptual generalisation | what carries beyond a qualitative study: an idea, a reason and how it works, that a reader can test in another setting, as against a statistical estimate of how common something is in a population | `S36-R1-C02` |
 | conclusion | the claim the premises are offered for | `B0-R0-C42` |
 | conditional probability | the same move with a chosen denominator: P(A given B), written P(A\|B), is the count who are both A and B divided by the count who are B | `B0-R0-C26` |
 | conduction | heat moving through matter that is staying put, by contact | `B0-R0-C34` |
+| confidentiality | the researcher's duty to keep safe what a person told them, including "from unauthorized access, use, disclosure, modification, loss or theft" (ICMR 2017, section 2.3) | `S36-R1-C07` |
 | conservation of energy | energy is never made and never destroyed; it changes form and it moves | `B0-R0-C33` |
 | constant multiple rule | the derivative of k times a function is k times the derivative of the function | `S02-R1-C03` |
 | constant rule | the derivative of a constant is zero | `S02-R1-C03` |
@@ -102,6 +109,7 @@ teaches were deleted. Terms used before their gloss, and terms used for two thin
 | derivation | a chain of equations in which each line follows from lines above it by one move that can be named | `S02-R1-C16` |
 | derivative | the mathematicians' name for the rate at a moment, written dy/dx | `B0-R0-C21` |
 | derived unit | a unit built out of the base units by multiplying and dividing | `B0-R0-C09` |
+| deviant case (negative case) | a passage that runs against the pattern the other passages seem to show; kept and marked, not dropped, because it is what tests and sharpens the pattern | `S36-R1-C12` |
 | deviation | a value minus the mean | `B0-R0-C28` |
 | differential equation | an equation involving an unknown function and one or more of its derivatives: a rule that gives the rate from the state | `S02-R1-C07` |
 | dimension | the kind of thing a quantity is: a length, a mass, a time, or a combination of these | `B0-R0-C11` |
@@ -112,6 +120,7 @@ teaches were deleted. Terms used before their gloss, and terms used for two thin
 | domain | the inputs a rule will accept | `B0-R0-C18` |
 | dominant | an allele that shows whenever it is present | `B0-R0-C37` |
 | dot product | multiply the entries of two vectors of the same length in matching positions, then add the products; written a · b, said "a dot b" | `S02-R1-C10` |
+| double question | a question that asks two things in one sentence; split it | `S36-R1-C05` |
 | doubly labelled water | the method that measures what was actually spent: a person drinks water carrying rare, stable forms of hydrogen and oxygen, and how fast they leave the body over the next 10 to 14 days gives the average energy spent | `S01-R1-C03` |
 | dynamic model | a model built on energy balance, with expenditure allowed to change | `S01-R1-C07` |
 | e (the number) | the base of the one exponential curve whose slope where it crosses the vertical axis is exactly 1; about 2.71828 | `S02-R1-C04` |
@@ -131,6 +140,7 @@ teaches were deleted. Terms used before their gloss, and terms used for two thin
 | equilibrium (steady state) | a constant value of the state at which the rule gives a rate of zero, written W* and read "W star" | `S02-R1-C08` |
 | error | what a measurement says minus what is actually true, or minus a trusted reference value (VIM 2.16: "measured quantity value minus a reference quantity value") | `B0-R0-C30` |
 | estimate | a number made from part of the group and used to stand in for the whole | `B0-R0-C29` |
+| ethics committee (EC) | a group of people at a hospital, college or research body that reads a researcher's plan before any research starts and can say yes, no, or change this first; the committee, not the researcher, decides the kind of review | `S36-R1-C07` |
 | event | any collection of outcomes from the sample space | `B0-R0-C24` |
 | executive | the day-to-day running of government | `B0-R0-C43` |
 | exocrine | sending a secretion down a tube to where it is needed | `B0-R0-C38` |
@@ -143,15 +153,18 @@ teaches were deleted. Terms used before their gloss, and terms used for two thin
 | extracellular fluid | the fluid around a gland's own cells, into which it lets its hormone out | `B0-R0-C38` |
 | fat mass | the triglyceride held in adipose tissue | `S01-R1-C01` |
 | fat-free mass | everything else the body weighs; some papers call it lean body mass, or lean mass | `S01-R1-C01` |
+| field notes | notes written the same day as an interview, before you listen to the recording: what happened, where, how it felt, what surprised you | `S36-R1-C08` |
 | first derivative test | sorts a critical point by the sign of the derivative either side: positive to negative is a local maximum, negative to positive a local minimum, the same sign neither | `S02-R1-C09` |
 | first law of thermodynamics | the physicists' name for one version of conservation of energy: energy is never made or destroyed, only changed in form | `S01-R1-C06` |
 | first-order (differential equation) | gives the rate of change of a quantity at a moment as a rule in its state, in the time, or in both | `S02-R1-C07` |
 | fitted equation | an equation whose form was chosen by its author and whose constants were estimated from one set of measurements | `S02-R1-C17` |
 | flow | a rate that changes a stock, with a time on the bottom of its unit | `B0-R0-C23` |
+| focus group | a form of group interview in which a moderator asks the participants to talk to one another, and that talk between them is the data | `S36-R1-C04` |
 | forward step (Euler's method) | from the state at time t, compute the rate from the equation, then take the state at t + h to be about the state at t plus h times that rate | `S02-R1-C07` |
 | fraction | a division that has not yet been carried out; a sum you have not done yet | `B0-R0-C02` |
 | free energy | loose energy, of which a cell cannot hold a useful amount | `B0-R0-C36` |
 | frequency table | lists each value, or each band of values, against the count of times it occurred | `B0-R0-C27` |
+| full verbatim | a transcript that keeps everything: every filler, every repeated word, every broken-off sentence | `S36-R1-C10` |
 | function | a rule that gives every input it accepts exactly one output; a machine with one slot in and one slot out | `B0-R0-C18` |
 | fundamental theorem of calculus (evaluation theorem) | if f is continuous and F is any antiderivative of f, the integral of f from a to b is F(b) minus F(a) | `S02-R1-C06` |
 | gallbladder | a small bag next to the liver that holds bile, concentrates it and lets it out | `B0-R0-C38` |
@@ -166,6 +179,7 @@ teaches were deleted. Terms used before their gloss, and terms used for two thin
 | grand total | what you get when you add up everything in the table | `B0-R0-C26` |
 | graph | a drawing of a relationship between two quantities, made of points | `B0-R0-C19` |
 | gross energy | all the energy a food gives up when it is burnt to nothing, also called ingested energy | `B0-R0-C32` |
+| group interview | several people interviewed at once, each answering the researcher in turn | `S36-R1-C04` |
 | half-time | the time a shrinking exponential takes to fall to half of any starting value: ln 2 divided by k | `S02-R1-C04` |
 | heat | energy moving, because one thing is hotter than another | `B0-R0-C34` |
 | heat capacity | the joules one particular object needs to go up by one degree | `B0-R0-C34` |
@@ -177,9 +191,11 @@ teaches were deleted. Terms used before their gloss, and terms used for two thin
 | identity (kind of equation) | an equation that holds for every value of its symbols because a conservation law, or counting, requires it | `S02-R1-C17` |
 | implausible (of a weight-loss claim) | needs more than any deficit people are known to manage | `S01-R1-C08` |
 | impossible (of a weight-loss claim) | needs more than the person's whole expenditure over the interval | `S01-R1-C08` |
+| in-depth interview | an interview in which almost nothing is decided in advance: one broad opening question about one or two issues, and everything after that comes from what the person has said | `S36-R1-C03` |
 | independent | finding out one of them happened tells you nothing new about the other | `B0-R0-C25` |
 | inference | the move from the reasons to the conclusion | `B0-R0-C42` |
 | infographic | a chart decorated with pictures | `B0-R0-C40` |
+| informed consent | a process with three parts: the person is given the information, understands it, and is free to say no (ICMR 2017, section 2.2); in writing, with a signature or thumb impression, except in exceptional cases an ethics committee approves | `S36-R1-C07` |
 | initial value | the state at one stated time, which picks out one solution of a differential equation | `S02-R1-C07` |
 | initial-value problem | a differential equation and an initial value together; a function solves it only if it satisfies both | `S02-R1-C07` |
 | instantaneous rate | how fast the quantity is changing at one moment: the steepness of the curve at that single point | `B0-R0-C21` |
@@ -201,6 +217,7 @@ teaches were deleted. Terms used before their gloss, and terms used for two thin
 | lakh | a hundred thousand | `B0-R0-C01` |
 | large store | fat: triglyceride, held in adipose tissue | `B0-R0-C36` |
 | law of large numbers | repeat the chance process many times, and the average of the values the random variable takes settles towards its expected value | `S02-R1-C14` |
+| leading question | a question that shows the answer the asker expects, or takes for granted part of what it is asking about; it can be open or closed | `S36-R1-C05` |
 | lean body mass | what some papers call fat-free mass | `S01-R1-C01` |
 | least squares | choosing a number by making squared misses as small as possible | `S02-R1-C09` |
 | legislature | the body that makes law: Parliament for the country, a State Legislature for its own state | `B0-R0-C43` |
@@ -216,22 +233,26 @@ teaches were deleted. Terms used before their gloss, and terms used for two thin
 | logarithm | the power you have to raise ten to, to get the number | `B0-R0-C07` |
 | logarithmic axis | an axis on which equal distances stand for equal multiplications, not equal additions | `B0-R0-C07` |
 | long tail | the side of a distribution that thins out slowly | `B0-R0-C27` |
+| main question (in a topic guide) | one of the questions a study turns on, each coming from the study question (DeJonckheere and Vaughn's "core question") | `S36-R1-C06` |
 | maintenance requirement | the energy it takes to keep a person at a steady weight | `S01-R1-C04` |
 | mark | anything drawn that stands for one number: a bar, a point, a slice, a picture | `B0-R0-C40` |
 | mass concentration | a weight in a volume, such as milligrams per decilitre (mg/dL): it says how heavy | `B0-R0-C13` |
 | matrix | a rectangular table of numbers, named by a capital letter: a table with the labels taken off | `S02-R1-C11` |
 | matrix product | A times B, written AB: the entry in row i and column j is row i of A dotted with column j of B; defined only when A has as many columns as B has rows | `S02-R1-C11` |
 | mean | the sum of a set of values divided by how many there are, which everyday speech calls the average | `B0-R0-C28` |
+| mean share (of talk) | across several interviews, the sum of the interviewer's talk shares divided by the number of interviews | `S36-R1-C11` |
 | measurement | a number together with a unit | `B0-R0-C09` |
 | measurement bias | an error that points one way and does not shrink when you collect more (VIM 2.18: an "estimate of a systematic measurement error") | `B0-R0-C30` |
 | median | the middle value of the set once it is ordered from smallest to largest; with an even count, the mean of the two middle values | `B0-R0-C28` |
 | megajoule | a million joules, a thousand kilojoules; mega means 10^6, a million | `S01-R1-C02` |
+| memo | a note, written while you read a transcript, of what you notice and what you want to ask next | `S36-R1-C12` |
 | metabolically active tissue | the tissue that spends most of the energy spent at rest | `S01-R1-C01` |
 | metabolism | the name for every chemical reaction in a body added together | `B0-R0-C36` |
 | metabolizable energy | what is left of a food's energy after the losses in faeces, gas and urine | `B0-R0-C32` |
 | millimole | one thousandth of a mole | `B0-R0-C13` |
 | mitochondria | the parts of a cell that make ATP | `B0-R0-C35` |
 | model assumption | a claim, adopted by the author, about how a body or a population behaves; it could be false | `S02-R1-C17` |
+| moderator | the person who runs a focus group (Kitzinger's "facilitator") | `S36-R1-C04` |
 | molar mass | how heavy one mole of a substance is, in grams per mole (g/mol); it belongs to the substance | `B0-R0-C13` |
 | mole | a fixed count of things, molecules here | `B0-R0-C13` |
 | molecule | a group of atoms held together by bonds | `B0-R0-C31` |
@@ -251,12 +272,14 @@ teaches were deleted. Terms used before their gloss, and terms used for two thin
 | nucleus | the compartment that holds the cell's instructions, written in its DNA | `B0-R0-C35` |
 | numerator | the number above the line, saying how many of the parts are being counted | `B0-R0-C02` |
 | odds | how many times more likely the event is than its opposite: p divided by (1 minus p) | `B0-R0-C24` |
+| open question | a question the person answers in their own words, not by picking from a list; it leaves the form of the answer to the respondent | `S36-R1-C03`, `S36-R1-C05` |
 | order of magnitude | which power of ten a number is nearest to | `B0-R0-C08` |
 | order-of-magnitude estimate | every input rounded to one digit and a power of ten, the answer claimed only to the nearest power of ten; it tests a figure rather than producing one | `B0-R0-C08` |
 | origin | the point where the two axes of a graph cross | `B0-R0-C19` |
 | outcome | one member of the sample space | `B0-R0-C24` |
 | overall maximum, overall minimum | the highest, or lowest, point over the whole stretch of inputs allowed | `S02-R1-C09` |
 | parameter | a number that describes the population, if every member of it could be measured | `B0-R0-C29` |
+| passage (of a transcript) | the stretch of a transcript that says one thing | `S36-R1-C12` |
 | percentage | a fraction whose denominator is one hundred; per cent means per hundred | `B0-R0-C04` |
 | percentage change | the change divided by the value it started from, times one hundred | `B0-R0-C04` |
 | percentage point | the plain difference between two percentages, as against per cent, which divides | `B0-R0-C04` |
@@ -265,30 +288,40 @@ teaches were deleted. Terms used before their gloss, and terms used for two thin
 | physical activity expenditure | the energy spent moving, whether as deliberate exercise or as the ordinary movement of a day | `S01-R1-C04` |
 | physical activity level (PAL) | a multiplier for how active the group is | `S01-R1-C03` |
 | pie chart | a circle standing for a whole, each slice's share of the circle being its share of the total | `B0-R0-C40` |
+| pilot interview | a practice run of the whole procedure of an interview study, done with a few people before the study proper; it tests the topic guide and the interviewer, not an answer to the study question | `S36-R1-C14` |
 | place value | what a digit is worth because of where it sits | `B0-R0-C01` |
 | plasma membrane | the skin round a cell, which decides what gets in and what stays out | `B0-R0-C35` |
 | polysaccharide | a chain of single sugar molecules, such as starch | `B0-R0-C36` |
+| pooled share (of talk) | all the interviewer's words across several interviews, divided by all the words in them; it differs from the mean share when the interviews differ in length | `S36-R1-C11` |
 | population | the whole group a question is about | `B0-R0-C28` |
 | positive predictive value | the share of positive results that are right, written P(condition present given test positive) | `B0-R0-C26` |
 | potential energy | energy a thing has because of where it is, what it is made of, or what state it is in | `B0-R0-C31` |
 | pound | a unit this course does not use; exactly 0.453 592 37 kilogram | `S01-R1-C02` |
 | power | repeated multiplication of one number by itself, as 10^3 is ten times ten times ten | `B0-R0-C06` |
+| power calculation | the sum a survey or trial does to decide how many people it needs | `S36-R1-C02` |
 | power rule | for a positive whole number n, the derivative of x^n is n times x^(n minus 1) | `S02-R1-C03` |
 | precision | how closely repeated readings agree with each other | `B0-R0-C30` |
 | predictor | one of the several columns a study predicts an outcome from, each given one weight | `S02-R1-C12` |
 | premise | a reason offered | `B0-R0-C42` |
 | prevalence | how many people in a group have the condition, written P(condition present), with no test involved | `B0-R0-C26` |
+| privacy | the person's right to control what is collected about them and who sees it | `S36-R1-C07` |
 | probability | a number from 0 to 1 that states how often an outcome would turn up if the same chance process were repeated a great many times | `B0-R0-C24` |
 | probability density | a curve that never goes below zero and has a total area of 1 beneath it; the area over a range is the probability of that range, and its height is a probability per unit, not a probability | `S02-R1-C13` |
 | probability distribution | the list of every value a random variable can take, each paired with its probability; a model of the chance process, where a frequency table is data | `S02-R1-C13` |
+| probe | a short follow-up that asks for more of what the respondent just said without suggesting what that should be, such as a pause, repeating their words, or "tell me more" | `S36-R1-C08` |
+| prompt (in a topic guide) | a short note under a main question of something you hope the answer covers, used only if the respondent does not get there on their own; it names a topic, never an answer | `S36-R1-C06` |
 | proportion | a part out of the whole it came from, never more than one | `B0-R0-C05` |
 | protein | a folded chain of amino acids, whose shape is what it does | `B0-R0-C35` |
 | quadratic | a function of the form px² + qx + r | `S02-R1-C09` |
+| qualitative research | research that asks what something is, what it means to the people involved, how it comes about and why, by gathering people's own words and actions and analysing them without turning them into counts | `S36-R1-C01` |
+| quantitative research | research that asks how many or how much: how common something is, how large a quantity is, or how large a difference a treatment makes | `S36-R1-C01` |
 | quartile | the first quartile is the median of the lower half of the ordered values, the third the median of the upper half, the second the median of the whole set | `B0-R0-C28` |
+| quotation (in a qualitative report) | a respondent's own words, offered as evidence for a claim the author makes about the data, not as decoration | `S36-R1-C13` |
 | radiation | heat crossing as light or as the invisible light below red, with nothing needed in between | `B0-R0-C34` |
 | random error | the part that varies unpredictably from one reading to the next (VIM 2.19) | `B0-R0-C30` |
 | random sample | picked at random: every member of the population has exactly the same chance of being the one picked, and an actual chance process decides it, not the person picking | `B0-R0-C29` |
 | random variable | a rule that gives a number to each outcome of a chance process; written as a capital letter, such as X | `S02-R1-C13` |
+| randomised controlled trial | a way to test a treatment in which chance decides who gets it, and then the groups are compared | `S36-R1-C01` |
 | range | (1) of a rule, the outputs it can give back (`B0-R0-C18`); (2) of a set of values, the largest minus the smallest (`B0-R0-C27`) | `B0-R0-C18`, `B0-R0-C27` |
 | rate | a count divided by the time, or the number of people, it was counted over | `B0-R0-C05` |
 | rate constant (k) | the rate divided by the amount; its unit is the rate's unit divided by the amount's, such as per day | `S02-R1-C04` |
@@ -299,10 +332,14 @@ teaches were deleted. Terms used before their gloss, and terms used for two thin
 | recessive | an allele that shows only when both copies are that version | `B0-R0-C37` |
 | redundant (column) | a column that is a weighted sum of other columns: once they are known, it says nothing about any row that they did not already say | `S02-R1-C12` |
 | reference | a pointer from a claim to the place that is supposed to support it | `B0-R0-C41` |
+| reflexivity | "sensitivity to the ways in which the researcher and the research process have shaped the collected data" (Mays and Pope 2000) | `S36-R1-C09` |
 | regulated system | a system that senses body weight, or a signal that tracks it, and pushes back when weight falls | `S01-R1-C09` |
 | regulation | what a body the statute set up may make, not Parliament; it binds because a statute said it could | `B0-R0-C43` |
 | relative frequency | a count divided by the total number counted; the proportion, under a longer name | `B0-R0-C27` |
+| research interview | a conversation in which a researcher asks a respondent about a topic to gather the respondent's account of it; not a clinical consultation | `S36-R1-C03` |
 | resolution | the smallest step an instrument's display can move by (VIM 4.14: the "smallest change in a quantity being measured that causes a perceptible change in the corresponding indication") | `B0-R0-C30` |
+| respondent | a person who answers in a qualitative study, chosen on purpose for what they can tell the researcher about the question | `S36-R1-C02` |
+| respondent-to-interviewer ratio | the respondent's words in an interview divided by the interviewer's words | `S36-R1-C11` |
 | resting energy expenditure (REE) | the energy spent at rest | `S01-R1-C01` |
 | ribosome | the machine in a cell that builds proteins | `B0-R0-C35` |
 | rise | the change up, between two points on a line | `B0-R0-C19` |
@@ -320,6 +357,7 @@ teaches were deleted. Terms used before their gloss, and terms used for two thin
 | scientific notation | a number between one and ten, times a power of ten | `B0-R0-C06` |
 | second derivative | the derivative of the derivative, the rate of change of the rate; written f″(x) | `S02-R1-C03` |
 | second derivative test | where the derivative is zero, a second derivative above zero means a local minimum, below zero a local maximum, and zero decides nothing | `S02-R1-C09` |
+| semi-structured interview | an interview that follows a short guide of open questions: the topics are decided, the path is not, and the order and wording change to suit the person | `S36-R1-C03` |
 | sensitivity | the share of people with the condition that the test catches, written P(test positive given condition present) | `B0-R0-C26` |
 | set point model | Hall and Guo's name for a model with feedback on both intake and expenditure; its equilibrium still moves when intake is shifted | `S02-R1-C08` |
 | settling point model | Hall and Guo's model in which intake is flat and expenditure rises with weight | `S02-R1-C08` |
@@ -333,6 +371,7 @@ teaches were deleted. Terms used before their gloss, and terms used for two thin
 | small store | glycogen, kept in the liver and the muscles | `B0-R0-C36` |
 | solution (of a system) | the pair of values that satisfies both equations, not one | `B0-R0-C17` |
 | solving for a letter | reaching an equation with that letter alone on one side and nowhere on the other | `B0-R0-C16` |
+| speaker label | a label such as R1 that stands in for a person's name on the recording, the file name and the transcript | `S36-R1-C07` |
 | special majority | a majority of all the members of a House, and two-thirds of those present and voting | `B0-R0-C43` |
 | specific heat | the joules one kilogram of a material needs to go up by one degree | `B0-R0-C34` |
 | specificity | the share of people without the condition that the test correctly clears, written P(test negative given condition absent) | `B0-R0-C26` |
@@ -347,6 +386,7 @@ teaches were deleted. Terms used before their gloss, and terms used for two thin
 | statistic | the same kind of number, computed instead from a sample | `B0-R0-C29` |
 | statute | a law enacted by Parliament or a State Legislature, each called an Act | `B0-R0-C43` |
 | stock | a quantity that exists at a moment and can be measured at that moment, such as the water in a tank | `B0-R0-C23` |
+| structured interview | a questionnaire read aloud, with everything decided in advance and most answers picked from a list; its answers are counted | `S36-R1-C03` |
 | subject (of a formula) | the one letter got on its own; getting it there is making it the subject | `B0-R0-C16` |
 | subscript | a small letter or number set low after a symbol; part of the symbol's name, and never a multiplication | `S02-R1-C01` |
 | substitution | (1) putting a number in place of a letter, everywhere it appears (`B0-R0-C15`); (2) to solve two equations, rearranging one to give a letter on its own and putting that into the other (`B0-R0-C17`) | `B0-R0-C15`, `B0-R0-C17` |
@@ -356,14 +396,18 @@ teaches were deleted. Terms used before their gloss, and terms used for two thin
 | system of two equations | a pair of equations that have to hold at the same time | `B0-R0-C17` |
 | systematic error | pushes every reading the same way, by close to the same amount, every time | `B0-R0-C30` |
 | table | values set out in a grid, each one identified by the row and the column it sits in | `B0-R0-C39` |
+| talk share | the interviewer's words in one interview divided by the words everyone says, times one hundred; the respondent's talk share is one hundred minus the interviewer's | `S36-R1-C11` |
 | tangent | the straight line that touches a curve at one point and runs along it, whose slope is the rate at that point | `B0-R0-C21` |
 | temperature | how hot a thing is - a level, not an amount | `B0-R0-C34` |
 | thermic effect of food | the energy spent digesting, absorbing and processing what was eaten | `S01-R1-C04` |
 | thermochemical calorie | 4.184 joules exactly | `B0-R0-C12` |
 | time constant (τ) | ρ divided by the total slope, in days; the gap to the equilibrium shrinks as e^(-t/τ), so τ is 1 divided by the rate constant k | `S02-R1-C08` |
+| topic guide | the written list of areas and questions an interviewer takes into a semi-structured interview; a guide, not a script | `S36-R1-C06` |
 | total energy expenditure (TEE) | the product of physical activity level and basal metabolic rate: what a group spends in a day | `S01-R1-C03` |
+| transcript | a written version of an interview recording, made by a person or a program; the text that analysis works on | `S36-R1-C10` |
 | triglyceride | the molecule fat is made of, in food and in a body alike | `B0-R0-C36` |
 | trueness | how close the average of many repeated readings sits to the true value | `B0-R0-C30` |
+| turn | one unbroken stretch of speech by one speaker in a transcript | `S36-R1-C11` |
 | two-way table | a table that sorts the same people twice, one way down the columns and the other way across the rows | `B0-R0-C26` |
 | type 2 diabetes | a condition in which blood glucose runs high | `S01-R1-C09` |
 | unit | an agreed amount that everybody measures against | `B0-R0-C09` |
@@ -373,6 +417,7 @@ teaches were deleted. Terms used before their gloss, and terms used for two thin
 | variance | worked out from the squared deviations: add them, then divide by the count for a whole population, or by one less than the count for a sample | `B0-R0-C28` |
 | vector | an ordered list of numbers, called its entries; one row of a data table is a vector | `S02-R1-C10` |
 | villi | the tiny fingers lining the gut | `B0-R0-C38` |
+| warm-up question | an easy first question on something the respondent knows all about, to get them talking | `S36-R1-C06` |
 | weighted sum | each vector multiplied by its own number, then added: cv + dw for vectors v and w and numbers c and d | `S02-R1-C10` |
 | weights (of a weighted sum) | the numbers a weighted sum multiplies by; "weight" here means a multiplier, not body weight | `S02-R1-C10` |
 | where-clause | the words that fix what each symbol in an equation stands for, often a clause beginning "where" after it; it fixes each symbol's meaning, its unit and its sign | `S02-R1-C01` |
