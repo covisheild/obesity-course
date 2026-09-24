@@ -173,7 +173,13 @@ one. The build blocks when:
 Two drawing options exist for what points and bars cannot say: `marker: none` on a series draws a
 fitted slope as a bare line, so its ends do not read as observations; `bands: [{y0, y1, label}]`
 shades a range behind the data, and its bounds and label pass the same number check as a plotted
-point.
+point. For mathematics: `curves: [{y: "y = 5*x^2", x0, x1, label, series?}]` draws a formula over its
+own range (a chord, a tangent, an exact curve over a staircase), and with `series` must pass through
+that series' points like a `fit`; `areas: [{y, x0, x1, to?, equals?, label}]` shades between the formula
+and `to` (default the axis), and `equals` must be the signed integral; `refs: [{x or y, label}]` draws a
+labelled reference line (an expected value, an equilibrium). Every constant, endpoint, `to`, `equals`,
+reference value and label number is checked like a plotted point. Bars may be negative (drawn from a
+zero line), and two or more drawn fits each take their series' colour in the legend.
 
 Never draw a figure by hand, edit a PNG, or type a figure's numbers into a script. The conductor
 looks at every figure as an image before the audit, and the auditor recomputes every value a figure

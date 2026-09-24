@@ -747,6 +747,114 @@
                   }
                 }
               },
+              "curves": {
+                "description": "Formulas drawn over their own x range (a curve with no data, a chord, a tangent). Constants, x0, x1 and label numbers are checked like data; with `series`, every point of that series inside [x0, x1] must satisfy the formula, as for a `fit`, and the curve takes the series' colour.",
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "y",
+                    "x0",
+                    "x1"
+                  ],
+                  "properties": {
+                    "y": {
+                      "type": "string",
+                      "description": "'y = <expression in x>' (+ - * / ^, exp, log, sqrt ...); every constant must be stated in the text or derived."
+                    },
+                    "x0": {
+                      "type": [
+                        "number",
+                        "string"
+                      ]
+                    },
+                    "x1": {
+                      "type": [
+                        "number",
+                        "string"
+                      ]
+                    },
+                    "label": {
+                      "type": "string"
+                    },
+                    "series": {
+                      "type": "string"
+                    }
+                  }
+                }
+              },
+              "areas": {
+                "description": "The region between the formula y and `to` (default 0, the axis; a number or 'y = ...') over [x0, x1], shaded and keyed: the integral as an area, a probability as area under a density. Constants, x0, x1, to and label numbers are checked like data; `equals`, if given, must be the signed integral of (y - to) over [x0, x1] at its written precision and be stated in the text.",
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "y",
+                    "x0",
+                    "x1"
+                  ],
+                  "properties": {
+                    "y": {
+                      "type": "string",
+                      "description": "'y = <expression in x>' (+ - * / ^, exp, log, sqrt ...); every constant must be stated in the text or derived."
+                    },
+                    "x0": {
+                      "type": [
+                        "number",
+                        "string"
+                      ]
+                    },
+                    "x1": {
+                      "type": [
+                        "number",
+                        "string"
+                      ]
+                    },
+                    "to": {
+                      "type": [
+                        "number",
+                        "string"
+                      ]
+                    },
+                    "equals": {
+                      "type": [
+                        "number",
+                        "string"
+                      ]
+                    },
+                    "label": {
+                      "type": "string"
+                    }
+                  }
+                }
+              },
+              "refs": {
+                "description": "Reference lines at a stated value: {x: 70} vertical, {y: 0} horizontal, labelled beside the line. The value and label numbers are checked like data.",
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "properties": {
+                    "x": {
+                      "type": [
+                        "number",
+                        "string"
+                      ]
+                    },
+                    "y": {
+                      "type": [
+                        "number",
+                        "string"
+                      ]
+                    },
+                    "label": {
+                      "type": "string"
+                    }
+                  }
+                }
+              },
               "y_scale": {
                 "enum": [
                   "linear",
