@@ -19,6 +19,11 @@ When an audit marks a defect **recurring** and it is not on this list, add it he
    right ("both figures are made up" when there are two).
 4. **No conclusion the source does not license**, especially a policy conclusion, and nothing that
    pre-empts what a later section establishes.
+4a. **A rate or a fitted equation is used only where it was measured or fitted.** A per-kg figure
+   from one body size multiplied out to a very different one, or an equation fitted on one range of
+   weights applied outside it, is a model assumption, not arithmetic: say so in the sentence, or
+   bound the answer another way. (Added 24 Sep 2026: Book 1 scaled a 55 kg woman's 36 kcal/kg a day
+   to 140 kg and reached the wrong verdict; every arithmetic and quote gate passed.)
 
 ## Consistency
 
