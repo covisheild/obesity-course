@@ -74,7 +74,10 @@ drafter starts. Drafters and fixers never fetch.
 **9. One writing chat at a time on shared files.** `sources/INDEX.yml`,
 `check/references/library.bib` and `prose/GLOSSARY.md` are shared registries. Two chats adding
 to them at once collide — Part D's odds source had to be renamed on rebase because F2 had taken
-its citekey. Parallel chats are fine only when neither adds a source.
+its citekey. Parallel chats are fine only when neither adds a source. *Amended 24 September 2026:*
+two book chats may run at once, both adding sources, under `PARALLEL.md` "Two books at once": each
+fetches GitHub before choosing a citekey, catches up with `main` before bundling, and resolves any
+collision on its own side (`check/parallel.py registries`).
 
 **10. Harsh follows the build in Notion.** At every phase boundary, the moment the conductor sends
 him its one-line progress message, and at finish, it updates the unit's row in the Notion Build
