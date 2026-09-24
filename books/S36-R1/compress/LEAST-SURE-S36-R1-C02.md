@@ -1,0 +1,1 @@
+definition.text: cut "The number of people interviewed is not the test, and there is no power calculation..." Only must_know[2] now mentions a power calculation, with no gloss of what one is. Exercise 3 (the "14 of 20" bus-pass budget) may need the reader to see plainly why sample size is not the measure here.

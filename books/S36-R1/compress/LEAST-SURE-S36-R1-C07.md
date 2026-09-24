@@ -1,0 +1,1 @@
+Least sure: deleting both statements of Box 9.3 (definition paragraph 5 and must_know[2]'s last sentence) — that social and behavioural interviews need the ethics committee's prior permission to record at all. Exercises 2 and 3 (recording in a waiting area; a resident recording on a phone) may hinge on it; only the "ask about the recorder separately" rule now survives.

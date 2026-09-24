@@ -1,0 +1,1 @@
+- S36-R1-C11 (cut4): deleted "The respondent speaks more than the interviewer exactly when the interviewer's share is below 50 per cent, and exactly when the ratio is above 1. That is the gate this rung sets." The exercises all say "meet the gate"; the term now survives only in must_know[5] and the simplified "under 50 per cent" line, and the ratio-above-1 form is gone.

@@ -1,0 +1,160 @@
+# S36-R1-C14 · Five pilot interviews: what they test and what you do after each
+
+**Definition.** A pilot interview is a practice run of the whole procedure of an interview study, done with a
+few people before the study proper. It tests the topic guide, the recording, the consent talk
+and the interviewer. It does not test an answer to the study question.
+
+The build for this rung is five pilot interviews. Each one runs the same seven steps, in order.
+
+1. Consent, including separate agreement to be recorded.
+2. The recorded interview.
+3. Field notes, written straight after.
+4. A transcript.
+5. A first reading, with rough codes and a memo.
+6. The interviewer's talk share.
+7. A revised topic guide, before the next interview.
+
+Across the five, you look for three things. Questions that drew short or flat answers. Places
+where you led the respondent. And whether your share of the words falls as you practise.
+
+The five transcripts are kept, on the terms agreed at consent, as the material on which S36-R2
+builds a set of codes.
+
+**In plain terms.** Everything in this book so far comes together here, in five practice interviews that you run
+yourself.
+
+A pilot is a practice run. You are not yet finding out why patients stop coming to a clinic. You
+are finding out whether your questions work, whether your recorder works, whether your consent
+talk is clear, and whether you can listen without steering. The thing under test is you and your
+topic guide.
+
+Choose five people you can reach who know the topic from their own lives. Do not choose your own
+patients. A patient may worry that what they say will change their care. They may then tell you
+what they think you want to hear (the section on the interviewer as part of the data).
+
+Each pilot runs the same seven steps, in this order.
+
+1. Consent, with a separate yes to the recording (the section on consent, recording and privacy).
+2. The interview, recorded.
+3. Field notes, written straight after, before you speak to anyone else.
+4. The transcript, typed from the recording, with speaker labels and no names.
+5. A first reading: rough codes in the margin, and a memo (the section on reading a transcript).
+6. Your talk share: your words divided by all the words (the section on the talk share).
+7. A revised topic guide, ready for the next interview.
+
+Then look across the five. Which questions fell flat every time? Where did you lead? Is your share
+of the words falling as you get better at waiting? The transcripts answer these questions. Your
+memory of the interviews does not.
+
+Keep the five transcripts safely, on the terms each person agreed to. The next rung builds its
+analysis on them.
+
+**Illustration.** Here is how five pilots might go. Everything below is made up: the people, the counts and the
+changes. It is a different set from the one in the section on the talk share, because here the
+point is what changes between pilots. The topic is the one this book has used throughout, why adult patients with obesity stop
+coming back to a district hospital clinic in Chhattisgarh.
+
+Start with the failure. After pilot 1 you count the words in the transcript. You said 1,150 words
+and R1 said 1,350. Your share is your words divided by all the words.
+
+```working
+1,150 plus 1,350 = 2,500
+1,150 divided by 2,500 = 0.46
+0.46 times 100 = 46 per cent
+```
+
+Your share is 46 per cent. That is under half, so the respondent spoke more than you. But only
+just, and the transcript shows why. You asked "Don't you find the clinic timings difficult?" and
+R1 said "Yes." Later you spent two minutes explaining why the clinic wants monthly visits. That is
+advice, not listening (the section on running the interview without leading it).
+
+So you change two things before pilot 2. The timings question becomes "Tell me about a clinic
+day, from when you leave home." And you write at the top of your guide: do not explain the
+clinic.
+
+Pilot 2 goes better, at 38 per cent. But the transcript shows R2 going quiet after "Why did you
+stop coming?" She heard it as blame (the section on open, closed and leading questions). It
+becomes "What was happening around the time you stopped coming?"
+
+Here are all five, with the share worked the same way each time.
+
+```table
+| Pilot | Your words | Respondent's words | All words | Your share (per cent) |
+| 1 | 1,150 | 1,350 | 2,500 | 46 |
+| 2 | 950 | 1,550 | 2,500 | 38 |
+| 3 | 780 | 2,220 | 3,000 | 26 |
+| 4 | 600 | 2,400 | 3,000 | 20 |
+| 5 | 1,290 | 1,710 | 3,000 | 43 |
+```
+
+The share falls across the first four pilots, from 46 per cent to 20. Then pilot 5 jumps back to
+43 per cent. Before you decide what that means, read the transcript.
+
+R5 is a man in his forties who answers in short lines. Each time he stopped, you filled the
+silence with a new question. Your guide did not break. You stopped waiting. The change for next
+time is the pause: ask, then wait, and let the silence do the asking (the section on running the
+interview).
+
+Pilot 3 also had a question that fell flat. "What does the clinic do for you?" drew one-word
+answers. You replaced it for pilot 4 with "Tell me about the last visit that felt worth the
+trip."
+
+Now plan the time honestly. Pope, Ziebland and Mays put one typical interview at several hours to
+transcribe, and 20 to 40 pages of single-spaced text. Five pilots are five of those, plus
+the reading and the memo after each. Space them so that each transcript is read before the next
+interview. If you run all five in one week and read them afterwards, pilots 2 to 5 cannot learn
+from pilot 1.
+
+**Where this picture breaks.** A falling share shows only that you spoke less. It does not show that you led less. A
+respondent can talk at length in answer to a leading question, and your share will look fine
+(the section on the talk share). Read the transcript for the questions themselves.
+
+The five made-up shares are one interviewer's practice. They say nothing about how much any
+interviewer should expect to talk, and nothing about why patients stop coming. Nothing a pilot
+finds about the clinic is a finding. It is a question to ask properly in the study itself.
+
+**Figure.** Your share of the words in five made-up pilot interviews: 46, 38, 26, 20 and 43 per cent. All five are under the dashed line at 50 per cent, where you and the respondent would speak equally. The rise at pilot 5 is explained by its transcript, not by the chart.
+
+*What the figure shows:* Five bars for pilots 1 to 5 at 46, 38, 26, 20 and 43 per cent. They fall across the first four and rise at the fifth. All sit below a dashed line at 50 per cent.
+
+**Must know points for you.**
+
+- A pilot tests your guide and you, not the study question. Do not report what five pilot respondents said as the reason patients stop coming. Five people chosen because you could reach them tell you which questions work, and what to ask properly later.
+- Do not pilot on your own patients. A patient may fear that answers will change their care, and tell you what the clinic wants to hear. If a patient of yours does take part, tell them plainly that nothing they say will affect their care.
+- Transcribe and read each pilot before the next one. The point of five pilots is that each changes the next. If you run them all and read them afterwards, you have done one pilot five times.
+- When your talk share moves, read the transcript before you explain it. A rise can mean you stopped waiting, or that one respondent speaks briefly. The fix differs, and only the lines on the page tell you which it was.
+- Listen to your own recording for four things. How much you steered. Whether you asked leading questions. Whether you picked up what the respondent offered. Whether you gave them time to say what they meant. Then ask someone else to listen to one recording with you.
+- Keep a dated copy of your topic guide after every pilot, with a line saying what changed and why. A trainee who shows you only the final guide cannot show you what the pilots taught.
+- You plan to keep the transcripts for the next rung's analysis. So say so when you take consent, and keep them only if the person agrees. The research ethics guidelines taught earlier (the section on consent) say what consent must cover. They do not settle, for you, whether your practice interviews need review. Ask your own institution's ethics committee before the first pilot, and keep its answer in writing.
+
+**Exercise 1** (build). Conduct five pilot interviews on a topic you can reach respondents for. The clinic question used
+in this book is one choice. Do not use your own patients.
+
+For each interview, produce seven things.
+
+- The consent record, kept without names.
+- The recording.
+- Field notes written the same day.
+- A transcript with speaker labels and no names.
+- Your codes and a memo.
+- Your talk share, with the working.
+- The topic guide you will use next, with a line saying what changed and why.
+
+Then write one page across all five. Which questions fell flat? Where did you lead? How did your
+talk share move, and what does each transcript say about why?
+
+**Exercise 2** (design). Here is a question from a made-up first-draft topic guide for the clinic study, and the lines it
+produced in pilot 1, translated from Hindi.
+
+```table
+| Speaker | Words |
+| I | Do you think the clinic should give appointments, so people don't have to wait all day and lose work? |
+| R1 | Yes, that would be good. |
+```
+
+Say what went wrong, and rewrite the question, with two probes, for pilot 2.
+
+**Exercise 3** (critique). A trainee reports after five pilots: "Four of my five respondents said the clinic is too far.
+So the pilots show distance is the main reason people stop. My talk share was 45, 44, 47, 46
+and 45 per cent, so I passed the gate." What would you say?
+
