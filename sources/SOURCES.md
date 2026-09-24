@@ -295,3 +295,24 @@ file says so. Golosovsky & Larivière's 12% to 70% range is their report of Sugi
 an archived page (last reviewed 18 May 2012).
 The Companies Act s.135 was fetched from India Code and then withdrawn by the conductor: India Code's
 Term of Use forbids automated access without written permission. Not held.
+
+### Added 2026-09-25 from PDFs supplied by Harsh
+
+The four **Harsh only** lines in `books/S55-R1/READY.md`. Harsh downloaded them in a browser from
+subscription sites. The "raw fetch" is each PDF's own text layer from `pdftotext` (poppler 24.02.0),
+saved unchanged outside the repository. The running text comes from the default mode. Patsopoulos
+Tables 1–2 and Nicolaisen Tables 1–3 and 6 come from `-layout`, which keeps table rows together. Every
+passage is a contiguous slice of that text, re-checked by `verify.py`: **38 of 38** in the four
+files (65 of 65 for the whole S55-R1 intake). **Excerpts only**, and every omission is listed in
+each header. **None is openly licensed.** Each is held as a subscription copy supplied by Harsh,
+for short quotation at audit only; no table or figure is to be reproduced. The Lancet prints carry
+Elsevier's site notice, which reserves "text and data mining, AI training, and similar
+technologies"; see the intake log. Page chrome from the two browser prints (date line, URL, page
+counter, menus, reference link labels) lies outside every run.
+
+| File | What it is | Words | Verified in it |
+| --- | --- | --- | --- |
+| `patsopoulos_2005.txt` | Patsopoulos, Analatos & Ioannidis, *JAMA* 2005;293:2362 (PMID 15900006), publisher PDF. "©2005 American Medical Association. All rights reserved." **Excerpts**: opening, abstract, methods, results, Tables 1–2, comment and caveats; figures and references omitted | 2,916 | ISI Science Citation Index (Web of Science); designs found by title words; 2,646 eligible articles from 1991 and 2001; citations to the end of the second year after publication, and totals to 10 December 2004; Table 1 median 2-year citations by design (meta-analysis 5 and 9, RCT 4 and 6, cohort 3 and 5, case-control 3 and 4, case report 0 and 1, nonsystematic review 2 and 4, decision or cost-effectiveness 4 and 4, for 1991 and 2001); share with more than 10 citations in 2 years; self-citations not excluded. **No cross-sectional category** |
+| `chalmers_glasziou_2009.txt` | Chalmers & Glasziou, *Lancet* 2009;374:86 (PMID 19525005), browser print of the full-text page. Elsevier site notice, all rights reserved. **Excerpts**: body text and Panel; the figure is an image and is not held | 2,469 | Four stages (questions, design and methods, publication, reports); "the roughly 50% loss at stages 2, 3, and 4 would lead to a greater than 85% loss"; mainly clinical-trial evidence, "reasonable to assume" it applies to other research; 53% of abstracts published in full after 9 years; osteoarthritis priorities (9% of patients wanted drug research, over 80% of trials were drug trials); the Panel's recommendations |
+| `chalmers_2014_priorities.txt` | Chalmers, Bracken, Djulbegovic et al., *Lancet* 2014;383:156 (PMID 24411644), browser print. Elsevier site notice, all rights reserved. **Excerpts**; figures and tables not held | 3,878 | Summary and the four recommendations; priority-setting steps (Panel 1); burden-of-disease mismatches; waste when users' needs are ignored; the Figure 2 caption (the figure's counts are an image); users rarely involved in agenda setting; fewer than a quarter of previous trials cited; less than half aware of reviews; closing recommendations with Panel 3 (James Lind Alliance shared priorities) |
+| `nicolaisen_frandsen_2019.txt` | Nicolaisen & Frandsen, *Scientometrics* 2019;119:1227 (not in PubMed), publisher PDF. "© Akadémiai Kiadó, Budapest, Hungary 2019"; no licence. **Excerpts**: abstract, introduction, method, results, discussion, Tables 1–3, the Medicine rows of Table 6 | 3,530 | Scopus; publications of 1996–2015; open window to 6 December 2018; seven document types; uncitedness ratio for Medicine 0.23 over all seven types (articles 0.18, reviews 0.18, letters 0.44, notes 0.64); all 27 subject areas (Table 3); ratios by year for Medicine; "uncited" means zero citations in Scopus |

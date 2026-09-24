@@ -134,3 +134,96 @@ likely route.
   "Swatch Bharat Kosh", "(CAPE)"). A quotation must reproduce them or stop short of them.
 - **Raw fetches** are in `/home/claude/intake-S55/raw/`, outside the repository, with `build_sources.py`,
   `verify.py` and `manifest.json`.
+
+## Second pass, 2026-09-25: the four Harsh-only PDFs
+
+Harsh supplied the four **Harsh only** optional sources as PDFs he downloaded in a browser from
+subscription sites. Patsopoulos and Nicolaisen are the publishers' PDFs. The two Lancet papers are
+browser prints of the full-text web pages. The same method was used, adapted to PDFs. The "raw fetch"
+is each PDF's own text layer, extracted with `pdftotext` (poppler 24.02.0) and saved unchanged to
+`/home/claude/intake-S55/raw/<citekey>[__layout].txt`. The default mode (no `-layout`) keeps each
+column's sentences together, so all running text is cut from it. In the default mode the tables in
+Patsopoulos (Tables 1–2) and Nicolaisen (Tables 1–3, 6) fall apart into columns of loose cells, and a
+figure can no longer be tied to its row. Those tables are cut from a second `-layout` extraction, and
+each block's heading names the extraction it came from. Every passage is a contiguous slice
+(`build_harsh_pdfs.py`, which adds to `manifest.json` without touching the existing files). In the
+Lancet prints, runs stop at each page break, so the repeated date line, URL and page counter stay
+outside them. PMIDs and DOIs of the three PubMed papers were confirmed with the PubMed tool
+(`lookup_article_by_citation`, `get_article_metadata`). Nicolaisen is not in PubMed; its DOI is as
+printed on the PDF. The citekeys were checked against local and GitHub `main` `INDEX.yml` and
+`library.bib` on 2026-09-25, and none was in use.
+
+**Verbatim check: 38 of 38** in the four new files; **65 of 65** for the whole S55-R1 intake
+(`python3 /home/claude/intake-S55/verify.py`). `verify.py` used to look for source files by a relative path. When run
+from anywhere but the repository root it skipped every file and reported "verbatim 0 of 0" with
+exit code 0. It now uses the absolute `sources/` path, and names the withdrawn Companies Act file as
+skipped.
+
+| Source | File supplied | Passages | Check | Licence as stated on the document | Citekey |
+| --- | --- | --- | --- | --- | --- |
+| Patsopoulos, Analatos & Ioannidis 2005 *JAMA* 293:2362 (PMID 15900006) | publisher PDF, 5 pp. | 6 (4 default, 2 `-layout`) | 6/6 | "©2005 American Medical Association. All rights reserved." | `patsopoulos_2005` (new) |
+| Chalmers & Glasziou 2009 *Lancet* 374:86 (PMID 19525005) | browser print of the thelancet.com full text, 10 pp. | 7 | 7/7 | "All content on this site: Copyright © 2026 Elsevier Ltd., its licensors, and contributors. All rights are reserved, including those for text and data mining, AI training, and similar technologies. For all open access content, the relevant licensing terms apply." (site footer; no article-level line in the print) | `chalmers_glasziou_2009` (new) |
+| Chalmers, Bracken, Djulbegovic et al. 2014 *Lancet* 383:156 (PMID 24411644) | browser print, 26 pp. | 13 | 13/13 | the same Elsevier site footer | `chalmers_2014_priorities` (new) |
+| Nicolaisen & Frandsen 2019 *Scientometrics* 119:1227 (not in PubMed) | publisher PDF, 28 pp. | 12 (8 default, 4 `-layout`) | 12/12 | "© Akadémiai Kiadó, Budapest, Hungary 2019" (no licence) | `nicolaisen_frandsen_2019` (new) |
+
+### Findings for the gate
+
+- **C06, citation by design (Patsopoulos 2005).** The design is ISI Science Citation Index (Web of
+  Science). Designs were identified by title words, and articles were from 1991 and 2001: 2,646
+  eligible out of 5,769 screened. The main count runs to the end of the second year after
+  publication, and totals run to 10 December 2004. Self-citations were not excluded. Table 1 gives
+  the median 2-year citations, 1991 then 2001: meta-analysis 5, 9; RCT 4, 6; cohort 3, 5;
+  case-control 3, 4; case report 0, 1; nonsystematic review 2, 4; decision or cost-effectiveness
+  4, 4. More than 10 citations in 2 years: meta-analyses 32.4% (1991) and 43.6% (2001); RCTs 23.2%
+  and 29.5%; other designs "in the range of 10% to 25%"; case reports under 1%. **There is no
+  cross-sectional category**, and the paper gives no figure for cross-sectional studies. C06 may
+  cite it for the order of designs. It may not use it for cross-sectional citation, so C06's fallback
+  sentence (no study measuring this was found) stands for that design.
+- **C05 and C07, the "85%" (Chalmers & Glasziou 2009).** It is stated in the text as a conditional:
+  "If the losses estimated in the figure apply more generally, then the roughly 50% loss at stages 2,
+  3, and 4 would lead to a greater than 85% loss". The four stages are questions, design and methods,
+  publication, and reports. Stage 1 (wrong questions) is not given a percentage. The basis is
+  "mainly … evidence about the design and reporting of clinical trials", and "we believe it is
+  reasonable to assume that the problems also apply to other types of research". (Three losses of
+  about 50% leave about 12.5%, which gives the figure.) The per-stage percentages are printed only in
+  the figure, which is an image and not held. The intake agent read them off the image: stage 2,
+  "Over 50% of studies designed without reference to systematic reviews" and "Over 50% … fail to take
+  adequate steps to reduce biases"; stage 3, "Over 50% of studies never published in full"; stage 4,
+  "Over 30% of trial interventions not sufficiently described" and "Over 50% of planned study
+  outcomes not reported". This reading is **not machine-verified**. A person must check any quotation
+  of it against the PDF. The running text supports 53% of abstracts reaching full publication after 9
+  years, and adequate intervention descriptions in "around 60%" of trial reports.
+- **C07, research priorities (Chalmers et al. 2014).** The file holds the Summary and its four
+  recommendations. It also holds "users of research evidence are only rarely involved in the setting
+  of research agendas"; fewer than a quarter of previous trials cited (a median of two); less than
+  half of trialists aware of relevant reviews; and 4 of 446 ethics-committee protocols (1%) using
+  meta-analyses to plan sample size. Figure 2's counts (James Lind Alliance priorities against
+  registered trials, by intervention type) are an image. The agent's reading, not verified, is drugs
+  23 of 126 JLA priorities against 689 of 798 commercial trials.
+- **C06, uncitedness by field (Nicolaisen & Frandsen 2019).** The data are Scopus documents of
+  1996–2015 in seven document types, retrieved on 6 December 2018. The citation window is open, so
+  older papers had longer. "Uncited" means zero citations in Scopus. The Medicine ratio is 0.23 over
+  all seven types (2,221,845 of 9,666,622): articles 0.18, reviews 0.18, letters 0.44, notes 0.64.
+  Medicine articles by year run from 0.22 (1996) to 0.15–0.19 (2004–2014) and 0.22 (2015). Across
+  the seven selected fields, 7,508,741 of 29,472,184 documents (about 25%) were uncited. The range
+  runs from Physics and astronomy at 0.19 to Arts and humanities at 0.38. Across all 27 Scopus areas
+  (Table 3), Biochemistry is at 0.08 and Health professions at 0.21. These are not comparable with Van
+  Noorden's 4% (Web of Science, 2006 biomedical papers), because the database, the document types and
+  the window all differ.
+
+### Caveats from the second pass
+
+- **Licences.** None of the four is openly licensed. All are held as subscription copies for audit
+  quotation only, and no table or figure may be reproduced. **Elsevier's site notice reserves "text
+  and data mining, AI training, and similar technologies"**. The two Lancet files are a machine
+  extraction of those pages. Harsh fetched the pages himself for private study; this intake did not
+  reach them by automated means (unlike India Code). Even so, the conductor withdrew India Code over
+  its terms, and the same question applies here. **Harsh to decide** whether the two Lancet files are kept.
+- **Figures are images** in all four, and none is held. The Chalmers & Glasziou per-stage figure and
+  the Chalmers 2014 Figure 2 counts above are the agent's reading of the image.
+- **Text-layer defects.** Patsopoulos prints "less than" as "⬍", and its default-mode text has
+  the "Early Citations" subhead out of place and stray figure labels in the Results run. The Lancet
+  headings carry icon-font characters. Nicolaisen's `-layout` Table 1 shares lines with its caption.
+  Runs that cross a page keep the form-feed character. Each header says so.
+- **Chalmers et al. 2014 authors**: the print shows six authors and "et al."; the nine in the
+  `.bib` are PubMed's list.
