@@ -14,22 +14,27 @@ ground_floor_deps:
 concept_deps: [S02-R1-C10, S02-R1-C11]
 definition:
   text: |
-    Read each column as a vector, with one entry for each row.
+    Take a table whose rows are cases and whose columns are variables, as `S02-R1-C11` sets one
+    up. Read each column as a vector, with one entry for each row.
 
     A column y is a weighted sum of the columns a1, a2, ..., ak when there are fixed numbers w1,
     w2, ..., wk, called the weights, that make the following true on every row. The entry of y
     equals w1 times the entry of a1, plus w2 times the entry of a2, and so on up to wk times the
     entry of ak. The same weights must hold on every row.
 
-    A column of 1s counts as a column.
+    A column of 1s counts as a column. So a column y that equals 2 times a, plus 5, on every row
+    is a weighted sum of a and the column of 1s, with weights 2 and 5.
 
-    Such a column is redundant: once the other columns are known, it says nothing about any row
+    A column that is a weighted sum of others is redundant: once the other columns are known, it says nothing about any row
     that they did not already say.
 
     The test for it treats the weights as unknowns. Each row gives one equation in them. Find the
     weights from as many rows as there are weights. With two weights, that is two equations in
-    two unknowns, solved as in `B0-R0-C17`. With more, look for rows in which every column but
-    one is zero, because each such row gives one weight on its own.
+    two unknowns, solved as in `B0-R0-C17`.
+
+    With more, look for a row in which only one weight is still unknown. A row where every column but one is zero gives that weight at once. A row with
+    the other weights already found gives the last one. This book solves more than two weights
+    only this way.
 
     Then put the weights into every other row. If every row holds, y is a weighted sum of those
     columns. If the equations have no solution, or a single leftover row fails, it is not. If the
@@ -41,8 +46,13 @@ definition:
     column onto its parts, in proportion, in infinitely many ways, and every row's total stays the
     same.
 
-    A column that is nearly, but not exactly, a weighted sum of others is the problem called
-    collinearity.
+    A study that predicts an outcome from several columns (its predictors) chooses one weight for
+    each from the rows. The weight on one column is its "effect with the others accounted for":
+    the change in the prediction for one more unit of that column, with every other column held
+    fixed, as in `S02-R1-C10`.
+
+    A column that is nearly, but not exactly, a weighted sum of others is a harder problem. The
+    next rung takes it up.
   references:
   - citekey: austin_ula
     kind: textbook
@@ -151,7 +161,7 @@ illustration:
   body: |
     Here is a question that sounds reasonable and has no answer. "Among foods with the same
     protein, fat and carbohydrate, what goes with an extra 100 kilocalories?" Try to answer it
-    from this table.
+    from this table of four made-up items.
 
     ```table
     item  protein (g)  fat (g)  carbohydrate (g)  energy (kcal)
@@ -245,7 +255,18 @@ illustration:
 
     Subtract row 1 from row 2, the elimination move of `B0-R0-C17`. The u terms cancel.
 
+    ```working
+    2.0 minus 1.5 = 0.5
+    12.0 minus 9.0 = 3.0
+    3.0 divided by 0.5 = 6
+    ```
+
     So 0.5 times v is 3.0, and v is 6. Put v back into row 1.
+
+    ```working
+    1.5 times 6 = 9
+    9.0 minus 9 = 0
+    ```
 
     So 6.0 times u is 0, and u is 0. Now check row 3, the row you did not use.
 
@@ -270,7 +291,7 @@ illustration:
     A real label also rounds its figures. The check then holds only to within the rounding. A row
     that misses by a fraction of a kilocalorie is not a sign of a separate column.
 
-    Add a column of 1s and there are three weights for three rows. The weights would then fit all
+    Add a column of 1s to the adults' test, and there are three weights for its three rows. The weights would then fit all
     three rows and leave nothing to check.
   numbers:
   - value: "4"
@@ -298,8 +319,9 @@ must_know:
   kind: trap
   bearing: methodological
 - point: |
-    A column that looks like no other column can still be redundant. Comparing columns two at a
-    time will never find it.
+    The misconception is that a redundant column must look like one of the others. A column that
+    looks like no other can still be a weighted sum of several. Comparing columns two at a time
+    will not find it.
   kind: misconception
   bearing: methodological
 - point: |
@@ -308,10 +330,9 @@ must_know:
   bearing: methodological
 - point: |
     When a column is nearly but not exactly a weighted sum, this test cannot say whether that
-    matters. Say so, and leave it to the next rung's collinearity.
+    matters. Say so, and leave it to the next rung.
   kind: boundary
   bearing: methodological
-  refs: [fao_who_unu_2004]
 - point: |
     When you hear that a model "found no effect of fat once calories were accounted for", ask how
     the calories were worked out. If they came from the grams, the model had no way to find an
@@ -566,21 +587,22 @@ practice:
   prompt: |
     Hall and colleagues (2012) write the energy balance equation as ES = EI − EO. Each term is an
     amount of energy per unit of time. ES is how fast the body's energy stores change. EI is the
-    energy taken in. EO is the energy spent, which this book writes EE.
+    energy taken in. EO is the energy spent, which this book writes EE. Hall's ES is the rate that
+    this book writes dES/dt.
 
     Here are three made-up days, in kcal a day.
 
     ```table
-    day  EI (kcal/day)  EO (kcal/day)  ES (kcal/day)
+    day  EI (kcal/day)  EE (kcal/day)  dES/dt (kcal/day)
     1    2500           2400           100
     2    2000           2200           -200
     3    2300           2300           0
     ```
 
-    Without using the equation, find weights that make the ES column a weighted sum of the EI
-    and EO columns, and check them.
+    Without using the equation, find weights that make the dES/dt column a weighted sum of the EI
+    and EE columns, and check them.
   answer: |
-    Call the weights u on EI and v on EO. Days 1 and 2 give two equations.
+    Call the weights u on EI and v on EE. Days 1 and 2 give two equations.
 
     ```working
     day 1: 2500 times u plus 2400 times v = 100
@@ -620,7 +642,7 @@ practice:
     ```
 
     It holds. The weights are 1 and minus 1, both without a unit, since all three columns are in
-    kilocalories a day. That is Hall's equation: ES is EI minus EO, a weighted sum.
+    kilocalories a day. That is Hall's equation: dES/dt is EI minus EE, a weighted sum.
   refs: [hall_2012_ajcn]
 - level: 6
   prompt: |
@@ -803,8 +825,8 @@ practice:
     dropping it loses no value that cannot be written back in.
 
     But only if every subtracted column is in the table. Take a copy without ash, or without
-    water. Its carbohydrate column is not a weighted sum of what is left. Dropping it then loses
-    something.
+    water. Its carbohydrate column is then, in general, not a weighted sum of what is left.
+    Run the test before you drop it.
 
     What this does not establish. It does not show that the carbohydrate figure is right. Every
     error in the water, protein, fat and ash columns lands in it, because it is what is left over.
@@ -849,7 +871,7 @@ figures:
     - check: "x[3] = 4*0 + 9*100 + 4*0"
 - file: s02-r1-c12-tee-not-weighted-sum.png
   caption: "The three made-up adults' TEE against the weights found from adults 1 and 2, 0 times BMR plus 6 times PAL, in megajoules a day. The weights fit the two adults they were found from and miss adult 3, whose TEE is 12.0, by 3."
-  alt: "Paired bars for adults 1, 2 and 3: TEE 9.0, 12.0 and 12.0 against the weighted sum 9, 12 and 9. Only adult 3's pair differs."
+  alt: "Paired bars for adults 1, 2 and 3: TEE 9.0, 12.0 and 12.0 against the weighted sum 9.0, 12.0 and 9.0. Only adult 3's pair differs."
   source: draw.py
   spec:
     kind: bar
@@ -857,11 +879,11 @@ figures:
     series:
     - name: TEE in the table
       y: ["9.0", "12.0", "12.0"]
-    - name: 0 times BMR plus 6 times PAL
-      y: ["9", "12", "9"]
+    - name: weights from adults 1 and 2 (0 on BMR, 6 on PAL)
+      y: ["9.0", "12.0", "9.0"]
     y_label: MJ a day
     value_labels: true
-    y_range: [0, 14]
+    y_range: [0, 18]
     relations:
     - check: "y1[2] - y2[2] = 3"
 - file: s02-r1-c12-three-weightings.png

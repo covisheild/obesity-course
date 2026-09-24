@@ -22,17 +22,20 @@ definition:
 
     A random variable is discrete when the values it can take can be listed, one by one. Its
     probability distribution is the list of every value it can take, each paired with its
-    probability. The values listed must not overlap. Each probability is between 0 and 1,
+    probability. The values, or bands of values, listed must not overlap. Each probability is between 0 and 1,
     inclusive, and the probabilities add to 1.
 
     A random variable is continuous when it can take any value in an interval, like a weight
-    measured with perfect precision. The probability of any one exact value is then 0. Its
-    probability distribution is given instead by a probability density: a curve that never goes
+    measured with perfect precision, and its probabilities are areas under a curve. The
+    probability of any one exact value is then 0. Its probability distribution is given by a
+    probability density: a curve that never goes
     below zero and has a total area of 1 beneath it. The probability that X lands between a and b
     is the area under the probability density from a to b. The height of a probability density is
     a probability per unit of X, not a probability, and it can be larger than 1.
 
-    A probability distribution is a model. A frequency table of data, as in `B0-R0-C27`, gives
+    A probability distribution is a model of the chance process; a survey gives data. When the
+    whole population is listed, as in the made-up village below, the model is known exactly. A
+    frequency table of data, as in `B0-R0-C27`, gives
     relative frequencies from the cases actually counted. Those estimate the probabilities, and
     differ from them from one sample to the next.
   references:
@@ -200,7 +203,8 @@ illustration:
     0.1 plus 0.1 plus 0.1 = 0.3
     ```
 
-    P(X = 5) is 0.3. The survey's 0.5 is a relative frequency from four households. It estimates
+    Before you write the survey's 0.5 into a report, set it beside P(X = 5), which is 0.3. The
+    survey's 0.5 is a relative frequency from four households. It estimates
     0.3, and misses it.
 
     A clinic scale shows weight to 0.1 kg. A person whose true weight is anywhere from 69.95 kg to
@@ -260,7 +264,8 @@ must_know:
   kind: trap
   bearing: methodological
 - point: |
-    When you give a journalist a chance, say which kind it is.
+    When you give a journalist a chance, say whether it is a probability from a model or a
+    relative frequency from a sample, and how big the sample was.
   kind: consequence
   bearing: public
 exercises:
@@ -492,9 +497,9 @@ practice:
   prompt: |
     A scale shows weight to the nearest 0.2 kg. Let X be the displayed weight minus the true
     weight, in kilograms. Model X as spread evenly, with a flat probability density, across its
-    whole range.
+    whole interval.
 
-    Work out the range of X and the height of the density, with its unit. Then work out the
+    Work out the interval of values X can take and the height of the density, with its unit. Then work out the
     probability that the error is more than 0.05 kg away from zero, in either direction.
   answer: |
     Rounding to the nearest 0.2 kg can be out by at most half of 0.2 either way.
@@ -716,8 +721,8 @@ retrieval_items:
   a: A rule that gives a number to each outcome of a chance process, a function from the sample
     space to numbers. It is written with a capital letter, X, and its values with lower case, x.
 - q: What two rules must a discrete probability distribution meet, and what must be true of its values?
-  a: Each probability is between 0 and 1, and the probabilities add to 1. The values listed must
-    not overlap.
+  a: Each probability is between 0 and 1, and the probabilities add to 1. The values, or bands
+    of values, listed must not overlap.
 - q: For a continuous random variable, where does probability live?
   a: In areas under the probability density. The probability of a range is the area over it, the
     integral of the density across it. Any single exact value has probability 0, and the
@@ -748,10 +753,10 @@ figures:
       marker: none
     x_label: displayed weight minus true weight (kg)
     y_label: density (per kg)
-    y_range: [0, 17]
+    y_range: [0, 12]
     areas:
-    - {y: "y = 10", x0: "-0.05", x1: "0.05", equals: 1, label: "total area: 0.1 times 10 = 1"}
-    - {y: "y = 10", x0: 0, x1: "0.02", equals: "0.2", label: "P(0 ≤ X ≤ 0.02) = 0.02 times 10 = 0.2"}
+    - {y: "y = 10", x0: "-0.05", x1: "0.05", equals: 1}
+    - {y: "y = 10", x0: 0, x1: "0.02", equals: "0.2"}
     refs:
     - {x: "0.02", label: "exactly 0.02: no width, area 0"}
 provenance:

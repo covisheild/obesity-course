@@ -12,13 +12,13 @@ ground_floor_deps:
 - B0-R0-C16
 - B0-R0-C15
 - B0-R0-C23
-concept_deps: [S01-R1-C02, S02-R1-C01, S02-R1-C02, S02-R1-C03, S02-R1-C05, S02-R1-C07, S02-R1-C08]
+concept_deps: [S01-R1-C02, S01-R1-C05, S01-R1-C07, S02-R1-C01, S02-R1-C02, S02-R1-C03, S02-R1-C05, S02-R1-C07, S02-R1-C08]
 definition:
   text: |
-    A derivation is a chain of equations in which each line follows from the line before it by
-    one move that can be named. The moves this book uses are these.
+    A derivation is a chain of equations in which each line follows from lines above it by one
+    move that can be named. The moves this book uses are these.
 
-    - Substitute: replace a symbol by something stated to be equal to it.
+    - Substitute: replace a symbol by something an earlier line states is equal to it.
     - Rearrange: do the same thing to both sides, by the four operations of `B0-R0-C16`.
     - Divide by a time interval and shrink it: turn a change over an interval into a rate at an
       instant, the derivative of `S02-R1-C02`.
@@ -26,7 +26,8 @@ definition:
       `S02-R1-C05` do.
     - Assume: bring in a new premise.
 
-    An assumed line carries nothing from above.
+    Putting a value in place of a symbol is a substitution. Doing the arithmetic on one side, or
+    collecting like terms, is part of rearranging. An assumed line carries nothing from above.
 
     A where-clause fixes each symbol's meaning, its unit and its sign. The same printed equation
     can say opposite things under two readings of its where-clause.
@@ -183,8 +184,20 @@ definition:
       checked_on: '2026-09-24'
       note: |-
         Why the UGE term is energy leaving the body, used in the level 6 practice problem.
-        The paper states UGE elsewhere as about 90 g/day of glucose, a mass; the practice
-        problem notes it must be energy a day inside Equation 1.
+        The paper assumes UGE is about 90 g/day of glucose, a mass (next reference); the
+        practice problem notes it must be energy a day inside Equation 1.
+  - citekey: polidori_2016
+    kind: primary
+    locator: "Discussion, the limitations paragraph on group means"
+    quote: |-
+      was assumed to be ~90 g/day based on previous measurements in people with type 2 diabetes treated with 300 mg/day canagliflozin
+    verified:
+      resolved_id: https://pmc.ncbi.nlm.nih.gov/articles/PMC5108589/
+      opened: true
+      claim_located: true
+      checked_on: '2026-09-24'
+      note: |-
+        The 90 grams a day of glucose lost in the urine, in the level 6 practice problem.
   - citekey: thomas_2013_3500kcal
     kind: primary
     locator: "Methods, the pooled-data paragraph"
@@ -196,14 +209,25 @@ definition:
       claim_located: true
       checked_on: '2026-09-24'
       note: |-
-        The mean deficit and duration for the level 9 practice problem, with the predicted
-        27.6 lbs from the Results sentence "Subjects lost 20.1±11.3 lbs, 7.4±12.6 lb less than
-        the 27.6±16.0 lbs predicted by the 3500 kcal rule."
+        The mean deficit and duration for the level 9 practice problem. The deficit is the
+        prescribed one.
+  - citekey: thomas_2013_3500kcal
+    kind: primary
+    locator: "Results and Discussion, first paragraph"
+    quote: |-
+      Subjects lost 20.1±11.3 lbs, 7.4±12.6 lb less than the 27.6±16.0 lbs predicted by the 3500 kcal rule.
+    verified:
+      resolved_id: https://pmc.ncbi.nlm.nih.gov/articles/PMC4024447/
+      opened: true
+      claim_located: true
+      checked_on: '2026-09-24'
+      note: |-
+        The predicted 27.6 lbs in the level 9 practice problem.
 simplified_explanation: |
   A derivation is a staircase. Each step down is one small move you could make yourself.
 
-  Some steps are not moves at all. The author brings in something new: "suppose expenditure stays
-  fixed". That line is a premise. Everything below it depends on it, however careful the steps that
+  Some steps are not moves at all. The author brings in something new: "suppose intake minus
+  expenditure stays fixed". That line is a premise. Everything below it depends on it, however careful the steps that
   follow.
 
   So read a derivation with a pencil. Beside every line, write the move that got you there.
@@ -229,7 +253,7 @@ illustration:
     one pound of body weight.
 
     ```working
-    dES/dt = 3500 × dW/dt (line 2: assumed, 3,500 kcal in every pound)
+    dES/dt = 3500 × dW/dt (line 2: assumed, 3,500 kcal in every pound, written as rates: divide the change by the interval and shrink it)
     ```
 
     ```working
@@ -263,10 +287,10 @@ illustration:
     The printed equation predicts a fall only if ΔEB is expenditure minus intake: the deficit, written as
     a positive number.
 
-    Start at 180 pounds, with a deficit of 500 kcal a day.
+    Take a made-up case: start at 180 pounds, with a deficit of 500 kcal a day.
 
     ```table
-    day  ΔEB read as expenditure minus intake (lb)  ΔEB read as intake minus expenditure (lb)
+    day  W(t) in lb, ΔEB read as expenditure minus intake  W(t) in lb, ΔEB read as intake minus expenditure
     0  180  180
     35  175  185
     70  170  190
@@ -274,15 +298,18 @@ illustration:
     140  160  200
     ```
 
-    Lines 1, 3, 5, 6 and 7 are safe moves. Lines 2 and 4 are assumptions. Hall and colleagues reject line
-    4. Expenditure falls as weight falls, so the gap in line 4 shrinks.
+    Line 1 is physics. Lines 3, 5, 6 and 7 are safe moves. Lines 2 and 4 are assumptions. Hall and
+    colleagues reject line 4. Expenditure falls as weight falls, so the gap in line 4 shrinks.
 
-    Polidori and colleagues work out the change in each person's energy intake from their weights alone,
-    with their Equation 1 (Polidori 2016).
+    Polidori and colleagues work out the change in each person's energy intake from their weights,
+    with their Equation 1 (Polidori 2016). Here W is in kilograms again, as in the rest of the book.
+    The equation's first two terms, in this book's symbols (W for their BW), are:
 
     ```working
     ΔEI = ρ × dW/dt + ε × (W − W0)
     ```
+
+    Its other terms, for activity and for glucose lost in the urine, come back in problem 9.
 
     The Greek letter rho, ρ, is "the effective energy density associated with the body weight change", in
     kcal per kg. The Greek letter epsilon, ε, sets "how energy expenditure depends on body weight", in
@@ -328,7 +355,9 @@ illustration:
   analogy_breaks_when: |
     The two straight lines in the table hold only while lines 2 and 4 hold.
 
-    The rebuild also takes ρ and ε as given.
+    The rebuild also takes ρ and ε as given. The paper does not print this route, and its ρ and ε
+    are built from further parts (its Equations 2 and 3). The rebuild shows the equation's shape,
+    not how the authors reached it.
   numbers:
   - value: "3500"
     unit: "kcal of stored energy assumed in each pound of body weight (the rule's own figure)"
@@ -357,8 +386,8 @@ must_know:
   bearing: methodological
 - point: |
     Following a derivation tells you whether each line follows. It cannot tell you whether an
-    assumed line is true; that needs evidence, as the passive fall in expenditure is for the 3500
-    kcal rule.
+    assumed line is true; that needs evidence, as the passive fall in expenditure
+    (`S02-R1-C03`) is for the 3500 kcal rule.
   kind: boundary
   bearing: methodological
 - point: |
@@ -369,7 +398,7 @@ must_know:
 - point: |
     When a press line says a diet "must" produce a steady loss "because of physics", the accurate
     reply is short. The physics gives one line. The steady loss needs a second line, that
-    expenditure stays fixed, and it does not.
+    intake minus expenditure stays fixed, and it does not.
   kind: consequence
   bearing: public
 exercises:
@@ -391,8 +420,8 @@ exercises:
     W(t) = W0 + ΔEB × t / 3500 (rearrange)
     ```
 
-    Then box the two assumed lines in a different colour. Say that the other five are safe moves,
-    so the rule is exactly as good as those two lines.
+    Then box the two assumed lines in a different colour. Say that the first line is physics and the
+    other four are safe moves, so the rule is exactly as good as those two lines.
 
     Take the second box. Ask the resident what happens to expenditure as weight falls. It falls,
     because a smaller body spends less. So the gap in that line shrinks, and weight loss slows.
@@ -416,7 +445,8 @@ exercises:
     The first law gives only one line of the derivation, the balance. The rest are premises.
 
     Expenditure is drawn as a straight line in weight; the paper calls Equation 1 "a
-    linearization". Weight is taken as steady at the start. And the change in physical activity
+    linearization". Equation 1 has no term for a gap between intake and expenditure at the start,
+    so it takes weight as steady then. And the change in physical activity
     is set to zero where it was not measured. The paper says this makes the calculated intake
     changes possibly "in error, especially at the individual level".
 
@@ -595,7 +625,8 @@ practice:
 - level: 5
   prompt: |
     Chow and Hall describe one step in words (Chow and Hall 2008). They "divide Equation 1 by some
-    interval of time and take the limit of infinitesimal change".
+    interval of time and take the limit of infinitesimal change" (infinitesimal: shrinking towards zero, the limit of
+    `S02-R1-C02`).
 
     Apply that step to Book 1's identity over an interval of Δt days. Write ES for body energy
     stores in kcal.
@@ -625,7 +656,7 @@ practice:
     ```
 
     Every term is in kcal a day. This is the form Hall and colleagues write as ES = EI − EO, where
-    their ES stands for the rate, dES/dt.
+    their ES stands for the rate, dES/dt, and their EO is expenditure, EE.
   refs:
   - chow_hall_2008
   - hall_2012_ajcn
@@ -653,11 +684,11 @@ practice:
     ΔEI = ρ × dW/dt + ε × (W − W0) + U (add ε × (W − W0) and U to both sides, swap sides)
     ```
 
-    With Δδ = 0 the paper's Equation 1 is ΔEI_i = ρ × dBW_i/dt + ε × (BW_i − BW_0) + UGE. The subscript
-    i numbers the measurement interval. It is the same equation.
+    With Δδ = 0 the paper's Equation 1 is ΔEIi = ρ × dBWi/dt + ε × (BWi − BW0) + UGE. The label
+    i numbers the measurement interval. It is the same form.
 
-    One check the derivation forces: every term must be in kcal a day. The paper states the
-    glucose lost as about 90 grams a day, a mass. Before it goes into Equation 1 it has to be
+    One check the derivation forces: every term must be in kcal a day. The paper assumes the
+    glucose lost is about 90 grams a day, a mass. Before it goes into Equation 1 it has to be
     turned into energy a day.
   refs:
   - polidori_2016
@@ -765,7 +796,9 @@ practice:
     So the two figures are different quantities, and the gap is not evidence of a slip.
 
     What this does not establish. It does not show that the paper's 27.6 is right; you would need
-    each person's figures. It does not show how deficit and duration were related. And it says
+    each person's figures. It does not show how deficit and duration were related. Nor does it
+    show that the predictions used the prescribed deficit; if they used each person's achieved
+    intake, the gap has a second source. And it says
     nothing for or against the 3500 kcal rule itself. The paper tests that by setting these
     predictions beside the losses people actually had.
   refs:
@@ -810,16 +843,16 @@ figures:
     y_label: weight (lb)
     relations:
     - fit: "y = 180 - 500*x/3500"
-      series: ΔEB read as expenditure minus intake (lb)
+      series: W(t) in lb, ΔEB read as expenditure minus intake
       draw: true
       label: "W(t) = 180 − 500 × t / 3500"
     - fit: "y = 180 + 500*x/3500"
-      series: ΔEB read as intake minus expenditure (lb)
+      series: W(t) in lb, ΔEB read as intake minus expenditure
       draw: true
       label: "W(t) = 180 − (−500) × t / 3500"
     y_range: [150, 215]
 - file: s02-r1-c16-line-six.png
-  caption: "Line 5 makes the rate of change of weight a constant: minus 500 divided by 3,500 pounds a day, for a deficit of 500 kcal a day. Line 6 integrates it from day 0 to day 140. The shaded area, 140 times that rate, is minus 20 pounds, the fall from 180 to 160 in the table. The area is a rectangle only because line 4 assumed the gap never changes."
+  caption: "Line 5, with ΔEB as line 4 defines it (intake minus expenditure, so −500), makes the rate of change of weight a constant: minus 500 divided by 3,500 pounds a day, for a deficit of 500 kcal a day. Line 6 integrates it from day 0 to day 140. The shaded area, 140 times that rate, is minus 20 pounds, the fall from 180 to 160 in the table. The area is a rectangle only because line 4 assumed the gap never changes."
   alt: "A flat line just below zero, at minus 500 divided by 3,500 pounds a day, from day 0 to day 140, with the rectangle between it and zero shaded."
   source: draw.py
   spec:

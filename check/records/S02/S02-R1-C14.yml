@@ -14,7 +14,7 @@ ground_floor_deps:
 - B0-R0-C30
 - B0-R0-C15
 - B0-R0-C14
-concept_deps: [S01-R1-C05, S02-R1-C01, S02-R1-C13]
+concept_deps: [S01-R1-C04, S01-R1-C05, S01-R1-C07, S02-R1-C01, S02-R1-C13]
 definition:
   text: |
     Let X be a discrete random variable, as in `S02-R1-C13`, taking the values x1, x2, ..., xk. Its expected value, or
@@ -22,20 +22,37 @@ definition:
     = x2), and so on up to xk times P(X = xk). In the sigma notation of `S02-R1-C01`, E[X] = Σ x P(X = x), the sum running
     over every value x that X can take. It carries the unit of X.
 
-    E[X] is a probability-weighted average. It is the ordinary mean of `B0-R0-C28` only when all
-    the values are equally likely. It need not be a value X can take.
+    E[X] is a probability-weighted average. When every listed case is equally likely, as with the
+    households of the village below, E[X] is the ordinary mean of `B0-R0-C28`. In general it is
+    not. It need not be a value X can take.
 
-    It is the long-run average. It is a property of the probability distribution, a parameter in the sense of `B0-R0-C29`. The
+    It is the long-run average: repeat the chance process many times, and the average of the
+    values X takes settles towards E[X].
+    That is the law of large numbers. E[X] is a property of the probability distribution, a parameter in the sense of `B0-R0-C29`. The
     mean of a sample of observed values is a statistic. It estimates E[X] and differs from it from one sample to the next.
 
-    Two rules follow from the definition. For fixed numbers a and b, E[aX + b] = aE[X] + b. For
-    any two random variables X and Y, E[X + Y] = E[X] + E[Y], whether or not X and Y are
-    independent. Together they give E[aX + bY] = aE[X] + bE[Y].
+    Two rules follow from the definition. The first: for fixed numbers a and b, E[aX + b] = aE[X]
+    + b. Each value x becomes ax + b, with the same probability. Multiply out, as in `B0-R0-C15`.
+
+    ```working
+    Σ (ax + b) P(X = x) = a Σ x P(X = x) + b Σ P(X = x) = aE[X] + b
+    ```
+
+    The last step uses the fact that the probabilities add to 1.
+
+    The second: for any two random variables X and Y, E[X + Y] = E[X] + E[Y]. A random variable
+    gives a number to each outcome, so E[X] is also the sum, over outcomes, of X's number times
+    the outcome's probability. Outcomes that give the same number group back into Σ x P(X = x).
+    X + Y gives each outcome X's number plus Y's. So its sum splits
+    into the sum for X plus the sum for Y. No step asked whether X and Y are independent.
+    Independent means that knowing one tells you nothing about the other, the idea of
+    `B0-R0-C25` carried to random variables. Together the rules give E[aX + bY] = aE[X] + bE[Y].
 
     Neither rule reaches products, ratios or squares. E[XY] is not in general E[X] times E[Y], and
     E[X/Y] is not in general E[X] divided by E[Y]. For those, go back to the distribution.
 
-    In papers on energy balance, E with a label, as in EI, EE or ES, is energy. E followed by square brackets around a random
+    In papers on energy balance, E with a label, as in EI, EE or ES, is an energy quantity: a store
+    in kcal, or a rate in kcal a day. E followed by square brackets around a random
     variable, E[X], is expectation. Some books write E(X) with round brackets.
   references:
   - citekey: openintro_stats_4e
@@ -100,7 +117,8 @@ definition:
       claim_located: true
       checked_on: '2026-09-24'
       note: |-
-        Carries "the ordinary mean only when all the values are equally likely".
+        Carries "when every listed case is equally likely, E[X] is the ordinary mean". It gives
+        only the "when"; the record claims no "only when".
   - citekey: openintro_stats_4e
     kind: textbook
     locator: "§3.4.3 Linear combinations of random variables, Example 3.61"
@@ -140,18 +158,6 @@ definition:
       checked_on: '2026-09-24'
       note: |-
         The footnote's examples are X×Y and X/Y, the product and ratio the record names.
-  - citekey: openintro_stats_4e
-    kind: textbook
-    locator: "§3.4.1, footnote 50 (the expected value of a continuous random variable)"
-    quote: |-
-      xf(x)dx where f(x) represents a function for the density curve.
-    verified:
-      resolved_id: https://www.openintro.org/book/os/
-      opened: true
-      claim_located: true
-      checked_on: '2026-09-24'
-      note: |-
-        The integral form, named in one sentence and not worked.
   - citekey: hall_2012_ajcn
     kind: primary
     locator: "Question 1, the energy balance equation paragraph"
@@ -176,11 +182,11 @@ illustration:
     X, in kilocalories a day. The distribution below is made up.
 
     ```table
-    surplus x (kcal/day)  P(X = x)
-    -300                  0.2
-    0                     0.3
-    200                   0.4
-    500                   0.1
+    | surplus x (kcal/day) | P(X = x) |
+    | -300                 | 0.2      |
+    | 0                    | 0.3      |
+    | 200                  | 0.4      |
+    | 500                  | 0.1      |
     ```
 
     The move you will reach for first is to average the four values, as if each were equally
@@ -201,7 +207,8 @@ illustration:
     -60 plus 0 plus 80 plus 50 = 70
     ```
 
-    E[X] is 70 kcal a day. You will never see a day with a surplus of 70 in this model.
+    E[X] is 70 kcal a day. It is where the four bars would balance, each weighted by its
+    probability. You will never see a day with a surplus of 70 in this model.
 
     Now a week. Let W be the surplus over seven days: X1 for day 1, plus X2 for day 2, and so on
     to X7. If each day has this same distribution, each has expected value 70. The sum rule gives
@@ -220,7 +227,7 @@ illustration:
     followed by a small one. Call day 2's surplus Y. Each value of X fixes Y.
 
     ```table
-    x (kcal/day)  y (kcal/day)  probability
+    day 1, x (kcal/day)  day 2, y (kcal/day)  probability
     -300          440           0.2
     0             140           0.3
     200           -60           0.4
@@ -286,8 +293,8 @@ must_know:
   kind: misconception
   bearing: clinical
 - point: |
-    Averaging the possible values without their probabilities gives the expected value only when
-    every value is equally likely. Weight each value by its probability, every time.
+    Averaging the possible values without their probabilities can be trusted only when every
+    value is equally likely. Weight each value by its probability, every time.
   kind: trap
   bearing: methodological
 - point: |
@@ -337,7 +344,7 @@ exercises:
     expected value. The paper writes it with round brackets; this book writes E[X].
 
     In the second line, E carries the label I, for intake, and no bracket. EI is energy intake,
-    and it has an energy unit, kcal/day.
+    and it is a rate, in kcal/day.
 
     The test is what follows the E. A label means energy. A bracket around a random variable
     means an expected value.
@@ -499,7 +506,8 @@ practice:
     is a statistic from five households, and it estimates 5.0. It misses by 1.0, and the first
     survey's 5.75 missed by less. Neither survey changes the village.
 
-    With a much bigger random sample, picking with replacement, the sample mean would tend to
+    With a much bigger random sample, picking with replacement (a household can be picked more
+    than once), the sample mean would tend to
     land closer to 5.0. That is the law of large numbers. It says what tends to happen over many
     picks. It does not say that any one survey will land close.
 - level: 7
@@ -613,12 +621,12 @@ practice:
   prompt: |
     A health talk says this.
 
-    > A surplus of just 100 kcal a day adds up to 36,500 kcal in a year, and all of it is stored.
+    > Eating just 100 kcal a day more adds up to 36,500 kcal in a year, and all of it is stored.
 
     Decide what to compute, compute it, and say what your answer does not establish.
   answer: |
-    What to compute: the expected surplus over 365 days, if every day has expected surplus 100
-    kcal. The sum rule needs no independence, so it is 365 times 100.
+    What to compute: the talk treats the extra 100 kcal of intake as a surplus of 100 on every
+    day. Then the expected surplus over 365 days is 365 times 100.
 
     ```working
     365 times 100 = 36500

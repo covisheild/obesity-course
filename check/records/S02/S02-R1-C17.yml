@@ -19,10 +19,11 @@ definition:
   text: |
     An equation in a paper is one of four kinds, and each kind is checked a different way.
 
-    An identity holds for every value of its symbols, because of how its quantities are defined or
-    because a conservation law requires it.
+    An identity holds for every value of its symbols because a conservation law, or counting,
+    requires it.
 
-    A definition brings in a new quantity as a combination of others. It cannot be false.
+    A definition brings in a new quantity as a combination of others. It cannot be false. A
+    definition rearranged is still a definition.
 
     A model assumption is a claim, adopted by the author, about how a body or a population
     behaves. It could be false.
@@ -32,7 +33,8 @@ definition:
 
     One printed equation can mix kinds: a model assumption with a fitted constant, or a definition
     rearranged and then used to estimate a quantity from inputs that are themselves fitted or
-    adopted. Each part is then checked by its own kind.
+    adopted. Each part is then checked by its own kind. A model's output inherits the kinds of the
+    model that produced it, and a fitted value can then be adopted by agreement. Record both.
 
     A notebook entry records one equation so that it can be used and checked later. It holds six
     things.
@@ -76,7 +78,7 @@ definition:
     quote: |-
       Physical activity level (PAL): TEE for 24 hours expressed as a multiple of BMR, and calculated as TEE/BMR for 24 hours. In adult men and non-pregnant, non-lactating women, BMR times PAL is equal to TEE or the daily energy requirement.
     verified:
-      resolved_id: https://www.fao.org/4/y5686e/y5686e00.htm
+      resolved_id: https://www.fao.org/4/y5686e/y5686e04.htm
       opened: true
       claim_located: true
       checked_on: '2026-09-24'
@@ -100,7 +102,7 @@ definition:
     quote: |-
       is measured under standard conditions that include being awake in the supine position after ten to 12 hours of fasting and eight hours of physical rest
     verified:
-      resolved_id: https://www.fao.org/4/y5686e/y5686e00.htm
+      resolved_id: https://www.fao.org/4/y5686e/y5686e04.htm
       opened: true
       claim_located: true
       checked_on: '2026-09-24'
@@ -110,7 +112,7 @@ definition:
     kind: consensus_statement
     locator: "Chapter 5, the paragraph before Table 5.2"
     quote: |-
-      For the time being, it was decided to retain the equations proposed in 1985 by Schofield (Table 5.2), and to pursue a more thorough analysis of existing information, or to promote a prospective study with broad global geographic and ethnic representation.
+      this consultation concluded that these were not robust enough to justify their adoption at present. For the time being, it was decided to retain the equations proposed in 1985 by Schofield (Table 5.2), and to pursue a more thorough analysis of existing information, or to promote a prospective study with broad global geographic and ethnic representation.
     verified:
       resolved_id: https://www.fao.org/4/y5686e/y5686e07.htm
       opened: true
@@ -202,6 +204,54 @@ definition:
       checked_on: '2026-09-24'
       note: |-
         ICMR-NIN uses the rearranged definition to estimate requirements.
+  - citekey: polidori_2016
+    kind: primary
+    locator: "Abstract, Methods"
+    quote: |-
+      a 52 week placebo-controlled trial in 153 patients treated with canagliflozin
+    verified:
+      resolved_id: https://pmc.ncbi.nlm.nih.gov/articles/PMC5108589/
+      opened: true
+      claim_located: true
+      checked_on: '2026-09-24'
+      note: |-
+        The trial kP was fitted on.
+  - citekey: polidori_2016
+    kind: primary
+    locator: "Results, the paragraph on the trial's weight and intake changes, first sentence"
+    quote: |-
+      Table 2 represents the characteristics of the type 2 diabetic subjects who completed the 52 week study
+    verified:
+      resolved_id: https://pmc.ncbi.nlm.nih.gov/articles/PMC5108589/
+      opened: true
+      claim_located: true
+      checked_on: '2026-09-24'
+      note: |-
+        The trial's people had type 2 diabetes.
+  - citekey: polidori_2016
+    kind: primary
+    locator: "Methods, the paragraph defining the parameter β"
+    quote: |-
+      The parameter β accounts for the adaptation of energy expenditure during a diet perturbation
+    verified:
+      resolved_id: https://pmc.ncbi.nlm.nih.gov/articles/PMC5108589/
+      opened: true
+      claim_located: true
+      checked_on: '2026-09-24'
+      note: |-
+        β in Equation 1 (candidate 7).
+  - citekey: polidori_2016
+    kind: primary
+    locator: "Methods, the paragraph after Equation 3, on physical activity"
+    quote: |-
+      The baseline physical activity parameter was δ0 and Δδ represents changes in physical activity
+    verified:
+      resolved_id: https://pmc.ncbi.nlm.nih.gov/articles/PMC5108589/
+      opened: true
+      claim_located: true
+      checked_on: '2026-09-24'
+      note: |-
+        δ in Equation 1 (candidate 7).
   - citekey: polidori_2016
     kind: primary
     locator: "Methods, the sentences after Equation 4"
@@ -303,8 +353,9 @@ illustration:
   body: |
     Start with an equation that went wrong for Indian adults, and find out why by sorting it.
 
-    The report, FAO/WHO/UNU 2004, prints equations for basal metabolic rate (BMR), the energy a body spends at
-    complete rest. They come from Schofield, and the consultation "decided to retain" them.
+    FAO/WHO/UNU 2004, the report of a consultation, prints equations for basal metabolic rate (BMR). BMR is
+    the energy a body spends lying awake and at rest, after an overnight fast. The equations come from Schofield, and
+    the consultation "decided to retain" them.
 
     ```working
     BMR = 15.057 × weight + 692.2
@@ -313,11 +364,11 @@ illustration:
     Now sort it. It is not an identity: nothing forces a body's BMR to be this number. It is a fitted equation. Its
     form, a straight line in weight, was chosen.
 
-    So ask the fitted equation's question: whom was it fitted on? ICMR-NIN, the Indian Council of Medical Research's
-    National Institute of Nutrition (NIN), answers it for you. The FAO/WHO/UNU equations "can overestimate the BMR by
+    So ask the fitted equation's question: whom was it fitted on? The Indian Council of Medical Research and National
+    Institute of Nutrition (ICMR-NIN) answers it for you. The FAO/WHO/UNU equations "can overestimate the BMR by
     10 -12%, because the FAO/WHO/UNU data set included young and muscular subjects."
 
-    Nothing was wrong with the line on its own data. It was carried onto people unlike the ones it was drawn through.
+    ICMR-NIN's complaint is not with the line but with whom it was drawn through.
 
     Now write the entry.
 
@@ -337,19 +388,20 @@ illustration:
     ```
 
     - Symbols: the change in intake from the start, ΔEI(t), is in kcal a day. The change in body weight (BW) from the
-      start, ΔBW(t), is in kg. The constant kP is "the feedback strength". The minus sign makes intake rise when
-      weight falls.
+      start, ΔBW(t), is in kg. The constant kP, above zero, is "the feedback strength", in kcal a day per kg. The
+      minus sign makes intake rise when weight falls.
     - In words: for every kilogram lost, intake rises by kP kcal a day.
     - Kind: a model assumption with one fitted constant. The straight-line form is the assumption.
     - Assumes: intake answers weight in proportion.
+    - Fitted on: the group means of a 52-week trial of canagliflozin in people with type 2 diabetes.
     - Source: Polidori and colleagues 2016, Methods, Equation 4.
   analogy_breaks_when: |
     ICMR-NIN's finding is about groups of Indian adults. It is not a correction to apply to a
     single patient's measured BMR.
 
     Sorting is not always this clean. Take the Atwater factors of `S02-R1-C10`: 4, 9 and 4 kcal a
-    gram. They are averages of measurements, rounded, and then adopted by agreement. So they are
-    fitted and then fixed by a body. Record both kinds when an equation has both.
+    gram. They are fitted: averages of measurements, rounded. They were then adopted by agreement.
+    Record both kinds when an equation has both.
   numbers:
   - value: "15.057"
     unit: "kcal/day per kg, the slope of the Schofield BMR equation for men aged 18 to 30"
@@ -390,7 +442,8 @@ must_know:
 - point: |
     Say an equation's kind before you use it, because the check differs. For a definition, read
     the where-clause. For a model assumption, ask for the evidence. For a fitted equation, ask
-    whom it was fitted on.
+    whom it was fitted on. For an identity, check that every term is counted across the same
+    boundary and over the same interval.
   kind: move
   bearing: methodological
 - point: |
@@ -399,9 +452,9 @@ must_know:
   kind: misconception
   bearing: methodological
 - point: |
-    ICMR-NIN finds that the FAO/WHO/UNU equations for BMR can run 10 to 12% high for Indians.
-    Before you estimate an Indian patient's needs from those equations, use ICMR-NIN's figures for
-    Indian adults, which build in a reduction.
+    ICMR-NIN's 2020 note finds that the FAO/WHO/UNU equations for BMR can run 10 to 12% high for
+    Indians. For an Indian patient, use instead the requirements in the note's Tables 1a and 1b.
+    They build in the reduction.
   kind: india_deviation
   bearing: clinical
   refs: [icmr_nin_2020_brief]
@@ -414,6 +467,8 @@ must_know:
   refs: [icmr_nin_2020_brief]
 - point: |
     A fitted equation holds for people like those it was fitted on, over the range it was fitted.
+    Outside them, use an equation fitted on people like yours, or a stated correction such as
+    ICMR-NIN's, and say which you used.
   kind: boundary
   bearing: clinical
 - point: |
@@ -444,22 +499,21 @@ exercises:
     2. PAL = TEE / BMR (FAO/WHO/UNU 2004, glossary and chapter 5).
     3. TEE = BMR × PAL (FAO/WHO/UNU 2004, chapter 5; ICMR-NIN 2020).
     4. One row of Table 5.2, such as BMR = 14.818 × weight + 486.6 for women aged 18 to 30 (FAO/WHO/UNU 2004).
+       Table 5.2's "No." column gives how many were measured.
     5. Energy in kcal = 4 × protein + 9 × fat + 4 × carbohydrate, each in grams (FAO Food and Nutrition Paper 77, §3.5.1).
     6. W(t) = W0 − ΔEB × t / 3500 (Thomas and colleagues 2013, Methods).
-    7. Equation 1 of Polidori and colleagues 2016, the change in intake from weights.
-    8. Equation 4 of Polidori and colleagues 2016, proportional control.
-    9. Equation 5 of Polidori and colleagues 2016, which adds an integral term.
+    7. ΔEIi = ρ × dBWi/dt + ε × (BWi − BW0) + (Δδ / (1 − β)) × BW0 + UGE (Polidori and colleagues 2016,
+       Equation 1).
+    8. ΔEI(t) = −kP × ΔBW(t) (Polidori and colleagues 2016, Equation 4).
+    9. ΔEI(t) = −kP × ΔBW(t) − kI × ∫ from 0 to t of ΔBW(τ) dτ (Polidori and colleagues 2016, Equation 5).
+       τ here is the running time inside the integral, not the time constant of `S02-R1-C08`.
     10. The rule of thumb (Hall and colleagues 2012, Question 3). Eventual weight change in pounds = the permanent change in intake in kcal a day, divided by 10.
-
-    Two more are worth adding if you can get them. One is Equations 1 and 2 of Chow and Hall 2008.
-    The other is Hall's 2008 equation for the energy density of weight loss. Both are printed as
-    images. Copy them symbol by symbol and have someone check your copy.
   answer: |
     The kinds, and the one thing each entry must not leave out.
 
     1. Identity. Counted across one boundary, the body, for one interval. Hall and colleagues call
        it "a statement of the principle of energy conservation". Their ES here is the rate, which
-       this book writes dES/dt. Names no cause.
+       this book writes dES/dt. EO is this book's EE. Names no cause.
     2. Definition. PAL has no existence apart from this ratio. Units cancel: PAL has none.
     3. The same definition, rearranged, used to estimate. Its kind is definition, but its answer is
        only as good as the BMR (fitted) and the PAL (measured or adopted) put in. ICMR-NIN's 2020
@@ -469,19 +523,20 @@ exercises:
     5. Fitted and then adopted. The factors are averaged from measurements, rounded, and used
        "regardless of the food", FAO says, as `B0-R0-C32` taught. Indian labelling rules then fix
        the factors by regulation, as `B0-R0-C12` showed.
-    6. Model assumption. `S02-R1-C16` rebuilt it as the identity plus two assumptions. One is
+    6. Model assumption. As `S02-R1-C16` showed, it is the identity plus two assumptions. One is
        3,500 kcal in every pound. The other is a gap that never changes. ΔEB must be read as expenditure minus intake for the
        printed minus sign to give a loss. W is in pounds.
     7. Model. The identity plus premises, as `S02-R1-C16` rebuilt it. The paper calls it "a
-       linearization". Two symbols, β and the activity figure δ, are defined in parts of the paper
-       this book has not quoted. Find them before you call the entry finished.
+       linearization". β "accounts for the adaptation of energy expenditure during a diet
+       perturbation". δ is its physical activity parameter: "The baseline physical activity
+       parameter was δ0 and Δδ represents changes in physical activity".
     8. Model assumption with a fitted constant, kP, about 100 kcal a day per kg, fitted to group
        means. The authors say they do not yet know if it holds across a range of losses.
     9. Model assumption. The authors "also investigated" it as an alternative. Its kI of 1 kcal a
        day per kg per day was set for the simulation. The paper's own words give no fit for it.
-    10. Model result. It is what a model gives, rounded. The panel calls it "a best-case scenario"
-        "for the average overweight person". It inherits every assumption of that model. It
-        describes the eventual weight, not the time to reach it.
+    10. Model assumption (a model's output, rounded). The panel calls it "a best-case scenario"
+       "for the average overweight person". It inherits every assumption of that model. It
+       describes the eventual weight, not the time to reach it.
 
     A full entry, for number 8, is in this section's illustration. The others follow its
     pattern.
@@ -502,7 +557,9 @@ exercises:
     populations. ICMR-NIN found they can run 10 to 12% high for Indians. It had already cut them by
     5% and cut them by another 5% in 2020.
 
-    The second input. For sedentary adults the activity number fell from 1.53 to 1.40. ICMR-NIN
+    The second input. For sedentary adults the activity number fell from 1.53 to 1.40. The note's
+    sentence calls it PAR, the physical activity ratio, but its heading and figures are the
+    physical activity level. ICMR-NIN
     says the energy spent on each activity is lower for Indians. On its own, at the same resting
     figure, that lowers the requirement by about 8.5%.
 
@@ -540,5 +597,6 @@ provenance:
 review:
   stability: long
   trigger: '2031-09-24'
+  as_of: 'ICMR-NIN 2020 brief note; re-check against the ICMR-NIN 2024 revised summary, the next FAO/WHO energy consultation, and the next FSSAI notification'
   last_reviewed: '2026-09-24'
 status: drafted

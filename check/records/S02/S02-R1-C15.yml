@@ -15,11 +15,15 @@ ground_floor_deps:
 - B0-R0-C06
 - B0-R0-C12
 concept_deps:
+- S01-R1-C07
 - S02-R1-C01
 - S02-R1-C13
 - S02-R1-C14
 definition:
   text: |
+    In `S02-R1-C14` you saw where a random variable sits on average. The variance says how far it
+    strays.
+
     The variance of X, written Var(X) and said "the variance of X", is the expected value of the
     squared deviation of X from E[X]. In symbols:
 
@@ -30,7 +34,8 @@ definition:
     For a random variable with a list of values, that is the sum, over every value x, of
     (x − E[X])² times the probability of x. The standard deviation of X, written with the Greek
     letter sigma, σ, is the square root of Var(X). It carries the unit of X. The variance carries
-    that unit squared.
+    that unit squared. `B0-R0-C28` found a sample's standard deviation by dividing by n − 1. That
+    is a statistic. It estimates σ, as a sample mean estimates E[X].
 
     For fixed numbers a and b, the variance of aX + b is a² times the variance of X. The standard
     deviation of aX + b is σ times the size of a, whatever the sign of a.
@@ -49,14 +54,17 @@ definition:
     Var(aX + bY) = a² Var(X) + b² Var(Y)
     ```
 
+    This book checks the rule on the dal example below and does not prove it. The proof needs one
+    more fact, that E[XY] = E[X] times E[Y] when X and Y are independent.
+
     Standard deviations do not add.
 
     For n independent random variables, each with variance σ², the sum has variance nσ² and
     standard deviation σ times the square root of n. Their mean has standard deviation σ divided
     by the square root of n, which is the square-root law of `B0-R0-C29`.
 
-    Without independence the adding rule fails. A correction term, the covariance, enters, and
-    S03-R1 teaches it.
+    Without independence the adding rule need not hold. A correction term, the covariance, enters,
+    and a later book, on probability and statistical inference, teaches it.
   references:
   - citekey: openintro_stats_4e
     kind: textbook
@@ -332,14 +340,15 @@ illustration:
     ```
 
     ```table
-    days  independent daily errors (kcal)  same under-count every day (kcal)
+    days  independent errors: standard deviation of the total (kcal)  same under-count every day (kcal)
     1  300  300
     4  600  1200
     9  900  2700
     16  1200  4800
     ```
 
-    Divide by the days to get the error in the average day. In the first case it shrinks: 300 divided by the square root of 16 is 75 kcal a day. That is the square-root law
+    Divide by the days to get the error in the average day. In the first case it shrinks: 1,200 divided by 16 is 75 kcal a day, which is 300 divided by the
+    square root of 16. That is the square-root law
     of `B0-R0-C29`. In the second case it stays at 300 kcal a day however long you record.
   analogy_breaks_when: |
     A real scale also has systematic error, the kind `B0-R0-C30` separates from random error. If the
@@ -371,8 +380,8 @@ must_know:
   bearing: methodological
 - point: |
     Hall and colleagues say expenditure measured by doubly labelled water can be off by more than
-    100 kcal a day. Take measured intake minus that expenditure. The gap you get is at least as
-    uncertain. So do not accept one person's measured imbalance quoted as if it were known to
+    100 kcal a day. Take measured intake minus that expenditure. If the two errors are independent,
+    the gap you get is at least as uncertain. So do not accept one person's measured imbalance quoted as if it were known to
     within 50 kcal a day.
   kind: number
   bearing: methodological
@@ -390,14 +399,16 @@ must_know:
   bearing: methodological
 - point: |
     Two measurements of the same person are rarely independent. A before-and-after change, or a
-    predicted-minus-actual difference, can then spread much less than the adding rule says. Do not
+    predicted-minus-actual difference, can then spread much less, or more, than the adding rule
+    says. A difference spreads less when its two parts rise and fall together, and more when one
+    rises as the other falls. Do not
     call a reported spread wrong only because it fails the rule on paired figures.
   kind: trap
   bearing: methodological
 - point: |
     When a paper subtracts a baseline, ask whether the baseline was a fixed number or a
-    measurement. Taking away a measured baseline adds that baseline's variance to the
-    change.
+    measurement. Taking away a measured baseline adds the variance of the baseline's measurement
+    error to the change, when that error is independent of the later reading's.
   kind: move
   bearing: methodological
 - point: |
@@ -448,7 +459,7 @@ exercises:
     colleagues report. Intake from what people report is worse.
 
     When you subtract one uncertain number from another, the uncertainties do not cancel. They
-    add. So a 50 kcal change in one person sits well inside the noise.
+    combine, and the result is rougher than either. So a 50 kcal change in one person sits well inside the noise.
 
     Quotable sentence: "Take one rough measurement away from another and the answer gets rougher,
     not sharper." A 50-calorie change in one person is lost in that roughness.
@@ -698,7 +709,8 @@ practice:
     712.4 divided by 7 = 101.8
     ```
 
-    About 101.8 kcal a day, which is 269.3 divided by the square root of 7.
+    About 101.8 kcal a day, which is 269.3 divided by the square root of 7. Both are floors,
+    because 269.3 was.
 
     Both figures rest on the days being independent. A reporting habit that repeats every day
     breaks that, and its part of the error would not shrink.
@@ -719,7 +731,8 @@ practice:
     1000 times 1000 minus 100 times 100 = 990000
     ```
 
-    The square root of 990,000 is about 995 kcal a day.
+    The square root of 990,000 is about 995 kcal a day. The paper's expenditure error is more than
+    100, so 995 is the most the intake part could be.
 
     So almost all of the combined error would come from intake. Take the expenditure error away
     entirely and the total would fall only from 1,000 to about 995.
@@ -825,7 +838,7 @@ practice:
   prompt: |
     Thomas and colleagues pooled seven weight-loss studies. They report that participants "lost
     20.1±11.3 lbs, 7.4±12.6 lb less than the 27.6±16.0 lbs predicted by the 3500 kcal rule"
-    (Thomas 2013). Their methods paragraph writes figures in the form mean ± standard deviation.
+    (Thomas 2013), the static rule of `S01-R1-C07`. Their methods paragraph writes figures in the form mean ± standard deviation.
 
     A reader says: "The difference is predicted minus actual, so its standard deviation should be
     the square root of 11.3 squared plus 16.0 squared. That is about 19.6, not 12.6, so the 12.6
@@ -857,7 +870,7 @@ practice:
 
     What this does not establish. It does not show that 12.6 is correct. It shows only that 19.6
     is not the figure to check it against. It does not say how strongly the two were related; that
-    needs the covariance, which S03-R1 teaches. And it says nothing about whether the 3500 kcal
+    needs the covariance, which a later book, on probability and statistical inference, teaches. And it says nothing about whether the 3500 kcal
     rule is right, which is a different question.
   refs:
   - thomas_2013_3500kcal
@@ -936,7 +949,9 @@ practice:
     What this does not establish. The 747 is not a figure the 784 must match. The means already
     show the subtraction was not the one used. Even if it were, the rule needs baseline and target
     to be independent. If each target was set from the person's own baseline, the two are not
-    independent. So the reported 784 is neither confirmed nor shown wrong by this check. What the check
+    independent. That kind of link would pull the spread below 747, not push it above. So
+    dependence of that kind cannot explain the 784 either; the means have already shown the
+    column was made some other way. What the check
     does show is how to read such a table: test the means before you test the spreads.
   refs:
   - thomas_2013_3500kcal
@@ -985,11 +1000,11 @@ figures:
     kind: line
     from_table: {block: 1, x: 0, y: [1, 2]}
     x_label: days recorded
-    y_label: error in the total (kcal)
+    y_label: "error in the total (kcal):\nstandard deviation, or fixed error"
     y_range: [0, 5200]
     relations:
     - fit: "y = 300*sqrt(x)"
-      series: independent daily errors (kcal)
+      series: "independent errors: standard deviation of the total (kcal)"
       draw: true
       label: "300 times the square root of n"
     - fit: "y = 300*x"
