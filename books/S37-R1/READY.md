@@ -54,3 +54,22 @@ Checked against `sources/`, `sources/INDEX.yml` and `check/references/library.bi
 - **verify_at_intake**: the Global Syndemic Commission (`S37-R2-A01`). C15 only names it as rung 2's frame; if it cannot be opened, C15 names it without describing it.
 - **Current figures**: MSP, sugarcane FRP, economic cost of grain and edible oil duty change by season. Take the newest official release at intake and stamp `as_of` on every figure; C09 and C10 carry event triggers (next CCEA MSP decision, next duty notification).
 - **No secondary summaries** for any instrument (PRS, news, UPSC sites and mirrors found by search are not citable).
+
+## After intake (2026-09-24)
+
+Intake done: `books/S37-R1/INTAKE.md`. 39 files added to `sources/` (38 citekeys pre-assigned plus
+`s37_pib_1812421` and `s37_pib_msp_backgrounder`); conductor's independent verbatim check 314/314.
+`rbi_wp_2024_06_tops` is `rbi_wp_2024_08_tops` (the TOP paper is WP 08/2024; 06 is fruits, 05 poultry).
+
+Still **no** (asked of Harsh; drafting proceeds on everything that does not depend on them):
+
+| Source | Concept | Stand-in held meanwhile |
+| --- | --- | --- |
+| Hawkes et al. 2020 *Lancet* 395:142 (bot-blocked) | C15 | WHO double-duty brief 2017 (its terms: do no harm, retrofit, de novo); `opened: false` on Hawkes |
+| PM POSHAN guidelines 2023 PDF (host unreachable) | C12, C13 | PIB 1812421 carries the nutrition and food-norms table; cost sharing held nowhere |
+| CACP "About us" (403) | C08, C09 | none for the 1965 date; the draft does not date CACP until held |
+
+Not needed (fallback held): DES Table 10.1 (Economic Survey Table 1.19 has the series); e-NAM About
+page (FAQ and stakeholder pages); CBIC notification (PIB release of 24 Sep 2026); 2026-27 economic
+cost (2025-26 BE held, dated). Known gap: the anganwadi supplementary-nutrition norms revised in
+January 2023 are not held; the held 2022 table says "under revision" and must be quoted as such.
