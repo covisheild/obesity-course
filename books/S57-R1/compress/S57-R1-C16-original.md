@@ -1,0 +1,112 @@
+# S57-R1-C16 · Words for how a team works
+
+**Definition.** Kotter (1990) sets management and leadership apart as two different and complementary
+systems of action. Management copes with complexity. Leadership copes with change.
+
+Management has three activities. Planning and budgeting is setting targets, laying down
+detailed steps to reach them, and allocating resources to those steps. Organizing and
+staffing is creating a structure of jobs, filling the jobs with qualified people,
+communicating the plan to them, delegating responsibility for it, and setting up systems to
+monitor it. Controlling and problem solving is monitoring results against the plan,
+identifying where they depart from it, and planning and organizing to fix that.
+
+Leadership has three matching activities. Setting a direction is developing a vision of the
+future, often the distant future, with strategies for making the changes it needs. Aligning
+people is communicating that direction to everyone who can help carry it out or can block it,
+so that they understand it and are committed to it. Motivating and inspiring is keeping
+people moving in that direction, despite obstacles, by appealing to their needs, values and
+emotions.
+
+Inside aligning, Kotter names credibility: people must believe the message, not only
+understand it. The messenger's record, integrity and trustworthiness, and the fit between
+their words and deeds, decide whether they do. Earning that trust is part of leading.
+
+Kotter holds that an organisation needs both, each balancing the other. Strong leadership
+with weak management is, in his view, no better than the reverse, and sometimes worse.
+
+The terms below are this book's working definitions. They are built from the words
+themselves, not taken from a study.
+
+Authority is the right to decide or to direct that comes with a post. A rule gives it, or a
+person who holds it hands part of it on. Power is the capacity to get things done through
+other people, from any source: authority, expertise, relationships, reputation, or control of
+something others need. A person can hold authority with little power, or power with no
+authority.
+
+Delegation is handing a task, and the authority it needs, to another person, while you stay
+answerable for the result. How much direction and checking you give is matched to that
+person's competence and commitment for that task, not to their seniority in general.
+
+Role clarity is a written statement, for each decision or piece of work, of who decides, who
+does the work, and who is consulted before it is done.
+
+Conflict about the work is disagreement over what to do, how to do it, or on what evidence.
+Conflict about the person is friction over who someone is: blame, dislike, a remark about
+their character or motives.
+
+**In plain terms.** The last section said a team you run needs direction, roles and work handed out. This section
+gives you the words for those. With them you can say what is going wrong in a team before you
+try to fix it.
+
+Start with two jobs that people often run together. Managing is keeping a complicated thing
+running: making the plan and the budget, putting people into jobs, and checking the results
+against the plan. Leading is moving the thing somewhere new: deciding where it should go,
+bringing people round to it, and keeping them going when it gets hard. Kotter's short way of
+saying it: management copes with complexity, leadership copes with change. Most of the time
+one person has to do both.
+
+People follow a direction only if they believe the person giving it. Kotter calls that
+credibility. It rests on your record, and on whether what you do matches what you say.
+
+Next, two words for why people do what you ask. Authority comes with the post. The head of
+department (HOD) can set the teaching roster because the post allows it. Power is getting
+things done through people by any means, and authority is only one of them. The senior
+resident everyone trusts may have more power over the ward than the unit head.
+
+Delegating is handing someone a task and the right to do it, while you stay answerable for
+how it turns out. How closely you guide and check depends on this person and this task. The
+same intern may need close watching on one job and none on another.
+
+Role clarity means writing down, for each decision, who makes it, who does the work, and who
+is asked first. When a team argues over whose job something was, look for the missing line
+on that sheet first.
+
+Last, two kinds of disagreement. One is about the work: what to do, how, on what evidence.
+The other is about the person: blame, dislike, a remark about someone's character. They are
+named apart because they are handled apart. How to handle each is for the next book in this subject.
+
+**Must know points for you.**
+
+- "Leadership is the senior person's job and management is for administrators" is wrong on both counts. They are two sets of activities, and most people who run anything must do both. Kotter holds that strong leadership with weak management is no better than the reverse. When a change stalls, ask which half was missing.
+- A detailed plan is not a direction. Kotter calls long-term planning used in place of direction one of the most frequent mistakes of overmanaged organisations. Before you write the timetable for a change, write in a few sentences where it is going and why.
+- Aligning means talking to everyone who can help or block the change, not only the people who report to you. For a teaching change in Community Medicine that includes other departments, the primary health centre and the students. List them before you start, and meet the ones you have no authority over first.
+- When people do not do what you ask, find out whether you lack authority or lack power. An order from the post does not reach a department you do not head. Trust built over time can reach people no post does. The fix for each is different.
+- Delegate to the person and the task, not to the rank. The same instruction given to everyone is too much for some and too little for others. Before you hand over a task, ask how well this person has done this task before, and how much they want it.
+- Write down who decides, who does and who is consulted before the work starts. When a team argues about whose job something was, check first whether anyone wrote it down.
+- Do not answer a disagreement about the work as if it were a personal attack, or the reverse. The two are handled differently, so name which one you are in first. Keep the argument about the work in the open, on the evidence.
+- These are words, not a diagnosis. Kotter's article is an argument built on company cases, not a measured study, and the working definitions here come from no study at all. Using the words does not show that a team will do better. How to diagnose a team, and what the evidence says about each of these, is for the next book in this subject.
+
+**Exercise 1** (retrieval). Write Kotter's three management activities and his three leadership activities, each
+management activity beside the leadership activity that matches it.
+
+**Exercise 2** (interpretation). These five sentences come from the notes of a meeting after a school weight-screening camp run
+by a Community Medicine department. For each, name the word from this section that fits
+best, and say why.
+
+1. "The Principal put me in charge of the camp, so the Paediatrics department had to send two
+   residents. They did not come."
+2. "Nobody knew who was meant to book the school hall."
+3. "Anita and Ravi disagreed about whether to screen with waist measurement or with body
+   mass index."
+4. "Ravi said Anita always sides with whoever is senior."
+5. "We gave the new intern the same one-line instruction as the senior resident, and her
+   forms were all incomplete."
+
+**Exercise 3** (design). Write the role sheet for the teaching session you are planning for this book's build. Cover
+at least four decisions or pieces of work: for example, the objective, the time slot, the
+tests, and the teaching itself. For each, name who decides, who does it, and who is asked
+first.
+
+**Exercise 4** (teaching). For a first-year resident, ten minutes with a whiteboard. "What is the difference between
+leading and managing, and why would a unit need both?"
+
