@@ -403,8 +403,24 @@ retrieval_items:
 - q: Name three tests a qualitative study is judged by, instead of its sample size.
   a: A clear account of how people were chosen and how data were gathered and analysed; a search for cases
     that do not fit, reported; several perspectives, so one group is not presented as the whole truth.
-figure_note: A chart of how many respondents said each thing would draw the very count this section warns
-  against reading as a rate.
+figures:
+- file: s36-r1-c02-share-follows-choice.png
+  caption: "The same 7 respondents talked about the bus fare both times. Among the 12 you chose, that is 58 per cent; choose two more from within walking distance who do not mention it, and among 14 it is 50 per cent. The clinic did not change; your choice did, so the share describes your choice, not the clinic."
+  alt: "A bar chart with two bars. The share of respondents who talked about the fare is 58.33333333 per cent when 7 of 12 did, and 50 per cent when 7 of 14 did."
+  source: draw.py
+  spec:
+    kind: bar
+    x: ["7 of 12 chosen", "7 of 14 chosen"]
+    series:
+    - name: talked about the fare
+      y: [58.33333333, 50]
+    x_label: respondents who talked about the fare, out of those you chose
+    y_label: per cent of those chosen
+    relations:
+    - check: "y[0] = 7/12*100"
+    - check: "y[1] = 7/14*100"
+    derived:
+    - {value: "50", from: "0.5 * 100"}
 provenance:
   map_version_id: fc19c8bc-a216-4131-99fb-ebe3f19cec4a
   outcome_refs:

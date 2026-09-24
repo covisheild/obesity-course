@@ -661,6 +661,28 @@ figures:
     y_label: words
     value_labels: true
     y_range: [0, 140]
+- file: s36-r1-c11-share-and-ratio.png
+  caption: "The share and the ratio are two readings of the same count. Your share is 100 divided by 1 plus the respondent's ratio. A ratio of 1 is a share of 50 per cent, the gate. R1's 7.2 is your 12.2 per cent; R2's 0.0769 is your 92.9."
+  alt: "A curve falling steeply from left to right. It passes through the second excerpt at ratio 0.0769 and share 92.9, the gate at ratio 1 and share 50, a respondent's share of 64 per cent at ratio 1.78 and share 36, the 450-and-1,350 transcript at ratio 3 and share 25, and the first excerpt at ratio 7.2 and share 12.2. A dashed line marks 50 per cent."
+  source: draw.py
+  spec:
+    kind: scatter
+    x: [0.0769, 1, 1.78, 3, 7.2]
+    series:
+    - {name: "worked in this section", y: [92.9, 50, 36, 25, 12.2]}
+    x_label: "respondent's words for each of yours (the ratio)"
+    y_label: your share of all words (per cent)
+    y_range: [0, 100]
+    relations:
+    - fit: "y = 100/(1 + x)"
+      series: "worked in this section"
+    curves:
+    - {y: "y = 100/(1 + x)", x0: 0.0769, x1: 7.2, label: "share = 100 / (1 + ratio)", series: "worked in this section"}
+    refs:
+    - {y: 50, label: "the gate, 50"}
+    labels:
+    - {text: "second excerpt", at: [0.0769, 92.9]}
+    - {text: "first excerpt", at: [7.2, 12.2]}
 provenance:
   map_version_id: fc19c8bc-a216-4131-99fb-ebe3f19cec4a
   outcome_refs:

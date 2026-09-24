@@ -359,19 +359,29 @@ retrieval_items:
   a: So that you, or anyone checking you, can go straight to that point in the audio and listen again.
 figures:
 - file: s36-r1-c10-transcribing-hours.png
-  caption: "Hours of typing for one to five interviews of an hour each, at the two ends of McMullin's range: 3 hours of work for each hour of audio at the quick end, 8 at the slow end. Five pilot interviews come to 15 to 40 hours, and 40 is not a ceiling."
-  alt: "Pairs of bars for 1 to 5 interviews. The shorter bar of each pair rises in steps of 3 hours, from 3 to 15. The taller rises in steps of 8 hours, from 8 to 40."
+  caption: "Typing time rises in step with the length of the recording: 3 hours of work for each hour of audio at the quick end of McMullin's range, 8 at the slow end. The 47-minute first pilot, 0.7833 of an hour, needs 2.35 to 6.27 hours. Five pilots of about an hour need 15 to 40 hours, and 40 is not a ceiling."
+  alt: "Two straight lines rising from left to right against hours of audio. The lower line, 3 hours a recorded hour, passes 2.35 at 0.7833, 3 at 1 and 15 at 5. The upper line, 8 hours a recorded hour, passes 6.27 at 0.7833, 8 at 1 and 40 at 5."
   source: draw.py
   spec:
-    kind: bar
-    from_table: {block: 3, x: 0, y: [1, 2]}
-    x_label: interviews, an hour each
+    kind: line
+    x: [0.7833, 1, 5]
+    series:
+    - {name: "quick end", y: [2.35, 3, 15]}
+    - {name: "slow end", y: [6.27, 8, 40]}
+    x_label: hours of audio
     y_label: hours of typing
+    y_range: [0, 45]
     relations:
     - fit: "y = 3*x"
-      series: Hours at 3 an hour
+      series: "quick end"
+      draw: true
+      label: "3 hours of typing a recorded hour"
     - fit: "y = 8*x"
-      series: Hours at 8 an hour
+      series: "slow end"
+      draw: true
+      label: "8 hours of typing a recorded hour"
+    refs:
+    - {x: 0.7833, label: "47-minute first pilot"}
 provenance:
   map_version_id: fc19c8bc-a216-4131-99fb-ebe3f19cec4a
   outcome_refs:
