@@ -123,3 +123,45 @@ passages cut by script, re-checked). **Verbatim check: 12 of 12.**
   are run into the text, as the header warns.
 - **Not held.** Figures (Figure 3.6 sample consent form; Figures 9.4 and 9.5 sample interview guides) are
   images. 9.3 (quantitative interviews), the chapter introductions and all exercise sets were not taken.
+
+## v1.1, 2026-09-24/25: Indian data-protection law for C07
+
+Asked for so that C07 (consent, recording and privacy) can teach the DPDP Act and Rules alongside ICMR. The
+method is the same as above. TinyFish `fetch_content` was the only tool used. Each result was decoded
+unchanged from the session's tool-result record into `intake-raw/<citekey>.txt`, and every run was cut by
+script as `raw[i:j]` and re-tested against the raw text. **Verbatim check: 4 of 4.** All four runs are also
+exact byte substrings of the raw fetch. The session crossed midnight, so the Act was fetched on 25
+September; the other two were fetched on 24 September.
+
+| Source | URL fetched | Runs | Check | Licence as stated | Citekey |
+| --- | --- | --- | --- | --- | --- |
+| Digital Personal Data Protection Act 2023 (Act 22 of 2023), Gazette of India Extraordinary Part II s.1 No. 25, 11 Aug 2023: whole Act as enacted, ss.1-44 and the Schedule | https://www.meity.gov.in/static/uploads/2024/06/2bf1f0e9f04e6fb4f8fef35e82c42aa5.pdf (PDF text layer) | 1 | 1/1 | none stated | `dpdp_act_2023` (new) |
+| G.S.R. 843(E), 13 Nov 2025, MeitY, commencement under s.1(2), Gazette No. 757: whole, Hindi and English | https://www.meity.gov.in/static/uploads/2025/11/c56ceae6c383460ca69577428d36828b.pdf (PDF text layer) | 1 | 1/1 | none stated | `dpdp_commencement_2025` (new) |
+| DPDP Rules 2025, G.S.R. 846(E), 13 Nov 2025, Gazette No. 760: masthead lines, and the whole English text (rules 1-23 and Schedules I-VII); Hindi version omitted | https://www.meity.gov.in/static/uploads/2025/11/53450e6e5dc0bfa85ebd78686cadad39.pdf (PDF text layer) | 2 | 2/2 | none stated | `dpdp_rules_2025` (new) |
+
+- **Host.** India Code (`indiacode.nic.in`, handle 123456789/22037) returned `target_unreachable` on two
+  paths. The Act is therefore the Gazette copy hosted by MeitY. It is the text **as enacted**, not a
+  consolidation, and no search was made for later amendments.
+- **Commencement exists and is held.** G.S.R. 843(E) is a separate Gazette issue (No. 757), not the one that
+  carries the Rules (No. 760). It appoints three stages: on publication, after one year, and after eighteen
+  months. Neither notification gives calendar dates for the later stages. See `DPDP-FACTS.md` §1.
+- **Hindi text layers are garbled** in both 2025 notifications, with conjuncts decomposed by a legacy
+  font mapping. The commencement file holds the Hindi because the run is the whole fetch. The Rules file
+  omits it. Quote the English only.
+- **Layout.** In the Act, marginal notes and the citations of other Acts print at the foot of each page's
+  text, so a quote that crosses a page needs "…". The Schedule's table comes out column by column. The
+  Rules' tables are flattened.
+- **Licence.** None of the three documents states a licence or copyright. They are recorded as Government
+  of India legislation, with nothing assumed.
+
+**Findings for the gate (C07).** Details and exact words are in `DPDP-FACTS.md`.
+
+- On 24 September 2026 only the definitions (s.2), the Board provisions and a few others are in force.
+  Notice (s.5), consent and withdrawal (s.6(1)-(8), (10)), the Fiduciary's duties (s.8), children (s.9)
+  and the exemptions (s.17, including the research exemption s.17(2)(b)) come in at eighteen months. So do
+  Rules 3, 5-16 (rule 16 and the Second Schedule among them). C07 must not present these as current duties.
+- "Research" is not defined in the Act or the Rules. Nothing in either says whether a student's practice
+  interview is research, or whether it falls under the "personal or domestic purpose" exclusion
+  (s.3(c)(i)).
+- The Act does not require written consent. The written-consent rule C07 now teaches is ICMR's, and it
+  should stay attributed to ICMR.

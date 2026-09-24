@@ -250,3 +250,14 @@ Same method: **12 of 12** passages verbatim against the fetch.
 | File | What it is | Words | Verified in it |
 | --- | --- | --- | --- |
 | `blackstone_2012.txt` | *Principles of Sociological Inquiry: Qualitative and Quantitative Methods* v1.0, Saylor Academy 2012 (Amy Blackstone; the Saylor edition omits her name at her request). CC BY-NC-SA 3.0 (licence page). One page per section, fetched with body scope. **Excerpts: eleven whole sections, exercises omitted** | 28,440 | 1.2 qualitative methods "yield results such as words or pictures", quantitative "can be represented by and condensed into numbers", "complementary rather than competing"; 2.3 inductive and deductive; 3.1 IRBs; 3.2 informed consent, anonymity and confidentiality; 5.2 idiographic and nomothetic; 7.2 purposive, snowball, quota and convenience samples (Table 7.1); 9.1 when to interview; 9.2 interview guide, open-ended and non-leading questions, recording, transcription, open and focused coding (Table 9.1); 9.4 power, location, rapport; 12.1 focus groups (Table 12.1). Figures (the sample consent form and the two interview guides) are images and not held |
+
+**Indian data-protection law added (S36-R1 v1.1, 24-25 September 2026).** For C07, recording and
+privacy in an interview. Same method: TinyFish `fetch_content` only, passages cut by script. **4 of
+4** runs verbatim against the fetch. India Code was unreachable for the tool; all three are the
+Gazette PDFs on meity.gov.in. None states a licence: Government of India legislation, nothing assumed.
+
+| File | What it is | Words | Verified in it |
+| --- | --- | --- | --- |
+| `dpdp_act_2023.txt` | Digital Personal Data Protection Act 2023 (Act 22 of 2023), Gazette of 11 August 2023, PDF text layer. **Whole Act as enacted**, not consolidated | 11,243 | s.2 definitions ("Data Fiduciary" (i), "Data Principal" (j), "personal data" (t), "processing" (x), "child" (f)); s.3 application; s.5 notice; s.6 consent and withdrawal; s.8(5) security safeguards, s.8(7) erasure; s.9 children; s.17(2)(b) research, archiving or statistical purposes; s.44(3) amending RTI Act s.8(1)(j) |
+| `dpdp_commencement_2025.txt` | MeitY G.S.R. 843(E), 13 November 2025, s.1(2) commencement. **Whole notification**, Hindi and English | 944 | (a) on publication: s.1(2), s.2, ss.18-26, 35, 38-43, s.44(1) and (3); (b) one year from publication: s.6(9), s.27(1)(d); (c) eighteen months: ss.3-5, s.6(1)-(8) and (10), ss.7-17, s.27 except (1)(d), ss.28-34, 36, 37, s.44(2) |
+| `dpdp_rules_2025.txt` | DPDP Rules 2025, G.S.R. 846(E), 13 November 2025, PDF text layer. **Whole English text**, Hindi version omitted | 10,906 | rule 1 commencement (rules 1, 2, 17-21 on publication; rule 4 after one year; rules 3, 5-16, 22, 23 after eighteen months); rule 3 notice; rule 6 security safeguards; rule 8 erasure; rule 10 children's verifiable consent; rule 16 research exemption; Second Schedule standards (a)-(h) |
