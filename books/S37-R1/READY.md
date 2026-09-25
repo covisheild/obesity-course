@@ -73,3 +73,10 @@ Not needed (fallback held): DES Table 10.1 (Economic Survey Table 1.19 has the s
 page (FAQ and stakeholder pages); CBIC notification (PIB release of 24 Sep 2026); 2026-27 economic
 cost (2025-26 BE held, dated). Known gap: the anganwadi supplementary-nutrition norms revised in
 January 2023 are not held; the held 2022 table says "under revision" and must be quoted as such.
+
+### Withdrawn 25 Sep 2026 (India Code terms)
+
+`eca_1955` and `food_corporations_act_1964` were fetched through India Code's search API. India
+Code's terms forbid automated access without written permission (handover §7, Book 7 precedent), so
+both files, their INDEX lines and `.bib` entries are withdrawn before commit. C08, C16 and C18 must not
+rest on them. If Harsh downloads either Act by hand, it can be taken back in as a held file.

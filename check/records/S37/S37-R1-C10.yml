@@ -1,0 +1,948 @@
+concept_id: S37-R1-C10
+subject: S37
+rung: 1
+sequence: 10
+name: 'How the state moves a price: support price, subsidy, import duty'
+concept_type: derivable
+clusters:
+- environment-and-market
+- india-specificity
+ground_floor_deps:
+- B0-R0-C04
+- B0-R0-C05
+- B0-R0-C15
+concept_deps:
+- S37-R1-C04
+- S37-R1-C06
+- S37-R1-C09
+definition:
+  text: |
+    A price wedge is a gap that a public decision opens between two prices of the same food.
+    Three wedges are computed here, each by one rule.
+
+    The margin of a minimum support price (MSP) over cost is the MSP minus the cost, divided by
+    the cost, times 100. The cost is the all-India weighted average cost of production for that
+    crop, as the Union government's release states it. An MSP set at 1.5 times cost carries a
+    margin of 50 per cent over cost.
+
+    The subsidy on grain issued for the public distribution system is the economic cost minus the
+    central issue price. The economic cost is what the grain costs the government to buy, store
+    and move. The central issue price is the price at which the Union government issues the grain
+    to the States. The share of the economic cost that is subsidy is the subsidy divided by the
+    economic cost, times 100. Where the issue price is zero, the subsidy equals the economic cost.
+
+    The landed price of an import under a duty charged as a percentage of its value is the price
+    before duty times (1 plus the duty rate as a decimal).
+  references:
+  - citekey: openstax_prealgebra_2e
+    kind: textbook
+    locator: ch. 6, Percents (percent increase and decrease; sales tax and markup)
+    verified:
+      resolved_id: https://openstax.org/books/prealgebra-2e/pages/6-introduction
+      opened: false
+      claim_located: false
+      checked_on: '2026-09-25'
+      note: |
+        Not opened by this drafter, who was barred from the web for this task. Book 0's section on
+        percentages records this chapter as located in the book's table of contents on
+        2026-09-22. The three rules here are percentage arithmetic the reader rebuilds from Book 0,
+        A4 and A5, so the concept does not rest on the anchor.
+  - citekey: pib_2260617
+    kind: instrument
+    locator: table, footnote marked *, and the paragraph after it
+    quote: "The increase in MSP for Kharif Crops for Marketing Season 2026-27 is in line with the Union Budget 2018-19 announcement of fixing the MSP at a level of at least 1.5 times of the All-India weighted average cost of production"
+    verified:
+      resolved_id: https://www.pib.gov.in/PressReleasePage.aspx?PRID=2260617
+      opened: true
+      claim_located: true
+      checked_on: '2026-09-25'
+      note: |
+        The table's column head is "Margin over cost (%)", and every row with a cost figure gives
+        MSP, cost and margin, so the base of the percentage is the cost. The footnote lists what the
+        cost includes, among them the imputed value of family labour.
+  - citekey: s37_economic_cost_grain
+    kind: instrument
+    locator: Foodgrains Bulletin, December 2025, definitions 18 and 19
+    quote: "It is computed as Economic Cost = Acquisition Cost + Distribution Cost."
+    verified:
+      resolved_id: https://dfpd.gov.in/WriteReadData/FoodBulletinUploadDocuments/8cc19261-0d0a-4ca7-b589-ab8708fb1b4d_Foodgrains%20Bulletin%20for%20December,%202025.pdf
+      opened: true
+      claim_located: true
+      checked_on: '2026-09-25'
+      note: |
+        The bulletin states the sum in its definition for a decentralised procurement State;
+        definitions 16 and 17 list what acquisition cost (MSP plus the costs of buying, bagging
+        and delivering to a storage point) and distribution cost (storage point to depot) hold.
+  - citekey: s37_economic_cost_grain
+    kind: instrument
+    locator: Foodgrains Bulletin, December 2025, definition 19, Central Issue Price
+    quote: "The price at which the central government issues food grains to state governments for distribution through the PDS."
+    verified:
+      resolved_id: https://dfpd.gov.in/WriteReadData/FoodBulletinUploadDocuments/8cc19261-0d0a-4ca7-b589-ab8708fb1b4d_Foodgrains%20Bulletin%20for%20December,%202025.pdf
+      opened: true
+      claim_located: true
+      checked_on: '2026-09-25'
+  - citekey: s37_economic_cost_grain
+    kind: instrument
+    locator: Foodgrains Bulletin, December 2025, p. 42, footnote to the central issue price table
+    quote: "CIP of foodgrains has become zero , as Government of India is providing free of cost foodgrains to all beneficiaries under NFSA since 1st January, 2023."
+    verified:
+      resolved_id: https://dfpd.gov.in/WriteReadData/FoodBulletinUploadDocuments/8cc19261-0d0a-4ca7-b589-ab8708fb1b4d_Foodgrains%20Bulletin%20for%20December,%202025.pdf
+      opened: true
+      claim_located: true
+      checked_on: '2026-09-25'
+      note: |
+        The date the issue price became zero is taken from this footnote and from the Year End
+        Review 2025 paragraph in the same file ("beginning from 1st January 2023"), not from memory.
+  - citekey: s37_economic_cost_grain
+    kind: instrument
+    locator: Foodgrains Bulletin, December 2025, p. 51, statement of economic cost, central issue price and subsidy
+    quote: "2022-23 3722.35 2549.73 300 200 3422.35 2349.73 91.9 92.2"
+    verified:
+      resolved_id: https://dfpd.gov.in/WriteReadData/FoodBulletinUploadDocuments/8cc19261-0d0a-4ca7-b589-ab8708fb1b4d_Foodgrains%20Bulletin%20for%20December,%202025.pdf
+      opened: true
+      claim_located: true
+      checked_on: '2026-09-25'
+      note: |
+        The row shows the rule at work: subsidy is economic cost minus issue price (3722.35 minus
+        300), and the last two columns are that subsidy as a percentage of economic cost. Units
+        are Rs per quintal. The column order is the one the table's headers give after the data.
+  - citekey: s37_edible_oil_duty
+    kind: instrument
+    locator: Press Information Bureau release 2314297, 24 September 2026, second paragraph
+    quote: "the BCD on Crude Sunflower Oil has been reduced from 10% to Nil, while the BCD on Crude Soybean Oil and Crude Palm Oil has been reduced from 10% to 5%."
+    verified:
+      resolved_id: https://www.pib.gov.in/PressReleasePage.aspx?PRID=2314297
+      opened: true
+      claim_located: true
+      checked_on: '2026-09-25'
+      note: |
+        Basic customs duty only. The release gives no effective duty including other charges, no
+        refined-oil rates and no notification number.
+  - citekey: s37_edible_oil_duty
+    kind: instrument
+    locator: Press Information Bureau release 2314297, 24 September 2026, third paragraph
+    quote: "Import duties constitute an important component of the landed cost of imported edible oils and, therefore, have a bearing on domestic market prices."
+    verified:
+      resolved_id: https://www.pib.gov.in/PressReleasePage.aspx?PRID=2314297
+      opened: true
+      claim_located: true
+      checked_on: '2026-09-25'
+simplified_explanation: |
+  The government changes food prices in three ways that you can work out with a calculator.
+
+  First, it sets a minimum support price (MSP) for a crop. That is the price at which its agencies
+  stand ready to buy. The Union government says each MSP is at least one and a half times the cost
+  of growing the crop. That extra half is the margin. It is a percentage of the cost, not of the
+  price, and that choice of base changes the number a great deal.
+
+  Second, it sells grain to ration-card holders for less than the grain cost it. The gap between
+  the two is the subsidy. The full cost of buying, storing and moving the grain is called the
+  economic cost. Since 1 January 2023 the grain under the National Food Security Act (NFSA) has
+  been free, so the subsidy is now the whole economic cost.
+
+  Third, it charges a duty on imports, as a percentage of their value. The price at the port after
+  duty is called the landed price. It is the price before duty, made bigger by the duty's share.
+
+  Each rule is one line of arithmetic. The hard part is the base. Always ask: a percentage of what?
+illustrations:
+- body: |
+    Start with the mistake, because it is the one a newspaper reader makes.
+
+    Search for the Cabinet's release of 13 May 2026, "Cabinet approves Minimum Support Prices (MSP)
+    for Kharif Crops for Marketing Season 2026-27", on the Press Information Bureau website, and
+    open it. Kharif crops are the ones sown with the monsoon. Find the row for common paddy. It
+    gives an MSP of Rs 2441 per quintal, a cost of Rs 1627 per quintal, and a margin over cost of
+    50 per cent. A quintal is 100 kg.
+
+    Work out the margin the way most people first do. Take the gap and divide it by the price.
+
+    ```working
+    2441 minus 1627 = 814
+    814 divided by 2441 = 0.3334698894
+    0.3334698894 times 100 = 33.34698894
+    ```
+
+    About 33 per cent. The release says 50. Your arithmetic is right, and your answer is wrong.
+
+    Read the column head again. It says "Margin over cost". The base is the cost, not the price.
+
+    ```working
+    814 divided by 1627 = 0.500307314
+    0.500307314 times 100 = 50.0307314
+    ```
+
+    Fifty per cent, as printed. The gap is the same Rs 814 in both sums. It is a third of the
+    price and a half of the cost. Book 0, A4, taught you to ask of every percentage: per cent of
+    what?
+
+    Now check the rule the release names, "at least 1.5 times" the cost. In words: the price is
+    the cost times one and a half.
+
+    ```working
+    1627 times 1.5 = 2440.5
+    ```
+
+    Round to the rupee and you have the Rs 2441 in the table. "One and a half times cost" and "50
+    per cent over cost" are one statement, written two ways.
+  analogy_breaks_when: |
+    The cost in the release is one number for the whole country, a weighted average. It counts
+    the value of the family's own labour at a rate someone set. A farmer whose own costs run above
+    that average earns less than 50 per cent over them. A farmer who sells below the MSP, because
+    no agency bought the crop, earns less again. The margin describes the announced price and the
+    average cost, and nothing about any one farmer.
+  numbers:
+  - value: '2441'
+    unit: Rs per quintal, MSP for common paddy, kharif marketing season 2026-27 (Cabinet Committee on Economic Affairs, 13 May 2026)
+    citekey: pib_2260617
+    quote: "Paddy Common 2441 1627 50 2369"
+    as_of: '2026-05-13'
+  - value: '1627'
+    unit: Rs per quintal, cost of production for common paddy in the same row
+    citekey: pib_2260617
+    quote: "Paddy Common 2441 1627 50 2369"
+    as_of: '2026-05-13'
+  - value: '50'
+    unit: per cent, margin over cost for common paddy, as printed
+    citekey: pib_2260617
+    quote: "Paddy Common 2441 1627 50 2369"
+    as_of: '2026-05-13'
+  - value: '1.5'
+    unit: times the all-India weighted average cost of production, the stated rule for MSP
+    citekey: pib_2260617
+    quote: "fixing the MSP at a level of at least 1.5 times of the All-India weighted average cost of production"
+    as_of: '2026-05-13'
+- body: |
+    The second wedge sits between what grain costs the government and what a ration-card holder
+    pays for it. The Union government buys the grain, mostly at the MSP, and issues it to the
+    States. The States hand it to households through ration shops.
+
+    Search for the Foodgrains Bulletin for December 2025 of the Department of Food and Public
+    Distribution, and open it. Find the statement of economic cost, central issue price and
+    subsidy. Here are its rows for rice under the National Food Security Act (NFSA), in rupees a
+    quintal.
+
+    ```table
+    | year | economic cost | issue price | subsidy | subsidy as % of economic cost |
+    | 2021-22 | 3562.49 | 300 | 3262.49 | 91.6 |
+    | 2022-23 | 3722.35 | 300 | 3422.35 | 91.9 |
+    | 2023-24 | 3883.83 | 0 | 3883.83 | 100.0 |
+    | 2024-25, revised estimate | 4042.15 | 0 | 4042.15 | 100.0 |
+    | 2025-26, budget estimate | 4173.34 | 0 | 4173.34 | 100.0 |
+    ```
+
+    Check one row yourself. Take 2022-23, when the issue price was Rs 300 a quintal, or Rs 3 a kg.
+
+    ```working
+    3722.35 minus 300 = 3422.35
+    3422.35 divided by 3722.35 = 0.9194
+    0.9194 times 100 = 91.94
+    ```
+
+    The bulletin prints 91.9. The household paid about 8 per cent of what the rice cost.
+
+    Now take 2025-26. The bulletin's footnote says the issue price "has become zero" because the
+    grain has been free to everyone under the Act since 1 January 2023.
+
+    ```working
+    4173.34 minus 0 = 4173.34
+    4173.34 divided by 100 = 41.7334
+    ```
+
+    The subsidy is the whole cost: about Rs 41.73 for every kilogram of rice.
+
+    One more step shows where MSP enters. The same bulletin splits that Rs 4173.34 a quintal. Rs
+    3375.29 of it is the "pooled" cost, the weighted average price paid for the grain at MSP. The
+    rest is the cost of buying, storing and moving it.
+
+    ```working
+    4173.34 minus 3375.29 = 798.05
+    3375.29 divided by 4173.34 = 0.8088
+    ```
+
+    About 81 per cent of the economic cost is the price paid for the grain. So when an MSP rises,
+    the economic cost rises. With the issue price at zero, all of that rise lands on the subsidy.
+    None of it reaches the ration-card holder's price.
+  analogy_breaks_when: |
+    These are costs per quintal of rice, which is paddy after milling. Never subtract a paddy MSP
+    from a rice economic cost: the two are prices of different goods, and the arithmetic would run
+    without complaint. The 2025-26 figure is a budget estimate, made before the year's accounts were
+    closed. And the subsidy is what the government spends, not what the rice is worth to the family
+    that receives it.
+  numbers:
+  - value: '3722.35'
+    unit: Rs per quintal, economic cost of rice, 2022-23 (Foodgrains Bulletin, December 2025)
+    citekey: s37_economic_cost_grain
+    quote: "2022-23 3722.35 2549.73 300 200 3422.35 2349.73 91.9 92.2"
+  - value: '300'
+    unit: Rs per quintal, central issue price of rice for NFSA households, 2022-23
+    citekey: s37_economic_cost_grain
+    quote: "2022-23 3722.35 2549.73 300"
+  - value: '91.9'
+    unit: per cent, rice subsidy as a share of economic cost, 2022-23
+    citekey: s37_economic_cost_grain
+    quote: "2022-23 3722.35 2549.73 300 200 3422.35 2349.73 91.9 92.2"
+  - value: '3562.49'
+    unit: Rs per quintal, economic cost of rice, 2021-22
+    citekey: s37_economic_cost_grain
+    quote: "2021-22 3562.49 2467.53 300 200 3262.49 2267.53 91.6 91.9"
+  - value: '91.6'
+    unit: per cent, rice subsidy as a share of economic cost, 2021-22
+    citekey: s37_economic_cost_grain
+    quote: "2021-22 3562.49 2467.53 300 200 3262.49 2267.53 91.6 91.9"
+  - value: '3883.83'
+    unit: Rs per quintal, economic cost of rice, 2023-24
+    citekey: s37_economic_cost_grain
+    quote: "2023-24* 3883.83 2693.52 0 0 3883.83 2693.52 100.0 100.0"
+  - value: '4042.15'
+    unit: Rs per quintal, economic cost of rice, 2024-25 revised estimate
+    citekey: s37_economic_cost_grain
+    quote: "2024-25 (RE)* 4042.15 2850.19 0 0 4042.15 2850.19 100.0 100.0"
+  - value: '4173.34'
+    unit: Rs per quintal, economic cost of rice, 2025-26 budget estimate
+    citekey: s37_economic_cost_grain
+    quote: "2025-26(BE)* 4173.34 2980.06 0 0 4173.34 2980.06 100.0 100.0"
+    as_of: '2025-12-31'
+  - value: '3375.29'
+    unit: Rs per quintal, pooled cost of rice at MSP within the 2025-26 budget-estimate economic cost
+    citekey: s37_economic_cost_grain
+    quote: "2025-26(BE) 3375.29 2347.41 526.64 305.04 271.41 327.61 4173.34 2980.06"
+    as_of: '2025-12-31'
+  - value: '2023'
+    unit: year from which the issue price for NFSA households is zero (from 1 January 2023)
+    citekey: s37_economic_cost_grain
+    quote: "CIP of foodgrains has become zero , as Government of India is providing free of cost foodgrains to all beneficiaries under NFSA since 1st January, 2023."
+- body: |
+    The third wedge is at the port. Search for the release of 24 September 2026, "Government Cuts
+    Import Duty on Major Edible Oils to Provide Relief to Consumers", on the Press Information
+    Bureau website. It says the basic customs duty on crude sunflower oil went from 10 per cent to
+    nil. On crude soybean oil and crude palm oil it went from 10 per cent to 5 per cent.
+
+    The release gives no world price for the oil, so use a made-up one. Say a kilogram of crude
+    palm oil costs Rs 100 at the port before duty. The rule, in words: the landed price is the
+    price before duty, times one plus the duty written as a decimal. Ten per cent is 0.10.
+
+    ```working
+    100 times (1 plus 0.10) = 110
+    100 times (1 plus 0.05) = 105
+    110 minus 105 = 5
+    5 divided by 110 = 0.0454545455
+    ```
+
+    Here is the trap. The duty was halved, from 10 to 5 per cent. The landed price did not halve.
+    It fell by Rs 5 on Rs 110, which is about 4.5 per cent. The duty fell by 5 percentage points
+    (Book 0, A4); the price fell by 4.5 per cent. Those are different numbers.
+
+    For sunflower oil the duty went to nil.
+
+    ```working
+    100 times (1 plus 0) = 100
+    110 minus 100 = 10
+    10 divided by 110 = 0.0909090909
+    ```
+
+    About 9 per cent off the landed price, at this made-up world price.
+
+    Each duty pushes the landed price up by its own share of the price before duty. Each cut pulls
+    it down by the same share. Whether a shopper's bottle of oil gets cheaper is a separate
+    question. The release itself asks industry "to ensure that the full benefit" is passed on,
+    which tells you it does not happen by itself.
+  analogy_breaks_when: |
+    The Rs 100 is made up; only the duty rates are real. The rule holds for any price before duty,
+    so the percentages hold too. But the duty here is the basic customs duty alone. A December 2025
+    government backgrounder on edible oils uses a second term. It says the "effective customs duty"
+    on crude oils was raised from 5.5 to 16.5 per cent, and it does not say which basic duty went
+    with that. The September 2026 release gives no effective duty at all. So the landed price above
+    leaves out whatever else is charged at the border, and nothing held says how much that is.
+  numbers:
+  - value: '10'
+    unit: per cent, basic customs duty on crude sunflower, soybean and palm oil before 24 September 2026
+    citekey: s37_edible_oil_duty
+    quote: "the BCD on Crude Sunflower Oil has been reduced from 10% to Nil, while the BCD on Crude Soybean Oil and Crude Palm Oil has been reduced from 10% to 5%."
+    as_of: '2026-09-24'
+  - value: '5'
+    unit: per cent, basic customs duty on crude soybean and palm oil from the release of 24 September 2026
+    citekey: s37_edible_oil_duty
+    quote: "the BCD on Crude Sunflower Oil has been reduced from 10% to Nil, while the BCD on Crude Soybean Oil and Crude Palm Oil has been reduced from 10% to 5%."
+    as_of: '2026-09-24'
+  - value: '16.5'
+    unit: per cent, "effective customs duty" on crude edible oils, as the December 2025 backgrounder words it
+    citekey: pib_2200287
+    quote: "the government raised the effective customs duty on crude edible oils like palm, sunflower and soybean from 5.5% to 16.5%."
+    as_of: '2025-12-08'
+  - value: '10'
+    unit: per cent, basic customs duty on crude sunflower, soybean and palm oil set in June 2025
+    citekey: s37_edible_oil_duty
+    quote: "Centre has reduced the Basic Customs Duty (BCD) on crude edible oils namely crude sunflower, soybean, and palm oils has been reduced from 20% to 10%"
+    as_of: '2025-06-11'
+must_know:
+- point: |
+    "MSP gives a 50 per cent margin" is true only over cost. The same gap is a third of the price.
+    When anyone quotes an MSP margin at you, ask for the base, and quote the base yourself.
+  kind: misconception
+  bearing: public
+  refs:
+  - pib_2260617
+- point: |
+    The economic cost of rice for 2025-26 is Rs 4173.34 a quintal, the Food Ministry's budget
+    estimate in its December 2025 bulletin. That is about Rs 41.73 a kg. With the issue price at
+    zero since 1 January 2023, all of it is subsidy.
+  kind: number
+  bearing: policy
+  refs:
+  - s37_economic_cost_grain
+- point: |
+    With free grain, a higher MSP does not change what the ration-card holder pays. It raises the
+    economic cost, and so the subsidy. Say this when someone argues that MSP makes ration grain
+    dearer.
+  kind: consequence
+  bearing: policy
+  refs:
+  - s37_economic_cost_grain
+- point: |
+    A duty cut from 10 to 5 per cent is a fall of 5 percentage points in the duty. It is not a 50
+    per cent fall in anything a shopper pays. Work out the landed price before and after, and
+    quote the change in that.
+  kind: trap
+  bearing: public
+  refs:
+  - s37_edible_oil_duty
+- point: |
+    Government releases on edible oil use two terms, "basic customs duty" and "effective customs
+    duty", and they are not the same charge. Before you compute a landed price from a duty figure,
+    find which one it is, and say it.
+  kind: india_deviation
+  bearing: policy
+  refs:
+  - s37_edible_oil_duty
+  - pib_2200287
+- point: |
+    A paddy MSP and a rice economic cost are prices of different goods. Paddy is milled before it
+    becomes rice. Never subtract one from the other, however neat the answer looks.
+  kind: trap
+  bearing: methodological
+- point: |
+    These rules stop at the edge of the government's books: the border, the procurement centre,
+    the ration shop. They cannot tell you the price in an ordinary shop. The margins along the
+    chain, from the section on the price build-up, sit between the wedge and the plate. For that
+    you need a measured retail price.
+  kind: boundary
+  bearing: methodological
+- point: |
+    An MSP margin is over an all-India average cost. It says nothing about one farmer's margin,
+    or about a farmer who never sold to a procurement agency. Do not carry it to a district or a
+    household without saying so.
+  kind: boundary
+  bearing: policy
+  refs:
+  - pib_2260617
+exercises:
+- type: critique
+  prompt: |
+    A draft policy note says this.
+
+    > Raising the MSP for paddy pushes up the price that poor households pay for rice at the
+    > ration shop.
+
+    Say what is wrong with it today, and write the sentence you would put in its place.
+  answer: |
+    Since 1 January 2023, grain under the National Food Security Act has been free. The issue
+    price is zero, so a household with a ration card pays nothing, whatever the MSP.
+
+    What an MSP rise does move is the economic cost. The pooled cost of grain at MSP is most of it:
+    Rs 3375.29 of Rs 4173.34 a quintal of rice in the 2025-26 budget estimate. With the issue price
+    at zero, the whole of any rise in economic cost becomes subsidy.
+
+    The replacement sentence:
+
+    > A higher paddy MSP raises what rice costs the government, and so the food subsidy. While
+    > ration grain stays free, ration-card holders pay nothing either way.
+
+    The sentence you replace was once closer to true. When the issue price was Rs 300 a quintal it
+    was fixed, so it did not follow the MSP either. It could be changed only by a new decision.
+- type: teaching
+  prompt: |
+    A health secretary asks for one page, answer first. What does a kilogram of free ration rice
+    cost the Union government? Where does that money go? Write it, with the cost.
+  answer: |
+    Answer first. A kilogram of rice issued free under the National Food Security Act costs the
+    Union government about Rs 41.73. That is the economic cost of Rs 4173.34 a quintal for 2025-26,
+    the budget estimate in the Food Ministry's December 2025 bulletin. The household pays nothing,
+    so the subsidy is all of it.
+
+    Where it goes. About Rs 33.75 a kg is the price paid for the grain, the pooled cost at the
+    minimum support price (Rs 3375.29 a quintal). About Rs 7.98 a kg is buying, storing and moving
+    it (Rs 798.05 a quintal).
+
+    What follows for the secretary. The subsidy moves with the MSP, because the grain price is
+    about four-fifths of the cost. Decisions on MSP are food-subsidy decisions too.
+
+    What the page does not say. It gives the government's cost, not the value to the family, and
+    a budget estimate, not an audited figure. Each paisa figure is rounded from rupees a quintal.
+quantitative: true
+practice:
+- level: 1
+  prompt: |
+    A price is 150 and a cost is 100. What is the margin over cost, as a percentage of the cost?
+
+    A second cost of 80 is to be raised to one and a half times itself. What is the new price, and
+    what is its margin over cost?
+  answer: |
+    Margin over cost: the gap, divided by the cost, times 100.
+
+    ```working
+    150 minus 100 = 50
+    50 divided by 100 = 0.5
+    0.5 times 100 = 50
+    ```
+
+    Fifty per cent.
+
+    One and a half times the cost:
+
+    ```working
+    80 times 1.5 = 120
+    120 minus 80 = 40
+    40 divided by 80 = 0.5
+    ```
+
+    A price of 120, and again 50 per cent over cost. One and a half times cost is always 50 per
+    cent over cost, whatever the cost.
+- level: 2
+  prompt: |
+    A good costs 60 a unit to supply. The buyer pays 15. Find the subsidy per unit, and the
+    subsidy as a percentage of the full cost.
+
+    Now the buyer pays nothing. Find the same two numbers.
+  answer: |
+    Subsidy is full cost minus what the buyer pays.
+
+    ```working
+    60 minus 15 = 45
+    45 divided by 60 = 0.75
+    0.75 times 100 = 75
+    ```
+
+    A subsidy of 45 a unit, 75 per cent of the cost.
+
+    When the buyer pays nothing:
+
+    ```working
+    60 minus 0 = 60
+    60 divided by 60 = 1
+    1 times 100 = 100
+    ```
+
+    A subsidy of 60 a unit, 100 per cent of the cost. At a zero price the subsidy is the cost.
+- level: 2
+  prompt: |
+    A good costs 200 before duty. Find its price after a duty of 12.5 per cent, and after a duty
+    of nothing at all.
+  answer: |
+    Write the duty as a decimal: 12.5 per cent is 0.125. Then multiply by one plus it.
+
+    ```working
+    200 times (1 plus 0.125) = 225
+    200 times (1 plus 0) = 200
+    ```
+
+    225, and 200. The duty added 25, which is 12.5 per cent of 200: the duty is charged on the
+    price before duty, not on the landed price.
+- level: 3
+  prompt: |
+    Go the other way twice.
+
+    A landed price of 230 includes a duty of 15 per cent. What was the price before duty?
+
+    A price of 3000 was set at one and a half times cost. What was the cost?
+  answer: |
+    Each price was made by multiplying, so undo it by dividing by the same number.
+
+    ```working
+    1 plus 0.15 = 1.15
+    230 divided by 1.15 = 200
+    ```
+
+    The price before duty was 200. Check: 200 times 1.15 gives 230.
+
+    ```working
+    3000 divided by 1.5 = 2000
+    ```
+
+    The cost was 2000.
+
+    The slip to avoid is taking 15 per cent of 230 and subtracting it. That gives 195.5, because
+    15 per cent of 230 is bigger than 15 per cent of 200. The duty was charged on 200, so 200 is
+    the base.
+- level: 4
+  prompt: |
+    The Cabinet's release of 13 May 2026 covers kharif marketing season 2026-27. For moong it gives
+    an MSP of Rs 8780 a quintal and a cost of Rs 5438 a quintal. Work out the margin over cost.
+    Compare your answer with the margin the release prints.
+  answer: |
+    ```working
+    8780 minus 5438 = 3342
+    3342 divided by 5438 = 0.614564178
+    0.614564178 times 100 = 61.4564178
+    ```
+
+    The gap is Rs 3342 a quintal. The margin over cost is about 61.5 per cent. The release prints
+    61, rounded to a whole number. It names moong as the kharif crop with the highest margin.
+
+    The unit matters on the first line only. Rupees a quintal divided by rupees a quintal has no
+    unit, so the margin is a pure percentage.
+  refs:
+  - pib_2260617
+- level: 5
+  prompt: |
+    Rabi crops are the ones sown after the monsoon, in winter. The Cabinet's release of 1 October
+    2025 covers rabi marketing season 2026-27. For wheat it gives an MSP of Rs 2585 a quintal and a
+    cost of Rs 1239 a quintal. Work out the margin over cost. Then work out the gap as a percentage
+    of the MSP. Say which one the release prints.
+  answer: |
+    ```working
+    2585 minus 1239 = 1346
+    1346 divided by 1239 = 1.086359968
+    1.086359968 times 100 = 108.6359968
+    1346 divided by 2585 = 0.520696325
+    0.520696325 times 100 = 52.0696325
+    ```
+
+    Over cost, about 109 per cent. As a share of the MSP, about 52 per cent.
+
+    The release prints 109, in its "Margin over cost" column. Wheat's MSP is more than twice its
+    stated cost. That is well above the rule's floor of one and a half times.
+
+    A percentage over cost can run past 100. A share of the price cannot, because the gap is
+    always smaller than the price.
+  refs:
+  - pib_rabi_msp
+- level: 5
+  prompt: |
+    The Food Ministry's December 2025 bulletin gives the economic cost of wheat for 2025-26 as Rs
+    2980.06 a quintal. That is a budget estimate. The issue price to households under the National
+    Food Security Act is zero. A person in a priority household gets 5 kg of grain a month. If all
+    5 kg were wheat, what would a month's grain cost the government for that person?
+  answer: |
+    First to rupees a kilogram. A quintal is 100 kg.
+
+    ```working
+    2980.06 divided by 100 = 29.8006
+    29.8006 minus 0 = 29.8006
+    ```
+
+    The subsidy is about Rs 29.80 a kg, all of the economic cost.
+
+    Then the month's 5 kg.
+
+    ```working
+    29.8006 times 5 = 149.003
+    ```
+
+    About Rs 149 a person a month, at the 2025-26 budget-estimate cost.
+
+    The "if all 5 kg were wheat" matters. A State may issue rice, wheat or coarse grains, and rice
+    costs more. Keep the grain named on the answer.
+  refs:
+  - s37_economic_cost_grain
+  - nfsa_2013
+- level: 6
+  prompt: |
+    The same bulletin has a second category, which it calls "tide over", for rice issued at Rs
+    830 a quintal. The economic cost of rice for 2025-26, budget estimate, is Rs 4173.34 a
+    quintal. Find the subsidy per quintal and per kilogram, and the subsidy as a percentage of the
+    economic cost. Check your percentage against the bulletin's 80.1.
+  answer: |
+    ```working
+    4173.34 minus 830 = 3343.34
+    3343.34 divided by 100 = 33.4334
+    3343.34 divided by 4173.34 = 0.8011
+    0.8011 times 100 = 80.11
+    ```
+
+    Rs 3343.34 a quintal, about Rs 33.43 a kg, and about 80.1 per cent of the economic cost, as the
+    bulletin prints.
+
+    The same grain carries two subsidies, 100 per cent and 80.1 per cent, because it goes out at
+    two issue prices. A subsidy figure means nothing until you know which issue price it was
+    worked from.
+  refs:
+  - s37_economic_cost_grain
+- level: 6
+  prompt: |
+    Suppose, as a made-up figure, that crude palm oil costs Rs 90 a kilogram at the port before
+    duty. The basic customs duty on it fell from 10 per cent to 5 per cent on 24 September 2026.
+    Work out the landed price before and after, the fall in rupees, and the fall as a percentage of
+    the old landed price.
+  answer: |
+    ```working
+    90 times (1 plus 0.10) = 99
+    90 times (1 plus 0.05) = 94.5
+    99 minus 94.5 = 4.5
+    4.5 divided by 99 = 0.0455
+    0.0455 times 100 = 4.55
+    ```
+
+    Rs 99 a kg before, Rs 94.50 after. A fall of Rs 4.50, about 4.5 per cent of the old landed
+    price.
+
+    Compare the illustration's made-up Rs 100: the fall was also about 4.5 per cent. The percentage
+    does not depend on the world price, only on the two duty rates. That is 0.05 divided by 1.10.
+    The rupee fall does depend on the world price. The duty rates are real; the Rs 90 is not.
+  refs:
+  - s37_edible_oil_duty
+- level: 7
+  prompt: |
+    Here is a worked answer. Find the step that broke.
+
+    ```working
+    bajra MSP, kharif 2026-27: Rs 2900 a quintal
+    cost: Rs 1858 a quintal
+    2900 minus 1858 = 1042
+    1042 divided by 2900 = 0.359
+    so the margin is 35.9 per cent, below the promised 50
+    ```
+  answer: |
+    The fourth line divides by the MSP. The margin the rule promises is over cost, so the base is
+    the cost.
+
+    ```working
+    1042 divided by 1858 = 0.560818084
+    0.560818084 times 100 = 56.0818084
+    ```
+
+    About 56 per cent over cost, which is what the Cabinet's release of 13 May 2026 prints for
+    bajra. It is above the 50, not below.
+
+    Why the wrong answer looks reasonable. In shops and company accounts, "margin" is often a share
+    of the selling price. So dividing by the price feels normal. The arithmetic on every line is
+    right. Only the base is wrong, and the answer comes out small enough to fit a story about a
+    broken promise.
+  refs:
+  - pib_2260617
+- level: 8
+  prompt: |
+    Here is a worked answer. Find the step that broke.
+
+    ```working
+    crude palm oil before duty: Rs 100 a kg (made up)
+    landed at 10 per cent duty: 100 times 1.10 = 110
+    the duty is halved, to 5 per cent
+    so the landed price halves: 110 divided by 2 = 55
+    ```
+  answer: |
+    The fourth line halves the whole landed price. Only the duty was halved. The Rs 100 before duty
+    does not change at all.
+
+    ```working
+    100 times (1 plus 0.05) = 105
+    110 minus 105 = 5
+    ```
+
+    The landed price falls from Rs 110 to Rs 105. The duty part halves, from Rs 10 to Rs 5. The
+    price falls by about 4.5 per cent.
+
+    Why it looks reasonable: the word "halved" is true of something in the problem, and the working
+    applies it to the nearest number in sight. The check that catches it is to ask what the price
+    would be at a duty of nothing. It would be Rs 100. No duty change can take the price below the
+    price before duty.
+- level: 9
+  prompt: |
+    A speaker at a meeting says this.
+
+    > Paddy farmers now get a 50 per cent profit, guaranteed. The Cabinet has said so.
+
+    Decide what to compute, compute it, and say what your answer does not establish.
+  answer: |
+    What to compute: the margin for common paddy from the Cabinet's release of 13 May 2026, on its
+    own base.
+
+    ```working
+    2441 minus 1627 = 814
+    814 divided by 1627 = 0.500307314
+    ```
+
+    About 50 per cent over the stated cost. The number is real.
+
+    What it does not establish. It is over an all-India weighted average cost, so it is not any
+    one farmer's margin. It is a margin over one list of costs, the one in the release's footnote.
+    A cost that counted more would give a smaller margin. So "profit" is the speaker's word, not the
+    release's.
+
+    And it is a margin on the announced price. It reaches only a farmer who sells to a
+    procurement agency at the MSP. The section on MSP and procurement showed that a farmer may sell
+    to the agency or in the open market. A farmer who sells in the open market gets the market
+    price. Say instead: the announced price is
+    about 50 per cent above the government's average cost figure.
+  refs:
+  - pib_2260617
+- level: 9
+  prompt: |
+    A government release of 29 November 2023 says this.
+
+    > As an example, the economic cost of 35 kg rice for an Antyodaya family comes to Rs. 1371
+
+    Antyodaya families are the poorest households, entitled to 35 kg a month. Recompute the figure
+    from the economic cost of rice for 2025-26, budget estimate, Rs 4173.34 a quintal. Then say what
+    your answer does not establish.
+  answer: |
+    ```working
+    4173.34 divided by 100 = 41.7334
+    41.7334 times 35 = 1460.669
+    ```
+
+    About Rs 1461 a month at the 2025-26 cost, against the release's Rs 1371. The two differ
+    because the economic cost is set again every year. The release's figure is about Rs 39.17 a kg
+    (1371 divided by 35), an earlier year's cost. Quote the year with any such figure.
+
+    What it does not establish. It is what the rice costs the government, not what it is worth to
+    the family. A family that would not have bought 35 kg of rice at the market price is not saved
+    Rs 1461. And it says nothing about what the rice does to the family's diet.
+  refs:
+  - pib_1980689
+  - s37_economic_cost_grain
+- level: 10
+  prompt: |
+    A news line on 24 September 2026 reads:
+
+    > With the duty on palm oil halved to 5 per cent, cooking oil will be 5 per cent cheaper in
+    > shops.
+
+    Decide what to compute, compute it, and say what your answer does not establish.
+  answer: |
+    What to compute: the change in the landed price of crude palm oil, for any price before duty.
+    Call that price 1, because the percentage does not depend on it.
+
+    ```working
+    1 times (1 plus 0.10) = 1.1
+    1 times (1 plus 0.05) = 1.05
+    1.1 minus 1.05 = 0.05
+    0.05 divided by 1.1 = 0.0455
+    ```
+
+    At the port, the price of crude palm oil falls by about 4.5 per cent. That is the most the duty
+    cut does by itself, and it is not 5.
+
+    What it does not establish. A bottle in a shop is not crude oil at a port. Refining, packing,
+    transport and each seller's margin sit on top, and none of them fell. So even full pass-through
+    moves the shop price by less than 4.5 per cent.
+
+    Full pass-through is not given either. The release asks industry to pass the benefit on,
+    which shows it is not automatic. Only measured shop prices after the cut can say what
+    happened. And this is basic duty only; other border
+    charges are not in the sum.
+  refs:
+  - s37_edible_oil_duty
+practice_note: |
+  Fourteen problems, because the section teaches three moves (margin over a base, subsidy as a
+  gap, price times one plus a rate) and each needs its own mechanical and applied rung. Two moves
+  have a named trap, the base of the margin and "halved duty, halved price", and each gets a
+  diagnostic and a transfer problem.
+retrieval_items:
+- q: What is the base of the margin printed in an MSP release, and what is common paddy's for 2026-27?
+  a: The cost of production, not the price. Common paddy's MSP of Rs 2441 is 50 per cent over its cost
+    of Rs 1627 a quintal, which is a third of the price.
+- q: How is the subsidy on ration grain worked out, and what has it been since 1 January 2023?
+  a: Economic cost minus central issue price. The issue price for households under the Act is zero, so
+    the subsidy is the whole economic cost, about Rs 41.73 a kg of rice in 2025-26.
+- q: A duty on a crude oil falls from 10 to 5 per cent. By how much does the landed price fall?
+  a: By 0.05 divided by 1.10, about 4.5 per cent, whatever the price before duty. Not by half, and
+    not by 5 per cent.
+figures:
+- file: s37-r1-c10-duty-landed-price.png
+  caption: 'A made-up Rs 100 a kg of crude oil at the port before duty. Its landed price is 100 times
+    (1 plus the duty), so it rises Rs 1 for each point of duty: Rs 110 at 10 per cent, Rs 105 at
+    5 per cent, Rs 100 at nil. The duties are the ones before and after 24 September 2026.'
+  alt: 'A straight line through three points: Rs 100 at 0 per cent duty, Rs 105 at 5 per cent and Rs
+    110 at 10 per cent.'
+  source: draw.py
+  spec:
+    kind: line
+    x_label: basic customs duty (per cent)
+    y_label: landed price (Rs a kg)
+    x:
+    - 0
+    - 5
+    - 10
+    series:
+    - name: landed price, made-up Rs 100 before duty
+      y:
+      - 100
+      - 105
+      - 110
+    relations:
+    - fit: y = 100 + x
+      draw: true
+      label: Rs 1 more for each point of duty
+    labels:
+    - text: sunflower, nil
+      at:
+      - 0
+      - 100
+      offset:
+      - 8
+      - -16
+    - text: palm and soybean, 5 per cent
+      at:
+      - 5
+      - 105
+      offset:
+      - 8
+      - -16
+    - text: all three before, 10 per cent
+      at:
+      - 10
+      - 110
+      offset:
+      - -190
+      - 6
+    y_range:
+    - 95
+    - 115
+    derived:
+    - value: '1'
+      from: (105 - 100)/5
+- file: s37-r1-c10-rice-subsidy-share.png
+  caption: Rice subsidy as a percentage of its economic cost, for households under the National Food
+    Security Act. It was 91.6 and 91.9 per cent while the issue price was Rs 300 a quintal. It has
+    been 100.0 since the issue price became zero on 1 January 2023.
+  alt: 'Five bars: 91.6 in 2021-22, 91.9 in 2022-23, then 100.0 in 2023-24, 2024-25 and 2025-26.'
+  source: draw.py
+  spec:
+    kind: bar
+    x:
+    - 2021-22
+    - 2022-23
+    - 2023-24
+    - "2024-25\nrevised estimate"
+    - "2025-26\nbudget estimate"
+    series:
+    - name: subsidy as % of economic cost
+      y:
+      - '91.6'
+      - '91.9'
+      - '100.0'
+      - '100.0'
+      - '100.0'
+    x_label: ''
+    y_label: subsidy as % of economic cost (rice)
+    value_labels: true
+    y_range:
+    - 0
+    - 110
+provenance:
+  map_version_id: fc19c8bc-a216-4131-99fb-ebe3f19cec4a
+  outcome_refs:
+  - S37-R1-O2
+  bridge_ref:
+  - S37-R2-P03
+  - S37-R2-R1
+  - S37-R2-G
+review:
+  stability: long
+  trigger: 'On event: the next Cabinet decision on MSP (the rabi decision for 2027-28 is due
+    about October 2026), the next Foodgrains Bulletin figure for economic cost, or the next
+    change in the customs duty on edible oils; otherwise 2031-09-25.'
+  as_of: '2026-09-24'
+  last_reviewed: '2026-09-25'
+status: drafted
