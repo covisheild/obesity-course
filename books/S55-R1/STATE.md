@@ -14,6 +14,6 @@ Parallel with S37-R1 and S57-R1 (third concurrent book, on Harsh's request by na
 | Task 5 compression | done: 4 cutters (38-68%), cold read 70 gaps, 2 restorers (30 restored, 39 holes, 4 not a defect); writeback after backup; holes in DEFECTS.md. Words 9,815 -> 5,808 |
 | Figure plan | done: 6 drawn (C02, C03, C06 x3, C08), 4 figure_notes; conductor looked at all 6. For audit: C06 uncited-shares 5th bar label ("letters, notes") may misdescribe what the 23% counts |
 | Task 3 audit, 4 fix, 4b verify | done: ~100 defects (4 auditors); 8 fixers + 1 cross-section fixer; 2 verifiers, round 2 on 3 conductor fixes; 0 open. Conductor decisions in FIX-BRIEF (C07 binds C08; no cut-offs; age bands) |
-| Glossary merge, build, PDF | |
+| Glossary merge (40 rows), build, PDF (80 pp) | done; pages looked at (cover, contents, Before you start, glossary, series list, back cover, a table/prose page) |
 
-Next action: glossary merge, PDF build, catch up with GitHub, bundle.
+**Done. Frozen at version 1.0.** Next: merge to main, catch up with origin/main, parallel.py ready, bundle.
