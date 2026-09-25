@@ -1,0 +1,1 @@
+- S37-R1-C11: cut every sentence saying the Union government fixes each State's coverage (section 9) and buys and moves the grain, including the definition's section 3(2)/9 paragraph and the plain-terms coverage paragraph. Section 10 (State picks households) survives, but a reader asked "who decides how many" or tracing Centre versus State for exercise 2 may now have nothing.

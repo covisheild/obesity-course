@@ -1,0 +1,1 @@
+- S37-R1-C10: cut the simplified explanation's "Since 1 January 2023 the grain under the NFSA has been free, so the subsidy is now the whole economic cost." The definition still says a zero issue price makes subsidy equal economic cost, but nothing in the prose now says the issue price *is* zero, or since when; exercises 1, 2 and 7 lean on that fact.

@@ -1,0 +1,1 @@
+Least-sure cut (pass 1): the illustration's Press Information Bureau paragraph (import dependence 63.2% to 56.25%, "not a figure for palm oil... mark the origin as unknown"). Must-know 3 still cites "the 56.25% import dependence", now with no worked source or how-to-find step, and the national-figure trap in Exercise 2 ("Palm oil: imported") leans on it.

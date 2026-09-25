@@ -1,0 +1,2 @@
+
+**Least sure (pass 1, batch k3):** deleted the lines saying pulses and oilseeds are bought only when the market price falls below MSP (definition, plain terms, must_know[0]), and the paddy 8,418 of 8,746 lakh tonnes figure from must_know[1]. What survives is "MSP is a price at which the government will buy" and "procurement is concentrated in one", with no mechanism for why; Exercise 3 (14 crops) may need it.
