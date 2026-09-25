@@ -32,10 +32,12 @@ definition:
     Composition Tables 2017 (IFCT) of the Indian Council of Medical Research's National Institute
     of Nutrition (ICMR-NIN). IFCT prints energy in kilojoules only. The figures are
     physiologically available energy, worked out by the Atwater system. IFCT converts them to
-    kilocalories with 1 kcal = 4.18 kJ.
+    kilocalories with 1 kcal = 4.18 kJ. This factor and Book 0's 4.184 differ by less than 0.1 per cent
+    (4.184 divided by 4.18 is 1.00096). The gap never changes a verdict against a norm.
 
-    ICMR-NIN's 2020 adult requirement is 1660 kcal a day for a sedentary reference woman of 55 kg
-    and 2110 kcal for a sedentary reference man of 65 kg.
+    ICMR-NIN's 2020 adult requirement is 1660 kcal a day for a woman of 55 kg doing sedentary work
+    (a physical activity ratio of 1.40). For a man of 65 kg it is 2110 kcal. The 55 and 65 kg are
+    the body weights the table assumes. This section calls these two the reference woman and man.
 
     The arithmetic gives the energy in the food handed over. It does not give the energy any
     person eats.
@@ -120,9 +122,10 @@ definition:
       note: |-
         Row 6 reads "6. Pregnant women and Lactating mothers Take Home Ration 600 18-20". These
         are the Schedule II figures in the text of the Act as held. PIB's backgrounder of 14 April
-        2026 (pib_2251769) says the supplementary-nutrition norms were revised in January 2023;
-        the revised figures are not held, so every take-home-ration sum in this section says it
-        uses the older ones.
+        2026 (pib_2251769) says the anganwadi supplementary-nutrition norms (take-home ration and
+        hot cooked meal) were revised in January 2023; the revised figures are not held, so every
+        take-home-ration sum in this section says it uses the older ones. Nothing held says the
+        school-meal rows 4 and 5 were revised.
   - citekey: s37_pib_1812421
     kind: instrument
     locator: PIB release 1812421, 1 April 2022, table of nutrition and food norms, food norms per child per day
@@ -267,6 +270,17 @@ definition:
       opened: true
       claim_located: true
       checked_on: '2026-09-25'
+  - citekey: icmr_nin_2020_brief
+    kind: guideline
+    locator: Energy requirements, the physical activity ratio used for sedentary adults
+    quote: to 1.40 for sedentary population
+    verified:
+      resolved_id: https://www.nin.res.in/rdabook/brief_note.pdf
+      opened: true
+      claim_located: true
+      checked_on: '2026-09-25'
+      note: |-
+        The brief calls it the physical activity ratio (PAR), lowered from the 1.53 of RDA-2010.
   - citekey: icmr_nin_2020_brief
     kind: guideline
     locator: Table 1b, footnote *
@@ -468,8 +482,10 @@ illustrations:
     PM POSHAN sets food norms for each child per day. A Press Information Bureau (PIB) release of
     1 April 2022 gives them
     for a primary school child: 100 g of foodgrains, 20 g of pulses, 50 g of vegetables and 5 g
-    of oil and fat. The energy and protein norms in the same table are 450 kilocalories and 12
-    g, the same as Schedule II of the Act.
+    of oil and fat. The release does not say whether these are raw weights; this sum takes them
+    as raw, the grain as issued. The energy and protein norms in the same table are 450
+    kilocalories and 12 g, the same as Schedule II of the Act. The release does not say which
+    classes are primary; the Schedule calls them lower and upper primary classes.
 
     Take the grain as raw milled rice again, and the pulse as tur dal, which the tables call red
     gram dal (row B021): 21.70 g protein and 1384 kJ per 100 g. The tables' Table 4 gives fat 37
@@ -583,12 +599,14 @@ illustrations:
     which is where you find it.
 
     One warning about the norm itself. The 2022 guidelines print this table with a note that the
-    norms are "under revision". A PIB backgrounder of 14 April 2026 says they were revised in
-    January 2023, and does not give the new figures. The 500 here is the older norm.
+    norms are "under revision". The anganwadi supplementary-nutrition norms in Schedule II
+    (take-home ration and hot cooked meal) were revised in January 2023, a PIB backgrounder of 14
+    April 2026 says; the revised figures are not held. Nothing held says the school-meal rows were
+    revised. The 500 here is the older norm.
   analogy_breaks_when: |
     The arithmetic assumes 25 days a month and two equal hand-outs, and it uses the pre-2023 norm.
-    It gives what the packet should carry, not what the child eats. A packet taken home is shared
-    with whoever else is at home, and nothing in this sum can see that.
+    It gives what the packet should carry, not what the child eats. A packet taken home may be
+    shared with whoever else is at home, and nothing in this sum can see that.
   numbers:
   - value: '500'
     unit: kcal a day, THR, children 6 months to 3 years, NFSA Schedule II (pre-2023 norm)
@@ -613,7 +631,7 @@ must_know:
 - point: |
     The priority-household entitlement is five kilograms of grain a month. As raw milled rice, it
     holds about 595 kilocalories and 13 g of protein a day for the person it is issued to. That uses the 2017
-    tables' average and a 30-day month. Quote it with both.
+    tables' average across six regions and a 30-day month. Quote it with both.
   kind: number
   bearing: policy
   refs:
@@ -658,8 +676,9 @@ must_know:
   - s37_pib_1812421
   - ifct_2017
 - point: |
-    The anganwadi take-home-ration norms in the Act's Schedule II were revised in January 2023,
-    and the revised figures are not quoted here. Any THR sum built on 500 or 600 kilocalories uses
+    The anganwadi supplementary-nutrition norms in Schedule II (take-home ration and hot cooked
+    meal) were revised in January 2023, a PIB backgrounder of 14 April 2026 says; the revised
+    figures are not held. Nothing held says the school-meal rows were revised. Any THR sum built on 500 or 600 kilocalories uses
     the older norm, and must say so.
   kind: trap
   bearing: policy
@@ -683,11 +702,10 @@ exercises:
     - It is the food handed over, not the food eaten. Who at home eats it, and what it replaces,
       are not in the sum.
     - The share is against a reference adult. Children and heavy workers need different amounts.
-    - The Department's own annual report calls the ration supplemental. A third of a day is what
-      it was built to be, not a shortfall.
+    - The Department's own annual report calls the ration supplemental: it was never meant to
+      meet the whole requirement.
 
-    The one figure worth holding on to is that most of what the ration gives is cereal energy. That
-    was the design.
+    All of what the ration gives is cereal energy, because the Act's foodgrains are cereals.
   confidence_first: false
 quantitative: true
 practice_note: |
@@ -846,8 +864,8 @@ practice:
 
     Each hand-out should carry 7,500 kcal, or 31,350 kJ.
 
-    The 600 is the Schedule II figure as the Act prints it. The norms were revised in January 2023
-    and the revised figures are not used here, so this is the older norm.
+    The 600 is the Schedule II figure as the Act prints it. The anganwadi norms were revised in
+    January 2023; the revised figures are not held, so this is the older norm.
   refs:
   - nfsa_2013
   - poshan2_guidelines_2022

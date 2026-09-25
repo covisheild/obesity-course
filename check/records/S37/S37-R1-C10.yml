@@ -21,7 +21,8 @@ definition:
     Three wedges are computed here, each by one rule.
 
     The margin of a minimum support price (MSP) over cost is the MSP minus the cost, divided by
-    the cost, times 100.
+    the cost, times 100. This is the release's "margin over cost". It is not a trader's margin
+    (`S37-R1-C04`), which is what is left of a mark-up after handling costs.
 
     The subsidy on grain issued for the public distribution system is the economic cost minus the
     central issue price. The central issue price is the price at which the Union government issues
@@ -130,8 +131,8 @@ simplified_explanation: |
   First, it sets a minimum support price (MSP) for a crop. The Union government says each MSP is at
   least one and a half times the cost of growing the crop. That extra half is the margin.
 
-  Second, it sells grain to ration-card holders for less than the grain cost it. The gap between
-  the two is the subsidy. The full cost of buying, storing and moving the grain is called the
+  Second, it hands grain to ration-card holders for less than it cost, and since January 2023 for
+  nothing. The gap between the two is the subsidy. The full cost of buying, storing and moving the grain is called the
   economic cost.
 
   Third, it charges a duty on imports, as a percentage of their value. The price at the port after
@@ -224,7 +225,10 @@ illustrations:
     | 2025-26, budget estimate | 4173.34 | 0 | 4173.34 | 100.0 |
     ```
 
-    Check one row yourself. Take 2022-23, when the issue price was Rs 300 a quintal, or Rs 3 a kg.
+    Check one row yourself. Take the 2022-23 row, which uses an issue price of Rs 300 a quintal, or
+    Rs 3 a kg. That was also what households under the Act paid at the ration shop until 1 January
+    2023 (Food Ministry, Year End Review 2025). The bulletin does not say how the row counts the
+    three months of 2022-23 after that date.
 
     ```working
     3722.35 minus 300 = 3422.35
@@ -232,7 +236,8 @@ illustrations:
     0.9194 times 100 = 91.94
     ```
 
-    The bulletin prints 91.9. The household paid about 8 per cent of what the rice cost.
+    The bulletin prints 91.9. At that price the household paid about 8 per cent of what the rice
+    cost.
 
     Now take 2025-26. The bulletin's footnote says the issue price "has become zero" because the
     grain has been free to everyone under the Act since 1 January 2023.
@@ -301,6 +306,10 @@ illustrations:
     citekey: s37_economic_cost_grain
     quote: "2025-26(BE) 3375.29 2347.41 526.64 305.04 271.41 327.61 4173.34 2980.06"
     as_of: '2025-12-31'
+  - value: '3'
+    unit: Rs per kg, price NFSA households paid for rice before 1 January 2023 (Food Ministry, Year End Review 2025)
+    citekey: s37_economic_cost_grain
+    quote: "Prior to that, under NFSA, subsidized food grains were distributed at Rs 3 per kg for rice"
   - value: '2023'
     unit: year from which the issue price for NFSA households is zero (from 1 January 2023)
     citekey: s37_economic_cost_grain
@@ -342,11 +351,11 @@ illustrations:
     which tells you it does not happen by itself.
   analogy_breaks_when: |
     The Rs 100 is made up; only the duty rates are real. The rule holds for any price before duty,
-    so the percentages hold too. But the duty here is the basic customs duty alone. A December 2025
-    government backgrounder on edible oils uses a second term. It says the "effective customs duty"
-    on crude oils was raised from 5.5 to 16.5 per cent, and it does not say which basic duty went
-    with that. The September 2026 release gives no effective duty at all. So the landed price above
-    leaves out whatever else is charged at the border, and nothing held says how much that is.
+    so the percentages hold too. But the duty here is the basic customs duty alone. The basic duty
+    on these crude oils was 10 per cent from June 2025. A December 2025 government backgrounder
+    says, without a date, that the "effective customs duty" on them was raised to 16.5 per cent.
+    No held text says what makes up the difference. So the landed price above leaves out whatever
+    else is charged at the border.
   numbers:
   - value: '10'
     unit: per cent, basic customs duty on crude sunflower, soybean and palm oil before 24 September 2026
@@ -376,8 +385,8 @@ must_know:
   refs:
   - pib_2260617
 - point: |
-    The economic cost of rice for 2025-26 is Rs 4173.34 a quintal, the Food Ministry's budget
-    estimate in its December 2025 bulletin. That is about Rs 41.73 a kg.
+    The economic cost of rice was budgeted at Rs 4173.34 a quintal for 2025-26 (Foodgrains
+    Bulletin, December 2025). That is about Rs 41.73 a kg.
   kind: number
   bearing: policy
   refs:
@@ -397,8 +406,10 @@ must_know:
   refs:
   - s37_edible_oil_duty
 - point: |
-    Government releases on edible oil use two terms, "basic customs duty" and "effective customs
-    duty", and they are not the same charge.
+    Releases on edible oil say "import duty", "basic customs duty" and "effective customs duty".
+    In December 2025 the basic duty on crude oils was 10 per cent. A backgrounder that month says,
+    without a date, that their effective duty was raised to 16.5 per cent. No held text says what
+    makes up the difference, so the landed-price rule here uses basic duty only.
   kind: india_deviation
   bearing: policy
   refs:
@@ -451,8 +462,8 @@ exercises:
     cost the Union government? Where does that money go? Write it, with the cost.
   answer: |
     Answer first. A kilogram of rice issued free under the National Food Security Act costs the
-    Union government about Rs 41.73. That is the economic cost of Rs 4173.34 a quintal for 2025-26,
-    the budget estimate in the Food Ministry's December 2025 bulletin. The household pays nothing,
+    Union government about Rs 41.73 in the 2025-26 budget estimate. That is the economic cost of
+    Rs 4173.34 a quintal in the Food Ministry's December 2025 bulletin. The household pays nothing,
     so the subsidy is all of it.
 
     Where it goes. About Rs 33.75 a kg is the price paid for the grain, the pooled cost at the
@@ -563,7 +574,7 @@ practice:
   prompt: |
     The Cabinet's release of 13 May 2026 covers kharif marketing season 2026-27. For moong it gives
     an MSP of Rs 8780 a quintal and a cost of Rs 5438 a quintal. Work out the margin over cost.
-    Compare your answer with the margin the release prints.
+    Compare your answer with the 61 per cent the release prints.
   answer: |
     ```working
     8780 minus 5438 = 3342
@@ -633,10 +644,10 @@ practice:
   - nfsa_2013
 - level: 6
   prompt: |
-    The same bulletin has a second category, which it calls "tide over", for rice issued at Rs
-    830 a quintal. The economic cost of rice for 2025-26, budget estimate, is Rs 4173.34 a
-    quintal. Find the subsidy per quintal and per kilogram, and the subsidy as a percentage of the
-    economic cost. Check your percentage against the bulletin's 80.1.
+    The same bulletin has a second category, which it calls "tide over": grain issued outside the
+    households under the Act, at Rs 830 a quintal for rice. The held texts do not say who receives
+    it. The economic cost of rice was budgeted at Rs 4173.34 a quintal for 2025-26. Find the
+    subsidy per quintal and per kilogram, and the subsidy as a percentage of the economic cost. Check your percentage against the bulletin's 80.1.
   answer: |
     ```working
     4173.34 minus 830 = 3343.34
@@ -778,7 +789,9 @@ practice:
 
     About Rs 1461 a month at the 2025-26 cost, against the release's Rs 1371. The two differ
     because the economic cost is set again every year. The release's figure is about Rs 39.17 a kg
-    (1371 divided by 35), an earlier year's cost. Quote the year with any such figure.
+    (1371 divided by 35). The release does not say which year's cost it used, and Rs 39.17 a kg
+    matches no row of the December 2025 bulletin. Quote the year with any such figure, and when the
+    source gives none, say so.
 
     What it does not establish. It is what the rice costs the government, not what it is worth to
     the family. A family that would not have bought 35 kg of rice at the market price is not saved
@@ -879,18 +892,20 @@ figures:
       - 10
       - 110
       offset:
-      - -190
-      - 6
+      - -150
+      - 10
     y_range:
-    - 95
+    - 0
     - 115
     derived:
     - value: '1'
       from: (105 - 100)/5
 - file: s37-r1-c10-rice-subsidy-share.png
   caption: Rice subsidy as a percentage of its economic cost, for households under the National Food
-    Security Act. It was 91.6 and 91.9 per cent while the issue price was Rs 300 a quintal. It has
-    been 100.0 since the issue price became zero on 1 January 2023.
+    Security Act. It was 91.6 and 91.9 per cent in the bulletin's 2021-22 and 2022-23 rows, at an
+    issue price of Rs 300 a quintal. The bulletin shows 100.0 from its 2023-24 row. Grain became
+    free on 1 January 2023, and the bulletin does not say how it counts the three months of 2022-23
+    after that.
   alt: 'Five bars: 91.6 in 2021-22, 91.9 in 2022-23, then 100.0 in 2023-24, 2024-25 and 2025-26.'
   source: draw.py
   spec:

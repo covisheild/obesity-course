@@ -112,13 +112,13 @@ illustrations:
     is the regulated wholesale market where the farmer sells. The shop price is the one the
     Department of Consumer Affairs (DoCA) records.
 
-    Before you read a number, ask the four questions from Book 0, F1. One row is one stage of
-    the chain. The Rs columns give rupees per kilogram added at that stage. The share columns
+    Before you read a number, ask the four questions from Book 0, F1. One row is one step of
+    the chain. The Rs columns give rupees per kilogram added at that step. The share columns
     give those rupees as a share of the final retail price. The source is a field survey. Here
     are the gram and tur columns.
 
     ```table
-    Stage  Gram, Rs per kg  Gram share, per cent  Tur, Rs per kg  Tur share, per cent
+    Step  Gram, Rs per kg  Gram share, per cent  Tur, Rs per kg  Tur share, per cent
     Farmer  53  75  72  65
     Fees  2  3  2  2
     Handling  2  3  4  4
@@ -134,7 +134,8 @@ illustrations:
     Fees are the mandi's market fee and the commission agent's commission. To mill and To
     city are the two lorry trips, mandi to mill and mill to the wholesaler in the city. Losses
     are the dirt and stones cleaned out. The final retail price is Rs 71 a kilogram for gram
-    and Rs 111 for tur.
+    and Rs 111 for tur. The ten steps fall in the production, processing, distribution and
+    retail stages of `S37-R1-C01`.
 
     First, check that the rows build the price. Add the gram column from top to bottom.
 
@@ -285,26 +286,29 @@ illustrations:
     the trip to market out of it.
 
     Now put the vegetables beside the pulses, and beside milk, eggs and bananas from the RBI's
-    companion papers on fruits (https://www.rbi.org.in/Scripts/PublicationsView.aspx?id=22721)
-    and on milk, poultry meat and eggs (https://www.rbi.org.in/Scripts/PublicationsView.aspx?id=22720).
+    companion papers on fruits (Working Paper 06/2024,
+    https://www.rbi.org.in/Scripts/PublicationsView.aspx?id=22721) and on milk, poultry meat
+    and eggs (Working Paper 05/2024, https://www.rbi.org.in/Scripts/PublicationsView.aspx?id=22720).
 
     ```table
-    Food  Farmer's share, per cent  Route or group the paper measured
-    Banana  30.8  Jalgaon to Delhi
-    Tomato  33.5  Growing areas to Delhi
-    Onion  36.2  Several states to Delhi
-    Potato  36.7  Agra to Mumbai
+    Food  Farmer's share, per cent  Route or group, and period
+    Banana  30.8  Jalgaon to Delhi, April to July
+    Tomato  33.5  Growing areas to Delhi, three years to 2021-22
+    Onion  36.2  Several states to Delhi, peak months, three years to 2021-22
+    Potato  36.7  Agra to Mumbai, February to June, three years to 2022
     Tur  65  Latur to Delhi, May 2023
     Moong  70  Bhopal to Delhi, May 2023
-    Milk  70  Dairy cooperatives in Gujarat and Maharashtra
+    Milk  70  Dairy cooperatives in Gujarat and Maharashtra, December 2022 and March 2023
     Gram  75  Indore to Delhi, May 2023
     Eggs  75.2  Three-year averages, major centres
     ```
 
-    The perishable foods sit at about a third. The foods that keep sit near two-thirds or
+    Fruit and vegetables sit at about a third. Pulses, which keep, sit near two-thirds or
     more. The pulses paper gives its own reason: pulses "are non-perishable with relatively
     longer shelf life". The tomato paper says the retailer takes the largest margin because
-    it "bears the maximum risk of perishability and wastage".
+    it "bears the maximum risk of perishability and wastage". But milk and eggs spoil and
+    still sit high. The milk paper says "the cooperatives are the most efficient" at passing
+    the rupee back. So perishability is not the whole story.
 
     One row is missing on purpose. For poultry meat, the paper puts the share at 56 per cent,
     but for "farmers and aggregators taken together". A broiler farmer raising birds under
@@ -314,7 +318,7 @@ illustrations:
   analogy_breaks_when: |
     Each share is one route in one period, and the periods differ from food to food. The table
     is a comparison across papers that used different months, cities and ways of getting the
-    farm-gate price. It shows a pattern, perishable against storable. It does not rank any
+    farm-gate price. It shows a pattern, fruit and vegetables against pulses. It does not rank any
     two neighbouring foods reliably.
 
     A share cannot say whether anyone is paid too much. For that you need each hand's costs,
@@ -401,6 +405,10 @@ illustrations:
 
     Half the true share, because a kilogram of pulp is not what one kilogram of fruit became.
 
+    The same table splits a mark-up, as the definition does. The processor's rows for
+    transport (Rs 2 to 3), labour (2 to 3), ripening and loss (0.5 to 1), and extraction and
+    packing (3 to 4) are its costs. The row "Processor Margin 6.6 - 7.3" is what is left.
+
     A packet of biscuits is this problem several times over. Flour, sugar, oil and milk
     solids each arrive by their own chain, each changes form in the factory, and the pack
     price also pays for things no row of these tables holds. The pulses paper notes in passing
@@ -438,14 +446,19 @@ illustrations:
     unit: per cent, the farmer's share of the retail price of mango pulp
     citekey: rbi_wp_2024_fruits
     quote: Farmers receive about 46-47 per cent of the retail price of mango pulp.
+  - value: 6.6-7.3
+    unit: Rs per kg, the mango processor's margin after its costs, April 2021
+    citekey: rbi_wp_2024_fruits
+    quote: Processor Margin 6.6 - 7.3
   - value: 3-4
     unit: Rs per kg spent by pulse processors on brand promotion
     citekey: rbi_wp_2024_07_pulses
     quote: processors spend about Rs. 3–4 per kg for brand promotion activities
 must_know:
 - point: |
-    "Farmers get a third, so middlemen pocket two-thirds" is wrong in its second half. In the
-    RBI's tomato chain, traders' mark-up was 21.3 per cent and their margin 5.3 per cent.
+    "Farmers get a third, so middlemen pocket two-thirds" does not follow. In the RBI's tomato
+    chain, traders' mark-up was 21.3 per cent and their margin 5.3 per cent (the paper does not
+    say of what). The retailer's margin is the largest, and the paper does not give it.
   kind: misconception
   bearing: public
   refs:
@@ -458,8 +471,8 @@ must_know:
   refs:
   - rbi_wp_2024_07_pulses
 - point: |
-    The RBI's 2024 paper puts tomato at 33.5 per cent. Quote the food, the route and the year
-    with the number.
+    The RBI's 2024 paper puts the Delhi tomato farmer's share at 33.5 per cent, on prices for
+    the three years to 2021-22. Quote the food, the route and the period with the number.
   kind: number
   bearing: policy
   refs:
@@ -467,8 +480,8 @@ must_know:
   - rbi_wp_2024_07_pulses
 - point: |
     The RBI papers tie the low farmer's share of vegetables to perishability. Suppose a
-    proposal raises it by cutting out a stage. It then has to say who carries the spoilage,
-    the storage and the display that the stage was paying for.
+    proposal raises it by cutting out a step. It then has to say who carries the spoilage,
+    the storage and the display that the step was paying for.
   kind: consequence
   bearing: policy
   refs:
@@ -501,7 +514,7 @@ exercises:
   prompt: |
     Here is the moong column of the same RBI pulses table, in rupees per kilogram. From the
     farmer down it reads 77, 2, 3, 1, 2, 5, 2, 1, 2 and 15. The retail price was Rs 110 in Delhi, May
-    2023. The rows are the same stages as for gram and tur.
+    2023. The rows are the same steps as for gram and tur.
 
     Name the hands a kilogram of moong passed through, in order. Give the farmer's share and
     the largest addition after the farmer. Then say one thing this column cannot tell you
@@ -547,19 +560,19 @@ exercises:
     Answer first.
 
     > In the RBI's 2024 study, a tomato farmer got about Rs 33 of every Rs 100 a Delhi shopper
-    > paid. Most of the rest paid for moving, handling and losing a food that rots in days.
+    > paid. Part of the rest paid for moving, handling and spoilage.
 
     Then the explanation. Between the field and the shop, a tomato is sold several times. Each
     buyer pays for a lorry, a market fee, a commission, loading, and the tomatoes that spoil.
     Those costs go into the price. The farmer's share is what is left for the farmer.
 
     Say what the figure does not show. It does not say the traders keep two-thirds as profit.
-    The same paper put traders' margin at 5.3 per cent against a mark-up of 21.3. It
-    is one route, to Delhi, in one period. And the farmer's Rs 33 is before the farmer's own
-    costs of labour and transport.
+    The same paper put traders' margin at 5.3 per cent against a mark-up of 21.3. It says the
+    retailer's margin is the largest, without giving it. It is one route, to Delhi, in one
+    period. And the farmer's Rs 33 is before the farmer's own costs of labour and transport.
 
-    Calibrate. The pattern, perishable foods at about a third and storable ones much higher,
-    is solid across the RBI's papers. The exact figure for any one town this month is not
+    Calibrate. The pattern, fruit and vegetables at about a third and pulses much higher, is
+    solid across the RBI's papers. The exact figure for any one town this month is not
     known.
 quantitative: true
 practice:
@@ -632,7 +645,7 @@ practice:
     Check it forwards: 24 divided by 80 times 100 = 30. A retail price of 80.
 - level: 3
   prompt: |
-    A unit leaves the farm at 20. Three later stages add 5, 3 and 12. Give the retail price,
+    A unit leaves the farm at 20. Three later steps add 5, 3 and 12. Give the retail price,
     then each of the four amounts as a share of the retail price.
   answer: |
     Build the price first.
@@ -657,47 +670,51 @@ practice:
     ```
 - level: 4
   prompt: |
-    In the RBI pulses paper, tur sold at the mandi for Rs 72 a kilogram in May 2023. It sold
-    at retail in Delhi for Rs 111 a kilogram. Give the tur farmer's share of the consumer rupee and
-    the rupees per kilogram added after the mandi. Keep the unit on the second answer.
+    In the RBI milk, poultry meat and eggs paper, the farm-gate price of eggs in the Delhi
+    region was Rs 381 for 100 eggs in April 2021. The retail price was Rs 552 for 100 eggs. Give the farmer's
+    share of the consumer rupee and the rupees added after the farm. Keep the unit on the
+    second answer.
   answer: |
     The farmer's share.
 
     ```working
-    72 divided by 111 times 100 = 64.9 per cent
+    381 divided by 552 times 100 = 69.0 per cent
     ```
 
-    About 65 per cent, which is what the paper prints.
+    About 69 per cent, which is what the paper prints.
 
-    What was added after the mandi.
+    What was added after the farm.
 
     ```working
-    111 minus 72 = 39
+    552 minus 381 = 171
     ```
 
-    Rs 39 per kilogram of tur, on the route from Latur to Delhi, in May 2023.
+    Rs 171 per 100 eggs, in the Delhi region, in April 2021.
   refs:
-  - rbi_wp_2024_07_pulses
+  - rbi_wp_2024_poultry
 - level: 5
   prompt: |
-    In the same table, the tur retailer's mark-up is Rs 16 a kilogram and the retail price is
-    Rs 111. Give the retailer's buying price, the mark-up as a percentage on that buying price,
-    and the mark-up as a share of the retail price. Say which of the two the table prints.
+    In the RBI pulses table, gram sold at retail in Delhi for Rs 71 a kilogram in May 2023.
+    The retailer added Rs 6. Before the retailer, the wholesaler added Rs 2. Give the
+    wholesaler's buying price, its mark-up as a percentage on that buying price, and its
+    mark-up as a share of the retail price. Say which of the two the table prints.
   answer: |
-    The retailer bought at the retail price less its own mark-up.
+    The wholesaler sold to the retailer, who then added Rs 6. So the wholesaler sold at the
+    retail price less Rs 6, and bought at that less its own Rs 2.
 
     ```working
-    111 minus 16 = 95
+    71 minus 6 = 65
+    65 minus 2 = 63
     ```
 
-    Rs 95 per kilogram. Now the two percentages.
+    Rs 63 per kilogram. Now the two percentages.
 
     ```working
-    16 divided by 95 times 100 = 16.8 per cent
-    16 divided by 111 times 100 = 14.4 per cent
+    2 divided by 63 times 100 = 3.2 per cent
+    2 divided by 71 times 100 = 2.8 per cent
     ```
 
-    16.8 per cent on the buying price, 14.4 per cent of the retail price. The table prints 14,
+    3.2 per cent on the buying price, 2.8 per cent of the retail price. The table prints 3,
     because every share column in it is against the final retail price.
   refs:
   - rbi_wp_2024_07_pulses
@@ -705,7 +722,7 @@ practice:
   prompt: |
     The RBI tomato paper puts the tomato farmer's share at 33.5 per cent of the consumer's
     price in Delhi. Take Rs 100 spent on tomatoes by a Delhi shopper. How many rupees reached
-    the farmer? How many went to every later stage together? Then say what the
+    the farmer? How many went to every later step together? Then say what the
     farmer paid out of their part.
   answer: |
     A share of 33.5 per cent means 33.5 rupees out of every 100, so the farmer's part is Rs
@@ -715,7 +732,7 @@ practice:
     100 minus 33.5 = 66.5
     ```
 
-    Rs 66.50 to all later stages together.
+    Rs 66.50 to all later steps together.
 
     The paper says the farmer's share "includes overhead costs of labour and transportation
     over and above his cost of cultivation". So the Rs 33.50 has to pay for growing the crop,
@@ -724,32 +741,27 @@ practice:
   - rbi_wp_2024_08_tops
 - level: 6
   prompt: |
-    In the RBI fruits paper, Totapuri mango farmers at Chittoor got Rs 14 to 16 for a kilogram
-    of raw mango, in April 2021. The pulp sold at Rs 30 to 35 for the half-kilogram of pulp the
-    paper sets against a kilogram of fruit. Give the farmer's share at the low end and at the
-    high end of both ranges. Then divide the Rs 14 by the price of a whole kilogram of pulp at
-    the low end. Say why that share is wrong.
+    In the RBI fruits paper, mango sold fresh in April 2021 fetched the farmer Rs 62 to 67 a
+    kilogram. It sold at retail for Rs 149 to 155 a kilogram. The paper prints the farmer's
+    share as 42 to 43 per cent. Check that figure. Then give the widest range of shares the
+    two price ranges allow.
   answer: |
-    The paper sets the pulp price per half-kilogram against a kilogram of fruit, so divide
-    directly.
+    Pair the low farm price with the low retail price, and the high with the high.
 
     ```working
-    14 divided by 30 times 100 = 46.7 per cent
-    16 divided by 35 times 100 = 45.7 per cent
+    62 divided by 149 times 100 = 41.6 per cent
+    67 divided by 155 times 100 = 43.2 per cent
     ```
 
-    About 46 to 47 per cent, as the paper prints.
-
-    A whole kilogram of pulp at the low end costs twice the half-kilogram price.
+    About 42 to 43 per cent, as the paper prints. Now cross the pairs.
 
     ```working
-    30 times 2 = 60
-    14 divided by 60 times 100 = 23.3 per cent
+    62 divided by 155 times 100 = 40.0 per cent
+    67 divided by 149 times 100 = 45.0 per cent
     ```
 
-    23.3 per cent is wrong. It sets a kilogram of fruit against a kilogram of pulp, and a
-    kilogram of pulp took more than one kilogram of fruit to make. The price of the fruit that went into
-    the pulp is left out. The share comes out at half its size.
+    The ranges allow anything from 40 to 45 per cent. The paper's 42 to 43 matches the paired
+    division. The table does not say the two prices moved together.
   refs:
   - rbi_wp_2024_fruits
 - level: 6
@@ -866,18 +878,19 @@ practice:
     100 minus 33.5 = 66.5
     ```
 
-    Rs 66.50 of every Rs 100 went to stages after the farmer. The first sentence holds for the
+    Rs 66.50 of every Rs 100 went to steps after the farmer. The first sentence holds for the
     route the paper studied.
 
     What it does not establish. It does not establish that Rs 66.50 was pocketed. Those rupees
     are mark-ups, and the paper says "mark-ups include costs plus margin": transport, mandi
     fees, commission, loading and the tomatoes that rot. For traders, a mark-up of 21.3 per
     cent held a margin of 5.3 per cent. The paper does not state the base of the 5.3, but read
-    beside the 21.3 it is a small part of it. The figure is also for Delhi, and not for this
-    district. And the farmer's own Rs 33.50 is before the farmer's labour and transport.
+    beside the 21.3 it is a small part of it. The paper says the retailer's margin is the
+    largest, without giving it. The figure is also for Delhi, and not for this district. And
+    the farmer's own Rs 33.50 is before the farmer's labour and transport.
 
-    Say it in the meeting as: "Farmers get about a third. Most of the rest pays for moving and
-    losing a food that spoils. We would need each stage's costs to say who earns too much."
+    Say it in the meeting as: "Farmers get about a third. Part of the rest pays for moving,
+    handling and spoilage. We would need each step's costs to say who earns too much."
   refs:
   - rbi_wp_2024_08_tops
 - level: 10
@@ -888,8 +901,8 @@ practice:
 
     Decide what to compute, compute it, and say what your answer does not establish.
   answer: |
-    What to compute: how much of the tur retail price each group of stages adds, from the RBI
-    table (Delhi, May 2023, Rs per kg). Start with the claim's own version, every stage after
+    What to compute: how much of the tur retail price each group of steps adds, from the RBI
+    table (Delhi, May 2023, Rs per kg). Start with the claim's own version, every step after
     the farmer removed.
 
     ```working
@@ -899,21 +912,23 @@ practice:
 
     A fall of about 35 per cent, roughly the third the proposal claims. But that price is only
     reached if nobody mills, packs or moves the tur. The farmer sells whole tur at the mandi;
-    dal has to be milled. Keep the processing, packaging, transport and losses, and remove only
-    the wholesaler's and the retailer's mark-ups.
+    dal has to be milled. Keep the processing, packaging, transport and losses. Remove the
+    mandi's fee and commission, which a farmer selling straight skips, and the wholesaler's and
+    the retailer's mark-ups.
 
     ```working
-    3 plus 16 = 19
-    111 minus 19 = 92
-    19 divided by 111 times 100 = 17.1 per cent
+    2 plus 3 plus 16 = 21
+    111 minus 21 = 90
+    21 divided by 111 times 100 = 18.9 per cent
     ```
 
-    At most about 17 per cent. Even that assumes nobody is paid for the retailer's work of
+    About 19 per cent, a little more if part of the Rs 4 handling row was mandi work, which the
+    table does not split. Even that assumes nobody is paid for the retailer's work of
     selling in small amounts and holding stock on display.
 
     What it does not establish. Whether the fall would reach the consumer rather than the new
     seller. Whether the farmer would get more, since someone must still carry the costs the
-    removed stages paid. And whether any of it holds for another pulse, another city or
+    removed steps paid. And whether any of it holds for another pulse, another city or
     another month. The table gives the size of the prize. It does not say anyone can collect
     it.
   refs:
@@ -931,20 +946,20 @@ retrieval_items:
 figures:
 - file: s37-r1-c04-gram-tur-rupee.png
   caption: "Where a kilogram of pulse's retail price comes from, Rs per kg, Indore and Latur to Delhi, May 2023 (RBI Working Paper 07/2024). The farmer's bar is the largest for both; the parts add to Rs 71 for gram and Rs 111 for tur. The retailer's Rs 16 is the largest addition for tur."
-  alt: "Grouped bars for ten stages. Gram: farmer 53, then 2, 2, 1, 2, 1, 1, 1, 2 and retailer 6. Tur: farmer 72, then 2, 4, 1, 2, 5, 3, 3, 3 and retailer 16."
+  alt: "Grouped bars for ten steps. Gram: farmer 53, then 2, 2, 1, 2, 1, 1, 1, 2 and retailer 6. Tur: farmer 72, then 2, 4, 1, 2, 5, 3, 3, 3 and retailer 16."
   source: draw.py
   spec:
     kind: bar
     from_table: {block: 0, x: 0, y: [1, 3]}
     x_label: ""
-    y_label: Rs per kg added at the stage
+    y_label: Rs per kg added at the step
     value_labels: true
     size: [8.0, 3.8]
     relations:
     - check: "sum(y1) = 71"
     - check: "sum(y2) = 111"
 - file: s37-r1-c04-farmer-share.png
-  caption: "The farmer's share of the consumer rupee, per cent, from four RBI working papers of 2024. Foods that spoil sit near a third; foods that keep sit near two-thirds or more. Each bar is one route or group in one period."
+  caption: "The farmer's share of the consumer rupee, per cent, from RBI Working Papers 05, 06, 07 and 08 of 2024. Fruit and vegetables sit near a third; pulses, which keep, sit near two-thirds or more. Milk and eggs spoil and still sit high. Each bar is one route or group in one period."
   alt: "Bars: banana 30.8, tomato 33.5, onion 36.2, potato 36.7, tur 65, moong 70, milk 70, gram 75, eggs 75.2 per cent."
   source: draw.py
   spec:

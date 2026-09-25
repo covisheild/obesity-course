@@ -28,9 +28,10 @@ definition:
     gives grams a day. The table states that these figures are not strictly representative of
     actual consumption.
 
-    The FAO's import dependency ratio (IDR) is imports divided by production plus imports
-    minus exports, times 100. Its self-sufficiency ratio (SSR) is production divided by the
-    same total, times 100. The two add to 100 only when exports are zero. A net imports figure,
+    The Food and Agriculture Organization of the United Nations (FAO) defines an import
+    dependency ratio (IDR): imports divided by production plus imports minus exports, times
+    100. Its self-sufficiency ratio (SSR) is gross production divided by the same total, times
+    100. Neither ratio uses the change in stocks. The two add to 100 only when exports are zero. A net imports figure,
     imports minus exports, is enough for the SSR and not enough for the IDR.
   references:
   - citekey: openstax_prealgebra_2e
@@ -174,6 +175,9 @@ illustrations:
     Rise in stocks, taken off  -615
     Net availability  23919
     ```
+
+    Table 1.19 prints the stock change as 615, a rise. It is written -615 here because a rise
+    is taken off.
 
     Net production is the harvest less what was kept for seed, fed to animals or wasted before
     sale. Net imports are imports minus exports. The stocks rose by 615 thousand tonnes, so
@@ -324,7 +328,7 @@ illustrations:
     ```
 
     Import dependence 56.25 per cent, the release's own figure, and self-sufficiency 43.75 per
-    cent (the release prints 43.74). With exports at zero, the two add to 100.
+    cent (the release prints 43.74). With exports taken as zero, the two add to 100.
 
     Now cereals, from Table 1.19 for 2022-23. Gross production was 3,03,628 thousand tonnes and
     net imports -30,352: net exports. The table gives only imports minus exports, so the IDR
@@ -347,7 +351,8 @@ illustrations:
     The two ratios compare a country's own production with what it kept. They say nothing
     about whether what it kept was enough, or too much, for the people eating it. And an SSR
     above 100 for all cereals together can sit beside heavy dependence on imports of another
-    food, as the oil figures show.
+    food, as the oil figures show. The FAO adds that the ratios hold only if imports are
+    mainly used at home and not re-exported.
   numbers:
   - value: '12.18'
     unit: million tonnes, India's edible oil production, 2023-24
@@ -406,8 +411,8 @@ must_know:
   refs:
   - econ_survey_tab_1_19
 - point: |
-    India imported 56.25 per cent of its edible oil supply in 2023-24, by the government's own
-    figures: 15.66 million tonnes imported against 12.18 produced. When someone says India is
+    India's edible oil imports were 56.25 per cent of its production plus imports in 2023-24,
+    by the government's own figures: 15.66 million tonnes imported against 12.18 produced. When someone says India is
     self-sufficient in food, ask which food.
   kind: india_deviation
   bearing: policy
@@ -421,8 +426,8 @@ must_know:
   refs:
   - fao_fbs_handbook_2001
 - point: |
-    Run the identity on every row of a supply table before you use the row. If a row does not
-    close, say so and do not build a trend on it.
+    Run the identity on every row of a supply table before you use the row. If a row misses by
+    more than a few units of its last digit, say so and do not build a trend on it.
   kind: move
   bearing: methodological
   refs:
@@ -489,8 +494,8 @@ exercises:
   answer: |
     Answer first.
 
-    > In grain, yes: India grows more cereal than it keeps, and sells the rest abroad. In
-    > cooking oil, no: more than half the oil India used in 2023-24 was imported.
+    > In cereals, yes: India grows more rice and wheat than it keeps. In pulses and cooking
+    > oil, no: more than half the oil India used in 2023-24 was imported.
 
     Then the numbers, one each. For cereals in 2022-23, production was about 111 per cent of
     what the country kept. For edible oil in 2023-24, the government's own figure for import
@@ -776,7 +781,7 @@ practice:
     25.45 divided by 0.72 = 35.35
     ```
 
-    About 35.3 million tonnes of projected requirement. In 2023-24, production plus imports
+    About 35.35 million tonnes of projected requirement. In 2023-24, production plus imports
     was 27.84 million tonnes, with exports left out because the release gives none.
 
     ```working
@@ -858,7 +863,7 @@ retrieval_items:
     For cereals India was a net exporter, with self-sufficiency of about 111 per cent in 2022-23.
 figures:
 - file: s37-r1-c06-pulses-identity.png
-  caption: "India's pulses, 2022-23, thousand tonnes (Economic Survey 2025-26, Table 1.19). Net production plus net imports, minus the rise in stocks, gives net availability: 22801 plus 1733 minus 615 is 23919."
+  caption: "India's pulses, 2022-23, thousand tonnes (Economic Survey 2025-26, Table 1.19). Net production plus net imports, minus the rise in stocks, gives net availability: 22801 plus 1733 minus 615 is 23919. The table prints the stock change as 615, a rise; it is drawn as -615 because a rise is taken off."
   alt: "Four bars: net production 22801, net imports 1733, rise in stocks taken off -615 drawn below zero, net availability 23919."
   source: draw.py
   spec:
@@ -870,7 +875,7 @@ figures:
     relations:
     - check: "y[0] + y[1] + y[2] = y[3]"
 - file: s37-r1-c06-self-sufficiency.png
-  caption: "Self-sufficiency, per cent: production divided by production plus imports minus exports, times 100. Cereals in 2022-23 at 111.1 (Economic Survey, Table 1.19); edible oil in 2023-24 at 43.75 (PIB, exports left out). The line at 100 is where a country grows exactly what it keeps."
+  caption: "Self-sufficiency, per cent: production divided by production plus imports minus exports, times 100. Cereals in 2022-23 at 111.1 (Economic Survey, Table 1.19); edible oil in 2023-24 at 43.75, worked from the PIB's production and import figures with exports unknown and taken as zero (the release prints 43.74). The line at 100 is where a country grows exactly what it keeps."
   alt: "Two bars against a line at 100: cereals 2022-23 at 111.1 per cent, above the line; edible oil 2023-24 at 43.75 per cent, well below it."
   source: draw.py
   spec:
@@ -914,7 +919,7 @@ provenance:
   - S37-R2-G
 review:
   stability: long
-  trigger: '2031-09-25'
+  trigger: 'the next Economic Survey Statistical Appendix, or the next notification changing edible oil duty; otherwise 2031-09-25'
   as_of: '2026-09-25'
   last_reviewed: '2026-09-25'
 status: drafted

@@ -101,6 +101,15 @@ definition:
       note: |
         The clause is headed "Country of Origin for Imported Foods". No clause in the held text
         requires the origin of an ingredient of an Indian-made food to be declared.
+  - citekey: fssai_labelling_2020
+    kind: instrument
+    locator: regulation 5(7)(b)
+    quote: "the license number of the manufacturer or marketer or packer or bottler, as the case may be, if different from the brand owner, shall also be displayed on the label."
+    verified:
+      resolved_id: https://www.fssai.gov.in/upload/uploadfiles/files/Comp_Labelling%20Display_Version%20VIII_09_09_2025.pdf
+      opened: true
+      claim_located: true
+      checked_on: '2026-09-25'
   - citekey: s37_pib_msp_backgrounder
     kind: instrument
     locator: PIB backgrounder, 10 October 2025, "Procurement Mechanisms"
@@ -155,28 +164,30 @@ illustration:
     neighbourhood shop. Suppose its list begins as below. This list is made up for the exercise, so
     read your own packet beside it.
 
-    > Refined wheat flour (maida), sugar, palm oil, invert sugar syrup, milk solids, iodised salt,
-    > raising agents.
+    > Refined wheat flour (maida), sugar, palm oil, dextrose, milk solids, iodised salt, raising
+    > agents.
 
-    Take the first three ingredients, and milk solids and salt as well. For each, find its crop and
+    Take the first four ingredients, and milk solids and salt as well. For each, find its crop and
     the tools that act on it. A quintal is 100 kg.
 
     ```table
     | Ingredient | From | Tools acting on it, as of September 2026 | Mark |
-    | Refined wheat flour | wheat | Support price for wheat, Rs 2,585 per quintal, rabi marketing season 2026-27; bought into the central pool by the Food Corporation of India (FCI) | tools checked; this flour's wheat unknown |
-    | Sugar | sugarcane | Fair and remunerative price of sugarcane, Rs 365 per quintal at 10.25% recovery, sugar season 2026-27, approved by the Cabinet Committee on Economic Affairs | tool checked; the mill unknown |
-    | Palm oil | oil palm | Basic customs duty on crude palm oil 5%, from the release of 24 Sep 2026; oil palm mission | tools checked; origin unknown |
+    | Refined wheat flour | wheat | Support price for wheat, Rs 2,585 per quintal, rabi marketing season 2026-27 (PIB backgrounder, 10 October 2025); bought into the central pool by the Food Corporation of India (FCI) | tools on wheat checked; whether they touched this flour's wheat, and how, unknown |
+    | Sugar | sugarcane | Fair and remunerative price of sugarcane, Rs 365 per quintal at a "basic recovery rate of 10.25%" (the release does not define recovery), sugar season 2026-27 (October to September), approved by the Cabinet Committee on Economic Affairs | tool checked; the mill unknown |
+    | Palm oil | oil palm | Basic customs duty on crude palm oil 5%, from the release of 24 Sep 2026; oil palm mission | crude palm oil duty checked; the refined-oil rate is not in the release; whether either applies to this oil unknown |
+    | Dextrose | glucose, from a crop the label does not name (`S37-R1-C03`) | none traced | crop unknown |
     | Milk solids | milk | none on this book's map | unknown |
     | Iodised salt | salt | none on this book's map | unknown |
+    | The packet itself | the factory | Labelling regulations, 2020; goods and services tax (GST), rate not held | labelling seen on the pack; GST unknown |
     ```
 
     Now the firm and the channel. Find the line on the pack beginning "Manufactured by" or "Marketed by". The regulation requires the brand owner's name and address, "whether or not, he himself is the manufacturer". So
-    "Marketed by" tells you who owns the brand. Mark the brand owner as seen, and the factory as unknown unless the pack names it.
+    "Marketed by" tells you who owns the brand. Mark the brand owner as seen. If the maker differs, the pack must also carry the maker's FSSAI licence number (regulation 5(7)(b)); mark it seen. This book does not look the number up.
 
     The channel you know: you bought it at a kirana. Mark that seen. Who brought it to the kirana,
     and from which depot, the pack does not say. Mark it unknown.
 
-    Count your marks. In this sketch the tools on each crop are checked. The brand and the shop are seen. Almost everything between the farm and the factory is unknown. That is the right result.
+    Count your marks. In this sketch the tools on wheat, sugarcane and oil palm are checked. The brand and the shop are seen. Almost everything between the farm and the factory is unknown. That is the right result.
   analogy_breaks_when: |
     The figures in the table are the ones in force or announced on 24 September 2026. The ingredient
     list is invented, so its order holds only for this made-up packet.
@@ -202,16 +213,6 @@ illustration:
     unit: per cent, basic customs duty on crude palm oil, announced 24 September 2026
     citekey: s37_edible_oil_duty
     as_of: '2026-09-24'
-  - value: '56.25'
-    quote: "import dependence on edible oils has declined from 63.2% in 2015-16 to 56.25% in 2023-24"
-    unit: per cent, import dependence on all edible oils in India, 2023-24
-    citekey: pib_2200287
-    as_of: '2025-12-08'
-  - value: '63.2'
-    quote: "import dependence on edible oils has declined from 63.2% in 2015-16 to 56.25% in 2023-24"
-    unit: per cent, import dependence on all edible oils in India, 2015-16
-    citekey: pib_2200287
-    as_of: '2025-12-08'
 must_know:
 - point: |
     "The label tells you where the food came from" is wrong for an Indian-made product. Where
@@ -272,7 +273,7 @@ exercises:
     The ingredient list is copied exactly, in its printed order, not tidied or reordered.
 
     Each of the four ingredients is traced to a crop or animal. A class name such as "milk solids"
-    or "edible vegetable fat" is traced as far as the label allows, and no further.
+    or "sugar" is traced as far as the label allows, and no further.
 
     Each policy tool carries its figure and the date of the text that states it. A support price
     without its season, or a duty without its release date, has failed this test.
@@ -336,7 +337,7 @@ provenance:
   - S37-R2-B
 review:
   stability: long
-  trigger: '2031-09-25'
+  trigger: '2026-10-31'
   as_of: '2026-09-24'
   last_reviewed: '2026-09-25'
 quantitative: false
