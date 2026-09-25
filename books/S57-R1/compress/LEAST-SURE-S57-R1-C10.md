@@ -1,0 +1,1 @@
+- S57-R1-C10: Cut the whole formative/summative paragraph from the definition. Exercise 3 and the CBME quiz point (a counted quiz is not low-stakes) lean on the reader knowing why the use of a test, not the item, matters; without it that point may read as unexplained.

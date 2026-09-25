@@ -1,0 +1,1 @@
+Least sure: deleting the whole Deslauriers paragraph from the definition (random allocation to lecture vs active class; active scored higher, rated learning lower). The result now survives only in must_know[1] and a line in the plain-terms section, so a cold reader may meet "active learning" and the rating-versus-score gap without its setup.
