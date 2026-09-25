@@ -1,0 +1,1 @@
+- S57-R1-C12: Cut the whole worked SD-of-gains passage (the ten gains, deviations from 29, squares, 890/9, root 9.9) from the illustration, leaving only "Its spread is the SD of the raw gains." Practice problem 3 and must-know 5 ask for the SD of gains; the cut bets that Book 0's SD method is enough.

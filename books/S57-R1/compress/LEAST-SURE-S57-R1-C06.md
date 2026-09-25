@@ -1,0 +1,1 @@
+- Cut the definition's "It can also be present when both groups do equally well on one of the methods." A reader who sees two style groups tie on one method may wrongly conclude no crossover is possible. The kept sign rule should still carry them, but only if they apply it strictly rather than reading the table by eye.

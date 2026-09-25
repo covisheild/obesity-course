@@ -1,0 +1,2 @@
+
+**Least sure (cut pass 1, batch c5):** deleted every sentence explaining *why* large group teaching is capped (the simplified paragraph "It also fixes things you will run into..." and the Foundation Course/AETCOM detail). Exercise 3 asks the reader to explain why the CBME Curriculum 2024 caps large group teaching at one third; the cut text now states the cap but the original never gave a reason either, so this may be a pre-existing gap.

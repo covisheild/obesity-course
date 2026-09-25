@@ -1,0 +1,1197 @@
+concept_id: S57-R1-C02
+subject: S57
+rung: 1
+sequence: 2
+name: 'Testing a teaching method: the comparison, the delayed test and the size of the difference'
+concept_type: derivable
+clusters:
+- measurement-inference
+- craft-and-integrity
+ground_floor_deps:
+- B0-R0-C04
+- B0-R0-C28
+- B0-R0-C29
+- B0-R0-C30
+- B0-R0-C39
+concept_deps:
+- S57-R1-C01
+definition:
+  text: |
+    A fair test of a teaching method compares two groups of learners who differ in one thing
+    only: the method. Both groups learn the same content, in the same time, and sit the same test
+    after the same delay. That delay is the retention interval, as the last section defined it.
+
+    The learners are allocated to the two groups at random: a chance process decides who goes
+    where, not the teacher or the learners. Anything else that affects the score is what the
+    OpenStax statistics textbook calls a lurking variable. Random allocation spreads the lurking
+    variables across the groups by chance.
+
+    The mean difference, MD, is the mean score of one group minus the mean score of the other.
+    Its sign says which group scored higher; whether higher is better depends on the scale. So
+    you always state which group was subtracted from which, and which way the score runs.
+
+    The standardised mean difference, SMD, is the MD expressed as a number of standard
+    deviations (SD, `B0-R0-C28`). In words, the SMD is the MD divided by the SD, written
+
+    ```working
+    SMD = MD ÷ SD
+    ```
+
+    The choice of SD is part of the definition. The SMD the Cochrane Handbook uses, Hedges'
+    adjusted g, divides by an SD pooled from both groups. Papers often report an SMD as an
+    "effect size".
+
+    One group tested before and after its teaching, with no comparison group, gives a change, not
+    a difference between methods. Divided by an SD it gives a number that looks like an SMD. But
+    it measures one group's change over time, so it cannot be set beside an SMD between two
+    groups.
+  references:
+  - citekey: openstax_intro_stats_2e
+    kind: textbook
+    locator: "\xA7 1.4 Experimental Design and Ethics, the paragraph on lurking variables"
+    quote: 'The researcher must design her experiment in such a way that there is only one difference
+      between groups being compared: the planned treatments.'
+    verified:
+      resolved_id: https://openstax.org/books/introductory-statistics-2e/pages/1-4-experimental-design-and-ethics
+      opened: true
+      claim_located: true
+      checked_on: '2026-09-25'
+      note: |-
+        The textbook anchor for this derivable concept. Backs "differ in one thing only: the
+        method"; the book's "treatments" are the two teaching methods here.
+  - citekey: openstax_intro_stats_2e
+    kind: textbook
+    locator: "\xA7 1.4 Experimental Design and Ethics, the paragraph on lurking variables"
+    quote: Additional variables that can cloud a study are called lurking variables.
+    verified:
+      resolved_id: https://openstax.org/books/introductory-statistics-2e/pages/1-4-experimental-design-and-ethics
+      opened: true
+      claim_located: true
+      checked_on: '2026-09-25'
+  - citekey: openstax_intro_stats_2e
+    kind: textbook
+    locator: "\xA7 1.4 Experimental Design and Ethics, the paragraph on lurking variables, its
+      fifth sentence"
+    quote: When subjects are assigned treatments randomly, all of the potential lurking variables
+      are spread equally among the groups.
+    verified:
+      resolved_id: https://openstax.org/books/introductory-statistics-2e/pages/1-4-experimental-design-and-ethics
+      opened: true
+      claim_located: true
+      checked_on: '2026-09-25'
+      note: |-
+        The textbook says "spread equally". This record says "spread by chance", and its first
+        illustration shows two randomly allocated groups that differ a little, because random
+        allocation balances the groups only up to chance.
+  - citekey: openstax_intro_stats_2e
+    kind: textbook
+    locator: "\xA7 1.4 Experimental Design and Ethics, the paragraph on the power of suggestion"
+    quote: researchers set aside one treatment group as a control group
+    verified:
+      resolved_id: https://openstax.org/books/introductory-statistics-2e/pages/1-4-experimental-design-and-ethics
+      opened: true
+      claim_located: true
+      checked_on: '2026-09-25'
+  - citekey: openstax_intro_stats_2e
+    kind: textbook
+    locator: "\xA7 1.4 Experimental Design and Ethics, the worked problem on birth order, its
+      solution"
+    quote: When you cannot assign subjects to treatment groups at random, there will be differences
+      between the groups other than the explanatory variable.
+    verified:
+      resolved_id: https://openstax.org/books/introductory-statistics-2e/pages/1-4-experimental-design-and-ethics
+      opened: true
+      claim_located: true
+      checked_on: '2026-09-25'
+  - citekey: cochrane_handbook_ch06_v6_5
+    kind: textbook
+    locator: "\xA7 6.5.1.1 The mean difference (or difference in means), first paragraph"
+    quote: is a standard statistic that measures the absolute difference between the mean value in
+      two groups of a randomized trial
+    verified:
+      resolved_id: https://training.cochrane.org/handbook/current/chapter-06
+      opened: true
+      claim_located: true
+      checked_on: '2026-09-25'
+      note: |-
+        The subject of the sentence is "The mean difference (MD, or more correctly, 'difference
+        in means')".
+  - citekey: cochrane_handbook_ch06_v6_5
+    kind: textbook
+    locator: "\xA7 6.5.1.2 The standardized mean difference, first paragraph"
+    quote: The SMD expresses the size of the intervention effect in each study relative to the
+      between-participant variability in outcome measurements observed in that study.
+    verified:
+      resolved_id: https://training.cochrane.org/handbook/current/chapter-06
+      opened: true
+      claim_located: true
+      checked_on: '2026-09-25'
+      note: |-
+        The Handbook's formula for the SMD is an image and is not quoted. The division SMD = MD
+        ÷ SD is derived from this sentence and the next one: an effect "relative to" the
+        variability, with equal SMDs wherever the difference in means is "the same proportion of
+        the standard deviation".
+  - citekey: cochrane_handbook_ch06_v6_5
+    kind: textbook
+    locator: "\xA7 6.5.1.2 The standardized mean difference, second paragraph"
+    quote: studies for which the difference in means is the same proportion of the standard deviation
+      (SD) will have the same SMD, regardless of the actual scales used to make the measurements
+    verified:
+      resolved_id: https://training.cochrane.org/handbook/current/chapter-06
+      opened: true
+      claim_located: true
+      checked_on: '2026-09-25'
+  - citekey: cochrane_handbook_ch06_v6_5
+    kind: textbook
+    locator: "\xA7 6.5.1.2 The standardized mean difference, the paragraph on Hedges' g and Glass'
+      delta"
+    quote: This uses a pooled SD in the denominator, which is an estimate of the SD based on outcome
+      data from both intervention groups, assuming that the SDs in the two groups are similar.
+    verified:
+      resolved_id: https://training.cochrane.org/handbook/current/chapter-06
+      opened: true
+      claim_located: true
+      checked_on: '2026-09-25'
+      note: |-
+        "This" is "the effect size known in social science as Hedges' (adjusted) g", which the
+        previous sentence names as the SMD Cochrane reviews use.
+  - citekey: cochrane_handbook_ch06_v6_5
+    kind: textbook
+    locator: "\xA7 6.5.1.2 The standardized mean difference, the paragraph on Hedges' g and Glass'
+      delta"
+    quote: Glass’ delta (Δ) uses only the SD from the comparator group
+    verified:
+      resolved_id: https://training.cochrane.org/handbook/current/chapter-06
+      opened: true
+      claim_located: true
+      checked_on: '2026-09-25'
+  - citekey: cochrane_handbook_ch06_v6_5
+    kind: textbook
+    locator: "\xA7 6.5.1.2 The standardized mean difference, the paragraph on the term effect size"
+    quote: Effect sizes typically, though not always, refer to versions of the SMD.
+    verified:
+      resolved_id: https://training.cochrane.org/handbook/current/chapter-06
+      opened: true
+      claim_located: true
+      checked_on: '2026-09-25'
+  - citekey: cochrane_handbook_ch06_v6_5
+    kind: textbook
+    locator: "\xA7 6.5.1.2 The standardized mean difference, third paragraph"
+    quote: If in two trials the true effect (as measured by the difference in means) is identical,
+      but the SDs are different, then the SMDs will be different.
+    verified:
+      resolved_id: https://training.cochrane.org/handbook/current/chapter-06
+      opened: true
+      claim_located: true
+      checked_on: '2026-09-25'
+      note: |-
+        Backs the boundary point on groups with different spreads.
+  - citekey: cochrane_handbook_ch06_v6_5
+    kind: textbook
+    locator: "\xA7 6.5.1.2 The standardized mean difference, MECIR Box 6.5.a, C61"
+    quote: Sometimes scales have higher scores that reflect a ‘better’ outcome and sometimes lower
+      scores reflect ‘better’ outcome.
+    verified:
+      resolved_id: https://training.cochrane.org/handbook/current/chapter-06
+      opened: true
+      claim_located: true
+      checked_on: '2026-09-25'
+      note: |-
+        Backs the level 8 practice problem on a score where fewer is better.
+  - citekey: freeman_2014_active_learning
+    kind: systematic_review
+    locator: Materials and Methods, Data Analysis, the paragraph on how effect sizes were calculated
+    quote: the weighted standardized mean difference as Hedges’
+    verified:
+      resolved_id: https://www.pnas.org/doi/10.1073/pnas.1319030111
+      opened: true
+      claim_located: true
+      checked_on: '2026-09-25'
+      note: |-
+        The sentence continues "g (48) for data on examination scores". Backs "Hedges' g" as a
+        name papers give an SMD.
+  - citekey: agarwal_2021_retrieval_practice
+    kind: systematic_review
+    locator: Results, the opening paragraph on the effect sizes derived
+    quote: we derived 49 effect sizes (Cohen ’s d)
+    verified:
+      resolved_id: https://doi.org/10.1007/s10648-021-09595-9
+      opened: true
+      claim_located: true
+      checked_on: '2026-09-25'
+      note: |-
+        Read from the text layer of the published PDF, whose extraction puts a space inside
+        "Cohen's". Backs only "Cohen's d" as a name papers give an SMD.
+  - citekey: freeman_2014_active_learning
+    kind: systematic_review
+    locator: Abstract
+    quote: student performance on examinations and concept inventories increased by 0.47 SDs under
+      active learning
+    verified:
+      resolved_id: https://www.pnas.org/doi/10.1073/pnas.1319030111
+      opened: true
+      claim_located: true
+      checked_on: '2026-09-25'
+  - citekey: freeman_2014_active_learning
+    kind: systematic_review
+    locator: Materials and Methods, Coding, the paragraph after the coding criteria
+    quote: 158 independent comparisons with data on student examination performance
+    verified:
+      resolved_id: https://www.pnas.org/doi/10.1073/pnas.1319030111
+      opened: true
+      claim_located: true
+      checked_on: '2026-09-25'
+  - citekey: freeman_2014_active_learning
+    kind: systematic_review
+    locator: Results, first paragraph
+    quote: meaning that on average, student performance increased by just under half a SD with active
+      learning compared with lecturing
+    verified:
+      resolved_id: https://www.pnas.org/doi/10.1073/pnas.1319030111
+      opened: true
+      claim_located: true
+      checked_on: '2026-09-25'
+  - citekey: freeman_2014_active_learning
+    kind: systematic_review
+    locator: Materials and Methods, Criteria for Admission, criterion i
+    quote: with total class time devoted to each approach not differing by more than 30 min/wk
+    verified:
+      resolved_id: https://www.pnas.org/doi/10.1073/pnas.1319030111
+      opened: true
+      claim_located: true
+      checked_on: '2026-09-25'
+  - citekey: freeman_2014_active_learning
+    kind: systematic_review
+    locator: Introduction, fourth paragraph, the first outcome variable
+    quote: scores on identical or formally equivalent examinations, concept inventories, or other
+      assessments
+    verified:
+      resolved_id: https://www.pnas.org/doi/10.1073/pnas.1319030111
+      opened: true
+      claim_located: true
+      checked_on: '2026-09-25'
+  - citekey: freeman_2014_active_learning
+    kind: systematic_review
+    locator: Materials and Methods, Data Analysis, the paragraph on the two types of study
+    quote: quasirandom designs where students self-sorted into classes, blind to the treatment at
+      the time of registering for the class
+    verified:
+      resolved_id: https://www.pnas.org/doi/10.1073/pnas.1319030111
+      opened: true
+      claim_located: true
+      checked_on: '2026-09-25'
+  - citekey: freeman_2014_active_learning
+    kind: systematic_review
+    locator: Table 1, row "Randomized assignment or crossover design"
+    quote: Randomized assignment or crossover design | 16 | 0.514
+    verified:
+      resolved_id: https://www.pnas.org/doi/10.1073/pnas.1319030111
+      opened: true
+      claim_located: true
+      checked_on: '2026-09-25'
+      note: |-
+        Columns: type of control, n (number of studies), Hedges's g. Backs 16 studies and 0.514.
+  - citekey: freeman_2014_active_learning
+    kind: systematic_review
+    locator: Table 1, row "Quasirandom—no statistical difference on metrics of academic
+      ability/preparedness"
+    quote: Quasirandom—no statistical difference on metrics of academic ability/preparedness | 51 |
+      0.362
+    verified:
+      resolved_id: https://www.pnas.org/doi/10.1073/pnas.1319030111
+      opened: true
+      claim_located: true
+      checked_on: '2026-09-25'
+  - citekey: freeman_2014_active_learning
+    kind: systematic_review
+    locator: Results, the paragraph on methodological quality
+    quote: Experiments where students were assigned to treatments at random produced results that
+      were indistinguishable from three types of quasirandomized designs (Table 1).
+    verified:
+      resolved_id: https://www.pnas.org/doi/10.1073/pnas.1319030111
+      opened: true
+      claim_located: true
+      checked_on: '2026-09-25'
+  - citekey: freeman_2014_active_learning
+    kind: systematic_review
+    locator: Materials and Methods, Data Analysis, the paragraph on the random effects model
+    quote: type, cognitive level, and timing—relative to the active learning exercise—of examinations
+      or other assessments
+    verified:
+      resolved_id: https://www.pnas.org/doi/10.1073/pnas.1319030111
+      opened: true
+      claim_located: true
+      checked_on: '2026-09-25'
+      note: |-
+        Backs the statement that the timing of the tests varied across Freeman's studies. The
+        held text does not say how long after the teaching any test was taken.
+  - citekey: freeman_2014_active_learning
+    kind: systematic_review
+    locator: Discussion, third paragraph
+    quote: The instructors who implemented active learning in these studies did so as volunteers.
+    verified:
+      resolved_id: https://www.pnas.org/doi/10.1073/pnas.1319030111
+      opened: true
+      claim_located: true
+      checked_on: '2026-09-25'
+  - citekey: freeman_2014_active_learning
+    kind: systematic_review
+    locator: Discussion, the second of two translations of 0.47 SDs
+    quote: a change of 0.47 SDs would produce an increase of about 6% in average examination scores
+    verified:
+      resolved_id: https://www.pnas.org/doi/10.1073/pnas.1319030111
+      opened: true
+      claim_located: true
+      checked_on: '2026-09-25'
+      note: |-
+        The sentence rests on "an analysis of examination scores in three introductory STEM
+        courses" in the Supporting Information, which is not held. The held text does not say
+        whether "6%" is percentage points or a per cent of the score.
+  - citekey: deslauriers_2019_feeling_of_learning
+    kind: primary
+    locator: Materials and Methods, the paragraph on controls, item 4
+    quote: Students were individually randomly assigned to 2 groups, and these groups were
+      indistinguishable on several measures of physics background and proficiency (Table 1).
+    verified:
+      resolved_id: https://pmc.ncbi.nlm.nih.gov/articles/PMC6765278/
+      opened: true
+      claim_located: true
+      checked_on: '2026-09-25'
+  - citekey: deslauriers_2019_feeling_of_learning
+    kind: primary
+    locator: Materials and Methods, the paragraph on controls, item 5
+    quote: Each student experienced both types of instruction in a crossover study design
+    verified:
+      resolved_id: https://pmc.ncbi.nlm.nih.gov/articles/PMC6765278/
+      opened: true
+      claim_located: true
+      checked_on: '2026-09-25'
+  - citekey: deslauriers_2019_feeling_of_learning
+    kind: primary
+    locator: Materials and Methods, the paragraph describing the two kinds of class
+    quote: 'students were instructed to solve the sample problems by working together in small groups'
+    verified:
+      resolved_id: https://pmc.ncbi.nlm.nih.gov/articles/PMC6765278/
+      opened: true
+      claim_located: true
+      checked_on: '2026-09-25'
+      note: |-
+        Describes the active class. The other class was a lecture in which "the instructor
+        presented slides", solving the problems "while students listened".
+  - citekey: freeman_2014_active_learning
+    kind: systematic_review
+    locator: Materials and Methods, the consensus definition of active learning
+    quote: Active learning engages students in the process of learning through activities and/or
+      discussion in class, as opposed to passively listening to an expert.
+    verified:
+      resolved_id: https://www.pnas.org/doi/10.1073/pnas.1319030111
+      opened: true
+      claim_located: true
+      checked_on: '2026-09-25'
+  - citekey: freeman_2014_active_learning
+    kind: systematic_review
+    locator: Results, the paragraph on the heterogeneity analysis by assessment type
+    quote: average effect sizes were lower when the outcome variable was an instructor-written course
+      examination as opposed to performance on a concept inventory
+    verified:
+      resolved_id: https://www.pnas.org/doi/10.1073/pnas.1319030111
+      opened: true
+      claim_located: true
+      checked_on: '2026-09-25'
+  - citekey: freeman_2014_active_learning
+    kind: systematic_review
+    locator: Results, the paragraph on the heterogeneity analysis by assessment type
+    quote: most concept inventories are designed to diagnose known misconceptions
+    verified:
+      resolved_id: https://www.pnas.org/doi/10.1073/pnas.1319030111
+      opened: true
+      claim_located: true
+      checked_on: '2026-09-25'
+  - citekey: deslauriers_2019_feeling_of_learning
+    kind: primary
+    locator: Table 1, spring semester, row "Average of first 2 midterms (%)"
+    quote: Average of first 2 midterms (%) | 77.9 | 13.4 | 78.1 | 14.4
+    verified:
+      resolved_id: https://pmc.ncbi.nlm.nih.gov/articles/PMC6765278/
+      opened: true
+      claim_located: true
+      checked_on: '2026-09-25'
+      note: |-
+        Columns: group A mean, group A SD, group B mean, group B SD. Table 1's title is
+        "Descriptive statistics for the randomized groups used in the study".
+  - citekey: deslauriers_2019_feeling_of_learning
+    kind: primary
+    locator: Table 1, fall semester, row "Average of first 2 midterms (%)"
+    quote: Average of first 2 midterms (%) | 70.5 | 13.0 | 72.02 | 13.9
+    verified:
+      resolved_id: https://pmc.ncbi.nlm.nih.gov/articles/PMC6765278/
+      opened: true
+      claim_located: true
+      checked_on: '2026-09-25'
+  - citekey: deslauriers_2019_feeling_of_learning
+    kind: primary
+    locator: Results and Discussion, the paragraph on analysing at the student or group level
+    quote: Students took the FOL and TOL surveys immediately at the end of each class period
+    verified:
+      resolved_id: https://pmc.ncbi.nlm.nih.gov/articles/PMC6765278/
+      opened: true
+      claim_located: true
+      checked_on: '2026-09-25'
+      note: |-
+        TOL is the paper's test of learning. Backs "taken at the end of the class": the test was
+        not delayed.
+  - citekey: roediger_karpicke_2006_testing_effect
+    kind: primary
+    locator: Experiment 2, Results and Discussion, Final Tests, the 5-minute result (p. 252)
+    quote: The SSSS group recalled more than the SSST group (83% vs. 78%), who in turn recalled more
+      than the STTT group (71%)
+    verified:
+      resolved_id: https://doi.org/10.1111/j.1467-9280.2006.01693.x
+      opened: true
+      claim_located: true
+      checked_on: '2026-09-25'
+  - citekey: roediger_karpicke_2006_testing_effect
+    kind: primary
+    locator: Experiment 2, Results and Discussion, Final Tests, the 1-week result (p. 252)
+    quote: The STTT group recalled more than the SSST group (61% vs. 56%), who in turn recalled more
+      than the SSSS group (40%)
+    verified:
+      resolved_id: https://doi.org/10.1111/j.1467-9280.2006.01693.x
+      opened: true
+      claim_located: true
+      checked_on: '2026-09-25'
+  - citekey: roediger_karpicke_2006_testing_effect
+    kind: primary
+    locator: Experiment 2, Results and Discussion, the post hoc analyses (p. 253), 5-minute test
+    quote: subjects in the SSSS condition recalled more than subjects in the STTT condition, t(58)
+      5 4.70, d 5 1.22
+    verified:
+      resolved_id: https://doi.org/10.1111/j.1467-9280.2006.01693.x
+      opened: true
+      claim_located: true
+      checked_on: '2026-09-25'
+      note: |-
+        The PDF's text layer renders "=" as "5", so "d 5 1.22" reads d = 1.22. The paper does
+        not report the SDs behind its d values, or how it computed them.
+  - citekey: roediger_karpicke_2006_testing_effect
+    kind: primary
+    locator: Experiment 2, Results and Discussion, the post hoc analyses (p. 253), 1-week test
+    quote: more than subjects in the SSSS condition, t(58) 5 4.78, d 5 1.26
+    verified:
+      resolved_id: https://doi.org/10.1111/j.1467-9280.2006.01693.x
+      opened: true
+      claim_located: true
+      checked_on: '2026-09-25'
+      note: |-
+        The sentence begins "Subjects in the STTT condition also recalled significantly more",
+        with a hyphenation break the quote leaves out. "d 5 1.26" reads d = 1.26.
+simplified_explanation: |
+  Here is the trap with judging your own teaching. You try a new method with a batch. Their marks
+  go up. It feels like proof.
+
+  But marks go up after almost any teaching. A rise tells you something happened. It cannot tell
+  you that your method did it.
+
+  So you need two groups, and they must differ in one way only: the method. Then you decide who
+  goes in which group by chance, for example by drawing roll numbers from a box.
+
+  Now compare the two groups' average marks.
+
+  A gap of 8 marks can be large or small. It depends on how spread out the marks are.
+
+  So divide the gap by the standard deviation.
+illustrations:
+- body: |
+    Start with the attempt that fails. The numbers in it are made up.
+
+    You teach a new way of running the nutrition sessions to a batch of 150 third-year MBBS
+    students. Before the first session, they sit a 20-question test. At the end of the last
+    session, they sit the same 20 questions again. The batch's mean score rises from 45% to 70%.
+
+    ```working
+    70 minus 45 = 25
+    ```
+
+    A rise of 25 percentage points. A colleague asks whether the new way works. Before you answer,
+    list what else could have raised that score.
+
+    - Any teaching at all. The old way would also have taught them something.
+    - The same 20 questions twice. The students had practised this exact test.
+    - The timing. The second test came at the end of a session, which measures performance, as the
+      last section showed. It says nothing about next month.
+
+    Each of these would raise the score with no help from your method. With one group, you cannot
+    tell how much of the 25 points belongs to which. The rise is real. It is not evidence about
+    the method.
+
+    Now build the fair version. Put all 150 roll numbers in a box. Draw 75 of them. That group
+    gets the new way. The other 75 get the usual way, the comparison group. Give both groups the
+    same topic, the same number of minutes, and the same teacher if you can. Two weeks after the
+    last session, give both groups one new test on the same objectives.
+
+    Does drawing from a box really give you two similar groups? Open Deslauriers and colleagues,
+    "Measuring actual learning versus feeling of learning", *Proceedings of the National Academy
+    of Sciences* (PNAS) 2019, at
+    https://pmc.ncbi.nlm.nih.gov/articles/PMC6765278/. Go to Table 1. It describes two groups of
+    physics students who were allocated at random. Later, each group had one topic as a lecture
+    and one in which students solved problems in small groups. Here you look only at how alike
+    chance made the groups before that. Find the row for each group's average score on two earlier
+    exams.
+
+    ```table
+    semester   group A mean (%)   group A SD   group B mean (%)   group B SD
+    spring     77.9   13.4   78.1   14.4
+    fall       70.5   13.0   72.02   13.9
+    ```
+
+    Work out each semester's gap, group B minus group A.
+
+    ```working
+    78.1 minus 77.9 = 0.2
+    72.02 minus 70.5 = 1.52
+    ```
+
+    In spring the two groups sit 0.2 percentage points apart. In fall they sit 1.52 apart. Neither
+    group was chosen for being stronger, and they came out nearly level. Nearly, not exactly: chance
+    leaves small gaps, and a real study has to show they are small. That is what this table is for.
+  analogy_breaks_when: |
+    A box of roll numbers balances a large group better than a small one. With 20 learners, chance
+    alone can leave one group clearly stronger. Check the groups' earlier marks, as Table 1 does,
+    before you trust the split.
+
+    The table shows balance on earlier exam marks only. It cannot show balance on things nobody
+    measured.
+  numbers:
+  - value: '77.9'
+    unit: per cent, group A's average on the first two midterm exams, spring semester
+    citekey: deslauriers_2019_feeling_of_learning
+    as_of: '2026-09-25'
+    quote: Average of first 2 midterms (%) | 77.9 | 13.4 | 78.1 | 14.4
+  - value: '13.4'
+    unit: percentage points, the SD of group A's midterm average, spring semester
+    citekey: deslauriers_2019_feeling_of_learning
+    as_of: '2026-09-25'
+    quote: Average of first 2 midterms (%) | 77.9 | 13.4 | 78.1 | 14.4
+  - value: '78.1'
+    unit: per cent, group B's average on the first two midterm exams, spring semester
+    citekey: deslauriers_2019_feeling_of_learning
+    as_of: '2026-09-25'
+    quote: Average of first 2 midterms (%) | 77.9 | 13.4 | 78.1 | 14.4
+  - value: '14.4'
+    unit: percentage points, the SD of group B's midterm average, spring semester
+    citekey: deslauriers_2019_feeling_of_learning
+    as_of: '2026-09-25'
+    quote: Average of first 2 midterms (%) | 77.9 | 13.4 | 78.1 | 14.4
+  - value: '70.5'
+    unit: per cent, group A's average on the first two midterm exams, fall semester
+    citekey: deslauriers_2019_feeling_of_learning
+    as_of: '2026-09-25'
+    quote: Average of first 2 midterms (%) | 70.5 | 13.0 | 72.02 | 13.9
+  - value: '13.0'
+    unit: percentage points, the SD of group A's midterm average, fall semester
+    citekey: deslauriers_2019_feeling_of_learning
+    as_of: '2026-09-25'
+    quote: Average of first 2 midterms (%) | 70.5 | 13.0 | 72.02 | 13.9
+  - value: '72.02'
+    unit: per cent, group B's average on the first two midterm exams, fall semester
+    citekey: deslauriers_2019_feeling_of_learning
+    as_of: '2026-09-25'
+    quote: Average of first 2 midterms (%) | 70.5 | 13.0 | 72.02 | 13.9
+  - value: '13.9'
+    unit: percentage points, the SD of group B's midterm average, fall semester
+    citekey: deslauriers_2019_feeling_of_learning
+    as_of: '2026-09-25'
+    quote: Average of first 2 midterms (%) | 70.5 | 13.0 | 72.02 | 13.9
+- body: |
+    Now run the fair comparison and measure the difference. These numbers are made up too.
+
+    Two weeks after the sessions, both groups of 75 sit the same new test. Here are the results.
+
+    ```table
+    group   mean score on the delayed test (%)   SD (percentage points)
+    comparison   58   16
+    new method   66   16
+    ```
+
+    First, the mean difference, the new method's group minus the comparison group.
+
+    ```working
+    66 minus 58 = 8
+    ```
+
+    The MD is 8 percentage points in favour of the new method. Its sign is positive, so the new
+    method's group did better.
+
+    Next, the size of that gap against the spread of the scores. Both groups have an SD of 16
+    percentage points, so use 16.
+
+    ```working
+    8 divided by 16 = 0.5
+    ```
+
+    The SMD is 0.5. The new method's group scored half a standard deviation higher. To see what
+    one SD is here, add it to the comparison group's mean.
+
+    ```working
+    58 plus 16 = 74
+    ```
+
+    One SD above the comparison mean is 74%. The new method's mean, 66%, sits halfway there.
+
+    Keep the MD at 8 and change only the spread. Say both SDs had been 8 percentage points.
+
+    ```working
+    8 divided by 8 = 1
+    ```
+
+    Now the same 8 points is a whole standard deviation. The gap in marks has not changed. What
+    changed is how unusual that gap is, compared with how much learners differ from one another.
+
+    Now read a published SMD the same way. Open Freeman and colleagues, "Active learning increases
+    student performance in science, engineering, and mathematics", *PNAS* 2014, at
+    https://www.pnas.org/doi/10.1073/pnas.1319030111. The authors define active learning: it
+    "engages students in the process of learning through activities and/or discussion in class,
+    as opposed to passively listening to an expert."
+
+    They combined the results of 158 comparisons between active learning and lecturing into one
+    average. The scores were on exams, concept inventories and similar tests. (A concept inventory
+    is a test mostly designed to find known misconceptions.) The overall SMD is 0.47. It was larger
+    on concept inventories than on course exams. The authors put it in words:
+    performance rose "by just under half a SD". Turn it back into marks for a batch whose scores
+    have an SD of 16 percentage points.
+
+    ```working
+    0.47 times 16 = 7.52
+    ```
+
+    About 7.5 percentage points. That holds only for a test with that spread.
+
+    Last, go to Freeman's Table 1. It splits the studies by how the students were put into
+    groups. In 16 studies, a chance process decided, or every student had both methods in turn.
+    Their SMD was 0.514. In other studies,
+    students chose their own class section, and the SMDs ranged from 0.362 to 0.534. The authors
+    report that the randomised studies gave results no different from the others.
+  analogy_breaks_when: |
+    The made-up batch gives both groups the same SD, so there is only one SD to divide by. Real
+    groups rarely match exactly. A published SMD may divide by an SD pooled from both groups, or by
+    the comparison group's SD alone (Glass's delta). Some papers name their version, such as
+    Cohen's d. Each uses an exact formula this book does not work through. Your
+    hand division gives the idea, not the published figure.
+
+    Freeman's studies were in university science courses in their own time and place. The timing
+    of the tests varied from study to study. So 0.47 is not a promise about a delayed test in your
+    college.
+  numbers:
+  - value: '158'
+    unit: independent comparisons with data on examination performance, Freeman's meta-analysis
+    citekey: freeman_2014_active_learning
+    as_of: '2026-09-25'
+    quote: 158 independent comparisons with data on student examination performance
+  - value: '0.47'
+    unit: SMD, active learning against lecturing, examination and concept-inventory scores
+    citekey: freeman_2014_active_learning
+    as_of: '2026-09-25'
+    quote: student performance on examinations and concept inventories increased by 0.47 SDs under
+      active learning
+  - value: '16'
+    unit: studies in Freeman's Table 1 with randomised assignment or a crossover design
+    citekey: freeman_2014_active_learning
+    as_of: '2026-09-25'
+    quote: Randomized assignment or crossover design | 16 | 0.514
+  - value: '0.514'
+    unit: SMD (Hedges's g), studies with randomised assignment or a crossover design
+    citekey: freeman_2014_active_learning
+    as_of: '2026-09-25'
+    quote: Randomized assignment or crossover design | 16 | 0.514
+  - value: '0.362'
+    unit: SMD (Hedges's g), the lowest of the three self-sorted (quasirandom) rows of Table 1
+    citekey: freeman_2014_active_learning
+    as_of: '2026-09-25'
+    quote: Quasirandom—no statistical difference on metrics of academic ability/preparedness | 51 |
+      0.362
+  - value: '0.534'
+    unit: SMD (Hedges's g), the highest of the three self-sorted (quasirandom) rows of Table 1
+    citekey: freeman_2014_active_learning
+    as_of: '2026-09-25'
+    quote: Quasirandom—no statistical difference in prescores on assessment used for effect size |
+      51 | 0.534
+must_know:
+- point: |
+    A batch's rise from a pre-test to a post-test is not evidence that your method works. Call
+    it the change in this batch, and run a comparison before you claim more.
+  kind: misconception
+  bearing: teaching
+- point: |
+    To compare two ways of teaching, let chance decide who gets which. Then check the two groups'
+    earlier marks, to see how evenly chance split them.
+  kind: move
+  bearing: methodological
+  refs:
+  - openstax_intro_stats_2e
+- point: |
+    Never quote an MD without saying which group was subtracted from which, and in what unit. A
+    positive 6 and a negative 6 are opposite findings.
+  kind: trap
+  bearing: methodological
+- point: |
+    An SMD of 0.5 does not mean "50% better". To turn it into marks, multiply it by the SD of your
+    own test's scores. That assumes the effect would carry over to your test and learners, which
+    the SMD cannot tell you. Report the MD in marks first, then the SMD with the SD you divided by.
+  kind: misconception
+  bearing: teaching
+- point: |
+    Freeman and colleagues combined 158 comparisons of active learning against lecturing into one
+    SMD of 0.47, just under half an SD. It was larger on concept inventories than on course exams.
+    Use that as your yardstick when someone offers you a new
+    method's "effect size". It came from volunteer teachers in university science courses.
+  kind: number
+  bearing: teaching
+  refs:
+  - freeman_2014_active_learning
+- point: |
+    The SMD shrinks when learners' scores are widely spread and grows when they are bunched, even if
+    the gap in marks is the same.
+  kind: boundary
+  bearing: methodological
+  refs:
+  - cochrane_handbook_ch06_v6_5
+- point: |
+    Random allocation makes the groups alike on average, not identical. With a small batch, chance
+    can still leave one group stronger: the spread of a group's mean shrinks only with the square
+    root of its size (`B0-R0-C29`). How many learners a comparison needs is outside this book.
+  kind: boundary
+  bearing: methodological
+- point: |
+    When a committee is shown an "effect size" for a teaching method, ask three things. Compared
+    with what? Who decided who got which? How long after the teaching was the test?
+  kind: consequence
+  bearing: policy
+  refs:
+  - deslauriers_2019_feeling_of_learning
+exercises:
+- type: design
+  prompt: |
+    An accredited social health activist (ASHA) is a village health worker. Your department has a
+    question about training them. Does a session built on short written questions teach them to
+    read a growth chart better than the usual talk? A growth chart is the printed curve on which a
+    child's weight is plotted against age. Sixty ASHA workers from one block will attend.
+
+    Plan the comparison. Say how you split them and what you keep the same. Say what you measure
+    and when. Name the one number you will report first.
+  answer: |
+    Split. Write the 60 names on slips and draw 30 at random for the question-based session. The
+    other 30 get the usual talk. That is the comparison group. Before teaching, record something
+    that could affect the result, such as years of service. Check that the two groups come out
+    roughly level on it.
+
+    Kept the same. The content and the handout, the length of the session, the day of the week
+    and the hall. Use the same trainer for both if possible. If you use two trainers, give each of
+    them half of each group, so a trainer's skill does not travel with one method.
+
+    Measured. One new set of growth-chart questions, the same for everyone, marked by someone who
+    does not know which group each worker was in. Do not reuse the questions from the session.
+
+    When. At a meeting two to four weeks later, not at the end of the session. A test at the end
+    measures performance. The later test measures what lasted.
+
+    Reported first. The mean difference, question-based group minus talk group, in percentage
+    points, with each group's mean and SD beside it. Then the SMD, with the SD you divided by
+    named.
+
+    Thirty in each group is small. Say plainly that a gap of a few points could be chance, and do
+    not report the SMD without the MD in marks.
+- type: teaching
+  prompt: |
+    A journalist rings. A company says its training app has "an effect size of 0.8, the biggest in
+    medical education". The company and its claim are made up for this exercise. You have three minutes and no jargon. Explain what that number means and
+    what to ask the company.
+  answer: |
+    For a journalist: three minutes, one quotable sentence, and plain honesty about what is
+    missing.
+
+    An effect size like this is usually the gap between two groups' average marks, measured in
+    units of how much individual students' marks vary. So 0.8 means the app's group scored, on
+    average, most of one such unit higher than some other group. The number cannot tell you who
+    that other group was.
+
+    Ask the company four things. Compared with what: a good class, or no teaching at all? Who
+    decided which students used the app: a lottery, or the students themselves? When were they
+    tested: at the end of the session, or weeks later? And what was the gap in actual marks?
+
+    The quotable line: "An effect size is only as good as the comparison behind it. Ask what the
+    app was compared with, and whether anyone was tested weeks later."
+
+    If they cannot answer, say the claim has not been shown. Do not say the app does not work.
+quantitative: true
+practice:
+- level: 1
+  prompt: |
+    Group P has a mean of 72 and group Q a mean of 63. The SD of the scores is 18 in both groups.
+    Find the MD, P minus Q, and the SMD.
+  answer: |
+    The MD is P's mean minus Q's mean.
+
+    ```working
+    72 minus 63 = 9
+    ```
+
+    The SMD is the MD divided by the SD.
+
+    ```working
+    9 divided by 18 = 0.5
+    ```
+
+    The MD is 9 and the SMD is 0.5.
+- level: 2
+  prompt: |
+    A new method's group has a mean of 47. The comparison group has a mean of 53. The SD is 12 in
+    both groups. Find the MD, new minus comparison, and the SMD. Say what the sign tells you.
+  answer: |
+    ```working
+    47 minus 53 = -6
+    -6 divided by 12 = -0.5
+    ```
+
+    The MD is -6 and the SMD is -0.5. The minus sign says the new method's group scored lower,
+    by half a standard deviation.
+- level: 3
+  prompt: |
+    A study reports an SMD of 0.25. The SD of the scores is 20. What is the MD?
+  answer: |
+    The SMD is the MD divided by the SD. So the MD is the SMD times the SD.
+
+    ```working
+    0.25 times 20 = 5
+    ```
+
+    The MD is 5. Check it by dividing back.
+
+    ```working
+    5 divided by 20 = 0.25
+    ```
+- level: 3
+  prompt: |
+    Two groups' means differ by 9, and the SMD is 0.6. What SD was used?
+  answer: |
+    The SMD is the MD divided by the SD. So the SD is the MD divided by the SMD.
+
+    ```working
+    9 divided by 0.6 = 15
+    ```
+
+    The SD was 15. Check it.
+
+    ```working
+    9 divided by 15 = 0.6
+    ```
+- level: 4
+  prompt: |
+    In Roediger and Karpicke's second experiment, the SSSS group read a passage in four study
+    periods. The STTT group read it once and then took three recall tests. After 5 minutes, SSSS
+    recalled 83% of the passage and STTT recalled 71%. After 1 week, STTT recalled 61% and SSSS
+    recalled 40%. Find the MD, STTT minus SSSS, at each retention interval, with its unit. Say what
+    the two signs tell you.
+  answer: |
+    Keep the subtraction the same way round both times: STTT minus SSSS.
+
+    ```working
+    71 minus 83 = -12
+    61 minus 40 = 21
+    ```
+
+    At 5 minutes the MD is -12 percentage points. At 1 week it is +21 percentage points.
+
+    The sign turns round. At 5 minutes the group that only read did better, by 12 points. A week
+    later the group that was tested did better, by 21 points. Had you subtracted SSSS minus STTT at
+    5 minutes and STTT minus SSSS at 1 week, both numbers would be positive. Then the reversal
+    would disappear from your report.
+  refs:
+  - roediger_karpicke_2006_testing_effect
+- level: 5
+  prompt: |
+    Deslauriers and colleagues allocated physics students to two groups at random. Before the
+    experiment, the groups' averages on two earlier exams were as follows. Spring: group A 77.9%
+    (SD 13.4 percentage points), group B 78.1% (SD 14.4). Fall: group A 70.5% (SD 13.0), group B
+    72.02% (SD 13.9). For each semester, find the MD, B minus A, and the SMD, dividing by group A's
+    SD. Say what the two SMDs tell you about the random allocation.
+  answer: |
+    Spring first.
+
+    ```working
+    78.1 minus 77.9 = 0.2
+    0.2 divided by 13.4 = 0.0149
+    ```
+
+    An MD of 0.2 percentage points and an SMD of about 0.01.
+
+    Now fall.
+
+    ```working
+    72.02 minus 70.5 = 1.52
+    1.52 divided by 13.0 = 0.117
+    ```
+
+    An MD of 1.52 percentage points and an SMD of about 0.12.
+
+    Before any teaching, the groups sat 0.01 and 0.12 SDs apart. Chance made them close, and in
+    fall a little less close. The authors tested these gaps and called the groups
+    "indistinguishable". Still, a later gap has to be judged against a starting gap of up to 0.12
+    SD. It was not zero.
+  refs:
+  - deslauriers_2019_feeling_of_learning
+- level: 6
+  prompt: |
+    Roediger and Karpicke report d, an SMD, for two of their comparisons. After 5 minutes, SSSS
+    beat STTT by 12 percentage points, with d = 1.22. After 1 week, STTT beat SSSS by 21 percentage
+    points, with d = 1.26. The paper does not give the SDs. Taking d as the MD divided by the SD,
+    find the SD each d implies. Why is the second MD nearly twice the first, while d hardly moves?
+  answer: |
+    The SD is the MD divided by d.
+
+    ```working
+    12 divided by 1.22 = 9.84
+    21 divided by 1.26 = 16.7
+    ```
+
+    At 5 minutes, the implied SD is about 9.8 percentage points. At 1 week, it is about 16.7.
+
+    A week later the scores are far more spread out. Some students kept much of the passage and
+    some kept little. The gap in marks grew from 12 to 21 points, but the spread grew almost as
+    much. So the gap, measured in SDs, stayed near 1.2.
+
+    These SDs are implied, not reported. The paper may have computed d another way, so treat them
+    as rough.
+  refs:
+  - roediger_karpicke_2006_testing_effect
+- level: 7
+  prompt: |
+    Here is a worked answer. The numbers are made up. Find the step that broke.
+
+    ```working
+    comparison group mean 58%, new method group mean 66%, SD 16 percentage points in each group
+    MD = 66 minus 58 = 8 percentage points
+    SMD = 8 divided by 58 = 0.14
+    so the new method's group scored 0.14 SD higher
+    ```
+  answer: |
+    The first two lines are right. The MD is 8 percentage points.
+
+    The third line broke. It divides the MD by the comparison group's mean, 58. The SMD divides by
+    the SD, 16.
+
+    ```working
+    8 divided by 16 = 0.5
+    ```
+
+    The SMD is 0.5, not 0.14.
+
+    Why it looks reasonable: dividing a change by the value it started from is exactly how you
+    work out a per cent change. Here it gives the gap as a share of the comparison mean, about
+    14%. That is a real number, but it is not an SMD. The SMD asks how big the gap is against how
+    much individual learners differ.
+- level: 7
+  prompt: |
+    Here is a worked answer. The numbers are made up. Find the step that broke.
+
+    ```working
+    usual method group mean 64%, new method group mean 58%, SD 12 percentage points in each group
+    MD = 64 minus 58 = 6 percentage points
+    SMD = 6 divided by 12 = 0.5
+    so the new method is half an SD better
+    ```
+  answer: |
+    The arithmetic in lines 2 and 3 is right. The subtraction is the wrong way round for the
+    claim in line 4.
+
+    The MD in this book is the new method's group minus the comparison group.
+
+    ```working
+    58 minus 64 = -6
+    -6 divided by 12 = -0.5
+    ```
+
+    The SMD is -0.5. The new method's group scored half an SD lower, not higher.
+
+    Why it looks reasonable: taking the bigger number minus the smaller one is a habit, and it
+    always gives a positive answer. A positive answer then reads as a win for whatever you were
+    hoping for. Fix the order before you subtract, and write it beside the answer.
+- level: 8
+  prompt: |
+    Here is a worked answer. The numbers are made up. Find the step that broke.
+
+    ```working
+    ASHA workers each plot ten children's weights on a growth chart; the score is the number of mistakes
+    question-based group: mean 2.1 mistakes, SD 1.4; usual talk group: mean 3.5 mistakes, SD 1.4
+    MD = 2.1 minus 3.5 = -1.4 mistakes
+    SMD = -1.4 divided by 1.4 = -1
+    the SMD is negative, so the question-based session did worse, by one SD
+    ```
+  answer: |
+    Lines 1 to 4 are right. The MD is -1.4 mistakes and the SMD is -1.
+
+    The last line broke. On this score, fewer is better. A negative MD means the question-based
+    group made fewer mistakes: 1.4 fewer on average. That is one SD better, not worse.
+
+    The Cochrane Handbook warns that some scales have higher scores for a better outcome and some
+    have lower. Before you read a sign, find out which way the score runs. If you are putting
+    several studies side by side, turn round the ones that run the other way, by multiplying by
+    -1.
+
+    ```working
+    -1 times -1 = 1
+    ```
+
+    Reported on a "higher is better" footing, the SMD is +1 in favour of the question-based
+    session.
+
+    Why it looks reasonable: nearly every test you set scores right answers, so "negative means
+    worse" becomes automatic. Counting mistakes turns that round, and nothing in the arithmetic
+    warns you.
+  refs:
+  - cochrane_handbook_ch06_v6_5
+- level: 9
+  prompt: |
+    A speaker at a medical-education meeting says: "Active learning raises exam scores by 6%.
+    Freeman proved it." Freeman's own words are that a change of 0.47 SDs "would produce an
+    increase of about 6% in average examination scores".
+
+    Suppose your course's exam marks have a mean of 77.9% and an SD of 13.4 percentage points.
+    Those are the figures for one group in Deslauriers's Table 1. Decide what to compute, compute
+    it, and say what your answer does not establish.
+  answer: |
+    Turn 0.47 SD into marks for a test with this spread, by multiplying the SMD by the SD.
+
+    ```working
+    0.47 times 13.4 = 6.298
+    ```
+
+    About 6.3 percentage points. Now as a share of the mean score.
+
+    ```working
+    6.3 divided by 77.9 = 0.081
+    ```
+
+    About 8% of the mean.
+
+    So "6%" could mean two different things. As percentage points, 6.3 is close to 6. As a per
+    cent of the score, it would be about 8% here. The paper's text does not say which it means. It
+    bases its 6% on three courses, analysed in its supplementary material.
+
+    What this does not establish:
+
+    - That your course would gain 6 points. The conversion assumes your SD, and your SD is not
+      theirs.
+    - That the gain lasts. The timing of the exams varied across Freeman's studies, and none of
+      this is a delayed test of your own.
+    - That every teacher would get it. The teachers in Freeman's studies were volunteers. The
+      authors call it an open question whether the gain would hold if all teachers had to do it.
+    - That "Freeman proved it" for your setting. The studies were undergraduate science courses,
+      not an Indian medical college.
+  refs:
+  - freeman_2014_active_learning
+  - deslauriers_2019_feeling_of_learning
+- level: 10
+  prompt: |
+    A colleague writes this in the department's annual report. The words are made up for this
+    problem.
+
+    "My case-based sessions raised the batch's mean score from 52% on the pre-test to 68% on the
+    post-test. The pre-test SD was 16 percentage points. So that is an effect size of 1.0, more
+    than double Freeman's 0.47."
+
+    Decide what to compute, compute it, and say what the claim does not establish.
+  answer: |
+    Check the arithmetic first. The change, post-test minus pre-test:
+
+    ```working
+    68 minus 52 = 16
+    16 divided by 16 = 1
+    ```
+
+    The rise is 16 percentage points, and 16 divided by the pre-test SD is 1. The division is
+    right.
+
+    What it does not establish:
+
+    - That the case-based sessions caused the rise. There is one group and no comparison group.
+      Any teaching raises a post-test score. If the post-test repeated the pre-test's questions,
+      practice on them raises it too.
+    - That this is comparable with Freeman's 0.47. Freeman's figure is a gap between two groups
+      taught differently, measured against the spread of scores. This 1.0 is one group's change
+      over time. The two numbers answer different questions, so "more than double" compares
+      nothing.
+    - That anything lasted. If the post-test came at the end of the posting, it measures
+      performance, not learning.
+
+    What would establish it? Split the next batch by lot into case-based and usual sessions. Give
+    both groups the same new test, two weeks or more later. Then report the MD in marks, with the
+    SMD beside it.
+  refs:
+  - freeman_2014_active_learning
+retrieval_items:
+- q: What must two groups share, and what must differ, for a fair test of a teaching method?
+  a: The same content, time, test and delay before the test, with learners allocated at random.
+    Only the method differs.
+- q: How do you get the SMD from two group means and an SD?
+  a: Subtract one mean from the other to get the MD, stating which way round, then divide the MD
+    by the SD.
+- q: Why can the same MD in marks give two different SMDs?
+  a: Because the SMD divides by the spread of the scores. A widely spread set of scores makes the
+    same gap a smaller share of one SD.
+- q: What can a single group's rise from pre-test to post-test not show?
+  a: That the method caused it. With no comparison group, it cannot be separated from any
+    teaching, practice on the test, or testing too soon.
+figures:
+- file: s57-r1-c02-md-and-sd.png
+  caption: "Made-up numbers. Mean scores on the delayed test: 58% for the comparison group and 66% for the new method's group, an MD of 8 percentage points. The shaded band runs from 58 to 74, one SD of 16 above the comparison mean. The new method's bar reaches halfway into it: an SMD of 0.5."
+  alt: "Two bars. The comparison group's bar reaches 58 per cent and the new method group's bar reaches 66 per cent. A shaded band runs across the chart from 58 to 74 per cent, and the second bar ends halfway up it."
+  source: draw.py
+  spec:
+    kind: bar
+    from_table: {block: 1, x: 0, y: [1]}
+    x_label: ''
+    y_label: mean score on the delayed test (%)
+    value_labels: true
+    y_range:
+    - 0
+    - 100
+    bands:
+    - {y0: 58, y1: 74, label: "one SD (16 points) above the comparison mean"}
+    relations:
+    - check: "y[1] - y[0] = 8"
+    - check: "(y[1] - y[0]) / 16 = 0.5"
+- file: s57-r1-c02-smd-and-spread.png
+  caption: "Made-up numbers. The same MD of 8 percentage points, divided by different SDs: SMD = 8
+    ÷ SD. With an SD of 16 the SMD is 0.5; with an SD of 8 it is 1. The gap in marks stays the
+    same; the SMD grows as the scores bunch together."
+  alt: "A curve falling from an SMD of 1 at an SD of 8 to an SMD of 0.5 at an SD of 16, with a
+    point at each end."
+  source: draw.py
+  spec:
+    kind: scatter
+    x: ["8", "16"]
+    series:
+    - name: SMD for an MD of 8 points
+      y: ["1", "0.5"]
+    x_label: SD of the scores (percentage points)
+    y_label: SMD
+    y_range: [0, 1.2]
+    curves:
+    - {y: "y = 8/x", x0: 8, x1: 16, series: "SMD for an MD of 8 points", label: "SMD = 8 ÷ SD"}
+    labels:
+    - {text: "SD 8: SMD 1", at: [8, 1], offset: [8, 4]}
+    - {text: "SD 16: SMD 0.5", at: [16, 0.5], offset: [-90, -16]}
+provenance:
+  map_version_id: fc19c8bc-a216-4131-99fb-ebe3f19cec4a
+  outcome_refs:
+  - S57-R1-O1
+  - S57-R1-G
+  bridge_ref:
+  - S57-R2-P01
+  - S57-R2-R2
+  - S57-R2-B
+review:
+  stability: long
+  trigger: '2031-09-25'
+  last_reviewed: '2026-09-25'
+status: drafted

@@ -1,0 +1,1 @@
+- Cut the definition's Cepeda (2008) design sentences ("After a gap of 0 to 105 days ... answering each question and then seeing the answer. After a retention interval of 7 to 350 days they took a final test."). Without them the reader may not know the review was a single retrieval-with-feedback, or the gap range tried, which Exercise 4 and the figure lean on.

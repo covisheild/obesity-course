@@ -1,0 +1,122 @@
+# S57-R1-C01 · Learning is what lasts, and how a session feels is not evidence of it
+
+**Definition.** In this book, learning means a lasting change in what a person can do. The learner can do
+something days or weeks after the teaching that they could not do before it. It is measured
+by a test taken after a delay. The time between study and that test is the retention
+interval.
+
+Performance is what a learner can do during a session or within minutes of it. Feeling of
+learning is the learner's own judgement of how much they learned, usually given as a rating.
+These are three different measures, and controlled experiments have found them pointing in
+opposite directions.
+
+In Roediger and Karpicke's first experiment (2006), each student read two short prose
+passages. They then read one passage again and took a recall test on the other. On a final
+test 5 minutes later, reading again won: 81%
+of the passage recalled against 75%. After 2 days, testing won, 68% against 54%. After 1
+week, testing still won, 56% against 42%.
+
+In Deslauriers and colleagues' experiment (2019), physics students were allocated at random
+to a lecture or to an active class with the same content and handouts. The active groups
+scored higher on a test at the end of the class. They also rated their own learning lower.
+
+Transmission is teaching by telling: the teacher explains and the learners listen, take
+notes, and ask the odd question. Its standard form is the lecture, which Freeman and
+colleagues (2014) define, after Bligh, as "continuous exposition by the teacher".
+
+**In plain terms.** A session can go well and teach almost nothing that lasts. So this book keeps three things apart.
+
+The first is what learners can do while you are still in the room. Call it performance. The
+second is how much they think they learned. Call it their feeling of learning. The third is what
+they can still do a week or a month later. Only that one is learning.
+
+You would expect the three to rise and fall together. Often they do not. Reading something
+twice makes it feel familiar, and the familiar feels learned. A smooth lecture feels clear, and
+the clear feels learned. Deslauriers and colleagues suggest that this smoothness itself misleads
+students. Work that makes learners struggle feels worse, even when it teaches more.
+
+So a quiz at the end of your session measures performance. A feedback form measures feeling.
+Neither measures learning. You find out about learning by testing again, after a gap, on
+something the learners have not just seen.
+
+Here is the trap in a single argument. "They enjoyed it and they answered well at the end, so they
+learned it." Both premises can be true. The inference still does not carry, because the
+conclusion is about a later day that neither premise measured.
+
+**Illustration.** You have just taught a batch of third-year MBBS students (the Bachelor of Medicine and Bachelor
+of Surgery course) how to classify body-mass index. At the end, you hand out a feedback form
+and a short quiz. The forms say the session was clear. Most students get the quiz right. You
+are about to write "objective achieved" in your teaching log.
+
+Before you write it, open Roediger and Karpicke, "Test-enhanced learning", *Psychological
+Science* 2006, at https://doi.org/10.1111/j.1467-9280.2006.01693.x. Go to Experiment 2.
+
+Students learned one short prose passage. The passage was cut into 30 small pieces of meaning,
+called idea units, and a student scored one point for each one they wrote down. Each student
+had four periods in a row, used in one of three ways. S stands for a study period: 5 minutes
+of reading. T stands for a test period: 10 minutes of writing down everything they could
+remember, with no feedback.
+
+- SSSS: read it in all four periods, no test.
+- SSST: read it three times, then one test.
+- STTT: read it once, then three tests.
+
+Then everyone took one final recall test. Half took it 5 minutes later. The other half took it
+1 week later. Here are the percentages of the passage recalled on that final test.
+
+```table
+group   after 5 minutes (%)   after 1 week (%)
+SSSS    83   40
+SSST    78   56
+STTT    71   61
+```
+
+Read the first column. Reading four times wins. Work out its lead over the group that was
+tested three times.
+
+```working
+83 minus 71 = 12
+```
+
+Now read the second column. The order has turned round. Work out the tested group's lead.
+
+```working
+61 minus 40 = 21
+```
+
+The group that was ahead by 12 percentage points at 5 minutes is behind by 21 a week later.
+Yet it read the passage many more times. On average, the SSSS group read it through 14.2
+times in all, against 3.4 times for the STTT group.
+
+Now find Table 2. At the end of the first session, before any final test, each student filled
+in a short rating form. One question asked how well they would remember the passage in 1 week,
+on a 7-point scale. The SSSS group gave
+4.8. The STTT group gave 4.0. The group most sure it would remember was the group that went on
+to remember least.
+
+Go back to your teaching log. Your quiz is the first column: performance, minutes after the
+teaching. Your feedback form is the rating in Table 2: a feeling. Neither is the second column.
+To fill in the second column for your own batch, set a short test on the same objective a week
+or more later. Write in the log after that.
+
+**Where this picture breaks.** The numbers come from undergraduates at one university. They recalled a short prose passage,
+with no feedback, after 5 minutes or after 1 week. The numbers do not tell you what happens
+after a month. They say nothing about a clinical skill, or about which method will win with
+your batch. Only one thing carries over. A test taken minutes after teaching, or a learner's
+own rating, can point the opposite way from a later test. That does not mean every method
+that wins at 5 minutes loses later.
+
+**Figure.** Percentage of the passage recalled on the final test in Roediger and Karpicke's second experiment. After 5 minutes, the group that read the passage four times (SSSS) recalled most. After 1 week, the group that read it once and was tested three times (STTT) recalled most. The order of the three groups turns round.
+
+*What the figure shows:* Grouped bars for three groups, SSSS, SSST and STTT. After 5 minutes: 83, 78 and 71 per cent. After 1 week: 40, 56 and 61 per cent.
+
+**Must know points for you.**
+
+- A high score on a quiz at the end of your session is not evidence that the batch learned. It measures performance minutes after the teaching. In Roediger and Karpicke's second experiment, the group that did best at 5 minutes did worst a week later.
+- Do not read a learner's rating of how much they learned as a measure of learning. In Deslauriers's experiment, a chance process decided who was taught actively. Those students scored almost half a standard deviation higher on the end-of-class test. They rated their learning more than half a standard deviation lower.
+- Before you call a session a success, book a second short test on the same objective, a week or more later. Write the date down at the planning stage, not afterwards, or it will not happen.
+- When you ask learners to work problems instead of watching you solve them, expect some to say they are learning less. Do not switch back to lecturing on the strength of that complaint. Tell them at the start that effort is part of how it works. Deslauriers's group did this in a 20-minute talk. By the end of that semester, over 65% of students said their view of active learning had improved. That was a survey in one course with no comparison group.
+- When a committee judges teachers by students' feedback ratings, say that the ratings measure feeling of learning. Deslauriers and colleagues warn that such evaluations could favour lecturing over methods that teach more. Ask for a delayed test result alongside the ratings.
+- These results reach only as far as they were measured: the end of a class in Deslauriers, one week in Roediger and Karpicke. A skill your learners need in six months has not been tested by either. Test at the interval you actually care about, and do not treat a one-week result as proof of a six-month one.
+- A learner's own rating is weakest where you most need it, in a beginner. Deslauriers found that ratings tracked test scores more closely in students who already knew more physics. With a new batch, give a test before you trust a show of hands.
+

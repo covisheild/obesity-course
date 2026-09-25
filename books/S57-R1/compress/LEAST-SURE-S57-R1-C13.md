@@ -1,0 +1,2 @@
+
+**Least sure (cut pass 1, batch c5):** deleted the definition's paragraph "Reaction and learning can move in opposite directions. In a randomised comparison, students rated passive lectures more highly and scored lower..." and the Deslauriers sentence in must_know[3]. The section now asserts that reaction and learning can diverge without any evidence for it, and Exercise 4 (the ASHA "rated excellent" brief) may need that evidence to argue against refunding on ratings.

@@ -58,6 +58,11 @@ the constraint.
 more until two books have run side by side and landed cleanly by the procedure below. How two
 books run at once is the section "Two books at once".
 
+*Amended 24 September 2026, on Harsh's explicit instruction in the S57-R1 chat* ("Harsh approves
+three book chats at once"): **the width is three book chats at once** (S36-R1, S37-R1, S57-R1).
+The procedure in "Two books at once" applies unchanged to each pair; a third book only adds one
+more chat that may land first, which the `--ff-only` pull already handles.
+
 ---
 
 ## Who owns what

@@ -1,0 +1,1 @@
+Least sure: deleting all of Roediger and Karpicke's first experiment from the definition (81% vs 75% at 5 minutes, 56% vs 42% at a week, d = 0.83). The two Figures still plot those d values, and must-know 0 now gives only the claim, not the 56/42 numbers, so a cold reader may meet "d" in the Figure with nothing in the text to read it against.

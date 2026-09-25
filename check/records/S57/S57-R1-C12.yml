@@ -1,0 +1,854 @@
+concept_id: S57-R1-C12
+subject: S57
+rung: 1
+sequence: 12
+name: "Measuring what changed: pre-test, post-test, gain"
+concept_type: derivable
+clusters:
+- measurement-inference
+- craft-and-integrity
+ground_floor_deps:
+- B0-R0-C04
+- B0-R0-C05
+- B0-R0-C28
+- B0-R0-C30
+- B0-R0-C39
+concept_deps: [S57-R1-C01, S57-R1-C02, S57-R1-C09, S57-R1-C10]
+definition:
+  text: |
+    A learner's score on a test is written here as a percentage of the test's maximum, from 0 to
+    100%. The pre-test score, pre, is taken before the teaching. The post-test score, post, is
+    taken at the end of it.
+
+    The raw gain is post minus pre, written post − pre, in percentage points.
+
+    The mean gain of a group is the mean of its learners' raw gains. It equals the mean post-test
+    score minus the mean pre-test score. Its spread is the standard deviation (SD) of the raw
+    gains.
+
+    The room to gain is 100 − pre: the most a learner, or a class, could have gained. The
+    normalised gain, written g, is the raw gain divided by the room to gain.
+
+    ```working
+    g = (post − pre) ÷ (100 − pre)
+    ```
+
+    It is a fraction with no unit. It does not exist for a pre-test of 100%. Hake defines the
+    class form from class-average scores. He writes it 〈g〉, with angle brackets round g, which
+    here mean "the class average".
+
+    The proportion reaching the standard is the number of learners whose score meets the standard
+    the objective set, divided by the number tested.
+  references:
+  - citekey: hake_1998_normalized_gain
+    kind: textbook
+    locator: "Abstract, the sentence defining the average normalized gain"
+    quote: |-
+      The latter is defined as the ratio of the actual average gain (%〈post〉−%〈pre〉) to the maximum possible average gain (100−%〈pre〉).
+    verified:
+      resolved_id: https://doi.org/10.1119/1.18809
+      opened: true
+      claim_located: true
+      checked_on: '2026-09-25'
+      note: |-
+        Only the abstract is held (the publisher-deposited abstract in the Crossref record). It
+        carries the definition of the class-average normalised gain in words and the two headline
+        averages. The full paper, which may discuss the gain of single students, was not
+        obtained, and the record does not attribute anything beyond the abstract to Hake.
+  - citekey: hake_1998_normalized_gain
+    kind: textbook
+    locator: "Abstract, the sentence introducing the average normalized gain"
+    quote: |-
+      a rough measure of the average effectiveness of a course in promoting conceptual understanding is taken to be the average normalized gain 〈g〉
+    verified:
+      resolved_id: https://doi.org/10.1119/1.18809
+      opened: true
+      claim_located: true
+      checked_on: '2026-09-25'
+      note: |-
+        Hake's own word for it is "rough", and it is a measure of a course, computed from class
+        averages.
+  - citekey: openstax_intro_stats_2e
+    kind: textbook
+    locator: "§2.5 Measures of the Center of the Data, first paragraph"
+    quote: |-
+      add the 50 weights together and divide by 50
+    verified:
+      resolved_id: https://openstax.org/books/introductory-statistics-2e/pages/2-5-measures-of-the-center-of-the-data
+      opened: true
+      claim_located: true
+      checked_on: '2026-09-25'
+      note: |-
+        The mean, as used for the mean pre-test, post-test and gain.
+  - citekey: openstax_intro_stats_2e
+    kind: textbook
+    locator: "§2.7 Measures of the Spread of the Data, first paragraph"
+    quote: |-
+      The standard deviation is a number that measures how far data values are from their mean.
+    verified:
+      resolved_id: https://openstax.org/books/introductory-statistics-2e/pages/2-7-measures-of-the-spread-of-the-data
+      opened: true
+      claim_located: true
+      checked_on: '2026-09-25'
+      note: |-
+        The SD of the raw gains.
+  - citekey: openstax_intro_stats_2e
+    kind: textbook
+    locator: "§1.4 Experimental Design and Ethics, the paragraph on lurking variables"
+    quote: |-
+      The researcher must design her experiment in such a way that there is only one difference between groups being compared: the planned treatments.
+    verified:
+      resolved_id: https://openstax.org/books/introductory-statistics-2e/pages/1-4-experimental-design-and-ethics
+      opened: true
+      claim_located: true
+      checked_on: '2026-09-25'
+      note: |-
+        Why a single group tested before and after cannot isolate the teaching: there are no
+        groups being compared.
+simplified_explanation: |
+  The raw gain has a catch. A learner who starts at 80% can gain at most 20 points, because no
+  score passes 100%. A learner who starts at 20% has 80 points of room. So a gain of 20 points
+  means everything to the first learner and a quarter to the second.
+illustration:
+  body: |
+    You teach a batch of ten third-year medical students one session. The standard the objective sets
+    is 8 of the test's 10 questions right, which is 80%.
+
+    The scores below are made up for this example. The delayed test is one week later, on a
+    parallel form: different questions asking for the same action.
+
+    ```table
+    learner  pre (%)  post (%)  delayed (%)
+    A        20       60        50
+    B        30       70        60
+    C        40       80        70
+    D        50       70        60
+    E        60       90        80
+    F        20       40        30
+    G        70       90        90
+    H        80       100       90
+    I        40       60        50
+    J        50       90        80
+    ```
+
+    Add each column and divide by 10.
+
+    ```working
+    460 divided by 10 = 46
+    750 divided by 10 = 75
+    660 divided by 10 = 66
+    ```
+
+    The class went from a mean of 46% to 75%.
+
+    ```working
+    75 minus 46 = 29
+    ```
+
+    A mean gain of 29 percentage points. Now look at two learners inside it.
+
+    ```working
+    F: 40 minus 20 = 20
+    H: 100 minus 80 = 20
+    ```
+
+    F and H each gained 20 points. Divide each by the room to gain.
+
+    ```working
+    F: 100 minus 20 = 80
+    F: 20 divided by 80 = 0.25
+    H: 100 minus 80 = 20
+    H: 20 divided by 20 = 1
+    ```
+
+    F's normalised gain is 0.25. H's is 1.
+
+    Turn the rule round to set a target. What post-test would F have needed for a gain of 0.5?
+    Half of F's room is 0.5 times 80.
+
+    ```working
+    0.5 times 80 = 40
+    20 plus 40 = 60
+    ```
+
+    A post-test of 60%.
+
+    Now the whole class, the way Hake defines it: from the class means.
+
+    ```working
+    100 minus 46 = 54
+    29 divided by 54 is about 0.537
+    ```
+
+    The class normalised gain is about 0.54. The mean of the ten learners' own normalised gains is
+    a different number. Work out each, add them, and divide by 10: it comes to about 0.59. Say which one you
+    computed.
+
+    Next, the spread. The ten raw gains are 40, 40, 40, 20, 30, 20, 20, 20, 20 and 40. Their mean
+    is 29. Four sit 11 above it, five sit 9 below it, and one sits 1 above it. Square and add.
+    Divide by 9, one less than the ten, as Book 0 did for a sample.
+
+    ```working
+    4 times 121 = 484
+    5 times 81 = 405
+    484 plus 405 plus 1 = 890
+    890 divided by 9 is about 98.9
+    ```
+
+    The square root of 98.9 is about 9.9. The SD of the gains is about 9.9 percentage points.
+
+    Now the standard. Count the learners at 80% or more.
+
+    ```working
+    pre: 1 of 10 = 10%
+    post: 5 of 10 = 50%
+    delayed: 4 of 10 = 40%
+    ```
+
+    Half the batch met the standard at the end of the session. A week later, four did.
+
+    The delayed test also shows how much of the gain lasted.
+
+    ```working
+    66 minus 46 = 20
+    20 divided by 29 is about 0.69
+    ```
+
+    A week on, the class kept 20 of its 29 points, about 69%.
+
+    ```working
+    100 minus 46 = 54
+    20 divided by 54 is about 0.37
+    ```
+
+    The delayed normalised gain is about 0.37: the room to gain is still counted from the pre-test.
+
+    Last, the items. Count, for each question, how many of the ten got it right.
+
+    ```table
+    item          1   2   3   4   5   6   7   8   9   10
+    right, pre    8   7   6   5   5   4   4   3   2   2
+    right, post   10  9   9   8   8   8   7   7   6   3
+    ```
+
+    Item 1 was right for 8 of 10 before you taught it: that time could go elsewhere. Item 10 moved
+    from 2 to 3. Either the teaching missed it or the question is broken. Read the question again
+    before you teach the topic again.
+
+    Hake surveyed 62 physics courses. The 14 courses that "made little or no use of
+    interactive-engagement (IE) methods" reached a class normalised gain of 0.23, with an SD of 0.04. The 48
+    courses that made "substantial use" of them reached 0.48, with an SD of 0.14.
+  analogy_breaks_when: |
+    Hake's two averages are for physics courses measured with two physics tests. They are not a
+    target for one session in another subject.
+
+    With a short test, one question moves a learner's g a long way. Read a single learner's g
+    with that in mind.
+  numbers:
+  - value: "62"
+    unit: "physics courses in Hake's survey"
+    citekey: hake_1998_normalized_gain
+    as_of: '2026-09-25'
+    quote: |-
+      A survey of pre/post-test data using the Halloun–Hestenes Mechanics Diagnostic test or more recent Force Concept Inventory is reported for 62 introductory physics courses enrolling a total number of students N=6542.
+  - value: "14"
+    unit: "traditional courses"
+    citekey: hake_1998_normalized_gain
+    as_of: '2026-09-25'
+    quote: |-
+      Fourteen “traditional” (T) courses (N=2084) which made little or no use of interactive-engagement (IE) methods achieved an average gain 〈g〉T-ave=0.23±0.04 (std dev).
+  - value: "0.23"
+    unit: "class normalised gain, the traditional courses' average (no unit)"
+    citekey: hake_1998_normalized_gain
+    as_of: '2026-09-25'
+    quote: |-
+      Fourteen “traditional” (T) courses (N=2084) which made little or no use of interactive-engagement (IE) methods achieved an average gain 〈g〉T-ave=0.23±0.04 (std dev).
+  - value: "0.04"
+    unit: "standard deviation of the traditional courses' gains"
+    citekey: hake_1998_normalized_gain
+    as_of: '2026-09-25'
+    quote: |-
+      Fourteen “traditional” (T) courses (N=2084) which made little or no use of interactive-engagement (IE) methods achieved an average gain 〈g〉T-ave=0.23±0.04 (std dev).
+  - value: "48"
+    unit: "interactive-engagement courses"
+    citekey: hake_1998_normalized_gain
+    as_of: '2026-09-25'
+    quote: |-
+      In sharp contrast, 48 courses (N=4458) which made substantial use of IE methods achieved an average gain 〈g〉IE-ave=0.48±0.14 (std dev)
+  - value: "0.48"
+    unit: "class normalised gain, the interactive-engagement courses' average (no unit)"
+    citekey: hake_1998_normalized_gain
+    as_of: '2026-09-25'
+    quote: |-
+      In sharp contrast, 48 courses (N=4458) which made substantial use of IE methods achieved an average gain 〈g〉IE-ave=0.48±0.14 (std dev)
+  - value: "0.14"
+    unit: "standard deviation of the interactive-engagement courses' gains"
+    citekey: hake_1998_normalized_gain
+    as_of: '2026-09-25'
+    quote: |-
+      In sharp contrast, 48 courses (N=4458) which made substantial use of IE methods achieved an average gain 〈g〉IE-ave=0.48±0.14 (std dev)
+must_know:
+- point: |
+    Twenty points from 80% is all the room there was. Twenty points from 20% is a quarter of it.
+    Report the normalised gain beside the raw gain whenever you compare learners, batches or
+    sessions.
+  kind: misconception
+  bearing: teaching
+- point: |
+    The class normalised gain worked out from the class means and the mean of each learner's own
+    normalised gain are different numbers. Say which one you computed, and compare with Hake's figures only the
+    first kind.
+  kind: trap
+  bearing: methodological
+  refs: [hake_1998_normalized_gain]
+- point: |
+    The normalised gain stops working at the top of the scale. If several learners start that
+    high, the test is too easy for them. Report them apart, and next time write harder items that
+    match the objective.
+  kind: boundary
+  bearing: methodological
+- point: |
+    A gain in one group, tested before and after, is a change, not an effect of your teaching.
+    Call it "the change in this batch", and use a comparison group allocated at random, as in `S57-R1-C02`, before you
+    claim more.
+  kind: boundary
+  bearing: methodological
+  refs: [openstax_intro_stats_2e]
+- point: |
+    The delayed test measures what lasted. Book it before the session, on a parallel form, and
+    report both.
+  kind: consequence
+  bearing: teaching
+- point: |
+    Report four things for any session you evaluate. First, the mean pre-test and post-test, with
+    the SD of the gains. Second, the class normalised gain. Third, the share who reached the
+    objective's standard. Fourth, the same at the delayed test. Add the item table.
+  kind: move
+  bearing: teaching
+- point: |
+    Read the item table before you plan the next session. An item most learners got right before
+    you taught it is time you can spend elsewhere.
+  kind: move
+  bearing: teaching
+- point: |
+    Hake's averages were 0.23 for 14 traditional physics courses and 0.48 for 48 courses using
+    interactive methods. Quote them as a rough scale for what a course can do, never as a pass
+    mark for one session.
+  kind: number
+  bearing: methodological
+  refs: [hake_1998_normalized_gain]
+exercises:
+- type: design
+  prompt: |
+    Plan how you will measure the session you are building for this book.
+
+    Write down four things. The objective and its standard. How many items the test has, and
+    what each asks for. When you will give the pre-test, the post-test and the delayed test. The
+    numbers you will report. Then say what you will do if three or more learners score 100% on
+    the pre-test.
+  answer: |
+    A good plan names everything before the session, so nothing is chosen after you see the
+    scores.
+
+    The objective and its standard, written as the section on objectives showed. For example: at
+    the end of the session, each student will work out a family's daily energy intake. They are
+    given a one-day diet record and a food table. The standard is at least 8 of 10 items right.
+
+    The test. Ten items, each asking for the objective's action, not for a sentence remembered
+    from the session. Two parallel forms, with half the group taking each first, as the section on
+    tests showed. A third form for the delayed test if you can build one; otherwise each
+    learner's first form again.
+
+    The dates. Pre-test at the start of the session. Post-test at the end. Delayed test on a date
+    you book now, a week or more later.
+
+    The numbers. Mean pre-test and post-test with the SD of the raw gains. The class normalised
+    gain from the class means. The share reaching the standard at post-test and at delayed test.
+    The share of the gain kept at the delayed test. The item table.
+
+    Three learners at 100% on the pre-test. Their normalised gain does not exist. Report how many
+    there were, apart from the rest. Work out the class normalised gain without them and say so. Next
+    time, the test needs harder items that still match the objective.
+  skill_ref: S57-R1-K01
+- type: interpretation
+  prompt: |
+    Read the abstract of Hake's 1998 survey, cited below. Say what the "±0.14 (std dev)" beside the
+    interactive courses' 0.48 describes, and what it does not tell you about any one student.
+  answer: |
+    The abstract gives 0.48 as an average over 48 courses: "〈g〉IE-ave". Each course has one
+    class normalised gain, worked out from that course's class-average scores. So the 0.14 beside it reads as
+    the standard deviation of those 48 course gains around 0.48. The abstract does not spell this
+    out, so hold the reading loosely. On that reading the interactive courses varied a
+    good deal among themselves: many sat within about 0.14 of 0.48, and some further out.
+
+    It tells you nothing about single students. A course with a class normalised gain of 0.48 can hold
+    students with gains near 0 and near 1. The spread of students' gains inside a course is not
+    in the abstract.
+
+    Nor does it tell you the methods caused the difference. The abstract calls the work "a survey
+    of pre/post-test data". It does not say the courses were assigned at random.
+retrieval_items:
+- q: What is the normalised gain, and why is it needed beside the raw gain?
+  a: The raw gain divided by the room to gain, (post − pre) ÷ (100 − pre). Learners who start
+    high have less room, so the same raw gain means more for them; the normalised gain puts
+    learners with different starts on one scale.
+- q: Why can the mean of learners' own normalised gains differ from the class normalised gain?
+  a: The class normalised gain is worked out from the class-average scores. Averaging each
+    learner's own normalised gain gives a learner near 100% as much weight as any other, and their gain can be large on a
+    few points.
+- q: What can one group's before-and-after scores not show?
+  a: That the teaching caused the change. Practice on the same test, learning in between or an
+    easier second test could each raise the score; only a comparison group separates them.
+quantitative: true
+practice:
+- level: 1
+  prompt: |
+    pre = 35 and post = 62. Work out the raw gain and the normalised gain.
+  answer: |
+    ```working
+    62 minus 35 = 27
+    100 minus 35 = 65
+    27 divided by 65 is about 0.415
+    ```
+
+    A raw gain of 27 percentage points, and a normalised gain of about 0.42.
+- level: 2
+  prompt: |
+    Learner P scores 70% before and 85% after. Learner Q scores 20% before and 60% after. Work out
+    each learner's raw gain and normalised gain.
+  answer: |
+    Learner P.
+
+    ```working
+    85 minus 70 = 15
+    100 minus 70 = 30
+    15 divided by 30 = 0.5
+    ```
+
+    Learner Q.
+
+    ```working
+    60 minus 20 = 40
+    100 minus 20 = 80
+    40 divided by 80 = 0.5
+    ```
+
+    Raw gains of 15 and 40 points. Both normalised gains are 0.5: each learner gained half the
+    room they had.
+- level: 2
+  prompt: |
+    Five learners' raw gains are 10, 20, 15, 25 and 30 percentage points. Work out the mean gain
+    and the SD of the gains.
+  answer: |
+    ```working
+    10 plus 20 plus 15 plus 25 plus 30 = 100
+    100 divided by 5 = 20
+    ```
+
+    The mean gain is 20 points. The deviations from 20 are -10, 0, -5, 5 and 10. Square them and
+    add.
+
+    ```working
+    100 plus 0 plus 25 plus 25 plus 100 = 250
+    250 divided by 4 = 62.5
+    ```
+
+    Divide by 4, one less than the 5 learners, because they are a sample. The square root of 62.5
+    is about 7.9. The SD of the gains is about 7.9 percentage points.
+- level: 3
+  prompt: |
+    pre = 40 and g = 0.25. What is post?
+  answer: |
+    The room to gain is 100 minus 40. A quarter of it is gained.
+
+    ```working
+    100 minus 40 = 60
+    0.25 times 60 = 15
+    40 plus 15 = 55
+    ```
+
+    post = 55.
+- level: 3
+  prompt: |
+    post = 85 and g = 0.75. What was pre?
+  answer: |
+    The raw gain is g times the room to gain.
+
+    ```working
+    post − pre = g × (100 − pre)
+    85 − pre = 0.75 × (100 − pre)
+    ```
+
+    Multiply out the right-hand side: 0.75 times 100 is 75, and 0.75 times pre is 0.75 × pre.
+
+    ```working
+    85 − pre = 75 − 0.75 × pre
+    ```
+
+    Add pre to both sides, and take 75 from both sides.
+
+    ```working
+    85 minus 75 = 10
+    10 = pre − 0.75 × pre = 0.25 × pre
+    10 divided by 0.25 = 40
+    ```
+
+    pre = 40. Check it forwards.
+
+    ```working
+    85 minus 40 = 45
+    100 minus 40 = 60
+    45 divided by 60 = 0.75
+    ```
+- level: 4
+  prompt: |
+    Hake's 14 traditional physics courses averaged a class normalised gain of 0.23. His 48
+    courses using interactive methods averaged 0.48. Take a class whose mean pre-test is 45%. What
+    mean post-test does each gain give it, and how many percentage points apart are the two?
+  answer: |
+    The room to gain is 100 minus 45.
+
+    ```working
+    100 minus 45 = 55
+    ```
+
+    At a gain of 0.23:
+
+    ```working
+    0.23 times 55 = 12.65
+    45 plus 12.65 = 57.65
+    ```
+
+    At a gain of 0.48:
+
+    ```working
+    0.48 times 55 = 26.4
+    45 plus 26.4 = 71.4
+    71.4 minus 57.65 = 13.75
+    ```
+
+    Mean post-tests of about 57.7% and 71.4%, about 13.8 percentage points apart. These are
+    what the two averages would mean for this class. They are not a prediction: each is an average
+    over physics courses, and courses varied around it.
+  refs: [hake_1998_normalized_gain]
+- level: 5
+  prompt: |
+    In Deslauriers and colleagues' study, one group of students (group A in the spring semester) averaged 23.3 on a physics pre-test,
+    the Force Concept Inventory, scored out of 30. Write that as a percentage. How many percentage points of room did that group
+    have? What raw gain, in percentage points, would equal Hake's interactive-course average of 0.48, and what
+    post-test would that be?
+  answer: |
+    ```working
+    23.3 divided by 30 = 0.7767
+    0.7767 times 100 = 77.67
+    100 minus 77.67 = 22.33
+    ```
+
+    A pre-test of about 77.7%, which leaves about 22.3 percentage points of room.
+
+    ```working
+    0.48 times 22.33 = 10.72
+    77.67 plus 10.72 = 88.39
+    ```
+
+    A raw gain of about 10.7 points, to a post-test of about 88.4%. A class that starts this high
+    reaches an average normalised gain with a small raw gain. The study did not report a
+    post-test on this test, so this is a what-if, not its result.
+  refs: [deslauriers_2019_feeling_of_learning, hake_1998_normalized_gain]
+- level: 5
+  prompt: |
+    Twelve accredited social health activist (ASHA) workers take a 10-item test before and after a session. The objective's standard
+    is 7 items right, or 70%. Their scores, made up for this problem, in %, are:
+
+    ```table
+    worker     1   2   3   4   5   6   7   8   9   10  11  12
+    pre (%)    40  50  30  60  70  20  50  40  60  30  80  50
+    post (%)   70  80  60  90  90  50  70  60  80  70  90  60
+    ```
+
+    What share reached the standard before, and after? By how many percentage points did the
+    share change?
+  answer: |
+    Before: workers 5 and 11 are at 70% or more.
+
+    ```working
+    2 divided by 12 is about 0.167
+    ```
+
+    After: workers 1, 2, 4, 5, 7, 9, 10 and 11 are at 70% or more.
+
+    ```working
+    8 divided by 12 is about 0.667
+    66.7 minus 16.7 = 50
+    ```
+
+    About 16.7% before and 66.7% after, a change of 50 percentage points. Four workers, 3, 6, 8
+    and 12, still did not reach the standard.
+- level: 6
+  prompt: |
+    Twenty residents take a 5-item test before and after a journal club on reading a trial's
+    results table. The number who got each item right, made up for this problem:
+
+    ```table
+    item          1   2   3   4   5
+    right, pre    17  6   4   5   9
+    right, post   19  16  15  6   18
+    ```
+
+    Work out the proportion correct on each item before and after, and the change in percentage
+    points. Say which two items you would act on, and what you would do.
+  answer: |
+    Divide each count by 20.
+
+    ```working
+    item 1: 17 divided by 20 = 0.85, 19 divided by 20 = 0.95
+    item 2: 6 divided by 20 = 0.30, 16 divided by 20 = 0.80
+    item 3: 4 divided by 20 = 0.20, 15 divided by 20 = 0.75
+    item 4: 5 divided by 20 = 0.25, 6 divided by 20 = 0.30
+    item 5: 9 divided by 20 = 0.45, 18 divided by 20 = 0.90
+    ```
+
+    The changes, in percentage points.
+
+    ```working
+    95 minus 85 = 10
+    80 minus 30 = 50
+    75 minus 20 = 55
+    30 minus 25 = 5
+    90 minus 45 = 45
+    ```
+
+    Item 1 was right for 85% before the journal club. Cut the time spent on it, or drop it. Item 4
+    barely moved, from 25% to 30%. Read the item first: if it is clear and matches the objective,
+    teach that part again next time. If it is unclear, rewrite it.
+- level: 6
+  prompt: |
+    A batch's mean pre-test is 38%. Its mean post-test at the end of the session is 74%. Its mean
+    delayed test, a week later on a parallel form, is 61%. The three scores are made up. Work out
+    the raw gain and the class normalised gain at the post-test. Do the same at the delayed test.
+    Then work out the share of the post-test gain still there a week later.
+  answer: |
+    ```working
+    74 minus 38 = 36
+    61 minus 38 = 23
+    100 minus 38 = 62
+    36 divided by 62 is about 0.581
+    23 divided by 62 is about 0.371
+    23 divided by 36 is about 0.639
+    ```
+
+    At the post-test: a raw gain of 36 points and a normalised gain of about 0.58. A week later: 23
+    points and about 0.37. About 64% of the end-of-session gain was still there.
+- level: 7
+  prompt: |
+    Here is a worked answer. Find the step that broke.
+
+    ```working
+    pre = 50, post = 80
+    raw gain = 80 minus 50 = 30
+    room to gain = 100 minus 80 = 20
+    g = 30 divided by 20 = 1.5
+    the learner did better than gaining everything there was to gain
+    ```
+  answer: |
+    The first two lines are right: a raw gain of 30 points.
+
+    The third line broke. The room to gain is measured from where the learner started, the
+    pre-test, not from where they ended.
+
+    ```working
+    100 minus 50 = 50
+    30 divided by 50 = 0.6
+    ```
+
+    The normalised gain is 0.6. The last line should have been the warning. A normalised gain
+    cannot be above 1, because no one can gain more than all the room there was.
+
+    Why it looks reasonable: 100 − post is a real quantity, the room still left at the end. It
+    is the wrong one to divide by.
+- level: 8
+  prompt: |
+    Here is a worked answer. Find the step that broke.
+
+    ```working
+    four learners, pre and post (%): 90 to 100, 20 to 30, 30 to 40, 40 to 50
+    their normalised gains: 1.0, 0.125, 0.143, 0.167
+    mean normalised gain = 1.435 divided by 4 = 0.36
+    Hake's traditional courses averaged 0.23
+    so this session did better than the average traditional course
+    ```
+  answer: |
+    The four learners' own normalised gains are right.
+
+    ```working
+    100 minus 90 = 10, 100 minus 90 = 10, 10 divided by 10 = 1.0
+    30 minus 20 = 10, 100 minus 20 = 80, 10 divided by 80 = 0.125
+    40 minus 30 = 10, 100 minus 30 = 70, 10 divided by 70 = 0.143
+    50 minus 40 = 10, 100 minus 40 = 60, 10 divided by 60 = 0.167
+    1.0 plus 0.125 plus 0.143 plus 0.167 = 1.435
+    ```
+
+    The step that broke is the comparison. Hake's 0.23 is a class normalised gain worked out from
+    class averages. The 0.36 is the mean of four learners' own normalised gains. Work out the same kind as Hake's.
+
+    ```working
+    90 plus 20 plus 30 plus 40 = 180
+    180 divided by 4 = 45
+    100 plus 30 plus 40 plus 50 = 220
+    220 divided by 4 = 55
+    55 minus 45 = 10
+    100 minus 45 = 55
+    10 divided by 55 is about 0.18
+    ```
+
+    The class normalised gain is about 0.18. Every learner gained exactly 10 points. The one who started at
+    90% turned those 10 points into a gain of 1.0, and that one learner lifted the mean to 0.36.
+
+    The last line fails a second time. One session of four learners is not a physics course. Even
+    at 0.18 against 0.23, the comparison says little.
+
+    Why it looks reasonable: "the mean normalised gain" sounds like the same thing as "the average
+    normalised gain". They are computed in different orders, and here they differ by a factor of
+    two.
+  refs: [hake_1998_normalized_gain]
+- level: 9
+  prompt: |
+    A colleague reads Hake's abstract and says: "Interactive courses were almost two standard
+    deviations better. So any student taught interactively gains about twice as much as one taught
+    traditionally."
+
+    Decide what to compute, compute it, and say what the abstract does not establish.
+  answer: |
+    Compute the gap in the abstract's own units, and the ratio the colleague is claiming.
+
+    ```working
+    0.48 minus 0.23 = 0.25
+    0.25 divided by 0.14 = 1.79
+    0.48 divided by 0.23 = 2.09
+    ```
+
+    The gap is 0.25, which is about 1.8 of the interactive courses' SD of 0.14. That is what
+    "almost two standard deviations" means in the abstract. The average interactive course gained
+    about 2.1 times the room the average traditional course did.
+
+    What it does not establish. First, on the likeliest reading, the SD is a spread among the 48
+    course gains, not among students; the abstract does not say. Nothing in it describes how any
+    one student will do. Second, the figures come from "a survey of pre/post-test data". Nothing
+    in the abstract says the courses were assigned their methods at random, so the survey alone
+    cannot say the methods caused the gap. Third, "twice as
+    much" is true of the normalised gain. In raw points it depends on where a class starts, as the
+    problem on a class at 45% showed.
+  refs: [hake_1998_normalized_gain]
+- level: 10
+  prompt: |
+    A made-up report on a training day for ASHA workers says: "Before the session, 60% of workers passed
+    the test. After it, 90% did. The session improved performance by 50%."
+
+    Decide what to compute, compute it, and say what the claim does not establish.
+  answer: |
+    Compute the change both ways, then the share of the room that was gained.
+
+    ```working
+    90 minus 60 = 30
+    30 divided by 60 = 0.5
+    100 minus 60 = 40
+    30 divided by 40 = 0.75
+    ```
+
+    The pass rate rose by 30 percentage points. That is a 50% rise on the starting 60%, so the
+    report's arithmetic holds, but only as a per cent change. The pass rate closed three quarters of the
+    gap to 100%. That is the same as three quarters of the earlier failures passing only if
+    nobody who passed before failed after.
+
+    What it does not establish. The same test before and after, on the same day, can raise scores
+    by practice alone. There is no comparison group to separate that from the teaching. The test
+    at the end of the day shows what the workers could do then, not a week later. Last, a pass rate
+    depends on where the pass mark was set. The report should say what the mark was, and whether
+    it matches the objective's standard.
+figures:
+- file: s57-r1-c12-pre-post.png
+  caption: "Ten students' pre-test and post-test scores, in %. The scores are made up for the example. Points on the lower line, post = pre, would mean no change. The upper line is every pair with a normalised gain of 0.5: post = 50 + 0.5 × pre. F, at 20 and 40, sits below it with a gain of 0.25. H, at 80 and 100, reaches the top of the scale with a gain of 1, though both gained 20 points. The dashed line at 100 is the ceiling: no score passes it."
+  alt: "A scatter of ten points, pre-test along the bottom from 0 to 100 and post-test up the side from 0 to 100. A lower diagonal line runs from 0 to 100 where post equals pre. An upper, flatter line runs from 50 at a pre-test of 0 to 100 at a pre-test of 100. Every point sits above the lower line. The point at 20 and 40 sits below the upper line; the point at 80 and 100 sits on the dashed line across the top at 100."
+  source: draw.py
+  spec:
+    kind: scatter
+    from_table: {block: 0, x: 1, y: [2]}
+    x_label: "pre-test (%)"
+    y_label: "post-test (%)"
+    y_range: [0, 105]
+    curves:
+    - {y: "y = x", x0: 0, x1: 100, label: "post = pre: no change"}
+    - {y: "y = 50 + 0.5*x", x0: 0, x1: 100, label: "normalised gain 0.5"}
+    refs:
+    - {y: 100, label: "100%: the ceiling"}
+    labels:
+    - {text: "F: gain 0.25", at: [20, 40], offset: [-66, -4]}
+    - {text: "H: gain 1", at: [80, 100], offset: [-52, 4]}
+    derived:
+    - {value: "50", from: "0.5 * 100"}
+    relations:
+    - check: "((50 + 0.5*20) - 20) / (100 - 20) = 0.5"
+    - check: "((50 + 0.5*60) - 60) / (100 - 60) = 0.5"
+    - check: "(40 - 20) / (100 - 20) = 0.25"
+    - check: "(100 - 80) / (100 - 80) = 1"
+- file: s57-r1-c12-class-over-time.png
+  caption: "The same ten made-up learners at three tests. The class mean rose from 46% to 75%, a gain of 29 points, and was 66% a week later: 20 of the 29 points, about 69%, were kept. At the end of the session 5 of 10 met the standard of 80%; a week later, 4 did."
+  alt: "Two bars at each of three tests. Class mean: 46 before, 75 at the end of the session, 66 a week later. Learners at 80% or more: 10 before, 50 at the end, 40 a week later, as a percentage of the ten."
+  source: draw.py
+  spec:
+    kind: bar
+    x: ["pre-test", "post-test", "delayed, a week later"]
+    series:
+    - {name: "class mean (%)", y: [46, 75, 66]}
+    - {name: "learners at 80% or more (%)", y: [10, 50, 40]}
+    x_label: "test"
+    y_label: "% (of the maximum, or of the ten)"
+    y_range: [0, 100]
+    value_labels: true
+    relations:
+    - check: "y1[1] - y1[0] = 29"
+    - check: "y1[2] - y1[0] = 20"
+    - check: "(y1[2] - y1[0]) / (y1[1] - y1[0]) = 0.69"
+- file: s57-r1-c12-items.png
+  caption: "How many of the ten learners got each question right, before and after the session. The counts are made up for the example. Item 1, Q1, was right for 8 of 10 before any teaching. Item 10, Q10, moved only from 2 to 3: read that question again before you teach the topic again."
+  alt: "Paired bars for items 1 to 10, Q1 to Q10. Before: 8, 7, 6, 5, 5, 4, 4, 3, 2, 2. After: 10, 9, 9, 8, 8, 8, 7, 7, 6, 3."
+  source: draw.py
+  spec:
+    kind: bar
+    x: ["Q1", "Q2", "Q3", "Q4", "Q5", "Q6", "Q7", "Q8", "Q9", "Q10"]
+    series:
+    - {name: "right, pre", y: [8, 7, 6, 5, 5, 4, 4, 3, 2, 2]}
+    - {name: "right, post", y: [10, 9, 9, 8, 8, 8, 7, 7, 6, 3]}
+    x_label: "item (question)"
+    y_label: "learners right (of 10)"
+    y_range: [0, 11]
+    value_labels: true
+    relations:
+    - check: "y2[9] - y1[9] = 1"
+- file: s57-r1-c12-hake.png
+  caption: "Hake's survey of 62 physics courses, class normalised gain. The 14 courses that made little or no use of interactive engagement averaged 0.23 (SD 0.04); the 48 that made substantial use of it averaged 0.48 (SD 0.14). These are physics courses on physics tests, not a target for one session in another subject."
+  alt: "Two bars. 14 traditional courses: 0.23. 48 interactive-engagement courses: 0.48."
+  source: draw.py
+  spec:
+    kind: bar
+    x: ["14 traditional courses", "48 interactive-engagement courses"]
+    series:
+    - {name: "class normalised gain", y: [0.23, 0.48]}
+    x_label: "Hake's 62 physics courses"
+    y_label: "class normalised gain"
+    value_labels: true
+    relations:
+    - check: "14 + 48 = 62"
+provenance:
+  map_version_id: fc19c8bc-a216-4131-99fb-ebe3f19cec4a
+  outcome_refs:
+  - S57-R1-G
+  - S57-R1-B
+  bridge_ref:
+  - S57-R2-R2
+  - S57-R2-B
+review:
+  stability: long
+  trigger: '2031-09-25'
+  last_reviewed: '2026-09-25'
+status: drafted
