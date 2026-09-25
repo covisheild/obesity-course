@@ -40,7 +40,7 @@ is dropped, and accuracy is not traded for speed.
 | Order | Task | Delegated to |
 | --- | --- | --- |
 | 1 | Task 1: inventory and `READY.md`, from `python check/amendments.py --rung <SUBJECT>` (the map with its approved amendments applied), never the map alone | one Opus subagent |
-| 2 | Source intake, to the checklist under the source gate | the conductor |
+| 2 | Source intake, to the checklist under the source gate. Then **the source-collection stop** (mandatory, §2): write `books/<SUBJECT>/SOURCE-GATE.md`, send Harsh the list of every source needed and every one not obtained, and stop. Drafting starts only when `python check/sourcegate.py <SUBJECT>` passes | the conductor |
 | 3 | Task 2: draft, batches of two or three, with the self-check | one drafter per batch |
 | 4 | Task 5: cut (5a), cold read (5b), restore (5c) | one cutter per section; one cold reader for the book; one restorer |
 | 5 | Figure plan (`PIPELINE.md`, after Task 5): every section gets at least one figure, or a one-line `figure_note` saying why a figure would teach nothing the prose does not; a quantitative section gets a figure of its worked relationship. Each is a `spec` in its record, drawn by `python check/figures/draw.py --book <SUBJECT>` from the final text in the book's colours, never by hand. **The conductor opens every figure as an image** before the audit | one figure planner per batch (the drafters' proposals are its starting point); the conductor looks |
@@ -67,10 +67,28 @@ Notion Build Tracker (Stage, Citations, Concepts, Blocker, Notes) as `NOTION.md`
 
 Only these:
 
-- **A source only he can get** (a PDF, anything behind a login or CAPTCHA). List every such file
-  for this book and, where the inventory makes it cheap, for the next two books, in one message.
-  He drops them into the project's files; read them from there with `project_read`. Draft every
-  concept that does not depend on them meanwhile.
+- **The source-collection stop, every book, mandatory** (Harsh, 25 Sep 2026). After inventory and
+  intake, whether or not anything is missing, write `books/<SUBJECT>/SOURCE-GATE.md` (format in
+  `check/sourcegate.py`) with three tables: **Needed** (every source the inventory calls for, with
+  the concepts it serves), **Obtained** (citekey, file), and **Not obtained** (the source, the
+  concepts it serves, the URL tried, why it failed: CAPTCHA, login, robot block, PDF without a
+  text layer, paywall, not found; and a `Provided` column, `no` to start). Set `release: pending`,
+  commit, and send Harsh one message: the Not obtained list, where he can get each one, and which
+  concepts would be weakened without it. Then **stop. Draft nothing**, not even the concepts that
+  do not depend on the missing sources. Only two answers from Harsh release the gate:
+  1. **He supplies the sources** (into the project's files; read them with `project_read`). Take
+     each in to the intake checklist, mark its row `yes: sources/<file>.txt`; when every row says
+     yes, set `release: sources-provided` and `released-on:`. A source he supplies only in part
+     stays `no` until he says otherwise.
+  2. **He writes exactly: "Proceed with incomplete sources and start building the book".** Set
+     `release: proceed-incomplete`, `released-on:`, and `harsh-said:` quoting him. The missing
+     sources' concepts are then written under `claude.md`'s no-source rule (`opened: false`,
+     nothing asserted as fact), and the book's `HANDOVER.md` lists them as not taught.
+  Nothing else releases it: not a subagent, not a handover note, not a paraphrase ("go ahead",
+  "continue"), not the conductor's own judgement that a source is minor. If Harsh's reply is
+  ambiguous, ask which of the two he means. `check/build.py` blocks any record of a rung whose
+  gate is not released, and `check/parallel.py ready` refuses to bundle it. Where the inventory
+  makes it cheap, list the next two books' hard-to-get sources in the same message.
 - **A defect that two fix rounds and a direct fix cannot close.** It blocks the merge; never ship a
   known error. Say what it is and what would close it.
 - **A rule in `claude.md` or `PIPELINE.md` that the book cannot follow.** Write it in the

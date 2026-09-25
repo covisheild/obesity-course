@@ -10,7 +10,8 @@ Added 24 September 2026 on Harsh's instruction. Three commands:
                                               that local main already contains origin/main (so
                                               Harsh's `git pull --ff-only` cannot fail), that
                                               deps and registries pass, and that map/BOOKS.yml
-                                              is current.
+                                              is current, and that the book's source gate
+                                              was released by Harsh (check/sourcegate.py).
 
 What a book depends on, from the frozen map: Book 0; its own subject's rung below; each
 prerequisite subject's rung at the same level (or its top rung, if it has fewer), which is the
@@ -183,6 +184,10 @@ def cmd_ready(book_id):
         fails.append("dependencies not frozen on origin/main")
     if cmd_registries():
         fails.append("shared registries have collisions")
+    sys.path.insert(0, HERE)
+    import sourcegate
+    if sourcegate.problems(book_id):
+        fails.append("source gate not released by Harsh (check/sourcegate.py)")
     if subprocess.run([sys.executable, os.path.join(HERE, "series.py"), "--check"],
                       cwd=ROOT).returncode:
         fails.append("map/BOOKS.yml stale: run python check/series.py")

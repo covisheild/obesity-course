@@ -70,6 +70,10 @@ the cheapest place it will ever be caught.
 **8. Sources are taken in once, before drafting.** The conductor fetches and
 files every source the inventory needs, to the checklist under the source gate, before any
 drafter starts. Drafters and fixers never fetch.
+*Amended 25 September 2026 (Harsh):* intake ends at a mandatory stop. The conductor lists every
+source needed and every one not obtained in `books/<SUBJECT>/SOURCE-GATE.md`, sends Harsh the list,
+and drafts nothing until he supplies them or says "Proceed with incomplete sources and start
+building the book" (`CONDUCTOR.md` §2; checked by `check/sourcegate.py`, blocking in the build).
 
 **9. One writing chat at a time on shared files.** `sources/INDEX.yml`,
 `check/references/library.bib` and `prose/GLOSSARY.md` are shared registries. Two chats adding
@@ -90,6 +94,13 @@ the row is caught up at the next boundary.
 ## Before anything: the source gate
 
 Open `books/<SUBJECT>/READY.md`. If any line says **no**, the pipeline does not start.
+
+**And the source-collection stop (mandatory from 25 September 2026).** After intake, the
+conductor writes `books/<SUBJECT>/SOURCE-GATE.md` — needed, obtained, not obtained with the URL
+tried and why — sends Harsh the not-obtained list, and stops. Drafting begins only when
+`python check/sourcegate.py <SUBJECT>` passes: every missing source supplied by Harsh, or Harsh's
+own words "Proceed with incomplete sources and start building the book" recorded in the file.
+Books frozen before this rule (Book 0 and Books 1–4, 7, 8) are exempt.
 
 This is not a formality and it is not satisfied by intending to find the source later. A record
 whose concept is `empirical` or `institutional` and whose source is unopened is now a **blocking**

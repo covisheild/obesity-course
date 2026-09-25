@@ -1901,6 +1901,10 @@ def main():
     block += [f"series: {p}" for p in _series.problems(_subs, _heads, _books)]
     if not os.path.exists(_series.OUT) or open(_series.OUT, encoding="utf-8").read() != _series.dump(_books):
         block.append("series: map/BOOKS.yml is stale (a book.yml status changed?) - run python check/series.py")
+    # Harsh's source-collection stop (25 Sep 2026): no rung is drafted before its gate is released.
+    import sourcegate as _sourcegate
+    block += [f"source gate: {p}" for b in _sourcegate.books_with_records()
+              for p in _sourcegate.problems(b)]
     counts = reports(recs, subjects, clusters, block, warn)
 
     print(f"records {len(recs)} | clusters {len(clusters)} | blocking {len(block)} | warnings {len(warn)}")
