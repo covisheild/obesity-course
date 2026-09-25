@@ -433,3 +433,20 @@ the pass does not touch. "Residue" marks what is left of a gap that was partly r
   both."
 - Wrong or missing: no reason is given, so the reader cannot defend or adapt the advice.
 - To close it: add the reason in one line, with a source if it is claimed as a finding.
+
+## Conductor's figure notes (looked at all 30 PNGs, 25 Sep)
+
+- C04 `best-gap`: its label says "best tried 21, fitted best 23 (7%)" at 350 days — the same 21/23
+  tension the cold read found in the prose (hole). Settle it from Cepeda (manuscript) and make figure
+  and prose agree.
+- C04 `review-window`: plots gap and remaining retention interval against "gap as % of the retention
+  interval" for a 42-day calendar; hard to read and the green line's meaning is unclear. Keep only if
+  it teaches the split the prose teaches; otherwise replace or drop.
+- C13 `form-by-level`: invented form's items by level; restates "nothing reaches 2B". Probably drop.
+- C14 `img-roles`: 5 / 7 / 5 roles in three lists from two documents — check each count against the
+  held instrument and that the prose explains why the same document gives 7 and 5.
+- C15 `mentees`: "3 new mentees a year" for 5 years — check that the rate and the 15 come from the
+  held MIQF 2025 text (or are labelled as an example), not invented.
+- C16 `crandall-reach`: the monthly bar is drawn at 100 for Kotter's "80 to 100"; acceptable only if
+  the caption says the bar shows the upper end.
+- C08 `faded-help`: y axis ticks in 0.5 steps for a count of steps (tool limitation; minor).
