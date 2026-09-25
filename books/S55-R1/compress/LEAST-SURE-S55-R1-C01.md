@@ -1,0 +1,1 @@
+Least sure: cut the illustration sentence defining NCDs ("long-term illnesses that do not pass from one person to another"). The table still says "NCD clinic", and later sections of this book may lean on the term. If the cold reader stalls on "NCD", restore that sentence.

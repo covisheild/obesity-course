@@ -1,0 +1,1 @@
+Least sure: cutting all of Ioannidis's eight features and Chalmers and Glasziou's waste estimate (from both definition.text and simplified_explanation). Nothing in the exercises asks for them, but together they were the section's main evidence that the three tests matter, and a reader might need them to answer Exercise 3 persuasively.
