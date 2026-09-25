@@ -214,6 +214,123 @@ line on each details page. *Understanding Linear Algebra* is revised in place to
 2022; the trigger is a fifth edition. Chow and Hall 2008 is a published article; the trigger is a
 correction notice.
 
+## Added by the S36-R1 source intake, 2026-09-24
+
+Same method as S02-R1: TinyFish `fetch_content` only, each passage a contiguous slice of the saved
+raw result, re-checked as a whitespace-normalised substring of that fetch: **21 of 21**. Log in
+`books/S36-R1/INTAKE.md`. Most files hold whole articles as one run, not excerpts.
+
+**Three files are OCR, not text.** Kitzinger 1995, Britten 1995 and Pope & Mays 1995 exist in PMC
+only as scanned pages. Europe PMC's PDF of the scans carries an OCR text layer, and that is what the
+three files hold. The OCR has dropped nearly every space between words and has visible misreadings,
+so a quote must be written unspaced to pass the check, and a person must check each one against the
+page image. Passing the machine check proves only that the OCR says it.
+
+**Licences.** DeJonckheere & Vaughn is CC BY-NC 4.0. McMullin is copyright ISTR, shown in PMC under
+PMC's time-limited COVID-19 permission, which is not an open licence. The five BMJ articles show no
+licence statement on their PMC pages: free to read, short quotation only. ICMR permits
+non-commercial use with acknowledgement.
+
+| File | What it is | Words | Verified in it |
+| --- | --- | --- | --- |
+| `dejonckheere_vaughn_2019.txt` | DeJonckheere and Vaughn, *Fam Med Community Health* 2019;7:e000057 (PMC6910737), PMC OA XML. CC BY-NC 4.0. **Whole body**, Tables 1-6 as text; Figure 1 (image) and the appendix guide not held | 5,215 | Eleven steps (Table 3); audio-recording suggestions (Table 4); grand tour, core and follow-up questions (Table 5); probing techniques: wait time, echo, verbal agreement, expansion, explanation (Table 6); "start with an easy, context-setting question"; pilot testing the guide; memoing; "prioritising listening over talking". **No sentence saying the participant should do most of the talking** |
+| `pope_ziebland_mays_2000.txt` | Pope, Ziebland and Mays, *BMJ* 2000;320:114 (PMC1117368), PMC page. **Whole article** without references. No licence stated | 2,465 | Transcribing one interview "takes several hours and can generate 20-40 pages"; transcripts as raw data; analysis begins during collection; deviant or negative cases; "expressing results in relative frequencies may be misleading"; indexing; constant comparison; framework approach |
+| `mays_pope_2000.txt` | Mays and Pope, *BMJ* 2000;320:50 (PMC1117321), PMC page. **Whole article** without references. No licence stated | 2,376 | Triangulation; respondent validation; clear exposition of methods; reflexivity; attention to negative cases ("deviant case analysis"); fair dealing; the box of quality questions ("more than convenience sampling") |
+| `green_britten_1998.txt` | Green and Britten, *BMJ* 1998;316:1230 (PMC1112988), PMC page. **Whole article** without references. No licence stated | 1,421 | Qualitative research addresses questions different from clinical epidemiology's; "different research questions require different kinds of research"; generalisability "conceptual rather than numerical"; anecdote against rigorous qualitative research |
+| `mcmullin_2023.txt` | McMullin, *Voluntas* 2023;34:140 (PMC8432276), PMC OA XML. PMC COVID-19 permission, **not CC**. **Whole body** without appendix and references | 4,741 | Naturalized against denaturalized transcription; three to eight hours per hour of audio; intelligent verbatim; the framework (before transcribing, whether to transcribe, how, who, writing about it); 41% of *Voluntas* interview papers do not mention transcription. Translation only in passing |
+| `icmr_ethical_guidelines_2017.txt` | ICMR *National Ethical Guidelines* 2017, PDF text layer. Non-commercial use with acknowledgement. **Excerpts** | 9,266 | Table 2.1 risk categories ("routine questioning or history taking" as minimal risk); 2.2.2 audio-visual recording of consent "in certain clinical trials as notified by CDSCO"; 3.5.1 authorship of course research (not review); Table 4.2 exemption, expedited, full review; 4.8.3 "A researcher cannot decide" the review category; 5.2 and Box 5.1 essential information; 5.4 documentation; 5.7 waiver; Section 9 whole, including EC permission for audio/video recording |
+| `kitzinger_1995.txt` | Kitzinger, *BMJ* 1995;311:299 (PMC2550365). **OCR text layer** of scans, whole article. No licence stated | (OCR, unspaced) | Title and headings located: rationale and uses of focus groups; sampling and group composition; running the groups; analysis and writing up; the sampling-advantages box (people who cannot read or write); seven main aims. Not checked against the page image |
+| `britten_1995.txt` | Britten, *BMJ* 1995;311:251 (PMC2550292). **OCR text layer** of scans, whole article. Licence not seen | (OCR, unspaced) | Box 1 types of interviews; Box 2 question types; Box 3 Whyte's directiveness scale; Box 4 control; Box 5 pitfalls; "Researcher as research instrument"; recording interviews. Not checked against the page image |
+| `pope_mays_1995.txt` | Pope and Mays, *BMJ* 1995;311:42 (PMC2550091). **OCR text layer** of scans, whole article. No licence stated | (OCR, unspaced) | Box 1 glossary; Box 2 the overstated dichotomy; Box 3 two-stage tonsillectomy investigation. Not checked against the page image |
+
+**Textbook added the same day (S36-R1, second intake).** A research-methods textbook was added so that
+derivable records can cite a `textbook` reference. The BMJ methods papers are articles, not textbooks.
+Same method: **12 of 12** passages verbatim against the fetch.
+
+| File | What it is | Words | Verified in it |
+| --- | --- | --- | --- |
+| `blackstone_2012.txt` | *Principles of Sociological Inquiry: Qualitative and Quantitative Methods* v1.0, Saylor Academy 2012 (Amy Blackstone; the Saylor edition omits her name at her request). CC BY-NC-SA 3.0 (licence page). One page per section, fetched with body scope. **Excerpts: eleven whole sections, exercises omitted** | 28,440 | 1.2 qualitative methods "yield results such as words or pictures", quantitative "can be represented by and condensed into numbers", "complementary rather than competing"; 2.3 inductive and deductive; 3.1 IRBs; 3.2 informed consent, anonymity and confidentiality; 5.2 idiographic and nomothetic; 7.2 purposive, snowball, quota and convenience samples (Table 7.1); 9.1 when to interview; 9.2 interview guide, open-ended and non-leading questions, recording, transcription, open and focused coding (Table 9.1); 9.4 power, location, rapport; 12.1 focus groups (Table 12.1). Figures (the sample consent form and the two interview guides) are images and not held. **Chapter 4 added 2026-09-25 by the S55-R1 intake** (see below) |
+
+**Indian data-protection law added (S36-R1 v1.1, 24-25 September 2026).** For C07, recording and
+privacy in an interview. Same method: TinyFish `fetch_content` only, passages cut by script. **4 of
+4** runs verbatim against the fetch. India Code was unreachable for the tool; all three are the
+Gazette PDFs on meity.gov.in. None states a licence: Government of India legislation, nothing assumed.
+
+| File | What it is | Words | Verified in it |
+| --- | --- | --- | --- |
+| `dpdp_act_2023.txt` | Digital Personal Data Protection Act 2023 (Act 22 of 2023), Gazette of 11 August 2023, PDF text layer. **Whole Act as enacted**, not consolidated | 11,243 | s.2 definitions ("Data Fiduciary" (i), "Data Principal" (j), "personal data" (t), "processing" (x), "child" (f)); s.3 application; s.5 notice; s.6 consent and withdrawal; s.8(5) security safeguards, s.8(7) erasure; s.9 children; s.17(2)(b) research, archiving or statistical purposes; s.44(3) amending RTI Act s.8(1)(j) |
+| `dpdp_commencement_2025.txt` | MeitY G.S.R. 843(E), 13 November 2025, s.1(2) commencement. **Whole notification**, Hindi and English | 944 | (a) on publication: s.1(2), s.2, ss.18-26, 35, 38-43, s.44(1) and (3); (b) one year from publication: s.6(9), s.27(1)(d); (c) eighteen months: ss.3-5, s.6(1)-(8) and (10), ss.7-17, s.27 except (1)(d), ss.28-34, 36, 37, s.44(2) |
+| `dpdp_rules_2025.txt` | DPDP Rules 2025, G.S.R. 846(E), 13 November 2025, PDF text layer. **Whole English text**, Hindi version omitted | 10,906 | rule 1 commencement (rules 1, 2, 17-21 on publication; rule 4 after one year; rules 3, 5-16, 22, 23 after eighteen months); rule 3 notice; rule 6 security safeguards; rule 8 erasure; rule 10 children's verifiable consent; rule 16 research exemption; Second Schedule standards (a)-(h) |
+
+
+**25 Sep 2026 (S36-R1):** the OCR files `kitzinger_1995`, `britten_1995`, `pope_mays_1995` were checked against PDFs Harsh downloaded from PMC (bmj00603-0031, bmj00602-0049, bmj00599-0046): every quote the book takes from them matches those PDFs' text and page images.
+
+
+## Added by the S55-R1 source intake, 2026-09-25
+
+Same method as S02-R1 and S36-R1: TinyFish `fetch_content` only, each passage a contiguous slice of
+the saved raw result, re-checked as a whitespace-normalised substring of that fetch: **31 of 31**
+(25 runs in the twelve new files, 6 in Blackstone chapter 4). Log in `books/S55-R1/INTAKE.md`. Most
+files hold whole articles as one run.
+
+**Licences.** Jhangiani and Ratan are CC BY-NC-SA 4.0; Aslam is CC BY 2.0; Ioannidis 2016 and
+Golosovsky & Larivière are CC BY 4.0. The CDC pages state no licence; CDC's own reuse page, held in
+the file, says most of its web material is public domain, with exceptions for third-party material
+and images. Morgan 2018 (EPA author manuscript), Farrugia 2010 and Nowroozzadeh 2019 state no open
+licence. Ioannidis 2014 is a Lancet author manuscript, "available for text mining" and fair use only.
+**Van Noorden 2017 is all rights reserved**: held for audit quotation only. India Code's terms of use
+allow personal, non-commercial use and forbid automated access without permission; see the file
+header and the intake log.
+
+**Van Noorden 2017 is a news feature.** Its uncitedness figures come from an analysis Larivière and
+Sugimoto ran on Web of Science for the feature. They are not peer-reviewed primary data, and the
+file says so. Golosovsky & Larivière's 12% to 70% range is their report of Sugimoto & Larivière
+(2018), a book that is not held.
+
+**Farrugia 2010's text layer is damaged.** Spaces fall inside words in the running text ("m edicine",
+"FIN E R"). A correctly spelled quotation of the running text will fail the check. Its Boxes 1-3
+(FINER, PICOT, tips) are clean.
+
+| File | What it is | Words | Verified in it |
+| --- | --- | --- | --- |
+| `blackstone_2012.txt` (extended) | Blackstone 2012, **chapter 4 appended** as blocks 13-18: chapter introduction and 4.1-4.5, each without exercises | +8,169 | 4.1 starting where you already are; 4.2 empirical against ethical questions; 4.4 the five features of a strong research question ("written in the form of a question, clearly focused, beyond yes/no, more than one plausible answer, and consider relationships among concepts") and Table 4.2, sample questions with strengths, weaknesses and alternatives; 4.5 feasibility (identity, access, time and money) and the library |
+| `jhangiani_2019_methods.txt` | Jhangiani, Chiang, Cuttler & Leighton, *Research Methods in Psychology* 4e (KPU 2019), CC BY-NC-SA 4.0. **One whole chapter**, "Generating Good Research Questions" (Pressbooks numbers it 9; `READY.md` calls it 2.3) | 1,829 | Empirically testable questions "expressed in terms of a single variable or relationship between variables"; looking at the discussion section of a recent article; causes, effects, types of people, types of situations; interestingness (answer in doubt, fills a gap, practical implications); feasibility (time, money, equipment, skill, access to participants) |
+| `cdc_ss1978_lesson1.txt` | CDC, *Principles of Epidemiology in Public Health Practice* 3e (SS1978), Lesson 1 §6 and §7 (archive pages, last reviewed 18 May 2012; book published October 2006, updated November 2011), exercises omitted, with CDC's reuse page. **Excerpts** | 6,442 | §6 time, place and person; §7 the comparison group as the key feature of analytic epidemiology; exposure and health outcome; experimental against observational studies; cohort, case-control and cross-sectional studies, and why the cross-sectional study "usually cannot disentangle risk factors for occurrence of disease (incidence) from risk factors for survival with the disease" |
+| `aslam_emmanuel_2010.txt` | Aslam & Emmanuel, *Indian J Sex Transm Dis AIDS* 2010;31:47 (PMC3140151), PMC OA XML, CC BY 2.0. **Whole article** without references | 2,264 | Background and foreground questions; PICO, with Table 1 (PICO and FINER); the otitis media worked example; characteristics of a good research question |
+| `morgan_peco_2018.txt` | Morgan, Whaley, Thayer & Schünemann, *Environ Int* 2018;121:1027 (PMC6908441), EPA author manuscript, Europe PMC PDF text layer. No licence stated. **Whole manuscript**; Figure 1 not held | 4,594 | PECO (population, exposure, comparator, outcome) as the exposure analogue of PICO; five scenarios with P/E/C/O examples on hearing impairment; Table 1; "54%" of 313 studies not reporting the four PICO components (their citation) |
+| `ratan_2019.txt` | Ratan, Anand & Ratan, *J Indian Assoc Pediatr Surg* 2019;24:15 (PMC6322175), PMC page, CC BY-NC-SA 4.0. **Whole article** without references; Tables 1-2 are images, not held | 2,879 | FINERMAPS, letter by letter; types of research question (existence, description and classification, composition, relationship, comparative, causality); steps to develop a question; research question and study design (incidence leads to a survey, risk factors to case-control or cohort). **No PICO** |
+| `ioannidis_2016_useful.txt` | Ioannidis, *PLoS Med* 2016;13:e1002049 (PMC4915619), PMC page, CC BY 4.0. **Whole essay** without references | 3,484 | Summary points; Table 1, the features and questions to ask; problem base; context placement and information gain; pragmatism; patient centeredness; value for money; feasibility; transparency; Table 2's estimates are the author's |
+| `ioannidis_2014_waste.txt` | Ioannidis et al., *Lancet* 2014;383:166 (PMC4697939), HHS author manuscript, PMC OA XML. Text mining and fair use only. **Whole body** without references | 5,917 | "Problem 2: poor utility of information"; "Problem 4: insufficient consideration of other evidence"; options for improvement; Panels 1-2 |
+| `van_noorden_2017.txt` | Van Noorden, *Nature* 2017;552:162, news feature, publisher PDF text layer. **All rights reserved.** Whole, with its correction | 2,654 | The 1990 *Science* claim (Hamilton) and Pendlebury's 1991 correction as the feature reports them; the Larivière–Sugimoto Web of Science figures; database coverage; uncited is not useless; the correction removing the data link |
+| `golosovsky_lariviere_2021.txt` | Golosovsky & Larivière, *Quant Sci Stud* 2021;2:899, Montréal repository copy of the published PDF, CC BY 4.0. **Whole article** to the data statement, references omitted | 5,670 | The uncitedness ratio and its dependence on time since publication; the 12%-70% range attributed to Sugimoto & Larivière 2018; the Poisson model. Equations flattened; figures not held |
+| `farrugia_2010.txt` (optional) | Farrugia et al., *Can J Surg* 2010;53:278 (PMC2912019), Europe PMC PDF text layer. No licence. **Whole article**; running text damaged | 3,823 | Box 1 FINER criteria; Box 2 PICOT (T for time); Box 3 tips; research hypothesis and objectives |
+| `nowroozzadeh_2019.txt` (optional) | Nowroozzadeh & Salehi-Marzijarani, *J Gen Intern Med* 2019;34:2695 (PMC6854350), Europe PMC PDF text layer. No open licence. **Whole letter** | 1,275 | Web of Science uncitedness in five top general medical journals (anonymised A-E) for 1990, 2000, 2010 and 2015 cohorts; five-year uncitedness falling from 8.3 (1990) to 0.7 (2010) |
+
+**Vintage.** The Pressbooks and Saylor books are revised in place (recheck the page). The CDC lesson is
+an archived page (last reviewed 18 May 2012).
+The Companies Act s.135 was fetched from India Code and then withdrawn by the conductor: India Code's
+Term of Use forbids automated access without written permission. Not held.
+
+### Added 2026-09-25 from PDFs supplied by Harsh
+
+The four **Harsh only** lines in `books/S55-R1/READY.md`. Harsh downloaded them in a browser from
+subscription sites. The "raw fetch" is each PDF's own text layer from `pdftotext` (poppler 24.02.0),
+saved unchanged outside the repository. The running text comes from the default mode. Patsopoulos
+Tables 1–2 and Nicolaisen Tables 1–3 and 6 come from `-layout`, which keeps table rows together. Every
+passage is a contiguous slice of that text, re-checked by `verify.py`: **38 of 38** in the four
+files (65 of 65 for the whole S55-R1 intake). **Excerpts only**, and every omission is listed in
+each header. **None is openly licensed.** Each is held as a subscription copy supplied by Harsh,
+for short quotation at audit only; no table or figure is to be reproduced. The Lancet prints carry
+Elsevier's site notice, which reserves "text and data mining, AI training, and similar
+technologies"; see the intake log. Page chrome from the two browser prints (date line, URL, page
+counter, menus, reference link labels) lies outside every run.
+
+| File | What it is | Words | Verified in it |
+| --- | --- | --- | --- |
+| `patsopoulos_2005.txt` | Patsopoulos, Analatos & Ioannidis, *JAMA* 2005;293:2362 (PMID 15900006), publisher PDF. "©2005 American Medical Association. All rights reserved." **Excerpts**: opening, abstract, methods, results, Tables 1–2, comment and caveats; figures and references omitted | 2,916 | ISI Science Citation Index (Web of Science); designs found by title words; 2,646 eligible articles from 1991 and 2001; citations to the end of the second year after publication, and totals to 10 December 2004; Table 1 median 2-year citations by design (meta-analysis 5 and 9, RCT 4 and 6, cohort 3 and 5, case-control 3 and 4, case report 0 and 1, nonsystematic review 2 and 4, decision or cost-effectiveness 4 and 4, for 1991 and 2001); share with more than 10 citations in 2 years; self-citations not excluded. **No cross-sectional category** |
+| `chalmers_glasziou_2009.txt` | Chalmers & Glasziou, *Lancet* 2009;374:86 (PMID 19525005), browser print of the full-text page. Elsevier site notice, all rights reserved. **Excerpts**: body text and Panel; the figure is an image and is not held | 2,469 | Four stages (questions, design and methods, publication, reports); "the roughly 50% loss at stages 2, 3, and 4 would lead to a greater than 85% loss"; mainly clinical-trial evidence, "reasonable to assume" it applies to other research; 53% of abstracts published in full after 9 years; osteoarthritis priorities (9% of patients wanted drug research, over 80% of trials were drug trials); the Panel's recommendations |
+| `chalmers_2014_priorities.txt` | Chalmers, Bracken, Djulbegovic et al., *Lancet* 2014;383:156 (PMID 24411644), browser print. Elsevier site notice, all rights reserved. **Excerpts**; figures and tables not held | 3,878 | Summary and the four recommendations; priority-setting steps (Panel 1); burden-of-disease mismatches; waste when users' needs are ignored; the Figure 2 caption (the figure's counts are an image); users rarely involved in agenda setting; fewer than a quarter of previous trials cited; less than half aware of reviews; closing recommendations with Panel 3 (James Lind Alliance shared priorities) |
+| `nicolaisen_frandsen_2019.txt` | Nicolaisen & Frandsen, *Scientometrics* 2019;119:1227 (not in PubMed), publisher PDF. "© Akadémiai Kiadó, Budapest, Hungary 2019"; no licence. **Excerpts**: abstract, introduction, method, results, discussion, Tables 1–3, the Medicine rows of Table 6 | 3,530 | Scopus; publications of 1996–2015; open window to 6 December 2018; seven document types; uncitedness ratio for Medicine 0.23 over all seven types (articles 0.18, reviews 0.18, letters 0.44, notes 0.64); all 27 subject areas (Table 3); ratios by year for Medicine; "uncited" means zero citations in Scopus |
 ## Added by the S57-R1 source intake, group a (learning-science papers), 2026-09-24
 
 Every passage was cut by script from the raw text the TinyFish `fetch_content` tool returned

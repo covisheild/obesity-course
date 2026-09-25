@@ -1,0 +1,1 @@
+Least sure: cut the whole Morgan statistic (54% of 313 studies omitted PICO parts) and the lines saying this course has not read that review. That leaves must_know[4] starting "So when you read a paper", with no reason given. The cold reader may find the step unmotivated. If so, restore the first two sentences.

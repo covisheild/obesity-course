@@ -1,0 +1,1 @@
+Least sure: deleting "You use a prompt only if the respondent does not get there on their own." Without it, the prompts bullet says what a prompt is but not when to use one. A reader could take prompts as extra questions to read out every time, which is the scripted use the section warns against. Exercise 1 asks for prompts under each main question.

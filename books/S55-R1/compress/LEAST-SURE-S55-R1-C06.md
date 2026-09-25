@@ -1,0 +1,1 @@
+Least sure: cutting the Heneberg Nobel-laureate check (1.6% down to 0.3%) and the two examples of uncited but used papers. "The database misses citations" and "Being uncited is not being useless" now stand as bare claims. Exercise 3 (the journalist, with confidence stated) may need that concrete evidence.

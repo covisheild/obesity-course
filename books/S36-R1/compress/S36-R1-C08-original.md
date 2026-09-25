@@ -1,0 +1,98 @@
+# S36-R1-C08 · Running the interview without leading it
+
+**Definition.** A semi-structured interview runs in a fixed order of parts, and within them it follows the
+respondent. In the words of a standard methods textbook, Principles of Sociological Inquiry
+(2012), after the opening question "what the participant says will shape how the interview
+proceeds".
+
+It opens with who you are, why you are talking to this person, the consent steps and the
+recorder. In DeJonckheere and Vaughn's (2019) words, most interviews begin "with a brief
+explanation of the research study". The consent steps follow, then the reason for talking to this
+person, then the plan for the hour. The first question after that is an open one the respondent
+can answer easily.
+
+From then on the interviewer's main work is listening. "Listening is the key to successful
+interviewing." The interviewer follows the respondent's words with probes. The textbook defines a
+probe as "a request for more information". In this book a probe is a short follow-up that asks
+for more of what the respondent just said without suggesting what that should be. DeJonckheere and Vaughn list, among others, the pause after a question ("wait time"),
+repeating or summarising the respondent's words ("echo"), short affirming words such as "yes...
+okay..." ("verbal agreement"), asking them to say more ("expansion") and asking what they meant
+by a word ("explanation").
+
+Either person may leave the topic guide to follow an idea. Britten (1995) describes the guide's open
+questions as a loose structure "from which the interviewer or interviewee may diverge in order to
+pursue an idea in more detail". The interviewer comes back to the guide when that thread ends.
+
+The interviewer does not judge, teach, advise or correct. The textbook puts the rule plainly:
+the job is "to gather the information being shared with you, not to make personal judgments
+about it". Britten lists "giving interviewee medical
+advice" and "summarising responses too early" among common pitfalls. A clinician interviewing
+patients should not correct them "if they say things that doctors think are wrong". Questions the
+respondent asks can be answered at the end.
+
+Leaving the guide does not mean giving up direction altogether. Britten's point is "not that
+non-directiveness is always best, but that the amount of directiveness should be appropriate".
+
+The interview closes with thanks. Straight afterwards, the interviewer writes field notes: an
+account of how the interview went, where it happened, and what the interviewer noticed. It is
+written because "you likely will not be able to recall each moment with sufficient detail".
+
+**In plain terms.** The sections before this one gave you the questions, the guide and the consent steps. This one is
+about the hour itself: what you do while the other person talks.
+
+The hour has a shape. You start by saying who you are and why you are there. You go through
+consent, and switch the recorder on only after a separate yes. Then you ask an easy, open first
+question. After that, most of your work is listening.
+
+Listening sounds passive. It is not. You are deciding, all the time, which of the person's words
+to follow.
+
+You follow them with probes — short follow-ups that ask for more without hinting at
+what more should be. You stay quiet and wait. You repeat the person's own words back. You say
+"tell me more", or "can you give me an example?", or "what do you mean by that?". None of these
+adds an idea of yours.
+
+Sometimes the person goes somewhere your topic guide did not plan. Go with them. That is often where the
+answer is. Come back to your list of questions when they finish.
+
+Some things feel helpful and damage the interview. Giving advice is one. So is correcting a wrong
+belief, or finishing the person's sentence. Agreeing with what they said, as opposed to showing
+that you heard it, is another. Each one tells the person what you think. From then on they talk to
+you, not about their life.
+
+When it ends, thank them. Then, the same day, write field notes — what happened, where, how it
+felt, what surprised you. You will not remember it well tomorrow.
+
+**Must know points for you.**
+
+- Running an interview well does not mean never steering. You still choose which thread to follow and when to return to the guide. Britten's point is that the amount of steering should be right for the moment, not zero. An interview with no direction wanders; one with too much hears only your own questions answered.
+- Showing you heard is not agreeing with what was said. "Yes... okay..." keeps a person talking. "You are right, the diet is impossible" tells them which answer you like, and the next answers will lean towards it.
+- Before you say a probe, check it for words the respondent has not used. A probe made of their words, a pause, or "tell me more" adds nothing of yours. A probe that brings in a new word, such as "was it the cost?", has already suggested the answer.
+- When a respondent says something medically wrong, do not correct it. What they believe is the data. Correcting them also teaches them what you want to hear for the rest of the hour. Britten says patients interviewed by their doctors should not be corrected for exactly this reason.
+- If a respondent asks you a medical question, say you will come back to it at the end. Then do come back to it: give them a name at the clinic to ask. Answering in the middle turns the interview into a consultation.
+- Write field notes the same day, before you listen to the recording. The recording keeps the words. It does not keep the room, who else was near, or the moment the person went quiet. Only your notes can.
+- The listening stance has a limit. If what a person says suggests danger to their life or another's, the ICMR guidelines give you a responsibility to disclose it to save life. Know your protocol's plan for this before the interview starts, and tell people at consent that confidentiality has limits.
+
+**Exercise 1** (critique). Here is a made-up exchange from an interview at the NCD clinic, translated from Chhattisgarhi. R4
+is a woman who stopped coming for follow-up. Find each line where the interviewer takes the
+interview away from her, say what the line does, and rewrite it.
+
+```table
+| Speaker | Words |
+| I | What was it like, coming here for your check-ups? |
+| R4 | The sister weighs me in front of everyone. Then the doctor... |
+| I | I know, the doctors can be very strict about weight. |
+| R4 | Hmm. |
+| I | You should still come, though. Obesity leads to diabetes. |
+| R4 | Yes. |
+| I | Was it the weighing that stopped you, or the travel? |
+```
+
+**Exercise 2** (design). Here is a made-up answer from a respondent. "After my knee got bad, I stopped walking to the bus
+stand. And my daughter-in-law does not like to bring me." Write three probes, each of a different kind, that
+use no word the respondent did not use. Name the kind of each.
+
+**Exercise 3** (teaching). A first-year resident has just run a practice interview. Every time the patient spoke, the
+resident said "Right, exactly". They think this built rapport. You have ten minutes and a
+whiteboard. Teach them what it did.
+

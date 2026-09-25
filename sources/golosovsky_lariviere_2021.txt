@@ -1,0 +1,545 @@
+GOLOSOVSKY AND LARIVIERE 2021, QUANT SCI STUD, UNCITED PAPERS ARE NOT USELESS - VERBATIM SOURCE PACK
+============================================================
+
+Transcription rule for this file: every line between a [TEXT] line and its [END TEXT] line is an
+exact, unaltered slice of the text returned by the TinyFish fetch_content tool for the URL in that
+block's heading, cut programmatically from the saved fetch (raw[i:j]); nothing has been paraphrased,
+smoothed or merged. Each block is one contiguous run; nothing inside a run is left out. What lies
+between runs, or outside them, is listed under WHAT THIS FILE HOLDS. Lines beginning [NOTE], and
+everything outside [TEXT] ... [END TEXT], are this file's own annotation and are NOT source text.
+
+CITATION: Golosovsky M, Larivière V. Uncited papers are not useless. Quantitative Science Studies
+2021;2(3):899-911. DOI: 10.1162/qss_a_00142. (Not in PubMed: bibliometrics is outside its scope; the
+DOI and volume are as given on the PDF and in READY.md, not confirmed by a database lookup.)
+PUBLISHER PAGE: https://direct.mit.edu/qss/article/2/3/899/102769/Uncited-papers-are-not-useless
+(blocks bots).
+TEXT FETCHED FROM: the Université de Montréal repository copy (Papyrus / Scholaris), https://umontreal.scholaris.ca/server/api/core/bitstreams/3812c254-b9af-4e69-9656-e6a10b5e031c/content (TinyFish
+fetch_content, the PDF's text layer), 2026-09-25. The PDF is the publisher's typeset version: its
+footer reads "Downloaded from http://direct.mit.edu/qss/article-pdf/doi/10.1162/qss_a_00142/..." and
+it carries "Received: 29 December 2020 / Accepted: 17 June 2021".
+LICENCE AS STATED IN THE PDF: "Copyright: © 2021 Michael Golosovsky and Vincent Larivière. Published
+under a Creative Commons Attribution 4.0 International (CC BY 4.0) license."
+READ BEFORE QUOTING: PDF text layer. Line ends are kept; the margin box (dates, corresponding author,
+handling editor, copyright) is interleaved with the introduction; each page carries a
+"Downloaded from ..." footer and running heads. Equations are flattened (symbols, subscripts and
+fraction bars lost or run together). Figures 1-8 are images: only their captions and any axis text in
+the layer are held. The 12% to 70% range for 1990 papers is the authors' report of Sugimoto and
+Larivière (2018), a book not held; quote it as such. Quote as it stands.
+
+WHAT THIS FILE HOLDS: the article from its first line to the end of the Data Availability statement,
+as one run: abstract, 1 Introduction, 2 The model of citation dynamics and the uncitedness ratio,
+3 Measurements and comparison with model, 4 Comparison to existing models, 5 Discussion, author
+contributions, competing interests, funding, data availability. Omitted: the reference list and
+anything after it. NOT HELD: the figures (images) and any supplementary material.
+
+
+===============================================================================
+1. Whole article to the data availability statement (repository PDF text layer)
+https://umontreal.scholaris.ca/server/api/core/bitstreams/3812c254-b9af-4e69-9656-e6a10b5e031c/content
+===============================================================================
+
+[TEXT]
+RESEARCH ARTICLE
+Uncited papers are not useless
+Michael Golosovsky 1 and Vincent Larivière 2
+1The Racah Institute of Physics, The Hebrew University of Jerusalem, 9190401 Jerusalem, Israel
+2École de bibliothéconomie et des sciences de linformation, Université de Montréal, Montréal, Québec, Canada
+Keywords: citation analysis, citation dynamics, uncitedness
+ABSTRACT
+We study the citation dynamics of the papers published in three scientific disciplines (Physics,
+Economics, and Mathematics) and four broad scientific categories (Medical, Natural, Social
+Sciences, and Arts & Humanities). We measure the uncitedness ratio, namely, the fraction of
+uncited papers in these data sets and its dependence on the time following publication. These
+measurements are compared with a model of citation dynamics that considers acquiring
+citations as an inhomogeneous Poisson process. The model captures the fraction of uncited
+papers in our collections fairly well, suggesting that uncitedness is an inevitable consequence
+of the Poisson statistics.
+1. INTRODUCTION
+The problem of uncited papers became prominent on the launch of the Science Citation Index
+in 1964. De Solla Price (1965) conjectured that about 10% of all papers remain uncited in the
+long term. This early estimate proved to be too optimistic and recent studies by Sugimoto and
+Larivière (2018) showed that the fraction of uncited papers is higher and domain specific. In
+particular, for the papers published in 1990 and for a citation window of 27 years, the uncit-
+edness ratio ranged from 12% for Medical Sciences to 70% for Arts & Humanities.
+The proper assessment of uncitedness is important for research policies ( Garfield, 1991 ;
+Seglen, 1992 ; van Noorden, 2017 ). Information scientists have made a large contribution to
+the empirical characterization of the number and composition of uncited papers, studying how
+uncitedness depends on the discipline, document kind, country, and year ( Dorta-Gonzalez,
+Suarez-Vega, & Dorta-Gonzalez, 2020 ; Hou & Ye, 2020 ; Thelwall, 2016a ; van Leeuwen &
+Moed, 2005 ; Wallace, Larivière, & Gingras, 2009 ). The measurements of uncitedness have
+been recently reviewed by Nicolaisen and Frandsen (2019) and a summary of the subject
+has been presented by van Noorden (2017) and Sugimoto and Larivière (2018) . It turns out
+that the uncitedness ratio, namely, the fraction of papers in a collection that remain uncited
+after a certain period, depends strongly on the length of this period. It is not even clear whether
+the uncitedness ratio achieves some limiting value over the long term.
+Existing empirical models successfully predict the uncitedness ratio for a collection of pa-
+pers during the first couple of years after publication, but fail to account for it over the long
+term. In particular, Burrell (2013), Egghe (2013), and Hsu and Huang (2012) analyzed the fac-
+tors that determine the uncitedness ratio in a collection of papers and claimed a direct relation
+to the mean number of citations for this collection; van Leeuwen and Moed (2005) related the
+an open access journal
+Citation: Golosovsky, M., & Larivière, V.
+(2021). Uncited papers are not useless.
+Quantitative Science Studies . Advance
+publication. https://doi.org/10.1162/qss
+_a_00142
+DOI:
+https://doi.org/10.1162/qss_a_00142
+Peer Review:
+https://publons.com/publon/10.1162
+/qss_a_00142
+Received: 29 December 2020
+Accepted: 17 June 2021
+Corresponding Author:
+Michael Golosovsky
+michael.golosovsky@mail.huji.ac.il
+Handling Editor:
+Ludo Waltman
+Copyright: © 2021 Michael Golosovsky
+and Vincent Larivière.
+Published under a Creative Commons
+Attribution 4.0 International
+(CC BY 4.0) license.
+The MIT Press
+Downloaded from http://direct.mit.edu/qss/article-pdf/doi/10.1162/qss_a_00142/1966534/qss_a_00142.pdf by guest on 02 November 2021
+
+journal uncitedness ratio to the journals’impact factor, which is determined by the mean number
+of citations per paper garnered in the first 1 –2 years after publication; whereas Wallace et al.
+(2009) demonstrated that the uncitedness ratio is strongly affected by the annual growth in the
+number of publications and their reference list length. Yet, a comprehensive study by Thelwall
+(2016a) showed a relation between the uncitedness ratio and the shape of the citation distri-
+bution for a given collection. Thus, although several factors that affect the uncitedness ratio were
+properly identified (the mean number of citations, the growing number of publications, the refer-
+ence list length, and the shape of the citation distribution), the existing models of uncitedness
+focus only on one or several of these factors and on a short time window comprising a couple of
+years after publication. A comprehensive model that includes all these factors and predicts the
+uncitedness ratio in the long run has been missing.
+Why do we need a better understanding of uncitedness? To answer a burning question:
+whether uncited papers are a burden to science or constitute an inherent part of the scientific
+enterprise (MacRoberts & MacRoberts, 2010 ; van Noorden, 2017 ). In other words, do uncited
+papers exert some influence or not? Seglen (1992) argued that uncitedness is the consequence
+of the mismatch between the number of publications and the number of references (because
+citation distributions are highly skewed, the total number of references is insufficient to pro-
+vide citations for all papers); Wallace et al. (2009) and Burrell (2013) suggested that uncited-
+ness is related to the Poisson statistics of citations. Both approaches converge on the point that
+uncitedness is an inevitable ingredient of the normal citation process. Thus, a consistent model
+of citation dynamics will account for uncited papers as well. Our objective is to validate this
+statement. Indeed, our recently developed model ( Golosovsky, 2019 , 2021; Golosovsky &
+Solomon, 2017 ) captures many attributes of the citation dynamics of research papers, includ-
+ing citation trajectories and citation distributions. In this study, we demonstrate that this model
+quantitatively captures the uncitedness ratio for three single disciplines and four broad scien-
+tific categories.
+2. THE MODEL OF CITATION DYNAMICS AND THE UNCITEDNESS RATIO
+We present here a short summary of the model of citation dynamics while focusing on the
+phenomenon of uncitedness. Consider a paper j that belongs to some scientific community.
+An author of a new publication may cite this paper after finding it in databases, scientific jour-
+nals, or following recommendations of colleagues or news portals. We name this a direct
+citation of paper j. An author of another new publication can find paper j in the reference lists
+of his already selected papers and cite it as well. If paper j was placed into the reference list of
+a new publication as a result of the copying strategy, we name it indirect citation. 1
+The model assumes that the number of citations garnered by a paper follows Poisson
+distribution,
+Pj kðÞ ¼
+λk
+j
+k! e−λj ; (1)
+where λj(t) is the papers ’latent citation rate which is postulated to be the sum of the direct
+and indirect contributions, namely, λj(t)= λdir
+j (t)+ λindir
+j (t). The model assumes that the direct
+citation rate is set at the moment of publication of the paper, and the indirect citation rate is
+1 A direct reference is an entry in the reference list of a publication that is not cited by any other reference
+there, while an indirect reference is an entry that is cited by one or more references in this list. When the
+perspective is shifted to the cited paper, these definitions correspond to direct and indirect citations.
+Quantitative Science Studies 2
+Uncited papers are not useless
+Downloaded from http://direct.mit.edu/qss/article-pdf/doi/10.1162/qss_a_00142/1966534/qss_a_00142.pdf by guest on 02 November 2021
+
+determined by the papers ’citation history. Any paper can be cited directly, but only previously
+cited papers can be cited indirectly. For uncited papers, only the direct citation rate matters,
+namely, λj(t)= λdir
+j (t).
+Each publication belongs to some scientific discipline or community and can be cited by
+any new publication there. Following Wallace et al. (2009) , we assume that
+λdir
+j tðÞ¼ Nreferences t0 þ tðÞ
+Npapers t0ðÞ ηj AtðÞ ; (2)
+where t0 is the publication year, t is the number of years after publication, Npapers(t0) is the
+number of papers associated with a given discipline that were published in the year t0, and
+Nreferences(t0 + t) is the total number of references in the papers belonging to this discipline or
+community that were published in the year t0 + t. A(t) is the aging function for references,
+namely, the average fraction of references in the reference lists of papers that belong to this
+discipline and which are t years old (we define it in such a way that
+R ∞
+0 A(t)dt = 1). ηj is the
+paper’s fitness or intrinsic citation capacity ( Milojevic, 2020 ), which captures its potential for
+garnering citations; in other words, it characterizes the appeal that the paper makes to citing
+authors after aging and other time-depende nt factors have been taken into account. The
+model assumes that each paper is born with some intrinsic fitness that does not change during
+the paper ’s lifetime. 2
+Thus, in the context of uncitedness, our model reduces to the combination of the fitness
+model of Caldarelli, Capocci et al. (2002) and the aging model of Wallace et al. (2009) .
+Equation 1 yields that the probability for a paper with fitness η to remain uncited after t years
+is P(0) = e−Λdir(η,t) , where Λdir(t)=
+R t
+0 λdir(η , τ)dτ. For a large collection of papers, all published
+in the same year, the fraction of uncited papers after t years (the uncitedness ratio), is
+f0 tðÞ¼
+Z ∞
+0
+e−Λdir η;tðÞ ρηðÞ dη; (3)
+where ρηðÞ is the fitness distribution for this collection.
+We introduce Mdir(t), the mean number of direct citations garnered by the papers in this
+collection during t years after publication. Thus
+Λdir η; tðÞ ¼ η
+η0
+Mdir tðÞ (4)
+where η0 =
+R ∞
+0 ηρ ηðÞ dη is the average fitness, namely, the average fraction of direct citations
+among all citations of a paper. Although the fitness distribution ρηðÞ is determined by the collec-
+tion of cited papers for which we calculate the uncitedness ratio (a single discipline, journal,
+institution, country, etc.), Mdir(t) is determined by the broad collection of papers that can po-
+tentially cite the given collection, namely, the whole discipline or community. We introduce
+reduced fitness eη = η
+η0
+, in such a way that Eqs. 3 and 4 yield
+f0 tðÞ¼
+Z ∞
+0
+e−~ηMdir tðÞ ρ eηðÞ deη; (5)
+where ρ(eη) is the reduced fitness distribution, which only differs from ρηðÞ by a constant factor.
+2 The factor η jA(t) corresponds to βI in Wallace et al. (2009) .
+Quantitative Science Studies 3
+Uncited papers are not useless
+Downloaded from http://direct.mit.edu/qss/article-pdf/doi/10.1162/qss_a_00142/1966534/qss_a_00142.pdf by guest on 02 November 2021
+
+Equation 5 relates the uncitedness ratio to the functions characterizing cited papers, such as
+the mean number of direct citations Mdir(t) and the reduced fitness distribution ρ(eη). How can
+one measure these functions? The fitness distribution can be determined from the analysis of
+citation distributions in different citation windows ( Golosovsky, 2021 )a n d Mdir(t) can be
+found from the analysis of the direct and indir ect citations garnered by the papers in the
+collection. On the other hand, Mdir(t) can be found from an analysis of the reference lists of
+papers. Indeed, Eqs. 2 and 4 yield Mdir(t)=
+R t
+0
+Nreferences t0 þτðÞ
+Npapers t0ðÞ η0A(τ)dτ. We introduce R0(t0 + t),
+the average reference list length for the papers published in the year t0 + t, in such a way that
+Nreferences(t0 + t)= Npapers(t0 + t)R0(t0 + t). Assuming that the number of publications covered by
+databases and the average reference list length both grow exponentially ( Hu, Leydesdorff, &
+Rousseau, 2020; Sugimoto & Larivière, 2018 ), namely, N(t + t0) ≈ N(t0)eαt, R0 ≈ R0(t0)eβt (where
+R0 stays for R0(t0)), we find
+Mdir tðÞ ≈ R0η0
+Z t
+0
+A τðÞ e αþβðÞ τdτ: (6)
+3. MEASUREMENTS AND COMPARISON WITH MODEL
+We measured citation distributions and citation dynamics of papers belonging to several col-
+lections, determined the corresponding model parameters, and verified to what extent the
+model captures the fraction of uncited papers in these collections.
+3.1. Single Disciplines
+Mathematics, Economics, and Physics papers published in 1984 were retrieved using the
+Clarivate Web of Science ( WoS) database. We considered only articles, letters, and notes writ-
+ten in English and excluded non-English and low-circulation journals which contain many
+papers whose citations are not covered by the WoS, because, according to our protocol, these
+papers would be considered uncited. We also excluded reviews, as their citation careers are
+very different from those of ordinary research papers. The publication year 1984 was chosen in
+such a way as to provide a long citation window for the cited papers and sufficient coverage
+for the citing papers.
+We analyzed citation trajectories of papers and the structure of their reference lists. These
+were compared to our stochastic model of citation dynamics ( Golosovsky, 2019 ). The corre-
+sponding model parameters and functions, such as the average reference list length R0, the sum
+of the growth exponents ( α + β), the aging function A(t), the average fitness η0, and the param-
+eters that define indirect citations, were estimated for each discipline. We found that the sum
+of the growth exponents ( α + β) is more or less compatible with the direct measurements of
+Sugimoto and Larivière (2018) which report ≈3% annual growth in the reference list length and
+≈4% growth in the number of publications. Although we found that the average reference list
+length R0 is smaller than the actual reference list length, it should be noted that it counts only
+those references that can cite the given paper and that are included in the citation database.
+For WoS, these include research papers and exclude books, conference proceedings, etc. The
+fraction of these documents in the referen ce lists of Physics papers is small; hence R0 for
+Physics matches our independent measurements. However, the fraction of books and confer-
+ence proceedings in the reference lists of Economics and Mathematics papers is rather large,
+and that is why the effective R0 for these disciplines is so small.
+Quantitative Science Studies 4
+Uncited papers are not useless
+Downloaded from http://direct.mit.edu/qss/article-pdf/doi/10.1162/qss_a_00142/1966534/qss_a_00142.pdf by guest on 02 November 2021
+
+Then we analyzed citation distributions and determined the reduced fitness distribution ρ(eη).
+We found that the latter is best modeled by a log-normal distribution
+ρ eηðÞ ¼ 1
+eησ
+ﬃﬃﬃﬃﬃ
+2π
+p e−
+ln~ηþσ2
+2ðÞ
+2
+2σ2 ; (7)
+where σ is the shape factor and /C22eη = 1, by definition.
+Figure 1 shows the measured and numerically simulated citation distributions for three
+disciplines. They are virtually indistinguishable.
+As the model relates the uncitedness ratio to the mean number of direct citations Mdir(t), we
+determined the latter basing on Eq. 6. Figure 2(a) shows that the Mdir(t) dependences do not
+come to saturation even after 25 years. It is also instructive to compare Mdir(t)t o M(t), the mean
+number of all citations for the same collection of papers. To this end, we introduced the
+Figure 1. Citation distributions for the papers published in single disciplines in 1984. Citations are counted in 2008. (a) Physics. Npapers =
+40,195. Parameters of the simulation: R0 = 19, (α + β) = 0.090, η0 = 0.5, σ = 1.13. (b) Economics. Npapers = 3,043. R0 = 8.44, (α + β) = 0.045, η0 =
+0.44, σ = 1.13. (c) Mathematics. Npapers = 6,313. R0 = 3.91, ( α + β) = 0.092, η0 = 0.46, σ = 1.13.
+Figure 2. (a) Mean number of direct citations. (b) An average fraction of direct citations among all citations of a paper. The publication year
+is t =1 .
+Quantitative Science Studies 5
+Uncited papers are not useless
+Downloaded from http://direct.mit.edu/qss/article-pdf/doi/10.1162/qss_a_00142/1966534/qss_a_00142.pdf by guest on 02 November 2021
+
+average fraction of direct citations D(t)= Mdir tðÞ
+MtðÞ and plotted it on Figure 2(b). Although early after
+the publication of a paper its citations are mostly direct ( D ≈ 1), after 10 –20 years the overall
+fraction of direct citations drops to D = 0.3 –0.45, depending on the discipline.
+Figure 3 shows the uncitedness ratiof0 and its dependence on the time after publication. For a
+citation window of 25 years, the uncitedness ratios for the Physics, Economics, and Mathematics
+papers are 7.1%, 14.7%, and 27.3%, correspondingly. Yet, these percentages are not final, because
+f0 continuously decreases with time and does not come to saturation even after 25 years. The reason
+for the very slow decay of the uncitedness ratio is not only the time after publication, but also the
+growth in the number of publications and the average reference list lengthR0 (see Eqs. 5 and 6).
+The continuous lines in Figure 3 show the results of the numerical simulation. As all the
+model parameters were found from the analysis of cited papers, the very fact that the same
+model captures the fraction of uncited papers is significant and indicates that, at least for these
+disciplines, the cited and uncited papers are two sides of the same coin.
+3.2. Broad Scientific Categories
+We consider here the measurements of uncitedness for the papers published in four broad
+scientific categories in 1990 ( Sugimoto & Larivière, 2018 ). To compare these data to Eqs. 5
+and 6, we need to find the corresponding model parameters. In principle, this can be done by
+measuring the citation trajectories of papers and comparing them to the full stochastic model
+of citation dynamics ( Golosovsky, 2019 ; Golosovsky & Solomon, 2017 ). Here, we did not
+Figure 3. The fraction of uncited papers, f0(t)= Nuncited tðÞ
+Npapers
+for the papers belongin g to three scientific
+disciplines. Npapers is the total number of papers belonging to a certain scientific discipline that
+were published in a certain year, Nuncited (t) is the number of uncited papers after t years, and t is
+the number of years after publication. The contin uous lines show the model prediction obtained by
+running the full stochastic model on the synthetic collections containing the same number of papers
+as in the measured collection. Note the good correspondence between the model and the
+measurements.
+Quantitative Science Studies 6
+Uncited papers are not useless
+Downloaded from http://direct.mit.edu/qss/article-pdf/doi/10.1162/qss_a_00142/1966534/qss_a_00142.pdf by guest on 02 November 2021
+
+perform this tedious task: For each category, we only measured the annual mean number of
+citations M(t) as a function of time and the citation distribution after 27 years. By fitting these
+two functions we determined all the model parameters.
+Figure 4(a) shows the M(t) dependences. Their analysis yields the average reference list
+length R0 and the sum of the growth exponents ( α + β). The basis for this analysis is the
+reference-citation duality. Namely, if the number of publications and of the average reference
+list length both grow exponentially, then the mean number of citations M(t) is closely related
+to R(t), the age distribution of references (synchronous or retrospective citation distribution):
+M(t)= R(t)e(α+β)t. This expression can be cast as follows
+MtðÞ e− αþβðÞ t
+R0
+¼ rtðÞ ; (8)
+where r(t) is the reduced age distribution of references3 and R0 is the average reference list length.
+Although M(t) can diverge with time,R(t) converges to R0 in the long run, namely,
+R ∞
+0 r(t)dt =1 .
+Using this constraint, we found R0 and (α + β) from the measured M(t) dependences and Eq. 8.
+Figure 4(b) shows the corresponding r(t) dependences. They are remarkably similar, although
+not identical. To find the remaining parameters of citation dynamics, we used our full stochas-
+tic model and the previously found aging function A(t)( Golosovsky, 2021 ) and fitted the
+citation distributions for each category in the year 2017. We assumed the log-normal reduced
+fitness distribution and used its width σ as a fitting parameter. Figure 5 shows that the model
+Figure 4. (a) The mean number of citations for four broad categories of papers ( Sugimoto & Larivière, 2018 ). Continuous lines show the fit to
+the model ( Golosovsky & Solomon, 2017 ). (b) Reduced mean number of citations, M(t)e−(α+β)t/R0. All four dependences are remarkably similar
+(but not identical) and Eq. 8 suggests that these are nothing else but r(t). Continuous line shows our measurements of r(t) for the Physical
+Review B papers published in 1984.
+3 The function r(t) is remarkably stable over time and does not vary much from discipline to discipline
+(Glanzel, 2004 ; Golosovsky & Solomon, 2017 ; Roth, Wu, & Lozano, 2012 ; Sinatra, Deville et al., 2015 ).
+Quantitative Science Studies 7
+Uncited papers are not useless
+Downloaded from http://direct.mit.edu/qss/article-pdf/doi/10.1162/qss_a_00142/1966534/qss_a_00142.pdf by guest on 02 November 2021
+
+accounts for the measured citation distributions 4,a n d Figure 6 demonstrates that the same
+model captures the uncitedness ratio as well.
+3.3. Fitness Distribution
+Figure 7 explores the sensitivity of the uncitedness ratio f0(t) to the functional shape of the
+fitness distribution. It shows the f0(Mdir) dependences where the time after publication is an
+Figure 5. Citation distributions for four broad scientific categories of papers published in 1990. Citations are counted in 2017. (a) Medical
+Sciences. Npapers = 272,192. Parameters of the simulation: R0 = 23.5, ( α + β) = 0.050, η0 =0 . 4 8 ,σ = 1.3. (b) Natural Sciences. Npapers =
+293,030. R0 = 11.27, ( α + β) = 0.06, η0 = 0.47, σ = 1.32. (c) Social Sciences. Npapers = 50,032. R0 =7 . 1 ,( α + β) = 0.095, η0 = 0.42, σ =
+1.4. (d) Arts & Humanities. Npapers = 30,069. R0 = 0.587, ( α + β) = 0.085, η0 = 0.46, σ = 1.1.
+4 A broad scientific category aggregates several disciplines with dissimilar citing habits, namely, those with
+different average reference list lengths R0 and different average fitness η0. Because the reduced fitness eη,
+average fitness η0, and the average reference list length R0 do not appear in Eqs. 5 and 6 separately but
+as a product eηη0R0, our model can still be applied to such aggregated data sets. However, the reduced fitness
+distribution ρ(eη) will be replaced with the joint distribution ρ(eη, η0R0). It is no surprise that the latter turns out
+to be log-normal. For such a distribution, the variance of the factor η0R0 among the disciplines belonging to
+one category and the variance of eη are added together, in such a way that ρ(eη, η0R0) is broadened. This is the
+reason why the fitness distribution for categories is somehow broadened in comparison with that found in
+our analysis of single disciplines.
+Quantitative Science Studies 8
+Uncited papers are not useless
+Downloaded from http://direct.mit.edu/qss/article-pdf/doi/10.1162/qss_a_00142/1966534/qss_a_00142.pdf by guest on 02 November 2021
+
+implicit parameter and Mdir(t) has been calculated according to Eq. 6. Equation 5 states that the
+function f0(Mdir) is nothing else but the Laplace transform of the reduced fitness distribution ρ(eη).
+Figure 7(a) shows that f0(Mdir) dependences for single disciplines correspond to log-normal dis-
+tribution with the shape factor σ ≈ 1.13, and Figure 7(b) shows that the data for the Medical,
+Natural, and Social Sciences correspond to log-normal distributions with σ =1 . 3–1.4.
+Notably, for all disciplines and categories, t he fitness distributions derived from the time
+Figure 7. The fraction of uncited papers, f0(t) versus the average number of direct citations Mdir(t), where the latter was calculated using Eq. 6.
+The continuous lines show model predictions (Eq. 6) for the log-normal fitness distributions (Eq. 7) with different shape factors σ. (a) Single
+disciplines. All data collapse onto one curve, indicating that the reduced fitness distribution ρ(eη) is almost the same for these three disciplines. It
+is best accounted for by the log-normal fitness distribution with the shape factor σ = 1.13. (b) The data for Medical, Natural, and Social
+Sciences are best described by the log-normal distribution with σ =1 . 3 – 1.4, while the data for Arts & Humanities can be accounted for
+by the log-normal distribution with σ = 1.1.
+Figure 6. The fraction of uncited papers f0(t) for the papers published in four broad scientific cat-
+egories ( Sugimoto & Larivière, 2018 ). The continuous lines show model predictions obtained by
+running the full stochastic model on synthetic collections containing the same number of papers.
+Quantitative Science Studies 9
+Uncited papers are not useless
+Downloaded from http://direct.mit.edu/qss/article-pdf/doi/10.1162/qss_a_00142/1966534/qss_a_00142.pdf by guest on 02 November 2021
+
+dependence of the uncitedness ratio are the same as those found in the analysis of citation
+distributions ( Figures 1 and 5).
+4. COMPARISON TO EXISTING MODELS
+The models of uncitedness, as summarized by Burrell (2013), assume that when the authors of
+a new publication compose the reference list, they choose the target papers basing on some
+attribute which we name fitness. When the perspective is shifted to cited papers, this means
+that each paper has an individual citation rate determined by its fitness. Statistical distribution
+of these rates, for the collection of papers published in one year, has been postulated to be
+either exponential or Gamma-distribution ( Burrell, 2013 ), or to result from the preferential
+attachment rule ( Egghe, 2013 ; Hsu & Huang, 2012 ). Assuming that the citation dynamics of
+papers is Poissonian, the existing models ( Burrell, 2013 ; Egghe, 2013 ; Hsu & Huang, 2012 )
+relate the uncitedness ratio for a collection of papers to the mean number of cumulative cita-
+tions for this collection, M(t). In particular, for the exponential fitness distribution, Burrell
+(2013) and Egghe (2013) showed theoretically that
+f0 tðÞ¼ 1
+1 þ MtðÞ : (9)
+Hsu and Huang (2012) successfully verified this simple relation for the Physics papers pub-
+lished in 2007 and for a three-year citation window. However, Eq. 9 fails for a long citation
+window. In particular, given a citation window of 27 years and M(t) from Figure 4, Eq. 9 yields
+f0 = 3%, 5.3%, 5.3%, and 46% for the papers in Medical, Natural, Social Sciences, and Arts &
+Humanities, correspondingly. However, the actual uncitedness ratios, as found from Figure 6,
+are much higher: 12%, 20%, 28%, and 70%.
+Figure 8. The red line shows the log-normal reduced fitness distribution ρ(eη)= 1
+~ησ
+ﬃﬃﬃ ﬃ
+2π
+p e−
+ln ~ηþσ2
+2ðÞ
+2
+2σ2 with
+σ = 1.13. This distribution characterizes the Physics, Mathematics, and Economics. The blue line
+shows the log-normal distribution with σ = 1.4. It characterizes the Medical, Natural, and Social
+Sciences. Although the mean of the reduced fitness distribution is unity, by definition, its mode
+is much smaller: 0.147 for σ = 1.13 and 0.053 for σ = 1.4. The dashed line shows the exponential
+distribution, ρ(eη)= e−~η, for comparison.
+Quantitative Science Studies 10
+Uncited papers are not useless
+Downloaded from http://direct.mit.edu/qss/article-pdf/doi/10.1162/qss_a_00142/1966534/qss_a_00142.pdf by guest on 02 November 2021
+
+In contrast to existing models, we assume a much more realistic scenario of the citation
+process which takes into account that, in filling the reference lists of their papers, the authors
+combine two strategies: random search (direct references) and “copying” from the reference
+lists of the preselected papers (indirect references). When the perspective is shifted to cited
+papers, these strategies yield direct and indirect citations, correspondingly. Although Burrell
+(2013), Egghe (2013), and Hsu and Huang (2012) related the uncitedness ratio in a collection
+of papers published in one year to the mean number of all citations M(t), our model relates it to
+Mdir(t), the mean number of direct citations.
+In summary, our approach to the problem of uncitedness builds on previous theoretical
+speculations but uses a more realistic scenario of the citation process. First, we replaced
+M(t)b y Mdir(t). Second, we did not postulate any specific shape of the fitness distribution
+but determined it from the measured citation distributions. Figure 8 shows that the actual fit-
+ness distributions are very different from the exponential distribution that was postulated in
+previous theoretical studies ( Burrell, 2013 ; Egghe, 2013 )o na n ad hoc basis.
+5. DISCUSSION
+After achieving a quantitative understanding of the time-dependent uncitedness ratio, we
+analyze it. A first question is why, given the same citation window, this ratio is discipline-
+specific. To answer this question, we note that Eq. 5 expresses the uncitedness ratio f0 through
+the reduced fitness distribution ρ(eη) and the mean number of direct citations Mdir(t). Equation 6
+yields that the latter is determined by the aging function A(t), the sum of the growth exponents
+(α + β), and the average reference list length R0. Of these factors and functions, the one that has
+the largest variability between the disciplines is R0. In particular, the disciplines with a long
+reference list, such as Medical and Natural Sciences, tend to have a relatively low uncitedness
+ratio, whereas the disciplines with a short reference list (Mathematics and Arts & Humanities)
+have a high uncitedness ratio. Equations 5 and 6 also explain the overall decline of uncited-
+ness during the last century, as documented by Wallace et al. (2009) . This can be attributed to
+the gradual increase of R0 and slower decay of A(t), as has been recently reported by Sinatra
+et al. (2015) for Physics.
+A second question is: What kind of papers remain uncited? According to our model, some
+papers are uncited because they have low fitness. There are also papers with a relatively high
+fitness that remain uncited as well — this is an inevitable consequence of the Poissonian cita-
+tion process. To estimate the relative weight of these two groups of uncited papers in a col-
+lection, we consider the probability that a paper with a certain fitness eη remains uncited after
+t years. Equation 5 yields
+P 0ðÞ eη; tðÞ ¼ e−~ηMdir tðÞ : (10)
+We define a low-fitness paper as one whose probability of being cited during a citation
+window t is less than one-half, P(0) < 1
+2. The high-fitness papers are, correspondingly, those
+with P(0) ≥ 1
+2. Equation 10 yields that the borderline fitness is eη* = 1
+Mdir tðÞ ln2. For a long citation
+window of 25 years, this corresponds to 0.13, 0.23, and 0.43 for our collections of the
+Physics, Economics, and Mathematics papers, and to 0.074, 0.13, 0.18, and 2.2 for our col-
+lections of the Medical, Natural, Social, and Arts & Humanities papers (and the average
+fitness is /C22eη = 1, by definition). The fraction of the high-fitness papers with eη > eη* that remain
+uncited after 25 years is 6.6% for Arts & Humanities and 2.5 –3.5% for all other collections.
+These high-fitness papers make up a small part of all uncited papers for all the disciplines
+Quantitative Science Studies 11
+Uncited papers are not useless
+Downloaded from http://direct.mit.edu/qss/article-pdf/doi/10.1162/qss_a_00142/1966534/qss_a_00142.pdf by guest on 02 November 2021
+
+and categories which we studied (possibly excluding Physics). Thus, the majority of uncited
+papers in our collections are characterized by low fitness.
+This brings us to the question of why the fraction of uncited papers for some disciplines is so
+high. Our findings suggest that this is the consequence of the highly skewed fitness distribu-
+tion, as has been previously conjectured by Seglen (1992). We found that this distribution can
+be approximated by a log-normal distribution. This distribution frequently occurs in nature as
+the result of a multiplicative random process and is usually associated with some hierarchical
+structure. The scientific publication network displays a strong hierarchy: There are break-
+through papers that set a new direction of research and initiate a cascade of follow-up papers,
+and the latter develop subdirections of this new research and generate new cascades of papers
+that deal with specialized topics, close the gaps, and tie up the loose ends. The breakthrough
+papers have high citation potential (fitness) because they are of great interest to a broad
+audience. The follow-up papers, which deal with more specific research questions, have lower
+fitness, not due to their quality but because they address a narrower forum of researchers. Thus
+it is quite natural that such a hierarchical structure of scientific publications, which results from
+the cascades of papers, is characterized by a lognormal fitness distribution. The width of this
+distribution hardly varies between the disciplines, because the research style is more or less
+uniform (a professor usually spends ~10 –15 years pursuing some research direction and this
+corresponds to two to three generations of graduate students).
+The last question is whether there are papers with eη = 0. To estimate the number of such
+uncitable papers, Thelwall (2016b) suggested using a zero-inflated log-normal distribution
+instead of a conventional log-normal distribution. We tried to fit our data using the zero-
+inflated fitness distribution (this requires an additional fitting parameter — the fraction of
+zero-fitness papers) and were unable to improve an already very good fit. We conclude that
+the overwhelming majority of uncited papers in our collections are characterized by finite
+fitness and have some chance to be cited, provided that there is enough time, and that the
+decay of attention to old papers is sufficiently slow. Equation 4 indicates that this decay is
+captured by the factor A(t)e(α+β)t. The aging function A(t) decays very slowly, in such a way
+that the exponential factor e(α+β)t can compensate for this decay. Indeed, Figure 3 demonstrates
+that although the uncitedness ratio for scientific papers decreases with time, it does not come
+to saturation even after 25 years. This lack o f saturation implies that, in principle, f0 may
+achieve a very small value over an extremely long term. This is the situation with patent cita-
+tions, as the authors of a new patent are required to cite all patents relevant to their invention,
+however old they are. Thus, the aging function for patent citations decays more slowly than
+that for scientific papers. It is no surprise that for many categories of US patents the uncitedness
+ratio, in the long run, is only 2 –4% ( Gandal, Shur-Ofry et al., 2021 ), which is significantly
+lower than the uncitedness ratio for scientific papers.
+AUTHOR CONTRIBUTIONS
+Michael Golosovsky: Conceptualization, Data Curation, Formal Analysis, Methodology,
+Writing. Vincent Larivière: Data Curation, Formal Analysis, Writing.
+COMPETING INTERESTS
+The authors have no competing interests.
+FUNDING INFORMATION
+This research was not funded.
+Quantitative Science Studies 12
+Uncited papers are not useless
+Downloaded from http://direct.mit.edu/qss/article-pdf/doi/10.1162/qss_a_00142/1966534/qss_a_00142.pdf by guest on 02 November 2021
+
+DATA AVAILABILITY
+Citation distributions, the mean number of citations, and the fraction of uncited papers and its
+time dependence are available at https://doi.org/10.5281/zenodo.5014627.
+[END TEXT]
+[NOTE] Reference list omitted.

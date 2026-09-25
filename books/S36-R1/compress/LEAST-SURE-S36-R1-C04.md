@@ -1,0 +1,1 @@
+Least sure: deleting from definition.text the Kitzinger sentence that interviews suit a person's own story and focus groups suit how ideas develop within a shared culture. It is the stated basis for Exercise 2's choices; the table and must-know "Choose the method from the question" may carry it, but the general rule now appears only by example.

@@ -1,0 +1,90 @@
+# S36-R1-C07 · Consent, recording and privacy before you switch on the recorder
+
+**Definition.** In India the rules a researcher follows with people who take part in health research are set
+out in the National Ethical Guidelines for Biomedical and Health Research Involving Human
+Participants. The Indian Council of Medical Research (ICMR) published them in October 2017. They
+are guidelines issued by a council. No legislature passed them. Their own copyright
+page urges the reader "to check latest notifications/rules/regulations by GOI from time to time".
+
+Informed consent, in the guidelines' words, is a process with "three components – providing
+relevant information to potential participants, ensuring the information is comprehended by them
+and assuring voluntariness of participation". The researcher "must obtain voluntary written
+informed consent from the prospective participant" (section 5.0).
+
+The information given must include the person's "Freedom of the individual to participate
+and/or withdraw from research at any time without penalty or loss of benefits" (Box 5.1). It
+must include how far confidentiality can be kept, and its limits (section 2.3.2). The researcher
+must assure people that their decision "will not affect their rights, the patient–clinician
+relationship or any other benefits to which they are entitled" (section 5.3.10).
+
+Spoken consent without a signature "should only be taken in exceptional circumstances", with the
+approval of the ethics committee, which the guidelines shorten to EC (section 5.3.8). A
+person who cannot read gives consent in front of an impartial literate witness (section 5.4.3).
+A person who cannot sign gives a thumb impression (section 5.4.4).
+
+For social and behavioural research, "The researcher must take prior permission from the EC with
+justifiable reasons for audio/video recording of participants' interviews" (Box 9.3).
+
+Privacy is the person's right to control what is collected about them and who sees it.
+Confidentiality is the researcher's duty to protect what was entrusted, including "from
+unauthorized access, use, disclosure, modification, loss or theft" (section 2.3). For this kind
+of research, "informational risk is one of the primary risks" (section 9.2.3). Raw data,
+audio-visual material included, is shared only after processing "to mask identifiers" (section
+9.2.12).
+
+Every proposal goes to an ethics committee. The committee, not the researcher, decides the kind of
+review: exemption, a quick review by a few members, or review by the full committee (section
+4.8.3, Table 4.2).
+
+**In plain terms.** Before you ask anyone a research question, three things have to be settled. Does the person
+agree, knowing what they are agreeing to? Do they agree to be recorded? And what will happen to
+their words afterwards?
+
+In India the rulebook for this is the ICMR's National Ethical Guidelines of 2017. It is a set of
+guidelines — rules written and published by a council, the Indian Council of Medical Research. No
+legislature passed it, so it is not a statute. Book 0's section on how government works showed you
+that difference. The guidelines still matter in practice, because an ethics committee reads your
+plan against them.
+
+An ethics committee is a group of people at a hospital, college or research body. It reads a
+researcher's plan before any research starts, and it can say yes, no, or change this first.
+
+Consent, in the guidelines' own words, has three parts. You give the person the information. You
+make sure they understood it. And you make sure they are free to say no. Saying no has to cost them
+nothing. In a clinic, that means you tell them plainly that their treatment will not change if they
+refuse.
+
+Recording is a separate question. Someone can be happy to talk and still not want their voice kept.
+Ask about the recorder on its own, and take no for an answer.
+
+Then there are their words. Privacy is the person's right to decide who hears about them.
+Confidentiality is your duty to keep safe what they told you. An interview recording carries a
+voice, a name, a village, a family story. So the risk in this kind of research is mostly about
+information getting out.
+
+Last, the question every learner asks: does my practice interview need an ethics committee? The
+guidelines do not let you decide that yourself. You send the plan, and the committee decides.
+
+**Must know points for you.**
+
+- "It is only a practice interview" is not a category in the ICMR guidelines. Section 4.8.3 says a researcher cannot place their own proposal in the exempt, quick or full review group. Send your plan to an ethics committee and let it decide, before you record anyone.
+- An interview can feel harmless and still carry risk. The guidelines warn that risks in social and behavioural research can be "misconstrued as no/minimum risk research" (Box 9.1). The main risk is information getting out, so plan where the recording lives and who hears it before you ask for consent.
+- Ask about the recorder as its own question, after consent to the interview. Someone may agree to talk and refuse to be recorded. Then take written notes instead, or do not go ahead, but never record anyway. For interviews in social and behavioural research, the guidelines also need the ethics committee's prior permission to record at all (Box 9.3).
+- In a clinic, tell the person in plain words that saying no will not change their treatment. The guidelines require it (section 5.3.10). A patient talking to someone in the clinic's own building will assume the opposite unless you say it.
+- In India a person may not say no out loud. The guidelines tell researchers to read silence, very short replies or restlessness as possible refusal, and not to carry on (Box 9.4). If you see them, stop and ask whether they want to go on, and accept the answer.
+- Keep names out of everything but the consent form. Give each person a label such as R1 and use it on the recording, the file name and the transcript. Keep the list that joins labels to names apart from the recordings. This is how you honour the guidelines' duty of confidentiality and their rule to mask identifiers before sharing data.
+- Tell people the limits of confidentiality, not a promise of perfect secrecy. The guidelines require you to say that it "may not be possible" to protect privacy in every circumstance (section 2.3.2).
+- These are ICMR's 2017 guidelines, read on 24 September 2026. They are not the whole of the law on recordings or personal information. When your question is legal rather than ethical, take it to your ethics committee or a lawyer, not to this section.
+
+**Exercise 1** (design). A patient of the NCD clinic stopped coming for follow-up, and you are about to interview her.
+Write what you will say before the first question, in the order you will say it. Write it as spoken sentences,
+not headings. Then write one line saying when the recorder goes on.
+
+**Exercise 2** (critique). A colleague writes: "It's only a practice interview with a clinic patient, so it's minimal risk
+under ICMR. That means no ethics committee. I'll record in the waiting area so she is
+comfortable." Find each claim that the guidelines do not support.
+
+**Exercise 3** (teaching). A first-year resident wants to "just chat" with five patients from the NCD clinic about why they
+stop coming. They plan to record on a phone and use the recordings in a presentation. You have ten
+minutes and a whiteboard. Teach them what has to happen first.
+

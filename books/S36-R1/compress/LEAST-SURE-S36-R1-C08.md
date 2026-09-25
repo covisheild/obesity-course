@@ -1,0 +1,1 @@
+Least sure: deleting "From then on they talk to you, not about their life." (plain terms, paragraph 6). It is the only sentence saying why agreement and advice damage the interview. must_know[1] keeps the "answers will lean towards it" point, but Exercise 3 ("Right, exactly" as rapport) asks the reader to teach the mechanism, and this line may be it.
