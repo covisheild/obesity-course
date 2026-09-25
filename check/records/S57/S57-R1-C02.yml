@@ -1097,6 +1097,27 @@ figures:
     relations:
     - check: "y[1] - y[0] = 8"
     - check: "(y[1] - y[0]) / 16 = 0.5"
+- file: s57-r1-c02-smd-and-spread.png
+  caption: "Made-up numbers. The same MD of 8 percentage points, divided by different SDs: SMD = 8
+    ÷ SD. With an SD of 16 the SMD is 0.5; with an SD of 8 it is 1. The gap in marks stays the
+    same; the SMD grows as the scores bunch together."
+  alt: "A curve falling from an SMD of 1 at an SD of 8 to an SMD of 0.5 at an SD of 16, with a
+    point at each end."
+  source: draw.py
+  spec:
+    kind: scatter
+    x: ["8", "16"]
+    series:
+    - name: SMD for an MD of 8 points
+      y: ["1", "0.5"]
+    x_label: SD of the scores (percentage points)
+    y_label: SMD
+    y_range: [0, 1.2]
+    curves:
+    - {y: "y = 8/x", x0: 8, x1: 16, series: "SMD for an MD of 8 points", label: "SMD = 8 ÷ SD"}
+    labels:
+    - {text: "SD 8: SMD 1", at: [8, 1], offset: [8, 4]}
+    - {text: "SD 16: SMD 0.5", at: [16, 0.5], offset: [-90, -16]}
 provenance:
   map_version_id: fc19c8bc-a216-4131-99fb-ebe3f19cec4a
   outcome_refs:

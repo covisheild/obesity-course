@@ -296,19 +296,43 @@ illustrations:
     Ten minutes for a ten-item test assumes the learners work fast. Time a colleague on one form
     before the session. If they need 15 minutes, cut the teaching, not the questions.
 figures:
-- file: s57-r1-c11-hour-plan.png
-  caption: "Where the 60 minutes go in the session plan: 40 minutes with every learner answering in writing, 18 minutes of explaining, 2 minutes on the objective."
-  alt: "Three bars: explaining 18 minutes, every learner answers in writing 40 minutes, the objective 2 minutes."
+- file: s57-r1-c11-two-plans.png
+  caption: "The same 60 minutes in two plans. The colleague's: 45 minutes of slides, 5 of a quiz and 10 of \"Any questions?\". The rebuilt plan: 18 minutes of explaining, 40 with every learner answering in writing, and 2 on the objective."
+  alt: "Grouped bars. Explaining: 45 minutes in the colleague's plan, 18 in the rebuilt plan. Every learner answers in writing: 5 and 40. The rest of the hour: 10 and 2."
   source: draw.py
   spec:
     kind: bar
-    from_table: {block: 1, x: 0, y: [1]}
+    x: ["explaining", "every learner answers\nin writing", "the rest of the hour"]
+    series:
+    - name: colleague's plan
+      y: ["45", "5", "10"]
+    - name: rebuilt plan
+      y: ["18", "40", "2"]
     x_label: ""
-    y_label: "minutes"
+    y_label: minutes
     value_labels: true
-    y_range: [0, 45]
+    y_range: [0, 60]
     relations:
-    - check: "y[0] + y[1] + y[2] = 60"
+    - check: "sum(y1) = 60"
+    - check: "sum(y2) = 60"
+- file: s57-r1-c11-step-minutes.png
+  caption: "The rebuilt plan step by step. A 10-minute pre-test (step 2) and post-test (step 11) bracket three teaching parts of 6 minutes, each followed by a 4-minute question and its answer."
+  alt: "Eleven bars, one per step of the plan, in minutes: 2, 10, 6, 4, 6, 4, 6, 4, 3, 5, 10."
+  source: draw.py
+  spec:
+    kind: bar
+    x: ["1\nobjective", "2\npre-test", "3\nteaching", "4\nquestion", "5\nteaching", "6\nquestion", "7\nteaching", "8\nquestion", "9\nlast\nweek", "10\nfree\nrecall", "11\npost-test"]
+    series:
+    - name: minutes
+      y: ["2", "10", "6", "4", "6", "4", "6", "4", "3", "5", "10"]
+    x_label: step of the session plan
+    size: [7.4, 3.2]
+    y_label: minutes
+    value_labels: true
+    y_range: [0, 12]
+    relations:
+    - check: "sum(y) = 60"
+    - check: "y[2] + y[4] + y[6] = 18"
 must_know:
 - point: |
     "Any questions?" and a question to one student are not retrieval practice for the room. Ask

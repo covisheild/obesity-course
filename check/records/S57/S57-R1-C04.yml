@@ -1111,7 +1111,34 @@ figures:
     - {y: "y = 0.2*x", x0: 0, x1: 350, label: "gap = 20% of the retention interval"}
     - {y: "y = 0.05*x", x0: 0, x1: 350, label: "gap = 5% of the retention interval"}
     labels:
-    - {text: "at 350 days: best tried 21, fitted best 23 (7%)", at: [350, 23], offset: [-190, 8]}
+    - {text: "at 350 days: best tried 21, fitted best 23 (7%)", at: [350, 21], offset: [-182, 2]}
+- file: s57-r1-c04-review-window.png
+  caption: "The worked calendar example: 42 days from teaching to test, split into the gap before
+    the review and the retention interval after it. A gap of 20% of the retention interval puts
+    the review on day 7, leaving 35 days; a gap of 30% puts it on day 9.69, leaving 32.3. The
+    dotted line is the best gap Cepeda tested for a 35-day retention interval, 11 days."
+  alt: "Two rising points joined by a curve, the gap: 7 days at 20% and 9.69 days at 30%. Two
+    falling points joined by a curve, the retention interval: 35 days at 20% and 32.3 at 30%. A
+    horizontal dashed line at 11 days."
+  source: draw.py
+  spec:
+    kind: scatter
+    x: ["20", "30"]
+    series:
+    - name: gap before the review (days)
+      y: ["7", "9.69"]
+    - name: retention interval after it (days)
+      y: ["35", "32.3"]
+    x_label: gap as % of the retention interval
+    y_label: days
+    y_range: [0, 42]
+    curves:
+    - {y: "y = 42*x/(100 + x)", x0: 20, x1: 30, series: "gap before the review (days)"}
+    - {y: "y = 42*100/(100 + x)", x0: 20, x1: 30, series: "retention interval after it (days)"}
+    refs:
+    - {y: 11, label: "best gap tested for a 35-day retention interval: 11 days"}
+    relations:
+    - check: "y1[0] + y2[0] = 42"
 provenance:
   map_version_id: fc19c8bc-a216-4131-99fb-ebe3f19cec4a
   outcome_refs:

@@ -557,7 +557,24 @@ retrieval_items:
   a: Two weeks at the start of Phase I, 80 teaching hours.
 - q: What is the mentor-to-mentee ratio in the CBME Curriculum 2024?
   a: One mentor to three mentees, allotted during the Foundation Course.
-figure_note: "The section is about which instrument says what; its numbers are single requirements from different papers, and drawing them would put unrelated quantities on one axis."
+figures:
+- file: s57-r1-c14-img-roles.png
+  caption: "How many roles of the Indian Medical Graduate each list names. The 2019 regulation named five. The CBME Curriculum 2024's guidelines, section 5, name seven, adding critical thinker and researcher. The manual inside the same document says it copies the guidelines, yet still lists five. Teach seven."
+  alt: "Three bars. 2019 regulation: 5 roles. CBME 2024 guidelines, section 5: 7 roles. The manual's extract in the same document: 5 roles."
+  source: draw.py
+  spec:
+    kind: bar
+    x: ["2019 regulation", "CBME 2024 guidelines,\nsection 5", "the manual's extract,\nsame document"]
+    series:
+    - {name: "roles named", y: [5, 7, 5]}
+    x_label: "list"
+    y_label: "roles of the IMG named"
+    y_range: [0, 8]
+    value_labels: true
+    derived:
+    - {value: "2", from: "7 - 5"}
+    relations:
+    - check: "y[1] - y[2] = 2"
 provenance:
   map_version_id: fc19c8bc-a216-4131-99fb-ebe3f19cec4a
   outcome_refs:

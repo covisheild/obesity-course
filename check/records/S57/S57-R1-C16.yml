@@ -485,7 +485,26 @@ retrieval_items:
   a: Authority is the right to decide or direct that comes with a post. Power is the capacity to get things done through people from any source, of which authority is one.
 - q: What three things does a role sheet state for each decision or piece of work?
   a: Who decides, who does the work, and who is consulted before it is done.
-figure_note: "The section is paired vocabulary with no quantity in it; its one structure, Kotter's three pairs, is already the first illustration's table, and a picture would draw that table again."
+figures:
+- file: s57-r1-c16-crandall-reach.png
+  caption: "How many people Crandall's aligning reached, in Kotter's account. His 12 direct reports weekly; 80 to 100 people from one part of the organisation monthly (drawn at 100); and a goal of all 1,500 employees in a small meeting each year. Aligning talks to many more people than organizing does."
+  alt: "Three bars on one scale. Weekly, direct reports: 12, a sliver. Monthly, one part of the organisation: 80 to 100, drawn at 100. Yearly goal, every employee: 1,500, fifteen times the monthly bar."
+  source: draw.py
+  spec:
+    kind: bar
+    x: ["weekly:\ndirect reports", "monthly:\none part of the organisation", "yearly goal:\nevery employee"]
+    series:
+    - {name: "people reached", y: [12, 100, 1500]}
+    x_label: "meeting"
+    y_label: "people reached"
+    labels:
+    - {text: "12", at: [0, 12], offset: [-6, 4]}
+    - {text: "80 to 100", at: [1, 100], offset: [-22, 4]}
+    - {text: "1,500", at: [2, 1500], offset: [-12, 4]}
+    derived:
+    - {value: "15", from: "1500 / 100"}
+    relations:
+    - check: "y[2] / y[1] = 15"
 provenance:
   map_version_id: fc19c8bc-a216-4131-99fb-ebe3f19cec4a
   outcome_refs:

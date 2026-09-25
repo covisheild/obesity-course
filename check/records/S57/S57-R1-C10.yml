@@ -303,6 +303,28 @@ figures:
     relations:
     - check: "(y[0] + y[1]) / 2 = y[2]"
     - check: "y[0] - y[2] = 10"
+- file: s57-r1-c10-partner-items.png
+  caption: "Item 1 on each form: 58 kg at 152 cm on form A, 61 kg at 156 cm on form B. Both sit on the curve of weights that give a BMI of 25.10 kg/m^2, to the nearest kilogram, so the numbers differ and the item is as hard to place."
+  alt: "Two points, weight against height: 58 kg at 152 cm and 61 kg at 156 cm, both on a rising curve of constant BMI 25.10."
+  source: draw.py
+  spec:
+    kind: scatter
+    x: ["152", "156"]
+    series:
+    - name: item 1, form A and form B
+      y: ["58", "61"]
+    x_label: height (cm)
+    y_label: weight (kg)
+    curves:
+    - {y: "y = 25.10*(x/100)^2", x0: 152, x1: 156, label: "BMI 25.10 kg/m^2", series: "item 1, form A and form B"}
+    labels:
+    - {text: "form A: 58 kg, 152 cm", at: [152, 58], offset: [8, -4]}
+    - {text: "form B: 61 kg, 156 cm", at: [156, 61], offset: [-112, 2]}
+    relations:
+    - check: "y[0] / (x[0]/100)^2 = 25.10"
+    - check: "y[1] / (x[1]/100)^2 = 25.07"
+    derived:
+    - {value: "100", from: "152 / 1.52"}
 must_know:
 - point: |
     A test of recall cannot show that learners reached an objective above remember. Before you

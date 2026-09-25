@@ -704,6 +704,19 @@ figures:
     y_range: [0, 100]
     relations:
     - check: "y[0] - y[1] = 7"
+- file: s57-r1-c07-why-prompts-minutes.png
+  caption: "What the prompts cost in the same class: 32 minutes of reading with \"Why is this true?\" prompts against 28 without, 4 minutes more for 7 more percentage points correct."
+  alt: "Two bars: 32 minutes spent reading with \"Why is this true?\" prompts, 28 minutes reading only."
+  source: draw.py
+  spec:
+    kind: bar
+    from_table: {block: 0, x: 0, y: [1]}
+    x_label: ""
+    y_label: minutes spent reading
+    value_labels: true
+    y_range: [0, 40]
+    relations:
+    - check: "y[0] - y[1] = 4"
 provenance:
   map_version_id: fc19c8bc-a216-4131-99fb-ebe3f19cec4a
   outcome_refs:

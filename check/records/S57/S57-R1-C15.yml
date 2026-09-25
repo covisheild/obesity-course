@@ -505,6 +505,29 @@ figures:
     value_labels: true
     relations:
     - check: "y[0] + y[1] = 45"
+    - check: "45 - y[2] = 41"
+- file: s57-r1-c15-mentees.png
+  caption: "Mentees under the CBME Curriculum 2024: three new first-year students each year. Stay five years in one college and 3 × 5 = 15 students have been yours. The five years are the example's; the three a year are the curriculum's."
+  alt: "Points rising in a straight line from 0 at the start: 3 students after year 1, 6 after year 2, 9 after year 3, 12 after year 4 and 15 after year 5, on the line students = 3 × years."
+  source: draw.py
+  spec:
+    kind: line
+    x: [0, 1, 2, 3, 4, 5]
+    series:
+    - {name: "students mentored so far", y: [0, 3, 6, 9, 12, 15]}
+    x_label: "years in one college"
+    y_label: "students mentored so far"
+    y_range: [0, 16]
+    value_labels: true
+    derived:
+    - {value: "0", from: "15 - 3*5"}
+    - {value: "6", from: "3 * 2"}
+    - {value: "9", from: "3 * 3"}
+    - {value: "12", from: "3 * 4"}
+    relations:
+    - fit: "y = 3*x"
+      draw: true
+      label: "3 new mentees a year"
 provenance:
   map_version_id: fc19c8bc-a216-4131-99fb-ebe3f19cec4a
   outcome_refs:

@@ -495,6 +495,27 @@ figures:
     x_label: "level (A: self-assessed, B: tested or observed)"
     y_label: "studies reporting it (of 45)"
     value_labels: true
+    relations:
+    - check: "36 / 45 = 0.8"
+    - check: "7 / 45 = 0.156"
+- file: s57-r1-c13-form-by-level.png
+  caption: "The made-up end-of-session form's five items, sorted by level. Three measure reaction, Level 1, and two the learner's own view of learning, Level 2A. None reaches Level 2B, a test scored against a key, or anything higher."
+  alt: "Bars for levels 1, 2A, 2B, 3 and 4. Level 1: 3 items. Level 2A: 2 items. Levels 2B, 3 and 4: none."
+  source: draw.py
+  spec:
+    kind: bar
+    x: ["1", "2A", "2B", "3", "4"]
+    series:
+    - {name: "items on the form", y: [3, 2, 0, 0, 0]}
+    x_label: "level"
+    y_label: "items on the form"
+    y_range: [0, 5]
+    value_labels: true
+    derived:
+    - {value: "5", from: "3 + 2"}
+    - {value: "0", from: "5 - 3 - 2"}
+    relations:
+    - check: "sum(y) = 5"
 provenance:
   map_version_id: fc19c8bc-a216-4131-99fb-ebe3f19cec4a
   outcome_refs:

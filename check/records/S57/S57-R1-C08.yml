@@ -564,11 +564,28 @@ figures:
     kind: bar
     from_table: {block: 0, x: 0, y: [1]}
     x_label: ""
-    y_label: gain from "why" questions over reading only (%)
+    y_label: gain over reading only (%)
     value_labels: true
     y_range: [0, 30]
     relations:
     - check: "y[0] / y[1] = 2"
+- file: s57-r1-c08-faded-help.png
+  caption: "The help faded, on the made-up percentage problems. Question 3 is shown with both steps worked, question 4 with the first step only, question 5 with none. At each problem the learner does one more step alone."
+  alt: "Three bars for steps shown worked: question 3, 2 steps; question 4, 1 step; question 5, 0 steps."
+  source: draw.py
+  spec:
+    kind: bar
+    x: ["question 3\nfull worked example", "question 4\nlast step left", "question 5\nbare problem"]
+    series:
+    - name: steps shown worked
+      y: ["2", "1", "0"]
+    x_label: ""
+    y_label: steps shown worked
+    value_labels: true
+    y_range: [0, 3]
+    relations:
+    - check: "y[0] - y[1] = 1"
+    - check: "y[1] - y[2] = 1"
 provenance:
   map_version_id: fc19c8bc-a216-4131-99fb-ebe3f19cec4a
   outcome_refs:

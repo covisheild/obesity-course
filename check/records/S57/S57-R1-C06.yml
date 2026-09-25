@@ -1098,6 +1098,24 @@ figures:
     relations:
     - check: "y1[0] - y1[1] = 12"
     - check: "y2[0] - y2[1] = 2"
+- file: s57-r1-c06-belief-persists.png
+  caption: "93% of 137 UK schoolteachers (2012) and 58% of 114 UK academics agreed that people learn better in their preferred style. After being shown that the evidence is missing, 32% of the academics said they would go on using learning styles. The first bar is a different sample from the other two."
+  alt: "Three bars: schoolteachers agreeing, 93%; academics agreeing, 58%; academics who would continue after seeing the evidence, 32%."
+  source: draw.py
+  spec:
+    kind: bar
+    x: ["schoolteachers\nagreed (2012)", "academics\nagreed", "academics would continue\nafter seeing the evidence"]
+    series:
+    - name: percent of those surveyed
+      y: ["93", "58", "32"]
+    x_label: ""
+    y_label: percent of those surveyed
+    value_labels: true
+    y_range: [0, 100]
+    relations:
+    - check: "y[1] - y[2] = 26"
+    derived:
+    - {value: "26", from: "58 - 32"}
 provenance:
   map_version_id: fc19c8bc-a216-4131-99fb-ebe3f19cec4a
   outcome_refs:
