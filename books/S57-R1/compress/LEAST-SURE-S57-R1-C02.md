@@ -1,0 +1,1 @@
+Least sure: deleting "Its sign... so you always state which group was subtracted from which" and "the MD is the new method's group minus the comparison group, unless it says otherwise" from the definition. Must-know 2 keeps the rule, but problems 2, 5, 9 and 10 (a lower-is-better score giving a negative MD) lean on the default direction, which is now nowhere stated.

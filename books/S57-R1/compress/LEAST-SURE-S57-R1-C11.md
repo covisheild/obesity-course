@@ -1,0 +1,1 @@
+- S57-R1-C11: Cut list item 4 of the plan (one question on material from an earlier session, answered from memory). It is the only place the plan builds in spaced recall across sessions; Exercise 1's critique and Exercise 2's plan may need it, and the list now jumps from 3 to 5.

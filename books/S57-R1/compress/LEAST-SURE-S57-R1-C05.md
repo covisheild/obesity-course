@@ -1,0 +1,1 @@
+- Cut the definition's "In one study, students who underlined did worse on questions that needed inferences; the reviewers say that result needs repeating." Exercise 1 asks how sure the evidence lets you be about highlighting; this single-study, unreplicated harm is the clearest example of a claim to hedge, and the reader may now overstate or miss it.

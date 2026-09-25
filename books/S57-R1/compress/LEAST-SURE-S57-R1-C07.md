@@ -1,0 +1,1 @@
+S57-R1-C07 (c3): least sure about cutting the sentence that warning learners they will have to explain shrinks the drop but does not remove it, plus the "procedures and film plots show no drop" line from the definition. must_know[1] and [3] still carry each point, but without the study evidence behind them a cold reader may take them as bare assertion.
