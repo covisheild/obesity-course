@@ -113,7 +113,9 @@ teaches were deleted. Terms used before their gloss, and terms used for two thin
 | cross-sectional study | a study that enrols a sample of a population and measures exposure and outcome at the same time: one visit, one count | `S55-R1-C03` |
 | cytoplasm | the watery jelly a cell is a bag of | `B0-R0-C35` |
 | d/dx | said "dee by dee x": the derivative with respect to x of what follows | `S02-R1-C03` |
+| Data Fiduciary | under the Digital Personal Data Protection Act, 2023, whoever "alone or in conjunction with other persons determines the purpose and means of processing of personal data" (section 2(i)) | `S36-R1-C07` |
 | data matrix | a matrix in which each row is one case and each column is one kind of measurement, always in the same place | `S02-R1-C11` |
+| Data Principal | under the Digital Personal Data Protection Act, 2023, "the individual to whom the personal data relates" (section 2(j)); in an interview, the person recorded | `S36-R1-C07` |
 | decimal | place value carried on past the point: tenths, then hundredths, then thousandths | `B0-R0-C03` |
 | deficit (of energy) | expenditure larger than intake; a surplus is the reverse | `S01-R1-C02` |
 | definition (kind of equation) | an equation that brings in a new quantity as a combination of others; it cannot be false | `S02-R1-C17` |
@@ -309,6 +311,7 @@ teaches were deleted. Terms used before their gloss, and terms used for two thin
 | percentage | a fraction whose denominator is one hundred; per cent means per hundred | `B0-R0-C04` |
 | percentage change | the change divided by the value it started from, times one hundred | `B0-R0-C04` |
 | percentage point | the plain difference between two percentages, as against per cent, which divides | `B0-R0-C04` |
+| personal data | under the Digital Personal Data Protection Act, 2023, "any data about an individual who is identifiable by or in relation to such data" (section 2(t)); a recording or transcript that can identify someone is personal data | `S36-R1-C07` |
 | phenotype | what you can see about a person, the traits they show | `B0-R0-C37` |
 | phospholipid | the one kind of molecule a membrane is built from, with one end that mixes with water and one that does not | `B0-R0-C35` |
 | physical activity expenditure | the energy spent moving, whether as deliberate exercise or as the ordinary movement of a day | `S01-R1-C04` |

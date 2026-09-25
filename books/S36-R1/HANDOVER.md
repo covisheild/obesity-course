@@ -1,6 +1,6 @@
 # S36-R1 — handover
 
-Book 3, *Qualitative and mixed methods · Rung 1*. Frozen at v1.0 on 24 September 2026. Branch
+Book 3, *Qualitative and mixed methods · Rung 1*. Frozen at v1.0 on 24 September 2026; v1.1 on 25 September 2026 (DPDP Act in C07). Branch
 `book/S36-R1`, merged to `main`. Chat session_017MfrSG2pRPoFB1oEe6f15Q.
 
 ## What was written
@@ -28,19 +28,20 @@ named from other editions) and three **OCR text layers** of scanned 1995 BMJ pap
 
 ## Still unverified — needs a person
 
-- **OCR quotes against the page images.** Quotes from the three 1995 BMJ files pass the quote gate
-  against the OCR text (unspaced), but no one has seen the pages. Five defect items are marked
-  `Verifier: deferred, page image` (C01-6, C02-9, C03-8, C08-14, C09-11), and the drafters' notes list
-  every OCR quote with its page (`draft-notes-b1..b5.md`, "OCR quotes"). Close them when Harsh
-  attaches the three PDFs: open each page, check each listed quote, note the result here.
-- **C08 locators** for Britten's Boxes 3–4 read "p. 252 or 253" until the page is seen.
+- **OCR quotes: checked 25 Sep 2026** against the three PDFs Harsh supplied. All 67 quotes match the
+  PDFs' text layer (four differ only by column interleaving, checked on the page image), with no
+  garbled words; Britten's Boxes 3–5 are on p. 253 (C08 locators corrected, C14 locator tidied).
+  The five deferred defect items are closed.
 
 ## Numbers and rules to re-check, with triggers
 
 - ICMR National Ethical Guidelines 2017 (C07, C14): trigger — any ICMR revision or addendum.
-- Not held and not taught: the Digital Personal Data Protection Act 2023 and its Rules (Harsh's
-  decision pending on naming it in C07), and the New Drugs and Clinical Trials Rules 2019 on ethics
-  committee registration. C07 says data rules on recordings are not covered.
+- **v1.1 (25 Sep 2026): the Digital Personal Data Protection Act, 2023 is taught in C07**
+  (`dpdp_act_2023`, `dpdp_commencement_2025`, `dpdp_rules_2025`). Trigger: the Act's third stage
+  commences 18 months after 13 November 2025 (13 May 2027 by arithmetic; the notification gives no
+  calendar date) — on that date C07's "not yet in force" becomes wrong and must be rewritten. Also
+  any amendment of the Act or Rules. Not held: the New Drugs and Clinical Trials Rules 2019 on ethics
+  committee registration.
 - McMullin 2023 on speech-to-text (C10): its evidence is from 2021; re-check at next review.
 - Focus-group size (C04): Kitzinger's four to eight and Blackstone's ranges are both given; they differ.
 
