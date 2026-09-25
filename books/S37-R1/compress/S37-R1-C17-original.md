@@ -1,0 +1,66 @@
+# S37-R1-C17 · Locating an intervention in the food system
+
+**Definition.** To locate an intervention is to state, for any proposal to change what people eat, three
+things. The stage of the food system at which it acts (`S37-R1-C01`). The actor whose decision
+it changes. And the element of the food environment it moves: availability, price, promotion
+or quality, the four elements named by the High Level Panel of Experts on Food Security
+and Nutrition (HLPE) (`S37-R1-C05`).
+
+A proposal acts upstream when the decision it changes is taken before the person chooses: a
+farmer's crop, a processor's recipe or pack, a retailer's shelf, a price, a ration basket, a
+scheme's menu. A proposal acts on the person when the only decision it changes is the eater's
+own, made from an offer left as it was: advice, counselling, an awareness campaign. It then
+moves no element of the food environment. One proposal can act at more than one stage, and
+each is located separately.
+
+HLPE puts the same idea in its 2017 report. Food systems allow "many points for
+intervention", across the supply chain, within food environments and in consumer behaviour.
+Its full diagram of a food system, with the drivers of change behind each point, is the formal
+version of this method, and is left to rung 2.
+
+**In plain terms.** You now have a map of the food system and of the state's tools on it (`S37-R1-C16`). This
+section gives you a way to pin any proposal onto that map.
+
+Most proposals about food and weight that you will hear speak to the person holding the plate.
+Eat less oil. Cut sugar. Choose millets. But what is on the plate was decided earlier, by people
+who grew, processed, priced, stocked and served it. The person chooses from what is already
+there.
+
+So for any proposal, ask three questions. Where in the chain does it act? Whose decision does it
+change? And what does it change about the food on offer? It might change whether the food is
+there, what it costs, how it is promoted, or what is in it.
+
+The second question does most of the work. If the only decision the proposal changes is the
+eater's, it acts on the person. The food on offer stays as it was. If it changes a decision taken
+before the eater chooses, such as a recipe, a price or a ration, it acts upstream.
+
+Neither kind is good or bad by being where it is. Locating a proposal tells you where it acts and
+through whom. It does not tell you whether it works.
+
+**Must know points for you.**
+
+- "Obesity prevention means persuading people to eat better" treats every intervention as acting on the eater. Much of what reaches a plate was decided upstream, by a recipe, a price, a shelf or a ration. A campaign changes nothing on offer. Say which kind a proposal is before you judge it.
+- For any proposal, write three answers: the stage, whose decision it changes, and what it changes about the food on offer. Then decide: upstream, or on the person. Do this before you discuss whether it will work.
+- "It acts at consumption" is true of every campaign and says nothing. Always name the actor. If the only decision changed is the eater's, the proposal acts on the person, whatever stage you wrote.
+- Where a component is housed is not where it acts. The oilseeds mission is a production programme, and its awareness campaign on dietary guidelines for oil still acts on the person. Locate each component, not the programme's name.
+- One topic can sit in two places. Poshan 2.0's 2025 campaign on less sugar acts on the person. The same scheme's guideline that "white sugar should not be used" acts on the recipe. When a committee lists "sugar" as one item, split it by where each measure acts.
+- In clinic, counselling is the tool you hold, and it acts on the person. When a family's food comes from a take-home ration or a school meal, the recipe decided much of the plate first. Ask what the child is served before you advise the parent on what to cut.
+- Locating a proposal tells you where it acts and through whom. It does not tell you whether it works, or in which direction. A duty cut that lowers the price of oil acts upstream, and may raise how much oil people use. Judge the effect separately, with evidence.
+
+**Exercise 1** (interpretation). Locate each proposal. Give the stage and whose decision it changes. Say what it changes about
+the food on offer, and whether it acts upstream or on the person.
+
+(a) A rule that school canteens may not sell sugared drinks.
+
+(b) A warning printed on the front of food packs that are high in salt.
+
+(c) A television campaign telling parents to give children fewer fried snacks.
+
+(d) A tax on sugared drinks.
+
+**Exercise 2** (critique). A district plan reads: "Our obesity work has three parts: a Poshan Maah rally, the anganwadi
+rule on jaggery, and school nutrition gardens. All three act on consumers." Find the flaw.
+
+**Exercise 3** (teaching). A journalist has three minutes and asks: "Isn't obesity about personal choice?" Answer using
+the idea of locating an intervention, in plain words, with one quotable sentence.
+

@@ -23,6 +23,7 @@ teaches were deleted. Terms used before their gloss, and terms used for two thin
 | accounting identity (for a body) | the change in body energy stores over an interval equals the energy intake minus the energy expenditure over that same interval | `S01-R1-C05` |
 | accuracy | how close a measured value comes to the true value | `B0-R0-C30` |
 | Act | the name each statute passed by Parliament or a State Legislature is called by | `B0-R0-C43` |
+| actor (in a food system) | anyone whose decision moves the food on, such as a farmer, a trader, a mill owner, a shopkeeper or the person who cooks; public bodies count too | `S37-R1-C01` |
 | adaptive part (of the fall in expenditure) | the extra fall in expenditure after a weight loss, beyond what the loss of fat and lean mass alone accounts for | `S01-R1-C09` |
 | adipocyte | a fat cell | `S01-R1-C01` |
 | adipose tissue | the tissue whose cells hold triglyceride until it is needed | `B0-R0-C36` |
@@ -30,13 +31,17 @@ teaches were deleted. Terms used before their gloss, and terms used for two thin
 | ADP | what is left when ATP's last phosphate group is knocked off: the same molecule, one phosphate short | `B0-R0-C36` |
 | alimentary canal | the gut tube | `B0-R0-C38` |
 | allele | one of the versions a gene comes in | `B0-R0-C37` |
+| allocation (of foodgrains) | grain set aside for a scheme, not grain that reached anyone; grain lifted is still not grain eaten | `S37-R1-C14` |
 | alpha cell | the islet cell that makes glucagon | `B0-R0-C38` |
 | amendment | a later change stitched into the law | `B0-R0-C41` |
 | amino acid | one of a small fixed set of kinds of link a protein chain is built from | `B0-R0-C35` |
 | amount-of-substance concentration | an amount of substance in a volume, such as millimoles per litre (mmol/L): it says how many | `B0-R0-C13` |
 | anabolism | reactions that join small molecules into bigger ones, which costs energy | `B0-R0-C36` |
+| anganwadi | a government child care centre, through which the National Food Security Act's meals for young children and for pregnant women and new mothers are given | `S37-R1-C12` |
 | answerable (research question) | passes two tests: it is an empirical question, and it is feasible for the person asking | `S55-R1-C04` |
 | antiderivative | a function whose derivative is the given function; checked by differentiating it back, and written with plus C on the end, where C is any constant | `S02-R1-C06` |
+| Antyodaya household | one of the poorest households under the National Food Security Act, entitled to 35 kg of grain a month for the whole household | `S37-R1-C11` |
+| APMC (Agricultural Produce Marketing Committee) | the committee that runs a mandi; it fixes the mandi fees and commission charges (`S37-R1-C05`) | `S37-R1-C02`, `S37-R1-C05` |
 | argument | reasons, called premises, together with a further statement they are meant to establish | `B0-R0-C42` |
 | at random | every member has exactly the same chance of being the one you pick | `B0-R0-C24` |
 | atom | a tiny heavy centre with much lighter electrons around it | `B0-R0-C31` |
@@ -49,6 +54,7 @@ teaches were deleted. Terms used before their gloss, and terms used for two thin
 | base ten | the counting system in which each place is worth ten times the place to its right | `B0-R0-C01` |
 | base unit | one of the seven units the SI builds on: the second, metre, kilogram, ampere, kelvin, mole and candela | `B0-R0-C09` |
 | baseline | the start: the weight at the start is the weight at baseline, written BW0 | `S02-R1-C01` |
+| basic customs duty | the duty on an import that the releases name as a percentage of its value before duty; the rule for the landed price uses it alone | `S37-R1-C10` |
 | beta cell | the islet cell that makes insulin | `B0-R0-C38` |
 | bile | what the liver makes to break a large blob of fat into many tiny ones | `B0-R0-C38` |
 | bin | a range of values grouped together into one bar | `B0-R0-C40` |
@@ -57,7 +63,9 @@ teaches were deleted. Terms used before their gloss, and terms used for two thin
 | bomb calorimeter | a sealed steel pot in a water tank, used to burn a weighed sample | `B0-R0-C32` |
 | bond | an attraction between two atoms that holds them together | `B0-R0-C31` |
 | boundary | the closed line you draw, with the system inside it and everything else outside | `B0-R0-C33` |
+| brand owner | the firm whose name and address the label must declare, whether it made the food or only marketed it | `S37-R1-C03` |
 | breaks conservation (of a claim) | asserts a fat change that could not have happened, given the energy that could plausibly have crossed the boundary drawn round the person over the stated time | `S01-R1-C08` |
+| buffer stock | grain held in reserve | `S37-R1-C08` |
 | calibration | measuring a machine against something already known, so its readings mean something | `B0-R0-C32` |
 | calibration weight | a weight already checked and trusted to be correct | `B0-R0-C30` |
 | calorie | a unit of energy outside the SI, whose size in joules was fixed by agreement, and two agreements are in use | `B0-R0-C12` |
@@ -69,6 +77,8 @@ teaches were deleted. Terms used before their gloss, and terms used for two thin
 | cause question | a question that asks whether changing the exposure would change the outcome; an association is needed for this and is not enough | `S55-R1-C03` |
 | ceiling | the level a saturating shape heads for and flattens against | `B0-R0-C20` |
 | cell | (1) of a table: where a row meets a column, the count of people who are both (`B0-R0-C26`); (2) a living cell: the smallest unit of a living thing (`B0-R0-C35`) | `B0-R0-C26`, `B0-R0-C35` |
+| central issue price | the price at which the Union government issues grain for the public distribution system to the States | `S37-R1-C10` |
+| central pool | the government's own stock of grain: the foodgrains procured through minimum support price operations (National Food Security Act, s. 2(2)) | `S37-R1-C09` |
 | checking a reference | four acts, each of which can fail on its own: find the source, confirm it is the source named, find the exact passage pointed to, read it to see whether it supports the claim | `B0-R0-C41` |
 | cherry-picking | choosing only the quotations that fit a claim, or cutting a quotation so that it fits; the first you catch only by reading the other transcripts for what runs against the claim | `S36-R1-C13` |
 | chord | the straight line laid across two points on a curve, whose slope is the average rate between them | `B0-R0-C21` |
@@ -76,6 +86,7 @@ teaches were deleted. Terms used before their gloss, and terms used for two thin
 | citation | an entry in the reference list of a later published work that points to an earlier one; it records that one work referred to another, not that the earlier work was used | `S55-R1-C06` |
 | citation database | a database that records the reference lists of the journals it indexes and, for each paper it holds, counts how many of those later works cite it | `S55-R1-C06` |
 | citation window | how long after publication the counting of citations runs | `S55-R1-C06` |
+| class title | one name the labelling regulation allows for a whole group of ingredients, such as "Sugar" | `S37-R1-C03` |
 | cleaned transcription (intelligent verbatim) | a transcript that tidies speech into readable sentences and drops the fillers and repeats | `S36-R1-C10` |
 | closed question | a question that fixes the possible answers before the respondent speaks: yes or no, a number, or one of a set of options the question supplies | `S36-R1-C05` |
 | closing question (in a topic guide) | the last question of a topic guide, such as "Is there anything I have not asked about that I should have?" | `S36-R1-C06` |
@@ -83,10 +94,13 @@ teaches were deleted. Terms used before their gloss, and terms used for two thin
 | coefficients | the fixed numbers that a formula multiplies by | `S02-R1-C11` |
 | cohort study | a study that starts from the exposure: it starts with people who do not yet have the outcome, records who is exposed and who is not, follows both groups over time and counts who develops the outcome | `S55-R1-C03` |
 | combustion | burning, a substance joining with oxygen | `B0-R0-C32` |
+| commission agent | a middleman in a mandi paid a percentage for arranging the sale | `S37-R1-C02` |
+| Commission for Agricultural Costs and Prices (CACP) | the body of experts that recommends the minimum support prices, and the sugarcane FRP | `S37-R1-C09` |
 | comparison (in a research question) | the group, or the level of exposure, that the exposed group is set against | `S55-R1-C02` |
 | comparison group | in a study built to answer a relate question, the people without the exposure, or without the outcome | `S55-R1-C03` |
 | complement | every outcome in the sample space that is not in the event; everything that is not it | `B0-R0-C24` |
 | complementary | each one completes the other; A always faces T and C always faces G | `B0-R0-C37` |
+| compound ingredient | an ingredient that is itself made of two or more ingredients | `S37-R1-C03` |
 | concentration | an amount of something held in a volume of something else | `B0-R0-C13` |
 | conceptual generalisation | what carries beyond a qualitative study: an idea, a reason and how it works, that a reader can test in another setting, as against a statistical estimate of how common something is in a population | `S36-R1-C02` |
 | conclusion | the claim the premises are offered for | `B0-R0-C42` |
@@ -116,6 +130,7 @@ teaches were deleted. Terms used before their gloss, and terms used for two thin
 | Data Fiduciary | under the Digital Personal Data Protection Act, 2023, whoever "alone or in conjunction with other persons determines the purpose and means of processing of personal data" (section 2(i)) | `S36-R1-C07` |
 | data matrix | a matrix in which each row is one case and each column is one kind of measurement, always in the same place | `S02-R1-C11` |
 | Data Principal | under the Digital Personal Data Protection Act, 2023, "the individual to whom the personal data relates" (section 2(j)); in an interview, the person recorded | `S36-R1-C07` |
+| de novo (double-duty action) | the WHO's third level: design a new action for both burdens from the start | `S37-R1-C15` |
 | decimal | place value carried on past the point: tenths, then hundredths, then thousandths | `B0-R0-C03` |
 | deficit (of energy) | expenditure larger than intake; a surplus is the reverse | `S01-R1-C02` |
 | definition (kind of equation) | an equation that brings in a new quantity as a combination of others; it cannot be false | `S02-R1-C17` |
@@ -133,13 +148,18 @@ teaches were deleted. Terms used before their gloss, and terms used for two thin
 | discrete (random variable) | the values it can take can be listed, one by one | `S02-R1-C13` |
 | distribution | the set of values a quantity takes, across the people, occasions or measurements counted, together with how often each value turns up | `B0-R0-C27` |
 | DNA | the long molecule a cell's instructions are written in | `B0-R0-C37` |
+| do no harm (double-duty action) | the WHO's first level: check that an existing action does not raise the risk of the other forms of malnutrition | `S37-R1-C15` |
 | domain | the inputs a rule will accept | `B0-R0-C18` |
 | dominant | an allele that shows whenever it is present | `B0-R0-C37` |
 | dot product | multiply the entries of two vectors of the same length in matching positions, then add the products; written a · b, said "a dot b" | `S02-R1-C10` |
+| double burden of malnutrition | the WHO's name for undernutrition (wasting, stunting, micronutrient deficiency) together with overweight, obesity or diet-related noncommunicable diseases, in one person, one household or one population | `S37-R1-C15` |
 | double question | a question that asks two things in one sentence; split it | `S36-R1-C05` |
+| double-duty action | in the WHO's words, an intervention, programme or policy with the potential to reduce the risk or burden of both undernutrition and overweight at once | `S37-R1-C15` |
 | doubly labelled water | the method that measures what was actually spent: a person drinks water carrying rare, stable forms of hydrogen and oxygen, and how fast they leave the body over the next 10 to 14 days gives the average energy spent | `S01-R1-C03` |
 | dynamic model | a model built on energy balance, with expenditure allowed to change | `S01-R1-C07` |
 | e (the number) | the base of the one exponential curve whose slope where it crosses the vertical axis is exactly 1; about 2.71828 | `S02-R1-C04` |
+| economic cost (of grain) | the full cost to the government of buying, storing and moving the grain | `S37-R1-C10` |
+| effective customs duty | what a December 2025 government backgrounder calls the duty on crude edible oils, a different and larger number than the basic duty; no held text says what it adds | `S37-R1-C10` |
 | electron | one of the much lighter particles in the cloud round an atom's tiny heavy centre | `B0-R0-C31` |
 | elimination | adding or subtracting the two equations, after multiplying where needed, so that one letter cancels | `B0-R0-C17` |
 | empirical question | a question that can be answered by observing the world | `S55-R1-C04` |
@@ -151,6 +171,7 @@ teaches were deleted. Terms used before their gloss, and terms used for two thin
 | energy equivalent | how many joules one degree is worth in one particular calorimeter | `B0-R0-C32` |
 | energy expenditure | the energy a body burns, or spends, in a day | `S01-R1-C03` |
 | energy intake | the energy a person eats in a day | `S01-R1-C03` |
+| entitlement (food) | a set quantity of food that a person or household has a legal right to, stated as a mass over a period, such as 5 kg of grain a person a month | `S37-R1-C11` |
 | entry (of a vector or matrix) | one number in the list; in a matrix, found by its row first and its column second | `S02-R1-C10` |
 | enzyme | a protein that makes one particular reaction go faster | `B0-R0-C35` |
 | equation | a statement that two expressions are the same number | `B0-R0-C15` |
@@ -169,6 +190,10 @@ teaches were deleted. Terms used before their gloss, and terms used for two thin
 | exposure | what differs between the people being compared: something they have, do or meet | `S55-R1-C02` |
 | expression | a piece of algebra that stands for a number, like 2x + 5 | `B0-R0-C15` |
 | extracellular fluid | the fluid around a gland's own cells, into which it lets its hormone out | `B0-R0-C38` |
+| fair and remunerative price (FRP) | the price the Union Government fixes for sugarcane, on the CACP's recommendation, which sugar mills must pay for the cane they buy | `S37-R1-C09` |
+| fair price shop | a licensed ration shop, from which the grain under the National Food Security Act is collected | `S37-R1-C11` |
+| farm-gate price | the price the farmer received at the first sale | `S37-R1-C04` |
+| farmer's share of the consumer rupee | the farm-gate price divided by the retail price: at 75 per cent, Rs 75 of every Rs 100 paid at the shop reaches the farmer, who still pays for seed, labour and the trip to market out of it | `S37-R1-C04` |
 | fat mass | the triglyceride held in adipose tissue | `S01-R1-C01` |
 | fat-free mass | everything else the body weighs; some papers call it lean body mass, or lean mass | `S01-R1-C01` |
 | feasible (question) | the person asking can actually get the answer with what they have: people to reach, a way to measure, time, money, equipment and skill, and ethics committee approval | `S55-R1-C04` |
@@ -180,6 +205,13 @@ teaches were deleted. Terms used before their gloss, and terms used for two thin
 | fitted equation | an equation whose form was chosen by its author and whose constants were estimated from one set of measurements | `S02-R1-C17` |
 | flow | a rate that changes a stock, with a time on the bottom of its unit | `B0-R0-C23` |
 | focus group | a form of group interview in which a moderator asks the participants to talk to one another, and that talk between them is the data | `S36-R1-C04` |
+| food composition table | a table of what 100 g of each food holds; India's is the Indian Food Composition Tables 2017 (IFCT) | `S37-R1-C13` |
+| food environment | the part of the food system where a person meets it; HLPE names four elements: what is there and how near, what it costs, how it is promoted, and its quality and safety | `S37-R1-C05` |
+| food loss | food that leaves the supply chain before the shop, spoiled in the field, dropped in sorting or rotted in a store (UNEP: up to, and excluding, retail) | `S37-R1-C02` |
+| food policy tool | any means by which a government changes what is grown, stored, traded, processed, sold, served or eaten | `S37-R1-C16` |
+| food supply chain | HLPE's name for the activities and actors that take food from production to consumption and to the disposal of its waste; its listed steps end at retail and markets | `S37-R1-C01` |
+| food system | everything that happens to food, and everyone who does it, from the field to the bin (HLPE's 2014 definition) | `S37-R1-C01` |
+| food waste | food, with its inedible parts such as peels and bones, removed at the shop, in food service or at home | `S37-R1-C02` |
 | forward step (Euler's method) | from the state at time t, compute the rate from the equation, then take the state at t + h to be about the state at t plus h times that rate | `S02-R1-C07` |
 | fraction | a division that has not yet been carried out; a sum you have not done yet | `B0-R0-C02` |
 | free energy | loose energy, of which a cell cannot hold a useful amount | `B0-R0-C36` |
@@ -206,12 +238,15 @@ teaches were deleted. Terms used before their gloss, and terms used for two thin
 | hepatic portal circulation | the route that takes every drop of blood leaving the gut through the liver before it goes anywhere else | `B0-R0-C38` |
 | hepatic portal vein | the vein along which blood from the gut runs straight to the liver | `B0-R0-C38` |
 | hormone | a chemical made in one part of the body that affects other parts some distance away | `B0-R0-C38` |
+| hot cooked meal (HCM) | a meal eaten at the anganwadi centre, or at school, as against a take-home ration | `S37-R1-C12` |
+| Household Consumption Expenditure Survey (HCES) | India's survey of household spending, run by the Ministry of Statistics and Programme Implementation (MoSPI) | `S37-R1-C07` |
 | how-common question | a question with a population and an outcome and nothing else; it asks how common something is | `S55-R1-C02` |
 | hydrophilic | water-loving: mixes with water | `B0-R0-C35` |
 | hydrophobic | water-hating: does not mix with water | `B0-R0-C35` |
 | identity (kind of equation) | an equation that holds for every value of its symbols because a conservation law, or counting, requires it | `S02-R1-C17` |
 | implausible (of a weight-loss claim) | needs more than any deficit people are known to manage | `S01-R1-C08` |
 | implementation money | money that pays to carry a programme out | `S55-R1-C07` |
+| import dependency ratio (IDR) | the FAO's ratio: imports divided by production plus imports minus exports, times 100 | `S37-R1-C06` |
 | impossible (of a weight-loss claim) | needs more than the person's whole expenditure over the interval | `S01-R1-C08` |
 | in-depth interview | an interview in which almost nothing is decided in advance: one broad opening question about one or two issues, and everything after that comes from what the person has said | `S36-R1-C03` |
 | independent | finding out one of them happened tells you nothing new about the other | `B0-R0-C25` |
@@ -234,11 +269,14 @@ teaches were deleted. Terms used before their gloss, and terms used for two thin
 | ionic bond | a bond where one atom hands an electron to another and the opposite charges pull | `B0-R0-C31` |
 | islets (pancreatic islets) | the small islands of another kind of cell scattered through the pancreas, which put chemicals straight into the blood | `B0-R0-C38` |
 | joule | the SI unit of energy, written J | `B0-R0-C09` |
+| kharif, rabi | the names the MSP releases use for India's two main crop seasons; paddy is a kharif crop and wheat a rabi crop | `S37-R1-C09` |
 | kilocalorie | a thousand calories, the unit used for the energy in food, where it is often written just calories | `B0-R0-C12` |
 | kilojoule | a thousand joules; kilo means a thousand | `B0-R0-C12` |
 | kinetic energy | energy a thing has because it is moving | `B0-R0-C31` |
+| kirana | a small neighbourhood grocery | `S37-R1-C05` |
 | lacteals | the lymph vessels of the villi, which take in what dissolves in fat | `B0-R0-C38` |
 | lakh | a hundred thousand | `B0-R0-C01` |
+| landed price | the price of an import at the port after duty: the price before duty times one plus the duty rate as a decimal | `S37-R1-C10` |
 | large store | fat: triglyceride, held in adipose tissue | `B0-R0-C36` |
 | law of large numbers | repeat the chance process many times, and the average of the values the random variable takes settles towards its expected value | `S02-R1-C14` |
 | leading question | a question that shows the answer the asker expects, or takes for granted part of what it is asking about; it can be open or closed | `S36-R1-C05` |
@@ -254,12 +292,17 @@ teaches were deleted. Terms used before their gloss, and terms used for two thin
 | lipid fraction | the proportion of a tissue's mass that is fat | `S01-R1-C02` |
 | lipolysis | the breakdown of stored triglycerides into free fatty acids and glycerol | `B0-R0-C38` |
 | local maximum, local minimum | a top that is higher than the ground near it; a bottom that is lower than the ground near it | `S02-R1-C09` |
+| locate (an intervention) | state three things: the stage at which it acts, the actor whose decision it changes, and the element of the food environment it moves | `S37-R1-C17` |
 | logarithm | the power you have to raise ten to, to get the number | `B0-R0-C07` |
 | logarithmic axis | an axis on which equal distances stand for equal multiplications, not equal additions | `B0-R0-C07` |
 | long tail | the side of a distribution that thins out slowly | `B0-R0-C27` |
 | main question (in a topic guide) | one of the questions a study turns on, each coming from the study question (DeJonckheere and Vaughn's "core question") | `S36-R1-C06` |
 | maintenance requirement | the energy it takes to keep a person at a steady weight | `S01-R1-C04` |
+| mandi | a regulated wholesale market for farm produce, run under state law | `S37-R1-C02` |
+| margin | what is left of an actor's mark-up after its own costs of handling the unit | `S37-R1-C04` |
+| margin over cost | the release's term: the minimum support price minus the cost, divided by the cost, times 100; not a trader's margin | `S37-R1-C09` |
 | mark | anything drawn that stands for one number: a bar, a point, a slice, a picture | `B0-R0-C40` |
+| mark-up | an actor's selling price minus its buying price; it pays for that actor's handling costs, and what is left is its margin | `S37-R1-C04` |
 | mass concentration | a weight in a volume, such as milligrams per decilitre (mg/dL): it says how heavy | `B0-R0-C13` |
 | matrix | a rectangular table of numbers, named by a capital letter: a table with the labels taken off | `S02-R1-C11` |
 | matrix product | A times B, written AB: the entry in row i and column j is row i of A dotted with column j of B; defined only when A has as many columns as B has rows | `S02-R1-C11` |
@@ -275,6 +318,7 @@ teaches were deleted. Terms used before their gloss, and terms used for two thin
 | metabolism | the name for every chemical reaction in a body added together | `B0-R0-C36` |
 | metabolizable energy | what is left of a food's energy after the losses in faeces, gas and urine | `B0-R0-C32` |
 | millimole | one thousandth of a mole | `B0-R0-C13` |
+| minimum support price (MSP) | the assured price the Central Government announces, at which foodgrains are procured from farmers for the central pool; a price at which the government will buy, not a price every farmer gets | `S37-R1-C09` |
 | mitochondria | the parts of a cell that make ATP | `B0-R0-C35` |
 | model assumption | a claim, adopted by the author, about how a body or a population behaves; it could be false | `S02-R1-C17` |
 | moderator | the person who runs a focus group (Kitzinger's "facilitator") | `S36-R1-C04` |
@@ -282,21 +326,27 @@ teaches were deleted. Terms used before their gloss, and terms used for two thin
 | mole | a fixed count of things, molecules here | `B0-R0-C13` |
 | molecule | a group of atoms held together by bonds | `B0-R0-C31` |
 | monosaccharide | a single sugar molecule, which is what breaking a starch gives you | `B0-R0-C36` |
+| monthly per capita consumption expenditure (MPCE) | a household's spending in a month, divided by the number of people in it | `S37-R1-C07` |
 | move (in a derivation) | one named step from a line to the next: substitute, rearrange, divide by a time interval and shrink it, differentiate or integrate both sides, or assume | `S02-R1-C16` |
 | mutually exclusive | they cannot both happen | `B0-R0-C25` |
 | natural logarithm (ln) | the power to which e must be raised to give the number; defined only for numbers above zero | `S02-R1-C04` |
 | negative number | a number less than zero, as far below zero as the matching positive number is above it, written with a minus sign in front | `B0-R0-C01` |
 | negative predictive value | the share of negative results that are right | `B0-R0-C26` |
+| net availability (of foodgrains) | gross production less seed, feed and wastage, less exports, plus imports, less the change in stocks: what was there to be eaten, not what was eaten | `S37-R1-C06` |
 | net change theorem | the integral of a rate over an interval is the change in the stock over that interval | `S02-R1-C05` |
 | net flow | the inflow minus the outflow | `B0-R0-C23` |
+| net imports | imports minus exports; a minus sign means more went out than came in | `S37-R1-C06` |
 | net metabolizable energy | metabolizable energy with the energy the body itself spends on digesting the food and handling it taken off | `B0-R0-C32` |
+| net production | the harvest less what was kept for seed, fed to animals or wasted before sale | `S37-R1-C06` |
 | net signed area | the area under a rate line with the area below the time axis counted as negative, so subtracted | `S02-R1-C05` |
 | notebook entry | one equation recorded in six parts: the equation as printed, each symbol in words with its unit, the whole equation as one sentence, its kind, what it assumes or whom it was fitted on, and the paper with the equation's number or page | `S02-R1-C17` |
 | notification | an order issued under a power a statute gives, and published in the Gazette | `B0-R0-C43` |
 | nucleotide | the repeating unit DNA is built from: a base, a sugar and a phosphate group | `B0-R0-C37` |
 | nucleus | the compartment that holds the cell's instructions, written in its DNA | `B0-R0-C35` |
 | numerator | the number above the line, saying how many of the parts are being counted | `B0-R0-C02` |
+| nutrition transition | Popkin and colleagues' name for a shift in the world's diets towards processed food, edible oils and sweet drinks | `S37-R1-C07` |
 | odds | how many times more likely the event is than its opposite: p divided by (1 minus p) | `B0-R0-C24` |
+| on the person (of an intervention) | changing only the eater's own decision, made from an offer left as it was: at most it adds information | `S37-R1-C17` |
 | open question | a question the person answers in their own words, not by picking from a list; it leaves the form of the answer to the respondent | `S36-R1-C03`, `S36-R1-C05` |
 | open window (of a citation count) | citations counted up to one fixed date for papers of many years, so an older paper has had longer to be cited than a younger one | `S55-R1-C06` |
 | order of magnitude | which power of ten a number is nearest to | `B0-R0-C08` |
@@ -304,6 +354,7 @@ teaches were deleted. Terms used before their gloss, and terms used for two thin
 | origin | the point where the two axes of a graph cross | `B0-R0-C19` |
 | outcome | one member of the sample space | `B0-R0-C24` |
 | overall maximum, overall minimum | the highest, or lowest, point over the whole stretch of inputs allowed | `S02-R1-C09` |
+| overweight (child under five) | weight-for-height more than two standard deviations above the WHO growth standard (the NFHS-5 cut-off) | `S37-R1-C15` |
 | parameter | a number that describes the population, if every member of it could be measured | `B0-R0-C29` |
 | passage (of a transcript) | the stretch of a transcript that says one thing | `S36-R1-C12` |
 | PECO | population, exposure, comparison, outcome: the four parts of a question about an exposure people meet in their ordinary lives | `S55-R1-C02` |
@@ -334,11 +385,14 @@ teaches were deleted. Terms used before their gloss, and terms used for two thin
 | predictor | one of the several columns a study predicts an outcome from, each given one weight | `S02-R1-C12` |
 | premise | a reason offered | `B0-R0-C42` |
 | prevalence | how many people in a group have the condition, written P(condition present), with no test involved | `B0-R0-C26` |
+| price wedge | a gap that a public decision opens between two prices of the same food | `S37-R1-C10` |
+| priority household | a household under the National Food Security Act whose members are entitled to 5 kg of grain a month each | `S37-R1-C11` |
 | privacy | the person's right to control what is collected about them and who sees it | `S36-R1-C07` |
 | probability | a number from 0 to 1 that states how often an outcome would turn up if the same chance process were repeated a great many times | `B0-R0-C24` |
 | probability density | a curve that never goes below zero and has a total area of 1 beneath it; the area over a range is the probability of that range, and its height is a probability per unit, not a probability | `S02-R1-C13` |
 | probability distribution | the list of every value a random variable can take, each paired with its probability; a model of the chance process, where a frequency table is data | `S02-R1-C13` |
 | probe | a short follow-up that asks for more of what the respondent just said without suggesting what that should be, such as a pause, repeating their words, or "tell me more" | `S36-R1-C08` |
+| procurement | the state buying grain from farmers | `S37-R1-C08` |
 | prompt (in a topic guide) | a short note under a main question of something you hope the answer covers, used only if the respondent does not get there on their own; it names a topic, never an answer | `S36-R1-C06` |
 | proportion | a part out of the whole it came from, never more than one | `B0-R0-C05` |
 | protein | a folded chain of amino acids, whose shape is what it does | `B0-R0-C35` |
@@ -347,6 +401,7 @@ teaches were deleted. Terms used before their gloss, and terms used for two thin
 | qualitative research | research that asks what something is, what it means to the people involved, how it comes about and why, by gathering people's own words and actions and analysing them without turning them into counts | `S36-R1-C01` |
 | quantitative research | research that asks how many or how much: how common something is, how large a quantity is, or how large a difference a treatment makes | `S36-R1-C01` |
 | quartile | the first quartile is the median of the lower half of the ordered values, the third the median of the upper half, the second the median of the whole set | `B0-R0-C28` |
+| quintal | 100 kg | `S37-R1-C02` |
 | quotation (in a qualitative report) | a respondent's own words, offered as evidence for a claim the author makes about the data, not as decoration | `S36-R1-C13` |
 | radiation | heat crossing as light or as the invisible light below red, with nothing needed in between | `B0-R0-C34` |
 | random error | the part that varies unpredictably from one reading to the next (VIM 2.19) | `B0-R0-C30` |
@@ -376,6 +431,8 @@ teaches were deleted. Terms used before their gloss, and terms used for two thin
 | respondent | a person who answers in a qualitative study, chosen on purpose for what they can tell the researcher about the question | `S36-R1-C02` |
 | respondent-to-interviewer ratio | the respondent's words in an interview divided by the interviewer's words | `S36-R1-C11` |
 | resting energy expenditure (REE) | the energy spent at rest | `S01-R1-C01` |
+| retail price | the price paid for a unit of food at the shop | `S37-R1-C04` |
+| retrofit (double-duty action) | the WHO's second level: change an existing action so that it also acts on the other burden | `S37-R1-C15` |
 | ribosome | the machine in a cell that builds proteins | `B0-R0-C35` |
 | rise | the change up, between two points on a line | `B0-R0-C19` |
 | rounding | choosing which place to stop at, and adjusting the last kept digit for what follows it | `B0-R0-C03` |
@@ -394,15 +451,18 @@ teaches were deleted. Terms used before their gloss, and terms used for two thin
 | second derivative | the derivative of the derivative, the rate of change of the rate; written f″(x) | `S02-R1-C03` |
 | second derivative test | where the derivative is zero, a second derivative above zero means a local minimum, below zero a local maximum, and zero decides nothing | `S02-R1-C09` |
 | self-citation | a paper citing its own authors' earlier work | `S55-R1-C06` |
+| self-sufficiency ratio (SSR) | the FAO's ratio: gross production divided by production plus imports minus exports, times 100 | `S37-R1-C06` |
 | semi-structured interview | an interview that follows a short guide of open questions: the topics are decided, the path is not, and the order and wording change to suit the person | `S36-R1-C03` |
 | sensitivity | the share of people with the condition that the test catches, written P(test positive given condition present) | `B0-R0-C26` |
 | set point model | Hall and Guo's name for a model with feedback on both intake and expenditure; its equilibrium still moves when intake is shifted | `S02-R1-C08` |
 | settling point model | Hall and Guo's model in which intake is flat and expenditure rises with weight | `S02-R1-C08` |
 | shape | where a distribution's values sit relative to each other | `B0-R0-C27` |
+| share of MPCE | a group's MPCE divided by total MPCE, times 100: a share of rupees spent, not of food eaten | `S37-R1-C07` |
 | SI | the international system of units, the one the world agreed to measure in | `B0-R0-C09` |
 | sigma (Σ) | add up; it comes with a counter and the counter's first and last values | `S02-R1-C01` |
 | signal transduction | a signal outside the cell converted into a signal inside it | `B0-R0-C35` |
 | significant figures | the digits in a number that carry information about the quantity | `B0-R0-C03` |
+| single-duty change | this book's reading word, not an official one: a change that acts on one burden and does not aim at the other | `S37-R1-C15` |
 | size (of a matrix) | rows by columns: a matrix with 3 rows and 2 columns is 3 × 2, said "3 by 2" | `S02-R1-C11` |
 | slope | how steep a line is: the change up divided by the change across | `B0-R0-C19` |
 | small store | glycogen, kept in the liver and the muscles | `B0-R0-C36` |
@@ -416,6 +476,7 @@ teaches were deleted. Terms used before their gloss, and terms used for two thin
 | square-root law | the spread of a sample's average equals the spread of the individual values in the population, divided by the square root of the sample size | `B0-R0-C29` |
 | squaring | multiplying a number by itself | `B0-R0-C06` |
 | stable, unstable (equilibrium) | stable if a state pushed a little away from it returns to it; unstable if the state moves further away | `S02-R1-C08` |
+| stage (of a food system) | one of this book's eight kinds of activity: production, storage, processing, distribution, retail, preparation, consumption and waste; this book's reading of HLPE, not HLPE's own list | `S37-R1-C01` |
 | standard deviation | the square root of the variance, in the same unit as the original values | `B0-R0-C28` |
 | standard error of the mean | that spread of a random sample's average, over many samples of the same size | `B0-R0-C29` |
 | starch | the stuff rice, wheat and potato are mostly made of | `B0-R0-C36` |
@@ -423,17 +484,23 @@ teaches were deleted. Terms used before their gloss, and terms used for two thin
 | statistic | the same kind of number, computed instead from a sample | `B0-R0-C29` |
 | statute | a law enacted by Parliament or a State Legislature, each called an Act | `B0-R0-C43` |
 | stock | a quantity that exists at a moment and can be measured at that moment, such as the water in a tank | `B0-R0-C23` |
+| stock limit | a limit on how much of a grain traders may hold | `S37-R1-C16` |
 | structured interview | a questionnaire read aloud, with everything decided in advance and most answers picked from a list; its answers are counted | `S36-R1-C03` |
+| stunted | of a child under five, height-for-age more than two standard deviations below the WHO growth standard | `S37-R1-C15` |
 | subject (of a formula) | the one letter got on its own; getting it there is making it the subject | `B0-R0-C16` |
 | subscript | a small letter or number set low after a symbol; part of the symbol's name, and never a multiplication | `S02-R1-C01` |
+| subsidy (on ration grain) | the economic cost minus the central issue price: what the government pays that the household does not | `S37-R1-C10` |
 | substitution | (1) putting a number in place of a letter, everywhere it appears (`B0-R0-C15`); (2) to solve two equations, rearranging one to give a letter on its own and putting that into the other (`B0-R0-C17`) | `B0-R0-C15`, `B0-R0-C17` |
 | sum and difference rules | the derivative of a sum or difference of two functions is the sum or difference of their derivatives | `S02-R1-C03` |
+| supply (of a food, for use within a country) | over one stated period, production plus imports minus exports, minus the rise in stocks (or plus the fall) | `S37-R1-C06` |
+| supply-chain sketch | a written map of one packaged food, from its ingredients' crops to the shop, with every link marked checked, seen or unknown | `S37-R1-C18` |
 | surroundings | everything outside the line you drew | `B0-R0-C33` |
 | system | whatever you have drawn a line round, for the purpose of counting something | `B0-R0-C33` |
 | system of two equations | a pair of equations that have to hold at the same time | `B0-R0-C17` |
 | systematic error | pushes every reading the same way, by close to the same amount, every time | `B0-R0-C30` |
 | systematic review | a study of studies: it collects and combines the results of the studies already done on one question, in a planned and careful way | `S55-R1-C03` |
 | table | values set out in a grid, each one identified by the row and the column it sits in | `B0-R0-C39` |
+| take-home ration (THR) | a prepared food handed out at the anganwadi to be eaten at home; not raw grain | `S37-R1-C12` |
 | talk share | the interviewer's words in one interview divided by the words everyone says, times one hundred; the respondent's talk share is one hundred minus the interviewer's | `S36-R1-C11` |
 | tangent | the straight line that touches a curve at one point and runs along it, whose slope is the rate at that point | `B0-R0-C21` |
 | temperature | how hot a thing is - a level, not an amount | `B0-R0-C34` |
@@ -450,8 +517,10 @@ teaches were deleted. Terms used before their gloss, and terms used for two thin
 | type 2 diabetes | a condition in which blood glucose runs high | `S01-R1-C09` |
 | uncited | (of a paper) its count of citations in a given database is zero; read it as no citation found in this database by this date | `S55-R1-C06` |
 | uncitedness ratio | the share of papers uncited, written as a fraction of 1, so 0.23 means 23 in every 100 | `S55-R1-C06` |
+| underweight (child under five) | weight-for-age more than two standard deviations below the WHO growth standard | `S37-R1-C15` |
 | unit | an agreed amount that everybody measures against | `B0-R0-C09` |
 | unit of observation | what one row of a table stands for | `B0-R0-C39` |
+| upstream (of an intervention) | changing a decision taken before the person chooses: a crop, a recipe, a price, a shelf, a ration basket | `S37-R1-C17` |
 | value axis | the axis a bar's length is read against: the side axis when bars stand up, the bottom axis when they lie flat | `B0-R0-C40` |
 | value question | a question about what ought to be done, which people answer from their values (Blackstone's textbook calls it an ethical question) | `S55-R1-C04` |
 | variable | a letter written in place of a number | `B0-R0-C15` |
@@ -459,12 +528,14 @@ teaches were deleted. Terms used before their gloss, and terms used for two thin
 | vector | an ordered list of numbers, called its entries; one row of a data table is a vector | `S02-R1-C10` |
 | villi | the tiny fingers lining the gut | `B0-R0-C38` |
 | warm-up question | an easy first question on something the respondent knows all about, to get them talking | `S36-R1-C06` |
+| wasted | of a child under five, weight-for-height more than two standard deviations below the WHO growth standard | `S37-R1-C15` |
 | weighted sum | each vector multiplied by its own number, then added: cv + dw for vectors v and w and numbers c and d | `S02-R1-C10` |
 | weights (of a weighted sum) | the numbers a weighted sum multiplies by; "weight" here means a multiplier, not body weight | `S02-R1-C10` |
 | where-clause | the words that fix what each symbol in an equation stands for, often a clause beginning "where" after it; it fixes each symbol's meaning, its unit and its sign | `S02-R1-C01` |
 | who-is-waiting test | name the person, or named role in a body, that needs the answer for a decision they actually face; then, for each answer the study could give, state what they will do, in their own words; it passes only when at least two answers lead to different actions | `S55-R1-C07` |
 | window | the stretch of time a chart over time shows, starting and ending where somebody chose | `B0-R0-C40` |
 | work | a force moving something through a distance; lifting a weight is work | `B0-R0-C31` |
+| working against the other burden | this book's reading word, not an official one: a change that acts on one burden and, by its design, raises the risk of the other | `S37-R1-C15` |
 | worth answering | (of a research question) the answer is in doubt, is not already known, and has practical consequences: at least one possible answer would lead someone to decide or act differently from another | `S55-R1-C05` |
 | x-axis | the flat line along the bottom of a graph | `B0-R0-C19` |
 | y-axis | the upright line up the side of a graph | `B0-R0-C19` |

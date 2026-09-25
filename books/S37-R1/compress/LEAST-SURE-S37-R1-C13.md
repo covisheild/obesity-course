@@ -1,0 +1,1 @@
+- Cut the definition's IFCT paragraph (tables named, kJ only, 1 kcal = 4.18 kJ, Atwater). The kJ trap and the 4.18 factor survive only in the plain-terms line and must-know points 0 and 2; "the tables' own factor" in exercise 4 now leans on must-know 2 alone. Also cut the share-of-a-norm definition that exercise 11 relies on.

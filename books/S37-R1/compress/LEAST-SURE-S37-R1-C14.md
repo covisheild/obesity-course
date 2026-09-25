@@ -1,0 +1,1 @@
+- Cut the fair-price-shop sentence, which is the only place "DFPD" is expanded, and swapped the school meal's PIB child count (11.80 crore, 1 April 2022) for the shorter DFPD grain line. Exercise 1 asks for a scale figure with date and source per channel; the school meal now has only an unexpanded "DFPD" as its source, and the anganwadi figure survives only in must-know 3.

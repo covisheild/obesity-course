@@ -1,0 +1,928 @@
+concept_id: S37-R1-C06
+subject: S37
+rung: 1
+sequence: 6
+name: 'Where a country''s food comes from: production, imports, stocks'
+concept_type: derivable
+clusters:
+- environment-and-market
+- measurement-inference
+ground_floor_deps:
+- B0-R0-C23
+- B0-R0-C04
+- B0-R0-C05
+- B0-R0-C10
+concept_deps:
+- S37-R1-C01
+definition:
+  text: |
+    Take one food and one stated period. A country's supply of that food for use within the country is its
+    production, plus its imports, minus its exports, minus the rise in its stocks over the period (or plus the
+    fall).
+
+    India's official series of per capita net availability of foodgrains, published in the
+    Economic Survey's Statistical Appendix Table 1.19, applies the same identity with two
+    further subtractions. Net availability is gross production, less seed, feed and wastage,
+    less exports, plus imports, less the change in stocks. Net availability divided by the
+    population gives per capita net availability in kilograms a year. Divided again by 365 it
+    gives grams a day. The table states that these figures are not strictly representative of
+    actual consumption.
+
+    The Food and Agriculture Organization of the United Nations (FAO) defines an import
+    dependency ratio (IDR): imports divided by production plus imports minus exports, times
+    100. Its self-sufficiency ratio (SSR) is gross production divided by the same total, times
+    100. Neither ratio uses the change in stocks. The two add to 100 only when exports are zero. A net imports figure,
+    imports minus exports, is enough for the SSR and not enough for the IDR.
+  references:
+  - citekey: openstax_prealgebra_2e_ch6
+    kind: textbook
+    locator: 6.2 Solve General Applications of Percent, Solve Applications of Percent, the worked example on the share of a brownie's calories from fat
+    quote: What percent of the total calories in each brownie comes from fat?
+    verified:
+      resolved_id: https://openstax.org/books/prealgebra-2e/pages/6-2-solve-general-applications-of-percent
+      opened: true
+      claim_located: true
+      checked_on: '2026-09-25'
+      note: |-
+        Opened 25 Sep 2026 from the held excerpt. The worked example finds what percent a part
+        is of a stated total (240 of 480 calories, "Of the total calories in each brownie, 50%
+        is fat."), which is the operation both FAO ratios perform: a part divided by the
+        domestic total, times 100. Section 6.1 gives the underlying definition, "A percent is a
+        ratio whose denominator is 100". The book says nothing about supply, stocks, imports or
+        the IDR and SSR; the identity rests on fao_fbs_handbook_2001 and Book 0, C9, and this
+        reference is cited only for expressing a part of a total as a percentage.
+  - citekey: fao_fbs_handbook_2001
+    kind: consensus_statement
+    locator: Chapter II, Concepts and definitions, item 4, Supply, definition (c)
+    quote: (c) Production + imports - exports + changes in stocks (decrease or increase) = supply
+      for domestic utilization.
+    verified:
+      resolved_id: https://www.fao.org/4/x9892e/X9892e02.htm
+      opened: true
+      claim_located: true
+      checked_on: '2026-09-25'
+      note: |-
+        The handbook adds that "In recent years concept (c) has been adopted when preparing
+        and publishing food balance sheets".
+  - citekey: fao_fbs_handbook_2001
+    kind: consensus_statement
+    locator: Chapter II, item 2, Changes in Stocks, the sign convention
+    quote: Increases in stocks of a commodity reduce the availability for domestic utilization.
+      They are therefore indicated by the - sign and decreases in stocks by the + sign since they
+      increase the available supply.
+    verified:
+      resolved_id: https://www.fao.org/4/x9892e/X9892e02.htm
+      opened: true
+      claim_located: true
+      checked_on: '2026-09-25'
+  - citekey: econ_survey_tab_1_19
+    kind: primary
+    locator: Economic Survey 2025-26, Statistical Appendix, Table 1.19, notes under the table
+    quote: The net availability of foodgrains is estimated to be Gross Production (-) seed, feed &
+      wastage, (-) exports (+) imports, (-) change in stocks.
+    verified:
+      resolved_id: https://www.indiabudget.gov.in/economicsurvey/doc/stat/tab1.19.pdf
+      opened: true
+      claim_located: true
+      checked_on: '2026-09-25'
+      note: |-
+        The table itself prints production (gross and net of seed, feed and wastage), net
+        imports, change in stocks and net availability, in thousand tonnes. Checked by
+        arithmetic across all eighteen rows: net availability equals net production plus net
+        imports minus change in stocks, within 3 thousand tonnes, in thirteen of them. Five do
+        not: rice, cereals and foodgrains for 2022-23 (by 4,567, 4,572 and 4,572) and pulses
+        and foodgrains for 2021-22 (by 102 and 101, the other way). The record shows the rice
+        row and names the pulses row.
+  - citekey: econ_survey_tab_1_19
+    kind: primary
+    locator: Table 1.19, notes, the division by population and by 365
+    quote: Net availability, thus worked out is further divided by the number of days in a year
+      i.e., 365 days which is taken as net availability of foodgrains in terms of grams/day.
+    verified:
+      resolved_id: https://www.indiabudget.gov.in/economicsurvey/doc/stat/tab1.19.pdf
+      opened: true
+      claim_located: true
+      checked_on: '2026-09-25'
+  - citekey: econ_survey_tab_1_19
+    kind: primary
+    locator: Table 1.19, last note
+    quote: Figures in respect of per capita net availability given above are not strictly
+      representative of actual level of consumption in the country
+    verified:
+      resolved_id: https://www.indiabudget.gov.in/economicsurvey/doc/stat/tab1.19.pdf
+      opened: true
+      claim_located: true
+      checked_on: '2026-09-25'
+  - citekey: fao_fbs_handbook_2001
+    kind: consensus_statement
+    locator: Chapter IV, Import dependency ratio, the definition and the caveat after it
+    quote: an important aspect is to know how much of the available domestic food supply has been
+      imported and how much comes from the country's own production. The IDR answers this
+      question.
+    verified:
+      resolved_id: https://www.fao.org/4/x9892e/X9892e04.htm
+      opened: true
+      claim_located: true
+      checked_on: '2026-09-25'
+      note: |-
+        The formula is set in the HTML as a fraction drawn with underscores: "Imports" above
+        the rule, "production + imports - exports" below it, then "x 100". The self-sufficiency
+        ratio is set the same way with "Production" above. The record reads the layout as
+        numerator over denominator. The handbook does not define IDR as imports divided by
+        consumption.
+  - citekey: fao_fbs_handbook_2001
+    kind: consensus_statement
+    locator: Chapter IV, the closing sentence on the two ratios
+    quote: the self-sufficiency rate (as defined above) cannot be the complement to 100 of the
+      import dependency rate, or vice-versa.
+    verified:
+      resolved_id: https://www.fao.org/4/x9892e/X9892e04.htm
+      opened: true
+      claim_located: true
+      checked_on: '2026-09-25'
+simplified_explanation: |
+  Where does the food a country eats in a year come from? Three places. What it grew, what it
+  bought from abroad, and what it had put away in store.
+
+  So start with what was grown. Add what came in from abroad. Take off what went out.
+
+  Two percentages tell you how much a country leans on the rest of the world. If the country
+  exports nothing, the two add to 100. If it exports, they do not.
+
+  None of this says what anyone ate. It says what was there to be eaten.
+illustrations:
+- body: |
+    Start with the shortcut, because it is the one people take. India grew 26,058 thousand
+    tonnes of pulses in 2022-23. Divide by the population and call it what Indians had.
+
+    Open the Economic Survey 2025-26 Statistical Appendix, Table 1.19, "Per Capita Net
+    Availability of Foodgrains", at
+    https://www.indiabudget.gov.in/economicsurvey/doc/stat/tab1.19.pdf. Find the block headed
+    PULSES and the row for 2022-23. The population column is in thousand persons: 13,92,329
+    thousand, which is 139.2 crore, that is about 1.39 billion people. Dividing thousand tonnes
+    by thousand persons gives tonnes a person.
+
+    ```working
+    26,058 divided by 13,92,329 = 0.018715 tonnes
+    0.018715 times 1,000 = 18.715
+    18.715 times 1,000 divided by 365 = 51.27
+    ```
+
+    About 51 grams of pulses a person a day. The table says 47.1. The shortcut is 4 grams too
+    high, and the table shows why. Now build the supply properly, from the same row.
+
+    ```table
+    Pulses, 2022-23  Thousand tonnes
+    Net production  22801
+    Net imports  1733
+    Rise in stocks, taken off  -615
+    Net availability  23919
+    ```
+
+    Table 1.19 prints the stock change as 615, a rise. It is written -615 here because a rise
+    is taken off.
+
+    Net production is the harvest less what was kept for seed, fed to animals or wasted before
+    sale. Net imports are imports minus exports. The stocks rose by 615 thousand tonnes, so
+    that much was stored rather than used, and it comes off. Say the identity in words:
+    production plus imports minus exports minus the rise in stocks is what was available.
+
+    ```working
+    22,801 plus 1,733 minus 615 = 23,919
+    ```
+
+    It closes exactly. Now share it out.
+
+    ```working
+    23,919 divided by 13,92,329 = 0.01718 tonnes
+    0.01718 times 1,000 = 17.18
+    17.18 times 1,000 divided by 365 = 47.07
+    ```
+
+    About 17.2 kilograms a person a year and 47.1 grams a day, as the table prints. The
+    shortcut counted seed, feed and waste as food, counted grain that went into store, and left
+    out imports. In this year those errors did not cancel.
+
+    Now read the note under the table before you quote the 47.1 anywhere. The figures "are not
+    strictly representative of actual level of consumption". This is what was there to be
+    eaten in the country as a whole. It is not what any household or person ate.
+  analogy_breaks_when: |
+    The identity always holds, because it is only bookkeeping. The figures in it do not always
+    hold. The table's stock column does not count stocks held by traders, producers and
+    consumers, by its own note. And a national average in grams a day says nothing about any
+    state, household or person.
+  numbers:
+  - value: '26058'
+    unit: thousand tonnes, gross production of pulses, 2022-23
+    citekey: econ_survey_tab_1_19
+    quote: 2022-23 1392329 26058 22801 1733 615 23919 17.2 47.1
+    as_of: 2022-23
+  - value: '1392329'
+    unit: thousand persons, population used for 2022-23
+    citekey: econ_survey_tab_1_19
+    quote: 2022-23 1392329 26058 22801 1733 615 23919 17.2 47.1
+  - value: '22801'
+    unit: thousand tonnes, net production of pulses, 2022-23
+    citekey: econ_survey_tab_1_19
+    quote: 2022-23 1392329 26058 22801 1733 615 23919 17.2 47.1
+  - value: '1733'
+    unit: thousand tonnes, net imports of pulses, 2022-23
+    citekey: econ_survey_tab_1_19
+    quote: 2022-23 1392329 26058 22801 1733 615 23919 17.2 47.1
+  - value: '615'
+    unit: thousand tonnes, change in stocks of pulses (a rise), 2022-23
+    citekey: econ_survey_tab_1_19
+    quote: 2022-23 1392329 26058 22801 1733 615 23919 17.2 47.1
+  - value: '23919'
+    unit: thousand tonnes, net availability of pulses, 2022-23
+    citekey: econ_survey_tab_1_19
+    quote: 2022-23 1392329 26058 22801 1733 615 23919 17.2 47.1
+  - value: '47.1'
+    unit: grams a person a day, per capita net availability of pulses, 2022-23
+    citekey: econ_survey_tab_1_19
+    quote: 2022-23 1392329 26058 22801 1733 615 23919 17.2 47.1
+  - value: '365'
+    unit: days, the divisor the table uses to turn a year into a day
+    citekey: econ_survey_tab_1_19
+    quote: further divided by the number of days in a year i.e., 365 days
+- body: |
+    Now run the identity on a row that does not close. It is a real one.
+
+    In the same table, find the block headed RICE and the row for 2022-23. Net production is
+    125438 thousand tonnes. Net imports are -22347: a minus sign in this column means India
+    exported more rice than it imported, by 22,347 thousand tonnes. Change in stocks is -7462:
+    the stocks fell. Printed net availability is 115120.
+
+    Take the rise in stocks off, as before. A fall is a negative rise, and taking off a negative
+    number adds it.
+
+    ```working
+    1,25,438 minus 22,347 plus 7,462 = 1,10,553
+    1,15,120 minus 1,10,553 = 4,567
+    ```
+
+    The row is 4,567 thousand tonnes short of its own printed total. Do the same with the rice
+    rows for 2020-21 and 2021-22, and they close exactly. Do it with wheat for 2022-23 and it is
+    out by 2, which is rounding. Of all the rows for single foods, one other fails: pulses in
+    2021-22, by 102. Only rice in 2022-23 is out by thousands.
+
+    The gap carries through. The CEREALS and FOODGRAINS totals for 2022-23 include rice, and
+    each misses its own identity by 4,572. Turn that into grams a day, the same way as before.
+
+    ```working
+    4,572 divided by 13,92,329 times 1,000 times 1,000 divided by 365 = 9.00 grams
+    ```
+
+    About 9 grams a person a day of the headline foodgrain figure for 2022-23, 568.8 grams,
+    that the table's own columns do not account for.
+
+    The table does not say why. The stock figure may have been revised, a column may carry a
+    different definition that year, or there may be a slip. You cannot tell which from here,
+    and you should not guess. What you can do is say it plainly: "Table 1.19's 2022-23 rice row
+    does not satisfy its own identity by 4,567 thousand tonnes, so I have not used the change
+    between 2021-22 and 2022-23 without checking the Division's source." That sentence is what
+    running the identity buys you.
+  analogy_breaks_when: |
+    The identity finds a row whose parts do not add up. It cannot find a row whose parts add up
+    and are all wrong together. A matched pair of errors passes it, as Book 0, C9 warned about
+    stocks.
+  numbers:
+  - value: '125438'
+    unit: thousand tonnes, net production of rice, 2022-23
+    citekey: econ_survey_tab_1_19
+    quote: 2022-23 1392329 135755 125438 -22347 -7462 115120 82.7 226.5
+    as_of: 2022-23
+  - value: '22347'
+    unit: thousand tonnes, net exports of rice, 2022-23 (printed as net imports of -22347)
+    citekey: econ_survey_tab_1_19
+    quote: 2022-23 1392329 135755 125438 -22347 -7462 115120 82.7 226.5
+  - value: '7462'
+    unit: thousand tonnes, fall in rice stocks, 2022-23 (printed as change in stocks -7462)
+    citekey: econ_survey_tab_1_19
+    quote: 2022-23 1392329 135755 125438 -22347 -7462 115120 82.7 226.5
+  - value: '115120'
+    unit: thousand tonnes, printed net availability of rice, 2022-23
+    citekey: econ_survey_tab_1_19
+    quote: 2022-23 1392329 135755 125438 -22347 -7462 115120 82.7 226.5
+  - value: '568.8'
+    unit: grams a person a day, per capita net availability of foodgrains, 2022-23
+    citekey: econ_survey_tab_1_19
+    quote: 2022-23 1392329 329686 295569 -28618 -17540 289063 207.6 568.8
+  - value: '4572'
+    unit: thousand tonnes by which the 2022-23 cereals and foodgrains rows miss their identity
+    citekey: econ_survey_tab_1_19
+    quote: 2022-23 1392329 329686 295569 -28618 -17540 289063 207.6 568.8
+    derived: 'By the identity, foodgrains 2022-23: 295569 minus 28618 plus 17540 = 284491, against 289063 printed, a gap of 4572. Cereals 2022-23: 272769 minus 30352 plus 18155 = 260572, against 265144 printed, the same gap of 4572.'
+- body: |
+    The identity also tells you how much of a food came from abroad. Edible oil and cereals
+    give opposite answers.
+
+    Open the Press Information Bureau (PIB) backgrounder *National Mission on Edible Oils* (8
+    December 2025) at https://www.pib.gov.in/PressReleasePage.aspx?PRID=2200287. Search for
+    "12.18" and then for "15.66". India produced 12.18 million tonnes of edible oil in 2023-24
+    and imported 15.66 million tonnes. The release gives no edible-oil export figure, so leave
+    exports out and say you did. The FAO's import dependency ratio is imports divided by
+    production plus imports minus exports, times 100.
+
+    ```working
+    12.18 plus 15.66 = 27.84
+    15.66 divided by 27.84 times 100 = 56.25
+    12.18 divided by 27.84 times 100 = 43.75
+    ```
+
+    Import dependence 56.25 per cent, the release's own figure, and self-sufficiency 43.75 per
+    cent (the release prints 43.74). With exports taken as zero, the two add to 100.
+
+    Now cereals, from Table 1.19 for 2022-23. Gross production was 3,03,628 thousand tonnes and
+    net imports -30,352: net exports. The table gives only imports minus exports, so the IDR
+    cannot be worked out: it needs imports alone. The SSR can, because its denominator,
+    production plus imports minus exports, is production plus net imports.
+
+    ```working
+    3,03,628 minus 30,352 = 2,73,276
+    3,03,628 divided by 2,73,276 times 100 = 111.1 per cent
+    ```
+
+    Self-sufficiency of about 111 per cent. India grew more cereal than it kept. For edible
+    oil, less than half of what it kept was home-grown.
+
+    One date to watch. The oil releases also give import duty rates, and those are out of date.
+    On 24 September 2026 the PIB announced that the basic customs duty on crude sunflower oil
+    had been cut to nil, and on crude soybean and crude palm oil to 5 per cent. Import figures
+    and duty rates move on different clocks. Quote each with its own date.
+  analogy_breaks_when: |
+    The two ratios compare a country's own production with what it kept. They say nothing
+    about whether what it kept was enough, or too much, for the people eating it. And an SSR
+    above 100 for all cereals together can sit beside heavy dependence on imports of another
+    food, as the oil figures show. The FAO adds that the ratios hold only if imports are
+    mainly used at home and not re-exported.
+  numbers:
+  - value: '12.18'
+    unit: million tonnes, India's edible oil production, 2023-24
+    citekey: pib_2200287
+    quote: total edible oil production was recordedat 12.18 million tonnes during 2023-24
+    as_of: 2023-24
+  - value: '15.66'
+    unit: million tonnes, India's edible oil imports, 2023-24
+    citekey: pib_2200287
+    quote: edible oil imports, which reached 15.66 million tonnes in 2023–24
+    as_of: 2023-24
+  - value: '56.25'
+    unit: per cent, import dependence on edible oils, 2023-24 (63.2 in 2015-16)
+    citekey: pib_2200287
+    quote: import dependence on edible oils has declined from 63.2% in 2015-16 to 56.25% in 2023-24
+  - value: '43.74'
+    unit: per cent, self-sufficiency in edible oils as the release prints it, 2023-24
+    citekey: pib_2200287
+    quote: reflecting a modest improvement in self-sufficiency from 36.8% to 43.74%
+  - value: '303628'
+    unit: thousand tonnes, gross production of cereals, 2022-23
+    citekey: econ_survey_tab_1_19
+    quote: 2022-23 1392329 303628 272769 -30352 -18155 265144 190.4 521.7
+    as_of: 2022-23
+  - value: '30352'
+    unit: thousand tonnes, net exports of cereals, 2022-23 (printed as net imports of -30352)
+    citekey: econ_survey_tab_1_19
+    quote: 2022-23 1392329 303628 272769 -30352 -18155 265144 190.4 521.7
+  - value: '5'
+    unit: per cent, basic customs duty on crude soybean and crude palm oil from 24 Sep 2026 (crude sunflower nil)
+    citekey: s37_edible_oil_duty
+    quote: the BCD on Crude Soybean Oil and Crude Palm Oil has been reduced from 10% to 5%
+    as_of: '2026-09-24'
+must_know:
+- point: |
+    Production is not supply. Write the identity out before you argue about any one term in
+    it.
+  kind: misconception
+  bearing: methodological
+  refs:
+  - econ_survey_tab_1_19
+- point: |
+    A rise in stocks is subtracted and a fall is added. The FAO's handbook says so in as many
+    words, and India's table follows it. Getting the sign wrong moves the answer by twice the
+    stock change.
+  kind: trap
+  bearing: methodological
+  refs:
+  - fao_fbs_handbook_2001
+- point: |
+    India's official per capita net availability of foodgrains for 2022-23 is 568.8 grams a
+    person a day (Economic Survey 2025-26, Table 1.19). It is what was there to be eaten, not
+    what was eaten.
+  kind: number
+  bearing: policy
+  refs:
+  - econ_survey_tab_1_19
+- point: |
+    India's edible oil imports were 56.25 per cent of its production plus imports in 2023-24,
+    by the government's own figures: 15.66 million tonnes imported against 12.18 produced. When someone says India is
+    self-sufficient in food, ask which food.
+  kind: india_deviation
+  bearing: policy
+  refs:
+  - pib_2200287
+- point: |
+    Import dependence and self-sufficiency are not two halves of 100 unless the country
+    exports nothing. Work each out from its own formula.
+  kind: trap
+  bearing: methodological
+  refs:
+  - fao_fbs_handbook_2001
+- point: |
+    Run the identity on every row of a supply table before you use the row. If a row misses by
+    more than a few units of its last digit, say so and do not build a trend on it.
+  kind: move
+  bearing: methodological
+  refs:
+  - econ_survey_tab_1_19
+- point: |
+    Availability stops at the household door. Do not use availability as intake, and do not
+    use a national average for a state or a family.
+  kind: boundary
+  bearing: public
+  refs:
+  - fao_fbs_handbook_2001
+  - econ_survey_tab_1_19
+- point: |
+    Import figures and import duties change on different dates. Put the date beside every
+    trade figure you quote.
+  kind: consequence
+  bearing: policy
+  refs:
+  - s37_edible_oil_duty
+exercises:
+- type: interpretation
+  prompt: |
+    Here is the WHEAT row of Table 1.19 for 2022-23, in thousand tonnes.
+
+    ```table
+    Column  Thousand tonnes
+    Gross production  110554
+    Net production  97177
+    Net imports  -4682
+    Change in stocks  -10645
+    Net availability  103142
+    ```
+
+    Population is 1392329 thousand.
+
+    Say what each of the two negative numbers means in words. Check that the row closes. Say
+    whether wheat availability in 2022-23 was helped or reduced by stocks, and by how much.
+  answer: |
+    Net imports of -4682 mean India exported 4,682 thousand tonnes more wheat than it imported.
+    Change in stocks of -10645 means the stocks the table counts fell by 10,645 thousand tonnes.
+
+    The identity: net production, plus net imports, minus the change in stocks.
+
+    ```working
+    97,177 minus 4,682 plus 10,645 = 1,03,140
+    ```
+
+    Against 1,03,142 printed: out by 2, which is rounding. The row closes.
+
+    Stocks helped. They fell, so 10,645 thousand tonnes came out of store and were available.
+    That is about a tenth of the year's net availability.
+
+    ```working
+    10,645 divided by 1,03,142 times 100 = 10.3 per cent
+    ```
+
+    Say it with its limit. This is the stock the table counts. Its note says stocks held by
+    traders, producers and consumers are not taken into account.
+  skill_ref: S37-R1-K01
+- type: teaching
+  prompt: |
+    A journalist has three minutes and asks: "Is India self-sufficient in food?" Answer without
+    jargon, give one quotable sentence, and say how sure you are.
+  answer: |
+    Answer first.
+
+    > In cereals, yes: India grows more rice and wheat than it keeps. In pulses and cooking
+    > oil, no: more than half the oil India used in 2023-24 was imported.
+
+    Then the numbers, one each. For cereals in 2022-23, production was about 111 per cent of
+    what the country kept. For edible oil in 2023-24, the government's own figure for import
+    dependence is 56.25 per cent.
+
+    Then the limit, plainly. "Self-sufficient" here means the country grew enough of that food
+    to cover what was available. It does not mean every family had enough, and it does not say
+    whether people ate too little or too much. Availability is not what people ate.
+
+    Confidence. The direction for each food is solid, from official tables. The exact
+    percentages depend on the year and the definition. One row of the cereal table for 2022-23
+    does not add up, so I would not quote the cereal figure to the decimal.
+quantitative: true
+practice:
+- level: 1
+  prompt: |
+    A country produces 800 units of a food in a year, imports 50 and exports 30. Its stocks rise
+    by 20 over the year. What was the supply for use at home? Then give the answer if the
+    stocks had fallen by 20 instead.
+  answer: |
+    Production plus imports minus exports, minus the rise in stocks.
+
+    ```working
+    800 plus 50 minus 30 minus 20 = 800
+    ```
+
+    Supply of 800. If the stocks had fallen by 20, that grain came out of store and is added.
+
+    ```working
+    800 plus 50 minus 30 plus 20 = 840
+    ```
+
+    Supply of 840. The same harvest gives two supplies 40 apart, twice the stock change.
+- level: 2
+  prompt: |
+    A supply of 73,000 tonnes of a food in a year is shared among 20,00,000 people. Give the
+    supply in kilograms a person a year and in grams a person a day.
+  answer: |
+    Turn the tonnes into kilograms, then share them out.
+
+    ```working
+    73,000 times 1,000 = 7,30,00,000
+    7,30,00,000 divided by 20,00,000 = 36.5
+    ```
+
+    36.5 kilograms a person a year. Now into grams, then days.
+
+    ```working
+    36.5 times 1,000 = 36,500
+    36,500 divided by 365 = 100
+    ```
+
+    100 grams a person a day.
+- level: 2
+  prompt: |
+    A country produces 30 units of a food, imports 70 and exports nothing. Give its import
+    dependency ratio and its self-sufficiency ratio, and add them.
+  answer: |
+    The denominator for both is production plus imports minus exports.
+
+    ```working
+    30 plus 70 minus 0 = 100
+    70 divided by 100 times 100 = 70
+    30 divided by 100 times 100 = 30
+    70 plus 30 = 100
+    ```
+
+    Import dependence 70 per cent, self-sufficiency 30 per cent. With no exports they add to
+    100.
+- level: 3
+  prompt: |
+    A country produces 90 units, imports 30 and exports 20. Give both ratios and their sum,
+    and say why the sum is not 100.
+  answer: |
+    ```working
+    90 plus 30 minus 20 = 100
+    30 divided by 100 times 100 = 30
+    90 divided by 100 times 100 = 90
+    30 plus 90 = 120
+    ```
+
+    Import dependence 30 per cent, self-sufficiency 90 per cent, sum 120.
+
+    The two tops, imports and production, add to 120. The shared bottom has had the 20 of
+    exports taken off, so it is 100. Some of what was produced left the country, yet it still
+    counts on top of the self-sufficiency ratio. That is why the FAO says one is not the
+    complement of the other.
+- level: 3
+  prompt: |
+    The supply for use at home was 500. Production was 520, imports 10 and exports 40. What
+    happened to stocks over the year, and by how much?
+  answer: |
+    Before stocks, the flows give this.
+
+    ```working
+    520 plus 10 minus 40 = 490
+    ```
+
+    Supply was 500, which is 10 more than the flows alone give. The extra 10 must have come out
+    of store.
+
+    ```working
+    500 minus 490 = 10
+    ```
+
+    Stocks fell by 10. Check it forwards: 520 plus 10 minus 40 plus 10 = 500.
+- level: 4
+  prompt: |
+    Table 1.19 of the Economic Survey 2025-26 gives, for foodgrains in 2022-23, net
+    availability of 289063 thousand tonnes and a population of 1392329 thousand. Work out the
+    per capita net availability in kilograms a year and grams a day, and keep the units.
+  answer: |
+    Thousand tonnes divided by thousand persons gives tonnes a person.
+
+    ```working
+    2,89,063 divided by 13,92,329 = 0.20761 tonnes
+    0.20761 times 1,000 = 207.61
+    207.61 times 1,000 divided by 365 = 568.8
+    ```
+
+    207.6 kilograms a person a year and 568.8 grams a person a day of foodgrains available in
+    2022-23, as the table prints.
+  refs:
+  - econ_survey_tab_1_19
+- level: 5
+  prompt: |
+    Go the other way. The same table gives 568.8 grams a person a day of foodgrains for
+    2022-23, for 1392329 thousand people. What total net availability, in thousand tonnes,
+    does that imply? Compare it with the printed 289063 and say why the two differ slightly.
+  answer: |
+    Grams a day to kilograms a year.
+
+    ```working
+    568.8 times 365 = 2,07,612
+    2,07,612 divided by 1,000 = 207.612
+    ```
+
+    207.612 kilograms, which is 0.207612 tonnes a person a year. Times the population in
+    thousands gives thousand tonnes.
+
+    ```working
+    0.207612 times 13,92,329 = 2,89,064.2
+    ```
+
+    About 2,89,064 thousand tonnes, against 2,89,063 printed. The difference of about 1 comes
+    from 568.8 having been rounded to one decimal. Going back from a rounded figure never lands
+    exactly.
+  refs:
+  - econ_survey_tab_1_19
+- level: 5
+  prompt: |
+    The PIB backgrounder of December 2025 gives India's edible oil production for 2023-24 as
+    12.18 million tonnes and imports as 15.66 million tonnes. Work out import dependence and
+    self-sufficiency. Say which term of the FAO's formula you had to leave out. Then compare
+    your answers with the release's own figures of 56.25 and 43.74 per cent.
+  answer: |
+    ```working
+    12.18 plus 15.66 = 27.84
+    15.66 divided by 27.84 times 100 = 56.25
+    12.18 divided by 27.84 times 100 = 43.75
+    ```
+
+    Import dependence 56.25 per cent, self-sufficiency 43.75 per cent. Exports were left out,
+    because the release gives no edible-oil export figure. The import figure matches the
+    release. The release prints 43.74 for self-sufficiency, one hundredth lower than the two
+    figures it gives. Report 43.75 with the working, or 43.74 as the release's figure, and say
+    which.
+  refs:
+  - pib_2200287
+- level: 6
+  prompt: |
+    The same backgrounder gives India's per capita domestic consumption of edible oils in
+    2022-23. It was 10.58 kilograms a year in rural areas and 11.78 in urban areas. In 2004-05
+    the two figures were 5.76 and 7.92. Give each 2022-23 figure in grams a day, and the rural rise as a
+    percentage of the 2004-05 figure.
+  answer: |
+    Kilograms a year into grams a day.
+
+    ```working
+    10.58 times 1,000 divided by 365 = 28.99
+    11.78 times 1,000 divided by 365 = 32.27
+    ```
+
+    About 29 grams a day rural and 32 grams a day urban.
+
+    The rural rise, against the starting value.
+
+    ```working
+    10.58 minus 5.76 = 4.82
+    4.82 divided by 5.76 times 100 = 83.68
+    ```
+
+    A rise of 83.68 per cent, the release's own figure. These are consumption figures, not the
+    supply worked out in this section. The release does not say which survey they come from.
+  refs:
+  - pib_2200287
+- level: 7
+  prompt: |
+    Here is a worked answer. Find the step that broke.
+
+    ```working
+    pulses 2022-23: net production 22,801, net imports 1,733
+    change in stocks 615
+    supply = 22,801 plus 1,733 plus 615 = 25,149
+    ```
+  answer: |
+    The third line added the change in stocks. The 615 is a rise: grain went into store, so it
+    was not available and comes off.
+
+    ```working
+    22,801 plus 1,733 minus 615 = 23,919
+    ```
+
+    23,919 thousand tonnes, which is the table's printed figure.
+
+    Why the wrong answer looks reasonable. The column is headed "Change in Stocks" with no
+    sign word. Every other term in the line is added. The error is twice the stock change,
+    1,230 thousand tonnes here, and it would have gone unnoticed without the printed total to
+    check against. Say "a rise comes off" before you write the sign.
+- level: 8
+  prompt: |
+    Here is a worked answer. Find the step that broke.
+
+    ```working
+    cereals 2022-23: gross production 3,03,628, net imports -30,352
+    import dependence = -30,352 divided by 2,73,276 times 100 = -11.1 per cent
+    so India's cereal import dependence is negative
+    ```
+  answer: |
+    The second line put net imports where imports belong. The import dependency ratio needs
+    imports alone. Net imports are imports minus exports, and a negative figure only says
+    exports were larger. A country can import a great deal of one cereal and export more of
+    another; the net figure hides both.
+
+    From this table the ratio cannot be worked out at all. What can be worked out is the
+    self-sufficiency ratio, whose denominator needs only production plus net imports.
+
+    ```working
+    3,03,628 divided by 2,73,276 times 100 = 111.1 per cent
+    ```
+
+    Why the wrong answer looks reasonable: the denominator is right, and a negative number
+    feels like it means "not dependent". But no share of a supply can be below zero. A negative
+    percentage of a whole is a sign that a wrong quantity went on top.
+- level: 8
+  prompt: |
+    Here is a worked answer. Find the step that broke.
+
+    ```working
+    foodgrains 2022-23: net availability 2,89,063, population 13,92,329
+    2,89,063 divided by 13,92,329 = 0.2076
+    so each person had 0.2 kilograms of foodgrain a year
+    ```
+  answer: |
+    The third line gave the wrong unit. Net availability is in thousand tonnes and population in
+    thousand persons. The thousands cancel, so 0.2076 is in tonnes a person.
+
+    ```working
+    0.2076 times 1,000 = 207.6
+    ```
+
+    207.6 kilograms a person a year, a thousand times more than the working said.
+
+    Why the wrong answer looks reasonable: the division is right, and 0.2 looks like a sensible
+    small number. Two hundred grams of grain a year would be a few days of meals, which a size
+    check catches at once. Write the unit on every line.
+- level: 9
+  prompt: |
+    A speaker says:
+
+    > The edible oil mission will make India 72 per cent self-sufficient by 2030-31. Problem
+    > solved.
+
+    The PIB backgrounder of December 2025 gives the mission's target. Domestic edible oil
+    production is to reach 25.45 million tonnes by 2030-31, "meeting around 72% of our
+    projected domestic requirement". Decide what to compute, compute it, and say what your answer does not
+    establish.
+  answer: |
+    What to compute: the requirement the target assumes, and how it compares with the supply
+    in 2023-24.
+
+    ```working
+    25.45 divided by 0.72 = 35.35
+    ```
+
+    About 35.35 million tonnes of projected requirement. In 2023-24, production plus imports
+    was 27.84 million tonnes, with exports left out because the release gives none.
+
+    ```working
+    35.35 minus 27.84 = 7.51
+    7.51 divided by 27.84 times 100 = 26.98
+    ```
+
+    The target assumes the requirement grows by about 27 per cent over 2023-24.
+
+    What this does not establish. That 72 per cent will be reached: it is a target. That the
+    remaining 28 per cent will stop being imported: by the target's own arithmetic it will
+    not.
+
+    ```working
+    35.35 minus 25.45 = 9.9
+    ```
+
+    About 9.9 million tonnes a year would still have to come from abroad. And self-sufficiency is a trade measure. It says nothing about
+    whether a rise in the oil people use is good for their health. That is a separate
+    question, and this calculation cannot answer it.
+  refs:
+  - pib_2200287
+- level: 10
+  prompt: |
+    A report says:
+
+    > Per capita foodgrain availability rose from 514.6 grams a day in 2021-22 to 568.8 in
+    > 2022-23. Indians ate 54 grams more grain a day.
+
+    Using Table 1.19, decide what to compute, compute it, and say what your answer does not
+    establish.
+  answer: |
+    What to compute: the rise, then what drove it, using the identity on the two FOODGRAINS
+    rows.
+
+    ```working
+    568.8 minus 514.6 = 54.2
+    ```
+
+    A rise of 54.2 grams a day, as the report says. Now the stocks. Change in stocks was -6,090
+    thousand tonnes in 2021-22 and -17,540 in 2022-23: grain came out of store both years, far
+    more in the second. Turn each into grams a person a day.
+
+    ```working
+    6,090 divided by 13,79,750 times 1,000 times 1,000 divided by 365 = 12.09 grams
+    17,540 divided by 13,92,329 times 1,000 times 1,000 divided by 365 = 34.51 grams
+    ```
+
+    Drawing down stocks gave about 12 grams a day in 2021-22 and about 35 in 2022-23.
+
+    ```working
+    34.51 minus 12.09 = 22.42
+    ```
+
+    About 22 grams of the 54-gram rise came from grain leaving store, not from a bigger
+    harvest.
+
+    Then run the identity. The 2022-23 row misses its own total by 4,572 thousand tonnes,
+    about 9 grams a day, and the table does not say why. The 2021-22 row misses by 101 the
+    other way, which is less than a quarter of a gram a day.
+
+    What the answer does not establish. That anyone ate more: the table says the figures are
+    not strictly representative of consumption, and this is availability before waste at
+    home. That the rise will last: a stock drawdown cannot repeat forever. And about 9 grams of
+    it rests on a row that does not add up. The honest sentence is this. "Availability rose by
+    about 54 grams a day on the official figures. About 22 grams of that is grain drawn from
+    stocks, and the 2022-23 figure needs checking."
+  refs:
+  - econ_survey_tab_1_19
+retrieval_items:
+- q: Say the supply identity in words.
+  a: Production plus imports minus exports, minus the rise in stocks (or plus the fall), is
+    the supply available for use within the country over the period.
+- q: How does the FAO define the import dependency ratio, and why is it not 100 minus self-sufficiency?
+  a: Imports divided by production plus imports minus exports, times 100. Self-sufficiency is
+    production over the same total. The two add to 100 only when exports are zero.
+- q: What was India's import dependence for edible oil in 2023-24, and what are cereals like?
+  a: 56.25 per cent by the government's figures (imports 15.66 million tonnes, production 12.18).
+    For cereals India was a net exporter, with self-sufficiency of about 111 per cent in 2022-23.
+figures:
+- file: s37-r1-c06-pulses-identity.png
+  caption: "India's pulses, 2022-23, thousand tonnes (Economic Survey 2025-26, Table 1.19). Net production plus net imports, minus the rise in stocks, gives net availability: 22801 plus 1733 minus 615 is 23919. The table prints the stock change as 615, a rise; it is drawn as -615 because a rise is taken off."
+  alt: "Four bars: net production 22801, net imports 1733, rise in stocks taken off -615 drawn below zero, net availability 23919."
+  source: draw.py
+  spec:
+    kind: bar
+    from_table: {block: 0, x: 0, y: [1]}
+    x_label: ""
+    y_label: thousand tonnes
+    value_labels: true
+    relations:
+    - check: "y[0] + y[1] + y[2] = y[3]"
+- file: s37-r1-c06-self-sufficiency.png
+  caption: "Self-sufficiency, per cent: production divided by production plus imports minus exports, times 100. Cereals in 2022-23 at 111.1 (Economic Survey, Table 1.19); edible oil in 2023-24 at 43.75, worked from the PIB's production and import figures with exports unknown and taken as zero (the release prints 43.74). The line at 100 is where a country grows exactly what it keeps."
+  alt: "Two bars against a line at 100: cereals 2022-23 at 111.1 per cent, above the line; edible oil 2023-24 at 43.75 per cent, well below it."
+  source: draw.py
+  spec:
+    kind: bar
+    x: ["Cereals, 2022-23", "Edible oil, 2023-24"]
+    series:
+    - name: self-sufficiency ratio
+      y: ["111.1", "43.75"]
+    x_label: ""
+    y_label: self-sufficiency, per cent
+    value_labels: true
+    y_range: [0, 130]
+    refs:
+    - {y: 100, label: "100"}
+    relations:
+    - check: "y[0] = round(100*303628/(303628 - 30352), 1)"
+    - check: "y[1] = round(100*12.18/(12.18 + 15.66), 2)"
+- file: s37-r1-c06-rice-row-gap.png
+  caption: "India's rice, 2022-23, thousand tonnes (Economic Survey 2025-26, Table 1.19). Net production 125438, less net exports of 22347, plus the fall in stocks of 7462, gives 110553. The table prints 115120: the row misses its own identity by 4567."
+  alt: "Two bars: availability worked out by the identity, 110553 thousand tonnes, and availability as printed, 115120, taller by 4567."
+  source: draw.py
+  spec:
+    kind: bar
+    x: ["by the identity", "as the table prints it"]
+    series:
+    - name: net availability of rice, 2022-23
+      y: ["110553", "115120"]
+    x_label: ""
+    y_label: thousand tonnes
+    value_labels: true
+    relations:
+    - check: "y[0] = 125438 - 22347 + 7462"
+    - check: "y[1] - y[0] = 4567"
+provenance:
+  map_version_id: fc19c8bc-a216-4131-99fb-ebe3f19cec4a
+  outcome_refs:
+  - S37-R1-O2
+  bridge_ref:
+  - S37-R2-P03
+  - S37-R2-S1
+  - S37-R2-G
+review:
+  stability: long
+  trigger: 'the next Economic Survey Statistical Appendix, or the next notification changing edible oil duty; otherwise 2031-09-25'
+  as_of: '2026-09-25'
+  last_reviewed: '2026-09-25'
+status: drafted
