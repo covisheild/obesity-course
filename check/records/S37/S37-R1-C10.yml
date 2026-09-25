@@ -915,6 +915,35 @@ figures:
     y_range:
     - 0
     - 110
+- file: s37-r1-c10-paddy-margin-base.png
+  caption: 'Common paddy, kharif marketing season 2026-27, in Rs a quintal. The cost is 1627 and the
+    MSP 2441; the gap between them is 814. The same 814 is 50 per cent of the cost and about 33 per
+    cent of the price. The release''s "margin over cost" takes the cost as its base.'
+  alt: 'Three bars: cost of production Rs 1627, the gap Rs 814, and the MSP Rs 2441. The first two add
+    to the third.'
+  source: draw.py
+  spec:
+    kind: bar
+    x:
+    - cost of production
+    - "gap: MSP minus cost"
+    - MSP
+    series:
+    - name: Rs a quintal, common paddy
+      y:
+      - '1627'
+      - '814'
+      - '2441'
+    x_label: ''
+    y_label: Rs a quintal, common paddy
+    value_labels: true
+    y_range:
+    - 0
+    - 2800
+    relations:
+    - check: y[0] + y[1] = y[2]
+    - check: 100*y[1]/y[0] = 50
+    - check: 100*y[1]/y[2] = 33
 provenance:
   map_version_id: fc19c8bc-a216-4131-99fb-ebe3f19cec4a
   outcome_refs:

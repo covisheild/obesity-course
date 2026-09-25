@@ -767,6 +767,35 @@ figures:
     y_label: per cent of rural MPCE
     value_labels: true
     y_range: [0, 14]
+- file: s37-r1-c07-cereal-rupees.png
+  caption: "Rural spending on cereals and cereal substitutes, Rs a person a month, each year's own prices (HCES). 2011-12: 10.75 per cent of Rs 1,430, about Rs 153.7. 2022-23: Rs 185, up by 31.3 while the share fell to 4.91 per cent. Rupees, not grain."
+  alt: "Two bars: 153.7 rupees in 2011-12 and 185 rupees in 2022-23, the second taller."
+  source: draw.py
+  spec:
+    kind: bar
+    x: ["2011-12", "2022-23"]
+    series:
+    - name: rural cereals, Rs a person a month
+      y: ["153.7", "185"]
+    x_label: survey year
+    y_label: Rs a person a month
+    value_labels: true
+    relations:
+    - check: "y[0] = round(1430*10.75/100, 1)"
+    - check: "y[1] - y[0] = 31.3"
+- file: s37-r1-c07-rural-energy.png
+  caption: "Estimated rural energy intake, kilocalories a person a day (NSS Report 594). 2,233 in 2011-12 and 2,212 in 2023-24: almost no change, over the years in which cereals' share of the rural budget halved."
+  alt: "Two nearly equal bars from zero: 2233 kilocalories in 2011-12 and 2212 in 2023-24."
+  source: draw.py
+  spec:
+    kind: bar
+    x: ["2011-12", "2023-24"]
+    series:
+    - name: rural energy intake
+      y: ["2233", "2212"]
+    x_label: survey year
+    y_label: kcal a person a day
+    value_labels: true
 provenance:
   map_version_id: fc19c8bc-a216-4131-99fb-ebe3f19cec4a
   outcome_refs:

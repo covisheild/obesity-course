@@ -573,6 +573,25 @@ figures:
     y_label: per cent
     value_labels: true
     y_range: [0, 45]
+- file: s37-r1-c15-point-changes.png
+  caption: "The change from NFHS-4 to NFHS-5 in percentage points, NFHS-5 minus NFHS-4. Stunting fell 2.9 points and thin women 4.2. Overweight or obese women rose 3.4 points and overweight children 1.3. The two burdens moved in opposite directions."
+  alt: "Four bars from a zero line: children stunted -2.9, women with BMI below 18.5 -4.2, women overweight or obese +3.4, children overweight +1.3."
+  source: draw.py
+  spec:
+    kind: bar
+    x: ["children\nstunted", "women\nBMI below 18.5", "women\noverweight\nor obese", "children\noverweight"]
+    series:
+    - name: change, percentage points
+      y: ["-2.9", "-4.2", "3.4", "1.3"]
+    x_label: ""
+    y_label: change, percentage points
+    value_labels: true
+    y_range: [-5, 4]
+    relations:
+    - check: "y[0] = 35.5 - 38.4"
+    - check: "y[1] = 18.7 - 22.9"
+    - check: "y[2] = 24.0 - 20.6"
+    - check: "y[3] = 3.4 - 2.1"
 provenance:
   map_version_id: fc19c8bc-a216-4131-99fb-ebe3f19cec4a
   outcome_refs:

@@ -539,19 +539,37 @@ retrieval_items:
     should not be used." Or: millets at least once a week.'
 figures:
 - file: s37-r1-c14-grain-allocation.png
-  caption: "Foodgrains the Union allocated to each scheme for 2025-26, in lakh tonnes (one lakh tonnes is 100 million kg). The ration's priority households take 428.63 and Antyodaya households 99.39. PM POSHAN school meals take 22.31 and the anganwadi grain, through the Wheat Based Nutrition Programme, 23.05. Allocated, not lifted or eaten."
-  alt: "One bar a scheme, in lakh tonnes: PHH 428.63, AAY 99.39, tide over 26.09, WBNP 23.05, PM POSHAN 22.31, hostels 5.83, adolescent girls 0.58."
+  caption: "Foodgrains the Union allocated for 2025-26, in lakh tonnes (one lakh tonnes is 100 million kg). The ration's priority households take 428.63 and Antyodaya households 99.39. PM POSHAN school meals take 22.31 and the anganwadi grain, through the Wheat Based Nutrition Programme, 23.05. With the small festival and calamity allocation, 1.52, the bars add to the table's grand total of 607.40. Allocated, not lifted or eaten."
+  alt: "One bar a scheme, in lakh tonnes: PHH 428.63, AAY 99.39, tide over 26.09, WBNP 23.05, PM POSHAN 22.31, hostels 5.83, festival and calamity 1.52, adolescent girls 0.58. Together 607.40."
   source: draw.py
   spec:
     kind: bar
-    x: ["PHH\nration", "AAY\nration", "TPDS\ntide over", "WBNP\n(anganwadi)", "PM\nPOSHAN", "hostels,\nwelfare\ninstitutions", "adolescent\ngirls"]
+    x: ["PHH\nration", "AAY\nration", "TPDS\ntide over", "WBNP\n(anganwadi)", "PM\nPOSHAN", "hostels,\nwelfare\ninstitutions", "festival\nand\ncalamity", "adolescent\ngirls"]
     series:
     - name: allocated 2025-26
-      y: ["428.63", "99.39", "26.09", "23.05", "22.31", "5.83", "0.58"]
+      y: ["428.63", "99.39", "26.09", "23.05", "22.31", "5.83", "1.52", "0.58"]
     x_label: ""
     y_label: lakh tonnes allocated, 2025-26
     value_labels: true
     y_range: [0, 480]
+    relations:
+    - check: "sum(y) = 607.40"
+    derived:
+    - {value: "1.52", from: "607.40 - 428.63 - 99.39 - 26.09 - 23.05 - 22.31 - 5.83 - 0.58"}
+- file: s37-r1-c14-pm-poshan-lifted.png
+  caption: "PM POSHAN grain in 2025-26, in lakh tonnes: 22.31 allocated, 15.68 lifted by December 2025, with a quarter of the year still to run. An allocation is grain set aside, not grain that reached anyone; grain lifted is still not grain eaten."
+  alt: "Two bars: 22.31 lakh tonnes allocated and 15.68 lifted by December 2025."
+  source: draw.py
+  spec:
+    kind: bar
+    x: ["allocated,\n2025-26", "lifted by\nDecember 2025"]
+    series:
+    - name: PM POSHAN grain
+      y: ["22.31", "15.68"]
+    x_label: ""
+    y_label: lakh tonnes, PM POSHAN, 2025-26
+    value_labels: true
+    y_range: [0, 25]
 provenance:
   map_version_id: fc19c8bc-a216-4131-99fb-ebe3f19cec4a
   outcome_refs:

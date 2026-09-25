@@ -550,7 +550,30 @@ retrieval_items:
   a: Pregnant women and lactating mothers, children from 6 to 36 months, severely malnourished children,
     and adolescent girls where the scheme covers them. Children from three to six get a hot cooked meal
     and a morning snack instead.
-figure_note: "The section's figures are one legal table and one norms table; Book 0's section on reading a figure already draws Schedule II's energy column, and a second drawing would only restate the tables."
+figures:
+- file: s37-r1-c12-pm-poshan-food-norms.png
+  caption: "PM POSHAN's food norms per child per day, in grams, as PIB 1812421 states them. Grain is the heaviest item for both classes, 100 g in primary and 150 g in upper primary. Every bar is an amount to provide. Salt has no number, only as per need, no row sets a ceiling, and sugar is not on the list at all."
+  alt: "Paired bars for four foods, primary then upper primary: food grains 100 and 150 g, pulses 20 and 30 g, vegetables 50 and 75 g, oil and fat 5 and 7.5 g. Upper primary is 1.5 times primary on every row."
+  source: draw.py
+  spec:
+    kind: bar
+    x: ["food grains", "pulses", "vegetables", "oil and fat"]
+    series:
+    - name: primary
+      y: ["100", "20", "50", "5"]
+    - name: upper primary
+      y: ["150", "30", "75", "7.5"]
+    x_label: ""
+    y_label: g per child per day
+    value_labels: true
+    y_range: [0, 170]
+    relations:
+    - check: "y2[0]/y1[0] = 1.5"
+    - check: "y2[1]/y1[1] = 1.5"
+    - check: "y2[2]/y1[2] = 1.5"
+    - check: "y2[3]/y1[3] = 1.5"
+    derived:
+    - {value: "1.5", from: "150/100"}
 provenance:
   map_version_id: fc19c8bc-a216-4131-99fb-ebe3f19cec4a
   outcome_refs:

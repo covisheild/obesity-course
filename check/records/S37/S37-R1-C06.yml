@@ -885,6 +885,25 @@ figures:
     y_range: [0, 130]
     refs:
     - {y: 100, label: "100"}
+    relations:
+    - check: "y[0] = round(100*303628/(303628 - 30352), 1)"
+    - check: "y[1] = round(100*12.18/(12.18 + 15.66), 2)"
+- file: s37-r1-c06-rice-row-gap.png
+  caption: "India's rice, 2022-23, thousand tonnes (Economic Survey 2025-26, Table 1.19). Net production 125438, less net exports of 22347, plus the fall in stocks of 7462, gives 110553. The table prints 115120: the row misses its own identity by 4567."
+  alt: "Two bars: availability worked out by the identity, 110553 thousand tonnes, and availability as printed, 115120, taller by 4567."
+  source: draw.py
+  spec:
+    kind: bar
+    x: ["by the identity", "as the table prints it"]
+    series:
+    - name: net availability of rice, 2022-23
+      y: ["110553", "115120"]
+    x_label: ""
+    y_label: thousand tonnes
+    value_labels: true
+    relations:
+    - check: "y[0] = 125438 - 22347 + 7462"
+    - check: "y[1] - y[0] = 4567"
 provenance:
   map_version_id: fc19c8bc-a216-4131-99fb-ebe3f19cec4a
   outcome_refs:

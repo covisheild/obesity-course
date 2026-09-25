@@ -282,7 +282,24 @@ illustrations:
     unit: per cent of broiler farmers following the integrator model
     citekey: rbi_wp_2024_poultry
     quote: In poultry meat, around 70 per cent of farmers or farm owners follow integrator model
-figure_note: "The section's content is a grid of four elements against their deciders, which the table carries; the wanted diagram (the chain feeding a food environment) is a flow picture the drawing tool does not make."
+figures:
+- file: s37-r1-c05-onion-rupee.png
+  caption: "Who set the price of an onion in Delhi: the RBI paper's split of the consumer rupee, per cent (Working Paper 08/2024). Farmers 36.2, traders 17.6, wholesalers 15.0, the retailer 31.3. Four sets of hands each set a part; the four add to 100.1 as printed."
+  alt: "Four bars: farmers 36.2, traders 17.6, wholesalers 15.0 and retailer 31.3 per cent of the Delhi onion rupee."
+  source: draw.py
+  spec:
+    kind: bar
+    x: ["farmers", "traders", "wholesalers", "retailer"]
+    series:
+    - name: share of the Delhi onion rupee
+      y: ["36.2", "17.6", "15.0", "31.3"]
+    x_label: ""
+    y_label: per cent of the consumer rupee
+    value_labels: true
+    relations:
+    - check: "sum(y) = 100.1"
+    derived:
+    - {value: "100.1", from: "36.2 + 17.6 + 15.0 + 31.3"}
 must_know:
 - point: |
     "People eat what they choose" leaves out half of it. People choose among what is there,

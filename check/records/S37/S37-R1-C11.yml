@@ -463,6 +463,60 @@ figures:
     y_range:
     - 0
     - 55
+- file: s37-r1-c11-grain-per-person.png
+  caption: The same rule per person. Every member of a priority household gets 5 kg a month, whatever
+    its size. An Antyodaya household's 35 kg is shared, so each member's grain is 35 divided by the
+    number of people. It falls to 5 kg at 7 people and to 3.5 kg each at 10.
+  alt: 'A flat line at 5 kg a person for priority households, and a falling curve for Antyodaya
+    households, 35 divided by household size, from 35 kg at 1 person to 3.5 kg at 10. They meet at 7
+    people.'
+  source: draw.py
+  spec:
+    kind: scatter
+    x_label: people in the household
+    y_label: kg of grain a person a month
+    x:
+    - 1
+    - 7
+    - 10
+    series:
+    - name: priority household, 5 kg a person
+      y:
+      - 5
+      - 5
+      - 5
+    - name: Antyodaya household, 35 kg shared
+      y:
+      - 35
+      - 5
+      - '3.5'
+    curves:
+    - y: y = 5 + 0*x
+      x0: 1
+      x1: 10
+      series: priority household, 5 kg a person
+    - y: y = 35/x
+      x0: 1
+      x1: 10
+      series: Antyodaya household, 35 kg shared
+    labels:
+    - text: equal at 7 people, 5 kg each
+      at:
+      - 7
+      - 5
+      offset:
+      - -120
+      - 34
+    - text: 3.5 kg each at 10
+      at:
+      - 10
+      - 3.5
+      offset:
+      - -100
+      - 16
+    y_range:
+    - 0
+    - 40
 provenance:
   map_version_id: fc19c8bc-a216-4131-99fb-ebe3f19cec4a
   outcome_refs:

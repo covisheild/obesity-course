@@ -954,6 +954,29 @@ figures:
     y_label: farmer's share, per cent
     value_labels: true
     y_range: [0, 100]
+- file: s37-r1-c04-markup-base.png
+  caption: "One rupee mark-up, two percentages. For tur sold at Rs 111 a kg, a retailer's mark-up of x rupees is 100x/111 per cent of the shop price and 100x/(111 - x) per cent on the buying price. The two lines part as x grows: at Rs 16 they are 14.4 and 16.8 per cent."
+  alt: "Two rising lines against the mark-up in rupees, both starting near zero. The line for the buying price bends upward away from the straight line for the shop price. At a mark-up of 16 rupees, marked points sit at 14.4 per cent on the lower line and 16.8 per cent on the upper line."
+  source: draw.py
+  spec:
+    kind: scatter
+    x: ["16"]
+    series:
+    - name: per cent of the shop price, Rs 111
+      y: ["14.4"]
+    - name: per cent on the buying price, 111 minus the mark-up
+      y: ["16.8"]
+    x_label: retailer's mark-up on a kg of tur (Rs)
+    y_label: mark-up, per cent
+    size: [6.2, 3.4]
+    curves:
+    - {y: "y = 100*x/111", x0: 1, x1: 39, series: "per cent of the shop price, Rs 111"}
+    - {y: "y = 100*x/(111 - x)", x0: 1, x1: 39, series: "per cent on the buying price, 111 minus the mark-up"}
+    refs:
+    - {x: 16, label: "Rs 16 on tur"}
+    labels:
+    - {text: "16.8", at: [16, 16.8], offset: [-26, 4]}
+    - {text: "14.4", at: [16, 14.4], offset: [6, -12]}
 provenance:
   map_version_id: fc19c8bc-a216-4131-99fb-ebe3f19cec4a
   outcome_refs:

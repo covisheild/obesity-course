@@ -1052,6 +1052,24 @@ figures:
     - {y: 1881, label: "norm: 450 kcal = 1,881 kJ"}
     relations:
     - check: "y[1] + y[2] + y[3] = y[0]"
+- file: s37-r1-c13-ration-kj-trap.png
+  caption: "Five kg of raw milled rice a month, as energy a day. Read the table's kJ as kcal and the ration seems to give 2,485 kcal, more than the reference man's 2,110. Divided by 4.18 it is 594.5 kcal: about 36 per cent of the reference woman's 1,660 and 28 per cent of the man's 2,110."
+  alt: "Four bars in kcal a day: the kJ misread as kcal, 2,485; the ration correctly converted, 594.5; the sedentary reference woman's requirement, 1,660; the sedentary reference man's, 2,110."
+  source: draw.py
+  spec:
+    kind: bar
+    x: ["ration, kJ misread\nas kcal (wrong)", "ration, kJ divided\nby 4.18", "reference woman,\n55 kg, sedentary", "reference man,\n65 kg, sedentary"]
+    series:
+    - name: kcal a day
+      y: ["2485", "594.5", "1660", "2110"]
+    x_label: ""
+    y_label: kcal a day
+    value_labels: true
+    y_range: [0, 2800]
+    relations:
+    - check: "y[0]/4.18 = 594.5"
+    - check: "y[1]/y[2] = 0.358"
+    - check: "y[1]/y[3] = 0.282"
 provenance:
   map_version_id: fc19c8bc-a216-4131-99fb-ebe3f19cec4a
   outcome_refs:

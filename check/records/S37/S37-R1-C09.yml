@@ -490,6 +490,32 @@ figures:
     y_range: [0, 3300]
     relations:
     - check: "y2[1] - y1[1] = 726.5"
+    - check: "y1[0] = 1.5*1627"
+    - check: "y1[1] = 1.5*1239"
+- file: s37-r1-c09-msp-cost-line.png
+  caption: "MSP against the CACP's cost, Rs per quintal, 2026-27 seasons: paddy (common, kharif), and wheat, gram and safflower (rabi). The line is the 1.5 times floor. Paddy and safflower sit on it; gram sits above it and wheat far above."
+  alt: "Points for paddy, wheat, gram and safflower, on or above a rising straight line, MSP equals 1.5 times cost. Paddy at cost 1627, MSP 2441 and safflower at 4360, 6540 lie on the line. Gram at 3699, 5875 lies a little above it. Wheat at 1239, 2585 lies well above it."
+  source: draw.py
+  spec:
+    kind: scatter
+    x: ["1239", "1627", "3699", "4360"]
+    series:
+    - name: MSP, 2026-27
+      y: ["2585", "2441", "5875", "6540"]
+    x_label: cost of production (Rs per quintal)
+    y_label: MSP (Rs per quintal)
+    size: [6.2, 3.6]
+    curves:
+    - {y: "y = 1.5*x", x0: 1239, x1: 4360, label: "1.5 times cost, the floor"}
+    labels:
+    - {text: "wheat", at: [1239, 2585], offset: [6, 4]}
+    - {text: "paddy", at: [1627, 2441], offset: [6, -12]}
+    - {text: "gram", at: [3699, 5875], offset: [-30, 4]}
+    - {text: "safflower", at: [4360, 6540], offset: [-58, 2]}
+    relations:
+    - check: "100*(2585 - 1239)/1239 = 109"
+    - check: "100*(5875 - 3699)/3699 = 59"
+    - check: "100*(6540 - 4360)/4360 = 50"
 provenance:
   map_version_id: fc19c8bc-a216-4131-99fb-ebe3f19cec4a
   outcome_refs:
