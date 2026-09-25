@@ -35,6 +35,7 @@ teaches were deleted. Terms used before their gloss, and terms used for two thin
 | amino acid | one of a small fixed set of kinds of link a protein chain is built from | `B0-R0-C35` |
 | amount-of-substance concentration | an amount of substance in a volume, such as millimoles per litre (mmol/L): it says how many | `B0-R0-C13` |
 | anabolism | reactions that join small molecules into bigger ones, which costs energy | `B0-R0-C36` |
+| answerable (research question) | passes two tests: it is an empirical question, and it is feasible for the person asking | `S55-R1-C04` |
 | antiderivative | a function whose derivative is the given function; checked by differentiating it back, and written with plus C on the end, where C is any constant | `S02-R1-C06` |
 | argument | reasons, called premises, together with a further statement they are meant to establish | `B0-R0-C42` |
 | at random | every member has exactly the same chance of being the one you pick | `B0-R0-C24` |
@@ -62,19 +63,28 @@ teaches were deleted. Terms used before their gloss, and terms used for two thin
 | calorie | a unit of energy outside the SI, whose size in joules was fixed by agreement, and two agreements are in use | `B0-R0-C12` |
 | calorimeter | a machine that measures energy from the temperature change it causes | `B0-R0-C32` |
 | capillaries | the smallest blood vessels | `B0-R0-C38` |
+| case report | a report that describes one patient, or a few | `S55-R1-C06` |
+| case-control study | a study that starts from the outcome: it enrols people who have the outcome (cases) and people who do not (controls), then compares what each group was exposed to in the past | `S55-R1-C03` |
 | catabolism | reactions that break a big molecule into smaller ones and let its energy go | `B0-R0-C36` |
+| cause question | a question that asks whether changing the exposure would change the outcome; an association is needed for this and is not enough | `S55-R1-C03` |
 | ceiling | the level a saturating shape heads for and flattens against | `B0-R0-C20` |
 | cell | (1) of a table: where a row meets a column, the count of people who are both (`B0-R0-C26`); (2) a living cell: the smallest unit of a living thing (`B0-R0-C35`) | `B0-R0-C26`, `B0-R0-C35` |
 | checking a reference | four acts, each of which can fail on its own: find the source, confirm it is the source named, find the exact passage pointed to, read it to see whether it supports the claim | `B0-R0-C41` |
 | cherry-picking | choosing only the quotations that fit a claim, or cutting a quotation so that it fits; the first you catch only by reading the other transcripts for what runs against the claim | `S36-R1-C13` |
 | chord | the straight line laid across two points on a curve, whose slope is the average rate between them | `B0-R0-C21` |
 | chromosome | one of the structures genes sit along, in a fixed order; a person gets two copies of each, one from each parent | `B0-R0-C37` |
+| citation | an entry in the reference list of a later published work that points to an earlier one; it records that one work referred to another, not that the earlier work was used | `S55-R1-C06` |
+| citation database | a database that records the reference lists of the journals it indexes and, for each paper it holds, counts how many of those later works cite it | `S55-R1-C06` |
+| citation window | how long after publication the counting of citations runs | `S55-R1-C06` |
 | cleaned transcription (intelligent verbatim) | a transcript that tidies speech into readable sentences and drops the fillers and repeats | `S36-R1-C10` |
 | closed question | a question that fixes the possible answers before the respondent speaks: yes or no, a number, or one of a set of options the question supplies | `S36-R1-C05` |
 | closing question (in a topic guide) | the last question of a topic guide, such as "Is there anything I have not asked about that I should have?" | `S36-R1-C06` |
 | code (in a transcript) | a short label written beside a passage of a transcript that bears on the study question, saying what it is about; the reader's own label for finding and comparing passages, not yet a finding | `S36-R1-C12` |
 | coefficients | the fixed numbers that a formula multiplies by | `S02-R1-C11` |
+| cohort study | a study that starts from the exposure: it starts with people who do not yet have the outcome, records who is exposed and who is not, follows both groups over time and counts who develops the outcome | `S55-R1-C03` |
 | combustion | burning, a substance joining with oxygen | `B0-R0-C32` |
+| comparison (in a research question) | the group, or the level of exposure, that the exposed group is set against | `S55-R1-C02` |
+| comparison group | in a study built to answer a relate question, the people without the exposure, or without the outcome | `S55-R1-C03` |
 | complement | every outcome in the sample space that is not in the event; everything that is not it | `B0-R0-C24` |
 | complementary | each one completes the other; A always faces T and C always faces G | `B0-R0-C37` |
 | concentration | an amount of something held in a volume of something else | `B0-R0-C13` |
@@ -83,11 +93,13 @@ teaches were deleted. Terms used before their gloss, and terms used for two thin
 | conditional probability | the same move with a chosen denominator: P(A given B), written P(A\|B), is the count who are both A and B divided by the count who are B | `B0-R0-C26` |
 | conduction | heat moving through matter that is staying put, by contact | `B0-R0-C34` |
 | confidentiality | the researcher's duty to keep safe what a person told them, including "from unauthorized access, use, disclosure, modification, loss or theft" (ICMR 2017, section 2.3) | `S36-R1-C07` |
+| conflict of interest | what a party has when it gains from one answer of a study | `S55-R1-C07` |
 | conservation of energy | energy is never made and never destroyed; it changes form and it moves | `B0-R0-C33` |
 | constant multiple rule | the derivative of k times a function is k times the derivative of the function | `S02-R1-C03` |
 | constant rule | the derivative of a constant is zero | `S02-R1-C03` |
 | Constitution | the founding law that every statute must fit | `B0-R0-C43` |
 | consumer unit | the survey's per-head measure that allows for age and sex, as against a plain count per person | `S01-R1-C03` |
+| context placement | Ioannidis's second feature of useful clinical research: earlier evidence has been systematically assessed before a new study | `S55-R1-C05` |
 | continuous (random variable) | can take any value in an interval, and its probabilities are areas under a curve; the probability of any one exact value is 0 | `S02-R1-C13` |
 | convection | heat moving because a liquid or a gas moves and takes it along | `B0-R0-C34` |
 | convenience sample | whoever happens to be available | `B0-R0-C29` |
@@ -98,6 +110,7 @@ teaches were deleted. Terms used before their gloss, and terms used for two thin
 | covalent bond | a bond where two atoms share a pair of electrons | `B0-R0-C31` |
 | critical point | an input inside the domain, not at one of its ends, at which the derivative is zero or does not exist | `S02-R1-C09` |
 | crore | ten million, or a hundred lakh | `B0-R0-C01` |
+| cross-sectional study | a study that enrols a sample of a population and measures exposure and outcome at the same time: one visit, one count | `S55-R1-C03` |
 | cytoplasm | the watery jelly a cell is a bag of | `B0-R0-C35` |
 | d/dx | said "dee by dee x": the derivative with respect to x of what follows | `S02-R1-C03` |
 | data matrix | a matrix in which each row is one case and each column is one kind of measurement, always in the same place | `S02-R1-C11` |
@@ -109,6 +122,7 @@ teaches were deleted. Terms used before their gloss, and terms used for two thin
 | derivation | a chain of equations in which each line follows from lines above it by one move that can be named | `S02-R1-C16` |
 | derivative | the mathematicians' name for the rate at a moment, written dy/dx | `B0-R0-C21` |
 | derived unit | a unit built out of the base units by multiplying and dividing | `B0-R0-C09` |
+| describe question | a question that asks how common an outcome is, or how much of it there is, in a stated population at a stated place and time, and in which people it is commoner; it names no exposure (the how-common question of `S55-R1-C02`) | `S55-R1-C03` |
 | deviant case (negative case) | a passage that runs against the pattern the other passages seem to show; kept and marked, not dropped, because it is what tests and sharpens the pattern | `S36-R1-C12` |
 | deviation | a value minus the mean | `B0-R0-C28` |
 | differential equation | an equation involving an unknown function and one or more of its derivatives: a rule that gives the rate from the state | `S02-R1-C07` |
@@ -126,6 +140,7 @@ teaches were deleted. Terms used before their gloss, and terms used for two thin
 | e (the number) | the base of the one exponential curve whose slope where it crosses the vertical axis is exactly 1; about 2.71828 | `S02-R1-C04` |
 | electron | one of the much lighter particles in the cloud round an atom's tiny heavy centre | `B0-R0-C31` |
 | elimination | adding or subtracting the two equations, after multiplying where needed, so that one letter cancels | `B0-R0-C17` |
+| empirical question | a question that can be answered by observing the world | `S55-R1-C04` |
 | endocrine | putting a chemical straight into the blood rather than sending it down a tube | `B0-R0-C38` |
 | endothermic | a change that takes heat in | `B0-R0-C31` |
 | energy | the capacity to supply heat or do work | `B0-R0-C31` |
@@ -149,11 +164,14 @@ teaches were deleted. Terms used before their gloss, and terms used for two thin
 | expected value (expectation), E[X] | each value times its probability, all added up; the long-run average | `S02-R1-C14` |
 | exponent | the small raised number that says how many copies to multiply together | `B0-R0-C06` |
 | exponential | equal steps in the input multiply the output by the same factor every time | `B0-R0-C20` |
+| exposure | what differs between the people being compared: something they have, do or meet | `S55-R1-C02` |
 | expression | a piece of algebra that stands for a number, like 2x + 5 | `B0-R0-C15` |
 | extracellular fluid | the fluid around a gland's own cells, into which it lets its hormone out | `B0-R0-C38` |
 | fat mass | the triglyceride held in adipose tissue | `S01-R1-C01` |
 | fat-free mass | everything else the body weighs; some papers call it lean body mass, or lean mass | `S01-R1-C01` |
+| feasible (question) | the person asking can actually get the answer with what they have: people to reach, a way to measure, time, money, equipment and skill, and ethics committee approval | `S55-R1-C04` |
 | field notes | notes written the same day as an interview, before you listen to the recording: what happened, where, how it felt, what surprised you | `S36-R1-C08` |
+| FINER | one published checklist for a research question: feasible, interesting, novel, ethical and relevant; a published guide, not a rule | `S55-R1-C04` |
 | first derivative test | sorts a critical point by the sign of the derivative either side: positive to negative is a local maximum, negative to positive a local minimum, the same sign neither | `S02-R1-C09` |
 | first law of thermodynamics | the physicists' name for one version of conservation of energy: energy is never made or destroyed, only changed in form | `S01-R1-C06` |
 | first-order (differential equation) | gives the rate of change of a quantity at a moment as a rule in its state, in the time, or in both | `S02-R1-C07` |
@@ -186,15 +204,18 @@ teaches were deleted. Terms used before their gloss, and terms used for two thin
 | hepatic portal circulation | the route that takes every drop of blood leaving the gut through the liver before it goes anywhere else | `B0-R0-C38` |
 | hepatic portal vein | the vein along which blood from the gut runs straight to the liver | `B0-R0-C38` |
 | hormone | a chemical made in one part of the body that affects other parts some distance away | `B0-R0-C38` |
+| how-common question | a question with a population and an outcome and nothing else; it asks how common something is | `S55-R1-C02` |
 | hydrophilic | water-loving: mixes with water | `B0-R0-C35` |
 | hydrophobic | water-hating: does not mix with water | `B0-R0-C35` |
 | identity (kind of equation) | an equation that holds for every value of its symbols because a conservation law, or counting, requires it | `S02-R1-C17` |
 | implausible (of a weight-loss claim) | needs more than any deficit people are known to manage | `S01-R1-C08` |
+| implementation money | money that pays to carry a programme out | `S55-R1-C07` |
 | impossible (of a weight-loss claim) | needs more than the person's whole expenditure over the interval | `S01-R1-C08` |
 | in-depth interview | an interview in which almost nothing is decided in advance: one broad opening question about one or two issues, and everything after that comes from what the person has said | `S36-R1-C03` |
 | independent | finding out one of them happened tells you nothing new about the other | `B0-R0-C25` |
 | inference | the move from the reasons to the conclusion | `B0-R0-C42` |
 | infographic | a chart decorated with pictures | `B0-R0-C40` |
+| information gain | Ioannidis's third feature of useful clinical research: the study is large enough to inform | `S55-R1-C05` |
 | informed consent | a process with three parts: the person is given the information, understands it, and is free to say no (ICMR 2017, section 2.2); in writing, with a signature or thumb impression, except in exceptional cases an ethics committee approves | `S36-R1-C07` |
 | initial value | the state at one stated time, which picks out one solution of a differential equation | `S02-R1-C07` |
 | initial-value problem | a differential equation and an initial value together; a function solves it only if it satisfies both | `S02-R1-C07` |
@@ -206,6 +227,7 @@ teaches were deleted. Terms used before their gloss, and terms used for two thin
 | intercept | the height of the line where the x quantity is zero | `B0-R0-C19` |
 | International Table calorie | 4.1868 joules, settled in 1956 | `B0-R0-C12` |
 | interquartile range | the third quartile minus the first | `B0-R0-C28` |
+| intervention | an exposure a researcher or a programme gives on purpose, as the thing being tested | `S55-R1-C02` |
 | ion | an atom left carrying a charge | `B0-R0-C31` |
 | ionic bond | a bond where one atom hands an electron to another and the opposite charges pull | `B0-R0-C31` |
 | islets (pancreatic islets) | the small islands of another kind of cell scattered through the pancreas, which put chemicals straight into the blood | `B0-R0-C38` |
@@ -246,6 +268,7 @@ teaches were deleted. Terms used before their gloss, and terms used for two thin
 | median | the middle value of the set once it is ordered from smallest to largest; with an even count, the mean of the two middle values | `B0-R0-C28` |
 | megajoule | a million joules, a thousand kilojoules; mega means 10^6, a million | `S01-R1-C02` |
 | memo | a note, written while you read a transcript, of what you notice and what you want to ask next | `S36-R1-C12` |
+| meta-analysis | a study that combines the results of earlier studies of the same question into one answer | `S55-R1-C06` |
 | metabolically active tissue | the tissue that spends most of the energy spent at rest | `S01-R1-C01` |
 | metabolism | the name for every chemical reaction in a body added together | `B0-R0-C36` |
 | metabolizable energy | what is left of a food's energy after the losses in faeces, gas and urine | `B0-R0-C32` |
@@ -273,6 +296,7 @@ teaches were deleted. Terms used before their gloss, and terms used for two thin
 | numerator | the number above the line, saying how many of the parts are being counted | `B0-R0-C02` |
 | odds | how many times more likely the event is than its opposite: p divided by (1 minus p) | `B0-R0-C24` |
 | open question | a question the person answers in their own words, not by picking from a list; it leaves the form of the answer to the respondent | `S36-R1-C03`, `S36-R1-C05` |
+| open window (of a citation count) | citations counted up to one fixed date for papers of many years, so an older paper has had longer to be cited than a younger one | `S55-R1-C06` |
 | order of magnitude | which power of ten a number is nearest to | `B0-R0-C08` |
 | order-of-magnitude estimate | every input rounded to one digit and a power of ten, the answer claimed only to the nearest power of ten; it tests a figure rather than producing one | `B0-R0-C08` |
 | origin | the point where the two axes of a graph cross | `B0-R0-C19` |
@@ -280,6 +304,8 @@ teaches were deleted. Terms used before their gloss, and terms used for two thin
 | overall maximum, overall minimum | the highest, or lowest, point over the whole stretch of inputs allowed | `S02-R1-C09` |
 | parameter | a number that describes the population, if every member of it could be measured | `B0-R0-C29` |
 | passage (of a transcript) | the stretch of a transcript that says one thing | `S36-R1-C12` |
+| PECO | population, exposure, comparison, outcome: the four parts of a question about an exposure people meet in their ordinary lives | `S55-R1-C02` |
+| peer-reviewed (paper) | checked by other researchers before the journal accepts it | `S55-R1-C06` |
 | percentage | a fraction whose denominator is one hundred; per cent means per hundred | `B0-R0-C04` |
 | percentage change | the change divided by the value it started from, times one hundred | `B0-R0-C04` |
 | percentage point | the plain difference between two percentages, as against per cent, which divides | `B0-R0-C04` |
@@ -287,6 +313,7 @@ teaches were deleted. Terms used before their gloss, and terms used for two thin
 | phospholipid | the one kind of molecule a membrane is built from, with one end that mixes with water and one that does not | `B0-R0-C35` |
 | physical activity expenditure | the energy spent moving, whether as deliberate exercise or as the ordinary movement of a day | `S01-R1-C04` |
 | physical activity level (PAL) | a multiplier for how active the group is | `S01-R1-C03` |
+| PICO | population, intervention, comparison, outcome: the four parts of a question about something given on purpose | `S55-R1-C02` |
 | pie chart | a circle standing for a whole, each slice's share of the circle being its share of the total | `B0-R0-C40` |
 | pilot interview | a practice run of the whole procedure of an interview study, done with a few people before the study proper; it tests the topic guide and the interviewer, not an answer to the study question | `S36-R1-C14` |
 | place value | what a digit is worth because of where it sits | `B0-R0-C01` |
@@ -312,6 +339,7 @@ teaches were deleted. Terms used before their gloss, and terms used for two thin
 | prompt (in a topic guide) | a short note under a main question of something you hope the answer covers, used only if the respondent does not get there on their own; it names a topic, never an answer | `S36-R1-C06` |
 | proportion | a part out of the whole it came from, never more than one | `B0-R0-C05` |
 | protein | a folded chain of amino acids, whose shape is what it does | `B0-R0-C35` |
+| protocol | the written plan of a study | `S55-R1-C02` |
 | quadratic | a function of the form px² + qx + r | `S02-R1-C09` |
 | qualitative research | research that asks what something is, what it means to the people involved, how it comes about and why, by gathering people's own words and actions and analysing them without turning them into counts | `S36-R1-C01` |
 | quantitative research | research that asks how many or how much: how common something is, how large a quantity is, or how large a difference a treatment makes | `S36-R1-C01` |
@@ -335,8 +363,12 @@ teaches were deleted. Terms used before their gloss, and terms used for two thin
 | reflexivity | "sensitivity to the ways in which the researcher and the research process have shaped the collected data" (Mays and Pope 2000) | `S36-R1-C09` |
 | regulated system | a system that senses body weight, or a signal that tracks it, and pushes back when weight falls | `S01-R1-C09` |
 | regulation | what a body the statute set up may make, not Parliament; it binds because a statute said it could | `B0-R0-C43` |
+| relate question | a question that asks whether an exposure is associated with an outcome: whether the two go together | `S55-R1-C03` |
 | relative frequency | a count divided by the total number counted; the proportion, under a longer name | `B0-R0-C27` |
 | research interview | a conversation in which a researcher asks a respondent about a topic to gather the respondent's account of it; not a clinical consultation | `S36-R1-C03` |
+| research money | money that pays to find out an answer | `S55-R1-C07` |
+| research question | a sentence that asks one thing a study will find out about a topic | `S55-R1-C01` |
+| research topic | an area of interest, such as obesity in adolescents; not yet a question | `S55-R1-C01` |
 | resolution | the smallest step an instrument's display can move by (VIM 4.14: the "smallest change in a quantity being measured that causes a perceptible change in the corresponding indication") | `B0-R0-C30` |
 | respondent | a person who answers in a qualitative study, chosen on purpose for what they can tell the researcher about the question | `S36-R1-C02` |
 | respondent-to-interviewer ratio | the respondent's words in an interview divided by the interviewer's words | `S36-R1-C11` |
@@ -355,8 +387,10 @@ teaches were deleted. Terms used before their gloss, and terms used for two thin
 | scale | how much of the quantity one step along an axis stands for, chosen by whoever draws the figure | `B0-R0-C19` |
 | scale factor | the number you multiply every length of a picture by | `B0-R0-C40` |
 | scientific notation | a number between one and ten, times a power of ten | `B0-R0-C06` |
+| scoring sheet (five-item sheet) | this course's working tool for putting candidate questions in order: five items, 0, 1 or 2 points each, total out of 10; a zero on item 4 or 5 rejects the question whatever its total; the totals put judgements in order and measure nothing | `S55-R1-C08` |
 | second derivative | the derivative of the derivative, the rate of change of the rate; written f″(x) | `S02-R1-C03` |
 | second derivative test | where the derivative is zero, a second derivative above zero means a local minimum, below zero a local maximum, and zero decides nothing | `S02-R1-C09` |
+| self-citation | a paper citing its own authors' earlier work | `S55-R1-C06` |
 | semi-structured interview | an interview that follows a short guide of open questions: the topics are decided, the path is not, and the order and wording change to suit the person | `S36-R1-C03` |
 | sensitivity | the share of people with the condition that the test catches, written P(test positive given condition present) | `B0-R0-C26` |
 | set point model | Hall and Guo's name for a model with feedback on both intake and expenditure; its equilibrium still moves when intake is shifted | `S02-R1-C08` |
@@ -395,6 +429,7 @@ teaches were deleted. Terms used before their gloss, and terms used for two thin
 | system | whatever you have drawn a line round, for the purpose of counting something | `B0-R0-C33` |
 | system of two equations | a pair of equations that have to hold at the same time | `B0-R0-C17` |
 | systematic error | pushes every reading the same way, by close to the same amount, every time | `B0-R0-C30` |
+| systematic review | a study of studies: it collects and combines the results of the studies already done on one question, in a planned and careful way | `S55-R1-C03` |
 | table | values set out in a grid, each one identified by the row and the column it sits in | `B0-R0-C39` |
 | talk share | the interviewer's words in one interview divided by the words everyone says, times one hundred; the respondent's talk share is one hundred minus the interviewer's | `S36-R1-C11` |
 | tangent | the straight line that touches a curve at one point and runs along it, whose slope is the rate at that point | `B0-R0-C21` |
@@ -410,9 +445,12 @@ teaches were deleted. Terms used before their gloss, and terms used for two thin
 | turn | one unbroken stretch of speech by one speaker in a transcript | `S36-R1-C11` |
 | two-way table | a table that sorts the same people twice, one way down the columns and the other way across the rows | `B0-R0-C26` |
 | type 2 diabetes | a condition in which blood glucose runs high | `S01-R1-C09` |
+| uncited | (of a paper) its count of citations in a given database is zero; read it as no citation found in this database by this date | `S55-R1-C06` |
+| uncitedness ratio | the share of papers uncited, written as a fraction of 1, so 0.23 means 23 in every 100 | `S55-R1-C06` |
 | unit | an agreed amount that everybody measures against | `B0-R0-C09` |
 | unit of observation | what one row of a table stands for | `B0-R0-C39` |
 | value axis | the axis a bar's length is read against: the side axis when bars stand up, the bottom axis when they lie flat | `B0-R0-C40` |
+| value question | a question about what ought to be done, which people answer from their values (Blackstone's textbook calls it an ethical question) | `S55-R1-C04` |
 | variable | a letter written in place of a number | `B0-R0-C15` |
 | variance | worked out from the squared deviations: add them, then divide by the count for a whole population, or by one less than the count for a sample | `B0-R0-C28` |
 | vector | an ordered list of numbers, called its entries; one row of a data table is a vector | `S02-R1-C10` |
@@ -421,8 +459,10 @@ teaches were deleted. Terms used before their gloss, and terms used for two thin
 | weighted sum | each vector multiplied by its own number, then added: cv + dw for vectors v and w and numbers c and d | `S02-R1-C10` |
 | weights (of a weighted sum) | the numbers a weighted sum multiplies by; "weight" here means a multiplier, not body weight | `S02-R1-C10` |
 | where-clause | the words that fix what each symbol in an equation stands for, often a clause beginning "where" after it; it fixes each symbol's meaning, its unit and its sign | `S02-R1-C01` |
+| who-is-waiting test | name the person, or named role in a body, that needs the answer for a decision they actually face; then, for each answer the study could give, state what they will do, in their own words; it passes only when at least two answers lead to different actions | `S55-R1-C07` |
 | window | the stretch of time a chart over time shows, starting and ending where somebody chose | `B0-R0-C40` |
 | work | a force moving something through a distance; lifting a weight is work | `B0-R0-C31` |
+| worth answering | (of a research question) the answer is in doubt, is not already known, and has practical consequences: at least one possible answer would lead someone to decide or act differently from another | `S55-R1-C05` |
 | x-axis | the flat line along the bottom of a graph | `B0-R0-C19` |
 | y-axis | the upright line up the side of a graph | `B0-R0-C19` |
 | zero error | an instrument reading something other than zero where it should read zero, as a thermometer in melting ice reading 0.3 °C | `B0-R0-C30` |
