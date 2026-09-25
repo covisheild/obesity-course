@@ -19,7 +19,11 @@ definition:
   text: |
     An item is one question or task on a test, marked on its own. A test matches a learning
     objective when every item asks the learner to carry out the objective's action, on its
-    content, under its condition, and is marked against its standard.
+    content, under its condition. Each item is marked right or wrong against a key written in
+    advance, and the objective's standard is applied to the learner's total.
+
+    A test that counts towards a mark or a decision about the learner is summative. In this book,
+    a test used only to show the learner and you where they stand is formative.
 
     An item is at the objective's level when it cannot be answered by repeating something said or
     shown in the session. For an objective above remember, that means the item hands the learner a
@@ -107,7 +111,8 @@ definition:
       checked_on: '2026-09-25'
       note: |-
         The summative use: high stakes, to evaluate. Off-type reference, held and quoted. The
-        record's definition of the formative use is its own; no held file defines "formative".
+        formative sense is the book's own, labelled "In this book" in the definition; no held
+        file defines "formative".
   - citekey: agarwal_2021_retrieval_practice
     kind: systematic_review
     locator: "Results, Retrieval Practice Format and Final Test Format, second paragraph"
@@ -139,7 +144,7 @@ definition:
     kind: guideline
     locator: "Curriculum volume, Levels of competency, the row P"
     quote: |-
-      P Performs (under supervision or independently)
+      P Performs (under supervision or independently) Mastery for the level of competence - When done independently under supervision a pre-specified number of times - certification or capacity to perform independently results
     verified:
       resolved_id: https://nmc.org.in/storage/cms/rules-regulation-nmc/YTW423v3EsCFdtPv3I5qZkaNNhuXfub42UZITDRM.pdf
       opened: true
@@ -174,16 +179,17 @@ definition:
     kind: guideline
     locator: "Assessment, (b) Certifiable Competencies Achieved, item 3"
     quote: |-
-      Learners must secure at least 50% of the total marks (combined in theory and practical / clinical;
+      Learners must secure at least 50% of the total marks (combined in theory and practical / clinical; and minimum 40% in theory and practic al
     verified:
       resolved_id: https://nmc.org.in/storage/cms/rules-regulation-nmc/YTW423v3EsCFdtPv3I5qZkaNNhuXfub42UZITDRM.pdf
       opened: true
       claim_located: true
       checked_on: '2026-09-25'
       note: |-
-        The sentence continues: "for internal assessment in a particular subject in order to be
+        The sentence continues: "separately) for internal assessment in a particular subject in order to be
         eligible for appearing at the final University examination of that subject." The text
-        layer breaks "practic al" in the middle, so the quote stops before it.
+        layer breaks "practical" as "practic al"; the quote keeps the file's spacing so the build
+        can find it.
 simplified_explanation: |
   A test can be well made and still test the wrong thing. Suppose your objective says students
   will classify a new adult's BMI. A test that asks them to write the BMI formula checks something
@@ -252,8 +258,9 @@ illustrations:
     ```
 
     Form A, item 1: 58 kg, 152 cm. Form B, item 1: 61 kg, 156 cm. The two BMIs differ by less
-    than 0.1 kg/m^2. Unless the table puts the edge of a category between 25.07 and 25.10, the two
-    adults land in the same category. Do the same for all ten pairs.
+    than 0.1 kg/m^2. Suppose the table's category changes at 25 kg/m^2. Both adults sit just above
+    that edge, so the two are equally hard to place. Unless the table puts an edge between 25.07 and
+    25.10, the two adults land in the same category. Do the same for all ten pairs.
 
     However carefully you pair them, one form may still turn out easier. That is a systematic
     error, the kind Book 0 described (`B0-R0-C30`): it pushes every score on that form the same
@@ -271,7 +278,7 @@ illustrations:
     ```
 
     ```table
-    order of the forms   students   gain (points)
+    order of the forms   students   gain (percentage points)
     A before, B after    15         40
     B before, A after    15         20
     whole group          30         30
@@ -282,8 +289,8 @@ illustrations:
     one half and hurt the other by the same 10 points. In the mean of the whole group, the two
     cancel.
   analogy_breaks_when: |
-    The cancelling works for the mean of the whole group, and only when the two halves are the
-    same size. It does nothing for any one student: in this example, every student's own gain is
+    The cancelling works for the mean of the whole group, and exactly only when the two halves
+    are the same size. It does nothing for any one student: in this example, every student's own gain is
     still 10 points wrong. Do not judge one student's progress from one pair of forms.
 
     Matching partners on BMI makes them equally hard for a table of BMI categories. For another
@@ -304,8 +311,8 @@ figures:
     - check: "(y[0] + y[1]) / 2 = y[2]"
     - check: "y[0] - y[2] = 10"
 - file: s57-r1-c10-partner-items.png
-  caption: "Item 1 on each form: 58 kg at 152 cm on form A, 61 kg at 156 cm on form B. Both sit on the curve of weights that give a BMI of 25.10 kg/m^2, to the nearest kilogram, so the numbers differ and the item is as hard to place."
-  alt: "Two points, weight against height: 58 kg at 152 cm and 61 kg at 156 cm, both on a rising curve of constant BMI 25.10."
+  caption: "Item 1 on each form: 58 kg at 152 cm on form A, 61 kg at 156 cm on form B. Both sit on the curve of weights that give a BMI of 25.10 kg/m^2, to the nearest kilogram, just above the edge of a category at 25 kg/m^2. The numbers differ; the item is as hard to place."
+  alt: "Two points, weight against height: 58 kg at 152 cm and 61 kg at 156 cm, both on a rising curve of constant BMI 25.10, just above a second curve, the category edge at BMI 25."
   source: draw.py
   spec:
     kind: scatter
@@ -317,6 +324,7 @@ figures:
     y_label: weight (kg)
     curves:
     - {y: "y = 25.10*(x/100)^2", x0: 152, x1: 156, label: "BMI 25.10 kg/m^2", series: "item 1, form A and form B"}
+    - {y: "y = 25*(x/100)^2", x0: 152, x1: 156, label: "the edge of the category, 25 kg/m^2"}
     labels:
     - {text: "form A: 58 kg, 152 cm", at: [152, 58], offset: [8, -4]}
     - {text: "form B: 61 kg, 156 cm", at: [156, 61], offset: [-112, 2]}
@@ -334,8 +342,9 @@ must_know:
   bearing: teaching
   refs: [adams_2015_bloom]
 - point: |
-    Write the test straight after the objective, before you plan the teaching. Then choose
-    activities that make learners do what the test will ask.
+    Write the test straight after the objective, before you plan the teaching. That order is this
+    book's advice. Biggs's point is that the objective, the activities and the test are designed
+    as one. Then choose activities that make learners do what the test will ask.
   kind: move
   bearing: teaching
   refs: [biggs_1996_constructive_alignment, chatterjee_corral_2017_objectives]
@@ -348,8 +357,9 @@ must_know:
   refs: [agarwal_2021_retrieval_practice]
 - point: |
     Give half the group each order of the two forms, with the halves the same size. A difference
-    in difficulty then cancels in the group's mean gain. It does not cancel for one learner, so
-    never judge one learner from one pair of forms.
+    in difficulty then cancels in the group's mean gain. With an odd number of learners, one
+    half has one more. The cancellation is then close, not exact. Say so when you report the mean gain.
+    It does not cancel for one learner, so never judge one learner from one pair of forms.
   kind: move
   bearing: methodological
 - point: |
@@ -358,17 +368,19 @@ must_know:
   kind: boundary
   bearing: methodological
 - point: |
-    India's MBBS course follows the Competency Based Medical Education (CBME) Curriculum 2024, from
-    the National Medical Commission. Its tables give each skill a level: K (knows), KH (knows how),
-    SH (shows how) or P (performs). A skill at SH cannot be tested on paper: the learner must show
-    you. Read the level before you write the test.
+    India's undergraduate medical course follows the Competency Based Medical Education (CBME) Curriculum 2024, from
+    the National Medical Commission. Its tables give each competency a level. At knows (K), the
+    learner enumerates or describes; at knows how (KH), discusses or analyses; at shows how (SH),
+    demonstrates. Performs (P) is certified after a set number of supervised performances. Each
+    row also names a suggested assessment method. Read both before you write the test. A
+    competency at SH or P has to be watched.
   kind: india_deviation
   bearing: teaching
   refs: [nmc_cbme_2024]
 - point: |
     The CBME Curriculum 2024 builds internal assessment from day-to-day tests, and quizzes can
-    count. A student needs at least 50% of those marks to sit the university exam in that
-    subject. So a quiz whose marks count there is not low-stakes. Keep your practice questions out
+    count. A student needs at least 50% of those marks, and 40% in theory and in practical
+    separately, to sit the university exam in that subject. So a quiz whose marks count there is not low-stakes. Keep your practice questions out
     of it.
   kind: india_deviation
   bearing: teaching
@@ -386,14 +398,15 @@ exercises:
     activists (ASHAs), village health workers:
 
     > At the end of this session, each ASHA, given a child and the scale used at her centre, will
-    > weigh the child and record the weight in the register, completing every step on the
-    > programme's checklist, observed by the trainer.
+    > weigh the child, completing every step on the programme's weighing checklist. Writing the
+    > weight in the register is its last step. The trainer observes, at the end of the session and
+    > again at a supervision visit a month later.
 
     Her test is a written quiz of ten multiple-choice questions on the steps of weighing a child.
     Say whether the test matches the objective. If not, describe a test that does, and say how you
     would make a second form of it for the end of the session.
   answer: |
-    It does not match. The objective's action is to weigh a child and record the weight. The quiz
+    It does not match. The objective's action is to weigh a child. The quiz
     asks the ASHAs to recognise the steps on paper. An ASHA could pick every right answer and still
     miss a step with a real child and a real scale. This is Chatterjee and Corral's intubation
     example in another setting: a written exam for a hands-on objective.
@@ -450,7 +463,8 @@ exercises:
 retrieval_items:
 - q: When does a test match a learning objective?
   a: When every item asks for the objective's action, on its content, under its condition, marked
-    against its standard; and, above remember, gives a case the learner has not met.
+    against a key, with the standard applied to the total; and, above remember, gives a case the
+    learner has not met.
 - q: What makes two forms of a test parallel, and why use them for a pre-test and post-test?
   a: Each item has a partner asking for the same action on the same kind of case, at the same level
     and difficulty, with a different case or numbers. The post-test then cannot be answered from

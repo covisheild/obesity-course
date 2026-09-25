@@ -31,7 +31,9 @@ definition:
     is hard.
 
     Rereading does improve recall over a single reading. But in direct comparisons, rereading has
-    consistently done worse than practice testing and than two techniques of explaining.
+    consistently done worse than practice testing and than two techniques of explaining:
+    explaining why a stated fact is true, and explaining how new material connects to what you
+    already know.
 
     So low utility is not zero effect. It means the same time spent another way does more.
 
@@ -53,8 +55,8 @@ definition:
         material again after an initial reading", which backs the definition of rereading.
   - citekey: dunlosky_2013_learning_techniques
     kind: systematic_review
-    locator: Table 1, row 7, the description of rereading
-    quote: 7. Rereading Restudying text material again after an initial reading
+    locator: Summary, first paragraph, the number of techniques reviewed
+    quote: In this monograph, we discuss 10 learning techniques in detail
     verified:
       resolved_id: https://doi.org/10.1177/1529100612453266
       opened: true
@@ -201,8 +203,9 @@ definition:
       checked_on: '2026-09-25'
       note: |-
         The comparisons named in the sentence are "elaborative interrogation, self- explanation,
-        and practice testing". The section calls the first two "two techniques of explaining"
-        and does not teach them; `S57-R1-C07` does.
+        and practice testing". Table 1 describes the first two: "Generating an explanation for
+        why an explicitly stated fact or concept is true" and "Explaining how new information is
+        related to known information". The section words them plainly.
   - citekey: dunlosky_2013_learning_techniques
     kind: systematic_review
     locator: 7.5 Rereading, Overall assessment, closing sentence
@@ -222,6 +225,21 @@ definition:
       opened: true
       claim_located: true
       checked_on: '2026-09-25'
+  - citekey: agarwal_2021_retrieval_practice
+    kind: systematic_review
+    locator: Results, on comparison conditions in the 50 classroom experiments
+    quote: the most common comparison conditions were when students re-read material (e.g.,
+      studied a review sheet; k = 19)
+    verified:
+      resolved_id: https://doi.org/10.1007/s10648-021-09595-9
+      opened: true
+      claim_located: true
+      checked_on: '2026-09-25'
+      note: |-
+        Read at the held file, block 1. The sentence opens "In contrast to retrieval practice,".
+        Backs must-know point 6's "later classroom experiments often set rereading against
+        retrieval practice". Rereading was the comparison, not the thing tested against doing
+        nothing; the section claims no more.
   - citekey: dunlosky_2013_learning_techniques
     kind: systematic_review
     locator: Summary, the recommendation for rereading and highlighting
@@ -466,13 +484,13 @@ simplified_explanation: |
   Ask a batch how they revise, and you will probably hear two things. They read their notes again. They
   mark the important lines with a highlighter.
 
-  Read a page a second time and it goes down easily. That ease is fluency, and it feels exactly like
+  Read a page a second time and it goes down easily. That ease is fluency, and it can feel like
   knowing. But it only tells you the page is familiar.
 
   Read once. Then close the book, write down what you remember, and check it against the page.
 illustrations:
 - body: |
-    A student in your MBBS batch shows you her textbook. The chapter on nutritional anaemia is
+    A student in your batch shows you her textbook. The chapter on nutritional anaemia is
     yellow from top to bottom. She has been through it twice. What does the yellow tell you?
 
     Open Dunlosky, Rawson, Marsh, Nathan and Willingham, "Improving students' learning with
@@ -531,7 +549,7 @@ illustrations:
     Closing Remarks and find Table 4. Before you read a single letter, settle what a row is and
     what a column is (`B0-R0-C39`).
 
-    A row is one technique. The Utility column is the overall rating. The next five columns ask
+    A row is one technique. The Utility column is the overall rating. The next three columns ask
     whether the benefit holds for different learners, for different materials, and for different
     kinds of final test. The review calls the final test the criterion task. The last two ask
     whether the technique is easy to put into use, and whether it has been shown in real
@@ -592,8 +610,9 @@ illustrations:
     ```
 
     Read down the last two columns together. The group that reread most was the surest it would
-    remember. It remembered least. Why would reading more make a group surer? Pashler and
-    colleagues give one reason.
+    remember. It remembered least. The other two groups' ratings did not differ reliably.
+
+    Why would reading more make a group surer? Pashler and colleagues give one reason.
 
     Open Pashler, McDaniel, Rohrer and Bjork, "Learning styles: concepts and evidence",
     *Psychological Science in the Public Interest* 2008, at
@@ -694,12 +713,14 @@ must_know:
   refs:
   - dunlosky_2013_learning_techniques
 - point: |
-    These ratings come mostly from laboratory studies of undergraduates. No experiment has tested
-    rereading's effect on learning in a real course, and your own batch was in none of them.
+    These ratings come mostly from laboratory studies of undergraduates. By 2013 no experiment had
+    tested rereading's effect on learning in a real course. Later classroom experiments often set
+    rereading against retrieval practice (`S57-R1-C03`). Your own batch was in none of them.
   kind: boundary
   bearing: methodological
   refs:
   - dunlosky_2013_learning_techniques
+  - agarwal_2021_retrieval_practice
 exercises:
 - type: teaching
   prompt: |
@@ -741,8 +762,8 @@ retrieval_items:
     later (40% against 61%).
 figures:
 - file: s57-r1-c05-sure-and-kept.png
-  caption: "Roediger and Karpicke (2006), second experiment, group means. The SSSS group, which only reread, expected to remember best (4.8 out of 7) and recalled least after 1 week (40%). The STTT group, read once and tested three times, expected least (4.0) and recalled most (61%). The ratings differ by under 1 point of the 1-to-7 scale; the bottom axis shows only that part of it."
-  alt: "Three points. SSSS at a rating of 4.8 and 40% recalled; SSST at 4.2 and 56%; STTT at 4.0 and 61%. The higher the rating, the lower the recall."
+  caption: "Roediger and Karpicke (2006), second experiment, group means. The SSSS group, which only reread, expected to remember best (4.8 out of 7) and recalled least after 1 week (40%). The STTT group, which studied in one period and was tested in three, expected least (4.0) and recalled most (61%). The ratings differ by under 1 point of the 1-to-7 scale; the bottom axis shows only that part of it."
+  alt: "Three points. SSSS at a rating of 4.8 and 40% recalled; SSST at 4.2 and 56%; STTT at 4.0 and 61%. The rereading group rated itself highest and recalled least; the other two ratings did not differ reliably."
   source: draw.py
   spec:
     kind: scatter

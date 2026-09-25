@@ -22,29 +22,29 @@ definition:
     after the same delay. That delay is the retention interval, as the last section defined it.
 
     The learners are allocated to the two groups at random: a chance process decides who goes
-    where, not the teacher or the learners. Anything else that affects the score is what OpenStax
-    calls a lurking variable. Random allocation spreads the lurking variables across the groups
-    by chance.
+    where, not the teacher or the learners. Anything else that affects the score is what the
+    OpenStax statistics textbook calls a lurking variable. Random allocation spreads the lurking
+    variables across the groups by chance.
 
     The mean difference, MD, is the mean score of one group minus the mean score of the other.
-    Its sign says which group did better, so you always state which group was subtracted from
-    which.
+    Its sign says which group scored higher; whether higher is better depends on the scale. So
+    you always state which group was subtracted from which, and which way the score runs.
 
     The standardised mean difference, SMD, is the MD expressed as a number of standard
-    deviations. In words, the SMD is the mean difference divided by the standard deviation,
-    written
+    deviations (SD, `B0-R0-C28`). In words, the SMD is the MD divided by the SD, written
 
     ```working
     SMD = MD ÷ SD
     ```
 
     The choice of SD is part of the definition. The SMD the Cochrane Handbook uses, Hedges'
-    adjusted g, divides by an SD pooled from both groups. Glass's delta divides by the comparison
-    group's SD alone. Papers often report an SMD as an "effect size", and some name the version,
-    such as Hedges' g or Cohen's d.
+    adjusted g, divides by an SD pooled from both groups. Papers often report an SMD as an
+    "effect size".
 
     One group tested before and after its teaching, with no comparison group, gives a change, not
-    a difference between methods.
+    a difference between methods. Divided by an SD it gives a number that looks like an SMD. But
+    it measures one group's change over time, so it cannot be set beside an SMD between two
+    groups.
   references:
   - citekey: openstax_intro_stats_2e
     kind: textbook
@@ -350,9 +350,60 @@ definition:
   - citekey: deslauriers_2019_feeling_of_learning
     kind: primary
     locator: Materials and Methods, the paragraph on controls, item 4
-    quote: Students were individually randomly assigned to 2 groups
+    quote: Students were individually randomly assigned to 2 groups, and these groups were
+      indistinguishable on several measures of physics background and proficiency (Table 1).
     verified:
       resolved_id: https://pmc.ncbi.nlm.nih.gov/articles/PMC6765278/
+      opened: true
+      claim_located: true
+      checked_on: '2026-09-25'
+  - citekey: deslauriers_2019_feeling_of_learning
+    kind: primary
+    locator: Materials and Methods, the paragraph on controls, item 5
+    quote: Each student experienced both types of instruction in a crossover study design
+    verified:
+      resolved_id: https://pmc.ncbi.nlm.nih.gov/articles/PMC6765278/
+      opened: true
+      claim_located: true
+      checked_on: '2026-09-25'
+  - citekey: deslauriers_2019_feeling_of_learning
+    kind: primary
+    locator: Materials and Methods, the paragraph describing the two kinds of class
+    quote: 'students were instructed to solve the sample problems by working together in small groups'
+    verified:
+      resolved_id: https://pmc.ncbi.nlm.nih.gov/articles/PMC6765278/
+      opened: true
+      claim_located: true
+      checked_on: '2026-09-25'
+      note: |-
+        Describes the active class. The other class was a lecture in which "the instructor
+        presented slides", solving the problems "while students listened".
+  - citekey: freeman_2014_active_learning
+    kind: systematic_review
+    locator: Materials and Methods, the consensus definition of active learning
+    quote: Active learning engages students in the process of learning through activities and/or
+      discussion in class, as opposed to passively listening to an expert.
+    verified:
+      resolved_id: https://www.pnas.org/doi/10.1073/pnas.1319030111
+      opened: true
+      claim_located: true
+      checked_on: '2026-09-25'
+  - citekey: freeman_2014_active_learning
+    kind: systematic_review
+    locator: Results, the paragraph on the heterogeneity analysis by assessment type
+    quote: average effect sizes were lower when the outcome variable was an instructor-written course
+      examination as opposed to performance on a concept inventory
+    verified:
+      resolved_id: https://www.pnas.org/doi/10.1073/pnas.1319030111
+      opened: true
+      claim_located: true
+      checked_on: '2026-09-25'
+  - citekey: freeman_2014_active_learning
+    kind: systematic_review
+    locator: Results, the paragraph on the heterogeneity analysis by assessment type
+    quote: most concept inventories are designed to diagnose known misconceptions
+    verified:
+      resolved_id: https://www.pnas.org/doi/10.1073/pnas.1319030111
       opened: true
       claim_located: true
       checked_on: '2026-09-25'
@@ -482,8 +533,10 @@ illustrations:
     "Measuring actual learning versus feeling of learning", *Proceedings of the National Academy
     of Sciences* (PNAS) 2019, at
     https://pmc.ncbi.nlm.nih.gov/articles/PMC6765278/. Go to Table 1. It describes two groups of
-    physics students who were allocated at random. Find the row for each group's average score on
-    two earlier exams, before the experiment began.
+    physics students who were allocated at random. Later, each group had one topic as a lecture
+    and one in which students solved problems in small groups. Here you look only at how alike
+    chance made the groups before that. Find the row for each group's average score on two earlier
+    exams.
 
     ```table
     semester   group A mean (%)   group A SD   group B mean (%)   group B SD
@@ -596,8 +649,14 @@ illustrations:
 
     Now read a published SMD the same way. Open Freeman and colleagues, "Active learning increases
     student performance in science, engineering, and mathematics", *PNAS* 2014, at
-    https://www.pnas.org/doi/10.1073/pnas.1319030111. It pools 158 comparisons of exam scores
-    between active learning and lecturing. The overall SMD is 0.47. The authors put it in words:
+    https://www.pnas.org/doi/10.1073/pnas.1319030111. The authors define active learning: it
+    "engages students in the process of learning through activities and/or discussion in class,
+    as opposed to passively listening to an expert."
+
+    They combined the results of 158 comparisons between active learning and lecturing into one
+    average. The scores were on exams, concept inventories and similar tests. (A concept inventory
+    is a test mostly designed to find known misconceptions.) The overall SMD is 0.47. It was larger
+    on concept inventories than on course exams. The authors put it in words:
     performance rose "by just under half a SD". Turn it back into marks for a batch whose scores
     have an SD of 16 percentage points.
 
@@ -615,7 +674,8 @@ illustrations:
   analogy_breaks_when: |
     The made-up batch gives both groups the same SD, so there is only one SD to divide by. Real
     groups rarely match exactly. A published SMD may divide by an SD pooled from both groups, or by
-    the comparison group's SD. It uses an exact formula this book does not work through. Your
+    the comparison group's SD alone (Glass's delta). Some papers name their version, such as
+    Cohen's d. Each uses an exact formula this book does not work through. Your
     hand division gives the idea, not the published figure.
 
     Freeman's studies were in university science courses in their own time and place. The timing
@@ -674,13 +734,15 @@ must_know:
   kind: trap
   bearing: methodological
 - point: |
-    An SMD of 0.5 does not mean "50% better". To turn it into marks, multiply it by the SD of the
-    scores on your own test.
+    An SMD of 0.5 does not mean "50% better". To turn it into marks, multiply it by the SD of your
+    own test's scores. That assumes the effect would carry over to your test and learners, which
+    the SMD cannot tell you. Report the MD in marks first, then the SMD with the SD you divided by.
   kind: misconception
   bearing: teaching
 - point: |
-    Freeman and colleagues pooled 158 comparisons of active learning against lecturing and found an
-    SMD of 0.47, just under half an SD. Use that as your yardstick when someone offers you a new
+    Freeman and colleagues combined 158 comparisons of active learning against lecturing into one
+    SMD of 0.47, just under half an SD. It was larger on concept inventories than on course exams.
+    Use that as your yardstick when someone offers you a new
     method's "effect size". It came from volunteer teachers in university science courses.
   kind: number
   bearing: teaching
@@ -695,7 +757,8 @@ must_know:
   - cochrane_handbook_ch06_v6_5
 - point: |
     Random allocation makes the groups alike on average, not identical. With a small batch, chance
-    can still leave one group stronger.
+    can still leave one group stronger: the spread of a group's mean shrinks only with the square
+    root of its size (`B0-R0-C29`). How many learners a comparison needs is outside this book.
   kind: boundary
   bearing: methodological
 - point: |
@@ -708,9 +771,10 @@ must_know:
 exercises:
 - type: design
   prompt: |
-    ASHA workers are accredited social health activists: village health workers. Your department
-    has a question about training them. Does a session built on short written questions teach them to read a child's growth chart better than the
-    usual talk? Sixty ASHA workers from one block will attend.
+    An accredited social health activist (ASHA) is a village health worker. Your department has a
+    question about training them. Does a session built on short written questions teach them to
+    read a growth chart better than the usual talk? A growth chart is the printed curve on which a
+    child's weight is plotted against age. Sixty ASHA workers from one block will attend.
 
     Plan the comparison. Say how you split them and what you keep the same. Say what you measure
     and when. Name the one number you will report first.
@@ -870,8 +934,9 @@ practice:
     An MD of 1.52 percentage points and an SMD of about 0.12.
 
     Before any teaching, the groups sat 0.01 and 0.12 SDs apart. Chance made them close, and in
-    fall a little less close. So any difference found after the teaching has to be judged against
-    a starting gap of that size. It was not zero.
+    fall a little less close. The authors tested these gaps and called the groups
+    "indistinguishable". Still, a later gap has to be judged against a starting gap of up to 0.12
+    SD. It was not zero.
   refs:
   - deslauriers_2019_feeling_of_learning
 - level: 6
@@ -953,8 +1018,6 @@ practice:
 - level: 8
   prompt: |
     Here is a worked answer. The numbers are made up. Find the step that broke.
-
-    ASHA workers are accredited social health activists: village health workers.
 
     ```working
     ASHA workers each plot ten children's weights on a growth chart; the score is the number of mistakes
@@ -1126,7 +1189,7 @@ provenance:
   bridge_ref:
   - S57-R2-P01
   - S57-R2-R2
-  - S57-R2-B2
+  - S57-R2-B
 review:
   stability: long
   trigger: '2031-09-25'

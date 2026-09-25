@@ -26,7 +26,8 @@ definition:
 
     The drop has held up. In a second study, 33 undergraduates showed the same pattern. When students were
     warned at the start that they would have to write explanations, the drop was smaller, but it did not go
-    away.
+    away. The drop was large for devices and natural processes, small for facts such as capital
+    cities, and absent for procedures and for the plots of films.
 
     Expertise does not reliably remove the illusion either. A later study from the same
     laboratory found that people with more education show it on topics from their own subject.
@@ -231,6 +232,18 @@ definition:
       opened: true
       claim_located: true
       checked_on: '2026-09-25'
+  - citekey: rozenblit_keil_2002_ioed
+    kind: primary
+    locator: "3.2.1 Methods (Study 8)"
+    quote: "such as how to bake chocolate chip cookies from scratch, how to tie a bow tie"
+    verified:
+      resolved_id: https://pmc.ncbi.nlm.nih.gov/articles/PMC3062901/
+      opened: true
+      claim_located: true
+      checked_on: '2026-09-25'
+      note: |-
+        37 participants. Backs the examples in simplified_explanation; nobody tested clinical
+        procedures, and the section says so.
   - citekey: fisher_keil_2015_ioed
     kind: primary
     locator: Abstract, Experiment 2 sentence
@@ -337,6 +350,18 @@ definition:
       checked_on: '2026-09-25'
   - citekey: dunlosky_2013_learning_techniques
     kind: systematic_review
+    locator: "2.2d Criterion tasks (self-explanation), end of paragraph on durability"
+    quote: "Taken together, the outcomes of these few studies are promising, but considerably more
+      research is needed"
+    verified:
+      resolved_id: https://doi.org/10.1177/1529100612453266
+      opened: true
+      claim_located: true
+      checked_on: '2026-09-25'
+      note: |-
+        Backs must_know[4]'s "only a few studies ... promising". The delays in these studies ran to weeks.
+  - citekey: dunlosky_2013_learning_techniques
+    kind: systematic_review
     locator: "1.3 Effects in representative educational contexts (elaborative interrogation)"
     quote: "few studies have been conducted outside the laboratory."
     verified:
@@ -378,9 +403,10 @@ definition:
       claim_located: true
       checked_on: '2026-09-25'
       note: |-
-        Backs must_know[5]. One study of third to fifth graders solving math problems; the review
-        calls the time-equated results "somewhat mixed", and three other time-equated studies found
-        self-explanation effects. The point says "in one study" for that reason.
+        Context for must_know[5], which does not cite this study's result: one study of third to
+        fifth graders solving math problems; the review calls the time-equated results "somewhat
+        mixed". The 30-100% in must_know[5] is for self-explanation in self-paced studies only, and
+        the point gives the biology class's own 32 minutes against 28 beside it.
   - citekey: dunlosky_2013_learning_techniques
     kind: systematic_review
     locator: "2.4 Issues for implementation (self-explanation), first paragraph, Didierjean and Cauzinille-Marmeche"
@@ -472,9 +498,10 @@ simplified_explanation: |
   That drop is the illusion of explanatory depth. You felt you understood. Trying to explain
   showed you where you do not.
 
-  The illusion lives in "how does it work" and "why". Ask people to list the steps of a
-  procedure, like the steps for weighing a child, and they judge what they know about right. Ask
-  them why each step is there, and you are asking how something works.
+  The illusion lives in "how does it work" and "why". In one study, people judged their
+  knowledge of everyday procedures, such as how to bake chocolate chip cookies from scratch or
+  tie a bow tie, about right. The steps for weighing a child may behave the same way; nobody has
+  tested it. Ask why each step is there, and you are asking how something works.
 
   So use explaining as a check. When a student nods, ask them to explain the step.
 illustrations:
@@ -539,7 +566,7 @@ illustrations:
     Now turn explaining into something your learners do. You are taking a batch of MBBS students
     through a textbook passage on human digestion.
 
-    Dunlosky and colleagues describe a class study of exactly this, by Smith and colleagues in
+    Dunlosky and colleagues describe a class study of this kind, by Smith and colleagues in
     2010. Open their review at https://doi.org/10.1177/1529100612453266 and search for Why is
     this true. Undergraduates in an introductory biology course read a long passage on human
     digestion from their course textbook.
@@ -557,11 +584,13 @@ illustrations:
     Reading only  28  69%
     ```
 
+    Guessing alone would score about 50% on a true-or-false test.
+
     Work out what the prompts bought, and what they cost.
 
     ```working
-    76% - 69% = 7 percentage points more correct
-    32 - 28 = 4 minutes more reading
+    76 minus 69 = 7 percentage points more correct
+    32 minus 28 = 4 minutes more reading
     ```
 
     To use it, pick the statements in your passage that carry the mechanism. After each one, write
@@ -628,22 +657,28 @@ must_know:
   bearing: teaching
 - point: |
     When you ask learners to explain, have them check the explanation against the text or against
-    you. A fluent explanation that is wrong can hurt learning.
+    you. A poor explanation, left unchecked, can hurt learning (Weinstein and colleagues).
   kind: move
   bearing: teaching
+  refs:
+  - weinstein_2018_science_of_learning
 - point: |
-    Asking someone to list the steps of a procedure will not show you the illusion, because
-    people judge their knowledge of steps about right.
+    Asking someone to list the steps of a procedure may not show you the illusion. In one study,
+    people judged their knowledge of everyday procedures about right.
   kind: boundary
   bearing: teaching
 - point: |
-    Do not claim that "why" questions or self-explanation produce lasting learning. If you use
-    them, test your learners days later before you say they worked.
+    Do not claim that "why" questions or self-explanation produce lasting learning. Only a few
+    studies tested after a delay, and their results were promising. Test your own learners
+    days later before you say they worked.
   kind: boundary
   bearing: methodological
+  refs:
+  - dunlosky_2013_learning_techniques
 - point: |
-    Explaining costs time: 30% to 100% more in the studies that reported it. Weigh fewer
-    problems explained against more problems solved.
+    Self-explanation took 30% to 100% more time in the few self-paced studies that reported it.
+    The "why" prompts in the biology class took 32 minutes against 28 for reading alone. Weigh fewer problems
+    explained against more problems solved.
   kind: consequence
   bearing: teaching
   refs:
@@ -651,7 +686,7 @@ must_know:
 exercises:
 - type: teaching
   prompt: |
-    A first-year resident tells you: "I read the chapter on anthropometry twice last night. I
+    A first-year resident tells you: "I read the chapter on anthropometry, body measurement, twice last night. I
     understood all of it, so I can take the MBBS batch on Monday." You have ten minutes and a
     whiteboard. Explain why "I understood it" is not yet evidence. Then give them one thing to
     do tonight instead of a third reading.
@@ -662,8 +697,8 @@ exercises:
     the explanation would be asked for made the drop smaller, not absent. Being well educated in
     the subject does not stop it either.
 
-    Then the whiteboard. Do not ask for the steps of a measurement; people know steps about as
-    well as they think. Ask why. Take the height measurement, step by step as the chapter gives
+    Then the whiteboard. Do not ask only for the steps of a measurement; in one study, people
+    judged their knowledge of everyday procedures about right. Ask why. Take the height measurement, step by step as the chapter gives
     it. For each step, ask why it is there and what happens to the reading if it is skipped. Let
     the resident talk, and mark where they stop or say "and then basically".
 
@@ -690,7 +725,7 @@ retrieval_items:
     explaining takes more time than the comparison.
 figures:
 - file: s57-r1-c07-why-prompts.png
-  caption: "One introductory biology class reading a textbook passage on human digestion. Students who met a \"Why is this true?\" prompt about every 150 words got 76% of 105 true-or-false questions right. Students who read without prompts got 69%. The test was not reported as delayed."
+  caption: "One introductory biology class reading a textbook passage on human digestion. Students who met a \"Why is this true?\" prompt about every 150 words got 76% of 105 true-or-false questions right. Students who read without prompts got 69%. Guessing alone would score about 50%. The test was not reported as delayed."
   alt: "Two bars: with \"Why is this true?\" prompts, 76% correct; reading only, 69% correct."
   source: draw.py
   spec:
@@ -703,6 +738,7 @@ figures:
     y_label: true-or-false questions correct (%)
     value_labels: true
     y_range: [0, 100]
+    refs: [{y: 50, label: "guessing on true-or-false"}]
     relations:
     - check: "y[0] - y[1] = 7"
 - file: s57-r1-c07-why-prompts-minutes.png
@@ -727,8 +763,10 @@ provenance:
   - S57-R2-R1
 review:
   stability: medium
-  trigger: '2029-09-25'
-  as_of: ''
+  trigger: 'Date 2029-09-25, or on event: an update of Dunlosky and colleagues'' ratings of
+    self-explanation or elaborative interrogation, or a replication of the illusion with medical
+    learners.'
+  as_of: '2026-09-25'
   last_reviewed: '2026-09-25'
 quantitative: false
 status: drafted

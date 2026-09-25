@@ -17,18 +17,26 @@ concept_deps:
 definition:
   text: |
     New information is handled first in working memory, which can hold and work on only a limited
-    number of new elements at a time, and only for a short time. What has been learned is kept in
+    number of new elements (pieces of information held as one) at a time, and only for a short
+    time. What has been learned is kept in
     long-term memory, which has no known limit.
 
     Cognitive load is the demand a learning task makes on working memory. Cognitive load theory,
-    set out by Sweller and colleagues, separates two sources of it. Extraneous load comes from how
+    set out by Sweller and colleagues, separates two sources of it. Intrinsic load comes from the
+    material itself and from how much the learner already knows; it changes only if what is taught
+    or the learner's knowledge changes. Extraneous load comes from how
     the material is presented and what the learner is made to do; the teacher can change it. If
     the load becomes too high, learning and transfer to new problems suffer.
 
     For novices, studying a worked example, a problem shown with its full solution, can teach more
-    than solving the same problem. A diagram alone has taught more than the same diagram with text
-    that repeats it. Spoken information is gone in seconds, so the learner must hold it in working
-    memory, which adds load and reduces learning.
+    than solving the same problem. That held for problems whose steps depend on each other. For
+    mathematical definitions it reversed: students made to produce the answer did better than
+    students shown it. So, this book suggests, retrieval practice (`S57-R1-C03`) still has a place
+    with beginners.
+
+    A diagram alone has taught more than the same diagram with text that repeats it. Spoken
+    information is gone in seconds, so the learner may have to hold it in working memory, which
+    adds load and can reduce learning.
 
     These effects shrink, then vanish, and can reverse as learners gain expertise. Interleaving,
     mixing different problem types in one session instead of doing one type in a block, gave
@@ -370,7 +378,8 @@ definition:
       checked_on: '2026-09-25'
 simplified_explanation: |
   Your working memory is the part of your mind that holds what you are thinking about right now.
-  It is small. It can juggle only a few new things at once, and it drops them within seconds.
+  It is small. It can juggle only a limited number of new pieces at once, and only for a short
+  time. The review behind this section gives no number for either.
 
   Your long-term memory is where learned things are kept, and it has no known limit. Anything
   already learned comes back from it as one piece. For you, "percentage" is one piece. A learner
@@ -388,7 +397,7 @@ simplified_explanation: |
 illustrations:
 - body: |
     Start with the usual way it goes wrong. You explain aloud, once, how to turn a score into a
-    percentage, then set a batch of first-year MBBS students three problems. Your words were gone
+    percentage, then set a batch of first-year medical students three problems. Your words were gone
     within seconds. Each student now has to hold what you said in working memory while also
     holding the numbers and trying the steps. That is load you added, and it is load you can take
     away.
@@ -397,23 +406,23 @@ illustrations:
     up. 26 of 40 students answered question 3 correctly. What percentage is that?
 
     ```working
-    26 ÷ 40 = 0.65
-    0.65 × 100 = 65%
+    26 divided by 40 = 0.65
+    0.65 times 100 = 65%
     ```
 
     Then give a partly worked problem, with the last step left for them. 18 of 24 students
     answered question 4 correctly.
 
     ```working
-    18 ÷ 24 = 0.75
-    0.75 × 100 = ?
+    18 divided by 24 = 0.75
+    0.75 times 100 = ?
     ```
 
     Then give a whole problem with nothing worked: 31 of 50 students answered question 5
     correctly. What percentage is that? They should reach 62%.
 
-    You have faded the help: a full example, then one with a gap, then a bare problem. A
-    percentage is the Book 0 skill of `B0-R0-C04`. For you it is a single step. For these students
+    You have faded the help: a full example, then one with a step left out, then a bare problem. A
+    percentage is the skill of `B0-R0-C04`. For you it is a single step. For these students
     it may not be yet.
 
     Now take the same three problems to a batch of residents who have done this a hundred times.
@@ -439,8 +448,8 @@ illustrations:
     The reason the authors give is that mixing makes the student choose the method each time,
     which a block of one type never asks them to do.
 
-    Effortful techniques also pay more to learners who already know more. Take the "why is this
-    true?" questions of the last section (`S57-R1-C07`). Open Dunlosky and colleagues' review at
+    "Why" questions also pay more to learners who already know more. Take the "why is this
+    true?" questions of `S57-R1-C07`. Open Dunlosky and colleagues' review at
     https://doi.org/10.1177/1529100612453266 and search for Canadian provinces. Woloshyn and
     colleagues gave Canadian and German students facts about Canadian provinces and German
     states, so each student knew one set well and the other less. Students who answered "why"
@@ -458,7 +467,7 @@ illustrations:
     The same "why" questions paid twice as much where the learner already knew more.
 
     ```working
-    24 ÷ 12 = 2
+    24 divided by 12 = 2
     ```
   analogy_breaks_when: |
     Interleave problems that are related, like three calculations from the same unit. Mixing
@@ -488,38 +497,46 @@ illustrations:
 must_know:
 - point: |
     Saying more is not teaching more. Put the steps where they stay: on the board, a chart on the
-    wall, a handout.
+    wall, a handout. Written steps that add what the picture cannot show (the order, what to check)
+    are not redundant; a paragraph that repeats the labels is.
   kind: misconception
   bearing: teaching
+  refs: [sweller_2019_cognitive_load]
 - point: |
     For beginners, show a worked example before you set a problem. Then give a problem with part
     of the solution done, then a whole problem. Take the help away as they gain skill.
   kind: move
   bearing: teaching
+  refs: [sweller_2019_cognitive_load]
 - point: |
-    What helps a first-year student can hold back a resident. For them, set problems.
+    What helps a learner new to a topic can hold back one who already knows it. For them, set
+    problems.
   kind: trap
   bearing: teaching
+  refs: [sweller_2019_cognitive_load]
 - point: |
     Before you put the same content on a slide twice, as a diagram and as text that repeats it,
     ask what the second copy adds.
   kind: consequence
   bearing: teaching
+  refs: [sweller_2019_cognitive_load]
 - point: |
     Once the basics are held, make learners work: mix related problem types and have them produce
     answers rather than read them.
   kind: move
   bearing: teaching
+  refs: [weinstein_2018_science_of_learning, dunlosky_2013_learning_techniques]
 - point: |
     Do not tell a colleague a session "overloaded" learners as though you measured it. Say what
     the learners could and could not do afterwards.
   kind: boundary
   bearing: methodological
+  refs: [sweller_2019_cognitive_load]
 exercises:
 - type: critique
   prompt: |
-    A colleague plans a one-hour session for 30 ASHA workers. The topic is reading a weighing
-    scale and recording a child's weight. For the first 40 minutes the colleague talks through
+    A colleague plans a one-hour session for 30 accredited social health activists. The topic is
+    reading a weighing scale and recording a child's weight. For the first 40 minutes the colleague talks through
     every step. Each slide shows a labelled picture of the scale. Beside it, a paragraph says the
     same thing in words.
 
@@ -538,7 +555,8 @@ exercises:
 
     The workers are beginners at this task, and the plan sends them straight to a whole problem.
     Show one weighing worked through in full, step by step. Then have each worker do one while
-    you finish the last steps with them. Then each does one alone.
+    you finish the last steps with them. Then each does one alone. Last, cover the chart and have
+    each worker write the steps from memory (`S57-R1-C03`).
 
     Say what the critique does not show: whether the session as planned would fail. That is
     found by testing what the workers can do afterwards, not by counting load.
@@ -557,7 +575,7 @@ retrieval_items:
     problems.
 figures:
 - file: s57-r1-c08-knowledge-and-why.png
-  caption: "In one study, students answered \"why\" questions about facts on Canadian provinces and German states. Over reading alone, they gained 24% on the facts they knew well and 12% on the facts they knew less: twice as much where knowledge was greater."
+  caption: "In one study, students answered \"why\" questions about facts on Canadian provinces and German states. Over reading alone, the review reports a 24% increase on the facts they knew well and a 12% increase on those they knew less (whether points or a share is not stated): twice as much where knowledge was greater."
   alt: "Two bars: gain from \"why\" questions over reading only, 24% for what the student knew well and 12% for what the student knew less."
   source: draw.py
   spec:
@@ -569,23 +587,6 @@ figures:
     y_range: [0, 30]
     relations:
     - check: "y[0] / y[1] = 2"
-- file: s57-r1-c08-faded-help.png
-  caption: "The help faded, on the made-up percentage problems. Question 3 is shown with both steps worked, question 4 with the first step only, question 5 with none. At each problem the learner does one more step alone."
-  alt: "Three bars for steps shown worked: question 3, 2 steps; question 4, 1 step; question 5, 0 steps."
-  source: draw.py
-  spec:
-    kind: bar
-    x: ["question 3\nfull worked example", "question 4\nlast step left", "question 5\nbare problem"]
-    series:
-    - name: steps shown worked
-      y: ["2", "1", "0"]
-    x_label: ""
-    y_label: steps shown worked
-    value_labels: true
-    y_range: [0, 3]
-    relations:
-    - check: "y[0] - y[1] = 1"
-    - check: "y[1] - y[2] = 1"
 provenance:
   map_version_id: fc19c8bc-a216-4131-99fb-ebe3f19cec4a
   outcome_refs:
@@ -595,8 +596,9 @@ provenance:
   - S57-R2-P04
 review:
   stability: medium
-  trigger: '2029-09-25'
-  as_of: ''
+  trigger: 'Date 2029-09-25; and on event, whichever comes first: a revision of the list of
+    effects in cognitive load theory, or a trial of worked examples with medical learners.'
+  as_of: '2026-09-25'
   last_reviewed: '2026-09-25'
 quantitative: false
 status: drafted
