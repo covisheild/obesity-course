@@ -1,0 +1,12 @@
+# books/<ID>/numbers.yml: every number this book uses in more than one section (claude.md §4a).
+# Prose writes {{n:key}}; another book's number is {{n:S01-R1/key}}. The build substitutes the
+# value before any check runs, blocks on an unknown key and warns on an unused one.
+numbers:
+  nfhs5_adult_women_obese_pct:
+    value: "…"                 # exactly as it should print, with its own digits and separators
+    meaning: share of women aged 15-49 with BMI 30 or more, NFHS-5 India
+    source: nfhs5_india_report # a citekey, or the arithmetic that derives it from other keys
+  cohort_n:
+    value: "1,240"
+    meaning: size of the running example cohort used in C03, C07 and C12
+    source: invented for teaching; said so where it first appears (SELFCHECK 3)

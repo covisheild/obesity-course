@@ -1,0 +1,18 @@
+# Phrases that never reach a reader. Checked by check/reader_checks.py in every prose field; a
+# new book blocks, a legacy book warns. Add a phrase when an audit or cold read finds the same
+# filler twice (the rule in SELFCHECK: a defect kind found twice becomes a check).
+# Started 28 Sep 2026 from the statistics book, whose v2.2 carried 37 "This completes..." bullets
+# and 275 uses of its authoring vocabulary ("branch", "tree", "note").
+phrases:
+  - pattern: '\bthis completes (?:the|this)\b'
+    why: recap filler; the heading already says where the reader is
+  - pattern: '\b(?:this|the) (?:branch|tree)\b'
+    why: authoring vocabulary; say section, Part or book
+  - pattern: '\bearlier expansion\b'
+    why: authoring note left in the text
+  - pattern: '\bas an AI\b|\bas a language model\b'
+    why: drafting residue
+  - pattern: '\bit can be shown\b(?![^.]{0,60}(?:beyond this book|§|section|appendix))'
+    why: a derivation asserted; show it, or mark it beyond this book (SELFCHECK 9)
+  - pattern: "\\bwhat'?s new in (?:this )?version\\b"
+    why: version history belongs in CHANGE-RECORD.md, not the reader's book

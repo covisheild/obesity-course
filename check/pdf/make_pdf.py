@@ -39,7 +39,7 @@ sys.path.insert(0, CHECK)
 
 LABELS = {"Definition.": "definition", "In plain terms.": "plain", "Illustration.": "illustration",
           "Where this picture breaks.": "breaks", "Must know points for you.": "mustknow",
-          "Practice.": "practice"}
+          "Practice.": "practice", "Common misreading.": "misread", "Reporting it.": "report"}
 
 
 # ---------------------------------------------------------------- inputs
@@ -299,6 +299,15 @@ def make(book_id):
     next_b = books[idx + 1] if idx + 1 < len(books) else None
 
     body = body_html(book_id, drop_preamble=bool(meta.get("why")))
+    # One accent per Part opener, stepping round the book's own hue family (28 Sep 2026, from the
+    # statistics edition): long books are easier to find your way in when each Part has a colour.
+    part_i = [0]
+    def _accent(m):
+        if "appendix" in m.group(1):
+            return m.group(0)
+        part_i[0] += 1
+        return (f'<h2{m.group(1)} style="--accent:{hsl(t["hue"] + 22 * ((part_i[0] - 1) % 5) - 44, 70, 40)}">')
+    body = re.sub(r"<h2([^>]*)>", _accent, body)
     hs = headings(body)
     gl = glossary_rows(book_id)
     css = open(os.path.join(HERE, "style.css"), encoding="utf-8").read()
@@ -310,6 +319,57 @@ def make(book_id):
     level_line = meta.get("cover_line") or (f'{entry["level"]} · {entry["part"]}' if n else "")
     url = f'https://{series["website"]}'
 
+    # Author identity (Harsh, 28 Sep 2026): ORCID on the title page, colophon and back cover, and
+    # an About-the-author page with photo, from series.yml. A book printed before this carried none.
+    orcid = series.get("orcid")
+    orcid_line = f" · ORCID {esc(orcid)}" if orcid else ""
+    orcid_row = f"<tr><th>ORCID</th><td>https://orcid.org/{esc(orcid)}</td></tr>" if orcid else ""
+    photo = os.path.join(HERE, "author.jpg")
+    about = ""
+    if series.get("author_bio"):
+        img = f'<img class="ab-photo" src="file://{photo}" alt="{esc(series["author"])}">' if os.path.exists(photo) else ""
+        contact = (f'<div><span>Email</span>{esc(series["email"])}</div><div><span>Website</span>{esc(series["website"])}</div>'
+                   + (f'<div><span>ORCID</span>{esc(orcid)}</div>' if orcid else ""))
+        about = f"""
+<section class="about">
+  <h2 class="front" id="about-the-author">About the author</h2>
+  <div class="ab-grid">{img}
+    <div class="ab-text"><div class="ab-name">{esc(series['author'])}</div>
+      <div class="ab-role">{esc(series['author_role'])}</div>{md_inline(series['author_bio'])}
+      <div class="ab-contact">{contact}</div></div>
+  </div>
+</section>"""
+    # Back cover: the author's photo, and a dark QR on a white tile. A white-on-dark QR did not
+    # decode in testing (28 Sep 2026, statistics edition); phone readers vary, so do not rely on it.
+    circ = os.path.join(HERE, "author-circle.png")
+    bc_photo = f'<img class="bc-photo" src="file://{circ}" alt="">' if os.path.exists(circ) else ""
+    # Symbols used in this book (28 Sep 2026): one page, from check/notation.yml, listing only the
+    # signs and letters this book prints, each with the section where it first appears.
+    symbols = ""
+    try:
+        sys.path.insert(0, CHECK)
+        import notation
+        with open(os.path.join(BUILD, f"{book_id}.md"), encoding="utf-8") as fh:
+            srows = notation.rows(fh.read())
+        if srows:
+            names = {"sign": "Signs", "mark": "Marks on letters", "greek": "Greek letters"}
+            trs, last = [], None
+            for kind, sym, read, meaning, where in srows:
+                if kind != last:
+                    trs.append(f'<tr class="sym-kind"><td colspan="4">{names[kind]}</td></tr>')
+                    last = kind
+                trs.append(f"<tr><td class='sym'>{esc(sym)}</td><td>{esc(read)}</td><td>{esc(meaning)}</td>"
+                           f"<td class='where'>{esc(where)}</td></tr>")
+            symbols = f"""
+<section class="symbols">
+  <h2 class="front" id="symbols">Symbols used in this book</h2>
+  <p class="note">Every sign and Greek letter this book prints, how to read it aloud, what it means in
+  this series, and the section where it first appears. Each is also explained where it is first used.</p>
+  <table class="symtab"><thead><tr><th>Symbol</th><th>Read as</th><th>Meaning</th><th>First in</th></tr></thead>
+  <tbody>{''.join(trs)}</tbody></table>
+</section>"""
+    except Exception as exc:  # the page is a help, never a reason for a build to fail
+        print(f"  [pdf] symbols page skipped: {exc}")
     front = f"""
 <section class="cover" style="{cover_bg(t['hue'])}">{cover_svg(entry, t['hue'])}
   <div class="cover-top"><div class="cover-series">{esc(series['series_title'])}</div>
@@ -331,7 +391,7 @@ def make(book_id):
   <div class="tp-subtitle">{esc(meta.get('subtitle', ''))}</div>
   <div class="tp-author">{esc(series['author'])}</div>
   <div class="tp-role">{esc(series['author_role'])}</div>
-  <div class="tp-contact">{esc(series['email'])} · {esc(series['website'])}</div>
+  <div class="tp-contact">{esc(series['email'])} · {esc(series['website'])}{orcid_line}</div>
 </section>
 
 <section class="colophon">
@@ -342,6 +402,7 @@ def make(book_id):
     <tr><th>Last updated</th><td>{esc(updated)}</td></tr>
     <tr><th>Author</th><td>{esc(series['author'])}, {esc(series['author_role'])}</td></tr>
     <tr><th>Contact</th><td>{esc(series['email'])}</td></tr>
+    {orcid_row}
     <tr><th>Newest version</th><td>{esc(series['website'])}</td></tr>
   </table>
   <p class="copy">© {series['copyright_year']} {esc(series['author'].replace('Dr. ', ''))}.</p>
@@ -351,10 +412,12 @@ def make(book_id):
   <h4>Not advice</h4>{md_inline(series['disclaimer'])}
 </section>
 
+{about}
 <section class="intro">
   <h2 class="front" id="introduction">Introduction</h2>
   <h3 class="front">Why this book exists</h3>{md_inline(meta.get('why', ''))}
   <h3 class="front">How to read it</h3>{md_inline(meta.get('how_to_read', ''))}{md_inline(series['how_to_read'])}
+  <h3 class="front">If you are new to this</h3>{md_inline(meta.get('prerequisites', ''))}{md_inline(series.get('new_reader', ''))}
   <h3 class="front">How to send feedback</h3>{md_inline(series['feedback'].format(**fmt))}
   <div class="whereis">
     <div class="whereis-h">Where this book sits</div>
@@ -365,6 +428,7 @@ def make(book_id):
   </div>
 </section>
 
+{symbols}
 <section class="toc">
   <h2 class="front" id="contents">Contents</h2>
   <ul>{contents(hs)}</ul>
@@ -396,9 +460,9 @@ def make(book_id):
     {md_inline(meta.get('back_blurb', ''))}
     <div class="bc-where">{esc(number_label)} of the series' {total} books, free to read at {esc(series['website'])}.</div>
     <div class="bc-bottom">
-      <div class="bc-qr">{qr_svg(url)}</div>
+      {bc_photo}<div class="bc-qr">{qr_svg(url, t['ink'])}</div>
       <div class="bc-meta"><div class="author">{esc(series['author'])}</div>
-        <div>{esc(series['author_role'])}</div><div>{esc(series['email'])}</div>
+        <div>{esc(series['author_role'])}</div><div>{esc(series['email'])}</div>{('<div>ORCID ' + esc(series['orcid']) + '</div>') if series.get('orcid') else ''}
         <div>{esc(series['website'])}</div><div>Version {esc(version)} · {esc(updated)}</div>
         <div class="lic">CC BY-NC-SA 4.0 · free to share, not to sell</div></div>
     </div>
@@ -419,7 +483,13 @@ def make(book_id):
         fh.write(doc)
     from weasyprint import HTML
     pdf_path = os.path.join(BUILD, f"{book_id}.pdf")
-    HTML(filename=html_path, base_url=BUILD).write_pdf(pdf_path)
+    doc_ = HTML(filename=html_path, base_url=BUILD).render()
+    doc_.write_pdf(pdf_path)
+    # Page budget (28 Sep 2026): agreed with Harsh at the source-gate stop; the build reports, it
+    # does not block, because only Harsh can trade scope for length.
+    budget = meta.get("page_budget")
+    if budget and len(doc_.pages) > int(budget):
+        print(f"  [pdf] {book_id}: {len(doc_.pages)} pages, over its page_budget of {budget}")
     return pdf_path
 
 

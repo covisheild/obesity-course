@@ -184,3 +184,31 @@ table.series .mark { font-weight: 800; }
 /* the worked-answers appendix: sections run on, no page per section */
 main.book h2.appendix ~ h3 { break-before: auto; font-size: 13pt; margin-top: 8mm; }
 main.book h2.appendix ~ h2 { break-before: page; }
+
+/* ------------------------------------------------ added 28 Sep 2026 (statistics-book lessons) */
+.about, .symbols { page: front; break-after: page; }
+.ab-grid { display: flex; gap: 8mm; align-items: flex-start; }
+.ab-photo { width: 52mm; border-radius: 3mm; box-shadow: 0 0 0 1mm var(--tint2); }
+.ab-name { font: 800 18pt Inter, sans-serif; color: var(--ink); }
+.ab-role { font: 500 9.5pt Inter, sans-serif; color: var(--accent); margin: 1mm 0 5mm; }
+.ab-text p { margin: 0 0 2.6mm; }
+.ab-contact { margin-top: 5mm; font: 600 9pt/1.8 Inter, sans-serif; color: var(--ink); hyphens: manual; }
+.ab-contact span { display: inline-block; width: 17mm; color: var(--muted); font-weight: 500; }
+table.symtab { width: 100% !important; table-layout: fixed; font-size: 8.2pt; }
+table.symtab td.sym { font: 400 11pt "Source Serif 4", "DejaVu Serif", serif; width: 16%; }
+table.symtab td.where { color: var(--accent); width: 24%; }
+table.symtab tr.sym-kind td { background: var(--tint2) !important; font-weight: 700; color: var(--ink);
+                              text-transform: uppercase; letter-spacing: .08em; font-size: 7.6pt; }
+table.symtab thead { display: table-header-group; }
+/* keep labels, headings and figures with what follows; keep captions with figures */
+p.lab { break-after: avoid; }
+main.book h4, h3.front { break-after: avoid; }
+figure, figure img { break-inside: avoid; }
+figcaption { break-before: avoid; }
+pre { max-width: 100%; overflow-wrap: anywhere; }
+td, th { overflow-wrap: anywhere; }
+.tp-contact, .bc-meta, .colophon .facts td { hyphens: manual; }
+.bc-qr { background: #fff; border-radius: 2mm; padding: 1.6mm; }
+.bc-photo { width: 26mm; height: 26mm; border-radius: 50%; border: .8mm solid #fff; flex: none; }
+p.lab-misread > strong:first-child { background: #b5452c; }
+p.lab-report > strong:first-child { background: #0e6e84; }
