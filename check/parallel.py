@@ -188,6 +188,10 @@ def cmd_ready(book_id):
     import sourcegate
     if sourcegate.problems(book_id):
         fails.append("source gate not released by Harsh (check/sourcegate.py)")
+    # 28 Sep 2026: every audit defect of a new book has a disposition and a verifier's word.
+    import defects
+    if book_id not in sourcegate.LEGACY and defects.problems(book_id):
+        fails.append("audit defects without a verified disposition (python check/defects.py " + book_id + ")")
     if subprocess.run([sys.executable, os.path.join(HERE, "series.py"), "--check"],
                       cwd=ROOT).returncode:
         fails.append("map/BOOKS.yml stale: run python check/series.py")

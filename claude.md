@@ -186,6 +186,36 @@ looks at every figure as an image before the audit, and the auditor recomputes e
 plots or prints. Book 0's figures were drawn before specs existed and stay as they are (frozen with
 the book, one build warning); they would be redrawn from specs only in a new Book 0 version.
 
+## 4a. Numbers, symbols, and three optional blocks
+
+*Added 28 Sep 2026, from the lessons of Harsh's statistics book (project doc
+claude/lessons-from-stats-book.md).*
+
+- **A number the book uses in more than one section lives in `books/<ID>/numbers.yml`** (`value`,
+  `meaning`, how it was obtained: a citekey or the arithmetic). Prose writes `{{n:key}}`, or
+  `{{n:S01-R1/key}}` for another book's number, and the build substitutes it before any check
+  runs. An unknown key blocks; an unused key warns. Quotes are never substituted: they are the
+  source's own words.
+- **Symbols are explained where they first appear**, in words, and each has a row in
+  `check/notation.yml`, from which the PDF prints *Symbols used in this book*. Mathematics beyond the
+  book's `prerequisites` (in `books/<ID>/book.yml`) is taught where it appears or marked "beyond this book".
+- **Every headline number says what it does not mean** (SELFCHECK 4b).
+- **Three optional record fields.** `common_misreading`: the tempting wrong reading of the result,
+  named and refuted, printed as *Common misreading*. `reporting_sentence`: a sentence the reader can
+  use as it stands, for rungs whose build target is a brief, note, budget or paper, printed as
+  *Reporting it*. `journey: true`: an end-of-Part or end-of-book worked case that runs one
+  realistic problem through the book's tools in the order real work uses them (question, data,
+  method, calculation, checks, interpretation, what it does not mean). A journey is gated like any
+  record.
+- **Every section has at least one `retrieval` exercise**, a from-memory prompt answered in the
+  appendix. Retrieval is what makes learning last (Book 8, S57-R1), and the statistics book's
+  checkpoints were its most useful pages for a first-time reader. The build warns on a new book's
+  section without one.
+- **Words that never reach a reader** are listed in `check/banned_phrases.yml` (filler such as
+  "This completes…", authoring vocabulary, "it can be shown" with nothing shown), and a "recall"
+  may only point back. A new book blocks on either.
+- **No version history in the book.** It goes in `books/<ID>/CHANGE-RECORD.md`, for Harsh.
+
 ## 5. Must-know points for you
 
 Printed under that heading, in the second person, because they are addressed to one reader with one purpose: becoming someone whose analysis, data and testimony cannot be routed around. They are not a summary of the section and not a revision box.
@@ -629,7 +659,7 @@ Records in, booklets out. The build is also the quality gate; these checks are t
 
 **Booklet front matter.** Every booklet carries an edition number and a rung-status line — for example `Rungs 1–2 released · rungs 3–4 in preparation` — so a partially written booklet is releasable rather than permanently unfinished. Institutional content additionally prints its as-of date.
 
-**Blocking checks.** Forward reference inside a subject. Reference `kind` incompatible with `concept_type`. `review.stability` inconsistent with `concept_type`. Missing `locator` on any reference. A citekey, in a reference, in a must-know point or in a practice problem, that is not in `check/references/library.bib`. A concept with no `outcome_refs`. A concept with no must-know points, or with the retired five-slot mapping in place of a list. A prose field authored as a YAML folded scalar. An exercise with no worked answer, or of type `integrative`. **A quantitative concept whose drill set falls outside three to eighteen problems without a `practice_note` saying why, or whose ladder never reaches the mechanical band or the transfer band.** A practice problem with no worked answer. An unknown cluster key. A figure whose file is not in `check/figures/`. **A figure outside Book 0 with no spec, a number it plots or prints that the record's text does not state or derive, a drawn relation or stated identity that does not hold, or a PNG stale against its spec** (§4, Figures). A section outside Book 0 with neither a figure nor a `figure_note`, once its status is `verified`. **An equation in reader-facing prose whose two sides do not evaluate equal.**
+**Blocking checks.** Forward reference inside a subject. Reference `kind` incompatible with `concept_type`. `review.stability` inconsistent with `concept_type`. Missing `locator` on any reference. A citekey, in a reference, in a must-know point or in a practice problem, that is not in `check/references/library.bib`. A concept with no `outcome_refs`. A concept with no must-know points, or with the retired five-slot mapping in place of a list. A prose field authored as a YAML folded scalar. An exercise with no worked answer, or of type `integrative`. **A quantitative concept whose drill set falls outside three to eighteen problems without a `practice_note` saying why, or whose ladder never reaches the mechanical band or the transfer band.** A practice problem with no worked answer. An unknown cluster key. A figure whose file is not in `check/figures/`. **A figure outside Book 0 with no spec, a number it plots or prints that the record's text does not state or derive, a drawn relation or stated identity that does not hold, or a PNG stale against its spec** (§4, Figures). A section outside Book 0 with neither a figure nor a `figure_note`, once its status is `verified`. **An equation in reader-facing prose whose two sides do not evaluate equal.** Since 28 Sep 2026, for a book not frozen before then: a `{{n:key}}` not in the book's `books/<ID>/numbers.yml`; a phrase from `check/banned_phrases.yml`; a "recall" of a later section; a cited source whose URL is Wikipedia or similar; version history in `books/<ID>/book.yml`; and, once frozen, a book with no `prerequisites`, `page_budget` or `books/<ID>/COVERAGE.md`.
 
 **Warning checks.** A reference with `verified.opened: false` — permitted while drafting, blocking at status `verified`. A bridge presupposition with no `bridge_ref`. A rung skill with no exercise anywhere in the rung. An institutional concept with no `as_of`. A concept past its review trigger. A `ground_floor_deps` entry with no corresponding Book 0 record. More must-know points than the soft cap of nine. A concept with no must-know point tagged `misconception` or `trap`. A section outside Book 0 with neither a figure nor a `figure_note`, while drafting. The sequence-read warnings of the style sheet above §10: an over-long sentence, an over-long paragraph, an illustration that never addresses the reader, and an acronym used in a booklet before anything expands it.
 

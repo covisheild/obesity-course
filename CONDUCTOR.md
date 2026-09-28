@@ -27,7 +27,8 @@ is dropped, and accuracy is not traded for speed.
    project doc `claude/books/<SUBJECT>.md` (started, branch, base commit, then progress and
    outcome); only this chat writes it. Two books may run at once (`PARALLEL.md`, "Two books at once").
 5. Create `books/<SUBJECT>/book.yml` from `books/B0/book.yml` (title, subtitle, `status: in progress`,
-   version `"1.0"`, the date, and the book's own why / how-to-read / back-cover text), then run
+   version `"1.0"`, the date, the book's own why / how-to-read / back-cover text, and since 28 Sep 2026
+   `prerequisites` and `page_budget`), then run
    `python check/series.py` and commit both. The PDF's front matter and covers come from it.
 6. Create `books/<SUBJECT>/STATE.md` and update it after every task: which tasks are done, which
    sections are at which task, open defects, and the next action. It is how this chat resumes after
@@ -41,11 +42,12 @@ is dropped, and accuracy is not traded for speed.
 | --- | --- | --- |
 | 1 | Task 1: inventory and `READY.md`, from `python check/amendments.py --rung <SUBJECT>` (the map with its approved amendments applied), never the map alone | one Opus subagent |
 | 2 | Source intake, to the checklist under the source gate. Then **the source-collection stop** (mandatory, §2): write `books/<SUBJECT>/SOURCE-GATE.md`, send Harsh the list of every source needed and every one not obtained, and stop. Drafting starts only when `python check/sourcegate.py <SUBJECT>` passes | the conductor |
-| 3 | Task 2: draft, batches of two or three, with the self-check | one drafter per batch |
+| 3 | Task 2: draft, batches of two or three, with the self-check; then Task 2b, reconcile the batches' `notes-for-others` | one drafter per batch; one reconciler |
 | 4 | Task 5: cut (5a), cold read (5b), restore (5c) | one cutter per section; one cold reader for the book; one restorer |
 | 5 | Figure plan (`PIPELINE.md`, after Task 5): every section gets at least one figure, or a one-line `figure_note` saying why a figure would teach nothing the prose does not; a quantitative section gets a figure of its worked relationship. Each is a `spec` in its record, drawn by `python check/figures/draw.py --book <SUBJECT>` from the final text in the book's colours, never by hand. **The conductor opens every figure as an image** before the audit | one figure planner per batch (the drafters' proposals are its starting point); the conductor looks |
 | 6 | Task 3: audit, one defect file per section. The auditor also recomputes every value each figure plots or prints | one Opus auditor per batch, never a drafter |
-| 7 | Task 4 and 4b: fix, then verify; a fix that changes a number redraws its figure | one fixer per section; a fresh verifier; two rounds, then the conductor |
+| 7 | Task 4 and 4b: fix, then verify; a fix that changes a number redraws its figure. Every defect ends with a Fixed/Partly/Rejected line and a verifier's word (`python check/defects.py <SUBJECT>` lists the rest) | one fixer per section; a fresh verifier; two rounds, then the conductor |
+| 7b | Rendered-page cold read (`PIPELINE.md`, Step 5b, second pass): at least 25 pages of the built PDF, in order | one fresh subagent |
 | 8 | Glossary: merge the book's new terms into `prose/GLOSSARY.md`, checking them against earlier books | the conductor |
 | 9 | Build: `check/build.py --check` at zero blocking (it blocks on a figure whose numbers are not in its text, whose stated relation does not hold, or that is stale against its spec), then `--subject <SUBJECT>` for the docx and the PDF | the conductor |
 | 10 | PDF: set `status: frozen` in `books/<SUBJECT>/book.yml`, run `python check/series.py`, rebuild; look at the cover, contents, one Part opener, the glossary and the series list as page images before sending | the conductor |
@@ -74,7 +76,9 @@ Only these:
   concepts it serves, the URL tried, why it failed: CAPTCHA, login, robot block, PDF without a
   text layer, paywall, not found; and a `Provided` column, `no` to start). Set `release: pending`,
   commit, and send Harsh one message: the Not obtained list, where he can get each one, and which
-  concepts would be weakened without it. Then **stop. Draft nothing**, not even the concepts that
+  concepts would be weakened without it. In the same message give the projected page count
+  (`page_budget`) and any gaps `books/<SUBJECT>/COVERAGE.md` found against outside standards, each as a proposed
+  map amendment for him to accept or refuse (28 Sep 2026). Then **stop. Draft nothing**, not even the concepts that
   do not depend on the missing sources. Only two answers from Harsh release the gate:
   1. **He supplies the sources** (into the project's files; read them with `project_read`). Take
      each in to the intake checklist, mark its row `yes: sources/<file>.txt`; when every row says
@@ -104,7 +108,10 @@ Only these:
    one fetch.
 3. Bundle **only** what GitHub does not have: `git bundle create <SUBJECT>.bundle origin/main..main`,
    then `git bundle verify` it against a fresh clone of GitHub.
-4. Send the PDF (`check/_build/<SUBJECT>.pdf`), the docx and the bundle with `SendUserFile`, and give
+4. Write `books/<SUBJECT>/CHANGE-RECORD.md` for this version (what was built or changed, open
+   decisions, sources not obtained); the build renders it to `check/_build/<SUBJECT>-change-record.docx`.
+   Nothing of it goes into the book itself (Harsh, 28 Sep 2026).
+   Send the PDF (`check/_build/<SUBJECT>.pdf`), the docx, the change record and the bundle with `SendUserFile`, and give
    exactly this, with the real names:
 
    ```cmd

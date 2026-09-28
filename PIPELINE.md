@@ -89,6 +89,15 @@ Tracker. What to set at which step, and the ids, are in `NOTION.md`. It costs on
 boundary and never blocks the book: if Notion is unreachable, `books/<SUBJECT>/STATE.md` says so and
 the row is caught up at the next boundary.
 
+**11. A scripted bulk edit is checked by counting.** Before a script renumbers, relabels or renames
+across files, count the targets; after it runs, count again and list any that did not change. In
+the statistics book a regex renumbered only half of one chapter's checkpoints and every later
+step looked fine; a verifier caught it (28 Sep 2026). Back up first (handover §7).
+
+**12. Scope is agreed before drafting, not after.** The source-gate message to Harsh states the
+projected page count (`page_budget`) and any coverage gaps (`books/<SUBJECT>/COVERAGE.md`), so he chooses scope
+while it is cheap. The statistics book grew from 317 to 510 pages by filling gaps it found late.
+
 ---
 
 ## Before anything: the source gate
@@ -134,6 +143,9 @@ found wrong at audit in Parts E or F2, and each cost a rebuild:
 - **The citekey is new**: `grep` `sources/INDEX.yml` and `check/references/library.bib` before choosing it.
 - `sources/INDEX.yml`, `check/references/library.bib` and `SOURCES.md` all updated in the same commit.
 - No repository path in any reader-facing field of the `.bib` entry.
+- **Wikipedia and its kind are leads, never sources** (28 Sep 2026: statistics-book writers cited it
+  five times). Follow the article to what it cites and take that in; the build blocks a cited
+  entry whose URL is Wikipedia, Quora, Reddit or similar.
 
 For S48 three files are missing and they are the three that matter most:
 
@@ -169,6 +181,23 @@ a sandbox; they can be reached from a browser.
 > discovered late. No prose.
 > Then write `books/<SUBJECT>/READY.md` listing every source, with obtained yes or no, checking
 > `sources/` for what is already there.
+>
+> **Coverage against outside standards** (28 Sep 2026). The map audit was done once for the whole
+> map; a book is checked again at its own level, because an inventory built from the map alone
+> cannot show what the map omitted (the "circular audit" lesson). Open two or three outside
+> standards for this rung: an official curriculum (NMC, WHO, a professional body), the contents of
+> a standard textbook, a guideline or examination syllabus. Write `books/<SUBJECT>/COVERAGE.md`: a
+> table of each standard's items this rung should hold, with *covered by <concept>*, *deferred to
+> <rung>* or *gap*, and the URL opened. A gap is **never** added silently: list it for Harsh as a
+> proposed map amendment in the source-gate message. Template: `check/schema/COVERAGE.example.md`.
+>
+> **Book settings.** Put in `books/<SUBJECT>/book.yml`: `prerequisites` (what the reader must
+> already know, in two or three sentences, including the level of mathematics), and a
+> `page_budget` estimated from the inventory (about 8 pages a section plus answers). Start
+> `books/<SUBJECT>/numbers.yml` with every number the inventory already shows being reused across
+> sections (template: `check/schema/numbers.example.yml`). Mark one candidate end-of-book **journey** (a record with `journey: true`: one realistic
+> case run through the book's tools in the order real work uses them) where the rung's build target
+> suits one.
 
 ## Task 2 — Draft. Delegate in batches.
 
@@ -241,11 +270,32 @@ a batch can contradict itself.
 > hand or type its numbers into a script. Run `python check/figures/draw.py --book <SUBJECT>` to
 > see that each spec passes; the figure planner redraws them all from the compressed text.
 >
+> Every section carries at least one `retrieval` exercise: a from-memory prompt ("explain, without
+> looking back, why ..."), answered in the appendix like any other. A number the book reuses in
+> another section is written `{{n:key}}` from `books/<SUBJECT>/numbers.yml`, never retyped; add the
+> key if it is new. Where a section's result invites a tempting wrong reading, you may add
+> `common_misreading`; where the rung's target is an output, `reporting_sentence`.
+>
+> If another batch's section needs a change (a term it must define first, a number to reuse, a
+> pointer to fix), do not edit it: write the note to `books/<SUBJECT>/notes-for-others-<RANGE>.md`
+> (section, what, why).
+>
 > Before you hand back, check your own work as the auditor will. Run
 > `python check/build.py --check` until blocking is zero for your records. Recompute every
 > practice answer in Python, not by reading it. For every quote, confirm it is in the source
 > file and states the number it is cited for. Check each item of `check/SELFCHECK.md`. Then
 > return at most 150 words: records written, anything unsourced, anything you are unsure of.
+
+### Task 2b — reconcile the batches. One subagent, after all drafters.
+
+*Added 28 Sep 2026.* In the statistics book, 18 parallel writers left about 110 notes for each
+other; one reconciler verified them and applied 23 edits.
+
+> Read every `books/<SUBJECT>/notes-for-others-*.md`. For each note, check it against the current
+> records (many are already handled, some are wrong) and apply or reject it, with the smallest
+> edit. Then check the batches against each other: one term, one meaning; one symbol, one meaning;
+> every reused number from `books/<SUBJECT>/numbers.yml`. Log each note's disposition in
+> `books/<SUBJECT>/RECONCILE.md`. Run `python check/build.py --check`. Return at most 150 words.
 
 ## Task 3 — Opus. Audit. Delegate, and not to whoever drafted it.
 
@@ -288,6 +338,10 @@ pass. Fresh contexts, every time.
 > support. The build has checked that each number appears in the text; you check that it is the
 > right number in the right place, and that the figure teaches what the section teaches.
 >
+> Then **the reader's traps** (28 Sep 2026): every headline number says what it does not mean
+> (SELFCHECK 4b); every symbol is explained at first use (14a); every number used in two sections
+> comes from `books/<SUBJECT>/numbers.yml` (6a). A figure invented for teaching is said to be invented (3).
+>
 > Output **one file per section**, `books/<SUBJECT>/defects/<RECORD-ID>.md`: a numbered list.
 > For each — the field, the claim, what the source actually says, and the smallest change that
 > fixes it. Do not edit records other than their `quote` fields. Mark any defect whose *kind*
@@ -308,15 +362,21 @@ whole batch of drafters.
 > Then run `python check/build.py --subject <SUBJECT>` and read **your section only** in the
 > rendered output. Every place you have to read a sentence twice is a defect: fix it.
 >
-> Under each defect in the defects file, write one line: what you changed. Return at most 150
-> words.
+> Under each defect in the defects file, write one line beginning **Fixed:**, **Partly:** or
+> **Rejected:**. *Fixed:* what you changed. *Partly:* what you changed and who owns the rest.
+> *Rejected:* why the text was right; auditors are sometimes wrong (handover §7), and a reasoned
+> rejection is a correct outcome, not a failure. Return at most 150 words.
 
 ## Task 4b — Opus 5.5. Verify. A fresh subagent that did not fix.
 
 > For each defect in `books/<SUBJECT>/defects/<RECORD-ID>.md`, read the fixer's line, then read
 > the record and check the defect is actually gone — recompute any number, search the source
-> for any quote. Check nothing else. Mark each defect **closed** or **open, because …**. Return
-> the count of open defects.
+> for any quote. For a **Rejected** line, judge the reason: if the text was right, the defect is
+> closed; if not, it is open. Check nothing else. Under each defect write **Verified: closed** or
+> **Verified: open, because …**. Return the count of open defects.
+
+`python check/defects.py <SUBJECT>` lists every defect without a closed, verified disposition;
+`check/parallel.py ready` refuses to bundle a new book while any is listed.
 
 Repeat Task 4 and 4b for any section with open defects, at most twice (rule 6 above). Then the
 main thread writes `books/<SUBJECT>/HANDOVER.md`: what was written, what is still unsourced and
@@ -418,6 +478,18 @@ knows where the originals live is one helpful impulse away from reading them.
 > without your background could not have done at that point. Include anything you read twice, any
 > term used before it was explained, any step asserted but never demonstrated. Check hard before
 > saying there are none: a fluent read is exactly what hides this.
+>
+> Then list every symbol you met that the text had not yet explained, and every place the same
+> letter or number seemed to mean two things.
+
+**The rendered pages, in a second cold pass after the figure plan** (28 Sep 2026). In the
+statistics book, three in-order cold readers still found about 40 cross-section faults and about
+35 layout faults after every other check had passed. Once the book renders, one fresh subagent reads
+the PDF in order (the Read tool with `pages`, at most 20 a call) and looks at **at least 25 pages spread
+through it**, listing: a code or working line running off the page, a table too wide or broken
+across its header, a caption separated from its figure, a label or heading stranded at the foot
+of a page, stray markup (`**`, `^`, `{width=`), a symbol drawn as a box, and anything read twice.
+Its list goes to `DEFECTS.md` under "Found in the rendered pages" and through the audit loop.
 
 Before launching it, confirm `/tmp/coldread/` holds the cut sections and nothing else. A stray
 `_build/` copy in that directory silently voids the pass while every step still appears to run —
@@ -508,13 +580,27 @@ and makes no PDF, because no subject-level `books/<ID>/book.yml` exists.
 the series edition: front cover, title page, copyright and licence page (version and date),
 introduction (why this book exists, how to read it, how to send feedback), contents with page
 numbers, the book, the worked answers, the book's glossary rows, the list of all 196 books with
-this one marked, and a back cover with a QR code to the website.
+this one marked, and a back cover with a QR code to the website. Since 28 Sep 2026 it also prints
+the ORCID iD (title page, copyright page, back cover), an **About the author** page with photo
+(`check/pdf/author.jpg`, bio from `check/pdf/series.yml`), an **If you are new to this** paragraph (the book's
+`prerequisites` and the series `new_reader` text), and a **Symbols used in this book** page built
+from `check/notation.yml` and the symbols the book actually prints. It reports a PDF longer than
+the book's `page_budget`. If `books/<ID>/CHANGE-RECORD.md` exists, the build also writes
+`check/_build/<ID>-change-record.docx` for Harsh.
+
+**The reader's book carries no version history** (Harsh, 28 Sep 2026). The copyright page shows
+the version and date; everything about what changed goes to `books/<ID>/CHANGE-RECORD.md`, which
+is sent to Harsh as Word beside the PDF and never printed in the book. Template:
+`check/schema/CHANGE-RECORD.example.md`.
 
 What it reads, and where to change it:
 
 | To change | Edit |
 | --- | --- |
-| author, role, email, website, licence, how-to-read, feedback wording, Part colours | `check/pdf/series.yml` |
+| author, role, email, website, ORCID, bio, licence, how-to-read, new-reader and feedback wording, Part colours | `check/pdf/series.yml` |
+| the author's photo | `check/pdf/author.jpg` (page) and `check/pdf/author-circle.png` (back cover) |
+| what a symbol is called and means | `check/notation.yml` |
+| phrases that must never reach a reader | `check/banned_phrases.yml` |
 | a book's title, subtitle, version, date, why-this-book, back-cover text, status | `books/<ID>/book.yml` |
 | the order of the series, and so each book's number | `ORDER_KEY` in `check/series.py`, then run it |
 | layout, fonts, colours of labels and boxes | `check/pdf/style.css` |

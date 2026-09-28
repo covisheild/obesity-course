@@ -160,7 +160,10 @@ def load_records() -> dict:
             r["_path"] = os.path.relpath(os.path.join(dirpath, fn), ROOT)
             r["_raw"] = raw
             recs[r["concept_id"]] = r
-    return recs
+    # Running numbers (28 Sep 2026): {{n:key}} becomes the value in books/<ID>/numbers.yml before
+    # any check or render sees the text, so one reused number cannot drift (check/reader_checks.py).
+    import reader_checks
+    return reader_checks.apply_numbers(recs)
 
 
 def _long_date(d) -> str:
@@ -223,6 +226,9 @@ def prose_fields(r) -> list[tuple[str, str]]:
     mk = r.get("must_know")
     if isinstance(mk, list):
         out += [(f"must_know[{i+1}]", p.get("point")) for i, p in enumerate(mk) if isinstance(p, dict)]
+    for k in ("common_misreading", "reporting_sentence"):
+        if isinstance(r.get(k), str):
+            out.append((k, r.get(k)))
     for i, ex in enumerate(r.get("exercises") or []):
         out += [(f"exercise {i+1} prompt", ex.get("prompt")), (f"exercise {i+1} answer", ex.get("answer"))]
     for p in (r.get("practice") or []):
@@ -1042,6 +1048,12 @@ def check(recs: dict, subjects: dict, clusters: dict, bibkeys: set):
     ab, aw = _amend.coverage(recs, lambda rk: book_meta(rk).get("status"))
     block += ab
     warn += aw
+    # Statistics-book lessons (28 Sep 2026): banned filler, forward "recall", Wikipedia-type
+    # citations, version history in book.yml, the new-book requirements and unknown symbols.
+    import reader_checks, sourcegate as _sg
+    rb_, rw_ = reader_checks.problems(recs, prose_fields, _sg.LEGACY)
+    block += rb_
+    warn += rw_
     return block, warn
 
 
@@ -1449,7 +1461,9 @@ def concept_md(r, cites, label=None, sid=None) -> list[str]:
     p = lambda t: _prose(t, flagged.append)
     # Headings skip _prose - they are never block-level - but they still carry notation:
     # B6 is titled "kg, m, cm and kg/m^2" and without this the caret reaches pandoc raw.
-    md = [f"### {_notation(label + ' · ' if label else '')}{_notation(r['name'])}", ""]
+    # A journey (28 Sep 2026) is an end-of-Part worked case that uses the book's tools together.
+    jl = "Worked journey: " if r.get("journey") else ""
+    md = [f"### {_notation(label + ' · ' if label else '')}{jl}{_notation(r['name'])}", ""]
     # The concept id and type are build metadata and are not shown: the heading already
     # names the section. Currency is shown, because a reader of statutory material needs
     # to know how old it is.
@@ -1475,6 +1489,12 @@ def concept_md(r, cites, label=None, sid=None) -> list[str]:
             if isinstance(q, dict) and (q.get("point") or "").strip()]
     if rows:
         md += ["**Must know points for you.**", ""] + rows + [""]
+    # Optional blocks (28 Sep 2026, from the statistics book): the tempting wrong reading named and
+    # refuted, and a sentence the reader can use as it stands in a brief, a note or a paper.
+    if (r.get("common_misreading") or "").strip():
+        md += _block("**Common misreading.** ", r["common_misreading"], flag=flg)
+    if (r.get("reporting_sentence") or "").strip():
+        md += _block("**Reporting it.** ", r["reporting_sentence"], flag=flg)
     if flagged:
         LEGACY_INDENT.add(r["concept_id"])
     return md
@@ -1967,7 +1987,16 @@ def _series_pdf(sid):
     sys.path.insert(0, os.path.join(ROOT, "pdf"))
     import make_pdf
     make_pdf.make(sid)
-    return [f"{sid}.pdf"]
+    made = [f"{sid}.pdf"]
+    # Harsh, 28 Sep 2026: version history stays out of the reader's book and goes to him as a
+    # change record, books/<ID>/CHANGE-RECORD.md rendered to Word next to the PDF.
+    cr = os.path.join(os.path.dirname(ROOT), "books", sid, "CHANGE-RECORD.md")
+    if os.path.exists(cr):
+        out = os.path.join(OUT, f"{sid}-change-record.docx")
+        subprocess.run(["pandoc", cr, "-o", out], check=False)
+        if os.path.exists(out):
+            made.append(os.path.basename(out))
+    return made
 
 
 if __name__ == "__main__":
