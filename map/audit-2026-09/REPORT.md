@@ -203,7 +203,8 @@ widened inside existing rungs, no new books (leadership thread in S57; managemen
 institution building and community mobilisation where builds need them; campaign design in S34-R3,
 structural levers still first). Decision 3: GLP-1 hands-on builds are a clinic co-run with an
 eligible physician who holds the prescription. Implemented as `map/AMENDMENTS-v3.1.yml` (113
-entries, 50 rungs), enforced by `check/amendments.py` and the build. The questions as they were put:
+entries, 50 rungs), enforced by `check/amendments.py` and the build. On 30 Sep 2026 Harsh added 20 more for health economics and AI/ML
+(`ADDENDUM-HE-AI.md`); the file now holds 133 entries across 61 rungs. The questions as they were put:
 
 
 1. **Approve Tiers 1 and 2 as amendments?** Recommended: yes. They are cheap now and expensive once
