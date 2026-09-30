@@ -1901,3 +1901,388 @@
 # 1.1 anganwadi/ICDS design gate — S26-R3-A05 "A paediatrician, a psychiatrist and the head of the platform…"
 # 1.2 government Food-EPI — S39-R3-A01, S39-R3-A02 (revise of 2972), S39-R3-A03 (revise of build 2976)
 
+
+# ---------------------------------------------------------------------------------------------------
+# ADDITION of 30 Sep 2026: health economics and AI/ML (Harsh asked for them to be added).
+# Gaps and evidence: map/audit-2026-09/ADDENDUM-HE-AI.md. Sources were opened by two intake subagents;
+# every entry was checked by an independent verifier before merge. Ids continue each rung's numbering.
+# Gap ids: HE1 budget impact; HE2 CBA, willingness to pay and the Indian threshold; HE3 stated
+# preference; AI1 kinds of AI and LLMs; AI2 AI reporting and appraisal standards; AI3 algorithmic
+# fairness; AI4 AI dietary assessment; AI5 conversational and generative-AI interventions; AI6 AI in
+# evidence synthesis and research; AI7 Indian governance of AI health tools; AI8 platform algorithms;
+# AI9 ethics of AI tools.
+- id: S42-R1-A01
+  rung: S42-R1
+  kind: concept
+  text: 'The four questions an economic evaluation can answer, and the method each needs: is it good value per unit
+    of health (cost-effectiveness and cost-utility analysis); do its benefits, valued in money, exceed its costs
+    (cost-benefit analysis, which often values health by willingness to pay); can this payer afford it over the
+    next few years (budget impact analysis); and does it pay back (return on investment) — and that an intervention
+    can be good value and still unaffordable, which is why a funder asks more than one of these questions.'
+  gap: HE1, HE2
+  why: 'Map search: ''budget impact'' 0, ''cost-benefit'' 0, ''willingness'' 0 hits; the audit''s own standard 11.3
+    names budget impact (EVIDENCE R11). R1 recognise-and-route form, so the R2 method lines have a lower-rung anchor.'
+  sources:
+  - https://yhec.co.uk/glossary/cost-benefit-analysis/
+  - https://doi.org/10.1136/bmj.307.6909.924
+  - https://doi.org/10.1016/j.jval.2013.08.2291
+  verify_at_intake: false
+  note: ''
+  drafter: HEAI
+- id: S42-R2-A01
+  rung: S42-R2
+  kind: concept
+  text: 'Budget impact analysis as the companion to cost-effectiveness, never its substitute: the eligible population,
+    the current treatment mix and how uptake changes it, the costs displaced, and a short horizon from the payer''s
+    perspective — in India both the current multi-payer and a single-payer scenario — built to published good-practice
+    principles and to India''s national methodological guidelines for budget impact analysis; and the newer obesity
+    drugs as the standing example of how a treatment judged cost-effective over a lifetime can still cost more at
+    population uptake than a payer can fund.'
+  gap: HE1
+  why: Budget impact is absent from the map although S43-R2 asks how generic semaglutide could reach population
+    scale (3219) — a question an ICER cannot answer. India has national BIA guidelines (Prinja 2021, reviewed by
+    HTAIn's Technical Appraisal Committee); the Indian reference case (Sharma 2023) says they 'have already been
+    published'.
+  sources:
+  - https://doi.org/10.1016/j.jval.2013.08.2291
+  - https://doi.org/10.1007/s40258-021-00668-y
+  - https://doi.org/10.1016/j.lansea.2023.100241
+  - https://htain.dhr.gov.in/
+  - https://doi.org/10.57264/cer-2025-0083
+  verify_at_intake: true
+  note: 'verify_at_intake: check for any later HTAIn revision of the BIA guidelines. No Indian budget-impact study
+    of anti-obesity drugs was found; the example is taught from non-Indian sources (US payers) and applied to an
+    Indian payer in the skill below. Whether a given drug is cost-effective depends on its price, which changes.'
+  drafter: HEAI
+- id: S42-R2-A02
+  rung: S42-R2
+  kind: skill
+  text: Build a budget impact model for one obesity intervention for a named Indian payer — a state scheme or PM-JAY
+    — to India's budget impact analysis guidelines, and present it beside the intervention's cost-effectiveness
+    result, with uptake treated as the main uncertainty.
+  gap: HE1
+  why: Skill form of S42-R2-A01; S42-R2's existing skills stop at the Markov model and cost of illness. Execution
+    at R2 matches the rung's existing skill 'Build a Markov cohort model in heemod'.
+  sources:
+  - https://doi.org/10.1007/s40258-021-00668-y
+  - https://doi.org/10.1016/j.jval.2013.08.2291
+  verify_at_intake: false
+  note: ''
+  drafter: HEAI
+- id: S42-R2-A03
+  rung: S42-R2
+  kind: revise
+  text: 'Cost-utility analysis: perspective, time horizon, discounting, acceptability curves, and India''s HTA reference
+    case — including the interim cost-effectiveness threshold it allows analysts to use, whether India has formally
+    adopted one, and what the estimates of Indian willingness to pay per QALY imply, all checked at intake.'
+  target: 'Cost-utility analysis: perspective, time horizon, discounting, acceptability curves, and India''s HTA
+    reference case.'
+  map_line: 3149
+  gap: HE2
+  why: 'The threshold is the number every Indian cost-utility result is judged against, and it is unsettled: the
+    reference case (Sharma 2023) says no formally recognised threshold exists and that researchers ''may use'' one
+    GDP per capita meanwhile; Chugh 2026 (e-pub 2025) proposes a range from a willingness-to-pay study.'
+  sources:
+  - https://doi.org/10.1016/j.lansea.2023.100241
+  - https://doi.org/10.1016/j.jval.2025.10.007
+  verify_at_intake: true
+  note: 'No threshold figure is written into the map: it is volatile and read at intake.'
+  drafter: HEAI
+- id: S42-R3-A01
+  rung: S42-R3
+  kind: concept
+  text: 'Stated-preference methods, chiefly the discrete choice experiment: what it measures (the trade-offs people
+    make among a service''s or treatment''s attributes, and willingness to pay where cost is an attribute), how
+    one is designed and analysed to published good practice, its main weakness (choices are hypothetical), and its
+    uses in obesity work — designing a service people will actually use, and predicting uptake to feed a budget
+    impact analysis or a microsimulation.'
+  gap: HE3
+  why: 'Map search: ''discrete choice'' 0, ''stated pref'' 0. Uptake is a main uncertainty in the S42-R2 budget
+    impact skill and in the S42-R3 microsimulation; Indian DCEs exist for NCD care (Leslie 2023, hypertension clinics
+    in Karnataka) but none was found for obesity services.'
+  sources:
+  - https://doi.org/10.1016/j.jval.2010.11.013
+  - https://doi.org/10.1001/jamanetworkopen.2023.2937
+  - https://doi.org/10.1136/bmj.307.6909.924
+  verify_at_intake: true
+  note: Placed at R3 (Advanced) as a concept only; no build or gate changes. Bridges 2011 opened as abstract only;
+    the ISPOR DCE experimental-design and analysis task-force reports are to be added at intake.
+  drafter: HEAI
+- id: S07-R1-A01
+  rung: S07-R1
+  kind: concept
+  text: 'The three kinds of AI a public-health doctor now meets, and the first question to ask of each: prediction
+    models fitted to tabular data (validated and calibrated in a population like mine?); deep-learning models that
+    read images, signals or text (trained on whose data?); and generative large language models, which write fluent
+    text by predicting likely words and can state false facts and invented references with confidence (tested on
+    this task, against a human standard, with the outcome that matters rather than an exam score?).'
+  gap: AI1
+  why: 'Map search: ''language model'' 0, ''hallucin'' 0, ''chatbot'' 0. The map''s only generative-AI line is the
+    S52-R3 tool-use warning (3816); S07 treats AI as tabular prediction only. R1 recognise level.'
+  sources: []
+  verify_at_intake: false
+  note: Definitional; no volatile fact.
+  drafter: HEAI
+- id: S07-R2-A01
+  rung: S07-R2
+  kind: revise
+  text: 'Reporting and appraisal standards for prediction and AI studies: TRIPOD+AI, which replaced the 2015 TRIPOD
+    checklist for models built by regression or machine learning, with its TRIPOD-LLM extension for studies of large
+    language models; PROBAST and its successor PROBAST+AI for risk of bias and applicability; CONSORT-AI and SPIRIT-AI
+    for trials and trial protocols of interventions with an AI component — and what a competent prediction paper
+    must contain.'
+  target: TRIPOD reporting and what a competent prediction paper must contain.
+  map_line: 613
+  gap: AI2
+  why: The map line names TRIPOD only (613). TRIPOD+AI (Collins 2024) states the 2015 checklist 'should no longer
+    be used'; PROBAST+AI (Moons 2025) updates PROBAST; CONSORT-AI and SPIRIT-AI (2020) cover AI trials, which no
+    map line reaches. TRIPOD-LLM (2025) extends TRIPOD+AI to LLM studies, which S07-R1-A01 introduces. S56-R2-A01
+    makes the same update to S56-R2's reporting-guideline list.
+  sources:
+  - https://doi.org/10.1136/bmj-2023-078378
+  - https://doi.org/10.1038/s41591-024-03425-5
+  - https://doi.org/10.7326/M18-1376
+  - https://doi.org/10.1136/bmj-2024-082505
+  - https://doi.org/10.1136/bmj.m3164
+  - https://doi.org/10.1136/bmj.m3210
+  verify_at_intake: true
+  note: 'verify_at_intake: TRIPOD-LLM calls itself a living document; read its current version.'
+  drafter: HEAI
+- id: S07-R2-A02
+  rung: S07-R2
+  kind: concept
+  text: 'Algorithmic fairness as part of validation: performance and calibration reported separately by sex, income,
+    rural or urban residence, region and tribal status rather than only overall; and label bias, where the outcome
+    a model learns — diagnosed diabetes, health spending, clinic attendance — records access to care as much as
+    disease, so the model under-serves the people who reach care least, as shown for a cost-based algorithm used
+    to allocate care in the United States.'
+  gap: AI3
+  why: S07-R2 teaches transfer between populations (612) but not unequal performance within one, and Indian outcome
+    labels come from unequal access. Obermeyer 2019 is the canonical mechanism.
+  sources:
+  - https://doi.org/10.1126/science.aax2342
+  verify_at_intake: false
+  note: ''
+  drafter: HEAI
+- id: S07-R2-A03
+  rung: S07-R2
+  kind: skill
+  text: Appraise one AI tool offered for obesity care — a risk score, an image-based diet app or a chatbot — against
+    its reporting standard, its performance in the subgroups your patients belong to and the outcome it was actually
+    tested on, and write whether it should be used, piloted or refused.
+  gap: AI1, AI2, AI3
+  why: Read-critique-commission form of A01-A02 at the rung's level; S07-R2's skills cover commissioning a model
+    but not judging a finished tool someone wants to deploy.
+  sources:
+  - https://doi.org/10.1136/bmj-2023-078378
+  - https://doi.org/10.1136/bmj-2024-082505
+  verify_at_intake: false
+  note: ''
+  drafter: HEAI
+- id: S09-R2-A01
+  rung: S09-R2
+  kind: revise
+  text: 'Dietary instruments compared: 24-hour recall, FFQ, food records, weighed records, and technology-assisted
+    records — image-based records and AI food recognition — each with its own error structure.'
+  target: 'Dietary instruments compared: 24-hour recall, FFQ, food records, weighed records — each with its own
+    error structure.'
+  map_line: 749
+  gap: AI4
+  why: 'Image-based methods are now a common dietary instrument and have a measured error structure (Ho 2020 meta-analysis:
+    under-reporting, largest against doubly labelled water); the line names only the classical instruments (749).'
+  sources:
+  - https://doi.org/10.1016/j.clnu.2020.08.002
+  verify_at_intake: false
+  note: ''
+  drafter: HEAI
+- id: S09-R3-A01
+  rung: S09-R3
+  kind: concept
+  text: 'AI-assisted dietary assessment as a new instrument to be validated, not trusted: food recognition, portion
+    estimation and nutrient lookup each add error; mixed dishes and culturally diverse foods are where recognition
+    is reported to need most improvement; a recognition score on a benchmark image set is not validity against weighed
+    records or doubly labelled water; and the common-pot problem makes the plate photographed an uncertain exposure.'
+  gap: AI4
+  why: Squarely inside the Expert measurement spine (S08-S09) and absent. Reviews find serious error and mostly
+    preclinical testing (Ho 2020; Cofre 2025); an evaluation of apps says recognition must improve 'especially for
+    mixed dishes and culturally diverse foods' (Li 2024, Australian apps); LLM image estimates under-estimate more
+    as portions grow (Fridolfsson 2025).
+  sources:
+  - https://doi.org/10.1016/j.clnu.2020.08.002
+  - https://doi.org/10.1017/S0007114525000522
+  - https://doi.org/10.3390/nu16152573
+  - https://doi.org/10.1016/j.cdnut.2025.107556
+  verify_at_intake: false
+  note: No validation of AI dietary assessment against a reference method for Indian foods was found — a gap the
+    S09-R3 build (an Indian instrument validation) could fill.
+  drafter: HEAI
+- id: S34-R3-A05
+  rung: S34-R3
+  kind: revise
+  text: 'Digital behaviour change: app-based interventions, their modest effects and high attrition; conversational
+    agents and generative-AI coaching, judged like any other behavioural intervention — by effect on behaviour and
+    weight against a comparison, not by engagement — with the trial evidence read at intake; social norms and network
+    interventions; financial incentive design.'
+  target: 'Digital behaviour change: app-based interventions, their modest effects and severe attrition; social
+    norms and network interventions; financial incentive design.'
+  map_line: 2616
+  gap: AI5
+  why: 'Map search: ''chatbot'' 0, ''conversational'' 0. Meta-analytic evidence exists and is mostly low quality
+    (Singh 2023 on lifestyle behaviours; Noh 2023 on weight), so a doctor will be asked to judge these tools.'
+  sources:
+  - https://doi.org/10.1038/s41746-023-00856-1
+  - https://doi.org/10.2196/42238
+  verify_at_intake: false
+  note: 'S34-R3 already carries four amendments; this revises an existing line rather than adding one. ''severe
+    attrition'' in the map line became ''high attrition'': neither new source reports attrition, so the degree is
+    read at intake.'
+  drafter: HEAI
+- id: S06-R2-A01
+  rung: S06-R2
+  kind: concept
+  text: 'Automation and AI in evidence synthesis: machine-learning-assisted screening and language-model-assisted
+    data extraction; the reviewers stay responsible for every judgement, any AI use that makes or suggests a judgement
+    is reported in full, PRISMA 2020 asks which automation tools were used, and a tool''s performance — for screening,
+    its recall — is validated within the review before it is relied on.'
+  gap: AI6
+  why: S06 has no automation line, yet Cochrane, Campbell, JBI and CEE issued a joint position statement on AI in
+    evidence synthesis in 2025, supporting the aims of the RAISE recommendations; it asks reviewers to pilot or
+    calibrate a tool 'to validate its performance'.
+  sources:
+  - https://doi.org/10.1002/cl2.70074
+  - https://doi.org/10.1136/bmj.n71
+  - https://osf.io/cqa82
+  verify_at_intake: true
+  note: The RAISE document itself could not be opened (OSF 502); the joint statement and PRISMA 2020 were. RAISE
+    is being revised, so read the current version at intake.
+  drafter: HEAI
+- id: S48-R2-A05
+  rung: S48-R2
+  kind: concept
+  text: 'Governance of AI and digital health tools in India: how the Medical Devices Rules, 2017 and CDSCO''s guidance
+    on medical device software draw the line between regulated software — including AI/ML-based software and apps
+    — and general-wellness software, read at intake, so that whether a weight-loss app is a regulated device is
+    decided from its intended purpose and its claims; and the Digital Personal Data Protection Act for the data
+    such tools collect.'
+  gap: AI7
+  why: 'Map search: no AI governance line. CDSCO''s guidance on medical device software under MDR-2017 (opened)
+    treats ''Mobile apps, AI/ML-based software'' meeting the device definition as medical device software and excludes
+    general-wellness software that makes no reference to disease.'
+  sources:
+  - https://cdsco.gov.in/opencms/export/sites/CDSCO_WEB/Pdf-documents/Guidance-document-on-Medical-Device-Software-under-MDR-2017.pdf
+  verify_at_intake: true
+  note: The CDSCO guidance says it is for public awareness and not for legal purposes; the binding text is MDR-2017,
+    read at intake with the guidance's release circular. S48-R2 now carries five additions; this one stays here
+    because S48-R2 maps which body holds which lever. ICMR's AI guidelines went to S56-R2 (S56-R2-A02), beside the
+    ICMR research-ethics guidelines.
+  drafter: HEAI
+- id: S52-R3-A01
+  rung: S52-R3
+  kind: revise
+  text: 'On AI coding and literature tools: use them heavily and check everything, because they confidently produce
+    wrong statistics and invented citations. Never report a number you have not reproduced yourself and never cite
+    a paper you have not opened. Disclose how you used them, as the ICMJE recommendations and journal policies require.'
+  target: 'On AI coding and literature tools: use them heavily and check everything, because they confidently produce
+    wrong statistics and invented citations. Never report a number you have not reproduced yourself and never cite
+    a paper you have not opened.'
+  map_line: 3816
+  gap: AI6
+  why: The line (3816) says how to use the tools but not the disclosure duty the ICMJE recommendations set. Why
+    an AI tool cannot be an author is taught with ICMJE authorship at S56-R2 (S56-R2-A03).
+  sources:
+  - https://www.icmje.org/recommendations/browse/roles-and-responsibilities/defining-the-role-of-authors-and-contributors.html
+  verify_at_intake: false
+  note: The disclosure duty is also taught with ICMJE authorship at S56-R2 (S56-R2-A03); it is repeated here because
+    S56 is not a prerequisite of S52.
+  drafter: HEAI
+- id: S38-R3-A03
+  rung: S38-R3
+  kind: concept
+  text: 'Platform algorithms as part of the digital food environment: personalised ranking and recommendation, push
+    notifications and membership offers decide what each user is shown, and studies of delivery and grocery platforms
+    find them used to promote less healthy foods, so a user''s exposure differs from the menu and cannot be read
+    from a menu scrape alone — which matters both for measuring the environment and for drafting marketing restrictions
+    that reach it.'
+  gap: AI8
+  why: S38-R3 teaches menu scraping (O1, S1) but not the personalised layer on top of it; Gupta 2025 (scoping review)
+    finds these techniques 'often deployed to preferentially promote nutrient-poor foods', from seven of its sixteen
+    studies, mostly outside India.
+  sources:
+  - https://doi.org/10.1186/s12916-025-04553-6
+  - https://doi.org/10.1136/jech-2025-224816
+  verify_at_intake: false
+  note: ''
+  drafter: HEAI
+- id: S60-R2-A01
+  rung: S60-R2
+  kind: concept
+  text: 'Ethics of AI in obesity care and research: automation bias and who is accountable when a tool''s advice
+    harms; consent and secondary use of patient data for training; and how AI image generators misrepresent people
+    with high body weight — leaving them out of neutral depictions of patients and adding them as the joke when
+    asked for humour — so an AI tool is appraised for stigma and for whom it fails, as any other intervention is.'
+  gap: AI9
+  why: 'S60 has no AI line. The weight-bias evidence is for image generators: under-representation in patient depictions
+    (Wiegand 2025) and over-representation when asked for humour (Saumure 2025); no peer-reviewed study was found
+    of weight-stigmatising LLM text, so the line does not claim it.'
+  sources:
+  - https://doi.org/10.1038/s41598-024-83384-6
+  - https://doi.org/10.1038/s41746-025-01817-6
+  verify_at_intake: false
+  note: ''
+  drafter: HEAI
+- id: S56-R2-A01
+  rung: S56-R2
+  kind: revise
+  text: 'Reporting guidelines used at the design stage: CONSORT and SPIRIT (with their AI extensions), STROBE and
+    STROBE-nut, PRISMA, TRIPOD+AI, CHEERS, COREQ, ISPOR-SMDM.'
+  target: 'Reporting guidelines used at the design stage: CONSORT and SPIRIT, STROBE and STROBE-nut, PRISMA, TRIPOD,
+    CHEERS, COREQ, ISPOR-SMDM.'
+  map_line: 4100
+  gap: AI2
+  why: TRIPOD+AI states the 2015 TRIPOD checklist 'should no longer be used'; without this revision S56-R2 (4100)
+    would still teach it while S07-R2-A01 teaches its replacement.
+  sources:
+  - https://doi.org/10.1136/bmj-2023-078378
+  - https://doi.org/10.1136/bmj.m3164
+  - https://doi.org/10.1136/bmj.m3210
+  verify_at_intake: false
+  note: ''
+  drafter: HEAI
+- id: S56-R2-A02
+  rung: S56-R2
+  kind: revise
+  text: 'Research ethics in practice: ICMR national ethical guidelines, and ICMR''s ethical guidelines for the application
+    of AI in biomedical research and healthcare; informed consent in low-literacy settings, benefit sharing, and
+    the specific ethics of research on stigmatised conditions — non-stigmatising language, community involvement,
+    returning results.'
+  target: 'Research ethics in practice: ICMR national ethical guidelines, informed consent in low-literacy settings,
+    benefit sharing, and the specific ethics of research on stigmatised conditions — non-stigmatising language,
+    community involvement, returning results.'
+  map_line: 4101
+  gap: AI7
+  why: ICMR issued ethical guidelines for AI in biomedical research and healthcare in 2023, addressed to 'ethics
+    committees' among others (official page opened); S56-R2 O4 (4101) is where the map teaches ICMR's research-ethics
+    guidelines.
+  sources:
+  - https://www.icmr.gov.in/ethical-guidelines-for-application-of-artificial-intelligence-in-biomedical-research-and-healthcare
+  verify_at_intake: true
+  note: Only the ICMR landing page was opened; read the guideline PDF at intake.
+  drafter: HEAI
+- id: S56-R2-A03
+  rung: S56-R2
+  kind: revise
+  text: 'Authorship and collaboration: ICMJE criteria — including why an AI tool cannot be an author and how its
+    use is disclosed — CRediT, negotiating author order before the work starts, and being an excellent collaborator
+    by delivering early and making the senior author''s life easier.'
+  target: 'Authorship and collaboration: ICMJE criteria, CRediT, negotiating author order before the work starts,
+    and being an excellent collaborator by delivering early and making the senior author''s life easier.'
+  map_line: 4102
+  gap: AI6
+  why: 'ICMJE: chatbots ''should not be listed as authors because they cannot be responsible for the accuracy, integrity,
+    and originality of the work''. S56-R2 O5 (4102) already teaches ICMJE authorship, so the AI clause belongs here,
+    at R2, rather than in S52-R3.'
+  sources:
+  - https://www.icmje.org/recommendations/browse/roles-and-responsibilities/defining-the-role-of-authors-and-contributors.html
+  verify_at_intake: false
+  note: ''
+  drafter: HEAI
