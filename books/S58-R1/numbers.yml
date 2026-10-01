@@ -1,0 +1,48 @@
+# books/S58-R1/numbers.yml: every number this book uses in more than one section (claude.md §4a).
+# Prose writes {{n:key}}; another book's number is {{n:S01-R1/key}}. The build substitutes the
+# value before any check runs, blocks on an unknown key and warns on an unused one.
+# Started at Task 1 (2026-10-02) from the inventory: the NFHS-5 overweight-or-obese rows are the
+# running case for C08 (numbers in a sentence), C16 (honest axes) and the C21 journey. Values read
+# from sources/nfhs5_india_factsheet.txt, indicators 88 and 89 (columns: NFHS-5 urban, rural,
+# total; NFHS-4 total; per cent; adults aged 15-49).
+numbers:
+  nfhs5_women_ow_ob_pct:
+    value: "24.0"
+    meaning: per cent of women aged 15-49 overweight or obese (BMI 25.0 kg/m2 or more), NFHS-5 (2019-21), India total
+    source: nfhs5_india_factsheet
+  nfhs4_women_ow_ob_pct:
+    value: "20.6"
+    meaning: the same indicator for women, NFHS-4 (2015-16), India total
+    source: nfhs5_india_factsheet
+  nfhs5_men_ow_ob_pct:
+    value: "22.9"
+    meaning: per cent of men aged 15-49 overweight or obese (BMI 25.0 kg/m2 or more), NFHS-5, India total
+    source: nfhs5_india_factsheet
+  nfhs4_men_ow_ob_pct:
+    value: "18.9"
+    meaning: the same indicator for men, NFHS-4, India total
+    source: nfhs5_india_factsheet
+  nfhs5_women_ow_ob_urban_pct:
+    value: "33.2"
+    meaning: women aged 15-49 overweight or obese, NFHS-5, urban India
+    source: nfhs5_india_factsheet
+  nfhs5_women_ow_ob_rural_pct:
+    value: "19.7"
+    meaning: women aged 15-49 overweight or obese, NFHS-5, rural India
+    source: nfhs5_india_factsheet
+  nfhs5_men_ow_ob_urban_pct:
+    value: "29.8"
+    meaning: men aged 15-49 overweight or obese, NFHS-5, urban India
+    source: nfhs5_india_factsheet
+  nfhs5_men_ow_ob_rural_pct:
+    value: "19.3"
+    meaning: men aged 15-49 overweight or obese, NFHS-5, rural India
+    source: nfhs5_india_factsheet
+  nfhs5_women_ow_ob_change_pp:
+    value: "3.4"
+    meaning: rise in women overweight or obese from NFHS-4 to NFHS-5, in percentage points
+    source: "24.0 minus 20.6 = 3.4 (nfhs5_women_ow_ob_pct minus nfhs4_women_ow_ob_pct)"
+  nfhs5_men_ow_ob_change_pp:
+    value: "4.0"
+    meaning: rise in men overweight or obese from NFHS-4 to NFHS-5, in percentage points
+    source: "22.9 minus 18.9 = 4.0 (nfhs5_men_ow_ob_pct minus nfhs4_men_ow_ob_pct)"

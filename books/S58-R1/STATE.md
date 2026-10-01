@@ -6,8 +6,8 @@ Chat: Cowork task, branch `book/S58-R1` from `main` `c86325b`, 2 Oct 2026. Third
 | Step | State |
 | --- | --- |
 | Claim (`claude/books/S58-R1.md`), book.yml, series.py | in progress |
-| Task 1 inventory, READY.md, COVERAGE.md | |
+| Task 1 inventory (21 concepts, 3 quantitative: C08, C10, C16; journey C21), READY.md, COVERAGE.md (5 gaps), numbers.yml | done |
 | Source intake | |
 | Source-collection stop (SOURCE-GATE.md) | |
 
-Next action: Task 1 inventory.
+Next action: source intake (TinyFish fetch, never WebFetch; INTAKE-BRIEF.md).
