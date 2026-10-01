@@ -1,0 +1,1627 @@
+AN INTRODUCTION TO R (R CORE TEAM; MANUAL FOR R 4.6.1) - VERBATIM EXCERPTS
+====================================================================================================
+
+Transcription rule for this file: every line between '--- passage begins ---' and '--- passage ends ---' is an exact,
+unaltered slice of the text returned by the TinyFish fetch_content tool (markdown output) for the URL
+named in that block's heading, cut by script (raw[i:j]) from the saved fetch; nothing has been
+paraphrased, re-wrapped or merged. The extraction's own artefacts are kept as returned (code fences
+split around inline code, '> >' prompts, escaped '\*', figures dropped). [...] marks an omission;
+lines beginning [NOTE] and everything outside the passage markers are this file's own annotation and
+are NOT source text. Reference lists are never held. Fetched 2026-10-02.
+
+WORK: Venables WN, Smith DM, and the R Core Team. An Introduction to R. Notes on R: A Programming
+Environment for Data Analysis and Graphics. Manual for R version 4.6.1 (2026-06-24).
+https://cran.r-project.org/doc/manuals/r-release/R-intro.html (the "r-release" URL always serves the
+current release's manual).
+VERSION AS STATED (block 1): "This manual is for R, version 4.6.1 (2026-06-24)." The S52-R1 book's code
+runs on R 4.3.3; nothing in the held passages is known to differ between 4.3.3 and 4.6.1, but the
+passages describe 4.6.1 and were not compared with the 4.3.3 manual.
+COPYRIGHT AND PERMISSION AS STATED (block 1, quoted in full there): Copyright 1990 W. N. Venables;
+1992 Venables & D. M. Smith; 1997 R. Gentleman & R. Ihaka; 1997, 1998 M. Maechler; 1999-2026 R Core
+Team. "Permission is granted to make and distribute verbatim copies of this manual provided the
+copyright notice and this permission notice are preserved on all copies", with modified versions
+allowed "under the conditions for verbatim copying, provided that the entire resulting derived work is
+distributed under the terms of a permission notice identical to this one." Not a Creative Commons
+licence. Block 1 preserves the notice as the permission requires.
+EXTRACTION: the HTML manual's chapter and section headings (e.g. "2.1 Vectors and assignment") were
+NOT returned by the extractor, so blocks are named here by their content and the manual's section
+names are given from the manual's structure only as orientation in brackets. Inline code is split onto
+separate fenced lines and example commands carry a doubled "> >" prompt; both are extraction artefacts.
+THE PIPE: the manual contains no "|>" and does not describe the native pipe (searched 2026-10-02); cite
+R4DS 2e ch. 3.4 or the base R help page for the pipe instead.
+WHAT IS HELD: the version and permission notice; getting help; names, commands and comments; source(),
+objects and the workspace; vectors and assignment through simple arithmetic and summary functions;
+logical vectors and missing values (NA, is.na, NaN); index vectors (opening and the replacement
+example); objects, modes and coercion; packages and namespaces; the Rscript front-end. Everything
+else (arrays, lists, data frames, reading data, distributions, statistical models, graphics, the
+sample session, appendices other than the Rscript passage) is NOT held.
+
+BLOCKS HELD:
+  1. Version line, copyright and permission notice (https://cran.r-project.org/doc/manuals/r-release/R-intro.html)
+  2. [1.7 Getting help with functions and features] help(), ?, help.start(), help.search, example() (https://cran.r-project.org/doc/manuals/r-release/R-intro.html)
+  3. [1.8 R commands, case sensitivity, etc.] names, expressions and assignments, commands, comments (https://cran.r-project.org/doc/manuals/r-release/R-intro.html)
+  4. [1.10 Executing commands from a file; 1.11 Data permanency and removing objects] source(), objects(), the workspace, .RData (https://cran.r-project.org/doc/manuals/r-release/R-intro.html)
+  5. [2.1 Vectors and assignment; 2.2 Vector arithmetic] c(), <-, element-by-element arithmetic, recycling, max/min/length/sum/mean/var/sort (https://cran.r-project.org/doc/manuals/r-release/R-intro.html)
+  6. [2.4 Logical vectors; 2.5 Missing values; opening of 2.6 Character vectors] (https://cran.r-project.org/doc/manuals/r-release/R-intro.html)
+  7. [2.7 Index vectors] opening paragraph and the logical index vector (x[!is.na(x)]) (https://cran.r-project.org/doc/manuals/r-release/R-intro.html)
+  8. [end of 2.7] replacement with an index vector, x[is.na(x)] <- 0; [3.1 Intrinsic attributes: mode and length] atomic structures, modes, coercion with as.character()/as.integer() (https://cran.r-project.org/doc/manuals/r-release/R-intro.html)
+  9. [13 Packages; 13.1 Standard packages; 13.2 Contributed packages and CRAN; 13.3 Namespaces] library(), install.packages(), search(), :: (https://cran.r-project.org/doc/manuals/r-release/R-intro.html)
+  10. [Appendix B, Scripting with R] Rscript (https://cran.r-project.org/doc/manuals/r-release/R-intro.html)
+
+====================================================================================================
+BLOCK 1 - Version line, copyright and permission notice
+FETCHED: https://cran.r-project.org/doc/manuals/r-release/R-intro.html
+====================================================================================================
+--- passage begins ---
+This manual is for R, version 4.6.1 (2026-06-24).
+
+Copyright © 1990 W. N. Venables  
+Copyright © 1992 W. N. Venables & D. M. Smith  
+Copyright © 1997 R. Gentleman & R. Ihaka  
+Copyright © 1997, 1998 M. Maechler  
+Copyright © 1999–2026 R Core Team
+
+> Permission is granted to make and distribute verbatim copies of this manual provided the copyright notice and this permission notice are preserved on all copies.
+>
+> Permission is granted to copy and distribute modified versions of this manual under the conditions for verbatim copying, provided that the entire resulting derived work is distributed under the terms of a permission notice identical to this one.
+>
+> Permission is granted to copy and distribute translations of this manual into another language, under the above conditions for modified versions, except that this permission notice may be stated in a translation
+--- passage ends ---
+
+[...]
+[NOTE] Preface and sections 1.1 to 1.6 omitted.
+
+====================================================================================================
+BLOCK 2 - [1.7 Getting help with functions and features] help(), ?, help.start(), help.search, example()
+FETCHED: https://cran.r-project.org/doc/manuals/r-release/R-intro.html
+====================================================================================================
+--- passage begins ---
+R has an inbuilt help facility similar to the
+
+```
+man
+```
+
+facility of
+UNIX. To get more information on any specific named function, for
+example
+
+```
+solve
+```
+
+, the command is
+
+> > help(solve)
+
+An alternative is
+
+> > ?solve
+
+For a feature specified by special characters, the argument must be
+enclosed in double or single quotes, making it a “character string”:
+This is also necessary for a few words with syntactic meaning including
+
+```
+if
+```
+
+,
+
+```
+for
+```
+
+and
+
+```
+function
+```
+
+.
+
+```
+> help("[[")
+```
+
+Either form of quote mark may be used to escape the other, as in the
+string
+
+```
+"It's important"
+```
+
+. Our convention is to use
+double quote marks for preference.
+
+On most R installations help is available in HTML format by running
+
+> > help.start()
+
+which will launch a Web browser that allows the help pages to be browsed
+with hyperlinks. On UNIX, subsequent help requests are sent to the
+HTML-based help system. The ‘Search Engine and Keywords’ link in the
+page loaded by
+
+```
+help.start()
+```
+
+is particularly useful as it is
+contains a high-level concept list which searches though available
+functions. It can be a great way to get your bearings quickly and to
+understand the breadth of what R has to offer.
+
+The
+
+```
+help.search
+```
+
+command (alternatively
+
+```
+??
+```
+
+)
+allows searching for help in various
+ways. For example,
+
+> > ??solve
+
+Try
+
+```
+?help.search
+```
+
+for details and more examples.
+
+The examples on a help topic can normally be run by
+
+> > example(topic)
+
+Windows versions of R have other optional help systems: use
+
+> > ?help
+
+for further details.
+--- passage ends ---
+
+====================================================================================================
+BLOCK 3 - [1.8 R commands, case sensitivity, etc.] names, expressions and assignments, commands, comments
+FETCHED: https://cran.r-project.org/doc/manuals/r-release/R-intro.html
+====================================================================================================
+--- passage begins ---
+Technically R is an expression language with a very simple
+syntax. It is case sensitive as are most UNIX based packages, so
+
+```
+A
+```
+
+and
+
+```
+a
+```
+
+are different symbols and would refer to different
+variables. The set of symbols which can be used in R names depends
+on the operating system and country within which R is being run
+(technically on the locale in use). Normally all alphanumeric
+symbols are allowed2 (and in
+some countries this includes accented letters) plus ‘
+
+```
+.
+```
+
+’ and
+‘
+
+```
+_
+```
+
+’, with the restriction that a name must start with
+‘
+
+```
+.
+```
+
+’ or a letter, and if it starts with ‘
+
+```
+.
+```
+
+’ the
+second character must not be a digit. Names are effectively
+unlimited in length.
+
+Elementary commands consist of either expressions or assignments. If an expression is given as a command, it is evaluated, printed (unless specifically made invisible), and the value is lost. An assignment also evaluates an expression and passes the value to a variable but the result is not automatically printed.
+
+Commands are separated either by a semi-colon (‘
+
+```
+;
+```
+
+’), or by a
+newline. Elementary commands can be grouped together into one compound
+expression by braces (‘
+
+```
+{
+```
+
+’ and ‘
+
+```
+}
+```
+
+’).
+Comments can be put almost3 anywhere,
+starting with a hash mark (‘
+
+```
+#
+```
+
+’), everything to the end of the
+line is a comment.
+--- passage ends ---
+
+[...]
+[NOTE] 1.9 Recall and correction of previous commands omitted.
+
+====================================================================================================
+BLOCK 4 - [1.10 Executing commands from a file; 1.11 Data permanency and removing objects] source(), objects(), the workspace, .RData
+FETCHED: https://cran.r-project.org/doc/manuals/r-release/R-intro.html
+====================================================================================================
+--- passage begins ---
+If commands5 are stored in an external file, say commands.R in the working directory work, they may be executed at any time in an R session with the command
+
+```
+> source("commands.R")
+```
+
+For Windows Source is also available on the
+File menu. The function
+
+```
+sink
+```
+
+,
+
+```
+> sink("record.lis")
+```
+
+will divert all subsequent output from the console to an external file, record.lis. The command
+
+> > sink()
+
+restores it to the console once again.
+
+The entities that R creates and manipulates are known as objects. These may be variables, arrays of numbers, character strings, functions, or more general structures built from such components.
+
+During an R session, objects are created and stored by name (we discuss this process in the next section). The R command
+
+> > objects()
+
+(alternatively,
+
+```
+ls()
+```
+
+) can be used to display the names of (most
+of) the objects which are currently stored within R. The collection
+of objects currently stored is called the workspace.
+
+To remove objects the function
+
+```
+rm
+```
+
+is available:
+
+> > rm(x, y, z, ink, junk, temp, foo, bar)
+
+All objects created during an R session can be stored permanently in a file for use in future R sessions. At the end of each R session you are given the opportunity to save all the currently available objects. If you indicate that you want to do this, the objects are written to a file called .RData6 in the current directory, and the command lines used in the session are saved to a file called .Rhistory.
+
+When R is started at later time from the same directory it reloads the workspace from this file. At the same time the associated commands history is reloaded.
+
+It is recommended that you should use separate working directories for
+analyses conducted with R. It is quite common for objects with names
+
+```
+x
+```
+
+and
+
+```
+y
+```
+
+to be created during an analysis. Names like this
+are often meaningful in the context of a single analysis, but it can be
+quite hard to decide what they might be when the several analyses have
+been conducted in the same directory.
+--- passage ends ---
+
+====================================================================================================
+BLOCK 5 - [2.1 Vectors and assignment; 2.2 Vector arithmetic] c(), <-, element-by-element arithmetic, recycling, max/min/length/sum/mean/var/sort
+FETCHED: https://cran.r-project.org/doc/manuals/r-release/R-intro.html
+====================================================================================================
+--- passage begins ---
+R operates on named data structures. The simplest such
+structure is the numeric vector, which is a single entity
+consisting of an ordered collection of numbers. To set up a vector
+named
+
+```
+x
+```
+
+, say, consisting of five numbers, namely 10.4, 5.6, 3.1,
+6.4 and 21.7, use the R command
+
+> > x <- c(10.4, 5.6, 3.1, 6.4, 21.7)
+
+This is an assignment statement using the function
+
+```
+c()
+```
+
+which in this context can take an arbitrary number of vector
+arguments and whose value is a vector got by concatenating its
+arguments end to end.7
+
+A number occurring by itself in an expression is taken as a vector of length one.
+
+Notice that the assignment operator (‘
+
+```
+<-
+```
+
+’), which consists
+of the two characters ‘
+
+```
+<
+```
+
+’ (“less than”) and
+‘
+
+```
+-
+```
+
+’ (“minus”) occurring strictly side-by-side and it
+‘points’ to the object receiving the value of the expression.
+In most contexts the ‘
+
+```
+=
+```
+
+’ operator can be used as an alternative.
+
+Assignment can also be made using the function
+
+```
+assign()
+```
+
+. An
+equivalent way of making the same assignment as above is with:
+
+```
+> assign("x", c(10.4, 5.6, 3.1, 6.4, 21.7))
+```
+
+The usual operator,
+
+```
+<-
+```
+
+, can be thought of as a syntactic
+short-cut to this.
+
+Assignments can also be made in the other direction, using the obvious change in the assignment operator. So the same assignment could be made using
+
+> > c(10.4, 5.6, 3.1, 6.4, 21.7) -> x
+
+If an expression is used as a complete command, the value is printed and lost8. So now if we were to use the command
+
+> > 1/x
+
+the reciprocals of the five values would be printed at the terminal (and
+the value of
+
+```
+x
+```
+
+, of course, unchanged).
+
+The further assignment
+
+> > y <- c(x, 0, x)
+
+would create a vector
+
+```
+y
+```
+
+with 11 entries consisting of two copies
+of
+
+```
+x
+```
+
+with a zero in the middle place.
+
+Vectors can be used in arithmetic expressions, in which case the operations are performed element by element. Vectors occurring in the same expression need not all be of the same length. If they are not, the value of the expression is a vector with the same length as the longest vector which occurs in the expression. Recycling occurs in each binary operation: the shorter vector is recycled as often as need be (perhaps fractionally) until it matches the length of the longer vector. In particular a constant is simply repeated. So with the above assignments the command
+
+> > v <- 2\*x + y + 1
+
+generates a new vector
+
+```
+v
+```
+
+of length 11 constructed by adding
+together, element by element,
+
+```
+2*x
+```
+
+repeated 2.2 times,
+
+```
+y
+```
+
+repeated just once, and
+
+```
+1
+```
+
+repeated 11 times.
+
+The elementary arithmetic operators are the usual
+
+```
++
+```
+
+,
+
+```
+-
+```
+
+,
+
+```
+*
+```
+
+,
+
+```
+/
+```
+
+and
+
+```
+^
+```
+
+for raising to a power.
+In addition all of the common arithmetic functions are available.
+
+```
+log
+```
+
+,
+
+```
+exp
+```
+
+,
+
+```
+sin
+```
+
+,
+
+```
+cos
+```
+
+,
+
+```
+tan
+```
+
+,
+
+```
+sqrt
+```
+
+,
+and so on, all have their usual meaning.
+
+```
+max
+```
+
+and
+
+```
+min
+```
+
+select the largest and smallest elements of a
+vector respectively.
+
+```
+range
+```
+
+is a function whose value is a vector of length two, namely
+
+```
+c(min(x), max(x))
+```
+
+.
+
+```
+length(x)
+```
+
+is the number of elements in
+
+```
+x
+```
+
+,
+
+```
+sum(x)
+```
+
+gives the total of the elements in
+
+```
+x
+```
+
+,
+and
+
+```
+prod(x)
+```
+
+their product.
+
+Two statistical functions are
+
+```
+mean(x)
+```
+
+which calculates the sample
+mean, which is the same as
+
+```
+sum(x)/length(x)
+```
+
+,
+and
+
+```
+var(x)
+```
+
+which gives
+
+> sum((x-mean(x))^2)/(length(x)-1)
+
+or sample variance. If the argument to
+
+```
+var()
+```
+
+is an
+n-by-p matrix the value is a p-by-p sample
+covariance matrix got by regarding the rows as independent
+p-variate sample vectors.
+
+```
+sort(x)
+```
+
+returns a vector of the same size as
+
+```
+x
+```
+
+with the
+elements arranged in increasing order; however there are other more
+flexible sorting facilities available (see
+
+```
+order()
+```
+
+or
+
+```
+sort.list()
+```
+
+which produce a permutation to do the sorting).
+
+Note that
+
+```
+max
+```
+
+and
+
+```
+min
+```
+
+select the largest and smallest
+values in their arguments, even if they are given several vectors. The
+parallel maximum and minimum functions
+
+```
+pmax
+```
+
+and
+
+```
+pmin
+```
+
+return a vector (of length equal to their longest argument)
+that contains in each element the largest (smallest) element in that
+position in any of the input vectors.
+
+For most purposes the user will not be concerned if the “numbers” in a numeric vector are integers, reals or even complex. Internally calculations are done as double precision real numbers, or double precision complex numbers if the input data are complex.
+
+To work with complex numbers, supply an explicit complex part. Thus
+
+> sqrt(-17)
+
+will give
+
+```
+NaN
+```
+
+and a warning, but
+
+> sqrt(-17+0i)
+
+will do the computations as complex numbers.
+--- passage ends ---
+
+[...]
+[NOTE] 2.3 Generating regular sequences omitted.
+
+====================================================================================================
+BLOCK 6 - [2.4 Logical vectors; 2.5 Missing values; opening of 2.6 Character vectors]
+FETCHED: https://cran.r-project.org/doc/manuals/r-release/R-intro.html
+====================================================================================================
+--- passage begins ---
+As well as numerical vectors, R allows manipulation of logical
+quantities. The elements of a logical vector can have the values
+
+```
+TRUE
+```
+
+,
+
+```
+FALSE
+```
+
+, and
+
+```
+NA
+```
+
+(for “not available”, see
+below). The first two are often abbreviated as
+
+```
+T
+```
+
+and
+
+```
+F
+```
+
+,
+respectively. Note however that
+
+```
+T
+```
+
+and
+
+```
+F
+```
+
+are just
+variables which are set to
+
+```
+TRUE
+```
+
+and
+
+```
+FALSE
+```
+
+by default, but
+are not reserved words and hence can be overwritten by the user. Hence,
+you should always use
+
+```
+TRUE
+```
+
+and
+
+```
+FALSE
+```
+
+.
+
+Logical vectors are generated by conditions. For example
+
+> > temp <- x > 13
+
+sets
+
+```
+temp
+```
+
+as a vector of the same length as
+
+```
+x
+```
+
+with values
+
+```
+FALSE
+```
+
+corresponding to elements of
+
+```
+x
+```
+
+where the condition
+is not met and
+
+```
+TRUE
+```
+
+where it is.
+
+The logical operators are
+
+```
+<
+```
+
+,
+
+```
+<=
+```
+
+,
+
+```
+>
+```
+
+,
+
+```
+>=
+```
+
+,
+
+```
+==
+```
+
+for exact equality and
+
+```
+!=
+```
+
+for inequality.
+In addition if
+
+```
+c1
+```
+
+and
+
+```
+c2
+```
+
+are logical expressions, then
+
+```
+c1 & c2
+```
+
+is their intersection (“and”),
+
+```
+c1 | c2
+```
+
+is their union (“or”), and
+
+```
+!c1
+```
+
+is the negation of
+
+```
+c1
+```
+
+.
+
+Logical vectors may be used in ordinary arithmetic, in which case they
+are coerced into numeric vectors,
+
+```
+FALSE
+```
+
+becoming
+
+```
+0
+```
+
+and
+
+```
+TRUE
+```
+
+becoming
+
+```
+1
+```
+
+. However there are situations where
+logical vectors and their coerced numeric counterparts are not
+equivalent, for example see the next subsection.
+
+In some cases the components of a vector may not be completely
+known. When an element or value is “not available” or a “missing
+value” in the statistical sense, a place within a vector may be
+reserved for it by assigning it the special value
+
+```
+NA
+```
+
+.
+In general any operation on an
+
+```
+NA
+```
+
+becomes an
+
+```
+NA
+```
+
+. The
+motivation for this rule is simply that if the specification of an
+operation is incomplete, the result cannot be known and hence is not
+available.
+
+The function
+
+```
+is.na(x)
+```
+
+gives a logical vector of the same size as
+
+```
+x
+```
+
+with value
+
+```
+TRUE
+```
+
+if and only if the corresponding element
+in
+
+```
+x
+```
+
+is
+
+```
+NA
+```
+
+.
+
+> > z <- c(1:3,NA); ind <- is.na(z)
+
+Notice that the logical expression
+
+```
+x == NA
+```
+
+is quite different
+from
+
+```
+is.na(x)
+```
+
+since
+
+```
+NA
+```
+
+is not really a value but a marker
+for a quantity that is not available. Thus
+
+```
+x == NA
+```
+
+is a vector
+of the same length as
+
+```
+x
+```
+
+all of whose values are
+
+```
+NA
+```
+
+as the logical expression itself is incomplete and hence undecidable.
+
+Note that there is a second kind of “missing” values which are
+produced by numerical computation, the so-called Not a Number,
+
+```
+NaN
+```
+
+,
+values. Examples are
+
+> > 0/0
+
+or
+
+> > Inf - Inf
+
+which both give
+
+```
+NaN
+```
+
+since the result cannot be defined sensibly.
+
+In summary,
+
+```
+is.na(xx)
+```
+
+is
+
+```
+TRUE
+```
+
+both for
+
+```
+NA
+```
+
+and
+
+```
+NaN
+```
+
+values. To differentiate these,
+
+```
+is.nan(xx)
+```
+
+is only
+
+```
+TRUE
+```
+
+for
+
+```
+NaN
+```
+
+s.
+
+Missing values are sometimes printed as
+
+```
+<NA>
+```
+
+when character
+vectors are printed without quotes.
+--- passage ends ---
+
+[...]
+[NOTE] 2.6 Character vectors (body) omitted.
+
+====================================================================================================
+BLOCK 7 - [2.7 Index vectors] opening paragraph and the logical index vector (x[!is.na(x)])
+FETCHED: https://cran.r-project.org/doc/manuals/r-release/R-intro.html
+====================================================================================================
+--- passage begins ---
+Subsets of the elements of a vector may be selected by appending to the name of the vector an index vector in square brackets. More generally any expression that evaluates to a vector may have subsets of its elements similarly selected by appending an index vector in square brackets immediately after the expression.
+
+Such index vectors can be any of four distinct types.
+
+```
+TRUE
+```
+
+in the index vector are selected and
+those corresponding to
+
+```
+FALSE
+```
+
+are omitted. For example
+> > y <- x[!is.na(x)]
+
+creates (or re-creates) an object
+
+```
+y
+```
+
+which will contain the
+non-missing values of
+
+```
+x
+```
+
+, in the same order. Note that if
+
+```
+x
+```
+
+has missing values,
+
+```
+y
+```
+
+will be shorter than
+
+```
+x
+```
+
+.
+Also
+
+> > (x+1)[(!is.na(x)) & x>0] -> z
+
+creates an object
+
+```
+z
+```
+
+and places in it the values of the vector
+
+```
+x+1
+```
+
+for which the corresponding value in
+
+```
+x
+```
+
+was both
+non-missing and positive.
+--- passage ends ---
+
+[...]
+[NOTE] The rest of 2.7 (positive, negative and character index vectors) omitted.
+
+====================================================================================================
+BLOCK 8 - [end of 2.7] replacement with an index vector, x[is.na(x)] <- 0; [3.1 Intrinsic attributes: mode and length] atomic structures, modes, coercion with as.character()/as.integer()
+FETCHED: https://cran.r-project.org/doc/manuals/r-release/R-intro.html
+====================================================================================================
+--- passage begins ---
+An indexed expression can also appear on the receiving end of an
+assignment, in which case the assignment operation is performed
+only on those elements of the vector. The expression must be of
+the form
+
+```
+vector[index_vector]
+```
+
+as having an arbitrary
+expression in place of the vector name does not make much sense here.
+
+For example
+
+> > x[is.na(x)] <- 0
+
+replaces any missing values in
+
+```
+x
+```
+
+by zeros and
+
+> > y[y < 0] <- -y[y < 0]
+
+has the same effect as
+
+> > y <- abs(y)
+
+Vectors are the most important type of object in R, but there are several others which we will meet more formally in later sections.
+
+The entities R operates on are technically known as objects. Examples are vectors of numeric (real) or complex values, vectors of logical values and vectors of character strings. These are known as “atomic” structures since their components are all of the same type, or mode, namely numeric10, complex, logical, character and raw.
+
+Vectors must have their values all of the same mode. Thus any
+given vector must be unambiguously either logical,
+numeric, complex, character or raw. (The
+only apparent exception to this rule is the special “value” listed as
+
+```
+NA
+```
+
+for quantities not available, but in fact there are several
+types of
+
+```
+NA
+```
+
+). Note that a vector can be empty and still have a
+mode. For example the empty character string vector is listed as
+
+```
+character(0)
+```
+
+and the empty numeric vector as
+
+```
+numeric(0)
+```
+
+.
+
+R also operates on objects called lists, which are of mode list. These are ordered sequences of objects which individually can be of any mode. lists are known as “recursive” rather than atomic structures since their components can themselves be lists in their own right.
+
+The other recursive structures are those of mode function and expression. Functions are the objects that form part of the R system along with similar user written functions, which we discuss in some detail later. Expressions as objects form an advanced part of R which will not be discussed in this guide, except indirectly when we discuss formulae used with modeling in R.
+
+By the mode of an object we mean the basic type of its
+fundamental constituents. This is a special case of a “property”
+of an object. Another property of every object is its length. The
+functions
+
+```
+mode(object)
+```
+
+and
+
+```
+length(object)
+```
+
+can be
+used to find out the mode and length of any defined structure
+11.
+
+Further properties of an object are usually provided by
+
+```
+attributes(object)
+```
+
+, see Getting and setting attributes.
+Because of this, mode and length are also called “intrinsic
+attributes” of an object.
+
+For example, if
+
+```
+z
+```
+
+is a complex vector of length 100, then in an
+expression
+
+```
+mode(z)
+```
+
+is the character string
+
+```
+"complex"
+```
+
+and
+
+```
+length(z)
+```
+
+is
+
+```
+100
+```
+
+.
+
+R caters for changes of mode almost anywhere it could be considered sensible to do so, (and a few where it might not be). For example with
+
+> > z <- 0:9
+
+we could put
+
+> > digits <- as.character(z)
+
+after which
+
+```
+digits
+```
+
+is the character vector
+
+```
+c("0", "1", "2",
+…, "9")
+```
+
+. A further coercion, or change of mode,
+reconstructs the numerical vector again:
+
+> > d <- as.integer(digits)
+
+Now
+
+```
+d
+```
+
+and
+
+```
+z
+```
+
+are the same.12 There is a
+large collection of functions of the form
+
+```
+as.something()
+```
+
+for either coercion from one mode to another, or for investing an object
+with some other attribute it may not already possess. The reader should
+consult the different help files to become familiar with them.
+--- passage ends ---
+
+[...]
+[NOTE] Sections 3.1 (rest) to 12 omitted.
+
+====================================================================================================
+BLOCK 9 - [13 Packages; 13.1 Standard packages; 13.2 Contributed packages and CRAN; 13.3 Namespaces] library(), install.packages(), search(), ::
+FETCHED: https://cran.r-project.org/doc/manuals/r-release/R-intro.html
+====================================================================================================
+--- passage begins ---
+All R functions and datasets are stored in packages. Only when a package is loaded are its contents available. This is done both for efficiency (the full list would take more memory and would take longer to search than a subset), and to aid package developers, who are protected from name clashes with other code. The process of developing packages is described in Creating R packages in Writing R Extensions. Here, we will describe them from a user’s point of view.
+
+To see which packages are installed at your site, issue the command
+
+> > library()
+
+with no arguments. To load a particular package (e.g., the boot package containing functions from Davison & Hinkley (1997)), use a command like
+
+> > library(boot)
+
+Users connected to the Internet can use the
+
+```
+install.packages()
+```
+
+and
+
+```
+update.packages()
+```
+
+functions (available through the
+
+```
+Packages
+```
+
+menu in the Windows and macOS GUIs, see Installing
+packages in R Installation and Administration) to install
+and update packages.
+
+To see which packages are currently loaded, use
+
+> > search()
+
+to display the search list. Some packages may be loaded but not available on the search list (see Namespaces): these will be included in the list given by
+
+> > loadedNamespaces()
+
+To see a list of all available help topics in an installed package, use
+
+> > help.start()
+
+to start the HTML help system, and then navigate to the package
+listing in the
+
+```
+Reference
+```
+
+section.
+
+The standard (or base) packages are considered part of the R source code. They contain the basic functions that allow R to work, and the datasets and standard statistical and graphical functions that are described in this manual. They should be automatically available in any R installation. For a complete list, see Which add-on packages exist for R? in R FAQ.
+
+There are thousands of contributed packages for R, written by many different authors. Some of these packages implement specialized statistical methods, others give access to data or hardware, and others are designed to complement textbooks. Some (the recommended packages) are distributed with every binary distribution of R. Most are available for download from CRAN (https://CRAN.R-project.org/ and its mirrors) and other repositories such as Bioconductor (https://www.bioconductor.org/). The R FAQ contains a list of CRAN packages current at the time of release, but the collection of available packages changes very frequently.
+
+Packages have namespaces, which do three things: they allow the package writer to hide functions and data that are meant only for internal use, they prevent functions from breaking when a user (or other package writer) picks a name that clashes with one in the package, and they provide a way to refer to an object within a particular package.
+
+For example,
+
+```
+t()
+```
+
+is the transpose function in R, but users
+might define their own function named
+
+```
+t
+```
+
+. Namespaces prevent
+the user’s definition from taking precedence, and breaking every
+function that tries to transpose a matrix.
+
+There are two operators that work with namespaces. The double-colon
+operator
+
+```
+::
+```
+
+selects definitions from a particular namespace.
+In the example above, the transpose function will always be available
+as
+
+```
+base::t
+```
+
+, because it is defined in the
+
+```
+base
+```
+
+package.
+Only functions that are exported from the package can be retrieved in
+this way.
+
+The triple-colon operator
+
+```
+:::
+```
+
+may be seen in a few places in R
+code: it acts like the double-colon operator but also allows access to
+hidden objects. Users are more likely to use the
+
+```
+getAnywhere()
+```
+
+function, which searches multiple packages.
+
+Packages are often inter-dependent, and loading one may cause others to be automatically loaded. The colon operators described above will also cause automatic loading of the associated package. When packages with namespaces are loaded automatically they are not added to the search list.
+--- passage ends ---
+
+[...]
+[NOTE] Chapter 14 and the rest of Appendix B before the Rscript passage omitted.
+
+====================================================================================================
+BLOCK 10 - [Appendix B, Scripting with R] Rscript
+FETCHED: https://cran.r-project.org/doc/manuals/r-release/R-intro.html
+====================================================================================================
+--- passage begins ---
+This is made simpler by the alternative front-end
+
+```
+Rscript
+```
+
+,
+which can be invoked by
+
+> Rscript foo.R arg1 arg2
+
+and this can also be used to write executable script files like (at least on Unix-alikes, and in some Windows shells)
+
+> #! /path/to/Rscript args <- commandArgs(TRUE) ... q(status=<exit status code>)
+
+If this is entered into a text file runfoo and this is made
+executable (by
+
+```
+chmod 755 runfoo
+```
+
+), it can be invoked for
+different arguments by
+
+> runfoo arg1 arg2
+
+For further options see
+
+```
+help("Rscript")
+```
+
+. This writes R
+output to stdout and stderr, and this can be redirected in
+the usual way for the shell running the command.
+
+If you do not wish to hardcode the path to
+
+```
+Rscript
+```
+
+but have it
+in your path (which is normally the case for an installed R except on
+Windows, but e.g. macOS users may need to add /usr/local/bin
+to their path), use
+
+> #! /usr/bin/env Rscript ...
+
+At least in Bourne and bash shells, the
+
+```
+#!
+```
+
+mechanism does
+not allow extra arguments like
+
+```
+#! /usr/bin/env Rscript --vanilla
+```
+
+.
+--- passage ends ---
+
+[...]
+[NOTE] End of the held excerpts. Everything not listed above is NOT held; absence of a passage from this file is not absence from the work.

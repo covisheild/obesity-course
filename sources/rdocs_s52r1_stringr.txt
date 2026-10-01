@@ -1,0 +1,191 @@
+STRINGR 1.5.1 — VERSION-MATCHED HELP PAGES FROM THE BOOK'S R 4.3.3 SANDBOX
+VERBATIM SOURCE PACK (EXCERPTS)
+============================================================
+
+Transcription rule for this file: every line between a [TEXT] and an [END TEXT] line is an exact,
+unaltered slice of a raw render made in the book's sandbox and saved under books/S52-R1/intake/raw/, cut
+programmatically (raw[i:j]) by books/S52-R1/intake/build-c/build.py and re-checked by verify.py as a
+whitespace-normalised substring of that render. Nothing has been paraphrased. Where material is left out,
+the omission is marked [...] in place. Lines beginning [NOTE] are this file's own annotation and are NOT
+source text. Quoted evidence in this header is cut the same way.
+
+LOCATORS: these are local documents, not web pages, so each block heading carries a locator, not a URL:
+  rhelp://<package>@<version>/<Rd name>     the installed help page (what ?topic shows in R)
+  rvignette://<package>@<version>/<name>    the installed vignette (what vignette("<name>") shows)
+  rfile://<package>@<version>/DESCRIPTION   the installed DESCRIPTION file, byte for byte
+The package's website shows the CURRENT version's documentation, which may differ from what is held here.
+
+HOW RENDERED (2026-10-02): R 4.3.3, in a UTF-8 locale, with options(useFancyQuotes = FALSE) so quotation
+marks print as straight ASCII ' and "; help pages by tools::Rd2txt(utils:::.getHelpFile(help(topic,
+package = pkg)), options = list(underline_titles = FALSE, width = 80)); vignettes from the installed HTML
+by xml2 1.3.6, taking h1-h4, p, pre, top-level li and table elements in document order (headings marked
+with #, list items with -, code and printed output as in the vignette's own <pre> blocks; images not
+held). Script: books/S52-R1/intake/build-c/render.R. Help pages print no output for their Examples: the
+code there is shown, not run.
+
+CITATION: Wickham, Hadley. stringr: Simple, Consistent Wrappers for Common String Operations. R package version 1.5.1, published on CRAN 2023-11-14. Help pages as installed.
+PACKAGE TITLE (from DESCRIPTION): "Title: Simple, Consistent Wrappers for Common String Operations"
+VERSION read with packageVersion() on 2026-10-02: "stringr 1.5.1"
+LICENCE: the installed DESCRIPTION file states
+  "License: MIT + file LICENSE"
+The LICENSE file it names is not present in the installed package (system.file("LICENSE",
+package = "stringr") returns ""), so its year and copyright-holder lines were not read.
+
+WHAT THIS FILE HOLDS: these help pages, each whole (description, usage, arguments, details, value, examples
+as code): str_trim (Rd "str_trim"); str_to_lower (Rd "case").
+The DESCRIPTION file, whole. Every other help page and vignette of the package is NOT held.
+
+VERSION WARNING: this is the documentation of the version the book's outputs were made with. Newer versions
+exist (see `tidyverse_news_s52r1` for what changed in dplyr, tidyr, readr and ggplot2). A reader on a newer
+version may see different text in ?topic. Current online reference (orientation only, not this text): https://stringr.tidyverse.org
+
+===============================================================================
+1. stringr::str_trim — help page "str_trim" (stringr 1.5.1), whole
+rhelp://stringr@1.5.1/str_trim
+===============================================================================
+
+[TEXT]
+str_trim                package:stringr                R Documentation
+
+Remove whitespace
+
+Description:
+
+     'str_trim()' removes whitespace from start and end of string;
+     'str_squish()' removes whitespace at the start and end, and
+     replaces all internal whitespace with a single space.
+
+Usage:
+
+     str_trim(string, side = c("both", "left", "right"))
+     
+     str_squish(string)
+     
+Arguments:
+
+  string: Input vector. Either a character vector, or something
+          coercible to one.
+
+    side: Side on which to remove whitespace: "left", "right", or
+          "both", the default.
+
+Value:
+
+     A character vector the same length as 'string'.
+
+See Also:
+
+     'str_pad()' to add whitespace
+
+Examples:
+
+     str_trim("  String with trailing and leading white space\t")
+     str_trim("\n\nString with trailing and leading white space\n\n")
+     
+     str_squish("  String with trailing,  middle, and leading white space\t")
+     str_squish("\n\nString with excess,  trailing and leading white   space\n\n")
+     
+[END TEXT]
+
+===============================================================================
+2. stringr::str_to_lower — help page "case" (stringr 1.5.1), whole
+rhelp://stringr@1.5.1/case
+===============================================================================
+
+[TEXT]
+case                  package:stringr                  R Documentation
+
+Convert string to upper case, lower case, title case, or sentence case
+
+Description:
+
+        • 'str_to_upper()' converts to upper case.
+
+        • 'str_to_lower()' converts to lower case.
+
+        • 'str_to_title()' converts to title case, where only the first
+          letter of each word is capitalized.
+
+        • 'str_to_sentence()' convert to sentence case, where only the
+          first letter of sentence is capitalized.
+
+Usage:
+
+     str_to_upper(string, locale = "en")
+     
+     str_to_lower(string, locale = "en")
+     
+     str_to_title(string, locale = "en")
+     
+     str_to_sentence(string, locale = "en")
+     
+Arguments:
+
+  string: Input vector. Either a character vector, or something
+          coercible to one.
+
+  locale: Locale to use for comparisons. See
+          'stringi::stri_locale_list()' for all possible options.
+          Defaults to "en" (English) to ensure that default behaviour
+          is consistent across platforms.
+
+Value:
+
+     A character vector the same length as 'string'.
+
+Examples:
+
+     dog <- "The quick brown dog"
+     str_to_upper(dog)
+     str_to_lower(dog)
+     str_to_title(dog)
+     str_to_sentence("the quick brown dog")
+     
+     # Locale matters!
+     str_to_upper("i") # English
+     str_to_upper("i", "tr") # Turkish
+     
+[END TEXT]
+
+===============================================================================
+3. DESCRIPTION file of stringr 1.5.1, whole (title, authors, licence, version, publication date)
+rfile://stringr@1.5.1/DESCRIPTION
+===============================================================================
+
+[TEXT]
+Package: stringr
+Title: Simple, Consistent Wrappers for Common String Operations
+Version: 1.5.1
+Authors@R: c(
+    person("Hadley", "Wickham", , "hadley@posit.co", role = c("aut", "cre", "cph")),
+    person("Posit Software, PBC", role = c("cph", "fnd"))
+  )
+Description: A consistent, simple and easy to use set of wrappers around
+    the fantastic 'stringi' package. All function and argument names (and
+    positions) are consistent, all functions deal with "NA"'s and zero
+    length vectors in the same way, and the output from one function is
+    easy to feed into the input of another.
+License: MIT + file LICENSE
+URL: https://stringr.tidyverse.org,
+        https://github.com/tidyverse/stringr
+BugReports: https://github.com/tidyverse/stringr/issues
+Depends: R (>= 3.6)
+Imports: cli, glue (>= 1.6.1), lifecycle (>= 1.0.3), magrittr, rlang
+        (>= 1.0.0), stringi (>= 1.5.3), vctrs (>= 0.4.0)
+Suggests: covr, dplyr, gt, htmltools, htmlwidgets, knitr, rmarkdown,
+        testthat (>= 3.0.0), tibble
+VignetteBuilder: knitr
+Config/Needs/website: tidyverse/tidytemplate
+Config/testthat/edition: 3
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 7.2.3
+NeedsCompilation: no
+Packaged: 2023-11-14 15:03:52 UTC; hadleywickham
+Author: Hadley Wickham [aut, cre, cph],
+  Posit Software, PBC [cph, fnd]
+Maintainer: Hadley Wickham <hadley@posit.co>
+Repository: CRAN
+Date/Publication: 2023-11-14 23:10:02 UTC
+Built: R 4.3.2; ; 'Tue, 21 Nov 2023 21:12:55 +0100'; unix
+[END TEXT]

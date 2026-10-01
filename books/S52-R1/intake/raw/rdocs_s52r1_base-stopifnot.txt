@@ -1,0 +1,154 @@
+stopifnot                 package:base                 R Documentation
+
+Ensure the Truth of R Expressions
+
+Description:
+
+     If any of the expressions (in '...' or 'exprs') are not 'all'
+     'TRUE', 'stop' is called, producing an error message indicating
+     the _first_ expression which was not ('all') true.
+
+Usage:
+
+     stopifnot(..., exprs, exprObject, local = TRUE)
+     
+Arguments:
+
+..., exprs: any number of R expressions, which should each evaluate to
+          (a logical vector of all) 'TRUE'.  Use _either_ '...' _or_
+          'exprs', the latter typically an unevaluated expression of
+          the form
+
+          {
+             expr1
+             expr2
+             ....
+          }
+          
+          Note that e.g., positive numbers are _not_ 'TRUE', even when
+          they are coerced to 'TRUE', e.g., inside 'if(.)' or in
+          arithmetic computations in R.
+
+          If names are provided to '...', they will be used in lieu of
+          the default error message.
+
+exprObject: alternative to 'exprs' or '...': an 'expression-like'
+          object, typically an 'expression', but also a 'call', a
+          'name', or atomic constant such as 'TRUE'.
+
+   local: (only when 'exprs' is used:) indicates the 'environment' in
+          which the expressions should be evaluated; by default the one
+          from where 'stopifnot()' has been called.
+
+Details:
+
+     This function is intended for use in regression tests or also
+     argument checking of functions, in particular to make them easier
+     to read.
+
+     'stopifnot(A, B)' or equivalently 'stopifnot(exprs= {A ; B})' are
+     conceptually equivalent to
+
+      { if(any(is.na(A)) || !all(A)) stop(...);
+        if(any(is.na(B)) || !all(B)) stop(...) }
+     
+     Since R version 3.6.0, 'stopifnot()' no longer handles potential
+     errors or warnings (by 'tryCatch()' etc) for each single
+     expression and may use 'sys.call(n)' to get a meaningful and short
+     error message in case an expression did not evaluate to all TRUE.
+     This provides considerably less overhead.
+
+     Since R version 3.5.0, expressions _are_ evaluated sequentially,
+     and hence evaluation stops as soon as there is a "non-TRUE", as
+     indicated by the above conceptual equivalence statement.
+
+     Also, since R version 3.5.0, 'stopifnot(exprs = { ... })' can be
+     used alternatively and may be preferable in the case of several
+     expressions, as they are more conveniently evaluated interactively
+     ("no extraneous ',' ").
+
+     Since R version 3.4.0, when an expression (from '...') is not true
+     _and_ is a call to 'all.equal', the error message will report the
+     (first part of the) differences reported by 'all.equal(*)'; since
+     R 4.3.0, this happens for all calls where '"all.equal"'
+     'pmatch()'es the function called, e.g., when that is called
+     'all.equalShow', see the example in 'all.equal'.
+
+Value:
+
+     ('NULL' if all statements in '...' are 'TRUE'.)
+
+Note:
+
+     Trying to use the 'stopifnot(exprs = ..)' version via a shortcut,
+     say,
+
+      assertWRONG <- function(exprs) stopifnot(exprs = exprs) 
+     
+     is delicate and the above is _not a good idea_.  Contrary to
+     'stopifnot()' which takes care to evaluate the parts of 'exprs'
+     one by one and stop at the first non-TRUE, the above short cut
+     would typically evaluate all parts of 'exprs' and pass the result,
+     i.e., typically of the _last_ entry of 'exprs' to 'stopifnot()'.
+
+     However, a more careful version,
+
+      assert <- function(exprs) eval.parent(substitute(stopifnot(exprs = exprs))) 
+     
+     may be a nice short cut for 'stopifnot(exprs = *)' calls using the
+     more commonly known verb as function name.
+
+See Also:
+
+     'stop', 'warning'; 'assertCondition' in package 'tools'
+     complements 'stopifnot()' for testing warnings and errors.
+
+Examples:
+
+     ## NB: Some of these examples are expected to produce an error. To
+     ##     prevent them from terminating a run with example() they are
+     ##     piped into a call to try().
+     
+     stopifnot(1 == 1, all.equal(pi, 3.14159265), 1 < 2) # all TRUE
+     
+     m <- matrix(c(1,3,3,1), 2, 2)
+     stopifnot(m == t(m), diag(m) == rep(1, 2)) # all(.) |=>  TRUE
+     
+     stopifnot(length(10)) |> try() # gives an error: '1' is *not* TRUE
+     ## even when   if(1) "ok"   works
+     
+     stopifnot(all.equal(pi, 3.141593),  2 < 2, (1:10 < 12), "a" < "b") |> try()
+     ## More convenient for interactive "line by line" evaluation:
+     stopifnot(exprs = {
+       all.equal(pi, 3.1415927)
+       2 < 2
+       1:10 < 12
+       "a" < "b"
+     }) |> try()
+     
+     eObj <- expression(2 < 3, 3 <= 3:6, 1:10 < 2)
+     stopifnot(exprObject = eObj) |> try()
+     stopifnot(exprObject = quote(3 == 3))
+     stopifnot(exprObject = TRUE)
+     
+     
+     # long all.equal() error messages are abbreviated:
+     stopifnot(all.equal(rep(list(pi),4), list(3.1, 3.14, 3.141, 3.1415))) |> try()
+     
+     # The default error message can be overridden to be more informative:
+     m[1,2] <- 12
+     stopifnot("m must be symmetric"= m == t(m)) |> try()
+     #=> Error: m must be symmetric
+     
+     ##' warnifnot(): a "only-warning" version of stopifnot()
+     ##'   {Yes, learn how to use do.call(substitute, ...) in a powerful manner !!}
+     warnifnot <- stopifnot ; N <- length(bdy <- body(warnifnot))
+     bdy        <- do.call(substitute, list(bdy,   list(stopifnot = quote(warnifnot))))
+     bdy[[N-1]] <- do.call(substitute, list(bdy[[N-1]], list(stop = quote(warning))))
+     body(warnifnot) <- bdy
+     warnifnot(1 == 1, 1 < 2, 2 < 2) # => warns " 2 < 2 is not TRUE  "
+     warnifnot(exprs = {
+         1 == 1
+         3 < 3  # => warns "3 < 3 is not TRUE"
+     })
+     

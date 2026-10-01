@@ -1,0 +1,1558 @@
+BASE 4.3.3 — VERSION-MATCHED HELP PAGES FROM THE BOOK'S R 4.3.3 SANDBOX
+VERBATIM SOURCE PACK (EXCERPTS)
+============================================================
+
+Transcription rule for this file: every line between a [TEXT] and an [END TEXT] line is an exact,
+unaltered slice of a raw render made in the book's sandbox and saved under books/S52-R1/intake/raw/, cut
+programmatically (raw[i:j]) by books/S52-R1/intake/build-c/build.py and re-checked by verify.py as a
+whitespace-normalised substring of that render. Nothing has been paraphrased. Where material is left out,
+the omission is marked [...] in place. Lines beginning [NOTE] are this file's own annotation and are NOT
+source text. Quoted evidence in this header is cut the same way.
+
+LOCATORS: these are local documents, not web pages, so each block heading carries a locator, not a URL:
+  rhelp://<package>@<version>/<Rd name>     the installed help page (what ?topic shows in R)
+  rvignette://<package>@<version>/<name>    the installed vignette (what vignette("<name>") shows)
+  rfile://<package>@<version>/DESCRIPTION   the installed DESCRIPTION file, byte for byte
+The package's website shows the CURRENT version's documentation, which may differ from what is held here.
+
+HOW RENDERED (2026-10-02): R 4.3.3, in a UTF-8 locale, with options(useFancyQuotes = FALSE) so quotation
+marks print as straight ASCII ' and "; help pages by tools::Rd2txt(utils:::.getHelpFile(help(topic,
+package = pkg)), options = list(underline_titles = FALSE, width = 80)); vignettes from the installed HTML
+by xml2 1.3.6, taking h1-h4, p, pre, top-level li and table elements in document order (headings marked
+with #, list items with -, code and printed output as in the vignette's own <pre> blocks; images not
+held). Script: books/S52-R1/intake/build-c/render.R. Help pages print no output for their Examples: the
+code there is shown, not run.
+
+CITATION: R Core Team. The R Base Package, part of R 4.3.3 (2024-02-29). Help pages as installed.
+PACKAGE TITLE (from DESCRIPTION): "Title: The R Base Package"
+VERSION read with packageVersion() on 2026-10-02: "base 4.3.3"
+LICENCE: the installed DESCRIPTION file states
+  "License: Part of R 4.3.3"
+and R itself, asked with R --version, states:
+  R is free software and comes with ABSOLUTELY NO WARRANTY.
+  You are welcome to redistribute it under the terms of the
+  GNU General Public License versions 2 or 3.
+
+WHAT THIS FILE HOLDS: these help pages, each whole (description, usage, arguments, details, value, examples
+as code): mean (Rd "mean"); NA, is.na (Rd "NA"); c (Rd "c"); stopifnot (Rd "stopifnot"); source (Rd "source"); set.seed (Rd "Random"); round (Rd "Round"); library (Rd "library").
+The DESCRIPTION file, whole. Pages marked [extra] were not in the intake brief's list and were added because S52-R1's
+inventory uses them (C05, C06, C11-C13, C16, C19). Every other help page and vignette of the package is NOT held.
+
+VERSION WARNING: this is the documentation of the version the book's outputs were made with. Newer versions
+exist (see `tidyverse_news_s52r1` for what changed in dplyr, tidyr, readr and ggplot2). A reader on a newer
+version may see different text in ?topic. Current online reference (orientation only, not this text): none (base R documentation ships with R itself; R-project.org hosts the current release only)
+
+===============================================================================
+1. base::mean — help page "mean" (base 4.3.3), whole
+rhelp://base@4.3.3/mean
+===============================================================================
+
+[TEXT]
+mean                   package:base                    R Documentation
+
+Arithmetic Mean
+
+Description:
+
+     Generic function for the (trimmed) arithmetic mean.
+
+Usage:
+
+     mean(x, ...)
+     
+     ## Default S3 method:
+     mean(x, trim = 0, na.rm = FALSE, ...)
+     
+Arguments:
+
+       x: An R object.  Currently there are methods for numeric/logical
+          vectors and date, date-time and time interval objects.
+          Complex vectors are allowed for 'trim = 0', only.
+
+    trim: the fraction (0 to 0.5) of observations to be trimmed from
+          each end of 'x' before the mean is computed.  Values of trim
+          outside that range are taken as the nearest endpoint.
+
+   na.rm: a logical evaluating to 'TRUE' or 'FALSE' indicating whether
+          'NA' values should be stripped before the computation
+          proceeds.
+
+     ...: further arguments passed to or from other methods.
+
+Value:
+
+     If 'trim' is zero (the default), the arithmetic mean of the values
+     in 'x' is computed, as a numeric or complex vector of length one.
+     If 'x' is not logical (coerced to numeric), numeric (including
+     integer) or complex, 'NA_real_' is returned, with a warning.
+
+     If 'trim' is non-zero, a symmetrically trimmed mean is computed
+     with a fraction of 'trim' observations deleted from each end
+     before the mean is computed.
+
+References:
+
+     Becker, R. A., Chambers, J. M. and Wilks, A. R. (1988) _The New S
+     Language_.  Wadsworth & Brooks/Cole.
+
+See Also:
+
+     'weighted.mean', 'mean.POSIXct', 'colMeans' for row and column
+     means.
+
+Examples:
+
+     x <- c(0:10, 50)
+     xm <- mean(x)
+     c(xm, mean(x, trim = 0.10))
+     
+[END TEXT]
+
+===============================================================================
+2. base::NA, base::is.na — help page "NA" (base 4.3.3), whole
+rhelp://base@4.3.3/NA
+===============================================================================
+
+[TEXT]
+NA                    package:base                     R Documentation
+
+'Not Available' / Missing Values
+
+Description:
+
+     'NA' is a logical constant of length 1 which contains a missing
+     value indicator.  'NA' can be coerced to any other vector type
+     except raw.  There are also constants 'NA_integer_', 'NA_real_',
+     'NA_complex_' and 'NA_character_' of the other atomic vector types
+     which support missing values: all of these are reserved words in
+     the R language.
+
+     The generic function 'is.na' indicates which elements are missing.
+
+     The generic function 'is.na<-' sets elements to 'NA'.
+
+     The generic function 'anyNA' implements 'any(is.na(x))' in a
+     possibly faster way (especially for atomic vectors).
+
+Usage:
+
+     NA
+     is.na(x)
+     anyNA(x, recursive = FALSE)
+     
+     ## S3 method for class 'data.frame'
+     is.na(x)
+     
+     is.na(x) <- value
+     
+Arguments:
+
+       x: an R object to be tested: the default method for 'is.na' and
+          'anyNA' handle atomic vectors, lists, pairlists, and 'NULL'.
+
+recursive: logical: should 'anyNA' be applied recursively to lists and
+          pairlists?
+
+   value: a suitable index vector for use with 'x'.
+
+Details:
+
+     The 'NA' of character type is distinct from the string '"NA"'.
+     Programmers who need to specify an explicit missing string should
+     use 'NA_character_' (rather than '"NA"') or set elements to 'NA'
+     using 'is.na<-'.
+
+     'is.na' and 'anyNA' are generic: you can write methods to handle
+     specific classes of objects, see InternalMethods.
+
+     Function 'is.na<-' may provide a safer way to set missingness.  It
+     behaves differently for factors, for example.
+
+     Numerical computations using 'NA' will normally result in 'NA': a
+     possible exception is where 'NaN' is also involved, in which case
+     either might result (which may depend on the R platform).
+     However, this is not guaranteed and future CPUs and/or compilers
+     may behave differently. Dynamic binary translation may also impact
+     this behavior (with valgrind, computations using 'NA' may result
+     in 'NaN' even when no 'NaN' is involved).
+
+     Logical computations treat 'NA' as a missing 'TRUE/FALSE' value,
+     and so may return 'TRUE' or 'FALSE' if the expression does not
+     depend on the 'NA' operand.
+
+     The default method for 'anyNA' handles atomic vectors without a
+     class and 'NULL'.  It calls 'any(is.na(x))' on objects with
+     classes and for 'recursive = FALSE', on lists and pairlists.
+
+Value:
+
+     The default method for 'is.na' applied to an atomic vector returns
+     a logical vector of the same length as its argument 'x',
+     containing 'TRUE' for those elements marked 'NA' or, for numeric
+     or complex vectors, 'NaN', and 'FALSE' otherwise. (A complex value
+     is regarded as 'NA' if either its real or imaginary part is 'NA'
+     or 'NaN'.)  'dim', 'dimnames' and 'names' attributes are copied to
+     the result.
+
+     The default methods also work for lists and pairlists:
+     For 'is.na', elementwise the result is false unless that element
+     is a length-one atomic vector and the single element of that
+     vector is regarded as 'NA' or 'NaN' (note that any 'is.na' method
+     for the class of the element is ignored).
+     'anyNA(recursive = FALSE)' works the same way as 'is.na';
+     'anyNA(recursive = TRUE)' applies 'anyNA' (with method dispatch)
+     to each element.
+
+     The data frame method for 'is.na' returns a logical matrix with
+     the same dimensions as the data frame, and with dimnames taken
+     from the row and column names of the data frame.
+
+     'anyNA(NULL)' is false; 'is.na(NULL)' is 'logical(0)' (no longer
+     warning since R version 3.5.0).
+
+References:
+
+     Becker, R. A., Chambers, J. M. and Wilks, A. R. (1988) _The New S
+     Language_.  Wadsworth & Brooks/Cole.
+
+     Chambers, J. M. (1998) _Programming with Data.  A Guide to the S
+     Language_.  Springer.
+
+See Also:
+
+     'NaN', 'is.nan', etc., and the utility function 'complete.cases'.
+
+     'na.action', 'na.omit', 'na.fail' on how methods can be tuned to
+     deal with missing values.
+
+Examples:
+
+     is.na(c(1, NA))        #> FALSE  TRUE
+     is.na(paste(c(1, NA))) #> FALSE FALSE
+     
+     (xx <- c(0:4))
+     is.na(xx) <- c(2, 4)
+     xx                     #> 0 NA  2 NA  4
+     anyNA(xx) # TRUE
+     
+     # Some logical operations do not return NA
+     c(TRUE, FALSE) & NA
+     c(TRUE, FALSE) | NA
+     
+     
+     ## Measure speed difference in a favourable case:
+     ## the difference depends on the platform, on most ca 3x.
+     x <- 1:10000; x[5000] <- NaN  # coerces x to be double
+     if(require("microbenchmark")) { # does not work reliably on all platforms
+       print(microbenchmark(any(is.na(x)), anyNA(x)))
+     } else {
+       nSim <- 2^13
+       print(rbind(is.na = system.time(replicate(nSim, any(is.na(x)))),
+                   anyNA = system.time(replicate(nSim, anyNA(x)))))
+     }
+     
+     
+     ## anyNA() can work recursively with list()s:
+     LL <- list(1:5, c(NA, 5:8), c("A","NA"), c("a", NA_character_))
+     L2 <- LL[c(1,3)]
+     sapply(LL, anyNA); c(anyNA(LL), anyNA(LL, TRUE))
+     sapply(L2, anyNA); c(anyNA(L2), anyNA(L2, TRUE))
+     
+     ## ... lists, and hence data frames, too:
+     dN <- dd <- USJudgeRatings; dN[3,6] <- NA
+     anyNA(dd) # FALSE
+     anyNA(dN) # TRUE
+     
+[END TEXT]
+
+===============================================================================
+3. base::c — help page "c" (base 4.3.3), whole
+rhelp://base@4.3.3/c
+===============================================================================
+
+[TEXT]
+c                     package:base                     R Documentation
+
+Combine Values into a Vector or List
+
+Description:
+
+     This is a generic function which combines its arguments.
+
+     The default method combines its arguments to form a vector.  All
+     arguments are coerced to a common type which is the type of the
+     returned value, and all attributes except names are removed.
+
+Usage:
+
+     ## S3 Generic function
+     c(...)
+     
+     ## Default S3 method:
+     c(..., recursive = FALSE, use.names = TRUE)
+     
+Arguments:
+
+     ...: objects to be concatenated.  All 'NULL' entries are dropped
+          before method dispatch unless at the very beginning of the
+          argument list.
+
+recursive: logical.  If 'recursive = TRUE', the function recursively
+          descends through lists (and pairlists) combining all their
+          elements into a vector.
+
+use.names: logical indicating if 'names' should be preserved.
+
+Details:
+
+     The output type is determined from the highest type of the
+     components in the hierarchy NULL < raw < logical < integer <
+     double < complex < character < list < expression.  Pairlists are
+     treated as lists, whereas non-vector components (such as 'name's /
+     'symbol's and 'call's) are treated as one-element 'list's which
+     cannot be unlisted even if 'recursive = TRUE'.
+
+     There is a 'c.factor' method which combines factors into a factor.
+
+     'c' is sometimes used for its side effect of removing attributes
+     except names, for example to turn an 'array' into a vector.
+     'as.vector' is a more intuitive way to do this, but also drops
+     names.  Note that methods other than the default are not required
+     to do this (and they will almost certainly preserve a class
+     attribute).
+
+     This is a primitive function.
+
+Value:
+
+     'NULL' or an expression or a vector of an appropriate mode.  (With
+     no arguments the value is 'NULL'.)
+
+S4 methods:
+
+     This function is S4 generic, but with argument list '(x, ...)'.
+
+References:
+
+     Becker, R. A., Chambers, J. M. and Wilks, A. R. (1988) _The New S
+     Language_.  Wadsworth & Brooks/Cole.
+
+See Also:
+
+     'unlist' and 'as.vector' to produce attribute-free vectors.
+
+Examples:
+
+     c(1,7:9)
+     c(1:5, 10.5, "next")
+     
+     ## uses with a single argument to drop attributes
+     x <- 1:4
+     names(x) <- letters[1:4]
+     x
+     c(x)          # has names
+     as.vector(x)  # no names
+     dim(x) <- c(2,2)
+     x
+     c(x)
+     as.vector(x)
+     
+     ## append to a list:
+     ll <- list(A = 1, c = "C")
+     ## do *not* use
+     c(ll, d = 1:3) # which is == c(ll, as.list(c(d = 1:3)))
+     ## but rather
+     c(ll, d = list(1:3))  # c() combining two lists
+     
+     c(list(A = c(B = 1)), recursive = TRUE)
+     
+     c(options(), recursive = TRUE)
+     c(list(A = c(B = 1, C = 2), B = c(E = 7)), recursive = TRUE)
+     
+[END TEXT]
+
+===============================================================================
+4. base::stopifnot — help page "stopifnot" (base 4.3.3), whole
+rhelp://base@4.3.3/stopifnot
+===============================================================================
+
+[TEXT]
+stopifnot                 package:base                 R Documentation
+
+Ensure the Truth of R Expressions
+
+Description:
+
+     If any of the expressions (in '...' or 'exprs') are not 'all'
+     'TRUE', 'stop' is called, producing an error message indicating
+     the _first_ expression which was not ('all') true.
+
+Usage:
+
+     stopifnot(..., exprs, exprObject, local = TRUE)
+     
+Arguments:
+
+..., exprs: any number of R expressions, which should each evaluate to
+          (a logical vector of all) 'TRUE'.  Use _either_ '...' _or_
+          'exprs', the latter typically an unevaluated expression of
+          the form
+
+          {
+             expr1
+             expr2
+             ....
+          }
+          
+          Note that e.g., positive numbers are _not_ 'TRUE', even when
+          they are coerced to 'TRUE', e.g., inside 'if(.)' or in
+          arithmetic computations in R.
+
+          If names are provided to '...', they will be used in lieu of
+          the default error message.
+
+exprObject: alternative to 'exprs' or '...': an 'expression-like'
+          object, typically an 'expression', but also a 'call', a
+          'name', or atomic constant such as 'TRUE'.
+
+   local: (only when 'exprs' is used:) indicates the 'environment' in
+          which the expressions should be evaluated; by default the one
+          from where 'stopifnot()' has been called.
+
+Details:
+
+     This function is intended for use in regression tests or also
+     argument checking of functions, in particular to make them easier
+     to read.
+
+     'stopifnot(A, B)' or equivalently 'stopifnot(exprs= {A ; B})' are
+     conceptually equivalent to
+
+      { if(any(is.na(A)) || !all(A)) stop(...);
+        if(any(is.na(B)) || !all(B)) stop(...) }
+     
+     Since R version 3.6.0, 'stopifnot()' no longer handles potential
+     errors or warnings (by 'tryCatch()' etc) for each single
+     expression and may use 'sys.call(n)' to get a meaningful and short
+     error message in case an expression did not evaluate to all TRUE.
+     This provides considerably less overhead.
+
+     Since R version 3.5.0, expressions _are_ evaluated sequentially,
+     and hence evaluation stops as soon as there is a "non-TRUE", as
+     indicated by the above conceptual equivalence statement.
+
+     Also, since R version 3.5.0, 'stopifnot(exprs = { ... })' can be
+     used alternatively and may be preferable in the case of several
+     expressions, as they are more conveniently evaluated interactively
+     ("no extraneous ',' ").
+
+     Since R version 3.4.0, when an expression (from '...') is not true
+     _and_ is a call to 'all.equal', the error message will report the
+     (first part of the) differences reported by 'all.equal(*)'; since
+     R 4.3.0, this happens for all calls where '"all.equal"'
+     'pmatch()'es the function called, e.g., when that is called
+     'all.equalShow', see the example in 'all.equal'.
+
+Value:
+
+     ('NULL' if all statements in '...' are 'TRUE'.)
+
+Note:
+
+     Trying to use the 'stopifnot(exprs = ..)' version via a shortcut,
+     say,
+
+      assertWRONG <- function(exprs) stopifnot(exprs = exprs) 
+     
+     is delicate and the above is _not a good idea_.  Contrary to
+     'stopifnot()' which takes care to evaluate the parts of 'exprs'
+     one by one and stop at the first non-TRUE, the above short cut
+     would typically evaluate all parts of 'exprs' and pass the result,
+     i.e., typically of the _last_ entry of 'exprs' to 'stopifnot()'.
+
+     However, a more careful version,
+
+      assert <- function(exprs) eval.parent(substitute(stopifnot(exprs = exprs))) 
+     
+     may be a nice short cut for 'stopifnot(exprs = *)' calls using the
+     more commonly known verb as function name.
+
+See Also:
+
+     'stop', 'warning'; 'assertCondition' in package 'tools'
+     complements 'stopifnot()' for testing warnings and errors.
+
+Examples:
+
+     ## NB: Some of these examples are expected to produce an error. To
+     ##     prevent them from terminating a run with example() they are
+     ##     piped into a call to try().
+     
+     stopifnot(1 == 1, all.equal(pi, 3.14159265), 1 < 2) # all TRUE
+     
+     m <- matrix(c(1,3,3,1), 2, 2)
+     stopifnot(m == t(m), diag(m) == rep(1, 2)) # all(.) |=>  TRUE
+     
+     stopifnot(length(10)) |> try() # gives an error: '1' is *not* TRUE
+     ## even when   if(1) "ok"   works
+     
+     stopifnot(all.equal(pi, 3.141593),  2 < 2, (1:10 < 12), "a" < "b") |> try()
+     ## More convenient for interactive "line by line" evaluation:
+     stopifnot(exprs = {
+       all.equal(pi, 3.1415927)
+       2 < 2
+       1:10 < 12
+       "a" < "b"
+     }) |> try()
+     
+     eObj <- expression(2 < 3, 3 <= 3:6, 1:10 < 2)
+     stopifnot(exprObject = eObj) |> try()
+     stopifnot(exprObject = quote(3 == 3))
+     stopifnot(exprObject = TRUE)
+     
+     
+     # long all.equal() error messages are abbreviated:
+     stopifnot(all.equal(rep(list(pi),4), list(3.1, 3.14, 3.141, 3.1415))) |> try()
+     
+     # The default error message can be overridden to be more informative:
+     m[1,2] <- 12
+     stopifnot("m must be symmetric"= m == t(m)) |> try()
+     #=> Error: m must be symmetric
+     
+     ##' warnifnot(): a "only-warning" version of stopifnot()
+     ##'   {Yes, learn how to use do.call(substitute, ...) in a powerful manner !!}
+     warnifnot <- stopifnot ; N <- length(bdy <- body(warnifnot))
+     bdy        <- do.call(substitute, list(bdy,   list(stopifnot = quote(warnifnot))))
+     bdy[[N-1]] <- do.call(substitute, list(bdy[[N-1]], list(stop = quote(warning))))
+     body(warnifnot) <- bdy
+     warnifnot(1 == 1, 1 < 2, 2 < 2) # => warns " 2 < 2 is not TRUE  "
+     warnifnot(exprs = {
+         1 == 1
+         3 < 3  # => warns "3 < 3 is not TRUE"
+     })
+     
+[END TEXT]
+
+===============================================================================
+5. base::source — help page "source" (base 4.3.3), whole
+rhelp://base@4.3.3/source
+===============================================================================
+
+[TEXT]
+source                  package:base                   R Documentation
+
+Read R Code from a File, a Connection or Expressions
+
+Description:
+
+     'source' causes R to accept its input from the named file or URL
+     or connection or expressions directly.  Input is read and 'parse'd
+     from that file until the end of the file is reached, then the
+     parsed expressions are evaluated sequentially in the chosen
+     environment.
+
+     'withAutoprint(exprs)' is a wrapper for 'source(exprs = exprs,
+     ..)' with different defaults.  Its main purpose is to evaluate and
+     auto-print expressions as if in a toplevel context, e.g, as in the
+     R console.
+
+Usage:
+
+     source(file, local = FALSE, echo = verbose, print.eval = echo,
+            exprs, spaced = use_file,
+            verbose = getOption("verbose"),
+            prompt.echo = getOption("prompt"),
+            max.deparse.length = 150, width.cutoff = 60L,
+            deparseCtrl = "showAttributes",
+            chdir = FALSE,
+            encoding = getOption("encoding"),
+            continue.echo = getOption("continue"),
+            skip.echo = 0, keep.source = getOption("keep.source"))
+     
+     withAutoprint(exprs, evaluated = FALSE, local = parent.frame(),
+                   print. = TRUE, echo = TRUE, max.deparse.length = Inf,
+                   width.cutoff = max(20, getOption("width")),
+                   deparseCtrl = c("keepInteger", "showAttributes", "keepNA"),
+                   ...)
+     
+Arguments:
+
+    file: a connection or a character string giving the pathname of the
+          file or URL to read from.  The 'stdin()' connection reads
+          from the console when interactive.
+
+   local: 'TRUE', 'FALSE' or an environment, determining where the
+          parsed expressions are evaluated.  'FALSE' (the default)
+          corresponds to the user's workspace (the global environment)
+          and 'TRUE' to the environment from which 'source' is called.
+
+    echo: logical; if 'TRUE', each expression is printed after parsing,
+          before evaluation.
+
+print.eval, print.: logical; if 'TRUE', the result of 'eval(i)' is
+          printed for each expression 'i'; defaults to the value of
+          'echo'.
+
+   exprs: for 'source()' and 'withAutoprint(*, evaluated=TRUE)':
+          _instead_ of specifying 'file', an 'expression', 'call', or
+          'list' of 'call''s, but _not_ an unevaluated "expression".
+
+          for 'withAutoprint()' (with default 'evaluated=FALSE'): one
+          or more unevaluated "expressions".
+
+evaluated: logical indicating that 'exprs' is passed to 'source(exprs=
+          *)' and hence must be evaluated, i.e., a formal 'expression',
+          'call' or 'list' of calls.
+
+  spaced: logical indicating if newline (hence empty line) should be
+          printed before each expression (when 'echo = TRUE').
+
+ verbose: if 'TRUE', more diagnostics (than just 'echo = TRUE') are
+          printed during parsing and evaluation of input, including
+          extra info for *each* expression.
+
+prompt.echo: character; gives the prompt to be used if 'echo = TRUE'.
+
+max.deparse.length: integer; is used only if 'echo' is 'TRUE' and gives
+          the maximal number of characters output for the deparse of a
+          single expression.
+
+width.cutoff: integer, passed to 'deparse()' which is used (only) when
+          there are no source references.
+
+deparseCtrl: 'character' vector, passed as 'control' to 'deparse()',
+          see also '.deparseOpts'.  In R version <= 3.3.x, this was
+          hardcoded to '"showAttributes"', which is the default
+          currently; 'deparseCtrl = "all"' may be preferable, when
+          strict back compatibility is not of importance.
+
+   chdir: logical; if 'TRUE' and 'file' is a pathname, the R working
+          directory is temporarily changed to the directory containing
+          'file' for evaluating.
+
+encoding: character vector.  The encoding(s) to be assumed when 'file'
+          is a character string: see 'file'.  A possible value is
+          '"unknown"' when the encoding is guessed: see the 'Encodings'
+          section.
+
+continue.echo: character; gives the prompt to use on continuation lines
+          if 'echo = TRUE'.
+
+skip.echo: integer; how many comment lines at the start of the file to
+          skip if 'echo = TRUE'.
+
+keep.source: logical: should the source formatting be retained when
+          echoing expressions, if possible?
+
+     ...: (for 'withAutoprint()':) further (non-file related) arguments
+          to be passed to 'source(.)'.
+
+Details:
+
+     Note that running code via 'source' differs in a few respects from
+     entering it at the R command line.  Since expressions are not
+     executed at the top level, auto-printing is not done.  So you will
+     need to include explicit 'print' calls for things you want to be
+     printed (and remember that this includes plotting by 'lattice',
+     FAQ Q7.22).  Since the complete file is parsed before any of it is
+     run, syntax errors result in none of the code being run.  If an
+     error occurs in running a syntactically correct script, anything
+     assigned into the workspace by code that has been run will be kept
+     (just as from the command line), but diagnostic information such
+     as 'traceback()' will contain additional calls to 'withVisible'.
+
+     All versions of R accept input from a connection with end of line
+     marked by LF (as used on Unix), CRLF (as used on DOS/Windows) or
+     CR (as used on classic Mac OS) and map this to newline.  The final
+     line can be incomplete, that is missing the final end-of-line
+     marker.
+
+     If 'keep.source' is true (the default in interactive use), the
+     source of functions is kept so they can be listed exactly as
+     input.
+
+     Unlike input from a console, lines in the file or on a connection
+     can contain an unlimited number of characters.
+
+     When 'skip.echo > 0', that many comment lines at the start of the
+     file will not be echoed.  This does not affect the execution of
+     the code at all.  If there are executable lines within the first
+     'skip.echo' lines, echoing will start with the first of them.
+
+     If 'echo' is true and a deparsed expression exceeds
+     'max.deparse.length', that many characters are output followed by
+     ' .... [TRUNCATED] '.
+
+Encodings:
+
+     By default the input is read and parsed in the current encoding of
+     the R session.  This is usually what is required, but occasionally
+     re-encoding is needed, e.g. if a file from a UTF-8-using system is
+     to be read on Windows (or _vice versa_).
+
+     The rest of this paragraph applies if 'file' is an actual filename
+     or URL (and not a connection).  If 'encoding = "unknown"', an
+     attempt is made to guess the encoding: the result of
+     'localeToCharset()' is used as a guide.  If 'encoding' has two or
+     more elements, they are tried in turn until the file/URL can be
+     read without error in the trial encoding.  If an actual 'encoding'
+     is specified (rather than the default or '"unknown"') in a Latin-1
+     or UTF-8 locale then character strings in the result will be
+     translated to the current encoding and marked as such (see
+     'Encoding').
+
+     If 'file' is a connection, it is not possible to re-encode the
+     input inside 'source', and so the 'encoding' argument is just used
+     to mark character strings in the parsed input in Latin-1 and UTF-8
+     locales: see 'parse'.
+
+References:
+
+     Becker, R. A., Chambers, J. M. and Wilks, A. R. (1988) _The New S
+     Language_.  Wadsworth & Brooks/Cole.
+
+See Also:
+
+     'demo' which uses 'source'; 'eval', 'parse' and 'scan';
+     'options("keep.source")'.
+
+     'sys.source' which is a streamlined version to source a file into
+     an environment.
+
+     'The R Language Definition' for a discussion of source directives.
+
+Examples:
+
+     someCond <- 7 > 6
+     ## want an if-clause to behave "as top level" wrt auto-printing :
+     ## (all should look "as if on top level", e.g. non-assignments should print:)
+     if(someCond) withAutoprint({
+        x <- 1:12
+        x-1
+        (y <- (x-5)^2)
+        z <- y
+        z - 10
+     })
+     
+     ## If you want to source() a bunch of files, something like
+     ## the following may be useful:
+      sourceDir <- function(path, trace = TRUE, ...) {
+         op <- options(); on.exit(options(op)) # to reset after each 
+         for (nm in list.files(path, pattern = "[.][RrSsQq]$")) {
+            if(trace) cat(nm,":")
+            source(file.path(path, nm), ...)
+            if(trace) cat("\n")
+            options(op)
+         }
+      }
+     
+     suppressWarnings( rm(x,y) ) # remove 'x' or 'y' from global env
+     withAutoprint({ x <- 1:2; cat("x=",x,"\n"); y <- x^2 })
+     ## x and y now exist:
+     stopifnot(identical(x, 1:2), identical(y, x^2))
+     
+     withAutoprint({ formals(sourceDir); body(sourceDir) },
+                   max.deparse.length = 20, verbose = TRUE)
+     
+[END TEXT]
+
+===============================================================================
+6. base::set.seed — help page "Random" (base 4.3.3), whole
+rhelp://base@4.3.3/Random
+===============================================================================
+
+[TEXT]
+Random                  package:base                   R Documentation
+
+Random Number Generation
+
+Description:
+
+     '.Random.seed' is an integer vector, containing the random number
+     generator (RNG) *state* for random number generation in R.  It can
+     be saved and restored, but should not be altered by the user.
+
+     'RNGkind' is a more friendly interface to query or set the kind of
+     RNG in use.
+
+     'RNGversion' can be used to set the random generators as they were
+     in an earlier R version (for reproducibility).
+
+     'set.seed' is the recommended way to specify seeds.
+
+Usage:
+
+     .Random.seed <- c(rng.kind, n1, n2, ...)
+     
+     RNGkind(kind = NULL, normal.kind = NULL, sample.kind = NULL)
+     RNGversion(vstr)
+     set.seed(seed, kind = NULL, normal.kind = NULL, sample.kind = NULL)
+     
+Arguments:
+
+    kind: character or 'NULL'.  If 'kind' is a character string, set
+          R's RNG to the kind desired.  Use '"default"' to return to
+          the R default.  See 'Details' for the interpretation of
+          'NULL'.
+
+normal.kind: character string or 'NULL'.  If it is a character string,
+          set the method of Normal generation.  Use '"default"' to
+          return to the R default.  'NULL' makes no change.
+
+sample.kind: character string or 'NULL'.  If it is a character string,
+          set the method of discrete uniform generation (used in
+          'sample', for instance).  Use '"default"' to return to the R
+          default.  'NULL' makes no change.
+
+    seed: a single value, interpreted as an integer, or 'NULL' (see
+          'Details').
+
+    vstr: a character string containing a version number, e.g.,
+          '"1.6.2"'.  The default RNG configuration of the current R
+          version is used if 'vstr' is greater than the current
+          version.
+
+rng.kind: integer code in '0:k' for the above 'kind'.
+
+n1, n2, ...: integers.  See the details for how many are required
+          (which depends on 'rng.kind').
+
+Details:
+
+     The currently available RNG kinds are given below.  'kind' is
+     partially matched to this list.  The default is
+     '"Mersenne-Twister"'.
+
+     '"Wichmann-Hill"' The seed, '.Random.seed[-1] == r[1:3]' is an
+          integer vector of length 3, where each 'r[i]' is in '1:(p[i]
+          - 1)', where 'p' is the length 3 vector of primes, 'p =
+          (30269, 30307, 30323)'.  The Wichmann-Hill generator has a
+          cycle length of 6.9536e12 (= 'prod(p-1)/4', see _Applied
+          Statistics_ (1984) *33*, 123 which corrects the original
+          article).  It exhibits 12 clear failures in the TestU01 Crush
+          suite and 22 in the BigCrush suite (_L'Ecuyer_, 2007).
+
+     '"Marsaglia-Multicarry"': A _multiply-with-carry_ RNG is used, as
+          recommended by George Marsaglia in his post to the mailing
+          list 'sci.stat.math'.  It has a period of more than 2^60.
+
+          It exhibits 40 clear failures in L'Ecuyer's TestU01 Crush
+          suite.  Combined with Ahrens-Dieter or Kinderman-Ramage it
+          exhibits deviations from normality even for univariate
+          distribution generation.  See PR#18168 for a discussion.
+
+          The seed is two integers (all values allowed).
+
+     '"Super-Duper"': Marsaglia's famous Super-Duper from the 70's.
+          This is the original version which does _not_ pass the MTUPLE
+          test of the Diehard battery.  It has a period of about
+          4.6*10^18 for most initial seeds.  The seed is two integers
+          (all values allowed for the first seed: the second must be
+          odd).
+
+          We use the implementation by Reeds _et al_ (1982-84).
+
+          The two seeds are the Tausworthe and congruence long
+          integers, respectively.  A one-to-one mapping to S's
+          '.Random.seed[1:12]' is possible but we will not publish one,
+          not least as this generator is *not* exactly the same as that
+          in recent versions of S-PLUS.
+
+          It exhibits 25 clear failures in the TestU01 Crush suite
+          (_L'Ecuyer_, 2007).
+
+     '"Mersenne-Twister"': From Matsumoto and Nishimura (1998); code
+          updated in 2002.  A twisted GFSR with period 2^19937 - 1 and
+          equidistribution in 623 consecutive dimensions (over the
+          whole period).  The 'seed' is a 624-dimensional set of 32-bit
+          integers plus a current position in that set.
+
+          R uses its own initialization method due to B. D. Ripley and
+          is not affected by the initialization issue in the 1998 code
+          of Matsumoto and Nishimura addressed in a 2002 update.
+
+          It exhibits 2 clear failures in each of the TestU01 Crush and
+          the BigCrush suite (_L'Ecuyer_, 2007).
+
+     '"Knuth-TAOCP-2002"': A 32-bit integer GFSR using lagged Fibonacci
+          sequences with subtraction.  That is, the recurrence used is
+
+                       X[j] = (X[j-100] - X[j-37]) mod 2^30             
+          
+          and the 'seed' is the set of the 100 last numbers (actually
+          recorded as 101 numbers, the last being a cyclic shift of the
+          buffer).  The period is around 2^129.
+
+     '"Knuth-TAOCP"': An earlier version from Knuth (1997).
+
+          The 2002 version was not backwards compatible with the
+          earlier version: the initialization of the GFSR from the seed
+          was altered.  R did not allow you to choose consecutive
+          seeds, the reported 'weakness', and already scrambled the
+          seeds. Otherwise, the algorithm is identical to
+          Knuth-TAOCP-2002, with the same lagged Fibonacci recurrence
+          formula.
+
+          Initialization of this generator is done in interpreted R
+          code and so takes a short but noticeable time.
+
+          It exhibits 3 clear failure in the TestU01 Crush suite and 4
+          clear failures in the BigCrush suite (_L'Ecuyer_, 2007).
+
+     '"L'Ecuyer-CMRG"': A 'combined multiple-recursive generator' from
+          L'Ecuyer (1999), each element of which is a feedback
+          multiplicative generator with three integer elements: thus
+          the seed is a (signed) integer vector of length 6. The period
+          is around 2^191.
+
+          The 6 elements of the seed are internally regarded as 32-bit
+          unsigned integers.  Neither the first three nor the last
+          three should be all zero, and they are limited to less than
+          '4294967087' and '4294944443' respectively.
+
+          This is not particularly interesting of itself, but provides
+          the basis for the multiple streams used in package
+          'parallel'.
+
+          It exhibits 6 clear failures in each of the TestU01 Crush and
+          the BigCrush suite (_L'Ecuyer_, 2007).
+
+     '"user-supplied"': Use a user-supplied generator.  See
+          'Random.user' for details.
+
+     'normal.kind' can be '"Kinderman-Ramage"', '"Buggy
+     Kinderman-Ramage"' (not for 'set.seed'), '"Ahrens-Dieter"',
+     '"Box-Muller"', '"Inversion"' (the default), or '"user-supplied"'.
+     (For inversion, see the reference in 'qnorm'.)  The
+     Kinderman-Ramage generator used in versions prior to 1.7.0 (now
+     called '"Buggy"') had several approximation errors and should only
+     be used for reproduction of old results.  The '"Box-Muller"'
+     generator is stateful as pairs of normals are generated and
+     returned sequentially.  The state is reset whenever it is selected
+     (even if it is the current normal generator) and when 'kind' is
+     changed.
+
+     'sample.kind' can be '"Rounding"' or '"Rejection"', or partial
+     matches to these.  The former was the default in versions prior to
+     3.6.0: it made 'sample' noticeably non-uniform on large
+     populations, and should only be used for reproduction of old
+     results.  See PR#17494 for a discussion.
+
+     'set.seed' uses a single integer argument to set as many seeds as
+     are required.  It is intended as a simple way to get quite
+     different seeds by specifying small integer arguments, and also as
+     a way to get valid seed sets for the more complicated methods
+     (especially '"Mersenne-Twister"' and '"Knuth-TAOCP"').  There is
+     no guarantee that different values of 'seed' will seed the RNG
+     differently, although any exceptions would be extremely rare.  If
+     called with 'seed = NULL' it re-initializes (see 'Note') as if no
+     seed had yet been set.
+
+     The use of 'kind = NULL', 'normal.kind = NULL' or 'sample.kind =
+     NULL' in 'RNGkind' or 'set.seed' selects the currently-used
+     generator (including that used in the previous session if the
+     workspace has been restored): if no generator has been used it
+     selects '"default"'.
+
+Value:
+
+     '.Random.seed' is an 'integer' vector whose first element _codes_
+     the kind of RNG and normal generator. The lowest two decimal
+     digits are in '0:(k-1)' where 'k' is the number of available RNGs.
+     The hundreds represent the type of normal generator (starting at
+     '0'), and the ten thousands represent the type of discrete uniform
+     sampler.
+
+     In the underlying C, '.Random.seed[-1]' is 'unsigned'; therefore
+     in R '.Random.seed[-1]' can be negative, due to the representation
+     of an unsigned integer by a signed integer.
+
+     'RNGkind' returns a three-element character vector of the RNG,
+     normal and sample kinds selected _before_ the call, invisibly if
+     either argument is not 'NULL'.  A type starts a session as the
+     default, and is selected either by a call to 'RNGkind' or by
+     setting '.Random.seed' in the workspace. (NB: prior to R 3.6.0 the
+     first two kinds were returned in a two-element character vector.)
+
+     'RNGversion' returns the same information as 'RNGkind' about the
+     defaults in a specific R version.
+
+     'set.seed' returns 'NULL', invisibly.
+
+Note:
+
+     Initially, there is no seed; a new one is created from the current
+     time and the process ID when one is required.  Hence different
+     sessions will give different simulation results, by default.
+     However, the seed might be restored from a previous session if a
+     previously saved workspace is restored.
+
+     '.Random.seed' saves the seed set for the uniform random-number
+     generator, at least for the system generators.  It does not
+     necessarily save the state of other generators, and in particular
+     does not save the state of the Box-Muller normal generator.  If
+     you want to reproduce work later, call 'set.seed' (preferably with
+     explicit values for 'kind' and 'normal.kind') rather than set
+     '.Random.seed'.
+
+     The object '.Random.seed' is only looked for in the user's
+     workspace.
+
+     Do not rely on randomness of low-order bits from RNGs.  Most of
+     the supplied uniform generators return 32-bit integer values that
+     are converted to doubles, so they take at most 2^32 distinct
+     values and long runs will return duplicated values (Wichmann-Hill
+     is the exception, and all give at least 30 varying bits.)
+
+Author(s):
+
+     of RNGkind: Martin Maechler. Current implementation, B. D. Ripley
+     with modifications by Duncan Murdoch.
+
+References:
+
+     Ahrens, J. H. and Dieter, U. (1973).  Extensions of Forsythe's
+     method for random sampling from the normal distribution.
+     _Mathematics of Computation_, *27*, 927-937.
+
+     Becker, R. A., Chambers, J. M. and Wilks, A. R. (1988).  _The New
+     S Language_.  Wadsworth & Brooks/Cole.  ('set.seed', storing in
+     '.Random.seed'.)
+
+     Box, G. E. P. and Muller, M. E. (1958).  A note on the generation
+     of normal random deviates.  _Annals of Mathematical Statistics_,
+     *29*, 610-611.  doi:10.1214/aoms/1177706645
+     <https://doi.org/10.1214/aoms/1177706645>.
+
+     De Matteis, A. and Pagnutti, S. (1993).  Long-range Correlation
+     Analysis of the Wichmann-Hill Random Number Generator.
+     _Statistics and Computing_, *3*, 67-70.  doi:10.1007/BF00153065
+     <https://doi.org/10.1007/BF00153065>.
+
+     Kinderman, A. J. and Ramage, J. G. (1976).  Computer generation of
+     normal random variables.  _Journal of the American Statistical
+     Association_, *71*, 893-896.  doi:10.2307/2286857
+     <https://doi.org/10.2307/2286857>.
+
+     Knuth, D. E. (1997).  _The Art of Computer Programming_.  Volume
+     2, third edition.
+     Source code at
+     <https://www-cs-faculty.stanford.edu/~knuth/taocp.html>.
+
+     Knuth, D. E. (2002).  _The Art of Computer Programming_.  Volume
+     2, third edition, ninth printing.
+
+     L'Ecuyer, P. (1999).  Good parameters and implementations for
+     combined multiple recursive random number generators.  _Operations
+     Research_, *47*, 159-164.  doi:10.1287/opre.47.1.159
+     <https://doi.org/10.1287/opre.47.1.159>.
+
+     L'Ecuyer, P. and Simard, R. (2007).  TestU01: A C Library for
+     Empirical Testing of Random Number Generators _ACM Transactions on
+     Mathematical Software_, *33*, Article 22.
+     doi:10.1145/1268776.1268777
+     <https://doi.org/10.1145/1268776.1268777>.
+
+     The TestU01 C library is available from
+     <http://simul.iro.umontreal.ca/testu01/tu01.html> or also
+     <https://github.com/umontreal-simul/TestU01-2009>.
+
+     Marsaglia, G. (1997).  _A random number generator for C_.
+     Discussion paper, posting on Usenet newsgroup 'sci.stat.math' on
+     September 29, 1997.
+
+     Marsaglia, G. and Zaman, A. (1994).  Some portable
+     very-long-period random number generators.  _Computers in
+     Physics_, *8*, 117-121.  doi:10.1063/1.168514
+     <https://doi.org/10.1063/1.168514>.
+
+     Matsumoto, M. and Nishimura, T. (1998).  Mersenne Twister: A
+     623-dimensionally equidistributed uniform pseudo-random number
+     generator, _ACM Transactions on Modeling and Computer Simulation_,
+     *8*, 3-30.
+     Source code formerly at
+     'http://www.math.keio.ac.jp/~matumoto/emt.html'.
+     Now see
+     <http://www.math.sci.hiroshima-u.ac.jp/~m-mat/MT/VERSIONS/C-LANG/c-lang.html>.
+
+     Reeds, J., Hubert, S. and Abrahams, M. (1982-4).  C implementation
+     of SuperDuper, University of California at Berkeley.  (Personal
+     communication from Jim Reeds to Ross Ihaka.)
+
+     Wichmann, B. A.  and Hill, I. D. (1982).  Algorithm AS 183: An
+     Efficient and Portable Pseudo-random Number Generator.  _Applied
+     Statistics_, *31*, 188-190; Remarks: *34*, 198 and *35*, 89.
+     doi:10.2307/2347988 <https://doi.org/10.2307/2347988>.
+
+See Also:
+
+     'sample' for random sampling with and without replacement.
+
+     Distributions for functions for random-variate generation from
+     standard distributions.
+
+Examples:
+
+     require(stats)
+     
+     ## Seed the current RNG, i.e., set the RNG status
+     set.seed(42); u1 <- runif(30)
+     set.seed(42); u2 <- runif(30) # the same because of identical RNG status:
+     stopifnot(identical(u1, u2))
+     
+     ## the default random seed is 626 integers, so only print a few
+      runif(1); .Random.seed[1:6]; runif(1); .Random.seed[1:6]
+      ## If there is no seed, a "random" new one is created:
+      rm(.Random.seed); runif(1); .Random.seed[1:6]
+     
+     ok <- RNGkind()
+     RNGkind("Wich")  # (partial string matching on 'kind')
+     
+     ## This shows how 'runif(.)' works for Wichmann-Hill,
+     ## using only R functions:
+     
+     p.WH <- c(30269, 30307, 30323)
+     a.WH <- c(  171,   172,   170)
+     next.WHseed <- function(i.seed = .Random.seed[-1])
+       { (a.WH * i.seed) %% p.WH }
+     my.runif1 <- function(i.seed = .Random.seed)
+       { ns <- next.WHseed(i.seed[-1]); sum(ns / p.WH) %% 1 }
+     set.seed(1998-12-04)# (when the next lines were added to the souRce)
+     rs <- .Random.seed
+     (WHs <- next.WHseed(rs[-1]))
+     u <- runif(1)
+     stopifnot(
+      next.WHseed(rs[-1]) == .Random.seed[-1],
+      all.equal(u, my.runif1(rs))
+     )
+     
+     ## ----
+     .Random.seed
+     RNGkind("Super") # matches  "Super-Duper"
+     RNGkind()
+     .Random.seed # new, corresponding to  Super-Duper
+     
+     ## Reset:
+     RNGkind(ok[1])
+     
+     RNGversion(getRversion()) # the default version for this R version
+     
+     ## ----
+     sum(duplicated(runif(1e6))) # around 110 for default generator
+     ## and we would expect about almost sure duplicates beyond about
+     qbirthday(1 - 1e-6, classes = 2e9) # 235,000
+     
+[END TEXT]
+
+===============================================================================
+7. base::round [extra] — help page "Round" (base 4.3.3), whole
+rhelp://base@4.3.3/Round
+===============================================================================
+
+[TEXT]
+Round                   package:base                   R Documentation
+
+Rounding of Numbers
+
+Description:
+
+     'ceiling' takes a single numeric argument 'x' and returns a
+     numeric vector containing the smallest integers not less than the
+     corresponding elements of 'x'.
+
+     'floor' takes a single numeric argument 'x' and returns a numeric
+     vector containing the largest integers not greater than the
+     corresponding elements of 'x'.
+
+     'trunc' takes a single numeric argument 'x' and returns a numeric
+     vector containing the integers formed by truncating the values in
+     'x' toward '0'.
+
+     'round' rounds the values in its first argument to the specified
+     number of decimal places (default 0).  See 'Details' about "round
+     to even" when rounding off a 5.
+
+     'signif' rounds the values in its first argument to the specified
+     number of _significant_ digits.  Hence, for 'numeric' 'x',
+     'signif(x, dig)' is the same as 'round(x, dig -
+     ceiling(log10(abs(x))))'.  For 'complex' 'x', this is not the
+     case, see the 'Details'.
+
+Usage:
+
+     ceiling(x)
+     floor(x)
+     trunc(x, ...)
+     
+     round(x, digits = 0)
+     signif(x, digits = 6)
+     
+Arguments:
+
+       x: a numeric vector.  Or, for 'round' and 'signif', a complex
+          vector.
+
+  digits: integer indicating the number of decimal places ('round') or
+          significant digits ('signif') to be used.  For 'round',
+          negative values are allowed (see 'Details').
+
+     ...: arguments to be passed to methods.
+
+Details:
+
+     These are generic functions: methods can be defined for them
+     individually or via the 'Math' group generic.
+
+     Note that for rounding off a 5, the IEC 60559 standard (see also
+     'IEEE 754') is expected to be used, '_go to the even digit_'.
+     Therefore 'round(0.5)' is '0' and 'round(-1.5)' is '-2'.  However,
+     this is dependent on OS services and on representation error
+     (since e.g. '0.15' is not represented exactly, the rounding rule
+     applies to the represented number and not to the printed number,
+     and so 'round(0.15, 1)' could be either '0.1' or '0.2').
+
+     Rounding to a negative number of digits means rounding to a power
+     of ten, so for example 'round(x, digits = -2)' rounds to the
+     nearest hundred.
+
+     For 'signif' the recognized values of 'digits' are '1...22', and
+     non-missing values are rounded to the nearest integer in that
+     range.  Complex numbers are rounded to retain the specified number
+     of digits in the larger of the components.  Each element of the
+     vector is rounded individually, unlike printing.
+
+     These are all primitive functions.
+
+S4 methods:
+
+     These are all (internally) S4 generic.
+
+     'ceiling', 'floor' and 'trunc' are members of the 'Math' group
+     generic.  As an S4 generic, 'trunc' has only one argument.
+
+     'round' and 'signif' are members of the 'Math2' group generic.
+
+Warning:
+
+     The realities of computer arithmetic can cause unexpected results,
+     especially with 'floor' and 'ceiling'.  For example, we 'know'
+     that 'floor(log(x, base = 8))' for 'x = 8' is '1', but '0' has
+     been seen on an R platform.  It is normally necessary to use a
+     tolerance.
+
+     Rounding to decimal digits in binary arithmetic is non-trivial
+     (when 'digits != 0') and may be surprising.  Be aware that most
+     decimal fractions are _not_ exactly representable in binary double
+     precision.  In R 4.0.0, the algorithm for 'round(x, d)', for d >
+     0, has been improved to _measure_ and round "to nearest even",
+     contrary to earlier versions of R (or also to 'sprintf()' or
+     'format()' based rounding).
+
+References:
+
+     Becker, R. A., Chambers, J. M. and Wilks, A. R. (1988) _The New S
+     Language_.  Wadsworth & Brooks/Cole.
+
+     The ISO/IEC/IEEE 60559:2011 standard is available for money from
+     <https://www.iso.org>.
+
+     The IEEE 754:2008 standard is more openly documented, e.g, at
+     <https://en.wikipedia.org/wiki/IEEE_754>.
+
+See Also:
+
+     'as.integer'.  Package 'round''s 'roundX()' for several versions
+     or implementations of rounding, including some previous and the
+     current R version (as 'version = "3d.C"').
+
+Examples:
+
+     round(.5 + -2:4) # IEEE / IEC rounding: -2  0  0  2  2  4  4
+     ## (this is *good* behaviour -- do *NOT* report it as bug !)
+     
+     ( x1 <- seq(-2, 4, by = .5) )
+     round(x1) #-- IEEE / IEC rounding !
+     x1[trunc(x1) != floor(x1)]
+     x1[round(x1) != floor(x1 + .5)]
+     (non.int <- ceiling(x1) != floor(x1))
+     
+     x2 <- pi * 100^(-1:3)
+     round(x2, 3)
+     signif(x2, 3)
+     
+[END TEXT]
+
+===============================================================================
+8. base::library [extra] — help page "library" (base 4.3.3), whole
+rhelp://base@4.3.3/library
+===============================================================================
+
+[TEXT]
+library                  package:base                  R Documentation
+
+Loading/Attaching and Listing of Packages
+
+Description:
+
+     'library' and 'require' load and attach add-on packages.
+
+Usage:
+
+     library(package, help, pos = 2, lib.loc = NULL,
+             character.only = FALSE, logical.return = FALSE,
+             warn.conflicts, quietly = FALSE,
+             verbose = getOption("verbose"),
+             mask.ok, exclude, include.only,
+             attach.required = missing(include.only))
+     
+     require(package, lib.loc = NULL, quietly = FALSE,
+             warn.conflicts,
+             character.only = FALSE,
+             mask.ok, exclude, include.only,
+             attach.required = missing(include.only))
+     
+     conflictRules(pkg, mask.ok = NULL, exclude = NULL)
+     
+Arguments:
+
+package, help: the name of a package, given as a name or literal
+          character string, or a character string, depending on whether
+          'character.only' is 'FALSE' (default) or 'TRUE'.
+
+     pos: the position on the search list at which to attach the loaded
+          namespace.  Can also be the name of a position on the current
+          search list as given by 'search()'.
+
+ lib.loc: a character vector describing the location of R library trees
+          to search through, or 'NULL'.  The default value of 'NULL'
+          corresponds to all libraries currently known to
+          '.libPaths()'.  Non-existent library trees are silently
+          ignored.
+
+character.only: a logical indicating whether 'package' or 'help' can be
+          assumed to be character strings.
+
+logical.return: logical.  If it is 'TRUE', 'FALSE' or 'TRUE' is
+          returned to indicate success.
+
+warn.conflicts: logical.  If 'TRUE', warnings are printed about
+          'conflicts' from attaching the new package.  A conflict is a
+          function masking a function, or a non-function masking a
+          non-function. The default is 'TRUE' unless specified as
+          'FALSE' in the 'conflicts.policy' option.
+
+ verbose: a logical.  If 'TRUE', additional diagnostics are printed.
+
+ quietly: a logical.  If 'TRUE', no message confirming package
+          attaching is printed, and most often, no errors/warnings are
+          printed if package attaching fails.
+
+     pkg: character string naming a package.
+
+ mask.ok: character vector of names of objects that can mask objects on
+          the search path without signaling an error when strict
+          conflict checking is enabled
+
+exclude,include.only: character vector of names of objects to exclude
+          or include in the attached frame. Only one of these arguments
+          may be used in a call to 'library' or 'require'.
+
+attach.required: logical specifying whether required packages listed in
+          the 'Depends' clause of the 'DESCRIPTION' file should be
+          attached automatically.
+
+Details:
+
+     'library(package)' and 'require(package)' both load the namespace
+     of the package with name 'package' and attach it on the search
+     list.  'require' is designed for use inside other functions; it
+     returns 'FALSE' and gives a warning (rather than an error as
+     'library()' does by default) if the package does not exist.  Both
+     functions check and update the list of currently attached packages
+     and do not reload a namespace which is already loaded.  (If you
+     want to reload such a package, call 'detach(unload = TRUE)' or
+     'unloadNamespace' first.)  If you want to load a package without
+     attaching it on the search list, see 'requireNamespace'.
+
+     To suppress messages during the loading of packages use
+     'suppressPackageStartupMessages': this will suppress all messages
+     from R itself but not necessarily all those from package authors.
+
+     If 'library' is called with no 'package' or 'help' argument, it
+     lists all available packages in the libraries specified by
+     'lib.loc', and returns the corresponding information in an object
+     of class '"libraryIQR"'.  (The structure of this class may change
+     in future versions.)  Use '.packages(all = TRUE)' to obtain just
+     the names of all available packages, and 'installed.packages()'
+     for even more information.
+
+     'library(help = somename)' computes basic information about the
+     package 'somename', and returns this in an object of class
+     '"packageInfo"'.  (The structure of this class may change in
+     future versions.)  When used with the default value ('NULL') for
+     'lib.loc', the attached packages are searched before the
+     libraries.
+
+Value:
+
+     Normally 'library' returns (invisibly) the list of attached
+     packages, but 'TRUE' or 'FALSE' if 'logical.return' is 'TRUE'.
+     When called as 'library()' it returns an object of class
+     '"libraryIQR"', and for 'library(help=)', one of class
+     '"packageInfo"'.
+
+     'require' returns (invisibly) a logical indicating whether the
+     required package is available.
+
+Conflicts:
+
+     Handling of conflicts depends on the setting of the
+     'conflicts.policy' option. If this option is not set, then
+     conflicts result in warning messages if the argument
+     'warn.conflicts' is 'TRUE'. If the option is set to the character
+     string '"strict"', then all unresolved conflicts signal errors.
+     Conflicts can be resolved using the 'mask.ok', 'exclude', and
+     'include.only' arguments to 'library' and 'require'. Defaults for
+     'mask.ok' and 'exclude' can be specified using 'conflictRules'.
+
+     If the 'conflicts.policy' option is set to the string
+     '"depends.ok"' then conflicts resulting from attaching declared
+     dependencies will not produce errors, but other conflicts will.
+     This is likely to be the best setting for most users wanting some
+     additional protection against unexpected conflicts.
+
+     The policy can be tuned further by specifying the
+     'conflicts.policy' option as a named list with the following
+     fields:
+
+     'error': logical; if 'TRUE' treat unresolved conflicts as errors.
+
+     'warn': logical; unless 'FALSE' issue a warning message when
+          conflicts are found.
+
+     'generics.ok': logical; if 'TRUE' ignore conflicts created by
+          defining S4 generics for functions on the search path.
+
+     'depends.ok': logical; if 'TRUE' do not treat conflicts with
+          required packages as errors.
+
+     'can.mask': character vector of names of packages that are allowed
+          to be masked. These would typically be base packages attached
+          by default.
+
+Licenses:
+
+     Some packages have restrictive licenses, and there is a mechanism
+     to allow users to be aware of such licenses.  If
+     'getOption("checkPackageLicense") == TRUE', then at first use of a
+     namespace of a package with a not-known-to-be-FOSS (see below)
+     license the user is asked to view and accept the license: a list
+     of accepted licenses is stored in file '~/.R/licensed'.  In a
+     non-interactive session it is an error to use such a package whose
+     license has not already been recorded as accepted.
+
+     Free or Open Source Software (FOSS, e.g.
+     <https://en.wikipedia.org/wiki/FOSS>) packages are determined by
+     the same filters used by 'available.packages' but applied to just
+     the current package, not its dependencies.
+
+     There can also be a site-wide file 'R_HOME/etc/licensed.site' of
+     packages (one per line).
+
+Formal methods:
+
+     'library' takes some further actions when package 'methods' is
+     attached (as it is by default).  Packages may define formal
+     generic functions as well as re-defining functions in other
+     packages (notably 'base') to be generic, and this information is
+     cached whenever such a namespace is loaded after 'methods' and
+     re-defined functions (implicit generics) are excluded from the
+     list of conflicts.  The caching and check for conflicts require
+     looking for a pattern of objects; the search may be avoided by
+     defining an object '.noGenerics' (with any value) in the
+     namespace.  Naturally, if the package _does_ have any such
+     methods, this will prevent them from being used.
+
+Note:
+
+     'library' and 'require' can only load/attach an _installed_
+     package, and this is detected by having a 'DESCRIPTION' file
+     containing a 'Built:' field.
+
+     Under Unix-alikes, the code checks that the package was installed
+     under a similar operating system as given by 'R.version$platform'
+     (the canonical name of the platform under which R was compiled),
+     provided it contains compiled code.  Packages which do not contain
+     compiled code can be shared between Unix-alikes, but not to other
+     OSes because of potential problems with line endings and
+     OS-specific help files.  If sub-architectures are used, the OS
+     similarity is not checked since the OS used to build may differ
+     (e.g. 'i386-pc-linux-gnu' code can be built on an
+     'x86_64-unknown-linux-gnu' OS).
+
+     The package name given to 'library' and 'require' must match the
+     name given in the package's 'DESCRIPTION' file exactly, even on
+     case-insensitive file systems such as are common on Windows and
+     macOS.
+
+References:
+
+     Becker, R. A., Chambers, J. M. and Wilks, A. R. (1988) _The New S
+     Language_.  Wadsworth & Brooks/Cole.
+
+See Also:
+
+     '.libPaths', '.packages'.
+
+     'attach', 'detach', 'search', 'objects', 'autoload',
+     'requireNamespace', 'library.dynam', 'data', 'install.packages'
+     and 'installed.packages'; 'INSTALL', 'REMOVE'.
+
+     The initial set of packages attached is set by
+     'options(defaultPackages=)': see also 'Startup'.
+
+Examples:
+
+     library()                   # list all available packages
+     library(lib.loc = .Library) # list all packages in the default library
+     library(help = splines)     # documentation on package 'splines'
+     library(splines)            # attach package 'splines'
+     require(splines)            # the same
+     search()                    # "splines", too
+     detach("package:splines")
+     
+     # if the package name is in a character vector, use
+     pkg <- "splines"
+     library(pkg, character.only = TRUE)
+     detach(pos = match(paste("package", pkg, sep = ":"), search()))
+     
+     require(pkg, character.only = TRUE)
+     detach(pos = match(paste("package", pkg, sep = ":"), search()))
+     
+     require(nonexistent)        # FALSE
+     ## Not run:
+     
+     ## if you want to mask as little as possible, use
+     library(mypkg, pos = "package:base")
+     ## End(Not run)
+     
+[END TEXT]
+
+===============================================================================
+9. DESCRIPTION file of base 4.3.3, whole (title, authors, licence, version, publication date)
+rfile://base@4.3.3/DESCRIPTION
+===============================================================================
+
+[TEXT]
+Package: base
+Version: 4.3.3
+Priority: base
+Title: The R Base Package
+Author: R Core Team and contributors worldwide
+Maintainer: R Core Team <do-use-Contact-address@r-project.org>
+Contact: R-help mailing list <r-help@r-project.org>
+Description: Base R functions.
+License: Part of R 4.3.3
+Suggests: methods
+Built: R 4.3.3; ; 2024-03-31 19:05:58 UTC; unix
+[END TEXT]

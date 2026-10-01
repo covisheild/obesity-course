@@ -1,0 +1,3465 @@
+DPLYR 1.1.4 — VERSION-MATCHED HELP PAGES FROM THE BOOK'S R 4.3.3 SANDBOX
+VERBATIM SOURCE PACK (EXCERPTS)
+============================================================
+
+Transcription rule for this file: every line between a [TEXT] and an [END TEXT] line is an exact,
+unaltered slice of a raw render made in the book's sandbox and saved under books/S52-R1/intake/raw/, cut
+programmatically (raw[i:j]) by books/S52-R1/intake/build-c/build.py and re-checked by verify.py as a
+whitespace-normalised substring of that render. Nothing has been paraphrased. Where material is left out,
+the omission is marked [...] in place. Lines beginning [NOTE] are this file's own annotation and are NOT
+source text. Quoted evidence in this header is cut the same way.
+
+LOCATORS: these are local documents, not web pages, so each block heading carries a locator, not a URL:
+  rhelp://<package>@<version>/<Rd name>     the installed help page (what ?topic shows in R)
+  rvignette://<package>@<version>/<name>    the installed vignette (what vignette("<name>") shows)
+  rfile://<package>@<version>/DESCRIPTION   the installed DESCRIPTION file, byte for byte
+The package's website shows the CURRENT version's documentation, which may differ from what is held here.
+
+HOW RENDERED (2026-10-02): R 4.3.3, in a UTF-8 locale, with options(useFancyQuotes = FALSE) so quotation
+marks print as straight ASCII ' and "; help pages by tools::Rd2txt(utils:::.getHelpFile(help(topic,
+package = pkg)), options = list(underline_titles = FALSE, width = 80)); vignettes from the installed HTML
+by xml2 1.3.6, taking h1-h4, p, pre, top-level li and table elements in document order (headings marked
+with #, list items with -, code and printed output as in the vignette's own <pre> blocks; images not
+held). Script: books/S52-R1/intake/build-c/render.R. Help pages print no output for their Examples: the
+code there is shown, not run.
+
+CITATION: Wickham, Hadley; François, Romain; Henry, Lionel; Müller, Kirill; Vaughan, Davis. dplyr: A Grammar of Data Manipulation. R package version 1.1.4, published on CRAN 2023-11-17. Help pages as installed.
+PACKAGE TITLE (from DESCRIPTION): "Title: A Grammar of Data Manipulation"
+VERSION read with packageVersion() on 2026-10-02: "dplyr 1.1.4"
+LICENCE: the installed DESCRIPTION file states
+  "License: MIT + file LICENSE"
+The LICENSE file it names is not present in the installed package (system.file("LICENSE",
+package = "dplyr") returns ""), so its year and copyright-holder lines were not read.
+
+WHAT THIS FILE HOLDS: these help pages, each whole (description, usage, arguments, details, value, examples
+as code): filter (Rd "filter"); select (Rd "select"); mutate (Rd "mutate"); summarise (Rd "summarise"); group_by (Rd "group_by"); arrange (Rd "arrange"); count (Rd "count"); if_else (Rd "if_else"); case_when (Rd "case_when"); left_join (Rd "mutate-joins"); anti_join (Rd "filter-joins"); across (Rd "across"); n_distinct (Rd "n_distinct"); rename (Rd "rename"); desc (Rd "desc"); n (Rd "context"). Vignette sections, each whole as marked:
+  - vignette "dplyr": Introduction to dplyr: the introduction, "Data: starwars", "Single table verbs" (the pipe; filter, arrange, slice, select, mutate, relocate, summarise; commonalities) and "Combining functions with %>%", whole
+  - vignette "two-table": Two-table verbs: the introduction, "Mutating joins" (how tables are matched, types of join, observations) and "Filtering joins", whole
+The DESCRIPTION file, whole. Pages marked [extra] were not in the intake brief's list and were added because S52-R1's
+inventory uses them (C05, C06, C11-C13, C16, C19). Every other help page and vignette of the package is NOT held.
+
+VERSION WARNING: this is the documentation of the version the book's outputs were made with. Newer versions
+exist (see `tidyverse_news_s52r1` for what changed in dplyr, tidyr, readr and ggplot2). A reader on a newer
+version may see different text in ?topic. Current online reference (orientation only, not this text): https://dplyr.tidyverse.org
+
+===============================================================================
+1. dplyr::filter — help page "filter" (dplyr 1.1.4), whole
+rhelp://dplyr@1.1.4/filter
+===============================================================================
+
+[TEXT]
+filter                  package:dplyr                  R Documentation
+
+Keep rows that match a condition
+
+Description:
+
+     The 'filter()' function is used to subset a data frame, retaining
+     all rows that satisfy your conditions. To be retained, the row
+     must produce a value of 'TRUE' for all conditions. Note that when
+     a condition evaluates to 'NA' the row will be dropped, unlike base
+     subsetting with '['.
+
+Usage:
+
+     filter(.data, ..., .by = NULL, .preserve = FALSE)
+     
+Arguments:
+
+   .data: A data frame, data frame extension (e.g. a tibble), or a lazy
+          data frame (e.g. from dbplyr or dtplyr). See _Methods_,
+          below, for more details.
+
+     ...: <'data-masking'> Expressions that return a logical value, and
+          are defined in terms of the variables in '.data'. If multiple
+          expressions are included, they are combined with the '&'
+          operator. Only rows for which all conditions evaluate to
+          'TRUE' are kept.
+
+     .by: *[Experimental]*
+
+          <'tidy-select'> Optionally, a selection of columns to group
+          by for just this operation, functioning as an alternative to
+          'group_by()'. For details and examples, see ?dplyr_by.
+
+.preserve: Relevant when the '.data' input is grouped. If '.preserve =
+          FALSE' (the default), the grouping structure is recalculated
+          based on the resulting data, otherwise the grouping is kept
+          as is.
+
+Details:
+
+     The 'filter()' function is used to subset the rows of '.data',
+     applying the expressions in '...' to the column values to
+     determine which rows should be retained. It can be applied to both
+     grouped and ungrouped data (see 'group_by()' and 'ungroup()').
+     However, dplyr is not yet smart enough to optimise the filtering
+     operation on grouped datasets that do not need grouped
+     calculations. For this reason, filtering is often considerably
+     faster on ungrouped data.
+
+Value:
+
+     An object of the same type as '.data'. The output has the
+     following properties:
+
+        • Rows are a subset of the input, but appear in the same order.
+
+        • Columns are not modified.
+
+        • The number of groups may be reduced (if '.preserve' is not
+          'TRUE').
+
+        • Data frame attributes are preserved.
+
+Useful filter functions:
+
+     There are many functions and operators that are useful when
+     constructing the expressions used to filter the data:
+
+        • '==', '>', '>=' etc
+
+        • '&', '|', '!', 'xor()'
+
+        • 'is.na()'
+
+        • 'between()', 'near()'
+
+Grouped tibbles:
+
+     Because filtering expressions are computed within groups, they may
+     yield different results on grouped tibbles. This will be the case
+     as soon as an aggregating, lagging, or ranking function is
+     involved. Compare this ungrouped filtering:
+
+     starwars %>% filter(mass > mean(mass, na.rm = TRUE))
+     
+     With the grouped equivalent:
+
+     starwars %>% group_by(gender) %>% filter(mass > mean(mass, na.rm = TRUE))
+     
+     In the ungrouped version, 'filter()' compares the value of 'mass'
+     in each row to the global average (taken over the whole data set),
+     keeping only the rows with 'mass' greater than this global
+     average. In contrast, the grouped version calculates the average
+     mass separately for each 'gender' group, and keeps rows with
+     'mass' greater than the relevant within-gender average.
+
+Methods:
+
+     This function is a *generic*, which means that packages can
+     provide implementations (methods) for other classes. See the
+     documentation of individual methods for extra arguments and
+     differences in behaviour.
+
+     The following methods are currently available in loaded packages:
+     no methods found.
+
+See Also:
+
+     Other single table verbs: 'arrange()', 'mutate()', 'reframe()',
+     'rename()', 'select()', 'slice()', 'summarise()'
+
+Examples:
+
+     # Filtering by one criterion
+     filter(starwars, species == "Human")
+     filter(starwars, mass > 1000)
+     
+     # Filtering by multiple criteria within a single logical expression
+     filter(starwars, hair_color == "none" & eye_color == "black")
+     filter(starwars, hair_color == "none" | eye_color == "black")
+     
+     # When multiple expressions are used, they are combined using &
+     filter(starwars, hair_color == "none", eye_color == "black")
+     
+     
+     # The filtering operation may yield different results on grouped
+     # tibbles because the expressions are computed within groups.
+     #
+     # The following filters rows where `mass` is greater than the
+     # global average:
+     starwars %>% filter(mass > mean(mass, na.rm = TRUE))
+     
+     # Whereas this keeps rows with `mass` greater than the gender
+     # average:
+     starwars %>% group_by(gender) %>% filter(mass > mean(mass, na.rm = TRUE))
+     
+     
+     # To refer to column names that are stored as strings, use the `.data` pronoun:
+     vars <- c("mass", "height")
+     cond <- c(80, 150)
+     starwars %>%
+       filter(
+         .data[[vars[[1]]]] > cond[[1]],
+         .data[[vars[[2]]]] > cond[[2]]
+       )
+     # Learn more in ?rlang::args_data_masking
+     
+[END TEXT]
+
+===============================================================================
+2. dplyr::select — help page "select" (dplyr 1.1.4), whole
+rhelp://dplyr@1.1.4/select
+===============================================================================
+
+[TEXT]
+select                  package:dplyr                  R Documentation
+
+Keep or drop columns using their names and types
+
+Description:
+
+     Select (and optionally rename) variables in a data frame, using a
+     concise mini-language that makes it easy to refer to variables
+     based on their name (e.g. 'a:f' selects all columns from 'a' on
+     the left to 'f' on the right) or type (e.g. 'where(is.numeric)'
+     selects all numeric columns).
+
+  Overview of selection features:
+
+       Tidyverse selections implement a dialect of R where operators
+       make it easy to select variables:
+
+         • ':' for selecting a range of consecutive variables.
+
+         • '!' for taking the complement of a set of variables.
+
+         • '&' and '|' for selecting the intersection or the union of
+           two sets of variables.
+
+         • 'c()' for combining selections.
+
+       In addition, you can use *selection helpers*. Some helpers
+       select specific columns:
+
+         • 'everything()': Matches all variables.
+
+         • 'last_col()': Select last variable, possibly with an offset.
+
+         • 'group_cols()': Select all grouping columns.
+
+       Other helpers select variables by matching patterns in their
+       names:
+
+         • 'starts_with()': Starts with a prefix.
+
+         • 'ends_with()': Ends with a suffix.
+
+         • 'contains()': Contains a literal string.
+
+         • 'matches()': Matches a regular expression.
+
+         • 'num_range()': Matches a numerical range like x01, x02, x03.
+
+       Or from variables stored in a character vector:
+
+         • 'all_of()': Matches variable names in a character vector.
+           All names must be present, otherwise an out-of-bounds error
+           is thrown.
+
+         • 'any_of()': Same as 'all_of()', except that no error is
+           thrown for names that don't exist.
+
+       Or using a predicate function:
+
+         • 'where()': Applies a function to all variables and selects
+           those for which the function returns 'TRUE'.
+
+
+Usage:
+
+     select(.data, ...)
+     
+Arguments:
+
+   .data: A data frame, data frame extension (e.g. a tibble), or a lazy
+          data frame (e.g. from dbplyr or dtplyr). See _Methods_,
+          below, for more details.
+
+     ...: <'tidy-select'> One or more unquoted expressions separated by
+          commas. Variable names can be used as if they were positions
+          in the data frame, so expressions like 'x:y' can be used to
+          select a range of variables.
+
+Value:
+
+     An object of the same type as '.data'. The output has the
+     following properties:
+
+        • Rows are not affected.
+
+        • Output columns are a subset of input columns, potentially
+          with a different order. Columns will be renamed if 'new_name
+          = old_name' form is used.
+
+        • Data frame attributes are preserved.
+
+        • Groups are maintained; you can't select off grouping
+          variables.
+
+Methods:
+
+     This function is a *generic*, which means that packages can
+     provide implementations (methods) for other classes. See the
+     documentation of individual methods for extra arguments and
+     differences in behaviour.
+
+     The following methods are currently available in loaded packages:
+     no methods found.
+
+Examples:
+
+     Here we show the usage for the basic selection operators. See the
+     specific help pages to learn about helpers like 'starts_with()'.
+
+     The selection language can be used in functions like
+     'dplyr::select()' or 'tidyr::pivot_longer()'. Let's first attach
+     the tidyverse:
+
+     library(tidyverse)
+     
+     # For better printing
+     iris <- as_tibble(iris)
+     
+     Select variables by name:
+
+     starwars %>% select(height)
+     #> # A tibble: 87 x 1
+     #>   height
+     #>    <int>
+     #> 1    172
+     #> 2    167
+     #> 3     96
+     #> 4    202
+     #> # i 83 more rows
+     
+     iris %>% pivot_longer(Sepal.Length)
+     #> # A tibble: 150 x 6
+     #>   Sepal.Width Petal.Length Petal.Width Species name         value
+     #>         <dbl>        <dbl>       <dbl> <fct>   <chr>        <dbl>
+     #> 1         3.5          1.4         0.2 setosa  Sepal.Length   5.1
+     #> 2         3            1.4         0.2 setosa  Sepal.Length   4.9
+     #> 3         3.2          1.3         0.2 setosa  Sepal.Length   4.7
+     #> 4         3.1          1.5         0.2 setosa  Sepal.Length   4.6
+     #> # i 146 more rows
+     
+     Select multiple variables by separating them with commas. Note how
+     the order of columns is determined by the order of inputs:
+
+     starwars %>% select(homeworld, height, mass)
+     #> # A tibble: 87 x 3
+     #>   homeworld height  mass
+     #>   <chr>      <int> <dbl>
+     #> 1 Tatooine     172    77
+     #> 2 Tatooine     167    75
+     #> 3 Naboo         96    32
+     #> 4 Tatooine     202   136
+     #> # i 83 more rows
+     
+     Functions like 'tidyr::pivot_longer()' don't take variables with
+     dots. In this case use 'c()' to select multiple variables:
+
+     iris %>% pivot_longer(c(Sepal.Length, Petal.Length))
+     #> # A tibble: 300 x 5
+     #>   Sepal.Width Petal.Width Species name         value
+     #>         <dbl>       <dbl> <fct>   <chr>        <dbl>
+     #> 1         3.5         0.2 setosa  Sepal.Length   5.1
+     #> 2         3.5         0.2 setosa  Petal.Length   1.4
+     #> 3         3           0.2 setosa  Sepal.Length   4.9
+     #> 4         3           0.2 setosa  Petal.Length   1.4
+     #> # i 296 more rows
+     
+  Operators::
+
+       The ':' operator selects a range of consecutive variables:
+
+       starwars %>% select(name:mass)
+       #> # A tibble: 87 x 3
+       #>   name           height  mass
+       #>   <chr>           <int> <dbl>
+       #> 1 Luke Skywalker    172    77
+       #> 2 C-3PO             167    75
+       #> 3 R2-D2              96    32
+       #> 4 Darth Vader       202   136
+       #> # i 83 more rows
+       
+       The '!' operator negates a selection:
+
+       starwars %>% select(!(name:mass))
+       #> # A tibble: 87 x 11
+       #>   hair_color skin_color  eye_color birth_year sex   gender    homeworld species
+       #>   <chr>      <chr>       <chr>          <dbl> <chr> <chr>     <chr>     <chr>  
+       #> 1 blond      fair        blue            19   male  masculine Tatooine  Human  
+       #> 2 <NA>       gold        yellow         112   none  masculine Tatooine  Droid  
+       #> 3 <NA>       white, blue red             33   none  masculine Naboo     Droid  
+       #> 4 none       white       yellow          41.9 male  masculine Tatooine  Human  
+       #> # i 83 more rows
+       #> # i 3 more variables: films <list>, vehicles <list>, starships <list>
+       
+       iris %>% select(!c(Sepal.Length, Petal.Length))
+       #> # A tibble: 150 x 3
+       #>   Sepal.Width Petal.Width Species
+       #>         <dbl>       <dbl> <fct>  
+       #> 1         3.5         0.2 setosa 
+       #> 2         3           0.2 setosa 
+       #> 3         3.2         0.2 setosa 
+       #> 4         3.1         0.2 setosa 
+       #> # i 146 more rows
+       
+       iris %>% select(!ends_with("Width"))
+       #> # A tibble: 150 x 3
+       #>   Sepal.Length Petal.Length Species
+       #>          <dbl>        <dbl> <fct>  
+       #> 1          5.1          1.4 setosa 
+       #> 2          4.9          1.4 setosa 
+       #> 3          4.7          1.3 setosa 
+       #> 4          4.6          1.5 setosa 
+       #> # i 146 more rows
+       
+       '&' and '|' take the intersection or the union of two
+       selections:
+
+       iris %>% select(starts_with("Petal") & ends_with("Width"))
+       #> # A tibble: 150 x 1
+       #>   Petal.Width
+       #>         <dbl>
+       #> 1         0.2
+       #> 2         0.2
+       #> 3         0.2
+       #> 4         0.2
+       #> # i 146 more rows
+       
+       iris %>% select(starts_with("Petal") | ends_with("Width"))
+       #> # A tibble: 150 x 3
+       #>   Petal.Length Petal.Width Sepal.Width
+       #>          <dbl>       <dbl>       <dbl>
+       #> 1          1.4         0.2         3.5
+       #> 2          1.4         0.2         3  
+       #> 3          1.3         0.2         3.2
+       #> 4          1.5         0.2         3.1
+       #> # i 146 more rows
+       
+       To take the difference between two selections, combine the '&'
+       and '!' operators:
+
+       iris %>% select(starts_with("Petal") & !ends_with("Width"))
+       #> # A tibble: 150 x 1
+       #>   Petal.Length
+       #>          <dbl>
+       #> 1          1.4
+       #> 2          1.4
+       #> 3          1.3
+       #> 4          1.5
+       #> # i 146 more rows
+       
+See Also:
+
+     Other single table verbs: 'arrange()', 'filter()', 'mutate()',
+     'reframe()', 'rename()', 'slice()', 'summarise()'
+[END TEXT]
+
+===============================================================================
+3. dplyr::mutate — help page "mutate" (dplyr 1.1.4), whole
+rhelp://dplyr@1.1.4/mutate
+===============================================================================
+
+[TEXT]
+mutate                  package:dplyr                  R Documentation
+
+Create, modify, and delete columns
+
+Description:
+
+     'mutate()' creates new columns that are functions of existing
+     variables. It can also modify (if the name is the same as an
+     existing column) and delete columns (by setting their value to
+     'NULL').
+
+Usage:
+
+     mutate(.data, ...)
+     
+     ## S3 method for class 'data.frame'
+     mutate(
+       .data,
+       ...,
+       .by = NULL,
+       .keep = c("all", "used", "unused", "none"),
+       .before = NULL,
+       .after = NULL
+     )
+     
+Arguments:
+
+   .data: A data frame, data frame extension (e.g. a tibble), or a lazy
+          data frame (e.g. from dbplyr or dtplyr). See _Methods_,
+          below, for more details.
+
+     ...: <'data-masking'> Name-value pairs. The name gives the name of
+          the column in the output.
+
+          The value can be:
+
+            • A vector of length 1, which will be recycled to the
+              correct length.
+
+            • A vector the same length as the current group (or the
+              whole data frame if ungrouped).
+
+            • 'NULL', to remove the column.
+
+            • A data frame or tibble, to create multiple columns in the
+              output.
+
+     .by: *[Experimental]*
+
+          <'tidy-select'> Optionally, a selection of columns to group
+          by for just this operation, functioning as an alternative to
+          'group_by()'. For details and examples, see ?dplyr_by.
+
+   .keep: Control which columns from '.data' are retained in the
+          output. Grouping columns and columns created by '...' are
+          always kept.
+
+            • '"all"' retains all columns from '.data'. This is the
+              default.
+
+            • '"used"' retains only the columns used in '...' to create
+              new columns. This is useful for checking your work, as it
+              displays inputs and outputs side-by-side.
+
+            • '"unused"' retains only the columns _not_ used in '...'
+              to create new columns. This is useful if you generate new
+              columns, but no longer need the columns used to generate
+              them.
+
+            • '"none"' doesn't retain any extra columns from '.data'.
+              Only the grouping variables and columns created by '...'
+              are kept.
+
+.before, .after: <'tidy-select'> Optionally, control where new columns
+          should appear (the default is to add to the right hand side).
+          See 'relocate()' for more details.
+
+Value:
+
+     An object of the same type as '.data'. The output has the
+     following properties:
+
+        • Columns from '.data' will be preserved according to the
+          '.keep' argument.
+
+        • Existing columns that are modified by '...' will always be
+          returned in their original location.
+
+        • New columns created through '...' will be placed according to
+          the '.before' and '.after' arguments.
+
+        • The number of rows is not affected.
+
+        • Columns given the value 'NULL' will be removed.
+
+        • Groups will be recomputed if a grouping variable is mutated.
+
+        • Data frame attributes are preserved.
+
+Useful mutate functions:
+
+        • '+', '-', 'log()', etc., for their usual mathematical
+          meanings
+
+        • 'lead()', 'lag()'
+
+        • 'dense_rank()', 'min_rank()', 'percent_rank()',
+          'row_number()', 'cume_dist()', 'ntile()'
+
+        • 'cumsum()', 'cummean()', 'cummin()', 'cummax()', 'cumany()',
+          'cumall()'
+
+        • 'na_if()', 'coalesce()'
+
+        • 'if_else()', 'recode()', 'case_when()'
+
+Grouped tibbles:
+
+     Because mutating expressions are computed within groups, they may
+     yield different results on grouped tibbles. This will be the case
+     as soon as an aggregating, lagging, or ranking function is
+     involved. Compare this ungrouped mutate:
+
+     starwars %>%
+       select(name, mass, species) %>%
+       mutate(mass_norm = mass / mean(mass, na.rm = TRUE))
+     
+     With the grouped equivalent:
+
+     starwars %>%
+       select(name, mass, species) %>%
+       group_by(species) %>%
+       mutate(mass_norm = mass / mean(mass, na.rm = TRUE))
+     
+     The former normalises 'mass' by the global average whereas the
+     latter normalises by the averages within species levels.
+
+Methods:
+
+     This function is a *generic*, which means that packages can
+     provide implementations (methods) for other classes. See the
+     documentation of individual methods for extra arguments and
+     differences in behaviour.
+
+     Methods available in currently loaded packages: no methods found.
+
+See Also:
+
+     Other single table verbs: 'arrange()', 'filter()', 'reframe()',
+     'rename()', 'select()', 'slice()', 'summarise()'
+
+Examples:
+
+     # Newly created variables are available immediately
+     starwars %>%
+       select(name, mass) %>%
+       mutate(
+         mass2 = mass * 2,
+         mass2_squared = mass2 * mass2
+       )
+     
+     # As well as adding new variables, you can use mutate() to
+     # remove variables and modify existing variables.
+     starwars %>%
+       select(name, height, mass, homeworld) %>%
+       mutate(
+         mass = NULL,
+         height = height * 0.0328084 # convert to feet
+       )
+     
+     # Use across() with mutate() to apply a transformation
+     # to multiple columns in a tibble.
+     starwars %>%
+       select(name, homeworld, species) %>%
+       mutate(across(!name, as.factor))
+     # see more in ?across
+     
+     # Window functions are useful for grouped mutates:
+     starwars %>%
+       select(name, mass, homeworld) %>%
+       group_by(homeworld) %>%
+       mutate(rank = min_rank(desc(mass)))
+     # see `vignette("window-functions")` for more details
+     
+     # By default, new columns are placed on the far right.
+     df <- tibble(x = 1, y = 2)
+     df %>% mutate(z = x + y)
+     df %>% mutate(z = x + y, .before = 1)
+     df %>% mutate(z = x + y, .after = x)
+     
+     # By default, mutate() keeps all columns from the input data.
+     df <- tibble(x = 1, y = 2, a = "a", b = "b")
+     df %>% mutate(z = x + y, .keep = "all") # the default
+     df %>% mutate(z = x + y, .keep = "used")
+     df %>% mutate(z = x + y, .keep = "unused")
+     df %>% mutate(z = x + y, .keep = "none")
+     
+     # Grouping ----------------------------------------
+     # The mutate operation may yield different results on grouped
+     # tibbles because the expressions are computed within groups.
+     # The following normalises `mass` by the global average:
+     starwars %>%
+       select(name, mass, species) %>%
+       mutate(mass_norm = mass / mean(mass, na.rm = TRUE))
+     
+     # Whereas this normalises `mass` by the averages within species
+     # levels:
+     starwars %>%
+       select(name, mass, species) %>%
+       group_by(species) %>%
+       mutate(mass_norm = mass / mean(mass, na.rm = TRUE))
+     
+     # Indirection ----------------------------------------
+     # Refer to column names stored as strings with the `.data` pronoun:
+     vars <- c("mass", "height")
+     mutate(starwars, prod = .data[[vars[[1]]]] * .data[[vars[[2]]]])
+     # Learn more in ?rlang::args_data_masking
+     
+[END TEXT]
+
+===============================================================================
+4. dplyr::summarise — help page "summarise" (dplyr 1.1.4), whole
+rhelp://dplyr@1.1.4/summarise
+===============================================================================
+
+[TEXT]
+summarise                package:dplyr                 R Documentation
+
+Summarise each group down to one row
+
+Description:
+
+     'summarise()' creates a new data frame. It returns one row for
+     each combination of grouping variables; if there are no grouping
+     variables, the output will have a single row summarising all
+     observations in the input. It will contain one column for each
+     grouping variable and one column for each of the summary
+     statistics that you have specified.
+
+     'summarise()' and 'summarize()' are synonyms.
+
+Usage:
+
+     summarise(.data, ..., .by = NULL, .groups = NULL)
+     
+     summarize(.data, ..., .by = NULL, .groups = NULL)
+     
+Arguments:
+
+   .data: A data frame, data frame extension (e.g. a tibble), or a lazy
+          data frame (e.g. from dbplyr or dtplyr). See _Methods_,
+          below, for more details.
+
+     ...: <'data-masking'> Name-value pairs of summary functions. The
+          name will be the name of the variable in the result.
+
+          The value can be:
+
+            • A vector of length 1, e.g. 'min(x)', 'n()', or
+              'sum(is.na(y))'.
+
+            • A data frame, to add multiple columns from a single
+              expression.
+
+          *[Deprecated]* Returning values with size 0 or >1 was
+          deprecated as of 1.1.0. Please use 'reframe()' for this
+          instead.
+
+     .by: *[Experimental]*
+
+          <'tidy-select'> Optionally, a selection of columns to group
+          by for just this operation, functioning as an alternative to
+          'group_by()'. For details and examples, see ?dplyr_by.
+
+ .groups: *[Experimental]* Grouping structure of the result.
+
+            • "drop_last": dropping the last level of grouping. This
+              was the only supported option before version 1.0.0.
+
+            • "drop": All levels of grouping are dropped.
+
+            • "keep": Same grouping structure as '.data'.
+
+            • "rowwise": Each row is its own group.
+
+          When '.groups' is not specified, it is chosen based on the
+          number of rows of the results:
+
+            • If all the results have 1 row, you get "drop_last".
+
+            • If the number of rows varies, you get "keep" (note that
+              returning a variable number of rows was deprecated in
+              favor of 'reframe()', which also unconditionally drops
+              all levels of grouping).
+
+          In addition, a message informs you of that choice, unless the
+          result is ungrouped, the option "dplyr.summarise.inform" is
+          set to 'FALSE', or when 'summarise()' is called from a
+          function in a package.
+
+Value:
+
+     An object _usually_ of the same type as '.data'.
+
+        • The rows come from the underlying 'group_keys()'.
+
+        • The columns are a combination of the grouping keys and the
+          summary expressions that you provide.
+
+        • The grouping structure is controlled by the .groups=
+          argument, the output may be another grouped_df, a tibble or a
+          rowwise data frame.
+
+        • Data frame attributes are *not* preserved, because
+          'summarise()' fundamentally creates a new data frame.
+
+Useful functions:
+
+        • Center: 'mean()', 'median()'
+
+        • Spread: 'sd()', 'IQR()', 'mad()'
+
+        • Range: 'min()', 'max()',
+
+        • Position: 'first()', 'last()', 'nth()',
+
+        • Count: 'n()', 'n_distinct()'
+
+        • Logical: 'any()', 'all()'
+
+Backend variations:
+
+     The data frame backend supports creating a variable and using it
+     in the same summary. This means that previously created summary
+     variables can be further transformed or combined within the
+     summary, as in 'mutate()'. However, it also means that summary
+     variables with the same names as previous variables overwrite
+     them, making those variables unavailable to later summary
+     variables.
+
+     This behaviour may not be supported in other backends. To avoid
+     unexpected results, consider using new names for your summary
+     variables, especially when creating multiple summaries.
+
+Methods:
+
+     This function is a *generic*, which means that packages can
+     provide implementations (methods) for other classes. See the
+     documentation of individual methods for extra arguments and
+     differences in behaviour.
+
+     The following methods are currently available in loaded packages:
+     no methods found.
+
+See Also:
+
+     Other single table verbs: 'arrange()', 'filter()', 'mutate()',
+     'reframe()', 'rename()', 'select()', 'slice()'
+
+Examples:
+
+     # A summary applied to ungrouped tbl returns a single row
+     mtcars %>%
+       summarise(mean = mean(disp), n = n())
+     
+     # Usually, you'll want to group first
+     mtcars %>%
+       group_by(cyl) %>%
+       summarise(mean = mean(disp), n = n())
+     
+     # Each summary call removes one grouping level (since that group
+     # is now just a single row)
+     mtcars %>%
+       group_by(cyl, vs) %>%
+       summarise(cyl_n = n()) %>%
+       group_vars()
+     
+     # BEWARE: reusing variables may lead to unexpected results
+     mtcars %>%
+       group_by(cyl) %>%
+       summarise(disp = mean(disp), sd = sd(disp))
+     
+     # Refer to column names stored as strings with the `.data` pronoun:
+     var <- "mass"
+     summarise(starwars, avg = mean(.data[[var]], na.rm = TRUE))
+     # Learn more in ?rlang::args_data_masking
+     
+     # In dplyr 1.1.0, returning multiple rows per group was deprecated in favor
+     # of `reframe()`, which never messages and always returns an ungrouped
+     # result:
+     mtcars %>%
+        group_by(cyl) %>%
+        summarise(qs = quantile(disp, c(0.25, 0.75)), prob = c(0.25, 0.75))
+     # ->
+     mtcars %>%
+        group_by(cyl) %>%
+        reframe(qs = quantile(disp, c(0.25, 0.75)), prob = c(0.25, 0.75))
+     
+[END TEXT]
+
+===============================================================================
+5. dplyr::group_by — help page "group_by" (dplyr 1.1.4), whole
+rhelp://dplyr@1.1.4/group_by
+===============================================================================
+
+[TEXT]
+group_by                 package:dplyr                 R Documentation
+
+Group by one or more variables
+
+Description:
+
+     Most data operations are done on groups defined by variables.
+     'group_by()' takes an existing tbl and converts it into a grouped
+     tbl where operations are performed "by group". 'ungroup()' removes
+     grouping.
+
+Usage:
+
+     group_by(.data, ..., .add = FALSE, .drop = group_by_drop_default(.data))
+     
+     ungroup(x, ...)
+     
+Arguments:
+
+   .data: A data frame, data frame extension (e.g. a tibble), or a lazy
+          data frame (e.g. from dbplyr or dtplyr). See _Methods_,
+          below, for more details.
+
+     ...: In 'group_by()', variables or computations to group by.
+          Computations are always done on the ungrouped data frame. To
+          perform computations on the grouped data, you need to use a
+          separate 'mutate()' step before the 'group_by()'.
+          Computations are not allowed in 'nest_by()'. In 'ungroup()',
+          variables to remove from the grouping.
+
+    .add: When 'FALSE', the default, 'group_by()' will override
+          existing groups. To add to the existing groups, use '.add =
+          TRUE'.
+
+          This argument was previously called 'add', but that prevented
+          creating a new grouping variable called 'add', and conflicts
+          with our naming conventions.
+
+   .drop: Drop groups formed by factor levels that don't appear in the
+          data? The default is 'TRUE' except when '.data' has been
+          previously grouped with '.drop = FALSE'. See
+          'group_by_drop_default()' for details.
+
+       x: A 'tbl()'
+
+Value:
+
+     A grouped data frame with class 'grouped_df', unless the
+     combination of '...' and 'add' yields a empty set of grouping
+     columns, in which case a tibble will be returned.
+
+Methods:
+
+     These function are *generic*s, which means that packages can
+     provide implementations (methods) for other classes. See the
+     documentation of individual methods for extra arguments and
+     differences in behaviour.
+
+     Methods available in currently loaded packages:
+
+        • 'group_by()': no methods found.
+
+        • 'ungroup()': no methods found.
+
+Ordering:
+
+     Currently, 'group_by()' internally orders the groups in ascending
+     order. This results in ordered output from functions that
+     aggregate groups, such as 'summarise()'.
+
+     When used as grouping columns, character vectors are ordered in
+     the C locale for performance and reproducibility across R
+     sessions. If the resulting ordering of your grouped operation
+     matters and is dependent on the locale, you should follow up the
+     grouped operation with an explicit call to 'arrange()' and set the
+     '.locale' argument. For example:
+
+     data %>%
+       group_by(chr) %>%
+       summarise(avg = mean(x)) %>%
+       arrange(chr, .locale = "en")
+     
+     This is often useful as a preliminary step before generating
+     content intended for humans, such as an HTML table.
+
+  Legacy behavior:
+
+       Prior to dplyr 1.1.0, character vector grouping columns were
+       ordered in the system locale. If you need to temporarily revert
+       to this behavior, you can set the global option
+       'dplyr.legacy_locale' to 'TRUE', but this should be used
+       sparingly and you should expect this option to be removed in a
+       future version of dplyr. It is better to update existing code to
+       explicitly call 'arrange(.locale = )' instead. Note that setting
+       'dplyr.legacy_locale' will also force calls to 'arrange()' to
+       use the system locale.
+
+
+See Also:
+
+     Other grouping functions: 'group_map()', 'group_nest()',
+     'group_split()', 'group_trim()'
+
+Examples:
+
+     by_cyl <- mtcars %>% group_by(cyl)
+     
+     # grouping doesn't change how the data looks (apart from listing
+     # how it's grouped):
+     by_cyl
+     
+     # It changes how it acts with the other dplyr verbs:
+     by_cyl %>% summarise(
+       disp = mean(disp),
+       hp = mean(hp)
+     )
+     by_cyl %>% filter(disp == max(disp))
+     
+     # Each call to summarise() removes a layer of grouping
+     by_vs_am <- mtcars %>% group_by(vs, am)
+     by_vs <- by_vs_am %>% summarise(n = n())
+     by_vs
+     by_vs %>% summarise(n = sum(n))
+     
+     # To removing grouping, use ungroup
+     by_vs %>%
+       ungroup() %>%
+       summarise(n = sum(n))
+     
+     # By default, group_by() overrides existing grouping
+     by_cyl %>%
+       group_by(vs, am) %>%
+       group_vars()
+     
+     # Use add = TRUE to instead append
+     by_cyl %>%
+       group_by(vs, am, .add = TRUE) %>%
+       group_vars()
+     
+     # You can group by expressions: this is a short-hand
+     # for a mutate() followed by a group_by()
+     mtcars %>%
+       group_by(vsam = vs + am)
+     
+     # The implicit mutate() step is always performed on the
+     # ungrouped data. Here we get 3 groups:
+     mtcars %>%
+       group_by(vs) %>%
+       group_by(hp_cut = cut(hp, 3))
+     
+     # If you want it to be performed by groups,
+     # you have to use an explicit mutate() call.
+     # Here we get 3 groups per value of vs
+     mtcars %>%
+       group_by(vs) %>%
+       mutate(hp_cut = cut(hp, 3)) %>%
+       group_by(hp_cut)
+     
+     # when factors are involved and .drop = FALSE, groups can be empty
+     tbl <- tibble(
+       x = 1:10,
+       y = factor(rep(c("a", "c"), each  = 5), levels = c("a", "b", "c"))
+     )
+     tbl %>%
+       group_by(y, .drop = FALSE) %>%
+       group_rows()
+     
+[END TEXT]
+
+===============================================================================
+6. dplyr::arrange — help page "arrange" (dplyr 1.1.4), whole
+rhelp://dplyr@1.1.4/arrange
+===============================================================================
+
+[TEXT]
+arrange                 package:dplyr                  R Documentation
+
+Order rows using column values
+
+Description:
+
+     'arrange()' orders the rows of a data frame by the values of
+     selected columns.
+
+     Unlike other dplyr verbs, 'arrange()' largely ignores grouping;
+     you need to explicitly mention grouping variables (or use
+     '.by_group = TRUE') in order to group by them, and functions of
+     variables are evaluated once per data frame, not once per group.
+
+Usage:
+
+     arrange(.data, ..., .by_group = FALSE)
+     
+     ## S3 method for class 'data.frame'
+     arrange(.data, ..., .by_group = FALSE, .locale = NULL)
+     
+Arguments:
+
+   .data: A data frame, data frame extension (e.g. a tibble), or a lazy
+          data frame (e.g. from dbplyr or dtplyr). See _Methods_,
+          below, for more details.
+
+     ...: <'data-masking'> Variables, or functions of variables. Use
+          'desc()' to sort a variable in descending order.
+
+.by_group: If 'TRUE', will sort first by grouping variable. Applies to
+          grouped data frames only.
+
+ .locale: The locale to sort character vectors in.
+
+            • If 'NULL', the default, uses the '"C"' locale unless the
+              'dplyr.legacy_locale' global option escape hatch is
+              active. See the dplyr-locale help page for more details.
+
+            • If a single string from 'stringi::stri_locale_list()' is
+              supplied, then this will be used as the locale to sort
+              with. For example, '"en"' will sort with the American
+              English locale. This requires the stringi package.
+
+            • If '"C"' is supplied, then character vectors will always
+              be sorted in the C locale. This does not require stringi
+              and is often much faster than supplying a locale
+              identifier.
+
+          The C locale is not the same as English locales, such as
+          '"en"', particularly when it comes to data containing a mix
+          of upper and lower case letters. This is explained in more
+          detail on the locale help page under the Default locale
+          section.
+
+Details:
+
+  Missing values:
+
+       Unlike base sorting with 'sort()', 'NA' are:
+
+         • always sorted to the end for local data, even when wrapped
+           with 'desc()'.
+
+         • treated differently for remote data, depending on the
+           backend.
+
+Value:
+
+     An object of the same type as '.data'. The output has the
+     following properties:
+
+        • All rows appear in the output, but (usually) in a different
+          place.
+
+        • Columns are not modified.
+
+        • Groups are not modified.
+
+        • Data frame attributes are preserved.
+
+Methods:
+
+     This function is a *generic*, which means that packages can
+     provide implementations (methods) for other classes. See the
+     documentation of individual methods for extra arguments and
+     differences in behaviour.
+
+     The following methods are currently available in loaded packages:
+     no methods found.
+
+See Also:
+
+     Other single table verbs: 'filter()', 'mutate()', 'reframe()',
+     'rename()', 'select()', 'slice()', 'summarise()'
+
+Examples:
+
+     arrange(mtcars, cyl, disp)
+     arrange(mtcars, desc(disp))
+     
+     # grouped arrange ignores groups
+     by_cyl <- mtcars %>% group_by(cyl)
+     by_cyl %>% arrange(desc(wt))
+     # Unless you specifically ask:
+     by_cyl %>% arrange(desc(wt), .by_group = TRUE)
+     
+     # use embracing when wrapping in a function;
+     # see ?rlang::args_data_masking for more details
+     tidy_eval_arrange <- function(.data, var) {
+       .data %>%
+         arrange({{ var }})
+     }
+     tidy_eval_arrange(mtcars, mpg)
+     
+     # Use `across()` or `pick()` to select columns with tidy-select
+     iris %>% arrange(pick(starts_with("Sepal")))
+     iris %>% arrange(across(starts_with("Sepal"), desc))
+     
+[END TEXT]
+
+===============================================================================
+7. dplyr::count — help page "count" (dplyr 1.1.4), whole
+rhelp://dplyr@1.1.4/count
+===============================================================================
+
+[TEXT]
+count                  package:dplyr                   R Documentation
+
+Count the observations in each group
+
+Description:
+
+     'count()' lets you quickly count the unique values of one or more
+     variables: 'df %>% count(a, b)' is roughly equivalent to 'df %>%
+     group_by(a, b) %>% summarise(n = n())'. 'count()' is paired with
+     'tally()', a lower-level helper that is equivalent to 'df %>%
+     summarise(n = n())'. Supply 'wt' to perform weighted counts,
+     switching the summary from 'n = n()' to 'n = sum(wt)'.
+
+     'add_count()' and 'add_tally()' are equivalents to 'count()' and
+     'tally()' but use 'mutate()' instead of 'summarise()' so that they
+     add a new column with group-wise counts.
+
+Usage:
+
+     count(x, ..., wt = NULL, sort = FALSE, name = NULL)
+     
+     ## S3 method for class 'data.frame'
+     count(
+       x,
+       ...,
+       wt = NULL,
+       sort = FALSE,
+       name = NULL,
+       .drop = group_by_drop_default(x)
+     )
+     
+     tally(x, wt = NULL, sort = FALSE, name = NULL)
+     
+     add_count(x, ..., wt = NULL, sort = FALSE, name = NULL, .drop = deprecated())
+     
+     add_tally(x, wt = NULL, sort = FALSE, name = NULL)
+     
+Arguments:
+
+       x: A data frame, data frame extension (e.g. a tibble), or a lazy
+          data frame (e.g. from dbplyr or dtplyr).
+
+     ...: <'data-masking'> Variables to group by.
+
+      wt: <'data-masking'> Frequency weights. Can be 'NULL' or a
+          variable:
+
+            • If 'NULL' (the default), counts the number of rows in
+              each group.
+
+            • If a variable, computes 'sum(wt)' for each group.
+
+    sort: If 'TRUE', will show the largest groups at the top.
+
+    name: The name of the new column in the output.
+
+          If omitted, it will default to 'n'. If there's already a
+          column called 'n', it will use 'nn'. If there's a column
+          called 'n' and 'nn', it'll use 'nnn', and so on, adding 'n's
+          until it gets a new name.
+
+   .drop: Handling of factor levels that don't appear in the data,
+          passed on to 'group_by()'.
+
+          For 'count()': if 'FALSE' will include counts for empty
+          groups (i.e. for levels of factors that don't exist in the
+          data).
+
+          *[Deprecated]* For 'add_count()': deprecated since it can't
+          actually affect the output.
+
+Value:
+
+     An object of the same type as '.data'. 'count()' and 'add_count()'
+     group transiently, so the output has the same groups as the input.
+
+Examples:
+
+     # count() is a convenient way to get a sense of the distribution of
+     # values in a dataset
+     starwars %>% count(species)
+     starwars %>% count(species, sort = TRUE)
+     starwars %>% count(sex, gender, sort = TRUE)
+     starwars %>% count(birth_decade = round(birth_year, -1))
+     
+     # use the `wt` argument to perform a weighted count. This is useful
+     # when the data has already been aggregated once
+     df <- tribble(
+       ~name,    ~gender,   ~runs,
+       "Max",    "male",       10,
+       "Sandra", "female",      1,
+       "Susan",  "female",      4
+     )
+     # counts rows:
+     df %>% count(gender)
+     # counts runs:
+     df %>% count(gender, wt = runs)
+     
+     # When factors are involved, `.drop = FALSE` can be used to retain factor
+     # levels that don't appear in the data
+     df2 <- tibble(
+       id = 1:5,
+       type = factor(c("a", "c", "a", NA, "a"), levels = c("a", "b", "c"))
+     )
+     df2 %>% count(type)
+     df2 %>% count(type, .drop = FALSE)
+     
+     # Or, using `group_by()`:
+     df2 %>% group_by(type, .drop = FALSE) %>% count()
+     
+     # tally() is a lower-level function that assumes you've done the grouping
+     starwars %>% tally()
+     starwars %>% group_by(species) %>% tally()
+     
+     # both count() and tally() have add_ variants that work like
+     # mutate() instead of summarise
+     df %>% add_count(gender, wt = runs)
+     df %>% add_tally(wt = runs)
+     
+[END TEXT]
+
+===============================================================================
+8. dplyr::if_else — help page "if_else" (dplyr 1.1.4), whole
+rhelp://dplyr@1.1.4/if_else
+===============================================================================
+
+[TEXT]
+if_else                 package:dplyr                  R Documentation
+
+Vectorised if-else
+
+Description:
+
+     'if_else()' is a vectorized if-else. Compared to the base R
+     equivalent, 'ifelse()', this function allows you to handle missing
+     values in the 'condition' with 'missing' and always takes 'true',
+     'false', and 'missing' into account when determining what the
+     output type should be.
+
+Usage:
+
+     if_else(condition, true, false, missing = NULL, ..., ptype = NULL, size = NULL)
+     
+Arguments:
+
+condition: A logical vector
+
+true, false: Vectors to use for 'TRUE' and 'FALSE' values of
+          'condition'.
+
+          Both 'true' and 'false' will be recycled to the size of
+          'condition'.
+
+          'true', 'false', and 'missing' (if used) will be cast to
+          their common type.
+
+ missing: If not 'NULL', will be used as the value for 'NA' values of
+          'condition'. Follows the same size and type rules as 'true'
+          and 'false'.
+
+     ...: These dots are for future extensions and must be empty.
+
+   ptype: An optional prototype declaring the desired output type. If
+          supplied, this overrides the common type of 'true', 'false',
+          and 'missing'.
+
+    size: An optional size declaring the desired output size. If
+          supplied, this overrides the size of 'condition'.
+
+Value:
+
+     A vector with the same size as 'condition' and the same type as
+     the common type of 'true', 'false', and 'missing'.
+
+     Where 'condition' is 'TRUE', the matching values from 'true',
+     where it is 'FALSE', the matching values from 'false', and where
+     it is 'NA', the matching values from 'missing', if provided,
+     otherwise a missing value will be used.
+
+Examples:
+
+     x <- c(-5:5, NA)
+     if_else(x < 0, NA, x)
+     
+     # Explicitly handle `NA` values in the `condition` with `missing`
+     if_else(x < 0, "negative", "positive", missing = "missing")
+     
+     # Unlike `ifelse()`, `if_else()` preserves types
+     x <- factor(sample(letters[1:5], 10, replace = TRUE))
+     ifelse(x %in% c("a", "b", "c"), x, NA)
+     if_else(x %in% c("a", "b", "c"), x, NA)
+     
+     # `if_else()` is often useful for creating new columns inside of `mutate()`
+     starwars %>%
+       mutate(category = if_else(height < 100, "short", "tall"), .keep = "used")
+     
+[END TEXT]
+
+===============================================================================
+9. dplyr::case_when — help page "case_when" (dplyr 1.1.4), whole
+rhelp://dplyr@1.1.4/case_when
+===============================================================================
+
+[TEXT]
+case_when                package:dplyr                 R Documentation
+
+A general vectorised if-else
+
+Description:
+
+     This function allows you to vectorise multiple 'if_else()'
+     statements. Each case is evaluated sequentially and the first
+     match for each element determines the corresponding value in the
+     output vector. If no cases match, the '.default' is used as a
+     final "else" statment.
+
+     'case_when()' is an R equivalent of the SQL "searched" CASE WHEN
+     statement.
+
+Usage:
+
+     case_when(..., .default = NULL, .ptype = NULL, .size = NULL)
+     
+Arguments:
+
+     ...: <'dynamic-dots'> A sequence of two-sided formulas. The left
+          hand side (LHS) determines which values match this case. The
+          right hand side (RHS) provides the replacement value.
+
+          The LHS inputs must evaluate to logical vectors.
+
+          The RHS inputs will be coerced to their common type.
+
+          All inputs will be recycled to their common size. That said,
+          we encourage all LHS inputs to be the same size. Recycling is
+          mainly useful for RHS inputs, where you might supply a size 1
+          input that will be recycled to the size of the LHS inputs.
+
+          'NULL' inputs are ignored.
+
+.default: The value used when all of the LHS inputs return either
+          'FALSE' or 'NA'.
+
+          '.default' must be size 1 or the same size as the common size
+          computed from '...'.
+
+          '.default' participates in the computation of the common type
+          with the RHS inputs.
+
+          'NA' values in the LHS conditions are treated like 'FALSE',
+          meaning that the result at those locations will be assigned
+          the '.default' value. To handle missing values in the
+          conditions differently, you must explicitly catch them with
+          another condition before they fall through to the '.default'.
+          This typically involves some variation of 'is.na(x) ~ value'
+          tailored to your usage of 'case_when()'.
+
+          If 'NULL', the default, a missing value will be used.
+
+  .ptype: An optional prototype declaring the desired output type. If
+          supplied, this overrides the common type of the RHS inputs.
+
+   .size: An optional size declaring the desired output size. If
+          supplied, this overrides the common size computed from '...'.
+
+Value:
+
+     A vector with the same size as the common size computed from the
+     inputs in '...' and the same type as the common type of the RHS
+     inputs in '...'.
+
+See Also:
+
+     'case_match()'
+
+Examples:
+
+     x <- 1:70
+     case_when(
+       x %% 35 == 0 ~ "fizz buzz",
+       x %% 5 == 0 ~ "fizz",
+       x %% 7 == 0 ~ "buzz",
+       .default = as.character(x)
+     )
+     
+     # Like an if statement, the arguments are evaluated in order, so you must
+     # proceed from the most specific to the most general. This won't work:
+     case_when(
+       x %%  5 == 0 ~ "fizz",
+       x %%  7 == 0 ~ "buzz",
+       x %% 35 == 0 ~ "fizz buzz",
+       .default = as.character(x)
+     )
+     
+     # If none of the cases match and no `.default` is supplied, NA is used:
+     case_when(
+       x %% 35 == 0 ~ "fizz buzz",
+       x %% 5 == 0 ~ "fizz",
+       x %% 7 == 0 ~ "buzz",
+     )
+     
+     # Note that `NA` values on the LHS are treated like `FALSE` and will be
+     # assigned the `.default` value. You must handle them explicitly if you
+     # want to use a different value. The exact way to handle missing values is
+     # dependent on the set of LHS conditions you use.
+     x[2:4] <- NA_real_
+     case_when(
+       x %% 35 == 0 ~ "fizz buzz",
+       x %% 5 == 0 ~ "fizz",
+       x %% 7 == 0 ~ "buzz",
+       is.na(x) ~ "nope",
+       .default = as.character(x)
+     )
+     
+     # `case_when()` evaluates all RHS expressions, and then constructs its
+     # result by extracting the selected (via the LHS expressions) parts.
+     # In particular `NaN`s are produced in this case:
+     y <- seq(-2, 2, by = .5)
+     case_when(
+       y >= 0 ~ sqrt(y),
+       .default = y
+     )
+     
+     # `case_when()` is particularly useful inside `mutate()` when you want to
+     # create a new variable that relies on a complex combination of existing
+     # variables
+     starwars %>%
+       select(name:mass, gender, species) %>%
+       mutate(
+         type = case_when(
+           height > 200 | mass > 200 ~ "large",
+           species == "Droid" ~ "robot",
+           .default = "other"
+         )
+       )
+     
+     
+     # `case_when()` is not a tidy eval function. If you'd like to reuse
+     # the same patterns, extract the `case_when()` call in a normal
+     # function:
+     case_character_type <- function(height, mass, species) {
+       case_when(
+         height > 200 | mass > 200 ~ "large",
+         species == "Droid" ~ "robot",
+         .default = "other"
+       )
+     }
+     
+     case_character_type(150, 250, "Droid")
+     case_character_type(150, 150, "Droid")
+     
+     # Such functions can be used inside `mutate()` as well:
+     starwars %>%
+       mutate(type = case_character_type(height, mass, species)) %>%
+       pull(type)
+     
+     # `case_when()` ignores `NULL` inputs. This is useful when you'd
+     # like to use a pattern only under certain conditions. Here we'll
+     # take advantage of the fact that `if` returns `NULL` when there is
+     # no `else` clause:
+     case_character_type <- function(height, mass, species, robots = TRUE) {
+       case_when(
+         height > 200 | mass > 200 ~ "large",
+         if (robots) species == "Droid" ~ "robot",
+         .default = "other"
+       )
+     }
+     
+     starwars %>%
+       mutate(type = case_character_type(height, mass, species, robots = FALSE)) %>%
+       pull(type)
+     
+[END TEXT]
+
+===============================================================================
+10. dplyr::left_join — help page "mutate-joins" (dplyr 1.1.4), whole
+rhelp://dplyr@1.1.4/mutate-joins
+===============================================================================
+
+[TEXT]
+mutate-joins               package:dplyr               R Documentation
+
+Mutating joins
+
+Description:
+
+     Mutating joins add columns from 'y' to 'x', matching observations
+     based on the keys. There are four mutating joins: the inner join,
+     and the three outer joins.
+
+  Inner join:
+
+       An 'inner_join()' only keeps observations from 'x' that have a
+       matching key in 'y'.
+
+       The most important property of an inner join is that unmatched
+       rows in either input are not included in the result. This means
+       that generally inner joins are not appropriate in most analyses,
+       because it is too easy to lose observations.
+
+
+  Outer joins:
+
+       The three outer joins keep observations that appear in at least
+       one of the data frames:
+
+         • A 'left_join()' keeps all observations in 'x'.
+
+         • A 'right_join()' keeps all observations in 'y'.
+
+         • A 'full_join()' keeps all observations in 'x' and 'y'.
+
+
+Usage:
+
+     inner_join(
+       x,
+       y,
+       by = NULL,
+       copy = FALSE,
+       suffix = c(".x", ".y"),
+       ...,
+       keep = NULL
+     )
+     
+     ## S3 method for class 'data.frame'
+     inner_join(
+       x,
+       y,
+       by = NULL,
+       copy = FALSE,
+       suffix = c(".x", ".y"),
+       ...,
+       keep = NULL,
+       na_matches = c("na", "never"),
+       multiple = "all",
+       unmatched = "drop",
+       relationship = NULL
+     )
+     
+     left_join(
+       x,
+       y,
+       by = NULL,
+       copy = FALSE,
+       suffix = c(".x", ".y"),
+       ...,
+       keep = NULL
+     )
+     
+     ## S3 method for class 'data.frame'
+     left_join(
+       x,
+       y,
+       by = NULL,
+       copy = FALSE,
+       suffix = c(".x", ".y"),
+       ...,
+       keep = NULL,
+       na_matches = c("na", "never"),
+       multiple = "all",
+       unmatched = "drop",
+       relationship = NULL
+     )
+     
+     right_join(
+       x,
+       y,
+       by = NULL,
+       copy = FALSE,
+       suffix = c(".x", ".y"),
+       ...,
+       keep = NULL
+     )
+     
+     ## S3 method for class 'data.frame'
+     right_join(
+       x,
+       y,
+       by = NULL,
+       copy = FALSE,
+       suffix = c(".x", ".y"),
+       ...,
+       keep = NULL,
+       na_matches = c("na", "never"),
+       multiple = "all",
+       unmatched = "drop",
+       relationship = NULL
+     )
+     
+     full_join(
+       x,
+       y,
+       by = NULL,
+       copy = FALSE,
+       suffix = c(".x", ".y"),
+       ...,
+       keep = NULL
+     )
+     
+     ## S3 method for class 'data.frame'
+     full_join(
+       x,
+       y,
+       by = NULL,
+       copy = FALSE,
+       suffix = c(".x", ".y"),
+       ...,
+       keep = NULL,
+       na_matches = c("na", "never"),
+       multiple = "all",
+       relationship = NULL
+     )
+     
+Arguments:
+
+    x, y: A pair of data frames, data frame extensions (e.g. a tibble),
+          or lazy data frames (e.g. from dbplyr or dtplyr). See
+          _Methods_, below, for more details.
+
+      by: A join specification created with 'join_by()', or a character
+          vector of variables to join by.
+
+          If 'NULL', the default, *_join() will perform a natural join,
+          using all variables in common across 'x' and 'y'. A message
+          lists the variables so that you can check they're correct;
+          suppress the message by supplying 'by' explicitly.
+
+          To join on different variables between 'x' and 'y', use a
+          'join_by()' specification. For example, 'join_by(a == b)'
+          will match 'x$a' to 'y$b'.
+
+          To join by multiple variables, use a 'join_by()'
+          specification with multiple expressions. For example,
+          'join_by(a == b, c == d)' will match 'x$a' to 'y$b' and 'x$c'
+          to 'y$d'. If the column names are the same between 'x' and
+          'y', you can shorten this by listing only the variable names,
+          like 'join_by(a, c)'.
+
+          'join_by()' can also be used to perform inequality, rolling,
+          and overlap joins. See the documentation at ?join_by for
+          details on these types of joins.
+
+          For simple equality joins, you can alternatively specify a
+          character vector of variable names to join by. For example,
+          'by = c("a", "b")' joins 'x$a' to 'y$a' and 'x$b' to 'y$b'.
+          If variable names differ between 'x' and 'y', use a named
+          character vector like 'by = c("x_a" = "y_a", "x_b" = "y_b")'.
+
+          To perform a cross-join, generating all combinations of 'x'
+          and 'y', see 'cross_join()'.
+
+    copy: If 'x' and 'y' are not from the same data source, and 'copy'
+          is 'TRUE', then 'y' will be copied into the same src as 'x'.
+          This allows you to join tables across srcs, but it is a
+          potentially expensive operation so you must opt into it.
+
+  suffix: If there are non-joined duplicate variables in 'x' and 'y',
+          these suffixes will be added to the output to disambiguate
+          them. Should be a character vector of length 2.
+
+     ...: Other parameters passed onto methods.
+
+    keep: Should the join keys from both 'x' and 'y' be preserved in
+          the output?
+
+            • If 'NULL', the default, joins on equality retain only the
+              keys from 'x', while joins on inequality retain the keys
+              from both inputs.
+
+            • If 'TRUE', all keys from both inputs are retained.
+
+            • If 'FALSE', only keys from 'x' are retained. For right
+              and full joins, the data in key columns corresponding to
+              rows that only exist in 'y' are merged into the key
+              columns from 'x'. Can't be used when joining on
+              inequality conditions.
+
+na_matches: Should two 'NA' or two 'NaN' values match?
+
+            • '"na"', the default, treats two 'NA' or two 'NaN' values
+              as equal, like '%in%', 'match()', and 'merge()'.
+
+            • '"never"' treats two 'NA' or two 'NaN' values as
+              different, and will never match them together or to any
+              other values. This is similar to joins for database
+              sources and to 'base::merge(incomparables = NA)'.
+
+multiple: Handling of rows in 'x' with multiple matches in 'y'. For
+          each row of 'x':
+
+            • '"all"', the default, returns every match detected in
+              'y'. This is the same behavior as SQL.
+
+            • '"any"' returns one match detected in 'y', with no
+              guarantees on which match will be returned. It is often
+              faster than '"first"' and '"last"' if you just need to
+              detect if there is at least one match.
+
+            • '"first"' returns the first match detected in 'y'.
+
+            • '"last"' returns the last match detected in 'y'.
+
+unmatched: How should unmatched keys that would result in dropped rows
+          be handled?
+
+            • '"drop"' drops unmatched keys from the result.
+
+            • '"error"' throws an error if unmatched keys are detected.
+
+          'unmatched' is intended to protect you from accidentally
+          dropping rows during a join. It only checks for unmatched
+          keys in the input that could potentially drop rows.
+
+            • For left joins, it checks 'y'.
+
+            • For right joins, it checks 'x'.
+
+            • For inner joins, it checks both 'x' and 'y'. In this
+              case, 'unmatched' is also allowed to be a character
+              vector of length 2 to specify the behavior for 'x' and
+              'y' independently.
+
+relationship: Handling of the expected relationship between the keys of
+          'x' and 'y'. If the expectations chosen from the list below
+          are invalidated, an error is thrown.
+
+            • 'NULL', the default, doesn't expect there to be any
+              relationship between 'x' and 'y'. However, for equality
+              joins it will check for a many-to-many relationship
+              (which is typically unexpected) and will warn if one
+              occurs, encouraging you to either take a closer look at
+              your inputs or make this relationship explicit by
+              specifying '"many-to-many"'.
+
+              See the _Many-to-many relationships_ section for more
+              details.
+
+            • '"one-to-one"' expects:
+
+                • Each row in 'x' matches at most 1 row in 'y'.
+
+                • Each row in 'y' matches at most 1 row in 'x'.
+
+            • '"one-to-many"' expects:
+
+                • Each row in 'y' matches at most 1 row in 'x'.
+
+            • '"many-to-one"' expects:
+
+                • Each row in 'x' matches at most 1 row in 'y'.
+
+            • '"many-to-many"' doesn't perform any relationship checks,
+              but is provided to allow you to be explicit about this
+              relationship if you know it exists.
+
+          'relationship' doesn't handle cases where there are zero
+          matches. For that, see 'unmatched'.
+
+Value:
+
+     An object of the same type as 'x' (including the same groups). The
+     order of the rows and columns of 'x' is preserved as much as
+     possible. The output has the following properties:
+
+        • The rows are affect by the join type.
+
+            • 'inner_join()' returns matched 'x' rows.
+
+            • 'left_join()' returns all 'x' rows.
+
+            • 'right_join()' returns matched of 'x' rows, followed by
+              unmatched 'y' rows.
+
+            • 'full_join()' returns all 'x' rows, followed by unmatched
+              'y' rows.
+
+        • Output columns include all columns from 'x' and all non-key
+          columns from 'y'. If 'keep = TRUE', the key columns from 'y'
+          are included as well.
+
+        • If non-key columns in 'x' and 'y' have the same name,
+          'suffix'es are added to disambiguate. If 'keep = TRUE' and
+          key columns in 'x' and 'y' have the same name, 'suffix'es are
+          added to disambiguate these as well.
+
+        • If 'keep = FALSE', output columns included in 'by' are
+          coerced to their common type between 'x' and 'y'.
+
+Many-to-many relationships:
+
+     By default, dplyr guards against many-to-many relationships in
+     equality joins by throwing a warning. These occur when both of the
+     following are true:
+
+        • A row in 'x' matches multiple rows in 'y'.
+
+        • A row in 'y' matches multiple rows in 'x'.
+
+     This is typically surprising, as most joins involve a relationship
+     of one-to-one, one-to-many, or many-to-one, and is often the
+     result of an improperly specified join. Many-to-many relationships
+     are particularly problematic because they can result in a
+     Cartesian explosion of the number of rows returned from the join.
+
+     If a many-to-many relationship is expected, silence this warning
+     by explicitly setting 'relationship = "many-to-many"'.
+
+     In production code, it is best to preemptively set 'relationship'
+     to whatever relationship you expect to exist between the keys of
+     'x' and 'y', as this forces an error to occur immediately if the
+     data doesn't align with your expectations.
+
+     Inequality joins typically result in many-to-many relationships by
+     nature, so they don't warn on them by default, but you should
+     still take extra care when specifying an inequality join, because
+     they also have the capability to return a large number of rows.
+
+     Rolling joins don't warn on many-to-many relationships either, but
+     many rolling joins follow a many-to-one relationship, so it is
+     often useful to set 'relationship = "many-to-one"' to enforce
+     this.
+
+     Note that in SQL, most database providers won't let you specify a
+     many-to-many relationship between two tables, instead requiring
+     that you create a third _junction table_ that results in two
+     one-to-many relationships instead.
+
+Methods:
+
+     These functions are *generic*s, which means that packages can
+     provide implementations (methods) for other classes. See the
+     documentation of individual methods for extra arguments and
+     differences in behaviour.
+
+     Methods available in currently loaded packages:
+
+        • 'inner_join()': no methods found.
+
+        • 'left_join()': no methods found.
+
+        • 'right_join()': no methods found.
+
+        • 'full_join()': no methods found.
+
+See Also:
+
+     Other joins: 'cross_join()', 'filter-joins', 'nest_join()'
+
+Examples:
+
+     band_members %>% inner_join(band_instruments)
+     band_members %>% left_join(band_instruments)
+     band_members %>% right_join(band_instruments)
+     band_members %>% full_join(band_instruments)
+     
+     # To suppress the message about joining variables, supply `by`
+     band_members %>% inner_join(band_instruments, by = join_by(name))
+     # This is good practice in production code
+     
+     # Use an equality expression if the join variables have different names
+     band_members %>% full_join(band_instruments2, by = join_by(name == artist))
+     # By default, the join keys from `x` and `y` are coalesced in the output; use
+     # `keep = TRUE` to keep the join keys from both `x` and `y`
+     band_members %>%
+       full_join(band_instruments2, by = join_by(name == artist), keep = TRUE)
+     
+     # If a row in `x` matches multiple rows in `y`, all the rows in `y` will be
+     # returned once for each matching row in `x`.
+     df1 <- tibble(x = 1:3)
+     df2 <- tibble(x = c(1, 1, 2), y = c("first", "second", "third"))
+     df1 %>% left_join(df2)
+     
+     # If a row in `y` also matches multiple rows in `x`, this is known as a
+     # many-to-many relationship, which is typically a result of an improperly
+     # specified join or some kind of messy data. In this case, a warning is
+     # thrown by default:
+     df3 <- tibble(x = c(1, 1, 1, 3))
+     df3 %>% left_join(df2)
+     
+     # In the rare case where a many-to-many relationship is expected, set
+     # `relationship = "many-to-many"` to silence this warning
+     df3 %>% left_join(df2, relationship = "many-to-many")
+     
+     # Use `join_by()` with a condition other than `==` to perform an inequality
+     # join. Here we match on every instance where `df1$x > df2$x`.
+     df1 %>% left_join(df2, join_by(x > x))
+     
+     # By default, NAs match other NAs so that there are two
+     # rows in the output of this join:
+     df1 <- data.frame(x = c(1, NA), y = 2)
+     df2 <- data.frame(x = c(1, NA), z = 3)
+     left_join(df1, df2)
+     
+     # You can optionally request that NAs don't match, giving a
+     # a result that more closely resembles SQL joins
+     left_join(df1, df2, na_matches = "never")
+     
+[END TEXT]
+
+===============================================================================
+11. dplyr::anti_join — help page "filter-joins" (dplyr 1.1.4), whole
+rhelp://dplyr@1.1.4/filter-joins
+===============================================================================
+
+[TEXT]
+filter-joins               package:dplyr               R Documentation
+
+Filtering joins
+
+Description:
+
+     Filtering joins filter rows from 'x' based on the presence or
+     absence of matches in 'y':
+
+        • 'semi_join()' return all rows from 'x' with a match in 'y'.
+
+        • 'anti_join()' return all rows from 'x' with*out* a match in
+          'y'.
+
+Usage:
+
+     semi_join(x, y, by = NULL, copy = FALSE, ...)
+     
+     ## S3 method for class 'data.frame'
+     semi_join(x, y, by = NULL, copy = FALSE, ..., na_matches = c("na", "never"))
+     
+     anti_join(x, y, by = NULL, copy = FALSE, ...)
+     
+     ## S3 method for class 'data.frame'
+     anti_join(x, y, by = NULL, copy = FALSE, ..., na_matches = c("na", "never"))
+     
+Arguments:
+
+    x, y: A pair of data frames, data frame extensions (e.g. a tibble),
+          or lazy data frames (e.g. from dbplyr or dtplyr). See
+          _Methods_, below, for more details.
+
+      by: A join specification created with 'join_by()', or a character
+          vector of variables to join by.
+
+          If 'NULL', the default, *_join() will perform a natural join,
+          using all variables in common across 'x' and 'y'. A message
+          lists the variables so that you can check they're correct;
+          suppress the message by supplying 'by' explicitly.
+
+          To join on different variables between 'x' and 'y', use a
+          'join_by()' specification. For example, 'join_by(a == b)'
+          will match 'x$a' to 'y$b'.
+
+          To join by multiple variables, use a 'join_by()'
+          specification with multiple expressions. For example,
+          'join_by(a == b, c == d)' will match 'x$a' to 'y$b' and 'x$c'
+          to 'y$d'. If the column names are the same between 'x' and
+          'y', you can shorten this by listing only the variable names,
+          like 'join_by(a, c)'.
+
+          'join_by()' can also be used to perform inequality, rolling,
+          and overlap joins. See the documentation at ?join_by for
+          details on these types of joins.
+
+          For simple equality joins, you can alternatively specify a
+          character vector of variable names to join by. For example,
+          'by = c("a", "b")' joins 'x$a' to 'y$a' and 'x$b' to 'y$b'.
+          If variable names differ between 'x' and 'y', use a named
+          character vector like 'by = c("x_a" = "y_a", "x_b" = "y_b")'.
+
+          To perform a cross-join, generating all combinations of 'x'
+          and 'y', see 'cross_join()'.
+
+    copy: If 'x' and 'y' are not from the same data source, and 'copy'
+          is 'TRUE', then 'y' will be copied into the same src as 'x'.
+          This allows you to join tables across srcs, but it is a
+          potentially expensive operation so you must opt into it.
+
+     ...: Other parameters passed onto methods.
+
+na_matches: Should two 'NA' or two 'NaN' values match?
+
+            • '"na"', the default, treats two 'NA' or two 'NaN' values
+              as equal, like '%in%', 'match()', and 'merge()'.
+
+            • '"never"' treats two 'NA' or two 'NaN' values as
+              different, and will never match them together or to any
+              other values. This is similar to joins for database
+              sources and to 'base::merge(incomparables = NA)'.
+
+Value:
+
+     An object of the same type as 'x'. The output has the following
+     properties:
+
+        • Rows are a subset of the input, but appear in the same order.
+
+        • Columns are not modified.
+
+        • Data frame attributes are preserved.
+
+        • Groups are taken from 'x'. The number of groups may be
+          reduced.
+
+Methods:
+
+     These function are *generic*s, which means that packages can
+     provide implementations (methods) for other classes. See the
+     documentation of individual methods for extra arguments and
+     differences in behaviour.
+
+     Methods available in currently loaded packages:
+
+        • 'semi_join()': no methods found.
+
+        • 'anti_join()': no methods found.
+
+See Also:
+
+     Other joins: 'cross_join()', 'mutate-joins', 'nest_join()'
+
+Examples:
+
+     # "Filtering" joins keep cases from the LHS
+     band_members %>% semi_join(band_instruments)
+     band_members %>% anti_join(band_instruments)
+     
+     # To suppress the message about joining variables, supply `by`
+     band_members %>% semi_join(band_instruments, by = join_by(name))
+     # This is good practice in production code
+     
+[END TEXT]
+
+===============================================================================
+12. dplyr::across [extra] — help page "across" (dplyr 1.1.4), whole
+rhelp://dplyr@1.1.4/across
+===============================================================================
+
+[TEXT]
+across                  package:dplyr                  R Documentation
+
+Apply a function (or functions) across multiple columns
+
+Description:
+
+     'across()' makes it easy to apply the same transformation to
+     multiple columns, allowing you to use 'select()' semantics inside
+     in "data-masking" functions like 'summarise()' and 'mutate()'. See
+     'vignette("colwise")' for more details.
+
+     'if_any()' and 'if_all()' apply the same predicate function to a
+     selection of columns and combine the results into a single logical
+     vector: 'if_any()' is 'TRUE' when the predicate is 'TRUE' for
+     _any_ of the selected columns, 'if_all()' is 'TRUE' when the
+     predicate is 'TRUE' for _all_ selected columns.
+
+     If you just need to select columns without applying a
+     transformation to each of them, then you probably want to use
+     'pick()' instead.
+
+     'across()' supersedes the family of "scoped variants" like
+     'summarise_at()', 'summarise_if()', and 'summarise_all()'.
+
+Usage:
+
+     across(.cols, .fns, ..., .names = NULL, .unpack = FALSE)
+     
+     if_any(.cols, .fns, ..., .names = NULL)
+     
+     if_all(.cols, .fns, ..., .names = NULL)
+     
+Arguments:
+
+   .cols: <'tidy-select'> Columns to transform. You can't select
+          grouping columns because they are already automatically
+          handled by the verb (i.e. 'summarise()' or 'mutate()').
+
+    .fns: Functions to apply to each of the selected columns. Possible
+          values are:
+
+            • A function, e.g. 'mean'.
+
+            • A purrr-style lambda, e.g. '~ mean(.x, na.rm = TRUE)'
+
+            • A named list of functions or lambdas, e.g. list(mean =
+              mean, n_miss = ~ sum(is.na(.x)). Each function is applied
+              to each column, and the output is named by combining the
+              function name and the column name using the glue
+              specification in '.names'.
+
+          Within these functions you can use 'cur_column()' and
+          'cur_group()' to access the current column and grouping keys
+          respectively.
+
+     ...: *[Deprecated]*
+
+          Additional arguments for the function calls in '.fns' are no
+          longer accepted in '...' because it's not clear when they
+          should be evaluated: once per 'across()' or once per group?
+          Instead supply additional arguments directly in '.fns' by
+          using a lambda. For example, instead of 'across(a:b, mean,
+          na.rm = TRUE)' write 'across(a:b, ~ mean(.x, na.rm = TRUE))'.
+
+  .names: A glue specification that describes how to name the output
+          columns. This can use '{.col}' to stand for the selected
+          column name, and '{.fn}' to stand for the name of the
+          function being applied. The default ('NULL') is equivalent to
+          '"{.col}"' for the single function case and '"{.col}_{.fn}"'
+          for the case where a list is used for '.fns'.
+
+ .unpack: *[Experimental]*
+
+          Optionally unpack data frames returned by functions in
+          '.fns', which expands the df-columns out into individual
+          columns, retaining the number of rows in the data frame.
+
+            • If 'FALSE', the default, no unpacking is done.
+
+            • If 'TRUE', unpacking is done with a default glue
+              specification of '"{outer}_{inner}"'.
+
+            • Otherwise, a single glue specification can be supplied to
+              describe how to name the unpacked columns. This can use
+              '{outer}' to refer to the name originally generated by
+              '.names', and '{inner}' to refer to the names of the data
+              frame you are unpacking.
+
+Value:
+
+     'across()' typically returns a tibble with one column for each
+     column in '.cols' and each function in '.fns'. If '.unpack' is
+     used, more columns may be returned depending on how the results of
+     '.fns' are unpacked.
+
+     'if_any()' and 'if_all()' return a logical vector.
+
+Timing of evaluation:
+
+     R code in dplyr verbs is generally evaluated once per group.
+     Inside 'across()' however, code is evaluated once for each
+     combination of columns and groups. If the evaluation timing is
+     important, for example if you're generating random variables,
+     think about when it should happen and place your code in
+     consequence.
+
+     gdf <-
+       tibble(g = c(1, 1, 2, 3), v1 = 10:13, v2 = 20:23) %>%
+       group_by(g)
+     
+     set.seed(1)
+     
+     # Outside: 1 normal variate
+     n <- rnorm(1)
+     gdf %>% mutate(across(v1:v2, ~ .x + n))
+     #> # A tibble: 4 x 3
+     #> # Groups:   g [3]
+     #>       g    v1    v2
+     #>   <dbl> <dbl> <dbl>
+     #> 1     1  9.37  19.4
+     #> 2     1 10.4   20.4
+     #> 3     2 11.4   21.4
+     #> 4     3 12.4   22.4
+     
+     # Inside a verb: 3 normal variates (ngroup)
+     gdf %>% mutate(n = rnorm(1), across(v1:v2, ~ .x + n))
+     #> # A tibble: 4 x 4
+     #> # Groups:   g [3]
+     #>       g    v1    v2      n
+     #>   <dbl> <dbl> <dbl>  <dbl>
+     #> 1     1  10.2  20.2  0.184
+     #> 2     1  11.2  21.2  0.184
+     #> 3     2  11.2  21.2 -0.836
+     #> 4     3  14.6  24.6  1.60
+     
+     # Inside `across()`: 6 normal variates (ncol * ngroup)
+     gdf %>% mutate(across(v1:v2, ~ .x + rnorm(1)))
+     #> # A tibble: 4 x 3
+     #> # Groups:   g [3]
+     #>       g    v1    v2
+     #>   <dbl> <dbl> <dbl>
+     #> 1     1  10.3  20.7
+     #> 2     1  11.3  21.7
+     #> 3     2  11.2  22.6
+     #> 4     3  13.5  22.7
+     
+See Also:
+
+     'c_across()' for a function that returns a vector
+
+Examples:
+
+     # For better printing
+     iris <- as_tibble(iris)
+     
+     # across() -----------------------------------------------------------------
+     # Different ways to select the same set of columns
+     # See <https://tidyselect.r-lib.org/articles/syntax.html> for details
+     iris %>%
+       mutate(across(c(Sepal.Length, Sepal.Width), round))
+     iris %>%
+       mutate(across(c(1, 2), round))
+     iris %>%
+       mutate(across(1:Sepal.Width, round))
+     iris %>%
+       mutate(across(where(is.double) & !c(Petal.Length, Petal.Width), round))
+     
+     # Using an external vector of names
+     cols <- c("Sepal.Length", "Petal.Width")
+     iris %>%
+       mutate(across(all_of(cols), round))
+     
+     # If the external vector is named, the output columns will be named according
+     # to those names
+     names(cols) <- tolower(cols)
+     iris %>%
+       mutate(across(all_of(cols), round))
+     
+     # A purrr-style formula
+     iris %>%
+       group_by(Species) %>%
+       summarise(across(starts_with("Sepal"), ~ mean(.x, na.rm = TRUE)))
+     
+     # A named list of functions
+     iris %>%
+       group_by(Species) %>%
+       summarise(across(starts_with("Sepal"), list(mean = mean, sd = sd)))
+     
+     # Use the .names argument to control the output names
+     iris %>%
+       group_by(Species) %>%
+       summarise(across(starts_with("Sepal"), mean, .names = "mean_{.col}"))
+     iris %>%
+       group_by(Species) %>%
+       summarise(across(starts_with("Sepal"), list(mean = mean, sd = sd), .names = "{.col}.{.fn}"))
+     
+     # If a named external vector is used for column selection, .names will use
+     # those names when constructing the output names
+     iris %>%
+       group_by(Species) %>%
+       summarise(across(all_of(cols), mean, .names = "mean_{.col}"))
+     
+     # When the list is not named, .fn is replaced by the function's position
+     iris %>%
+       group_by(Species) %>%
+       summarise(across(starts_with("Sepal"), list(mean, sd), .names = "{.col}.fn{.fn}"))
+     
+     # When the functions in .fns return a data frame, you typically get a
+     # "packed" data frame back
+     quantile_df <- function(x, probs = c(0.25, 0.5, 0.75)) {
+       tibble(quantile = probs, value = quantile(x, probs))
+     }
+     
+     iris %>%
+       reframe(across(starts_with("Sepal"), quantile_df))
+     
+     # Use .unpack to automatically expand these packed data frames into their
+     # individual columns
+     iris %>%
+       reframe(across(starts_with("Sepal"), quantile_df, .unpack = TRUE))
+     
+     # .unpack can utilize a glue specification if you don't like the defaults
+     iris %>%
+       reframe(across(starts_with("Sepal"), quantile_df, .unpack = "{outer}.{inner}"))
+     
+     # This is also useful inside mutate(), for example, with a multi-lag helper
+     multilag <- function(x, lags = 1:3) {
+       names(lags) <- as.character(lags)
+       purrr::map_dfr(lags, lag, x = x)
+     }
+     
+     iris %>%
+       group_by(Species) %>%
+       mutate(across(starts_with("Sepal"), multilag, .unpack = TRUE)) %>%
+       select(Species, starts_with("Sepal"))
+     
+     # if_any() and if_all() ----------------------------------------------------
+     iris %>%
+       filter(if_any(ends_with("Width"), ~ . > 4))
+     iris %>%
+       filter(if_all(ends_with("Width"), ~ . > 2))
+     
+[END TEXT]
+
+===============================================================================
+13. dplyr::n_distinct [extra] — help page "n_distinct" (dplyr 1.1.4), whole
+rhelp://dplyr@1.1.4/n_distinct
+===============================================================================
+
+[TEXT]
+n_distinct                package:dplyr                R Documentation
+
+Count unique combinations
+
+Description:
+
+     'n_distinct()' counts the number of unique/distinct combinations
+     in a set of one or more vectors. It's a faster and more concise
+     equivalent to 'nrow(unique(data.frame(...)))'.
+
+Usage:
+
+     n_distinct(..., na.rm = FALSE)
+     
+Arguments:
+
+     ...: Unnamed vectors. If multiple vectors are supplied, then they
+          should have the same length.
+
+   na.rm: If 'TRUE', exclude missing observations from the count. If
+          there are multiple vectors in '...', an observation will be
+          excluded if _any_ of the values are missing.
+
+Value:
+
+     A single number.
+
+Examples:
+
+     x <- c(1, 1, 2, 2, 2)
+     n_distinct(x)
+     
+     y <- c(3, 3, NA, 3, 3)
+     n_distinct(y)
+     n_distinct(y, na.rm = TRUE)
+     
+     # Pairs (1, 3), (2, 3), and (2, NA) are distinct
+     n_distinct(x, y)
+     
+     # (2, NA) is dropped, leaving 2 distinct combinations
+     n_distinct(x, y, na.rm = TRUE)
+     
+     # Also works with data frames
+     n_distinct(data.frame(x, y))
+     
+[END TEXT]
+
+===============================================================================
+14. dplyr::rename [extra] — help page "rename" (dplyr 1.1.4), whole
+rhelp://dplyr@1.1.4/rename
+===============================================================================
+
+[TEXT]
+rename                  package:dplyr                  R Documentation
+
+Rename columns
+
+Description:
+
+     'rename()' changes the names of individual variables using
+     'new_name = old_name' syntax; 'rename_with()' renames columns
+     using a function.
+
+Usage:
+
+     rename(.data, ...)
+     
+     rename_with(.data, .fn, .cols = everything(), ...)
+     
+Arguments:
+
+   .data: A data frame, data frame extension (e.g. a tibble), or a lazy
+          data frame (e.g. from dbplyr or dtplyr). See _Methods_,
+          below, for more details.
+
+     ...: For 'rename()': <'tidy-select'> Use 'new_name = old_name' to
+          rename selected variables.
+
+          For 'rename_with()': additional arguments passed onto '.fn'.
+
+     .fn: A function used to transform the selected '.cols'. Should
+          return a character vector the same length as the input.
+
+   .cols: <'tidy-select'> Columns to rename; defaults to all columns.
+
+Value:
+
+     An object of the same type as '.data'. The output has the
+     following properties:
+
+        • Rows are not affected.
+
+        • Column names are changed; column order is preserved.
+
+        • Data frame attributes are preserved.
+
+        • Groups are updated to reflect new names.
+
+Methods:
+
+     This function is a *generic*, which means that packages can
+     provide implementations (methods) for other classes. See the
+     documentation of individual methods for extra arguments and
+     differences in behaviour.
+
+     The following methods are currently available in loaded packages:
+     no methods found.
+
+See Also:
+
+     Other single table verbs: 'arrange()', 'filter()', 'mutate()',
+     'reframe()', 'select()', 'slice()', 'summarise()'
+
+Examples:
+
+     iris <- as_tibble(iris) # so it prints a little nicer
+     rename(iris, petal_length = Petal.Length)
+     
+     # Rename using a named vector and `all_of()`
+     lookup <- c(pl = "Petal.Length", sl = "Sepal.Length")
+     rename(iris, all_of(lookup))
+     
+     # If your named vector might contain names that don't exist in the data,
+     # use `any_of()` instead
+     lookup <- c(lookup, new = "unknown")
+     try(rename(iris, all_of(lookup)))
+     rename(iris, any_of(lookup))
+     
+     rename_with(iris, toupper)
+     rename_with(iris, toupper, starts_with("Petal"))
+     rename_with(iris, ~ tolower(gsub(".", "_", .x, fixed = TRUE)))
+     
+     
+     # If your renaming function uses `paste0()`, make sure to set
+     # `recycle0 = TRUE` to ensure that empty selections are recycled correctly
+     try(rename_with(
+       iris,
+       ~ paste0("prefix_", .x),
+       starts_with("nonexistent")
+     ))
+     
+     rename_with(
+       iris,
+       ~ paste0("prefix_", .x, recycle0 = TRUE),
+       starts_with("nonexistent")
+     )
+     
+[END TEXT]
+
+===============================================================================
+15. dplyr::desc [extra] — help page "desc" (dplyr 1.1.4), whole
+rhelp://dplyr@1.1.4/desc
+===============================================================================
+
+[TEXT]
+desc                   package:dplyr                   R Documentation
+
+Descending order
+
+Description:
+
+     Transform a vector into a format that will be sorted in descending
+     order. This is useful within 'arrange()'.
+
+Usage:
+
+     desc(x)
+     
+Arguments:
+
+       x: vector to transform
+
+Examples:
+
+     desc(1:10)
+     desc(factor(letters))
+     
+     first_day <- seq(as.Date("1910/1/1"), as.Date("1920/1/1"), "years")
+     desc(first_day)
+     
+     starwars %>% arrange(desc(mass))
+     
+[END TEXT]
+
+===============================================================================
+16. dplyr::n [extra] — help page "context" (dplyr 1.1.4), whole
+rhelp://dplyr@1.1.4/context
+===============================================================================
+
+[TEXT]
+context                 package:dplyr                  R Documentation
+
+Information about the "current" group or variable
+
+Description:
+
+     These functions return information about the "current" group or
+     "current" variable, so only work inside specific contexts like
+     'summarise()' and 'mutate()'.
+
+        • 'n()' gives the current group size.
+
+        • 'cur_group()' gives the group keys, a tibble with one row and
+          one column for each grouping variable.
+
+        • 'cur_group_id()' gives a unique numeric identifier for the
+          current group.
+
+        • 'cur_group_rows()' gives the row indices for the current
+          group.
+
+        • 'cur_column()' gives the name of the current column (in
+          'across()' only).
+
+     See 'group_data()' for equivalent functions that return values for
+     all groups.
+
+     See 'pick()' for a way to select a subset of columns using
+     tidyselect syntax while inside 'summarise()' or 'mutate()'.
+
+Usage:
+
+     n()
+     
+     cur_group()
+     
+     cur_group_id()
+     
+     cur_group_rows()
+     
+     cur_column()
+     
+data.table:
+
+     If you're familiar with data.table:
+
+        • 'cur_group_id()' <-> '.GRP'
+
+        • 'cur_group()' <-> '.BY'
+
+        • 'cur_group_rows()' <-> '.I'
+
+     See 'pick()' for an equivalent to '.SD'.
+
+Examples:
+
+     df <- tibble(
+       g = sample(rep(letters[1:3], 1:3)),
+       x = runif(6),
+       y = runif(6)
+     )
+     gf <- df %>% group_by(g)
+     
+     gf %>% summarise(n = n())
+     
+     gf %>% mutate(id = cur_group_id())
+     gf %>% reframe(row = cur_group_rows())
+     gf %>% summarise(data = list(cur_group()))
+     
+     gf %>% mutate(across(everything(), ~ paste(cur_column(), round(.x, 2))))
+     
+[END TEXT]
+
+===============================================================================
+17. vignette("dplyr", package = "dplyr") 1.1.4 — Introduction to dplyr: the introduction, "Data: starwars", "Single table verbs" (the pipe; filter, arrange, slice, select, mutate, relocate, summarise; commonalities) and "Combining functions with %>%", whole
+rvignette://dplyr@1.1.4/dplyr
+===============================================================================
+
+[TEXT]
+# Introduction to dplyr
+
+When working with data you must:
+
+- Figure out what you want to do.
+
+- Describe those tasks in the form of a computer program.
+
+- Execute the program.
+
+The dplyr package makes these steps fast and easy:
+
+- By constraining your options, it helps you think about your data
+manipulation challenges.
+
+- It provides simple “verbs”, functions that correspond to the most
+common data manipulation tasks, to help you translate your thoughts into
+code.
+
+- It uses efficient backends, so you spend less time waiting for
+the computer.
+
+This document introduces you to dplyr’s basic set of tools, and shows
+you how to apply them to data frames. dplyr also supports databases via
+the dbplyr package, once you’ve installed, read
+vignette("dbplyr") to learn more.
+
+## Data: starwars
+
+To explore the basic data manipulation verbs of dplyr, we’ll use the
+dataset starwars. This dataset contains 87 characters and
+comes from the Star Wars API, and is
+documented in ?starwars
+
+dim(starwars)
+#> [1] 87 14
+starwars
+#> # A tibble: 87 × 14
+#>   name      height  mass hair_color skin_color eye_color birth_year sex   gender
+#>   <chr>      <int> <dbl> <chr>      <chr>      <chr>          <dbl> <chr> <chr> 
+#> 1 Luke Sky…    172    77 blond      fair       blue            19   male  mascu…
+#> 2 C-3PO        167    75 <NA>       gold       yellow         112   none  mascu…
+#> 3 R2-D2         96    32 <NA>       white, bl… red             33   none  mascu…
+#> 4 Darth Va…    202   136 none       white      yellow          41.9 male  mascu…
+#> # ℹ 83 more rows
+#> # ℹ 5 more variables: homeworld <chr>, species <chr>, films <list>,
+#> #   vehicles <list>, starships <list>
+
+Note that starwars is a tibble, a modern reimagining of
+the data frame. It’s particularly useful for large datasets because it
+only prints the first few rows. You can learn more about tibbles at https://tibble.tidyverse.org; in particular you can
+convert data frames to tibbles with as_tibble().
+
+## Single table verbs
+
+dplyr aims to provide a function for each basic verb of data
+manipulation. These verbs can be organised into three categories based
+on the component of the dataset that they work with:
+
+- Rows:
+filter() chooses rows based on column values.
+slice() chooses rows based on location.
+arrange() changes the order of the rows.
+
+- Columns:
+select() changes whether or not a column is
+included.
+rename() changes the name of columns.
+mutate() changes the values of columns and creates new
+columns.
+relocate() changes the order of the columns.
+
+- Groups of rows:
+summarise() collapses a group into a single row.
+
+### The pipe
+
+All of the dplyr functions take a data frame (or tibble) as the first
+argument. Rather than forcing the user to either save intermediate
+objects or nest functions, dplyr provides the %>%
+operator from magrittr. x %>% f(y) turns into
+f(x, y) so the result from one step is then “piped” into
+the next step. You can use the pipe to rewrite multiple operations that
+you can read left-to-right, top-to-bottom (reading the pipe operator as
+“then”).
+
+### Filter rows with filter()
+
+filter() allows you to select a subset of rows in a data
+frame. Like all single verbs, the first argument is the tibble (or data
+frame). The second and subsequent arguments refer to variables within
+that data frame, selecting rows where the expression is
+TRUE.
+
+For example, we can select all character with light skin color and
+brown eyes with:
+
+starwars %>% filter(skin_color == "light", eye_color == "brown")
+#> # A tibble: 7 × 14
+#>   name      height  mass hair_color skin_color eye_color birth_year sex   gender
+#>   <chr>      <int> <dbl> <chr>      <chr>      <chr>          <dbl> <chr> <chr> 
+#> 1 Leia Org…    150    49 brown      light      brown             19 fema… femin…
+#> 2 Biggs Da…    183    84 black      light      brown             24 male  mascu…
+#> 3 Padmé Am…    185    45 brown      light      brown             46 fema… femin…
+#> 4 Cordé        157    NA brown      light      brown             NA <NA>  <NA>  
+#> # ℹ 3 more rows
+#> # ℹ 5 more variables: homeworld <chr>, species <chr>, films <list>,
+#> #   vehicles <list>, starships <list>
+
+This is roughly equivalent to this base R code:
+
+starwars[starwars$skin_color == "light" & starwars$eye_color == "brown", ]
+
+### Arrange rows with arrange()
+
+arrange() works similarly to filter()
+except that instead of filtering or selecting rows, it reorders them. It
+takes a data frame, and a set of column names (or more complicated
+expressions) to order by. If you provide more than one column name, each
+additional column will be used to break ties in the values of preceding
+columns:
+
+starwars %>% arrange(height, mass)
+#> # A tibble: 87 × 14
+#>   name      height  mass hair_color skin_color eye_color birth_year sex   gender
+#>   <chr>      <int> <dbl> <chr>      <chr>      <chr>          <dbl> <chr> <chr> 
+#> 1 Yoda          66    17 white      green      brown            896 male  mascu…
+#> 2 Ratts Ty…     79    15 none       grey, blue unknown           NA male  mascu…
+#> 3 Wicket S…     88    20 brown      brown      brown              8 male  mascu…
+#> 4 Dud Bolt      94    45 none       blue, grey yellow            NA male  mascu…
+#> # ℹ 83 more rows
+#> # ℹ 5 more variables: homeworld <chr>, species <chr>, films <list>,
+#> #   vehicles <list>, starships <list>
+
+Use desc() to order a column in descending order:
+
+starwars %>% arrange(desc(height))
+#> # A tibble: 87 × 14
+#>   name      height  mass hair_color skin_color eye_color birth_year sex   gender
+#>   <chr>      <int> <dbl> <chr>      <chr>      <chr>          <dbl> <chr> <chr> 
+#> 1 Yarael P…    264    NA none       white      yellow            NA male  mascu…
+#> 2 Tarfful      234   136 brown      brown      blue              NA male  mascu…
+#> 3 Lama Su      229    88 none       grey       black             NA male  mascu…
+#> 4 Chewbacca    228   112 brown      unknown    blue             200 male  mascu…
+#> # ℹ 83 more rows
+#> # ℹ 5 more variables: homeworld <chr>, species <chr>, films <list>,
+#> #   vehicles <list>, starships <list>
+
+### Choose rows using their position with slice()
+
+slice() lets you index rows by their (integer)
+locations. It allows you to select, remove, and duplicate rows.
+
+We can get characters from row numbers 5 through 10.
+
+starwars %>% slice(5:10)
+#> # A tibble: 6 × 14
+#>   name      height  mass hair_color skin_color eye_color birth_year sex   gender
+#>   <chr>      <int> <dbl> <chr>      <chr>      <chr>          <dbl> <chr> <chr> 
+#> 1 Leia Org…    150    49 brown      light      brown             19 fema… femin…
+#> 2 Owen Lars    178   120 brown, gr… light      blue              52 male  mascu…
+#> 3 Beru Whi…    165    75 brown      light      blue              47 fema… femin…
+#> 4 R5-D4         97    32 <NA>       white, red red               NA none  mascu…
+#> # ℹ 2 more rows
+#> # ℹ 5 more variables: homeworld <chr>, species <chr>, films <list>,
+#> #   vehicles <list>, starships <list>
+
+It is accompanied by a number of helpers for common use cases:
+
+- slice_head() and slice_tail() select the
+first or last rows.
+
+starwars %>% slice_head(n = 3)
+#> # A tibble: 3 × 14
+#>   name      height  mass hair_color skin_color eye_color birth_year sex   gender
+#>   <chr>      <int> <dbl> <chr>      <chr>      <chr>          <dbl> <chr> <chr> 
+#> 1 Luke Sky…    172    77 blond      fair       blue              19 male  mascu…
+#> 2 C-3PO        167    75 <NA>       gold       yellow           112 none  mascu…
+#> 3 R2-D2         96    32 <NA>       white, bl… red               33 none  mascu…
+#> # ℹ 5 more variables: homeworld <chr>, species <chr>, films <list>,
+#> #   vehicles <list>, starships <list>
+
+- slice_sample() randomly selects rows. Use the option
+prop to choose a certain proportion of the cases.
+
+starwars %>% slice_sample(n = 5)
+#> # A tibble: 5 × 14
+#>   name      height  mass hair_color skin_color eye_color birth_year sex   gender
+#>   <chr>      <int> <dbl> <chr>      <chr>      <chr>          <dbl> <chr> <chr> 
+#> 1 Ayla Sec…    178  55   none       blue       hazel             48 fema… femin…
+#> 2 Bossk        190 113   none       green      red               53 male  mascu…
+#> 3 San Hill     191  NA   none       grey       gold              NA male  mascu…
+#> 4 Luminara…    170  56.2 black      yellow     blue              58 fema… femin…
+#> # ℹ 1 more row
+#> # ℹ 5 more variables: homeworld <chr>, species <chr>, films <list>,
+#> #   vehicles <list>, starships <list>
+starwars %>% slice_sample(prop = 0.1)
+#> # A tibble: 8 × 14
+#>   name      height  mass hair_color skin_color eye_color birth_year sex   gender
+#>   <chr>      <int> <dbl> <chr>      <chr>      <chr>          <dbl> <chr> <chr> 
+#> 1 Qui-Gon …    193    89 brown      fair       blue              92 male  mascu…
+#> 2 Jango Fe…    183    79 black      tan        brown             66 male  mascu…
+#> 3 Jocasta …    167    NA white      fair       blue              NA fema… femin…
+#> 4 Zam Wese…    168    55 blonde     fair, gre… yellow            NA fema… femin…
+#> # ℹ 4 more rows
+#> # ℹ 5 more variables: homeworld <chr>, species <chr>, films <list>,
+#> #   vehicles <list>, starships <list>
+
+Use replace = TRUE to perform a bootstrap sample. If
+needed, you can weight the sample with the weight
+argument.
+
+- slice_min() and slice_max() select rows
+with highest or lowest values of a variable. Note that we first must
+choose only the values which are not NA.
+
+starwars %>%
+  filter(!is.na(height)) %>%
+  slice_max(height, n = 3)
+#> # A tibble: 3 × 14
+#>   name      height  mass hair_color skin_color eye_color birth_year sex   gender
+#>   <chr>      <int> <dbl> <chr>      <chr>      <chr>          <dbl> <chr> <chr> 
+#> 1 Yarael P…    264    NA none       white      yellow            NA male  mascu…
+#> 2 Tarfful      234   136 brown      brown      blue              NA male  mascu…
+#> 3 Lama Su      229    88 none       grey       black             NA male  mascu…
+#> # ℹ 5 more variables: homeworld <chr>, species <chr>, films <list>,
+#> #   vehicles <list>, starships <list>
+
+### Select columns with select()
+
+Often you work with large datasets with many columns but only a few
+are actually of interest to you. select() allows you to
+rapidly zoom in on a useful subset using operations that usually only
+work on numeric variable positions:
+
+# Select columns by name
+starwars %>% select(hair_color, skin_color, eye_color)
+#> # A tibble: 87 × 3
+#>   hair_color skin_color  eye_color
+#>   <chr>      <chr>       <chr>    
+#> 1 blond      fair        blue     
+#> 2 <NA>       gold        yellow   
+#> 3 <NA>       white, blue red      
+#> 4 none       white       yellow   
+#> # ℹ 83 more rows
+# Select all columns between hair_color and eye_color (inclusive)
+starwars %>% select(hair_color:eye_color)
+#> # A tibble: 87 × 3
+#>   hair_color skin_color  eye_color
+#>   <chr>      <chr>       <chr>    
+#> 1 blond      fair        blue     
+#> 2 <NA>       gold        yellow   
+#> 3 <NA>       white, blue red      
+#> 4 none       white       yellow   
+#> # ℹ 83 more rows
+# Select all columns except those from hair_color to eye_color (inclusive)
+starwars %>% select(!(hair_color:eye_color))
+#> # A tibble: 87 × 11
+#>   name     height  mass birth_year sex   gender homeworld species films vehicles
+#>   <chr>     <int> <dbl>      <dbl> <chr> <chr>  <chr>     <chr>   <lis> <list>  
+#> 1 Luke Sk…    172    77       19   male  mascu… Tatooine  Human   <chr> <chr>   
+#> 2 C-3PO       167    75      112   none  mascu… Tatooine  Droid   <chr> <chr>   
+#> 3 R2-D2        96    32       33   none  mascu… Naboo     Droid   <chr> <chr>   
+#> 4 Darth V…    202   136       41.9 male  mascu… Tatooine  Human   <chr> <chr>   
+#> # ℹ 83 more rows
+#> # ℹ 1 more variable: starships <list>
+# Select all columns ending with color
+starwars %>% select(ends_with("color"))
+#> # A tibble: 87 × 3
+#>   hair_color skin_color  eye_color
+#>   <chr>      <chr>       <chr>    
+#> 1 blond      fair        blue     
+#> 2 <NA>       gold        yellow   
+#> 3 <NA>       white, blue red      
+#> 4 none       white       yellow   
+#> # ℹ 83 more rows
+
+There are a number of helper functions you can use within
+select(), like starts_with(),
+ends_with(), matches() and
+contains(). These let you quickly match larger blocks of
+variables that meet some criterion. See ?select for more
+details.
+
+You can rename variables with select() by using named
+arguments:
+
+starwars %>% select(home_world = homeworld)
+#> # A tibble: 87 × 1
+#>   home_world
+#>   <chr>     
+#> 1 Tatooine  
+#> 2 Tatooine  
+#> 3 Naboo     
+#> 4 Tatooine  
+#> # ℹ 83 more rows
+
+But because select() drops all the variables not
+explicitly mentioned, it’s not that useful. Instead, use
+rename():
+
+starwars %>% rename(home_world = homeworld)
+#> # A tibble: 87 × 14
+#>   name      height  mass hair_color skin_color eye_color birth_year sex   gender
+#>   <chr>      <int> <dbl> <chr>      <chr>      <chr>          <dbl> <chr> <chr> 
+#> 1 Luke Sky…    172    77 blond      fair       blue            19   male  mascu…
+#> 2 C-3PO        167    75 <NA>       gold       yellow         112   none  mascu…
+#> 3 R2-D2         96    32 <NA>       white, bl… red             33   none  mascu…
+#> 4 Darth Va…    202   136 none       white      yellow          41.9 male  mascu…
+#> # ℹ 83 more rows
+#> # ℹ 5 more variables: home_world <chr>, species <chr>, films <list>,
+#> #   vehicles <list>, starships <list>
+
+### Add new columns with mutate()
+
+Besides selecting sets of existing columns, it’s often useful to add
+new columns that are functions of existing columns. This is the job of
+mutate():
+
+starwars %>% mutate(height_m = height / 100)
+#> # A tibble: 87 × 15
+#>   name      height  mass hair_color skin_color eye_color birth_year sex   gender
+#>   <chr>      <int> <dbl> <chr>      <chr>      <chr>          <dbl> <chr> <chr> 
+#> 1 Luke Sky…    172    77 blond      fair       blue            19   male  mascu…
+#> 2 C-3PO        167    75 <NA>       gold       yellow         112   none  mascu…
+#> 3 R2-D2         96    32 <NA>       white, bl… red             33   none  mascu…
+#> 4 Darth Va…    202   136 none       white      yellow          41.9 male  mascu…
+#> # ℹ 83 more rows
+#> # ℹ 6 more variables: homeworld <chr>, species <chr>, films <list>,
+#> #   vehicles <list>, starships <list>, height_m <dbl>
+
+We can’t see the height in meters we just calculated, but we can fix
+that using a select command.
+
+starwars %>%
+  mutate(height_m = height / 100) %>%
+  select(height_m, height, everything())
+#> # A tibble: 87 × 15
+#>   height_m height name     mass hair_color skin_color eye_color birth_year sex  
+#>      <dbl>  <int> <chr>   <dbl> <chr>      <chr>      <chr>          <dbl> <chr>
+#> 1     1.72    172 Luke S…    77 blond      fair       blue            19   male 
+#> 2     1.67    167 C-3PO      75 <NA>       gold       yellow         112   none 
+#> 3     0.96     96 R2-D2      32 <NA>       white, bl… red             33   none 
+#> 4     2.02    202 Darth …   136 none       white      yellow          41.9 male 
+#> # ℹ 83 more rows
+#> # ℹ 6 more variables: gender <chr>, homeworld <chr>, species <chr>,
+#> #   films <list>, vehicles <list>, starships <list>
+
+dplyr::mutate() is similar to the base
+transform(), but allows you to refer to columns that you’ve
+just created:
+
+starwars %>%
+  mutate(
+    height_m = height / 100,
+    BMI = mass / (height_m^2)
+  ) %>%
+  select(BMI, everything())
+#> # A tibble: 87 × 16
+#>     BMI name       height  mass hair_color skin_color eye_color birth_year sex  
+#>   <dbl> <chr>       <int> <dbl> <chr>      <chr>      <chr>          <dbl> <chr>
+#> 1  26.0 Luke Skyw…    172    77 blond      fair       blue            19   male 
+#> 2  26.9 C-3PO         167    75 <NA>       gold       yellow         112   none 
+#> 3  34.7 R2-D2          96    32 <NA>       white, bl… red             33   none 
+#> 4  33.3 Darth Vad…    202   136 none       white      yellow          41.9 male 
+#> # ℹ 83 more rows
+#> # ℹ 7 more variables: gender <chr>, homeworld <chr>, species <chr>,
+#> #   films <list>, vehicles <list>, starships <list>, height_m <dbl>
+
+If you only want to keep the new variables, use
+.keep = "none":
+
+starwars %>%
+  mutate(
+    height_m = height / 100,
+    BMI = mass / (height_m^2),
+    .keep = "none"
+  )
+#> # A tibble: 87 × 2
+#>   height_m   BMI
+#>      <dbl> <dbl>
+#> 1     1.72  26.0
+#> 2     1.67  26.9
+#> 3     0.96  34.7
+#> 4     2.02  33.3
+#> # ℹ 83 more rows
+
+### Change column order with relocate()
+
+Use a similar syntax as select() to move blocks of
+columns at once
+
+starwars %>% relocate(sex:homeworld, .before = height)
+#> # A tibble: 87 × 14
+#>   name       sex   gender homeworld height  mass hair_color skin_color eye_color
+#>   <chr>      <chr> <chr>  <chr>      <int> <dbl> <chr>      <chr>      <chr>    
+#> 1 Luke Skyw… male  mascu… Tatooine     172    77 blond      fair       blue     
+#> 2 C-3PO      none  mascu… Tatooine     167    75 <NA>       gold       yellow   
+#> 3 R2-D2      none  mascu… Naboo         96    32 <NA>       white, bl… red      
+#> 4 Darth Vad… male  mascu… Tatooine     202   136 none       white      yellow   
+#> # ℹ 83 more rows
+#> # ℹ 5 more variables: birth_year <dbl>, species <chr>, films <list>,
+#> #   vehicles <list>, starships <list>
+
+### Summarise values with summarise()
+
+The last verb is summarise(). It collapses a data frame
+to a single row.
+
+starwars %>% summarise(height = mean(height, na.rm = TRUE))
+#> # A tibble: 1 × 1
+#>   height
+#>    <dbl>
+#> 1   175.
+
+It’s not that useful until we learn the group_by() verb
+below.
+
+### Commonalities
+
+You may have noticed that the syntax and function of all these verbs
+are very similar:
+
+- The first argument is a data frame.
+
+- The subsequent arguments describe what to do with the data frame.
+You can refer to columns in the data frame directly without using
+$.
+
+- The result is a new data frame
+
+Together these properties make it easy to chain together multiple
+simple steps to achieve a complex result.
+
+These five functions provide the basis of a language of data
+manipulation. At the most basic level, you can only alter a tidy data
+frame in five useful ways: you can reorder the rows
+(arrange()), pick observations and variables of interest
+(filter() and select()), add new variables
+that are functions of existing variables (mutate()), or
+collapse many values to a summary (summarise()).
+
+## Combining functions with %>%
+
+The dplyr API is functional in the sense that function calls don’t
+have side-effects. You must always save their results. This doesn’t lead
+to particularly elegant code, especially if you want to do many
+operations at once. You either have to do it step-by-step:
+
+a1 <- group_by(starwars, species, sex)
+a2 <- select(a1, height, mass)
+a3 <- summarise(a2,
+  height = mean(height, na.rm = TRUE),
+  mass = mean(mass, na.rm = TRUE)
+)
+
+Or if you don’t want to name the intermediate results, you need to
+wrap the function calls inside each other:
+
+summarise(
+  select(
+    group_by(starwars, species, sex),
+    height, mass
+  ),
+  height = mean(height, na.rm = TRUE),
+  mass = mean(mass, na.rm = TRUE)
+)
+#> Adding missing grouping variables: `species`, `sex`
+#> `summarise()` has grouped output by 'species'. You can override using the
+#> `.groups` argument.
+#> # A tibble: 41 × 4
+#> # Groups:   species [38]
+#>   species  sex   height  mass
+#>   <chr>    <chr>  <dbl> <dbl>
+#> 1 Aleena   male      79    15
+#> 2 Besalisk male     198   102
+#> 3 Cerean   male     198    82
+#> 4 Chagrian male     196   NaN
+#> # ℹ 37 more rows
+
+This is difficult to read because the order of the operations is from
+inside to out. Thus, the arguments are a long way away from the
+function. To get around this problem, dplyr provides the
+%>% operator from magrittr. x %>% f(y)
+turns into f(x, y) so you can use it to rewrite multiple
+operations that you can read left-to-right, top-to-bottom (reading the
+pipe operator as “then”):
+
+starwars %>%
+  group_by(species, sex) %>%
+  select(height, mass) %>%
+  summarise(
+    height = mean(height, na.rm = TRUE),
+    mass = mean(mass, na.rm = TRUE)
+  )
+[END TEXT]
+
+[...]
+[NOTE] Omitted: the vignette's closing section "Patterns of operations" (selecting and mutating operations).
+
+===============================================================================
+18. vignette("two-table", package = "dplyr") 1.1.4 — Two-table verbs: the introduction, "Mutating joins" (how tables are matched, types of join, observations) and "Filtering joins", whole
+rvignette://dplyr@1.1.4/two-table
+===============================================================================
+
+[TEXT]
+# Two-table verbs
+
+It’s rare that a data analysis involves only a single table of data.
+In practice, you’ll normally have many tables that contribute to an
+analysis, and you need flexible tools to combine them. In dplyr, there
+are three families of verbs that work with two tables at a time:
+
+- Mutating joins, which add new variables to one table from
+matching rows in another.
+
+- Filtering joins, which filter observations from one table based
+on whether or not they match an observation in the other table.
+
+- Set operations, which combine the observations in the data sets
+as if they were set elements.
+
+(This discussion assumes that you have tidy data, where the rows
+are observations and the columns are variables. If you’re not familiar
+with that framework, I’d recommend reading up on it first.)
+
+All two-table verbs work similarly. The first two arguments are
+x and y, and provide the tables to combine.
+The output is always a new table with the same type as
+x.
+
+## Mutating joins
+
+Mutating joins allow you to combine variables from multiple tables.
+For example, consider the flights and airlines data from the
+nycflights13 package. In one table we have flight information with an
+abbreviation for carrier, and in another we have a mapping between
+abbreviations and full names. You can use a join to add the carrier
+names to the flight data:
+
+library(nycflights13)
+# Drop unimportant variables so it's easier to understand the join results.
+flights2 <- flights %>% select(year:day, hour, origin, dest, tailnum, carrier)
+
+flights2 %>% 
+  left_join(airlines)
+#> Joining with `by = join_by(carrier)`
+#> # A tibble: 336,776 × 9
+#>    year month   day  hour origin dest  tailnum carrier name                  
+#>   <int> <int> <int> <dbl> <chr>  <chr> <chr>   <chr>   <chr>                 
+#> 1  2013     1     1     5 EWR    IAH   N14228  UA      United Air Lines Inc. 
+#> 2  2013     1     1     5 LGA    IAH   N24211  UA      United Air Lines Inc. 
+#> 3  2013     1     1     5 JFK    MIA   N619AA  AA      American Airlines Inc.
+#> 4  2013     1     1     5 JFK    BQN   N804JB  B6      JetBlue Airways       
+#> 5  2013     1     1     6 LGA    ATL   N668DN  DL      Delta Air Lines Inc.  
+#> # ℹ 336,771 more rows
+
+### Controlling how the tables are matched
+
+As well as x and y, each mutating join
+takes an argument by that controls which variables are used
+to match observations in the two tables. There are a few ways to specify
+it, as I illustrate below with various tables from nycflights13:
+
+- NULL, the default. dplyr will will use all variables
+that appear in both tables, a natural join. For
+example, the flights and weather tables match on their common variables:
+year, month, day, hour and origin.
+flights2 %>% left_join(weather)
+#> Joining with `by = join_by(year, month, day, hour, origin)`
+#> # A tibble: 336,776 × 18
+#>    year month   day  hour origin dest  tailnum carrier  temp  dewp humid
+#>   <int> <int> <int> <dbl> <chr>  <chr> <chr>   <chr>   <dbl> <dbl> <dbl>
+#> 1  2013     1     1     5 EWR    IAH   N14228  UA       39.0  28.0  64.4
+#> 2  2013     1     1     5 LGA    IAH   N24211  UA       39.9  25.0  54.8
+#> 3  2013     1     1     5 JFK    MIA   N619AA  AA       39.0  27.0  61.6
+#> 4  2013     1     1     5 JFK    BQN   N804JB  B6       39.0  27.0  61.6
+#> 5  2013     1     1     6 LGA    ATL   N668DN  DL       39.9  25.0  54.8
+#> # ℹ 336,771 more rows
+#> # ℹ 7 more variables: wind_dir <dbl>, wind_speed <dbl>, wind_gust <dbl>,
+#> #   precip <dbl>, pressure <dbl>, visib <dbl>, time_hour <dttm>
+
+- A character vector, by = "x". Like a natural join,
+but uses only some of the common variables. For example,
+flights and planes have year
+columns, but they mean different things so we only want to join by
+tailnum.
+flights2 %>% left_join(planes, by = "tailnum")
+#> # A tibble: 336,776 × 16
+#>   year.x month   day  hour origin dest  tailnum carrier year.y type             
+#>    <int> <int> <int> <dbl> <chr>  <chr> <chr>   <chr>    <int> <chr>            
+#> 1   2013     1     1     5 EWR    IAH   N14228  UA        1999 Fixed wing multi…
+#> 2   2013     1     1     5 LGA    IAH   N24211  UA        1998 Fixed wing multi…
+#> 3   2013     1     1     5 JFK    MIA   N619AA  AA        1990 Fixed wing multi…
+#> 4   2013     1     1     5 JFK    BQN   N804JB  B6        2012 Fixed wing multi…
+#> 5   2013     1     1     6 LGA    ATL   N668DN  DL        1991 Fixed wing multi…
+#> # ℹ 336,771 more rows
+#> # ℹ 6 more variables: manufacturer <chr>, model <chr>, engines <int>,
+#> #   seats <int>, speed <int>, engine <chr>
+Note that the year columns in the output are disambiguated with a
+suffix.
+
+- A named character vector: by = c("x" = "a"). This
+will match variable x in table x to variable
+a in table y. The variables from use will be
+used in the output.
+Each flight has an origin and destination airport, so we
+need to specify which one we want to join to:
+flights2 %>% left_join(airports, c("dest" = "faa"))
+#> # A tibble: 336,776 × 15
+#>    year month   day  hour origin dest  tailnum carrier name      lat   lon   alt
+#>   <int> <int> <int> <dbl> <chr>  <chr> <chr>   <chr>   <chr>   <dbl> <dbl> <dbl>
+#> 1  2013     1     1     5 EWR    IAH   N14228  UA      George…  30.0 -95.3    97
+#> 2  2013     1     1     5 LGA    IAH   N24211  UA      George…  30.0 -95.3    97
+#> 3  2013     1     1     5 JFK    MIA   N619AA  AA      Miami …  25.8 -80.3     8
+#> 4  2013     1     1     5 JFK    BQN   N804JB  B6      <NA>     NA    NA      NA
+#> 5  2013     1     1     6 LGA    ATL   N668DN  DL      Hartsf…  33.6 -84.4  1026
+#> # ℹ 336,771 more rows
+#> # ℹ 3 more variables: tz <dbl>, dst <chr>, tzone <chr>
+flights2 %>% left_join(airports, c("origin" = "faa"))
+#> # A tibble: 336,776 × 15
+#>    year month   day  hour origin dest  tailnum carrier name      lat   lon   alt
+#>   <int> <int> <int> <dbl> <chr>  <chr> <chr>   <chr>   <chr>   <dbl> <dbl> <dbl>
+#> 1  2013     1     1     5 EWR    IAH   N14228  UA      Newark…  40.7 -74.2    18
+#> 2  2013     1     1     5 LGA    IAH   N24211  UA      La Gua…  40.8 -73.9    22
+#> 3  2013     1     1     5 JFK    MIA   N619AA  AA      John F…  40.6 -73.8    13
+#> 4  2013     1     1     5 JFK    BQN   N804JB  B6      John F…  40.6 -73.8    13
+#> 5  2013     1     1     6 LGA    ATL   N668DN  DL      La Gua…  40.8 -73.9    22
+#> # ℹ 336,771 more rows
+#> # ℹ 3 more variables: tz <dbl>, dst <chr>, tzone <chr>
+
+### Types of join
+
+There are four types of mutating join, which differ in their
+behaviour when a match is not found. We’ll illustrate each with a simple
+example:
+
+df1 <- tibble(x = c(1, 2), y = 2:1)
+df2 <- tibble(x = c(3, 1), a = 10, b = "a")
+
+- inner_join(x, y) only includes observations that
+match in both x and y.
+df1 %>% inner_join(df2) %>% knitr::kable()
+#> Joining with `by = join_by(x)`
+x
+y
+a
+b
+1
+2
+10
+a
+
+- left_join(x, y) includes all observations in
+x, regardless of whether they match or not. This is the
+most commonly used join because it ensures that you don’t lose
+observations from your primary table.
+df1 %>% left_join(df2)
+#> Joining with `by = join_by(x)`
+#> # A tibble: 2 × 4
+#>       x     y     a b    
+#>   <dbl> <int> <dbl> <chr>
+#> 1     1     2    10 a    
+#> 2     2     1    NA <NA>
+
+- right_join(x, y) includes all observations in
+y. It’s equivalent to left_join(y, x), but the
+columns and rows will be ordered differently.
+df1 %>% right_join(df2)
+#> Joining with `by = join_by(x)`
+#> # A tibble: 2 × 4
+#>       x     y     a b    
+#>   <dbl> <int> <dbl> <chr>
+#> 1     1     2    10 a    
+#> 2     3    NA    10 a
+df2 %>% left_join(df1)
+#> Joining with `by = join_by(x)`
+#> # A tibble: 2 × 4
+#>       x     a b         y
+#>   <dbl> <dbl> <chr> <int>
+#> 1     3    10 a        NA
+#> 2     1    10 a         2
+
+- full_join() includes all observations from
+x and y.
+df1 %>% full_join(df2)
+#> Joining with `by = join_by(x)`
+#> # A tibble: 3 × 4
+#>       x     y     a b    
+#>   <dbl> <int> <dbl> <chr>
+#> 1     1     2    10 a    
+#> 2     2     1    NA <NA> 
+#> 3     3    NA    10 a
+
+The left, right and full joins are collectively know as outer
+joins. When a row doesn’t match in an outer join, the new
+variables are filled in with missing values.
+
+### Observations
+
+While mutating joins are primarily used to add new variables, they
+can also generate new observations. If a match is not unique, a join
+will add all possible combinations (the Cartesian product) of the
+matching observations:
+
+df1 <- tibble(x = c(1, 1, 2), y = 1:3)
+df2 <- tibble(x = c(1, 1, 2), z = c("a", "b", "a"))
+
+df1 %>% left_join(df2)
+#> Joining with `by = join_by(x)`
+#> Warning in left_join(., df2): Detected an unexpected many-to-many relationship between `x` and `y`.
+#> ℹ Row 1 of `x` matches multiple rows in `y`.
+#> ℹ Row 1 of `y` matches multiple rows in `x`.
+#> ℹ If a many-to-many relationship is expected, set `relationship =
+#>   "many-to-many"` to silence this warning.
+#> # A tibble: 5 × 3
+#>       x     y z    
+#>   <dbl> <int> <chr>
+#> 1     1     1 a    
+#> 2     1     1 b    
+#> 3     1     2 a    
+#> 4     1     2 b    
+#> 5     2     3 a
+
+## Filtering joins
+
+Filtering joins match observations in the same way as mutating joins,
+but affect the observations, not the variables. There are two types:
+
+- semi_join(x, y) keeps all observations
+in x that have a match in y.
+
+- anti_join(x, y) drops all observations
+in x that have a match in y.
+
+These are most useful for diagnosing join mismatches. For example,
+there are many flights in the nycflights13 dataset that don’t have a
+matching tail number in the planes table:
+
+library("nycflights13")
+flights %>% 
+  anti_join(planes, by = "tailnum") %>% 
+  count(tailnum, sort = TRUE)
+#> # A tibble: 722 × 2
+#>   tailnum     n
+#>   <chr>   <int>
+#> 1 <NA>     2512
+#> 2 N725MQ    575
+#> 3 N722MQ    513
+#> 4 N723MQ    507
+#> 5 N713MQ    483
+#> # ℹ 717 more rows
+
+If you’re worried about what observations your joins will match,
+start with a semi_join() or anti_join().
+semi_join() and anti_join() never duplicate;
+they only ever remove observations.
+
+df1 <- tibble(x = c(1, 1, 3, 4), y = 1:4)
+df2 <- tibble(x = c(1, 1, 2), z = c("a", "b", "a"))
+
+# Four rows to start with:
+df1 %>% nrow()
+#> [1] 4
+# And we get four rows after the join
+df1 %>% inner_join(df2, by = "x") %>% nrow()
+#> Warning in inner_join(., df2, by = "x"): Detected an unexpected many-to-many relationship between `x` and `y`.
+#> ℹ Row 1 of `x` matches multiple rows in `y`.
+#> ℹ Row 1 of `y` matches multiple rows in `x`.
+#> ℹ If a many-to-many relationship is expected, set `relationship =
+#>   "many-to-many"` to silence this warning.
+#> [1] 4
+# But only two rows actually match
+df1 %>% semi_join(df2, by = "x") %>% nrow()
+#> [1] 2
+[END TEXT]
+
+[...]
+[NOTE] Omitted: "Set operations" and "Multiple-table verbs".
+
+===============================================================================
+19. DESCRIPTION file of dplyr 1.1.4, whole (title, authors, licence, version, publication date)
+rfile://dplyr@1.1.4/DESCRIPTION
+===============================================================================
+
+[TEXT]
+Type: Package
+Package: dplyr
+Title: A Grammar of Data Manipulation
+Version: 1.1.4
+Authors@R: c(
+    person("Hadley", "Wickham", , "hadley@posit.co", role = c("aut", "cre"),
+           comment = c(ORCID = "0000-0003-4757-117X")),
+    person("Romain", "François", role = "aut",
+           comment = c(ORCID = "0000-0002-2444-4226")),
+    person("Lionel", "Henry", role = "aut"),
+    person("Kirill", "Müller", role = "aut",
+           comment = c(ORCID = "0000-0002-1416-3412")),
+    person("Davis", "Vaughan", , "davis@posit.co", role = "aut",
+           comment = c(ORCID = "0000-0003-4777-038X")),
+    person("Posit Software, PBC", role = c("cph", "fnd"))
+  )
+Description: A fast, consistent tool for working with data frame like
+    objects, both in memory and out of memory.
+License: MIT + file LICENSE
+URL: https://dplyr.tidyverse.org, https://github.com/tidyverse/dplyr
+BugReports: https://github.com/tidyverse/dplyr/issues
+Depends: R (>= 3.5.0)
+Imports: cli (>= 3.4.0), generics, glue (>= 1.3.2), lifecycle (>=
+        1.0.3), magrittr (>= 1.5), methods, pillar (>= 1.9.0), R6,
+        rlang (>= 1.1.0), tibble (>= 3.2.0), tidyselect (>= 1.2.0),
+        utils, vctrs (>= 0.6.4)
+Suggests: bench, broom, callr, covr, DBI, dbplyr (>= 2.2.1), ggplot2,
+        knitr, Lahman, lobstr, microbenchmark, nycflights13, purrr,
+        rmarkdown, RMySQL, RPostgreSQL, RSQLite, stringi (>= 1.7.6),
+        testthat (>= 3.1.5), tidyr (>= 1.3.0), withr
+VignetteBuilder: knitr
+Config/Needs/website: tidyverse, shiny, pkgdown, tidyverse/tidytemplate
+Config/testthat/edition: 3
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 7.2.3
+NeedsCompilation: yes
+Packaged: 2023-11-16 21:48:56 UTC; hadleywickham
+Author: Hadley Wickham [aut, cre] (<https://orcid.org/0000-0003-4757-117X>),
+  Romain François [aut] (<https://orcid.org/0000-0002-2444-4226>),
+  Lionel Henry [aut],
+  Kirill Müller [aut] (<https://orcid.org/0000-0002-1416-3412>),
+  Davis Vaughan [aut] (<https://orcid.org/0000-0003-4777-038X>),
+  Posit Software, PBC [cph, fnd]
+Maintainer: Hadley Wickham <hadley@posit.co>
+Repository: CRAN
+Date/Publication: 2023-11-17 16:50:02 UTC
+Built: R 4.3.2; x86_64-pc-linux-gnu; 'Thu, 23 Nov 2023 07:18:35 +0100'; unix
+[END TEXT]

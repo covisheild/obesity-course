@@ -1,0 +1,52 @@
+case                  package:stringr                  R Documentation
+
+Convert string to upper case, lower case, title case, or sentence case
+
+Description:
+
+        • 'str_to_upper()' converts to upper case.
+
+        • 'str_to_lower()' converts to lower case.
+
+        • 'str_to_title()' converts to title case, where only the first
+          letter of each word is capitalized.
+
+        • 'str_to_sentence()' convert to sentence case, where only the
+          first letter of sentence is capitalized.
+
+Usage:
+
+     str_to_upper(string, locale = "en")
+     
+     str_to_lower(string, locale = "en")
+     
+     str_to_title(string, locale = "en")
+     
+     str_to_sentence(string, locale = "en")
+     
+Arguments:
+
+  string: Input vector. Either a character vector, or something
+          coercible to one.
+
+  locale: Locale to use for comparisons. See
+          'stringi::stri_locale_list()' for all possible options.
+          Defaults to "en" (English) to ensure that default behaviour
+          is consistent across platforms.
+
+Value:
+
+     A character vector the same length as 'string'.
+
+Examples:
+
+     dog <- "The quick brown dog"
+     str_to_upper(dog)
+     str_to_lower(dog)
+     str_to_title(dog)
+     str_to_sentence("the quick brown dog")
+     
+     # Locale matters!
+     str_to_upper("i") # English
+     str_to_upper("i", "tr") # Turkish
+     

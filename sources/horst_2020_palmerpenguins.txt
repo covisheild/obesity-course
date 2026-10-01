@@ -1,0 +1,346 @@
+PALMERPENGUINS 0.1.1 — penguins_raw.csv (THE BOOK'S DATASET) AND ITS DOCUMENTATION
+VERBATIM SOURCE PACK
+============================================================
+
+Transcription rule for this file: every line between a [TEXT] and an [END TEXT] line is an exact,
+unaltered slice of a raw file saved under books/S52-R1/intake/raw/ (a render or file from the installed
+package, or the TinyFish fetch of the CRAN page for the URL in the block heading), cut programmatically
+(raw[i:j]) by books/S52-R1/intake/build-c/build.py and re-checked by verify.py. Locators rhelp://, rfile://
+and rcitation:// are local documents (see the rdocs_s52r1_* files for the scheme); file:// is the CSV held
+in this folder. Lines beginning [NOTE] are this file's own annotation and are NOT source text.
+
+CITATION: Horst AM, Hill AP, Gorman KB. palmerpenguins: Palmer Archipelago (Antarctica) penguin data.
+R package version 0.1.1 (CRAN, published 2022-08-15). doi:10.5281/zenodo.3960218.
+https://allisonhorst.github.io/palmerpenguins/. [NOTE] The package's own citation() (block 3) gives
+year 2020 and "R package version 0.1.0"; the installed and CRAN version is 0.1.1. The data themselves come
+from Palmer Station Antarctica LTER and K. Gorman (Environmental Data Initiative, 2020) and were first
+published in Gorman, Williams and Fraser 2014, PLoS ONE 9(3):e90081 (block 1, Source).
+
+THE DATA FILE HELD: sources/data/penguins_raw.csv, copied byte for byte on 2026-10-02 from the installed
+package's system.file("extdata", "penguins_raw.csv", package = "palmerpenguins") by
+books/S52-R1/intake/build-c/penguins.R. Task 1 (READY.md) found the same MD5 for
+https://raw.githubusercontent.com/allisonhorst/palmerpenguins/main/inst/extdata/penguins_raw.csv.
+FACTS RECORDED BY SCRIPT (penguins.R output, cut whole from its saved output; read with readr 2.1.5,
+default na = c("", "NA")):
+  source: /usr/lib/R/site-library/palmerpenguins/extdata/penguins_raw.csv
+  copied to: sources/data/penguins_raw.csv
+  palmerpenguins version (packageVersion): 0.1.1
+  readr version used to read it: 2.1.5
+  bytes: 53098
+  md5 (installed file): 049da101568e078f9845c8b366481810
+  md5 (copy): 049da101568e078f9845c8b366481810
+  text lines in file (readLines, including header): 345
+  header line: studyName,Sample Number,Species,Region,Island,Stage,Individual ID,Clutch Completion,Date Egg,Culmen Length (mm),Culmen Depth (mm),Flipper Length (mm),Body Mass (g),Sex,Delta 15 N (o/oo),Delta 13 C (o/oo),Comments
+  rows (read_csv): 344
+  columns (read_csv): 17
+  column types as guessed by read_csv (spec):
+  cols(
+    studyName = col_character(),
+    `Sample Number` = col_double(),
+    Species = col_character(),
+    Region = col_character(),
+    Island = col_character(),
+    Stage = col_character(),
+    `Individual ID` = col_character(),
+    `Clutch Completion` = col_character(),
+    `Date Egg` = col_date(format = ""),
+    `Culmen Length (mm)` = col_double(),
+    `Culmen Depth (mm)` = col_double(),
+    `Flipper Length (mm)` = col_double(),
+    `Body Mass (g)` = col_double(),
+    Sex = col_character(),
+    `Delta 15 N (o/oo)` = col_double(),
+    `Delta 13 C (o/oo)` = col_double(),
+    Comments = col_character()
+  )
+  missing values per column (sum(is.na()) after read_csv with default na = c("", "NA")):
+    studyName: 0
+    Sample Number: 0
+    Species: 0
+    Region: 0
+    Island: 0
+    Stage: 0
+    Individual ID: 0
+    Clutch Completion: 0
+    Date Egg: 0
+    Culmen Length (mm): 2
+    Culmen Depth (mm): 2
+    Flipper Length (mm): 2
+    Body Mass (g): 2
+    Sex: 11
+    Delta 15 N (o/oo): 14
+    Delta 13 C (o/oo): 13
+    Comments: 290
+  total missing cells: 336
+  complete rows (all 17 columns present): 34
+  rows with Comments missing: 290
+  range of Date Egg: 2007-11-09 to 2009-12-01
+  Species counts: Adelie Penguin (Pygoscelis adeliae) = 152; Chinstrap penguin (Pygoscelis antarctica) = 68; Gentoo penguin (Pygoscelis papua) = 124
+  Sex counts (NA excluded): FEMALE = 165; MALE = 168
+
+LICENCE: the installed DESCRIPTION states "License: CC0". The CRAN page (block 4), fetched 2026-10-02, states
+"License: CC0" (between the License and URL fields).
+[NOTE] The text of the CC0 deed itself was not fetched; this file states only what the two pages say.
+
+WHAT THIS FILE HOLDS: the penguins_raw help page, the DESCRIPTION, citation() output, the CRAN page and the
+CSV's first three lines, each whole as marked. The penguins (cleaned) dataset and its help page are not held.
+
+===============================================================================
+1. Help page "penguins_raw" (palmerpenguins 0.1.1), whole: the 17 variables and the data sources
+rhelp://palmerpenguins@0.1.1/penguins_raw
+===============================================================================
+
+[TEXT]
+penguins_raw          package:palmerpenguins           R Documentation
+
+Penguin size, clutch, and blood isotope data for foraging adults near
+Palmer Station, Antarctica
+
+Description:
+
+     Includes nesting observations, penguin size data, and isotope
+     measurements from blood samples for adult Adélie, Chinstrap, and
+     Gentoo penguins.
+
+Usage:
+
+     penguins_raw
+     
+Format:
+
+     A tibble with 344 rows and 17 variables:
+
+     studyName Sampling expedition from which data were collected,
+          generated, etc.
+
+     Sample Number an integer denoting the continuous numbering
+          sequence for each sample
+
+     Species a character string denoting the penguin species
+
+     Region a character string denoting the region of Palmer LTER
+          sampling grid
+
+     Island a character string denoting the island near Palmer Station
+          where samples were collected
+
+     Stage a character string denoting reproductive stage at sampling
+
+     Individual ID a character string denoting the unique ID for each
+          individual in dataset
+
+     Clutch Completion a character string denoting if the study nest
+          observed with a full clutch, i.e., 2 eggs
+
+     Date Egg a date denoting the date study nest observed with 1 egg
+          (sampled)
+
+     Culmen Length a number denoting the length of the dorsal ridge of
+          a bird's bill (millimeters)
+
+     Culmen Depth a number denoting the depth of the dorsal ridge of a
+          bird's bill (millimeters)
+
+     Flipper Length an integer denoting the length penguin flipper
+          (millimeters)
+
+     Body Mass an integer denoting the penguin body mass (grams)
+
+     Sex a character string denoting the sex of an animal
+
+     Delta 15 N a number denoting the measure of the ratio of stable
+          isotopes 15N:14N
+
+     Delta 13 C a number denoting the measure of the ratio of stable
+          isotopes 13C:12C
+
+     Comments a character string with text providing additional
+          relevant information for data
+
+Source:
+
+     Adélie penguins: Palmer Station Antarctica LTER and K. Gorman.
+     2020. Structural size measurements and isotopic signatures of
+     foraging among adult male and female Adélie penguins (Pygoscelis
+     adeliae) nesting along the Palmer Archipelago near Palmer Station,
+     2007-2009 ver 5. Environmental Data Initiative. doi:
+     10.6073/pasta/98b16d7d563f265cb52372c8ca99e60f (URL:
+     https://doi.org/10.6073/pasta/98b16d7d563f265cb52372c8ca99e60f)
+
+     Gentoo penguins: Palmer Station Antarctica LTER and K. Gorman.
+     2020. Structural size measurements and isotopic signatures of
+     foraging among adult male and female Gentoo penguin (Pygoscelis
+     papua) nesting along the Palmer Archipelago near Palmer Station,
+     2007-2009 ver 5. Environmental Data Initiative. doi:
+     10.6073/pasta/7fca67fb28d56ee2ffa3d9370ebda689 (URL:
+     https://doi.org/10.6073/pasta/7fca67fb28d56ee2ffa3d9370ebda689)
+
+     Chinstrap penguins: Palmer Station Antarctica LTER and K. Gorman.
+     2020. Structural size measurements and isotopic signatures of
+     foraging among adult male and female Chinstrap penguin (Pygoscelis
+     antarcticus) nesting along the Palmer Archipelago near Palmer
+     Station, 2007-2009 ver 6. Environmental Data Initiative. doi:
+     10.6073/pasta/c14dfcfada8ea13a17536e73eb6fbe9e (URL:
+     https://doi.org/10.6073/pasta/c14dfcfada8ea13a17536e73eb6fbe9e)
+
+     Originally published in: Gorman KB, Williams TD, Fraser WR (2014)
+     Ecological Sexual Dimorphism and Environmental Variability within
+     a Community of Antarctic Penguins (Genus Pygoscelis). PLoS ONE
+     9(3): e90081. doi:10.1371/journal.pone.0090081
+[END TEXT]
+
+===============================================================================
+2. DESCRIPTION file of palmerpenguins 0.1.1, whole
+rfile://palmerpenguins@0.1.1/DESCRIPTION
+===============================================================================
+
+[TEXT]
+Package: palmerpenguins
+Title: Palmer Archipelago (Antarctica) Penguin Data
+Version: 0.1.1
+Date: 2022-08-12
+Authors@R: c(
+    person(given = "Allison",
+           family = "Horst",
+           role = c("aut", "cre"),
+           email = "ahorst@ucsb.edu",
+           comment = c(ORCID = "0000-0002-6047-5564")),
+    person(given = "Alison",
+           family = "Hill",
+           role = c("aut"),
+           email = "apresstats@gmail.com",
+           comment = c(ORCID = "0000-0002-8082-1890")),
+    person(given = "Kristen",
+           family = "Gorman",
+           role = c("aut"),
+           email = "kbgorman@alaska.edu",
+           comment = c(ORCID = "0000-0002-0258-9264"))
+           )
+Description: Size measurements, clutch observations, and blood isotope ratios for adult foraging Adélie, Chinstrap, and Gentoo penguins observed on islands in the Palmer Archipelago near Palmer Station, Antarctica. Data were collected and made available by Dr. Kristen Gorman and the Palmer Station Long Term Ecological Research (LTER) Program. 
+License: CC0
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 7.2.1.9000
+Depends: R (>= 2.10)
+Suggests: knitr, rmarkdown, tibble, ggplot2, dplyr, tidyr, recipes
+URL: https://allisonhorst.github.io/palmerpenguins/,
+        https://github.com/allisonhorst/palmerpenguins
+BugReports: https://github.com/allisonhorst/palmerpenguins/issues
+NeedsCompilation: no
+Packaged: 2022-08-13 17:49:08 UTC; allison
+Author: Allison Horst [aut, cre] (<https://orcid.org/0000-0002-6047-5564>),
+  Alison Hill [aut] (<https://orcid.org/0000-0002-8082-1890>),
+  Kristen Gorman [aut] (<https://orcid.org/0000-0002-0258-9264>)
+Maintainer: Allison Horst <ahorst@ucsb.edu>
+Repository: CRAN
+Date/Publication: 2022-08-15 07:40:07 UTC
+Built: R 4.2.1; ; 'Mon, 22 Aug 2022 08:53:31 +0200'; unix
+[END TEXT]
+
+===============================================================================
+3. citation("palmerpenguins"), as printed by R 4.3.3 (text and BibTeX)
+rcitation://palmerpenguins@0.1.1
+===============================================================================
+
+[TEXT]
+Horst AM, Hill AP, Gorman KB (2020). _palmerpenguins: Palmer
+Archipelago (Antarctica) penguin data_. doi:10.5281/zenodo.3960218
+<https://doi.org/10.5281/zenodo.3960218>, R package version 0.1.0,
+<https://allisonhorst.github.io/palmerpenguins/>.
+
+@Manual{,
+  title = {palmerpenguins: Palmer Archipelago (Antarctica) penguin data},
+  author = {Allison Marie Horst and Alison Presmanes Hill and Kristen B Gorman},
+  year = {2020},
+  note = {R package version 0.1.0},
+  doi = {10.5281/zenodo.3960218},
+  url = {https://allisonhorst.github.io/palmerpenguins/},
+}
+[END TEXT]
+
+===============================================================================
+4. CRAN package page, palmerpenguins, whole as extracted
+https://cran.r-project.org/package=palmerpenguins
+===============================================================================
+
+[TEXT]
+Size measurements, clutch observations, and blood isotope ratios for adult foraging Adélie, Chinstrap, and Gentoo penguins observed on islands in the Palmer Archipelago near Palmer Station, Antarctica. Data were collected and made available by Dr. Kristen Gorman and the Palmer Station Long Term Ecological Research (LTER) Program.
+
+Version:
+0.1.1
+
+Depends:
+R (≥ 2.10)
+
+Suggests:
+knitr, rmarkdown, tibble, ggplot2, dplyr, tidyr, recipes
+
+Published:
+2022-08-15
+
+DOI:
+10.32614/CRAN.package.palmerpenguins
+
+Author:
+Allison Horst [aut, cre], Alison Hill [aut], Kristen Gorman [aut]
+
+Maintainer:
+Allison Horst <ahorst at ucsb.edu>
+
+BugReports:
+https://github.com/allisonhorst/palmerpenguins/issues
+
+License:
+CC0
+
+URL:
+https://allisonhorst.github.io/palmerpenguins/, https://github.com/allisonhorst/palmerpenguins
+
+NeedsCompilation:
+no
+
+Citation:
+palmerpenguins citation info
+
+Materials:
+README
+
+CRAN checks:
+palmerpenguins results
+
+Reference manual:
+palmerpenguins.html , palmerpenguins.pdf
+
+Package source:
+palmerpenguins\_0.1.1.tar.gz
+
+Windows binaries:
+r-devel: palmerpenguins\_0.1.1.zip, r-release: palmerpenguins\_0.1.1.zip, r-oldrel: palmerpenguins\_0.1.1.zip
+
+macOS binaries:
+r-release (arm64): palmerpenguins\_0.1.1.tgz, r-oldrel (arm64): palmerpenguins\_0.1.1.tgz, r-release (x86\_64): palmerpenguins\_0.1.1.tgz, r-oldrel (x86\_64): palmerpenguins\_0.1.1.tgz
+
+Old sources:
+palmerpenguins archive
+
+Reverse imports:
+coursekata, dados, datos, DBItest, explore, hypervolume, mlr3
+
+Reverse suggests:
+anticlust, arf, brand.yml, brandr, bullseye, cheetahR, classbound, clustTMB, cuda.ml, dittoViz, drmTMB, duckplyr, easytable, FakeDataR, gameR, ggblanket, ggformula, gglm, ggspec, here, innsight, ivo.table, janusplot, langevitour, levelSets, lorax, LSTbook, manydist, mosaic, mosaicCalc, nadir, nic, nmfkc, partialling.out, parttree, pillar, plotly, plotscaper, positron.tutorials, qbinplots, quarto, querychat, r4ds.tutorials, rCISSVAE, regressinator, rmdformats, robservable, rphylopic, RplotterPkg, shiny.tailwind, sigPCA, supportR, svgedit, svmodt, tidycharts, tidyhte, tidyrules, tidysynthesis, tiledb, torch, vchartr, visOmopResults, xkcd
+
+Please use the canonical form https://CRAN.R-project.org/package=palmerpenguins to link to this page.
+[END TEXT]
+
+===============================================================================
+5. sources/data/penguins_raw.csv: header line and first two data rows
+file://sources/data/penguins_raw.csv
+===============================================================================
+
+[TEXT]
+studyName,Sample Number,Species,Region,Island,Stage,Individual ID,Clutch Completion,Date Egg,Culmen Length (mm),Culmen Depth (mm),Flipper Length (mm),Body Mass (g),Sex,Delta 15 N (o/oo),Delta 13 C (o/oo),Comments
+PAL0708,1,Adelie Penguin (Pygoscelis adeliae),Anvers,Torgersen,"Adult, 1 Egg Stage",N1A1,Yes,2007-11-11,39.1,18.7,181,3750,MALE,NA,NA,Not enough blood for isotopes.
+PAL0708,2,Adelie Penguin (Pygoscelis adeliae),Anvers,Torgersen,"Adult, 1 Egg Stage",N1A2,Yes,2007-11-11,39.5,17.4,186,3800,FEMALE,8.94956,-24.69454,NA
+[END TEXT]
+[...]
+[NOTE] The other 342 data rows are in sources/data/penguins_raw.csv itself.

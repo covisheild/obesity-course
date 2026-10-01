@@ -1,0 +1,1282 @@
+GGPLOT2 3.4.4 — VERSION-MATCHED HELP PAGES FROM THE BOOK'S R 4.3.3 SANDBOX
+VERBATIM SOURCE PACK (EXCERPTS)
+============================================================
+
+Transcription rule for this file: every line between a [TEXT] and an [END TEXT] line is an exact,
+unaltered slice of a raw render made in the book's sandbox and saved under books/S52-R1/intake/raw/, cut
+programmatically (raw[i:j]) by books/S52-R1/intake/build-c/build.py and re-checked by verify.py as a
+whitespace-normalised substring of that render. Nothing has been paraphrased. Where material is left out,
+the omission is marked [...] in place. Lines beginning [NOTE] are this file's own annotation and are NOT
+source text. Quoted evidence in this header is cut the same way.
+
+LOCATORS: these are local documents, not web pages, so each block heading carries a locator, not a URL:
+  rhelp://<package>@<version>/<Rd name>     the installed help page (what ?topic shows in R)
+  rvignette://<package>@<version>/<name>    the installed vignette (what vignette("<name>") shows)
+  rfile://<package>@<version>/DESCRIPTION   the installed DESCRIPTION file, byte for byte
+The package's website shows the CURRENT version's documentation, which may differ from what is held here.
+
+HOW RENDERED (2026-10-02): R 4.3.3, in a UTF-8 locale, with options(useFancyQuotes = FALSE) so quotation
+marks print as straight ASCII ' and "; help pages by tools::Rd2txt(utils:::.getHelpFile(help(topic,
+package = pkg)), options = list(underline_titles = FALSE, width = 80)); vignettes from the installed HTML
+by xml2 1.3.6, taking h1-h4, p, pre, top-level li and table elements in document order (headings marked
+with #, list items with -, code and printed output as in the vignette's own <pre> blocks; images not
+held). Script: books/S52-R1/intake/build-c/render.R. Help pages print no output for their Examples: the
+code there is shown, not run.
+
+CITATION: Wickham, Hadley; Chang, Winston; Henry, Lionel; Pedersen, Thomas Lin; Takahashi, Kohske; Wilke, Claus; Woo, Kara; Yutani, Hiroaki; Dunnington, Dewey. ggplot2: Create Elegant Data Visualisations Using the Grammar of Graphics. R package version 3.4.4, published on CRAN 2023-10-12. Help pages as installed.
+PACKAGE TITLE (from DESCRIPTION): "Title: Create Elegant Data Visualisations Using the Grammar of Graphics"
+VERSION read with packageVersion() on 2026-10-02: "ggplot2 3.4.4"
+LICENCE: the installed DESCRIPTION file states
+  "License: MIT + file LICENSE"
+The LICENSE file it names is not present in the installed package (system.file("LICENSE",
+package = "ggplot2") returns ""), so its year and copyright-holder lines were not read.
+
+WHAT THIS FILE HOLDS: these help pages, each whole (description, usage, arguments, details, value, examples
+as code): ggplot (Rd "ggplot"); aes (Rd "aes"); geom_histogram (Rd "geom_histogram"); geom_boxplot (Rd "geom_boxplot"); ggsave (Rd "ggsave"); facet_wrap (Rd "facet_wrap").
+The DESCRIPTION file, whole. Every other help page and vignette of the package is NOT held.
+
+VERSION WARNING: this is the documentation of the version the book's outputs were made with. Newer versions
+exist (see `tidyverse_news_s52r1` for what changed in dplyr, tidyr, readr and ggplot2). A reader on a newer
+version may see different text in ?topic. Current online reference (orientation only, not this text): https://ggplot2.tidyverse.org
+
+===============================================================================
+1. ggplot2::ggplot — help page "ggplot" (ggplot2 3.4.4), whole
+rhelp://ggplot2@3.4.4/ggplot
+===============================================================================
+
+[TEXT]
+ggplot                 package:ggplot2                 R Documentation
+
+Create a new ggplot
+
+Description:
+
+     'ggplot()' initializes a ggplot object. It can be used to declare
+     the input data frame for a graphic and to specify the set of plot
+     aesthetics intended to be common throughout all subsequent layers
+     unless specifically overridden.
+
+Usage:
+
+     ggplot(data = NULL, mapping = aes(), ..., environment = parent.frame())
+     
+Arguments:
+
+    data: Default dataset to use for plot. If not already a data.frame,
+          will be converted to one by 'fortify()'. If not specified,
+          must be supplied in each layer added to the plot.
+
+ mapping: Default list of aesthetic mappings to use for plot. If not
+          specified, must be supplied in each layer added to the plot.
+
+     ...: Other arguments passed on to methods. Not currently used.
+
+environment: *[Deprecated]* Used prior to tidy evaluation.
+
+Details:
+
+     'ggplot()' is used to construct the initial plot object, and is
+     almost always followed by a plus sign ('+') to add components to
+     the plot.
+
+     There are three common patterns used to invoke 'ggplot()':
+
+        • ggplot(data = df, mapping = aes(x, y, other aesthetics))
+
+        • 'ggplot(data = df)'
+
+        • 'ggplot()'
+
+     The first pattern is recommended if all layers use the same data
+     and the same set of aesthetics, although this method can also be
+     used when adding a layer using data from another data frame.
+
+     The second pattern specifies the default data frame to use for the
+     plot, but no aesthetics are defined up front. This is useful when
+     one data frame is used predominantly for the plot, but the
+     aesthetics vary from one layer to another.
+
+     The third pattern initializes a skeleton 'ggplot' object, which is
+     fleshed out as layers are added. This is useful when multiple data
+     frames are used to produce different layers, as is often the case
+     in complex graphics.
+
+     The data = and mapping = specifications in the arguments are
+     optional (and are often omitted in practice), so long as the data
+     and the mapping values are passed into the function in the right
+     order. In the examples below, however, they are left in place for
+     clarity.
+
+Examples:
+
+     # Create a data frame with some sample data, then create a data frame
+     # containing the mean value for each group in the sample data.
+     set.seed(1)
+     
+     sample_df <- data.frame(
+       group = factor(rep(letters[1:3], each = 10)),
+       value = rnorm(30)
+     )
+     
+     group_means_df <- setNames(
+       aggregate(value ~ group, sample_df, mean),
+       c("group", "group_mean")
+     )
+     
+     # The following three code blocks create the same graphic, each using one
+     # of the three patterns specified above. In each graphic, the sample data
+     # are plotted in the first layer and the group means data frame is used to
+     # plot larger red points on top of the sample data in the second layer.
+     
+     # Pattern 1
+     # Both the `data` and `mapping` arguments are passed into the `ggplot()`
+     # call. Those arguments are omitted in the first `geom_point()` layer
+     # because they get passed along from the `ggplot()` call. Note that the
+     # second `geom_point()` layer re-uses the `x = group` aesthetic through
+     # that mechanism but overrides the y-position aesthetic.
+     ggplot(data = sample_df, mapping = aes(x = group, y = value)) +
+       geom_point() +
+       geom_point(
+         mapping = aes(y = group_mean), data = group_means_df,
+         colour = 'red', size = 3
+       )
+     
+     # Pattern 2
+     # Same plot as above, passing only the `data` argument into the `ggplot()`
+     # call. The `mapping` arguments are now required in each `geom_point()`
+     # layer because there is no `mapping` argument passed along from the
+     # `ggplot()` call.
+     ggplot(data = sample_df) +
+       geom_point(mapping = aes(x = group, y = value)) +
+       geom_point(
+         mapping = aes(x = group, y = group_mean), data = group_means_df,
+         colour = 'red', size = 3
+       )
+     
+     # Pattern 3
+     # Same plot as above, passing neither the `data` or `mapping` arguments
+     # into the `ggplot()` call. Both those arguments are now required in
+     # each `geom_point()` layer. This pattern can be particularly useful when
+     # creating more complex graphics with many layers using data from multiple
+     # data frames.
+     ggplot() +
+       geom_point(mapping = aes(x = group, y = value), data = sample_df) +
+       geom_point(
+         mapping = aes(x = group, y = group_mean), data = group_means_df,
+         colour = 'red', size = 3
+       )
+     
+[END TEXT]
+
+===============================================================================
+2. ggplot2::aes — help page "aes" (ggplot2 3.4.4), whole
+rhelp://ggplot2@3.4.4/aes
+===============================================================================
+
+[TEXT]
+aes                  package:ggplot2                   R Documentation
+
+Construct aesthetic mappings
+
+Description:
+
+     Aesthetic mappings describe how variables in the data are mapped
+     to visual properties (aesthetics) of geoms. Aesthetic mappings can
+     be set in 'ggplot()' and in individual layers.
+
+Usage:
+
+     aes(x, y, ...)
+     
+Arguments:
+
+x, y, ...: <'data-masking'> List of name-value pairs in the form
+          'aesthetic = variable' describing which variables in the
+          layer data should be mapped to which aesthetics used by the
+          paired geom/stat. The expression 'variable' is evaluated
+          within the layer data, so there is no need to refer to the
+          original dataset (i.e., use 'ggplot(df, aes(variable))'
+          instead of 'ggplot(df, aes(df$variable))'). The names for x
+          and y aesthetics are typically omitted because they are so
+          common; all other aesthetics must be named.
+
+Details:
+
+     This function also standardises aesthetic names by converting
+     'color' to 'colour' (also in substrings, e.g., 'point_color' to
+     'point_colour') and translating old style R names to ggplot names
+     (e.g., 'pch' to 'shape' and 'cex' to 'size').
+
+Value:
+
+     A list with class 'uneval'. Components of the list are either
+     quosures or constants.
+
+Quasiquotation:
+
+     'aes()' is a quoting function. This means that its inputs are
+     quoted to be evaluated in the context of the data. This makes it
+     easy to work with variables from the data frame because you can
+     name those directly. The flip side is that you have to use
+     quasiquotation to program with 'aes()'. See a tidy evaluation
+     tutorial such as the dplyr programming vignette to learn more
+     about these techniques.
+
+See Also:
+
+     'vars()' for another quoting function designed for faceting
+     specifications.
+
+     Delayed evaluation for working with computed variables.
+
+Examples:
+
+     aes(x = mpg, y = wt)
+     aes(mpg, wt)
+     
+     # You can also map aesthetics to functions of variables
+     aes(x = mpg ^ 2, y = wt / cyl)
+     
+     # Or to constants
+     aes(x = 1, colour = "smooth")
+     
+     # Aesthetic names are automatically standardised
+     aes(col = x)
+     aes(fg = x)
+     aes(color = x)
+     aes(colour = x)
+     
+     # aes() is passed to either ggplot() or specific layer. Aesthetics supplied
+     # to ggplot() are used as defaults for every layer.
+     ggplot(mpg, aes(displ, hwy)) + geom_point()
+     ggplot(mpg) + geom_point(aes(displ, hwy))
+     
+     # Tidy evaluation ----------------------------------------------------
+     # aes() automatically quotes all its arguments, so you need to use tidy
+     # evaluation to create wrappers around ggplot2 pipelines. The
+     # simplest case occurs when your wrapper takes dots:
+     scatter_by <- function(data, ...) {
+       ggplot(data) + geom_point(aes(...))
+     }
+     scatter_by(mtcars, disp, drat)
+     
+     # If your wrapper has a more specific interface with named arguments,
+     # you need the "embrace operator":
+     scatter_by <- function(data, x, y) {
+       ggplot(data) + geom_point(aes({{ x }}, {{ y }}))
+     }
+     scatter_by(mtcars, disp, drat)
+     
+     # Note that users of your wrapper can use their own functions in the
+     # quoted expressions and all will resolve as it should!
+     cut3 <- function(x) cut_number(x, 3)
+     scatter_by(mtcars, cut3(disp), drat)
+     
+[END TEXT]
+
+===============================================================================
+3. ggplot2::geom_histogram — help page "geom_histogram" (ggplot2 3.4.4), whole
+rhelp://ggplot2@3.4.4/geom_histogram
+===============================================================================
+
+[TEXT]
+geom_freqpoly             package:ggplot2              R Documentation
+
+Histograms and frequency polygons
+
+Description:
+
+     Visualise the distribution of a single continuous variable by
+     dividing the x axis into bins and counting the number of
+     observations in each bin. Histograms ('geom_histogram()') display
+     the counts with bars; frequency polygons ('geom_freqpoly()')
+     display the counts with lines. Frequency polygons are more
+     suitable when you want to compare the distribution across the
+     levels of a categorical variable.
+
+Usage:
+
+     geom_freqpoly(
+       mapping = NULL,
+       data = NULL,
+       stat = "bin",
+       position = "identity",
+       ...,
+       na.rm = FALSE,
+       show.legend = NA,
+       inherit.aes = TRUE
+     )
+     
+     geom_histogram(
+       mapping = NULL,
+       data = NULL,
+       stat = "bin",
+       position = "stack",
+       ...,
+       binwidth = NULL,
+       bins = NULL,
+       na.rm = FALSE,
+       orientation = NA,
+       show.legend = NA,
+       inherit.aes = TRUE
+     )
+     
+     stat_bin(
+       mapping = NULL,
+       data = NULL,
+       geom = "bar",
+       position = "stack",
+       ...,
+       binwidth = NULL,
+       bins = NULL,
+       center = NULL,
+       boundary = NULL,
+       breaks = NULL,
+       closed = c("right", "left"),
+       pad = FALSE,
+       na.rm = FALSE,
+       orientation = NA,
+       show.legend = NA,
+       inherit.aes = TRUE
+     )
+     
+Arguments:
+
+ mapping: Set of aesthetic mappings created by 'aes()'. If specified
+          and 'inherit.aes = TRUE' (the default), it is combined with
+          the default mapping at the top level of the plot. You must
+          supply 'mapping' if there is no plot mapping.
+
+    data: The data to be displayed in this layer. There are three
+          options:
+
+          If 'NULL', the default, the data is inherited from the plot
+          data as specified in the call to 'ggplot()'.
+
+          A 'data.frame', or other object, will override the plot data.
+          All objects will be fortified to produce a data frame. See
+          'fortify()' for which variables will be created.
+
+          A 'function' will be called with a single argument, the plot
+          data. The return value must be a 'data.frame', and will be
+          used as the layer data. A 'function' can be created from a
+          'formula' (e.g. '~ head(.x, 10)').
+
+position: Position adjustment, either as a string naming the adjustment
+          (e.g. '"jitter"' to use 'position_jitter'), or the result of
+          a call to a position adjustment function. Use the latter if
+          you need to change the settings of the adjustment.
+
+     ...: Other arguments passed on to 'layer()'. These are often
+          aesthetics, used to set an aesthetic to a fixed value, like
+          'colour = "red"' or 'size = 3'. They may also be parameters
+          to the paired geom/stat.
+
+   na.rm: If 'FALSE', the default, missing values are removed with a
+          warning. If 'TRUE', missing values are silently removed.
+
+show.legend: logical. Should this layer be included in the legends?
+          'NA', the default, includes if any aesthetics are mapped.
+          'FALSE' never includes, and 'TRUE' always includes. It can
+          also be a named logical vector to finely select the
+          aesthetics to display.
+
+inherit.aes: If 'FALSE', overrides the default aesthetics, rather than
+          combining with them. This is most useful for helper functions
+          that define both data and aesthetics and shouldn't inherit
+          behaviour from the default plot specification, e.g.
+          'borders()'.
+
+binwidth: The width of the bins. Can be specified as a numeric value or
+          as a function that calculates width from unscaled x. Here,
+          "unscaled x" refers to the original x values in the data,
+          before application of any scale transformation. When
+          specifying a function along with a grouping structure, the
+          function will be called once per group. The default is to use
+          the number of bins in 'bins', covering the range of the data.
+          You should always override this value, exploring multiple
+          widths to find the best to illustrate the stories in your
+          data.
+
+          The bin width of a date variable is the number of days in
+          each time; the bin width of a time variable is the number of
+          seconds.
+
+    bins: Number of bins. Overridden by 'binwidth'. Defaults to 30.
+
+orientation: The orientation of the layer. The default ('NA')
+          automatically determines the orientation from the aesthetic
+          mapping. In the rare event that this fails it can be given
+          explicitly by setting 'orientation' to either '"x"' or '"y"'.
+          See the _Orientation_ section for more detail.
+
+geom, stat: Use to override the default connection between
+          'geom_histogram()'/'geom_freqpoly()' and 'stat_bin()'.
+
+center, boundary: bin position specifiers. Only one, 'center' or
+          'boundary', may be specified for a single plot. 'center'
+          specifies the center of one of the bins. 'boundary' specifies
+          the boundary between two bins. Note that if either is above
+          or below the range of the data, things will be shifted by the
+          appropriate integer multiple of 'binwidth'. For example, to
+          center on integers use 'binwidth = 1' and 'center = 0', even
+          if '0' is outside the range of the data. Alternatively, this
+          same alignment can be specified with 'binwidth = 1' and
+          'boundary = 0.5', even if '0.5' is outside the range of the
+          data.
+
+  breaks: Alternatively, you can supply a numeric vector giving the bin
+          boundaries. Overrides 'binwidth', 'bins', 'center', and
+          'boundary'.
+
+  closed: One of '"right"' or '"left"' indicating whether right or left
+          edges of bins are included in the bin.
+
+     pad: If 'TRUE', adds empty bins at either end of x. This ensures
+          frequency polygons touch 0. Defaults to 'FALSE'.
+
+Details:
+
+     'stat_bin()' is suitable only for continuous x data. If your x
+     data is discrete, you probably want to use 'stat_count()'.
+
+     By default, the underlying computation ('stat_bin()') uses 30
+     bins; this is not a good default, but the idea is to get you
+     experimenting with different number of bins. You can also
+     experiment modifying the 'binwidth' with 'center' or 'boundary'
+     arguments. 'binwidth' overrides 'bins' so you should do one change
+     at a time. You may need to look at a few options to uncover the
+     full story behind your data.
+
+     In addition to 'geom_histogram()', you can create a histogram plot
+     by using 'scale_x_binned()' with 'geom_bar()'. This method by
+     default plots tick marks in between each bar.
+
+Orientation:
+
+     This geom treats each axis differently and, thus, can thus have
+     two orientations. Often the orientation is easy to deduce from a
+     combination of the given mappings and the types of positional
+     scales in use. Thus, ggplot2 will by default try to guess which
+     orientation the layer should have. Under rare circumstances, the
+     orientation is ambiguous and guessing may fail. In that case the
+     orientation can be specified directly using the 'orientation'
+     parameter, which can be either '"x"' or '"y"'. The value gives the
+     axis that the geom should run along, '"x"' being the default
+     orientation you would expect for the geom.
+
+Aesthetics:
+
+     'geom_histogram()' uses the same aesthetics as 'geom_bar()';
+     'geom_freqpoly()' uses the same aesthetics as 'geom_line()'.
+
+Computed variables:
+
+     These are calculated by the 'stat' part of layers and can be
+     accessed with delayed evaluation.
+
+        • 'after_stat(count)'
+          number of points in bin.
+
+        • 'after_stat(density)'
+          density of points in bin, scaled to integrate to 1.
+
+        • 'after_stat(ncount)'
+          count, scaled to a maximum of 1.
+
+        • 'after_stat(ndensity)'
+          density, scaled to a maximum of 1.
+
+        • 'after_stat(width)'
+          widths of bins.
+
+Dropped variables:
+
+     'weight' After binning, weights of individual data points (if
+          supplied) are no longer available.
+
+See Also:
+
+     'stat_count()', which counts the number of cases at each x
+     position, without binning. It is suitable for both discrete and
+     continuous x data, whereas 'stat_bin()' is suitable only for
+     continuous x data.
+
+Examples:
+
+     ggplot(diamonds, aes(carat)) +
+       geom_histogram()
+     ggplot(diamonds, aes(carat)) +
+       geom_histogram(binwidth = 0.01)
+     ggplot(diamonds, aes(carat)) +
+       geom_histogram(bins = 200)
+     # Map values to y to flip the orientation
+     ggplot(diamonds, aes(y = carat)) +
+       geom_histogram()
+     
+     # For histograms with tick marks between each bin, use `geom_bar()` with
+     # `scale_x_binned()`.
+     ggplot(diamonds, aes(carat)) +
+       geom_bar() +
+       scale_x_binned()
+     
+     # Rather than stacking histograms, it's easier to compare frequency
+     # polygons
+     ggplot(diamonds, aes(price, fill = cut)) +
+       geom_histogram(binwidth = 500)
+     ggplot(diamonds, aes(price, colour = cut)) +
+       geom_freqpoly(binwidth = 500)
+     
+     # To make it easier to compare distributions with very different counts,
+     # put density on the y axis instead of the default count
+     ggplot(diamonds, aes(price, after_stat(density), colour = cut)) +
+       geom_freqpoly(binwidth = 500)
+     
+     if (require("ggplot2movies")) {
+     # Often we don't want the height of the bar to represent the
+     # count of observations, but the sum of some other variable.
+     # For example, the following plot shows the number of movies
+     # in each rating.
+     m <- ggplot(movies, aes(rating))
+     m + geom_histogram(binwidth = 0.1)
+     
+     # If, however, we want to see the number of votes cast in each
+     # category, we need to weight by the votes variable
+     m +
+       geom_histogram(aes(weight = votes), binwidth = 0.1) +
+       ylab("votes")
+     
+     # For transformed scales, binwidth applies to the transformed data.
+     # The bins have constant width on the transformed scale.
+     m +
+      geom_histogram() +
+      scale_x_log10()
+     m +
+       geom_histogram(binwidth = 0.05) +
+       scale_x_log10()
+     
+     # For transformed coordinate systems, the binwidth applies to the
+     # raw data. The bins have constant width on the original scale.
+     
+     # Using log scales does not work here, because the first
+     # bar is anchored at zero, and so when transformed becomes negative
+     # infinity. This is not a problem when transforming the scales, because
+     # no observations have 0 ratings.
+     m +
+       geom_histogram(boundary = 0) +
+       coord_trans(x = "log10")
+     # Use boundary = 0, to make sure we don't take sqrt of negative values
+     m +
+       geom_histogram(boundary = 0) +
+       coord_trans(x = "sqrt")
+     
+     # You can also transform the y axis.  Remember that the base of the bars
+     # has value 0, so log transformations are not appropriate
+     m <- ggplot(movies, aes(x = rating))
+     m +
+       geom_histogram(binwidth = 0.5) +
+       scale_y_sqrt()
+     }
+     
+     # You can specify a function for calculating binwidth, which is
+     # particularly useful when faceting along variables with
+     # different ranges because the function will be called once per facet
+     ggplot(economics_long, aes(value)) +
+       facet_wrap(~variable, scales = 'free_x') +
+       geom_histogram(binwidth = function(x) 2 * IQR(x) / (length(x)^(1/3)))
+     
+[END TEXT]
+
+===============================================================================
+4. ggplot2::geom_boxplot — help page "geom_boxplot" (ggplot2 3.4.4), whole
+rhelp://ggplot2@3.4.4/geom_boxplot
+===============================================================================
+
+[TEXT]
+geom_boxplot              package:ggplot2              R Documentation
+
+A box and whiskers plot (in the style of Tukey)
+
+Description:
+
+     The boxplot compactly displays the distribution of a continuous
+     variable. It visualises five summary statistics (the median, two
+     hinges and two whiskers), and all "outlying" points individually.
+
+Usage:
+
+     geom_boxplot(
+       mapping = NULL,
+       data = NULL,
+       stat = "boxplot",
+       position = "dodge2",
+       ...,
+       outlier.colour = NULL,
+       outlier.color = NULL,
+       outlier.fill = NULL,
+       outlier.shape = 19,
+       outlier.size = 1.5,
+       outlier.stroke = 0.5,
+       outlier.alpha = NULL,
+       notch = FALSE,
+       notchwidth = 0.5,
+       varwidth = FALSE,
+       na.rm = FALSE,
+       orientation = NA,
+       show.legend = NA,
+       inherit.aes = TRUE
+     )
+     
+     stat_boxplot(
+       mapping = NULL,
+       data = NULL,
+       geom = "boxplot",
+       position = "dodge2",
+       ...,
+       coef = 1.5,
+       na.rm = FALSE,
+       orientation = NA,
+       show.legend = NA,
+       inherit.aes = TRUE
+     )
+     
+Arguments:
+
+ mapping: Set of aesthetic mappings created by 'aes()'. If specified
+          and 'inherit.aes = TRUE' (the default), it is combined with
+          the default mapping at the top level of the plot. You must
+          supply 'mapping' if there is no plot mapping.
+
+    data: The data to be displayed in this layer. There are three
+          options:
+
+          If 'NULL', the default, the data is inherited from the plot
+          data as specified in the call to 'ggplot()'.
+
+          A 'data.frame', or other object, will override the plot data.
+          All objects will be fortified to produce a data frame. See
+          'fortify()' for which variables will be created.
+
+          A 'function' will be called with a single argument, the plot
+          data. The return value must be a 'data.frame', and will be
+          used as the layer data. A 'function' can be created from a
+          'formula' (e.g. '~ head(.x, 10)').
+
+position: Position adjustment, either as a string naming the adjustment
+          (e.g. '"jitter"' to use 'position_jitter'), or the result of
+          a call to a position adjustment function. Use the latter if
+          you need to change the settings of the adjustment.
+
+     ...: Other arguments passed on to 'layer()'. These are often
+          aesthetics, used to set an aesthetic to a fixed value, like
+          'colour = "red"' or 'size = 3'. They may also be parameters
+          to the paired geom/stat.
+
+outlier.colour, outlier.color, outlier.fill, outlier.shape,
+          outlier.size, outlier.stroke, outlier.alpha: Default
+          aesthetics for outliers. Set to 'NULL' to inherit from the
+          aesthetics used for the box.
+
+          In the unlikely event you specify both US and UK spellings of
+          colour, the US spelling will take precedence.
+
+          Sometimes it can be useful to hide the outliers, for example
+          when overlaying the raw data points on top of the boxplot.
+          Hiding the outliers can be achieved by setting 'outlier.shape
+          = NA'. Importantly, this does not remove the outliers, it
+          only hides them, so the range calculated for the y-axis will
+          be the same with outliers shown and outliers hidden.
+
+   notch: If 'FALSE' (default) make a standard box plot. If 'TRUE',
+          make a notched box plot. Notches are used to compare groups;
+          if the notches of two boxes do not overlap, this suggests
+          that the medians are significantly different.
+
+notchwidth: For a notched box plot, width of the notch relative to the
+          body (defaults to 'notchwidth = 0.5').
+
+varwidth: If 'FALSE' (default) make a standard box plot. If 'TRUE',
+          boxes are drawn with widths proportional to the square-roots
+          of the number of observations in the groups (possibly
+          weighted, using the 'weight' aesthetic).
+
+   na.rm: If 'FALSE', the default, missing values are removed with a
+          warning. If 'TRUE', missing values are silently removed.
+
+orientation: The orientation of the layer. The default ('NA')
+          automatically determines the orientation from the aesthetic
+          mapping. In the rare event that this fails it can be given
+          explicitly by setting 'orientation' to either '"x"' or '"y"'.
+          See the _Orientation_ section for more detail.
+
+show.legend: logical. Should this layer be included in the legends?
+          'NA', the default, includes if any aesthetics are mapped.
+          'FALSE' never includes, and 'TRUE' always includes. It can
+          also be a named logical vector to finely select the
+          aesthetics to display.
+
+inherit.aes: If 'FALSE', overrides the default aesthetics, rather than
+          combining with them. This is most useful for helper functions
+          that define both data and aesthetics and shouldn't inherit
+          behaviour from the default plot specification, e.g.
+          'borders()'.
+
+geom, stat: Use to override the default connection between
+          'geom_boxplot()' and 'stat_boxplot()'.
+
+    coef: Length of the whiskers as multiple of IQR. Defaults to 1.5.
+
+Orientation:
+
+     This geom treats each axis differently and, thus, can thus have
+     two orientations. Often the orientation is easy to deduce from a
+     combination of the given mappings and the types of positional
+     scales in use. Thus, ggplot2 will by default try to guess which
+     orientation the layer should have. Under rare circumstances, the
+     orientation is ambiguous and guessing may fail. In that case the
+     orientation can be specified directly using the 'orientation'
+     parameter, which can be either '"x"' or '"y"'. The value gives the
+     axis that the geom should run along, '"x"' being the default
+     orientation you would expect for the geom.
+
+Summary statistics:
+
+     The lower and upper hinges correspond to the first and third
+     quartiles (the 25th and 75th percentiles). This differs slightly
+     from the method used by the 'boxplot()' function, and may be
+     apparent with small samples. See 'boxplot.stats()' for more
+     information on how hinge positions are calculated for 'boxplot()'.
+
+     The upper whisker extends from the hinge to the largest value no
+     further than 1.5 * IQR from the hinge (where IQR is the
+     inter-quartile range, or distance between the first and third
+     quartiles). The lower whisker extends from the hinge to the
+     smallest value at most 1.5 * IQR of the hinge. Data beyond the end
+     of the whiskers are called "outlying" points and are plotted
+     individually.
+
+     In a notched box plot, the notches extend '1.58 * IQR / sqrt(n)'.
+     This gives a roughly 95% confidence interval for comparing
+     medians. See McGill et al. (1978) for more details.
+
+Aesthetics:
+
+     'geom_boxplot()' understands the following aesthetics (required
+     aesthetics are in bold):
+
+        • *'x' _or_ 'y'*
+
+        • *'lower' _or_ 'xlower'*
+
+        • *'upper' _or_ 'xupper'*
+
+        • *'middle' _or_ 'xmiddle'*
+
+        • *'ymin' _or_ 'xmin'*
+
+        • *'ymax' _or_ 'xmax'*
+
+        • 'alpha'
+
+        • 'colour'
+
+        • 'fill'
+
+        • 'group'
+
+        • 'linetype'
+
+        • 'linewidth'
+
+        • 'shape'
+
+        • 'size'
+
+        • 'weight'
+
+     Learn more about setting these aesthetics in
+     'vignette("ggplot2-specs")'.
+
+Computed variables:
+
+     These are calculated by the 'stat' part of layers and can be
+     accessed with delayed evaluation. 'stat_boxplot()' provides the
+     following variables, some of which depend on the orientation:
+
+        • 'after_stat(width)'
+          width of boxplot.
+
+        • 'after_stat(ymin)' _or_ 'after_stat(xmin)'
+          lower whisker = smallest observation greater than or equal to
+          lower hinger - 1.5 * IQR.
+
+        • 'after_stat(lower)' _or_ 'after_stat(xlower)'
+          lower hinge, 25% quantile.
+
+        • 'after_stat(notchlower)'
+          lower edge of notch = median - 1.58 * IQR / sqrt(n).
+
+        • 'after_stat(middle)' _or_ 'after_stat(xmiddle)'
+          median, 50% quantile.
+
+        • 'after_stat(notchupper)'
+          upper edge of notch = median + 1.58 * IQR / sqrt(n).
+
+        • 'after_stat(upper)' _or_ 'after_stat(xupper)'
+          upper hinge, 75% quantile.
+
+        • 'after_stat(ymax)' _or_ 'after_stat(xmax)'
+          upper whisker = largest observation less than or equal to
+          upper hinger + 1.5 * IQR.
+
+References:
+
+     McGill, R., Tukey, J. W. and Larsen, W. A. (1978) Variations of
+     box plots. The American Statistician 32, 12-16.
+
+See Also:
+
+     'geom_quantile()' for continuous 'x', 'geom_violin()' for a richer
+     display of the distribution, and 'geom_jitter()' for a useful
+     technique for small data.
+
+Examples:
+
+     p <- ggplot(mpg, aes(class, hwy))
+     p + geom_boxplot()
+     # Orientation follows the discrete axis
+     ggplot(mpg, aes(hwy, class)) + geom_boxplot()
+     
+     p + geom_boxplot(notch = TRUE)
+     p + geom_boxplot(varwidth = TRUE)
+     p + geom_boxplot(fill = "white", colour = "#3366FF")
+     # By default, outlier points match the colour of the box. Use
+     # outlier.colour to override
+     p + geom_boxplot(outlier.colour = "red", outlier.shape = 1)
+     # Remove outliers when overlaying boxplot with original data points
+     p + geom_boxplot(outlier.shape = NA) + geom_jitter(width = 0.2)
+     
+     # Boxplots are automatically dodged when any aesthetic is a factor
+     p + geom_boxplot(aes(colour = drv))
+     
+     # You can also use boxplots with continuous x, as long as you supply
+     # a grouping variable. cut_width is particularly useful
+     ggplot(diamonds, aes(carat, price)) +
+       geom_boxplot()
+     ggplot(diamonds, aes(carat, price)) +
+       geom_boxplot(aes(group = cut_width(carat, 0.25)))
+     # Adjust the transparency of outliers using outlier.alpha
+     ggplot(diamonds, aes(carat, price)) +
+       geom_boxplot(aes(group = cut_width(carat, 0.25)), outlier.alpha = 0.1)
+     
+     
+     # It's possible to draw a boxplot with your own computations if you
+     # use stat = "identity":
+     set.seed(1)
+     y <- rnorm(100)
+     df <- data.frame(
+       x = 1,
+       y0 = min(y),
+       y25 = quantile(y, 0.25),
+       y50 = median(y),
+       y75 = quantile(y, 0.75),
+       y100 = max(y)
+     )
+     ggplot(df, aes(x)) +
+       geom_boxplot(
+        aes(ymin = y0, lower = y25, middle = y50, upper = y75, ymax = y100),
+        stat = "identity"
+      )
+     
+[END TEXT]
+
+===============================================================================
+5. ggplot2::ggsave — help page "ggsave" (ggplot2 3.4.4), whole
+rhelp://ggplot2@3.4.4/ggsave
+===============================================================================
+
+[TEXT]
+ggsave                 package:ggplot2                 R Documentation
+
+Save a ggplot (or other grid object) with sensible defaults
+
+Description:
+
+     'ggsave()' is a convenient function for saving a plot. It defaults
+     to saving the last plot that you displayed, using the size of the
+     current graphics device. It also guesses the type of graphics
+     device from the extension.
+
+Usage:
+
+     ggsave(
+       filename,
+       plot = last_plot(),
+       device = NULL,
+       path = NULL,
+       scale = 1,
+       width = NA,
+       height = NA,
+       units = c("in", "cm", "mm", "px"),
+       dpi = 300,
+       limitsize = TRUE,
+       bg = NULL,
+       ...
+     )
+     
+Arguments:
+
+filename: File name to create on disk.
+
+    plot: Plot to save, defaults to last plot displayed.
+
+  device: Device to use. Can either be a device function (e.g. png), or
+          one of "eps", "ps", "tex" (pictex), "pdf", "jpeg", "tiff",
+          "png", "bmp", "svg" or "wmf" (windows only).
+
+    path: Path of the directory to save plot to: 'path' and 'filename'
+          are combined to create the fully qualified file name.
+          Defaults to the working directory.
+
+   scale: Multiplicative scaling factor.
+
+width, height, units: Plot size in 'units' ("in", "cm", "mm", or "px").
+          If not supplied, uses the size of current graphics device.
+
+     dpi: Plot resolution. Also accepts a string input: "retina" (320),
+          "print" (300), or "screen" (72). Applies only to raster
+          output types.
+
+limitsize: When 'TRUE' (the default), 'ggsave()' will not save images
+          larger than 50x50 inches, to prevent the common error of
+          specifying dimensions in pixels.
+
+      bg: Background colour. If 'NULL', uses the 'plot.background' fill
+          value from the plot theme.
+
+     ...: Other arguments passed on to the graphics device function, as
+          specified by 'device'.
+
+Details:
+
+     Note: Filenames with page numbers can be generated by including a
+     C integer format expression, such as %03d (as in the default file
+     name for most R graphics devices, see e.g. 'png()'). Thus,
+     'filename = "figure%03d.png"' will produce successive filenames
+     'figure001.png', 'figure002.png', 'figure003.png', etc. To write a
+     filename containing the % sign, use '%%'. For example, 'filename =
+     "figure-100%%.png"' will produce the filename figure-100%.png.
+
+Saving images without ggsave():
+
+     In most cases 'ggsave()' is the simplest way to save your plot,
+     but sometimes you may wish to save the plot by writing directly to
+     a graphics device. To do this, you can open a regular R graphics
+     device such as 'png()' or 'pdf()', print the plot, and then close
+     the device using 'dev.off()'. This technique is illustrated in the
+     examples section.
+
+Examples:
+
+     ## Not run:
+     
+     ggplot(mtcars, aes(mpg, wt)) +
+       geom_point()
+     
+     ggsave("mtcars.pdf")
+     ggsave("mtcars.png")
+     
+     ggsave("mtcars.pdf", width = 4, height = 4)
+     ggsave("mtcars.pdf", width = 20, height = 20, units = "cm")
+     
+     # delete files with base::unlink()
+     unlink("mtcars.pdf")
+     unlink("mtcars.png")
+     
+     # specify device when saving to a file with unknown extension
+     # (for example a server supplied temporary file)
+     file <- tempfile()
+     ggsave(file, device = "pdf")
+     unlink(file)
+     
+     # save plot to file without using ggsave
+     p <-
+       ggplot(mtcars, aes(mpg, wt)) +
+       geom_point()
+     png("mtcars.png")
+     print(p)
+     dev.off()
+     ## End(Not run)
+     
+[END TEXT]
+
+===============================================================================
+6. ggplot2::facet_wrap — help page "facet_wrap" (ggplot2 3.4.4), whole
+rhelp://ggplot2@3.4.4/facet_wrap
+===============================================================================
+
+[TEXT]
+facet_wrap               package:ggplot2               R Documentation
+
+Wrap a 1d ribbon of panels into 2d
+
+Description:
+
+     'facet_wrap()' wraps a 1d sequence of panels into 2d. This is
+     generally a better use of screen space than 'facet_grid()' because
+     most displays are roughly rectangular.
+
+Usage:
+
+     facet_wrap(
+       facets,
+       nrow = NULL,
+       ncol = NULL,
+       scales = "fixed",
+       shrink = TRUE,
+       labeller = "label_value",
+       as.table = TRUE,
+       switch = deprecated(),
+       drop = TRUE,
+       dir = "h",
+       strip.position = "top"
+     )
+     
+Arguments:
+
+  facets: A set of variables or expressions quoted by 'vars()' and
+          defining faceting groups on the rows or columns dimension.
+          The variables can be named (the names are passed to
+          'labeller').
+
+          For compatibility with the classic interface, can also be a
+          formula or character vector. Use either a one sided formula,
+          '~a + b', or a character vector, 'c("a", "b")'.
+
+nrow, ncol: Number of rows and columns.
+
+  scales: Should scales be fixed ('"fixed"', the default), free
+          ('"free"'), or free in one dimension ('"free_x"',
+          '"free_y"')?
+
+  shrink: If 'TRUE', will shrink scales to fit output of statistics,
+          not raw data. If 'FALSE', will be range of raw data before
+          statistical summary.
+
+labeller: A function that takes one data frame of labels and returns a
+          list or data frame of character vectors. Each input column
+          corresponds to one factor. Thus there will be more than one
+          with 'vars(cyl, am)'. Each output column gets displayed as
+          one separate line in the strip label. This function should
+          inherit from the "labeller" S3 class for compatibility with
+          'labeller()'. You can use different labeling functions for
+          different kind of labels, for example use 'label_parsed()'
+          for formatting facet labels. 'label_value()' is used by
+          default, check it for more details and pointers to other
+          options.
+
+as.table: If 'TRUE', the default, the facets are laid out like a table
+          with highest values at the bottom-right. If 'FALSE', the
+          facets are laid out like a plot with the highest value at the
+          top-right.
+
+  switch: By default, the labels are displayed on the top and right of
+          the plot. If '"x"', the top labels will be displayed to the
+          bottom. If '"y"', the right-hand side labels will be
+          displayed to the left. Can also be set to '"both"'.
+
+    drop: If 'TRUE', the default, all factor levels not used in the
+          data will automatically be dropped. If 'FALSE', all factor
+          levels will be shown, regardless of whether or not they
+          appear in the data.
+
+     dir: Direction: either '"h"' for horizontal, the default, or
+          '"v"', for vertical.
+
+strip.position: By default, the labels are displayed on the top of the
+          plot. Using 'strip.position' it is possible to place the
+          labels on either of the four sides by setting 'strip.position
+          = c("top", "bottom", "left", "right")'
+
+Examples:
+
+     p <- ggplot(mpg, aes(displ, hwy)) + geom_point()
+     
+     # Use vars() to supply faceting variables:
+     p + facet_wrap(vars(class))
+     
+     # Control the number of rows and columns with nrow and ncol
+     p + facet_wrap(vars(class), nrow = 4)
+     
+     
+     # You can facet by multiple variables
+     ggplot(mpg, aes(displ, hwy)) +
+       geom_point() +
+       facet_wrap(vars(cyl, drv))
+     
+     # Use the `labeller` option to control how labels are printed:
+     ggplot(mpg, aes(displ, hwy)) +
+       geom_point() +
+       facet_wrap(vars(cyl, drv), labeller = "label_both")
+     
+     # To change the order in which the panels appear, change the levels
+     # of the underlying factor.
+     mpg$class2 <- reorder(mpg$class, mpg$displ)
+     ggplot(mpg, aes(displ, hwy)) +
+       geom_point() +
+       facet_wrap(vars(class2))
+     
+     # By default, the same scales are used for all panels. You can allow
+     # scales to vary across the panels with the `scales` argument.
+     # Free scales make it easier to see patterns within each panel, but
+     # harder to compare across panels.
+     ggplot(mpg, aes(displ, hwy)) +
+       geom_point() +
+       facet_wrap(vars(class), scales = "free")
+     
+     # To repeat the same data in every panel, simply construct a data frame
+     # that does not contain the faceting variable.
+     ggplot(mpg, aes(displ, hwy)) +
+       geom_point(data = transform(mpg, class = NULL), colour = "grey85") +
+       geom_point() +
+       facet_wrap(vars(class))
+     
+     # Use `strip.position` to display the facet labels at the side of your
+     # choice. Setting it to `bottom` makes it act as a subtitle for the axis.
+     # This is typically used with free scales and a theme without boxes around
+     # strip labels.
+     ggplot(economics_long, aes(date, value)) +
+       geom_line() +
+       facet_wrap(vars(variable), scales = "free_y", nrow = 2, strip.position = "top") +
+       theme(strip.background = element_blank(), strip.placement = "outside")
+     
+[END TEXT]
+
+===============================================================================
+7. DESCRIPTION file of ggplot2 3.4.4, whole (title, authors, licence, version, publication date)
+rfile://ggplot2@3.4.4/DESCRIPTION
+===============================================================================
+
+[TEXT]
+Package: ggplot2
+Version: 3.4.4
+Title: Create Elegant Data Visualisations Using the Grammar of Graphics
+Authors@R: c(
+    person("Hadley", "Wickham", , "hadley@posit.co", role = "aut",
+           comment = c(ORCID = "0000-0003-4757-117X")),
+    person("Winston", "Chang", role = "aut",
+           comment = c(ORCID = "0000-0002-1576-2126")),
+    person("Lionel", "Henry", role = "aut"),
+    person("Thomas Lin", "Pedersen", , "thomas.pedersen@posit.co", role = c("aut", "cre"),
+           comment = c(ORCID = "0000-0002-5147-4711")),
+    person("Kohske", "Takahashi", role = "aut"),
+    person("Claus", "Wilke", role = "aut",
+           comment = c(ORCID = "0000-0002-7470-9261")),
+    person("Kara", "Woo", role = "aut",
+           comment = c(ORCID = "0000-0002-5125-4188")),
+    person("Hiroaki", "Yutani", role = "aut",
+           comment = c(ORCID = "0000-0002-3385-7233")),
+    person("Dewey", "Dunnington", role = "aut",
+           comment = c(ORCID = "0000-0002-9415-4582")),
+    person("Posit, PBC", role = c("cph", "fnd"))
+  )
+Description: A system for 'declaratively' creating graphics, based on "The
+    Grammar of Graphics". You provide the data, tell 'ggplot2' how to map
+    variables to aesthetics, what graphical primitives to use, and it
+    takes care of the details.
+License: MIT + file LICENSE
+URL: https://ggplot2.tidyverse.org,
+        https://github.com/tidyverse/ggplot2
+BugReports: https://github.com/tidyverse/ggplot2/issues
+Depends: R (>= 3.3)
+Imports: cli, glue, grDevices, grid, gtable (>= 0.1.1), isoband,
+        lifecycle (> 1.0.1), MASS, mgcv, rlang (>= 1.1.0), scales (>=
+        1.2.0), stats, tibble, vctrs (>= 0.5.0), withr (>= 2.5.0)
+Suggests: covr, dplyr, ggplot2movies, hexbin, Hmisc, knitr, lattice,
+        mapproj, maps, multcomp, munsell, nlme, profvis, quantreg,
+        ragg, RColorBrewer, rmarkdown, rpart, sf (>= 0.7-3), svglite
+        (>= 1.2.0.9001), testthat (>= 3.1.2), vdiffr (>= 1.0.0), xml2
+Enhances: sp
+VignetteBuilder: knitr
+Config/Needs/website: ggtext, tidyr, forcats, tidyverse/tidytemplate
+Config/testthat/edition: 3
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 7.2.3
+Collate: 'ggproto.R' 'ggplot-global.R' 'aaa-.R'
+        'aes-colour-fill-alpha.R' 'aes-evaluation.R'
+        'aes-group-order.R' 'aes-linetype-size-shape.R'
+        'aes-position.R' 'compat-plyr.R' 'utilities.R' 'aes.R'
+        'utilities-checks.R' 'legend-draw.R' 'geom-.R'
+        'annotation-custom.R' 'annotation-logticks.R' 'geom-polygon.R'
+        'geom-map.R' 'annotation-map.R' 'geom-raster.R'
+        'annotation-raster.R' 'annotation.R' 'autolayer.R' 'autoplot.R'
+        'axis-secondary.R' 'backports.R' 'bench.R' 'bin.R' 'coord-.R'
+        'coord-cartesian-.R' 'coord-fixed.R' 'coord-flip.R'
+        'coord-map.R' 'coord-munch.R' 'coord-polar.R'
+        'coord-quickmap.R' 'coord-sf.R' 'coord-transform.R' 'data.R'
+        'facet-.R' 'facet-grid-.R' 'facet-null.R' 'facet-wrap.R'
+        'fortify-lm.R' 'fortify-map.R' 'fortify-multcomp.R'
+        'fortify-spatial.R' 'fortify.R' 'stat-.R' 'geom-abline.R'
+        'geom-rect.R' 'geom-bar.R' 'geom-bin2d.R' 'geom-blank.R'
+        'geom-boxplot.R' 'geom-col.R' 'geom-path.R' 'geom-contour.R'
+        'geom-count.R' 'geom-crossbar.R' 'geom-segment.R'
+        'geom-curve.R' 'geom-defaults.R' 'geom-ribbon.R'
+        'geom-density.R' 'geom-density2d.R' 'geom-dotplot.R'
+        'geom-errorbar.R' 'geom-errorbarh.R' 'geom-freqpoly.R'
+        'geom-function.R' 'geom-hex.R' 'geom-histogram.R'
+        'geom-hline.R' 'geom-jitter.R' 'geom-label.R'
+        'geom-linerange.R' 'geom-point.R' 'geom-pointrange.R'
+        'geom-quantile.R' 'geom-rug.R' 'geom-sf.R' 'geom-smooth.R'
+        'geom-spoke.R' 'geom-text.R' 'geom-tile.R' 'geom-violin.R'
+        'geom-vline.R' 'ggplot2-package.R' 'grob-absolute.R'
+        'grob-dotstack.R' 'grob-null.R' 'grouping.R' 'guide-bins.R'
+        'guide-colorbar.R' 'guide-colorsteps.R' 'guide-legend.R'
+        'guides-.R' 'guides-axis.R' 'guides-grid.R' 'guides-none.R'
+        'hexbin.R' 'import-standalone-obj-type.R'
+        'import-standalone-types-check.R' 'labeller.R' 'labels.R'
+        'layer.R' 'layer-sf.R' 'layout.R' 'limits.R' 'margins.R'
+        'performance.R' 'plot-build.R' 'plot-construction.R'
+        'plot-last.R' 'plot.R' 'position-.R' 'position-collide.R'
+        'position-dodge.R' 'position-dodge2.R' 'position-identity.R'
+        'position-jitter.R' 'position-jitterdodge.R' 'position-nudge.R'
+        'position-stack.R' 'quick-plot.R' 'reshape-add-margins.R'
+        'save.R' 'scale-.R' 'scale-alpha.R' 'scale-binned.R'
+        'scale-brewer.R' 'scale-colour.R' 'scale-continuous.R'
+        'scale-date.R' 'scale-discrete-.R' 'scale-expansion.R'
+        'scale-gradient.R' 'scale-grey.R' 'scale-hue.R'
+        'scale-identity.R' 'scale-linetype.R' 'scale-linewidth.R'
+        'scale-manual.R' 'scale-shape.R' 'scale-size.R' 'scale-steps.R'
+        'scale-type.R' 'scale-view.R' 'scale-viridis.R' 'scales-.R'
+        'stat-align.R' 'stat-bin.R' 'stat-bin2d.R' 'stat-bindot.R'
+        'stat-binhex.R' 'stat-boxplot.R' 'stat-contour.R'
+        'stat-count.R' 'stat-density-2d.R' 'stat-density.R'
+        'stat-ecdf.R' 'stat-ellipse.R' 'stat-function.R'
+        'stat-identity.R' 'stat-qq-line.R' 'stat-qq.R'
+        'stat-quantilemethods.R' 'stat-sf-coordinates.R' 'stat-sf.R'
+        'stat-smooth-methods.R' 'stat-smooth.R' 'stat-sum.R'
+        'stat-summary-2d.R' 'stat-summary-bin.R' 'stat-summary-hex.R'
+        'stat-summary.R' 'stat-unique.R' 'stat-ydensity.R'
+        'summarise-plot.R' 'summary.R' 'theme-elements.R' 'theme.R'
+        'theme-defaults.R' 'theme-current.R' 'utilities-break.R'
+        'utilities-grid.R' 'utilities-help.R' 'utilities-matrix.R'
+        'utilities-resolution.R' 'utilities-table.R'
+        'utilities-tidy-eval.R' 'zxx.R' 'zzz.R'
+NeedsCompilation: no
+Packaged: 2023-10-11 08:54:22 UTC; thomas
+Author: Hadley Wickham [aut] (<https://orcid.org/0000-0003-4757-117X>),
+  Winston Chang [aut] (<https://orcid.org/0000-0002-1576-2126>),
+  Lionel Henry [aut],
+  Thomas Lin Pedersen [aut, cre]
+    (<https://orcid.org/0000-0002-5147-4711>),
+  Kohske Takahashi [aut],
+  Claus Wilke [aut] (<https://orcid.org/0000-0002-7470-9261>),
+  Kara Woo [aut] (<https://orcid.org/0000-0002-5125-4188>),
+  Hiroaki Yutani [aut] (<https://orcid.org/0000-0002-3385-7233>),
+  Dewey Dunnington [aut] (<https://orcid.org/0000-0002-9415-4582>),
+  Posit, PBC [cph, fnd]
+Maintainer: Thomas Lin Pedersen <thomas.pedersen@posit.co>
+Repository: CRAN
+Date/Publication: 2023-10-12 11:40:02 UTC
+Built: R 4.3.1; ; 'Tue, 17 Oct 2023 11:03:27 +0200'; unix
+[END TEXT]

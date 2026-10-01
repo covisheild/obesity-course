@@ -1,0 +1,201 @@
+R LANGUAGE DEFINITION (R CORE TEAM; MANUAL FOR R 4.6.0) - VERBATIM EXCERPTS
+====================================================================================================
+
+Transcription rule for this file: every line between '--- passage begins ---' and '--- passage ends ---' is an exact,
+unaltered slice of the text returned by the TinyFish fetch_content tool (markdown output) for the URL
+named in that block's heading, cut by script (raw[i:j]) from the saved fetch; nothing has been
+paraphrased, re-wrapped or merged. The extraction's own artefacts are kept as returned (code fences
+split around inline code, '> >' prompts, escaped '\*', figures dropped). [...] marks an omission;
+lines beginning [NOTE] and everything outside the passage markers are this file's own annotation and
+are NOT source text. Reference lists are never held. Fetched 2026-10-02.
+
+WORK: R Core Team. R Language Definition. Manual for R version 4.6.0 (2026-04-24).
+https://cran.r-project.org/doc/manuals/r-release/R-lang.html
+VERSION AS STATED (block 1): "This manual is for R, version 4.6.0 (2026-04-24)." (Note: the R-intro
+manual served at the same time is for 4.6.1; the book's code runs on R 4.3.3.)
+COPYRIGHT AND PERMISSION AS STATED (block 1): "Copyright © 2000–2026 R Core Team", with the same
+verbatim-copy permission notice as An Introduction to R. Not a Creative Commons licence.
+EXTRACTION: section headings were not returned by the extractor; blocks are named by content, with the
+manual's section names in brackets as orientation only. The type table after block 3 was mangled by
+the extractor into pipe fragments and is NOT held.
+OPTIONAL SOURCE (READY.md): held only for exact statements about objects, types and NA.
+WHAT IS HELD: the version and permission notice; [2 Objects] opening; [2.1.1 Vectors] the six atomic
+types; [3.3.4 NA handling] how NA behaves; [10.4.2 Infix and prefix operators] the operator precedence
+list, which places |> . Everything else is NOT held.
+
+BLOCKS HELD:
+  1. Version line, copyright and permission notice (https://cran.r-project.org/doc/manuals/r-release/R-lang.html)
+  2. [2 Objects] opening paragraph (https://cran.r-project.org/doc/manuals/r-release/R-lang.html)
+  3. [2.1 Basic types] coercion; [2.1.1 Vectors] the six atomic vector types (https://cran.r-project.org/doc/manuals/r-release/R-lang.html)
+  4. [3.3.4 NA handling] (https://cran.r-project.org/doc/manuals/r-release/R-lang.html)
+  5. [10.4.2 Infix and prefix operators] precedence list (https://cran.r-project.org/doc/manuals/r-release/R-lang.html)
+
+====================================================================================================
+BLOCK 1 - Version line, copyright and permission notice
+FETCHED: https://cran.r-project.org/doc/manuals/r-release/R-lang.html
+====================================================================================================
+--- passage begins ---
+This manual is for R, version 4.6.0 (2026-04-24).
+
+Copyright © 2000–2026 R Core Team
+
+> Permission is granted to make and distribute verbatim copies of this manual provided the copyright notice and this permission notice are preserved on all copies.
+>
+> Permission is granted to copy and distribute modified versions of this manual under the conditions for verbatim copying, provided that the entire resulting derived work is distributed under the terms of a permission notice identical to this one.
+>
+> Permission is granted to copy and distribute translations of this manual into another language, under the above conditions for modified versions, except that this permission notice may be stated in a translation
+--- passage ends ---
+
+[...]
+[NOTE] Chapter 1 Introduction omitted.
+
+====================================================================================================
+BLOCK 2 - [2 Objects] opening paragraph
+FETCHED: https://cran.r-project.org/doc/manuals/r-release/R-lang.html
+====================================================================================================
+--- passage begins ---
+In every computer language variables provide a means of accessing the data stored in memory. R does not provide direct access to the computer’s memory but rather provides a number of specialized data structures we will refer to as objects. These objects are referred to through symbols or variables. In R, however, the symbols are themselves objects and can be manipulated in the same way as any other object. This is different from many other languages and has wide ranging effects.
+--- passage ends ---
+
+[...]
+[NOTE] The rest of chapter 2.1 before the coercion paragraph omitted.
+
+====================================================================================================
+BLOCK 3 - [2.1 Basic types] coercion; [2.1.1 Vectors] the six atomic vector types
+FETCHED: https://cran.r-project.org/doc/manuals/r-release/R-lang.html
+====================================================================================================
+--- passage begins ---
+R objects are often coerced to different types during computations. There are also many functions available to perform explicit coercion. When programming in the R language the type of an object generally doesn’t affect the computations, however, when dealing with foreign languages or the operating system it is often necessary to ensure that an object is of the correct type.
+
+Vectors can be thought of as contiguous cells containing data. Cells
+are accessed through
+indexing operations such as
+
+```
+x[5]
+```
+
+. More details are given in Indexing.
+
+R has six basic (‘atomic’) vector types: logical, integer, real, complex, character (in C aka ‘string’) and raw.
+--- passage ends ---
+
+[...]
+[NOTE] The type table and everything from 2.1.2 to 3.3.3 omitted.
+
+====================================================================================================
+BLOCK 4 - [3.3.4 NA handling]
+FETCHED: https://cran.r-project.org/doc/manuals/r-release/R-lang.html
+====================================================================================================
+--- passage begins ---
+Missing values in the statistical sense, that is, variables whose value
+is not known, have the value
+
+```
+NA
+```
+
+. This should not be confused with
+the
+
+```
+missing
+```
+
+property for a function argument that has not been
+supplied (see Arguments).
+
+As the elements of an atomic vector must be of the same type there are
+multiple types of
+
+```
+NA
+```
+
+values. There is one case where this is
+particularly important to the user. The default type of
+
+```
+NA
+```
+
+is
+
+```
+logical
+```
+
+, unless coerced to some other type, so the appearance of
+a missing value may trigger logical rather than numeric indexing (see
+Indexing for details).
+
+Numeric and logical calculations with
+
+```
+NA
+```
+
+generally return
+
+```
+NA
+```
+
+. In cases where the result of the operation would be the same
+for all possible values the
+
+```
+NA
+```
+
+could take, the operation may
+return this value. In particular, ‘FALSE & NA’ is
+
+```
+FALSE
+```
+
+,
+‘TRUE | NA’ is
+
+```
+TRUE
+```
+
+.
+
+```
+NA
+```
+
+is not equal to any other
+value or to itself; testing for
+
+```
+NA
+```
+
+is done using
+
+```
+is.na
+```
+
+.
+--- passage ends ---
+
+[...]
+[NOTE] The rest of 3.3.4 and chapters 3.4 to 10.4.1 omitted.
+
+====================================================================================================
+BLOCK 5 - [10.4.2 Infix and prefix operators] precedence list
+FETCHED: https://cran.r-project.org/doc/manuals/r-release/R-lang.html
+====================================================================================================
+--- passage begins ---
+The order of precedence (highest first) of the operators is
+
+> :: $ @ ^ - + (unary) : %xyz% |> \* / + - (binary) > >= < <= == != ! & && | || ~ (unary and binary) -> ->> <- <<- = (as assignment)
+--- passage ends ---
+
+[...]
+[NOTE] End of the held excerpts. Everything not listed above is NOT held; absence of a passage from this file is not absence from the work.

@@ -1,0 +1,310 @@
+READXL 1.4.3 — VERSION-MATCHED HELP PAGES FROM THE BOOK'S R 4.3.3 SANDBOX
+VERBATIM SOURCE PACK (EXCERPTS)
+============================================================
+
+Transcription rule for this file: every line between a [TEXT] and an [END TEXT] line is an exact,
+unaltered slice of a raw render made in the book's sandbox and saved under books/S52-R1/intake/raw/, cut
+programmatically (raw[i:j]) by books/S52-R1/intake/build-c/build.py and re-checked by verify.py as a
+whitespace-normalised substring of that render. Nothing has been paraphrased. Where material is left out,
+the omission is marked [...] in place. Lines beginning [NOTE] are this file's own annotation and are NOT
+source text. Quoted evidence in this header is cut the same way.
+
+LOCATORS: these are local documents, not web pages, so each block heading carries a locator, not a URL:
+  rhelp://<package>@<version>/<Rd name>     the installed help page (what ?topic shows in R)
+  rvignette://<package>@<version>/<name>    the installed vignette (what vignette("<name>") shows)
+  rfile://<package>@<version>/DESCRIPTION   the installed DESCRIPTION file, byte for byte
+The package's website shows the CURRENT version's documentation, which may differ from what is held here.
+
+HOW RENDERED (2026-10-02): R 4.3.3, in a UTF-8 locale, with options(useFancyQuotes = FALSE) so quotation
+marks print as straight ASCII ' and "; help pages by tools::Rd2txt(utils:::.getHelpFile(help(topic,
+package = pkg)), options = list(underline_titles = FALSE, width = 80)); vignettes from the installed HTML
+by xml2 1.3.6, taking h1-h4, p, pre, top-level li and table elements in document order (headings marked
+with #, list items with -, code and printed output as in the vignette's own <pre> blocks; images not
+held). Script: books/S52-R1/intake/build-c/render.R. Help pages print no output for their Examples: the
+code there is shown, not run.
+
+CITATION: Wickham, Hadley; Bryan, Jennifer. readxl: Read Excel Files. R package version 1.4.3, published on CRAN 2023-07-06. Help pages as installed.
+PACKAGE TITLE (from DESCRIPTION): "Title: Read Excel Files"
+VERSION read with packageVersion() on 2026-10-02: "readxl 1.4.3"
+LICENCE: the installed DESCRIPTION file states
+  "License: MIT + file LICENSE"
+The LICENSE file it names is not present in the installed package (system.file("LICENSE",
+package = "readxl") returns ""), so its year and copyright-holder lines were not read.
+
+WHAT THIS FILE HOLDS: these help pages, each whole (description, usage, arguments, details, value, examples
+as code): read_excel (Rd "read_excel").
+The DESCRIPTION file, whole. Every other help page and vignette of the package is NOT held.
+
+VERSION WARNING: this is the documentation of the version the book's outputs were made with. Newer versions
+exist (see `tidyverse_news_s52r1` for what changed in dplyr, tidyr, readr and ggplot2). A reader on a newer
+version may see different text in ?topic. Current online reference (orientation only, not this text): https://readxl.tidyverse.org
+
+===============================================================================
+1. readxl::read_excel — help page "read_excel" (readxl 1.4.3), whole
+rhelp://readxl@1.4.3/read_excel
+===============================================================================
+
+[TEXT]
+read_excel               package:readxl                R Documentation
+
+Read xls and xlsx files
+
+Description:
+
+     Read xls and xlsx files
+
+     'read_excel()' calls 'excel_format()' to determine if 'path' is
+     xls or xlsx, based on the file extension and the file itself, in
+     that order. Use 'read_xls()' and 'read_xlsx()' directly if you
+     know better and want to prevent such guessing.
+
+Usage:
+
+     read_excel(
+       path,
+       sheet = NULL,
+       range = NULL,
+       col_names = TRUE,
+       col_types = NULL,
+       na = "",
+       trim_ws = TRUE,
+       skip = 0,
+       n_max = Inf,
+       guess_max = min(1000, n_max),
+       progress = readxl_progress(),
+       .name_repair = "unique"
+     )
+     
+     read_xls(
+       path,
+       sheet = NULL,
+       range = NULL,
+       col_names = TRUE,
+       col_types = NULL,
+       na = "",
+       trim_ws = TRUE,
+       skip = 0,
+       n_max = Inf,
+       guess_max = min(1000, n_max),
+       progress = readxl_progress(),
+       .name_repair = "unique"
+     )
+     
+     read_xlsx(
+       path,
+       sheet = NULL,
+       range = NULL,
+       col_names = TRUE,
+       col_types = NULL,
+       na = "",
+       trim_ws = TRUE,
+       skip = 0,
+       n_max = Inf,
+       guess_max = min(1000, n_max),
+       progress = readxl_progress(),
+       .name_repair = "unique"
+     )
+     
+Arguments:
+
+    path: Path to the xls/xlsx file.
+
+   sheet: Sheet to read. Either a string (the name of a sheet), or an
+          integer (the position of the sheet). Ignored if the sheet is
+          specified via 'range'. If neither argument specifies the
+          sheet, defaults to the first sheet.
+
+   range: A cell range to read from, as described in
+          cell-specification. Includes typical Excel ranges like
+          "B3:D87", possibly including the sheet name like
+          "Budget!B2:G14", and more. Interpreted strictly, even if the
+          range forces the inclusion of leading or trailing empty rows
+          or columns. Takes precedence over 'skip', 'n_max' and
+          'sheet'.
+
+col_names: 'TRUE' to use the first row as column names, 'FALSE' to get
+          default names, or a character vector giving a name for each
+          column. If user provides 'col_types' as a vector, 'col_names'
+          can have one entry per column, i.e. have the same length as
+          'col_types', or one entry per unskipped column.
+
+col_types: Either 'NULL' to guess all from the spreadsheet or a
+          character vector containing one entry per column from these
+          options: "skip", "guess", "logical", "numeric", "date",
+          "text" or "list". If exactly one 'col_type' is specified, it
+          will be recycled. The content of a cell in a skipped column
+          is never read and that column will not appear in the data
+          frame output. A list cell loads a column as a list of length
+          1 vectors, which are typed using the type guessing logic from
+          'col_types = NULL', but on a cell-by-cell basis.
+
+      na: Character vector of strings to interpret as missing values.
+          By default, readxl treats blank cells as missing data.
+
+ trim_ws: Should leading and trailing whitespace be trimmed?
+
+    skip: Minimum number of rows to skip before reading anything, be it
+          column names or data. Leading empty rows are automatically
+          skipped, so this is a lower bound. Ignored if 'range' is
+          given.
+
+   n_max: Maximum number of data rows to read. Trailing empty rows are
+          automatically skipped, so this is an upper bound on the
+          number of rows in the returned tibble. Ignored if 'range' is
+          given.
+
+guess_max: Maximum number of data rows to use for guessing column
+          types.
+
+progress: Display a progress spinner? By default, the spinner appears
+          only in an interactive session, outside the context of
+          knitting a document, and when the call is likely to run for
+          several seconds or more. See 'readxl_progress()' for more
+          details.
+
+.name_repair: Handling of column names. Passed along to
+          'tibble::as_tibble()'. readxl's default is `.name_repair =
+          "unique", which ensures column names are not empty and are
+          unique.
+
+Value:
+
+     A tibble
+
+See Also:
+
+     cell-specification for more details on targetting cells with the
+     'range' argument
+
+Examples:
+
+     datasets <- readxl_example("datasets.xlsx")
+     read_excel(datasets)
+     
+     # Specify sheet either by position or by name
+     read_excel(datasets, 2)
+     read_excel(datasets, "mtcars")
+     
+     # Skip rows and use default column names
+     read_excel(datasets, skip = 148, col_names = FALSE)
+     
+     # Recycle a single column type
+     read_excel(datasets, col_types = "text")
+     
+     # Specify some col_types and guess others
+     read_excel(datasets, col_types = c("text", "guess", "numeric", "guess", "guess"))
+     
+     # Accomodate a column with disparate types via col_type = "list"
+     df <- read_excel(readxl_example("clippy.xlsx"), col_types = c("text", "list"))
+     df
+     df$value
+     sapply(df$value, class)
+     
+     # Limit the number of data rows read
+     read_excel(datasets, n_max = 3)
+     
+     # Read from an Excel range using A1 or R1C1 notation
+     read_excel(datasets, range = "C1:E7")
+     read_excel(datasets, range = "R1C2:R2C5")
+     
+     # Specify the sheet as part of the range
+     read_excel(datasets, range = "mtcars!B1:D5")
+     
+     # Read only specific rows or columns
+     read_excel(datasets, range = cell_rows(102:151), col_names = FALSE)
+     read_excel(datasets, range = cell_cols("B:D"))
+     
+     # Get a preview of column names
+     names(read_excel(readxl_example("datasets.xlsx"), n_max = 0))
+     
+     # exploit full .name_repair flexibility from tibble
+     
+     # "universal" names are unique and syntactic
+     read_excel(
+       readxl_example("deaths.xlsx"),
+       range = "arts!A5:F15",
+       .name_repair = "universal"
+     )
+     
+     # specify name repair as a built-in function
+     read_excel(readxl_example("clippy.xlsx"), .name_repair = toupper)
+     
+     # specify name repair as a custom function
+     my_custom_name_repair <- function(nms) tolower(gsub("[.]", "_", nms))
+     read_excel(
+       readxl_example("datasets.xlsx"),
+       .name_repair = my_custom_name_repair
+     )
+     
+     # specify name repair as an anonymous function
+     read_excel(
+       readxl_example("datasets.xlsx"),
+       sheet = "chickwts",
+       .name_repair = ~ substr(.x, start = 1, stop = 3)
+     )
+     
+[END TEXT]
+
+===============================================================================
+2. DESCRIPTION file of readxl 1.4.3, whole (title, authors, licence, version, publication date)
+rfile://readxl@1.4.3/DESCRIPTION
+===============================================================================
+
+[TEXT]
+Package: readxl
+Title: Read Excel Files
+Version: 1.4.3
+Authors@R: c(
+    person("Hadley", "Wickham", , "hadley@posit.co", role = "aut",
+           comment = c(ORCID = "0000-0003-4757-117X")),
+    person("Jennifer", "Bryan", , "jenny@posit.co", role = c("aut", "cre"),
+           comment = c(ORCID = "0000-0002-6983-2759")),
+    person("Posit, PBC", role = c("cph", "fnd"),
+           comment = "Copyright holder of all R code and all C/C++ code without explicit copyright attribution"),
+    person("Marcin", "Kalicinski", role = c("ctb", "cph"),
+           comment = "Author of included RapidXML code"),
+    person("Komarov Valery", role = c("ctb", "cph"),
+           comment = "Author of included libxls code"),
+    person("Christophe Leitienne", role = c("ctb", "cph"),
+           comment = "Author of included libxls code"),
+    person("Bob Colbert", role = c("ctb", "cph"),
+           comment = "Author of included libxls code"),
+    person("David Hoerl", role = c("ctb", "cph"),
+           comment = "Author of included libxls code"),
+    person("Evan Miller", role = c("ctb", "cph"),
+           comment = "Author of included libxls code")
+  )
+Description: Import excel files into R. Supports '.xls' via the embedded
+    'libxls' C library <https://github.com/libxls/libxls> and '.xlsx' via
+    the embedded 'RapidXML' C++ library <https://rapidxml.sourceforge.net/>.
+    Works on Windows, Mac and Linux without external dependencies.
+License: MIT + file LICENSE
+URL: https://readxl.tidyverse.org, https://github.com/tidyverse/readxl
+BugReports: https://github.com/tidyverse/readxl/issues
+Depends: R (>= 3.6)
+Imports: cellranger, tibble (>= 2.0.1), utils
+Suggests: covr, knitr, rmarkdown, testthat (>= 3.1.6), withr
+LinkingTo: cpp11 (>= 0.4.0), progress
+VignetteBuilder: knitr
+Config/Needs/website: tidyverse/tidytemplate, tidyverse
+Config/testthat/edition: 3
+Encoding: UTF-8
+Note: libxls v1.6.2 (patched) 45abe77
+RoxygenNote: 7.2.3
+NeedsCompilation: yes
+Packaged: 2023-07-05 19:59:43 UTC; jenny
+Author: Hadley Wickham [aut] (<https://orcid.org/0000-0003-4757-117X>),
+  Jennifer Bryan [aut, cre] (<https://orcid.org/0000-0002-6983-2759>),
+  Posit, PBC [cph, fnd] (Copyright holder of all R code and all C/C++
+    code without explicit copyright attribution),
+  Marcin Kalicinski [ctb, cph] (Author of included RapidXML code),
+  Komarov Valery [ctb, cph] (Author of included libxls code),
+  Christophe Leitienne [ctb, cph] (Author of included libxls code),
+  Bob Colbert [ctb, cph] (Author of included libxls code),
+  David Hoerl [ctb, cph] (Author of included libxls code),
+  Evan Miller [ctb, cph] (Author of included libxls code)
+Maintainer: Jennifer Bryan <jenny@posit.co>
+Repository: CRAN
+Date/Publication: 2023-07-06 22:00:09 UTC
+Built: R 4.3.1; x86_64-pc-linux-gnu; 'Fri, 07 Jul 2023 11:54:50 -0500'; unix
+[END TEXT]
