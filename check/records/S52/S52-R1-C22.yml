@@ -321,7 +321,7 @@ illustrations:
     ```
 
     {{n:nhanes_adults_rows}} adults. Of them, 41 were pregnant at the exam (code 1). The question
-    leaves them out, so you expect 6064 minus 41, which is 6023 rows, after the next step. Here is the first draft of that line:
+    leaves them out, so you expect {{n:nhanes_adults_rows}} minus 41, which is 6023 rows, after the next step. Here is the first draft of that line:
 
     ```r
     first_try <- adults |>
@@ -552,8 +552,8 @@ illustrations:
     [33] fansi_1.0.5       colorspace_2.1-0  tools_4.3.3       pkgconfig_2.0.3
     ```
 
-    Read the table as the dictionary and the question tell you to. There are 2680 men and 3249 women
-    with a BMI, and 2680 + 3249 = 5929, the count in the log. Every check passed, or the script
+    Read the table as the dictionary and the question tell you to. There are {{n:nhanes_men_bmi_n}} men and 3249 women
+    with a BMI, and {{n:nhanes_men_bmi_n}} + 3249 = 5929, the count in the log. Every check passed, or the script
     would have stopped at it. The versions printed below the table are the record of what produced
     it.
 
@@ -567,10 +567,10 @@ illustrations:
     | 75 | 32.4 | 34.7 |
     ```
 
-    The median BMI is 28.1 kg/m^2 in men and 28.7 kg/m^2 in women, close together. The spread is
+    The median BMI is {{n:nhanes_men_bmi_median}} kg/m^2 in men and 28.7 kg/m^2 in women, close together. The spread is
     not. The middle half of the women runs from 24.4 to 34.7 kg/m^2, a width of 10.3 kg/m^2. The
     middle half of the men runs from 24.9 to 32.4 kg/m^2, a width of 7.5 kg/m^2. The women's upper
-    quarter reaches higher. The means, 29.3 and 30.3 kg/m^2, sit above both medians, because a long
+    quarter reaches higher. The means, {{n:nhanes_men_bmi_mean}} and 30.3 kg/m^2, sit above both medians, because a long
     tail of high values pulls a mean up and leaves a median where it is.
   analogy_breaks_when: |
     The range limits in step 5 are the ones the section on checks used, and they are wide on
@@ -800,7 +800,7 @@ retrieval_items:
   a: Question; raw data obtained, terms read, checksums recorded; data dictionary; project folder;
     script (read, check, join, clean, derive, summarise, plot, write outputs, print versions);
     README with the one command; a rerun from nothing; what the result does not show.
-- q: Why did `filter(RIDEXPRG != 1)` keep only 1093 of 6064 adults?
+- q: Why did `filter(RIDEXPRG != 1)` keep only 1093 of {{n:nhanes_adults_rows}} adults?
   a: RIDEXPRG is missing for everyone not asked. For those rows the test gives NA, and `filter()`
     keeps only rows where the test is TRUE, so they were all dropped. Keep them explicitly with
     `is.na(RIDEXPRG) | RIDEXPRG != 1`.

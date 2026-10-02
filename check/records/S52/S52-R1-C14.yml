@@ -164,7 +164,7 @@ simplified_explanation: |
 
   Here is the trap. When you make a factor and a value is not on your list, R turns it into `NA`
   and says nothing. A misspelt "Female" quietly becomes missing. So clean the text first, with the
-  tools from the last section but one, and count again after making the factor.
+  tools from the section on making new columns, and count again after making the factor.
 
   Codes need the same care. A file may store sex as 1 and 2. The data dictionary says which is
   which, and **fct_recode()** writes that into the script: `female = "1"`. Never guess the codes
@@ -532,9 +532,9 @@ exercises:
     3 <NA>      11
     ```
 
-    165 female, 168 male, and 11 with no recorded sex. The file writes FEMALE and MALE in
+    {{n:penguins_female}} female, {{n:penguins_male}} male, and {{n:penguins_sex_missing}} with no recorded sex. The file writes FEMALE and MALE in
     capitals, so the values are lowered first. Without `str_to_lower()`, `factor()` would match
-    nothing, and all 344 rows would become `NA`. The 11 `NA`s here were already missing in the
+    nothing, and all {{n:penguins_rows}} rows would become `NA`. The 11 `NA`s here were already missing in the
     file, as the section on missing values counted.
   skill_ref: S52-R1-K01
 - type: retrieval
@@ -674,7 +674,7 @@ practice:
     2 Yes                   308
     ```
 
-    36 rows say "No" and 308 say "Yes", which add to 344. The help page describes the column as
+    36 rows say "No" and 308 say "Yes", which add to {{n:penguins_rows}}. The help page describes the column as
     whether the study nest was "observed with a full clutch, i.e., 2 eggs". So "No" means the
     nest was not seen with two eggs.
   refs:
@@ -725,7 +725,7 @@ practice:
     3 Dream       124
     ```
 
-    Torgersen 52, Biscoe 168, Dream 124. `fct_relevel()` moves the named level to the front. It
+    Torgersen {{n:penguins_torgersen}}, Biscoe {{n:penguins_biscoe}}, Dream {{n:penguins_dream}}. `fct_relevel()` moves the named level to the front. It
     leaves the rest in their existing order, which for a text column is alphabetical.
 - level: 6
   prompt: |
@@ -925,7 +925,7 @@ practice:
     3 Gentoo      124
     ```
 
-    Adelie 152, Chinstrap 68, Gentoo 124.
+    Adelie {{n:penguins_adelie}}, Chinstrap {{n:penguins_chinstrap}}, Gentoo {{n:penguins_gentoo}}.
 
     Why the wrong conclusion looks reasonable: the counts were right and only a label was long, so
     it looked like a cosmetic problem. It was a typing error that the warning had already named.
@@ -990,7 +990,7 @@ practice:
     labels from the dictionary into a comment beside the line.
 - level: 9
   prompt: |
-    A made-up draft report says: "Of the 333 penguins with sex recorded, 168 were male." Check the
+    A made-up draft report says: "Of the 333 penguins with sex recorded, {{n:penguins_male}} were male." Check the
     sentence against the penguin file and say what it does not establish.
   answer: |
     ```r
@@ -1026,8 +1026,8 @@ practice:
     3 <NA>      11
     ```
 
-    168 MALE and 165 FEMALE make 333 with sex recorded, and 11 more have none. The sentence
-    matches the file. 168 of 333 is 50.5 per cent.
+    {{n:penguins_male}} MALE and {{n:penguins_female}} FEMALE make 333 with sex recorded, and 11 more have none. The sentence
+    matches the file. {{n:penguins_male}} of 333 is 50.5 per cent.
 
     What it does not establish:
 
@@ -1079,7 +1079,7 @@ practice:
     3 Torgersen     0
     ```
 
-    All 124 Gentoo rows are from Biscoe, with 0 from Dream and 0 from Torgersen. Making the island
+    All {{n:penguins_gentoo}} Gentoo rows are from Biscoe, with 0 from Dream and 0 from Torgersen. Making the island
     a factor first, with `.drop = FALSE`, keeps the zeros in view.
 
     What it establishes: in this file, every Gentoo row was recorded on Biscoe.

@@ -553,8 +553,8 @@ illustrations:
     2        2   3344  3290     30.3       28.7
     ```
 
-    2720 men and 3344 women, {{n:nhanes_adults_rows}} adults in all, of whom 2680 and 3290 have a
-    BMI. Their mean BMI is 29.3 and 30.3 kg/m^2, and the medians are 28.1 and 28.7 kg/m^2.
+    2720 men and 3344 women, {{n:nhanes_adults_rows}} adults in all, of whom {{n:nhanes_men_bmi_n}} and {{n:nhanes_women_bmi_n}} have a
+    BMI. Their mean BMI is {{n:nhanes_men_bmi_mean}} and 30.3 kg/m^2, and the medians are {{n:nhanes_men_bmi_median}} and 28.7 kg/m^2.
 
     These are the mean and median of the rows in the file, unweighted. The survey's documentation
     says its sample weights should be used to analyse these data. Without them, these numbers
@@ -568,7 +568,8 @@ illustrations:
 
     The adult summary includes everyone aged 20 or over who was examined. It does not exclude
     anyone for whom BMI means something different, such as women who were pregnant at the
-    examination. A real analysis would decide that, in code, before summarising.
+    examination. A real analysis would decide that, in code, before summarising, as the last
+    section of this book does.
 must_know:
 - point: |
     Count the rows before and after every join. A `left_join()` that returns more rows than went
@@ -1249,7 +1250,7 @@ practice:
 
     What it does not establish:
 
-    - That the 8860 have every measurement. Height, weight and BMI each have missing values, and
+    - That the {{n:bmx_rows}} have every measurement. Height, weight and BMI each have missing values, and
       each analysis has its own n.
     - Anything about the US population. The counts are rows of the files; estimates need the
       survey's sample weights.
@@ -1300,8 +1301,8 @@ practice:
     2        2  3290     30.3       28.7
     ```
 
-    In these rows, the 3290 women have a mean BMI of 30.3 kg/m^2, and the 2680 men 29.3 kg/m^2. The
-    medians are 28.7 and 28.1 kg/m^2. So the women examined have a higher mean and median BMI than
+    In these rows, the {{n:nhanes_women_bmi_n}} women have a mean BMI of 30.3 kg/m^2, and the {{n:nhanes_men_bmi_n}} men {{n:nhanes_men_bmi_mean}} kg/m^2. The
+    medians are 28.7 and {{n:nhanes_men_bmi_median}} kg/m^2. So the women examined have a higher mean and median BMI than
     the men examined.
 
     What it does not establish:

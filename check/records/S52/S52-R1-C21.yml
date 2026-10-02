@@ -440,7 +440,7 @@ illustrations:
     Now make the one command produce everything. Two more things go into the script. The first is a
     random step. Suppose you want five rows picked at random, to check by hand against the field
     notebooks. The function `sample()` picks at random, and `sample(344, 5)` picks five of the whole
-    numbers from 1 to 344. Each run picks different ones, unless you set the seed first. The seed is
+    numbers from 1 to {{n:penguins_rows}}. Each run picks different ones, unless you set the seed first. The seed is
     the starting point R's random numbers are worked out from. See what it does:
 
     ```r
@@ -819,7 +819,7 @@ practice:
     Gentoo penguin (Pygoscelis papua),124
     ```
 
-    152, 68 and 124 rows, which add up to {{n:penguins_rows}}. These are rows of the file, one per
+    {{n:penguins_adelie}}, {{n:penguins_chinstrap}} and {{n:penguins_gentoo}} rows, which add up to {{n:penguins_rows}}. These are rows of the file, one per
     nesting observation, not counts of birds. The `dir.create()` line is what lets the script run
     on a copy with no `output/` folder.
 - level: 5
@@ -923,7 +923,7 @@ practice:
     [1] TRUE
     ```
 
-    `nrow(penguins_raw)` is {{n:penguins_rows}}, so the picks are row numbers from 1 to 344.
+    `nrow(penguins_raw)` is {{n:penguins_rows}}, so the picks are row numbers from 1 to {{n:penguins_rows}}.
     `identical()` asks whether two objects are exactly the same, and answers TRUE. In the script,
     `set.seed(52)` goes once, directly above the pick. The same ten come out for anyone who runs it
     on the same version of R.
@@ -1037,7 +1037,7 @@ practice:
     1       4202.
     ```
 
-    About 4202 g for every row with a body mass, against 4716 g for Biscoe alone. If she wants
+    About {{n:penguins_mass_mean_g}} g for every row with a body mass, against 4716 g for Biscoe alone. If she wants
     Biscoe, the filter belongs in the script, where a reader can see it.
 - level: 8
   prompt: |
@@ -1165,7 +1165,7 @@ practice:
     ```
 
     `> /dev/null 2>&1` throws away what each run prints, since only the files matter here. The two
-    files are identical: 165, 168 and 11 rows, which add up to {{n:penguins_rows}}.
+    files are identical: {{n:penguins_female}}, {{n:penguins_male}} and {{n:penguins_sex_missing}} rows, which add up to {{n:penguins_rows}}.
 
     What this does not establish:
 

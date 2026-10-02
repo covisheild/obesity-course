@@ -196,8 +196,8 @@ definition:
       claim_located: true
       checked_on: '2026-10-02'
 simplified_explanation: |
-  The last section left you with the whole penguin file in R as one data frame: 344 rows and 17
-  columns. Most questions need a few of those columns and some of the rows. Four functions do the
+  The section on reading a raw file left you with the whole penguin file in R as one data frame:
+  {{n:penguins_rows}} rows and {{n:penguins_cols}} columns. Most questions need a few of those columns and some of the rows. Four functions do the
   choosing.
 
   **select()** keeps columns. You name the ones you want and the rest are dropped. Every row stays.
@@ -255,7 +255,7 @@ illustrations:
     hides the `filter()` of the stats package. It is not an error.
 
     The column is called `Body Mass (g)`, with spaces and brackets. A name like that breaks R's
-    rules for names, so you wrap it in backticks, the ` mark on the key left of 1. Now write the
+    rules for names, so you wrap it in backticks, as the section on tidy data showed. Now write the
     question the way it sounds in English: keep the rows where body mass equals missing.
 
     ```r
@@ -278,7 +278,7 @@ illustrations:
 
     That is wrong, and here is why. `==` compares each value with `NA`. A comparison with an unknown
     value is itself unknown, so the answer on every row is `NA`. `filter()` keeps a row only when
-    the answer is `TRUE`, and drops it when the answer is `NA`. So it drops all 344.
+    the answer is `TRUE`, and drops it when the answer is `NA`. So it drops all {{n:penguins_rows}}.
 
     Ask the question with `is.na()` instead. It answers `TRUE` for a missing value and `FALSE` for
     anything else. Keep four columns, so the answer fits on the screen.
@@ -344,11 +344,11 @@ illustrations:
     # ℹ 1 more variable: `Culmen Depth (mm)` <dbl>
     ```
 
-    Still 344 rows: `select()` never drops a row. Six columns. The two culmen columns keep their
+    Still {{n:penguins_rows}} rows: `select()` never drops a row. Six columns. The two culmen columns keep their
     old names, because `starts_with()` chose them and nothing renamed them. Long text is cut short
     to fit the screen: `FEMA…` is "FEMALE".
 
-    `rename()` does the renaming without dropping anything. Check that it keeps all 17 columns:
+    `rename()` does the renaming without dropping anything. Check that it keeps all {{n:penguins_cols}} columns:
 
     ```r
     penguins_raw |>
@@ -432,7 +432,7 @@ illustrations:
     [1] 344
     ```
 
-    Still 344. Each verb handed back a new data frame. Only `penguins_small` was kept, because only
+    Still {{n:penguins_rows}}. Each verb handed back a new data frame. Only `penguins_small` was kept, because only
     it was given a name.
   analogy_breaks_when: |
     The 85 is a count of rows in this file with "FEMALE" in the sex column. Eleven penguins have no
@@ -519,7 +519,7 @@ exercises:
   prompt: |
     Write the first block of your analysis script after the line that reads the penguin file. It
     should keep the species, island, sex, flipper length and body mass columns, and give each a
-    snake-case name that carries its unit. Show that the result has 344 rows and 5 columns.
+    snake-case name that carries its unit. Show that the result has {{n:penguins_rows}} rows and 5 columns.
   answer: |
     One answer. Your names may differ; check that each is lowercase, joined by `_`, and ends in its
     unit where it has one.
@@ -563,7 +563,7 @@ exercises:
     ```
 
     `select()` with `new_name = old_name` keeps and renames in one step. No row is lost, because
-    `select()` never drops rows. The raw object `penguins_raw` still has all 17 columns.
+    `select()` never drops rows. The raw object `penguins_raw` still has all {{n:penguins_cols}} columns.
   skill_ref: S52-R1-K02
 quantitative: true
 practice_note: |
@@ -745,7 +745,7 @@ practice:
     [1] 68
     ```
 
-    68 rows, so 68 Chinstrap penguins in this file. The test must match the text exactly, letter
+    {{n:penguins_chinstrap}} rows, so {{n:penguins_chinstrap}} Chinstrap penguins in this file. The test must match the text exactly, letter
     for letter, including the capital C and the part in brackets.
 - level: 5
   prompt: |
@@ -911,7 +911,7 @@ practice:
     [1] 152
     ```
 
-    152 Adelie penguins. (`count()` gives the number of rows for each value of a column; it comes
+    {{n:penguins_adelie}} Adelie penguins. (`count()` gives the number of rows for each value of a column; it comes
     back in a later section.)
 
     Why the wrong answer looks reasonable: the code ran, the spelling looks right, and 0 is a real
@@ -1086,7 +1086,7 @@ practice:
     [1] NA
     ```
 
-    The `filter()` printed 342 rows, so they expected a number. They got `NA`. Find what broke.
+    The `filter()` printed {{n:penguins_mass_n}} rows, so they expected a number. They got `NA`. Find what broke.
   answer: |
     The result of `filter()` was printed and then thrown away. The function never changes
     `penguins_raw`. It hands back a new data frame, and nothing gave that one a name. So `mean()`
@@ -1108,7 +1108,7 @@ practice:
     [1] 4201.754
     ```
 
-    342 penguins have a body mass, and their mean is about 4202 g (4201.754 as printed).
+    {{n:penguins_mass_n}} penguins have a body mass, and their mean is about {{n:penguins_mass_mean_g}} g ({{n:penguins_mass_mean}} as printed).
 
     Why the wrong code looks reasonable: the filter printed the right number of rows, so it looked
     as if it had done its job. It had. It just did not do it to `penguins_raw`.
@@ -1219,7 +1219,7 @@ practice:
     3 <NA>       5
     ```
 
-    52 Adelie penguins on Torgersen: 24 female, 23 male, 5 with no sex recorded.
+    {{n:penguins_torgersen}} Adelie penguins on Torgersen: 24 female, 23 male, 5 with no sex recorded.
 
     The claim depends on the denominator.
 
@@ -1232,9 +1232,9 @@ practice:
     fraction. A report should say which denominator it used.
 
     What it does not establish: anything about penguins on Torgersen outside this file, or about
-    the 5 whose sex is unknown. Counted out of all 52, the females number somewhere from 24 to 29,
+    the 5 whose sex is unknown. Counted out of all {{n:penguins_torgersen}}, the females number somewhere from 24 to 29,
     depending on those 5. They are more than half only if at least 3 of the 5 are female. 26 is
-    exactly half, and 27 ÷ 52 = 0.52.
+    exactly half, and 27 ÷ {{n:penguins_torgersen}} = 0.52.
 - level: 10
   prompt: |
     In a made-up lab meeting, someone says: "The Gentoo penguins over 6 kg were all males." Turn
@@ -1328,7 +1328,7 @@ retrieval_items:
     unchanged.
 figures:
 - file: s52-r1-c11-rows-left.png
-  caption: "Rows left after each step of the second example's pipe: 344 penguins in the file, 176 on Dream or Torgersen, and 85 of those recorded as FEMALE."
+  caption: "Rows left after each step of the second example's pipe: 344 rows in the file, 176 on Dream or Torgersen, and 85 of those recorded as FEMALE."
   alt: "A bar chart with three bars: all penguins 344, island is Dream or Torgersen 176, and sex is FEMALE 85."
   source: draw.py
   spec:

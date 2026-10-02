@@ -204,7 +204,7 @@ simplified_explanation: |
 
   ```table
   | Folder | What goes in it | Who writes to it |
-  | data-raw/ | the data exactly as it arrived | nobody, ever |
+  | data-raw/ | the data exactly as it arrived | you, once, when it arrives; never the code |
   | code/ | your scripts | you |
   | output/ | tables, figures and cleaned files the scripts make | only the scripts |
   ```
@@ -227,12 +227,13 @@ simplified_explanation: |
 illustrations:
 - body: |
     Start with the failure. A colleague, Priya, emails you the script for her thesis. You copy
-    her `data-raw` file into your own project and run her first lines. Here they are, run on
-    your computer:
+    her `data-raw` file into your own project and run her first lines. (`read_csv()`, from the
+    readr package, reads a CSV file into R; the section on reading a raw file explains it.) Here
+    they are, run on your computer:
 
     ```r error
     library(readr)
-    penguins <- read_csv("C:/Users/priya/Documents/thesis/data-raw/penguins_raw.csv")
+    penguins_raw <- read_csv("C:/Users/priya/Documents/thesis/data-raw/penguins_raw.csv")
     ```
 
     ```output
@@ -241,7 +242,7 @@ illustrations:
 
     Read the error literally. R went looking for a folder called `C:/Users/priya` and found none.
     Nothing is wrong with her data or her code. The address is wrong, because it is the address of
-    a place on her laptop. Every line after this one fails too, because `penguins` was never made.
+    a place on her laptop. Every line after this one fails too, because `penguins_raw` was never made.
 
     Now ask R where it is. The function `getwd()`, short for "get working directory", prints the
     folder R is treating as home:
@@ -258,8 +259,8 @@ illustrations:
     `data-raw` inside it, so give the address from there:
 
     ```r
-    penguins <- read_csv("data-raw/penguins_raw.csv", show_col_types = FALSE)
-    nrow(penguins)
+    penguins_raw <- read_csv("data-raw/penguins_raw.csv", show_col_types = FALSE)
+    nrow(penguins_raw)
     ```
 
     ```output
@@ -327,13 +328,14 @@ illustrations:
 
     ```r file=code/count_rows.R
     library(readr)
-    penguins <- read_csv("data-raw/penguins_raw.csv", show_col_types = FALSE)
-    nrow(penguins)
+    penguins_raw <- read_csv("data-raw/penguins_raw.csv", show_col_types = FALSE)
+    nrow(penguins_raw)
     ```
 
     Run it the way a colleague might, from inside the `code` folder. These are commands for the
     computer's terminal, the window where you type commands to the computer itself rather than to
-    R. `cd code` moves into the folder, and `Rscript` runs an R script from start to end:
+    R. `cd code` moves into the folder, and `Rscript` runs an R script from start to end. A later
+    section, on running a script top to bottom in a fresh session, explains `Rscript` fully. Here:
 
     ```sh error
     cd code
@@ -351,8 +353,8 @@ illustrations:
     ```r file=code/count_rows.R
     library(readr)
     library(here)
-    penguins <- read_csv(here("data-raw", "penguins_raw.csv"), show_col_types = FALSE)
-    nrow(penguins)
+    penguins_raw <- read_csv(here("data-raw", "penguins_raw.csv"), show_col_types = FALSE)
+    nrow(penguins_raw)
     ```
 
     Run it from the same place:
@@ -398,7 +400,7 @@ must_know:
   kind: trap
   bearing: methodological
 - point: |
-    Nothing ever writes into `data-raw/`. A correction typed into the raw file cannot be told apart
+    No code ever writes into `data-raw/`, and no one edits a raw file there. A correction typed into the raw file cannot be told apart
     from the original later. The analysis can then no longer be rerun from the data as it arrived.
     Put the correction in code, and write the corrected file to `output/`.
   kind: consequence
@@ -564,8 +566,8 @@ practice:
     ```r
     library(readr)
     library(here)
-    penguins <- read_csv(here("data-raw", "penguins_raw.csv"), show_col_types = FALSE)
-    dim(penguins)
+    penguins_raw <- read_csv(here("data-raw", "penguins_raw.csv"), show_col_types = FALSE)
+    dim(penguins_raw)
     ```
 
     ```output
@@ -618,7 +620,7 @@ practice:
     [1] "data-raw" "output"
     ```
 
-    The project now has a raw-data folder and an output folder. A script that writes its tables
+    The project now has a `data-raw/` folder and an `output/` folder. A script that writes its tables
     with `here("output", ...)` has somewhere to put them.
 - level: 7
   prompt: |
@@ -628,7 +630,7 @@ practice:
     ```r error
     library(readr)
     setwd("C:/Users/priya/Documents/thesis")
-    penguins <- read_csv("data-raw/penguins_raw.csv", show_col_types = FALSE)
+    penguins_raw <- read_csv("data-raw/penguins_raw.csv", show_col_types = FALSE)
     ```
 
     ```output
@@ -648,8 +650,8 @@ practice:
     ```r
     library(readr)
     library(here)
-    penguins <- read_csv(here("data-raw", "penguins_raw.csv"), show_col_types = FALSE)
-    nrow(penguins)
+    penguins_raw <- read_csv(here("data-raw", "penguins_raw.csv"), show_col_types = FALSE)
+    nrow(penguins_raw)
     ```
 
     ```output
@@ -666,13 +668,13 @@ practice:
     library(readr)
     library(here)
     # first run
-    penguins <- read_csv(here("data-raw", "penguins_raw.csv"), show_col_types = FALSE)
-    nrow(penguins)
-    penguins_test <- head(penguins, 300)
+    penguins_raw <- read_csv(here("data-raw", "penguins_raw.csv"), show_col_types = FALSE)
+    nrow(penguins_raw)
+    penguins_test <- head(penguins_raw, 300)
     write_csv(penguins_test, here("data-raw", "penguins_raw.csv"))
     # second run, the same lines again
-    penguins <- read_csv(here("data-raw", "penguins_raw.csv"), show_col_types = FALSE)
-    nrow(penguins)
+    penguins_raw <- read_csv(here("data-raw", "penguins_raw.csv"), show_col_types = FALSE)
+    nrow(penguins_raw)
     ```
 
     ```output
@@ -682,7 +684,7 @@ practice:
     ```
   answer: |
     The `write_csv()` line broke the project. It wrote the 300-row test file over the raw file, in
-    `data-raw/`. The first run read all 344 rows. The second run read the overwritten file, so it
+    `data-raw/`. The first run read all {{n:penguins_rows}} rows. The second run read the overwritten file, so it
     found 300. The other 44 rows are gone from the project, and no line of code can bring them back.
 
     Nothing looked wrong on the first run because the first run was correct. The damage shows only
@@ -694,12 +696,12 @@ practice:
     ```r norun
     library(readr)
     library(here)
-    penguins <- read_csv(here("data-raw", "penguins_raw.csv"), show_col_types = FALSE)
-    penguins_test <- head(penguins, 300)
+    penguins_raw <- read_csv(here("data-raw", "penguins_raw.csv"), show_col_types = FALSE)
+    penguins_test <- head(penguins_raw, 300)
     write_csv(penguins_test, here("output", "penguins_test_300.csv"))
     ```
 
-    With this version the raw file keeps its 344 rows however many times the script runs. The only
+    With this version the raw file keeps its {{n:penguins_rows}} rows however many times the script runs. The only
     way back from the broken version is a copy of the raw file kept somewhere else, which is one
     reason to keep one.
 - level: 9
@@ -711,8 +713,8 @@ practice:
 
     ```r file=code/count_rows.R
     library(readr)
-    penguins <- read_csv(here::here("data-raw", "penguins_raw.csv"), show_col_types = FALSE)
-    nrow(penguins)
+    penguins_raw <- read_csv(here::here("data-raw", "penguins_raw.csv"), show_col_types = FALSE)
+    nrow(penguins_raw)
     ```
 
     Then say what your test does not establish.
@@ -740,7 +742,7 @@ practice:
 
     - That it runs on your guide's laptop. Your copy still has your version of R and your
       packages. If your guide lacks readr or the here package, the first line stops.
-    - That the number is right. The script finding 344 rows says the file was read. It says
+    - That the number is right. The script finding {{n:penguins_rows}} rows says the file was read. It says
       nothing about whether the analysis that follows is correct.
     - That the copy was complete. If the script read a file outside the project, the test would
       still have passed on your computer, where that file exists.
@@ -761,12 +763,15 @@ practice:
     ```r file=code/clean.R
     library(readr)
     library(here)
-    penguins <- read_csv(here("data-raw", "penguins_raw.csv"), show_col_types = FALSE)
+    penguins_raw <- read_csv(here("data-raw", "penguins_raw.csv"), show_col_types = FALSE)
     # keep the rows whose body mass is not missing
-    with_mass <- penguins[!is.na(penguins$`Body Mass (g)`), ]
+    with_mass <- penguins_raw[!is.na(penguins_raw$`Body Mass (g)`), ]
     dir.create(here("output"), showWarnings = FALSE)
     write_csv(with_mass, here("output", "penguins_with_mass.csv"))
     ```
+
+    The comment says what the middle line does. Picking a column with `$` and backticks is taught
+    in the next section. `write_csv()` writes a table to a CSV file.
 
     ```sh
     Rscript code/clean.R
@@ -806,7 +811,7 @@ practice:
       file only.
 retrieval_items:
 - q: Name the three folders inside this book's project folder, and say which of them your code may write to.
-  a: '`data-raw/` (the raw data as it arrived; nothing writes to it), `code/` (your scripts) and `output/` (everything the scripts produce; only the scripts write to it).'
+  a: '`data-raw/` (the raw data as it arrived; no code writes to it), `code/` (your scripts) and `output/` (everything the scripts produce; only the scripts write to it).'
 - q: What is the difference between an absolute path and a relative path?
   a: An absolute path starts from the top of one computer's disk, such as `C:/Users/...`, so it names a place on that computer only. A relative path starts from the working directory, such as `data-raw/file.csv`.
 - q: How does `here()` find the project root, and what does it do with its arguments?

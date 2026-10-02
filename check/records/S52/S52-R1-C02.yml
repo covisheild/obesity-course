@@ -505,7 +505,7 @@ practice:
     second line the bracket goes first: 3 times 2 is 6, and 2 to the power 6 is 64.
 - level: 4
   prompt: |
-    This book uses a file of measurements of 344 penguins from near Palmer Station, Antarctica. The
+    This book uses a file of {{n:penguins_rows}} rows of penguin measurements from near Palmer Station, Antarctica. The
     first penguin in the file weighed 3750 g. Write one line of R that gives its weight in
     kilograms, with a comment saying what the line does.
   answer: |
@@ -616,8 +616,12 @@ practice:
     The third line is meant to be a comment, but it has no `#`. R tries to read "BMI of patient
     2" as an instruction. It finds the word "of" straight after "BMI" with nothing joining them, and
     stops. That is what "unexpected symbol" means: a word where R did not expect one. The `3:5`
-    says where: line 3, fifth character, which is where "of" begins. In the RStudio console the same
-    message reads `Error: unexpected symbol in "BMI of"`.
+    says where: line 3, fifth character, which is where "of" begins.
+
+    The RStudio console runs the
+    lines one at a time. There, line 2 prints `[1] 1.65` first, and then the message reads
+    `Error: unexpected symbol in "BMI of"`. The book's output runs nothing from a block that R
+    cannot read, so it shows the error alone.
 
     ```r
     # Height in metres
@@ -677,8 +681,8 @@ practice:
 
     What it does not establish:
 
-    - Anything about "the average penguin". These are the first three rows of a file of 344
-      penguins. Rows come in the order they were entered, not chosen to stand for the rest.
+    - Anything about "the average penguin". These are the first three rows of a file of {{n:penguins_rows}}
+      rows. Rows come in the order they were entered, not chosen to stand for the rest.
     - Anything about penguins of other species. The first rows of this file are all one species, and
       the file holds three.
     - The mean of the whole file. That needs every row, read from the file by code, which later

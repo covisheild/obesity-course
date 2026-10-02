@@ -199,7 +199,9 @@ simplified_explanation: |
     order-of-magnitude check, done by the computer on every row, every time the script runs.
   - **Key.** Every row has its own ID. Count the different IDs with `n_distinct()` and compare with
     the number of rows.
-  - **Row count.** Count the rows before a join or a filter and again after. Then compare.
+  - **Row count.** Count the rows before a join or a filter and again after. Then compare. The
+    cases left out of the daily figures in the first section of this book grew unseen until
+    someone compared one count with another.
 
   A check that fails is a question, not a verdict. Look at the rows it found. Go back to the paper
   register, the form or the person who measured. Then write the fix as a line of code, with the date
@@ -391,7 +393,9 @@ illustrations:
     [1] 8860
     ```
 
-    Still {{n:bmx_rows}} rows, as before the join. Now keep the adults, aged 20 or over:
+    Still {{n:bmx_rows}} rows, as before the join. The section on reshaping and joining wrote the
+    same promise into the join itself, with `relationship = "one-to-one"`. The row-count check does
+    the same job after any step, not only a join. Now keep the adults, aged 20 or over:
 
     ```r
     adults <- joined |>
@@ -884,7 +888,7 @@ practice:
     ```
 
     The section on the data dictionary found that species together with sample number picks out one
-    row each. Write two checks: that the file has the 344 rows its help page states, and that species
+    row each. Write two checks: that the file has the {{n:penguins_rows}} rows its help page states, and that species
     with sample number is a key. Then try the same key check on `Individual ID` alone, and say what
     happens.
   answer: |
@@ -911,7 +915,7 @@ practice:
     Error: Individual ID is a key
     ```
 
-    It stops: there are 190 different IDs in 344 rows. The help page calls this column the unique ID
+    It stops: there are {{n:penguins_ids}} different IDs in {{n:penguins_rows}} rows. The help page calls this column the unique ID
     for each individual, and the check shows it does not pick out one row each. That is not an error
     to correct. It is a question about what one row stands for, and the section on the data
     dictionary records the answer you found rather than guessing.
@@ -1208,7 +1212,7 @@ practice:
     that stops a script feels like the problem. It is the messenger.
 - level: 9
   prompt: |
-    A draft thesis on the NHANES 2021–2023 files says: "Height and weight were checked for all 6064
+    A draft thesis on the NHANES 2021–2023 files says: "Height and weight were checked for all {{n:nhanes_adults_rows}}
     adults, and every value was plausible." The adults are those aged 20 or over. Turn the sentence into
     code, with limits of 50 to 250 cm and 20 to 300 kg. Run it, and say what the result does not
     establish.
@@ -1252,9 +1256,9 @@ practice:
     [1] 81
     ```
 
-    There are 6064 adults, and no recorded height or weight lies outside the limits. But 67 have no
-    height and 81 no weight. So "checked for all 6064" is not true: 6064 − 67 = 5997 heights and
-    6064 − 81 = 5983 weights were checked. The sentence should say how many of each were recorded.
+    There are {{n:nhanes_adults_rows}} adults, and no recorded height or weight lies outside the limits. But 67 have no
+    height and 81 no weight. So "checked for all {{n:nhanes_adults_rows}}" is not true: {{n:nhanes_adults_rows}} − 67 = 5997 heights and
+    {{n:nhanes_adults_rows}} − 81 = 5983 weights were checked. The sentence should say how many of each were recorded.
 
     What the result does not establish:
 

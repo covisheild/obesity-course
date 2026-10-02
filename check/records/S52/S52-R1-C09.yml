@@ -395,7 +395,7 @@ illustrations:
     ```r
     library(readr)
     library(here)
-    penguins <- read_csv(here("data-raw", "penguins_raw.csv"))
+    penguins_raw <- read_csv(here("data-raw", "penguins_raw.csv"))
     ```
 
     ```output
@@ -422,7 +422,7 @@ illustrations:
     you do not name are still guessed:
 
     ```r
-    penguins <- read_csv(
+    penguins_raw <- read_csv(
       here("data-raw", "penguins_raw.csv"),
       col_types = cols(`Body Mass (g)` = col_double())
     )
@@ -438,7 +438,7 @@ illustrations:
 
     ```r
     before <- tools::md5sum(here("data-raw", "penguins_raw.csv"))
-    penguins <- read_csv(here("data-raw", "penguins_raw.csv"), show_col_types = FALSE)
+    penguins_raw <- read_csv(here("data-raw", "penguins_raw.csv"), show_col_types = FALSE)
     after <- tools::md5sum(here("data-raw", "penguins_raw.csv"))
     unname(before)
     unname(before == after)
@@ -898,7 +898,7 @@ practice:
     ```r
     library(readr)
     library(here)
-    penguins <- read_csv(here("data-raw", "penguins_raw.csv"))
+    penguins_raw <- read_csv(here("data-raw", "penguins_raw.csv"))
     ```
 
     ```output
@@ -937,7 +937,7 @@ practice:
     [1] "Age in years at screening"
     ```
 
-    11933 rows and 27 columns. `RIDAGEYR` is age in years at screening. The demographics file has
+    {{n:demo_rows}} rows and 27 columns. `RIDAGEYR` is age in years at screening. The demographics file has
     more rows than the body measures file, because not everyone screened was examined.
   refs:
   - nchs_nhanes_2021_2023_bmx_demo
@@ -1004,8 +1004,8 @@ practice:
     ```r
     library(readr)
     library(here)
-    penguins <- read_csv(here("data-raw", "penguins_raw.csv"), na = "-99")
-    sum(is.na(penguins$Sex))
+    penguins_raw <- read_csv(here("data-raw", "penguins_raw.csv"), na = "-99")
+    sum(is.na(penguins_raw$Sex))
     ```
 
     ```output
@@ -1031,9 +1031,9 @@ practice:
     defaults in the list:
 
     ```r
-    penguins <- read_csv(here("data-raw", "penguins_raw.csv"), na = c("", "NA", "-99"),
-                         show_col_types = FALSE)
-    sum(is.na(penguins$Sex))
+    penguins_raw <- read_csv(here("data-raw", "penguins_raw.csv"), na = c("", "NA", "-99"),
+                             show_col_types = FALSE)
+    sum(is.na(penguins_raw$Sex))
     ```
 
     ```output
@@ -1045,7 +1045,7 @@ practice:
   - horst_2020_palmerpenguins
 - level: 9
   prompt: |
-    A slide at a journal club says: "NHANES 2021–2023 measured 8860 people; their mean weight was
+    A slide at a journal club says: "NHANES 2021–2023 measured {{n:bmx_rows}} people; their mean weight was
     70.5 kg." Check the two numbers against the body measures file, and say what the slide's
     sentence does not establish.
   answer: |
@@ -1067,8 +1067,8 @@ practice:
     [1] 2.7
     ```
 
-    The file has 8860 rows. Only 8754 of them have a weight, so the mean is over 8754 people, not
-    8860:
+    The file has {{n:bmx_rows}} rows. Only 8754 of them have a weight, so the mean is over 8754 people, not
+    {{n:bmx_rows}}:
 
     ```working
     8860 − 106 = 8754

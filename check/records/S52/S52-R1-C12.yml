@@ -458,7 +458,8 @@ illustrations:
     because R tells capitals from small letters.
 
     A `case_when()` with no `.default` gives `NA` to any row it did not match. So check that every
-    row matched. Count the new column:
+    row matched. Count the new column with `count()`, which lists each value with the number of
+    rows that hold it (the section on categories teaches it):
 
     ```r
     penguins |>
@@ -474,7 +475,7 @@ illustrations:
     3 Gentoo      124
     ```
 
-    152, 68 and 124, and no `NA` row. Every species name in the file was caught by one of the three
+    {{n:penguins_adelie}}, {{n:penguins_chinstrap}} and {{n:penguins_gentoo}}, and no `NA` row. Every species name in the file was caught by one of the three
     cases. If a fourth spelling had crept in, it would show up here as `NA`, and you would go and
     look.
 
@@ -506,7 +507,7 @@ illustrations:
 
     The names are now in lower case, but `body mass (g)` still has spaces and brackets, so it still
     needs backticks. Making a name safe in one step needs text patterns that this book does not
-    teach. For a file with 17 columns, name the ones you use with `rename()` or inside `select()`,
+    teach. For a file with {{n:penguins_cols}} columns, name the ones you use with `rename()` or inside `select()`,
     as the last section did.
   analogy_breaks_when: |
     Dividing by 1000 is exact only because grams and kilograms differ by a fixed factor. A column
@@ -868,7 +869,7 @@ practice:
     ```
 
     153 penguins from 3.5 to under 4.5 kg, 118 at 4.5 kg or more, 71 under 3.5 kg, and 2 with no
-    body mass. The four counts add to 344, every row. `count()` sorts the labels alphabetically,
+    body mass. The four counts add to {{n:penguins_rows}}, every row. `count()` sorts the labels alphabetically,
     which is why "3.5 to under 4.5 kg" comes first.
 - level: 6
   prompt: |
@@ -1197,7 +1198,7 @@ practice:
     [1] 4.201754
     ```
 
-    The mean body mass is 4.2 kg (4.201754 as printed), from the 342 penguins with a body mass.
+    The mean body mass is 4.2 kg (4.201754 as printed), from the {{n:penguins_mass_n}} penguins with a body mass.
 
     Why the wrong answer looks reasonable: the number 4.2 is correct. Only its unit is wrong, and
     the unit came from a name the code no longer matched.
@@ -1374,7 +1375,7 @@ practice:
     ```
 
     5.076016 kg, which rounds to 5.08 kg. The sentence matches the file. But `na.rm = TRUE` left one
-    penguin out: the mean is of 123 of the 124 Gentoo penguins, and the sentence should say so.
+    penguin out: the mean is of {{n:penguins_gentoo_mass_n}} of the {{n:penguins_gentoo}} Gentoo penguins, and the sentence should say so.
 
     What it does not establish:
 

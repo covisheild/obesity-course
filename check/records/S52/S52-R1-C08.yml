@@ -347,8 +347,8 @@ illustrations:
     library(readr)
     library(tibble)
     library(here)
-    penguins <- read_csv(here("data-raw", "penguins_raw.csv"), show_col_types = FALSE)
-    glimpse(penguins)
+    penguins_raw <- read_csv(here("data-raw", "penguins_raw.csv"), show_col_types = FALSE)
+    glimpse(penguins_raw)
     ```
 
     ```output
@@ -377,8 +377,8 @@ illustrations:
     `nrow()` and `ncol()` count rows and columns:
 
     ```r
-    nrow(penguins)
-    ncol(penguins)
+    nrow(penguins_raw)
+    ncol(penguins_raw)
     ```
 
     ```output
@@ -390,32 +390,32 @@ illustrations:
     name in code, wrap it in backticks, the slanted quote marks on the key left of 1:
 
     ```r
-    mean(penguins$`Body Mass (g)`, na.rm = TRUE)
+    mean(penguins_raw$`Body Mass (g)`, na.rm = TRUE)
     ```
 
     ```output
     [1] 4201.754
     ```
 
-    The average body mass of the penguins with a mass recorded is 4201.754 grams. Now ask Book
+    The average body mass of the penguins with a mass recorded is {{n:penguins_mass_mean}} grams. Now ask Book
     0's first question. What does one row stand for? The help page says the file holds nesting
     observations of adult penguins, and calls `Individual ID` the unique ID for each individual.
     If one row were one bird, there would be as many IDs as rows. Count them:
 
     ```r
-    length(unique(penguins$`Individual ID`))
+    length(unique(penguins_raw$`Individual ID`))
     ```
 
     ```output
     [1] 190
     ```
 
-    There are 190 different IDs in {{n:penguins_rows}} rows. So some ID appears more than once.
+    There are {{n:penguins_ids}} different IDs in {{n:penguins_rows}} rows. So some ID appears more than once.
     Take one and look at the species and island of every row that carries it:
 
     ```r
-    penguins$Species[penguins$`Individual ID` == "N1A1"]
-    penguins$Island[penguins$`Individual ID` == "N1A1"]
+    penguins_raw$Species[penguins_raw$`Individual ID` == "N1A1"]
+    penguins_raw$Island[penguins_raw$`Individual ID` == "N1A1"]
     ```
 
     ```output
@@ -435,7 +435,7 @@ illustrations:
     rules, this file is close to tidy. What it does not do is tell you, from any one column, which
     rows are the same bird.
   analogy_breaks_when: |
-    The average of 4201.754 grams is a fact about the rows in this file that have a body mass. It
+    The average of {{n:penguins_mass_mean}} grams is a fact about the rows in this file that have a body mass. It
     mixes three species and both sexes, so it describes no actual group of penguins.
 
     The check above shows that one ID can name two birds. It does not show how many birds there
@@ -608,10 +608,10 @@ practice:
     ```r
     library(readr)
     library(here)
-    penguins <- read_csv(here("data-raw", "penguins_raw.csv"), show_col_types = FALSE)
-    nrow(penguins)
-    ncol(penguins)
-    mean(penguins$`Flipper Length (mm)`, na.rm = TRUE)
+    penguins_raw <- read_csv(here("data-raw", "penguins_raw.csv"), show_col_types = FALSE)
+    nrow(penguins_raw)
+    ncol(penguins_raw)
+    mean(penguins_raw$`Flipper Length (mm)`, na.rm = TRUE)
     ```
 
     ```output
@@ -631,8 +631,8 @@ practice:
     ```r
     library(readr)
     library(here)
-    penguins <- read_csv(here("data-raw", "penguins_raw.csv"), show_col_types = FALSE)
-    unique(penguins$Island)
+    penguins_raw <- read_csv(here("data-raw", "penguins_raw.csv"), show_col_types = FALSE)
+    unique(penguins_raw$Island)
     ```
 
     ```output
@@ -651,8 +651,8 @@ practice:
     ```r
     library(readr)
     library(here)
-    penguins <- read_csv(here("data-raw", "penguins_raw.csv"), show_col_types = FALSE)
-    table(penguins$studyName)
+    penguins_raw <- read_csv(here("data-raw", "penguins_raw.csv"), show_col_types = FALSE)
+    table(penguins_raw$studyName)
     ```
 
     ```output
@@ -679,7 +679,7 @@ practice:
     ```r
     library(readr)
     library(here)
-    penguins <- read_csv(here("data-raw", "penguins_raw.csv"), show_col_types = FALSE)
+    penguins_raw <- read_csv(here("data-raw", "penguins_raw.csv"), show_col_types = FALSE)
     ```
 
     ```output
@@ -687,32 +687,32 @@ practice:
     ```
 
     ```r error
-    mean(penguins$Body Mass (g), na.rm = TRUE)
+    mean(penguins_raw$Body Mass (g), na.rm = TRUE)
     ```
 
     ```output
-    Error: <text>:1:20: unexpected symbol
-    1: mean(penguins$Body Mass
-                           ^
+    Error: <text>:1:24: unexpected symbol
+    1: mean(penguins_raw$Body Mass
+                               ^
     ```
 
   answer: |
     The last line broke. The column name `Body Mass (g)` has spaces and brackets, so R reads
-    `penguins$Body` and then meets the word `Mass`, which it cannot place. It stops before running
+    `penguins_raw$Body` and then meets the word `Mass`, which it cannot place. It stops before running
     anything on that line.
 
     It looked right because the name is typed exactly as it appears in the file. The repair is
     backticks round the whole name:
 
     ```r
-    mean(penguins$`Body Mass (g)`, na.rm = TRUE)
+    mean(penguins_raw$`Body Mass (g)`, na.rm = TRUE)
     ```
 
     ```output
     [1] 4201.754
     ```
 
-    The mean is 4201.754 grams.
+    The mean is {{n:penguins_mass_mean}} grams.
 - level: 8
   prompt: |
     A camp register is entered with blood pressure as text. The data are made up. A resident runs
@@ -810,7 +810,7 @@ practice:
       tidy shape makes it easy to compute; it does not make it a sensible summary.
 - level: 10
   prompt: |
-    In a meeting someone says: "The penguin file has data on 344 penguins." Decide what to compute
+    In a meeting someone says: "The penguin file has data on {{n:penguins_rows}} penguins." Decide what to compute
     to test the claim, compute it, and say what your answer does not establish.
   answer: |
     The claim treats one row as one penguin. Test that by counting rows, then counting what might
@@ -819,10 +819,10 @@ practice:
     ```r
     library(readr)
     library(here)
-    penguins <- read_csv(here("data-raw", "penguins_raw.csv"), show_col_types = FALSE)
-    nrow(penguins)
-    length(unique(penguins$`Individual ID`))
-    length(unique(paste(penguins$Species, penguins$Island, penguins$`Individual ID`)))
+    penguins_raw <- read_csv(here("data-raw", "penguins_raw.csv"), show_col_types = FALSE)
+    nrow(penguins_raw)
+    length(unique(penguins_raw$`Individual ID`))
+    length(unique(paste(penguins_raw$Species, penguins_raw$Island, penguins_raw$`Individual ID`)))
     ```
 
     ```output
@@ -835,13 +835,13 @@ practice:
     `paste()` joins the three columns into one piece of text per row. The species, the island and
     the ID are written one after another. `unique()` then keeps each different combination once.
 
-    There are {{n:penguins_rows}} rows, 190 different IDs, and 304 different combinations of
-    species, island and ID. So "344 penguins" is wrong if the same bird can appear on more than one
-    expedition. "190 penguins" is wrong too, because one ID can name birds of two species.
+    There are {{n:penguins_rows}} rows, {{n:penguins_ids}} different IDs, and 304 different combinations of
+    species, island and ID. So "{{n:penguins_rows}} penguins" is wrong if the same bird can appear on more than one
+    expedition. "{{n:penguins_ids}} penguins" is wrong too, because one ID can name birds of two species.
 
     What the answer does not establish: the number of birds. Suppose species, island and ID
     together always name one bird, and a bird keeps its ID from one expedition to the next. Then
-    there were 304 birds. Neither is stated in the file or on its help page. Say "344 nesting observations", which
+    there were 304 birds. Neither is stated in the file or on its help page. Say "{{n:penguins_rows}} nesting observations", which
     the file supports, and stop there.
   refs:
   - horst_2020_palmerpenguins

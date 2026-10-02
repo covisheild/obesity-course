@@ -339,7 +339,7 @@ illustrations:
     A histogram appears, and R prints two lines. Read both. The first says ggplot2 used 30 bins
     because you did not choose any. Thirty is not a property of penguins. It is a default, and the
     help page calls it "not a good default". The second says 2 rows were removed: the two penguins
-    with no body mass. The figure shows 342 penguins, and nothing on it says so.
+    with no body mass. The figure shows {{n:penguins_mass_n}} penguins, and nothing on it says so.
 
     Choose the bins. Body masses run from 2700 g to 6300 g, so bins 500 g wide, starting at 2500 g,
     cover them in eight bars. Say also which edge a bin includes. By default a value on an edge goes
@@ -397,7 +397,7 @@ illustrations:
     | 6000 | 6500 | 4 |
     ```
 
-    The eight counts add up to 342, and the `NA` row holds the other 2. These are the heights of the
+    The eight counts add up to {{n:penguins_mass_n}}, and the `NA` row holds the other 2. These are the heights of the
     eight bars. Rule 7 of Sandve and colleagues' ten rules for reproducible research asks for
     exactly this: keep the counts behind a histogram, not only the picture.
 
@@ -406,7 +406,7 @@ illustrations:
     left on defaults can change shape when a colleague runs your script on a newer version. One with
     its width and boundary written down cannot.
   analogy_breaks_when: |
-    The bars describe the 342 penguins with a body mass in this file. They are not the shape of
+    The bars describe the {{n:penguins_mass_n}} penguins with a body mass in this file. They are not the shape of
     body mass in any wider population of penguins.
 
     Another bin width tells a different story. Bins of 100 g show more bumps, and some of them are
@@ -550,7 +550,7 @@ illustrations:
       labs(x = "Species", y = "Rows in the file")
     ```
 
-    The bars stand at 152, 68 and 124. A bar chart of means, with the axis cut to start at 3000 g,
+    The bars stand at {{n:penguins_adelie}}, {{n:penguins_chinstrap}} and {{n:penguins_gentoo}}. A bar chart of means, with the axis cut to start at 3000 g,
     would make the Gentoo bar look several times the Adelie bar when its mean is about 1.4 times as
     large. Keep bar charts for counts and amounts that start at zero, and show distributions with
     boxes or histograms.
@@ -676,7 +676,7 @@ exercises:
     8           NA     2
     ```
 
-    The warning says 2 rows were removed, so the figure shows 342 penguins. The counts per bin are
+    The warning says 2 rows were removed, so the figure shows {{n:penguins_mass_n}} penguins. The counts per bin are
     in the CSV file, beside the figure they describe; the `NA` row holds the 2 with no flipper
     length.
   skill_ref: S52-R1-K01
@@ -940,7 +940,7 @@ practice:
     3 <NA>      11
     ```
 
-    165 female, 168 male, and 11 with no sex recorded. The `NA` rows get a bar of their own, just as
+    {{n:penguins_female}} female, {{n:penguins_male}} male, and {{n:penguins_sex_missing}} with no sex recorded. The `NA` rows get a bar of their own, just as
     `count()` gives them a row of their own. Keep it: the reader should see that
     11 penguins could not be put in either group. The bars start at zero, so their lengths compare
     fairly.
@@ -974,7 +974,7 @@ practice:
   prompt: |
     You and a colleague run the same script on the same penguin file. Your histogram of body mass,
     made with `geom_histogram()` and no other arguments, has a different shape from hers. You have
-    ggplot2 3.4.4; she has 4.0.3. She concludes one of the two data files must be corrupt. Say what
+    ggplot2 {{n:ggplot2_version}}; she has 4.0.3. She concludes one of the two data files must be corrupt. Say what
     is more likely, and how to make the two figures agree.
   answer: |
     The data are more likely the same, and the bins different. ggplot2's notes for version 4.0.0
@@ -1043,7 +1043,7 @@ practice:
     layers.
 - level: 8
   prompt: |
-    A made-up thesis figure caption says: "Figure 3. Body mass of all 344 penguins, by species." The
+    A made-up thesis figure caption says: "Figure 3. Body mass of all {{n:penguins_rows}} penguins, by species." The
     code was:
 
     ```r
@@ -1066,8 +1066,8 @@ practice:
 
     Find what is wrong with the caption, using only what R printed.
   answer: |
-    R printed a warning: 2 rows were removed. The boxes are drawn from 342 body masses, not 344. Two
-    penguins have no body mass, and `geom_boxplot()` left them out. The caption should say 342, and
+    R printed a warning: 2 rows were removed. The boxes are drawn from {{n:penguins_mass_n}} body masses, not {{n:penguins_rows}}. Two
+    penguins have no body mass, and `geom_boxplot()` left them out. The caption should say {{n:penguins_mass_n}}, and
     the methods should say why 2 are missing.
 
     Count them to be sure:
@@ -1080,7 +1080,7 @@ practice:
     [1] 2
     ```
 
-    Why the wrong caption looks reasonable: 344 is the number of rows in the file, which everyone
+    Why the wrong caption looks reasonable: {{n:penguins_rows}} is the number of rows in the file, which everyone
     remembers. A warning in the console is easy to scroll past, and it is the only place the
     difference is shown.
 - level: 9
@@ -1134,9 +1134,9 @@ practice:
     1    342             94  27.5
     ```
 
-    94 of the 342 penguins with a body mass, 27.5%, weigh from 3500 g to under 4000 g. That bar is
+    94 of the {{n:penguins_mass_n}} penguins with a body mass, 27.5%, weigh from 3500 g to under 4000 g. That bar is
     the tallest, so 3.5 to 4 kg is the commonest band. But "most" means more than half, and this is
-    about a quarter. The sentence should say "the commonest band was 3.5 to 4 kg, holding 94 of 342
+    about a quarter. The sentence should say "the commonest band was 3.5 to 4 kg, holding 94 of {{n:penguins_mass_n}}
     penguins (27.5%)".
 
     What the figure does not establish:
@@ -1208,7 +1208,7 @@ practice:
     2 Women  3290
     ```
 
-    The figure has two boxes, from 2680 men and 3290 women with a BMI. The rows with no BMI were
+    The figure has two boxes, from {{n:nhanes_men_bmi_n}} men and {{n:nhanes_women_bmi_n}} women with a BMI. The rows with no BMI were
     removed before plotting, on purpose, so the counts printed are the counts drawn. The caption
     says what the boxes are, and what they are not.
 

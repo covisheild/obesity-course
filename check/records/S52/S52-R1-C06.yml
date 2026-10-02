@@ -326,7 +326,7 @@ illustrations:
     [10] "package:base"
     ```
 
-    `.GlobalEnv` is where the objects you make are kept, and R looks there first. dplyr now comes
+    `.GlobalEnv` is the workspace, where the objects you make are kept, and R looks there first. dplyr now comes
     before stats, which is why its `filter()` wins.
 
     The two-colon form needs no `library()` call at all. It names the package and the function
@@ -345,7 +345,7 @@ illustrations:
     [1] 344
     ```
 
-    The file has 344 rows, one for each penguin. The two-colon form is useful when you need one
+    The file has {{n:penguins_rows}} rows, one for each nesting observation of a penguin. The two-colon form is useful when you need one
     function from a package once. When a script uses a package throughout, load it with
     `library()` at the top, so a reader sees at once what the script needs.
   analogy_breaks_when: |
@@ -565,7 +565,7 @@ practice:
     ```
 
     `readr::` and `here::` call each function from its package without `library()`. The file
-    has 344 rows, and each row is one penguin.
+    has {{n:penguins_rows}} rows.
 - level: 7
   prompt: |
     A colleague's script begins as below and stops at its second line with the error shown.
@@ -573,7 +573,7 @@ practice:
 
     ```r error
     raw <- here::here("data-raw", "penguins_raw.csv")
-    penguins <- read_csv(raw, show_col_types = FALSE)
+    penguins_raw <- read_csv(raw, show_col_types = FALSE)
     ```
 
     ```output
@@ -588,15 +588,15 @@ practice:
     ```r
     library(readr)
     raw <- here::here("data-raw", "penguins_raw.csv")
-    penguins <- read_csv(raw, show_col_types = FALSE)
-    nrow(penguins)
+    penguins_raw <- read_csv(raw, show_col_types = FALSE)
+    nrow(penguins_raw)
     ```
 
     ```output
     [1] 344
     ```
 
-    The script now reads the file's 344 rows. A script must load everything it uses. Whatever
+    The script now reads the file's {{n:penguins_rows}} rows. A script must load everything it uses. Whatever
     happened in the console earlier does not count.
 - level: 8
   prompt: |

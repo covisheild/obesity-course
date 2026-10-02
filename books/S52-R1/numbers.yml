@@ -89,6 +89,78 @@ numbers:
     value: "11933"
     meaning: 'rows of NHANES 2021-2023 DEMO_L.xpt as haven::read_xpt() reads it (one per screened participant, interviewed and examined or interviewed only)'
     source: 'S52-R1-C17, illustration 3, nrow(demo) (gate-filled output); agrees with nchs_nhanes_2021_2023_bmx_demo header "DEMO_L.xpt: ... 11933 rows x 27 columns"; also printed in S52-R1-C09 practice level 6'
+  penguins_ids:
+    value: "190"
+    meaning: 'distinct values of Individual ID in data-raw/penguins_raw.csv (an ID can name more than one bird; not a count of penguins)'
+    source: 'S52-R1-C08, illustrations, length(unique(penguins_raw$`Individual ID`)) (gate-filled output); also C10 n_distinct(), C19 practice level 5'
+  penguins_mass_n:
+    value: "342"
+    meaning: 'rows of penguins_raw.csv with a recorded Body Mass (g) (2 of the 344 are NA)'
+    source: 'S52-R1-C13, illustrations, summarise() of body mass (gate-filled output); also C11, C12, C16, C18'
+  penguins_mass_mean:
+    value: "4201.754"
+    meaning: 'mean Body Mass (g) of the 342 rows with a body mass, as R prints it (grams)'
+    source: 'S52-R1-C08, illustrations, mean(penguins_raw$`Body Mass (g)`, na.rm = TRUE) (gate-filled output); also C11'
+  penguins_mass_mean_g:
+    value: "4202"
+    meaning: 'the same mean rounded to whole grams, as a tibble prints it (4202.) and as prose reports it'
+    source: 'S52-R1-C13, illustrations, summarise() output printed as 4202. (gate-filled); also C11, C21'
+  penguins_adelie:
+    value: "152"
+    meaning: 'rows of penguins_raw.csv whose Species is the Adelie penguin'
+    source: 'S52-R1-C14, practice level 8, count(species) (gate-filled output); also C11, C12, C16, C18, C21'
+  penguins_chinstrap:
+    value: "68"
+    meaning: 'rows whose Species is the Chinstrap penguin'
+    source: 'S52-R1-C14, practice level 8, count(species) (gate-filled output); also C11, C12, C16, C18, C21'
+  penguins_gentoo:
+    value: "124"
+    meaning: 'rows whose Species is the Gentoo penguin'
+    source: 'S52-R1-C14, practice level 8, count(species) (gate-filled output); also C12, C16, C18, C21'
+  penguins_gentoo_mass_n:
+    value: "123"
+    meaning: 'Gentoo rows with a recorded body mass (one of the 124 is NA)'
+    source: 'S52-R1-C16, illustrations, summary by species (gate-filled output, Gentoo 124 rows, 123 masses); also C12'
+  penguins_female:
+    value: "165"
+    meaning: 'rows with Sex recorded as FEMALE'
+    source: 'S52-R1-C14, practice level 9, count(sex) (gate-filled output); also C16, C18, C21'
+  penguins_male:
+    value: "168"
+    meaning: 'rows with Sex recorded as MALE'
+    source: 'S52-R1-C14, practice level 9, count(sex) (gate-filled output); also C16, C18, C21'
+  penguins_sex_missing:
+    value: "11"
+    meaning: 'rows with no recorded Sex (NA as read_csv() reads the file with its default na)'
+    source: 'S52-R1-C14, practice level 9, count(sex) (gate-filled output); also C18, C21; agrees with C13 practice level 3'
+  penguins_torgersen:
+    value: "52"
+    meaning: 'rows from Torgersen island (all Adelie)'
+    source: 'S52-R1-C14, illustrations, count(island) (gate-filled output); also C11, C16'
+  penguins_biscoe:
+    value: "168"
+    meaning: 'rows from Biscoe island'
+    source: 'S52-R1-C14, illustrations, count(island) (gate-filled output); also C16'
+  penguins_dream:
+    value: "124"
+    meaning: 'rows from Dream island'
+    source: 'S52-R1-C14, illustrations, count(island) (gate-filled output); also C16'
+  nhanes_men_bmi_n:
+    value: "2680"
+    meaning: 'NHANES 2021-2023 BMX_L joined to DEMO_L, RIDAGEYR >= 20, RIAGENDR 1 (male), BMXBMI present (unweighted count of rows)'
+    source: 'S52-R1-C17, illustrations, summary by RIAGENDR (gate-filled output); also C18 practice, C22 illustrations (no men are excluded as pregnant)'
+  nhanes_women_bmi_n:
+    value: "3290"
+    meaning: 'the same for RIAGENDR 2 (female), before any exclusion for pregnancy (C22 excludes 41 and has 3249)'
+    source: 'S52-R1-C17, illustrations, summary by RIAGENDR (gate-filled output); also C18 practice'
+  nhanes_men_bmi_mean:
+    value: "29.3"
+    meaning: 'unweighted mean BMXBMI of those 2680 men, kg/m^2, as the tibble prints it'
+    source: 'S52-R1-C17, illustrations, summary by RIAGENDR (gate-filled output); also C22 illustrations'
+  nhanes_men_bmi_median:
+    value: "28.1"
+    meaning: 'unweighted median BMXBMI of those 2680 men, kg/m^2, as the tibble prints it'
+    source: 'S52-R1-C17, illustrations, summary by RIAGENDR (gate-filled output); also C22 illustrations'
 # TODO at the source gate, once Harsh chooses the build dataset (READY.md, candidates A, B, C):
 #   dataset_rows, dataset_cols, and the missing-value counts the sections reuse, read by running
 #   the code on the chosen file. Do not fill from this comment. For candidate B (penguins_raw.csv,

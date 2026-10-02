@@ -226,12 +226,12 @@ definition:
         Carries the reason a summary table is written to a file by code rather than copied from
         the screen.
 simplified_explanation: |
-  The last few sections changed the rows and columns of a data frame and kept every row. This one
-  shrinks it. A summary turns many rows into one number: how many there are, their mean, their
+  Earlier sections chose the rows of a data frame and changed its columns, one row still standing
+  for one observation. This one shrinks it. A summary turns many rows into one number: how many there are, their mean, their
   median, their spread. Book 0 taught each of these by hand. Here R does the arithmetic, and your
   job moves to choosing the summary and reading it.
 
-  **summarise()** gives one row. Ask it for the mean body mass of every penguin in the file and
+  **summarise()**, met once in the section on missing values, gives one row. Ask it for the mean body mass of every penguin in the file and
   you get one row with one number.
 
   **group_by()** before it, or **.by** inside it, gives one row per group: one row per species,
@@ -323,8 +323,8 @@ illustrations:
     1    344  4202.
     ```
 
-    Read the two numbers together. `n_rows` is 344, every row in the file. The mean was worked out
-    from 342 of them, because `na.rm = TRUE` dropped the two without a body mass. The count beside
+    Read the two numbers together. `n_rows` is {{n:penguins_rows}}, every row in the file. The mean was worked out
+    from {{n:penguins_mass_n}} of them, because `na.rm = TRUE` dropped the two without a body mass. The count beside
     the mean is wrong by two, and nothing on the screen says so. Count the values the mean used,
     not the rows:
 
@@ -353,8 +353,8 @@ illustrations:
     ```
 
     `.by = species` asked for one row per species, and there are three rows. Each row has its own
-    two counts. Adelie has 152 rows and 151 body masses; Gentoo has 124 rows and 123; Chinstrap has
-    68 of each. Those are the two missing values, one in each of two species. The tibble prints the
+    two counts. Adelie has {{n:penguins_adelie}} rows and 151 body masses; Gentoo has {{n:penguins_gentoo}} rows and {{n:penguins_gentoo_mass_n}}; Chinstrap has
+    {{n:penguins_chinstrap}} of each. Those are the two missing values, one in each of two species. The tibble prints the
     means rounded to fit the screen.
 
     ```table
@@ -390,11 +390,11 @@ illustrations:
     Adelie mean takes it from this file. If a corrected body mass arrives next month, you rerun the
     script, the file changes, and the report's number can be checked against it.
   analogy_breaks_when: |
-    The table describes the 344 rows of this file: penguins measured on three islands in three
+    The table describes the {{n:penguins_rows}} rows of this file: penguins measured on three islands in three
     seasons. It is not a figure for all penguins of these species, and the file's documentation
     makes no such claim.
 
-    Leaving out missing values is a choice. Here two body masses out of 344 are missing, and the
+    Leaving out missing values is a choice. Here two body masses out of {{n:penguins_rows}} are missing, and the
     choice barely matters. When a quarter of the values are missing, the mean of the rest may
     describe a different group of penguins, or patients, from the one you meant. The section on
     missing values says how to count and report them.
@@ -521,9 +521,9 @@ illustrations:
     8 Gentoo    <NA>       5  4.03
     ```
 
-    The first row says 48.0% for Adelie females. But 73 is not 48% of 344. Because the result was
-    still grouped by species, `sum(n)` added up within each species: 73 divided by 152, not by
-    344. The code ran, gave tidy numbers, and answered a different question.
+    The first row says 48.0% for Adelie females. But 73 is not 48% of {{n:penguins_rows}}. Because the result was
+    still grouped by species, `sum(n)` added up within each species: 73 divided by {{n:penguins_adelie}}, not by
+    {{n:penguins_rows}}. The code ran, gave tidy numbers, and answered a different question.
 
     Group for one step only with `.by`, and the result comes back ungrouped:
 
@@ -547,7 +547,7 @@ illustrations:
     8 Chinstrap MALE      34  9.88
     ```
 
-    Now 73 Adelie females are 21.2% of all 344. The rows come in the order each group first
+    Now 73 Adelie females are 21.2% of all {{n:penguins_rows}}. The rows come in the order each group first
     appears in the file, where `group_by()` sorted them. If you do use `group_by()`, end the
     pipe with `ungroup()` before anything else touches the result.
 
@@ -564,7 +564,7 @@ must_know:
 - point: |
     Print the count beside every summary, and print the right count. `n()` counts rows. With
     `na.rm = TRUE`, a mean uses only the rows that have a value, so count those with
-    `sum(!is.na(x))`. A table that prints 152 beside a mean of 151 values is wrong by one, and the
+    `sum(!is.na(x))`. A table that prints {{n:penguins_adelie}} beside a mean of 151 values is wrong by one, and the
     reader cannot see it.
   kind: trap
   bearing: methodological
@@ -663,7 +663,7 @@ exercises:
     3 Dream        124       124    193.       193
     ```
 
-    Three islands, three rows. Torgersen's mean rests on the fewest flipper lengths: 51 of its 52
+    Three islands, three rows. Torgersen's mean rests on the fewest flipper lengths: 51 of its {{n:penguins_torgersen}}
     rows have one. Biscoe and Torgersen each lost one penguin to a missing flipper length; Dream
     lost none. The file in `output/` holds the full numbers, and rerunning the script rewrites it.
   skill_ref: S52-R1-K01
@@ -888,8 +888,8 @@ practice:
     3 Dream        124         2
     ```
 
-    Torgersen: 52 rows, 1 species. Biscoe: 168 rows, 2 species. Dream: 124 rows, 2 species. The
-    three counts of rows add up to 344, every row in the file. Only Adelie penguins were sampled on
+    Torgersen: {{n:penguins_torgersen}} rows, 1 species. Biscoe: {{n:penguins_biscoe}} rows, 2 species. Dream: {{n:penguins_dream}} rows, 2 species. The
+    three counts of rows add up to {{n:penguins_rows}}, every row in the file. Only Adelie penguins were sampled on
     all three islands.
 - level: 5
   prompt: |
@@ -940,7 +940,7 @@ practice:
     3 <NA>       11      9     4100
     ```
 
-    Males: 168 rows, median 4300 g. Females: 165 rows, median 3650 g. The third row is `NA`: 11
+    Males: {{n:penguins_male}} rows, median 4300 g. Females: {{n:penguins_female}} rows, median 3650 g. The third row is `NA`: 11
     penguins whose sex was not recorded, 9 of them with a body mass. A summary does not drop a
     missing category; it prints it as a group. Say how many penguins had no sex recorded, and do
     not quietly leave them out of the table.
@@ -1062,13 +1062,13 @@ practice:
     3 Chinstrap penguin (Pygoscelis antarctica)     68         0  3733.
     ```
 
-    Adelie: 1 missing of 152. Gentoo: 1 missing of 124. Both have a mean.
+    Adelie: 1 missing of {{n:penguins_adelie}}. Gentoo: 1 missing of {{n:penguins_gentoo}}. Both have a mean.
 
     Why the wrong reading looks reasonable: `NA` means "not available", and the note took that to
     mean the whole column was not available. It meant one value was.
 - level: 7
   prompt: |
-    A colleague's table of Gentoo body mass reads "n = 124, mean 5076 g". Here is his code.
+    A colleague's table of Gentoo body mass reads "n = {{n:penguins_gentoo}}, mean 5076 g". Here is his code.
 
     ```r
     library(readr)
@@ -1108,7 +1108,7 @@ practice:
     The mean is right. Find what is wrong with the table.
   answer: |
     The n counts rows, not body masses. One Gentoo penguin has no body mass, so the mean was
-    worked out from 123 values, not 124.
+    worked out from {{n:penguins_gentoo_mass_n}} values, not {{n:penguins_gentoo}}.
 
     ```r
     penguins_raw |>
@@ -1127,7 +1127,7 @@ practice:
     1    124    123  5076.
     ```
 
-    The table should read "n = 123" for the mean, and say that 1 of 124 had no body mass.
+    The table should read "n = {{n:penguins_gentoo_mass_n}}" for the mean, and say that 1 of {{n:penguins_gentoo}} had no body mass.
 
     Why the wrong n looks reasonable: `n()` is the count every example shows beside a mean. With no
     missing values it is the right one. The error only appears in a group with a gap.
@@ -1178,7 +1178,7 @@ practice:
     Find what broke.
   answer: |
     After `summarise()`, the result is still grouped by `Species`: the message says so. So `sum(n)`
-    adds up within each species. 61 Gentoo males are 49.2% of 124 Gentoo penguins, not of all 344.
+    adds up within each species. 61 Gentoo males are 49.2% of {{n:penguins_gentoo}} Gentoo penguins, not of all {{n:penguins_rows}}.
 
     Group for that step only, so the sum covers every row:
 
@@ -1198,8 +1198,8 @@ practice:
     3 Gentoo penguin (Pygoscelis papua)         MALE     61 17.7
     ```
 
-    Gentoo males are 17.7% of the 344 penguins in the file. `count()` returns an ungrouped
-    result, so `sum(n)` is 344.
+    Gentoo males are 17.7% of the {{n:penguins_rows}} rows in the file. `count()` returns an ungrouped
+    result, so `sum(n)` is {{n:penguins_rows}}.
 
     Why the wrong answer looks reasonable: 49.2% is a sensible share for males in one species, so
     nothing about the number looks off. Only the denominator changed, and the denominator is not
@@ -1290,8 +1290,8 @@ practice:
     its name is not the one the code used.
 - level: 9
   prompt: |
-    A made-up draft thesis says: "Gentoo penguins (n = 124) were heavier than Adelie penguins
-    (n = 152), with mean body masses of 5076 g and 3701 g." Check every number in the sentence
+    A made-up draft thesis says: "Gentoo penguins (n = {{n:penguins_gentoo}}) were heavier than Adelie penguins
+    (n = {{n:penguins_adelie}}), with mean body masses of 5076 g and 3701 g." Check every number in the sentence
     against the penguin file. Then say what the result does not establish.
   answer: |
     ```r
@@ -1335,7 +1335,7 @@ practice:
 
     The means match, once rounded: 3701 g for Adelie and 5076 g for Gentoo. The counts do not
     describe the means. Each n is the number of rows; each mean used one value fewer, 151 and
-    123. The sentence should give those, or say that one body mass was missing in each species.
+    {{n:penguins_gentoo_mass_n}}. The sentence should give those, or say that one body mass was missing in each species.
     The medians, 3700 g and 5000 g, tell the same story as the means.
 
     What it does not establish:
@@ -1406,7 +1406,7 @@ practice:
     3 Chinstrap penguin (Pygoscelis antarctica)     34  3939.
     ```
 
-    The 168 males average 4546 g, about 4.5 kg, so the sentence matches the file. Now look inside
+    The {{n:penguins_male}} males average 4546 g, about 4.5 kg, so the sentence matches the file. Now look inside
     it. Adelie males average 4043 g and Chinstrap males 3939 g; Gentoo males average 5485 g. No
     species has males that average about 4.5 kg. The pooled mean sits between a group of lighter
     birds and a group of heavier ones, and it describes almost no actual penguin.

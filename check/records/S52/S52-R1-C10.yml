@@ -340,7 +340,7 @@ illustrations:
     [1] 344
     ```
 
-    17 columns and 344 rows, as the help page said. But read the names. The file says
+    {{n:penguins_cols}} columns and {{n:penguins_rows}} rows, as the help page said. But read the names. The file says
     `Culmen Length (mm)`, `Flipper Length (mm)`, `Body Mass (g)` and `Delta 15 N (o/oo)`, with a unit
     in brackets after the name. Six of the names you copied
     are not the names in the file. Any line of code written from your dictionary would fail on
@@ -362,7 +362,7 @@ illustrations:
     [1] 190
     ```
 
-    190 different IDs in 344 rows. So an ID can appear on more than one row. The help page does not
+    {{n:penguins_ids}} different IDs in {{n:penguins_rows}} rows. So an ID can appear on more than one row. The help page does not
     say why, and this book does not guess. What the dictionary records is what you found. Then find
     something that does pick out one row each. Species with sample number does:
 
@@ -374,7 +374,7 @@ illustrations:
     [1] 344
     ```
 
-    344 combinations for 344 rows: one each.
+    344 combinations for {{n:penguins_rows}} rows: one each.
 
     Last, the allowed values and the missing code. The help page says only that Sex is "a character
     string". `count()` lists each value with the number of rows that hold it:
@@ -425,7 +425,7 @@ illustrations:
     | Delta 15 N (o/oo) | ratio of the nitrogen isotopes 15N to 14N | o/oo, from the column name | number | expected range not stated | help page; unit from the file |
     ```
 
-    The full dictionary has 17 rows, one for each column, and one more fact for the whole file:
+    The full dictionary has {{n:penguins_cols}} rows, one for each column, and one more fact for the whole file:
     missing values are written `NA`. Save it as a CSV file, `penguins_raw_dictionary.csv`, beside the
     raw file in `data-raw/`. Raw data and the facts about it belong together. You type the dictionary
     once, by hand, before any cleaning. No code ever writes to that folder.
@@ -456,7 +456,8 @@ illustrations:
     >
     > Raw data: `data-raw/penguins_raw.csv`, copied unchanged from the palmerpenguins R package,
     > version 0.1.1, licence CC0. The data were collected by Palmer Station Antarctica LTER and
-    > K. Gorman, and first published by Gorman, Williams and Fraser in PLoS ONE in 2014.
+    > K. Gorman, and first published by Gorman, Williams and Fraser in PLoS ONE in 2014. MD5
+    > checksum on arrival: 049da101568e078f9845c8b366481810.
     >
     > Data dictionary: `data-raw/penguins_raw_dictionary.csv`.
     >
@@ -466,6 +467,9 @@ illustrations:
     > Outputs: a table of body mass by species and a figure of it, both in `output/`.
     >
     > Written with R {{n:r_version}}. Contact: your name and email address.
+
+    The checksum is the one the section on reading a raw file taught you to take on the day the file
+    arrives.
 
     CC0 is the licence the package's own files state. Wilson and colleagues describe it as the "No
     Rights Reserved" licence: anyone may reuse the data without asking.
@@ -601,7 +605,7 @@ exercises:
     The README says six things:
 
     - the project's title and purpose;
-    - where the raw data came from, which version, and on what terms;
+    - where the raw data came from, which version, on what terms, and its checksum;
     - where the data dictionary is;
     - the one command that reruns the analysis, and where to run it from;
     - what each output is;
@@ -632,7 +636,7 @@ retrieval_items:
   a: Once, before any cleaning, from the documentation of whoever made the data. Then each entry is
     checked against the file.
 - q: Name the parts of a README.
-  a: Title and purpose; where the raw data came from, which version and on what terms; where the
+  a: Title and purpose; where the raw data came from, which version, on what terms, and its checksum; where the
     data dictionary is; the one command that reruns the analysis and where to run it from; what each
     output is; whom to contact.
 - q: Why should an "expected range" not be filled from the smallest and largest values in your file?
