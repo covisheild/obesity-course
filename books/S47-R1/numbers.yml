@@ -5,13 +5,71 @@
 numbers:
   gst_demerit_rate_pct:
     value: "40"
-    meaning: the combined GST "special de-merit rate" the 56th GST Council meeting recommended for a select few goods, including sugar-added and other non-alcoholic beverages (C09, C15, C18)
+    meaning: the combined GST "special de-merit rate" the 56th GST Council meeting recommended for a select few goods, including sugar-added and other non-alcoholic beverages (C09, C11, C14-C18)
     source: pib_2163555
   cgst_sugary_drinks_rate_pct:
     value: "20"
-    meaning: the central (CGST) rate on heading 2202 drinks in Schedule III of Notification 9/2025-CT(Rate), and the cap CGST Act s.9(1) sets (C09, C18)
+    meaning: the central (CGST) rate on heading 2202 drinks in Schedule III of Notification 9/2025-CT(Rate), and the cap CGST Act s.9(1) sets (C09, C11, C18)
     source: cgst_notif_9_2025_rate; cgst_act_2017_s9_cbic
   plcp_comment_days:
     value: "thirty"
     meaning: minimum period a draft Bill is kept in the public domain under the Pre-Legislative Consultation Policy 2014 (C06, C07)
     source: plcp_2014
+  # Keys added by the Task 2b reconciler on 2026-10-02 (books/S47-R1/RECONCILE.md): numbers the
+  # drafters wrote as literals in two or more sections. Text inside quotation marks stays literal.
+  gst_council_majority:
+    value: "three-fourths"
+    meaning: the share of the weighted votes of members present and voting that a GST Council decision needs, Article 279A(9) (C09, C18)
+    source: constitution
+  gst_union_vote_weight:
+    value: "one-third"
+    meaning: the weight of the Central Government's vote in the GST Council, of the total votes cast, Article 279A(9)(a) (C09, C18)
+    source: constitution
+  gst_states_vote_weight:
+    value: "two-thirds"
+    meaning: the weight of all the State Governments' votes taken together in the GST Council, of the total votes cast, Article 279A(9)(b) (C09, C18)
+    source: constitution
+  gst_council_majority_pct:
+    value: "75"
+    meaning: three-fourths as a percentage of the weighted votes (C09, C18)
+    source: arithmetic, 3 divided by 4 = 0.75, on constitution Art. 279A(9)
+  gst_union_vote_pct:
+    value: "33.3"
+    meaning: the Central Government's one-third as a percentage of the votes cast, rounded (C09, C18)
+    source: arithmetic, 100 divided by 3, on constitution Art. 279A(9)(a)
+  gst_states_vote_pct:
+    value: "66.7"
+    meaning: all the States' two-thirds as a percentage of the votes cast, rounded (C09, C18)
+    source: arithmetic, 200 divided by 3, on constitution Art. 279A(9)(b)
+  gst_states_needed_pct:
+    value: "41.7"
+    meaning: the percentage of the votes still needed from the States when the Centre votes yes (C09, C18)
+    source: arithmetic, 75 minus 33.3, on the two keys above
+  edible_oil_cut_pct:
+    value: "10"
+    meaning: the cut in edible-oil use the Prime Minister asked for in Mann Ki Baat, 23 February 2025 ("use 10% less oil every month") (C14, C17; quoted literally in C11, C15)
+    source: pib_2105618
+  barry_n:
+    value: "1,009"
+    meaning: number of United States adults in the Barry et al. survey, Knowledge Networks panel, late 2006 to early 2007 ("N = 1,009") (C13, C14)
+    source: barry_2009_metaphors
+  summan_kii_n:
+    value: "18"
+    meaning: number of semi-structured key informant interviews in Summan et al., February to September 2024 ("a total of 18 semi-structured KIIs") (C10, C13, C18)
+    source: summan_2026_foodtax
+  summan_model_tax_range:
+    value: "10% to 30%"
+    meaning: the extra health tax modelled in the study Summan et al. report (Varghese et al. 2024, not held); the review writes "10%–30%" (C16, C17, C18)
+    source: summan_2026_foodtax
+  summan_model_demand_fall:
+    value: "7% to 30%"
+    meaning: the projected fall in demand for sugar-sweetened drinks in that model, as Summan et al. report it ("7%–30%"); a model, not a measured change (C16, C17, C18)
+    source: summan_2026_foodtax
+  laying_days:
+    value: "thirty"
+    meaning: total days of sitting for which a rule or regulation is laid before each House of Parliament (FSS Act s.93 in C07; COTPA s.31(3) in C11). Not the consultation policy's thirty, not the objection period
+    source: fss_act_2006; cotpa_2003
+  packaging_draft_objection_days:
+    value: "thirty"
+    meaning: the period for objections and suggestions on the draft Food Safety and Standards (Packaging) Regulations, 2018, from the date Gazette copies were made available (C07, C11)
+    source: fssai_2018_packaging_regs
