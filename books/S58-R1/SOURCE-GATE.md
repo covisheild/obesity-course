@@ -7,7 +7,7 @@ release: pending
 
 ## Needed
 
-27 sources serve the 21 concepts (`READY.md`, `INVENTORY.md`). 24 are obtained, 3 (all optional) are not.
+27 sources serve the 21 concepts (`READY.md`, `INVENTORY.md`). All 27 are now held (2 Oct 2026), plus three extras.
 
 | Source | Concepts |
 | --- | --- |
@@ -68,6 +68,10 @@ header lines of the files, not passages.
 | `crameri_2020_misuse_colour` | `sources/crameri_2020_misuse_colour.txt` |
 | `cumming_2007_error_bars` | `sources/cumming_2007_error_bars.txt` |
 | `kincaid_1975_readability` (supplied by Harsh 2 Oct 2026: the UCF STARS PDF with a text layer; Table 3 and the Flesch counting rules checked against page images) | `sources/kincaid_1975_readability.txt` |
+| `cleveland_mcgill_1984_graphical_perception` (supplied by Harsh 2 Oct 2026; OCR text layer; every page carrying a held number or the ranking checked against its image) | `sources/cleveland_mcgill_1984_graphical_perception.txt` |
+| `tufte_1983_visual_display` (supplied by Harsh 2 Oct 2026; the copy is the **first edition**, 1983, tenth printing 1990, not the 2001 second edition; every held page checked against its image) | `sources/tufte_1983_visual_display.txt` |
+| `flesch_1948_readability_yardstick` (Harsh could not download the APA original and asked for alternatives; found as a retyped public-domain reprint in DuBay's *The Classic Readability Studies*, ERIC ED506404) | `sources/flesch_1948_readability_yardstick.txt` |
+| Extra: `flesch_1979_plain_english` (Flesch's own *How to Write Plain English*, ch. 2: the formula as "multiply the average word length by 84.6" and the score bands) | `sources/flesch_1979_plain_english.txt` |
 | Extra, not in the list: `krishnamurthy_2021_cvd_india` (colour-vision deficiency in boys in one Tamil Nadu district, for C18) | `sources/krishnamurthy_2021_cvd_india.txt` |
 | Fallback for Kincaid: `edwards_2022_readability_formulas` (secondary restatement of the Flesch formulas) | `sources/edwards_2022_readability_formulas.txt` |
 
@@ -80,10 +84,14 @@ distribution licence only; Bergstrom & West's page states no licence; Wilke is C
 
 ## Not obtained
 
-All three are optional: each concept has a named fallback in the book. Kincaid et al. 1975 was supplied by Harsh on 2 Oct 2026 and moved to Obtained.
+Every row is now provided. Kincaid 1975, Cleveland & McGill 1984 and Tufte were supplied by Harsh on 2 Oct 2026. Flesch 1948
+could not be downloaded; at Harsh's instruction ("search for its alternatives") the article itself was found as a retyped
+public-domain reprint (ERIC ED506404). It settles the coefficient: Flesch printed .846, so Kincaid's Table 3 ".836" is a
+misprint. Release is still pending until Harsh confirms the reprint is acceptable.
 
 | Source | Needed for | URL tried | Why not obtained | Provided |
 | --- | --- | --- | --- | --- |
-| Flesch R. A new readability yardstick. *J Appl Psychol* 1948;32(3):221-233. **Now recommended, not just optional:** the Kincaid report prints the old formula's syllable term as .836 per 100 words, while two held papers print 84.6 per syllable-per-word; only Flesch 1948 can settle which is original | C10 | https://doi.org/10.1037/h0057532 (not opened: this session could not open DOI links); https://www.ovid.com/journals/japsy/fulltext/00004565-194806000-00001~a-new-readability-yardstick (returned "payment required") | paywall (APA / Ovid) | no |
-| Cleveland WS, McGill R. Graphical perception: theory, experimentation, and application to the development of graphical methods. *J Am Stat Assoc* 1984;79(387):531-554 | C14 (Heer & Bostock 2010 replicates the ranking; C14 stands on Heer & Bostock plus Wilke if this is not obtained) | https://doi.org/10.1080/01621459.1984.10478080 (not opened); Semantic Scholar page https://www.semanticscholar.org/paper/Graphical-Perception:-Theory,-Experimentation,-and-Cleveland-McGill/fa459de6552f5cd0cbe28539c0c7c65bc112a164 (403 to this session) | paywall; JSTOR terms forbid automated download | no |
-| Tufte ER. *The Visual Display of Quantitative Information*, 2nd ed. Graphics Press, 2001 (the Lie Factor and the data-ink ratio; pages to locate) | C16, C17 (both stand on Wilke and Bergstrom & West; the names "Lie Factor" and "data-ink" are written only if this is opened) | https://archive.org/details/visualdisplayofq00tuft (the 2nd ed., 4th printing, 2001; access-restricted, borrowable) | print book; no open copy | no |
+| Kincaid et al. 1975 | C10 | https://stars.library.ucf.edu/cgi/viewcontent.cgi?article=1055&context=istlibrary | scan without a text layer at fetch | yes: sources/kincaid_1975_readability.txt |
+| Flesch 1948, A new readability yardstick | C10 | https://doi.org/10.1037/h0057532 | paywall (APA / Ovid) | yes: sources/flesch_1948_readability_yardstick.txt |
+| Cleveland & McGill 1984 | C14 | https://doi.org/10.1080/01621459.1984.10478080 | paywall; JSTOR terms | yes: sources/cleveland_mcgill_1984_graphical_perception.txt |
+| Tufte, The Visual Display of Quantitative Information | C16, C17 | https://archive.org/details/visualdisplayofq00tuft | print book | yes: sources/tufte_1983_visual_display.txt |

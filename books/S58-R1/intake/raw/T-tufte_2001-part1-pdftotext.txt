@@ -1,0 +1,2552 @@
+ALIN   LULALG NN
+ 0702 00000131 3
+
+
+
+
+             The Visual Display
+ of Quant 1tat          ive Information
+                   EDWARD   R TUFTE
+  “A landmark book,
+   a wonderful book”
+  Frederick Mosteller,
+  Harvard University
+
+
+
+  “A tour de force”
+John W. Tukey,
+  Bell Laboratories and Princeton University
+
+
+
+
+  The cover graphic, drawn by Minoru Niijima,
+  is based on E. J. Marey’s train schedule from
+  Paris to Lyon in his book La Méthode Graph-
+  ique (Paris, 1878).
+
+ Design & Typography by Howard I. Gralla
+  ‘ce
+i‘ il
+           %
+    le   i ae
+      Digitized by the Internet Archive
+          in 2023 with funding from
+           Kahle/Austin Foundation
+
+
+
+
+https://archive.org/details/owb_T2-EQU-551
+Edward R. Tufte
+
+
+
+
+The Visual Display
+of Quantitative Information
+
+
+
+
+Graphics Press   - Cheshire, Connecticut
+             Copyright © 1983 by Edward R. Tufte
+Published by Graphics Press, Box 430, Cheshire, Connecticut 06410
+                     ALL RIGHTS RESERVED
+               Printed in the United States of America
+                      Tenth printing, March 1990
+Contents
+
+akiel        (GRAPHICAL          PRACTICE
+   al    Graphical Excellence         13
+   2     Graphical Integrity     53
+   3     Sources of Graphical Integrity and Sophistication        79
+
+Partintl,     LHEORY           OF DATA      GRAPHICS
+         Data-Ink and Graphical Redesign        91
+         Chartjunk: Vibrations, Grids, and Ducks           107
+         Data-Ink Maximization and Graphical Design              123
+         Multifunctioning Graphical Elements         139
+         Data Density and Small Multiples        161
+   FS
+   Ws
+   fs
+   SS)
+   fey
+   Ney   Aesthetics and Technique in Data Graphical Design              1977
+
+         Epilogue: Designs for the Display of Information         191
+For my parents
+
+Edward E. Tufte and Virginia James Tufte
+Acknowledgments
+I am indebted to many for their advice and assistance with this book.
+  For leave and research support during several academic years,
+the Center for Advanced Study in the Behavioral Sciences, the
+John Simon Guggenheim Foundation, the Woodrow Wilson School
+of Princeton University, and Yale University.
+   For providing access to their superb collections, the Bibliothéque
+Nationale and the Bibliotheque de I’Ecole Nationale des Ponts et
+Chaussées in Paris, and, at Yale University, the Historical Medical
+Library and the Beinecke Rare Book and Manuscript Library.
+  For helping me appreciate the practicalities in the production
+of statistical graphics, several members of the art department at the
+New York Times and my students in Graphic Design and in the
+Department of Statistics at Yale.
+   For assistance in establishing Graphics Press, Peter B. Cooper,
+Earle E. Jacobs, Jr., and Trudy Putsche.
+   For design and artwork, Howard I. Gralla and Minoru Niijima.
+  For their help and hospitality in Paris during my work on the
+Minard drawings, Michel Balinski, Jean Dubout, André Jammes,
+and Claudine Kleb.
+  For providing examples and for suggesting improvements in the
+manuscript, James Beniger, Inge Druckrey, Timothy Gregoire,
+Joanna Hitchcock, Joseph LaPalombara, Kathryn Scholle, Stephen
+Stigler, Howard Wainer, and Ellen Woodbury.
+   For their reviews of the manuscript and for their inspiration and
+encouragement through all the years of this enterprise, Frederick
+Mosteller and John W. Tukey.
+
+  June 1982
+   Cheshire, Connecticut
+                                       or)   mY
+
+
+
+
+          —S-        )        a
+_               ae                ae    =28
+
+                 7       7         SS         ‘a
+    cad     nd       a                 ae     se
+
+
+                     =        nel            ae ae   v
+                 .           ns                 ©
+:   ee
+     _          ee
+                >            -_         oo a
+Introduction
+
+Data graphics visually display measured quantities by means of
+the combined use of points, lines, a coordinate system, numbers,
+symbols, words, shading, and color.
+   The use of abstract, non-representational pictures to show numbers
+is a surprisingly recent invention, perhaps because of the diversity
+of skills required—the visual-artistic, empirical-statistical, and
+mathematical. It was not until 1750-1800 that statistical graphics—
+length and area to show quantity, time-series, scatterplots, and
+multivariate displays—were invented, long after such triumphs of
+mathematical ingenuity as logarithms, Cartesian coordinates, the
+calculus, and the basics of probability theory. The remarkable
+William Playfair (1759-1823) developed or improved upon nearly
+all the fundamental graphical designs, seeking to replace conven-
+tional tables of numbers with the systematic visual representations
+of his “‘linear arithmetic.”
+  Modern data graphics can do much more than simply substitute
+for small statistical tables. At their best, graphics are instruments
+for reasoning about quantitative information. Often the most effec-
+tive way to describe, explore, and summarize a set of numbers—
+even a very large set—is to look at pictures of those numbers.
+Furthermore, of all methods for analyzing and communicating
+statistical information, well-designed data graphics are usually the
+simplest and at the same time the most powerful.
+
+
+The first part of this book reviews the graphical practice of the
+two centuries since Playfair. The reader will, I hope, rejoice in the
+graphical glories shown in Chapter 1 and then condemn the lapses
+and lost opportunities exhibited in Chapter 2. Chapter 3, on graph-
+ical integrity and sophistication, seeks to account for these differ-
+ences in quality of graphical design.
+   The second part of the book provides a language for discussing
+graphics and a practical theory of data graphics. Applying to most
+visual displays of quantitative information, the theory leads to
+changes and improvements in design, suggests why some graphics
+might be better than others, and generates new types of graphics.
+The emphasis is on maximizing principles, empirical measures of
+graphical performance, and the sequential improvement of graphics
+through revision and editing. Insights into graphical design are to
+be gained, I believe, from theories of what makes for excellence
+in art, architecture, and prose.
+
+
+
+This is a book about the design of statistical graphics and, as such,
+it is concerned both with design and with statistics. But it is also
+about how to communicate information through the simultaneous
+presentation of words, numbers, and pictures. The design of statis-
+tical graphics is a universal matter—like mathematics—and is not
+tied to the unique features of a particular language. The descriptive
+concepts (a vocabulary for graphics) and the principles advanced
+apply to most designs. I have at times provided evidence about the
+scope of these ideas, by showing how frequently a principle applies
+to (a random sample of) news and scientific graphics.
+   Each year, the world over, somewhere between 900 billion
+(9x10!) and 2 trillion (210!) images of statistical graphics are
+printed. The principles of this book apply to most of those graphics.
+Some of the suggested changes are small, but others are substantial,
+with consequences for hundreds of billions of printed pages.
+   But I hope also that the book has consequences for the viewers and
+makers of those images—that they will never view or create statis-
+tical graphics the same way again. That is in part because we are
+about to see, collected here, so many wonderful drawings, those
+of Playfair, of Minard, of Marey, and, nowadays, of the computer.
+   Most of all, then, this book is a celebration of data graphics.
+       PART.
+
+
+Graphical Practice
+if        Graphical Excellence
+
+
+
+
+Excellence in statistical graphics consists of complex ideas
+communicated with clarity, precision, and efficiency. Graphical
+displays should
+
+     show the data
+
+     induce the viewer to think about the substance rather than about
+     methodology, graphic design, the technology of graphic pro-
+     duction, or something else
+
+     avoid distorting what the data have to say
+     present many numbers in a small space
+     make large data sets coherent
+     encourage the eye to compare different pieces of data
+     reveal the data at several levels of detail, from a broad overview
+     to the fine structure
+
+     serve a reasonably clear purpose: description, exploration,
+     tabulation, or decoration
+
+     be closely integrated with the statistical and verbal descriptions
+     of a data set.
+
+     Graphics reveal data. Indeed graphics can be more precise and
+revealing than conventional statistical computations. Consider
+Anscombe’s quartet: all four of these data sets are described by
+exactly the same linear model (at least until the residuals are ex-
+amined).
+
+
+
+                                                                            N= il
+                                                                            mean of X’s = 9.0
+                                                                            mean of Y’s = 7.5
+                                                                            equation ofregression line: Y= 3+0.5X
+                                                                            standard error of estimate of slope = 0.118
+                                                                            t = 4.24             =
+            6.0    7.24    6:00)   6:13    6.0   6.08      S10     a.)      sum of squares X —- X = 110.0
+            4.0    4.26    4.0     3.10    40    5.39    19/07    1250      regression sum of squares = 27.50
+           12.0   10.84   NAO      Bi)    IO     88215     (SHO    ovo.6)   residual sum of squares of Y = 13.75
+                                                                            correlation coefficient = .82
+            5.0    5.68    5.0     4.74    50    5:/5     8.0      6.89     r2 = .67
+14     GRAPHICAL    PRACTICE
+
+
+
+
+And yet how they differ, as the graphical display of the data            F. J. Anscombe, “Graphs in Statistical
+                                                                         Analysis,’ American Statistician, 27
+makes vividly clear:                                                     (February 1973), 17-21.
+
+
+
+
+     And likewise a graphic easily reveals point A, a wildshot obser-
+vation that will dominate standard statistical calculations. Note that
+point A hides in the marginal distribution but shows up as clearly
+exceptional in the bivariate scatter.
+
+
+
+
+                                                                         Stephen S. Brier and Stephen E. Fien-
+                                                                         berg, “Recent Econometric Modelling
+                                                                         of Crime and Punishment: Support for
+                                                                         the Deterrence Hypothesis?” in Stephen
+                                                                         E. Fienberg and Albert J. Reiss, Jr., eds.,
+                                                                         Indicators of Crime and Criminal Justice:
+                                                                         Quantitative Studies (Washington, D.C.,
+                                                                         1980), p. 89.
+                                                                                                      GRAPHIT CALE           X CEULEN GE   VA5
+
+
+
+
+   Of course, statistical graphics, just like statistical calculations, are                          Edward R. Dewey and Edwin F. Dakin,
+only as good as what goes into them. An ill-specified or prepos-                                     BEE UIE             METRES GS
+:           Ae           q                                                                           York, 1947), Pp. 144.
+  erous model or a puny data set cannot be rescued by a graphic
+(or by calculation), no matter how clever or fancy. A silly theory
+means a silly graphic:
+
+
+
+
+                             New York Stock Prices
+                           ars saan
+                                                Sey
+                                  Solar Radiation
+
+
+
+
+                                         [Se —"
+                                  London Stock Prices
+
+  minute
+  Calories
+  cm.
+  sq.
+  per
+
+
+
+
+             Jan.   Feb.   Mar.   Apr.    May   June    July    Aug.    Sept.   Oct.   Nov.   Dec.
+
+                                  SOLAR    RADIATION           AND     STOCK    PRICES
+   A. New York stock prices (Barron’s average) . B. Solar Radiation, inverted,
+and C. London stock prices, all by months, 1929 (after Garcia-Mata and
+Shaffner).
+
+
+
+
+Let us turn to the practice of graphical excellence, the efficient
+communication of complex quantitative ideas. Excellence, nearly
+always of a multivariate sort, is illustrated here for fundamental
+graphical designs: data maps, time-series, space-time narrative
+designs, and relational graphics. These examples serve several
+purposes, providing a set of high-quality graphics that can be
+discussed (and sometimes even redrawn) in constructing a theory
+of data graphics, helping to demonstrate a descriptive terminology,
+and telling in brief about the history of graphical development.
+Most of all, we will be able to see just how good statistical
+graphics can be.
+16     GRAPHICAL     PRACTICE
+
+
+
+
+Data Maps
+These six maps report the age-adjusted death rate from various              iach county’s rate is located in two
+                                                                            dimensions and, further, at least four
+types of cancer for the 3,056 counties of the United States. Each           numbers would be necessary to recon-
+map portrays some 21,000 numbers.! Only a picture can carry such            struct the size and shape of each county.
+a volume of data in such a small space. Furthermore, all that data,         This yields 7 x 3,056 entries in a data
+                                                                            matrix sufficient to reproduce a map.
+thanks to the graphic, can be thought about in many different
+ways at many different levels of analysis—ranging from the con-
+templation of general overall patterns to the detection of very
+fine county-by-county detail. To take just a few examples, look
+at the
+     - high death rates from cancer in the northeast part of the country    In highest decile,
+                                                                            statistically significant
+       and around the Great Lakes
+                                                                            Significantly high, but
+ - low rates in an east-west band across the middle of the country          not in highest decile
+
+ - higher rates for men than for women in the south, particularly           In highest decile, but not
+      Louisiana (cancers probably caused by occupational exposure,          statistically significant
+
+      from working with asbestos in shipyards)                              Not significantly different
+                                                                            from U.S. as a whole
+
+
+                                                                                                              JUG
+ - unusual hot spots, including northern Minnesota and a few
+      counties in Iowa and Nebraska along the Missouri River                Significantly lower than
+                                                                            U.S. as a whole
+ - differences in types of cancer by region (for example, the high
+   rates of stomach cancer in the north-central part of the country
+   —probably the result of the consumption of smoked fish by
+   Scandinavians)
+ * rates in areas where you have lived.
+
+
+     The maps provide many leads into the causes—and avoidance—
+of cancer. For example, the authors report:
+
+       In certain situations . . . the unusual experience of a county
+       warrants further investigation. For example, Salem County,           2Robert Hoover, Thomas J. Mason,
+       New Jersey, leads the nation in bladder cancer mortality             Frank W. McKay, and Joseph F. Frau-
+       among white men. We attribute this excess risk to occupational       meni, Jr., “Cancer by County: New
+                                                                            Resource for Etiologic Clues,”’ Science,
+       exposures, since about 25 percent of the employed persons in         189 (September 19, 1975), 1006.
+       this county work in the chemical industry, particularly the
+       manufacturing of organic chemicals, which may cause bladder
+       tumors. After the finding was communicated to New Jersey             Maps from Atlas of Cancer Mortality
+                                                                                                              for
+                                                                            U.S. Counties: 1950-1969, by Thomas J.
+       health officials, a company in the area reported that at least 330   Mason, Frank W. McKay, Robert
+       workers in a single plant had developed bladder cancer during        Hoover, William J. Blot, and Joseph F.
+       the last 50 years. It is urgent that surveys of cancer risk and      Fraumeni,Jr. (Washington, D.C.: Public
+       programs in cancer control be initiated among workers and            Health Service, National Institutes of
+       former workers in this area.?                                        Health, 1975). The six maps shown here
+                                                                            were redesigned and redrawn by
+                                                                            Lawrence Fahey and Edward Tufte.
+                                                i)                 :                                                                                                           =
+                                                ES                               =                                              a
+                                                                                             [ES                            |       }                                                         a
+
+                                bs        aia
+                                           ma                                                             ia            &                                                      A °
+
+                                                      ce                             i                                                                                         (
+                                     mf                x                                                                                                                       a
+                                     ie                                ah                                                                                                                                                      ‘nh
+                                                                   a                                                                                                                                                                             1x
+
+
+                          ON\                                           oe
+                                                           a                                         -                              2                                                                     2                          Ss
+
+
+
+
+   ae                                                                                    -                                               f                                                                                                )
+
+                     \                                                                                                                                                               ey
+
+
+
+                                                                            a
+
+                                                               L
+
+
+                                                                             :                                                                                        a                               a
+
+                                                                                                                                                So
+
+
+All types of cancer, white females;
+age-adjusted rate by county, 1950-1969                                                                    a                                                                                                            S
+
+
+
+
+             L
+
+
+
+
+                                                                                                     Hy            GR                                        oD            °
+
+
+
+                                                                                                 Tom                        Ch                           6
+
+
+                                                                                                          Hj            Se                                                                                                 M
+
+                                                                                                                                                                                                                                      é        vy,
+
+       lef                                                                                                     :            i           i a                                               a                   co           re
+
+                     Cr                                                                                                                 a       a
+                                                                                                                                                                  [                               E
+                                                                                                                                                                                                                               iSae
+                                                                                                                                                                                                                                          q]
+                                                                                                                                                                  7
+
+
+                                                eH)                              is          }                                  [|                                    My                                           {
+
+
+
+
+                                                                                                     an                                  “ile
+  PS             ;                                                                                                 ia ae        at                   —                                                                                j
+
+   me:                                                                                                                                   a                                                                                 ze
+             \                                                                                   L                                                   &
+
+
+
+
+All types of cancer, white males;
+age-adjusted rate by county, 1950-1969
+         See
+
+
+
+
+               ais
+                oo   z
+                     eam
+                                           Seago)
+
+
+
+
+   os
+
+
+
+
+Trachea, bronchus, and lung cancer;
+white females; age-adjusted rate
+by county, 1950-1969
+
+
+
+
+                                           eS
+
+
+                                      Ly
+
+
+
+
+   os.
+
+
+
+
+Trachea, bronchus, and lung cancer;
+white males; age-adjusted rate
+by county, 1950-1969
+                                     Ue                         55 a 8:                    a
+                                                                  zs   =|       Ry i       aa   nf           A                       S
+
+
+
+
+                                                                       ie                                                        ”       0   OS
+
+                                                                                                                  =a
+
+
+
+
+  ae,                                                                                                5
+            \                                                                          a
+
+
+
+
+                                                                                                             ‘i    iy
+
+
+
+
+                                                                                                                        1
+
+
+                                                                                                                            is                          7
+Stomach cancer, white females;                                   +5                              7
+age-adjusted rate by county, 1950-1969                           y                vy
+
+
+
+
+       D                       ae
+
+                                                       .                                   el
+                                                                                                             Ff                      5
+
+
+                                                                                   S|                             CY                     0        es
+
+
+
+
+                                Z                      aay
+
+
+                                                            py            2 2
+
+
+
+
+                                    Br                     Va          El
+                                                                                                                                                            pA
+
+
+
+  on                                      :   Z
+
+
+
+
+        \                                         Zz                               .
+
+
+
+
+                                                                            A                            :                  mi                     Sf
+
+Stomach cancer, white males;
+age-adjusted rate by county, 1950-1969                                          a
+20     GRAPHICAL    PRACTICE
+
+
+
+
+     The maps repay careful study. Notice how quickly and naturally
+our attention has been directed toward exploring the substantive
+content of the data rather than toward questions of methodology
+and technique. Nonetheless the maps do have their flaws. They
+wrongly equate the visual importance of each county with its
+geographic area rather than with the number of people living in
+the county (or the number of cancer deaths). Our visual impres-
+sion of the data is entangled with the circumstance of geographic
+boundaries, shapes, and areas—the chronic problem afflicting shaded-
+in-area designs of such “blot maps” or “patch maps.”
+   A further shortcoming, a defect of data rather than graphical
+composition, is that the maps are founded on a suspect data source,
+death certificate reports on the cause of death. These reports fall
+under the influence of diagnostic fashions prevailing among doc-
+tors and coroners in particular places and times, a troublesome
+adulterant of the evidence purporting to describe the already some-
+times ambiguous matter of the exact bodily site of the primary
+cancer. Thus part of the regional clustering seen on the maps, as
+well as some of the hot spots, may reflect varying diagnostic
+customs and fads along with the actual differences in cancer rates
+between areas.
+
+Data maps have a curious history. It was not until the seventeenth
+century that the combination of cartographic and statistical skills
+required to construct the data map came together, fully 5,000 years
+after the first geographic maps were drawn on clay tablets. And
+many highly sophisticated geographic maps were produced cen-
+turies before the first map containing any statistical material was
+drawn.? For example, a detailed map with a full grid was engraved
+during the eleventh century A.p. in China. The Yiti Chi Thu (Map          3Data maps are usually described as
+of the Tracks of Yii the Great) shown here is described by Joseph         “thematic maps” in cartography. For a
+                                                                          thorough account, see Arthur H. Rob-
+Needham as the                                                            inson, Early Thematic Mapping in the
+                                                                          History of Cartography (Chicago, 1982).
+      . .. most remarkable cartographic work of its age in any            On the history of statistical graphics, see
+      culture, carved in stone in +1137 but probably dating from          H. Gray Funkhouser, “Historical Devel-
+      before +1100. The scale of the grid is 100 li to the division.      opment of the Graphical Representation
+      The coastal outline is relatively firm and the precision of the     of Statistical Data,”’ Osiris, 3 (November
+      network of river systems extraordinary. The size of the original,   1937), 269-404; and James R. Beniger
+                                                                          and Dorcthy L. Robyn, ‘‘Quantitative
+      which is now in the Pei Lin Museum at Sian, is about 3 feet         Graphics in Statistics: A Brief History,”
+      square. The name of the geographer is not known. .. . Anyone        American Statistician, 32 (February 1978),
+      who compares this map with the contemporary productions             1-11.
+      of European religious cosmography cannot but be amazed at
+      the extent to which Chinese geography was at that time ahead        4Joseph Needham, Science and Civilisa-
+      of the West. . . . There was nothing like it in Europe till the     tion in China (Cambridge, 1959), vol. 3,
+      Escorial MS. map of about +1550... .4                               546-547.
+                                                                                                                                                                                                GRAPHICAL                                           EXCELLENCE                                              21
+
+
+
+
+                                                                                            fi      it!             2                                           Pee
+                                                                                                                                                                               To
+
+
+
+
+                          of OD Y Hf Bor Zh)
+                                                                                                         Ce                                                                                          et
+
+
+
+
+                   |
+                                                                                                                                ry
+                                                                                                                                                          CL
+
+
+
+
+                                                        40 de = Sp 08
+                                                14-4
+                                                                                Coo
+                                                                                  fe
+                                                                                                                                                                                                                             |_|            =
+
+
+
+
+         oaee
+                                                                                                              ey
+                                                                                                                                                                                        K
+             1                                                                                                                                    z             sl                                                  Me
+
+
+
+
+                                                X
+                                                                                                                                                                                                                   res
+                                                                                                                                                                                                                                                                                us            rary
+                                                                                                                                          rect                                        lesti
+
+
+
+
+                                                Yoo
+                   |
+                                                                                                                                                                                                                                                               ry
+                                                                                   mG                                                                           Eeele                      u/s3                                             =
+     |           rae                                                                                     Lote                        45
+                                                                                                                                                      a
+                                                                                                                                                      |
+                                                                                                                                                                          i
+                                                                                                                                                                                      ei
+                                                                                                                                                                                                     Kd
+                                                                                                                                                                                                                   <4 Mod                                           |
+         |
+         |                                                                                                                                            tees
+
+
+
+
+                                                ;
+                                                                                                                                                                      =                         ek
+
+
+
+
+                                                        I
+                                                                    palit
+                                                                                            Ft                                                    «                                   fhS
+
+
+
+
+                                                f
+                                                                                                                                                                                                           S)
+
+
+                                                                                                         lah
+                                                                                                                            va
+                                                                                                                                     t
+
+                                                                                                                                          R   [           as    |                                    -
+                                                                                                                                                                                                                   |
+                                                                                                                                                                                                                   pst
+                                                                                                                                                                                                                      w
+                                                                                                                                                                                                                        t                                                              Let sna
+                                                                                                                                                                                                           =,
+                                                                                  a=
+                                                                                            see                                                                                       2\ ‘
+                                                                                                              hed                                                                                                                      oe
+                                                                                                                                                                                                 a)                                         %
+                                                                                                                                                      ¥         %                                                                 e         re
+                                                         |
+                           q
+                                                                                   a                                        =                                                                                                               a
+                                                                                                                                                                                                     te                 L]43a                        =I
+                                                                                                                                                                ofS é ue              Ty
+                                               ‘
+
+                                                                                                                                                  =                                              3                                          rhe
+                                                                                  ve:                               6
+                                                                                                                                                      ax  pal             eS
+                                                                                                                                                                                           PP)       Sle          ex         Nk
+                   ie
+
+                                               te
+
+
+
+
+                                                                                                                                     2
+                           ra
+
+
+
+
+                                                                                                                                                                                                           kg
+                                                                                                              cd                A                                                     at                                wt                      eee
+                                                         f
+
+                                                                                            3                                                                   qe
+                                                                                   az                                                                                                                |
+                                                                    aa
+
+
+
+
+                                                                                  ex                                                      @ Cr                                 zp     [«
+                                                                                                                                                          Vee
+                                                                                                                                     e                                                                     rl
+                                                                                                         eS2                                                                                         7                                      1
+                                                                   \
+
+
+
+
+                                                                                                                                              7
+
+                                                                                                                                                          ST
+                                                                    :
+                                                         {
+
+
+
+
+                                                                                                              bea
+                                                                                                                                                                                      3 =
+                                               at
+
+
+
+
+                                                                                                         ie                                       3                                                                               3 &
+                                                                                                                                                                                                                                                =
+                   my
+
+
+
+
+                                                                                                                                                      R         [ws                                        ithe        y                                       w
+
+                                                                                            i                                                                                                        =                                                   fe         h
+                                                                                                                                                                                                                                                                                                *   age
+                   |
+
+
+
+
+                                                         |
+
+
+
+
+                                                                                            i                                                                                                                                          ex
+                                                                                                                                                                                                                                  |         <s
+                                                                                                                                          PPK                             e    aes                                                                                  ale
+                   =
+
+
+
+
+                                                                                                                                                                                                     we                      Py                          el                  aie
+
+                                                                                                                                                          :
+                                                                                                              &
+                                                                                                                                                                                                                  Kaa                  Aig                          =
+                                                                                                                                                      $3                              ees                                                   a)
+                                                                                            H                                                                                                                                                            |<      Q\S|            St
+                                                                    |
+                   2x
+
+
+
+
+                                                                                                                                     &                                                                                                          =              r)*
+                            =
+
+
+
+
+                                                                                                                                                                                      4              bel                                                                         ge
+                                                                                                                                                                                                                                                                                 | [2
+                                                          a
+
+
+
+
+                                                                                                                                                                                                                             P                           Nee
+                                                                                                              |                                                                            ex]                                                                                   WOR
+                                                                                                                                                                                                                  a                                            fet
+                             3}
+
+
+
+
+                                                                                                                    a3                                                                                                                                                                 AR x
+                                                                                  |
+                                                                                                :                                                     we
+                                                                                                                                                                                                                                                                 L               =
+                   =
+
+                                               =
+                             thal
+
+
+
+
+                                                                                                                                                                                                                  ie                   <3
+
+                                                                                                                                                                                                                                  ie                                i
+                                                                                                                                                                                                                                                                                                    FF
+                             te
+
+
+
+
+                                                                                                                                                                                                                                                                                                               =
+                                                                                                                                                                                                                             l                                               Ss Sana                [mags
+                                               =
+
+
+
+
+                                                                                                                                                                          e                                                                                    [el
+                                                                                                                                                                                                                                                                             = P77
+                             the}
+
+
+
+
+                                                                                                              ®
+                                                                                                                                                                                                                                                                                                          lo
+                                                                                                                                                                                                                                                                                       Re
+
+                                                                                                i                                                                                                                 Sle                           £                                               a
+                   =
+
+
+
+
+                                                                                                                                4         B                                                                                                                        |
+                                                                                                                                                                                                                                                                   fos
+                                                                    *
+
+
+
+
+                                                                                                         al
+                                                                                  €                                                                                           ;                                                                                                             =
+
+
+                                                                                Coo
+                                                           a
+
+
+
+
+                                                                                                                                                                          =                                                                                             €|
+                                                                                                                                                      |
+                   ve
+
+
+
+
+                                                                                                                                                                                                                                                                                                2
+                                                                                                                            S                                                              ee                                                                  |
+                                                                +
+
+
+
+
+                                                                                                                                                                                                      |
+                                                                                                                        *
+                                                                    ce
+
+
+
+
+                                                                                       [fs               _|                                           te                                                                                                                                    is 5
+                                                           altel +
+
+
+
+
+                                                                                                                                                                          ey                     e
+
+
+                                                                                                                                                      SNe fs ie
+                                                                                                                                                              le                                                  ae
+                                                                                                         ee
+                               1
+
+
+
+
+                                                                                                                                                                  zie                                                 ey
+                                                                                                                                                  4             x3 Bae                                                                              1a             eSWl
+                                               ial
+
+
+
+
+                                                                            1                                                                                     ds                                                                                     $
+                                                                                                                                                                                                                             ime            (he          Sh   +
+                                                                                                                                                                                                                                                            [
+                                                                                       |
+                                                                                                                                                                                                                                                         es
+                                                                                                              =                                                  —
+                                                                                                                                                                 CS                                                                                      ee #
+                                               iE
+
+
+
+
+st                                                                                                                      }                 rie
+                                                                                                                                           N
+                                                                                                                                                                                    Kaw
+                                                                                                                                                                                    Asis
+                                                                                                                                                                                    ==ie
+                                                                                                                                                                                      24
+                                                                                                                                                                                      ~
+                                                                                                                                                                                           Yale
+                                                                                                                                                                                                                      42                            at
+                                                                                                         [
+                                                                                                                                                      SS
+                                                                                                                                cS                                        ae
+                                                            eae
+
+
+
+
+                                                                                                                                     Ip
+                                                                                                                                                                 |            bal     ig
+                   ia
+
+
+
+
+                                                                                                                                                                 Fi
+                                                                                                                            =
+                                           jaca cal
+
+
+
+
+                                                                                                                                              &
+
+                                                                                        i       i             i
+                                                  eat
+
+
+
+
+                                                                                        x
+                   ace!
+
+
+
+
+                                                                                            EE
+                                                                                                    =|        Sy
+                                                                            we]
+
+
+
+
+                                                                                                                                                                                           E. Chavannes, ‘“Les Deux Plus Anciens
+                                                                                                                                                                                                                                                                                                                   »”
+                                                                                                                                                                                           Spécimens de la Cartographie Chinoise,
+                                                                                                                                                                                           Bulletin de ?Ecole Francaise de Extr eme
+                                                                                                                                                                                                                                                                                                    A
+
+
+
+
+                                                                                                                                                                                           Orient, 3 (1903), 1-35, Carte B.
+    22     GRAPHICAL    PRACTICE
+
+
+
+
+         $9 Ecce formulam.vium satque
+           ftru@uram Tabularum Prolomzi,cum quibufdam locis,in
+             quibus ftudiofus Geographiz fe fatis exercere poteft,
+
+                           Gober tite Nie RL,
+                                  pars fuperior.
+
+
+
+
+av                                                                        Be
+ae                                                                        57
+ty 2                                                                      Av
+     5                                                                    Fi
+As                                                                        30
+     2                                                                    37
+OF                                                                        54
+Oa
+O
+
+
+
+
+                                                yD
+                                               Soh AWAD
+
+
+                                    pars inferior.
+                                   MER    LD TES.
+
+
+
+
+         The 1546 edition of Cosmographia by Petrus Apianus contained
+    examples of map design that show how very close European car-
+    tography by that time had come to achieving statistical graphicacy,
+    even approaching the bivariate scatterplot. But, according to the
+    historical record, no one had yet made the quantitative abstraction
+    of placing a measured quantity on the map’s surface at the inter-
+    section of the two threads instead of the name of a city, let alone
+    the more difficult abstraction of replacing latitude and longitude
+    with some other dimensions, such as time and money. Indeed, it
+    was not until 1786 that the first economic time-series was plotted.
+                                                                           GRAPHICAL        EXCELLENCE                   23
+
+
+
+
+                                                                                                                7   SEES
+                             \                                                                           of
+                                                                                                         hailed/ “PART,
+                                                                                                                  i     7 “OF
+                                                                                                         ENE,
+                             AWAY                                                                                               3A
+
+                              tal                                                                         (pe |rH     GKE AT;
+                                \\
+                      \\‘s\ \\‘qy\
+                 \\          a’ah
+                                      \e
+                         7
+                                 )/
+  A
+
+a
+y KSpry! 3 tal
+gz Vals t
+
+
+
+
+     One of the first data maps was Edmond Halley’s 1686 chart            5Norman J. W. Thrower, “Edmond
+  showing trade winds and monsoons on a world map.> The detailed          Halley as a Thematic Geo-Cartogra-
+                                                                          pher,” Annals of the Association ofAmer-
+  section below shows the cartographic symbolization; with, as            ican Geographers, 59 (December 1969),
+  Halley wrote, “. . . the sharp end of each little stroak pointing out   652-676.
+
+  that part of the Horizon, from whence the wind continually comes;
+  and where there are Monsoons the rows of stroaks run alternately
+  backwards and forwards, by which means they are thicker [denser]
+  than elsewhere.”
+
+
+
+
+                                                                          Edmond Halley, “An Historical Ac-
+                                                                          count of the Trade Winds, and Mon-
+                                                                          soons, Observable in the Seas Between
+                                                                          and Near the Tropicks; With an At-
+                                                                          tempt to Assign the Phisical Cause of
+                                                                          Said Winds,” Philosophical Transactions,
+                                                                          183 (1686), 153-168.
+24       GRAPHICAL               PRACTICE
+
+
+
+
+      An early and most worthy use of a map to chart patterns of
+disease was the famous dot map of Dr. John Snow, who plotted
+the location of deaths from cholera in central London for Sep-
+tember 1854. Deaths were marked by dots and, in addition, the
+area’s eleven water pumps were located by crosses. Examining the
+scatter over the surface of the map, Snow observed that cholera
+occurred almost entirely among those who lived near (and drank
+from) the Broad Street water pump. He had the handle of the
+contaminated pump removed, ending the neighborhood epidemic
+which had taken more than 500 lives. The pump is located at the         6E. W. Gilbert, “Pioneer Maps of Health
+center of the map, just to the right of the D in BROAD STREET. Of       and Disease in England,” Geographical
+                                                                        Journal, 124 (1958), 172-183.
+course the link between the pump and the disease might have been
+revealed by computation and analysis without graphics, with some
+good luck and hard work. But, here at least, graphical analysis
+testifies about the data far more efficiently than calculation.
+
+                        Yards
+ 50         °      50            100         150    200
+
+        x   Pump    e   Deaths     from   cholera
+
+
+
+
+      Charles Joseph Minard gave quantity as well as direction to the
+data measures located on the world map in his portrayal of the
+1864 exports of French wine:
+            awd)
+              >            sonvanrb               sowwrmaddyy—~V2
+                                                      gag     smmeonb
+                                                                 2¢               CI               orwhin2.eeopedws
+                                                                                                                avd                 fame.
+                                                                                                                                       Ww             IS|                             |                                                                                   21097 med7)                            wrygry                                anbyedorb
+                                                                                                                                                                                                                           Reregerrs
+                             22029)
+                                 avd Ir        ie
+                                                18          psépu
+                                                              af                arrpodeny
+                                                                                        peru,
+                                                                                          me or, Cp 1                      CAICNDY
+                                                                                                                             UD    “IPH
+                                                                                                                                                                                          ALAS
+                                                                                                                                                                                          *                           an                        I me~v ward                             ag Iai
+                                                                                                                                                                                                                                                                      ~Heveem2qN
+                                                                                                                                                                                                                                                                         2¢        22n12¢2rde0
+                                                                                                                                                                                                                                                                                       ea)        pausenow late se              pw
+                                                                                                                                                                                Roo   mpyooys.
+    ey         ernabaey
+                  oe pur2¢           mayneabnor             ~mayuegrde2
+                                                              oa}      earpmenb ea2peda9
+                                                                                  v      woeye2
+                                                                                          @                         eat3        mabe) anedWie         ayy                                                                                        suaaqybryygonkyonkyarn paw ¢21dv~P
+                                                                                                                                                                                                                                                                                 9)     2291)  abrnryon
+                                                                                                                                                                                                                                                                                                    ~1m,2,°
+                                                                                                                                                                                                                                                                                                       2    Moning rwaygri snbrydosb
+                                                                                                                                                                                                                                                                                                                              -49|
+           MNO!)
+              82D        sounrenb
+                             10 ¢~    enyel       gaounadoos
+                                                     1            YoIgueN
+                                                                       eLOU
+                                                                          1G        S22Aw2]
+                                                                                       9C V]     pu0l                                                                                                                                              YnOCEDe-
+                                                                                                                                                                                                                                                     We 62]            wIgEIDEgH
+                                                                                                                                                                                                                                                                            —MOP92)       popINIM
+                                                                                                                                                                                                                                                                                           ' “2 $24          er2uuogre
+                                                                                                                                                                                                                                                                                                                o9)               saimonb              somgePry
+                                                                                                                                                                                                                                                                                                                                                         2¢ ana                 eoapodiur
+                                                                                                                                                                                                                                                                                                                                                                                 |
+                                                                                                          siggy            mw   JVM Pe]           POAYO
+    Eola         worn
+                   gud2NE v)         M2       00007
+                                                egy        crayon?
+                                                              |   Me 2p           egpodaeo
+                                                                                       avd aon
+                                                                                             30          Y'9229) DMoave
+                                                                                                                  + og o00ns            deep
+                                                                                                                                           'g6 ooo Ma
+                                                                                                                                                                                          %                                            no            V22podeD
+                                                                                                                                                                                                                                                          CVE
+                                                                                                                                                                                                                                                            J                      epU2o)u09‘>IHNY
+                                                                                                                                                                                                                                                                                        dH gud     CHEMIN
+                                                                                                                                                                                                                                                                                                     C9                      eIMMUEG)              Sewsumrg
+                                                                                                                                                                                                                                                                                                                                                      ~2 yDbu                   201
+                                                                                                                                                                                                                                                                                                                                                                                |
+           smbrbyoee
+                 o00'g>
+                     U9      7YBIP 9004,“
+                                       M2                                                                                                                                                                                              rw Ve                     JerVENwIy TPVrSgy
+                                                                                                                                                                                                                                                                               61r
+                                                                                                                                                                                                                                                                                 6              Si                           rn
+                                                        onbruryo
+                                                              .
+         one
+           De     YT}I¢F919]
+                           ¢9)            eUENwIred29
+                                               TWH,e —NA}2 ~nivg somaraywr grep              sheoyaro
+                                                                                                 pune aun sag          saporhonad9¢-Vaypuy
+                                                                                                                                                                                                                                               »             0   692    sia29¢9¢       canbry
+                                                                                                                                                                                                                                                                                           coe ortta1            erd~Wwo.1
+                                                                                                                                                                                                                                                                                                                      awag                   2nBuneie
+                                                                                                                                                                                                                                                                                                                                               |                       —semenyfing
+                                                                                                                                                                                                                                                                                                                                                                          Me |
+                                                                                                                                      ro         smn
+                                                                                                                                                                                                                                             22)Ne    >agy         sbiwgoo
+                                                                                                                                                                                                                                                                        IE! WO HEA HH Med¢                 ~MImUIEeI0229
+                                                                                                                                                                                                                                                                                                               9¢              yuorepodue
+                                                                                                                                                                                                                                                                                                                                 9» buy ma2p22629 mie |
+                                                                                                                                                                                                                                               ooh)Ho Ww anew                  ~nO}coe E9IIMM ‘eI
+                                                                                                                                                                                                                                                                                                J!            >¢-ne¢e222yn2e-v) wonzrdemy
+                                                                                                                                                                                                                                                                                                                                       ve   mvaygPlapoub
+                                                                                                                                                                                                                                                                                                                                                    |
+                                                                                                                                                                                                                                                   ty      con ernie mb       eua2,¢
+                                                                                                                                                                                                                                                                               eu, re1  ~moy
+                                                                                                                                                                                                                                                                                          >)>) 206
+                                                                                                                                                                                                                                                                                                 agoyb7 v_iv ovd 2200
+                                                                                                                                                                                                                                                                                                                    }J     APUD paa2z2ybuyy
+                                                                                                                                                                                                                                                                                                                                      91mft      poippodit
+
+
+
+
+                                                                            Ve
+                                                                                                                                                                                                                                                                                                                                                       »qebney
+                                                                                                                                                                                                                                        (1     “oggL 2IOMME EF HE PQ                                                                                                            }
+                    :                                                           Anim
+
+
+
+
+                                                                   ae
+              TOOIWAWY                                                      4        »                                                                                                                                                                                                                                                  j                          |
+|           VW            aa                                            y                                                                                                                               -                                                                                                   17                          i)                     i
+                        aTuON                               fae                                                                                                                               ANOVWUT IV                                                                                                    i,                      i                                      ae
+|                   ;                                       a /
+|                                                           §                                                                                                                                                                                                                                Ti petalaaad          imam           aed i ho                             ! Sag:
+                                                                                                                                                                                                                                                                                                             |                      3                   lJ                  I
+                                                                                                                                                                                                                                                                                                        4                                                      |
+                                                           fi
+                                                                                                                                                                             DONVAA
+
+
+
+
+                                                                                                                                                                                                    |                 ah                                 |                         NTE
+                                                                                                                                                            y           ot
+                                                                                                                                                                ——   [eae
+
+
+                                                                                                                                                            \
+                                                                                                                                                                 a     in                 “<       os       z              ,‘
+                                                                                                                                                                                ose              sai            .,~
+
+                                                      i                                                                    eee .
+                                                  {                                                             /                   =                                                                                                                                         2ani                                                            e
+                                                                                                                                                                                                                       \                        J
+                                                  .                                      s                                  aro                       eae                                                              he.                                                                                                                                *|
+                                                                                                                                                  f                                                                                                                                                                LEH
+                                                                                                   np                                            pS                                                                                                                                                                 \                             si
+
+                                                                                                                                             }
+                                                                                                                                                                                                        ra0LuaY¥
+                                                                                                                                                                                                             1                                                                            Aeoyoipuey,
+                                                           pees                                         ares
+                                                                                                                                             }                                                                                                                                     .
+                                                                                                                                             {                                                                                                                                                                           \
+
+                                                                                                                                                                              Sapeers
+                                                                                                                                                                                 —~
+                                                                                                                                                                                                                                                                                                                                        me
+
+
+
+
+                  sapreyD Ydasof                          ‘preutyy xnvajqvT,
+                                                                         —DIL)
+                 sanbiyd
+                    ja     sajavZ                            saayvsnsny
+                                                                ap “WW     ‘POUL
+                          “6ggt-Sret
+                            ev       oroyjiod
+                                        Jo sty                                     yz0mM Prey
+     Aq ayy                                   anbamorqrg
+                                                op|      [09g                                    speuoneny
+         sop            squog
+                           39                    ‘sagssneyD
+                                                        ‘sued
+26   GRAPHICAL     PRACTICE
+
+
+
+   Computerized cartography and modern photographic techniques
+have increased the density of information some 5,000-fold in the
+best of current data maps compared to Halley’s pioneering effort.
+This map shows the distribution of 1.3 million galaxies (including
+some overlaps) in the northern galactic hemisphere. The map
+divides the sky into 1,024  x2,222 rectangles. The number of gal-
+axies counted in each of the 2,275,328 rectangles is represented by
+ten gray tones; the darker the tone, the greater the number of
+galaxies counted. The north galactic pole is at the center. The
+sharp edge on the left results from the earth blocking the view
+from the observatory. In the area near the perimeter of the map,
+the view is obscured by the interstellar dust of the galaxy in which
+we live (the Milky Way) as the line of sight passes through the
+flattened disk of our galaxy. The curious texture of local clusters
+of galaxies seen in this truly new view of the universe was not
+anticipated by students of galaxies, who had, of course, micro-
+scopically examined millions of photographs of galaxies before
+seeing this macroscopic view. Although the clusters are clearly
+evident (and accounted for by a theory of galactic origins), the
+seemingly random filaments may be happenstance. The producers
+of the map note the “‘strong temptation to conclude that the gal-
+axies are arranged in a remarkable filamentary pattern on scales
+of approximately 5° to 15°, but we caution that this visual impres-
+sion may be misleading because the eye tends to pick out linear        7 Kfichael Seldper, BrHL sicher. Bdeard
+patterns even in random noise. Indeed, roughly similar patterns        J. Groth and P. James E. Peebles,
+                                                                       “New Reduction of the Lick Catalog of
+are seen on maps constructed from simulated catalogs where no          Galaxies,’   Astronomical Journal, 82
+linear structure has been built in. . . 7
+                                          ”
+
+                                                                       (April 1977), 249-314.
+
+The most extensive data maps, such as the cancer atlas and the
+count of the galaxies, place millions of bits of information on a
+single page before our eyes. No other method for the display of
+statistical information is so powerful.
+GRAPHICAL   EXCELLENCE   27
+             28                   GRAPHICAL   PRACTICE
+
+
+
+
+             Time-Series
+
+             The time-series plot is the most frequently used form of graphic                   8A random sample of 4,000 graphics
+                                                                                                drawn from 15 of the world’s news-
+                 design.8 With one dimension marching along to the regular rhythm
+                                         .                                                ;     papers and magazines published from
+                 of seconds, minutes, hours, days, weeks, months, years, centuries, or          1974 to 1980 found that more than 75
+                 millennia, the natural ordering of the time scale gives this design a          percent of all the graphics published
+                                                                                                were time-series. Chapter 3 reports more
+             strength and efficiency of interpretation found in no other graphic                on this.
+                 arrangement.
+                             This reputed tenth- (or possibly eleventh-) century illustration
+             of the inclinations of the planetary orbits as a function of time,
+             apparently part of a text for monastery schools, is the oldest known
+             example of an attempt to show changing values graphically. It
+             appears as a mysterious and isolated wonder in the history of data
+             graphics, since the next extant graphic of a plotted time-series
+             shows up some 800 years later. According to Funkhouser, the
+             astronomical content is confused and there are difficulties in recon-
+             ciling the graph and its accompanying text with the actual move-
+             ments of the planets. Particularly disconcerting is the wavy path                  ar eee thon              TA ne eae
+             ascribed to the sun.? An erasure and correction of a curve occur                   Tenth Century Graph,” Osiris, 1
+             near the middle of the graph.                                                      (January 1936), 260-262.
+
+
+
+
+Neat
+    Wad
+
+
+
+
+                                              Le
+                                                              _
+                                                          ee Same
+                                                                                                HAS        Toy
+
+
+—   e                    =         WA PRROeBEE
+                                      sarc HS
+    r                .
+                                                                    Bue                                                          CoE
+    *
+    cl   .
+
+
+
+
+                                                                                                                                 a WY
+    o*
+
+
+
+
+                                                                                                                                ‘:
+                                                                       a)                                                          BS
+
+                                                  eae BEG
+                              2
+                                                                    ZA
+                                                                    WZ
+                                                                        Za]
+         “el
+
+             ~
+
+
+
+                 x                             HES     FEESwe
+                                                                                                                                                               GRAPHICAL                             EXCELLENCE                               29
+
+
+
+
+  It was not until the late 1700s that time-series charts began to
+appear in scientific writings. This drawing of Johann Heinrich
+Lambert, one of a long series, shows the periodic variation in soil
+temperature in relation to the depth under the surface. The greater
+the depth, the greater the time-lag in temperature responsiveness.
+Modern graphic designs showing time-series periodicities differ
+little from those of Lambert, although the data bases are far larger.
+                                                                                                                                                               J. H. Lambert, Pyrometrie (Berlin, 1779).
+
+
+
+
+ae                                            NORTHERN        SOURCE                                        VOYAGER       2                                SOUTHERN                    SOURCE
+ r=(0)        ai      i      \     \    ake              i        A          I   i       \    x);     I     he    eC             I       n         i            L         i   Es            i        1        [feneener         1       =f.
+ Ss            | 56.2kHz                           /         |
+ GY      te                                    f
+ Z 0 ee                                         |
+ iL            1 3.11 kHz
+ Or      =6 4
+ eal                               Kiaoreatlnatiedld
+ O
+ La
+    11 17.8 kHz
+ wo fhe 4                                                     &                         5                         she ie             r                 i             lh                |:            |                              ,         hal
+
+       207
+
+
+
+ ae ae                                                        e                                                                                            ae                               Ti
+ SI)          4                                        MAGNETIC                      JOVIGRAPHIC
+       -20°   nas    ie     xc     T     T      T        T            T     T                  T      T                         T        T    ——           ate         T           T        7        :ia      T    aati     =
+
+
+ R(R) 106.5                            Js)                                83.4                      TAGS)                     59.2                                  46.5                                   33.1                               9.3
+                          JULY 2                       CUES                          JULY 4                      JULY 5                      JULY          6                           WUE      of                        JULY 8, I979
+
+
+
+
+This plot of radio emissions from Jupiter is based on data collected
+by Voyager 2 in its pass close by the planet in July 1979. The radio
+intensity increases and decreases in a ten-hour cycle as Jupiter
+rotates. Maximum intensity occurs when the Jovian north mag-
+netic pole is tipped toward the spacecraft, indicating a northern
+hemisphere source. A southern source was detected on July 7, as
+the spacecraft neared the equatorial plane. The horizontal scale
+shows the distance of the spacecraft from the planet measured in
+terms of Jupiter radii (R). Note the use of dual labels on the hori-
+zontal to indicate both the date and distance from Jupiter. The
+entire bottom panel also serves to label the horizontal scale,
+describing the changing orientation of the spacecraft relative to
+Jupiter as the planet is approached. The multiple time-series
+enforce not only comparisons within each series over time (as do
+                                                                                                                                                           D. A. Gurnett, W. S. Kurth, and F. L.
+all time-series plots) but also comparisons between the three
+                                                                                                                                                           Scarf, ‘Plasma Wave Observations Near
+different sampled radio bands shown. This richly multivariate                                                                                              Jupiter: Initial Results from Voyager
+display is based on 453,600 instrument samples of eight bits each.                                                                                         2,” Science 206 (November 23, 1979),
+                                                                                                                                                           987-991; and letter from Donald A.
+The resulting 3.6 million bits were reduced by peak and average                                                                                            Gurnett to Edward R. Tufte, June 27,
+processing to the 18,900 points actually plotted on the graphic.                                                                                           1980.
+       30         GRAPHICAL                       PRACTICE
+
+
+
+
+          Time-series displays are at their best for big data sets with real
+       variability. Why waste the power of data graphics on simple lin-
+       ear changes,
+
+
+
+
+       which can usually be better summarized in one or two numbers?
+       Instead, graphics should be reserved for the richer, more complex,
+       more difficult statistical material. This New York City weather
+       summary for 1980 depicts 2,220 numbers. The daily high and
+       low temperatures are shown in relation to the long-run average.
+       The path of the normal temperatures also provides a forecast of
+       expected change over the year; in the middle of February, for
+       instance, New York City residents can look forward to warming
+       at the rate of about 1.5 degrees per week all the way to July,
+       the yearly peak. This distinguished graphic successfully organizes
+       a large collection of numbers, makes comparisons between different
+       parts of the data, and tells a story.
+
+
+
+
+                                                                          NEW YORK CITY’S WEATHER FOR 1980
+              JANUARY        FEBRUARY.                                                                                                                        AUGUST             SEPTEMBER               OCTOBER              NOVEMBER                        DECEMBER
+                                                                                                                                                        Eee     ee                                                                               7
+             ANNUAL TEMPERATURE
+            5%                 =75°
+                                                                                                                                              lleiag      July 21: 102°
+
+
+
+                                       oe                                                          _     ble                           j                            :                                              LINE INDICATES
+                                                                                                                                       :                                                                            NORMAL HIGH
+            1°)
+                   1980    NORMAL                                                            7                                                     f            :
+
+70° bores                                oi                 4         a        a                                              i               alld                          Ba          y    '       7                       ae                           =
+
+
+                                                                                   a=   if                                                                                                                ¥
+                                                                                                                                                                                                                    ai                               j
+                                                                                                                                                                                                                                  y                      CT]                   50°
+
+
+                                                                                                                                                                                                                    wr            Wy N\; Y
+                                                                                                                                                                                                                         i                  1)
+
+
+
+
+                                                       LINE INDICATES                   ee                          ef                             zi                   =           a                                                                         f   ‘ i
+                                                           NORMAL LOW                                                                         ss                                    =                                                                                    Vi.
+                                                                                                                                         ane)                                |          Sanches                      +f                  DEC. 25:-1°
+                                                                                             PRECIPITATION IN INCHES
+                                                                                        Total Precipitation for 1980.......... 44.54
+                                                                                        Normal Precipitation...........:.......40.19                                                                                              ——             $$$               _}
+
+
+
+
+                                                                                                                                                                                                 +                  —+
+                                                                                                          =           os i          4 ae                                                                        et         LA    |         LD.
+        ACTUAL    NORMAL    ACTUAL   NORMAL   |                                          __ACTUAL NORMAL | ACTUAL NORMAL | ACTUALNORMAL | ACTUALNORMAL                                           | ACTUAL NORMAL | ACTUAL'NORMAL | ACTUAL.NORMAL
+
+
+
+                                                                                                                                                                      i i fob
+                                                                                                                                                                AR aatAdi
+100 (Percent                                           =        ‘ee       os             r=
+
+    aanne aWa i at
+aerres                                                                                                       AAA
+  r]
+
+
+
+ oO                                                                                              {RELATIVE   HUMIDITY    AS       OF   NOON                                                                                                  t                             J0
+
+
+
+                                                                                                                                                                                   New York Times, January 11, 1981, p. 32.
+                a                  QH
+                                    30            se        Cb)              ‘reyrey             is ut} wy
+
+
+
+                                                                                                                                                                                                                                                                                                                                         6
+                S        ©         SS ©           eae                                            osea      see
+                                                                                                          ds                                                                                                                                                                                       Zz
+                Oo FP                             “GUO  QS ©                                     ae   Peel ea
+                is sa Se                          Ne ves a eet                                   eec
+                                                                                                   er On
+                                                                                                       tRe
+
+
+
+
+                                                                                                                                                                                                                                                                                                         montereaut{ {IY
+                                      ya, Soe
+                                    got)                    So)                   &     o        &         &:3 6                     ™                                                                   ok                                                                                                                                  s
+                         SS we,    eS                        eS se es                      eate    ya                         o                                                                   2)
+                &          Oocs GQ                            iadb etek                    ct   OH Se GN                   [esl ‘wa
+                aw SS   Huaao                               oO                            oo es      88 SS OO                                                                                            i                                                                                                                                   o
+                   S70 Be oy                                         ers
+                v     =    .                                          2 oOo                 aAare  ith 2sce                                                                                       2a
+                   oe    SO                                                                      ae ey                                                                                                   K                                                                                                                 4         :
+                   ee      =                                                          US oO ales,120 GU) Ss 3                                                                             bs
+                      GSSe                                                               ONTRey,      nee ON set                                                                                                                                                                                                                aS           6)
+                    yg SS eo                                             8 8                     a8                                  abs
+                                   Aw es                                 2              ah                     a                     a7)                                                  2                                                                                                                                              2
+                                  aes             ea                                                 he                 OtBY
+                         8 S                      z                               of                  8659
+                                                                                                        6                            =
+                         Ss              Soa
+                                           ~                                 un         a7                 e008 a8                                                                                                                                                                                                         4             =P
+                             “wo         QO,      HH                              Rey    (any              on
+                                                                                 eephe tear Maced                                                                                                                                                                                                                 P                      —_
+                             22s fi3 o& osgeGao                          odee = mend Oa = ae      Boro:                                                                                   5 =                                                                      :                                                                     :
+                                                                                        cea                                      cuore)                                                                                                                                SS                      2                                     a
+                                   O°             eo)                             oS       wW         FemSO                                                                               oo                           i                     SI                        —             SZ                                                  e
+                                         oa                                       ES >           a,   oY   =              es m                                                            .                           bx                         +                         aa             ae
+                                                  24g                                                                                eyehesae                                                                                                                                                 =a
+                    IS                   ore)                                     Sy             BS GR        4S                                                                          L                                                                            —                  !                                              «
+                             Oo 0     02 og                                       4S               Nae 8   4  =                                                                                              Zr        IZ                    J                 K           KS
+                                    ee
+                                   seu)
+                                         ay                                        bo              Oeste
+                                                                                                    t       Sirti                                                                                        ‘                               D                             Sac
+                                                  och                             eC               Siroleee
+                                                                                                       he     A                                                                                   ae                                                       —                         =                                                   ze
+                                                                     On                  eeOn ae    cu                           Omics                                                                                                            :
+                                   rgeet eateymleich                     a                       85°
+                                                                                                   $=                                ‘4                                                                      4                                   =                               SZ
+                             &             eee
+                                           6
+                                          £3                                        5
+                                                                         8e og o 8gas                               ©            o
+                                                                                                                                 Ese                                                                                                     oN
+                                                                                                                                                                                                                                         Ss                                          ——
+                                                                                                                                                                                                                                                                                     a2                                                  A
+                                                                                                                                 tH                                                           4                            <
+                                   0-8© 5.4                                        os                 NemaaEO
+                                                                                                          Oo  y =                                                                                  —                               ran                                          ZS
+                                                                                                                                 avegear                                                                                                 =                     A
+                                                  epee 8 es#0u               oo Go      GS  DS SS CG
+                                                                                                                                     E222                                                          Naa
+                                                                                                                                                                                                                                                               a e
+                                   tae34 oe
+                                      pe gets                                ee                    —aHe?'.
+                                                                                        es$48Mea Bes                                                                                                                                                           Po ===
+                                   ey se                                 2              lie                                      {Oo                                                                                  :                               ee
+                             1S                    one                                  eS 2               to                        Ba                                                                                        a                 A
+                             SS     ano) fo)                                 Wee te) IS                 feligd
+                                                                                                           4                   Se)                                                                                x
+                             OE By                =                               Ocs Be                   ee ak A                                                                        he                                       es              REE
+                                                                                                                                                                                                                                                 Reee
+                                   FO             Ore                    YF &                    QS 8                            0o6os838                                                                                          y     Z
+                                    Ss                                            +         _—              rv                       ts,                                                                                                         =             =
+                             ce          ow                                           Re             moO ct                      Cee                                                                                   1                 rx
+                                         sa!                                                ~                                        ©)
+                                                                                                                                                                                                                                                               K                     5.
+                                         >                                                                                                                                                                            [x                 ——                    M
+                                                                                                                                io
+                                                                                                                                                                                                                                         mNIDZA
+
+
+
+
+                                                                                                                                                                                          ANYONEATIWy
+                                                                                                                                                                                                       l
+                                                                                                                                                                                                                      Gastal HLL
+                                                                                                                                                                                                                                                 aa
+                                                                                                                                                                                                                                                                                                   it
+                                                                                                                                                                                                                                                                                                                                                  GRAPHICAL
+
+
+
+
+                                                                                                                        A,
+            J
+                                                                                                                   s fA
+ ee
+ =
+                                                                                                                                                                                                                                   N
+                                                                                                                                                                                                                                         FATT
+
+                                                                                                                                                                                                                                    \
+
+
+
+
+ i
+                                                                                                                                                                                                 Ai
+
+
+ SS                                                                                                                     = BS
+                                                                                                                                                                                                                      lrCUES ii
+
+                                                                                                                                                to the French engineer, Ibry.
+                                                                                                                                                                                                                      ELLHLLATN EN
+
+
+
+
+SS
+                                                                                                                                                                                                   N
+
+
+
+
+e
+        i           ee                                  -            a                                7                                    ut
+                                                                                                                                                                                                                                                                                                                                                  EXCELLENCE
+
+
+
+
+                                                                                                                                                                                                                                                                                                        PY
+
+
+
+
+—
+E==
+aSr
+                                                                                                                                                                                                  TTT NT
+
+
+
+
+4Seee
+                                                                                                                                                                                                                      Ht Th ACOUT
+
+                                                                                                                                                1885), p. 20. The method is attributed
+                                                                                                                                                                                                   S x
+                                                                                                                                                                                                                                         NUT
+
+
+
+
+                                                                                                                                                                                                                                                                                                                               ey
+                                                                                                                                                E.J.Marey, La Méthode Graphique (Paris,
+                                                                                                                                                                                                   4
+                                                                                                                                                                                                                                                                                                             vil Alr
+
+
+
+
+                         7                   iS                  [                                                  s                       =
+                                                                                                                                                                                                                                                                                                                                                  31
+
+
+
+
+                                                                                                                                                                                                                                                                                                        7 0
+
+
+
+
+    =SS
+    >.
+32         GRAPHICAL          PRACTICE
+
+
+
+
+     The two great inventors of modern graphical designs were J. H.                                                       10Laura Tilling, “Early Experimental
+Lambert (1728-1777), a Swiss-German scientist and mathematician,                                                          oe :He             ee neey
+and William Playfair (1759-1823), an English political economist.1°                                                           ;
+The first known time-series using economic data was published in
+Playfair’s remarkable book, The Commercial and Political Atlas (Lon-
+don, 1786). Note the graphical arithmetic, which shows the shift-
+ing balance of trade by the difference between the import and
+export time-series. Playfair contrasted his new graphical method
+with the tabular presentation of data:
+           Information, that is imperfectly acquired, is generally as imper-
+           fectly retained; and a man who has carefully investigated a
+           printed table, finds, when done, that he has only a very faint
+           and partial idea of what he has read; and that like a figure
+           imprinted on sand, is soon totally erased and defaced. The
+           amount of mercantile transactions in money, and of profit or
+           loss, are capable of being as easily represented in drawing, as
+           any part of space, or as the face of a country; though, till now,
+           it has not been attempted. Upon that principle these Charts
+           were made; and, while they give a simple and distinct idea,
+           they are as near perfect accuracy as is any way useful. On
+           inspecting any one of these Charts attentively, a sufficiently
+           distinct impression will be made, to remain unimpaired for a
+           considerable time, and the idea which does remain will be
+           simple and complete, at once including the duration and the
+           amount. [pages 3-4]
+
+     For Playfair, graphics were preferable to tables because graphics
+showed the shape of the data in a comparative perspective. Time-
+
+
+          CHART          Gall the   IMPORTS     and EXPORTS          ©     and Pou     ENGLAND
+                               From   the Year 700 to 1782    by WM Playfair
+                                                                                                                     =|
+
+
+
+
+                                                                                                ===
+
+
+
+
+                                                                                                     =a_
+
+
+
+
+                                                                                                                xy
+
+                                                                                                     =
+
+
+
+
+                  W772                IO       740       7,           oo                         3         i)
+
+     Lhe Divirions al Ce Bottom, cap ref4      WEARS,   & those on the Leight hand MIL STING A POENDS
+     J Ainulie Sealy?                                                           Lublitil as the Act direc, 204 Aug? 1783
+                                                                                                                                                                           GRAPHICAL   EXCELLENCE   33
+
+
+
+
+series plots did this, and all but one of the 44 charts in the first
+edition of The Commercial and Political Atlas were time-series. That
+one exception is the first known bar chart, which Playfair invented
+because year-to-year data were missing and he needed a design to
+portray the one-year data that were available. Nonetheless he was
+skeptical about his innovation:
+               This Chart is different from the others in principle, as it does
+               not comprehend any portion of time, and it is much inferior
+               in utility to those that do; for though it gives the extent of the
+               different branches of trade, it does not compare the same
+               branch of commerce with itself at different periods; nor does
+               it imprint upon the mind that distinct idea, in doing which,
+               the chief advantage of Charts consists: for as it wants the di-
+               mension that is formed by duration, there is no shape given
+               to the quantities. [page 101]
+
+He was right: small, noncomparative, highly labeled data sets
+usually belong in tables.
+
+    Exports and Imports of SCOTLAND                           to and from different parts for one Year from Cluriftmas   1780 to Chroftmas                 1761
+
+ is            ca             ae                Se ase         z
+ "ere10   20        30Ao 40   Jo ASGo   7o   80 pa
+                                             be     go 190 10
+                                                            soo 130
+                                                                                                                                      |
+                                                                                                                                          |
+                                                                                                                                 + | Names of Places,                  |
+
+
+
+                                                                                                                                     |           dersey Ke,
+
+
+
+iol
+ (er
+ ae|
+i
+                                                                                                                                          |     Lele of Man
+
+                                                                                                                                     |          Greenland
+
+aie                                                                                                                                              Prufiia
+
+Rete                                                                                                                                  |         Priugal
+
+
+4                                                                                                                                               Ltollarrd
+
+
+
+
+|
+                                                                                                                                                Sweden
+=          i                                                                                                                                     Cueresy
+                                                                                                                                                Carman
+                                                                                                                                               Denmark and
+                                                                                                                                              _ Norway
+                                                                                                                                   | Panders
+                                                                                                                                   | WE Indice
+                                                                                                                                    | America
+                                                                                                                                      HOES,                       ot
+                                                                                                                                 pedeRufiua
+                                                                                                                                        Ireland                   |
+
+       The Upright divyions are Tin Vhoufard Pounds cach.                            The Iilack Lines are Exports the Ribbed                  tines Imports.
+Libbihed a0 theAct direc: fare      7" 4706 by Wl" Plartiar                                                          Veale veuty "IS2 Strand        hondor
+
+
+
+
+   The chart does show, at any rate, the imports (cross-hatched
+lines) and exports (solid lines) to and from Scotland in 1781 for
+17 countries, which are ordered by volume of trade. The horizontal
+scale is at the top, possibly to make it more convenient to see in
+plotting the points by hand. Zero values are nicely indicated both
+by the absence of a bar and by a “o.” The horizontal scale mis-
+takenly repeats “200.” In nearly all his charts, Playfair placed the
+labels for the vertical scale on the right side of the page (suggest-
+ing that he plotted the data points using his left hand).
+   34         GRAPHICAL        PRACTICE
+
+
+
+      Playfair’s last book addressed the question whether the price of
+   wheat had increased relative to wages. In his Letter on our agricul-
+   tural distresses, their causes and remedies; accompanied with tables and
+   copper-plate charts shewing and comparing the prices of wheat, bread and
+   labour, from 1565 to 1821, Playfair wrote:
+              You have before you, my Lords and Gentlemen, a chart of
+              the prices of wheat for 250 years, made from official returns;
+              on the same plate I have traced a line representing, as nearly as
+              I can, the wages of good mechanics, such as smiths, masons,
+              and carpenters, in order to compare the proportion between
+              them and the price of wheat at every different period. . . . the
+              main fact deserving of consideration is, that never at any former
+              period was wheat so cheap, in proportion to mechanical labour,
+              as it is at the present time. . . . [pages 29-31]
+       Here Playfair plotted three parallel time-series: prices, wages, and
+       the reigns of British kings and queens.
+
+
+
+
+                                    Wages
+                                        Wades° ofGab     b the Weaa
+                                                  rabour by
+
+                                      the Your 1505
+                                               ti   ASU,
+                                      ext         AM PLAYFAIR,
+                                                                                                                                                     of
+                                                                                                                                                     in
+                                                                                                                                                      Wheat
+                                                                                                                                                      Shallings
+
+
+
+
+                                                                                                                                                ta
+                                                                                                                                                     the
+                                                                                                                                                     of
+                                                                                                                                                     Quarter
+                                                                                                                                                     Lrice
+
+
+
+
+1565    =pp   a0   90   1600                        1660              4700   we   2   ae
+                                                                                                            9       1800 56   ©   18   20   2% 30
+                                           6o Yenears: wears dives
+                                                               ves                         5 5 Yoane cach   division:
+
+
+
+
+      The history and genealogy ofroyalty was long a graphical favorite.
+   This superb construction of E. J. Marey brings together several
+   sets of facts about English rulers into a time-series that conveys a
+   sense of the march ofhistory. Marey (1830-1904) also pioneered
+   the development of graphical methods in human and animal
+   physiology, including studies of horses moving at different paces,
+                                                                                                GRAPHICAL        EXCELLENCE           35
+
+
+
+
+                                                                                                      Ries enc
+
+                                                                                                       biARINE
+                                                                              Fr
+                                                                            eee
+                                                                            TE
+                                                                      Georges    IV ==
+
+
+
+
+                                               rées|
+                                               “ee   rele
+
+                                                                            =
+                                                                            iz      -— |   Fe    |         =aa                =
+                                                                                                                            Ses
+                                                                                                E.J.Marey, La Méthode Graphique (Paris,
+                                                                                                1885), p. 6.
+                       Hutu
+
+
+
+
+                                                                                                E. J. Marey, Movement (London, 1895).
+                                                                                                Beginning with the tracks of the horse,
+
+   cal fe] fen
+‘Ordinary       Walk          Quick
+                                      Lid]
+                                      Amble.    Jog-trot.   Gallop.
+                                                                        |
+                                                                                                the time-series are from pages 191, 224,
+                                                                                                222, 265, 60, and 61.
+
+  walk.     (long stride),    walk.
+36     GRAPHICAL               PRACTICE
+
+
+
+the movement of a starfish turning itself over (read images from
+the bottom upwards),
+
+
+
+
+the undulations of the dorsal fin of a descending sea-horse,
+
+
+
+
+as well as the advance of the gecko.
+
+
+
+
+Marey’s man in black velvet, photographed in stick-figure images,
+became the time-series forerunner of Marcel Duchamp’s Nude
+Descending a Staircase.
+
+
+ eI HER Repke acre   Fe JeAUaeryWoC mG Ssthe Pa
+
+
+
+
+                                      ANT               AAA
+                                                                                                                                                       GRAPHICAL                  EXCELLENCE                      37
+
+
+    The problem with time-series is that the simple passage of time
+ is not a good explanatory variable: descriptive chronology is not
+ causal explanation. There are occasional exceptions, especially when
+ there is a clear mechanism that drives the Y-variable. This time-
+ series does testify about causality: the outgoing mail of the U.S.
+ House of Representatives peaks every two years, just before the
+ election day:
+
+
+ 60 - Monthly outgoing
+        mail workload,
+         millions of units
+
+                       October 1968
+
+
+
+
+ 40-
+
+
+
+
+ 20-
+
+
+
+
+   1967                    1968                                                                1971                  1972
+
+
+
+
+The graphic is worth at least 700 words, the number used in a
+news report describing how incumbent representatives exploit their
+free mailing privileges to advance their re-election campaigns:
+
+FRANKED MAIL TIE
+                                   for sending them as an integral founding of the republic, and 'franked newsletter to his old jDole of Kansas, Peter H. Domi-                     Senator      Tower's     use  of
+                                   part of a model re-election cam- only Congress polices against constituents after he had left nick of Colorado, Charles McC. franked mail in his 1972 cam-
+                                                                      abuses of the free mailings. office. Mr. Clark is seeking ‘Mathias Jr. of Maryland
+
+ TO VOTING SHOWN
+                                                                                                                                                                                 paign was documented by mem-
+                                      Gsenator John G. Tower, Re-        Complaints of political use to regain his old post.                    Another political mail speciai- lorandums,
+                                   publican of Texas, mailed more of the free-mailing privilege,             Practice Documented             ist, Lee W. MacGregor, wrote | Tom Loeffler, a high-ranking
+                                   than 800,000      special-interest called the franking privilege,
+                                   letters at taxpayer expense as are heard every election year.         Seldom       has the political 'a proposal for the use of | campaign aide, wrote in a mem-
+                                                                                                      use of franked mail been so franked mail by his chief, Sena- ;orandum                     dated     Oct,   27,
+Testimony Finds the Volume| Part of his 1972 re-election Recently, however, the volume well documented as in recent tor Javits, in 1973.                                        1972, that during the campaign
+                                   effort and received campaign and cost of franked mail has                                                    “The over-all objective of the \Senator Tower had sent “31
+   Rises Before Elections          volunteer offers and donations multiplied. A new Federal law testimony and documents filed
+                                   in response.                       will limit what out-of-office in a Federal Court by Common franked mail program can be special interest letters totaling
+                                      Senator Jacob K. Javits, Re- challengers can spend to unseat Cause, the lobby group, which ito get the recipient of the mail approximately 803,333 franked
+   WASHINGTON, June 1 (AP) publican of New York, gave incumbents.                                    lis suing for an end to tax-fi- to identify positively with a mailings.”
+—New court testimony and doc- written approval in 1973 for               In 1972, Congress passed a nanced mass mailings by Con- particular stand you have taken                    Mr. Tower was not available
+uments show that much of a tax-paid mail program intend- law prohibiting mass franked gress.                                                 or a bill you have introduced; for comment. His administra-
+the mail Congress sends at ed to better his image and mailings within 28 days before                     For example, Joyce P. Baker, the kind of identification that tive assistant,                 Elwin Skiles,
+taxpayer expense is tied direct- pay off at the polls. He focused an election. The sponsor of         a  political   mail  specialist, said  can   be translated  into  a  vote  said    the Senator’s       use  of
+ly to the re-election campaigns his mail on areas where he that legislation, Representative in a 1973 job proposal that ‘at the polls on election day ” franked mail in 1972 was with-
+of Senate and House members. needed votes.                            Morris K. Udall, Democrat of ‘she wanted to set up direct- Mr. MacGregor said.                             in the law, and he defended
+                                      GThe volume of “official” Arizona, said in an interview ‘mail programs for Republican
+According to material filed                                                                                                                     Mr. Javits was out of the the free-mailing privileges.
+in a lawsuit in Federal Court: Congressional mail rises in that further changes were need- Senators using franked mail. country and could not be                                    Postal Service figures show
+                                                                                                                                             reached.    His    administrative
+   GSenate Republicans put two election years and peaks just ed to curtail political abuse | “The purpose of such a pro- assistant, Donald Kellerman, that in the 12 months before
+direct-mail experts on    the pub- before the general election.       of the frank.                   gram is to help an incumbent                                              ‘November, 1973, Congress sent
+                                      None of this activity neces-       Mr. Udall urged a 60-day     Senator      get   re-elected,”   she  defended   the   use  of  franked  \222.9    million franked pieces
+lic payroll to advise them on                                                                                                               imail.                              jof mail. But in the next 12
+how to use their free mailing sarily violates any law or regula- pre-election cutoff for mass said.
+privileges to get votes.           tion, since Congress has wide mailings and said he favored            She was put on the Senate | “It is a standard device to {months, covering the election
+   GAn election manual pre- discretion in the use of tax-paid closing a loophole that recently payroll at $18,810 a year in let voters, not voters but citiz- 'season                      of 1974, Congress sent
+                                                                                                                                                                                {350.6 million, a jump of 57
+pared for Senate Democrats mail. Congress gave itself the allowed defeated Representa- 1973 and 1974 and testified ens, know what the Senator |per cent about what’s happen-
+refers to newsletters as a “free right to send official mail at tive Frank M. Clark, Democrat that during that time she aided is doing here in Washington, ‘ing,” Mr. Skiles said.
+forum,” and sets up a timetable|Government expense at the of Pennsylvania, to send a Republican Senators Robert J. jhe said.
+          38        GRAPHICAL                 PRACTICE
+
+
+
+               Time-series plots can be moved toward causal explanation by                                                              11See William S. Cleveland and Irma J.
+                                                                                                                                        Terpenning, ‘““Graphical Methods for
+          smuggling additional variables into the graphic design. For example,
+               :                       as                            :                     i                                            Seasonal Adjustinent,”’ Journal of the
+          this decomposition of economic data, arraying 1,296 numbers,                                                                  American Siatistieal -Assoaation 77 (March
+          breaks out the top series into seasonal and trading-day fluctuations                                                          1982), 52-62.
+          (which dominate short-term changes) to reveal the long-run trend
+          adjusted for inflation. (Note a significant defect in the design,
+          however: the vertical grid conceals the height of the December
+                                                                                                                                        Julius Shiskin, “Measuring Current Eco-
+          peaks.) The next step would ; be to bring inf additional variables to                                                         nomic Fluctuations,” Statistical Reporter
+          explain the transformed and improved series at the bottom.'!                                                                  (July 1973), p. 3.
+
+
+           Systematic and Irregular Components of Total Retail Sales, United Stotes
+                                                                                                            Billions    of   dollars
+
+
+
+
+               Unadjusted data                     |          :                                                                 "4
+
+
+
+
+                     I                                                                                                       Percent
+
+               Holiday variation                                                                                                105
+Percent                                                                                                                         100
+                                                                                                                              +95
+          Trading day variation
+
+  10 |MAA
+            Seasonal variation                                                                                               Percent
+                     ,                                                                                                          120
+                                                                         i                                                      110
+
+
+Percent                                                                                                                            90
+ 105       Irregular component                                                                                               Billions
+
+
+
+
+          Trend-cycle component
+
+
+
+                   MCD curve                                                                                                    32
+
+          Seasonally adjusted                                                                                                   28
+                     series
+
+          Deflated Retail Sales
+
+
+                     Sal                                                                                                     pot
+          1950           1981   1962        1S63       ISs4   ISeS           is66   1967   1968   1969   1970    197]
+                                                                                                     GRAPHICAL         EXCELLENCE                39
+
+
+
+   Finally, a vivid design (with appropriate data) is the before-after
+time-series:
+
+                                            Time of day (PST)
+        3          6             9              12         15          18            21         24
+        LF mel aaa ia        a          a   a        ace    ie    ac        a      fd      el eens
+
+
+
+
+(®o)
+Flux
+
+                               t
+                        LN   transfer
+                                                                 February       14, 1982
+
+
+A monopole?
+Cabrera’s candidate monopole signal looms over a disturbance caused by a liquid nitrogen
+transfer earlier in the day. The jump in magnetic flux through the superconducting detector
+                                                                                                     M. Mitchell Waldrop, “In Search of
+loop (or equivalently, the jump in the loop’s supercurrent) is just the right magnitude to be a      the Magnetic Monopole,” Science
+monopole. Moreover, the current remained stable for many hours afterward.                            (June 4, 1982), p. 1087.
+
+
+
+
+And before and after the collapse of a bridge on the Rhéne in 1840:
+
+                     Pont de Bourg-S* Andecol sur le Rhone.
+
+
+
+
+ >>—_—
+
+        /uage
+                                                                                                     Charles Joseph Minard, “De la Chute
+                                                                                                     des Ponts dans les grandes Crues,”
+                                                                                                     (October 24, 1856), Figure 3, in Minard,
+                                                                                                     Collection de ses brochures (Paris, 1821—
+                                                                                                     1869), held by the Bibliothéque de
+                                                                                                     V’Ecole Nationale des Ponts et Chaussées,
+                                                                                                     Paris.
+40     GRAPHICAL     PRACTICE
+
+
+
+
+Narrative Graphics of Space and Time
+An especially effective device for enhancing the explanatory power
+of time-series displays is to add spatial dimensions to the design of
+the graphic, so that the data are moving over space (in two or
+three dimensions) as well as over time. Three excellent space-time-
+story graphics illustrate here how multivariate complexity can be
+subtly integrated into graphical architecture, integrated so gently
+and unobtrusively that viewers are hardly aware that they are
+looking into a world of four or five dimensions. Occasionally
+graphics are belligerently multivariate, advertising the technique
+rather than the data. But not these three.
+
+The first is the classic of Charles Joseph Minard (1781-1870), the
+French engineer, which shows the terrible fate of Napoleon’s army
+in Russia. Described by E. J. Marey as seeming to defy the pen of
+the historian by its brutal eloquence,!? this combination of data       12,J,Marey, La Méthode Graphique
+map and time-series, drawn in 1861, portrays the devastating losses     (Paris, 1885), p. 73. For more on Minard,
+           i            ,      f         ,                ee            see Arthur H. Robinson, ““The Thematic
+suffered in Napoleon’s Russian campaign of 1812. Beginning at the       Maps of Charles Joseph Minard,” Imago
+left on the Polish-Russian border near the Niemen River, the thick      Mundi, 21 (1967), 95-108.
+band shows the size of the army (422,000 men) as it invaded Rus-
+sia in June 1812. The width of the band indicates the size of the
+army at each place on the map. In September, the army reached
+Moscow, which was by then sacked and deserted, with 100,000
+men. The path of Napoleon's retreat from Moscow is depicted by
+the darker, lower band, which is linked to a temperature scale and
+dates at the bottom of the chart. It was a bitterly cold winter, and
+many froze on the march out of Russia. As the graphic shows, the
+crossing of the Berezina River was a disaster, and the army finally
+struggled back into Poland with only 10,000 men remaining. Also
+shown are the movements of auxiliary troops, as they sought to
+protect the rear and the flank of the advancing army. Minard’s
+graphic tells a rich, coherent story with its multivariate data, far
+more enlightening than just a single number bouncing along over
+time. Six variables are plotted: the size of the army, its location
+on a two-dimensional surface, direction of the army’s movement,
+and temperature on various dates during the retreat from
+Moscow.
+     It may well be the best statistical graphic ever drawn.
+CARTE        FIGURATIVE        des pertes successives en hommes de l'Armée Francaise dans la campagne de Russie 1812-1813.
+                               Oressée par M.Minard, Inspecteur Genéral des Ponts et Chaussées en retraite.
+
+
+
+
+   B22 000
+                                                      S
+                                                      Sc.
+   i4                      —       oF
+   uy                     S——SS—_—                          Polotzk
+   =     é             ls                     2                =|
+   el               —
+                     ZS %,ZY           Gloubokoe                      =
+         °
+   g|              4       %
+                  SS
+
+
+
+
+                                                               :        -1
+                                                  =         = 2091028 gore      — 21% lel gbre
+                                          =242 le iexere
+        =26%le7 xO          — 30° le 6 x>re
+
+
+
+                       Xbre — December                                        gbre — November                 gbre — October
+42     GRAPHICAL       PRACTICE
+
+
+
+
+     The next time-space graphic, drawn by a computer, displays           Los Angeles Times, July 22, 1979; based
+                                                                          on work of Gregory J. McRae, Cali-
+the levels of three air pollutants located over a two-dimensional
+                                                                          fornia Institute of Technology.
+surface (six counties in southern California) at four times during
+the day. Nitrogen oxides (top row) are emitted by power plants,
+refineries, and vehicles. Refineries along the coast and Kaiser Steel’s
+Fontana plant produce the post-midnight peaks shown in the first
+panel; traffic and power plants (with their heavy daytime demand)
+send levels up during the day. Carbon monoxide (second row) is
+low after midnight except out at the steel plant; morning traffic
+then begins to generate each day’s ocean of carbon monoxide,
+with the greatest concentration at the convergence of five freeways
+in downtown Los Angeles. Reactive hydrocarbons (third row),
+like nitrogen oxides, come from refineries after midnight and then
+increase with traffic during the day. Each of the 12 time-space-
+pollutant slices summarizes pollutants for 2,400 spatial locations
+(2,400 squares five kilometers on a side). Thus 28,800 pollutant
+readings are shown, except for those masked by peaks.
+  The air pollution display is a small multiple. The same graphical
+design structure is repeated for each of the twelve slices or multi-
+ples. Small multiples are economical: once viewers understand the
+design of one slice, they have immediate access to the data in all
+the other slices. Thus, as the eye moves from one slice to the next,
+the constancy of the design allows the viewer to focus on changes
+in the data rather than on changes in graphical design.
+
+
+
+
+  SANTA BARBARA
+  COUNTY    So    :-              ~_   RIVERSIDE
+                                           COUNTY
+
+
+
+
+REACTIVE
+HYDROCARBONS
+                                                                                     GRAPHICAL                 EXCELLENCE        43
+
+
+
+
+   Our third example of a space-time-story graphic ingeniously                      L. Hugh Newman, Man and Insects
+mixes space and time on the horizontal axis. This design moves                      Mondor 1995) «BPs 104at05,
+well beyond the conventional time-series because of its clever
+plotting field, with location relative to the ground surface on the
+vertical axis and time/space on the horizontal. The life cycle of
+the Japanese beetle is shown.
+
+| January   | February   | March   April   May   |   June   July   August       }|September{   October         | November! December
+
+
+
+
+                                                                            :      BEE
+                                                                                   SASSY,
+                                                                            LAS AVL iD
+                                                                                                   ‘fel   ee
+
+
+
+
+More Abstract Designs: Relational Graphics
+The invention of data graphics required replacing the latitude-
+longitude coordinates of the map with more abstract measures not
+based on geographical analogy. Moving from maps to statistical
+graphics was a big step, and thousands of years passed before this
+step was taken by Lambert, Playfair, and others in the eighteenth
+century. Even so, analogies to the physical world served as the
+conceptual basis for early time-series. Playfair repeatedly compared
+his charts to maps and, in the preface to the first edition of The
+Commercial and Political Atlas, argued that his charts corresponded
+to a physical realization of the data:
+      Suppose the money we pay in any one year for the expence
+      of the Navy were in guineas, and that these guineas were laid
+      down upon a large table in a straight line, and touching each
+      other, and those paid next year were laid down in another
+44     GRAPHICAL               PRACTICE
+
+
+                                                                                                                                                             De
+       straight line, and the same continued for a number of years:
+       these lines would be of different lengths, as there were fewer
+       or more guineas; and they would make a shape, the dimensions
+       of which would agree exactly with the amount of the sums;                                                 STATISTICAL                 BREVIARY;
+       and the value of a guinea would be represented by the part of                                                                 SHEWING,
+
+
+       space which it covered. The Charts are exactly this upon a                                                    ON   A PRINCIPLE     ENTIRELY    NEW,
+
+                                                                                                                           THE      RESOURCES
+       small scale, and one division represents the breadth or value of                                                             OF EVERY
+       ten thousand or an hundred thousand guineas as marked, with                                         .    STATE AND KINGDOM
+                                                                                                                                IN EUROPE;
+       the same exactness that a square inch upon a map may represent                                                            ILLUSTRATED WITH
+
+       a square mile of country. And they, therefore, are a represen-                                                 STAINED COPPER-PLATE CHARTS,
+
+
+       tation of the real money laid down in different lines, as it was
+                                                                                                                                 REPRESENTING THE
+                                                                                                                PHYSICAL POWERS OF EACH DISTINCT NATION
+
+       originally paid away. [pages ili-iv]
+                                                                                                                        WITH EASE AND PERSPICUITY.
+
+
+                                                                                                                     By WILLIAM             PLAYFAIR.
+
+     Fifteen years later in The Statistical Breviary, his most theoretical                                                       To wMICK Is ADDED,
+
+
+book about graphics, Playfair broke free of analogies to the phys-
+                                                                                                               A SIMILAR EXHIBITION OF THE RULING POWERS
+                                                                                                                             OF HINDOOSTAN.
+
+
+ical world and drew graphics as designs-in-themselves.
+     One of four plates in The Statistical Breviary, this graphic is dis-
+tinguished by its multivariate data, the use of area to depict quan-
+tity, and the pie chart—in apparently the first application of these
+devices. The circle represents the area of each country; the line on
+the left, the population in millions read on the vertical scales; the
+line on the right, the revenue (taxes) collected in millions of pounds
+sterling read also on the vertical scale; and the “dotted lines drawn
+between the population and revenue, are merely intended to con-
+nect together the lines belonging to the same country. The ascent
+
+
+
+
+              RUSSIAN EMPIRE
+               4720000 Square Miles                                                   For Explanation
+                                                                                                   this SeePoageSi
+
+
+                                                     Publiched as the   Net darects
+                                                                          GRAPHICAL         EXCELLENCE               45
+
+
+
+of those lines being from right to left, or from left to right, shews
+whether in proportion to its population the country is burdened
+with heavy taxes or otherwise” (pages 13-14). The slope of the
+dotted line is uninformative, since it is dependent on the diameter
+of the circle as well as the height of the two verticals. However,
+the sign of the slope does make sense, taking Playfair to his familiar
+point about what he regarded as excessive taxation in Britain
+(fourth circle from the right, with the slope running opposite to
+most countries). Playfair was enthusiastic about the multivariate
+arrangement because it fostered comparisons:
+     The author of this work applied the use of lines to matters of
+     commerce and finance about fifteen years ago, with great
+     success. His mode was generally approved of as not only facili-
+     tating, but rendering those studies more clear, and retained
+     more easily by the memory. The present charts are in like
+     manner intended to aid statistical studies, by shewing to the
+     eye the sizes of different countries represented by similar forms,
+     for where forms are not similar, the eye cannot compare them
+     easily nor accurately. From this circumstance it happens, that
+     we have a more accurate idea of the sizes of the planets, which
+     are spheres, than of the nations of Europe which we see on
+    the maps, all of which are irregular forms in themselves as well
+    as unlike to each other. Size, Population, and Revenue, are the
+    three principal objects of attention upon the general scale of
+    statistical studies, whether we are actuated by curiosity or
+    interest; I have therefore represented these three objects in one
+    view... . [page 15]
+   But here Playfair had a forerunner—and one who thought more
+clearly about the abstract problems of graphical design than did
+Playfair, who lacked mathematical skills. A most remarkable and
+explicit early theoretical statement advancing the general (non-
+analogical) relational graphic was made by J. H. Lambert in 1765,
+35 years before The Statistical Breviary:
+    We have in general two variable quantities, x, y, which will
+    be collated with one another by observation, so that we can
+    determine for each value of x, which may be considered as an
+    abscissa, the corresponding ordinate y. Were the experiments
+    or observations completely accurate, these ordinates would
+    give a number of points through which a straight or curved
+    line should be drawn. But as this is not so, the line deviates to
+    a greater or lesser extent from the observational points. It must     is johann Hemet Lambert Hey trae
+    therefore be drawn in such a way that it comes as near as             hah       Pan     ar ET MET DTI Pere.
+    possible to its true position and goes, as it were, through the       Anwendung (Berlin, 1765), as quoted in
+                                                                          Laura Tilling, “Early Experimental
+    middle of the given points.'9                                         Graphs,” British Journal for the History
+                                                                          of Science, 8 (1975), 204-205.
+46     GRAPHICAL     PRACTICE
+
+
+
+   Lambert drew a graphical derivation of the evaporation rate of       J. H. Lambert, “Essai d’hygrométrie ou
+                                                                        sur la mesure de l’humidité,”’ Mémoires
+water as a function of temperature, according to Tilling. The           de l’Académie Royale des Sciences et Belles-
+analysis begins with two time-series: DEF, showing the decreasing       Lettres .. . 1769 (Berlin, 1771), plate 1,
+height of water in a capillary tube as a function of time, and ABC,     facing p. 126; from Tilling’s article.
+
+the temperature. The slope of the curve DEF is then taken (note the
+tangent DEG) at a number of places, yielding the rate of evaporation:
+
+
+
+
+To complete the graphical calculus, the measured rate is plotted
+against the corresponding temperature in this relational graphic:
+
+
+
+
+     Thus, by the early 1800s, graphical design was at last no longer
+dependent on direct analogy to the physical world—thanks to the
+work of Lambert and Playfair. This meant, quite simply but quite
+profoundly, that any variable quantity could be placed in rela-
+tionship to any other variable quantity, measured for the same
+units of observation. Data graphics, because they were relational
+and not tied to geographic or time coordinates, became relevant
+

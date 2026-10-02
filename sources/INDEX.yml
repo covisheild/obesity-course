@@ -804,8 +804,9 @@ files:
       Introduction passage on the Flesch formula, the Results passages on the regression and new formulas,
       Table 3 whole (old RE = 206.835 - 1.015 w/s - .836 syl/100 words; new GL = .39 w/s + 11.8 syl/word - 15.59;
       simplified .4 and 12 and 16; checked against the page image), Appendix B Flesch counting instructions. The
-      report prints .836 where Plaven-Sigray 2017 and Edwards 2022 print 84.6 per syllable-per-word: not settled
-      without Flesch 1948
+      report prints .836 where Flesch 1948 (flesch_1948_readability_yardstick: .846, consistent with his worked
+      tables) and Plaven-Sigray 2017 and Edwards 2022 (84.6 per syllable-per-word) agree on .846: Kincaid's .836
+      is a misprint in the report
   edwards_2022_readability_formulas:
     file: edwards_2022_readability_formulas.txt
     what: >-
@@ -965,6 +966,51 @@ files:
       Krishnamurthy, Rangavittal, Chandrasekar & Narayanan, Indian J Ophthalmol 2021;69(8):2021-2025 (PMC8482944;
       CC BY-NC-SA 4.0), PMC OA XML. Licence, abstract, whole introduction, methods, results with Tables 1-2, discussion and
       conclusion; references not held. Boys aged 11-17 in Kanchipuram district only
+  flesch_1948_readability_yardstick:
+    file: flesch_1948_readability_yardstick.txt
+    what: >-
+      Flesch, A new readability yardstick, J Appl Psychol 1948;32(3):221-233 (PMID 18867058), NOT the APA
+      original: the retyped reprint in DuBay (ed.), The Classic Readability Studies, 2007, ERIC ED506404 (PDF
+      text layer; ERIC abstract: reprinted articles "all in the public domain"). Whole article less references:
+      Formula A RE = 206.835 - .846 wl - 1.015 sl (wl = syllables per 100 words), untransformed C75 = .0846 wl
+      + .1015 sl - 5.6835, Formula B human interest, Tables 1-7 incl. Table 5 Reading Ease bands (reprint prints
+      "0 to 20" for Very Difficult), The Formulas Restated steps 1-8. Plus DuBay's introduction (his words: 84.6 x
+      ASW restatement, two tables from Flesch 1949). Settles the coefficient: .846/84.6, not Kincaid's .836
+  flesch_1979_plain_english:
+    file: flesch_1979_plain_english.txt
+    what: >-
+      Flesch, How to Write Plain English (1979), chapter 2 "Let's Start With the Formula", whole, as reproduced
+      on W. H. Starbuck's NYU Stern page, with the formula and grade table also from the Univ. of Canterbury copy
+      (Wayback 2017). No licence stated; in-copyright book. Flesch's own words: counting rules for words,
+      syllables, sentences; "Multiply the average word length by 84.6"; score to school-grade bands (0-30
+      college graduate ... 90-100 5th grade); Plain English minimum 60; scores of 19 publications. Nomogram NOT held
+  cleveland_mcgill_1984_graphical_perception:
+    file: cleveland_mcgill_1984_graphical_perception.txt
+    what: >-
+      Cleveland & McGill, Graphical perception: theory, experimentation, and application to the development of
+      graphical methods, J Am Stat Assoc 1984;79(387):531-554 (doi 10.1080/01621459.1984.10478080). PDF supplied by
+      Harsh 2 Oct 2026 (Taylor & Francis download, scanned, OCR text layer). (c) ASA, publisher's terms: private
+      study only; excerpts, held for study and quotation. Held: T&F cover page and copyright line, abstract, Figure 1
+      sentence (10 elementary perceptual tasks), section 3 ordering (1 position common scale; 2 nonaligned scales;
+      3 length, direction, angle; 4 area; 5 volume, curvature; 6 shading, color saturation; ties at 3, 5, 6),
+      experiments' design (55 and 54 subjects, 51 analysed each), accuracy measure log2(|judged - true| + 1/8),
+      results (length errors 40%-250% above position; angle 1.96 times position; pie better than bar in 3 of 40;
+      large errors 5.3 and 7.3 times), 4.5 summary, 5.1 dot charts replace pie and divided bar charts, section 6
+      conclusions. Numbers checked against page images; OCR errors noted in [NOTE]s. Figures, psychophysics,
+      bootstrap, bias, 5.2-5.4, references not held
+  tufte_1983_visual_display:
+    file: tufte_1983_visual_display.txt
+    what: >-
+      Tufte, The Visual Display of Quantitative Information, Graphics Press 1983 (FIRST edition, tenth printing
+      March 1990; not the 2001 2nd ed.). Scan supplied by Harsh 2 Oct 2026 from Anna's Archive (a shadow
+      library; Internet Archive digitisation bwb_T2-EQU-551), OCR text layer; in copyright, short excerpts held
+      privately for study and quotation. 30 passages, every page checked against its image: ch. 2 pp. 56-58
+      (first two principles; Lie Factor = size of effect shown in graphic / size of effect in data, formula read
+      from the page image; "greater than 1.05 or less than .95 indicate substantial distortion"; fuel-economy
+      example 53% vs 783%, Lie Factor 14.8), pp. 60-61 (design variation, OPEC 15.1x), pp. 70-71 (dimensions;
+      barrels 9.4 and 59.4), p. 77 (the six principles); ch. 4 pp. 93-94 (data-ink, data-ink ratio), pp. 96-97,
+      100 (maximize the ratio; erase non-data-ink; erase redundant data-ink), p. 105 (the five principles);
+      ch. 5 pp. 107, 112-113, 116, 121 (chartjunk introduced, the grid, the duck, conclusion). No figures
 
 # Held but not citable. Kept because Book 0 F3 teaches currency-checking on it: the worked
 # example is a reader discovering that this copy is out of date. Citing it for anything else

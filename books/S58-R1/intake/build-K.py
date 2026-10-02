@@ -64,11 +64,11 @@ KEY NUMBERS HELD (for C10): old Flesch Reading Ease, RE = 206.835 - 1.015 (words
 (syllables/100 words), "grade level is determined from a conversion table"; new, GL = .39 (words/sentence) +
 11.8 (syllables/word) - 15.59; simplified GL = .4 (words/sentence) + 12 (syllables/word) - 16; 531 Navy enlisted
 personnel; 18 test passages; counting rules for words, sentences and syllables (Appendix B).
-DISCREPANCY (found 2 Oct 2026 at intake): this report's Table 3 prints the old formula's syllable term as
-.836 (syllables/100 words), i.e. 83.6 per syllable-per-word. Two held sources print 84.6 per syllable-per-word
-(Plaven-Sigray et al. 2017, eLife, FRE formula as MathML; Edwards et al. 2022, citing the same formula). The page
-image shows .836. Flesch 1948 (not held) would settle which is the original; until then a book must not state
-the coefficient as settled, and must say where the sources differ.
+DISCREPANCY (found 2 Oct 2026 at intake, settled the same day): this report's Table 3 prints the old formula's
+syllable term as .836 (syllables/100 words); the page image shows .836. Flesch's own article gives .846
+(flesch_1948_readability_yardstick, a public-domain reprint: "RE = 206.835 - .846 wl - 1.015 sl", consistent with
+his worked tables), as do Plaven-Sigray 2017 and Edwards 2022 (84.6 per syllable-per-word). The .836 here is a
+misprint in this report: quote Table 3 only for the new GL formula, and take the Reading Ease formula from Flesch.
 WHAT IS HELD: blocks 1-6 below. NOT HELD: the acknowledgements, tables 1, 2 and 5, the ARI and Fog Count
 instructions, the method and reading-test details, Appendices A and the other appendices.
 Absence of a passage from this file is not absence from the report.
