@@ -7,7 +7,7 @@ release: pending
 
 ## Needed
 
-27 sources serve the 21 concepts (`READY.md`, `INVENTORY.md`). 23 are obtained, 4 are not.
+27 sources serve the 21 concepts (`READY.md`, `INVENTORY.md`). 24 are obtained, 3 (all optional) are not.
 
 | Source | Concepts |
 | --- | --- |
@@ -67,6 +67,7 @@ header lines of the files, not passages.
 | `bateman_2010_useful_junk` | `sources/bateman_2010_useful_junk.txt` |
 | `crameri_2020_misuse_colour` | `sources/crameri_2020_misuse_colour.txt` |
 | `cumming_2007_error_bars` | `sources/cumming_2007_error_bars.txt` |
+| `kincaid_1975_readability` (supplied by Harsh 2 Oct 2026: the UCF STARS PDF with a text layer; Table 3 and the Flesch counting rules checked against page images) | `sources/kincaid_1975_readability.txt` |
 | Extra, not in the list: `krishnamurthy_2021_cvd_india` (colour-vision deficiency in boys in one Tamil Nadu district, for C18) | `sources/krishnamurthy_2021_cvd_india.txt` |
 | Fallback for Kincaid: `edwards_2022_readability_formulas` (secondary restatement of the Flesch formulas) | `sources/edwards_2022_readability_formulas.txt` |
 
@@ -79,9 +80,10 @@ distribution licence only; Bergstrom & West's page states no licence; Wilke is C
 
 ## Not obtained
 
+All three are optional: each concept has a named fallback in the book. Kincaid et al. 1975 was supplied by Harsh on 2 Oct 2026 and moved to Obtained.
+
 | Source | Needed for | URL tried | Why not obtained | Provided |
 | --- | --- | --- | --- | --- |
-| Kincaid JP, Fishburne RP, Rogers RL, Chissom BS. *Derivation of New Readability Formulas*, Research Branch Report 8-75, 1975 (the Flesch Reading Ease and Flesch–Kincaid grade formulas) | C10 | https://apps.dtic.mil/sti/citations/ADA006655; https://eric.ed.gov/?id=ED108134; https://stars.library.ucf.edu/cgi/viewcontent.cgi?article=1055&context=istlibrary | DTIC "under maintenance"; ERIC holds no full text; the UCF PDF is a scan with no text layer. Harsh can download https://stars.library.ucf.edu/cgi/viewcontent.cgi?article=1055&context=istlibrary | no |
-| Cleveland WS, McGill R. Graphical perception. *J Am Stat Assoc* 1984;79:531-554 (optional) | C14 | https://doi.org/10.1080/01621459.1984.10478080 | paywall and JSTOR terms forbid automated download | no |
-| Tufte ER. *The Visual Display of Quantitative Information*, 2nd ed., 2001 (optional) | C16, C17 | none (print only) | book, no open copy | no |
-| Flesch R. A new readability yardstick. *J Appl Psychol* 1948;32:221-233 (optional) | C10 | https://doi.org/10.1037/h0057532 | paywall (APA) | no |
+| Flesch R. A new readability yardstick. *J Appl Psychol* 1948;32(3):221-233. **Now recommended, not just optional:** the Kincaid report prints the old formula's syllable term as .836 per 100 words, while two held papers print 84.6 per syllable-per-word; only Flesch 1948 can settle which is original | C10 | https://doi.org/10.1037/h0057532 (not opened: this session could not open DOI links); https://www.ovid.com/journals/japsy/fulltext/00004565-194806000-00001~a-new-readability-yardstick (returned "payment required") | paywall (APA / Ovid) | no |
+| Cleveland WS, McGill R. Graphical perception: theory, experimentation, and application to the development of graphical methods. *J Am Stat Assoc* 1984;79(387):531-554 | C14 (Heer & Bostock 2010 replicates the ranking; C14 stands on Heer & Bostock plus Wilke if this is not obtained) | https://doi.org/10.1080/01621459.1984.10478080 (not opened); Semantic Scholar page https://www.semanticscholar.org/paper/Graphical-Perception:-Theory,-Experimentation,-and-Cleveland-McGill/fa459de6552f5cd0cbe28539c0c7c65bc112a164 (403 to this session) | paywall; JSTOR terms forbid automated download | no |
+| Tufte ER. *The Visual Display of Quantitative Information*, 2nd ed. Graphics Press, 2001 (the Lie Factor and the data-ink ratio; pages to locate) | C16, C17 (both stand on Wilke and Bergstrom & West; the names "Lie Factor" and "data-ink" are written only if this is opened) | https://archive.org/details/visualdisplayofq00tuft (the 2nd ed., 4th printing, 2001; access-restricted, borrowable) | print book; no open copy | no |
