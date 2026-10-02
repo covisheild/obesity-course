@@ -74,7 +74,16 @@ codebook counts match the data. Conductor re-check of the passages: 31/31. Still
 Broman & Woo article (the authors' manuscript is held). A Kincaid et al. 1975 PDF came in the same upload; it is
 Book 9's (S58-R1) source, already filed there, and is not used here.
 
-## Decisions for Harsh (also in the message)
+## Harsh's decisions, 2 Oct 2026 (answered in the chat)
+
+1. Dataset: NHANES 2021-2023 (BMX_L joined to DEMO_L) for the build and the C22 journey; palmerpenguins
+   `penguins_raw.csv` for worked examples and drill problems.
+2. Package versions: accepted; outputs from R 4.3.3 and the installed tidyverse, stated in the front matter, C06
+   and C21, with later-version changes taken from `tidyverse_news_s52r1`.
+3. Coverage gaps: iteration accepted (map amendment S52-R2-A01, appended to `map/AMENDMENTS-v3.1.yml`,
+   `amendments.py --check` 0 problems); regular expressions refused (not added).
+
+## Decisions for Harsh (as first asked)
 
 1. Build dataset: A (NHANES, you download two files), B (palmerpenguins `penguins_raw.csv`, held, CC0), or C (NFHS-5 district table, not reachable).
 2. Accept outputs from R 4.3.3 and the tidyverse as installed here (ggplot2 3.4.4; newest is 4.0.3), stated in the book.
