@@ -3,41 +3,44 @@
 Written 2 Oct 2026 at the source-collection stop (`CONDUCTOR.md` §2). Nothing is drafted until Harsh
 releases this gate.
 
-release: pending
+release: sources-provided
+released-on: 2026-10-02
+harsh-decision: 2 Oct 2026, in this chat, Harsh accepted the Flesch 1948 public-domain reprint ("Accept reprint") after supplying Kincaid 1975, Cleveland & McGill 1984 and Tufte himself; every Not-obtained row is provided.
 
 ## Needed
 
-27 sources serve the 21 concepts (`READY.md`, `INVENTORY.md`). All 27 are now held (2 Oct 2026), plus three extras.
+28 sources serve the 23 concepts (`READY.md`, `INVENTORY.md`). All 28 are now held (2 Oct 2026), plus three extras. Renumbered 2 Oct 2026 when Harsh accepted the coverage gaps: new C05 (citing and referencing, S58-R1-A02) and C21 (making a table, S58-R1-A01); old C05–C19 are C06–C20, old C20 is C22, old C21 is C23 (table in `INVENTORY.md`). C05 needed one more source, NLM *Citing Medicine*, taken in the same day (group R); C21 stands on two sources already held (ICMJE §IV.A.3.h, Wilke ch. 22).
 
 | Source | Concepts |
 | --- | --- |
-| NFHS-5 India Fact Sheet (held) | C08, C16, C21 |
-| OpenStax *Contemporary Mathematics* §8.2 (held) | C16 |
-| OpenStax *Introductory Business Statistics 2e* §2.1 (held) | C16 |
+| NFHS-5 India Fact Sheet (held) | C09, C17, C23 |
+| OpenStax *Contemporary Mathematics* §8.2 (held) | C17 |
+| OpenStax *Introductory Business Statistics 2e* §2.1 (held) | C17 |
 | Chalmers & Glasziou 2009 (held) | C02 |
-| ICMJE Recommendations, section IV.A (version updated January 2026) | C01, C02, C03, C04, C07, C08, C13, C19, C20 |
+| ICMJE Recommendations, section IV.A (version updated January 2026) | C01, C02, C03, C04, C05, C08, C09, C14, C20, C21, C22 |
 | Sollaci & Pereira 2004 | C01 |
-| Mensh & Kording 2017 | C02, C03, C04, C07, C09, C11, C12 |
-| OpenStax *Writing Guide with Handbook* | C05, C06, C09 |
-| Gopen & Swan 1990 | C06 |
-| Federal Plain Language Guidelines 2011 | C06, C11 |
-| Barnett & Doubleday 2020 | C07 |
-| Cole 2015 | C08 |
-| Lang & Altman, SAMPL | C08 |
-| Kincaid et al. 1975 | C10 |
-| Plavén-Sigray et al. 2017 | C10 |
-| Rougier, Droettboom & Bourne 2014 | C13, C17, C18, C19, C20 |
-| Wilke 2019, 15 chapters | C13–C20 |
-| Bergstrom & West, proportional ink | C16 |
-| Correll, Bertini & Franconeri 2020 | C16 |
-| Heer & Bostock 2010 | C14 |
-| Weissgerber et al. 2015 | C15 |
-| Bateman et al. 2010 | C17 |
-| Crameri, Shephard & Heron 2020 | C18 |
-| Cumming, Fidler & Vaux 2007 | C19 |
-| Cleveland & McGill 1984 | C14 (optional) |
-| Tufte 2001 | C16, C17 (optional) |
-| Flesch 1948 | C10 (optional) |
+| Mensh & Kording 2017 | C02, C03, C04, C08, C10, C12, C13 |
+| OpenStax *Writing Guide with Handbook* | C06, C07, C10 |
+| Gopen & Swan 1990 | C07 |
+| Federal Plain Language Guidelines 2011 | C07, C12 |
+| Barnett & Doubleday 2020 | C08 |
+| Cole 2015 | C09 |
+| Lang & Altman, SAMPL | C09 |
+| Kincaid et al. 1975 | C11 |
+| Plavén-Sigray et al. 2017 | C11 |
+| Rougier, Droettboom & Bourne 2014 | C14, C18, C19, C20, C22 |
+| Wilke 2019, 15 chapters and the Preface | C14–C22 (ch. 22 "Tables" for C21; the Preface for C22) |
+| NLM, *Citing Medicine*, 2nd ed., ch. 1 Journals part A, with NLM Sample References | C05 |
+| Bergstrom & West, proportional ink | C17 |
+| Correll, Bertini & Franconeri 2020 | C17 |
+| Heer & Bostock 2010 | C15 |
+| Weissgerber et al. 2015 | C16 |
+| Bateman et al. 2010 | C18 |
+| Crameri, Shephard & Heron 2020 | C19 |
+| Cumming, Fidler & Vaux 2007 | C20 |
+| Cleveland & McGill 1984 | C15 (optional) |
+| Tufte 2001 | C17, C18 (optional) |
+| Flesch 1948 | C11 (optional) |
 
 ## Obtained
 
@@ -67,12 +70,13 @@ header lines of the files, not passages.
 | `bateman_2010_useful_junk` | `sources/bateman_2010_useful_junk.txt` |
 | `crameri_2020_misuse_colour` | `sources/crameri_2020_misuse_colour.txt` |
 | `cumming_2007_error_bars` | `sources/cumming_2007_error_bars.txt` |
+| `nlm_citing_medicine_2007` (2 Oct 2026, group R, for C05: public domain as stated; 19/19 verbatim; `intake/log-R.md`. merged into the registries 2 Oct 2026) | `sources/nlm_citing_medicine_2007.txt` |
 | `kincaid_1975_readability` (supplied by Harsh 2 Oct 2026: the UCF STARS PDF with a text layer; Table 3 and the Flesch counting rules checked against page images) | `sources/kincaid_1975_readability.txt` |
 | `cleveland_mcgill_1984_graphical_perception` (supplied by Harsh 2 Oct 2026; OCR text layer; every page carrying a held number or the ranking checked against its image) | `sources/cleveland_mcgill_1984_graphical_perception.txt` |
 | `tufte_1983_visual_display` (supplied by Harsh 2 Oct 2026; the copy is the **first edition**, 1983, tenth printing 1990, not the 2001 second edition; every held page checked against its image) | `sources/tufte_1983_visual_display.txt` |
 | `flesch_1948_readability_yardstick` (Harsh could not download the APA original and asked for alternatives; found as a retyped public-domain reprint in DuBay's *The Classic Readability Studies*, ERIC ED506404) | `sources/flesch_1948_readability_yardstick.txt` |
 | Extra: `flesch_1979_plain_english` (Flesch's own *How to Write Plain English*, ch. 2: the formula as "multiply the average word length by 84.6" and the score bands) | `sources/flesch_1979_plain_english.txt` |
-| Extra, not in the list: `krishnamurthy_2021_cvd_india` (colour-vision deficiency in boys in one Tamil Nadu district, for C18) | `sources/krishnamurthy_2021_cvd_india.txt` |
+| Extra, not in the list: `krishnamurthy_2021_cvd_india` (colour-vision deficiency in boys in one Tamil Nadu district, for C19) | `sources/krishnamurthy_2021_cvd_india.txt` |
 | Fallback for Kincaid: `edwards_2022_readability_formulas` (secondary restatement of the Flesch formulas) | `sources/edwards_2022_readability_formulas.txt` |
 
 Caveats on obtained sources: ICMJE asks others not to reprint or post the Recommendations, so the file is a
@@ -87,11 +91,11 @@ distribution licence only; Bergstrom & West's page states no licence; Wilke is C
 Every row is now provided. Kincaid 1975, Cleveland & McGill 1984 and Tufte were supplied by Harsh on 2 Oct 2026. Flesch 1948
 could not be downloaded; at Harsh's instruction ("search for its alternatives") the article itself was found as a retyped
 public-domain reprint (ERIC ED506404). It settles the coefficient: Flesch printed .846, so Kincaid's Table 3 ".836" is a
-misprint. Release is still pending until Harsh confirms the reprint is acceptable.
+misprint. Harsh accepted the reprint on 2 Oct 2026; the gate is released (sources provided).
 
 | Source | Needed for | URL tried | Why not obtained | Provided |
 | --- | --- | --- | --- | --- |
-| Kincaid et al. 1975 | C10 | https://stars.library.ucf.edu/cgi/viewcontent.cgi?article=1055&context=istlibrary | scan without a text layer at fetch | yes: sources/kincaid_1975_readability.txt |
-| Flesch 1948, A new readability yardstick | C10 | https://doi.org/10.1037/h0057532 | paywall (APA / Ovid) | yes: sources/flesch_1948_readability_yardstick.txt |
-| Cleveland & McGill 1984 | C14 | https://doi.org/10.1080/01621459.1984.10478080 | paywall; JSTOR terms | yes: sources/cleveland_mcgill_1984_graphical_perception.txt |
-| Tufte, The Visual Display of Quantitative Information | C16, C17 | https://archive.org/details/visualdisplayofq00tuft | print book | yes: sources/tufte_1983_visual_display.txt |
+| Kincaid et al. 1975 | C11 | https://stars.library.ucf.edu/cgi/viewcontent.cgi?article=1055&context=istlibrary | scan without a text layer at fetch | yes: sources/kincaid_1975_readability.txt |
+| Flesch 1948, A new readability yardstick | C11 | https://doi.org/10.1037/h0057532 | paywall (APA / Ovid) | yes: sources/flesch_1948_readability_yardstick.txt |
+| Cleveland & McGill 1984 | C15 | https://doi.org/10.1080/01621459.1984.10478080 | paywall; JSTOR terms | yes: sources/cleveland_mcgill_1984_graphical_perception.txt |
+| Tufte, The Visual Display of Quantitative Information | C17, C18 | https://archive.org/details/visualdisplayofq00tuft | print book | yes: sources/tufte_1983_visual_display.txt |
