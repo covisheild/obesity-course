@@ -1,0 +1,1 @@
+- Definition, principle 4: cut the topic-position sentence ("The start of a sentence, the topic position, holds the information that links back..."). Only the heading "Old information first" now covers it, yet Exercise 1 asks directly where a reader looks for the link to what came before.

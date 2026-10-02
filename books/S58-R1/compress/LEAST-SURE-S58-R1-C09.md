@@ -1,0 +1,1 @@
+- Definition: cut "When n people are counted, one person moves a percentage by 100 ÷ n percentage points." The figure caption and must-know 3 still gesture at it, but the formula itself now appears only in the figure. Exercise 2 and problems 2, 10 and 13 ask the reader to judge decimals against sample size, which leans on that rule.

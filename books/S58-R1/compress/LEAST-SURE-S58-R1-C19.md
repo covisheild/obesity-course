@@ -1,0 +1,1 @@
+- Cut the whole definition paragraph on perceptual uniformity and one-direction lightness ("The rainbow scale fails both", Crameri's seven per cent). The rainbow survives only as "fits none of them" and the review checklist, so Exercise 2 may leave the reader unable to say *why* a rainbow map misleads. Also cut the diverging-scale sentence.

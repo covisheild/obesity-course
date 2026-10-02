@@ -1,0 +1,1 @@
+- Cut the definition's sentence "A percentage has its count beside it, and any measure of variation is named" and the simplified "Every percentage has its count beside it." The rule now lives only in must_know[3]; Exercise 2 (bare percentages, mixed "%") and Exercise 3 depend on it.

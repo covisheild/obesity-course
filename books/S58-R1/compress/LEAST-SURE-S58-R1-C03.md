@@ -1,0 +1,1 @@
+Least sure: cutting the ICMJE abstract sentence and "Title, abstract and text must agree, and ICMJE notes that abstracts often differ from the text." The kept must_know[3] tells you to check every abstract number against the results but no longer says why (abstracts often drift, and are the only part many read). A cold reader may follow the step without seeing its stakes.
