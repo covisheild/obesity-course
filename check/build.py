@@ -23,6 +23,7 @@ REFDOC = os.path.join(ROOT, "references", "reference.docx")
 FIGURES_DIR = os.path.join(ROOT, "figures")
 sys.path.insert(0, FIGURES_DIR)
 import figspec  # noqa: E402  - figure specs: numbers tied to the text, PNG tied to the spec
+import codeblocks  # noqa: E402  - ```r / ```output / ```sh fences (S52-R1, 2 Oct 2026)
 LEVELS = ["Introductory", "Intermediate", "Advanced", "Expert"]
 
 # `textbook` is allowed on an empirical concept, and that is a deliberate widening made on
@@ -235,6 +236,10 @@ def prose_fields(r) -> list[tuple[str, str]]:
         if isinstance(p, dict):
             lv = p.get("level")
             out += [(f"practice {lv} prompt", p.get("prompt")), (f"practice {lv} answer", p.get("answer"))]
+    # Code is not prose (2 Oct 2026): every check that reads these fields - sentence length,
+    # grade, hard words, banned phrases, forward recall, symbols - sees the field with its
+    # ```r / ```output / ```sh blocks blanked out. A field without code is returned unchanged.
+    out = [(k, codeblocks.strip(v)) for k, v in out]
     return [(k, v) for k, v in out if isinstance(v, str) and v.strip()]
 
 
@@ -248,6 +253,9 @@ def _paragraphs(text: str) -> list[str]:
     because three bullets are three thoughts however they are punctuated.
     """
     out = []
+    # A code block is not prose and may contain blank lines, which would split it into chunks
+    # that no longer open with a fence; blank it out first (no-op for text without code).
+    text = codeblocks.strip(text)
     for block in re.split(r"\n\s*\n", text):
         b = block.strip()
         if not b or b.lstrip().startswith(("|", "#", "```")):
@@ -433,7 +441,8 @@ def check_arithmetic(r: dict) -> list:
     out = []
 
     def scan(text, where):
-        for line in str(text or "").split("\n"):
+        # R code and its printed output are not equations (2 Oct 2026); no-op without code.
+        for line in codeblocks.strip(str(text or "")).split("\n"):
             t = line.strip()
             if t.count("=") < 1 or "==" in t:
                 continue
@@ -942,11 +951,15 @@ def check(recs: dict, subjects: dict, clusters: dict, bibkeys: set):
         # A fence toggles. Reading a closing fence as if it opened a block - which is what
         # a naive `inside = tag != "table"` does - makes the prose after a table look like
         # a block of its own, and it reported the table it had just correctly skipped.
+        # A code fence may carry attributes (```r norun), and an r/output/sh block is verbatim
+        # code, never a table: a printed tibble has columns by design (2 Oct 2026).
         raw, inside, tag, body = r.get("_raw") or "", False, "", []
         for ln in raw.split("\n"):
             m = re.match(r"^\s*```+\s*(\S*)\s*$", ln)
+            if not m and codeblocks.OPEN.match(ln):
+                m = re.match(r"^\s*```+\s*(\S*)", ln)
             if m:
-                if inside and tag != "table" and _looks_tabular(body):
+                if inside and tag not in ("table",) + codeblocks.CODE_TAGS and _looks_tabular(body):
                     W(rid, "a working block has columns in it - tag it ```table so it "
                            "renders as a table, or the columns arrive as ragged text")
                 inside, tag, body = not inside, ("" if inside else m.group(1)), []
@@ -1054,6 +1067,11 @@ def check(recs: dict, subjects: dict, clusters: dict, bibkeys: set):
     rb_, rw_ = reader_checks.problems(recs, prose_fields, _sg.LEGACY)
     block += rb_
     warn += rw_
+    # Code (2 Oct 2026): records with ```r / ```output / ```sh blocks are run by check/code_gate.py
+    # (cached), and every printed output must match its ```output block. Records without code
+    # cost one substring scan of their raw text.
+    import code_gate
+    block += code_gate.build_problems(recs)
     return block, warn
 
 
@@ -1114,6 +1132,9 @@ def _notation(text: str) -> str:
         subs.append(f"{m.group(1)}^{m.group(2).replace(' ', chr(92) + ' ')}^")
         return f"\x00{len(subs) - 1}\x01"
 
+    # Inline code (`x^2`, `~ island`) is verbatim, like a code block: parked untouched. Only
+    # spans that carry a caret or tilde are parked, so text without them is unaffected.
+    text = re.sub(r"((?<!`)`[^`\n]*[\^~][^`\n]*`(?!`))", park("{0}"), text)
     text = _SUP.sub(_sup, text)
     text = _LOGB.sub(park("log~{0}~"), text)
     text = text.replace("^", r"\^").replace("~", r"\~")
@@ -1232,7 +1253,15 @@ def _prose(text, flag=None) -> str:
     character to a cell and shifted every boundary to its right, and pandoc then read the
     wreckage as merged cells. Widths have to be computed on the final text.
     """
-    return _working(_notation(str(text or "")), flag)
+    text = str(text or "")
+    if codeblocks.has_code(text):
+        # Code is verbatim (2 Oct 2026): the notation layer and the working-block conversion
+        # run on the prose around it, and each code block goes to pandoc as a fenced block.
+        out = []
+        for kind, part in codeblocks.segments(text):
+            out += [_working(_notation(part), flag)] if kind == "text" else codeblocks.to_markdown(part)
+        return "\n".join(out)
+    return _working(_notation(text), flag)
 
 
 def _block(prefix, text, trail="", flag=None) -> list[str]:
@@ -1248,14 +1277,15 @@ def _block(prefix, text, trail="", flag=None) -> list[str]:
     first = next((i for i, l in enumerate(lines) if l.strip()), None)
     if first is None:
         return [prefix.strip(), ""] if prefix.strip() else []
-    if lines[first].startswith(":::"):
+    blockish = (":::", "```")   # a working div, or a code block (2 Oct 2026)
+    if lines[first].startswith(blockish):
         lines = [prefix.rstrip(), ""] + lines[first:]
     else:
         lines[first] = prefix + lines[first]
     if trail:
         last = max(i for i, l in enumerate(lines) if l.strip())
-        lines[last] = lines[last] + trail if not lines[last].startswith(":::") else lines[last]
-        if lines[last].startswith(":::"):
+        lines[last] = lines[last] + trail if not lines[last].startswith(blockish) else lines[last]
+        if lines[last].startswith(blockish):
             lines += ["", trail.strip()]
     return lines + [""]
 
@@ -1485,8 +1515,9 @@ def concept_md(r, cites, label=None, sid=None) -> list[str]:
         if (ill.get("analogy_breaks_when") or "").strip():
             md += _block("**Where this picture breaks.** ", ill["analogy_breaks_when"], flag=flg)
     mk = r.get("must_know") if isinstance(r.get("must_know"), list) else []
-    rows = [f"- {p(' '.join((q.get('point') or '').split()))}" for q in mk
-            if isinstance(q, dict) and (q.get("point") or "").strip()]
+    rows = [f"- {p(' '.join((q.get('point') or '').split()))}"
+            if not codeblocks.has_code(q.get("point")) else _code_item(p(q["point"]))
+            for q in mk if isinstance(q, dict) and (q.get("point") or "").strip()]
     if rows:
         md += ["**Must know points for you.**", ""] + rows + [""]
     # Optional blocks (28 Sep 2026, from the statistics book): the tempting wrong reading named and
@@ -1501,6 +1532,15 @@ def concept_md(r, cites, label=None, sid=None) -> list[str]:
 
 
 LEGACY_INDENT = set()
+
+
+def _code_item(md):
+    """A must-know point that carries a code block: a list item whose lines keep their breaks,
+    indented under the marker, instead of being collapsed onto one line."""
+    lines = md.strip("\n").split("\n")
+    if lines and lines[0].startswith("```"):
+        lines = [""] + lines
+    return "- " + lines[0] + "".join("\n" + ("  " + l if l.strip() else "") for l in lines[1:])
 
 
 RUNG_BOOK = re.compile(r"^(S[0-9]{2})-R([0-9])$")
@@ -1659,7 +1699,9 @@ def _ids_to_labels(text, recs, own):
             if n is not None:
                 return f"Book {n}, section {recs[rid].get('sequence')}"
         return m.group(0)
-    return re.sub(r"`?\b((?:B0|S\d\d)-R\d-C\d\d)\b`?", label, text)
+    # Code blocks are verbatim (2 Oct 2026); without any, this is the plain substitution.
+    return codeblocks.md_outside(
+        text, lambda t: re.sub(r"`?\b((?:B0|S\d\d)-R\d-C\d\d)\b`?", label, t))
 
 
 # ---------------------------------------------------------------- reports
@@ -1883,7 +1925,13 @@ def _caret_check(html_path):
         return
     import html as _html
     with open(html_path, encoding="utf-8") as fh:
-        text = _html.unescape(re.sub(r"<[^>]+>", "", fh.read()))
+        page = fh.read()
+    # R code prints carets and tildes verbatim, by design (2 Oct 2026): code blocks and inline
+    # code are removed before the caret/tilde count. Prose outside them is checked as before.
+    code_free = re.sub(r"<code\b[^>]*>.*?</code>", "", re.sub(r"<pre\b[^>]*>.*?</pre>", "", page,
+                                                           flags=re.S), flags=re.S)
+    text = _html.unescape(re.sub(r"<[^>]+>", "", page))
+    prose_text = _html.unescape(re.sub(r"<[^>]+>", "", code_free))
     # The same check for a second class of leak: a repository path reaching the reader. It
     # happened once in prose and once through a bibliography note ("... is held in sources/"),
     # and a reader does not have this repository, so any such path is a dead instruction.
@@ -1894,13 +1942,13 @@ def _caret_check(html_path):
     if paths:
         print(f"  [paths] {len(paths)} repository path(s) reached the rendered page: "
               + ", ".join(paths[:6]))
-    hits = list(re.finditer(r"[\^~]", text))
+    hits = list(re.finditer(r"[\^~]", prose_text))
     if not hits:
         return
     print(f"  [notation] {len(hits)} literal caret/tilde reached the rendered page - "
           "the superscript pattern has missed a case:")
     for m in hits[:5]:
-        print("    ..." + " ".join(text[max(0, m.start() - 60):m.end() + 30].split()) + "...")
+        print("    ..." + " ".join(prose_text[max(0, m.start() - 60):m.end() + 30].split()) + "...")
 
 
 # ---------------------------------------------------------------- main
@@ -1963,7 +2011,7 @@ def main():
                 in_refs = False
             if not in_refs and not l.lstrip().startswith("#"):
                 body.append(l)
-        stumbles = [s for s in acronym_defects("\n".join(body))
+        stumbles = [s for s in acronym_defects(codeblocks.md_strip("\n".join(body)))
                     if not re.fullmatch(r"[IVXLC]+", s)]   # Schedule II is a numeral
         if stumbles:
             print(f"  [{sid}] used before anything expands them: {', '.join(stumbles)}")

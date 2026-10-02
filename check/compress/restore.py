@@ -54,6 +54,7 @@ import yaml
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from _book import Book, build, take_opts  # noqa: E402
+import codeblocks  # noqa: E402  - on sys.path via _book (check/)
 
 BULLET = build.BULLET
 MARKUP = "*_`"
@@ -208,14 +209,26 @@ def rebuild(original, cut_text, wanted):
         n = norm(s)
         return any(w in n for w in wanted)
 
-    out, prev_restored = [], False
+    # An ```output block belongs to the r or sh block right above it (2 Oct 2026): it comes
+    # back exactly when that block does, and never on its own.
+    out, prev_restored, code_kept = [], False, None
     for kind, raw in split_blocks(str(original)):
         if kind == "fence":
+            o = codeblocks.parse_open(raw.split("\n", 1)[0])
+            if o and o["tag"] == "output" and code_kept is not None:
+                if code_kept:
+                    out.append(raw.rstrip("\n"))
+                code_kept = None
+                continue
             named = asked(raw) and norm(raw) not in kept_fences
-            if norm(raw) in kept_fences or prev_restored or named:
+            keep = norm(raw) in kept_fences or prev_restored or named
+            if keep:
                 out.append(raw.rstrip("\n"))
             prev_restored = named
+            code_kept = keep if (o and o["tag"] in codeblocks.RUNNABLE) else None
             continue
+        if raw.strip():
+            code_kept = None
 
         pieces, restored_here = [], False
         for chunk in re.split(r"\n\s*\n", raw):

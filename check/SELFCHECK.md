@@ -97,3 +97,6 @@ When an audit marks a defect **recurring** and it is not on this list, add it he
 
 19. Exponents as `10^7`, logarithms as `log10`, no markup; no repository path (`sources/…`,
     `check/…`) anywhere a reader will see it, including `.bib` notes.
+19a. **Code runs as printed.** Every ```` ```r ```` / ```` ```sh ```` block is fenced, every
+    ```` ```output ```` block was written by `python check/code_gate.py --write`, never typed, and
+    `python check/code_gate.py --check --subject <ID>` passes.

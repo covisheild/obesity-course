@@ -21,6 +21,8 @@ import re
 
 import yaml
 
+import codeblocks
+
 HERE = os.path.dirname(os.path.abspath(__file__))
 REPO = os.path.dirname(HERE)
 BOOKS = os.path.join(REPO, "books")
@@ -86,7 +88,10 @@ def apply_numbers(recs):
                 return m.group(0)
             USED.add((b, k))
             return str(e["value"])
-        return NUM.sub(rep, text)
+        # Never inside a ```r / ```output / ```sh block (2 Oct 2026): code is printed verbatim and
+        # its output is whatever a fresh run printed, so a registry value cannot be pasted into it.
+        # A {{n:key}} written inside code is left as typed (and the code gate runs it as typed).
+        return codeblocks.outside(text, lambda t: NUM.sub(rep, t))
 
     def walk(node, rid, key=None):
         if isinstance(node, dict):

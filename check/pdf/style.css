@@ -138,6 +138,22 @@ div.working { font-family: "JetBrains Mono", "DejaVu Sans Mono", monospace; font
 div.working p { margin: 0; }
 pre, code { font-family: "JetBrains Mono", "DejaVu Sans Mono", monospace; font-size: 8.6pt; }
 pre { background: #f4f6f7; padding: 3mm 4mm; border-radius: 1.5mm; white-space: pre-wrap; break-inside: avoid; }
+/* R code, its printed output and shell commands (```r, ```output, ```sh; 2 Oct 2026). Verbatim and
+   monospace. At 8.3pt a 72-character line (the code gate's width) is about 127mm, inside the A4
+   text block; a longer line wraps rather than running off the page. Code is tinted in the book's
+   colour; output sits on white under a faint rule, so the reader sees which is which. */
+div.sourceCode { margin: 2.5mm 0 2.5mm; }
+pre.sourceCode, pre.output { font-size: 8.3pt; line-height: 1.42; padding: 2.2mm 3.5mm; margin: 2.5mm 0 2.5mm;
+                             border-radius: 0 1.5mm 1.5mm 0; white-space: pre-wrap; overflow-wrap: anywhere; }
+div.sourceCode pre.sourceCode { margin: 0; }
+pre.sourceCode { background: var(--tint); border-left: 1mm solid var(--accent); color: var(--text); }
+pre.output { background: #fcfcfc; border: .25mm solid var(--rule); border-left: 1mm solid var(--rule); color: #2b3137; }
+/* JetBrains Mono draws `<-` as an arrow and `==` as one long bar unless told not to: a reader
+   copying from the page must see the characters they type. */
+pre.sourceCode, pre.output, pre.sourceCode code, pre.output code {
+  font-variant-ligatures: none; font-feature-settings: "liga" 0, "calt" 0, "dlig" 0; }
+pre code { font-size: inherit; }
+pre.sourceCode a { color: inherit; text-decoration: none; }
 
 blockquote { margin: 3mm 0 3.5mm; padding: 2.5mm 5mm; background: #faf7f0; border-left: 1.2mm solid #d9a441;
              font-style: italic; border-radius: 0 1.5mm 1.5mm 0; break-inside: avoid; }
