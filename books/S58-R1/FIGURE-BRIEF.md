@@ -43,11 +43,15 @@ captions and alt text are yours but keep them short.
   draw; the greyscale problem) and `books/S58-R1/DEFECTS.md` only for figure-related holes in your
   range (e.g. a figure describing a worked example the compressed text no longer shows: fix the
   figure or its caption so it says only what the text gives; never restore prose).
-- **Greyscale.** The book's two default series colours are almost equally light, so two-series
-  figures nearly merge in grey — exactly what C19 teaches against. Where a figure has two or more
-  series, use per-series colours (claude.md §4 documents them) chosen to differ clearly in lightness
-  within the book's Part hue, and check by converting your PNG to greyscale in Python (e.g. PIL
-  `convert("L")`) and looking at it. Do not edit `check/figures/draw.py` or `figspec.py`.
+- **Greyscale.** For this book's hue the palette's primary (#b6206b) and secondary (#138613) have
+  the same greyscale lightness (both about 85 of 255), so two-series figures merge in grey — what C19
+  teaches against. This is a fault in `check/figures/figspec.py` `palette_for` (a contract file,
+  frozen while books run; the conductor reports it). Do not pick colours by hand and do not edit
+  `draw.py` or `figspec.py`. Instead, where a figure has two series, make it readable without
+  colour: direct labels on the marks or line ends, different markers where the spec allows, or one
+  series per panel/figure; or use the tertiary series (dark ink, dashed) as the second where the spec
+  lets you order series. Convert each such PNG to greyscale in Python (PIL `convert("L")`), look at it,
+  and record the result in your FIGURES file.
 - `draw.py` does not substitute `{{n:key}}`: a number a spec uses must appear literally in the
   record's prose (outside the placeholder) or be worked out under `derived`. The build blocks
   `kind: dataset` references; use the kinds the build accepts.
