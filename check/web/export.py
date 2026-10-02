@@ -112,13 +112,18 @@ def inline(h):
 # ---------------------------------------------------------------- leaks
 
 LEAKS = []
+NOTES = []
 
 
 def leak_check(where, h):
     """build._caret_check, applied to every piece of HTML this writes rather than to one page."""
     text = _html.unescape(re.sub(r"<[^>]+>", "", h))
+    # A caret means a superscript the notation layer missed: always a fault. A tilde can be the book's
+    # own words: S02-R1 quotes sources that write "~90 g/day" and then says what the ~ means. So a
+    # tilde is reported, as build._caret_check reports it, and does not stop the export.
     for m in re.finditer(r"[\^~]", text):
-        LEAKS.append(f"{where}: literal caret/tilde: ...{text[max(0, m.start() - 50):m.end() + 20]}...")
+        msg = f"{where}: literal {'caret' if m.group(0) == '^' else 'tilde'}: ...{text[max(0, m.start() - 50):m.end() + 20]}..."
+        (LEAKS if m.group(0) == "^" else NOTES).append(msg)
     for p in sorted(set(re.findall(r"(?<![/\w.])(?:sources|check|books)/[\w./-]+", text))):
         LEAKS.append(f"{where}: repository path reached the page: {p}")
     for i in sorted(set(re.findall(r"\b(?:B0|S\d\d)-R\d-[CK]\d\d\b", text))):
@@ -564,6 +569,10 @@ def main():
     export_series(a.out, series, books)
     for bid in ids:
         export_book(bid, a.out, a.figures_out, recs, series, books)
+    if NOTES:
+        print(f"\n{len(NOTES)} note(s), reported as the PDF build reports them:")
+        for n in NOTES[:20]:
+            print("  " + " ".join(n.split()))
     if LEAKS:
         print(f"\n{len(LEAKS)} leak(s) in the rendered HTML; nothing a reader sees may carry these:")
         for l in LEAKS[:40]:
