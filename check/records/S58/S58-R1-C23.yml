@@ -651,21 +651,34 @@ illustrations:
       phase two from 2 January 2020 to 30 April 2021
 figures:
 - file: s58-r1-c23-three-drafts.png
-  caption: "Flesch Reading Ease of the three drafts of the results paragraph, each figure counted as one syllable: the diary 61.6, the claim draft 79.7, after the cut 86.7. The dashed line is Flesch's minimum of 60 for Plain English. The diary passes it, and is the worst of the three."
+  caption: "The worst draft passes: the diary scores 61.6 in Flesch Reading Ease, above Flesch's minimum of 60 for Plain English (dashed line). The claim draft scores 79.7, and the cut version 86.7. Each figure in a draft is counted as one word of one syllable."
   alt: "Three bars: 61.6 for the diary, 79.7 for the claim draft, 86.7 after the cut, with a dashed line at 60 that all three clear."
   source: draw.py
   spec:
     kind: bar
-    x: ["the diary", "the claim draft", "after the cut"]
-    series:
-    - name: Flesch Reading Ease
-      y: ["61.6", "79.7", "86.7"]
+    from_table: {block: 0, x: 0, y: [6]}
     x_label: ""
-    y_label: "Flesch Reading Ease"
+    y_label: "Flesch Reading Ease (score)"
     value_labels: true
     y_range: [0, 100]
     refs:
-    - {y: 60, label: "60: Flesch's Plain English minimum"}
+    - {y: 60}
+    labels:
+    - {text: "dashed line: Flesch's minimum for Plain English, 60", at: [-0.36, 91], offset: [0, 0]}
+- file: s58-r1-c23-sentences-and-words.png
+  caption: "The cut scored higher than the diary although its sentences were longer: 17 words a sentence against 13.8. Its words were shorter, 1.2157 syllables a word against 1.5507. The long words went, and the score rose. These are points, so neither axis starts at zero."
+  alt: "Three points, one per draft, with average sentence length across and average syllables per word up the side: the diary at 13.8 and 1.5507, the claim draft at 16.25 and 1.3077, after the cut at 17 and 1.2157. Each draft lies further right and lower than the one before."
+  source: draw.py
+  spec:
+    kind: scatter
+    from_table: {block: 0, x: 4, y: [5]}
+    x_label: "average sentence length (words per sentence)"
+    y_label: "average word length (syllables per word)"
+    size: [6.2, 3.0]
+    labels:
+    - {text: "the diary", at: [13.8, 1.5507], offset: [8, -3]}
+    - {text: "the claim draft", at: [16.25, 1.3077], offset: [-34, 8]}
+    - {text: "after the cut", at: [17, 1.2157], offset: [-62, -3]}
 must_know:
 - point: |
     Work in this order: the message, then the paragraph, then the table or figure, then the

@@ -677,7 +677,23 @@ common_misreading: |
 reporting_sentence: |
   Among women aged 15-49 in India, {{n:nfhs5_women_ow_ob_pct}} per cent had overweight or obesity in
   NFHS-5 (2019-21), against {{n:nfhs4_women_ow_ob_pct}} per cent in NFHS-4 (2015-16) (1).
-figure_note: "The section's content is the order and punctuation of a written reference, which the illustration's table shows element by element; a chart would plot nothing."
+figures:
+- file: s58-r1-c05-first-mention-numbers.png
+  caption: "Each source keeps the number it got at its first mention, and a new source takes the next free number. A returns as (1) in sentence 3. D, cited only in Table 1, takes (3) at sentence 4, where the text first mentions the table, so C in sentence 5 gets (4). The sources and sentences are the made-up draft of this section."
+  alt: "Five bars from zero, one per sentence, each as tall as the reference number printed there: sentence 1 A (1), sentence 2 B (2), sentence 3 A again (1), sentence 4 D through Table 1 (3), sentence 5 C (4)."
+  source: draw.py
+  spec:
+    kind: bar
+    x: ["sentence 1\nA", "sentence 2\nB", "sentence 3\nA again", "sentence 4\nD, via Table 1", "sentence 5\nC"]
+    series:
+    - name: number printed in the text
+      y: ["1", "2", "1", "3", "4"]
+    x_label: "sentence of the draft introduction, and the source it cites"
+    y_label: "reference number printed"
+    y_range: [0, 5]
+    value_labels: true
+    relations:
+    - check: "y[2] = y[0]"
 exercises:
 - type: retrieval
   prompt: |

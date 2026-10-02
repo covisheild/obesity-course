@@ -351,7 +351,7 @@ illustrations:
 figures:
 - file: s58-r1-c14-urban-rural.png
   caption: "In NFHS-5 (2019-21), a larger share of urban than of rural adults aged 15-49 had overweight or obesity, in women ({{n:nfhs5_women_ow_ob_urban_pct}}% against {{n:nfhs5_women_ow_ob_rural_pct}}%) and in men ({{n:nfhs5_men_ow_ob_urban_pct}}% against {{n:nfhs5_men_ow_ob_rural_pct}}%). Bars show the per cent with a body mass index of 25.0 kg/m^2 or more. Source: NFHS-5 India Fact Sheet, indicators 88 and 89."
-  alt: "Two pairs of bars. Women: urban 33.2%, rural 19.7%. Men: urban 29.8%, rural 19.3%. In each pair the urban bar is the taller."
+  alt: "Two pairs of bars from zero, urban on the left of each pair and rural on the right, each pair labelled. Women: urban 33.2%, rural 19.7%. Men: urban 29.8%, rural 19.3%. In each pair the urban bar is the taller."
   source: draw.py
   spec:
     kind: bar
@@ -365,6 +365,11 @@ figures:
     y_label: "overweight or obese, aged 15-49 (%)"
     value_labels: true
     y_range: [0, 40]
+    labels:
+    - {text: "urban", at: [-0.175, 33.2], offset: [-11, 13]}
+    - {text: "rural", at: [0.175, 19.7], offset: [-10, 13]}
+    - {text: "urban", at: [0.825, 29.8], offset: [-11, 13]}
+    - {text: "rural", at: [1.175, 19.3], offset: [-10, 13]}
 must_know:
 - point: |
     Write the figure's claim as one sentence before you open any program that draws charts.

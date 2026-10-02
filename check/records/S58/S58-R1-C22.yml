@@ -449,24 +449,34 @@ illustration:
       98. Men age 15-19 years who are anaemic (<13.0 g/dl)22 (%) 25.0 33.9 31.1 29.2
 figures:
 - file: s58-r1-c22-anaemia-two-rounds.png
-  caption: "Between NFHS-4 (2015-16) and NFHS-5 (2019-21), the share with anaemia rose in every group the India fact sheet reports. Bars show the per cent anaemic, by each group's own haemoglobin cut-off; ages in years. Counts are not given in the source. Source: NFHS-5 India Fact Sheet, indicators 92 and 95 to 98."
-  alt: "Five pairs of bars from zero, NFHS-4 on the left of each pair and NFHS-5 on the right, named over the first pair: children 6-59 months 58.6 and 67.1; women 15-19 54.1 and 59.1; women 15-49 53.1 and 57.0; men 15-19 29.2 and 31.1; men 15-49 22.7 and 25.0. In every pair the NFHS-5 bar is taller."
+  caption: "Between NFHS-4 (2015-16) and NFHS-5 (2019-21), the share with anaemia rose in each of the five groups shown, by 1.9 to 8.5 percentage points. Bars show the per cent anaemic, by each group's own haemoglobin cut-off; ages in years. Counts are not given in the source. Source: NFHS-5 India Fact Sheet, indicators 92 and 95 to 98."
+  alt: "Five pairs of bars from zero, NFHS-4 on the left of each pair and NFHS-5 on the right, named over the first pair, each bar's value printed on it: children 6-59 months 58.6 and 67.1; women 15-19 54.1 and 59.1; women 15-49 53.1 and 57.0; men 15-19 29.2 and 31.1; men 15-49 22.7 and 25.0. In every pair the NFHS-5 bar is taller."
   source: draw.py
   spec:
     kind: bar
+    # Literal rather than from_table: a table series takes its header as a legend entry, and this
+    # book's two series colours merge in grey (RECONCILE.md), so the rounds are named directly over
+    # the first pair and the series are left unnamed, which leaves no legend.
     x: ["children 6-59 months", "women 15-19", "women 15-49", "men 15-19", "men 15-49"]
     series:
-    - name: "NFHS-4, 2015-16"
+    - name: ""
       y: ["58.6", "54.1", "53.1", "29.2", "22.7"]
-    - name: "NFHS-5, 2019-21"
+    - name: ""
       y: ["67.1", "59.1", "57.0", "31.1", "25.0"]
     labels:
-    - {text: "NFHS-4", at: [-0.34, 59.5], offset: [0, 4]}
-    - {text: "NFHS-5", at: [0.02, 68], offset: [0, 4]}
+    - {text: "NFHS-4", at: [-0.335, 63.5], offset: [0, 2]}
+    - {text: "NFHS-5", at: [0.015, 72], offset: [0, 2]}
     x_label: ""
     y_label: "anaemic (%)"
+    value_labels: true
     y_range: [0, 80]
     size: [7.4, 3.2]
+    derived:
+    - {value: "8.5", from: "67.1 - 58.6"}
+    - {value: "5.0", from: "59.1 - 54.1"}
+    - {value: "3.9", from: "57.0 - 53.1"}
+    - {value: "1.9", from: "31.1 - 29.2"}
+    - {value: "2.3", from: "25.0 - 22.7"}
     relations:
     - check: "y2[0] - y1[0] = 8.5"
     - check: "y2[1] - y1[1] = 5.0"

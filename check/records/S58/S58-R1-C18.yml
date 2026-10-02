@@ -626,8 +626,8 @@ common_misreading: |
   values.
 figures:
 - file: s58-r1-c18-where-they-looked.png
-  caption: "Bateman and colleagues (2010): share of on-screen time spent looking at each part of the chart. Holmes charts, built into cartoon pictures: 40% on data alone, 27% on data drawn as part of a picture, 13% on picture alone, 20% elsewhere. Plain charts: 78% on data, 22% elsewhere. 20 students, untimed viewing."
-  alt: "Paired bars for four parts of the screen. Holmes charts: data alone 40, data in a picture 27, picture alone 13, elsewhere 20. Plain charts: data 78, data in a picture 0, picture alone 0, elsewhere 22."
+  caption: "The pictures took looking time. On the Holmes charts, built into cartoon pictures, 40% of on-screen time went on data alone, 27% on data drawn as part of a picture, 13% on picture alone and 20% elsewhere. On the plain charts, 78% went on data and 22% elsewhere; they have no picture, so those two bars are 0. Bateman and colleagues, \"Useful junk?\": an eye tracker, 20 students, untimed viewing."
+  alt: "Paired bars from zero for four parts of the screen, Holmes charts on the left of each pair and plain charts on the right, the first pair labelled. Holmes charts: data alone 40, data in a picture 27, picture alone 13, elsewhere 20. Plain charts: data 78, data in a picture 0, picture alone 0, elsewhere 22."
   source: draw.py
   spec:
     kind: bar
@@ -639,6 +639,11 @@ figures:
     y_label: "share of on-screen time (%)"
     y_range: [0, 100]
     value_labels: true
+    labels:
+    - {text: "Holmes", at: [-0.175, 40], offset: [-15, 13]}
+    - {text: "plain", at: [0.175, 78], offset: [-10, 13]}
+    - {text: "Holmes", at: [2.825, 20], offset: [-15, 13]}
+    - {text: "plain", at: [3.175, 22], offset: [-10, 13]}
     relations:
     - check: "sum(y1) = 100"
     - check: "sum(y2) = 100"

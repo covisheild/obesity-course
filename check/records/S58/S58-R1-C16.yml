@@ -328,7 +328,7 @@ illustrations:
   numbers: []
 figures:
 - file: s58-r1-c16-equal-bars.png
-  caption: "Made-up survey of 8 adults in each of three wards. The bars show each ward's mean minutes of moderate activity a day. All three are 30 minutes, and each ward's standard deviation is 14.3 minutes, so the bars and any error bars would match."
+  caption: "Three wards look alike as bars of means. Made-up survey of 8 adults in each of three wards; each bar is a ward's mean minutes of moderate activity a day. All three are 30 minutes, and each ward's standard deviation is 14.3 minutes, so the bars and any error bars would match."
   alt: "Three bars of equal height, each labelled 30, for ward 1, ward 2 and ward 3."
   source: draw.py
   spec:
@@ -341,28 +341,35 @@ figures:
     relations:
     - check: "y[0] - y[2] = 0"
 - file: s58-r1-c16-every-value.png
-  caption: "The same 24 made-up values, one dot per adult. Each ward's eight adults are set out from left to right, lowest value first, and joined in that order, so no dot hides another. Ward 1 climbs evenly from 10 to 50 minutes. Ward 2 stays between 22 and 28 until one adult at 65. Ward 3 jumps from a cluster at 15 to 19 to one at 41 to 45. The dashed line marks the mean of every ward, 30 minutes."
-  alt: "Three sets of eight dots, each set joined in order, against adult number 1 to 8. Ward 1 rises steadily from 10 to 50. Ward 2 is nearly flat from 22 to 28, then jumps to 65. Ward 3 is flat from 15 to 19, then jumps to 41 to 45. A dashed line at 30 crosses all three."
+  caption: "The same three means of 30 minutes hide three different wards. One dot per adult, 24 made-up values, set out ward by ward; within each ward the eight adults go from left to right, lowest value first, so no dot hides another. The dots are not joined, because the adults are not pairs. Ward 1 is spread fairly evenly from 10 to 50 minutes. In ward 2, seven adults report 22 to 28 and one reports 65. Ward 3 falls into two clusters, 15 to 19 and 41 to 45. The dashed line is the mean of every ward, 30 minutes."
+  alt: "24 unjoined dots in three labelled blocks of eight, one block per ward, each block rising from its lowest value. Ward 1 rises fairly evenly from 10 to 50. Ward 2 is nearly flat from 22 to 28, then one dot at 65. Ward 3 sits at 15 to 19, then at 41 to 45. A dashed line at 30 crosses all three blocks."
   source: draw.py
   spec:
-    kind: line
-    x: ["1", "2", "3", "4", "5", "6", "7", "8"]
+    kind: scatter
+    x: ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24"]
     series:
-    - name: ward 1
-      y: ["10", "15", "21", "27", "33", "39", "45", "50"]
-    - name: ward 2
-      y: ["22", "23", "24", "25", "26", "27", "28", "65"]
-    - name: ward 3
-      y: ["15", "16", "17", "19", "41", "43", "44", "45"]
-    x_label: "adult in the ward, lowest value first (1 to 8)"
+    - name: each adult
+      y: ["10", "15", "21", "27", "33", "39", "45", "50", "22", "23", "24", "25", "26", "27", "28", "65", "15", "16", "17", "19", "41", "43", "44", "45"]
+    x_label: "adult: ward 1 is 1 to 8, ward 2 is 9 to 16, ward 3 is 17 to 24; lowest value first in each ward"
     y_label: "moderate activity (minutes a day)"
     y_range: [0, 70]
     refs:
     - {y: 30, label: "mean, 30 minutes"}
+    labels:
+    - {text: "ward 1", at: [3, 58], offset: [0, 0]}
+    - {text: "ward 2", at: [11, 58], offset: [0, 0]}
+    - {text: "ward 3", at: [19, 58], offset: [0, 0]}
+    derived:
+    - {value: "9", from: "8 + 1"}
+    - {value: "12", from: "8 + 4"}
+    - {value: "13", from: "8 + 5"}
+    - {value: "14", from: "8 + 6"}
+    - {value: "18", from: "16 + 2"}
+    - {value: "20", from: "16 + 4"}
     relations:
-    - check: "sum(y1) / 8 = 30"
-    - check: "sum(y2) / 8 = 30"
-    - check: "sum(y3) / 8 = 30"
+    - check: "sum(y[0:8]) / 8 = 30"
+    - check: "sum(y[8:16]) / 8 = 30"
+    - check: "sum(y[16:24]) / 8 = 30"
 must_know:
 - point: |
     "The bar chart summarises the group" is the error. Very different sets of values give the same

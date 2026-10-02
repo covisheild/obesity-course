@@ -236,16 +236,28 @@ illustrations:
     A margin note can be one tidy sentence and still be wrong. The reverse outline tests where
     the points are, not whether the evidence below each one supports it.
 figures:
-- file: s58-r1-c10-topic-changes.png
-  caption: "The topic of each of the 7 sentences, in reading order: 1 is how common and how it changed, 2 is towns against villages, 3 is what the survey counted. The made-up paragraph before the rewrite changes topic 6 times; the rewrite changes 2 times, each at a paragraph break."
-  alt: "Two step lines over sentences 1 to 7. Before: topics 1, 3, 2, 1, 3, 2, 1, jumping up and down at every sentence. After: topics 3, 3, 1, 1, 1, 2, 2, three flat runs."
+- file: s58-r1-c10-topics-before.png
+  caption: "Before the rewrite: the topic of each of the 7 sentences of the made-up paragraph, in reading order. Topic 1 is how common and how it changed, 2 is towns against villages, 3 is what the survey counted. The topic changes 6 times, and the reader is taken to topic 1 three times."
+  alt: "A step line over sentences 1 to 7, at topics 1, 3, 2, 1, 3, 2, 1: a jump at every sentence."
   source: draw.py
   spec:
     kind: step
-    from_table: {block: 0, x: 0, y: [1, 2]}
+    from_table: {block: 0, x: 0, y: [1]}
     x_label: sentence, in reading order
     y_label: topic (1, 2 or 3)
-    y_range: [0, 3.5]
+    y_range: [0, 4]
+    size: [6.2, 2.3]
+- file: s58-r1-c10-topics-after.png
+  caption: "After the rewrite, drawn the same way: topics 3, 1 and 2, each in one place. The topic changes 2 times, and each change falls at a paragraph break."
+  alt: "A step line over sentences 1 to 7, at topics 3, 3, 1, 1, 1, 2, 2: three flat runs with two steps between them."
+  source: draw.py
+  spec:
+    kind: step
+    from_table: {block: 0, x: 0, y: [2]}
+    x_label: sentence, in reading order
+    y_label: topic (1, 2 or 3)
+    y_range: [0, 4]
+    size: [6.2, 2.3]
 must_know:
 - point: |
     "One idea per paragraph" read as "short paragraphs" is the error.

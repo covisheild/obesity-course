@@ -638,3 +638,13 @@ mean sentence length (or, item 12, without tripping a tool conflict). Field name
     section 18's "decoration". Close: one term in both.
 25. **C20 Ex 3 / C22 illustration.body.** "a side axis titled 'BMI'" against "the value axis". Close:
     one term, glossed once.
+
+## Found by the conductor's look at every figure (3 Oct 2026, after the figure plan)
+
+All 29 figures were opened as images. Figure-specific notes from the planners are in `FIGURES-f1.md` … `FIGURES-f4.md`.
+
+- **FIG-1 (contract, deferred):** every figure with two or more series also gets a legend (`check/figures/draw.py` draws one whenever n > 1), even where the planner added direct labels: C07, C08, C11 counting-rule and score-lines, C14, C15 large-errors, C17 bars-from-zero and line-from-18, C18. C18 itself teaches deleting a legend that direct labels make redundant. Needs a `legend: false` spec option in a contract-change chat; not fixable in this book while `check/**` is frozen.
+- **FIG-2 (contract, deferred):** for hue 330 the palette's primary #b6206b and secondary #138613 have the same greyscale lightness (85 vs 87 of 255), against `figspec.palette_for`'s own design note ("a different lightness") and against C19's rule. Two-series figures read in grey only through their direct labels. Fix in `palette_for` (force a lightness gap) in a contract-change chat.
+- **FIG-3 (S58-R1-C17, `s58-r1-c17-lie-factor-by-start.png`):** log value axis printed as 10⁰ and 10¹ with no intermediate labels; the Lie Factors 1.00 to 34.3 read as well on a linear axis, which the section's reader is not asked to read in logs. Fixer: consider `y_scale` linear, or say in the caption how to read the log axis.
+- **FIG-4 (S58-R1-C11, `s58-r1-c11-counting-rule.png`):** Flesch scores of 1.1 (the draft) and 8.3 (Rewrite A) when figures are counted as read aloud: auditor recomputes from the record's counts.
+- **FIG-5 (S58-R1-C16, `s58-r1-c16-every-value.png`):** x ticks run 0–25 over adults numbered 1–24; the ward labels carry the grouping. Minor; tool limitation on tick placement.

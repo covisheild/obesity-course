@@ -515,6 +515,30 @@ figures:
     relations:
     - check: "y[0] / y[1] = 1.732"
     - check: "y[2] / y[1] = 4"
+- file: s58-r1-c20-se-shrinks.png
+  caption: "The standard error shrinks as n grows; the standard deviation does not. If more values had the same spread as Cumming's three, an SD of 12.0, the SE would be 12.0 divided by the square root of n: 6.93 at n = 3, and 1.90 at n = 40. A short SE bar says the mean is precise, not that the people are alike."
+  alt: "A dashed horizontal line at 12.0 marks the SD. A curve falls from 6.93 at n = 3 to 1.90 at n = 40, the SE, with the two ends marked as points."
+  source: draw.py
+  spec:
+    kind: scatter
+    x: ["3", "40"]
+    series:
+    - name: "SE"
+      y: ["6.93", "1.90"]
+    x_label: "n, the number of independent values"
+    y_label: "length of one arm (units of the data)"
+    y_range: [0, 14]
+    size: [6.2, 3.0]
+    derived:
+    - {value: "1.90", from: "12.0 / 6.32"}
+    curves:
+    - {y: "y = 12.0 / sqrt(x)", x0: 3, x1: 40, series: "SE"}
+    refs:
+    - {y: 12.0, label: "SD 12.0"}
+    labels:
+    - {text: "SE = SD ÷ √n", at: [12, 3.46], offset: [6, 6]}
+    - {text: "n = 3: SE 6.93", at: [3, 6.93], offset: [8, 2]}
+    - {text: "n = 40: SE 1.90", at: [40, 1.90], offset: [-70, 8]}
 must_know:
 - point: |
     "An error bar shows the error" is the error. Write in every caption whether a bar is the SD, the

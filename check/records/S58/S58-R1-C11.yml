@@ -1156,8 +1156,8 @@ figures:
     English minimum of 60. The whole gain comes from shorter sentences: Rewrite A's words are a
     little longer, so its line sits lower."
   alt: "Two nearly parallel falling lines of the FRE score against average sentence length. A point
-    at 52 words and a score of 38.5 on the lower line; a point at 15.5 words and 71.0 on the upper
-    line. A dashed horizontal line at 60."
+    at 52 words and a score of 38.5 on the upper, solid line; a point at 15.5 words and 71.0 on the
+    lower, dashed line. A dashed horizontal line at 60."
   source: draw.py
   spec:
     kind: scatter
@@ -1174,7 +1174,10 @@ figures:
     - {y: 60, label: "Plain English minimum, 60"}
     labels:
     - {text: "the draft: 52 words, 38.5", at: [52, 38.5], offset: [-150, -14]}
-    - {text: "Rewrite A: 15.5 words, 71.0", at: [15.5, 71.0], offset: [8, 6]}
+    - {text: "Rewrite A: 15.5 words, 71.0", at: [15.5, 71.0], offset: [6, 16]}
+    relations:
+    - check: "206.835 - 1.015*x[0] - 84.6*71/52 = 38.5"
+    - check: "206.835 - 1.015*x[1] - 84.6*44/31 = 71.0"
 - file: s58-r1-c11-counting-rule.png
   caption: "The same two sentences scored under Flesch's two rules for figures. Counting each figure
     as one syllable, the draft scores 38.5 and Rewrite A 71.0. Reading each figure aloud, they score
@@ -1192,6 +1195,37 @@ figures:
       y: ["1.1", "8.3"]
     y_label: "Flesch Reading Ease, FRE"
     value_labels: true
+    labels:
+    - {text: "figures as\none syllable", at: [-0.336, 38.5], offset: [0, 14]}
+    - {text: "figures\nread aloud", at: [0.014, 1.1], offset: [0, 14]}
+    relations:
+    - check: "206.835 - 1.015*52 - 84.6*71/52 = 38.5"
+    - check: "206.835 - 1.015*15.5 - 84.6*44/31 = 71.0"
+    - check: "206.835 - 1.015*52 - 84.6*94/52 = 1.1"
+    - check: "206.835 - 1.015*15.5 - 84.6*67/31 = 8.3"
+- file: s58-r1-c11-three-scores.png
+  caption: "The three versions scored by the same rule. Rewrite B scores 101.1, above the 100 at the
+    top of Flesch's scale, and it is the worst of the three: it splits one group in two and drops
+    which survey each figure came from. Rewrite A, at 71.0, keeps everything the draft said. The
+    score counts lengths; only reading tells you which to keep."
+  alt: "Three bars from zero: the draft 38.5, Rewrite A 71.0, Rewrite B 101.1. Dashed lines at 60,
+    Flesch's Plain English minimum, and at 100, the top of his scale."
+  source: draw.py
+  spec:
+    kind: bar
+    from_table: {block: 1, x: 0, y: [6]}
+    x_label: ""
+    y_label: "Flesch Reading Ease, FRE"
+    value_labels: true
+    y_range: [0, 115]
+    refs:
+    - {y: 60}
+    - {y: 100}
+    labels:
+    - {text: "Plain English minimum, 60", at: [-0.45, 60], offset: [0, 3]}
+    - {text: "100, the top of Flesch's scale", at: [-0.45, 100], offset: [0, 3]}
+    relations:
+    - check: "206.835 - 1.015*24/7 - 84.6*29/24 = 101.1"
 provenance:
   map_version_id: fc19c8bc-a216-4131-99fb-ebe3f19cec4a
   outcome_refs:

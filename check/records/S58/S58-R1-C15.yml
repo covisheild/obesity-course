@@ -643,7 +643,7 @@ illustrations:
 figures:
 - file: s58-r1-c15-large-errors.png
   caption: "Cleveland and McGill (1984), first experiment. Position judgments were 60% of all judgments but drew 22% of the large errors; length judgments were 40% of judgments and drew 78%. Per judgment, a large error was 5.3 times as frequent on length as on position."
-  alt: "Two pairs of bars. Position: 60% of judgments, 22% of large errors. Length: 40% of judgments, 78% of large errors."
+  alt: "Two pairs of bars from zero, each pair labelled: share of judgments on the left, share of large errors on the right. Position: 60% of judgments, 22% of large errors. Length: 40% of judgments, 78% of large errors."
   source: draw.py
   spec:
     kind: bar
@@ -657,10 +657,32 @@ figures:
     y_label: "per cent"
     value_labels: true
     y_range: [0, 100]
+    labels:
+    - {text: "judgments", at: [-0.175, 60], offset: [-20, 13]}
+    - {text: "large errors", at: [0.175, 22], offset: [-23, 13]}
+    - {text: "judgments", at: [0.825, 40], offset: [-20, 13]}
+    - {text: "large errors", at: [1.175, 78], offset: [-23, 13]}
     relations:
     - check: "sum(y1) = 100"
     - check: "sum(y2) = 100"
     - check: "(y2[1] / y1[1]) / (y2[0] / y1[0]) = 5.3"
+- file: s58-r1-c15-pie-errors.png
+  caption: "Cleveland and McGill (1984), second experiment. Each set of numbers was drawn once as bars and once as a pie, so position and angle judgments were equal in number. The pie drew 88% of the large errors and the bars 12%: per judgment, a large error was about seven times as likely on the pie (88 ÷ 12 ≈ 7.33; the paper prints 7.3)."
+  alt: "Two bars from zero. Position, read on the bar charts: 12% of the large errors. Angle, read on the pies: 88%."
+  source: draw.py
+  spec:
+    kind: bar
+    x: ["position (bar chart)", "angle (pie)"]
+    series:
+    - name: share of the large errors
+      y: ["12", "88"]
+    x_label: "the judgment the reader made"
+    y_label: "share of the large errors (%)"
+    value_labels: true
+    y_range: [0, 100]
+    relations:
+    - check: "sum(y) = 100"
+    - check: "y[1] / y[0] = 7.33"
 must_know:
 - point: |
     Put the values a reader must compare on one shared axis, next to each other: bars from one

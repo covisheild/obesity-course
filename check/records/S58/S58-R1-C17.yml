@@ -989,8 +989,24 @@ practice:
     chart.
   refs: [nfhs5_india_factsheet]
 figures:
+- file: s58-r1-c17-fuel-economy-change.png
+  caption: "The newspaper's fuel-economy chart drew a rise of 52.8 per cent as a rise of 783 per cent. The standard rose from 18.0 to 27.5 miles per gallon; the lines that drew it grew from 0.6 to 5.3 inches on the page, as Tufte measured them. Lie Factor about 14.8."
+  alt: "Two bars from zero. Percentage change in the data: 52.8. Percentage change in the lines as drawn: 783, about 14.8 times as tall."
+  source: draw.py
+  spec:
+    kind: bar
+    x: ["in the data", "as drawn"]
+    series:
+    - name: percentage change, 1978 to 1985
+      y: ["52.8", "783"]
+    x_label: "the fuel-economy standard's rise"
+    y_label: "percentage change (%)"
+    value_labels: true
+    y_range: [0, 900]
+    relations:
+    - check: "y[1] / y[0] = 14.8"
 - file: s58-r1-c17-lie-factor-by-start.png
-  caption: "The Lie Factor of a bar slide of women aged 15-49 with overweight or obesity, 20.6% in NFHS-4 and 24.0% in NFHS-5, against where the value axis starts. It is 20.6 ÷ (20.6 − s): 1.00 from zero, 1.94 from 10, 3.68 from 15, 7.92 from 18 and 34.3 from 20. The dashed line is Tufte's 1.05. The side axis is logarithmic."
+  caption: "The Lie Factor climbs fastest as the axis start nears the smaller bar. Here it is for a bar slide of women aged 15-49 with overweight or obesity, 20.6% in NFHS-4 and 24.0% in NFHS-5, against where the value axis starts. It is 20.6 ÷ (20.6 − s): 1.00 from zero, 1.94 from 10, 3.68 from 15, 7.92 from 18 and 34.3 from 20. The dashed line is Tufte's 1.05. The side axis is logarithmic."
   alt: "A rising curve, drawn on a logarithmic side axis, from 1.00 at an axis start of 0 through 1.94 at 10, 3.68 at 15 and 7.92 at 18, to 34.3 at 20. A dashed horizontal line at 1.05 sits just above the first point."
   source: draw.py
   spec:
@@ -999,6 +1015,7 @@ figures:
     x_label: "where the value axis starts (%)"
     y_label: "Lie Factor"
     y_scale: log
+    value_labels: true
     relations:
     - fit: "y = 20.6/(20.6 - x)"
       draw: true
@@ -1007,7 +1024,7 @@ figures:
     - {y: 1.05, label: "1.05: Tufte's limit"}
 - file: s58-r1-c17-bars-from-zero.png
   caption: "Women and men aged 15-49 with overweight or obesity, India, NFHS-4 (2015-16) and NFHS-5 (2019-21). Bars from zero: women 20.6% and 24.0%, men 18.9% and 22.9%. The rise is drawn at its true size beside the level."
-  alt: "Paired bars from zero. Women: 20.6 then 24.0. Men: 18.9 then 22.9."
+  alt: "Paired bars from zero, NFHS-4 on the left of each pair and NFHS-5 on the right, each bar labelled. Women: 20.6 then 24.0. Men: 18.9 then 22.9."
   source: draw.py
   spec:
     kind: bar
@@ -1019,12 +1036,17 @@ figures:
     y_label: "overweight or obese (%)"
     y_range: [0, 35]
     value_labels: true
+    labels:
+    - {text: "NFHS-4", at: [-0.175, 20.6], offset: [-14, 13]}
+    - {text: "NFHS-5", at: [0.175, 24.0], offset: [-14, 13]}
+    - {text: "NFHS-4", at: [0.825, 18.9], offset: [-14, 13]}
+    - {text: "NFHS-5", at: [1.175, 22.9], offset: [-14, 13]}
     relations:
     - check: "y2[0] - y1[0] = 3.4"
     - check: "y2[1] - y1[1] = 4.0"
 - file: s58-r1-c17-line-from-18.png
   caption: "The same four values as points joined by lines, each survey placed at the year its fieldwork ended, 2016 for NFHS-4 and 2021 for NFHS-5. The side axis starts at 18%, not zero: a point carries its value by position, so this is honest when the caption says so. Women rose by 3.4 percentage points, men by 4.0."
-  alt: "Two rising lines on an axis from 18 to 26. Women: 20.6 in 2016 to 24.0 in 2021. Men: 18.9 to 22.9."
+  alt: "Two rising lines on an axis from 18 to 26, each labelled at its right end: women with circles, men with squares. Women: 20.6 in 2016 to 24.0 in 2021. Men: 18.9 to 22.9."
   source: draw.py
   spec:
     kind: line
@@ -1035,9 +1057,29 @@ figures:
     x_label: "year the survey's fieldwork ended"
     y_label: "overweight or obese, aged 15-49 (%)"
     y_range: [18, 26]
+    labels:
+    - {text: "women", at: [2021, 24.0], offset: [8, -3]}
+    - {text: "men", at: [2021, 22.9], offset: [8, -3]}
     relations:
     - check: "y1[1] - y1[0] = 3.4"
     - check: "y2[1] - y2[0] = 4.0"
+- file: s58-r1-c17-change-bars.png
+  caption: "The rise itself, drawn as bars from zero: between NFHS-4 (2015-16) and NFHS-5 (2019-21), overweight or obesity among adults aged 15-49 rose by 3.4 percentage points in women and 4.0 in men. Each bar's length is the change, so the change is drawn at its true size."
+  alt: "Two bars from zero. Women: 3.4 percentage points. Men: 4.0."
+  source: draw.py
+  spec:
+    kind: bar
+    x: ["women", "men"]
+    series:
+    - name: rise, NFHS-4 to NFHS-5
+      y: ["3.4", "4.0"]
+    x_label: "adults aged 15-49, India"
+    y_label: "rise in overweight or obese (percentage points)"
+    value_labels: true
+    y_range: [0, 5]
+    relations:
+    - check: "y[0] = 24.0 - 20.6"
+    - check: "y[1] = 22.9 - 18.9"
 provenance:
   map_version_id: fc19c8bc-a216-4131-99fb-ebe3f19cec4a
   outcome_refs:

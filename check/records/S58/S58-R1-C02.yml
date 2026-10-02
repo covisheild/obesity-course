@@ -267,8 +267,8 @@ illustrations:
     quote: "it is possible to increase to 90% the proportion of trials for which adequate information could be made available."
 figures:
 - file: s58-r1-c02-unusable-reports.png
-  caption: "Adequate information on the treatment tested was in around 60 per cent of reports of clinical trials, and could be found for 90 per cent of the trials by checking references, writing to authors and searching further: a gap of 30 percentage points made in the writing. Figures from one study cited by Chalmers and Glasziou (2009)."
-  alt: "Two bars: 60 per cent of trial reports as published, 90 per cent of trials after further searching."
+  caption: "For about 30 trials in every 100, the authors knew what treatment they had tested and how it was given, but their report did not say it: adequate information was in around 60 per cent of reports as published, and could be found for 90 per cent of the trials by checking references, writing to authors and searching further. The dashed line marks 90 per cent. Figures from one study of trial reports cited by Chalmers and Glasziou (2009), not their own measurement."
+  alt: "Two bars from zero: 60 per cent of trial reports as published, 90 per cent of trials after further searching, with a dashed line at 90 above the first bar showing the 30-point gap."
   source: draw.py
   spec:
     kind: bar
@@ -279,6 +279,10 @@ figures:
     y_label: "trials with adequate information (%)"
     y_range: [0, 100]
     value_labels: true
+    refs:
+    - {y: 90, label: ""}
+    labels:
+    - {text: "30 points known\nbut not reported", at: [0, 76], offset: [-40, -10]}
     relations:
     - check: "y[1] - y[0] = 30"
 must_know:
