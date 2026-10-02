@@ -214,10 +214,10 @@ simplified_explanation: |
 
   ```table
   | Mark | What it looks like |
-  | 1. Selective evidence | only the studies that support one option are cited, and the reader is not told how they were chosen |
-  | 2. Uncertainty changed | ranges, model assumptions and limits are dropped; or, the other way, doubt is made up about evidence the writer dislikes |
-  | 3. A value written as a finding | "the evidence shows we must..." — a judgement about what ought to be done, written as if a study had found it |
-  | 4. An interest not declared | the writer, the department or the funder stands to gain or lose from the decision, and the document does not say so |
+  | Mark 1: Selective evidence | only the studies that support one option are cited, and the reader is not told how they were chosen |
+  | Mark 2: Uncertainty changed | ranges, model assumptions and limits are dropped; or, the other way, doubt is made up about evidence the writer dislikes |
+  | Mark 3: A value written as a finding | "the evidence shows we must..." — a judgement about what ought to be done, written as if a study had found it |
+  | Mark 4: An interest not declared | the writer, the department or the funder stands to gain or lose from the decision, and the document does not say so |
   ```
 
   Mark 3 is the commonest in health writing. A conclusion about what ought to be done needs a value premise: a premise that says what matters, or what
@@ -343,10 +343,10 @@ illustrations:
 
     ```table
     | Mark | First draft of the note | The letter |
-    | 1. Selective evidence | fails: only one side was asked, and the reader is not told | passes: it names the case against |
-    | 2. Uncertainty changed | fails: a modelled range became a flat 30% | passes: it keeps the range and the word model |
-    | 3. A value written as a finding | fails: "the evidence shows the rate must rise" | passes: "that is our judgement, not a finding" |
-    | 4. An interest not declared | fails: the department's public position is hidden | passes: it says what it wants, and declares that no drinks company pays the department |
+    | Mark 1: Selective evidence | fails: only one side was asked, and the reader is not told | passes: it names the case against |
+    | Mark 2: Uncertainty changed | fails: a modelled range became a flat 30% | passes: it keeps the range and the word model |
+    | Mark 3: A value written as a finding | fails: "the evidence shows the rate must rise" | passes: "that is our judgement, not a finding" |
+    | Mark 4: An interest not declared | fails: the department's public position is hidden | passes: it says what it wants, and declares that no drinks company pays the department |
     ```
 
     The letter campaigns from its first line, and it passes all four marks. The marks do not catch
@@ -493,6 +493,8 @@ practice:
     d. The study did not measure what happened after the first year.
     e. Nobody who cares about children could oppose option A.
   answer: |
+    Sentence by sentence:
+
     ```table
     | Sentence | Job | Because |
     | a | informing | it compares the options on cost and reach and picks neither |
@@ -520,6 +522,8 @@ practice:
     e. "The evidence on this option is too uncertain to act on." The writer dislikes the option, and
        the studies agree closely with each other.
   answer: |
+    Sentence by sentence:
+
     ```table
     | Sentence | Mark | Because |
     | a | 1 | two studies that went the other way were left out, and the reader is not told |
@@ -564,6 +568,8 @@ practice:
     Say whether each informs or campaigns. Then say which you would carry into your department's note,
     and why.
   answer: |
+    Sentence by sentence:
+
     ```table
     | Sentence | Job | Because |
     | 1 | campaigning | "strategic, principled, and citizen-centric" are judgements, and "will enhance the quality of life of every last citizen" is a forecast with no measure behind it |
@@ -597,6 +603,8 @@ practice:
     "Earmarking" means setting a tax's money aside for one named use. Say what job each sentence does.
     Then say whether the paper marks its suggestion as a suggestion.
   answer: |
+    Sentence by sentence:
+
     ```table
     | Sentence | Job | Because |
     | 1 | informing | a finding of the study, about who holds the decision, drawn from its review and interviews |
@@ -646,9 +654,9 @@ practice:
     that broke.
 
     ```working
-    sentence: "Our survey of students at one college, described in section 2, proves that the district needs a tax on sugary drinks."
+    sentence: "Our survey of students at one college, described in section 2 of this note, proves that the district needs a tax on sugary drinks."
     it names a survey, so it rests on evidence
-    it points to section 2 for the methods, so it can be checked
+    it points to section 2 of the note for the methods, so it can be checked
     job: informing
     ```
   answer: |
@@ -657,7 +665,7 @@ practice:
     finding: mark 3. A survey can say what students at one college drink. It cannot say what the
     district ought to do, and it cannot prove a need for one measure rather than another.
 
-    The fix keeps the survey and moves the value out. "Section 2 reports what our survey of students at
+    The fix keeps the survey and moves the value out. "Section 2 of this note reports what our survey of students at
     one college found about sugary drinks. Whether the district should seek a tax is a separate
     judgement; the survey does not make it."
 
@@ -794,7 +802,7 @@ reporting_sentence: |
   the last paragraph."
 figures:
 - file: s47-r1-c17-draft-and-rewrite.png
-  caption: "The made-up paragraph of the department's note, sentence by sentence. The first draft has 1 informing sentence and 4 campaigning ones. The rewrite keeps every fact, moves each value into a sentence that says it is a value, and adds a declaration of the department's position: 6 informing sentences and none campaigning."
+  caption: "A made-up paragraph of a department's note on a sugary-drinks tax, sentence by sentence, in a first draft and a rewrite. The first draft has 1 informing sentence and 4 campaigning ones. The rewrite keeps every fact, moves each value into a sentence that says it is a value, and adds a declaration of the department's position: 6 informing sentences and none campaigning."
   alt: "A bar chart with two jobs, each with two bars. Informing: 1 in the first draft, 6 in the rewrite. Campaigning: 4 in the first draft, 0 in the rewrite."
   source: draw.py
   spec:
@@ -807,7 +815,7 @@ figures:
     - check: "y1[0] + y1[1] = 5"
     - check: "y2[0] + y2[1] = 6"
 - file: s47-r1-c17-range-to-top.png
-  caption: "Mark 2 in the first draft. The modelling study that Summan and colleagues report, in a 2026 study of food taxes in India, estimated that an extra health tax of 10% to 30% could cut demand for sugary drinks by 7% to 30%. The draft wrote a flat 30%: it kept the top end of the range and dropped the word model."
+  caption: "Mark 2, uncertainty changed, in a made-up draft note. The modelling study that Summan and colleagues report, in a 2026 study of food taxes in India, estimated that an extra health tax of 10% to 30% could cut demand for sugary drinks by 7% to 30%. The draft wrote a flat 30%: it kept the top end of the range and dropped the word model."
   alt: "Three bars: the model's low end 7, the model's high end 30, and the draft's figure 30, as tall as the high end."
   source: draw.py
   spec:
