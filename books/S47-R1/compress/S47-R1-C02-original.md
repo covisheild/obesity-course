@@ -1,0 +1,78 @@
+# S47-R1-C02 · Four jobs around a decision: propose, advise, decide, carry out
+
+**Definition.** Around any public decision, four jobs can be told apart. Someone proposes a course of action.
+Someone advises or recommends. A body with the legal power decides. Offices carry the decision
+out and enforce it. The four jobs are often held by different bodies, and one job can need more
+than one body.
+
+Two Indian cases show the split.
+
+Minimum support prices (MSP), the prices at which the government will buy certain crops. The
+Commission for Agricultural Costs and Prices (CACP) recommends them. The Government announces the prices on those recommendations, after considering the
+views of the State Governments and the Central Ministries and Departments concerned. For the
+kharif crops of marketing season 2026-27, the Cabinet Committee on Economic Affairs (CCEA)
+approved them. Public procurement agencies buy wheat and paddy at MSP.
+
+Food regulations under the Food Safety and Standards (FSS) Act, 2006. The Central Advisory Committee
+advises the Food Safety and Standards Authority of India (the Food Authority). The Food Authority
+makes regulations, with the previous approval of the Central Government and after previous
+publication, by notification (section 92(1)). So the decide job needs two bodies. The State
+Government appoints a Commissioner of Food Safety for efficient implementation (section 30(1)),
+and there is a Designated Officer for each district (section 36(2)).
+
+Courts hold a different power. Under Articles 32 and 226 of the Constitution, the Supreme Court
+and the High Courts may issue directions, orders or writs. The power to make food regulations
+lies with the Food Authority under section 92.
+
+"Who decides" names the body that holds the decide job under a named power. It never names the
+body that proposes, advises or speaks loudest.
+
+**In plain terms.** The last section showed that a proposal turns into a policy only when a body with power decides
+it. Now split that into jobs. Four jobs happen around almost every public decision.
+
+1. **Propose.** Someone puts an idea forward. Anyone can do this: your department, a company, a
+   newspaper, a minister.
+2. **Advise.** Someone studies the idea and recommends what to do. An adviser has no power to
+   decide.
+3. **Decide.** One body holds the legal power to make the decision. Sometimes the law makes it
+   need a second body's approval too.
+4. **Carry out.** Offices put the decision into effect and make sure people follow it. These are
+   often different offices, in a different government.
+
+Here is the trap. People name whoever they heard about. A news line says an expert body "fixed"
+a price. A speech makes a minister sound like the decider. The question "who decides?" has one
+kind of answer: the body that holds the decide job, and the law that gives it that job.
+
+Courts are another kind of body. A court can order a government body to act or to stop. Making
+the food regulation itself is still the job the Act gives to the food regulator. How far courts
+go is a question for a later book on food regulation.
+
+**Must know points for you.**
+
+- The error is to name the body that recommends as the body that decides. The Commission for Agricultural Costs and Prices recommends minimum support prices; the Cabinet Committee on Economic Affairs approves them. When a line says an expert body "fixed" or "set" something, find the decision and the body that took it.
+- For any proposal, write four lines: who proposes, who advises, who decides, who carries it out. Fill each with a named body and the place that says so. A line you cannot fill is a finding. Say so in your note rather than guessing.
+- The decide job can need more than one body. A food regulation needs the Food Authority and the previous approval of the Central Government (FSS Act, section 92(1)). Address a note to every body whose agreement the law requires.
+- The body that decides and the body that carries out can sit in different governments. Food regulations are made at the Union level and implemented by each State's Commissioner of Food Safety and the district's Designated Officer. Ask the decider about the rule. Ask the State's officers whether it is followed.
+- A court can direct a body to act. Making the regulation is still the job of the body the statute names. Do not write that a court "made" a food rule without reading what the order actually says.
+- The four jobs tell you who holds formal power. They do not tell you who has influence, or whether the decider will act. A body can hold the decide job and never use it. When your note names the decider, do not imply that naming it predicts the outcome.
+
+**Exercise 1** (retrieval). From memory, name the four jobs around a decision. Then, for minimum support prices, name the
+body that recommends and the body that approved them for the kharif crops of 2026-27.
+
+**Exercise 2** (interpretation). Read section 92(1) of the Food Safety and Standards Act, 2006:
+
+> The Food Authority may, with the previous approval of the Central Government and after previous
+> publication, by notification, make regulations consistent with this Act and the rules made
+> thereunder to carry out the provisions of this Act.
+
+Name every body in the sentence and give each its job. Then name the two steps that must happen
+before a regulation can be made. Say what the sentence does not tell you.
+
+**Exercise 3** (critique). Here is a made-up draft note from your department. "FSSAI enforces the Act. So we will write to
+the Food Safety and Standards Authority of India (FSSAI). We will ask it to check that school
+canteens in our district follow the food safety rules." Find what is wrong with whom the note
+writes to, and fix it.
+
+**Exercise 4** (teaching). A journalist has three minutes and asks: "So who actually sets the price farmers are promised for
+paddy, the expert commission or the government?" Answer in plain words, with one quotable sentence.
+
