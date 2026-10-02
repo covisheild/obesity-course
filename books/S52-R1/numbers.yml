@@ -65,6 +65,22 @@ numbers:
     value: "56%"
     meaning: the same share after automatic code cleaning (C20, C21)
     source: trisovic_2022 (proposed citekey; Abstract)
+  penguins_rows:
+    value: "344"
+    meaning: 'rows of data-raw/penguins_raw.csv as read_csv() reads it (readr 2.1.5), one per nesting observation of an adult penguin'
+    source: 'S52-R1-C07, illustration 1, nrow(penguins) (gate-filled output); agrees with horst_2020_palmerpenguins header "rows (read_csv): 344"'
+  penguins_cols:
+    value: "17"
+    meaning: 'columns of data-raw/penguins_raw.csv as read_csv() reads it'
+    source: 'S52-R1-C07, practice level 4, dim(penguins) (gate-filled output); agrees with horst_2020_palmerpenguins header "columns (read_csv): 17"'
+  bmx_rows:
+    value: "8860"
+    meaning: 'rows of NHANES 2021-2023 BMX_L.xpt as haven::read_xpt() reads it (one per examined participant, all ages)'
+    source: 'S52-R1-C09, illustration 3, dim(bmx) (gate-filled output); agrees with nchs_nhanes_2021_2023_bmx_demo header "8860 rows x 22 columns"'
+  bmx_cols:
+    value: "22"
+    meaning: 'columns of NHANES 2021-2023 BMX_L.xpt as haven::read_xpt() reads it'
+    source: 'S52-R1-C09, illustration 3, dim(bmx) (gate-filled output)'
 # TODO at the source gate, once Harsh chooses the build dataset (READY.md, candidates A, B, C):
 #   dataset_rows, dataset_cols, and the missing-value counts the sections reuse, read by running
 #   the code on the chosen file. Do not fill from this comment. For candidate B (penguins_raw.csv,

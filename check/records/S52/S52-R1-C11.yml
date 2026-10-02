@@ -1,0 +1,1353 @@
+concept_id: S52-R1-C11
+subject: S52
+rung: 1
+sequence: 11
+name: Choosing rows and columns
+concept_type: derivable
+clusters:
+- craft-and-integrity
+ground_floor_deps:
+- B0-R0-C39
+concept_deps:
+- S52-R1-C04
+- S52-R1-C05
+- S52-R1-C08
+- S52-R1-C09
+definition:
+  text: |
+    Four functions of the dplyr package choose parts of a data frame. Each takes a data frame as its
+    first argument and returns a new data frame. None of them changes the data frame it was given.
+    To keep a result, assign it to a name.
+
+    `select()` keeps the columns you name, in the order you name them, and drops the rest. Every row
+    is kept. A column can be renamed inside it with `new_name = old_name`. Selection helpers pick
+    columns by their names: `starts_with("Culmen")` picks every column whose name starts with
+    "Culmen".
+
+    `rename()` changes the names of columns you name, with `new_name = old_name`, and keeps every
+    column, in its place.
+
+    `filter()` keeps the rows for which a condition is `TRUE`. A condition is built from
+    comparisons (`==` equal to, `!=` not equal to, `<`, `>`, `<=`, `>=`) joined by `&` (and), `|`
+    (or) and `!` (not). `x %in% c(a, b)` is `TRUE` where `x` equals one of the values listed.
+    Several conditions separated by commas must all be `TRUE`. A row whose condition is `NA` is
+    dropped. So a test for a missing value is written `is.na(x)`, never `x == NA`.
+
+    `arrange()` sorts the rows by the values of the columns named, smallest first. `desc()` sorts
+    largest first. Missing values go to the end either way.
+
+    The pipe passes the data frame on its left to the function on its right, as that function's
+    first argument: `x |> f(y)` is `f(x, y)`.
+  references:
+  - citekey: rdocs_s52r1_dplyr
+    kind: textbook
+    locator: 'help page "filter" (dplyr 1.1.4), Description: rows kept, and NA dropped'
+    quote: |-
+      To be retained, the row must produce a value of 'TRUE' for all conditions. Note that when a condition evaluates to 'NA' the row will be dropped, unlike base subsetting with '['.
+    verified:
+      resolved_id: rhelp://dplyr@1.1.4/filter
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+  - citekey: rdocs_s52r1_dplyr
+    kind: textbook
+    locator: 'help page "filter" (dplyr 1.1.4), Arguments, "...": several conditions combined with &'
+    quote: |-
+      If multiple expressions are included, they are combined with the '&' operator.
+    verified:
+      resolved_id: rhelp://dplyr@1.1.4/filter
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+  - citekey: rdocs_s52r1_dplyr
+    kind: textbook
+    locator: 'help page "filter" (dplyr 1.1.4), "Useful filter functions"'
+    quote: |-
+      '&', '|', '!', 'xor()'
+    verified:
+      resolved_id: rhelp://dplyr@1.1.4/filter
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+      note: |-
+        The same list names "'==', '>', '>=' etc" and "'is.na()'" as the other useful functions.
+  - citekey: rdocs_s52r1_dplyr
+    kind: textbook
+    locator: 'help page "select" (dplyr 1.1.4), Value: rows unaffected, renaming inside select'
+    quote: |-
+      Columns will be renamed if 'new_name = old_name' form is used.
+    verified:
+      resolved_id: rhelp://dplyr@1.1.4/select
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+      note: |-
+        The same Value list opens "Rows are not affected."
+  - citekey: rdocs_s52r1_dplyr
+    kind: textbook
+    locator: 'help page "select" (dplyr 1.1.4), Overview of selection features: starts_with()'
+    quote: |-
+      'starts_with()': Starts with a prefix.
+    verified:
+      resolved_id: rhelp://dplyr@1.1.4/select
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+  - citekey: rdocs_s52r1_dplyr
+    kind: textbook
+    locator: 'help page "rename" (dplyr 1.1.4), Description and Value'
+    quote: |-
+      'rename()' changes the names of individual variables using 'new_name = old_name' syntax
+    verified:
+      resolved_id: rhelp://dplyr@1.1.4/rename
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+      note: |-
+        Value: "Column names are changed; column order is preserved."
+  - citekey: rdocs_s52r1_dplyr
+    kind: textbook
+    locator: 'help page "arrange" (dplyr 1.1.4), Details, Missing values'
+    quote: |-
+      always sorted to the end for local data, even when wrapped with 'desc()'.
+    verified:
+      resolved_id: rhelp://dplyr@1.1.4/arrange
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+  - citekey: rdocs_s52r1_dplyr
+    kind: textbook
+    locator: 'help page "desc" (dplyr 1.1.4), Description'
+    quote: |-
+      Transform a vector into a format that will be sorted in descending order. This is useful within 'arrange()'.
+    verified:
+      resolved_id: rhelp://dplyr@1.1.4/desc
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+  - citekey: r4ds_2e
+    kind: textbook
+    locator: 'ch. 3 "Data transformation", 3.1.3 dplyr basics: what the verbs have in common'
+    quote: |-
+      3. The output is always a new data frame.
+    verified:
+      resolved_id: https://r4ds.hadley.nz/data-transform.html
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+  - citekey: r4ds_2e
+    kind: textbook
+    locator: 'ch. 3 "Data transformation", 3.2.1 filter(): the input is not changed'
+    quote: |-
+      dataset because dplyr functions never modify their inputs. To save the result, you need to use the assignment operator,
+    verified:
+      resolved_id: https://r4ds.hadley.nz/data-transform.html
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+  - citekey: r4ds_2e
+    kind: textbook
+    locator: 'ch. 3 "Data transformation", 3.2.1 filter(): %in%'
+    quote: |-
+      It keeps rows where the variable equals one of the values on the right:
+    verified:
+      resolved_id: https://r4ds.hadley.nz/data-transform.html
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+  - citekey: r4ds_2e
+    kind: textbook
+    locator: 'ch. 3 "Data transformation", 3.1.3 dplyr basics: the pipe read as "then"'
+    quote: |-
+      The easiest way to pronounce the pipe is “then”.
+    verified:
+      resolved_id: https://r4ds.hadley.nz/data-transform.html
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+  - citekey: r4ds_2e
+    kind: textbook
+    locator: 'ch. 7 "Data import", 7.2: column names with spaces need backticks'
+    quote: |-
+      That’s because they contain spaces, breaking R’s usual rules for variable names; they’re non-syntactic names. To refer to these variables, you need to surround them with backticks,
+    verified:
+      resolved_id: https://r4ds.hadley.nz/data-import.html
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+  - citekey: tidyverse_style
+    kind: textbook
+    locator: '2.1 Object names: snake case'
+    quote: |-
+      Variable and function names should use only lowercase letters, numbers, and `_`. Use underscores (`_`) (so called snake case) to separate words within a name.
+    verified:
+      resolved_id: https://style.tidyverse.org/syntax.html
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+  - citekey: tidyverse_style
+    kind: textbook
+    locator: '4 Pipes: one step per line'
+    quote: |-
+      `|>` should always have a space before it, and should usually be followed by a new line.
+    verified:
+      resolved_id: https://style.tidyverse.org/pipes.html
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+simplified_explanation: |
+  The last section left you with the whole penguin file in R as one data frame: 344 rows and 17
+  columns. Most questions need a few of those columns and some of the rows. Four functions do the
+  choosing.
+
+  **select()** keeps columns. You name the ones you want and the rest are dropped. Every row stays.
+
+  **rename()** gives columns new names and keeps all of them.
+
+  **filter()** keeps rows. You write a test, and a row stays only if the test says `TRUE` for it.
+  "Island is Dream" is a test. So is "body mass is more than 4,000 g".
+
+  **arrange()** puts the rows in order: smallest first, or largest first with `desc()`.
+
+  Here is the trap that catches everyone once. A test on a missing value gives neither `TRUE` nor
+  `FALSE`. It gives `NA`, "don't know". `filter()` drops every row where the test says "don't know".
+  So a test written as "body mass equals missing" says "don't know" on every row, and you get no
+  rows at all. To find the missing ones, ask `is.na()`, which answers `TRUE` or `FALSE`.
+
+  One more thing holds for all four. None of them touches the data frame you gave it. Each hands
+  back a new one, prints it, and forgets it, unless you give the result a name with `<-`. Your raw
+  data stays exactly as it was read.
+
+  The pipe, `|>`, lets you write the steps one under another. Read each `|>` as "then": take the
+  penguins, then keep these rows, then keep these columns, then sort.
+illustrations:
+- body: |
+    Start with a question that fails. Which penguins have no body mass recorded?
+
+    Load the two packages and read the raw file, as the section on reading a raw file showed.
+    `show_col_types = FALSE` turns off the column report that `read_csv()` prints, because you have
+    already read it once.
+
+    ```r
+    library(readr)
+    library(dplyr)
+
+    penguins_raw <- read_csv(
+      here::here("data-raw", "penguins_raw.csv"),
+      show_col_types = FALSE
+    )
+    ```
+
+    ```output
+
+    Attaching package: ‘dplyr’
+
+    The following objects are masked from ‘package:stats’:
+
+        filter, lag
+
+    The following objects are masked from ‘package:base’:
+
+        intersect, setdiff, setequal, union
+    ```
+
+    The message from `library(dplyr)` is the one about masked functions: dplyr's `filter()` now
+    hides the `filter()` of the stats package. It is not an error.
+
+    The column is called `Body Mass (g)`, with spaces and brackets. A name like that breaks R's
+    rules for names, so you wrap it in backticks, the ` mark on the key left of 1. Now write the
+    question the way it sounds in English: keep the rows where body mass equals missing.
+
+    ```r
+    penguins_raw |>
+      filter(`Body Mass (g)` == NA)
+    ```
+
+    ```output
+    # A tibble: 0 × 17
+    # ℹ 17 variables: studyName <chr>, Sample Number <dbl>, Species <chr>,
+    #   Region <chr>, Island <chr>, Stage <chr>, Individual ID <chr>,
+    #   Clutch Completion <chr>, Date Egg <date>, Culmen Length (mm) <dbl>,
+    #   Culmen Depth (mm) <dbl>, Flipper Length (mm) <dbl>,
+    #   Body Mass (g) <dbl>, Sex <chr>, Delta 15 N (o/oo) <dbl>,
+    #   Delta 13 C (o/oo) <dbl>, Comments <chr>
+    ```
+
+    R says: a tibble with 0 rows. No error, no warning. It would be easy to write down "no penguin
+    is missing its body mass".
+
+    That is wrong, and here is why. `==` compares each value with `NA`. A comparison with an unknown
+    value is itself unknown, so the answer on every row is `NA`. `filter()` keeps a row only when
+    the answer is `TRUE`, and drops it when the answer is `NA`. So it drops all 344.
+
+    Ask the question with `is.na()` instead. It answers `TRUE` for a missing value and `FALSE` for
+    anything else. Keep four columns, so the answer fits on the screen.
+
+    ```r
+    penguins_raw |>
+      filter(is.na(`Body Mass (g)`)) |>
+      select(Species, `Individual ID`, `Body Mass (g)`, Comments)
+    ```
+
+    ```output
+    # A tibble: 2 × 4
+      Species                       `Individual ID` `Body Mass (g)` Comments
+      <chr>                         <chr>                     <dbl> <chr>
+    1 Adelie Penguin (Pygoscelis a… N2A2                         NA Adult n…
+    2 Gentoo penguin (Pygoscelis p… N38A2                        NA Adult n…
+    ```
+
+    Two penguins, N2A2 and N38A2. Their `Comments` column starts "Adult n", cut short to fit the
+    screen; in the file it reads "Adult not sampled". The empty answer above was not a finding
+    about the penguins. It was a property of `==`.
+  analogy_breaks_when: |
+    `is.na()` finds what R reads as missing. A missing value written in the file as -99, or as
+    "not recorded", is not `NA` unless you told `read_csv()` about it when you read the file. For
+    such a column `is.na()` finds nothing, for a different reason, and the section on missing values
+    deals with it.
+- body: |
+    Now answer a real question in steps: among the female penguins on Dream and Torgersen islands,
+    which were the heaviest?
+
+    First keep the columns you need, and give them names you can type. Inside `select()`,
+    `new_name = old_name` renames as it keeps. `starts_with("Culmen")` keeps both culmen columns
+    (the culmen is the ridge along the top of the bill) without typing either name.
+
+    ```r
+    penguins_small <- penguins_raw |>
+      select(
+        species = Species,
+        island = Island,
+        sex = Sex,
+        body_mass_g = `Body Mass (g)`,
+        starts_with("Culmen")
+      )
+
+    penguins_small
+    ```
+
+    ```output
+    # A tibble: 344 × 6
+       species                 island sex   body_mass_g `Culmen Length (mm)`
+       <chr>                   <chr>  <chr>       <dbl>                <dbl>
+     1 Adelie Penguin (Pygosc… Torge… MALE         3750                 39.1
+     2 Adelie Penguin (Pygosc… Torge… FEMA…        3800                 39.5
+     3 Adelie Penguin (Pygosc… Torge… FEMA…        3250                 40.3
+     4 Adelie Penguin (Pygosc… Torge… <NA>           NA                 NA
+     5 Adelie Penguin (Pygosc… Torge… FEMA…        3450                 36.7
+     6 Adelie Penguin (Pygosc… Torge… MALE         3650                 39.3
+     7 Adelie Penguin (Pygosc… Torge… FEMA…        3625                 38.9
+     8 Adelie Penguin (Pygosc… Torge… MALE         4675                 39.2
+     9 Adelie Penguin (Pygosc… Torge… <NA>         3475                 34.1
+    10 Adelie Penguin (Pygosc… Torge… <NA>         4250                 42
+    # ℹ 334 more rows
+    # ℹ 1 more variable: `Culmen Depth (mm)` <dbl>
+    ```
+
+    Still 344 rows: `select()` never drops a row. Six columns. The two culmen columns keep their
+    old names, because `starts_with()` chose them and nothing renamed them. Long text is cut short
+    to fit the screen: `FEMA…` is "FEMALE".
+
+    `rename()` does the renaming without dropping anything. Check that it keeps all 17 columns:
+
+    ```r
+    penguins_raw |>
+      rename(body_mass_g = `Body Mass (g)`) |>
+      ncol()
+    ```
+
+    ```output
+    [1] 17
+    ```
+
+    Now the rows. Keep the two islands with `%in%`, which asks "is this value one of these?". Then
+    count the rows with `nrow()`.
+
+    ```r
+    penguins_small |>
+      filter(island %in% c("Dream", "Torgersen")) |>
+      nrow()
+    ```
+
+    ```output
+    [1] 176
+    ```
+
+    Add the second condition after a comma. Both must be `TRUE` for a row to stay. The file writes
+    sex in capitals, so the test is `sex == "FEMALE"`, not `"female"`.
+
+    ```r
+    penguins_small |>
+      filter(island %in% c("Dream", "Torgersen"), sex == "FEMALE") |>
+      nrow()
+    ```
+
+    ```output
+    [1] 85
+    ```
+
+    Then sort the heaviest first, and look at the top five.
+
+    ```r
+    penguins_small |>
+      filter(island %in% c("Dream", "Torgersen"), sex == "FEMALE") |>
+      arrange(desc(body_mass_g)) |>
+      print(n = 5)
+    ```
+
+    ```output
+    # A tibble: 85 × 6
+      species                  island sex   body_mass_g `Culmen Length (mm)`
+      <chr>                    <chr>  <chr>       <dbl>                <dbl>
+    1 Chinstrap penguin (Pygo… Dream  FEMA…        4150                 46
+    2 Chinstrap penguin (Pygo… Dream  FEMA…        3950                 45.2
+    3 Chinstrap penguin (Pygo… Dream  FEMA…        3900                 47.5
+    4 Chinstrap penguin (Pygo… Dream  FEMA…        3850                 47.6
+    5 Adelie Penguin (Pygosce… Torge… FEMA…        3800                 39.5
+    # ℹ 80 more rows
+    # ℹ 1 more variable: `Culmen Depth (mm)` <dbl>
+    ```
+
+    The heaviest of those 85 females weighed 4150 g, a Chinstrap penguin on Dream.
+
+    Read the pipe aloud, with "then" for each `|>`: take the small table, then keep the rows on
+    Dream or Torgersen where sex is FEMALE, then sort by body mass, largest first.
+
+    Here is what each step left.
+
+    ```table
+    | Step | Rows left |
+    | all penguins | 344 |
+    | island is Dream or Torgersen | 176 |
+    | and sex is FEMALE | 85 |
+    ```
+
+    Last, check that none of this changed the raw data.
+
+    ```r
+    nrow(penguins_raw)
+    ```
+
+    ```output
+    [1] 344
+    ```
+
+    Still 344. Each verb handed back a new data frame. Only `penguins_small` was kept, because only
+    it was given a name.
+  analogy_breaks_when: |
+    The 85 is a count of rows in this file with "FEMALE" in the sex column. Eleven penguins have no
+    sex recorded, and some of them may be female. So 85 is the number of penguins known to be
+    female on those two islands, not the number of females there.
+
+    The count holds for this file only. It says nothing about how many penguins live on either
+    island.
+must_know:
+- point: |
+    The error is to write `filter(x == NA)` to find missing values. It returns no rows, without a
+    warning, and reads like "none are missing". Write `filter(is.na(x))`.
+  kind: misconception
+  bearing: methodological
+- point: |
+    An empty result is a claim about your test before it is a claim about your data. When
+    `filter()` returns no rows, or far fewer than you expected, print the column you tested and
+    look at its values. "Adelie penguin" with a small p matches nothing in this file.
+  kind: trap
+  bearing: methodological
+- point: |
+    `filter()` drops a row whose test is `NA`. So "body mass more than 4000 g" also drops the two
+    penguins with no body mass. Whenever you report a count after a filter, say whether missing
+    values were dropped by it.
+  kind: consequence
+  bearing: methodological
+- point: |
+    Never type a filter into the raw file by deleting rows. Write the `filter()` line in the script.
+    It is visible, it can be undone by deleting one line, and the raw file stays whole for the next
+    question.
+  kind: move
+  bearing: methodological
+- point: |
+    A verb that is not assigned changes nothing. If a result vanishes on the next line, look for the
+    missing `<-`.
+  kind: trap
+  bearing: teaching
+- point: |
+    Rename awkward column names once, near the top of the script, into snake case (lowercase words
+    joined by `_`). Every later line is shorter, and nobody has to type backticks again.
+  kind: move
+  bearing: methodological
+- point: |
+    `filter()` keeps the rows that pass the test you wrote. It cannot tell you whether that test
+    matches your question. "Female" in a sex column may be coded "F", "FEMALE", 2 or "female"; read
+    the data dictionary before you write the test.
+  kind: boundary
+  bearing: methodological
+exercises:
+- type: teaching
+  prompt: |
+    A first-year resident has ten minutes and a whiteboard. Their code `filter(hb == NA)` on an
+    anaemia survey file returned no rows, and they have written "no missing haemoglobin values" in
+    their results. Explain what happened and how to check.
+  answer: |
+    Write three values on the board: 11.2, NA, 9.8. Under each, write what `hb == NA` gives: NA, NA,
+    NA. Comparing anything with an unknown value gives an unknown answer, even comparing NA with NA.
+
+    Then say what `filter()` does with the answers. It keeps a row only when the answer is `TRUE`.
+    It drops `FALSE` and it drops `NA`. Every answer was `NA`, so every row was dropped. The empty
+    result is a property of `==`, not of their survey.
+
+    Now write `is.na(hb)` under the same three values: FALSE, TRUE, FALSE. That is a real answer on
+    every row, so `filter(is.na(hb))` keeps exactly the rows with no value.
+
+    Ask them to run it and report the number it gives. Then ask them to put that number in their
+    results. Ask them to add how many rows the survey had, so a reader can see the denominator.
+  skill_ref: S52-R1-K01
+- type: retrieval
+  prompt: |
+    Without looking back, take each of `select()`, `rename()`, `filter()` and `arrange()` in turn.
+    Say what it does to the rows and to the columns. Then say what it does to the data frame you
+    gave it.
+  answer: |
+    `select()` keeps the columns you name, in that order, and keeps every row. The function
+    `rename()` changes column names and keeps every row and every column. The function `filter()`
+    keeps the rows whose condition is `TRUE`, dropping `FALSE` and `NA`, and keeps every column. The
+    function `arrange()` keeps every row and column and changes only the order of the rows, with
+    missing values last.
+
+    None of them changes the data frame you gave it. Each returns a new one, which is lost unless you
+    assign it with `<-`.
+- type: design
+  prompt: |
+    Write the first block of your analysis script after the line that reads the penguin file. It
+    should keep the species, island, sex, flipper length and body mass columns, and give each a
+    snake-case name that carries its unit. Show that the result has 344 rows and 5 columns.
+  answer: |
+    One answer. Your names may differ; check that each is lowercase, joined by `_`, and ends in its
+    unit where it has one.
+
+    ```r
+    library(readr)
+    library(dplyr)
+
+    penguins_raw <- read_csv(
+      here::here("data-raw", "penguins_raw.csv"),
+      show_col_types = FALSE
+    )
+
+    penguins <- penguins_raw |>
+      select(
+        species = Species,
+        island = Island,
+        sex = Sex,
+        flipper_length_mm = `Flipper Length (mm)`,
+        body_mass_g = `Body Mass (g)`
+      )
+
+    nrow(penguins)
+    ncol(penguins)
+    ```
+
+    ```output
+
+    Attaching package: ‘dplyr’
+
+    The following objects are masked from ‘package:stats’:
+
+        filter, lag
+
+    The following objects are masked from ‘package:base’:
+
+        intersect, setdiff, setequal, union
+
+    [1] 344
+    [1] 5
+    ```
+
+    `select()` with `new_name = old_name` keeps and renames in one step. No row is lost, because
+    `select()` never drops rows. The raw object `penguins_raw` still has all 17 columns.
+  skill_ref: S52-R1-K02
+quantitative: true
+practice_note: |
+  Thirteen problems: four verbs, each with its own trap (== NA, capitals in a value, the unassigned
+  verb, the English "or", the sort direction), and every trap needs its own diagnostic problem.
+practice:
+- level: 1
+  prompt: |
+    A made-up clinic register has three rows.
+
+    ```r
+    library(dplyr)
+
+    clinic <- tibble(
+      id = c(101, 102, 103),
+      sex = c("F", "M", "F"),
+      weight_kg = c(61.2, 78.5, NA)
+    )
+    ```
+
+    ```output
+
+    Attaching package: ‘dplyr’
+
+    The following objects are masked from ‘package:stats’:
+
+        filter, lag
+
+    The following objects are masked from ‘package:base’:
+
+        intersect, setdiff, setequal, union
+    ```
+
+    Write one line that keeps the rows for women.
+  answer: |
+    ```r
+    clinic |>
+      filter(sex == "F")
+    ```
+
+    ```output
+    # A tibble: 2 × 3
+         id sex   weight_kg
+      <dbl> <chr>     <dbl>
+    1   101 F          61.2
+    2   103 F          NA
+    ```
+
+    Two rows, ids 101 and 103. The test `sex == "F"` is `TRUE` on rows 1 and 3, so those stay. The
+    missing weight on row 3 does not matter: the test was on `sex`, not on `weight_kg`.
+- level: 2
+  prompt: |
+    The same made-up register:
+
+    ```r
+    library(dplyr)
+
+    clinic <- tibble(
+      id = c(101, 102, 103),
+      sex = c("F", "M", "F"),
+      weight_kg = c(61.2, 78.5, NA)
+    )
+    ```
+
+    ```output
+
+    Attaching package: ‘dplyr’
+
+    The following objects are masked from ‘package:stats’:
+
+        filter, lag
+
+    The following objects are masked from ‘package:base’:
+
+        intersect, setdiff, setequal, union
+    ```
+
+    Write one line that keeps only the `id` and `weight_kg` columns, in that order.
+  answer: |
+    ```r
+    clinic |>
+      select(id, weight_kg)
+    ```
+
+    ```output
+    # A tibble: 3 × 2
+         id weight_kg
+      <dbl>     <dbl>
+    1   101      61.2
+    2   102      78.5
+    3   103      NA
+    ```
+
+    Three rows and two columns. `select()` keeps every row and the named columns, in the order you
+    named them.
+- level: 3
+  prompt: |
+    The same made-up register:
+
+    ```r
+    library(dplyr)
+
+    clinic <- tibble(
+      id = c(101, 102, 103),
+      sex = c("F", "M", "F"),
+      weight_kg = c(61.2, 78.5, NA)
+    )
+    ```
+
+    ```output
+
+    Attaching package: ‘dplyr’
+
+    The following objects are masked from ‘package:stats’:
+
+        filter, lag
+
+    The following objects are masked from ‘package:base’:
+
+        intersect, setdiff, setequal, union
+    ```
+
+    Sort it heaviest first. Before you run it, say where the row with no weight will go.
+  answer: |
+    ```r
+    clinic |>
+      arrange(desc(weight_kg))
+    ```
+
+    ```output
+    # A tibble: 3 × 3
+         id sex   weight_kg
+      <dbl> <chr>     <dbl>
+    1   102 M          78.5
+    2   101 F          61.2
+    3   103 F          NA
+    ```
+
+    102 (78.5 kg), then 101 (61.2 kg), then 103. The missing value goes last. `arrange()` puts
+    missing values at the end whichever direction you sort, so `desc()` does not bring it to the
+    top.
+- level: 4
+  prompt: |
+    Read the penguin file.
+
+    ```r
+    library(readr)
+    library(dplyr)
+
+    penguins_raw <- read_csv(
+      here::here("data-raw", "penguins_raw.csv"),
+      show_col_types = FALSE
+    )
+    ```
+
+    ```output
+
+    Attaching package: ‘dplyr’
+
+    The following objects are masked from ‘package:stats’:
+
+        filter, lag
+
+    The following objects are masked from ‘package:base’:
+
+        intersect, setdiff, setequal, union
+    ```
+
+    How many rows are Chinstrap penguins? The species is written in the file exactly as
+    "Chinstrap penguin (Pygoscelis antarctica)".
+  answer: |
+    ```r
+    penguins_raw |>
+      filter(Species == "Chinstrap penguin (Pygoscelis antarctica)") |>
+      nrow()
+    ```
+
+    ```output
+    [1] 68
+    ```
+
+    68 rows, so 68 Chinstrap penguins in this file. The test must match the text exactly, letter
+    for letter, including the capital C and the part in brackets.
+- level: 5
+  prompt: |
+    Read the penguin file.
+
+    ```r
+    library(readr)
+    library(dplyr)
+
+    penguins_raw <- read_csv(
+      here::here("data-raw", "penguins_raw.csv"),
+      show_col_types = FALSE
+    )
+    ```
+
+    ```output
+
+    Attaching package: ‘dplyr’
+
+    The following objects are masked from ‘package:stats’:
+
+        filter, lag
+
+    The following objects are masked from ‘package:base’:
+
+        intersect, setdiff, setequal, union
+    ```
+
+    How many penguins on Biscoe island have a flipper length of 210 mm or more? Give the number
+    with its unit of count and its condition.
+  answer: |
+    ```r
+    penguins_raw |>
+      filter(Island == "Biscoe", `Flipper Length (mm)` >= 210) |>
+      nrow()
+    ```
+
+    ```output
+    [1] 109
+    ```
+
+    109 penguins on Biscoe have a flipper length of 210 mm or more. The comma joins the two tests,
+    so both must be `TRUE`. `>=` includes a flipper of exactly 210 mm; `>` would leave it out.
+- level: 6
+  prompt: |
+    Read the penguin file.
+
+    ```r
+    library(readr)
+    library(dplyr)
+
+    penguins_raw <- read_csv(
+      here::here("data-raw", "penguins_raw.csv"),
+      show_col_types = FALSE
+    )
+    ```
+
+    ```output
+
+    Attaching package: ‘dplyr’
+
+    The following objects are masked from ‘package:stats’:
+
+        filter, lag
+
+    The following objects are masked from ‘package:base’:
+
+        intersect, setdiff, setequal, union
+    ```
+
+    The two isotope columns are `Delta 15 N (o/oo)` and `Delta 13 C (o/oo)`. How many penguins
+    are missing both? How many are missing at least one?
+  answer: |
+    Both missing: join the two tests with `&`.
+
+    ```r
+    penguins_raw |>
+      filter(is.na(`Delta 15 N (o/oo)`) & is.na(`Delta 13 C (o/oo)`)) |>
+      nrow()
+    ```
+
+    ```output
+    [1] 13
+    ```
+
+    At least one missing: join them with `|`.
+
+    ```r
+    penguins_raw |>
+      filter(is.na(`Delta 15 N (o/oo)`) | is.na(`Delta 13 C (o/oo)`)) |>
+      nrow()
+    ```
+
+    ```output
+    [1] 14
+    ```
+
+    13 penguins are missing both isotope values and 14 are missing at least one. So one penguin has
+    a carbon value and no nitrogen value. "And" can only give a count the same size as "or" or
+    smaller, never larger.
+- level: 7
+  prompt: |
+    A colleague wants the number of Adelie penguins and writes:
+
+    ```r
+    library(readr)
+    library(dplyr)
+
+    penguins_raw <- read_csv(
+      here::here("data-raw", "penguins_raw.csv"),
+      show_col_types = FALSE
+    )
+
+    penguins_raw |>
+      filter(Species == "Adelie penguin (Pygoscelis adeliae)") |>
+      nrow()
+    ```
+
+    ```output
+
+    Attaching package: ‘dplyr’
+
+    The following objects are masked from ‘package:stats’:
+
+        filter, lag
+
+    The following objects are masked from ‘package:base’:
+
+        intersect, setdiff, setequal, union
+
+    [1] 0
+    ```
+
+    They report "there are no Adelie penguins in the file". Find what broke.
+  answer: |
+    The test does not match the text in the file. Look at the values that are there:
+
+    ```r
+    penguins_raw |>
+      count(Species)
+    ```
+
+    ```output
+    # A tibble: 3 × 2
+      Species                                       n
+      <chr>                                     <int>
+    1 Adelie Penguin (Pygoscelis adeliae)         152
+    2 Chinstrap penguin (Pygoscelis antarctica)    68
+    3 Gentoo penguin (Pygoscelis papua)           124
+    ```
+
+    The file writes "Adelie Penguin", with a capital P. The other two species have a small p. The
+    comparison `==` works letter for letter. So "penguin" never equals "Penguin", and the test is
+    `FALSE` on every row. Copy the value exactly:
+
+    ```r
+    penguins_raw |>
+      filter(Species == "Adelie Penguin (Pygoscelis adeliae)") |>
+      nrow()
+    ```
+
+    ```output
+    [1] 152
+    ```
+
+    152 Adelie penguins. (`count()` gives the number of rows for each value of a column; it comes
+    back in a later section.)
+
+    Why the wrong answer looks reasonable: the code ran, the spelling looks right, and 0 is a real
+    number. But a species the study was built around cannot have no rows. An answer of zero is the
+    moment to print the values you tested against.
+- level: 7
+  prompt: |
+    A colleague wants the penguins with no sex recorded and writes:
+
+    ```r
+    library(readr)
+    library(dplyr)
+
+    penguins_raw <- read_csv(
+      here::here("data-raw", "penguins_raw.csv"),
+      show_col_types = FALSE
+    )
+
+    penguins_raw |>
+      filter(Sex == NA) |>
+      nrow()
+    ```
+
+    ```output
+
+    Attaching package: ‘dplyr’
+
+    The following objects are masked from ‘package:stats’:
+
+        filter, lag
+
+    The following objects are masked from ‘package:base’:
+
+        intersect, setdiff, setequal, union
+
+    [1] 0
+    ```
+
+    They write in their notes: "sex was recorded for every penguin". Find what broke, and give the
+    right count.
+  answer: |
+    The test `Sex == NA` is `NA` on every row. A comparison with an unknown value is unknown. The
+    function `filter()` drops every row whose test is `NA`, so it drops all of them. The test must
+    be `is.na()`:
+
+    ```r
+    penguins_raw |>
+      filter(is.na(Sex)) |>
+      nrow()
+    ```
+
+    ```output
+    [1] 11
+    ```
+
+    11 penguins have no sex recorded.
+
+    Why the wrong answer looks reasonable: zero missing is a common and welcome result, and nothing
+    on the screen says the test was meaningless. The line reads correctly as English.
+- level: 8
+  prompt: |
+    A colleague wants the male and female penguins on Dream island and writes:
+
+    ```r
+    library(readr)
+    library(dplyr)
+
+    penguins_raw <- read_csv(
+      here::here("data-raw", "penguins_raw.csv"),
+      show_col_types = FALSE
+    )
+    ```
+
+    ```output
+
+    Attaching package: ‘dplyr’
+
+    The following objects are masked from ‘package:stats’:
+
+        filter, lag
+
+    The following objects are masked from ‘package:base’:
+
+        intersect, setdiff, setequal, union
+    ```
+
+    ```r error
+    penguins_raw |>
+      filter(Island == "Dream", Sex == "MALE" | "FEMALE")
+    ```
+
+    ```output
+    Error in `filter()`:
+    ℹ In argument: `Sex == "MALE" | "FEMALE"`.
+    Caused by error in `Sex == "MALE" | "FEMALE"`:
+    ! operations are possible only for numeric, logical or complex types
+    ```
+
+    Read the error. Say what broke and fix it.
+  answer: |
+    `Sex == "MALE" | "FEMALE"` is English, not R. R works out `Sex == "MALE"` first, which gives
+    `TRUE` or `FALSE`. Then it tries `|` between that and the text "FEMALE". The sign `|` needs
+    `TRUE` or `FALSE` on both sides. A piece of text is neither, so R stops.
+
+    Each side of `|` must be a whole test. Or use `%in%`, which says the same thing in one go:
+
+    ```r
+    penguins_raw |>
+      filter(Island == "Dream", Sex %in% c("MALE", "FEMALE")) |>
+      nrow()
+    ```
+
+    ```output
+    [1] 123
+    ```
+
+    123 penguins on Dream with sex recorded as male or female.
+
+    Why the wrong line looks reasonable: it is how you would say it aloud. With numbers instead of
+    text, the same mistake does not stop with an error; it quietly keeps the wrong rows, which is
+    worse.
+- level: 8
+  prompt: |
+    A colleague wants the mean body mass without the two missing values and writes:
+
+    ```r
+    library(readr)
+    library(dplyr)
+
+    penguins_raw <- read_csv(
+      here::here("data-raw", "penguins_raw.csv"),
+      show_col_types = FALSE
+    )
+
+    penguins_raw |>
+      filter(!is.na(`Body Mass (g)`))
+
+    mean(penguins_raw$`Body Mass (g)`)
+    ```
+
+    ```output
+
+    Attaching package: ‘dplyr’
+
+    The following objects are masked from ‘package:stats’:
+
+        filter, lag
+
+    The following objects are masked from ‘package:base’:
+
+        intersect, setdiff, setequal, union
+
+    # A tibble: 342 × 17
+       studyName `Sample Number` Species Region Island Stage `Individual ID`
+       <chr>               <dbl> <chr>   <chr>  <chr>  <chr> <chr>
+     1 PAL0708                 1 Adelie… Anvers Torge… Adul… N1A1
+     2 PAL0708                 2 Adelie… Anvers Torge… Adul… N1A2
+     3 PAL0708                 3 Adelie… Anvers Torge… Adul… N2A1
+     4 PAL0708                 5 Adelie… Anvers Torge… Adul… N3A1
+     5 PAL0708                 6 Adelie… Anvers Torge… Adul… N3A2
+     6 PAL0708                 7 Adelie… Anvers Torge… Adul… N4A1
+     7 PAL0708                 8 Adelie… Anvers Torge… Adul… N4A2
+     8 PAL0708                 9 Adelie… Anvers Torge… Adul… N5A1
+     9 PAL0708                10 Adelie… Anvers Torge… Adul… N5A2
+    10 PAL0708                11 Adelie… Anvers Torge… Adul… N6A1
+    # ℹ 332 more rows
+    # ℹ 10 more variables: `Clutch Completion` <chr>, `Date Egg` <date>,
+    #   `Culmen Length (mm)` <dbl>, `Culmen Depth (mm)` <dbl>,
+    #   `Flipper Length (mm)` <dbl>, `Body Mass (g)` <dbl>, Sex <chr>,
+    #   `Delta 15 N (o/oo)` <dbl>, `Delta 13 C (o/oo)` <dbl>,
+    #   Comments <chr>
+    [1] NA
+    ```
+
+    The `filter()` printed 342 rows, so they expected a number. They got `NA`. Find what broke.
+  answer: |
+    The result of `filter()` was printed and then thrown away. The function never changes
+    `penguins_raw`. It hands back a new data frame, and nothing gave that one a name. So `mean()`
+    was given the original column, missing values and all, and a mean with a missing value in it is
+    missing.
+
+    Assign the filtered data frame, then take the mean of its column:
+
+    ```r
+    weighed <- penguins_raw |>
+      filter(!is.na(`Body Mass (g)`))
+
+    nrow(weighed)
+    mean(weighed$`Body Mass (g)`)
+    ```
+
+    ```output
+    [1] 342
+    [1] 4201.754
+    ```
+
+    342 penguins have a body mass, and their mean is about 4202 g (4201.754 as printed).
+
+    Why the wrong code looks reasonable: the filter printed the right number of rows, so it looked
+    as if it had done its job. It had. It just did not do it to `penguins_raw`.
+- level: 8
+  prompt: |
+    A colleague wants the heaviest penguin in the file and writes:
+
+    ```r
+    library(readr)
+    library(dplyr)
+
+    penguins_raw <- read_csv(
+      here::here("data-raw", "penguins_raw.csv"),
+      show_col_types = FALSE
+    )
+
+    penguins_raw |>
+      arrange(`Body Mass (g)`) |>
+      select(Species, `Body Mass (g)`) |>
+      print(n = 1)
+    ```
+
+    ```output
+
+    Attaching package: ‘dplyr’
+
+    The following objects are masked from ‘package:stats’:
+
+        filter, lag
+
+    The following objects are masked from ‘package:base’:
+
+        intersect, setdiff, setequal, union
+
+    # A tibble: 344 × 2
+      Species                                   `Body Mass (g)`
+      <chr>                                               <dbl>
+    1 Chinstrap penguin (Pygoscelis antarctica)            2700
+    # ℹ 343 more rows
+    ```
+
+    They report "the heaviest penguin was a Chinstrap at 2700 g". Find what broke.
+  answer: |
+    `arrange()` sorts smallest first. The top row is the lightest penguin, not the heaviest. Wrap the
+    column in `desc()`:
+
+    ```r
+    penguins_raw |>
+      arrange(desc(`Body Mass (g)`)) |>
+      select(Species, `Body Mass (g)`) |>
+      print(n = 1)
+    ```
+
+    ```output
+    # A tibble: 344 × 2
+      Species                           `Body Mass (g)`
+      <chr>                                       <dbl>
+    1 Gentoo penguin (Pygoscelis papua)            6300
+    # ℹ 343 more rows
+    ```
+
+    The heaviest penguin was a Gentoo at 6300 g.
+
+    Why the wrong answer looks reasonable: 2700 g is a real penguin's mass, and "top row" feels like
+    "top value". Check a sort by looking at the last row as well as the first, or by asking whether
+    the number is plausible as a maximum.
+- level: 9
+  prompt: |
+    A line in a made-up field report says: "More than half of the Adelie penguins on Torgersen were
+    female." Check it against the file, and say what your answer does not establish.
+  answer: |
+    Read the file and keep the Adelie penguins on Torgersen. Then count each value of `Sex`.
+
+    ```r
+    library(readr)
+    library(dplyr)
+
+    penguins_raw <- read_csv(
+      here::here("data-raw", "penguins_raw.csv"),
+      show_col_types = FALSE
+    )
+
+    penguins_raw |>
+      filter(
+        Species == "Adelie Penguin (Pygoscelis adeliae)",
+        Island == "Torgersen"
+      ) |>
+      count(Sex)
+    ```
+
+    ```output
+
+    Attaching package: ‘dplyr’
+
+    The following objects are masked from ‘package:stats’:
+
+        filter, lag
+
+    The following objects are masked from ‘package:base’:
+
+        intersect, setdiff, setequal, union
+
+    # A tibble: 3 × 2
+      Sex        n
+      <chr>  <int>
+    1 FEMALE    24
+    2 MALE      23
+    3 <NA>       5
+    ```
+
+    52 Adelie penguins on Torgersen: 24 female, 23 male, 5 with no sex recorded.
+
+    The claim depends on the denominator.
+
+    ```working
+    out of all 52: 24 ÷ 52 = 0.46, so 46%, less than half
+    out of the 47 with sex recorded: 24 ÷ 47 = 0.51, so 51%, more than half
+    ```
+
+    So "more than half" is true only if the 5 unrecorded penguins are left out of the bottom of the
+    fraction. A report should say which denominator it used.
+
+    What it does not establish: anything about penguins on Torgersen outside this file, or about
+    the 5 whose sex is unknown. Counted out of all 52, the females number somewhere from 24 to 29,
+    depending on those 5. They are more than half only if at least 3 of the 5 are female. 26 is
+    exactly half, and 27 ÷ 52 = 0.52.
+- level: 10
+  prompt: |
+    In a made-up lab meeting, someone says: "The Gentoo penguins over 6 kg were all males." Turn
+    this into code, run it, and say what the result does not establish.
+  answer: |
+    6 kg is 6000 g, the unit of the column. Keep Gentoo penguins heavier than 6000 g and look at
+    their sex.
+
+    ```r
+    library(readr)
+    library(dplyr)
+
+    penguins_raw <- read_csv(
+      here::here("data-raw", "penguins_raw.csv"),
+      show_col_types = FALSE
+    )
+
+    penguins_raw |>
+      filter(
+        Species == "Gentoo penguin (Pygoscelis papua)",
+        `Body Mass (g)` > 6000
+      ) |>
+      select(`Individual ID`, Sex, `Body Mass (g)`)
+    ```
+
+    ```output
+
+    Attaching package: ‘dplyr’
+
+    The following objects are masked from ‘package:stats’:
+
+        filter, lag
+
+    The following objects are masked from ‘package:base’:
+
+        intersect, setdiff, setequal, union
+
+    # A tibble: 2 × 3
+      `Individual ID` Sex   `Body Mass (g)`
+      <chr>           <chr>           <dbl>
+    1 N39A2           MALE             6300
+    2 N56A2           MALE             6050
+    ```
+
+    Two Gentoo penguins weighed more than 6000 g, at 6300 g and 6050 g, and both are recorded as
+    male. The sentence is true of this file.
+
+    What it does not establish:
+
+    - That heavy Gentoo penguins are male in general. Two penguins are two penguins.
+    - Anything about a penguin of exactly 6000 g. "Over 6 kg" became `> 6000`, which leaves 6000
+      out. If the speaker meant "6 kg or more", the test is `>= 6000`. Run that too:
+
+      ```r
+      penguins_raw |>
+        filter(
+          Species == "Gentoo penguin (Pygoscelis papua)",
+          `Body Mass (g)` >= 6000
+        ) |>
+        select(`Individual ID`, Sex, `Body Mass (g)`)
+      ```
+
+      ```output
+      # A tibble: 4 × 3
+        `Individual ID` Sex   `Body Mass (g)`
+        <chr>           <chr>           <dbl>
+      1 N39A2           MALE             6300
+      2 N56A2           MALE             6050
+      3 N58A2           MALE             6000
+      4 N36A2           MALE             6000
+      ```
+
+      Four penguins, because two weighed exactly 6000 g, and all four are recorded as male. Here
+      the two readings agree. They need not. Say which one you used.
+    - Anything about the two penguins with no body mass. `filter()` dropped them, because their
+      test was `NA`.
+  refs:
+  - horst_2020_palmerpenguins
+retrieval_items:
+- q: What does filter() do with a row whose condition is NA?
+  a: It drops it. A row stays only when the condition is TRUE.
+- q: Why does filter(x == NA) return no rows, and what do you write instead?
+  a: A comparison with NA gives NA on every row, and filter() drops NA. Write filter(is.na(x)).
+- q: What is the difference between select() and rename()?
+  a: select() keeps only the columns you name (and can rename them as it keeps them). rename()
+    changes names and keeps every column.
+- q: Where do missing values go when you sort with arrange(desc(x))?
+  a: To the end, the same as when you sort smallest first.
+- q: What happens to your data frame when you run a dplyr verb on it without <-?
+  a: Nothing. The verb returns a new data frame, which is printed and then lost. The original is
+    unchanged.
+figures:
+- file: s52-r1-c11-rows-left.png
+  caption: "Rows left after each step of the second example's pipe: 344 penguins in the file, 176 on Dream or Torgersen, and 85 of those recorded as FEMALE."
+  alt: "A bar chart with three bars: all penguins 344, island is Dream or Torgersen 176, and sex is FEMALE 85."
+  source: draw.py
+  spec:
+    kind: bar
+    from_table: {block: 0, x: 0, y: [1]}
+    x_label: step of the pipe
+    y_label: rows left
+    y_range: [0, 400]
+    value_labels: true
+provenance:
+  map_version_id: fc19c8bc-a216-4131-99fb-ebe3f19cec4a
+  outcome_refs:
+  - S52-R1-O2
+  - S52-R1-S1
+  - S52-R1-S2
+  bridge_ref:
+  - S52-R2-R3
+review:
+  stability: long
+  trigger: '2031-10-02'
+  last_reviewed: '2026-10-02'
+status: drafted

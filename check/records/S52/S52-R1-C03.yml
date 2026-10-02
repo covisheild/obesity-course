@@ -1,0 +1,800 @@
+concept_id: S52-R1-C03
+subject: S52
+rung: 1
+sequence: 3
+name: Objects and names
+concept_type: derivable
+clusters:
+- craft-and-integrity
+- measurement-inference
+ground_floor_deps:
+- B0-R0-C15
+- B0-R0-C14
+concept_deps:
+- S52-R1-C02
+definition:
+  text: |
+    An object is a value R holds in memory under a name. The assignment `name <- value` makes one:
+    R works out the right-hand side completely, then stores the result under the name on the
+    left. An assignment prints nothing. Typing the name alone prints the value.
+
+    Assigning to a name that already exists replaces its value. The name keeps no link to how the
+    value was made, so an object worked out from another object does not change when that other
+    object is later given a new value.
+
+    Names are case sensitive: `bmi` and `BMI` are different names. A name may contain letters,
+    digits, `.` and `_`, and no spaces. It must start with a letter, or with `.` not followed by a
+    digit.
+
+    The objects that exist at a given moment form the workspace, which `ls()` lists and RStudio
+    shows in its Environment pane. The workspace holds whatever has been run, in any order, in the
+    current session, whether or not those lines are in the script.
+
+    The tidyverse style guide asks for names in lower case, with words joined by `_` (snake case),
+    and for `<-` rather than `=` for assignment. R accepts `=` in most places.
+
+    "Variable" now has two meanings in this book, and a third comes later. In Book 0's algebra, a
+    variable is a letter standing for a number. In R, an object's name is often called a variable.
+    Later, a variable will also mean one column of a table of data.
+  references:
+  - citekey: r_intro_manual
+    kind: textbook
+    locator: 'Section 1.8 "R commands, case sensitivity, etc.": an assignment is not printed'
+    quote: |-
+      An assignment also evaluates an expression and passes the value to a variable but the result is not automatically printed.
+    verified:
+      resolved_id: https://cran.r-project.org/doc/manuals/r-release/R-intro.html
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+  - citekey: r_intro_manual
+    kind: textbook
+    locator: 'Section 1.10, objects: what R creates and manipulates'
+    quote: |-
+      The entities that R creates and manipulates are known as objects.
+    verified:
+      resolved_id: https://cran.r-project.org/doc/manuals/r-release/R-intro.html
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+  - citekey: swc_r_gapminder
+    kind: textbook
+    locator: 'Episode 1, "Variables and assignment": the right-hand side first'
+    quote: |-
+      The right hand side of the assignment can be any valid R expression. The right hand side is fully evaluated before the assignment occurs.
+    verified:
+      resolved_id: https://swcarpentry.github.io/r-novice-gapminder/01-rstudio-intro.html
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+  - citekey: swc_r_gapminder
+    kind: textbook
+    locator: 'Episode 1, "Variables and assignment": reassignment'
+    quote: |-
+      Notice also that variables can be reassigned:
+    verified:
+      resolved_id: https://swcarpentry.github.io/r-novice-gapminder/01-rstudio-intro.html
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+  - citekey: r_intro_manual
+    kind: textbook
+    locator: 'Section 1.8: case sensitivity'
+    quote: |-
+      Technically R is an expression language with a very simple syntax. It is case sensitive as are most UNIX based packages, so
+    verified:
+      resolved_id: https://cran.r-project.org/doc/manuals/r-release/R-intro.html
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+      note: |-
+        The sentence goes on: "A and a are different symbols and would refer to different variables."
+  - citekey: swc_r_gapminder
+    kind: textbook
+    locator: 'Episode 1, "Variables and assignment": which names are allowed'
+    quote: |-
+      Variable names can contain letters, numbers, underscores and periods but no spaces. They must start with a letter or a period followed by a letter (they cannot start with a number nor an underscore).
+    verified:
+      resolved_id: https://swcarpentry.github.io/r-novice-gapminder/01-rstudio-intro.html
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+      note: |-
+        R-intro's form of the rule (section 1.8): a name must start with "." or a letter, and if it
+        starts with "." the second character must not be a digit. The definition follows R-intro.
+  - citekey: r_intro_manual
+    kind: textbook
+    locator: 'Section 1.8: names starting with a dot'
+    quote: |-
+      the second character must not be a digit. Names are effectively unlimited in length.
+    verified:
+      resolved_id: https://cran.r-project.org/doc/manuals/r-release/R-intro.html
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+  - citekey: r_intro_manual
+    kind: textbook
+    locator: 'Section 1.10: the workspace'
+    quote: |-
+      The collection of objects currently stored is called the workspace.
+    verified:
+      resolved_id: https://cran.r-project.org/doc/manuals/r-release/R-intro.html
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+      note: |-
+        The same passage gives objects() and its alternative ls() as the command that lists them.
+  - citekey: r4ds_2e
+    kind: textbook
+    locator: 'Section 2.4 "Calling functions", last sentence: the environment tab'
+    quote: |-
+      Note that the environment tab in the upper right pane displays all of the objects that you’ve created:
+    verified:
+      resolved_id: https://r4ds.hadley.nz/workflow-basics.html
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+      note: |-
+        CC BY-NC-ND: quoted for audit only.
+  - citekey: r4ds_2e
+    kind: textbook
+    locator: 'Section 6.2.1 "What is the source of truth?": the environment against the script'
+    quote: |-
+      With only your environment, it’s much harder to recreate your R scripts
+    verified:
+      resolved_id: https://r4ds.hadley.nz/workflow-scripts.html
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+  - citekey: tidyverse_style
+    kind: textbook
+    locator: '2.1 Object names'
+    quote: |-
+      Variable and function names should use only lowercase letters, numbers, and `_`. Use underscores (`_`) (so called snake case) to separate words within a name.
+    verified:
+      resolved_id: https://style.tidyverse.org/syntax.html
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+  - citekey: tidyverse_style
+    kind: textbook
+    locator: '2.8 Assignment'
+    quote: |-
+      Use `<-`, not `=`, for assignment.
+    verified:
+      resolved_id: https://style.tidyverse.org/syntax.html
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+  - citekey: r_intro_manual
+    kind: textbook
+    locator: 'Section 2.1 "Vectors and assignment": = as an alternative'
+    quote: |-
+      In most contexts the ‘
+    verified:
+      resolved_id: https://cran.r-project.org/doc/manuals/r-release/R-intro.html
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+      note: |-
+        The extraction splits the sentence round a code fence; whole, it reads "In most contexts the
+        '=' operator can be used as an alternative." The second half is quoted in the next reference.
+  - citekey: r_intro_manual
+    kind: textbook
+    locator: 'Section 2.1 "Vectors and assignment": = as an alternative, continued'
+    quote: |-
+      operator can be used as an alternative.
+    verified:
+      resolved_id: https://cran.r-project.org/doc/manuals/r-release/R-intro.html
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+  - citekey: tidyverse_style
+    kind: textbook
+    locator: '2.2.4 Infix operators: spaces round <-'
+    quote: |-
+      Most infix operators (`==`, `+`, `-`, `<-`, etc.) should always be surrounded by spaces:
+    verified:
+      resolved_id: https://style.tidyverse.org/syntax.html
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+simplified_explanation: |
+  The last section ended with numbers typed straight into each line. This one gives them names.
+
+  ```r
+  weight_kg <- 72
+  ```
+
+  Read the arrow `<-` as "gets": weight_kg gets 72. R prints nothing. It has stored 72 under the
+  name `weight_kg`. Type the name, and R prints the value back.
+
+  ```r
+  weight_kg
+  ```
+
+  ```output
+  [1] 72
+  ```
+
+  A name is a label stuck on a value. Three things follow from that.
+
+  - **Give the same name a new value, and the old one is gone.** No warning.
+  - **A name holds a value, not a sum.** If you work out a BMI from `weight_kg` and then change
+    `weight_kg`, the BMI stays as it was. It changes only when you run its line again.
+  - **R reads names exactly.** `Weight_kg` with a capital W is a different name. A name cannot start
+    with a digit and cannot hold a space.
+
+  The objects you have made so far sit in a list called the workspace. RStudio shows it in the
+  Environment pane, and `ls()` prints it. That list is not your script. It holds every line you ran
+  today, in whatever order you ran it, including lines you typed only in the console.
+
+  Write names in small letters, with `_` between words, and put the unit in the name:
+  `height_cm`, `height_m`, `bmi`. Then a line such as `height_m <- height_cm / 100` explains itself.
+
+  The word "variable" now means two things. In Book 0's algebra, a variable was a letter standing
+  for a number. In R, people also call a named object a variable. A third meaning, a column in a
+  table of data, comes later in the book. The context tells you which is meant.
+illustrations:
+- body: |
+    Start with a correction that does not arrive. Take the made-up patient from the last section,
+    and give each number a name.
+
+    ```r
+    weight_kg <- 72
+    height_m <- 1.6
+    bmi <- weight_kg / height_m^2
+    bmi
+    ```
+
+    ```output
+    [1] 28.125
+    ```
+
+    Now the clinic tells you the weight was copied wrongly into the register. The form says 74 kg.
+    You fix the weight, and print the BMI again.
+
+    ```r
+    weight_kg <- 74
+    bmi
+    ```
+
+    ```output
+    [1] 28.125
+    ```
+
+    The BMI has not moved. When R ran `bmi <- weight_kg / height_m^2`, it worked out the right-hand
+    side, 72 divided by 1.6 squared, and stored the answer, 28.125. It did not store the recipe.
+    Changing `weight_kg` afterwards changes `weight_kg` and nothing else.
+
+    Run the BMI line again, and the new weight is used.
+
+    ```r
+    bmi <- weight_kg / height_m^2
+    bmi
+    ```
+
+    ```output
+    [1] 28.90625
+    ```
+
+    Now look at what exists.
+
+    ```r
+    ls()
+    ```
+
+    ```output
+    [1] "bmi"       "height_m"  "weight_kg"
+    ```
+
+    Three objects, listed in alphabetical order. The list says nothing about the order the lines
+    ran in, or about the weight that was 72 a minute ago. Suppose you had typed `weight_kg <- 74`
+    in the console and never put it in the script. The workspace would still say 74, and you would
+    believe it. Tomorrow, running the script from the top, you would get 28.125 again.
+
+    So the fix belongs in the script. Change the first line to 74, with a comment saying why. Then
+    run every line from the top, so that each object is made from the ones above it.
+  analogy_breaks_when: |
+    Book 0's algebra letter is the wrong picture here. In `BMI = w / h^2`, w stands for whatever
+    number you substitute, and the formula holds for all of them at once. In R, `weight_kg` holds
+    one value, the last one assigned, and `bmi` holds one number worked out once.
+
+    The patient and the copying error are made up. The correction itself is real practice: a
+    correction is a line in the script, with a comment, never a value typed over in the console.
+- body: |
+    Now break the naming rules on purpose, and read what R says each time.
+
+    A capital letter where there was none:
+
+    ```r error
+    weight_kg <- 74
+    Weight_kg
+    ```
+
+    ```output
+    Error: object 'Weight_kg' not found
+    ```
+
+    R looked for an object called `Weight_kg` and found none. To R, the capital W makes it a
+    different name.
+
+    A name that starts with a digit:
+
+    ```r error
+    2nd_visit_kg <- 73
+    ```
+
+    ```output
+    Error: <text>:1:2: unexpected symbol
+    1: 2nd_visit_kg
+         ^
+    ```
+
+    A name with a space in it:
+
+    ```r error
+    weight visit2 <- 73
+    ```
+
+    ```output
+    Error: <text>:1:8: unexpected symbol
+    1: weight visit2
+               ^
+    ```
+
+    Both stop with "unexpected symbol". R read the first part as one thing, then met a second part
+    it could not join to it. In the RStudio console the same message ends with the words R could
+    not read, such as `in "2nd_visit_kg"`.
+
+    Now name it so the rules and the reader are both satisfied:
+
+    ```r
+    weight_visit2_kg <- 73
+    weight_visit2_kg
+    ```
+
+    ```output
+    [1] 73
+    ```
+
+    Small letters, words joined by `_`, the visit and the unit in the name. Anyone reading
+    `weight_visit2_kg` knows what it holds and in what unit, without a comment.
+  analogy_breaks_when: |
+    The rules R enforces and the style this book asks for are different things. R accepts
+    `WeightVisit2` and `w2`, and both would run. The style guide's snake case is a choice the
+    tidyverse made for consistency, and this book follows it so that every name reads the same way.
+must_know:
+- point: |
+    The error is to think a name holds a formula. `bmi <- weight_kg / height_m^2` stores one
+    number. Change the weight afterwards and `bmi` keeps the old answer until you run its line again.
+    After any correction, run the script from the top.
+  kind: misconception
+  bearing: methodological
+- point: |
+    The workspace is not your script. It holds whatever you ran today, in any order, including
+    lines typed only in the console. Trust a result only after it has come from running the
+    script from the top.
+  kind: trap
+  bearing: methodological
+- point: |
+    Assigning to a name that already exists replaces its value without any warning. Give each
+    thing its own name, such as `bmi_visit1` and `bmi_visit2`, rather than reusing `bmi`.
+  kind: trap
+  bearing: methodological
+- point: |
+    Put the unit in the name: `height_cm`, `height_m`, `weight_kg`. A line that divides
+    `height_cm` by 100 to make `height_m` can then be checked by reading it.
+  kind: move
+  bearing: methodological
+- point: |
+    "object 'x' not found" usually means a typing slip or a wrong capital letter, or a line that
+    makes `x` was never run. Check the spelling first, then whether the line that creates it has
+    run.
+  kind: move
+  bearing: teaching
+- point: |
+    A good name makes code readable, not correct. `bmi` can still hold the wrong number. Names help
+    a reviewer follow the steps; only checking the values tells you they are right.
+  kind: boundary
+  bearing: methodological
+exercises:
+- type: retrieval
+  prompt: |
+    From memory: you run `bmi <- weight_kg / height_m^2`, then `weight_kg <- 74`. What does `bmi`
+    hold now, and what must you do to bring it up to date? Then name two things an R name may not
+    do.
+  answer: |
+    `bmi` still holds the number worked out from the old weight. The name stores a value, not the
+    calculation. To bring it up to date, run the BMI line again. Better still, correct the weight in
+    the script, then run the whole script from the top.
+
+    An R name may not start with a digit, and may not contain a space. It may also not start with
+    `_`.
+- type: design
+  prompt: |
+    A classmate's script reads:
+
+    ```r
+    W <- 66
+    H <- 158
+    x <- W / (H / 100)^2
+    x
+    ```
+
+    ```output
+    [1] 26.43807
+    ```
+
+    Rewrite it so that every name follows this book's style and says what it holds, with its unit.
+    Add a comment for the step that would puzzle a reader. Check that your version gives the same
+    answer.
+  answer: |
+    ```r
+    weight_kg <- 66
+    height_cm <- 158
+    # BMI needs height in metres; the register records centimetres
+    height_m <- height_cm / 100
+    bmi <- weight_kg / height_m^2
+    bmi
+    ```
+
+    ```output
+    [1] 26.43807
+    ```
+
+    The answer is the same as the classmate's, about 26.4 kg/m^2. Running their four lines gives
+    26.43807 too. What changed is that each line can now be read on its own. The conversion
+    from centimetres to metres has a name and a reason. The capital letters are gone, and `x` no
+    longer hides what it holds.
+  skill_ref: S52-R1-K01
+- type: teaching
+  prompt: |
+    A first-year resident has ten minutes and a whiteboard. They corrected a participant's height
+    in the console and say their BMI results are now fixed. Teach them why they may not be.
+  answer: |
+    Write three lines on the board, as they would be in a script:
+
+    `height_m <- 1.52`, then `bmi <- weight_kg / height_m^2`, then `bmi`.
+
+    Underneath, write the line they typed in the console: `height_m <- 1.62`.
+
+    Ask: what is `bmi` now? Most residents say it uses 1.62. It does not. `bmi` was worked out when
+    its line ran, from the height at that moment, and stored as one number. The console line changed
+    the height and nothing else.
+
+    Then ask: what happens tomorrow, when the script runs from the top? The console line is not in
+    the script. The height goes back to 1.52, and so does every BMI made from it.
+
+    The fix they can use today: put the correction in the script, with a comment saying where the
+    right value came from. Then run the whole script from the top and look at the new result.
+quantitative: true
+practice:
+- level: 1
+  prompt: |
+    What does the last line print?
+
+    ```r norun
+    a <- 5
+    a <- a + 2
+    a
+    ```
+  answer: |
+    ```r
+    a <- 5
+    a <- a + 2
+    a
+    ```
+
+    ```output
+    [1] 7
+    ```
+
+    The second line works out the right-hand side first, 5 plus 2, and then stores 7 under `a`,
+    replacing the 5.
+- level: 2
+  prompt: |
+    Which of these names will R accept for an object? Try each one with `<- 1` to check.
+
+    `bmi_2024`, `2024_bmi`, `bmi.2024`, `bmi 2024`, `.bmi`, `_bmi`
+  answer: |
+    The three that work make an object without a message:
+
+    ```r
+    bmi_2024 <- 1
+    bmi.2024 <- 1
+    .bmi <- 1
+    ```
+
+    The other three stop with an error:
+
+    ```r error
+    2024_bmi <- 1
+    ```
+
+    ```output
+    Error: <text>:1:5: unexpected input
+    1: 2024_
+            ^
+    ```
+
+    ```r error
+    bmi 2024 <- 1
+    ```
+
+    ```output
+    Error: <text>:1:5: unexpected numeric constant
+    1: bmi 2024
+            ^
+    ```
+
+    ```r error
+    _bmi <- 1
+    ```
+
+    ```output
+    Error: <text>:1:2: unexpected symbol
+    1: _bmi
+         ^
+    ```
+
+    A name must start with a letter or a dot, so `2024_bmi` and `_bmi` fail. A name cannot hold a
+    space, so `bmi 2024` fails. Of the three that work, only `bmi_2024` follows this book's style.
+    A name starting with a dot, like `.bmi`, is also left out of what `ls()` prints, which makes it
+    easy to forget.
+- level: 3
+  prompt: |
+    Predict what the last line prints, then run the lines to check.
+
+    ```r norun
+    x <- 10
+    y <- x * 2
+    x <- 3
+    y
+    ```
+  answer: |
+    ```r
+    x <- 10
+    y <- x * 2
+    x <- 3
+    y
+    ```
+
+    ```output
+    [1] 20
+    ```
+
+    `y` was worked out when its line ran, from `x` at that moment, which was 10. Giving `x` a new
+    value afterwards does not reach back into `y`.
+- level: 4
+  prompt: |
+    The first penguin in the Palmer file weighed 3750 g. Store that value in an object whose name
+    gives the unit. Then make a second object holding the weight in kilograms, and print it.
+  answer: |
+    ```r
+    body_mass_g <- 3750
+    body_mass_kg <- body_mass_g / 1000
+    body_mass_kg
+    ```
+
+    ```output
+    [1] 3.75
+    ```
+
+    The penguin weighed 3.75 kg. Both names say their unit, so the division by 1000 reads as a
+    conversion from grams to kilograms.
+  refs:
+  - horst_2020_palmerpenguins
+- level: 5
+  prompt: |
+    A made-up adult weighs 81 kg and is 172 cm tall. Write lines that store the weight and the
+    height as they were recorded, make the height in metres, make the BMI, and print it. Use names
+    that carry units.
+  answer: |
+    ```r
+    weight_kg <- 81
+    height_cm <- 172
+    height_m <- height_cm / 100
+    bmi <- weight_kg / height_m^2
+    bmi
+    ```
+
+    ```output
+    [1] 27.37966
+    ```
+
+    The BMI is about 27.4 kg/m^2. The height is stored once as recorded, in centimetres, and the
+    conversion is a line of its own.
+- level: 6
+  prompt: |
+    The second and third penguins in the Palmer file weighed 3800 g and 3250 g. Store each weight in
+    its own object, make an object holding the difference between them in kilograms, and print it.
+  answer: |
+    ```r
+    body_mass_2_g <- 3800
+    body_mass_3_g <- 3250
+    difference_kg <- (body_mass_2_g - body_mass_3_g) / 1000
+    difference_kg
+    ```
+
+    ```output
+    [1] 0.55
+    ```
+
+    The second penguin weighed 0.55 kg more than the third. The bracket makes R subtract before it
+    divides, and each name says which penguin and which unit.
+  refs:
+  - horst_2020_palmerpenguins
+- level: 7
+  prompt: |
+    A resident works out BMI for two made-up patients and reports patient A's value. Here is the
+    script and what it printed.
+
+    ```r
+    bmi <- 72 / 1.6^2       # patient A
+    bmi <- 58 / 1.52^2      # patient B
+    bmi                     # patient A's BMI, for the report
+    ```
+
+    ```output
+    [1] 25.10388
+    ```
+
+    They write "Patient A: BMI 25.1 kg/m^2". Find what broke, and say why the wrong answer looks
+    reasonable.
+  answer: |
+    The second line reused the name `bmi`. Assigning to it replaced patient A's value with patient
+    B's, without any warning. The last line printed patient B's BMI.
+
+    ```r
+    bmi_a <- 72 / 1.6^2
+    bmi_b <- 58 / 1.52^2
+    bmi_a
+    bmi_b
+    ```
+
+    ```output
+    [1] 28.125
+    [1] 25.10388
+    ```
+
+    Patient A's BMI is about 28.1 kg/m^2. Patient B's is about 25.1 kg/m^2.
+
+    Why the wrong answer looks reasonable: 25.1 kg/m^2 is an ordinary adult BMI, so nothing about it
+    looks off. The comments even say "patient A". Comments describe what the writer meant, and R
+    does not read them. Separate names would have kept the two values apart.
+- level: 8
+  prompt: |
+    This script stops with an error. Find the cause.
+
+    ```r error
+    weight_kg <- 60
+    height_m <- 1.62
+    weight_kg / Height_m^2
+    ```
+
+    ```output
+    Error: object 'Height_m' not found
+    ```
+  answer: |
+    The object was made as `height_m`, with a small h. The third line asks for `Height_m`, with a
+    capital H. R treats them as two different names, finds no object called `Height_m`, and stops.
+    The error printed under the prompt's code says so: object 'Height_m' not found.
+
+    ```r
+    weight_kg <- 60
+    height_m <- 1.62
+    weight_kg / height_m^2
+    ```
+
+    ```output
+    [1] 22.86237
+    ```
+
+    With the name spelt as it was made, the BMI is about 22.9 kg/m^2.
+- level: 9
+  prompt: |
+    A line in a made-up thesis reads as follows. "The weight of participant 12 was corrected from 47
+    kg to 74 kg, a transposition error. The BMI was recalculated." The participant's height is 1.58 m.
+    Write the lines that record this correction and give both BMIs. Then say what your lines do
+    not establish.
+  answer: |
+    ```r
+    height_m <- 1.58
+    # Participant 12: register says 47 kg; the paper form says 74 kg (digits swapped)
+    weight_recorded_kg <- 47
+    weight_corrected_kg <- 74
+    bmi_recorded <- weight_recorded_kg / height_m^2
+    bmi_corrected <- weight_corrected_kg / height_m^2
+    bmi_recorded
+    bmi_corrected
+    ```
+
+    ```output
+    [1] 18.82711
+    [1] 29.64269
+    ```
+
+    The BMI moves from about 18.8 to about 29.6 kg/m^2. Both values stay in the script under their
+    own names, with a comment saying where the corrected value came from.
+
+    What these lines do not establish:
+
+    - That 74 kg is right. The lines record the correction; they do not check it. Only the paper
+      form, or a second measurement, can.
+    - That no other participant has the same kind of error. One swapped pair of digits found is a
+      reason to check the rest, not a sign that the rest are clean.
+    - Anything about the thesis's own results. If the correction was typed into a console and not
+      into the script, the next run from the top will lose it.
+- level: 10
+  prompt: |
+    A made-up thesis methods section says: "Height was recorded in centimetres and converted to
+    metres before BMI was calculated." Participant 2's register entry reads: weight 64, height 1.63.
+    Write the lines the sentence describes for participant 2, with names that carry units. Run
+    them. Then say what the methods sentence does not establish.
+  answer: |
+    The sentence says heights were in centimetres, so the lines divide by 100:
+
+    ```r
+    weight_kg <- 64
+    height_cm <- 1.63    # as written in the register
+    height_m <- height_cm / 100
+    bmi <- weight_kg / height_m^2
+    bmi
+    ```
+
+    ```output
+    [1] 240882.2
+    ```
+
+    The code runs without a complaint and gives a BMI in the hundreds of thousands. Book 0's
+    order-of-magnitude check says no adult has that. The height of 1.63 was written in metres,
+    not centimetres, and dividing it by 100 made it 1.63 cm.
+
+    The name `height_cm` did not protect you. A name says what you believe the value is. R does not
+    check it against the value.
+
+    After checking the paper form, record what you found and use it:
+
+    ```r
+    weight_kg <- 64
+    # Register shows 1.63; the form confirms metres (163 cm), unlike the other entries
+    height_cm <- 163
+    height_m <- height_cm / 100
+    bmi <- weight_kg / height_m^2
+    bmi
+    ```
+
+    ```output
+    [1] 24.08822
+    ```
+
+    The BMI is about 24.1 kg/m^2.
+
+    What the methods sentence does not establish:
+
+    - That every height was recorded in centimetres. It describes the plan, not the register.
+    - That anyone checked. A conversion applied to every row runs just as smoothly on a value
+      recorded in the wrong unit.
+    - That the results are right. A check on the size of each value would catch an entry like this
+      one. For adults, heights between roughly 1 m and 2 m once converted is such a check.
+retrieval_items:
+- q: What does `bmi <- weight_kg / height_m^2` store, and what happens to `bmi` if you later change `weight_kg`?
+  a: It stores one number, the result worked out when the line ran. Changing `weight_kg` later leaves `bmi` unchanged until its line is run again.
+- q: Which characters may an R name contain, and how must it start?
+  a: Letters, digits, `.` and `_`, and no spaces. It must start with a letter, or with a dot not followed by a digit.
+- q: What is the workspace, and why is it not the same as your script?
+  a: The set of objects that exist now in the session, listed by `ls()`. It holds whatever was run, in any order, including lines typed only in the console, so it can differ from what the script would make.
+- q: Which style does this book use for names and for assignment?
+  a: Lower-case names with words joined by `_` (snake case), with units where they help, and `<-` for assignment.
+figure_note: "The section is about how names hold values; each step prints one value, and a chart of those values would show nothing the printed outputs do not."
+provenance:
+  map_version_id: fc19c8bc-a216-4131-99fb-ebe3f19cec4a
+  outcome_refs:
+  - S52-R1-O1
+  - S52-R1-S1
+review:
+  stability: long
+  trigger: '2031-10-02'
+  last_reviewed: '2026-10-02'
+status: drafted

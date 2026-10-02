@@ -1,0 +1,707 @@
+concept_id: S52-R1-C02
+subject: S52
+rung: 1
+sequence: 2
+name: 'Installing R and an editor; the console and the script'
+concept_type: derivable
+clusters:
+- craft-and-integrity
+- measurement-inference
+ground_floor_deps:
+- B0-R0-C01
+- B0-R0-C08
+- B0-R0-C10
+- B0-R0-C14
+concept_deps:
+- S52-R1-C01
+definition:
+  text: |
+    R is a program that reads instructions written in the R language and carries them out.
+    RStudio is a separate application, an integrated development environment (IDE), that makes R
+    easier to use: it gives a script editor, the console, and panes for objects, plots and help
+    pages. R is installed first, then RStudio. The printed outputs in this book came from R
+    {{n:r_version}}; newer releases exist.
+
+    The console is the pane in which R shows a prompt, `>`, and waits for one instruction. Each
+    instruction typed there is run once. If it is an expression, its value is printed and then
+    lost. If the instruction is incomplete, R shows `+` instead of `>` and waits for the rest.
+
+    A script is a plain-text file of R code, saved with a name ending in `.R`. Its lines are run in
+    order, from the top. Together with the data files, the script is the lasting record of an
+    analysis: from it, every result can be made again.
+
+    R does arithmetic with `+` (plus), `-` (minus), `*` (times), `/` (divided by) and `^` (to the
+    power of). It follows the order Book 0 taught. Brackets come first, then powers, then
+    multiplication and division, then addition and subtraction, left to right within each pair.
+
+    Everything after a `#` on a line is a comment. R ignores it; people read it.
+
+    An error message is R's statement that it could not carry out an instruction. It says what it
+    could not do and, for a line it could not read, where on the line it stopped.
+  references:
+  - citekey: swc_r_gapminder
+    kind: textbook
+    locator: 'Summary and Setup, Prerequisites: install R, then RStudio'
+    quote: |-
+      Download and install the latest version of R.
+    verified:
+      resolved_id: https://swcarpentry.github.io/r-novice-gapminder/
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+      note: |-
+        The same list goes on: "Download and install RStudio." This book's outputs come from R
+        4.3.3, not the latest version; the definition says so.
+  - citekey: swc_r_gapminder
+    kind: textbook
+    locator: 'Summary and Setup, Prerequisites: what RStudio is'
+    quote: |-
+      RStudio is an application (an integrated development environment or IDE) that facilitates the use of R
+    verified:
+      resolved_id: https://swcarpentry.github.io/r-novice-gapminder/
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+  - citekey: r4ds_2e
+    kind: textbook
+    locator: 'Introduction, Prerequisites, "RStudio"'
+    quote: |-
+      RStudio is an integrated development environment, or IDE, for R programming
+    verified:
+      resolved_id: https://r4ds.hadley.nz/intro.html
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+      note: |-
+        CC BY-NC-ND: quoted for audit only, never adapted.
+  - citekey: r_intro_manual
+    kind: textbook
+    locator: 'Section 1.8 "R commands, case sensitivity, etc.": an expression is printed and lost'
+    quote: |-
+      If an expression is given as a command, it is evaluated, printed (unless specifically made invisible), and the value is lost.
+    verified:
+      resolved_id: https://cran.r-project.org/doc/manuals/r-release/R-intro.html
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+  - citekey: swc_r_gapminder
+    kind: textbook
+    locator: 'Episode 1, "Using R as a calculator": the + prompt'
+    quote: |-
+      Any time you hit return and the R session shows a “+” instead of a “>”, it means it’s waiting for you to complete the command.
+    verified:
+      resolved_id: https://swcarpentry.github.io/r-novice-gapminder/01-rstudio-intro.html
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+  - citekey: swc_r_gapminder
+    kind: textbook
+    locator: 'Episode 1, "R scripts"'
+    quote: |-
+      Any commands that you write in the R console can be saved to a file to be re-run again. Files containing R code to be ran in this way are called R scripts.
+    verified:
+      resolved_id: https://swcarpentry.github.io/r-novice-gapminder/01-rstudio-intro.html
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+  - citekey: r4ds_2e
+    kind: textbook
+    locator: 'Section 6.2.1 "What is the source of truth?"'
+    quote: |-
+      your source of truth should be the R scripts. With your R scripts (and your data files), you can recreate the environment.
+    verified:
+      resolved_id: https://r4ds.hadley.nz/workflow-scripts.html
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+  - citekey: swc_r_gapminder
+    kind: textbook
+    locator: 'Episode 1, "Using R as a calculator": order of operations'
+    quote: |-
+      When using R as a calculator, the order of operations is the same as you would have learned back in school.
+    verified:
+      resolved_id: https://swcarpentry.github.io/r-novice-gapminder/01-rstudio-intro.html
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+  - citekey: r_intro_manual
+    kind: textbook
+    locator: 'Section 2.2 "Vector arithmetic": the arithmetic operators, ending with ^'
+    quote: |-
+      and ``` ^ ``` for raising to a power.
+    verified:
+      resolved_id: https://cran.r-project.org/doc/manuals/r-release/R-intro.html
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+      note: |-
+        The sentence lists "+, -, *, / and ^ for raising to a power"; the extraction set each
+        operator in its own code fence, which the quote keeps.
+  - citekey: r4ds_2e
+    kind: textbook
+    locator: 'Section 2.2 "Comments"'
+    quote: |-
+      R will ignore any text after `#` for that line.
+    verified:
+      resolved_id: https://r4ds.hadley.nz/workflow-basics.html
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+  - citekey: r4ds_2e
+    kind: textbook
+    locator: 'Section 2.2 "Comments": comments for why'
+    quote: |-
+      Use comments to explain the *why* of your code, not the *how* or the *what*.
+    verified:
+      resolved_id: https://r4ds.hadley.nz/workflow-basics.html
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+  - citekey: r4ds_2e
+    kind: textbook
+    locator: 'Section 6.1.1 "Running code": Ctrl + Enter'
+    quote: |-
+      Cmd/Ctrl + Enter. This executes the current R expression in the console.
+    verified:
+      resolved_id: https://r4ds.hadley.nz/workflow-scripts.html
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+  - citekey: r4ds_2e
+    kind: textbook
+    locator: 'Section 6.1 "Scripts": opening a new script'
+    quote: |-
+      Open it up by clicking the File menu, selecting New File, then R script, or using the keyboard shortcut Cmd/Ctrl + Shift + N.
+    verified:
+      resolved_id: https://r4ds.hadley.nz/workflow-scripts.html
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+  - citekey: swc_r_gapminder
+    kind: textbook
+    locator: 'Episode 1, tip "Running segments of your code": running a block'
+    quote: |-
+      To run a block of code, select it and then
+    verified:
+      resolved_id: https://swcarpentry.github.io/r-novice-gapminder/01-rstudio-intro.html
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+      note: |-
+        The sentence ends "Run", the name of the button above the editor.
+  - citekey: r4ds_2e
+    kind: textbook
+    locator: 'Section 6.1.3 "Saving and naming": informative names'
+    quote: |-
+      it’s a good idea to avoid Untitled1, Untitled2, Untitled3, and so on and instead save your scripts and give them informative names.
+    verified:
+      resolved_id: https://r4ds.hadley.nz/workflow-scripts.html
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+  - citekey: tidyverse_style
+    kind: textbook
+    locator: 'Chapter 1 "Files", 1.1 Names, rule 1'
+    quote: |-
+      avoid spaces, symbols, and special characters. Prefer file names that are all lower case, and never have names that differ only in their capitalization.
+    verified:
+      resolved_id: https://style.tidyverse.org/files.html
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+simplified_explanation: |
+  You install two programs. R is the one that does the work: you give it an instruction, and it
+  carries it out. RStudio is the window you work in. Install R first, then RStudio, from their
+  own websites.
+
+  Open RStudio and you see several panes. Two matter today.
+
+  **The console** is where R waits for you. It shows a `>` sign. Type `2 + 3` after it and press
+  Enter. R prints `[1] 5`. The `[1]` only marks the first value on the line; ignore it for now. The
+  answer is printed once and kept nowhere. If you press Enter on an unfinished line, R shows `+`
+  and waits for the rest.
+
+  **The script** is a plain text file of instructions, one per line, saved with a name ending in
+  `.R`. Open one from the File menu: New File, then R script. Type your instructions there instead
+  of in the console. Put the cursor on a line and press Ctrl and Enter together. RStudio sends that
+  line to the console, and the answer appears there. Select every line and press Ctrl and Enter,
+  and the whole file runs from the top.
+
+  The difference is the whole point of this book. The console is a place to try things. The script
+  is what you keep. Tomorrow, or in a year, or on your guide's computer, the script makes the same
+  answers again.
+
+  R's arithmetic signs differ from Book 0's in two places. Times is `*`, not ×. Divided by is `/`,
+  not ÷. Powers are `^`, so 1.6 squared is `1.6^2`. The order of working is the one you already
+  know: brackets, powers, then times and divide, then plus and minus.
+
+  A `#` starts a comment. R skips everything after it on that line. Use comments to say why a line
+  is there.
+
+  When R cannot do what you asked, it prints an error message. Read it word by word. It usually
+  says exactly what went wrong.
+illustrations:
+- body: |
+    Start in the console, and make the mistakes on purpose. A made-up patient in a clinic register
+    weighs 72 kg and is 160 cm tall. Book 0 gave you body mass index (BMI): weight in kilograms
+    divided by height in metres, squared, in kg/m^2. Type the first thing that comes to mind.
+
+    ```r
+    72 / 160^2
+    ```
+
+    ```output
+    [1] 0.0028125
+    ```
+
+    R does exactly what you typed. Now do Book 0's order-of-magnitude check. An adult's BMI is a
+    number in the tens. This answer is thousands of times too small. The height went in as
+    centimetres. 160 cm is 1.6 m, because a metre is 100 cm.
+
+    Try again, and this time leave the squaring out by accident:
+
+    ```r
+    72 / 1.6 * 1.6
+    ```
+
+    ```output
+    [1] 72
+    ```
+
+    The answer is the weight you started with. R worked left to right: 72 divided by 1.6, then that
+    times 1.6. Multiplying by 1.6 twice was never what you meant. You meant 1.6 squared, and that
+    needs a power or a bracket.
+
+    ```r
+    72 / 1.6^2
+    72 / (1.6 * 1.6)
+    ```
+
+    ```output
+    [1] 28.125
+    [1] 28.125
+    ```
+
+    Both lines give 28.125, so the patient's BMI is about 28.1 kg/m^2. The power is worked out
+    before the division, just as Book 0's order of operations says.
+
+    One more slip. Book 0 taught you the sign ÷. Type it here:
+
+    ```r error
+    72 ÷ 1.6^2
+    ```
+
+    ```output
+    Error: <text>:1:4: unexpected input
+    1: 72 ÷
+           ^
+    ```
+
+    Read the message literally. "Unexpected input" means R met a character it cannot read. The `^`
+    under the line points at the ÷ sign, which is not part of the R language. In the RStudio
+    console the same message reads `Error: unexpected input in "72 ÷"`. Either way, the fix is `/`.
+
+    Now scroll up through the console. Five tries sit there, three of them wrong, in the order you
+    typed them. Nothing marks which one was right. If you came back next week, you would have to
+    work it out again.
+  analogy_breaks_when: |
+    BMI is used here only because Book 0 taught it and the numbers are easy to check. The patient
+    is made up, and 28.1 kg/m^2 says nothing about anyone real.
+
+    The order-of-magnitude check caught the first slip because a factor of 10,000 is huge. It would
+    not catch a weight typed as 27 instead of 72. Only checking the inputs catches that.
+- body: |
+    Now put the right version where it will last. Open a new script from the File menu. Type these
+    lines into it, and save it as `bmi_arithmetic.R`. A name with no spaces, all in small letters,
+    and saying what the file does, is easy to find and easy to type later.
+
+    ```r
+    # BMI of a made-up clinic patient, from the register's units
+    # Weight is recorded in kg and height in cm.
+
+    # Height in metres: the register gives cm, and BMI needs m
+    160 / 100
+
+    # BMI in kg/m^2: weight divided by height in metres squared
+    72 / (160 / 100)^2
+    ```
+
+    ```output
+    [1] 1.6
+    [1] 28.125
+    ```
+
+    Select all the lines and press Ctrl and Enter. The comments are skipped. The two
+    calculations run, from the top, and their answers appear in the console.
+
+    Read the second calculation as R reads it. The bracket `(160 / 100)` is worked out first, giving
+    1.6. Then the power: 1.6 squared. Then 72 is divided by that.
+
+    Notice what the script holds that the console did not. It keeps only the right version. Its
+    comments say why each line is there. The conversion from centimetres to metres is a line you
+    can see, not a step you did in your head. Close RStudio, open the file tomorrow, and run it. You
+    get 28.125 again.
+
+    This is the first file of the habit the book builds. Later sections add a folder, data files
+    and a whole analysis. The habit does not change: what you want to keep goes in the script.
+  analogy_breaks_when: |
+    A script that runs is not a script that is right. If the register said 61 kg and you typed 72,
+    the script would repeat the wrong answer every time, perfectly. Running from a file makes a
+    mistake repeatable and visible. It does not remove it.
+
+    These two lines use typed-in numbers. Real work reads the numbers from a data file, and that
+    comes later in this book.
+must_know:
+- point: |
+    The error is to think the console keeps your work. It keeps a list of everything you typed,
+    the wrong lines with the right ones, and nothing says which was which. Type into the console to
+    try something. Put anything you want to keep into the script.
+  kind: misconception
+  bearing: methodological
+- point: |
+    R's signs are `*` for times, `/` for divided by and `^` for a power. Typing × or ÷ stops R
+    with an error, and typing the letter x as times does too.
+  kind: trap
+  bearing: methodological
+- point: |
+    `72 / 1.6 * 1.6` gives 72, not a BMI. R divides and multiplies from left to right. When you mean
+    "divided by a product", put the product in brackets or use a power.
+  kind: trap
+  bearing: methodological
+- point: |
+    Write a unit conversion as a line of code, with a comment, rather than doing it in your head
+    and typing the result. A reader can then see that 160 became 1.6 because the register was in
+    centimetres.
+  kind: move
+  bearing: methodological
+- point: |
+    When an answer comes out, check its size against what you expect before you use it. A BMI of
+    0.003 kg/m^2 or 72 kg/m^2 for an ordinary adult means the code is wrong, however cleanly it ran.
+  kind: boundary
+  bearing: methodological
+- point: |
+    When a trainee shows you a number from R, ask to see the script, not the console. If there is
+    no script, ask them to write one and run it from the top before you look at the number.
+  kind: move
+  bearing: teaching
+exercises:
+- type: retrieval
+  prompt: |
+    Answer from memory, without R open. What does the console show when it is waiting for an
+    instruction? What does it show when your line is unfinished? Where should a line you want to keep be
+    written, and why?
+  answer: |
+    The console shows `>` when it is waiting, and `+` when the line you entered is unfinished, for
+    example a bracket left open.
+
+    A line you want to keep goes in the script, a saved file ending in `.R`. The console runs a
+    line once and keeps only a history of everything typed. The script keeps the lines you chose,
+    with comments, and runs again from the top to give the same answers.
+- type: build
+  prompt: |
+    Start the habit. In RStudio, open a new script. Save it with a name of your choosing that has no
+    spaces and says what the file is for. In it, write lines that work out, for a made-up
+    adult who weighs 58 kg and is 152 cm tall:
+
+    1. the height in metres;
+    2. the BMI in kg/m^2.
+
+    Give each line a comment saying why it is there. Run the whole script from the top and write
+    down the two answers.
+  answer: |
+    One possible script, saved as `bmi_practice.R`:
+
+    ```r
+    # BMI of a made-up adult, worked from the units the register uses
+
+    # Height in metres: recorded in cm, and BMI needs m
+    152 / 100
+
+    # BMI in kg/m^2: weight in kg divided by height in m, squared
+    58 / (152 / 100)^2
+    ```
+
+    ```output
+    [1] 1.52
+    [1] 25.10388
+    ```
+
+    The height is 1.52 m. The BMI is about 25.1 kg/m^2.
+
+    Check your script against three things. The file name has no spaces. Each calculation has a
+    comment saying why. Running every line from the top gives the same two answers each time.
+  skill_ref: S52-R1-K01
+- type: teaching
+  prompt: |
+    A first-year resident has ten minutes and a whiteboard. They have been doing their thesis
+    calculations in the console "because it is faster". Teach them the difference between the
+    console and a script, and why it matters for a thesis.
+  answer: |
+    Draw two boxes. Label one "console" and one "script".
+
+    In the console box, write three lines as the resident might have typed them: `72 / 160^2`,
+    `72 / 1.6 * 1.6` and `72 / 1.6^2`. Ask which one their thesis used. They cannot tell from the
+    box. Neither could their guide, an examiner, or they themselves in six months.
+
+    In the script box, write the one right line with a comment above it: why 160 was divided by 100.
+
+    Then make the point. The console runs a line once, prints the answer and moves on. Its history
+    holds every attempt in the order typed, wrong ones included. The script holds only the version
+    you chose, with the reasons, and runs again from the top whenever anyone asks.
+
+    Speed is not lost. They can still try ideas in the console. What changes is where the answer
+    they will defend lives.
+quantitative: true
+practice:
+- level: 1
+  prompt: |
+    Write one line of R that works out 45 plus 17 times 2. Before you run it, write down what you
+    expect it to print.
+  answer: |
+    ```r
+    45 + 17 * 2
+    ```
+
+    ```output
+    [1] 79
+    ```
+
+    The multiplication goes first: 17 times 2 is 34, and 45 plus 34 is 79. If you expected 124, you
+    added first. R follows Book 0's order of operations.
+- level: 2
+  prompt: |
+    Write one line of R that divides 150 by the sum of 20 and 30.
+  answer: |
+    ```r
+    150 / (20 + 30)
+    ```
+
+    ```output
+    [1] 3
+    ```
+
+    The bracket makes R add first, giving 50, and 150 divided by 50 is 3. Without the bracket,
+    `150 / 20 + 30` would divide first and give 37.5.
+- level: 3
+  prompt: |
+    Predict what each line prints, then run them to check.
+
+    ```r norun
+    2^3 * 2
+    2^(3 * 2)
+    ```
+  answer: |
+    ```r
+    2^3 * 2
+    2^(3 * 2)
+    ```
+
+    ```output
+    [1] 16
+    [1] 64
+    ```
+
+    In the first line the power goes first: 2 to the power 3 is 8, and 8 times 2 is 16. In the
+    second line the bracket goes first: 3 times 2 is 6, and 2 to the power 6 is 64.
+- level: 4
+  prompt: |
+    This book uses a file of measurements of 344 penguins from near Palmer Station, Antarctica. The
+    first penguin in the file weighed 3750 g. Write one line of R that gives its weight in
+    kilograms, with a comment saying what the line does.
+  answer: |
+    ```r
+    # Body mass of the first penguin: the file records grams, 1000 g in a kilogram
+    3750 / 1000
+    ```
+
+    ```output
+    [1] 3.75
+    ```
+
+    The first penguin weighed 3.75 kg. The comment keeps the unit and the reason for dividing by
+    1000 next to the number.
+  refs:
+  - horst_2020_palmerpenguins
+- level: 5
+  prompt: |
+    A made-up adult in a clinic register weighs 81 kg and is 172 cm tall. Write a short script, with
+    a comment on each line of code, that works out the height in metres and then the BMI in kg/m^2.
+    Give the BMI to one decimal place in your answer.
+  answer: |
+    ```r
+    # Height in metres: the register gives cm
+    172 / 100
+
+    # BMI in kg/m^2: weight in kg divided by height in m, squared
+    81 / (172 / 100)^2
+    ```
+
+    ```output
+    [1] 1.72
+    [1] 27.37966
+    ```
+
+    The height is 1.72 m and the BMI is 27.37966, about 27.4 kg/m^2. R prints more digits than
+    the measurements carry. The rounding to one decimal place is for the report; the script keeps
+    the full value.
+- level: 6
+  prompt: |
+    The first three penguins in the Palmer file have flipper lengths of 181, 186 and 195 mm. Write
+    a line of R that gives their average flipper length in centimetres, with a comment.
+  answer: |
+    ```r
+    # Average flipper length of the first three penguins: mm to cm is divided by 10
+    (181 + 186 + 195) / 3 / 10
+    ```
+
+    ```output
+    [1] 18.73333
+    ```
+
+    The bracket adds the three lengths first, 562 mm. Divided by 3 that is 187.3 mm, and divided by
+    10 it is about 18.7 cm. The order of the two divisions does not matter here. The bracket
+    does.
+  refs:
+  - horst_2020_palmerpenguins
+- level: 7
+  prompt: |
+    A made-up patient's weight was measured twice at one visit, 71.4 kg and 71.8 kg. A resident
+    wants the average of the two and writes:
+
+    ```r
+    71.4 + 71.8 / 2
+    ```
+
+    ```output
+    [1] 107.3
+    ```
+
+    They record 107.3 kg in the register. Find what broke, and say why the wrong answer can look
+    reasonable.
+  answer: |
+    R divided before it added. The line worked out 71.8 divided by 2, which is 35.9, and then added
+    71.4. The sum was never divided.
+
+    ```r
+    (71.4 + 71.8) / 2
+    ```
+
+    ```output
+    [1] 71.6
+    ```
+
+    The average is 71.6 kg.
+
+    Why the wrong answer looks reasonable: 107.3 kg is a weight a real adult can have, so it passes
+    a glance. The check that catches it is the one Book 0 taught for averages. An average of two
+    numbers lies between them. 107.3 is not between 71.4 and 71.8.
+- level: 8
+  prompt: |
+    A resident saves this script and runs every line. R stops with an error. Find the cause.
+
+    ```r error
+    # Height in metres
+    165 / 100
+    BMI of patient 2
+    68 / (165 / 100)^2
+    ```
+
+    ```output
+    Error: <text>:3:5: unexpected symbol
+    2: 165 / 100
+    3: BMI of
+           ^
+    ```
+  answer: |
+    The third line is meant to be a comment, but it has no `#`. R tries to read "BMI of patient
+    2" as an instruction. It finds the word "of" straight after "BMI" with nothing joining them, and
+    stops. That is what "unexpected symbol" means: a word where R did not expect one. The `3:5`
+    says where: line 3, fifth character, which is where "of" begins. In the RStudio console the same
+    message reads `Error: unexpected symbol in "BMI of"`.
+
+    ```r
+    # Height in metres
+    165 / 100
+    # BMI of patient 2
+    68 / (165 / 100)^2
+    ```
+
+    ```output
+    [1] 1.65
+    [1] 24.97704
+    ```
+
+    With the `#` in place, the line is skipped and the BMI is about 25.0 kg/m^2. The error message
+    showed exactly where to look: it quoted the words "BMI of" and pointed at the second one.
+- level: 9
+  prompt: |
+    A line from a made-up thesis results chapter reads: "The mean weight of the three participants
+    in the pilot was 68.3 kg." The three weights in the pilot register are 64.2, 71.5 and 69.1 kg.
+    Check the sentence in R. Then say what your check does not establish.
+  answer: |
+    ```r
+    # Mean of the three pilot weights, in kg
+    (64.2 + 71.5 + 69.1) / 3
+    ```
+
+    ```output
+    [1] 68.26667
+    ```
+
+    The mean is 68.26667 kg, which rounds to 68.3 kg. The sentence matches the register.
+
+    What the check does not establish:
+
+    - That the weights in the register were measured or copied correctly. You checked the
+      arithmetic on the numbers you were given, nothing before that.
+    - That three participants tell you anything about anyone else. A mean of three is a fact
+      about those three.
+    - That the thesis can be checked by someone else. Your line can, if you keep it in a script.
+      The thesis's own number came from wherever its author worked it out.
+- level: 10
+  prompt: |
+    In a made-up lab meeting, someone says this: "The first three penguins in the Palmer file
+    weighed 3750, 3800 and 3250 g. So the average penguin weighs 3.6 kg." Turn the claim into R, run it,
+    and say what the result does not establish.
+  answer: |
+    ```r
+    # Mean body mass of the first three penguins, converted from g to kg
+    (3750 + 3800 + 3250) / 3 / 1000
+    ```
+
+    ```output
+    [1] 3.6
+    ```
+
+    The arithmetic holds: the mean of those three is 3.6 kg.
+
+    What it does not establish:
+
+    - Anything about "the average penguin". These are the first three rows of a file of 344
+      penguins. Rows come in the order they were entered, not chosen to stand for the rest.
+    - Anything about penguins of other species. The first rows of this file are all one species, and
+      the file holds three.
+    - The mean of the whole file. That needs every row, read from the file by code, which later
+      sections teach.
+  refs:
+  - horst_2020_palmerpenguins
+retrieval_items:
+- q: What is the difference between R and RStudio, and which do you install first?
+  a: R is the program that carries out R instructions. RStudio is an application (an integrated development environment) that you work in, with a script editor and the console. Install R first, then RStudio.
+- q: What does the console keep, and what does a script keep?
+  a: The console runs each line once, prints the answer and keeps only a history of everything typed, wrong lines included. A script is a saved file that keeps the lines you chose, with comments, and runs again from the top.
+- q: What are R's signs for times, divided by and to the power of?
+  a: '`*` for times, `/` for divided by, `^` for to the power of.'
+- q: What does R do with everything after a `#` on a line?
+  a: It ignores it. The text is a comment, for people to read.
+figure_note: "The section is about where code is typed and where it is kept; each result is one printed number, and a chart of them would add nothing the outputs do not show."
+provenance:
+  map_version_id: fc19c8bc-a216-4131-99fb-ebe3f19cec4a
+  outcome_refs:
+  - S52-R1-O1
+  - S52-R1-S1
+review:
+  stability: long
+  trigger: '2031-10-02'
+  last_reviewed: '2026-10-02'
+status: drafted

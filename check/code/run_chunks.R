@@ -99,7 +99,10 @@ run_r <- function(code) {
     } else if (inherits(x, "warning")) {
       pending[[length(pending) + 1]] <- x
     } else if (inherits(x, "message")) {
-      out <- c(out, conditionMessage(x))
+      m <- conditionMessage(x)
+      # cli messages (readr's column report) carry no final newline; the console still ends the line.
+      if (!endsWith(m, "\n")) m <- paste0(m, "\n")
+      out <- c(out, m)
     }
   }
   flush()

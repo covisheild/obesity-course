@@ -1,0 +1,930 @@
+concept_id: S52-R1-C01
+subject: S52
+rung: 1
+sequence: 1
+name: 'When data change silently: three documented failures'
+concept_type: empirical
+clusters:
+- craft-and-integrity
+- measurement-inference
+ground_floor_deps:
+- B0-R0-C04
+- B0-R0-C41
+concept_deps: []
+definition:
+  text: |
+    A silent change is a change to data, or a choice about which data to use, that leaves no
+    instruction a second person can read and run again, and that nothing on the screen announces.
+    This section rests on three documented cases.
+
+    Gene symbols turned into dates. Ziemann, Eren and El-Osta report that Microsoft Excel, used
+    with its default settings, converts some gene symbols to dates: SEPT2 becomes "2-Sep" and
+    MARCH1 becomes "1-Mar".
+
+    They screened 35,175 supplementary Excel files from 18 journals published from 2005 to 2015.
+    They confirmed gene name errors in 987 files from 704 articles, which is {{n:ziemann_affected_pct}} of the 3597 articles whose Excel files held gene lists. They
+    state that in 2016 no spreadsheet program they named could switch the conversion off for good.
+    In 2020 the HUGO Gene Nomenclature Committee (HGNC) reported that it had renamed every gene
+    symbol that Excel turned into a date: SEPT1 is now SEPTIN1, and MARCH1 is now MARCHF1.
+
+    A spreadsheet formula and undeclared choices. Herndon, Ash and Pollin replicated, that is
+    rebuilt, Reinhart and Rogoff's 2010 papers on public debt and economic growth from the authors' working spreadsheet.
+    They found selective exclusion of available data, coding errors and inappropriate weighting of
+    summary statistics. One formula averaged rows 30 to 44 instead of rows 30 to 49, which left out
+    five countries entirely.
+
+    The papers' highest category was public debt above 90% of gross domestic product (GDP), a
+    measure of the size of an economy. The correct count of years in that category was 110. The
+    chosen exclusions brought it to 96, and the spreadsheet error to 71. Average growth in that
+    category, recalculated with all the data, was 2.2% a year rather than the published −0.1%. The
+    authors state that the problems interact. Corrected alone, the spreadsheet error moves the
+    figure to 1.9%.
+
+    Rows lost in transfer. Public Health England (PHE) stated on 4 October 2020 that 15,841
+    positive test results for coronavirus disease 2019 (COVID-19), from 25 September to 2 October,
+    had been left out of the reported daily figures. It gave the cause as files that "exceeded the
+    maximum file size" of the process that loads them into central systems. It does not name the
+    software.
+
+    The three cases differ in cause. What they share is that the change was silent: nothing
+    announced it, and it came to light only later.
+  references:
+  - citekey: ziemann_2016
+    kind: primary
+    locator: 'Abstract: Excel with default settings'
+    quote: |-
+      The spreadsheet software Microsoft Excel, when used with default settings, is known to convert gene names to dates and floating-point numbers.
+    verified:
+      resolved_id: https://doi.org/10.1186/s13059-016-1044-7
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+  - citekey: ziemann_2016
+    kind: primary
+    locator: 'Background, first paragraph: the SEPT2 and MARCH1 examples'
+    quote: |-
+      For example, gene symbols such as SEPT2 (Septin 2) and MARCH1 [Membrane-Associated Ring Finger (C3HC4) 1, E3 Ubiquitin Protein Ligase] are converted by default to ‘2-Sep’ and ‘1-Mar’, respectively.
+    verified:
+      resolved_id: https://doi.org/10.1186/s13059-016-1044-7
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+  - citekey: ziemann_2016
+    kind: primary
+    locator: 'Methods: 18 journals, 2005 to 2015'
+    quote: |-
+      We downloaded and screened supplementary files from 18 journals published between 2005 and 2015 using a suite of shell scripts.
+    verified:
+      resolved_id: https://doi.org/10.1186/s13059-016-1044-7
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+  - citekey: ziemann_2016
+    kind: primary
+    locator: 'Results, first paragraph: files screened and papers with gene lists'
+    quote: |-
+      In total, we screened 35,175 supplementary Excel files, finding 7467 gene lists attached to 3597 published papers.
+    verified:
+      resolved_id: https://doi.org/10.1186/s13059-016-1044-7
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+  - citekey: ziemann_2016
+    kind: primary
+    locator: 'Results, first paragraph: confirmed errors'
+    quote: |-
+      We confirmed gene name errors in 987 supplementary files from 704 published articles
+    verified:
+      resolved_id: https://doi.org/10.1186/s13059-016-1044-7
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+  - citekey: ziemann_2016
+    kind: primary
+    locator: 'Results, first paragraph: the proportion affected'
+    quote: |-
+      Of the selected journals, the proportion of published articles with Excel files containing gene lists that are affected by gene name errors is 19.6 %.
+    verified:
+      resolved_id: https://doi.org/10.1186/s13059-016-1044-7
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+      note: |-
+        704 of 3597 is 19.57%, which rounds to the 19.6% stated (worked in the first illustration).
+  - citekey: ziemann_2016
+    kind: primary
+    locator: 'Discussion, first paragraph: no permanent switch'
+    quote: |-
+      To date, there is no way to permanently deactivate automatic conversion to dates in MS Excel and other spreadsheet software such as LibreOffice Calc or Apache OpenOffice Calc.
+    verified:
+      resolved_id: https://doi.org/10.1186/s13059-016-1044-7
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+      note: |-
+        "To date" is 2016. The record does not say how any spreadsheet program behaves now.
+  - citekey: ziemann_2016
+    kind: primary
+    locator: 'Discussion, second paragraph: files whose original names cannot be recovered'
+    quote: |-
+      In the 987 supplementary files containing gene name errors identified here, 166 files did not contain any other identifying information such as accession numbers or genomic coordinates that could be used to infer the original gene names.
+    verified:
+      resolved_id: https://doi.org/10.1186/s13059-016-1044-7
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+  - citekey: bruford_2020_hgnc
+    kind: primary
+    locator: 'p. 757, Box 3 "Scenarios that may merit a symbol change": symbols that affect data handling'
+    quote: |-
+      For example, all symbols that autoconverted to dates in Microsoft Excel have been changed (for example, SEPT1 is now SEPTIN1; MARCH1 is now MARCHF1)
+    verified:
+      resolved_id: https://doi.org/10.1038/s41588-020-0669-3
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+      note: |-
+        The box names SEPT1 and MARCH1, not SEPT2, and gives no date for the renaming and no count.
+        The record says only that the 2020 guidelines report the change.
+  - citekey: bruford_2020_hgnc
+    kind: primary
+    locator: 'p. 754, introduction: the committee''s name'
+    quote: |-
+      Here, we present the current HUGO Gene Nomenclature Committee (HGNC) guidelines for
+    verified:
+      resolved_id: https://doi.org/10.1038/s41588-020-0669-3
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+  - citekey: herndon_2014_cje
+    kind: primary
+    locator: 'p. 259, introduction: the three problems'
+    quote: |-
+      selective exclusion of available data, (ii) coding errors and (iii) inappropriate methods for the weighting of summary statistics
+    verified:
+      resolved_id: https://doi.org/10.1093/cje/bet075
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+      note: |-
+        The journal article says "inappropriate"; the 2013 working paper said "unconventional". The
+        record uses the article's word.
+  - citekey: herndon_2014_cje
+    kind: primary
+    locator: 'p. 261, section 3 Replication: the posted spreadsheets could not reproduce the results'
+    quote: |-
+      these publicly available spreadsheets do not include information on the exact data series, years and methods used in their paper.
+    verified:
+      resolved_id: https://doi.org/10.1093/cje/bet075
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+  - citekey: herndon_2014_cje
+    kind: primary
+    locator: 'p. 263, section 3.2 Spreadsheet coding error'
+    quote: |-
+      a coding error in the RR working spreadsheet also unintentionally excludes five countries entirely (Australia, Austria, Belgium, Canada and Denmark) from all parts of the analysis.
+    verified:
+      resolved_id: https://doi.org/10.1093/cje/bet075
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+  - citekey: herndon_2014_cje
+    kind: primary
+    locator: 'p. 263, footnote 9: the rows the formula averaged'
+    quote: |-
+      In their analysis with the 1946–2009 dataset, RR calculated both means and medians of cells in lines 30–44 instead of lines 30–49.
+    verified:
+      resolved_id: https://doi.org/10.1093/cje/bet075
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+  - citekey: herndon_2014_cje
+    kind: primary
+    locator: 'p. 262, section 3.1: the exclusions not declared'
+    quote: |-
+      At no point do RR either explicitly explain they why they chose to make these data exclusions or even indicate that they had done so.
+    verified:
+      resolved_id: https://doi.org/10.1093/cje/bet075
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+      note: |-
+        "they why" is the article's own wording.
+  - citekey: herndon_2014_cje
+    kind: primary
+    locator: 'p. 264, section 3.3 and Table 2: country-years above 90%, correct total'
+    quote: |-
+      As we see from Table 2, the correct total in RR’s 1946–2009 data sample in which a country is in the >90% public debt/GDP category is 110 country-years.
+    verified:
+      resolved_id: https://doi.org/10.1093/cje/bet075
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+  - citekey: herndon_2014_cje
+    kind: primary
+    locator: 'p. 264, section 3.3: after the chosen exclusions'
+    quote: |-
+      With RR’s chosen data exclusions, the total falls to 96 country-years.
+    verified:
+      resolved_id: https://doi.org/10.1093/cje/bet075
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+  - citekey: herndon_2014_cje
+    kind: primary
+    locator: 'p. 264, section 3.3: after the exclusions and the spreadsheet errors'
+    quote: |-
+      With both their chosen exclusions and their spreadsheet errors, the total number of country-years in the >90% public debt/GDP category falls to 71.
+    verified:
+      resolved_id: https://doi.org/10.1093/cje/bet075
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+      note: |-
+        The 2013 working paper's own Table 2 prints 75 here while its text says 71; the article
+        prints 71 in both. The record follows the article.
+  - citekey: herndon_2014_cje
+    kind: primary
+    locator: 'p. 257, abstract: 2.2% against the published −0.1%'
+    quote: |-
+      Over 1946– 2009, countries with public debt/GDP ratios above 90% averaged 2.2% real annual GDP growth, not −0.1% as published.
+    verified:
+      resolved_id: https://doi.org/10.1093/cje/bet075
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+  - citekey: herndon_2014_cje
+    kind: primary
+    locator: 'p. 268, section 3.5: interactive effects'
+    quote: |-
+      These factors have strong interactive effects.
+    verified:
+      resolved_id: https://doi.org/10.1093/cje/bet075
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+  - citekey: herndon_2014_cje
+    kind: primary
+    locator: 'p. 269, Table 5, row "Spreadsheet error only", last column (>90%)'
+    quote: |-
+      Spreadsheet error only 4.2 3.0 3.2 1.9
+    verified:
+      resolved_id: https://doi.org/10.1093/cje/bet075
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+      note: |-
+        Column heads: ≤30%, 30–60%, 60–90%, >90% public debt/GDP. The rows "Selective years
+        exclusion only" and "Country weights only" also give 1.9 in the >90% column.
+  - citekey: herndon_2014_cje
+    kind: primary
+    locator: 'p. 277, section 4 Conclusion: the errors acknowledged'
+    quote: |-
+      RR did acknowledge their spreadsheet errors.
+    verified:
+      resolved_id: https://doi.org/10.1093/cje/bet075
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+  - citekey: herndon_2013_wp322
+    kind: primary
+    locator: 'Working paper, p. 14, footnote 9: reproducible code against working spreadsheets'
+    quote: |-
+      For econometricians a lesson from the problems in RR is the advantages of reproducible code relative to working spreadsheets.
+    verified:
+      resolved_id: https://peri.umass.edu/publication/does-high-public-debt-consistently-stifle-economic-growth-a-critique-of-reinhart-and-rogoff/
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+      note: |-
+        This sentence is in the 2013 working paper only; the 2014 article has no counterpart.
+  - citekey: phe_2020_delayed
+    kind: primary
+    locator: 'Statement of Michael Brodie, first paragraph: 15,841 cases'
+    quote: |-
+      After rapid investigation, we have identified that 15,841 cases between 25 September and 2 October were not included in the reported daily COVID-19 cases.
+    verified:
+      resolved_id: https://www.gov.uk/government/news/phe-statement-on-delayed-reporting-of-covid-19-cases
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+  - citekey: phe_2020_delayed
+    kind: primary
+    locator: 'Statement of Michael Brodie, first paragraph: when and where it was found'
+    quote: |-
+      A technical issue was identified overnight on Friday 2 October in the data load process that transfers COVID-19 positive lab results into reporting dashboards.
+    verified:
+      resolved_id: https://www.gov.uk/government/news/phe-statement-on-delayed-reporting-of-covid-19-cases
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+  - citekey: phe_2020_delayed
+    kind: primary
+    locator: 'Background information, fourth paragraph: the cause'
+    quote: |-
+      The technical issue was caused by the fact that some files containing positive test results exceeded the maximum file size that takes these data files and loads then into central systems.
+    verified:
+      resolved_id: https://www.gov.uk/government/news/phe-statement-on-delayed-reporting-of-covid-19-cases
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+      note: |-
+        "loads then" is the page's own wording. The page does not name Excel, a spreadsheet
+        program, a file format or a row limit, and the record names none.
+  - citekey: phe_2020_delayed
+    kind: primary
+    locator: 'Background information, fourth paragraph: the fix'
+    quote: |-
+      A rapid mitigation has been put in place that splits large files and a full end to end review of all systems has also been instigated to mitigate the risk of this happening again.
+    verified:
+      resolved_id: https://www.gov.uk/government/news/phe-statement-on-delayed-reporting-of-covid-19-cases
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+  - citekey: phe_2020_delayed
+    kind: primary
+    locator: 'Background information, fourth paragraph: checks already in place'
+    quote: |-
+      There are already a number of automated and manual checks that happen throughout.
+    verified:
+      resolved_id: https://www.gov.uk/government/news/phe-statement-on-delayed-reporting-of-covid-19-cases
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+  - citekey: herndon_2014_cje
+    kind: primary
+    locator: 'p. 263, section 3.2: the omitted countries alphabetical'
+    quote: |-
+      The omitted countries are selected alphabetically.
+    verified:
+      resolved_id: https://doi.org/10.1093/cje/bet075
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+  - citekey: herndon_2014_cje
+    kind: primary
+    locator: 'p. 259, introduction: the 20 advanced economies'
+    quote: |-
+      inaccurately represent the relationship between public debt and GDP growth among 20 advanced economies.
+    verified:
+      resolved_id: https://doi.org/10.1093/cje/bet075
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+  - citekey: phe_2020_delayed
+    kind: primary
+    locator: 'Statement of Michael Brodie, second paragraph: test results not affected'
+    quote: |-
+      Every one of these cases received their COVID-19 test result as normal and all those who tested positive were advised to self-isolate.
+    verified:
+      resolved_id: https://www.gov.uk/government/news/phe-statement-on-delayed-reporting-of-covid-19-cases
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+  - citekey: phe_2020_delayed
+    kind: primary
+    locator: 'Statement of Susan Hopkins, fourth paragraph: cases passed to contact tracing'
+    quote: |-
+      All outstanding cases were immediately transferred to the contact tracing system by 1am on 3 October
+    verified:
+      resolved_id: https://www.gov.uk/government/news/phe-statement-on-delayed-reporting-of-covid-19-cases
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+  - citekey: phe_2020_delayed
+    kind: primary
+    locator: 'Background information, last paragraph before the table: the recorded dates'
+    quote: |-
+      The delayed reporting are all positive cases identified via Pillar 2 testing between 24 September and 1 October.
+    verified:
+      resolved_id: https://www.gov.uk/government/news/phe-statement-on-delayed-reporting-of-covid-19-cases
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+  - citekey: wilson_2017
+    kind: primary
+    locator: 'Data management, practice 1a "Save the raw data"'
+    quote: |-
+      It is tempting to overwrite raw data files with cleaned-up versions, but faithful retention is essential for rerunning analyses from start to finish, for recovery from analytical mishaps, and for experimenting without fear.
+    verified:
+      resolved_id: https://doi.org/10.1371/journal.pcbi.1005510
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+  - citekey: sandve_2013
+    kind: primary
+    locator: 'Rule 2: Avoid Manual Data Manipulation Steps'
+    quote: |-
+      Whenever possible, rely on the execution of programs instead of manual procedures to modify data. Such manual procedures are not only inefficient and error-prone, they are also difficult to reproduce.
+    verified:
+      resolved_id: https://doi.org/10.1371/journal.pcbi.1003285
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+  - citekey: broman_woo_2018_tas
+    kind: primary
+    locator: 'p. 2, section 1 Introduction: analysis in a separate program'
+    quote: |-
+      Analyzing and visualizing data in a separate program, or at least in a separate copy of the data file, reduces the risk of contaminating or destroying the raw data in the spreadsheet.
+    verified:
+      resolved_id: https://doi.org/10.1080/00031305.2017.1375989
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+      note: |-
+        CC BY-NC-ND: quoted for audit only; the reader-facing text paraphrases.
+simplified_explanation: |
+  Here is the trap with data. A number can change, or a row can go missing, and nothing on the
+  screen tells you. You see a tidy table and a clean total. The table looks right, so you trust it.
+
+  This book starts with three times that happened, each one written up by the people who found
+  it.
+
+  - **A program changed values as the file was opened.** Excel, used with its default settings,
+    turned gene names such as SEPT2 into dates such as "2-Sep". About one in five genomics papers
+    that came with Excel gene lists carried such errors.
+  - **A formula covered the wrong rows, and choices went unsaid.** A famous paper on debt and
+    growth averaged rows 30 to 44 instead of 30 to 49. Five countries dropped out. Other data had
+    been left out on purpose, and the paper never said so.
+  - **A transfer lost rows.** In England in 2020, 15,841 positive COVID-19 test results did not
+    reach the daily figures for up to about a week. Some files were too big for the system that loaded
+    them.
+
+  The causes differ. The pattern is the same. The change was silent, and it came to light only
+  later.
+
+  So this book follows one rule. You never edit the raw data file. Every change you make to the
+  data is a line of code, kept in a file, that anyone can read and run again. And you count your
+  rows before and after each step.
+
+  The rule is a response to cases like these, not a law of nature. Code can be wrong too. Its
+  advantage is that the wrong line is there to be found.
+illustrations:
+- body: |
+    Start with the gene names, because the failure is easy to picture.
+
+    A gene symbol is a short code for one gene: SEPT2, MARCH1. Ziemann, Eren and El-Osta report
+    that Excel, with its default settings, turns these into dates. SEPT2 becomes "2-Sep". MARCH1
+    becomes "1-Mar". Nobody typed a date. The program decided the text looked like one.
+
+    The authors then went looking for how often this reached published papers. They wrote programs
+    to screen 35,175 supplementary Excel files from 18 journals, published from 2005 to 2015.
+    Supplementary files are the extra files published alongside a paper. They found gene lists attached to 3597 papers. They confirmed errors in 704 of those papers.
+
+    Now check their headline figure yourself, as Book 0's section on percentages taught you. Ask
+    first: per cent of what? Of the papers that had gene lists in Excel files. Not of all papers in
+    those journals.
+
+    ```working
+    704 ÷ 3597 = 0.1957
+    0.1957 × 100 = 19.57
+    ```
+
+    That rounds to 19.6%, the figure they state. It is about one paper in five.
+
+    Here is what made the error so hard to undo. A date carries no trace of the name it replaced.
+    Of the 987 files with errors, 166 held nothing else, such as a gene's position, from which the
+    original names could be worked out. Those names are lost from the file.
+
+    The world adjusted around the problem. In 2020 the committee that names human genes reported
+    that it had renamed every symbol Excel turned into a date. SEPT1 is now SEPTIN1, and MARCH1 is now
+    MARCHF1.
+  analogy_breaks_when: |
+    The 19.6% describes papers with Excel gene lists in 18 journals from 2005 to 2015. It is not a
+    rate for all papers, all journals or later years, and the authors could not screen supplementary
+    files behind a paywall.
+
+    The finding is about Excel's behaviour in 2016, as the authors report it. Spreadsheet programs
+    change between versions, and this course has not tested a current one. What carries over is the
+    pattern: a program can change a value as it reads a file, and say nothing.
+  numbers:
+  - value: '35,175'
+    unit: supplementary Excel files screened, 18 journals, 2005 to 2015
+    citekey: ziemann_2016
+    as_of: '2026-10-02'
+    quote: |-
+      In total, we screened 35,175 supplementary Excel files, finding 7467 gene lists attached to 3597 published papers.
+  - value: '18'
+    unit: journals screened
+    citekey: ziemann_2016
+    as_of: '2026-10-02'
+    quote: |-
+      We downloaded and screened supplementary files from 18 journals published between 2005 and 2015 using a suite of shell scripts.
+  - value: '3597'
+    unit: published papers with gene lists in Excel files
+    citekey: ziemann_2016
+    as_of: '2026-10-02'
+    quote: |-
+      In total, we screened 35,175 supplementary Excel files, finding 7467 gene lists attached to 3597 published papers.
+  - value: '704'
+    unit: published papers with confirmed gene name errors
+    citekey: ziemann_2016
+    as_of: '2026-10-02'
+    quote: |-
+      We confirmed gene name errors in 987 supplementary files from 704 published articles
+  - value: '987'
+    unit: supplementary files with confirmed gene name errors
+    citekey: ziemann_2016
+    as_of: '2026-10-02'
+    quote: |-
+      We confirmed gene name errors in 987 supplementary files from 704 published articles
+  - value: '19.6'
+    unit: per cent of published papers with Excel gene lists affected by gene name errors
+    citekey: ziemann_2016
+    as_of: '2026-10-02'
+    quote: |-
+      Of the selected journals, the proportion of published articles with Excel files containing gene lists that are affected by gene name errors is 19.6 %.
+  - value: '166'
+    unit: files with errors and no other information from which to recover the names
+    citekey: ziemann_2016
+    as_of: '2026-10-02'
+    quote: |-
+      In the 987 supplementary files containing gene name errors identified here, 166 files did not contain any other identifying information such as accession numbers or genomic coordinates that could be used to infer the original gene names.
+- body: |
+    Now a case where the error sat inside a formula, and the larger problems were choices nobody
+    wrote down.
+
+    In 2010 Reinhart and Rogoff published figures on public debt and economic growth in 20 rich
+    countries. Herndon, Ash and Pollin tried to rebuild them. From
+    the data the authors had posted, they could not. The posted spreadsheets did not record which
+    data series, years and methods the papers had used. Only when Reinhart and Rogoff sent their
+    working spreadsheet could the replication begin.
+
+    Follow what the working spreadsheet held. Count the years in which a country carried public
+    debt above 90% of its GDP, the highest category the papers used.
+
+    ```table
+    | Step | Years counted |
+    | All the data | 110 |
+    | After the exclusions Reinhart and Rogoff chose | 96 |
+    | After those exclusions and the spreadsheet error | 71 |
+    ```
+
+    The spreadsheet error was one formula. It averaged rows 30 to 44 when the data ran to row 49.
+    Five countries, Australia, Austria, Belgium, Canada and Denmark, fell out of every average.
+    The authors note that the countries left out run in alphabetical order, a block of rows.
+
+    The exclusions were choices. Some early post-war years for Australia, Canada and New Zealand
+    were left out, and the papers never said so.
+
+    Then read what each problem did to the answer. With all the data, average growth in the
+    high-debt category was 2.2% a year. The published figure was −0.1%. Herndon and colleagues
+    corrected each problem alone, too. The spreadsheet error by itself moved the figure only from
+    2.2% to 1.9%. So did the exclusions alone, and so did the weighting alone. It took all of them
+    together, which the authors say interact strongly, to reach −0.1%.
+
+    Reinhart and Rogoff acknowledged the spreadsheet errors. In their 2013 working paper, Herndon
+    and colleagues drew a lesson for economists: the advantages of reproducible code over working
+    spreadsheets.
+  analogy_breaks_when: |
+    It is tempting to tell this as "a spreadsheet slip changed world policy". The replication does
+    not say that. The slip alone moved the figure by 0.3 of a percentage point. The undeclared
+    exclusions and the way countries were weighted mattered as much, and the authors stress that the
+    problems work together.
+
+    Code would not have stopped anyone choosing to leave data out. What a script does is show the
+    choice, as a line someone can read and question.
+  numbers:
+  - value: '110'
+    unit: country-years above 90% public debt/GDP, all data, 1946–2009
+    citekey: herndon_2014_cje
+    as_of: '2026-10-02'
+    quote: |-
+      As we see from Table 2, the correct total in RR’s 1946–2009 data sample in which a country is in the >90% public debt/GDP category is 110 country-years.
+  - value: '96'
+    unit: country-years after the chosen exclusions
+    citekey: herndon_2014_cje
+    as_of: '2026-10-02'
+    quote: |-
+      With RR’s chosen data exclusions, the total falls to 96 country-years.
+  - value: '71'
+    unit: country-years after the exclusions and the spreadsheet errors
+    citekey: herndon_2014_cje
+    as_of: '2026-10-02'
+    quote: |-
+      With both their chosen exclusions and their spreadsheet errors, the total number of country-years in the >90% public debt/GDP category falls to 71.
+  - value: '2.2'
+    unit: per cent a year, mean real GDP growth above 90% debt/GDP, all data, country-year weighting
+    citekey: herndon_2014_cje
+    as_of: '2026-10-02'
+    quote: |-
+      Over 1946– 2009, countries with public debt/GDP ratios above 90% averaged 2.2% real annual GDP growth, not −0.1% as published.
+  - value: '-0.1'
+    unit: per cent a year, the published mean for the same category
+    citekey: herndon_2014_cje
+    as_of: '2026-10-02'
+    quote: |-
+      Over 1946– 2009, countries with public debt/GDP ratios above 90% averaged 2.2% real annual GDP growth, not −0.1% as published.
+  - value: '1.9'
+    unit: per cent a year, the same mean with only the spreadsheet error applied
+    citekey: herndon_2014_cje
+    as_of: '2026-10-02'
+    quote: |-
+      Spreadsheet error only 4.2 3.0 3.2 1.9
+  - value: '30'
+    unit: first spreadsheet row averaged
+    citekey: herndon_2014_cje
+    as_of: '2026-10-02'
+    quote: |-
+      In their analysis with the 1946–2009 dataset, RR calculated both means and medians of cells in lines 30–44 instead of lines 30–49.
+  - value: '44'
+    unit: last spreadsheet row averaged
+    citekey: herndon_2014_cje
+    as_of: '2026-10-02'
+    quote: |-
+      In their analysis with the 1946–2009 dataset, RR calculated both means and medians of cells in lines 30–44 instead of lines 30–49.
+  - value: '49'
+    unit: last spreadsheet row that should have been averaged
+    citekey: herndon_2014_cje
+    as_of: '2026-10-02'
+    quote: |-
+      In their analysis with the 1946–2009 dataset, RR calculated both means and medians of cells in lines 30–44 instead of lines 30–49.
+- body: |
+    The third case is a transfer that dropped rows, and the numbers let you check the statement
+    against itself.
+
+    On 4 October 2020, PHE said that 15,841 positive COVID-19 test results had not reached the
+    daily figures. The problem had been found overnight on Friday 2 October. The cause it gave:
+    some files of results were bigger than the maximum file size the loading process could take.
+    It put in a fix that splits large files.
+
+    The statement gives the missing results day by day. Each was recorded on one day and should
+    have appeared in the next day's published figure.
+
+    ```table
+    | Day it should have been reported | Results not included |
+    | 25 Sep | 957 |
+    | 26 Sep | 744 |
+    | 27 Sep | 757 |
+    | 28 Sep | 0 |
+    | 29 Sep | 1415 |
+    | 30 Sep | 3049 |
+    | 1 Oct | 4133 |
+    | 2 Oct | 4786 |
+    ```
+
+    Add the column. Then add the last three days alone.
+
+    ```working
+    957 + 744 + 757 + 0 + 1415 + 3049 + 4133 + 4786 = 15841
+    3049 + 4133 + 4786 = 11968
+    11968 ÷ 15841 = 0.7555
+    ```
+
+    The total matches the 15,841 in the statement. The last three days hold 11,968 results, and 11,968
+    out of 15,841 is about 75.6%. The statement says "over 75% (11,968)". It checks.
+
+    Now look at the shape of the column. The missing results were fewer than a thousand a day at
+    first, then rose over the last four days to 4786. A loss that grows while the daily table still
+    looks complete is one nobody sees until they compare one count with another.
+
+    Here is what the statement does not say. It does not name the software, a file format or a
+    row limit. You may read elsewhere that this was a spreadsheet problem. This statement does not
+    say so, and neither does this book.
+  analogy_breaks_when: |
+    PHE says the problem did not change anyone's test result: everyone who tested positive got
+    their result as normal and was advised to self-isolate. What was delayed was the count in the
+    daily figures. The outstanding cases, the statement says, were passed to contact tracing by 1am
+    on 3 October.
+
+    The table gives the day each result should have been reported. The statement also describes the
+    same results by the day they were recorded, one day earlier: 24 September to 1 October. Say
+    which you mean when you quote the dates.
+  numbers:
+  - value: '15,841'
+    unit: positive COVID-19 test results not included in daily figures, 25 September to 2 October 2020
+    citekey: phe_2020_delayed
+    as_of: '2026-10-02'
+    quote: |-
+      After rapid investigation, we have identified that 15,841 cases between 25 September and 2 October were not included in the reported daily COVID-19 cases.
+  - value: '11,968'
+    unit: of those, results that should have been reported 30 September to 2 October
+    citekey: phe_2020_delayed
+    as_of: '2026-10-02'
+    quote: |-
+      Of these, over 75% (11,968) relate to cases that should have been reported between 30 September and 2 October.
+  - value: '957'
+    unit: results not included, expected report date 25 September 2020
+    citekey: phe_2020_delayed
+    as_of: '2026-10-02'
+    quote: |-
+      | 24/09/2020 | 25/09/2020 | 957 |
+  - value: '744'
+    unit: results not included, expected report date 26 September 2020
+    citekey: phe_2020_delayed
+    as_of: '2026-10-02'
+    quote: |-
+      | 25/09/2020 | 26/09/2020 | 744 |
+  - value: '757'
+    unit: results not included, expected report date 27 September 2020
+    citekey: phe_2020_delayed
+    as_of: '2026-10-02'
+    quote: |-
+      | 26/09/2020 | 27/09/2020 | 757 |
+  - value: '0'
+    unit: results not included, expected report date 28 September 2020
+    citekey: phe_2020_delayed
+    as_of: '2026-10-02'
+    quote: |-
+      | 27/09/2020 | 28/09/2020 | 0 |
+  - value: '1415'
+    unit: results not included, expected report date 29 September 2020
+    citekey: phe_2020_delayed
+    as_of: '2026-10-02'
+    quote: |-
+      | 28/09/2020 | 29/09/2020 | 1415 |
+  - value: '3049'
+    unit: results not included, expected report date 30 September 2020
+    citekey: phe_2020_delayed
+    as_of: '2026-10-02'
+    quote: |-
+      | 29/09/2020 | 30/09/2020 | 3049 |
+  - value: '4133'
+    unit: results not included, expected report date 1 October 2020
+    citekey: phe_2020_delayed
+    as_of: '2026-10-02'
+    quote: |-
+      | 30/09/2020 | 01/10/2020 | 4133 |
+  - value: '4786'
+    unit: results not included, expected report date 2 October 2020
+    citekey: phe_2020_delayed
+    as_of: '2026-10-02'
+    quote: |-
+      | 01/10/2020 | 02/10/2020 | 4786 |
+must_know:
+- point: |
+    The error is to believe a table because it looks complete. A converted gene name, a
+    formula that stops at row 44 and a batch of lost rows all produce tidy-looking output. Before
+    you trust a table, compare its row count, or a total, with the count you expected.
+  kind: misconception
+  bearing: methodological
+- point: |
+    Never edit the raw data file, and never save over it. Make every change in code that reads the
+    raw file and writes a new one. If a value is wrong, the correction is a line someone can read,
+    and the original is still there to compare.
+  kind: move
+  bearing: methodological
+  refs:
+  - wilson_2017
+  - sandve_2013
+- point: |
+    A choice about which data to leave out is part of the analysis. Write it as a line of code with
+    a comment saying why. Reinhart and Rogoff's exclusions mattered as much as their formula error,
+    and the papers never stated them.
+  kind: consequence
+  bearing: methodological
+  refs:
+  - herndon_2014_cje
+- point: |
+    Do not repeat "a spreadsheet slip caused austerity" or "Excel lost the COVID cases". The
+    replication found the slip alone moved the result from 2.2% to 1.9% a year. The PHE statement
+    names no software. Quote what each source says, and no more.
+  kind: trap
+  bearing: public
+  refs:
+  - herndon_2014_cje
+  - phe_2020_delayed
+- point: |
+    About one in five genomics papers with Excel gene lists carried gene names turned into dates.
+    The count was 704 of 3597, in 18 journals from 2005 to 2015. When you open someone else's data file, look
+    for values that have changed type, such as text turned into dates.
+  kind: number
+  bearing: methodological
+  refs:
+  - ziemann_2016
+- point: |
+    When a trainee says their numbers are right because they checked them on screen, ask how a
+    second person would check them. If the answer is "by redoing it by hand", the work has no record.
+  kind: move
+  bearing: teaching
+- point: |
+    Writing every step in code does not make the steps right. A script can average the wrong rows
+    too. What it changes is that the step is written down, so a reviewer can find the error and
+    you can fix it once and rerun.
+  kind: boundary
+  bearing: methodological
+  refs:
+  - herndon_2013_wp322
+exercises:
+- type: retrieval
+  prompt: |
+    From memory, name the three documented failures in this section. For each, say in one sentence
+    what changed or went missing, and how it came to light.
+  answer: |
+    Gene names turned into dates. Excel, with its default settings, turned names such as SEPT2
+    into dates. Ziemann and colleagues found this by checking published files with their own
+    programs. They found errors in 704 of 3597 papers with Excel gene lists.
+
+    The Reinhart and Rogoff spreadsheet. A formula averaged rows 30 to 44, not 30 to 49. Some data
+    were also left out without saying so. Herndon and colleagues found both when they rebuilt the
+    results from the authors' own spreadsheet.
+
+    The missing COVID-19 results. In England, 15,841 positive test results did not reach the daily
+    figures. Some files were too big for the system that loaded them. PHE found the problem on
+    2 October 2020 and said so two days later.
+- type: critique
+  prompt: |
+    In a made-up department meeting, a senior colleague says: "Our thesis data are in one Excel
+    file. Residents correct mistakes directly in the cells, so the file is always the cleanest
+    version. That is good practice."
+
+    Using the three cases in this section, say what is lost when corrections are made directly in
+    the file, and what you would propose instead.
+  answer: |
+    Three things are lost.
+
+    The original values. Once a cell is overwritten, the value that was first recorded is gone. If a
+    correction was itself wrong, there is nothing to go back to. Ziemann and colleagues found 166
+    files in which gene names, once turned into dates, could not be recovered from the file at all.
+
+    The record of what changed. Nobody can later see which cells were corrected, by whom, or why.
+    In the Reinhart and Rogoff case, the replication could not start from the posted files. They did
+    not record which data and methods had been used.
+
+    The chance to check. A reviewer cannot rerun a correction typed into a cell. They can only trust
+    it.
+
+    The proposal: keep the file as it arrived from the data collection, and never save over it.
+    Make every correction as a line of code. The code reads the raw file and fixes the value. A
+    comment says why. The code then writes a new, cleaned file.
+
+    Count the rows before and after. The colleague's goal, a
+    clean dataset, is still met. It is now made from the raw file every time the code runs.
+  skill_ref: S52-R1-K02
+- type: interpretation
+  prompt: |
+    A classmate's draft introduction says: "Excel deleted 15,841 COVID-19 cases in England in 2020
+    because of its row limit." Check this sentence against what PHE's statement says, and rewrite
+    it so that every part of it is supported.
+  answer: |
+    Check the reference as Book 0 taught: find the source, confirm it, find the passage, read it.
+
+    The number holds: PHE says 15,841 cases from 25 September to 2 October were not included in the
+    reported daily figures.
+
+    "Deleted" does not hold. The cases were delayed, not deleted. PHE says everyone who tested
+    positive got their result as normal, and the outstanding cases were passed to contact tracing.
+
+    "Excel" and "row limit" do not hold. The statement says some files "exceeded the maximum file
+    size" of the process that loads them into central systems. It names no software and no row
+    limit.
+
+    A supported version, in two sentences: "In England, 15,841 positive COVID-19 test results from
+    25 September to 2 October 2020 were left out of the reported daily figures. Public Health
+    England gave the cause as files that exceeded the maximum size the loading system could take."
+- type: teaching
+  prompt: |
+    A first-year resident has ten minutes and a whiteboard. They say: "My data are small, a few
+    hundred rows. I can see every cell. Why should I bother with code?" Teach them, using one of the
+    three cases.
+  answer: |
+    Draw a column of gene names on the board: SEPT2, MARCH1, and a few others. Next to it, draw the
+    same column as Excel showed it: 2-Sep, 1-Mar.
+
+    Ask: if you had typed the first column and later opened the file, would you notice? Most people
+    say yes, for two rows. Then point out that the errors Ziemann and colleagues found sat in
+    published papers, checked by authors, reviewers and editors. Being able to see every cell is not
+    the same as looking at every cell.
+
+    Then make the real point. Size is not the issue. The issue is whether a second person can see
+    what was done. If every change is a line of code, the change is there to read. If it was typed
+    into a cell, it is invisible.
+
+    End with the rule they can use tomorrow: keep the raw file as it came, never save over it, and
+    put every change in code.
+quantitative: false
+retrieval_items:
+- q: What did Excel, with its default settings, do to gene symbols such as SEPT2 and MARCH1, and how common was it in the papers Ziemann and colleagues screened?
+  a: It turned them into dates ("2-Sep", "1-Mar"). Errors were confirmed in 704 of the 3597 papers with Excel gene lists, about one in five (19.6%), in 18 journals from 2005 to 2015.
+- q: In the Reinhart and Rogoff replication, what did the spreadsheet error alone do to average growth in the high-debt category, and what did all the problems together do?
+  a: The spreadsheet error alone moved it from 2.2% to 1.9% a year. All the problems together, the exclusions, the weighting and the error, gave the published −0.1%.
+- q: What cause did Public Health England give for the 15,841 results missing from the daily figures in October 2020, and what does its statement not say?
+  a: Some files exceeded the maximum file size of the process that loads them into central systems. The statement does not name Excel, any software, a file format or a row limit.
+- q: What rule does this book follow because of cases like these?
+  a: Never edit or save over the raw data file. Make every change in code that reads it and can be rerun, and count the rows before and after each step.
+figures:
+- file: s52-r1-c01-phe-missing-results.png
+  caption: "Positive COVID-19 test results left out of England's daily figures, by the day each should have been reported, as Public Health England's statement of 4 October 2020 gives them: 957, 744, 757, 0, 1415, 3049, 4133 and 4786, a total of 15,841. The last three days hold 11,968 of them."
+  alt: "A bar chart of the days from 25 September to 2 October 2020. Results not included: 957, 744, 757, 0, 1415, 3049, 4133 and 4786. The bars rise over the last four days."
+  source: draw.py
+  spec:
+    kind: bar
+    from_table: {block: 1, x: 0, y: [1]}
+    x_label: day the results should have been reported (2020)
+    y_label: results not included
+    value_labels: true
+    relations:
+    - check: "sum(y) = 15841"
+    - check: "y[5] + y[6] + y[7] = 11968"
+provenance:
+  map_version_id: fc19c8bc-a216-4131-99fb-ebe3f19cec4a
+  outcome_refs:
+  - S52-R1-O3
+  - S52-R1-S2
+  - S52-R1-G
+review:
+  stability: medium
+  trigger: '2028-10-02'
+  last_reviewed: '2026-10-02'
+status: drafted

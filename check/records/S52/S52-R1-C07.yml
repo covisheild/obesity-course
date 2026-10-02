@@ -1,0 +1,830 @@
+concept_id: S52-R1-C07
+subject: S52
+rung: 1
+sequence: 7
+name: A project folder, and paths that work on someone else's computer
+concept_type: derivable
+clusters:
+- craft-and-integrity
+ground_floor_deps: []
+concept_deps:
+- S52-R1-C02
+- S52-R1-C05
+- S52-R1-C06
+definition:
+  text: |
+    A project folder is one folder that holds everything for one analysis. In this book it has
+    three folders inside it and one file at the top. `data-raw/` holds the raw data as it arrived,
+    and code reads from it but never writes to it. `code/` holds the scripts. `output/` holds every
+    file the code produces, which can always be made again by running the code. A README at the top
+    says what the project is and how to rerun it.
+
+    A path is the address of a file. An absolute path starts from the top of one computer's disk,
+    such as `C:/Users/priya/Documents/thesis/data-raw/heights.csv`, so it names a place that exists
+    on one computer only. A relative path starts from the working directory, the folder R treats as
+    its current home when it looks for a file or saves one, such as `data-raw/heights.csv`. It works
+    on any computer where the project folder has the same layout inside.
+
+    The function `here()`, from the here package, builds a path from the project root, the top
+    folder of the project. It finds the root by starting at the working directory and climbing
+    upwards. It stops at the first folder that holds a marker, such as a file called `.here`, an
+    RStudio project file or a `.git` folder. The same line of code therefore finds the same file from any
+    folder inside the project, on any computer.
+  references:
+  - citekey: r4ds_2e
+    kind: textbook
+    locator: 'Ch. 6 "Workflow: scripts and projects", 6.2.2 "Where does your analysis live?": the working directory'
+    quote: |-
+      R has a powerful notion of the working directory. This is where R looks for files that you ask it to load, and where it will put any files that you ask it to save.
+    verified:
+      resolved_id: https://r4ds.hadley.nz/workflow-scripts.html
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+  - citekey: r4ds_2e
+    kind: textbook
+    locator: 'Ch. 6, 6.2.4 "Relative and absolute paths", first paragraph: what a relative path is relative to'
+    quote: |-
+      A relative path is relative to the working directory, i.e. the project’s home.
+    verified:
+      resolved_id: https://r4ds.hadley.nz/workflow-scripts.html
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+  - citekey: r4ds_2e
+    kind: textbook
+    locator: 'Ch. 6, 6.2.4 "Relative and absolute paths", second paragraph: why absolute paths are never used in a script'
+    quote: |-
+      You should never use absolute paths in your scripts, because they hinder sharing: no one else will have exactly the same directory configuration as you.
+    verified:
+      resolved_id: https://r4ds.hadley.nz/workflow-scripts.html
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+  - citekey: r4ds_2e
+    kind: textbook
+    locator: 'Ch. 6, 6.2.4, last paragraph: backslashes in Windows paths'
+    quote: |-
+      backslashes mean something special to R, and to get a single backslash in the path, you need to type two backslashes!
+    verified:
+      resolved_id: https://r4ds.hadley.nz/workflow-scripts.html
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+  - citekey: r4ds_2e
+    kind: textbook
+    locator: 'Ch. 6, 6.2.2, on setwd()'
+    quote: |-
+      You can set the working directory from within R but we do not recommend it:
+    verified:
+      resolved_id: https://r4ds.hadley.nz/workflow-scripts.html
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+  - citekey: r4ds_2e
+    kind: textbook
+    locator: 'Ch. 6, 6.1.3 "Saving and naming", first of the three principles for file names'
+    quote: |-
+      File names should be machine readable: avoid spaces, symbols, and special characters.
+    verified:
+      resolved_id: https://r4ds.hadley.nz/workflow-scripts.html
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+  - citekey: rdocs_s52r1_here
+    kind: textbook
+    locator: 'Help page "here" (here 1.0.1), Description'
+    quote: |-
+      'here()' uses a reasonable heuristics to find your project's files, based on the current working directory at the time when the package is loaded.
+    verified:
+      resolved_id: rhelp://here@1.0.1/here
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+  - citekey: rdocs_s52r1_here
+    kind: textbook
+    locator: 'Help page "here" (here 1.0.1), "Project root": the upward search and its markers'
+    quote: |-
+      the directory hierarchy is walked upwards until a directory with at least one of the following conditions is found:
+    verified:
+      resolved_id: rhelp://here@1.0.1/here
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+      note: |-
+        The list that follows names, among others, a file '.here', an RStudio project file and a
+        directory '.git'; those three are the markers the definition names.
+  - citekey: rdocs_s52r1_here
+    kind: textbook
+    locator: 'Help page "here" (here 1.0.1), "Project root", last sentence: the arguments become path components'
+    quote: |-
+      'here()' appends its arguments as path components to the root directory.
+    verified:
+      resolved_id: rhelp://here@1.0.1/here
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+  - citekey: wilson_2017
+    kind: primary
+    locator: 'Project organization, recommendation 4a'
+    quote: |-
+      Put each project in its own directory, which is named after the project (4a).
+    verified:
+      resolved_id: https://doi.org/10.1371/journal.pcbi.1005510
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+  - citekey: wilson_2017
+    kind: primary
+    locator: 'Project organization, recommendation 4c: raw data apart from generated files'
+    quote: |-
+      Put raw data and metadata in a data directory and files generated during cleanup and analysis in a results directory (4c)
+    verified:
+      resolved_id: https://doi.org/10.1371/journal.pcbi.1005510
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+      note: |-
+        Wilson and colleagues name the folders data, src and results. This book names them
+        data-raw, code and output. The separation is theirs; the names are this book's choice.
+  - citekey: wilson_2017
+    kind: primary
+    locator: 'Data management, recommendation 1a "Save the raw data"'
+    quote: |-
+      It is tempting to overwrite raw data files with cleaned-up versions, but faithful retention is essential for rerunning analyses from start to finish
+    verified:
+      resolved_id: https://doi.org/10.1371/journal.pcbi.1005510
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+  - citekey: wilson_2017
+    kind: primary
+    locator: 'Collaboration, recommendation 3a: the README'
+    quote: |-
+      Have a short file in the project's home directory that explains the purpose of the project.
+    verified:
+      resolved_id: https://doi.org/10.1371/journal.pcbi.1005510
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+  - citekey: swc_r_gapminder
+    kind: textbook
+    locator: 'Ep. 02 "Project Management With RStudio", "Treat data as read only"'
+    quote: |-
+      It is therefore a good idea to treat your data as “read-only”.
+    verified:
+      resolved_id: https://swcarpentry.github.io/r-novice-gapminder/02-project-intro.html
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+  - citekey: swc_r_gapminder
+    kind: textbook
+    locator: 'Ep. 02, "Treat generated output as disposable"'
+    quote: |-
+      Anything generated by your scripts should be treated as disposable: it should all be able to be regenerated from your scripts.
+    verified:
+      resolved_id: https://swcarpentry.github.io/r-novice-gapminder/02-project-intro.html
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+  - citekey: swc_r_gapminder
+    kind: textbook
+    locator: 'Ep. 02, "Version Control"'
+    quote: |-
+      It is important to use version control with projects.
+    verified:
+      resolved_id: https://swcarpentry.github.io/r-novice-gapminder/02-project-intro.html
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+simplified_explanation: |
+  Give every analysis its own folder. Name the folder after the analysis, for example
+  `penguin_mass` or `school_heights_2026`, with no spaces in the name. Inside it, make three
+  folders:
+
+  ```table
+  | Folder | What goes in it | Who writes to it |
+  | data-raw/ | the data exactly as it arrived | nobody, ever |
+  | code/ | your scripts | you |
+  | output/ | tables, figures and cleaned files the scripts make | only the scripts |
+  ```
+
+  Put a short plain-text file called README at the top. It says what the project is, where the
+  data came from, and how to run it again.
+
+  Now the addresses. A file's address is its path. `C:/Users/priya/Documents/thesis/data-raw/heights.csv`
+  is the full address on Priya's laptop. On your laptop there is no `C:/Users/priya` folder, so that
+  address leads nowhere. `data-raw/heights.csv` says "from where I am now, go into data-raw". It
+  works on any computer, as long as R starts from the top of the project folder.
+
+  That last condition is the weak spot. R does not always start from the top. So use `here()`,
+  which finds the top of the project for you: `here("data-raw", "heights.csv")` gives the full
+  address on whichever computer runs it.
+
+  Two habits follow. Never write a full address from your own computer into a script. And never
+  start a script with `setwd()`, the function that moves R's current home to a named folder.
+  Whatever folder you name exists only on your computer.
+illustrations:
+- body: |
+    Start with the failure. A colleague, Priya, emails you the script for her thesis. You copy
+    her `data-raw` file into your own project and run her first lines. Here they are, run on
+    your computer:
+
+    ```r error
+    library(readr)
+    penguins <- read_csv("C:/Users/priya/Documents/thesis/data-raw/penguins_raw.csv")
+    ```
+
+    ```output
+    Error: 'C:/Users/priya/Documents/thesis/data-raw/penguins_raw.csv' does not exist.
+    ```
+
+    Read the error literally. R went looking for a folder called `C:/Users/priya` and found none.
+    Nothing is wrong with her data or her code. The address is wrong, because it is the address of
+    a place on her laptop. Every line after this one fails too, because `penguins` was never made.
+
+    Now ask R where it is. The function `getwd()`, short for "get working directory", prints the
+    folder R is treating as home:
+
+    ```r
+    getwd()
+    ```
+
+    ```output
+    [1] "~/project"
+    ```
+
+    On your computer this prints your own folder. Here it is the project folder. The file sits in
+    `data-raw` inside it, so give the address from there:
+
+    ```r
+    penguins <- read_csv("data-raw/penguins_raw.csv", show_col_types = FALSE)
+    nrow(penguins)
+    ```
+
+    ```output
+    [1] 344
+    ```
+
+    The file opens and has {{n:penguins_rows}} rows. The argument `show_col_types = FALSE` stops
+    `read_csv()` printing a report about the columns; that report matters, but not for this
+    section.
+
+    One more trap hides in addresses copied from Windows. The Windows file window writes paths
+    with backslashes, `data-raw\penguins_raw.csv`. A backslash means something special to R, so a
+    path pasted with backslashes stops with an error. Type forward slashes, which R reads on every
+    system.
+  analogy_breaks_when: |
+    The relative path worked here because R's working directory was the top of the project. If R
+    is started from another folder, `data-raw/penguins_raw.csv` fails in the same way the
+    absolute path did. The next illustration shows that happening, and the fix.
+
+    The error message you see may be worded differently on a newer version of readr. What stays
+    the same is the cause: R looked in a folder that does not exist on your computer.
+- body: |
+    Now build the project and make the address safe. Load the here package. It prints the folder
+    it has taken as the project root:
+
+    ```r
+    library(here)
+    ```
+
+    ```output
+    here() starts at ~/project
+    ```
+
+    It found the root by climbing upwards from the working directory until it met a marker file.
+    In this book's project the marker is an empty file called `.here`. An RStudio project file
+    works the same way. Now build addresses from that root:
+
+    ```r
+    here()
+    here("data-raw", "penguins_raw.csv")
+    ```
+
+    ```output
+    [1] "~/project"
+    [1] "~/project/data-raw/penguins_raw.csv"
+    ```
+
+    Each argument is one folder or file name, given in order from the top. The function only
+    builds the address. It does not check that the file exists, and it creates nothing.
+
+    Make the two missing folders from code, then list what the project holds:
+
+    ```r
+    dir.create(here("code"))
+    dir.create(here("output"))
+    list.files(here())
+    ```
+
+    ```output
+    [1] "code"     "data-raw" "output"
+    ```
+
+    Now the test that matters. Save a three-line script in `code/` that reads the file with a
+    relative path:
+
+    ```r file=code/count_rows.R
+    library(readr)
+    penguins <- read_csv("data-raw/penguins_raw.csv", show_col_types = FALSE)
+    nrow(penguins)
+    ```
+
+    Run it the way a colleague might, from inside the `code` folder. These are commands for the
+    computer's terminal, the window where you type commands to the computer itself rather than to
+    R. `cd code` moves into the folder, and `Rscript` runs an R script from start to end:
+
+    ```sh error
+    cd code
+    Rscript count_rows.R
+    ```
+
+    ```output
+    Error: 'data-raw/penguins_raw.csv' does not exist in current working directory ('~/project/code').
+    Execution halted
+    ```
+
+    The relative path failed because R started in `code/`, and there is no `data-raw` folder inside
+    `code/`. Change one line, so that the address is built by `here()`:
+
+    ```r file=code/count_rows.R
+    library(readr)
+    library(here)
+    penguins <- read_csv(here("data-raw", "penguins_raw.csv"), show_col_types = FALSE)
+    nrow(penguins)
+    ```
+
+    Run it from the same place:
+
+    ```sh
+    cd code
+    Rscript count_rows.R
+    ```
+
+    ```output
+    here() starts at ~/project
+    [1] 344
+    ```
+
+    R started in `code/` again. The here package climbed one folder up, found the marker, and built
+    the full address from there. The script now finds its file from any folder inside the project,
+    on any computer that has the project folder.
+  analogy_breaks_when: |
+    `here()` finds the root only if the marker is there. Copy the project without its `.here` file
+    or RStudio project file and `here()` keeps climbing, and may settle on some other folder higher
+    up. Keep the marker in the project folder, and copy the whole folder when you share it.
+
+    A safe address fixes one cause of failure, the location of files. A script can still fail on
+    another computer because a package is missing or is a different version. Running the whole
+    script in a fresh session on a second computer is a separate check.
+must_know:
+- point: |
+    The error is to believe that a script which runs on your computer will run on another. An
+    address that starts with `C:/Users/` or `/home/` names a folder on one computer. Before you
+    send a script, search it for such addresses and replace each one with `here()`.
+  kind: misconception
+  bearing: methodological
+- point: |
+    Build every file address with `here()`, starting from the project root: `here("data-raw",
+    "file.csv")` to read, `here("output", "table.csv")` to write. The line then works from any
+    folder inside the project.
+  kind: move
+  bearing: methodological
+- point: |
+    A script that starts with `setwd()` and a folder name works only on the computer it was written
+    on. When you receive one, delete that line, open the project folder, and change the paths to
+    `here()`. Do not create the other person's folders on your own disk to make it run.
+  kind: trap
+  bearing: methodological
+- point: |
+    Nothing ever writes into `data-raw/`. A correction typed into the raw file cannot be told apart
+    from the original later. The analysis can then no longer be rerun from the data as it arrived.
+    Put the correction in code, and write the corrected file to `output/`.
+  kind: consequence
+  bearing: methodological
+- point: |
+    Everything in `output/` can be deleted and made again by running the code. If a file there
+    cannot be remade, part of the analysis was done by hand, and that part is the one to find.
+  kind: consequence
+  bearing: methodological
+- point: |
+    A trainee's script fails on your computer with "does not exist". Look at the address in the
+    failing line before you look at the data, and check whether it names a folder on their computer.
+  kind: move
+  bearing: teaching
+- point: |
+    Name files with no spaces, no brackets and no capital letters used to tell two files apart.
+    `Final data (2).xlsx` and `final data.xlsx` are a quarrel waiting to happen. Rename the copy you
+    keep as raw data once, when it arrives, and record the original name in the README.
+  kind: trap
+  bearing: methodological
+- point: |
+    A tidy folder and safe addresses fix only where files are. They do not make an analysis
+    correct, and they do not make it rerun if a package is missing. Do not accept "the paths are
+    relative" as proof that someone else can rerun the work.
+  kind: boundary
+  bearing: methodological
+exercises:
+- type: retrieval
+  prompt: |
+    Without looking back, write the line that reads a file called `heights.csv` from the project's
+    `data-raw` folder so that it works on any computer. Say why a line starting with `setwd()`
+    does not belong above it.
+  answer: |
+    The line is `heights <- read_csv(here("data-raw", "heights.csv"))`. Load readr and here
+    first. `here()` builds the address from the project root. It finds that root by itself, on
+    whatever computer runs the script.
+
+    `setwd()` with a folder name moves R to a folder that exists only on the computer of the person
+    who wrote the line. On any other computer the script stops there.
+- type: design
+  prompt: |
+    You are starting a thesis analysis of weight and height measured in a school health camp. The
+    camp team will give you one CSV file, a plain-text table, exported from their data-entry form.
+    Lay out the project folder. Give it a name, and list the folders and the files you expect in
+    each. Say which folders your code may write to. Then write the one line that reads the camp file.
+  answer: |
+    One layout. The names inside are a choice. The separation is not.
+
+    ```table
+    | Path | What it holds | Written by |
+    | school_camp_2026/ | the project folder, named after the analysis | you, once |
+    | README | what the project is, where the file came from, how to rerun it | you |
+    | data-raw/camp_export.csv | the file exactly as the camp team sent it | nobody |
+    | code/analysis.R | the one script that reads, checks, cleans and summarises | you |
+    | output/ | cleaned file, summary tables, figures | the script only |
+    ```
+
+    The code writes only to `output/`. Nothing, including you, edits `data-raw/camp_export.csv`.
+    If the camp team sends a corrected file, it goes in `data-raw/` under a new name with the date
+    it arrived. The README says which file the analysis uses.
+
+    The reading line:
+
+    ```r norun
+    camp <- read_csv(here("data-raw", "camp_export.csv"))
+    ```
+
+    It needs `library(readr)` and `library(here)` above it. It has no address from your own
+    computer in it, so it runs on your guide's laptop as it does on yours.
+  skill_ref: S52-R1-K02
+- type: teaching
+  prompt: |
+    A first-year resident has ten minutes and a whiteboard. Her script ran on her laptop and
+    stopped on yours with "does not exist". Teach her why, and what to change.
+  answer: |
+    Write her failing line on the board, with its address: `read_csv("C:/Users/meera/Desktop/data.csv")`.
+    Ask her where `C:/Users/meera` is. It is a folder on her laptop. On yours it does not exist.
+
+    Draw the project folder as a box with three boxes inside: `data-raw`, `code`, `output`. Put the
+    data file in `data-raw`. Show that "go into data-raw, take data.csv" is true on any computer
+    that has this box, while "go to Meera's desktop" is true on one.
+
+    Then write the fix: `read_csv(here("data-raw", "data.csv"))`. Say that `here()` finds the top
+    of the box by itself, wherever R started.
+
+    End with the rule she can check by eye: no line of the script should contain the name of
+    anyone's computer, user folder or desktop.
+quantitative: true
+practice_note: |
+  Ten problems. Building a path is one move, so the mechanical band is short. The weight is on
+  the diagnostic and transfer bands, because this technique fails only when code meets another
+  computer or a second run.
+practice:
+- level: 1
+  prompt: |
+    The project root is `~/project`. Write the `here()` call that gives the address of a file
+    called `heights.csv` inside `data-raw`, and run it.
+  answer: |
+    ```r
+    here::here("data-raw", "heights.csv")
+    ```
+
+    ```output
+    [1] "~/project/data-raw/heights.csv"
+    ```
+
+    Writing `here::here()` uses the function without loading the package with `library()`. The
+    file does not need to exist: `here()` builds the address and checks nothing.
+- level: 2
+  prompt: |
+    Say whether each address is absolute or relative.
+
+    a. `C:/Users/ravi/Documents/thesis/data.csv`
+    b. `data-raw/camp_export.csv`
+    c. `/home/ravi/thesis/output/table1.csv`
+    d. `output/figures/bmi_histogram.png`
+    e. `D:/MD thesis/final.xlsx`
+  answer: |
+    ```table
+    | Address | Kind | Why |
+    | a | absolute | starts from a drive letter, C: |
+    | b | relative | starts from a folder name, read from the working directory |
+    | c | absolute | starts from the top of the disk, / |
+    | d | relative | starts from a folder name |
+    | e | absolute | starts from a drive letter, D:, and has a space in a folder name as well |
+    ```
+
+    The test is the first character or two. A drive letter or a leading slash means absolute.
+- level: 3
+  prompt: |
+    The project root is `~/project`. Predict what this line prints, then run it. Does running it
+    create a folder called `figures`?
+
+    ```r norun
+    here::here("output", "figures", "bmi_histogram.png")
+    ```
+  answer: |
+    ```r
+    here::here("output", "figures", "bmi_histogram.png")
+    ```
+
+    ```output
+    [1] "~/project/output/figures/bmi_histogram.png"
+    ```
+
+    Each argument becomes one level of the address, in order. Nothing is created:
+
+    ```r
+    dir.exists(here::here("output", "figures"))
+    ```
+
+    ```output
+    [1] FALSE
+    ```
+
+    `dir.exists()` asks whether a folder exists, and answers FALSE. To make the folder you would
+    call `dir.create()` on that address.
+- level: 4
+  prompt: |
+    Read `penguins_raw.csv` from the project's `data-raw` folder, building the address with
+    `here()`. Give its number of rows and columns with `dim()`.
+  answer: |
+    ```r
+    library(readr)
+    library(here)
+    penguins <- read_csv(here("data-raw", "penguins_raw.csv"), show_col_types = FALSE)
+    dim(penguins)
+    ```
+
+    ```output
+    here() starts at ~/project
+    [1] 344  17
+    ```
+
+    `dim()` gives rows first, then columns: {{n:penguins_rows}} rows and {{n:penguins_cols}}
+    columns.
+- level: 5
+  prompt: |
+    Where does each of these files belong in the project folder: `data-raw/`, `code/`, `output/`,
+    or the top?
+
+    a. `penguins_raw.csv`, exactly as downloaded
+    b. `analysis.R`
+    c. `species_counts.csv`, written by your script
+    d. `mass_histogram.png`, saved by your script
+    e. `README`
+    f. a copy of `penguins_raw.csv` in which you corrected one value by hand
+  answer: |
+    ```table
+    | File | Where |
+    | a. penguins_raw.csv as downloaded | data-raw/ |
+    | b. analysis.R | code/ |
+    | c. species_counts.csv | output/ |
+    | d. mass_histogram.png | output/ |
+    | e. README | the top of the project folder |
+    | f. hand-corrected copy | nowhere |
+    ```
+
+    File f has no place. A correction made by hand leaves no record of what changed. Write the
+    correction as a line of code that reads the raw file and writes the corrected version to
+    `output/`. Then delete the hand-made copy.
+- level: 6
+  prompt: |
+    In the project, make the `output` folder from code, check that it now exists, and list the
+    folders at the top of the project.
+  answer: |
+    ```r
+    library(here)
+    dir.create(here("output"))
+    dir.exists(here("output"))
+    list.files(here())
+    ```
+
+    ```output
+    here() starts at ~/project
+    [1] TRUE
+    [1] "data-raw" "output"
+    ```
+
+    The project now has a raw-data folder and an output folder. A script that writes its tables
+    with `here("output", ...)` has somewhere to put them.
+- level: 7
+  prompt: |
+    A colleague's script begins like this. Run it. Find the line that broke, and say why it
+    looked reasonable to the person who wrote it.
+
+    ```r error
+    library(readr)
+    setwd("C:/Users/priya/Documents/thesis")
+    penguins <- read_csv("data-raw/penguins_raw.csv", show_col_types = FALSE)
+    ```
+
+    ```output
+    Error in setwd("C:/Users/priya/Documents/thesis") :
+      cannot change working directory
+    ```
+  answer: |
+    The second line broke. `setwd()` tried to move R's working directory to a folder on Priya's
+    laptop, and that folder does not exist here.
+
+    It looked reasonable because on Priya's laptop it works. There, the line moves R to her thesis
+    folder, and the relative path on the next line then finds the file. Every time she ran it, it
+    worked, so she had no reason to doubt it.
+
+    The repair removes the line and builds the address from the project root:
+
+    ```r
+    library(readr)
+    library(here)
+    penguins <- read_csv(here("data-raw", "penguins_raw.csv"), show_col_types = FALSE)
+    nrow(penguins)
+    ```
+
+    ```output
+    here() starts at ~/project
+    [1] 344
+    ```
+- level: 8
+  prompt: |
+    A resident wants a quick test run on fewer rows. Her script keeps the first 300 rows and saves
+    them. She runs it twice. Run the two runs below. Find the line that broke, and say why nothing
+    looked wrong on the first run.
+
+    ```r
+    library(readr)
+    library(here)
+    # first run
+    penguins <- read_csv(here("data-raw", "penguins_raw.csv"), show_col_types = FALSE)
+    nrow(penguins)
+    penguins_test <- head(penguins, 300)
+    write_csv(penguins_test, here("data-raw", "penguins_raw.csv"))
+    # second run, the same lines again
+    penguins <- read_csv(here("data-raw", "penguins_raw.csv"), show_col_types = FALSE)
+    nrow(penguins)
+    ```
+
+    ```output
+    here() starts at ~/project
+    [1] 344
+    [1] 300
+    ```
+  answer: |
+    The `write_csv()` line broke the project. It wrote the 300-row test file over the raw file, in
+    `data-raw/`. The first run read all 344 rows. The second run read the overwritten file, so it
+    found 300. The other 44 rows are gone from the project, and no line of code can bring them back.
+
+    Nothing looked wrong on the first run because the first run was correct. The damage shows only
+    on the next run, when the number of rows changes with no change to the code.
+
+    The repair writes the test file to `output/` under its own name, and leaves `data-raw/` alone.
+    It is shown here without being run, because the raw file in this session is already damaged:
+
+    ```r norun
+    library(readr)
+    library(here)
+    penguins <- read_csv(here("data-raw", "penguins_raw.csv"), show_col_types = FALSE)
+    penguins_test <- head(penguins, 300)
+    write_csv(penguins_test, here("output", "penguins_test_300.csv"))
+    ```
+
+    With this version the raw file keeps its 344 rows however many times the script runs. The only
+    way back from the broken version is a copy of the raw file kept somewhere else, which is one
+    reason to keep one.
+- level: 9
+  prompt: |
+    Your guide says at a meeting: "Send me the project folder. If it runs on your laptop, it will
+    run on mine."
+
+    Test the second half of that claim before you send anything. The project holds this script:
+
+    ```r file=code/count_rows.R
+    library(readr)
+    penguins <- read_csv(here::here("data-raw", "penguins_raw.csv"), show_col_types = FALSE)
+    nrow(penguins)
+    ```
+
+    Then say what your test does not establish.
+  answer: |
+    The nearest test you can run alone is to move the project somewhere else and run it there. Copy
+    the whole folder, marker included, into a new temporary folder, and run the script from inside
+    the copy:
+
+    ```sh
+    moved=$(mktemp -d)
+    cp -r data-raw code .here "$moved"
+    cd "$moved"
+    Rscript code/count_rows.R
+    ```
+
+    ```output
+    [1] 344
+    ```
+
+    `mktemp -d` makes a new empty folder with a made-up name. The script found its file from the
+    new place, because `here()` built the address from wherever the project now sits. An
+    absolute path would have pointed back to the old folder.
+
+    What the test does not establish:
+
+    - That it runs on your guide's laptop. Your copy still has your version of R and your
+      packages. If your guide lacks readr or the here package, the first line stops.
+    - That the number is right. The script finding 344 rows says the file was read. It says
+      nothing about whether the analysis that follows is correct.
+    - That the copy was complete. If the script read a file outside the project, the test would
+      still have passed on your computer, where that file exists.
+- level: 10
+  prompt: |
+    A co-author writes: "Just email me the cleaned file. I don't need your code. The cleaned file
+    is the result."
+
+    The project's script reads the raw penguin file and writes a file with the rows that have a
+    body mass recorded to `output/penguins_with_mass.csv`. Show that the cleaned file is
+    disposable: delete it, remake it from code, and check that the remade file is identical to the
+    first. Then say what this does not establish.
+  answer: |
+    Write the script, run it once, and record a fingerprint of its output. `tools::md5sum()`
+    computes an MD5 checksum, a 32-character code calculated from every byte of a file. Two
+    files with the same checksum have, for practical purposes, identical contents.
+
+    ```r file=code/clean.R
+    library(readr)
+    library(here)
+    penguins <- read_csv(here("data-raw", "penguins_raw.csv"), show_col_types = FALSE)
+    # keep the rows whose body mass is not missing
+    with_mass <- penguins[!is.na(penguins$`Body Mass (g)`), ]
+    dir.create(here("output"), showWarnings = FALSE)
+    write_csv(with_mass, here("output", "penguins_with_mass.csv"))
+    ```
+
+    ```sh
+    Rscript code/clean.R
+    Rscript -e 'unname(tools::md5sum("output/penguins_with_mass.csv"))'
+    ```
+
+    ```output
+    here() starts at ~/project
+    [1] "2d547e4c975aa165159abbda25d7fc9e"
+    ```
+
+    Now delete the output and remake it:
+
+    ```sh
+    rm output/penguins_with_mass.csv
+    Rscript code/clean.R
+    Rscript -e 'unname(tools::md5sum("output/penguins_with_mass.csv"))'
+    ```
+
+    ```output
+    here() starts at ~/project
+    [1] "2d547e4c975aa165159abbda25d7fc9e"
+    ```
+
+    The two checksums are the same. The cleaned file can be thrown away and made again at any
+    time. So the result is the code and the raw file together, and the cleaned file is one product
+    of them.
+    Send the co-author the folder, not the file.
+
+    What this does not establish:
+
+    - That keeping only rows with a body mass was the right cleaning step. The check shows the
+      step is repeatable, not that it is sensible.
+    - That the co-author could remake it on their computer. That needs their R and packages, which
+      this check did not touch.
+    - That the raw file itself is the one that was collected. The checksum describes the cleaned
+      file only.
+retrieval_items:
+- q: Name the three folders inside this book's project folder, and say which of them your code may write to.
+  a: '`data-raw/` (the raw data as it arrived; nothing writes to it), `code/` (your scripts) and `output/` (everything the scripts produce; only the scripts write to it).'
+- q: What is the difference between an absolute path and a relative path?
+  a: An absolute path starts from the top of one computer's disk, such as `C:/Users/...`, so it names a place on that computer only. A relative path starts from the working directory, such as `data-raw/file.csv`.
+- q: How does `here()` find the project root, and what does it do with its arguments?
+  a: It climbs upwards from the working directory until it meets a folder holding a marker, such as a `.here` file, an RStudio project file or a `.git` folder. It joins its arguments, in order, onto that folder's address.
+- q: Why should a script never begin with `setwd()` and a folder name?
+  a: The folder named exists only on the computer of the person who wrote it, so the script stops on any other computer.
+figure_note: "The section is about where files sit and how an address names them; the layout is a table and the addresses are text, and there is no quantity for a chart to show."
+provenance:
+  map_version_id: fc19c8bc-a216-4131-99fb-ebe3f19cec4a
+  outcome_refs:
+  - S52-R1-S1
+  - S52-R1-S2
+  - S52-R1-B
+  - S52-R1-G
+  bridge_ref:
+  - S52-R2-P02
+review:
+  stability: long
+  trigger: '2031-10-02'
+  last_reviewed: '2026-10-02'
+status: drafted

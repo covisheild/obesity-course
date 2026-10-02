@@ -1,0 +1,1172 @@
+concept_id: S52-R1-C09
+subject: S52
+rung: 1
+sequence: 9
+name: Reading a raw file without changing it
+concept_type: derivable
+clusters:
+- craft-and-integrity
+ground_floor_deps:
+- B0-R0-C39
+- B0-R0-C06
+- B0-R0-C08
+concept_deps:
+- S52-R1-C04
+- S52-R1-C05
+- S52-R1-C06
+- S52-R1-C07
+- S52-R1-C08
+definition:
+  text: |
+    A CSV file, short for comma-separated values, is plain text. Each line is one row; within a
+    line, values are separated by commas; the first line, the header row, gives the column names.
+    Nothing in the file says what type each column is.
+
+    Reading a file copies its contents into R as a data frame. The file on disk is not changed by
+    being read, and an analysis that never writes to it can always be rerun from it.
+
+    `read_csv()`, from the readr package, reads a CSV file. It guesses each column's type from a
+    sample of its values and prints the guess, the column specification. Values listed in its `na`
+    argument become `NA`, R's code for a missing value; by default the list is the empty string and
+    the text `NA`. The `col_types` argument states the types you expect instead of letting readr
+    guess. A value that does not fit its stated type becomes `NA`, readr warns, and `problems()`
+    lists each such value with its row and column.
+
+    Other formats need other functions. `read_excel()`, from readxl, reads Excel `.xls` and `.xlsx`
+    files, one sheet at a time, optionally from a stated cell range. From haven, `read_sav()` reads
+    SPSS `.sav` files and `read_xpt()` reads SAS transport `.xpt` files; both keep each column's
+    label, the description stored with it in the file, as a label attribute of that column.
+  references:
+  - citekey: r4ds_2e
+    kind: textbook
+    locator: 'Ch. 7 "Data import", 7.2 "Reading data from a file", first paragraph: what a CSV file is'
+    quote: |-
+      CSV, which is short for comma-separated values. Here is what a simple CSV file looks like. The first row, commonly called the header row, gives the column names
+    verified:
+      resolved_id: https://r4ds.hadley.nz/data-import.html
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+  - citekey: r4ds_2e
+    kind: textbook
+    locator: 'Ch. 7, 7.3 "Controlling column types", first paragraph'
+    quote: |-
+      A CSV file doesn’t contain any information about the type of each variable (i.e. whether it’s a logical, number, string, etc.), so readr will try to guess the type.
+    verified:
+      resolved_id: https://r4ds.hadley.nz/data-import.html
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+  - citekey: broman_woo_2018_tas
+    kind: primary
+    locator: 'Section 13 "Save the Data in Plain Text Files", second paragraph'
+    quote: |-
+      this sort of nonproprietary file format does not and never will require any sort of special software. And CSV files are easier to handle in code.
+    verified:
+      resolved_id: https://doi.org/10.1080/00031305.2017.1375989
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+  - citekey: wilson_2017
+    kind: primary
+    locator: 'Data management, recommendation 1a "Save the raw data"'
+    quote: |-
+      Where possible, save data as originally generated (i.e., by an instrument or from a survey).
+    verified:
+      resolved_id: https://doi.org/10.1371/journal.pcbi.1005510
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+  - citekey: rdocs_s52r1_readr
+    kind: textbook
+    locator: 'Help page "read_delim" (readr 2.1.5), Arguments, col_types: types guessed from a sample of rows'
+    quote: |-
+      If 'NULL', all column types will be inferred from 'guess_max' rows of the input, interspersed throughout the file. This is convenient (and fast), but not robust.
+    verified:
+      resolved_id: rhelp://readr@2.1.5/read_delim
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+  - citekey: rdocs_s52r1_readr
+    kind: textbook
+    locator: 'Help page "read_delim" (readr 2.1.5), Arguments, col_types: the message printed when types are guessed'
+    quote: |-
+      By default, reading a file without a column specification will print a message showing what 'readr' guessed they were.
+    verified:
+      resolved_id: rhelp://readr@2.1.5/read_delim
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+  - citekey: rdocs_s52r1_readr
+    kind: textbook
+    locator: 'Help page "read_delim" (readr 2.1.5), Usage, the default of na'
+    quote: |-
+      na = c("", "NA"),
+    verified:
+      resolved_id: rhelp://readr@2.1.5/read_delim
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+  - citekey: rdocs_s52r1_readr
+    kind: textbook
+    locator: 'Help page "read_delim" (readr 2.1.5), Arguments, na'
+    quote: |-
+      na: Character vector of strings to interpret as missing values.
+    verified:
+      resolved_id: rhelp://readr@2.1.5/read_delim
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+  - citekey: rdocs_s52r1_readr
+    kind: textbook
+    locator: 'Help page "read_delim" (readr 2.1.5), Value'
+    quote: |-
+      If there are parsing problems, a warning will alert you. You can retrieve the full details by calling 'problems()' on your dataset.
+    verified:
+      resolved_id: rhelp://readr@2.1.5/read_delim
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+  - citekey: rdocs_s52r1_readr
+    kind: textbook
+    locator: 'Help page "read_delim" (readr 2.1.5), Arguments, file: literal data'
+    quote: |-
+      To be recognised as literal data, the input must be either wrapped with 'I()', be a string containing at least one new line, or be a vector containing at least one string with a new line.
+    verified:
+      resolved_id: rhelp://readr@2.1.5/read_delim
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+  - citekey: rdocs_s52r1_readxl
+    kind: textbook
+    locator: 'Help page "read_excel" (readxl 1.4.3), Description and Arguments sheet and range'
+    quote: |-
+      Sheet to read. Either a string (the name of a sheet), or an integer (the position of the sheet).
+    verified:
+      resolved_id: rhelp://readxl@1.4.3/read_excel
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+      note: |-
+        The page's title is "Read xls and xlsx files", and range is "A cell range to read from",
+        including "typical Excel ranges like "B3:D87"".
+  - citekey: rdocs_s52r1_readxl
+    kind: textbook
+    locator: 'Help page "read_excel" (readxl 1.4.3), Arguments, range'
+    quote: |-
+      A cell range to read from, as described in cell-specification.
+    verified:
+      resolved_id: rhelp://readxl@1.4.3/read_excel
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+  - citekey: rdocs_s52r1_haven
+    kind: textbook
+    locator: 'Help page "read_spss" (haven 2.5.4), Description'
+    quote: |-
+      'read_sav()' reads both '.sav' and '.zsav' files
+    verified:
+      resolved_id: rhelp://haven@2.5.4/read_spss
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+  - citekey: rdocs_s52r1_haven
+    kind: textbook
+    locator: 'Help page "read_spss" (haven 2.5.4), Arguments, user_na'
+    quote: |-
+      If 'FALSE', the default, user-defined missings will be converted to 'NA'.
+    verified:
+      resolved_id: rhelp://haven@2.5.4/read_spss
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+  - citekey: rdocs_s52r1_haven
+    kind: textbook
+    locator: 'Help page "read_xpt" (haven 2.5.4), title, and Value: variable labels'
+    quote: |-
+      Variable labels are stored in the "label" attribute of each variable.
+    verified:
+      resolved_id: rhelp://haven@2.5.4/read_xpt
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+      note: |-
+        The same sentence is on the read_spss page. The read_xpt page's title is "Read and write
+        SAS transport files".
+  - citekey: r4ds_2e
+    kind: textbook
+    locator: 'Ch. 20 "Spreadsheets", 20.2.3, after the reading examples: look at a copy, read the original'
+    quote: |-
+      we recommend making a copy of the Excel file to open and browse interactively while leaving the original data file untouched and reading into R from the untouched file.
+    verified:
+      resolved_id: https://r4ds.hadley.nz/spreadsheets.html
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+simplified_explanation: |
+  A raw file is the data as it first reached you. It may be the export from a survey tablet, the
+  file a laboratory machine wrote, or the spreadsheet a camp team typed. Tools for collecting data in the
+  field, such as KoboToolbox, ODK and REDCap, write such files, and the next level of this subject
+  teaches them. Here the file has already arrived.
+
+  The commonest raw file is a CSV. Open one in a plain text editor, such as Notepad, and you see
+  lines of text with commas between the values. The first line holds the column names. That is
+  all there is: no colours, no formulas, and nothing saying which column is a number.
+
+  So `read_csv()` has to guess. It looks at the values in each column and decides: numbers, text,
+  dates or TRUE and FALSE. Then it prints what it decided. Read that report every time. A column
+  you expected to be numbers that comes out as text means some cell in it is not a number.
+
+  Two habits keep the guess honest:
+
+  - **Name the missing-value codes.** If the file uses -99, or "NR", for "not recorded", say so
+    in `na = c("", "NA", "-99", "NR")`. Otherwise -99 is read as a real number.
+  - **Say what you expect.** `col_types` tells `read_csv()` which type each column should have.
+    A value that does not fit is reported, instead of quietly turning the whole column into text.
+
+  Reading never changes the file. `read_csv()` makes a copy inside R and leaves the file alone.
+  The file is changed only if something writes to it: you, in a spreadsheet, or a line of code
+  that saves over it. In this book nothing does.
+
+  Data in a department may come as an Excel or SPSS file, and some surveys publish files in other
+  formats. `read_excel()` reads Excel files. The haven package reads SPSS files with `read_sav()`
+  and the SAS transport files of American surveys with `read_xpt()`.
+illustrations:
+- body: |
+    Start with a failure. A school camp team sends you a file. Where a child could not be
+    measured, they typed -99. The values below are made up. Here is the file's text, held in R as
+    one piece of text so you can see every character:
+
+    ```r
+    library(readr)
+    camp_text <- "child_id,height_cm,weight_kg
+    S01,128,26.0
+    S02,-99,24.5
+    S03,131,-99"
+    writeLines(camp_text)
+    ```
+
+    ```output
+    child_id,height_cm,weight_kg
+    S01,128,26.0
+    S02,-99,24.5
+    S03,131,-99
+    ```
+
+    That is the whole of a CSV file: a header line, then one line per child. Read it with
+    `read_csv()`. Wrapping the text in `I()` tells `read_csv()` that this is the data itself,
+    not the name of a file:
+
+    ```r
+    camp <- read_csv(I(camp_text))
+    camp
+    ```
+
+    ```output
+    Rows: 3 Columns: 3
+    ── Column specification ────────────────────────────────────────────────
+    Delimiter: ","
+    chr (1): child_id
+    dbl (2): height_cm, weight_kg
+
+    ℹ Use `spec()` to retrieve the full column specification for this data.
+    ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
+    # A tibble: 3 × 3
+      child_id height_cm weight_kg
+      <chr>        <dbl>     <dbl>
+    1 S01            128      26
+    2 S02            -99      24.5
+    3 S03            131     -99
+    ```
+
+    The report says `height_cm` and `weight_kg` were read as `dbl`, numbers. That is true, and it
+    is the trap. -99 is a number, so readr had no reason to object. Ask for the shortest child:
+
+    ```r
+    min(camp$height_cm)
+    ```
+
+    ```output
+    [1] -99
+    ```
+
+    A height of -99 cm. Every summary of this column is now wrong, and nothing warned you. Tell
+    `read_csv()` the code. The vector given to `na` replaces the default, so keep the empty string
+    and `"NA"` in it as well:
+
+    ```r
+    camp <- read_csv(I(camp_text), na = c("", "NA", "-99"), show_col_types = FALSE)
+    camp
+    min(camp$height_cm, na.rm = TRUE)
+    ```
+
+    ```output
+    # A tibble: 3 × 3
+      child_id height_cm weight_kg
+      <chr>        <dbl>     <dbl>
+    1 S01            128      26
+    2 S02             NA      24.5
+    3 S03            131      NA
+    [1] 128
+    ```
+
+    The -99s are `NA` now, and the shortest measured child is 128 cm.
+
+    Now a second file from the same camp, where one entry says "not measured" in words:
+
+    ```r
+    camp_text_2 <- "child_id,height_cm,weight_kg
+    S01,128,26.0
+    S02,not measured,24.5
+    S03,131,27.5"
+    camp_2 <- read_csv(I(camp_text_2))
+    ```
+
+    ```output
+    Rows: 3 Columns: 3
+    ── Column specification ────────────────────────────────────────────────
+    Delimiter: ","
+    chr (2): child_id, height_cm
+    dbl (1): weight_kg
+
+    ℹ Use `spec()` to retrieve the full column specification for this data.
+    ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
+    ```
+
+    The report says `height_cm` is `chr`, text. One word in one cell turned the whole column into
+    text, and `mean()` of it would fail. Say what you expect instead, with `col_types`. The
+    function `cols()` takes one entry per column; `col_character()` means text and `col_double()`
+    means numbers:
+
+    ```r
+    camp_2 <- read_csv(
+      I(camp_text_2),
+      col_types = cols(
+        child_id = col_character(),
+        height_cm = col_double(),
+        weight_kg = col_double()
+      )
+    )
+    camp_2
+    ```
+
+    ```output
+    Warning message:
+    One or more parsing issues, call `problems()` on your data frame for
+    details, e.g.:
+      dat <- vroom(...)
+      problems(dat)
+    # A tibble: 3 × 3
+      child_id height_cm weight_kg
+      <chr>        <dbl>     <dbl>
+    1 S01            128      26
+    2 S02             NA      24.5
+    3 S03            131      27.5
+    ```
+
+    Now readr warns, keeps `height_cm` as numbers, and puts `NA` where the words were. Ask which
+    values did not fit. The last column of `problems()` names a temporary file that changes from
+    run to run, so keep the first four:
+
+    ```r
+    problems(camp_2)[c("row", "col", "expected", "actual")]
+    ```
+
+    ```output
+    # A tibble: 1 × 4
+        row   col expected actual
+      <int> <int> <chr>    <chr>
+    1     3     2 a double not measured
+    ```
+
+    Row 3 of the file, counting the header line as row 1, column 2: readr expected a number and
+    found "not measured". You now know the value, and the raw file still says exactly what the camp
+    team typed.
+  analogy_breaks_when: |
+    The camp files are made up and three rows long. In a real file of thousands of rows, a code
+    such as -99 does not stand out by eye, which is the reason to declare it when you read.
+
+    Declaring `na` works only for codes you know about. A file may use 999 for one column and 0
+    for another, and 0 can be a real value. The codes come from the file's own documentation, not
+    from guessing; where there is none, ask the person who made the file.
+- body: |
+    Now the real file. Read the penguin data and let `read_csv()` print its report:
+
+    ```r
+    library(readr)
+    library(here)
+    penguins <- read_csv(here("data-raw", "penguins_raw.csv"))
+    ```
+
+    ```output
+    here() starts at ~/project
+    Rows: 344 Columns: 17
+    ── Column specification ────────────────────────────────────────────────
+    Delimiter: ","
+    chr  (9): studyName, Species, Region, Island, Stage, Individual ID, ...
+    dbl  (7): Sample Number, Culmen Length (mm), Culmen Depth (mm), Flip...
+    date (1): Date Egg
+
+    ℹ Use `spec()` to retrieve the full column specification for this data.
+    ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
+    ```
+
+    Read the report line by line. `Rows: 344 Columns: 17` gives the size. `Delimiter: ","` says
+    the values were separated by commas. Then the guesses: nine columns as `chr`, text; seven as
+    `dbl`, numbers; one as `date`. The list after each type is cut short to fit the line. `Date
+    Egg` became a date because its values are written year-month-day, such as 2007-11-11, which
+    readr recognises.
+
+    Check each guess against what you know. Body mass should be a number, and it is in the `dbl`
+    line. To make that expectation part of the script, name the column in `col_types`. Columns
+    you do not name are still guessed:
+
+    ```r
+    penguins <- read_csv(
+      here("data-raw", "penguins_raw.csv"),
+      col_types = cols(`Body Mass (g)` = col_double())
+    )
+    ```
+
+    It reads quietly. When `col_types` is given, readr stops printing the report. If a later copy
+    of this file ever arrives with "3750 g" typed in that column, this line warns, and the
+    `problems()` list names the row.
+
+    Last, prove that reading did not touch the file. `tools::md5sum()` computes an MD5 checksum,
+    a 32-character code calculated from every byte of a file. Change one character in the file and
+    the code changes. Take it, read the file again, and take it again:
+
+    ```r
+    before <- tools::md5sum(here("data-raw", "penguins_raw.csv"))
+    penguins <- read_csv(here("data-raw", "penguins_raw.csv"), show_col_types = FALSE)
+    after <- tools::md5sum(here("data-raw", "penguins_raw.csv"))
+    unname(before)
+    unname(before == after)
+    ```
+
+    ```output
+    [1] "049da101568e078f9845c8b366481810"
+    [1] TRUE
+    ```
+
+    Same code before and after. Write the checksum into the project's README the day a raw file
+    arrives. Then anyone can check, later, that the file the analysis reads is the file that
+    arrived.
+  analogy_breaks_when: |
+    The checksum shows that the bytes of the file are unchanged since you computed it. It says
+    nothing about whether the data were right when they arrived.
+
+    The type report comes from a sample of rows. In a large file, a stray word far down a column
+    may be missed by the guess. Stating `col_types` for the columns that matter closes that gap.
+- body: |
+    Not every raw file is a CSV. Here are the three other kinds this book's reader meets most.
+
+    **Excel.** The readxl package comes with a small example workbook that is laid out the way
+    people lay out sheets for printing, with notes above and below the table. Read it without
+    instructions and the notes become rows:
+
+    ```r
+    library(readxl)
+    read_excel(readxl_example("deaths.xlsx"))
+    ```
+
+    ```output
+    New names:
+    • `` -> `...2`
+    • `` -> `...3`
+    • `` -> `...4`
+    • `` -> `...5`
+    • `` -> `...6`
+    # A tibble: 18 × 6
+       `Lots of people`             ...2             ...3  ...4  ...5  ...6
+       <chr>                        <chr>            <chr> <chr> <chr> <chr>
+     1 simply cannot resist writing <NA>             <NA>  <NA>  <NA>  some…
+     2 at                           the              top   <NA>  of    thei…
+     3 or                           merging          <NA>  <NA>  <NA>  cells
+     4 Name                         Profession       Age   Has … Date… Date…
+     5 David Bowie                  musician         69    TRUE  17175 42379
+     6 Carrie Fisher                actor            60    TRUE  20749 42731
+     7 Chuck Berry                  musician         90    TRUE  9788  42812
+     8 Bill Paxton                  actor            61    TRUE  20226 42791
+     9 Prince                       musician         57    TRUE  21343 42481
+    10 Alan Rickman                 actor            69    FALSE 16854 42383
+    11 Florence Henderson           actor            82    TRUE  12464 42698
+    12 Harper Lee                   author           89    FALSE 9615  42419
+    13 Zsa Zsa Gábor                actor            99    TRUE  6247  42722
+    14 George Michael               musician         53    FALSE 23187 42729
+    15 Some                         <NA>             <NA>  <NA>  <NA>  <NA>
+    16 <NA>                         also like to wr… <NA>  <NA>  <NA>  <NA>
+    17 <NA>                         <NA>             at t… bott… <NA>  <NA>
+    18 <NA>                         <NA>             <NA>  <NA>  <NA>  too!
+    ```
+
+    The first sheet was read. The notes became the first rows, the real header row became a row of
+    data, and every column became text. Give the sheet and the cells that hold the table:
+
+    ```r
+    read_excel(readxl_example("deaths.xlsx"), sheet = "other", range = "A5:F15")
+    ```
+
+    ```output
+    # A tibble: 10 × 6
+       Name           Profession   Age `Has kids` `Date of birth`
+       <chr>          <chr>      <dbl> <lgl>      <dttm>
+     1 Vera Rubin     scientist     88 TRUE       1928-07-23 00:00:00
+     2 Mohamed Ali    athlete       74 TRUE       1942-01-17 00:00:00
+     3 Morley Safer   journalist    84 TRUE       1931-11-08 00:00:00
+     4 Fidel Castro   politician    90 TRUE       1926-08-13 00:00:00
+     5 Antonin Scalia lawyer        79 TRUE       1936-03-11 00:00:00
+     6 Jo Cox         politician    41 TRUE       1974-06-22 00:00:00
+     7 Janet Reno     lawyer        78 FALSE      1938-07-21 00:00:00
+     8 Gwen Ifill     journalist    61 FALSE      1955-09-29 00:00:00
+     9 John Glenn     astronaut     95 TRUE       1921-07-28 00:00:00
+    10 Pat Summit     coach         64 TRUE       1952-06-14 00:00:00
+    # ℹ 1 more variable: `Date of death` <dttm>
+    ```
+
+    Now there is one header row and ten rows of data. Ages are numbers, and the two date columns
+    are dates, printed with a time of midnight that readxl attaches.
+    If you want to look at an Excel file before reading it, open a copy and leave the original
+    alone.
+
+    **SPSS.** The haven package comes with an SPSS copy of a classic dataset of iris flowers:
+
+    ```r
+    library(haven)
+    iris_spss <- read_sav(system.file("examples", "iris.sav", package = "haven"))
+    iris_spss
+    ```
+
+    ```output
+    # A tibble: 150 × 5
+       Sepal.Length Sepal.Width Petal.Length Petal.Width Species
+              <dbl>       <dbl>        <dbl>       <dbl> <dbl+lbl>
+     1          5.1         3.5          1.4         0.2 1 [setosa]
+     2          4.9         3            1.4         0.2 1 [setosa]
+     3          4.7         3.2          1.3         0.2 1 [setosa]
+     4          4.6         3.1          1.5         0.2 1 [setosa]
+     5          5           3.6          1.4         0.2 1 [setosa]
+     6          5.4         3.9          1.7         0.4 1 [setosa]
+     7          4.6         3.4          1.4         0.3 1 [setosa]
+     8          5           3.4          1.5         0.2 1 [setosa]
+     9          4.4         2.9          1.4         0.2 1 [setosa]
+    10          4.9         3.1          1.5         0.1 1 [setosa]
+    # ℹ 140 more rows
+    ```
+
+    Look at `Species`. Its type is `dbl+lbl`, a number with a label: SPSS stored the number 1 and
+    the label `setosa`, and haven keeps both. Missing-value codes declared inside an SPSS file
+    become `NA` when it is read, unless you ask otherwise.
+
+    **SAS transport.** NHANES, the National Health and Nutrition Examination Survey of the United
+    States, publishes its files as `.xpt`. This book's project holds the body measures file of
+    the 2021–2023 cycle. Read it with `read_xpt()`:
+
+    ```r
+    bmx <- read_xpt(here("data-raw", "BMX_L.xpt"))
+    dim(bmx)
+    attr(bmx$BMXWT, "label")
+    ```
+
+    ```output
+    [1] 8860   22
+    [1] "Weight (kg)"
+    ```
+
+    The file has {{n:bmx_rows}} rows, one per person examined, and {{n:bmx_cols}} columns. The
+    column names are codes, and the label carries their meaning: `BMXWT` is weight in kg. The
+    label came with the file; nobody typed it. Look at the labels of four columns, and count the
+    missing values in each. `sapply()` asks each column in turn for its label, and `colSums()`
+    adds up the missing values column by column:
+
+    ```r
+    body <- bmx[c("BMXWT", "BMXHT", "BMXBMI", "BMXWAIST")]
+    sapply(body, attr, "label")
+    colSums(is.na(body))
+    ```
+
+    ```output
+                          BMXWT                       BMXHT
+                  "Weight (kg)"      "Standing Height (cm)"
+                         BMXBMI                    BMXWAIST
+    "Body Mass Index (kg/m**2)"  "Waist Circumference (cm)"
+       BMXWT    BMXHT   BMXBMI BMXWAIST
+         106      361      389      670
+    ```
+
+    ```table
+    | Column | What it holds | Missing values |
+    | BMXWT | weight (kg) | 106 |
+    | BMXHT | standing height (cm) | 361 |
+    | BMXBMI | body mass index (kg/m^2) | 389 |
+    | BMXWAIST | waist circumference (cm) | 670 |
+    ```
+
+    BMI is missing more often than weight or height. The documentation says BMI was calculated from
+    weight and height, so it is missing whenever either one is. Check that, with `|` meaning "or":
+
+    ```r
+    sum(is.na(bmx$BMXWT) | is.na(bmx$BMXHT))
+    ```
+
+    ```output
+    [1] 389
+    ```
+
+    Exactly 389 rows lack a weight or a height, the same as the rows that lack a BMI. The four
+    counts also match the code tables printed in the survey's own codebook. These are
+    counts of rows in the file. They are not survey estimates: the survey's documentation says its
+    sample weights should be used to analyse these data, and no count or average in this book uses
+    them.
+  analogy_breaks_when: |
+    The Excel and SPSS files are examples that come inside the readxl and haven packages. Their
+    contents are not health data; they are there to show the reading.
+
+    The NHANES counts describe the people examined in one American survey cycle, at all ages,
+    infants included. They say nothing about how many people in India, or in the United States,
+    lack a measurement.
+  numbers:
+  - value: "106"
+    unit: rows with the value missing
+    citekey: nchs_nhanes_2021_2023_bmx_demo
+    as_of: '2024-09'
+    quote: |-
+      Missing 106 8860
+  - value: "361"
+    unit: rows with the value missing
+    citekey: nchs_nhanes_2021_2023_bmx_demo
+    as_of: '2024-09'
+    quote: |-
+      Missing 361 8860
+  - value: "389"
+    unit: rows with the value missing
+    citekey: nchs_nhanes_2021_2023_bmx_demo
+    as_of: '2024-09'
+    quote: |-
+      Missing 389 8860
+  - value: "670"
+    unit: rows with the value missing
+    citekey: nchs_nhanes_2021_2023_bmx_demo
+    as_of: '2024-09'
+    quote: |-
+      Missing 670 8860
+must_know:
+- point: |
+    The error is to think that a file which reads without an error has been read correctly. -99
+    read as a height raises no warning. Read the column report, and declare every missing-value
+    code from the file's documentation in `na` before you compute anything.
+  kind: misconception
+  bearing: methodological
+- point: |
+    Giving `na` replaces the default list. Write `na = c("", "NA", "-99")`, not `na = "-99"`;
+    the second form stops reading empty cells and the text "NA" as missing.
+  kind: trap
+  bearing: methodological
+- point: |
+    A number column that the report calls `chr` holds at least one value that is not a number.
+    Find it with `col_types` and `problems()`, then deal with it in code. Never open the raw file
+    and retype the cell.
+  kind: move
+  bearing: methodological
+- point: |
+    Record the MD5 checksum of every raw file in the README on the day it arrives. When someone
+    says "it's the same file", you can check in one line instead of arguing.
+  kind: move
+  bearing: methodological
+- point: |
+    Open an Excel file you were sent only as a copy. Browsing the original invites typing into it
+    or saving over it by accident. Read the original into R with `read_excel()`, giving the sheet
+    and range.
+  kind: trap
+  bearing: methodological
+- point: |
+    When a department hands over an SPSS file, read it with `read_sav()` rather than asking for an
+    Excel export. The SPSS file carries its labels and its missing-value codes; an export may drop
+    both.
+  kind: move
+  bearing: policy
+- point: |
+    Any average you compute from an NHANES file without its sample weights describes the people in
+    the file only. Say "unweighted" next to it, and never present it as the figure for the United
+    States, still less for India.
+  kind: boundary
+  bearing: public
+- point: |
+    Reading carefully catches codes and types. It cannot catch a wrong value that is a valid
+    number: a height of 182 cm typed for 128 cm reads perfectly. That needs a check on the values
+    themselves.
+  kind: boundary
+  bearing: methodological
+exercises:
+- type: retrieval
+  prompt: |
+    Without looking back, write the argument that makes `read_csv()` treat -99 as missing without
+    losing its default missing values. Then name the function that lists the values that did not
+    fit the types given in `col_types`.
+  answer: |
+    `na = c("", "NA", "-99")`. Giving `na` replaces the default list, which is the empty string and
+    the text "NA", so both go back in beside -99.
+
+    `problems()`, called on the data frame that `read_csv()` returned. It gives the row, the
+    column, the type expected and the value found.
+- type: design
+  prompt: |
+    A district team sends you `screening_2026.csv`, exported from their form. Its documentation
+    says four things:
+
+    - height and weight are in cm and kg;
+    - 999 means "not measured";
+    - "NR" means "not recorded";
+    - `village_code` is a code with leading zeros, such as 0042.
+
+    Write the reading line, with every
+    argument you need, and say what each argument protects you from.
+  answer: |
+    ```r norun
+    library(readr)
+    library(here)
+    screening <- read_csv(
+      here("data-raw", "screening_2026.csv"),
+      na = c("", "NA", "999", "NR"),
+      col_types = cols(
+        village_code = col_character(),
+        height_cm = col_double(),
+        weight_kg = col_double()
+      )
+    )
+    problems(screening)
+    ```
+
+    - `here("data-raw", ...)`: the address works on any computer that has the project.
+    - `na`: 999 and "NR" become `NA`, so 999 cm never enters a summary. The empty string and
+      "NA" stay in the list, because giving `na` replaces the default.
+    - `village_code = col_character()`: read as a number, 0042 would become 42. Read as text, it
+      stays 0042, as the documentation writes it.
+    - `height_cm` and `weight_kg` as `col_double()`: any word typed in those columns is reported
+      by `problems()` instead of turning the column into text.
+
+    Columns not named in `cols()` are still guessed. The block is shown, not run, because the file
+    is made up.
+  skill_ref: S52-R1-K01
+- type: interpretation
+  prompt: |
+    You read a made-up clinic file and `read_csv()` prints this report:
+
+    `Rows: 1250 Columns: 6`, then `chr (3): patient_id, sex, weight_kg` and `dbl (3): age_years,
+    height_cm, visit_no`.
+
+    What does the report tell you, what does it not tell you, and what do you do next?
+  answer: |
+    It tells you the file has 1250 rows and 6 columns, and that `weight_kg` was read as text.
+    Weight should be a number. So at least one cell in that column is not a number. It may hold a
+    unit ("62 kg"), a word ("absent"), or a comma used as a decimal mark.
+
+    It does not tell you which cells, how many, or whether the other numbers are right. It does
+    not tell you whether 1250 rows means 1250 patients.
+
+    Next, read again with `col_types = cols(weight_kg = col_double())`. Run `problems()` to list
+    the cells that are not numbers, and decide in code what each means. If they are a missing-value
+    code, add it to `na`.
+quantitative: true
+practice:
+- level: 1
+  prompt: |
+    Read this made-up CSV text with `read_csv()` and print the result. Wrap the text in `I()`.
+
+    ```r norun
+    "district,children,with_obesity
+    Raipur,410,23
+    Durg,385,19"
+    ```
+  answer: |
+    ```r
+    library(readr)
+    read_csv(I("district,children,with_obesity
+    Raipur,410,23
+    Durg,385,19"))
+    ```
+
+    ```output
+    Rows: 2 Columns: 3
+    ── Column specification ────────────────────────────────────────────────
+    Delimiter: ","
+    chr (1): district
+    dbl (2): children, with_obesity
+
+    ℹ Use `spec()` to retrieve the full column specification for this data.
+    ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
+    # A tibble: 2 × 3
+      district children with_obesity
+      <chr>       <dbl>        <dbl>
+    1 Raipur        410           23
+    2 Durg          385           19
+    ```
+
+    Two rows and three columns. `district` is text; the two counts are numbers.
+- level: 2
+  prompt: |
+    In this made-up text, -1 means "not recorded". Read it so that -1 becomes `NA`, keeping the
+    default missing values too, and print it.
+
+    ```r norun
+    "child_id,age_years
+    A1,7
+    A2,-1
+    A3,9"
+    ```
+  answer: |
+    ```r
+    library(readr)
+    read_csv(I("child_id,age_years
+    A1,7
+    A2,-1
+    A3,9"), na = c("", "NA", "-1"))
+    ```
+
+    ```output
+    Rows: 3 Columns: 2
+    ── Column specification ────────────────────────────────────────────────
+    Delimiter: ","
+    chr (1): child_id
+    dbl (1): age_years
+
+    ℹ Use `spec()` to retrieve the full column specification for this data.
+    ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
+    # A tibble: 3 × 2
+      child_id age_years
+      <chr>        <dbl>
+    1 A1               7
+    2 A2              NA
+    3 A3               9
+    ```
+
+    Child A2's age is `NA`. The report still says `age_years` is `dbl`.
+- level: 3
+  prompt: |
+    Read this made-up text with `col_types` given as a short string, one letter per column: `c`
+    for text and `d` for numbers. Print the result.
+
+    ```r norun
+    "ward,beds,occupied
+    A,30,27
+    B,24,24"
+    ```
+  answer: |
+    ```r
+    library(readr)
+    read_csv(I("ward,beds,occupied
+    A,30,27
+    B,24,24"), col_types = "cdd")
+    ```
+
+    ```output
+    # A tibble: 2 × 3
+      ward   beds occupied
+      <chr> <dbl>    <dbl>
+    1 A        30       27
+    2 B        24       24
+    ```
+
+    The string `"cdd"` says: first column text, second and third numbers. No report is printed,
+    because the types were given.
+- level: 4
+  prompt: |
+    Read the Excel example workbook that comes with readxl, `readxl_example("deaths.xlsx")`, taking
+    only the cells `A5:C8` of the sheet called `arts`. How many rows and columns do you get?
+  answer: |
+    ```r
+    library(readxl)
+    read_excel(readxl_example("deaths.xlsx"), range = "arts!A5:C8")
+    ```
+
+    ```output
+    # A tibble: 3 × 3
+      Name          Profession   Age
+      <chr>         <chr>      <dbl>
+    1 David Bowie   musician      69
+    2 Carrie Fisher actor         60
+    3 Chuck Berry   musician      90
+    ```
+
+    Three rows and three columns. Row 5 of the sheet became the header, and rows 6 to 8 are data.
+    The sheet can be named inside the range, as `arts!`, instead of in `sheet`.
+- level: 5
+  prompt: |
+    Read the penguin file with its column report showing. How many columns were read as text, as
+    numbers and as dates? Which numeric columns would you expect, from their names?
+  answer: |
+    ```r
+    library(readr)
+    library(here)
+    penguins <- read_csv(here("data-raw", "penguins_raw.csv"))
+    ```
+
+    ```output
+    here() starts at ~/project
+    Rows: 344 Columns: 17
+    ── Column specification ────────────────────────────────────────────────
+    Delimiter: ","
+    chr  (9): studyName, Species, Region, Island, Stage, Individual ID, ...
+    dbl  (7): Sample Number, Culmen Length (mm), Culmen Depth (mm), Flip...
+    date (1): Date Egg
+
+    ℹ Use `spec()` to retrieve the full column specification for this data.
+    ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
+    ```
+
+    Nine as text (`chr`), seven as numbers (`dbl`), one as a date. The seven numeric columns
+    include the four measurements whose names carry a unit, `(mm)` or `(g)`, and the two isotope
+    ratios. The seventh is `Sample Number`, a running number, which is stored as a number but is
+    not a measurement.
+- level: 6
+  prompt: |
+    Read the NHANES demographics file, `DEMO_L.xpt`, from the project's `data-raw` folder. Give its
+    number of rows and columns, and the label of the column `RIDAGEYR`.
+  answer: |
+    ```r
+    library(haven)
+    library(here)
+    demo <- read_xpt(here("data-raw", "DEMO_L.xpt"))
+    dim(demo)
+    attr(demo$RIDAGEYR, "label")
+    ```
+
+    ```output
+    here() starts at ~/project
+    [1] 11933    27
+    [1] "Age in years at screening"
+    ```
+
+    11933 rows and 27 columns. `RIDAGEYR` is age in years at screening. The demographics file has
+    more rows than the body measures file, because not everyone screened was examined.
+  refs:
+  - nchs_nhanes_2021_2023_bmx_demo
+- level: 7
+  prompt: |
+    A resident wants all the measurements read as numbers. She writes this, gets a warning, and
+    notes "child IDs missing in the file". Run it. Find what broke and why her note looks
+    reasonable. The data are made up.
+
+    ```r
+    library(readr)
+    camp <- read_csv(I("child_id,height_cm,weight_kg
+    S01,128,26.0
+    S02,133,24.5
+    S03,131,27.5"), col_types = cols(.default = col_double()))
+    camp
+    ```
+
+    ```output
+    Warning message:
+    One or more parsing issues, call `problems()` on your data frame for
+    details, e.g.:
+      dat <- vroom(...)
+      problems(dat)
+    # A tibble: 3 × 3
+      child_id height_cm weight_kg
+         <dbl>     <dbl>     <dbl>
+    1       NA       128      26
+    2       NA       133      24.5
+    3       NA       131      27.5
+    ```
+  answer: |
+    The `col_types` line broke. `.default = col_double()` says every column is numbers, including
+    `child_id`. "S01" is not a number, so every ID became `NA`. The IDs are in the file. The code
+    threw them away.
+
+    Her note looks reasonable because the result shows `NA` in the ID column, and `NA` reads as
+    "missing". The warning said what happened: values did not fit the type she asked for.
+
+    Name the ID column as text and let the rest default to numbers:
+
+    ```r
+    camp <- read_csv(I("child_id,height_cm,weight_kg
+    S01,128,26.0
+    S02,133,24.5
+    S03,131,27.5"), col_types = cols(child_id = col_character(), .default = col_double()))
+    camp
+    ```
+
+    ```output
+    # A tibble: 3 × 3
+      child_id height_cm weight_kg
+      <chr>        <dbl>     <dbl>
+    1 S01            128      26
+    2 S02            133      24.5
+    3 S03            131      27.5
+    ```
+- level: 8
+  prompt: |
+    The penguin file has no -99 codes, but a resident adds `na = "-99"` to be safe. Then she counts
+    the penguins of unknown sex and finds none. Run her code. Find what broke, and why the answer
+    looked believable.
+
+    ```r
+    library(readr)
+    library(here)
+    penguins <- read_csv(here("data-raw", "penguins_raw.csv"), na = "-99")
+    sum(is.na(penguins$Sex))
+    ```
+
+    ```output
+    here() starts at ~/project
+    Rows: 344 Columns: 17
+    ── Column specification ────────────────────────────────────────────────
+    Delimiter: ","
+    chr  (15): studyName, Species, Region, Island, Stage, Individual ID,...
+    dbl   (1): Sample Number
+    date  (1): Date Egg
+
+    ℹ Use `spec()` to retrieve the full column specification for this data.
+    ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
+    [1] 0
+    ```
+  answer: |
+    The `na = "-99"` argument broke it. It replaced the default list, so the text "NA" in the file
+    is no longer read as missing. The 11 penguins of unknown sex now have the text "NA" as their
+    sex, which is not `NA`, so the count is 0. The report gives it away: 15 columns are now `chr`,
+    because "NA" in a number column is a word, not a number.
+
+    The answer looked believable because 0 is a possible count, and nothing stopped. Keep the
+    defaults in the list:
+
+    ```r
+    penguins <- read_csv(here("data-raw", "penguins_raw.csv"), na = c("", "NA", "-99"),
+                         show_col_types = FALSE)
+    sum(is.na(penguins$Sex))
+    ```
+
+    ```output
+    [1] 11
+    ```
+
+    Eleven penguins have no sex recorded.
+  refs:
+  - horst_2020_palmerpenguins
+- level: 9
+  prompt: |
+    A slide at a journal club says: "NHANES 2021–2023 measured 8860 people; their mean weight was
+    70.5 kg." Check the two numbers against the body measures file, and say what the slide's
+    sentence does not establish.
+  answer: |
+    ```r
+    library(haven)
+    library(here)
+    bmx <- read_xpt(here("data-raw", "BMX_L.xpt"))
+    nrow(bmx)
+    sum(!is.na(bmx$BMXWT))
+    mean(bmx$BMXWT, na.rm = TRUE)
+    min(bmx$BMXWT, na.rm = TRUE)
+    ```
+
+    ```output
+    here() starts at ~/project
+    [1] 8860
+    [1] 8754
+    [1] 70.54904
+    [1] 2.7
+    ```
+
+    The file has 8860 rows. Only 8754 of them have a weight, so the mean is over 8754 people, not
+    8860:
+
+    ```working
+    8860 − 106 = 8754
+    ```
+
+    The mean of those weights is 70.54904 kg, which rounds to 70.5 kg. So both numbers can be
+    reproduced from the file. The smallest weight is 2.7 kg, an infant: the file covers all ages.
+
+    What the sentence does not establish:
+
+    - The average weight of Americans. This mean is unweighted. The survey's documentation says its
+      sample weights should be used, and they were not.
+    - The average weight of adults. Children and infants are in the 8754.
+    - Anything about India. It is one survey of the United States.
+  refs:
+  - nchs_nhanes_2021_2023_bmx_demo
+- level: 10
+  prompt: |
+    A colleague says: "I only opened the CSV in Excel to look at it and saved it. Nothing changed;
+    it is still the original." The project's README recorded the file's MD5 checksum on the day it
+    arrived: `049da101568e078f9845c8b366481810`. Decide what to compute, and compute it for the
+    project's copy. Then show what a single hand edit does to the checksum, using a copy in
+    `output/`. Say what the check does not establish.
+  answer: |
+    Compute the checksum of the file the analysis reads, and compare it with the one in the
+    README:
+
+    ```r
+    library(readr)
+    library(here)
+    raw_path <- here("data-raw", "penguins_raw.csv")
+    unname(tools::md5sum(raw_path)) == "049da101568e078f9845c8b366481810"
+    ```
+
+    ```output
+    here() starts at ~/project
+    [1] TRUE
+    ```
+
+    TRUE: this copy is byte for byte the file that arrived. Now see what a single change does.
+    Make a copy in `output/` and change one character on one line, the way a hand edit would:
+
+    ```r
+    lines <- readLines(raw_path)
+    lines[2] <- sub("3750", "3760", lines[2])
+    dir.create(here("output"), showWarnings = FALSE)
+    writeLines(lines, here("output", "penguins_edited.csv"))
+    unname(tools::md5sum(here("output", "penguins_edited.csv")))
+    ```
+
+    ```output
+    [1] "ca70412ca7d8c1908ef8530279c1111f"
+    ```
+
+    One digit changed, and the checksum is completely different. If your colleague's saved file
+    gives the README's checksum, nothing changed. If it gives anything else, something did, even if
+    the cells look the same on screen.
+
+    What the check does not establish:
+
+    - What changed, or whether it matters. A different checksum says the bytes differ. It does not
+      say which value, or whether a spreadsheet only changed how a date was written.
+    - That the original was correct. The checksum only ties today's file to the day it arrived.
+    - Which file the analysis used, if the script reads some other copy. Check the path in the
+      script as well.
+retrieval_items:
+- q: What is inside a CSV file?
+  a: Plain text. One line per row, values separated by commas, and a header line with the column names. Nothing says what type each column is.
+- q: What are `read_csv()`'s default missing values, and what happens when you give `na` yourself?
+  a: The empty string and the text "NA". Giving `na` replaces that list, so include `""` and `"NA"` along with your own codes.
+- q: What does `col_types` do, and where do you find the values that did not fit?
+  a: It states the type each column should have. A value that does not fit becomes `NA`, readr warns, and `problems()` lists each one with its row and column.
+- q: Which functions read Excel, SPSS and SAS transport files, and from which packages?
+  a: '`read_excel()` from readxl; `read_sav()` and `read_xpt()` from haven.'
+figures:
+- file: s52-r1-c09-nhanes-missing.png
+  caption: "Missing values in four body-measure columns of the NHANES 2021–2023 body measures file, as read_xpt() reads it: weight 106, height 361, BMI 389, waist 670 rows. BMI is missing in exactly the 389 rows that lack a weight or a height. These are counts of rows in the file, not survey estimates."
+  alt: "A bar chart with four bars. BMXWT 106, BMXHT 361, BMXBMI 389, BMXWAIST 670 missing values."
+  source: draw.py
+  spec:
+    kind: bar
+    from_table: {block: 0, x: 0, y: [2]}
+    x_label: column of BMX_L
+    y_label: rows with the value missing
+    y_range: [0, 750]
+    value_labels: true
+    relations:
+    - check: "y[2] = 389"
+provenance:
+  map_version_id: fc19c8bc-a216-4131-99fb-ebe3f19cec4a
+  outcome_refs:
+  - S52-R1-S1
+  - S52-R1-S2
+  - S52-R1-O3
+  bridge_ref:
+  - S52-R2-P05
+review:
+  stability: long
+  trigger: '2031-10-02'
+  last_reviewed: '2026-10-02'
+status: drafted

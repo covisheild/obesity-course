@@ -1,0 +1,653 @@
+concept_id: S52-R1-C10
+subject: S52
+rung: 1
+sequence: 10
+name: The data dictionary and the README
+concept_type: derivable
+clusters:
+- craft-and-integrity
+ground_floor_deps:
+- B0-R0-C39
+- B0-R0-C09
+concept_deps:
+- S52-R1-C07
+- S52-R1-C08
+- S52-R1-C09
+definition:
+  text: |
+    A data dictionary is a separate file, laid out as a table, that explains every variable in one
+    data file. It has one row per variable. Its columns give the variable's exact name as it appears
+    in the data file, a plain label and what the variable means. They also give its unit, its type,
+    the values it is allowed to take or its expected range, how a missing value is written, and
+    where each entry came from. It is written once, before any cleaning, from the documentation of whoever made the data,
+    and each entry is then checked against the file.
+
+    A README is a short plain-text file at the top of the project folder. It gives the project's
+    title and what it is for. It says where the raw data came from, which version, and on what
+    terms, and where the data dictionary is. It gives the one command that reruns the analysis, and
+    the folder to run it from. It says what each output file is, and whom to contact.
+
+    A project shared in a public repository adds two more files beside the README. A LICENSE says on
+    what terms others may reuse the code and data. A CITATION says how to cite the project.
+  references:
+  - citekey: broman_woo_2018_tas
+    kind: primary
+    locator: 'section 8 "Create a Data Dictionary", first paragraph'
+    quote: |-
+      It is helpful to have a separate file that explains what all of the variables are. It is helpful if this is laid out in rectangular form, so that the data analyst can make use of it in analyses.
+    verified:
+      resolved_id: https://doi.org/10.1080/00031305.2017.1375989
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+      note: |-
+        Typeset article, CC BY-NC-ND 4.0: quoted briefly, not adapted. The section's list goes on:
+        "The exact variable name as in the data file", "A longer explanation of what the variable
+        means", "The measurement units", "Expected minimum and maximum values" (each line preceded
+        in the text layer by a stray "r", the extraction's rendering of a bullet).
+  - citekey: broman_woo_2018_tas
+    kind: primary
+    locator: 'section 8 "Create a Data Dictionary": the exact name, and the units'
+    quote: |-
+      The exact variable name as in the data file
+    verified:
+      resolved_id: https://doi.org/10.1080/00031305.2017.1375989
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+  - citekey: broman_woo_2018_tas
+    kind: primary
+    locator: 'section 8 "Create a Data Dictionary", last paragraph: allowed values'
+    quote: |-
+      information about the allowed values for the variables would be helpful in identifying data entry errors.
+    verified:
+      resolved_id: https://doi.org/10.1080/00031305.2017.1375989
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+  - citekey: broman_woo_2018_tas
+    kind: primary
+    locator: 'section 8 "Create a Data Dictionary": metadata and the ReadMe file'
+    quote: |-
+      This is part of the metadata that you will want to prepare: information about the data. You will also want a ReadMe file that includes an overview of the project and data.
+    verified:
+      resolved_id: https://doi.org/10.1080/00031305.2017.1375989
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+  - citekey: wilson_2017
+    kind: primary
+    locator: 'Collaboration, 3a "Create an overview of your project": what a README holds'
+    quote: |-
+      This file (generally called README, README.txt, or something similar) should contain the project's title, a brief description, up-to-date contact information, and an example or 2 of how to run various cleaning or analysis tasks.
+    verified:
+      resolved_id: https://doi.org/10.1371/journal.pcbi.1005510
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+  - citekey: wilson_2017
+    kind: primary
+    locator: 'Data management, 1a "Save the raw data": record how the raw data were obtained'
+    quote: |-
+      record the exact procedure used to obtain the raw data, as well as any other pertinent information, such as an official version number or the date of download.
+    verified:
+      resolved_id: https://doi.org/10.1371/journal.pcbi.1005510
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+      note: |-
+        Wilson and colleagues give this for data too large to copy locally; the README here records
+        the version and source of a file that is copied, which the same sentence's reasoning covers.
+  - citekey: wilson_2017
+    kind: primary
+    locator: 'Project organization, 4c: raw data and metadata in a data directory'
+    quote: |-
+      Put raw data and metadata in a data directory and files generated during cleanup and analysis in a results directory (4c)
+    verified:
+      resolved_id: https://doi.org/10.1371/journal.pcbi.1005510
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+  - citekey: wilson_2017
+    kind: primary
+    locator: 'Collaboration, 3d "Make the license explicit"'
+    quote: |-
+      Have a LICENSE file in the project's home directory that clearly states what license(s) apply to the project's software, data, and manuscripts.
+    verified:
+      resolved_id: https://doi.org/10.1371/journal.pcbi.1005510
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+  - citekey: wilson_2017
+    kind: primary
+    locator: 'Collaboration, 3d: the licences recommended, CC-0 among them'
+    quote: |-
+      We recommend Creative Commons licenses for data and text, either CC-0 (the "No Rights Reserved" license) or CC-BY
+    verified:
+      resolved_id: https://doi.org/10.1371/journal.pcbi.1005510
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+      note: |-
+        Wilson and colleagues write CC-0; the palmerpenguins DESCRIPTION writes CC0. Same licence
+        name; the deed itself is not held.
+  - citekey: wilson_2017
+    kind: primary
+    locator: 'Collaboration, 3e "Make the project citable"'
+    quote: |-
+      Make the project citable (3e) by including a CITATION file in the project's home directory that describes how to cite this project as a whole
+    verified:
+      resolved_id: https://doi.org/10.1371/journal.pcbi.1005510
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+  - citekey: wilson_2017
+    kind: primary
+    locator: 'Data management, 1c "Create the data you wish to see in the world": variable names and codes'
+    quote: |-
+      replace artificial codes for missing data, such as "-99," with NA, a code used in most programming languages to indicate that data are "Not Available"
+    verified:
+      resolved_id: https://doi.org/10.1371/journal.pcbi.1005510
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+  - citekey: sandve_2013
+    kind: primary
+    locator: 'Rule 1 "For Every Result, Keep Track of How It Was Produced", minimum'
+    quote: |-
+      As a minimum, you should at least record sufficient details on programs, parameters, and manual procedures to allow yourself, in a year or so, to approximately reproduce the results.
+    verified:
+      resolved_id: https://doi.org/10.1371/journal.pcbi.1003285
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+  - citekey: horst_2020_palmerpenguins
+    kind: textbook
+    locator: 'help page "penguins_raw" (palmerpenguins 0.1.1), Format: the 17 variables'
+    quote: |-
+      A tibble with 344 rows and 17 variables:
+    verified:
+      resolved_id: https://cran.r-project.org/package=palmerpenguins
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+      note: |-
+        The documentation the illustration writes the dictionary from. The help page names the
+        variables without the units the file's header carries ("Culmen Length", not "Culmen Length
+        (mm)").
+  - citekey: horst_2020_palmerpenguins
+    kind: textbook
+    locator: 'help page "penguins_raw", Format: Individual ID'
+    quote: |-
+      Individual ID a character string denoting the unique ID for each individual in dataset
+    verified:
+      resolved_id: https://cran.r-project.org/package=palmerpenguins
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+  - citekey: horst_2020_palmerpenguins
+    kind: textbook
+    locator: 'help page "penguins_raw", Format: Culmen Length and Body Mass, with their units'
+    quote: |-
+      Culmen Length a number denoting the length of the dorsal ridge of a bird's bill (millimeters)
+    verified:
+      resolved_id: https://cran.r-project.org/package=palmerpenguins
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+      note: |-
+        The same list: "Body Mass an integer denoting the penguin body mass (grams)"; "Delta 15 N a
+        number denoting the measure of the ratio of stable isotopes 15N:14N", with no unit.
+  - citekey: horst_2020_palmerpenguins
+    kind: textbook
+    locator: 'DESCRIPTION file (palmerpenguins 0.1.1): licence'
+    quote: |-
+      License: CC0
+    verified:
+      resolved_id: https://cran.r-project.org/package=palmerpenguins
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+  - citekey: horst_2020_palmerpenguins
+    kind: textbook
+    locator: 'help page "penguins_raw", Source: who collected the data, and the first publication'
+    quote: |-
+      Originally published in: Gorman KB, Williams TD, Fraser WR (2014)
+    verified:
+      resolved_id: https://cran.r-project.org/package=palmerpenguins
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+      note: |-
+        The same Source section opens each species' entry "Palmer Station Antarctica LTER and K.
+        Gorman. 2020." The README in the second illustration names both. The installed and CRAN
+        version is 0.1.1 (file header and DESCRIPTION).
+  - citekey: rdocs_s52r1_readr
+    kind: textbook
+    locator: 'vignette "readr" (readr 2.1.5), column specification: spec()'
+    quote: |-
+      You can also access it after the fact using spec():
+    verified:
+      resolved_id: rvignette://readr@2.1.5/readr
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+  - citekey: rdocs_s52r1_dplyr
+    kind: textbook
+    locator: 'help page "n_distinct" (dplyr 1.1.4), Description'
+    quote: |-
+      'n_distinct()' counts the number of unique/distinct combinations in a set of one or more vectors.
+    verified:
+      resolved_id: rhelp://dplyr@1.1.4/n_distinct
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+  - citekey: rdocs_s52r1_dplyr
+    kind: textbook
+    locator: 'help page "count" (dplyr 1.1.4), Description'
+    quote: |-
+      'count()' lets you quickly count the unique values of one or more variables
+    verified:
+      resolved_id: rhelp://dplyr@1.1.4/count
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+simplified_explanation: |
+  Book 0 taught four questions to ask of any table before reading a number. What does one row stand
+  for? What does each column report? In what unit? Where did the numbers come from? A data
+  dictionary is those answers, written down once, for every column of your raw file, so nobody has to
+  guess them again.
+
+  It is itself a small table, one row per column of the data. For each column it says:
+
+  - the exact name, letter for letter, as it is in the file;
+  - what the column means, in plain words;
+  - its unit;
+  - its type: number, text or date;
+  - the values it may take, or the range you expect;
+  - how a missing value is written;
+  - where you got each of these facts.
+
+  Write it before you clean anything, from the documents that came with the data. Then check it
+  against the file in code. The documents describe what the data's makers meant. The file is what
+  they delivered, and the two do not always agree.
+
+  A README is the note on the front of the project folder. It is a plain-text file that anyone can
+  open. It says what the project is, and where the raw data came from and on what terms. It gives
+  the one command that reruns everything, and says what each output is. Someone who has never met you should be able to
+  read it and rerun your analysis. That someone is often you, a year later.
+
+  A project put online for others has two more files beside the README. A LICENSE says what others
+  may do with it. A CITATION says how to cite it. Both belong to the next level of this subject.
+illustrations:
+- body: |
+    Write a dictionary for the penguin file, and watch the documentation and the file disagree.
+
+    The documentation is the help page of the palmerpenguins package. It describes "a tibble with 344
+    rows and 17 variables", one paragraph each. Copy its names into the first column of your
+    dictionary: studyName, Sample Number, Species, and on to Culmen Length, Culmen Depth, Flipper
+    Length, Body Mass, Sex, Delta 15 N, Delta 13 C, Comments.
+
+    Now check them against the file. Read it, then ask `spec()` for the column specification that
+    `read_csv()` used. It lists every column's name exactly as the file has it, with the type it was
+    read as.
+
+    ```r
+    library(readr)
+    library(dplyr)
+
+    penguins_raw <- read_csv(
+      here::here("data-raw", "penguins_raw.csv"),
+      show_col_types = FALSE
+    )
+
+    spec(penguins_raw)
+
+    nrow(penguins_raw)
+    ```
+
+    ```output
+
+    Attaching package: ‘dplyr’
+
+    The following objects are masked from ‘package:stats’:
+
+        filter, lag
+
+    The following objects are masked from ‘package:base’:
+
+        intersect, setdiff, setequal, union
+
+    cols(
+      studyName = col_character(),
+      `Sample Number` = col_double(),
+      Species = col_character(),
+      Region = col_character(),
+      Island = col_character(),
+      Stage = col_character(),
+      `Individual ID` = col_character(),
+      `Clutch Completion` = col_character(),
+      `Date Egg` = col_date(format = ""),
+      `Culmen Length (mm)` = col_double(),
+      `Culmen Depth (mm)` = col_double(),
+      `Flipper Length (mm)` = col_double(),
+      `Body Mass (g)` = col_double(),
+      Sex = col_character(),
+      `Delta 15 N (o/oo)` = col_double(),
+      `Delta 13 C (o/oo)` = col_double(),
+      Comments = col_character()
+    )
+    [1] 344
+    ```
+
+    17 columns and 344 rows, as the help page said. But read the names. The file says
+    `Culmen Length (mm)`, `Flipper Length (mm)`, `Body Mass (g)` and `Delta 15 N (o/oo)`, with a unit
+    in brackets after the name. Six of the names you copied
+    are not the names in the file. Any line of code written from your dictionary would fail on
+    them. The dictionary's first column must hold the name exactly as the file has it.
+
+    The units are a second difference. The help page gives millimetres and grams in words. It gives
+    no unit for the two isotope columns; the file's own header writes "o/oo" after them. So the unit
+    column of your dictionary says "o/oo, as written in the column name; the help page gives no unit".
+    That cell records exactly what you know and where it came from, and no more.
+
+    The third difference is in the identifiers. The help page calls `Individual ID` "the unique ID for
+    each individual in dataset". Count how many different values the column holds:
+
+    ```r
+    n_distinct(penguins_raw$`Individual ID`)
+    ```
+
+    ```output
+    [1] 190
+    ```
+
+    190 different IDs in 344 rows. So an ID can appear on more than one row. The help page does not
+    say why, and this book does not guess. What the dictionary records is what you found. Then find
+    something that does pick out one row each. Species with sample number does:
+
+    ```r
+    n_distinct(penguins_raw$Species, penguins_raw$`Sample Number`)
+    ```
+
+    ```output
+    [1] 344
+    ```
+
+    344 combinations for 344 rows: one each.
+
+    Last, the allowed values and the missing code. The help page says only that Sex is "a character
+    string". `count()` lists each value with the number of rows that hold it:
+
+    ```r
+    penguins_raw |>
+      count(Sex)
+    ```
+
+    ```output
+    # A tibble: 3 × 2
+      Sex        n
+      <chr>  <int>
+    1 FEMALE   165
+    2 MALE     168
+    3 <NA>      11
+    ```
+
+    Two values, FEMALE and MALE, in capitals, and 11 rows missing. To see how the file writes a missing
+    value, look at its first lines as plain text:
+
+    ```sh
+    head -n 5 data-raw/penguins_raw.csv
+    ```
+
+    ```output
+    studyName,Sample Number,Species,Region,Island,Stage,Individual ID,Clutch Completion,Date Egg,Culmen Length (mm),Culmen Depth (mm),Flipper Length (mm),Body Mass (g),Sex,Delta 15 N (o/oo),Delta 13 C (o/oo),Comments
+    PAL0708,1,Adelie Penguin (Pygoscelis adeliae),Anvers,Torgersen,"Adult, 1 Egg Stage",N1A1,Yes,2007-11-11,39.1,18.7,181,3750,MALE,NA,NA,Not enough blood for isotopes.
+    PAL0708,2,Adelie Penguin (Pygoscelis adeliae),Anvers,Torgersen,"Adult, 1 Egg Stage",N1A2,Yes,2007-11-11,39.5,17.4,186,3800,FEMALE,8.94956,-24.69454,NA
+    PAL0708,3,Adelie Penguin (Pygoscelis adeliae),Anvers,Torgersen,"Adult, 1 Egg Stage",N2A1,Yes,2007-11-16,40.3,18,195,3250,FEMALE,8.36821,-25.33302,NA
+    PAL0708,4,Adelie Penguin (Pygoscelis adeliae),Anvers,Torgersen,"Adult, 1 Egg Stage",N2A2,Yes,2007-11-16,NA,NA,NA,NA,NA,NA,NA,Adult not sampled.
+    ```
+
+    The fourth penguin, N2A2, has `NA` where its measurements should be. So the file writes a missing
+    value as `NA`, which `read_csv()` reads as missing without being told.
+
+    Here is the dictionary, for the columns this book uses most. Each entry says where it came from.
+
+    ```table
+    | Variable, exactly as in the file | Meaning | Unit | Type | Allowed values | Source |
+    | Species | penguin species | none | text | three spellings, listed by count(Species) | help page; values from the file |
+    | Island | island where the sample was taken | none | text | Biscoe, Dream, Torgersen | help page; values from the file |
+    | Individual ID | identifier of the penguin | none | text | not one per row: 190 values in 344 rows | help page says unique; the file disagrees |
+    | Sample Number | running number of the sample | none | number | with Species, one per row | help page; checked in the file |
+    | Culmen Length (mm) | length of the ridge along the top of the bill | mm | number | expected range not stated | help page; name from the file |
+    | Body Mass (g) | body mass | g | number | expected range not stated | help page; name from the file |
+    | Sex | sex of the penguin | none | text | FEMALE, MALE | help page; values from the file |
+    | Delta 15 N (o/oo) | ratio of the nitrogen isotopes 15N to 14N | o/oo, from the column name | number | expected range not stated | help page; unit from the file |
+    ```
+
+    The full dictionary has 17 rows, one for each column, and one more fact for the whole file:
+    missing values are written `NA`. Save it as a CSV file, `penguins_raw_dictionary.csv`, beside the
+    raw file in `data-raw/`. Raw data and the facts about it belong together. You type the dictionary
+    once, by hand, before any cleaning. No code ever writes to that folder.
+
+    Notice the cells that say "expected range not stated". Broman and Woo suggest giving the expected
+    minimum and maximum of each variable. The help page gives none. Do not fill the cell with the
+    smallest and largest values in this file: those describe the file, not what is possible, so they
+    could not catch an error. Leave it saying what you know, until a source or a decision fills it.
+  analogy_breaks_when: |
+    The penguin file came with documentation written by the people who made it. Many files do not: a
+    register handed over from a clinic may come with nothing. Then the dictionary is written from
+    asking the people who collected it, and its source column says so, name and date.
+
+    A dictionary says what the values should be. It does not check them. Turning "allowed values" and
+    "expected range" into lines of code that stop the script comes later in this book.
+- body: |
+    Now the README. Picture the project folder handed to a colleague who has never seen it. They can
+    see `data-raw/`, `code/` and `output/`. What can they not tell from the folder alone? Where the
+    raw file came from, and whether they may use it. Which file to run, and from where. Which output
+    is the final table. Whom to ask.
+
+    The README answers those, in that order. Type it into a plain-text file called `README.txt` at the
+    top of the folder:
+
+    > Penguin body mass by species
+    >
+    > An analysis of adult penguin body mass by species and sex, written while learning R.
+    >
+    > Raw data: `data-raw/penguins_raw.csv`, copied unchanged from the palmerpenguins R package,
+    > version 0.1.1, licence CC0. The data were collected by Palmer Station Antarctica LTER and
+    > K. Gorman, and first published by Gorman, Williams and Fraser in PLoS ONE in 2014.
+    >
+    > Data dictionary: `data-raw/penguins_raw_dictionary.csv`.
+    >
+    > To rerun: open a terminal in this folder and type `Rscript code/analysis.R`. The script reads
+    > the raw file, writes everything it makes into `output/`, and changes nothing in `data-raw/`.
+    >
+    > Outputs: a table of body mass by species and a figure of it, both in `output/`.
+    >
+    > Written with R {{n:r_version}}. Contact: your name and email address.
+
+    CC0 is the licence the package's own files state. Wilson and colleagues describe it as the "No
+    Rights Reserved" licence: anyone may reuse the data without asking.
+
+    Read it back as the colleague. Each question they had is answered in a line. The line "To rerun"
+    is the one that matters most. If you cannot write it yet, because the analysis needs a click
+    somewhere or a step done by hand, the analysis cannot be rerun, and the README has told you so
+    before anyone else finds out.
+
+    Notice what the README does not do. It does not describe each column; the dictionary does that.
+    It does not explain each step of the analysis; the comments in the script do that. It points to
+    both.
+  analogy_breaks_when: |
+    The README's "To rerun" line is a claim. It is true only if someone has run that command, in a
+    fresh session, and got the outputs it promises. Writing the line does not make it true; running
+    it from a clean start, later in this book, is how you find out.
+
+    The outputs line here is general, because the script is not written yet. A finished README names
+    each output file.
+must_know:
+- point: |
+    The error is to think the documentation describes the file. It describes what the data's makers
+    meant to deliver. Check every entry of your dictionary against the file in code: the names, the
+    values, and whether an ID is really one per row.
+  kind: misconception
+  bearing: methodological
+- point: |
+    Write the variable name in the dictionary exactly as the file has it, letter for letter, with
+    its spaces and brackets. A name copied from the documentation can differ, and code written from
+    it will fail.
+  kind: trap
+  bearing: methodological
+- point: |
+    Write the dictionary before you clean. Every cleaning step needs it: which code means missing,
+    which unit a column is in, which values are allowed. A dictionary written after cleaning
+    describes your cleaned data and hides what the raw file held.
+  kind: move
+  bearing: methodological
+- point: |
+    Record how missing values are written in the raw file, for each column if they differ: blank,
+    `NA`, -99, "not recorded". That one cell decides what you tell `read_csv()` and whether a -99
+    ends up inside a mean.
+  kind: consequence
+  bearing: methodological
+- point: |
+    Never fill an "expected range" cell with the smallest and largest values in your own file. A
+    range taken from the data can never flag an error in the data. Leave it blank and say why, until
+    a source or a protocol gives the range.
+  kind: trap
+  bearing: methodological
+- point: |
+    Write the README's rerun line as the exact command. If you cannot, because some step is done by
+    hand, you have found the step that makes your analysis unrepeatable. Move it into code.
+  kind: move
+  bearing: methodological
+- point: |
+    When a trainee hands you a thesis dataset, ask for its dictionary before you look at a single
+    number. If there is none, ask them to write one row: one variable, its unit, its missing code,
+    and where they got each. Most of what will go wrong shows up in that row.
+  kind: move
+  bearing: teaching
+- point: |
+    A dictionary and a README describe the data and how to rerun the analysis. They do not make
+    either one right. A dictionary can faithfully describe a column full of errors.
+  kind: boundary
+  bearing: methodological
+exercises:
+- type: design
+  prompt: |
+    A made-up thesis dataset, `school_heights.csv`, has these columns: `child_id`, `school`, `sex`
+    (coded 1 and 2), `dob`, `visit_date`, `height_cm` (to 0.1 cm), `weight_kg` (to 0.1 kg). The
+    data-entry operator typed -99 wherever a measurement was not taken. The study protocol says
+    `sex` is 1 for boys and 2 for girls, and gives no expected ranges. Write the data dictionary.
+  answer: |
+    One dictionary. Yours may word the meanings differently; check that every column is there, that
+    names are exact, and that every entry says where it came from.
+
+    ```table
+    | Variable | Meaning | Unit | Type | Allowed values or range | Missing written as | Source |
+    | child_id | the child's study number | none | text | one per child | none expected | protocol; check one per row in the file |
+    | school | school the child attends | none | text | the schools listed in the protocol | none expected | protocol |
+    | sex | sex of the child | none | number code | 1 = boy, 2 = girl | none expected | protocol |
+    | dob | date of birth | none | date | before visit_date | none expected | protocol; check the date format in the file |
+    | visit_date | date of measurement | none | date | within the study period | none expected | protocol |
+    | height_cm | standing height, to 0.1 cm | cm | number | not stated | -99 | protocol; missing code from the operator |
+    | weight_kg | weight, to 0.1 kg | kg | number | not stated | -99 | protocol; missing code from the operator |
+    ```
+
+    Three things to notice. The codes 1 and 2 are written out, because nobody can recover "1 = boy"
+    from the file. The -99 is recorded, so it can be declared as missing when the file is read, and
+    never averaged. And the expected ranges say "not stated" rather than being filled from the
+    data, because the protocol gives none.
+
+    Before cleaning, you would check each "one per child" and each code against the file, as the
+    illustration did.
+  skill_ref: S52-R1-K02
+- type: critique
+  prompt: |
+    A colleague's project folder has this README, in full: "Analysis code for my thesis. Run the
+    scripts in order. Data from the department." Name what is missing, and say what each gap would
+    cost the next person.
+  answer: |
+    Almost everything a README is for.
+
+    - **No title or purpose.** The next person cannot tell which thesis, or what question.
+    - **No source for the raw data.** "The department" names no file, no version, no date and no
+      terms. Nobody can get a fresh copy, or say whether they may use it.
+    - **No rerun command.** "Run the scripts in order" leaves the order to be guessed, and says
+      nothing about where to run them from. If the order matters, it belongs in the code: one
+      script that runs the others, named in one line.
+    - **No outputs.** The next person cannot tell which file is the final table.
+    - **No pointer to a data dictionary**, so the meanings of columns and codes are lost.
+    - **No contact.** When it breaks, there is nobody to ask.
+
+    The cost is the same each time. The next person has to guess what one paragraph could have said.
+    That person may be your colleague, a year later.
+  skill_ref: S52-R1-K02
+- type: retrieval
+  prompt: |
+    Without looking back, list what a data dictionary records for each variable, and what a README
+    says.
+  answer: |
+    For each variable, the data dictionary records seven things:
+
+    - its exact name as in the file;
+    - what it means;
+    - its unit;
+    - its type;
+    - its allowed values or expected range;
+    - how a missing value is written;
+    - where each of these facts came from.
+
+    The README says six things:
+
+    - the project's title and purpose;
+    - where the raw data came from, which version, and on what terms;
+    - where the data dictionary is;
+    - the one command that reruns the analysis, and where to run it from;
+    - what each output is;
+    - whom to contact.
+- type: teaching
+  prompt: |
+    A health secretary asks, on one page: "Why should a district survey's data come with a data
+    dictionary? We have the data."
+  answer: |
+    Without a dictionary, the data cannot be read safely by anyone except the people who entered it.
+
+    A data file holds names and numbers. It does not say what "sex = 2" means, whether height is in
+    centimetres or metres, or that -99 means "not measured". Those facts live in the heads of a few
+    staff, or in a protocol nobody attaches. When those staff move on, the facts go with them.
+
+    The cost of not having one is concrete. A -99 read as a real value pulls an average down. A
+    height read in the wrong unit makes every derived index wrong by a large factor. A code read the
+    wrong way round swaps two groups. Each produces a confident, wrong number in a report.
+
+    A dictionary is one table, one row per column, written once when the data are collected. It
+    costs an afternoon. Ask that every dataset the department releases or commissions comes with one,
+    and that the dictionary is checked against the file before any analysis.
+retrieval_items:
+- q: What does a data dictionary hold for each variable?
+  a: Its exact name as in the file, its meaning, its unit, its type, its allowed values or expected
+    range, how a missing value is written, and where each entry came from.
+- q: When is a data dictionary written, and from what?
+  a: Once, before any cleaning, from the documentation of whoever made the data. Then each entry is
+    checked against the file.
+- q: Name the parts of a README.
+  a: Title and purpose; where the raw data came from, which version and on what terms; where the
+    data dictionary is; the one command that reruns the analysis and where to run it from; what each
+    output is; whom to contact.
+- q: Why should an "expected range" not be filled from the smallest and largest values in your file?
+  a: A range taken from the data describes the data, so it can never flag an error in the data.
+figure_note: "The section's two products are a table and a short text file, both shown in full; a figure would be a table drawn as a picture."
+provenance:
+  map_version_id: fc19c8bc-a216-4131-99fb-ebe3f19cec4a
+  outcome_refs:
+  - S52-R1-O3
+  - S52-R1-S2
+  - S52-R1-B
+  bridge_ref:
+  - S52-R2-B
+review:
+  stability: long
+  trigger: '2031-10-02'
+  last_reviewed: '2026-10-02'
+status: drafted
