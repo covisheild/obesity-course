@@ -1,0 +1,1 @@
+Cut "The two accounts placing least blame on individuals... went with support for measures in general" and the whole R-squared passage, while keeping must_know[2]'s "0.11 to 0.18". The kept "opposition to most of them" now has a weak referent, and the 0.11/0.18 figures arrive with no explanation of what share they measure.

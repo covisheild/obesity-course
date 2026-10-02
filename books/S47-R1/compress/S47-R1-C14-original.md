@@ -1,0 +1,87 @@
+# S47-R1-C14 · The frame sets the menu
+
+**Definition.** A frame's diagnosis of cause carries an implied remedy, so each frame makes some measures
+sayable and leaves others outside the discussion. Framing research states this as a premise.
+In Koon, Hawkins and Mayhew's 2016 review, framing "precludes certain policy responses" (a
+point the review credits to Schattschneider, 1960). Frames also decide what the people in a
+policy debate take the facts to be (credited to Rochefort and Cobb, 1994).
+
+The held measurement is the United States survey by Barry and colleagues (2009): {{n:barry_n}} adults,
+late 2006 to early 2007. It asked about sixteen measures against obesity, besides the seven
+accounts of cause. Which accounts a respondent endorsed predicted which measures they supported,
+beyond what their background, health and politics predicted. For one group of measures, those aimed at helping or
+protecting people, the authors' model with background and health alone accounted for 0.08 of
+the differences in support between respondents. Adding political attitudes raised it to 0.11,
+and adding the seven accounts raised it to 0.18. The paper calls this share R-squared; the model
+itself is beyond this book.
+
+The two accounts placing least blame on individuals, industry manipulation and a toxic food
+environment, went with support for measures in general. The sinful-behaviour account went with
+opposition to most of them. It went with support for one: letting health insurers charge higher
+premiums to policyholders who are overweight or do not exercise. Support for a tax on junk food went
+with the environment and industry accounts, not with the sinful-behaviour account. The food
+addiction account went with support for warning labels saying such foods may be addictive. The
+disability account went with support for only three positions: anti-discrimination protection,
+funding for treatment, and opposition to the higher premiums.
+
+These are associations measured once, in one country. The authors call for experiments to test
+whether exposure to a different frame shifts support, how far and for how long. No such
+experiment is held by this course.
+
+**In plain terms.** The last section named the frames obesity is argued in. This one shows what each frame does to
+the list of things people are willing to discuss.
+
+A frame names a cause. A cause points to a remedy. So once a frame is in place, some measures
+sound sensible and others sound beside the point.
+
+- If obesity is about each person's choices, the sensible measures are advice, campaigns and
+  asking people to change. A tax on a product sounds like punishing the buyer.
+- If obesity is about the food around us, the sensible measures are about that food: what
+  schools sell, what labels say, what costs more.
+- If obesity is a disease, the sensible measures are treatment, and protection from unfair
+  treatment.
+
+One survey in the United States found exactly this kind of link. What people believed caused
+obesity went with which measures they supported. It found a link, not proof that changing the
+frame changes minds.
+
+So before you argue for a measure, ask which frame makes it sayable. Then ask which frame the
+person deciding is using. If the two do not match, your evidence may never be heard.
+
+**Figure.** Barry and colleagues' United States survey (2006-07, 1,009 adults), measures aimed at helping or protecting people. The share of differences in support between respondents that the model accounted for: 0.08 with background and health alone, 0.11 with political attitudes added, 0.18 with the seven accounts of cause added. Most differences, 0.82 of them, stay unexplained.
+
+*What the figure shows:* Three bars rising from 0.08 (background and health) to 0.11 (plus politics) to 0.18 (plus beliefs about cause), on a scale where 0 is none and 1 is all.
+
+**Must know points for you.**
+
+- Before you argue for a measure, name the frame that makes it sayable. Then name the frame the decider holds. If they differ, deal with the frame first; evidence offered inside the wrong frame is often not heard as evidence at all.
+- "People who blame individuals will back a tax on junk food" is the wrong way round, on the one survey held. Barry and colleagues asked {{n:barry_n}} United States adults in 2006-07. Support for a junk-food tax went with the environment and industry accounts, not with the sinful-behaviour account.
+- Take the measures that help or protect people. In that survey, adding beliefs about cause raised the share of differences in support explained from 0.11 to 0.18. That is an association in one sample at one time. It is not evidence that changing the frame changes support.
+- Never write "framing obesity as environmental raises support by X". No experiment testing that is held here, and Barry and colleagues themselves say one is needed. Say what was found: beliefs and support went together.
+- The Prime Minister's 2025 call to use {{n:edible_oil_cut_pct}}% less oil is framed as personal and family responsibility, and its menu is household action. Do not cite it as support for a tax or a regulation. Cite it as evidence that obesity is on the national agenda.
+- When you quote the GST release's "special de-merit rate", you take on its frame: the product is the problem. That may be what you mean. If you are writing to inform rather than to argue, call it by its number and its legal basis and let the reader judge.
+- Framing obesity as a disability or a disease is not neutral in its effects. In the survey the disability account went with support for protection from discrimination and for treatment, and with less support for most other measures. Choose a disease frame knowing which part of the menu it opens.
+- The menu rule tells you which measures a frame makes sayable. It does not tell you which measure works, or whether the body that must act will act. Those need evidence on effects and a trace of who decides.
+
+**Exercise 1** (retrieval). From memory, answer for Barry and colleagues' survey. Which account of cause went with support
+for each of these?
+
+(a) A junk-food tax.
+(b) Higher insurance premiums for policyholders who are overweight or do not exercise.
+(c) Warning labels saying foods may be addictive.
+
+Then give the survey's country, years and sample size.
+
+**Exercise 2** (critique). Here is the opening of a made-up memo from your department to the State health secretary,
+asking for a higher tax on sugar-sweetened drinks.
+
+> Young people today lack the discipline to refuse sugary drinks. Parents have stopped
+> supervising what their children consume. We therefore request a higher tax on these drinks.
+
+Name the frame of the first two sentences. Say why the request in the third sentence sits badly
+with it, and rewrite the opening so that frame and request match. Say what your rewrite still
+does not establish.
+
+**Exercise 3** (teaching). A health secretary asks for one page: "Why does it matter how we describe obesity, if the data
+are the same?" Answer first, no methods section.
+

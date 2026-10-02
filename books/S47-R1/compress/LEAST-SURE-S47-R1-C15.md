@@ -1,0 +1,1 @@
+Cut the cue-word definition and the metaphor examples ("sea" of cheap food, "war") from simplified_explanation, keeping only "A cue word is a clue, not a verdict." The term "cue word" is now used without ever being taught, and Exercise 2 (explaining how a facts-only report has a frame) may lean on it.

@@ -1,0 +1,1 @@
+- Cut the FSS Act example from must_know[0] ("Under the FSS Act, regulations are the Food Authority's to make, with the Central Government's approval") and the "Address the note to the holder of the power" instruction. Problems 4 and 7 turn on exactly this minister-versus-Food-Authority distinction; the cut text now states the rule only in the abstract.

@@ -1,0 +1,1 @@
+- Cut the Summan et al. study sentence in must_know[5], leaving "They report that the Ministry of Finance and the GST Council..." with no named source; "They" now dangles and the claim loses its evidence and its "one study's judgement" caveat.
