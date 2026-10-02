@@ -26,3 +26,11 @@ decisions) and `books/S47-R1/compress/HOLES-<batch>.md`: each hole with section 
 sentence as it stands, what is wrong or missing, and what would close it (for the fixer). Scratch in
 `/home/claude/scratch-restore-<batch>/`. Return at most 150 words: per section words original → cut →
 final and validate result; counts restored / hole / not a defect.
+
+**S47-R1 note (conductor, 2026-10-02):** the cold reader's files showed `{{n:key}}` placeholders
+unsubstituted, because `prepare.py extract/assemble` does not run the numbers registry (the build
+does, in `load_records()`). Gaps that are only "the number placeholder is unfilled" are **not a
+defect** of the text: mark them so, with the key's value from `books/S47-R1/numbers.yml` in one line.
+But where the gap is that the *sentence carrying* the number was cut, decide it as any other gap.
+Gaps about the State share of GST (no held SGST source) are **holes**, not restorations, unless the
+original holds a sentence that states what PIB 2163555 says.
