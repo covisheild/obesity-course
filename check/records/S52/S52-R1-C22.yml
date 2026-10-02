@@ -1,0 +1,847 @@
+concept_id: S52-R1-C22
+subject: S52
+rung: 1
+sequence: 22
+name: One dataset, end to end
+concept_type: derivable
+journey: true
+clusters:
+- craft-and-integrity
+ground_floor_deps:
+- B0-R0-C39
+- B0-R0-C40
+concept_deps:
+- S52-R1-C07
+- S52-R1-C09
+- S52-R1-C10
+- S52-R1-C11
+- S52-R1-C12
+- S52-R1-C13
+- S52-R1-C14
+- S52-R1-C16
+- S52-R1-C17
+- S52-R1-C18
+- S52-R1-C19
+- S52-R1-C21
+definition:
+  text: |
+    An end-to-end analysis takes one question from raw data to its final table and figure in a
+    single script that another person can run.
+
+    Real work does it in this order. Write the question. Obtain the raw files, read their terms of
+    use, and record their checksums. Write the data dictionary from the source's documentation. Set
+    up the project folder.
+
+    Then write the script,
+    which reads, checks, joins, cleans, derives, summarises, plots, writes its outputs to `output/`
+    and prints the versions that made them. Write the README, whose rerun line is the one command.
+    Last, a fresh session, or a second person, runs that command and gets the same outputs.
+
+    The analysis is reproducible in this book's sense when the outputs come back the same from the
+    raw files with that one command. That says the result can be checked. It does not say the
+    result is right, or that it describes any population beyond the rows in the file.
+  references:
+  - citekey: r4ds_2e
+    kind: textbook
+    locator: 'Ch. 6 "Workflow: scripts and projects", 6.2.1 "What is the source of truth?", first paragraph'
+    quote: |-
+      your source of truth should be the R scripts. With your R scripts (and your data files), you can recreate the environment.
+    verified:
+      resolved_id: https://r4ds.hadley.nz/workflow-scripts.html
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+  - citekey: wilson_2017
+    kind: primary
+    locator: 'Data management, 1e "Record all the steps used to process data", second paragraph'
+    quote: |-
+      The best way to do this is to write scripts for every stage of data processing.
+    verified:
+      resolved_id: https://doi.org/10.1371/journal.pcbi.1005510
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+  - citekey: wilson_2017
+    kind: primary
+    locator: 'Data management, 1a "Save the raw data"'
+    quote: |-
+      It is tempting to overwrite raw data files with cleaned-up versions, but faithful retention is essential for rerunning analyses from start to finish
+    verified:
+      resolved_id: https://doi.org/10.1371/journal.pcbi.1005510
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+  - citekey: wilson_2017
+    kind: primary
+    locator: 'Project organization, 4d: a single controller script for a small project'
+    quote: |-
+      For a small project with 1 main output, a single controller script should be placed in the main src directory and distinguished clearly by a name such as "runall".
+    verified:
+      resolved_id: https://doi.org/10.1371/journal.pcbi.1005510
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+      note: |-
+        This book's project keeps scripts in `code/` (S52-R1-C07) rather than `src/`; the
+        script `code/analysis.R` is that controller script.
+  - citekey: wilson_2017
+    kind: primary
+    locator: 'Collaboration, 3a "Create an overview of your project": the README'
+    quote: |-
+      This file (generally called README, README.txt, or something similar) should contain the project's title, a brief description, up-to-date contact information, and an example or 2 of how to run various cleaning or analysis tasks.
+    verified:
+      resolved_id: https://doi.org/10.1371/journal.pcbi.1005510
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+  - citekey: sandve_2013
+    kind: primary
+    locator: 'Rule 2: Avoid Manual Data Manipulation Steps, first sentence'
+    quote: |-
+      Whenever possible, rely on the execution of programs instead of manual procedures to modify data.
+    verified:
+      resolved_id: https://doi.org/10.1371/journal.pcbi.1003285
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+  - citekey: nchs_nhanes_2021_2023_bmx_demo
+    kind: primary
+    locator: 'Block 3, BMX_L documentation, Analytic Notes: sample weights'
+    quote: |-
+      Sample weights: The NHANES examination sample weights should be used to analyze the body measures data.
+    verified:
+      resolved_id: https://wwwn.cdc.gov/Nchs/Data/Nhanes/Public/2021/DataFiles/BMX_L.htm
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+      note: |-
+        The analysis in this section uses no weights, so every summary in it is unweighted and
+        describes the participants only. Survey weights are the subject of S54.
+simplified_explanation: |
+  This section puts the whole book into one piece of work, in the order you would really do it.
+
+  1. **The question.** One sentence, saying who, what is measured, and how it is summarised.
+  2. **The data.** Download the raw files. Read the terms that come with them. Record each file's
+     checksum.
+  3. **The dictionary.** One row per variable you will use: its name in the file, its meaning, its
+     unit, its codes, and where you found them.
+  4. **The project folder.** `data-raw/` for the files as they arrived, `code/` for the script,
+     `output/` for what the script makes.
+  5. **The script.** Read, check, join, clean, work out new columns, summarise, plot, write the
+     outputs, print the versions. Every step is a line of code.
+  6. **The README.** What the project is, where the data came from, and the one command that
+     reruns it.
+  7. **The rerun.** Delete the outputs and run the command from nothing. The same table and the
+     same figure must come back.
+  8. **What it does not show.** Say it, next to the result.
+
+  The data here are real: the body measures and the demographics of the people examined in an
+  American national survey, NHANES, in 2021 to 2023. The method is the same for a thesis dataset
+  from Raipur.
+illustrations:
+- body: |
+    Start with the question, written in one sentence before you touch the data:
+
+    > Among adults aged 20 and over who were examined in NHANES between August 2021 and August
+    > 2023 and were not pregnant at the exam, how is measured body mass index (BMI) spread in men
+    > and in women?
+
+    BMI is weight in kilograms divided by the square of height in metres, measured in kg/m^2. The
+    question names who (adults examined in one survey cycle, not pregnant), what is measured
+    (BMI from measured weight and height), and how it is summarised (its spread, by gender). It
+    does not ask about the United States. That matters later.
+
+    Now the data. NHANES, the National Health and Nutrition Examination Survey, publishes each
+    part of the survey as its own file. The measurements are in the body measures file, `BMX_L`.
+    Age, gender and pregnancy are in the demographics file, `DEMO_L`. Both carry `SEQN`, the
+    respondent sequence number, which is the key that joins them. You download both `.xpt` files
+    from the survey's website and put them, unchanged, in `data-raw/`.
+
+    Before using them, read the terms. NHANES files come under the Data User Agreement of the
+    National Center for Health Statistics, the American agency that runs the survey. Among other
+    things, users agree to "Use the data in this dataset for statistical reporting and analysis
+    only" and to "Make no attempt to learn the identity of any person or establishment included in
+    these data". Neither the agreement nor the documentation states a copyright licence. Write the
+    terms in the README.
+
+    Then record what arrived. Take each file's MD5 checksum, as in the section on reading raw
+    files, and count its rows:
+
+    ```r
+    library(haven)
+    library(here)
+
+    unname(tools::md5sum(here("data-raw", c("BMX_L.xpt", "DEMO_L.xpt"))))
+
+    bmx <- read_xpt(here("data-raw", "BMX_L.xpt"))
+    demo <- read_xpt(here("data-raw", "DEMO_L.xpt"))
+    nrow(bmx)
+    nrow(demo)
+    ```
+
+    ```output
+    here() starts at ~/project
+    [1] "ab25a36296e5b61881d42fef61c06b84"
+    [2] "14555b1f4e3c909172e900f63a2ecd03"
+    [1] 8860
+    [1] 11933
+    ```
+
+    The body measures file has {{n:bmx_rows}} rows, one for each person examined. The demographics
+    file has {{n:demo_rows}}, because it also holds people who were interviewed and never examined. The two
+    checksums go in the README, so that anyone can confirm later that they have the same files.
+
+    Next, the dictionary. Write it from the survey's own documentation, the codebook pages for the
+    two files, for the variables the question needs and no others:
+
+    ```table
+    | Variable | File | Meaning | Unit | Codes | Source |
+    | SEQN | both | respondent sequence number, one per person | none | a number | codebooks; checked unique in the file |
+    | RIAGENDR | DEMO_L | gender | none | 1 Male, 2 Female | DEMO_L codebook |
+    | RIDAGEYR | DEMO_L | age in years at the screening interview | years | 0 to 79; 80 means 80 and over | DEMO_L codebook |
+    | RIDEXPRG | DEMO_L | pregnancy status at the exam | none | 1 pregnant, 2 not pregnant, 3 cannot tell; missing for anyone not asked | DEMO_L codebook |
+    | BMXWT | BMX_L | weight | kg | measured value | BMX_L codebook |
+    | BMXHT | BMX_L | standing height | cm | measured value | BMX_L codebook |
+    | BMXBMI | BMX_L | BMI, worked out from weight and height and rounded to one decimal | kg/m^2 | worked-out value | BMX_L codebook |
+    ```
+
+    Two entries will matter in the script. Ages of 80 and over are all written as 80, so no age in
+    the file is above 80. And the pregnancy question was asked only of some women, so the column
+    is missing for every man and for most women. Type the dictionary once, by hand, and save it as
+    `data-raw/nhanes_dictionary.csv` beside the raw files.
+
+    The project folder is the one this book has used throughout: `data-raw/`, `code/` and
+    `output/`. The README goes at the top. Write it now, with the outputs named, and treat its rerun
+    line as a promise you are about to test:
+
+    > BMI of adults in NHANES 2021–2023, by gender
+    >
+    > The spread of measured BMI in men and women aged 20 and over, not pregnant at the exam,
+    > examined in NHANES August 2021–August 2023. Every summary is unweighted and describes these
+    > participants only.
+    >
+    > Raw data: `data-raw/BMX_L.xpt` (MD5 ab25a36296e5b61881d42fef61c06b84) and
+    > `data-raw/DEMO_L.xpt` (MD5 14555b1f4e3c909172e900f63a2ecd03), downloaded unchanged from the
+    > NHANES website. Use is governed by the NCHS Data User Agreement: statistical reporting and
+    > analysis only, and no attempt to identify anyone.
+    >
+    > Data dictionary: `data-raw/nhanes_dictionary.csv`.
+    >
+    > To rerun: open a terminal in this folder and type `Rscript code/analysis.R`. The script reads
+    > `data-raw/`, never writes to it, and writes `output/bmi_by_gender.csv` (the table) and
+    > `output/bmi_by_gender.png` (the figure).
+    >
+    > Written with R {{n:r_version}}; the versions of every package are printed at the end of each
+    > run. Contact: your name and email address.
+  analogy_breaks_when: |
+    These files came with complete documentation, a stated key and published terms. A thesis
+    dataset exported from a form tool, or a register typed up from a clinic, often comes with none
+    of the three. Then the dictionary is written from the questionnaire and from asking the people
+    who collected the data, and the README says so.
+
+    The checksums prove that your files are the files you recorded. They cannot prove that those
+    are the files the survey published, unless the survey also publishes checksums.
+  numbers:
+  - value: "8860"
+    unit: rows in BMX_L.xpt as read
+    citekey: nchs_nhanes_2021_2023_bmx_demo
+    as_of: '2024-09'
+    quote: |-
+      rows: 8860
+  - value: "11933"
+    unit: rows in DEMO_L.xpt as read
+    citekey: nchs_nhanes_2021_2023_bmx_demo
+    as_of: '2024-09'
+    quote: |-
+      rows: 11933
+  - value: "80"
+    unit: years, the top code of RIDAGEYR
+    citekey: nchs_nhanes_2021_2023_bmx_demo
+    as_of: '2024-09'
+    quote: |-
+      Due to disclosure concerns, all responses of participants aged 80 years and older are coded as “80.”
+- body: |
+    Build the script a step at a time, checking the row count after each step. The first step that
+    went wrong while this section was being written goes first.
+
+    Join the demographics onto the body measures by `SEQN`, as in the section on joining. A
+    `left_join()` keeps every row of the left table, so the count must stay at {{n:bmx_rows}}.
+    `relationship = "one-to-one"` tells the join to stop with an error if a key turns up twice in
+    either file:
+
+    ```r
+    library(dplyr)
+
+    n_distinct(bmx$SEQN)
+    n_distinct(demo$SEQN)
+
+    nhanes <- bmx |>
+      left_join(demo, by = "SEQN", relationship = "one-to-one")
+    nrow(nhanes)
+    ```
+
+    ```output
+
+    Attaching package: ‘dplyr’
+
+    The following objects are masked from ‘package:stats’:
+
+        filter, lag
+
+    The following objects are masked from ‘package:base’:
+
+        intersect, setdiff, setequal, union
+
+    [1] 8860
+    [1] 11933
+    [1] 8860
+    ```
+
+    Each file has as many distinct `SEQN` values as rows, so the key is one per person in both. The
+    join added no row and lost none. Now keep the adults:
+
+    ```r
+    adults <- nhanes |>
+      filter(RIDAGEYR >= 20)
+    nrow(adults)
+
+    adults |>
+      count(RIDEXPRG)
+    ```
+
+    ```output
+    [1] 6064
+    # A tibble: 4 × 2
+      RIDEXPRG     n
+         <dbl> <int>
+    1        1    41
+    2        2  1065
+    3        3    28
+    4       NA  4930
+    ```
+
+    {{n:nhanes_adults_rows}} adults. Of them, 41 were pregnant at the exam (code 1). The question
+    leaves them out, so you expect 6064 minus 41, which is 6023 rows, after the next step. Here is the first draft of that line:
+
+    ```r
+    first_try <- adults |>
+      filter(RIDEXPRG != 1)
+    nrow(first_try)
+    ```
+
+    ```output
+    [1] 1093
+    ```
+
+    1093, not 6023. The line meant to drop 41 people dropped 4971. The reason is the 4930 rows where
+    `RIDEXPRG` is missing: every man, and every woman who was not asked. For them `RIDEXPRG != 1` is
+    neither true nor false. It is `NA`, and `filter()` keeps only the rows where the test is
+    `TRUE`. The line ran without a warning and gave a plausible table of 1093 adults. All of them
+    were women whose pregnancy status was recorded as code 2 or 3, and no man was left. Only the
+    expected count caught it.
+
+    Say what you mean instead: keep a row if the value is missing, or if it is not 1.
+
+    ```r
+    adults <- adults |>
+      filter(is.na(RIDEXPRG) | RIDEXPRG != 1)
+    nrow(adults)
+    sum(!is.na(adults$BMXBMI))
+    ```
+
+    ```output
+    [1] 6023
+    [1] 5929
+    ```
+
+    6023, as expected. Of these, 5929 have a BMI; the other 94 lack a weight or a height.
+
+    One more check before trusting the BMI column. The codebook says BMI was worked out as weight
+    in kilograms divided by height in metres squared, then rounded to one decimal. Work it out
+    again and find the largest gap between yours and the file's:
+
+    ```r
+    bmi_check <- adults$BMXWT / (adults$BMXHT / 100)^2
+    max(abs(bmi_check - adults$BMXBMI), na.rm = TRUE)
+    ```
+
+    ```output
+    [1] 0.04996478
+    ```
+
+    The largest gap is under 0.05 kg/m^2, which is what rounding to one decimal allows. So the
+    column is what the codebook says it is. Here are the counts at each step:
+
+    ```table
+    | Step | Rows |
+    | body measures file as read | 8860 |
+    | after the join | 8860 |
+    | aged 20 and over | 6064 |
+    | not pregnant at the exam | 6023 |
+    | with a BMI | 5929 |
+    ```
+  analogy_breaks_when: |
+    The expected count caught the pregnancy filter because the codebook gave the number of
+    pregnant participants, so you knew what to expect. A filter whose correct result you cannot
+    predict has no such check. Count the rows it removes, and look at a few of them.
+
+    The BMI check compares the file with itself. It confirms the column was worked out as
+    documented. It cannot catch a weight or height that was measured or recorded wrongly.
+- body: |
+    Now put the steps that survived into the script, in order, with a comment for each. This is the
+    whole of `code/analysis.R`:
+
+    ```r file=code/analysis.R
+    # analysis.R
+    # BMI of adults aged 20 and over, by gender, in NHANES August
+    # 2021-August 2023 (files BMX_L and DEMO_L), leaving out anyone
+    # pregnant at the exam.
+    # Run from the project folder: Rscript code/analysis.R
+    # Reads data-raw/ and never writes to it; writes two files to
+    # output/. Every summary is unweighted: it describes these
+    # participants only.
+
+    library(haven)
+    library(dplyr)
+    library(readr)
+    library(ggplot2)
+    library(here)
+
+    dir.create(here("output"), showWarnings = FALSE)
+
+    # 1. Read the two raw files
+    bmx <- read_xpt(here("data-raw", "BMX_L.xpt"))
+    demo <- read_xpt(here("data-raw", "DEMO_L.xpt"))
+    cat("Participants with body measures:", nrow(bmx), "\n")
+
+    # 2. Check the key: one row per participant in each file
+    stopifnot(
+      n_distinct(bmx$SEQN) == nrow(bmx),
+      n_distinct(demo$SEQN) == nrow(demo)
+    )
+
+    # 3. Join demographics onto body measures; no row added or lost
+    nhanes <- bmx |>
+      left_join(demo, by = "SEQN", relationship = "one-to-one")
+    stopifnot(nrow(nhanes) == nrow(bmx))
+
+    # 4. Keep adults not pregnant at the exam. RIDEXPRG is missing
+    #    for everyone not asked, so missing rows are kept on purpose.
+    adults <- nhanes |>
+      filter(RIDAGEYR >= 20) |>
+      filter(is.na(RIDEXPRG) | RIDEXPRG != 1) |>
+      mutate(
+        gender = factor(RIAGENDR, levels = c(1, 2),
+                        labels = c("Male", "Female")),
+        bmi_check = BMXWT / (BMXHT / 100)^2
+      ) |>
+      select(SEQN, gender, age = RIDAGEYR, weight_kg = BMXWT,
+             height_cm = BMXHT, bmi = BMXBMI, bmi_check)
+    cat("Adults kept:", nrow(adults), "\n")
+    cat("Adults with a BMI:", sum(!is.na(adults$bmi)), "\n")
+
+    # 5. Check the values. Limits set before looking at the data;
+    #    a value outside them stops the script so that you look.
+    stopifnot(
+      "measured adult heights are between 50 and 250 cm" =
+        all(adults$height_cm >= 50 & adults$height_cm <= 250,
+            na.rm = TRUE),
+      "measured adult weights are between 20 and 300 kg" =
+        all(adults$weight_kg >= 20 & adults$weight_kg <= 300,
+            na.rm = TRUE),
+      "BMI agrees with weight / height^2 to rounding" =
+        all(abs(adults$bmi - adults$bmi_check) <= 0.05, na.rm = TRUE)
+    )
+
+    # 6. Summarise BMI by gender, with the n behind every number.
+    #    The mean is rounded for display, to BMI's one decimal.
+    bmi_by_gender <- adults |>
+      group_by(gender) |>
+      summarise(
+        n_adults = n(),
+        n_bmi = sum(!is.na(bmi)),
+        mean_bmi = round(mean(bmi, na.rm = TRUE), 1),
+        q1_bmi = quantile(bmi, 0.25, na.rm = TRUE),
+        median_bmi = median(bmi, na.rm = TRUE),
+        q3_bmi = quantile(bmi, 0.75, na.rm = TRUE)
+      )
+    print(bmi_by_gender)
+    write_csv(bmi_by_gender, here("output", "bmi_by_gender.csv"))
+
+    # 7. Plot the spread of BMI by gender
+    bmi_plot <- adults |>
+      filter(!is.na(bmi)) |>
+      ggplot(aes(x = gender, y = bmi)) +
+      geom_boxplot() +
+      labs(
+        x = NULL,
+        y = "BMI (kg/m^2)",
+        caption = "NHANES 2021-2023, aged 20+, not pregnant; unweighted"
+      )
+    ggsave(here("output", "bmi_by_gender.png"), bmi_plot,
+           width = 5, height = 4, dpi = 150)
+
+    # 8. Record the versions that made these outputs
+    sessionInfo()
+    ```
+
+    Read it from the top and you can name the section of this book behind each step: the project
+    folder and `here()`, reading a raw file, checks that stop the script, the join, choosing rows,
+    new columns and factors, summaries by group, the plot, and the fresh run. `cat()` prints its
+    arguments as one line of text, which gives the run a short log of counts.
+
+    Open a terminal in the project folder and type the README's command:
+
+    ```sh
+    Rscript code/analysis.R
+    ```
+
+    ```output
+
+    Attaching package: ‘dplyr’
+
+    The following objects are masked from ‘package:stats’:
+
+        filter, lag
+
+    The following objects are masked from ‘package:base’:
+
+        intersect, setdiff, setequal, union
+
+    here() starts at ~/project
+    Participants with body measures: 8860
+    Adults kept: 6023
+    Adults with a BMI: 5929
+    # A tibble: 2 × 7
+      gender n_adults n_bmi mean_bmi q1_bmi median_bmi q3_bmi
+      <fct>     <int> <int>    <dbl>  <dbl>      <dbl>  <dbl>
+    1 Male       2720  2680     29.3   24.9       28.1   32.4
+    2 Female     3303  3249     30.3   24.4       28.7   34.7
+    R version 4.3.3 (2024-02-29)
+    Platform: x86_64-pc-linux-gnu (64-bit)
+    Running under: Ubuntu 24.04.5 LTS
+
+    Matrix products: default
+    BLAS:   /usr/lib/x86_64-linux-gnu/blas/libblas.so.3.12.0
+    LAPACK: /usr/lib/x86_64-linux-gnu/lapack/liblapack.so.3.12.0
+
+    locale:
+     [1] LC_CTYPE=C.utf8       LC_NUMERIC=C          LC_TIME=C.utf8
+     [4] LC_COLLATE=C.utf8     LC_MONETARY=C.utf8    LC_MESSAGES=C.utf8
+     [7] LC_PAPER=C.utf8       LC_NAME=C             LC_ADDRESS=C
+    [10] LC_TELEPHONE=C        LC_MEASUREMENT=C.utf8 LC_IDENTIFICATION=C
+
+    time zone: UTC
+    tzcode source: system (glibc)
+
+    attached base packages:
+    [1] stats     graphics  grDevices utils     datasets  methods   base
+
+    other attached packages:
+    [1] here_1.0.1    ggplot2_3.4.4 readr_2.1.5   dplyr_1.1.4   haven_2.5.4
+
+    loaded via a namespace (and not attached):
+     [1] bit_4.0.5         gtable_0.3.4      compiler_4.3.3    crayon_1.5.2
+     [5] tidyselect_1.2.0  parallel_4.3.3    systemfonts_1.0.5 scales_1.3.0
+     [9] textshaping_0.3.7 R6_2.5.1          labeling_0.4.3    generics_0.1.3
+    [13] forcats_1.0.0     tibble_3.2.1      munsell_0.5.0     rprojroot_2.0.4
+    [17] pillar_1.9.0      tzdb_0.4.0        rlang_1.1.3       utf8_1.2.4
+    [21] bit64_4.0.5       cli_3.6.2         withr_2.5.0       magrittr_2.0.3
+    [25] grid_4.3.3        vroom_1.6.5       hms_1.1.3         lifecycle_1.0.4
+    [29] vctrs_0.6.5       glue_1.7.0        farver_2.1.1      ragg_1.2.7
+    [33] fansi_1.0.5       colorspace_2.1-0  tools_4.3.3       pkgconfig_2.0.3
+    ```
+
+    Read the table as the dictionary and the question tell you to. There are 2680 men and 3249 women
+    with a BMI, and 2680 + 3249 = 5929, the count in the log. Every check passed, or the script
+    would have stopped at it. The versions printed below the table are the record of what produced
+    it.
+
+    The three quartiles answer the question, as Book 0 taught them: a quarter of the values lie
+    below the first quartile, half below the median, three quarters below the third quartile.
+
+    ```table
+    | Share of adults below the value (%) | Male | Female |
+    | 25 | 24.9 | 24.4 |
+    | 50 | 28.1 | 28.7 |
+    | 75 | 32.4 | 34.7 |
+    ```
+
+    The median BMI is 28.1 kg/m^2 in men and 28.7 kg/m^2 in women, close together. The spread is
+    not. The middle half of the women runs from 24.4 to 34.7 kg/m^2, a width of 10.3 kg/m^2. The
+    middle half of the men runs from 24.9 to 32.4 kg/m^2, a width of 7.5 kg/m^2. The women's upper
+    quarter reaches higher. The means, 29.3 and 30.3 kg/m^2, sit above both medians, because a long
+    tail of high values pulls a mean up and leaves a median where it is.
+  analogy_breaks_when: |
+    The range limits in step 5 are the ones the section on checks used, and they are wide on
+    purpose: they stop the script for a height of 17 cm or a weight of 700 kg, not for an unusual
+    but real adult. They passed here partly because the
+    survey's own team had already reviewed the values. Their documentation says values judged
+    unrealistic "were deleted from the file". A file nobody has reviewed may stop at step 5, and
+    that is the step doing its job.
+
+    The script handles these two files. If the survey releases a corrected file, its checksum will
+    differ from the README's, and the counts in the log may change. Rerun, compare, and record the
+    new checksum.
+  numbers:
+  - value: "41"
+    unit: adults aged 20 and over pregnant at the exam (RIDEXPRG 1)
+    citekey: nchs_nhanes_2021_2023_bmx_demo
+    as_of: '2024-09'
+    quote: |-
+      of these, RIDEXPRG == 1 (pregnant at exam): 41
+  - value: "6064"
+    unit: rows of BMX_L aged 20 and over after the join on SEQN
+    citekey: nchs_nhanes_2021_2023_bmx_demo
+    as_of: '2024-09'
+    quote: |-
+      BMX rows with RIDAGEYR >= 20: 6064
+- body: |
+    The rerun is the test the whole book has been building to. Start from nothing: delete
+    `output/`, run the command again, and compare the new table with the old one, byte for byte.
+
+    ```sh
+    cp output/bmi_by_gender.csv first_run.csv
+    rm -r output
+    Rscript code/analysis.R > /dev/null 2>&1
+    ls output
+    cmp first_run.csv output/bmi_by_gender.csv && echo "identical"
+    cat output/bmi_by_gender.csv
+    ```
+
+    ```output
+    bmi_by_gender.csv
+    bmi_by_gender.png
+    identical
+    gender,n_adults,n_bmi,mean_bmi,q1_bmi,median_bmi,q3_bmi
+    Male,2720,2680,29.3,24.9,28.1,32.4
+    Female,3303,3249,30.3,24.4,28.7,34.7
+    ```
+
+    Both outputs came back, and the table is identical to the one before. A colleague with the
+    project folder runs the same command on their computer. If their table differs, the checksums
+    and the version lines are where the two of you start looking. This is the gate to the next
+    rung: the analysis reproduces from the raw data with one command.
+
+    Now say what it does not show, in the README and next to any number you quote from it.
+
+    - It does not estimate anything about the United States. The survey's documentation says its
+      sample weights "should be used to analyze the body measures data". This analysis uses none,
+      so its summaries describe these 5929 participants and nobody else. Weights are taught in the
+      subject on India's data infrastructure and complex surveys.
+    - It says nothing about India, or about adults anywhere else.
+    - BMI is worked out from weight and height. It is not a measurement of body fat.
+    - It is one examination of each person. It says nothing about change over time, or about what
+      causes a higher or lower BMI.
+    - Its correctness rests on the checks. A mistake that passes every check reruns perfectly.
+
+    The next rung of this subject takes the same project further. A block of code repeated three
+    times becomes a function you write. Git records every change to the script. A Quarto document
+    replaces the step where you copy 28.1 into your text: the code writes the number into the
+    document itself. DuckDB queries files too big to read into R at once. A form tool such as
+    KoboToolbox, ODK or REDCap writes the raw file at the point where the data are collected.
+  analogy_breaks_when: |
+    The rerun on one computer shows the script is complete. It does not show that a computer with
+    other package versions gets the same table; only a second person's run shows that, and pinning
+    the versions is two rungs up.
+
+    The comparison here is of the CSV file. Compare a figure by looking at it: an image file can
+    differ in its bytes when nothing you would see has changed.
+must_know:
+- point: |
+    Write the question before you open the data, and write who it is about. "Adults aged 20 and
+    over examined in this survey cycle, not pregnant" decides every filter in the script. Without
+    it, each filter becomes a choice made after seeing the numbers.
+  kind: move
+  bearing: methodological
+- point: |
+    The error is to trust a filter because it ran without a warning. `filter(RIDEXPRG != 1)` ran
+    silently and dropped 4971 adults instead of 41, because a missing value is neither equal nor
+    unequal to 1. Before each filter, write down how many rows you expect it to keep, and check.
+  kind: misconception
+  bearing: methodological
+- point: |
+    Record each raw file's checksum in the README on the day it arrives, and the terms it came
+    with. Someone who questions your result months later can confirm in one line that they hold the
+    same file. They can also see whether they may use it.
+  kind: move
+  bearing: policy
+- point: |
+    Put a printed row count after every step that can add or drop rows, and a `stopifnot()` where
+    you know the right count. The log of counts is the first thing an examiner, or you next year,
+    reads to see what the script did.
+  kind: move
+  bearing: methodological
+- point: |
+    Any summary of an NHANES file without its sample weights describes the participants in the
+    file. Write "unweighted" beside it, and never present it as the figure for the United States,
+    still less for India.
+  kind: boundary
+  bearing: public
+  refs:
+  - nchs_nhanes_2021_2023_bmx_demo
+- point: |
+    The gate is one command from raw data to the same outputs. When you hand a project on, or ask
+    for one, the first test is that command in a fresh session. Ask for it before you read a single
+    result.
+  kind: move
+  bearing: teaching
+- point: |
+    Reproducible means the result can be checked, not that it is right. A wrong cut-point or a
+    wrong filter reruns perfectly. Rerunning shows that the script is complete; only reading it
+    shows whether it asks the right question.
+  kind: boundary
+  bearing: methodological
+common_misreading: |
+  "NHANES shows the median BMI of American women is 28.7 kg/m^2." The table does not say that. It
+  gives the median of 3249 women examined in one survey cycle. It uses none of the survey's sample
+  weights, and the survey's documentation says those weights should be used. So 28.7 kg/m^2 describes these
+  participants. Read it as "in this sample", never as "in America".
+exercises:
+- type: retrieval
+  prompt: |
+    Without looking back, list the steps of an end-to-end analysis in the order real work runs
+    them. Then say what the gate to the next rung is.
+  answer: |
+    1. The question.
+    2. The raw files, their terms and their checksums.
+    3. The data dictionary.
+    4. The project folder.
+    5. The script. It reads, checks, joins, cleans, works out new columns, summarises, plots,
+       writes its outputs and prints the versions.
+    6. The README, with the one command.
+    7. A rerun from nothing.
+    8. What the result does not show.
+
+    The gate: the analysis reproduces from the raw data with one command, `Rscript code/analysis.R`,
+    in a fresh session.
+- type: build
+  prompt: |
+    Build the rung's target with a dataset of your own. It may be a thesis dataset, or a department
+    register you have permission to use. It may be the NHANES files of this section, with a question
+    of your own.
+
+    Write the question in one sentence. Put the raw files in `data-raw/` and record their
+    checksums and terms. Write the data dictionary.
+
+    Write `code/analysis.R` so that it reads,
+    checks, cleans, summarises and plots, writes one table and one figure to `output/`, and ends
+    with `sessionInfo()`. Write the README. Then delete `output/`, run `Rscript code/analysis.R`
+    in a fresh session, and give the project folder to a colleague to run the same command.
+  answer: |
+    The project passes when all of these hold.
+
+    1. The question is one sentence and says who the answer is about.
+    2. `data-raw/` holds the files exactly as they arrived. Their checksums in the README match
+       `tools::md5sum()` on them now. No code writes to that folder.
+    3. The dictionary has a row for every variable the script uses. Each row gives the name exactly
+       as in the file, its meaning, unit and codes, and where each came from.
+    4. The script reads every file with `here()`. It needs no object, package or file that it does
+       not load or make itself.
+    5. It prints the row count after each step that can add or drop rows. It stops with
+       `stopifnot()` where a count, a key or a range is wrong.
+    6. Every change to the data is a line of code with a comment. No cell was edited by hand.
+    7. Every summary prints its n. A survey summary says whether it is weighted.
+    8. The table and the figure are written to `output/` by code, and the script ends with
+       `sessionInfo()`.
+    9. After `output/` is deleted, `Rscript code/analysis.R` brings back the same table, byte for
+       byte.
+    10. Your colleague's run gives the same table. If it does not, the two `sessionInfo()`
+        printouts are compared and the difference is written in the README.
+
+    Write, beside the result, what it does not show.
+  skill_ref: S52-R1-K01
+- type: critique
+  prompt: |
+    A colleague sends you the project for her thesis chapter. The README says: "Run the scripts in
+    code/ in order." `code/` holds `clean.R` and `analysis.R`. The first line of `clean.R` is
+    `data <- read_excel("C:/Users/anita/Desktop/final data (2).xlsx")`. Its last line is
+    `write_xlsx(data, "C:/Users/anita/Desktop/final data (2).xlsx")`. Her chapter reports "mean
+    BMI 24.6 kg/m^2 (n = 412)". Find each thing that stops this project from passing the gate, and
+    say what each one would cost her.
+  answer: |
+    - The README gives no single command, and "in order" leaves the reader guessing. Fix: one
+      script, or one command that runs both, written in the README.
+    - The path is absolute and names her desktop, so the script stops on every other computer.
+      Fix: put the file in `data-raw/` and read it with `here()`.
+    - The last line writes over the file it read. After one run the raw data are gone, replaced by
+      the cleaned version, and nothing can be rerun from the original. Fix: never write to the raw
+      file; write cleaned data to `output/` if it is needed at all.
+    - The file name "final data (2)" says there was a "final data (1)". Nobody can tell which one the
+      chapter used. Fix: record the raw file's checksum in the README.
+    - The number 24.6 kg/m^2 has no line of code that writes it to a file, so it was copied off a
+      screen. Fix: write the table to `output/` with code and take the number from there.
+
+    The cost: as it stands, nobody, including Anita in a year, can show that 24.6 kg/m^2 comes from
+    the data collected. Her examiner can ask, and she cannot answer.
+  skill_ref: S52-R1-K02
+- type: teaching
+  prompt: |
+    A health secretary asks why the department's analysts should hand over every analysis as a
+    project folder that reruns with one command. Answer on one page. Put the answer first, then the
+    reasons, with no methods section.
+  answer: |
+    Answer: because then someone else can check any number in a departmental report in minutes.
+    Without it, nobody can check it at all.
+
+    - **Mistakes are found before publication, not after.** A rerun by a second analyst catches a
+      step that lived only on one laptop.
+    - **Work survives people.** When an analyst leaves, the next one reruns the folder instead of
+      starting again.
+    - **Corrections are cheap.** When the raw data are corrected, the same command remakes every
+      table.
+    - **The cost is small.** It is a habit and free software, not a purchase.
+
+    What it does not buy: a rerunnable analysis can still ask the wrong question. Someone still has
+    to read it.
+quantitative: false
+retrieval_items:
+- q: In what order does real work run an analysis from question to result?
+  a: Question; raw data obtained, terms read, checksums recorded; data dictionary; project folder;
+    script (read, check, join, clean, derive, summarise, plot, write outputs, print versions);
+    README with the one command; a rerun from nothing; what the result does not show.
+- q: Why did `filter(RIDEXPRG != 1)` keep only 1093 of 6064 adults?
+  a: RIDEXPRG is missing for everyone not asked. For those rows the test gives NA, and `filter()`
+    keeps only rows where the test is TRUE, so they were all dropped. Keep them explicitly with
+    `is.na(RIDEXPRG) | RIDEXPRG != 1`.
+- q: What is the gate to the next rung of this subject?
+  a: The analysis reproduces from the raw data with one command, `Rscript code/analysis.R`, run in
+    a fresh session.
+- q: What does an unweighted summary of an NHANES file describe?
+  a: The participants in the file only. It is not an estimate for the United States, because the
+    survey's documentation says its sample weights should be used.
+figures:
+- file: s52-r1-c22-bmi-quartiles.png
+  caption: "The first quartile, median and third quartile of measured BMI in 2680 men and 3249 women aged 20 and over, not pregnant, examined in NHANES 2021–2023. The medians are close, 28.1 and 28.7 kg/m^2; the women's third quartile, 34.7 kg/m^2, is higher than the men's, 32.4 kg/m^2. Unweighted: these values describe the participants, not the United States."
+  alt: "A chart of points for two groups at 25, 50 and 75 per cent. Male: 24.9, 28.1, 32.4 kg/m^2. Female: 24.4, 28.7, 34.7 kg/m^2. The female points start lower and end higher."
+  source: draw.py
+  spec:
+    kind: scatter
+    from_table: {block: 2, x: 0, y: [1, 2]}
+    x_label: share of adults below the value (%)
+    y_label: BMI (kg/m^2)
+    relations:
+    - check: "y2[2] - y2[0] = 10.3"
+    - check: "y1[2] - y1[0] = 7.5"
+provenance:
+  map_version_id: fc19c8bc-a216-4131-99fb-ebe3f19cec4a
+  outcome_refs:
+  - S52-R1-B
+  - S52-R1-G
+  - S52-R1-S1
+  - S52-R1-S2
+  - S52-R1-O3
+  bridge_ref:
+  - S52-R2-P01
+  - S52-R2-P02
+  - S52-R2-P03
+  - S52-R2-P04
+  - S52-R2-P05
+  - S52-R2-R1
+  - S52-R2-B
+  - S52-R2-G
+review:
+  stability: long
+  trigger: '2031-10-02'
+  last_reviewed: '2026-10-02'
+status: drafted

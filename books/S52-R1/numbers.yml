@@ -77,10 +77,18 @@ numbers:
     value: "8860"
     meaning: 'rows of NHANES 2021-2023 BMX_L.xpt as haven::read_xpt() reads it (one per examined participant, all ages)'
     source: 'S52-R1-C09, illustration 3, dim(bmx) (gate-filled output); agrees with nchs_nhanes_2021_2023_bmx_demo header "8860 rows x 22 columns"'
+  nhanes_adults_rows:
+    value: "6064"
+    meaning: 'rows of NHANES 2021-2023 BMX_L joined to DEMO_L on SEQN with RIDAGEYR >= 20 (participants aged 20 or over with a body measures record; unweighted count of rows)'
+    source: 'S52-R1-C19, illustration 2, nrow(adults) (gate-filled output); agrees with nchs_nhanes_2021_2023_bmx_demo block 1 "BMX rows with RIDAGEYR >= 20: 6064"'
   bmx_cols:
     value: "22"
     meaning: 'columns of NHANES 2021-2023 BMX_L.xpt as haven::read_xpt() reads it'
     source: 'S52-R1-C09, illustration 3, dim(bmx) (gate-filled output)'
+  demo_rows:
+    value: "11933"
+    meaning: 'rows of NHANES 2021-2023 DEMO_L.xpt as haven::read_xpt() reads it (one per screened participant, interviewed and examined or interviewed only)'
+    source: 'S52-R1-C17, illustration 3, nrow(demo) (gate-filled output); agrees with nchs_nhanes_2021_2023_bmx_demo header "DEMO_L.xpt: ... 11933 rows x 27 columns"; also printed in S52-R1-C09 practice level 6'
 # TODO at the source gate, once Harsh chooses the build dataset (READY.md, candidates A, B, C):
 #   dataset_rows, dataset_cols, and the missing-value counts the sections reuse, read by running
 #   the code on the chosen file. Do not fill from this comment. For candidate B (penguins_raw.csv,
