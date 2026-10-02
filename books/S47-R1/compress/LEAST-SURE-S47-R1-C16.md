@@ -1,0 +1,1 @@
+- C16 pass1: cut the "Evidence about one setting also needs a judgement of whether it applies to another" sentence (definition) and the evidence explanations under the "who gains" and "can it be done" bullets (which body, law, money). Feasibility is now named without saying what it consists of; Exercise 1 asks which missing premises evidence could supply.

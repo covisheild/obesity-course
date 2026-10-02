@@ -1,0 +1,1 @@
+- k3 cut (step 5a): Removed the Article 112(1) sentence from the definition (the annual financial statement laid before both Houses each year). Exercise 1 asks from memory what Article 112 requires, and nothing else in the cut text now names Article 112. Expect the cold reader to flag it.

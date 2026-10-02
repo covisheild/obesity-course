@@ -1,0 +1,1 @@
+- C18 pass1: deleted the nine-item list from definition.text, relying on the simplified table to carry the nine lines. Definition now says "answers nine questions, in this order" with nothing after it; if the renderer separates definition from the table, Exercise 1 (list the nine lines) depends wholly on the table.

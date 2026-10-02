@@ -1,0 +1,1 @@
+- C17 pass1: cut the whole Oliver and Cairney "honest broker" / "issue advocate" paragraph, including the warning that the same authors use "honest broker" in two senses. must_know[6] now says only "The line between the two jobs is disputed", with no source or explanation left behind it.
