@@ -222,6 +222,29 @@ definition:
       opened: true
       claim_located: true
       checked_on: '2026-10-02'
+  - citekey: cole_2015_too_many_digits
+    kind: textbook
+    locator: "Body, the paragraph after the definitions of decimal places and significant digits"
+    quote: |-
+      tables ought not to be restricted to columns of numbers with fixed decimal places
+    verified:
+      resolved_id: https://doi.org/10.1136/archdischild-2014-307149
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+      note: |-
+        Cole and Wilke disagree on fixed decimal places in a column; the record names both. The
+        same paragraph suggests aligning a column "by decimal point".
+  - citekey: cole_2015_too_many_digits
+    kind: textbook
+    locator: "Body, the paragraph after the definitions of decimal places and significant digits"
+    quote: |-
+      A useful trick when formatting table columns is to align the numbers by decimal point, which highlights differences in the number of decimal places.
+    verified:
+      resolved_id: https://doi.org/10.1136/archdischild-2014-307149
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
 simplified_explanation: |
   A table is for the reader who wants exact numbers, or wants to find one row. It has to make
   sense on its own, because a reader may look at the tables before reading the text.
@@ -405,7 +428,7 @@ illustrations:
 
     The result:
 
-    > Table 1. Women and men aged 15–49 years with overweight or obesity (body mass index 25.0
+    > Table 1. Women and men aged 15–49 years with overweight or obesity (body mass index {{n:nfhs5_ow_ob_bmi_cutoff}}
     > kg/m^2 or more), India, National Family Health Survey 2019–21 (NFHS-5), by residence, with
     > the 2015–16 (NFHS-4) total
 
@@ -416,8 +439,8 @@ illustrations:
     ```
 
     > (a) Excludes pregnant women and women who gave birth in the preceding 2 months. Counts of
-    > women and men weighed and measured are not given in the source; NFHS-5 interviewed 724,115
-    > women and 101,839 men. Source: NFHS-5 India Fact Sheet, indicators 88 and 89 [reference
+    > women and men weighed and measured are not given in the source; NFHS-5 interviewed {{n:nfhs5_women_interviewed}}
+    > women and {{n:nfhs5_men_interviewed}} men. Source: NFHS-5 India Fact Sheet, indicators 88 and 89 [reference
     > number].
 
     Now the lines and the alignment, which the page here cannot show. In your word processor, draw
@@ -538,6 +561,15 @@ must_know:
   bearing: methodological
   refs: [icmje_2026_manuscript_preparation]
 - point: |
+    Keep the same decimal places down a column of like values, such as the per cents in one
+    table: that is Wilke's rule. Cole adds a warning. In his words, "tables ought not to be
+    restricted to columns of numbers with fixed decimal places". A column of ratios or P values may
+    need more digits in some rows than in others, by the rules of `S58-R1-C09`. Give each value
+    the digits it needs, and line the column up on the decimal point.
+  kind: boundary
+  bearing: methodological
+  refs: [wilke_2019_dataviz_ch22, cole_2015_too_many_digits]
+- point: |
     Acknowledge every table's outside data in a source line, every time. Before you use
     unpublished data, such as a colleague's register or another department's survey, get the
     owner's permission. ICMJE asks for both.
@@ -608,7 +640,7 @@ exercises:
     97 and its footnote 22.
 - type: interpretation
   prompt: |
-    Krishnamurthy and colleagues write that the 74,986 boys they screened had a "mean age: 13.75 ±
+    Krishnamurthy and colleagues write that the {{n:cvd_kanchipuram_boys_n}} boys they screened had a "mean age: 13.75 ±
     1.91", without saying what 1.91 is. Can you tell whether it is a standard deviation or a
     standard error? Show your reasoning. Then say how the authors should have written it in a
     table.

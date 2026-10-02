@@ -46,3 +46,86 @@ numbers:
     value: "4.0"
     meaning: rise in men overweight or obese from NFHS-4 to NFHS-5, in percentage points
     source: "22.9 minus 18.9 = 4.0 (nfhs5_men_ow_ob_pct minus nfhs4_men_ow_ob_pct)"
+# Added at Task 2b (reconcile, 2 Oct 2026) from the drafters' notes: numbers that more than one
+# section prints. Figure specs keep literal numbers (draw.py does not substitute), so a record whose
+# own figure plots one of these values keeps it literal; see books/S58-R1/RECONCILE.md.
+  nfhs5_ow_ob_bmi_cutoff:
+    value: "25.0"
+    meaning: body mass index (kg/m^2) at or above which NFHS-5 indicators 88 and 89 count an adult as overweight or obese
+    source: nfhs5_india_factsheet
+  nfhs5_women_interviewed:
+    value: "724,115"
+    meaning: women from whom NFHS-5 gathered information, India (not the women weighed for indicator 88)
+    source: nfhs5_india_factsheet
+  nfhs5_men_interviewed:
+    value: "101,839"
+    meaning: men from whom NFHS-5 gathered information, India (not the men weighed for indicator 89)
+    source: nfhs5_india_factsheet
+  nfhs5_women_ow_ob_urban_rural_gap_pp:
+    value: "13.5"
+    meaning: urban minus rural share of women aged 15-49 overweight or obese, NFHS-5, in percentage points
+    source: "33.2 minus 19.7 = 13.5 (nfhs5_women_ow_ob_urban_pct minus nfhs5_women_ow_ob_rural_pct)"
+  nfhs5_women_ow_ob_urban_rural_ratio:
+    value: "1.69"
+    meaning: urban share divided by rural share, women aged 15-49 overweight or obese, NFHS-5, to three significant figures
+    source: "33.2 divided by 19.7 = 1.685, rounded to 1.69 by Cole's rule of four"
+  nfhs_ow_ob_totals_range_pp:
+    value: "5.1"
+    meaning: range of the four India totals (women and men, NFHS-4 and NFHS-5), in percentage points
+    source: "24.0 minus 18.9 = 5.1 (nfhs5_women_ow_ob_pct minus nfhs4_men_ow_ob_pct)"
+  nfhs_women_ow_ob_rel_rise_pct:
+    value: "17"
+    meaning: relative rise in women overweight or obese, NFHS-4 to NFHS-5, per cent of the NFHS-4 figure, rounded
+    source: "3.4 divided by 20.6 = 0.165, about 17 per cent"
+  nfhs_men_ow_ob_rel_rise_pct:
+    value: "21"
+    meaning: relative rise in men overweight or obese, NFHS-4 to NFHS-5, per cent of the NFHS-4 figure, rounded
+    source: "4.0 divided by 18.9 = 0.212, about 21 per cent"
+  nfhs_women_lf_axis18:
+    value: "7.9"
+    meaning: Lie Factor of bars of the women's NFHS-4 and NFHS-5 totals drawn on a value axis starting at 18, rounded
+    source: "20.6 divided by (20.6 minus 18) = 7.92"
+  nfhs_men_lf_axis18:
+    value: "21"
+    meaning: Lie Factor of bars of the men's NFHS-4 and NFHS-5 totals drawn on a value axis starting at 18
+    source: "18.9 divided by (18.9 minus 18) = 21.0"
+  tufte_lf_threshold:
+    value: "1.05"
+    meaning: Lie Factor above which Tufte counts the distortion as substantial
+    source: tufte_1983_visual_display
+  fre_constant:
+    value: "206.835"
+    meaning: constant of the Flesch Reading Ease formula
+    source: flesch_1948_readability_yardstick
+  fre_asl_weight:
+    value: "1.015"
+    meaning: Flesch Reading Ease weight on average sentence length (words per sentence)
+    source: flesch_1948_readability_yardstick
+  fre_asw_weight:
+    value: "84.6"
+    meaning: Flesch Reading Ease weight on average syllables per word (Flesch 1948 prints .846 per 100 words)
+    source: flesch_1979_plain_english
+  fkgl_asl_weight:
+    value: "0.39"
+    meaning: Flesch-Kincaid grade level weight on average sentence length
+    source: kincaid_1975_readability
+  fkgl_asw_weight:
+    value: "11.8"
+    meaning: Flesch-Kincaid grade level weight on average syllables per word
+    source: kincaid_1975_readability
+  fkgl_constant:
+    value: "15.59"
+    meaning: Flesch-Kincaid grade level constant (subtracted)
+    source: kincaid_1975_readability
+  cvd_kanchipuram_boys_n:
+    value: "74,986"
+    meaning: boys aged 11-17 screened for colour-vision deficiency in schools of Kanchipuram district, Tamil Nadu
+    source: krishnamurthy_2021_cvd_india
+  figure_check_width_low_cm:
+    value: "8"
+    meaning: narrow end of the on-screen width (cm) at which to read a figure's labels; Wilke's three inches
+    source: "3 times 2.54 = 7.62, about 8 (wilke_2019_dataviz_ch24)"
+  figure_check_width_high_cm:
+    value: "13"
+    meaning: wide end of that width (cm); Wilke's five inches
+    source: "5 times 2.54 = 12.7, about 13 (wilke_2019_dataviz_ch24)"
