@@ -15,15 +15,12 @@ ground_floor_deps:
 concept_deps: [S58-R1-C14, S58-R1-C15]
 definition:
   text: |
-    The value axis of a figure is the axis its values are read against (`B0-R0-C40`). The axis
-    start, written s, is the value at which the value axis begins.
+    The axis start, written s, is the value at which the value axis begins.
 
     The principle of proportional ink, so named by Bergstrom and West, says that a shaded area
     must be in proportion to the value it stands for. On an ordinary, linear axis a bar, or an
-    area shaded down to the axis, therefore starts at zero. On a logarithmic axis a bar stands
-    for a ratio, and it starts at 1. A point or a line carries its value by position alone. Its
-    axis may start wherever the data need, and the range it shows is a choice the author makes
-    and states.
+    area shaded down to the axis, therefore starts at zero. On a logarithmic axis a bar stands for
+    a ratio, and it starts at 1. A point or a line carries its value by position alone.
 
     Take two bars with values a and b, a the smaller, drawn up from an axis start s above zero.
     Their drawn heights are a − s and b − s, read "a minus s" and "b minus s". The drawn ratio is
@@ -38,13 +35,10 @@ definition:
     ```
 
     An LF of 1 draws the change at its true size. Tufte counts an LF above 1.05 or below 0.95 as
-    substantial distortion. For two bars drawn from an axis start s, the LF comes to a ÷ (a − s),
-    as the second illustration shows.
+    substantial distortion.
 
     Starting a bar chart's axis above zero is called truncating it. Truncation makes readers judge
-    a difference as more severe. In one set of experiments this held for line charts as well as
-    bars, held when the axis was drawn as broken, and held when readers reported the numbers
-    accurately.
+    a difference as more severe.
   references:
   - citekey: bergstrom_west_2016_proportional_ink
     kind: textbook
@@ -213,17 +207,7 @@ definition:
         The sentence: the exaggeration "appears to persist across chart types and chart designs,
         and even when participants make accurate reports of the numbers they observe."
 simplified_explanation: |
-  A bar is a length, and a reader reads a length as a value. Cut the bottom off the bars and the
-  reader still reads the lengths that are left. A small rise then looks like a leap.
-
-  You can measure how big the leap looks. Take the change the figure draws, as a percentage. Divide
-  it by the change in the data, as a percentage. That is the Lie Factor. Close to 1 is honest, and
-  Tufte drew the line at 1.05.
-
-  Points and lines work differently. A point is read by where it sits, not by how long anything
-  is. So a line chart may start its axis near the data, as long as the axis says where it starts.
-  Even then, the range you choose changes how big the change feels. So the caption gives the
-  change in numbers too.
+  A bar is a length, and a reader reads a length as a value. A small rise then looks like a leap.
 illustrations:
 - body: |
     Start with a real chart that went wrong. A newspaper drew the fuel-economy standards the United
@@ -536,9 +520,7 @@ must_know:
   bearing: methodological
   refs: [tufte_1983_visual_display]
 - point: |
-    A break mark on the axis does not make a truncated bar chart honest. The lengths are unchanged,
-    so the Lie Factor is unchanged, and a break mark did not stop the exaggeration in Correll's
-    second experiment.
+    A break mark on the axis does not make a truncated bar chart honest.
   kind: trap
   bearing: methodological
   refs: [correll_2020_truncating_yaxis]
@@ -550,7 +532,7 @@ must_know:
   refs: [bergstrom_west_2016_proportional_ink]
 - point: |
     To show a small change honestly, draw the change itself as bars from zero, or draw points on
-    a stated range near the data. Do not truncate bars to make the change visible.
+    a stated range near the data.
   kind: move
   bearing: methodological
   refs: [wilke_2019_dataviz_ch17]
@@ -561,15 +543,12 @@ must_know:
   bearing: methodological
   refs: [wilke_2019_dataviz_ch17]
 - point: |
-    The Lie Factor measures whether a drawn change matches the data. It cannot tell you whether
-    the change matters, and it does not apply to points read by position. The range you pick for a
-    line chart still sets how big the change feels. So state the axis start in the caption, and
-    give the change in numbers.
+    The range you pick for a line chart still sets how big the change feels. So state the axis
+    start in the caption, and give the change in numbers.
   kind: boundary
   bearing: methodological
   refs: [correll_2020_truncating_yaxis]
 - point: |
-    When a journalist or a colleague sends you an alarming bar chart, do not repeat its shape.
     Repeat the change in percentage points and in per cent, with both values.
   kind: consequence
   bearing: public
