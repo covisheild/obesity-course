@@ -1,8 +1,9 @@
 # Source gate · S47-R1 (Book 5)
 
-release: pending
+release: sources-provided
+released-on: 2026-10-02
 
-Updated 2026-10-02: Harsh supplied five PDFs (intake group H, verbatim 11/11). Still not obtained: General Clauses Act s.23 and the 2026 amendment to Notification 9/2025-CT(Rate).
+Updated 2026-10-02: Harsh supplied five PDFs (intake group H, verbatim 11/11). Later the same day Harsh supplied the General Clauses Act (India Code PDF) and Notification 01/2026-CT(Rate); every Not obtained row is now provided, so the gate is released (sources-provided).
 
 Written 2026-10-01 after Task 1 (`INVENTORY.md`, `READY.md`, `COVERAGE.md`) and source intake
 (`INTAKE.md`, four intake groups A–D, every stored passage re-checked verbatim: A 29/29, B 15/15,
@@ -74,7 +75,7 @@ Projected size: 18 sections, `page_budget: 160` (about 8 pages a section plus an
 | One draft notification from the e-Gazette with its objection period (e.g. an FSSAI draft regulation) | C07 | https://egazette.gov.in/Disclaimer.aspx | Site terms could not be read (page redirects to an error), so nothing was fetched | yes: sources/fssai_2018_packaging_regs.txt (the final FSSAI Packaging Regulations 2018, G.S.R. of 24 Dec 2018, whose preamble recites the draft of 19 Mar 2018 and its 30-day objection period; Harsh supplied a final notification, which shows the whole draft-to-final path) |
 | Prohibition of Smoking in Public Places Rules 2008, G.S.R. 417(E) | C11 | https://ntcp.mohfw.gov.in/assets/document/Acts-Rules-Regulations/GSR-417(E).pdf | PDF without a text layer | yes: sources/mohfw_2008_smoking_rules.txt (Indian Kanoon print, not an official copy; see header) |
 | CGST Notification No. 9/2025-Central Tax (Rate), 17 Sep 2025, entries for HSN 2202 | C18 | https://taxinformation.cbic.gov.in/view-pdf/1010436/ENG/Notifications | CBIC tax portal unreachable from the sandbox | yes: sources/cgst_notif_9_2025_rate.txt (Gazette copy 266209 supplied by Harsh) |
-| The latest amendment to Notification 9/2025-CT(Rate) (one issued in 2026; a search snippet names 01/2026-CT(Rate), 30 Apr 2026), to confirm the HSN 2202 entries still stand | C18 | https://www.gstcouncil.gov.in/cgst-rate-notification (list stops at 08/2025 as served); taxinformation.cbic.gov.in (proxy error) | Not on the GST Council list as served; CBIC portal unreachable | no |
+| The latest amendment to Notification 9/2025-CT(Rate) (one issued in 2026; a search snippet names 01/2026-CT(Rate), 30 Apr 2026), to confirm the HSN 2202 entries still stand | C18 | https://www.gstcouncil.gov.in/cgst-rate-notification (list stops at 08/2025 as served); taxinformation.cbic.gov.in (proxy error) | Not on the GST Council list as served; CBIC portal unreachable | yes: sources/cgst_notif_1_2026_rate.txt (01/2026-CT(Rate), in force 1 May 2026; heading 2202 stays in Schedule III - 20%; 19/2025 named in its Note, not held) |
 | CGST Act 2017, s.9 as currently amended | C18 | https://taxinformation.cbic.gov.in/content/html/tax_repository/gst/acts/2017_CGST_act/active/chapter3/section9_v1.00.html | Unreachable (proxy error); only the 2020 consolidation is held | yes: sources/cgst_act_2017_s9_cbic.txt |
 
 ## Optional, not obtained (these do not hold the gate)

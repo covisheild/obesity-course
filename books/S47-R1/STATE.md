@@ -7,8 +7,8 @@ Branch `book/S47-R1`, base `c86325b`. Claimed 2026-10-01 in project doc `claude/
 | Setup (book.yml, series) | done 2026-10-01 |
 | Task 1 inventory, READY, COVERAGE, numbers.yml | done 2026-10-01: 18 concepts (C01–C18), 3 quantitative (C11, C15, C17), journey C18, page_budget 160 |
 | Source intake | done 2026-10-01: 25 sources, verbatim 104/104 runs; one withdrawn (Lok Sabha USQ 2110) |
-| Source-collection stop | **waiting for Harsh** since 2026-10-01 (`SOURCE-GATE.md`, release: pending): 6 not obtained |
-| Draft onward | blocked on the source gate |
+| Source-collection stop | **released 2026-10-02** (sources-provided): Harsh supplied all 7 missing items (groups H, H2, H3) |
+| Task 2 draft | next |
 
 Next action: when Harsh supplies sources, take each in to the intake checklist and mark its row
 `yes: sources/<file>.txt`; or, on his exact words "Proceed with incomplete sources and start building
