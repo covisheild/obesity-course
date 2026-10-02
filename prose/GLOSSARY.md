@@ -241,7 +241,7 @@ teaches were deleted. Terms used before their gloss, and terms used for two thin
 | farmer's share of the consumer rupee | the farm-gate price divided by the retail price: at 75 per cent, Rs 75 of every Rs 100 paid at the shop reaches the farmer, who still pays for seed, labour and the trip to market out of it | `S37-R1-C04` |
 | fat mass | the triglyceride held in adipose tissue | `S01-R1-C01` |
 | fat-free mass | everything else the body weighs; some papers call it lean body mass, or lean mass | `S01-R1-C01` |
-| feasibility (of a policy option) | whether it can be done: evidence can inform it (costs, capacity, what the law allows), but whether the bodies with the power will commit to it is a judgement; not the same as "feasible (question)", `S55-R1-C04` | `S47-R1-C16` |
+| feasibility (of a policy option) | whether it can be done: evidence can inform it (costs, capacity, what the law allows), but whether the bodies with the power will commit to it is a judgement; not the same as "feasible (question)" (Book 7) | `S47-R1-C16` |
 | feasible (question) | the person asking can actually get the answer with what they have: people to reach, a way to measure, time, money, equipment and skill, and ethics committee approval | `S55-R1-C04` |
 | feedback (on a retrieval attempt) | showing the learner the correct answer after the attempt | `S57-R1-C03` |
 | feeling of learning | the learner's own judgement of how much they learned, usually given as a rating | `S57-R1-C01` |
