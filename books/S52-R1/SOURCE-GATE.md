@@ -57,11 +57,22 @@ what is held instead.
 
 | Source | Needed for | URL tried | Why not obtained | Provided |
 | --- | --- | --- | --- | --- |
-| Herndon, Ash & Pollin 2014, *Camb J Econ* 38:257, the journal article | C01 | https://academic.oup.com/cje (article page via doi.org) | publisher page "bot_blocked". **Held instead:** PERI Working Paper 322 (April 2013, revised), which states the spreadsheet error ("lines 30 to 44 instead of lines 30 to 49") | no |
+| Herndon, Ash & Pollin 2014, *Camb J Econ* 38:257, the journal article | C01 | https://academic.oup.com/cje (article page via doi.org) | publisher page "bot_blocked". **Held instead:** PERI Working Paper 322 (April 2013, revised), which states the spreadsheet error ("lines 30 to 44 instead of lines 30 to 49") | yes: sources/herndon_2014_cje.txt |
 | Broman & Woo 2018, *Am Stat* 72:2, the typeset journal article | C01, C08–C10, C15 | https://www.tandfonline.com/doi/full/10.1080/00031305.2017.1375989 | publisher page "bot_blocked". **Held instead:** the authors' own manuscript (CC BY), kbroman.org and PeerJ Preprints 6:e3183v2; wording may differ slightly from print | no |
-| NHANES 2021-2023 `BMX_L.xpt` (1.5 MB) and `DEMO_L.xpt` (2.5 MB) with their codebooks | C22 and the build, **only if Harsh chooses dataset A** | https://wwwn.cdc.gov/nchs/nhanes/search/datapage.aspx?Component=Examination&Cycle=2021-2023 | the host refuses downloads from the sandbox (CONNECT 403); the data page was readable | no |
-| Bruford et al. 2020, *Nat Genet* 52:754, HGNC gene nomenclature guidelines | C01 (optional: only to say the gene symbols were later renamed) | https://www.nature.com/articles/s41588-020-0669-3 | paywalled | no |
-| NMC, *Guidelines for competency based postgraduate training programme for MD in Community Medicine* | C09 (optional: the curriculum's software line) | https://nmc.org.in/storage/new/MD-Community-Medicine.pdf | opened for `COVERAGE.md`, not filed; no date on the document | no |
+| NHANES 2021-2023 `BMX_L.xpt` (1.5 MB) and `DEMO_L.xpt` (2.5 MB) with their codebooks | C22 and the build, **only if Harsh chooses dataset A** | https://wwwn.cdc.gov/nchs/nhanes/search/datapage.aspx?Component=Examination&Cycle=2021-2023 | the host refuses downloads from the sandbox (CONNECT 403); the data page was readable | yes: sources/nchs_nhanes_2021_2023_bmx_demo.txt |
+| Bruford et al. 2020, *Nat Genet* 52:754, HGNC gene nomenclature guidelines | C01 (optional: only to say the gene symbols were later renamed) | https://www.nature.com/articles/s41588-020-0669-3 | paywalled | yes: sources/bruford_2020_hgnc.txt |
+| NMC, *Guidelines for competency based postgraduate training programme for MD in Community Medicine* | C09 (optional: the curriculum's software line) | https://nmc.org.in/storage/new/MD-Community-Medicine.pdf | opened for `COVERAGE.md`, not filed; no date on the document | yes: sources/nmc_pg_md_community_medicine.txt |
+
+## Supplied by Harsh, 2 Oct 2026
+
+Harsh attached the Herndon et al. 2014 journal PDF, Bruford et al. 2020, the NMC MD Community Medicine
+guideline, NHANES 2021-2023 `BMX_L.xpt` and `DEMO_L.xpt`, and the two codebooks printed to PDF. Filed by intake
+group d (`intake/log-d.md`): 31/31 passages verbatim, every cited number checked against the page image; data
+files byte-identical (MD5 ab25a36296e5b61881d42fef61c06b84, 14555b1f4e3c909172e900f63a2ecd03); BMX_L 8860 x 22,
+DEMO_L 11933 x 27, 6064 BMX rows aged 20 or over after the join (recomputed by the conductor); all 155 printed
+codebook counts match the data. Conductor re-check of the passages: 31/31. Still not provided: the typeset
+Broman & Woo article (the authors' manuscript is held). A Kincaid et al. 1975 PDF came in the same upload; it is
+Book 9's (S58-R1) source, already filed there, and is not used here.
 
 ## Decisions for Harsh (also in the message)
 

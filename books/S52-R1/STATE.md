@@ -7,7 +7,7 @@ Drafters: Opus 5.5. Second book chat at once (Book 5, S47-R1, is at its source g
 | --- | --- |
 | Claim, book.yml, series.py | done `825c0fb` |
 | Task 1 inventory (22 concepts, 18 quantitative), READY.md, COVERAGE.md, numbers.yml | done `60cdeca` |
-| Source intake, SOURCE-GATE.md | intake done (30 files, 219/220 re-checked); **WAITING AT THE SOURCE GATE** (release: pending) |
+| Source intake, SOURCE-GATE.md | intake done (34 files + 3 data files); Harsh supplied 4 of 5 not-obtained on 2 Oct (group d); **WAITING AT THE SOURCE GATE**: Broman & Woo typeset article, or the exact phrase |
 | Task 2 draft, 2b reconcile | |
 | Task 5 compression | |
 | Figure plan | |

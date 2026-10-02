@@ -1,0 +1,154 @@
+R version: R version 4.3.3 (2024-02-29) 
+haven version (packageVersion): 2.5.4 
+
+== BMX_L
+file: sources/data/BMX_L.xpt 
+bytes: 1563200 
+md5: ab25a36296e5b61881d42fef61c06b84 
+rows: 8860 
+columns: 22 
+variables (name: label as read by read_xpt; class):
+  SEQN: Respondent sequence number; numeric
+  BMDSTATS: Body Measures Component Status Code; numeric
+  BMXWT: Weight (kg); numeric
+  BMIWT: Weight Comment; numeric
+  BMXRECUM: Recumbent Length (cm); numeric
+  BMIRECUM: Recumbent Length Comment; numeric
+  BMXHEAD: Head Circumference (cm); numeric
+  BMIHEAD: Head Circumference Comment; numeric
+  BMXHT: Standing Height (cm); numeric
+  BMIHT: Standing Height Comment; numeric
+  BMXBMI: Body Mass Index (kg/m**2); numeric
+  BMDBMIC: BMI Category - Children/Youth; numeric
+  BMXLEG: Upper Leg Length (cm); numeric
+  BMILEG: Upper Leg Length Comment; numeric
+  BMXARML: Upper Arm Length (cm); numeric
+  BMIARML: Upper Arm Length Comment; numeric
+  BMXARMC: Arm Circumference (cm); numeric
+  BMIARMC: Arm Circumference Comment; numeric
+  BMXWAIST: Waist Circumference (cm); numeric
+  BMIWAIST: Waist Circumference Comment; numeric
+  BMXHIP: Hip Circumference (cm); numeric
+  BMIHIP: Hip Circumference Comment; numeric
+
+== DEMO_L
+file: sources/data/DEMO_L.xpt 
+bytes: 2582160 
+md5: 14555b1f4e3c909172e900f63a2ecd03 
+rows: 11933 
+columns: 27 
+variables (name: label as read by read_xpt; class):
+  SEQN: Respondent sequence number; numeric
+  SDDSRVYR: Data release cycle; numeric
+  RIDSTATR: Interview/Examination status; numeric
+  RIAGENDR: Gender; numeric
+  RIDAGEYR: Age in years at screening; numeric
+  RIDAGEMN: Age in months at screening - 0 to 24 mos; numeric
+  RIDRETH1: Race/Hispanic origin; numeric
+  RIDRETH3: Race/Hispanic origin w/ NH Asian; numeric
+  RIDEXMON: Six-month time period; numeric
+  RIDEXAGM: Age in months at exam - 0 to 19 years; numeric
+  DMQMILIZ: Served active duty in US Armed Forces; numeric
+  DMDBORN4: Country of birth; numeric
+  DMDYRUSR: Length of time in US; numeric
+  DMDEDUC2: Education level - Adults 20+; numeric
+  DMDMARTZ: Marital status; numeric
+  RIDEXPRG: Pregnancy status at exam; numeric
+  DMDHHSIZ: Total number of people in the Household; numeric
+  DMDHRGND: HH ref person<92>s gender; numeric
+  DMDHRAGZ: HH ref person<92>s age in years; numeric
+  DMDHREDZ: HH ref person<92>s education level; numeric
+  DMDHRMAZ: HH ref person<92>s marital status; numeric
+  DMDHSEDZ: HH ref person<92>s spouse<92>s education level; numeric
+  WTINT2YR: Full sample 2-year interview weight; numeric
+  WTMEC2YR: Full sample 2-year MEC exam weight; numeric
+  SDMVSTRA: Masked variance pseudo-stratum; numeric
+  SDMVPSU: Masked variance pseudo-PSU; numeric
+  INDFMPIR: Ratio of family income to poverty; numeric
+
+== BMX_L: missing values (sum(is.na())) for four measures
+  BMXWT: 106
+  BMXHT: 361
+  BMXBMI: 389
+  BMXWAIST: 670
+
+== DEMO_L: counts
+  RIDSTATR (table, NA included):
+
+   1    2 <NA> 
+3073 8860    0 
+  RIAGENDR (table, NA included):
+
+   1    2 <NA> 
+5575 6358    0 
+  RIDAGEYR range (min, max): 0 80 
+  RIDAGEYR missing: 0 
+  RIDAGEYR == 80 (top code): 525 
+
+== Join BMX_L to DEMO_L on SEQN (dplyr-free: merge, all.x = TRUE)
+  SEQN unique in BMX_L: TRUE ; SEQN unique in DEMO_L: TRUE 
+  BMX_L SEQNs found in DEMO_L: 8860 of 8860 
+  rows after join: 8860 
+  RIDSTATR among joined BMX rows (table):
+
+   2 <NA> 
+8860    0 
+  BMX rows with RIDAGEYR >= 20: 6064 
+  of these, missing BMXWT / BMXHT / BMXBMI / BMXWAIST: 81 / 67 / 94 / 302 
+  of these, RIDEXPRG == 1 (pregnant at exam): 41 
+
+== FREQUENCIES IN THE CODEBOOK'S FORM (every variable; for comparison with the printed tables)
+   numeric variables with many values: non-missing count with min and max, then missing count
+   coded variables (<= 12 distinct values): count per value, then missing count
+BMX_L BMDSTATS: 1=8235 2=147 3=409 4=69 NA=0
+BMX_L BMXWT: range 2.7 to 248.2 n=8754 NA=106
+BMX_L BMIWT: 1=30 3=296 4=19 NA=8515
+BMX_L BMXRECUM: range 48.5 to 118.8 n=454 NA=8406
+BMX_L BMIRECUM: 1=18 NA=8842
+BMX_L BMXHEAD: range 34.4 to 46.5 n=70 NA=8790
+BMX_L BMIHEAD: = NA=8860
+BMX_L BMXHT: range 79.1 to 200.7 n=8499 NA=361
+BMX_L BMIHT: 1=46 3=88 NA=8726
+BMX_L BMXBMI: range 11.1 to 74.8 n=8471 NA=389
+BMX_L BMDBMIC: 1=92 2=1469 3=372 4=559 NA=6368
+BMX_L BMXLEG: range 24.9 to 51.6 n=7335 NA=1525
+BMX_L BMILEG: 1=396 NA=8464
+BMX_L BMXARML: range 10 to 49.2 n=8568 NA=292
+BMX_L BMIARML: 1=200 NA=8660
+BMX_L BMXARMC: range 12 to 63.3 n=8562 NA=298
+BMX_L BMIARMC: 1=205 NA=8655
+BMX_L BMXWAIST: range 39.8 to 187 n=8190 NA=670
+BMX_L BMIWAIST: 1=347 NA=8513
+BMX_L BMXHIP: range 69.9 to 187.1 n=6776 NA=2084
+BMX_L BMIHIP: 1=361 NA=8499
+DEMO_L SDDSRVYR: 12=11933 NA=0
+DEMO_L RIDSTATR: 1=3073 2=8860 NA=0
+DEMO_L RIAGENDR: 1=5575 2=6358 NA=0
+DEMO_L RIDAGEYR: range 0 to 80 n=11933 NA=0
+DEMO_L RIDAGEMN: range 0 to 24 n=377 NA=11556
+DEMO_L RIDRETH1: 1=1117 2=1373 3=6217 4=1597 5=1629 NA=0
+DEMO_L RIDRETH3: 1=1117 2=1373 3=6217 4=1597 6=681 7=948 NA=0
+DEMO_L RIDEXMON: 1=4251 2=4609 NA=3073
+DEMO_L RIDEXAGM: range 0 to 239 n=2787 NA=9146
+DEMO_L DMQMILIZ: 1=694 2=7606 7=1 NA=3632
+DEMO_L DMDBORN4: 1=10039 2=1875 NA=19
+DEMO_L DMDYRUSR: 1=101 2=260 3=225 4=160 5=158 6=912 77=13 99=46 NA=10058
+DEMO_L DMDEDUC2: 1=373 2=666 3=1749 4=2370 5=2625 9=11 NA=4139
+DEMO_L DMDMARTZ: 1=4136 2=2022 3=1625 77=4 99=5 NA=4141
+DEMO_L RIDEXPRG: 1=41 2=1065 3=397 NA=10430
+DEMO_L DMDHHSIZ: 1=1916 2=3056 3=1912 4=2284 5=1418 6=723 7=624 NA=0
+DEMO_L DMDHRGND: 1=1793 2=2322 NA=7818
+DEMO_L DMDHRAGZ: 1=83 2=1985 3=1804 4=252 NA=7809
+DEMO_L DMDHREDZ: 1=550 2=2004 3=1192 NA=8187
+DEMO_L DMDHRMAZ: 1=2947 2=614 3=459 NA=7913
+DEMO_L DMDHSEDZ: 1=300 2=942 3=885 NA=9806
+DEMO_L WTINT2YR: range 4584.463196 to 170968.343177 n=11933 NA=0
+DEMO_L WTMEC2YR: range 0 to 227108.296958 n=11933 NA=0
+DEMO_L SDMVSTRA: range 173 to 187 n=11933 NA=0
+DEMO_L SDMVPSU: 1=6065 2=5868 NA=0
+DEMO_L INDFMPIR: range 0 to 5 n=9892 NA=2041
+   split ranges where the codebook prints a separate code inside a range:
+DEMO_L WTMEC2YR: >0 range 4581.595095 to 227108.296958 n=8860 ==0 n=3073 NA=0
+DEMO_L INDFMPIR: <5 range 0 to 4.99 n=7743 ==5 n=2149 NA=2041
+DEMO_L RIDAGEYR: 0-79 n=11408 ==80 n=525
+DEMO_L DMDHHSIZ: 1-6 n=11309 ==7 n=624
