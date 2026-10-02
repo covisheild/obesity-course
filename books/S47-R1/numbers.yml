@@ -1,19 +1,17 @@
 # books/S47-R1/numbers.yml: every number this book uses in more than one section (claude.md §4a).
 # Prose writes {{n:key}}; another book's number is {{n:S01-R1/key}}. The build substitutes the
 # value before any check runs, blocks on an unknown key and warns on an unused one.
-#
-# Started at Task 1 (2026-10-01). This book is institutional and carries almost no figures. Two
-# numbers are expected to recur, and both wait for their sources to be opened at intake, so they are
-# listed here as candidates and not yet as keys (a key whose value nobody has read is the defect
-# claude.md §7b forbids):
-#
-#   gst_sugary_drinks_rate   - the GST rate on carbonated and sugar-added drinks after the 56th GST
-#                              Council meeting (the map says 40%, from 22 September 2025). Used in
-#                              C09, C15 and C18. Source: PIB PRID 2163555 and the CBIC rate
-#                              notification, both "to obtain" in READY.md.
-#   plcp_comment_days        - the minimum days a draft Bill is published for comment under the
-#                              Pre-Legislative Consultation Policy 2014 (expected 30). Used in C06 and
-#                              C07. Source: the Policy, "to obtain".
-#
-# The drafter adds each as a key, with value, meaning and citekey, once the source is in sources/.
-numbers: {}
+# Keys filled by the conductor on 2026-10-02 after the source gate was released.
+numbers:
+  gst_demerit_rate_pct:
+    value: "40"
+    meaning: the combined GST "special de-merit rate" the 56th GST Council meeting recommended for a select few goods, including sugar-added and other non-alcoholic beverages (C09, C15, C18)
+    source: pib_2163555
+  cgst_sugary_drinks_rate_pct:
+    value: "20"
+    meaning: the central (CGST) rate on heading 2202 drinks in Schedule III of Notification 9/2025-CT(Rate), and the cap CGST Act s.9(1) sets (C09, C18)
+    source: cgst_notif_9_2025_rate; cgst_act_2017_s9_cbic
+  plcp_comment_days:
+    value: "thirty"
+    meaning: minimum period a draft Bill is kept in the public domain under the Pre-Legislative Consultation Policy 2014 (C06, C07)
+    source: plcp_2014
