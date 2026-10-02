@@ -1,0 +1,807 @@
+concept_id: S58-R1-C19
+subject: S58
+rung: 1
+sequence: 19
+name: "Colour: for meaning only, readable by everyone, and in grey"
+concept_type: empirical
+clusters:
+- craft-and-integrity
+- india-specificity
+ground_floor_deps:
+- B0-R0-C29
+- B0-R0-C40
+concept_deps:
+- S58-R1-C14
+- S58-R1-C18
+definition:
+  text: |
+    In a data figure, colour does one of three jobs. It separates groups that have no order, using
+    a qualitative scale: a small set of colours that look clearly different from each other and
+    equally strong. It stands for a value, using a sequential scale, which runs from light to dark.
+    For a value that can lie either side of a meaningful middle, such as zero, it uses a diverging
+    scale: two sequential scales joined at a light middle colour placed at that value. Or it picks
+    out one element against others drawn in grey. Colour that does none of these jobs is ornament.
+
+    A colour scale shows values fairly when it is perceptually uniform: the same step in the data
+    looks like the same step in colour anywhere along the scale. Its lightness should also change
+    in one direction only, so that the order of the values survives when the colour is removed. The
+    rainbow scale fails both. Crameri, Shephard and Heron (2020) report that its distortion can
+    exceed seven per cent of the range of the data shown.
+
+    Colour-vision deficiency is a reduced ability to tell certain colours apart, most often red
+    from green. The general estimate cited worldwide is that it affects 8 per cent of men and 0.5
+    per cent of women. In India, one school screening of 74,986 boys aged 11 to 17 in Kanchipuram
+    district, Tamil Nadu, found it confirmed in 2.76 per cent. That is a figure for boys in one
+    district, not a rate for India.
+
+    A greyscale copy of a figure keeps only the lightness of each colour, so two colours of the
+    same lightness print as the same grey. A colour-vision-deficiency simulator is a program that
+    redraws an image as a reader with a given deficiency would see it.
+
+    What would overturn this: perception experiments in which readers judge values on a rainbow
+    scale as accurately as on a perceptually uniform one. For the Indian figure, a survey of a
+    random sample of Indian adults, women and men, would replace one district's boys as the number
+    to quote.
+  references:
+  - citekey: wilke_2019_dataviz_ch04
+    kind: textbook
+    locator: "Chapter 4, Color scales, opening paragraph"
+    quote: |-
+      There are three fundamental use cases for color in data visualizations: (i) we can use color to distinguish groups of data from each other; (ii) we can use color to represent data values; and (iii) we can use color to highlight.
+    verified:
+      resolved_id: https://clauswilke.com/dataviz/color-basics.html
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+      note: |-
+        Off-type reference (textbook on an empirical concept), held and quoted; it backs the three
+        jobs only. CC BY-NC-ND 4.0: quoted, never adapted.
+  - citekey: wilke_2019_dataviz_ch04
+    kind: textbook
+    locator: "Chapter 4, section 4.1 Color as a tool to distinguish, first paragraph"
+    quote: |-
+      Such a scale contains a finite set of specific colors that are chosen to look clearly distinct from each other while also being equivalent to each other.
+    verified:
+      resolved_id: https://clauswilke.com/dataviz/color-basics.html
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+      note: |-
+        "Such a scale" is the qualitative colour scale named in the sentence before. The next
+        sentence glosses "equivalent": "no one color should stand out relative to the others".
+  - citekey: wilke_2019_dataviz_ch04
+    kind: textbook
+    locator: "Chapter 4, section 4.2 Color to represent data values, paragraph on diverging scales"
+    quote: |-
+      We can think of a diverging scale as two sequential scales stiched together at a common midpoint, which usually is represented by a light color
+    verified:
+      resolved_id: https://clauswilke.com/dataviz/color-basics.html
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+      note: |-
+        "stiched" is Wilke's spelling, kept. The midpoint "that means something" is from the
+        Texas example in the same section: "a diverging scale is justified here, because 50% is
+        a meaningful midpoint value".
+  - citekey: wilke_2019_dataviz_ch04
+    kind: textbook
+    locator: "Chapter 4, section 4.3 Color as a tool to highlight, last paragraph"
+    quote: |-
+      Just remove all color from all elements in the figure except the highlighted data categories or points.
+    verified:
+      resolved_id: https://clauswilke.com/dataviz/color-basics.html
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+  - citekey: crameri_2020_misuse_colour
+    kind: primary
+    locator: "The importance of colour to prevent data distortion, first paragraph"
+    quote: |-
+      A perceptually uniform colour map weights the same data variation equally all across the dataspace, while other colour maps (such as rainbow) interpret some small data variation to be more important than others
+    verified:
+      resolved_id: https://doi.org/10.1038/s41467-020-19160-7
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+      note: |-
+        A Perspective in Nature Communications; read at the PMC open-access XML (CC BY 4.0).
+  - citekey: crameri_2020_misuse_colour
+    kind: primary
+    locator: "The importance of colour to prevent data distortion, first paragraph (the size of the error)"
+    quote: |-
+      Such a colour-introduced blind interpretation can diverge from an objective representation by more than seven percent of the displayed data variation
+    verified:
+      resolved_id: https://doi.org/10.1038/s41467-020-19160-7
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+      note: |-
+        Backs "more than seven per cent of the range of the data shown". The Fig. 3 caption says
+        the same: for jet, "visual error can be >7% of the displayed data variation". The method
+        (CIEDE2000 colour differences) is in the paper's Methods, not held.
+  - citekey: wilke_2019_dataviz_ch19
+    kind: textbook
+    locator: "Chapter 19, section 19.2 Using non-monotonic color scales to encode data values"
+    quote: |-
+      This lack of monotonicity becomes particularly apparent if we look at the color scale in grayscale (Figure 19.4).
+    verified:
+      resolved_id: https://clauswilke.com/dataviz/color-pitfalls.html
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+      note: |-
+        Backs "lightness should change in one direction only, so that the order survives when
+        the colour is removed", and the rainbow failing it. The next sentence describes the grey
+        rainbow: "from medium dark to light to very dark and back to medium dark".
+  - citekey: crameri_2020_misuse_colour
+    kind: primary
+    locator: "Introduction, paragraph on red and green and colour-vision deficiency"
+    quote: |-
+      The general estimate is that worldwide 0.5% of women and 8% of men are subject to a colour-vision deficiency
+    verified:
+      resolved_id: https://doi.org/10.1038/s41467-020-19160-7
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+      note: |-
+        A general estimate the authors cite (refs 24, 25), not their own measurement; the record
+        says "cited". The next sentence says the numbers are lower in sub-Saharan Africa and
+        likely higher in populations such as Scandinavia's.
+  - citekey: crameri_2020_misuse_colour
+    kind: primary
+    locator: "Box 1, Human colour perception, third paragraph"
+    quote: |-
+      The most common form of colour-vision deficiency is the red–green dichromatism, called deuteranomaly, concerning the M-cone and causing red and green to appear indistinguishable.
+    verified:
+      resolved_id: https://doi.org/10.1038/s41467-020-19160-7
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+      note: |-
+        Backs "most often red from green". Wilke ch. 19.3 agrees: "deuteranomaly is the most
+        common form".
+  - citekey: krishnamurthy_2021_cvd_india
+    kind: primary
+    locator: "Abstract, Results"
+    quote: |-
+      The overall prevalence of CVD was found to be 2.76% (n = 2073; 95% confidence interval [CI]: 2.65–2.88).
+    verified:
+      resolved_id: https://doi.org/10.4103/ijo.IJO_3208_20
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+      note: |-
+        Read at the PMC open-access XML (CC BY-NC-SA 4.0). Boys only, one district.
+  - citekey: krishnamurthy_2021_cvd_india
+    kind: primary
+    locator: "Abstract, Results, first sentence"
+    quote: |-
+      Totally 250,052 children were screened in 1047 schools of which 74986 (60.61%) were boys between 11 and 17 years
+    verified:
+      resolved_id: https://doi.org/10.4103/ijo.IJO_3208_20
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+      note: |-
+        Backs 74,986 boys aged 11 to 17. The 60.61% is a share of the boys present (74,986 of
+        123,720, Results), not of all children; the record does not use it.
+  - citekey: krishnamurthy_2021_cvd_india
+    kind: primary
+    locator: "Methods, Definitions, first paragraph"
+    quote: |-
+      Boys who read less than 14 plates in the Ishihara PIP (38 plate edition) were confirmed to have CVD.
+    verified:
+      resolved_id: https://doi.org/10.4103/ijo.IJO_3208_20
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+      note: |-
+        Backs "confirmed". Screening was with Dalton's plates first (Methods, Screening for
+        color vision deficiency: "Dalton's psuedoiscochromatic plates were used to screen for CVD
+        in boys"); only boys were screened.
+  - citekey: krishnamurthy_2021_cvd_india
+    kind: primary
+    locator: "Methods, first paragraph (the setting)"
+    quote: |-
+      The school eye-screening program was conducted in Kanchipuram district, Tamil Nadu, India served by the institution.
+    verified:
+      resolved_id: https://doi.org/10.4103/ijo.IJO_3208_20
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+  - citekey: crameri_2020_misuse_colour
+    kind: primary
+    locator: "Design and implementation of scientifically derived colour maps, paragraph on universal readability"
+    quote: |-
+      With an even, monotonic lightness gradient (Supplementary Fig. 1a), a colour palette remains readable (as well as perceptually uniform and ordered) even after a conversion to grey scale
+    verified:
+      resolved_id: https://doi.org/10.1038/s41467-020-19160-7
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+      note: |-
+        Backs what a greyscale copy keeps. Box 1 gives the reason: rod cells carry "achromatic
+        information (i.e., lightness or grey-scale vision)".
+  - citekey: wilke_2019_dataviz_ch19
+    kind: textbook
+    locator: "Chapter 19, section 19.3 Not designing for color-vision deficiency, last two paragraphs"
+    quote: |-
+      There are several online services and desktop apps available that allow users to run arbitrary figures through a cvd simulation.
+    verified:
+      resolved_id: https://clauswilke.com/dataviz/color-pitfalls.html
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+      note: |-
+        Backs "a colour-vision-deficiency simulator". No particular simulator is named in the
+        record, because none is named in a held source.
+  - citekey: crameri_2020_misuse_colour
+    kind: primary
+    locator: "Introduction, fourth paragraph (what is wrong with rainbow colour maps)"
+    quote: |-
+      In rainbow colour maps, the yellow is the brightest colour and attracts the eye the most
+    verified:
+      resolved_id: https://doi.org/10.1038/s41467-020-19160-7
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+      note: |-
+        Backs illustration 2. The sentence goes on: yellow "is neither at the end nor the centre
+        of the colour map, while its greenish shades form a wide band with low perceived colour
+        contrast".
+  - citekey: crameri_2020_misuse_colour
+    kind: primary
+    locator: "Design and implementation of scientifically derived colour maps, paragraph on the colour bar"
+    quote: |-
+      Excluding a colour bar would be equivalent to not including the axis labels and tick marks on the x- or y-axis of a plot.
+    verified:
+      resolved_id: https://doi.org/10.1038/s41467-020-19160-7
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+  - citekey: crameri_2020_misuse_colour
+    kind: primary
+    locator: "Box 2, Freely available scientifically derived colour maps, the MPL and Cividis entries"
+    quote: |-
+      MPL maps aim for the most accurate perceptual uniformity with its widely applied colour maps being: viridis, magma, plasma and inferno.
+    verified:
+      resolved_id: https://doi.org/10.1038/s41467-020-19160-7
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+      note: |-
+        Cividis is the next entry in Box 2: "aims to represent an almost identical appearance for
+        red–green colour-vision deficiencies ... while also being perceptually uniform".
+  - citekey: crameri_2020_misuse_colour
+    kind: primary
+    locator: "How to recognise an unscientific colour map, second check"
+    quote: |-
+      The colour map should not contain red and green at a similar luminosity
+    verified:
+      resolved_id: https://doi.org/10.1038/s41467-020-19160-7
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+      note: |-
+        Quoted in illustration 1. The four checks (uniform colour bar; no red and green at
+        similar luminosity; no rainbow; only a scientifically derived map) back must-know point 8.
+  - citekey: wilke_2019_dataviz_ch19
+    kind: textbook
+    locator: "Chapter 19, section 19.1 Encoding too much or irrelevant information, second paragraph"
+    quote: |-
+      As a rule of thumb, qualitative color scales work best when there are three to five different categories that need to be colored.
+    verified:
+      resolved_id: https://clauswilke.com/dataviz/color-pitfalls.html
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+      note: |-
+        The next sentence: "Once we reach eight to ten different categories or more, the task of
+        matching colors to categories becomes too burdensome to be useful". The same paragraph
+        offers the data "as a table" as an option.
+  - citekey: wilke_2019_dataviz_ch19
+    kind: textbook
+    locator: "Chapter 19, section 19.1, the boxed rule on saturated colours"
+    quote: |-
+      Avoid large filled areas of overly saturated colors.
+    verified:
+      resolved_id: https://clauswilke.com/dataviz/color-pitfalls.html
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+  - citekey: wilke_2019_dataviz_ch19
+    kind: textbook
+    locator: "Chapter 19, section 19.3, paragraph after Table 19.1"
+    quote: |-
+      Colors are much easier to distinguish when they are applied to large areas than to small ones or thin lines
+    verified:
+      resolved_id: https://clauswilke.com/dataviz/color-pitfalls.html
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+      note: |-
+        The next sentence: "And this effect is exacerbated under cvd". The paragraph opens "It is
+        very possible to use a cvd-safe scale and yet produce a figure a person with cvd cannot
+        decipher." Table 19.1 gives the Okabe-Ito codes #E69F00 (orange) and #0072B2 (blue).
+  - citekey: wilke_2019_dataviz_ch20
+    kind: textbook
+    locator: "Chapter 20, Redundant coding, opening paragraph"
+    quote: |-
+      I refer to this design principle as redundant coding, because it prompts us to encode data redundantly, using multiple different aesthetic dimensions.
+    verified:
+      resolved_id: https://clauswilke.com/dataviz/redundant-coding.html
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+  - citekey: nfhs5_india_factsheet
+    kind: instrument
+    locator: "Introduction, fieldwork paragraph, last sentence"
+    quote: |-
+      Fact sheets for each State/UT and District of India are also available separately.
+    verified:
+      resolved_id: https://dhsprogram.com/pubs/pdf/OF43/India_National_Fact_Sheet.pdf
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+      note: |-
+        Backs illustration 2's "NFHS-5 publishes a fact sheet for every district". No district
+        fact sheet is held, and the record quotes no district number.
+  - citekey: krishnamurthy_2021_cvd_india
+    kind: primary
+    locator: "Abstract, Methods"
+    quote: |-
+      The SES followed a three-phased protocol, which also included screening for CVD for all the boys between 11 and 17 years.
+    verified:
+      resolved_id: https://doi.org/10.4103/ijo.IJO_3208_20
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+      note: |-
+        Boys only. Methods, Eye examination: "All the boys from class grade 6–12 (age 11–17
+        years) underwent the color vision screening"; Screening: "Color vision screening was
+        conducted in the corridors where bright sunlight was available."
+simplified_explanation: |
+  Colour in a chart should have a job. It can tell groups apart, stand for a number, or point at
+  one thing. If it does none of these, take it out and draw in black or grey.
+
+  Some of your readers cannot tell red from green. Some copies of what you write will be printed
+  or photocopied in black and white. A grey copy keeps only how light or dark each colour is. So two
+  colours of the same lightness turn into the same grey, and the reader loses what they meant.
+
+  So test every colour figure twice before it leaves you. Look at it in grey. Then run it through a
+  program that shows it as a reader with colour-vision deficiency sees it. If the meaning survives
+  both, the colour is doing its job.
+illustrations:
+- body: |
+    Start with a chart that fails. You draw the National Family Health Survey (NFHS-5) results
+    for adults aged 15 to 49. In urban India, {{n:nfhs5_women_ow_ob_urban_pct}} per cent of women
+    had overweight or obesity, and {{n:nfhs5_women_ow_ob_rural_pct}} per cent in rural India. For
+    men the two numbers were {{n:nfhs5_men_ow_ob_urban_pct}} and {{n:nfhs5_men_ow_ob_rural_pct}}
+    per cent. You draw four bars, grouped by sex. You colour urban red and rural green, because
+    those are the first two colours your program offers. A legend in the corner says which is
+    which.
+
+    Now test it two ways.
+
+    First, print it on a black-and-white printer, or photocopy it. A grey copy keeps only how light
+    or dark each colour is. A red and a green of about the same lightness print as the same grey.
+    The legend now tells the reader nothing.
+
+    Second, think of the reader who cannot tell red from green. Crameri, Shephard and Heron, "The
+    misuse of colour in science communication" (Nature Communications, 2020,
+    https://pmc.ncbi.nlm.nih.gov/articles/PMC7595127/), list four checks any reader can run on a
+    colour figure. One of them:
+
+    > The colour map should not contain red and green at a similar luminosity
+
+    Luminosity there means how bright or dark a colour looks. Run your chart through a
+    colour-vision-deficiency simulator. Claus Wilke's book *Fundamentals of Data Visualization*
+    (2019, free online at https://clauswilke.com/dataviz/) says several exist, online and as
+    programs for your computer. In the simulated copy, the red and green bars look alike.
+
+    Now fix it, in this order.
+
+    1. Ask what the colour is for. Here it separates two groups, urban and rural. That is a real
+       job, so the colour may stay.
+    2. Put the words on the chart. Write "urban" and "rural" beside the bars and delete the legend.
+       This is the direct labelling of the last section. The chart now reads with no colour at
+       all.
+    3. Make the two colours differ in lightness, not only in hue. Hue is the name of the colour:
+       red, green, blue. A dark blue for urban and a light blue for rural survives a grey copy.
+    4. Or take two colours from a palette built for colour-vision deficiency. Wilke uses the
+       Okabe–Ito palette throughout his book. Its orange is #E69F00 and its blue is #0072B2, codes
+       most programs accept. Keep large bars soft: Wilke warns against "large filled areas of
+       overly saturated colors".
+    5. Print it in grey again, and run it through the simulator again. In both copies a reader
+       should still be able to say which bar is urban.
+
+    Step 2 did most of the work. Once the words are on the chart, colour only helps; nothing
+    depends on it. Wilke calls this redundant coding: the same information carried two ways.
+  analogy_breaks_when: |
+    Labels beside the bars work when there are few groups and room for the words. Wilke's rule of
+    thumb is that colours for groups work best with three to five groups. At eight to ten or more,
+    matching colours to groups becomes too hard. Then label directly, or label only the groups the
+    text talks about.
+
+    A palette built for colour-vision deficiency is not a pass. Wilke shows that colours are harder
+    to tell apart on thin lines and small points than on large bars, and harder still under
+    colour-vision deficiency. Test the figure itself, at its printed size, not the palette.
+  numbers:
+  - value: "33.2"
+    unit: "% of women aged 15-49 with overweight or obesity (BMI 25.0 kg/m2 or more), urban India, NFHS-5"
+    citekey: nfhs5_india_factsheet
+    quote: "88. Women who are overweight or obese (BMI ≥25.0 kg/m2)21 (%) 33.2  19.7  24.0  20.6"
+  - value: "19.7"
+    unit: "% of women aged 15-49 with overweight or obesity, rural India, NFHS-5"
+    citekey: nfhs5_india_factsheet
+    quote: "88. Women who are overweight or obese (BMI ≥25.0 kg/m2)21 (%) 33.2  19.7  24.0  20.6"
+  - value: "29.8"
+    unit: "% of men aged 15-49 with overweight or obesity, urban India, NFHS-5"
+    citekey: nfhs5_india_factsheet
+    quote: "89. Men who are overweight or obese (BMI ≥25.0 kg/m2) (%) 29.8  19.3  22.9  18.9"
+  - value: "19.3"
+    unit: "% of men aged 15-49 with overweight or obesity, rural India, NFHS-5"
+    citekey: nfhs5_india_factsheet
+    quote: "89. Men who are overweight or obese (BMI ≥25.0 kg/m2) (%) 29.8  19.3  22.9  18.9"
+- body: |
+    Now colour does a different job: it stands for a number. Say you want a map of your state's
+    districts, each shaded by the per cent of women with overweight or obesity. NFHS-5 publishes a
+    fact sheet for every district, so the numbers exist.
+
+    Your program offers a rainbow: blue for low, through green and yellow, to red for high. It
+    looks lively. Turn the map grey and see what happens. Wilke describes the rainbow scale in
+    grey:
+
+    > The scale goes from medium dark to light to very dark and back to medium dark
+
+    So in grey the order is lost. A district at the bottom of the scale and one at the top come
+    out about equally dark. In colour the rainbow fails another way. Its yellow is the brightest
+    colour and pulls the eye, wherever it falls on the scale. Its greens cover a wide band in which
+    real differences are hard to see. Crameri and colleagues put a size on the damage: the colours
+    can misrepresent the data "by more than seven percent of the displayed data variation".
+
+    Use instead:
+
+    - For a value that runs from low to high, a sequential scale. One colour going from light to
+      dark will do. Scales built to be even, such as viridis or cividis, are listed with their
+      sources in Crameri and colleagues' Box 2.
+    - For a change that can go either way, such as each district's rise or fall from NFHS-4 to
+      NFHS-5, a diverging scale. Put its light middle colour at zero, where the change is nothing.
+      Wilke's warning: "Diverging scales need to be balanced". The colours should darken at the same
+      rate on both sides, or a rise will look bigger than a fall of the same size.
+    - Always print the colour bar: the strip, like an axis, that shows which colour stands for
+      which value. Crameri and colleagues say that leaving it out is like leaving the labels and
+      tick marks off an axis.
+
+    Then turn the map grey again. A sequential scale that runs from light to dark keeps its order
+    in grey.
+  analogy_breaks_when: |
+    An even colour scale makes equal differences look equal. It does nothing for the numbers
+    themselves. A district's percentage from a survey carries its own error, and the colour hides
+    it: two neighbouring shades may differ by less than that error. If the reader needs the
+    numbers, give them in a table as well, as Wilke suggests for any figure whose data the reader
+    may want in full.
+  numbers:
+  - value: "7"
+    unit: "% of the displayed data range: distortion a rainbow-type colour map can introduce, at least"
+    citekey: crameri_2020_misuse_colour
+    quote: |-
+      Such a colour-introduced blind interpretation can diverge from an objective representation by more than seven percent of the displayed data variation
+- body: |
+    How many of your readers is this about? One figure appears almost everywhere. Crameri and
+    colleagues give it as "the general estimate":
+
+    > worldwide 0.5% of women and 8% of men are subject to a colour-vision deficiency
+
+    It is a general estimate they cite, not something they measured. They add that it is lower in
+    sub-Saharan Africa and probably higher in some European populations.
+
+    Now look for an Indian measurement. Krishnamurthy and colleagues, "Prevalence of color vision
+    deficiency among school-going boys in South India" (Indian Journal of Ophthalmology, 2021,
+    https://pmc.ncbi.nlm.nih.gov/articles/PMC8482944/), screened every boy in classes 6 to 12,
+    aged 11 to 17, in the schools they visited in Kanchipuram district, Tamil Nadu. Boys who failed
+    a first set of colour plates were tested on Ishihara's plates to confirm. Search their Table 1
+    for Rural.
+
+    ```table
+    | school location | boys screened | colour-vision deficiency | per cent |
+    | rural | 21911 | 392 | 1.79 |
+    | urban | 53075 | 1681 | 3.17 |
+    | all | 74986 | 2073 | 2.76 |
+    ```
+
+    Check the total row, and turn it into "one boy in how many".
+
+    2073 divided by 74986 is 0.0276, to four decimal places.
+
+    ```working
+    0.0276 times 100 = 2.76
+    100 divided by 2.76 = 36.2
+    100 divided by 8 = 12.5
+    ```
+
+    So about one boy in 36 in this district, against one man in 12 or 13 in the general
+    estimate.
+
+    Now say what the 2.76 is. It is boys, at school, in one district, found by colour plates. Girls
+    were not screened. Within the same district, the share differed between blocks, from 1.12 per
+    cent in one to 3.40 per cent in another. So it is not a rate for India. The authors go further
+    than their data in one sentence:
+
+    > Extrapolating this, there could be 17 million boys affected with CVD in the country.
+
+    That sentence assumes one district's boys stand for every boy in India. Book 0's section on
+    sampling (`B0-R0-C29`) says why a sample speaks only for the population it was drawn from. This
+    study did not sample India.
+
+    For your figure, none of this changes the rule. Whether it is one man in 12 or one boy in 36,
+    some of the people on your thesis committee, or among a journal's reviewers, may not tell red
+    from green. Designing for them costs you two tests and a few labels.
+  analogy_breaks_when: |
+    Both numbers are counts of people who failed colour plates. The 8 per cent is a figure the
+    authors cite from others, for the world as a whole; it is not an Indian measurement. The 2.76
+    per cent is a measurement, but of boys aged 11 to 17 in one district, screened in school
+    corridors in daylight. Neither tells you how many of your own readers, adults of both sexes,
+    have colour-vision deficiency.
+  numbers:
+  - value: "0.5"
+    unit: "% of women worldwide with colour-vision deficiency (general estimate, cited)"
+    citekey: crameri_2020_misuse_colour
+    quote: |-
+      The general estimate is that worldwide 0.5% of women and 8% of men are subject to a colour-vision deficiency
+  - value: "8"
+    unit: "% of men worldwide with colour-vision deficiency (general estimate, cited)"
+    citekey: crameri_2020_misuse_colour
+    quote: |-
+      The general estimate is that worldwide 0.5% of women and 8% of men are subject to a colour-vision deficiency
+  - value: "21911"
+    unit: "boys screened, rural schools, Kanchipuram district"
+    citekey: krishnamurthy_2021_cvd_india
+    quote: "| Rural | 21911 | 392 | 1.79 | Reference |"
+  - value: "392"
+    unit: "boys with confirmed colour-vision deficiency, rural schools"
+    citekey: krishnamurthy_2021_cvd_india
+    quote: "| Rural | 21911 | 392 | 1.79 | Reference |"
+  - value: "1.79"
+    unit: "% of boys screened in rural schools with colour-vision deficiency"
+    citekey: krishnamurthy_2021_cvd_india
+    quote: "| Rural | 21911 | 392 | 1.79 | Reference |"
+  - value: "53075"
+    unit: "boys screened, urban schools"
+    citekey: krishnamurthy_2021_cvd_india
+    quote: "| Urban | 53075 | 1681 | 3.17 | 1.90 (1.69-2.13) (0.001) |"
+  - value: "1681"
+    unit: "boys with confirmed colour-vision deficiency, urban schools"
+    citekey: krishnamurthy_2021_cvd_india
+    quote: "| Urban | 53075 | 1681 | 3.17 | 1.90 (1.69-2.13) (0.001) |"
+  - value: "3.17"
+    unit: "% of boys screened in urban schools with colour-vision deficiency"
+    citekey: krishnamurthy_2021_cvd_india
+    quote: "| Urban | 53075 | 1681 | 3.17 | 1.90 (1.69-2.13) (0.001) |"
+  - value: "74986"
+    unit: "boys aged 11-17 screened, all schools"
+    citekey: krishnamurthy_2021_cvd_india
+    quote: "| Total | 74986 | 2073 | 2.76 |  |"
+  - value: "2073"
+    unit: "boys with confirmed colour-vision deficiency, all schools"
+    citekey: krishnamurthy_2021_cvd_india
+    quote: "| Total | 74986 | 2073 | 2.76 |  |"
+  - value: "2.76"
+    unit: "% of boys screened with colour-vision deficiency, all schools"
+    citekey: krishnamurthy_2021_cvd_india
+    quote: "| Total | 74986 | 2073 | 2.76 |  |"
+  - value: "1.12"
+    unit: "% of boys with colour-vision deficiency in the lowest block of the district (Block XIII)"
+    citekey: krishnamurthy_2021_cvd_india
+    quote: "Block VI (1.21%), and Block XIII (1.12%) blocks"
+  - value: "3.40"
+    unit: "% of boys with colour-vision deficiency in the highest block of the district (Block V)"
+    citekey: krishnamurthy_2021_cvd_india
+    quote: "with the highest proportion of CVD in Block V (3.40%)"
+  - value: "17"
+    unit: "million boys in India with colour-vision deficiency: the authors' extrapolation, not a measurement"
+    citekey: krishnamurthy_2021_cvd_india
+    quote: "Extrapolating this, there could be 17 million boys affected with CVD in the country."
+  - value: "36.2"
+    unit: "boys screened per boy with colour-vision deficiency"
+    citekey: krishnamurthy_2021_cvd_india
+    quote: "| Total | 74986 | 2073 | 2.76 |  |"
+    derived: "100 divided by 2.76 = 36.2, from the total row's per cent"
+  - value: "12.5"
+    unit: "men per man with colour-vision deficiency, at the general estimate"
+    citekey: crameri_2020_misuse_colour
+    quote: |-
+      The general estimate is that worldwide 0.5% of women and 8% of men are subject to a colour-vision deficiency
+    derived: "100 divided by 8 = 12.5, from the general estimate for men"
+figures:
+- file: s58-r1-c19-cvd-boys.png
+  caption: "Colour-vision deficiency confirmed in boys aged 11 to 17 screened in schools of
+    Kanchipuram district, Tamil Nadu (Krishnamurthy and colleagues, 2021): 1.79% of 21911 boys in
+    rural schools, 3.17% of 53075 in urban schools, 2.76% of all 74986. The dashed line is the
+    general worldwide estimate for men, 8%, which the study did not measure. Girls were not
+    screened."
+  alt: "Three bars: 1.79 per cent for rural schools, 3.17 for urban schools and 2.76 for all boys,
+    all below a dashed line at 8 per cent marking the worldwide estimate for men."
+  source: draw.py
+  spec:
+    kind: bar
+    from_table: {block: 0, x: 0, y: [3]}
+    x_label: "school location"
+    y_label: "boys with colour-vision deficiency (%)"
+    value_labels: true
+    y_range: [0, 10]
+    refs:
+    - {y: 8, label: "worldwide estimate for men, 8%"}
+must_know:
+- point: |
+    "More colours make a figure clearer" is the error. Colour with no job gives the reader a
+    puzzle to solve. Before you colour anything, ask the question Rougier and colleagues print:
+    "Is there any reason this plot is blue and not black?" If you cannot answer, draw it in black.
+  kind: misconception
+  bearing: methodological
+  refs: [rougier_2014_ten_rules_figures]
+- point: |
+    Name the job before you choose a colour: separating groups with no order, standing for a value,
+    or picking out one element against grey. Each job takes its own kind of scale. A rainbow fits
+    none of them.
+  kind: move
+  bearing: methodological
+  refs: [wilke_2019_dataviz_ch04]
+- point: |
+    Red against green is the tempting pair: good and bad, urban and rural, before and after. At
+    similar lightness it fails twice: in a grey copy and for
+    readers with red-green colour-vision deficiency, the commonest kind. Change one of the pair, or
+    make them differ in lightness.
+  kind: trap
+  bearing: methodological
+  refs: [crameri_2020_misuse_colour]
+- point: |
+    The general estimate cited worldwide is 8 per cent of men and 0.5 per cent of women with
+    colour-vision deficiency. It is an estimate Crameri and colleagues cite, not one they measured.
+  kind: number
+  bearing: public
+  refs: [crameri_2020_misuse_colour]
+- point: |
+    The one Indian measurement here found 2.76 per cent of 74,986 school boys in Kanchipuram
+    district, Tamil Nadu. It is boys in one district, with block figures from 1.12 to 3.40 per
+    cent. Quote it with those words attached, never as "the Indian rate".
+  kind: india_deviation
+  bearing: public
+  refs: [krishnamurthy_2021_cvd_india]
+- point: |
+    Test every colour figure twice before it leaves you: in grey, by printing or photocopying it in
+    black and white, and through a colour-vision-deficiency simulator. Write "urban" on the urban
+    bar so that nothing depends on colour at all.
+  kind: move
+  bearing: methodological
+  refs: [wilke_2019_dataviz_ch19, wilke_2019_dataviz_ch20]
+- point: |
+    A palette sold as colour-blind safe stops being safe on thin lines and small points. Wilke
+    shows colours are harder to tell apart there, and harder still under colour-vision deficiency.
+    So test the finished figure at its printed size, not the palette.
+  kind: boundary
+  bearing: methodological
+  refs: [wilke_2019_dataviz_ch19]
+- point: |
+    When you review a colleague's map or heat map, run Crameri and colleagues' checks aloud. Is
+    there a colour bar? Does the scale get steadily lighter or darker? Are red and green at similar
+    lightness? Is it a rainbow? A no, yes, yes or yes is a request for a redraw, not a matter of
+    taste.
+  kind: move
+  bearing: teaching
+  refs: [crameri_2020_misuse_colour]
+common_misreading: |
+  "Eight per cent of men are colour-blind, so 8 per cent of Indian men are." The 8 per cent is a
+  general estimate for the world that Crameri and colleagues cite; they did not measure it. The one
+  Indian measurement in this section found 2.76 per cent, in school boys of one district of Tamil
+  Nadu. Even there, the share varied from block to block. Neither number is a rate for Indian adults. Your
+  figure needs the same two tests whichever number is true.
+reporting_sentence: |
+  Colour in Figure 2 only separates urban from rural residence; each bar is also labelled, so the
+  figure reads the same in black and white.
+exercises:
+- type: retrieval
+  prompt: |
+    Without looking back: name the three jobs colour can do in a data figure, and the kind of colour
+    scale each job takes. Then name the two tests a colour figure should pass before it leaves you.
+  answer: |
+    To separate groups with no order, use a few colours that look clearly different and equally
+    strong. That is a qualitative scale. To stand for a value, use colours that run from light to
+    dark: a sequential scale. If the value can go either way from a middle such as zero, join two
+    of them at a light middle colour: a diverging scale. To pick out one thing, use one strong
+    colour and make the rest grey.
+
+    The two tests: look at the figure in grey, and run it through a simulator of colour-vision
+    deficiency. If its meaning survives both, the colour is doing its job.
+- type: critique
+  prompt: |
+    A colleague's thesis draft has this figure, described in words. It is made up for this
+    exercise.
+
+    Figure 4 is a map of the districts of a state. Each district is shaded on a rainbow scale, blue
+    through green and yellow to red, by the per cent of women with overweight or obesity. There is
+    no colour bar. The caption ends "Red districts have the highest burden."
+
+    Figure 5 is a line chart of the same percentage in four age groups over two survey rounds. The
+    four lines are red, green, brown and orange, all thin and of the same thickness. A legend box
+    in the corner names the age groups in the order youngest to oldest.
+
+    List what is wrong with the colour, and how you would fix each problem.
+  answer: |
+    Figure 4.
+
+    - The rainbow scale is not even. Yellow pulls the eye wherever it falls, and the wide green
+      band hides real differences. In grey the order of districts is lost. Use a sequential scale
+      that runs from light to dark.
+    - There is no colour bar. Without it a reader cannot turn any shade into a number. Print one,
+      with values marked.
+    - The caption asks the reader to find "red". A reader with red-green colour-vision deficiency
+      may not be able to. On a light-to-dark scale the caption can say "darker districts".
+
+    Figure 5.
+
+    - Red, green, brown and orange at similar lightness are hard to tell apart for many readers
+      with colour-vision deficiency, and thin lines make it worse.
+    - The legend sends the reader back and forth. Write each age group's name at the end of its
+      line instead. If a legend stays, put its entries in the order the lines appear.
+    - Then choose colours that differ in lightness, or from a palette built for colour-vision
+      deficiency, and check the figure in grey and in a simulator.
+- type: teaching
+  prompt: |
+    A first-year resident says: "In that Tamil Nadu study only about 3 boys in 100 were
+    colour-blind. Why should I redraw my red and green slides for so few people?" You have ten
+    minutes and a whiteboard. Answer her.
+  answer: |
+    Start with what the number is. It is 2.76 per cent of 74,986 boys aged 11 to 17 in one
+    district, about one boy in 36. It is not a rate for Indian adults, and girls were not tested.
+    The general estimate cited worldwide is higher for men, 8 per cent, about one in 12 or 13.
+
+    Then say why the number does not decide the question. Any room of examiners or reviewers may
+    hold one person who cannot tell red from green. And some copies of her slides and thesis will
+    be printed or photocopied in black and white. There, a red and a green of the same lightness
+    become the same grey. That second problem affects every reader of a grey copy.
+
+    Then show the cost of fixing it. Draw a red and green pair on the board, then the same chart
+    with "urban" and "rural" written beside the bars. The labelled version needs no colour at all.
+    Changing one colour and checking in grey takes minutes.
+- type: design
+  prompt: |
+    Take the figure you are drawing for your build. For each colour in it, write down the job it
+    does: separating groups, standing for a value, or picking out one thing. Remove every colour
+    that has no job. Then print the figure in grey and run it through a colour-vision-deficiency
+    simulator, and write down what you changed after each test.
+  answer: |
+    A good record of this has three parts. A list of colours, each with its job, or "none,
+    removed". A grey copy in which every group or value can still be told apart. Usually that is
+    because the groups are labelled directly or the colours differ in lightness. And a note of what the
+    simulator showed, with the change you made.
+
+    If a colour stands for a value, check three more things. The scale runs steadily from light to
+    dark. It is not a rainbow. A colour bar is printed. If you used a palette built for
+    colour-vision deficiency, check thin lines and small points at the printed size; the palette
+    alone does not guarantee them.
+  skill_ref: S58-R1-K02
+retrieval_items:
+- q: What does a greyscale copy of a figure keep, and what does it lose?
+  a: It keeps how light or dark each colour is and loses the hue. Two colours of the same lightness
+    become the same grey.
+- q: What did the one Indian study in this section measure, and what is it not?
+  a: 2.76 per cent of 74,986 boys aged 11 to 17 in Kanchipuram district, Tamil Nadu, had
+    colour-vision deficiency confirmed on Ishihara plates. It is not a rate for India, for adults or
+    for women.
+- q: Why does a rainbow colour scale fail for values?
+  a: It is not even, so some differences look bigger than others, and its lightness goes up and
+    down, so the order of the values is lost in grey.
+quantitative: false
+provenance:
+  map_version_id: fc19c8bc-a216-4131-99fb-ebe3f19cec4a
+  outcome_refs:
+  - S58-R1-S2
+  bridge_ref:
+  - S58-R2-P02
+review:
+  stability: medium
+  trigger: "Date 2029-10-02; and on event, whichever comes first: a population-based Indian
+    survey of colour-vision deficiency in adults, or a new edition of Wilke's book."
+  last_reviewed: '2026-10-02'
+status: drafted
