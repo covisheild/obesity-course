@@ -562,20 +562,46 @@ retrieval_items:
     Union government.
 figures:
 - file: s47-r1-c07-packaging-path.png
-  caption: "The FSSAI Packaging Regulations, 2018, in days: 14 from the draft's date (19 March 2018) to Gazette copies reaching the public (2 April 2018); 30 for objections; 280 from the draft's date to the final notification of 24 December 2018."
-  alt: "Bar chart of three spans in days. Draft's date to Gazette copies reaching the public: 14. The period for objections: 30. Draft's date to final notification: 280, far taller than the other two."
+  caption: The FSSAI Packaging Regulations, 2018, counted in days from the draft's date, 19 March 2018. Gazette copies reached the public on day 14 (2 April). The thirty days for objections ran from then, so they closed on day 44. Counting thirty from 19 March would have stopped at the dashed line, 14 days too soon. The final notification came on day 280 (24 December).
+  alt: 'Three bars of days since 19 March 2018: 14 for Gazette copies reaching the public, 44 for the close of objections, 280 for the final notification. A dashed line at 30 sits between the first two bars.'
   source: draw.py
   spec:
     kind: bar
-    x: ["draft's date to copies reaching the public", "period for objections", "draft's date to final notification"]
+    x:
+    - Gazette copies reach the public
+    - objections close
+    - final notification
     series:
-    - name: days
-      y: ["14", "30", "280"]
-    x_label: ""
-    y_label: days
+    - name: days since the draft's date
+      y:
+      - '14'
+      - '44'
+      - '280'
+    x_label: ''
+    y_label: days since 19 March 2018
     value_labels: true
+    y_range:
+    - 0
+    - 300
+    refs:
+    - y: 30
+      label: ''
+    labels:
+    - text: "thirty from 19 March:\n14 days too soon"
+      at:
+      - -0.38
+      - 30
+      offset:
+      - 0
+      - 4
+    derived:
+    - value: '44'
+      from: 14 + 30
     relations:
-    - check: "12 + 244 + 24 = 280"
+    - check: 12 + 2 = 14
+    - check: 14 + 30 = 44
+    - check: 44 - 30 = 14
+    - check: 12 + 244 + 24 = 280
 provenance:
   map_version_id: fc19c8bc-a216-4131-99fb-ebe3f19cec4a
   outcome_refs:

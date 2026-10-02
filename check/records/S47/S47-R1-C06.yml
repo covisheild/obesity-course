@@ -616,23 +616,29 @@ retrieval_items:
   a: Fourteen, and none since 1970 (PRS Legislative Research, 2012).
 figures:
 - file: s47-r1-c06-private-members-bills.png
-  caption: "Private Members' Bills in the 15th Lok Sabha's term, to 2012 (PRS Legislative Research). Lok Sabha: 264 introduced, 14 discussed. Rajya Sabha: 160 introduced, 11 discussed. Of 424 introduced, 25 were discussed."
-  alt: "Grouped bars for the Lok Sabha and the Rajya Sabha. Bills introduced reach 264 and 160. Bills discussed are short bars at 14 and 11."
+  caption: 'Private Members'' Bills in the 15th Lok Sabha, the term running in 2012, as PRS Legislative Research counted them. Lok Sabha: 264 introduced, 14 discussed. Rajya Sabha: 160 introduced, 11 discussed. Of 424 introduced, 25 had been discussed at all.'
+  alt: Grouped bars for the Lok Sabha and the Rajya Sabha. Bills introduced reach 264 and 160. Bills discussed are short bars at 14 and 11.
   source: draw.py
   spec:
     kind: bar
-    x: ["Lok Sabha", "Rajya Sabha"]
+    x:
+    - Lok Sabha
+    - Rajya Sabha
     series:
     - name: introduced
-      y: ["264", "160"]
+      y:
+      - '264'
+      - '160'
     - name: discussed
-      y: ["14", "11"]
-    x_label: ""
+      y:
+      - '14'
+      - '11'
+    x_label: ''
     y_label: Private Members' Bills
     value_labels: true
     relations:
-    - check: "y1[0] + y1[1] = 424"
-    - check: "y2[0] + y2[1] = 25"
+    - check: y1[0] + y1[1] = 424
+    - check: y2[0] + y2[1] = 25
 provenance:
   map_version_id: fc19c8bc-a216-4131-99fb-ebe3f19cec4a
   outcome_refs:

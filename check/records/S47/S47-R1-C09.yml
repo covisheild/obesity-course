@@ -563,23 +563,50 @@ retrieval_items:
     2025, as amended by 01/2026, in force 1 May 2026.
 figures:
 - file: s47-r1-c09-gst-votes.png
-  caption: "Weighted votes in the GST Council under Article 279A(9), per cent of votes cast: the Central Government 33.3, all the States together 66.7. A decision needs three-fourths, 75. Neither side reaches it alone."
-  alt: "Two bars against a dashed line at 75. The Central Government's bar reaches 33.3; the bar for all the States together reaches 66.7. Both stop below the line."
+  caption: Weighted votes in the GST Council under Article 279A(9), per cent of votes cast. The Centre alone has 33.3 and all the States alone 66.7; a decision needs three-fourths, 75, so neither side carries it alone. With the Centre in favour, 41.7 more must come from the States.
+  alt: Three bars against a dashed line at 75. The Centre alone reaches 33.3 and all the States alone 66.7, both below the line. The third bar, the Centre's 33.3 plus 41.7 from the States, reaches the line at 75.
   source: draw.py
   spec:
     kind: bar
-    x: ["the Central Government", "all the States together"]
+    x:
+    - the Centre alone
+    - all the States alone
+    - the Centre plus 41.7 from the States
     series:
-    - name: weight in the votes cast (%)
-      y: ["33.3", "66.7"]
-    x_label: ""
+    - name: share of weighted votes cast (%)
+      y:
+      - '33.3'
+      - '66.7'
+      - '75'
+    x_label: ''
     y_label: share of weighted votes cast (%)
     value_labels: true
-    y_range: [0, 100]
+    y_range:
+    - 0
+    - 100
     refs:
-    - {y: 75, label: "three-fourths needed, 75"}
+    - y: 75
+      label: ''
+    labels:
+    - text: three-fourths needed, 75
+      at:
+      - -0.38
+      - 75
+      offset:
+      - 0
+      - 4
+    derived:
+    - value: '75'
+      from: 3 / 4 * 100
+    - value: '33.3'
+      from: 100 / 3
+    - value: '66.7'
+      from: 200 / 3
+    - value: '41.7'
+      from: 75 - 33.3
     relations:
-    - check: "y[0] + y[1] = 100"
+    - check: y[0] + y[1] = 100
+    - check: y[0] + 41.7 = 75
 provenance:
   map_version_id: fc19c8bc-a216-4131-99fb-ebe3f19cec4a
   outcome_refs:

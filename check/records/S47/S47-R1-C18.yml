@@ -839,3 +839,25 @@ figures:
     relations:
     - check: "y2[0] = 40"
     - check: "y1[0] + 12 = 40"
+- file: s47-r1-c18-cess-folded.png
+  caption: "Line 4 of the failed draft, for drinks with added sugar or flavour. Before the 2025 reform, a 2026 review reports, they paid 28% GST and a 12% cess, a combined 40. After it, one rate of 40% and no cess. The GST rose by 12 points; the combined rate did not rise."
+  alt: "Two groups of three bars. Before: GST 28, cess 12, combined 40. After: GST 40, cess 0, combined 40. The two combined bars are the same height."
+  source: draw.py
+  spec:
+    kind: bar
+    x: ["before the 2025 reform", "after it"]
+    series:
+    - {name: GST, y: [28, 40]}
+    - {name: cess, y: [12, 0]}
+    - {name: combined, y: [40, 40]}
+    x_label: ""
+    y_label: rate on sugar-added drinks (%)
+    value_labels: true
+    relations:
+    - check: "y1[0] + y2[0] = y3[0]"
+    - check: "y1[1] + y2[1] = y3[1]"
+    - check: "y3[1] - y3[0] = 0"
+    - check: "y1[1] - y1[0] = 12"
+    derived:
+    - {value: "0", from: "12 - 12"}
+    size: [5.6, 3.0]

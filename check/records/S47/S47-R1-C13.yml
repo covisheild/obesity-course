@@ -786,7 +786,7 @@ common_misreading: |
   how widely an account is accepted as part of the story. It does not show who is blamed.
 figures:
 - file: s47-r1-c13-koon-issues.png
-  caption: "Articles by health issue in Koon and colleagues' review of framing and health policy, 52 articles from 1996 to 2014. Infectious disease 10, substance misuse 9, reproductive and sexual health 5, access to medicines 4, cancer 3, obesity 3, environmental health 3. The rest fell under other issues the review does not count separately."
+  caption: "Articles by health issue in Koon and colleagues' review of framing and health policy, 52 articles from 1996 to 2014. Infectious disease 10, substance misuse 9, reproductive and sexual health 5, access to medicines 4, cancer 3, obesity 3, environmental health 3. These seven counts, the ones the review's text gives, add to 37, so they do not cover all 52 articles. Obesity has 3."
   alt: "A bar chart of seven health issues: infectious disease 10, substance misuse 9, reproductive and sexual health 5, access to medicines 4, cancer 3, obesity 3, environmental health 3."
   source: draw.py
   spec:
@@ -797,7 +797,29 @@ figures:
     x_label: health issue
     y_label: number of articles
     value_labels: true
+    relations:
+    - check: "sum(y) = 37"
+    derived:
+    - {value: "37", from: "10 + 9 + 5 + 4 + 3 + 3 + 3"}
     size: [6.4, 3.2]
+- file: s47-r1-c13-highest-lowest.png
+  caption: "Barry and colleagues' United States survey (2006-07, 1,009 adults, weighted): the share calling an account an important explanation, for the highest and the lowest of the seven. The toxic food environment 77.5 per cent; sinful behaviour 50.5 per cent. Both bars pass the line at 50 per cent, so even the last account was called important by a majority. Important meant explaining a lot for at least 10 in every 100 Americans with weight problems, not being the cause."
+  alt: "Two bars against a dashed line at 50: toxic food environment 77.5 per cent, sinful behaviour 50.5 per cent, both above the line."
+  source: draw.py
+  spec:
+    kind: bar
+    x: ["toxic food environment\n(highest of the seven)", "sinful behaviour\n(lowest of the seven)"]
+    series:
+    - {name: called it an important explanation (%), y: ["77.5", "50.5"]}
+    x_label: ""
+    y_label: called it important (%)
+    value_labels: true
+    y_range: [0, 100]
+    refs:
+    - {y: 50, label: "50 per cent"}
+    derived:
+    - {value: "50", from: "100 / 2"}
+    size: [5.0, 3.8]
 - file: s47-r1-c13-summan-interviews.png
   caption: "The 18 interviews in Summan and colleagues' study of food taxes and subsidies in India, February to September 2024, by group: academia 4; think tanks, civil society and non-governmental organisations 4; government 3; health sector 2; media 2; food and beverage industry 2; consumer interest 1."
   alt: "A bar chart of seven interviewee groups adding to 18: academia 4, think tanks and civil society 4, government 3, health sector 2, media 2, food and beverage industry 2, consumer interest 1."
@@ -810,6 +832,7 @@ figures:
     x_label: interviewee group
     y_label: number of interviews
     value_labels: true
+    y_range: [0, 6]
     relations:
     - check: "sum(y) = 18"
     size: [6.4, 3.2]

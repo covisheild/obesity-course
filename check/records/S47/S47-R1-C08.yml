@@ -490,16 +490,55 @@ retrieval_items:
   a: 2024-25 to 2030-31, Rs 10,103 crore in all.
 figures:
 - file: s47-r1-c08-poshan-shares.png
-  caption: "Poshan 2.0: the Centre's share of spending, per cent, by component and category of State or Union Territory (UT), from the 2022 guidelines. In States and UTs with a legislature: 60 general, 25 salary, 50 supplementary nutrition. North-eastern and Himalayan States: 90 each. UTs without a legislature: 100 each. The State pays the rest."
-  alt: "Grouped bars for three categories. States and UTs with a legislature: 60, 25 and 50. North-eastern and Himalayan States: 90, 90 and 90. UTs without a legislature: 100, 100 and 100."
+  caption: 'Poshan 2.0: the Centre''s share of spending, per cent, by component and category of State or Union Territory (UT), from the 2022 guidelines. States and UTs with a legislature: 60 general components, 25 salary, 50 supplementary nutrition. North-eastern and Himalayan States: 90 each. UTs without a legislature: 100 each. The State pays the rest.'
+  alt: 'Grouped bars for three categories. States and UTs with a legislature: 60, 25 and 50. North-eastern and Himalayan States: 90, 90 and 90. UTs without a legislature: 100, 100 and 100.'
   source: draw.py
   spec:
     kind: bar
-    from_table: {block: 0, x: 0, y: [1, 2, 3]}
-    x_label: ""
+    from_table:
+      block: 0
+      x: 0
+      y:
+      - 1
+      - 2
+      - 3
+    x_label: ''
     y_label: Centre's share (%)
     value_labels: true
-    y_range: [0, 150]
+    y_range:
+    - 0
+    - 150
+- file: s47-r1-c08-poshan-split.png
+  caption: 'Poshan 2.0 in a State with a legislature, under the 2022 guidelines: of every Rs 100, the Centre pays 60 and the State 40 for general components, 25 and 75 for salary, 50 and 50 for supplementary nutrition. Each pair makes 100, so every component touches both budgets.'
+  alt: 'Grouped bars for three components. General components: Centre 60, State 40. Salary: Centre 25, State 75. Supplementary nutrition: Centre 50, State 50.'
+  source: draw.py
+  spec:
+    kind: bar
+    x:
+    - general components
+    - salary
+    - supplementary nutrition
+    series:
+    - name: Centre's share (%)
+      y:
+      - '60'
+      - '25'
+      - '50'
+    - name: State's share (%)
+      y:
+      - '40'
+      - '75'
+      - '50'
+    x_label: ''
+    y_label: share of spending (%)
+    value_labels: true
+    y_range:
+    - 0
+    - 100
+    relations:
+    - check: y1[0] + y2[0] = 100
+    - check: y1[1] + y2[1] = 100
+    - check: y1[2] + y2[2] = 100
 provenance:
   map_version_id: fc19c8bc-a216-4131-99fb-ebe3f19cec4a
   outcome_refs:

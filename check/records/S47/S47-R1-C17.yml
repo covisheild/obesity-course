@@ -776,3 +776,18 @@ figures:
     relations:
     - check: "y1[0] + y1[1] = 5"
     - check: "y2[0] + y2[1] = 6"
+- file: s47-r1-c17-range-to-top.png
+  caption: "Mark 2 in the first draft. The modelling study reported in the 2026 review estimated that an extra health tax of 10% to 30% could cut demand for sugary drinks by 7% to 30%. The draft wrote a flat 30%: it kept the top end of the range and dropped the word model."
+  alt: "Three bars: the model's low end 7, the model's high end 30, and the draft's figure 30, as tall as the high end."
+  source: draw.py
+  spec:
+    kind: bar
+    x: ["the model's low end", "the model's high end", "the draft's figure"]
+    series:
+    - {name: fall in demand (%), y: [7, 30, 30]}
+    x_label: ""
+    y_label: fall in demand for sugary drinks (%)
+    value_labels: true
+    relations:
+    - check: "y[2] = y[1]"
+    size: [5.0, 3.0]
