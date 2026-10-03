@@ -18,13 +18,14 @@ definition:
     A mark is anything drawn that stands for one number (`B0-R0-C40`). The reader gets the number
     back by a judgment the eye makes about the mark. Cleveland and McGill (1984) called these
     judgments elementary perceptual tasks, and named ten. They are position along a common scale,
-    position along scales that are not lined up, length, direction, angle, area, volume,
-    curvature, shading and colour saturation. A common scale is one axis that every mark being compared is read
+    position along scales that are not lined up, length, direction (such as the slope of a line),
+    angle, area, volume, curvature, shading and colour saturation. A common scale is one axis that every mark being compared is read
     against.
 
     They proposed an order, from the judgment people make most accurately to the least. First comes position
-    along a common scale, then positions along scales not lined up. Length, direction and angle share third
-    place, then area. Their rule for design follows: a graph should use judgments as high in this order as it
+    along a common scale, then positions along scales not lined up, such as the same measure in two panels
+    side by side, each with its own axis. Length, direction and angle share third place. Area is fourth.
+    Their rule for design follows: a graph should use judgments as high in this order as it
     can.
 
     The order is a hypothesis. Their two experiments tested two parts of it, position against length and
@@ -32,7 +33,7 @@ definition:
 
     The mark is chosen by the shape of the data as well. Amounts for a set of groups take bars, or
     dots where the bars would end. Many values from each group take a chart of their distribution.
-    Parts of one whole take side-by-side bars, stacked bars or, for a few parts, a pie. One measured
+    Parts of one whole take side-by-side bars or, for a few parts, a pie. One measured
     quantity against another takes a scatterplot. Change over time takes a line.
   references:
   - citekey: cleveland_mcgill_1984_graphical_perception
@@ -433,6 +434,33 @@ definition:
       opened: true
       claim_located: true
       checked_on: '2026-10-02'
+  - citekey: nfhs5_india_factsheet
+    kind: instrument
+    locator: Footnotes 18 and 20 to the key indicators (the cut-offs for indicators 81-85)
+    quote: |-
+      18Below -2 standard deviations, based on the WHO standard.
+    verified:
+      resolved_id: https://dhsprogram.com/pubs/pdf/OF43/India_National_Fact_Sheet.pdf
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-03'
+      note: |-
+        Footnote 18 applies to stunted, wasted and underweight; footnote 20, to child overweight,
+        reads "Above +2 standard deviations, based on the WHO standard." Backs exercise 2's "judged
+        against the World Health Organization growth standard"; the rows name the measures
+        (height-for-age, weight-for-height, weight-for-age).
+  - citekey: wilke_2019_dataviz_ch17
+    kind: textbook
+    locator: Chapter 17, section 17.2 Visualizations along logarithmic axes, the rule at the end of the section
+    quote: |-
+      Bars on a log scale represent ratios and must always start at 1, and bars on a linear scale represent amounts and must always start at 0.
+    verified:
+      resolved_id: https://clauswilke.com/dataviz/proportional-ink.html
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-03'
+      note: |-
+        Backs must-know point 7's second sentence; section 17 teaches it.
 simplified_explanation: |
   Your eye reads some marks better than others. So put the numbers a reader must compare on one
   shared axis, side by side.
@@ -440,8 +468,8 @@ simplified_explanation: |
   Many values from one group take a chart of how they spread, which the next section is about.
 illustrations:
 - body: |
-    Start with a chart that fails. A draft district report puts the four NFHS-5 numbers from the last
-    section into a pie: urban women, rural women, urban men, rural men. The draft is made up; the
+    Start with a chart that fails. A draft district report puts four numbers from the last section
+    into a pie, from the fifth National Family Health Survey (NFHS-5): urban women, rural women, urban men, rural men. The draft is made up; the
     numbers are the fact sheet's.
 
     Before you look at the angles, add up the slices.
@@ -464,7 +492,7 @@ illustrations:
     position along a common scale, the judgment people make best.
   analogy_breaks_when: |
     A pie is not always wrong. When a few parts make one whole, such as how a clinic's patients
-    split across four BMI categories, a pie shows that the parts add up to the whole. Wilke says
+    split across four body mass index (BMI) categories, a pie shows that the parts add up to the whole. Wilke says
     that is what pies do well, and that side-by-side bars still compare the parts better.
 
     The sum of 102.0 is a quick test, not a proof. Four shares of different groups could add to
@@ -721,7 +749,8 @@ must_know:
   bearing: methodological
   refs: [wilke_2019_dataviz_ch05]
 - point: |
-    When the value axis cannot start at zero, as on a logarithmic axis, draw dots, not bars.
+    When an amount needs a logarithmic axis, draw dots, not bars: zero lies infinitely far down it.
+    A ratio there takes bars from 1 (`S58-R1-C17`).
   kind: move
   bearing: methodological
   refs: [wilke_2019_dataviz_ch17]
@@ -752,8 +781,9 @@ exercises:
 - type: critique
   prompt: |
     A district nutrition report shows one pie chart of children under 5, titled "Child
-    undernutrition and overweight, India, NFHS-5". Its four slices are stunted 35.5%, wasted 19.3%,
-    underweight 32.1% and overweight 3.4%. The numbers are the NFHS-5 India Fact Sheet's totals
+    undernutrition and overweight, India, NFHS-5". Its four slices are stunted (short for age)
+    35.5%, wasted (thin for height) 19.3%, underweight (light for age) 32.1% and overweight (heavy
+    for height) 3.4%, each judged against the World Health Organization growth standard. The numbers are the NFHS-5 India Fact Sheet's totals
     for indicators 81, 82, 84 and 85. Say what is wrong and what you would draw instead.
   answer: |
     Add the slices first.
@@ -766,7 +796,7 @@ exercises:
     pie has stretched 90.3 to fill a circle.
 
     The deeper problem would remain even if they added to 100. Each number is the share of all
-    children under 5 with one condition, and one child can have more than one. A child who is
+    children under 5 with one condition, and one child can have more than one. A child
     can be stunted and underweight at once. So the four groups overlap, and a pie, which shows parts
     that do not overlap, cannot hold them.
 

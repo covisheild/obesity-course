@@ -30,9 +30,12 @@ definition:
     almost all ordinary prose the score falls between 0 and 100, but the formula can go below 0 or
     above 100.
 
+    Every worked score below uses ASL, ASW and FRE, so this section keeps all three. The limit on
+    abbreviations in `S58-R1-C08` counts a paper's nonstandard ones.
+
     Kincaid and colleagues (1975) gave a grade-level formula: 0.39 times ASL, plus 11.8 times ASW,
-    minus 15.59. Its result is a school grade level. Later writers call the formula the
-    Flesch–Kincaid grade level (FKGL).
+    minus 15.59. Its result is a United States school grade, not an Indian class. Later writers
+    call the formula the Flesch–Kincaid grade level.
 
     Both formulas count lengths. Neither reads meaning, order or the logic between sentences.
 
@@ -461,6 +464,32 @@ definition:
       note: |-
         Edwards 2022 (Methods) generated both scores with Microsoft Word. Backs must-know
         point 3.
+  - citekey: edwards_2022_readability_formulas
+    kind: primary
+    locator: Methods, how the scores were generated
+    quote: |-
+      All documents were assessed using plain text with Microsoft Word for Mac version 16.20. The FKGL and FRE for each article were generated.
+    verified:
+      resolved_id: https://doi.org/10.25259/SNI_502_2022
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-03'
+      note: |-
+        Backs illustration 3's "one 2022 study used Microsoft Word for both scores".
+  - citekey: flesch_1979_plain_english
+    kind: textbook
+    locator: Chapter 2, Step 2, words with two pronunciations
+    quote: |-
+      If a word has two accepted pronunciations, use the one with fewer syllables.
+    verified:
+      resolved_id: https://pages.stern.nyu.edu/%7Ewstarbuc/Writing/Flesch.htm
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-03'
+      note: |-
+        Backs illustration 2's "Flesch in 1979 took the shorter". This book counts the fuller
+        pronunciation ("Family" 3, "National" 3, "allegedly" 4), as Plavén-Sigray and colleagues
+        did ("the longer alternative was chosen").
 simplified_explanation: |
   A readability formula reads your draft with a ruler, not with a mind. Long sentences and long
   words push the score towards hard.
@@ -565,8 +594,10 @@ illustrations:
     > years who were overweight or obese showed an increase from {{n:nfhs4_women_ow_ob_pct}}% in
     > NFHS-4 to {{n:nfhs5_women_ow_ob_pct}}% in NFHS-5.
 
-    Count it. Take each figure, such as {{n:nfhs4_women_ow_ob_pct}}% or NFHS-4, as one word of one
-    syllable. That is Flesch's own rule from 1979. There are 52 words. The words with more than one
+    Count it. Take each numeral, abbreviation or symbol (such as {{n:nfhs4_women_ow_ob_pct}}%, NFHS
+    or NFHS-4) as one word of one syllable. That is Flesch's own
+    rule from 1979. Where a word can be said two ways, this book counts the fuller one (Flesch in
+    1979 took the shorter); state your choice. There are 52 words. The words with more than one
     syllable add 19 extra beats: observed 1, present 1, study 1, analysis 3, data 1, National 2,
     Family 2, Survey 1, proportion 2, women 1, overweight 2, obese 1, increase 1.
 
@@ -586,22 +617,22 @@ illustrations:
     Here are two rewrites. Score both before you read on.
 
     > Rewrite A. We analysed data from the National Family Health Survey. Among women aged 15 to
-    > 49, the share who were overweight or obese rose from {{n:nfhs4_women_ow_ob_pct}}% in NFHS-4
+    > 49, the share with overweight or obesity rose from {{n:nfhs4_women_ow_ob_pct}}% in NFHS-4
     > to {{n:nfhs5_women_ow_ob_pct}}% in NFHS-5.
 
     > Rewrite B. We used NFHS. Women were measured. They were 15 to 49. Some were overweight.
     > Some were obese. It was {{n:nfhs4_women_ow_ob_pct}}%. It is now
     > {{n:nfhs5_women_ow_ob_pct}}%.
 
-    Rewrite A has 31 words in 2 sentences, with 13 extra beats: analysed 2, data 1, National 2,
-    Family 2, Survey 1, Among 1, women 1, overweight 2, obese 1. Rewrite B has 24 words in 7
+    Rewrite A has 30 words in 2 sentences, with 15 extra beats: analysed 2, data 1, National 2,
+    Family 2, Survey 1, Among 1, women 1, overweight 2, obesity 3. Rewrite B has 24 words in 7
     sentences, with 5 extra beats: women 1, measured 1, overweight 2, obese 1.
 
     ```working
-    31 plus 13 = 44
-    31 divided by 2 = 15.5
-    44 divided by 31 = 1.419354839
-    206.835 minus 1.015 times 15.5 minus 84.6 times 1.4194 = 71.02
+    30 plus 15 = 45
+    30 divided by 2 = 15
+    45 divided by 30 = 1.5
+    206.835 minus 1.015 times 15 minus 84.6 times 1.5 = 64.71
     24 plus 5 = 29
     24 divided by 7 = 3.428571429
     29 divided by 24 = 1.208333333
@@ -611,17 +642,17 @@ illustrations:
     ```table
     | version | words | sentences | syllables | ASL | ASW | FRE |
     | the draft | 52 | 1 | 71 | 52 | 1.3654 | 38.5 |
-    | Rewrite A | 31 | 2 | 44 | 15.5 | 1.4194 | 71.0 |
+    | Rewrite A | 30 | 2 | 45 | 15 | 1.5 | 64.7 |
     | Rewrite B | 24 | 7 | 29 | 3.4286 | 1.2083 | 101.1 |
     ```
 
     Rewrite B scores best, above even the 100 at the top of Flesch's scale. It is also the worst
     of the three. It splits "overweight or obese", one group, into two, as if each had its own
-    figure. It drops which survey each figure came from. It says "now" of a survey that ended in
+    number. It drops which survey each number came from. It says "now" of a survey that ended in
     2021. The score rose because the sentences got shorter, and it would rise just as far whatever
     they said.
 
-    Rewrite A keeps everything the draft said and scores 71.0, above Flesch's minimum of 60 for
+    Rewrite A keeps everything the draft said and scores 64.7, above Flesch's minimum of 60 for
     Plain English. It is the one to keep, and the score is not what tells you so. Reading it is.
   analogy_breaks_when: |
     These are single sentences and two short paragraphs, chosen to show the arithmetic. A score
@@ -629,7 +660,7 @@ illustrations:
     not change: a formula that counts lengths cannot tell a clear sentence from a short broken
     one.
 
-    The counts here take each figure as one syllable. The next illustration counts the same
+    The counts here take each numeral as one syllable. The next illustration counts the same
     sentences the other way.
   numbers:
   - value: '{{n:nfhs4_women_ow_ob_pct}}'
@@ -657,14 +688,15 @@ illustrations:
     citekey: flesch_1979_plain_english
     quote: The minimum score for Plain English is 60
 - body: |
-    Here is the trap with counting figures. Flesch himself gave two rules. In 1948 he counted a
-    figure the way it is read aloud: "two for $ ("dollars") and four for 1918". So did Kincaid
-    and colleagues. In 1979 he counted every figure and abbreviation as one syllable. Plavén-Sigray
+    Here is the trap with counting numerals. Flesch himself gave two rules. In 1948 he counted a
+    numeral or symbol the way it is read aloud: "two for $ ("dollars") and four for 1918". So did
+    Kincaid and colleagues. In 1979 he counted every numeral, symbol and abbreviation as one
+    syllable. Plavén-Sigray
     and colleagues, scoring 709,577 abstracts by computer, removed the numbers altogether.
 
-    Count the draft and Rewrite A again, reading each figure aloud. "15" is fifteen, 2 beats. "49"
+    Count the draft and Rewrite A again, reading each numeral and abbreviation aloud. "15" is fifteen, 2 beats. "49"
     is forty-nine, 3. "{{n:nfhs4_women_ow_ob_pct}}%" is twenty point six per cent, 6. "{{n:nfhs5_women_ow_ob_pct}}%" is twenty-four
-    point zero per cent, 8. Each "NFHS" with its number is four letters and a figure, said one by
+    point zero per cent, 8. Each "NFHS" with its number is four letters and a numeral, said one by
     one: 5. Each of these words had 1 beat before.
 
     ```working
@@ -672,23 +704,24 @@ illustrations:
     71 plus 23 = 94
     94 divided by 52 = 1.807692308
     206.835 minus 1.015 times 52 minus 84.6 times 1.8077 = 1.12
-    44 plus 23 = 67
-    67 divided by 31 = 2.161290323
-    206.835 minus 1.015 times 15.5 minus 84.6 times 2.1613 = 8.26
+    45 plus 23 = 68
+    68 divided by 30 = 2.266666667
+    206.835 minus 1.015 times 15 minus 84.6 times 2.2667 = -0.15
     ```
 
-    The same draft scores 38.5 or 1.1. The same rewrite scores 71.0 or 8.3. Nothing in either
+    The same draft scores 38.5 or 1.1. The same rewrite scores 64.7 or -0.15. Nothing in either
     sentence changed. Only the counting rule did.
 
     So a score means nothing until you know how it was counted. A results paragraph is thick with
-    figures, and the rule for figures can move its score more than any rewrite. When you compare
+    numerals, and the rule for numerals can move its score more than any rewrite. When you compare
     two drafts, score both with the same program or the same rule. When you read someone else's
-    score, look for how they counted figures before you compare it with yours.
+    score, look for how they counted numerals before you compare it with yours.
   analogy_breaks_when: |
-    The gap is this large because these sentences are thick with figures: 6 of the draft's 52
-    words. In a paragraph of discussion with no figures in it, the two rules give the same score.
-    A program you use may follow yet another rule, and it may not say which. So test it: score one
-    sentence with figures by hand, and see which rule its answer matches.
+    The gap is this large because these sentences are thick with numerals: 6 of the draft's 52
+    words. In a paragraph of discussion with no numerals, symbols or abbreviations in it, the two
+    rules give the same score. Most word processors can score readability; one 2022 study used
+    Microsoft Word for both scores. Yours may follow yet another rule, and may not say which. So
+    test it: score one sentence with numerals by hand, and see which rule its answer matches.
   numbers:
   - value: '709,577'
     unit: abstracts scored by Plavén-Sigray and colleagues
@@ -705,8 +738,8 @@ common_misreading: |
   a text is in general. Neither formula was tested on your readers. A grade is a guess about
   difficulty from the outside of the words, not a measured need for schooling.
 reporting_sentence: |
-  "We scored each leaflet with the Flesch Reading Ease score (Flesch 1948) and the Flesch–Kincaid
-  grade level (Kincaid et al. 1975), using [program and version]. The program counts each figure
+  "We scored each leaflet with the Flesch Reading Ease score [ref] and the Flesch–Kincaid grade
+  level [ref], using [program and version]. The program counts each numeral
   as [one syllable / the syllables it has when read aloud]. Both scores estimate difficulty from
   the length of words and sentences alone. We did not test our readers' understanding."
 must_know:
@@ -718,7 +751,7 @@ must_know:
   refs:
   - plavensigray_2017_readability
 - point: |
-    Before you compare two scores, find out how each counted figures. Flesch in 1948 read them
+    Before you compare two scores, find out how each counted numerals. Flesch in 1948 read them
     aloud, Flesch in 1979 counted each as one syllable, and one large study dropped them.
   kind: trap
   bearing: methodological
@@ -743,7 +776,8 @@ must_know:
   - flesch_1948_readability_yardstick
   - kincaid_1975_readability
 - point: |
-    Do not score a Hindi or Tamil translation of a leaflet with these formulas. For a health
+    These formulas were fitted on schoolchildren's test passages and Navy training manuals, so they
+    say nothing about a Hindi or Tamil translation. For a health
     leaflet in any language, give it to a few people from the audience and ask them what it tells
     them to do.
   kind: boundary
@@ -761,9 +795,9 @@ must_know:
   - flesch_1948_readability_yardstick
   - flesch_1979_plain_english
 - point: |
-    In one study of 709,577 abstracts, the share scoring below 0 on the FRE rose from 14% in
-    1960 to 22% in 2015. It does not show that specialists understand the newer abstracts less
-    well.
+    Quote the rise in abstracts scoring below 0 on the FRE (14 per cent in 1960, 22 per cent in
+    2015, in one study of 709,577) as a rise in long words and long sentences. It does not show
+    that specialists understand the newer abstracts less well.
   kind: number
   bearing: public
   refs:
@@ -807,7 +841,7 @@ practice:
     25.5 minus 15.59 = 9.91
     ```
 
-    FKGL 9.9.
+    Grade level 9.9.
 - level: 3
   prompt: |
     A passage averages 1.6 syllables per word. What average sentence length, to the nearest
@@ -853,7 +887,7 @@ practice:
     7.8 plus 17.464 minus 15.59 = 9.674
     ```
 
-    FKGL 9.7. The grade formula was made 27 years after Flesch's article, for Navy personnel. It
+    Grade level 9.7. The grade formula was made 27 years after Flesch's article, for Navy personnel. It
     gives a number for a 1946 magazine, but nobody tested that number on the magazine's readers.
   refs:
   - flesch_1948_readability_yardstick
@@ -904,7 +938,7 @@ practice:
 - level: 5
   prompt: |
     Suppose the 43-word sentence of the last problem could be split into three sentences. No word
-    is added or removed, so it still has 67 syllables. Compute its new Flesch Reading Ease
+    is added or removed, so it keeps every syllable you counted in the last problem. Compute its new Flesch Reading Ease
     score, and how much it changed.
   answer: |
     Only the average sentence length changes.
@@ -917,44 +951,44 @@ practice:
     ```
 
     FRE 60.5, up 29.1 points, with the same words. Two full stops moved the sentence from
-    Flesch's "college graduate" band to just above his Plain English minimum of 60. That is why
+    Flesch's "college" band (30 to 50) to just above his Plain English minimum of 60. That is why
     Flesch's own advice for a higher score is to "sprinkle periods". Whether the three sentences
     are clearer depends on how you split them, and the score cannot tell you.
   refs:
   - flesch_1979_plain_english
 - level: 6
   prompt: |
-    Score this results sentence twice: once taking each figure as one syllable, and once counting
-    each figure as it is read aloud. Give both Flesch Reading Ease scores to one decimal place.
+    Score this results sentence twice: once taking each numeral as one syllable, and once counting
+    each numeral as it is read aloud. Give both Flesch Reading Ease scores to one decimal place.
 
-    > Among men aged 15 to 49, {{n:nfhs5_men_ow_ob_pct}}% were overweight or obese in NFHS-5,
+    > Among men aged 15 to 49, {{n:nfhs5_men_ow_ob_pct}}% had overweight or obesity in NFHS-5,
     > against {{n:nfhs4_men_ow_ob_pct}}% in NFHS-4.
   answer: |
-    17 words, one sentence. With figures as one syllable, the extra beats are: among 1,
-    overweight 2, obese 1, against 1.
+    17 words, one sentence. With numerals as one syllable, the extra beats are: among 1,
+    overweight 2, obesity 3, against 1.
 
     ```working
-    17 plus 5 = 22
-    22 divided by 17 = 1.294117647
+    17 plus 7 = 24
+    24 divided by 17 = 1.411764706
     1.015 times 17 = 17.255
-    84.6 times 1.2941 = 109.48
-    206.835 minus 17.255 minus 109.48 = 80.10
+    84.6 times 1.4118 = 119.44
+    206.835 minus 17.255 minus 119.44 = 70.14
     ```
 
-    FRE 80.1. Now read the figures aloud. Fifteen adds 1 beat. Forty-nine adds 2.
+    FRE 70.1. Now read the numerals aloud. Fifteen adds 1 beat. Forty-nine adds 2.
     "{{n:nfhs5_men_ow_ob_pct}}%", twenty-two point nine per cent, is 7 beats, so it adds 6.
     "{{n:nfhs4_men_ow_ob_pct}}%", eighteen point nine per cent, is 6, so it adds 5. Each
     "NFHS" with its number is 5 beats, adding 4 each.
 
     ```working
     1 plus 2 plus 6 plus 5 plus 4 plus 4 = 22
-    22 plus 22 = 44
-    44 divided by 17 = 2.588235294
-    84.6 times 2.5882 = 218.96
-    206.835 minus 17.255 minus 218.96 = -29.38
+    24 plus 22 = 46
+    46 divided by 17 = 2.705882353
+    84.6 times 2.7059 = 228.92
+    206.835 minus 17.255 minus 228.92 = -39.34
     ```
 
-    FRE -29.4. The same 17 words score 80.1 or -29.4. State your counting rule beside any score
+    FRE -39.3. The same 17 words score 70.1 or -39.3. State your counting rule beside any score
     you report.
   refs:
   - nfhs5_india_factsheet
@@ -1049,10 +1083,10 @@ practice:
     111.61 divided by 84.6 = 1.3193
     ```
 
-    At 15 words a sentence, a score of 80 needs about 1.32 syllables a word, nearer 1 1/3 than
+    At 15 words a sentence, a score of 80 needs about 1.32 syllables a word, nearer 1 1/3 (1.33) than
     1 1/2. The same page's other pair works: 20 words and 1 1/2 syllables give 59.6, about the 60
-    it is quoted for. So one figure in the 80 sentence is probably a slip, in Flesch's book or in
-    the retyped copy online. The arithmetic shows a mismatch; it cannot show which figure is wrong.
+    it is quoted for. So one number in the 80 sentence is probably a slip, in Flesch's book or in
+    the retyped copy online. The arithmetic shows a mismatch; it cannot show which number is wrong.
 
     What this does not establish. Even a leaflet that does score 80 has not been shown to read as
     conversation, or to be understood by its readers. The score counts lengths. To know whether
@@ -1078,8 +1112,8 @@ practice:
     ```
 
     About 2.14 syllables a word, at 25 words a sentence. Many medical words have three or four
-    syllables: proportion, obesity, prevalence. In the study, 14% of abstracts scored below 0 in 1960 and 22%
-    in 2015. So "more than a fifth" is right for 2015.
+    syllables: proportion, obesity, prevalence. In the study, 14 per cent of abstracts scored below 0 in 1960 and
+    22 per cent in 2015. So "more than a fifth" is right for 2015.
 
     What this does not establish. A score below 0 means long words in long sentences. It does not
     mean nobody can understand the text. Flesch fitted his formula on children's reading passages
@@ -1118,7 +1152,7 @@ exercises:
     The paper would need to give the leaflets to patients from the clinic and test what they
     understood. For example, ask each one what the leaflet tells them to do. Mark the answers
     against a key written in advance. It should also say which program computed the grade, and how
-    that program counts figures and abbreviations.
+    that program counts numerals and abbreviations.
 - type: teaching
   prompt: |
     A journalist rings you: "Is it true scientific papers are getting harder to read?" You have
@@ -1145,70 +1179,74 @@ retrieval_items:
   a: 206.835, minus 1.015 times the average sentence length, minus 84.6 times the average syllables
     per word. Higher means easier.
 - q: Why can the same paragraph get two very different readability scores?
-  a: The counting rules differ, above all for figures and abbreviations, which one rule counts as one
-    syllable and another reads aloud. In a paragraph thick with figures, that can move the score by
+  a: The counting rules differ, above all for numerals and abbreviations, which one rule counts as one
+    syllable and another reads aloud. In a paragraph thick with numerals, that can move the score by
     more than any rewrite.
 figures:
 - file: s58-r1-c11-score-lines.png
   caption: "The Flesch Reading Ease score falls by 1.015 points for each extra word in the average
-    sentence. Each line holds one version's average syllables per word: 71/52 for the 52-word
-    draft, 44/31 for Rewrite A. The draft sits at 38.5; Rewrite A at 71.0, above Flesch's Plain
+    sentence. Each line holds one version's average syllables per word: about 1.37 for the 52-word
+    draft of illustration 2, below, and 1.5 for its Rewrite A. The draft sits at 38.5; Rewrite A at
+    64.7, above Flesch's Plain
     English minimum of 60. The whole gain comes from shorter sentences: Rewrite A's words are a
     little longer, so its line sits lower."
   alt: "Two nearly parallel falling lines of the FRE score against average sentence length. A point
-    at 52 words and a score of 38.5 on the upper, solid line; a point at 15.5 words and 71.0 on the
+    at 52 words and a score of 38.5 on the upper, solid line; a point at 15 words and 64.7 on the
     lower, dashed line. A dashed horizontal line at 60."
   source: draw.py
   spec:
     kind: scatter
-    x: ["52", "15.5"]
+    x: ["52", "15"]
     series:
     - name: "the draft and Rewrite A"
-      y: ["38.5", "71.0"]
+      y: ["38.5", "64.7"]
     x_label: "average sentence length, ASL (words)"
     y_label: "Flesch Reading Ease, FRE"
     curves:
-    - {y: "y = 206.835 - 1.015*x - 84.6*71/52", x0: 0, x1: 52, label: "ASW of the draft, 71/52"}
-    - {y: "y = 206.835 - 1.015*x - 84.6*44/31", x0: 0, x1: 52, label: "ASW of Rewrite A, 44/31"}
+    - {y: "y = 206.835 - 1.015*x - 84.6*71/52", x0: 0, x1: 52, label: "ASW of the draft, about 1.37"}
+    - {y: "y = 206.835 - 1.015*x - 84.6*45/30", x0: 0, x1: 52, label: "ASW of Rewrite A, 1.5"}
     refs:
     - {y: 60, label: "Plain English minimum, 60"}
     labels:
-    - {text: "the draft: 52 words, 38.5", at: [52, 38.5], offset: [-150, -14]}
-    - {text: "Rewrite A: 15.5 words, 71.0", at: [15.5, 71.0], offset: [6, 16]}
+    - {text: "the draft:\n52 words, 38.5", at: [52, 38.5], offset: [-56, 32]}
+    - {text: "Rewrite A:\n15 words, 64.7", at: [15, 64.7], offset: [-80, -36]}
+    derived:
+    - {value: "1.37", from: "71/52"}
     relations:
     - check: "206.835 - 1.015*x[0] - 84.6*71/52 = 38.5"
-    - check: "206.835 - 1.015*x[1] - 84.6*44/31 = 71.0"
+    - check: "206.835 - 1.015*x[1] - 84.6*45/30 = 64.7"
 - file: s58-r1-c11-counting-rule.png
-  caption: "The same two sentences scored under Flesch's two rules for figures. Counting each figure
-    as one syllable, the draft scores 38.5 and Rewrite A 71.0. Reading each figure aloud, they score
-    1.1 and 8.3. The rule for figures moved each score more than the rewrite did."
-  alt: "Two pairs of bars. The draft: 38.5 with each figure as one syllable, 1.1 with figures read
-    aloud. Rewrite A: 71.0 and 8.3."
+  caption: "The draft and Rewrite A of illustration 2, below, scored under Flesch's two rules for
+    numerals (illustration 3). Counting each numeral as one syllable, the draft scores 38.5 and
+    Rewrite A 64.7. Reading each aloud, they score 1.1 and -0.15. The rule for numerals moved each
+    score more than the rewrite did."
+  alt: "Two pairs of bars. The draft: 38.5 with each numeral as one syllable, 1.1 with numerals read
+    aloud. Rewrite A: 64.7 and -0.15, just below zero."
   source: draw.py
   spec:
     kind: bar
     x: ["the draft", "Rewrite A"]
     series:
-    - name: "each figure counted as one syllable"
-      y: ["38.5", "71.0"]
-    - name: "each figure counted as read aloud"
-      y: ["1.1", "8.3"]
+    - name: "each numeral counted as one syllable"
+      y: ["38.5", "64.7"]
+    - name: "each numeral counted as read aloud"
+      y: ["1.1", "-0.15"]
     y_label: "Flesch Reading Ease, FRE"
     value_labels: true
     labels:
-    - {text: "figures as\none syllable", at: [-0.336, 38.5], offset: [0, 14]}
-    - {text: "figures\nread aloud", at: [0.014, 1.1], offset: [0, 14]}
+    - {text: "numerals as\none syllable", at: [-0.336, 38.5], offset: [0, 14]}
+    - {text: "numerals\nread aloud", at: [0.014, 1.1], offset: [0, 14]}
     relations:
     - check: "206.835 - 1.015*52 - 84.6*71/52 = 38.5"
-    - check: "206.835 - 1.015*15.5 - 84.6*44/31 = 71.0"
+    - check: "206.835 - 1.015*15 - 84.6*45/30 = 64.7"
     - check: "206.835 - 1.015*52 - 84.6*94/52 = 1.1"
-    - check: "206.835 - 1.015*15.5 - 84.6*67/31 = 8.3"
+    - check: "206.835 - 1.015*15 - 84.6*68/30 = -0.15"
 - file: s58-r1-c11-three-scores.png
-  caption: "The three versions scored by the same rule. Rewrite B scores 101.1, above the 100 at the
+  caption: "The three versions of illustration 2, below, scored by the same rule. Rewrite B scores 101.1, above the 100 at the
     top of Flesch's scale, and it is the worst of the three: it splits one group in two and drops
-    which survey each figure came from. Rewrite A, at 71.0, keeps everything the draft said. The
+    which survey each number came from. Rewrite A, at 64.7, keeps everything the draft said. The
     score counts lengths; only reading tells you which to keep."
-  alt: "Three bars from zero: the draft 38.5, Rewrite A 71.0, Rewrite B 101.1. Dashed lines at 60,
+  alt: "Three bars from zero: the draft 38.5, Rewrite A 64.7, Rewrite B 101.1. Dashed lines at 60,
     Flesch's Plain English minimum, and at 100, the top of his scale."
   source: draw.py
   spec:

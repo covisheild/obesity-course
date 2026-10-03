@@ -17,7 +17,9 @@ definition:
   text: |
     A bar chart of a measured quantity draws each group as one bar, the height of its mean.
 
-    Many different sets of values give the same bar and the same error bar. The values may be spread evenly, or
+    Many different sets of values give the same bar and the same error bar. An error bar is a line above and
+    below the top of the bar, usually one standard deviation or one standard error each way (`B0-R0-C28` and
+    `B0-R0-C29`). The values may be spread evenly, or
     bunched with one far from the rest, or split into two clusters. There may be only three of them.
 
     Showing the data means drawing every value. A strip chart puts each value as a dot along the value axis, one
@@ -36,6 +38,18 @@ definition:
       note: |-
         CC BY 4.0. The same paragraph: bar and line graphs of continuous data "typically show the
         mean and standard error (SE) or standard deviation (SD)".
+  - citekey: weissgerber_2015_beyond_bar_graphs
+    kind: primary
+    locator: Introduction, second paragraph
+    quote: |-
+      Bar and line graphs of continuous data are “visual tables” that typically show the mean and standard error (SE) or standard deviation (SD).
+    verified:
+      resolved_id: https://doi.org/10.1371/journal.pbio.1002128
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-03'
+      note: |-
+        Backs "usually one standard deviation or one standard error" in the definition of an error bar.
   - citekey: weissgerber_2015_beyond_bar_graphs
     kind: primary
     locator: Abstract
@@ -181,6 +195,18 @@ definition:
         of the box) and to outliers "usually showns as individual dots" (sic).
   - citekey: wilke_2019_dataviz_ch09
     kind: textbook
+    locator: Chapter 9, Figure 9.2 caption, anatomy of a boxplot
+    quote: |-
+      The top and bottom whiskers extend either to the maximum and minimum of the data or to the maximum or minimum that falls within 1.5 times the height of the box, whichever yields the shorter whisker.
+    verified:
+      resolved_id: https://clauswilke.com/dataviz/boxplots-violins.html
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-03'
+      note: |-
+        Backs "whiskers out towards the far values" in illustration 2.
+  - citekey: wilke_2019_dataviz_ch09
+    kind: textbook
     locator: Chapter 9, section 9.1, the paragraph on violin plots
     quote: |-
       In particular, violin plots will accurately represent bimodal data whereas a boxplot will not.
@@ -267,13 +293,13 @@ illustrations:
     | ward 3 | 8 | 30 | 14.3 | 30 |
     ```
 
-    Now draw every value as a dot and look again. In the second figure, each ward's adults are
-    numbered 1 to 8, from the lowest value to the highest. They are set out from left to right, so
-    that no dot hides another. Ward 1 is spread fairly
+    Now draw every value as a dot and look again. In the second figure, the adults are numbered 1
+    to 24, ward by ward, lowest value first. They are set out from left to right, so that no dot
+    hides another. Ward 1 is spread fairly
     evenly from 10 to 50. In ward 2, seven adults report 22 to 28 minutes, and one reports 65.
     That one value lifts the mean to 30, though seven of the eight report less; the median is
     25.5. In ward 3 the adults fall into two clusters, 15 to 19 and 41 to 45. Nobody in ward 3 is
-    within 11 minutes of the mean.
+    closer than 11 minutes to the mean.
 
     "Activity was similar across the three wards" is true of the means and false of the people.
     Weissgerber and colleagues make the same point with four example datasets behind one bar
@@ -304,7 +330,9 @@ illustrations:
     (43 plus 44) divided by 2 = 43.5
     ```
 
-    The box runs from 16.5 to 43.5 minutes, with its median line at 30. A reader sees a wide, even
+    A box plot draws a box from the lower to the upper quartile, a line at the median, and whiskers
+    out towards the far values. Ward 3's box runs from 16.5 to 43.5 minutes, with its median line
+    at 30. A reader sees a wide, even
     spread with a middle at 30. No adult in ward 3 reports anything between 19 and 41. Wilke says
     it plainly: violin plots, a smoothed outline of where the values fall, "will accurately
     represent bimodal data whereas a boxplot will not". Bimodal means two clusters.
@@ -323,7 +351,8 @@ illustrations:
     the shape and the count, keep them. If they pile into a smear, change the chart.
 
     All of this is for measured quantities. A share of people with or without something, such as
-    the NFHS rows of the last two sections, is one number per group. A bar or a dot is the right
+    the National Family Health Survey rows in `S58-R1-C14` and `S58-R1-C15`, is one number per
+    group. A bar or a dot is the right
     mark for it.
   numbers: []
 figures:
@@ -397,7 +426,7 @@ must_know:
   bearing: methodological
   refs: [weissgerber_2015_beyond_bar_graphs]
 - point: |
-    A systematic review covered 703 papers in leading physiology journals from early 2014. Of these, 85.6% had
+    Weissgerber and colleagues' systematic review (2015) covered 703 papers in leading physiology journals from early 2014. Of these, 85.6% had
     at least one bar chart, and only 13.4% had a chart showing every value.
   kind: number
   bearing: methodological
@@ -408,7 +437,8 @@ must_know:
   kind: consequence
   bearing: teaching
 - point: |
-    Leaf through a recent issue of the journal you will submit to and count for yourself before you
+    Weissgerber and colleagues counted physiology journals only; this book holds no such count for
+    Indian journals. Leaf through a recent issue of the journal you will submit to and count for yourself before you
     assume its habits.
   kind: india_deviation
   bearing: methodological
@@ -437,7 +467,7 @@ exercises:
     separate clusters. A group of very few values is a fourth.
 
     For small groups, a univariate scatterplot, which this book calls a strip chart: every value
-    as a dot. A box plot or a histogram is hard to read with so few values, and a box plot can draw
+    as a dot. A box plot or a histogram is hard to read with so few values. A box plot can also draw
     two clusters as one wide box.
   confidence_first: true
 - type: interpretation
@@ -486,8 +516,8 @@ exercises:
     need from the authors to do so. Write the caption's sentence that says what the dots and the
     line mean.
   answer: |
-    A good redraw keeps the groups on one shared axis, puts every value as a dot, and marks the
-    median or mean with a short line. The caption says which the line is and how many values each
+    A good redraw keeps the groups on one shared axis and puts every value as a dot. A short line
+    marks the median or mean. The caption says which the line is and how many values each
     group has.
 
     If you could not redraw it, you needed the individual values, which a bar chart never shows.
@@ -509,7 +539,7 @@ exercises:
     dot far above, one in two clusters. Every column has the same mean. Ask again.
 
     Make three points. First, with eight values a group, the reader can see every value; a bar
-    throws seven of them away. Second, one far value can make a group's mean match another's, and
+    shows one number in place of eight. Second, one far value can make a group's mean match another's, and
     only the dots show it. Third, her examiner will want to check her claim, and the dots are what
     lets them.
 

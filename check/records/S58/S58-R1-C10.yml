@@ -12,9 +12,9 @@ concept_deps: [S58-R1-C02, S58-R1-C03, S58-R1-C04, S58-R1-C07]
 definition:
   text: |
     A paragraph is a group of sentences that makes one point. Its topic sentence states that
-    point. Mensh and Kording call this shape context, content, conclusion. At the scale of a
-    paragraph, the first sentence sets the topic and the body carries the content. The last
-    sentence gives the conclusion to remember.
+    point, often first. Mensh and Kording use a second shape: context, content, conclusion. The
+    first sentence sets the topic, the body carries the content, and the last sentence gives the
+    conclusion to remember. Illustration 2 shows both shapes.
 
     A paragraph zig-zags when it leaves a topic and comes back to it later.
 
@@ -89,7 +89,7 @@ simplified_explanation: |
 illustrations:
 - body: |
     Start with a paragraph that fails. Its wording is made up for this example; its numbers are
-    from the NFHS-5 India fact sheet. Its sentences are numbered so you can follow them.
+    from the India fact sheet of the fifth National Family Health Survey (NFHS-5). Its sentences are numbered so you can follow them.
 
     > (1) Overweight and obesity are becoming commoner among Indian women. (2) NFHS-5 measured
     > women aged 15-49 and counted those with a body mass index (BMI) of {{n:nfhs5_ow_ob_bmi_cutoff}} kg/m^2 or more.
@@ -102,11 +102,12 @@ illustrations:
     Every sentence is clear on its own. The paragraph is still hard to follow. Find out why.
 
     First, try the reverse outline. Write the paragraph's one point in a single sentence. You
-    cannot do it without "and": the share is rising, and it is higher in towns, and here is what
-    the survey counted. Three points.
+    cannot do it without "and": the share rose, and it is higher in towns, and here is what
+    the survey counted, and action is needed. Four points.
 
     Next, give each topic a number. Topic 1 is how common it is and how it changed. Topic 2 is
-    towns against villages. Topic 3 is what the survey counted. Label each sentence. Then
+    towns against villages. Topic 3 is what the survey counted. Topic 4 is what to do. Label
+    each sentence. Then
     rewrite the paragraph with each topic in one place, and label the new sentences the same way.
 
     ```table
@@ -117,11 +118,11 @@ illustrations:
     4         1              1
     5         3              1
     6         2              2
-    7         1              2
+    7         4              2
     ```
 
     Count the changes of topic down each column. Before, the topic changes 6 times in 7
-    sentences. The reader is taken to topic 1 three times, and to topics 2 and 3 twice each.
+    sentences. The reader is taken to topics 1, 2 and 3 twice each, and to topic 4 once.
     After, it changes 2 times, and each change falls at a paragraph break. That is Mensh and
     Kording's rule: each subject in one place, so the reader changes subject as few times as
     possible.
@@ -190,9 +191,11 @@ illustrations:
     quote: |-
       (BMI ≥25.0 kg/m2)21 (%) 33.2 19.7 24.0 20.6
 - body: |
-    The book has now shown a one-point paragraph in two shapes. `S58-R1-C02` put the claim
-    first. `S58-R1-C04` opened a results paragraph with its question and closed it with the
-    answer. Here is one paragraph of the rewrite in each shape.
+    The book has now shown a one-point paragraph in two shapes. The claim came first in
+    `S58-R1-C02`, the shape for a results paragraph and the abstract. Mensh and Kording open a results
+    paragraph with its question and close it with the answer; `S58-R1-C04` keeps that order for
+    the end of the introduction and the start of the discussion. Here is one paragraph of the
+    rewrite in each shape.
 
     ```working
     {{n:nfhs5_women_ow_ob_urban_pct}} minus {{n:nfhs5_women_ow_ob_rural_pct}} = {{n:nfhs5_women_ow_ob_urban_rural_gap_pp}}
@@ -216,7 +219,8 @@ illustrations:
     such paragraph "convinces the reader of the answer given in its last sentence". That makes a
     doubtful conclusion easy to find and check.
 
-    Choose one shape for a section and keep it. Mensh and Kording ask that "parallel messages
+    Choose one shape for a section and keep it; in this book's results sections, that is point
+    first. Mensh and Kording ask that "parallel messages
     should be communicated with parallel form". A reader who has learnt where the point sits
     finds it faster in every paragraph after.
 
@@ -237,26 +241,26 @@ illustrations:
     the points are, not whether the evidence below each one supports it.
 figures:
 - file: s58-r1-c10-topics-before.png
-  caption: "Before the rewrite: the topic of each of the 7 sentences of the made-up paragraph, in reading order. Topic 1 is how common and how it changed, 2 is towns against villages, 3 is what the survey counted. The topic changes 6 times, and the reader is taken to topic 1 three times."
-  alt: "A step line over sentences 1 to 7, at topics 1, 3, 2, 1, 3, 2, 1: a jump at every sentence."
+  caption: "Before the rewrite: the topic of each of the 7 sentences of the made-up paragraph in illustration 1, below, in reading order. Topic 1 is how common and how it changed, 2 is towns against villages, 3 is what the survey counted, 4 is what to do. The topic changes 6 times, and the reader is taken to topics 1, 2 and 3 twice each."
+  alt: "A step line over sentences 1 to 7, at topics 1, 3, 2, 1, 3, 2, 4: a jump at every sentence."
   source: draw.py
   spec:
     kind: step
     from_table: {block: 0, x: 0, y: [1]}
     x_label: sentence, in reading order
-    y_label: topic (1, 2 or 3)
-    y_range: [0, 4]
+    y_label: topic (1 to 4)
+    y_range: [0, 5]
     size: [6.2, 2.3]
 - file: s58-r1-c10-topics-after.png
-  caption: "After the rewrite, drawn the same way: topics 3, 1 and 2, each in one place. The topic changes 2 times, and each change falls at a paragraph break."
+  caption: "After: the rewrite in illustration 1, below, drawn the same way. Topics 3, 1 and 2 are each in one place, and topic 4 is cut. The topic changes 2 times, and each change falls at a paragraph break."
   alt: "A step line over sentences 1 to 7, at topics 3, 3, 1, 1, 1, 2, 2: three flat runs with two steps between them."
   source: draw.py
   spec:
     kind: step
     from_table: {block: 0, x: 0, y: [2]}
     x_label: sentence, in reading order
-    y_label: topic (1, 2 or 3)
-    y_range: [0, 4]
+    y_label: topic (1 to 4)
+    y_range: [0, 5]
     size: [6.2, 2.3]
 must_know:
 - point: |
@@ -302,13 +306,13 @@ exercises:
 - type: retrieval
   prompt: |
     From memory: what are the three parts of a paragraph in Mensh and Kording's scheme? What is
-    a reverse outline, and what are the three things it can tell you to do with a paragraph?
+    a reverse outline, and what are the four things it can tell you to do with a paragraph?
   answer: |
     Context, content, conclusion: the first sentence sets the topic, the body carries the
     content, and the last sentence gives the conclusion to remember.
 
     A reverse outline is one sentence per paragraph, stating its one point, written from the
-    finished draft and read alone. It tells you three things. Split a paragraph whose note needs
+    finished draft and read alone. It tells you four things. Split a paragraph whose note needs
     "and". Merge two neighbours whose notes say the same thing. Move or cut one whose note
     serves no claim.
   confidence_first: true
@@ -335,13 +339,12 @@ exercises:
 
     ```table
     | paragraph | its one point |
-    | 1 | the district's share was higher than the nation's, and highest in urban wards |
-    | 2 | how far the sample and the measurement let us trust that |
+    | 1 | the district's share was above the nation's, highest in urban wards |
+    | 2 | how far the survey's methods let us trust that |
     | 3 | what the district should do first |
     ```
 
-    The first note has an "and", but both halves compare the district with NFHS-5, so they are
-    one point. A rewrite:
+    A rewrite:
 
     > In the district, the share of women aged 15-49 with a BMI of {{n:nfhs5_ow_ob_bmi_cutoff}} kg/m^2 or more was
     > higher than the national figure. That figure was {{n:nfhs5_women_ow_ob_pct}} per cent in
@@ -358,7 +361,7 @@ exercises:
   skill_ref: S58-R1-K01
 - type: critique
   prompt: |
-    Take the manuscript or thesis section you chose for this book. Write its reverse outline:
+    Take the section of your own manuscript or thesis that you chose for this book's build. Write its reverse outline:
     one sentence per paragraph, in the margin or on a separate sheet. Read the sentences alone.
     Mark every paragraph to split, merge, move or cut, and rewrite the two worst.
   answer: |
