@@ -1,0 +1,1 @@
+- Cut the whole "three more habits" passage from the plain-terms explanation, including "The same seed gives the same \"random\" picks on every run." The definition still says to set the seed before any random step, but nowhere now says what the seed buys you. Practice problems 1 and 6 ask the reader to predict and show identical picks, and may need that sentence back.

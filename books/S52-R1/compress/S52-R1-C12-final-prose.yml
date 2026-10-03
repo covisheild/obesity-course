@@ -1,0 +1,90 @@
+definition.text: '`mutate()`, from the dplyr package, adds columns to a data frame. A new column goes on the
+
+  right. If its name is the name of an existing column, it replaces that column.
+
+
+  `if_else(condition, true, false)` gives one value where the condition is `TRUE` and another
+
+  where it is `FALSE`. Where the condition is `NA`, the result is `NA`, unless a value is given
+
+  for `missing`.
+
+
+  `case_when()` takes a list of cases, each written `condition ~ value`. It checks them in order,
+
+  and each row gets the value of the first case whose condition is `TRUE`. A row that matches no
+
+  case gets `.default` if one is given, and `NA` otherwise.
+
+
+  `round(x, digits)` rounds to that many decimal places. A 5 at the cut is rounded to the even
+
+  digit, so `round(2.5)` is 2.
+
+
+  `str_trim()` removes spaces from the start and end of a piece of text. `str_to_lower()` turns
+
+  text into lower case. Both come from the stringr package. `rename_with()` renames columns by
+
+  applying a function to their names.
+
+  '
+simplified_explanation: '**mutate()** adds a column. You give the new column a name and a rule, and R applies the rule to
+
+  every row. The number of rows does not change.
+
+
+  Give the new column a new name.
+
+
+  **if_else()** sorts rows into two groups by one test. **case_when()** sorts them into several
+
+  groups. A row with a missing value passes no test and gets `NA`, which is what you want. Be
+
+  careful with `.default`, the label for "everything else": a missing value lands there too.
+
+
+  **round()** is for showing a number, not for storing it. Keep full precision in the column you
+
+  compute with, and round only what you print.
+
+
+  Text columns get cleaned the same way. **str_trim()** takes spaces off the ends.
+
+  **str_to_lower()** turns capitals into small letters. Together they turn "Male ", "male" and
+
+  "MALE" into "male".
+
+  '
+must_know[0].point: 'Convert units in code, in a new column, before using them.
+
+  '
+must_know[1].point: 'A BMI computed from height in centimetres is 10,000 times too small.
+
+  '
+must_know[2].point: 'The error is to think a value that prints as 25 is 25. At a cut-point, decide a rounding
+
+  rule, write it in a comment, and group on the rounded column.
+
+  '
+must_know[3].point: 'The order of the cases in `case_when()` is part of the rule. With `bmi >= 18.5` first and
+
+  `bmi >= 25` second, nobody is ever put in "25 or more", and no error says so.
+
+  '
+must_know[4].point: 'Leave `.default` out unless you mean it. With `.default` set, a missing value is given that
+
+  label as if it had been measured.
+
+  '
+must_know[5].point: 'Give a new column a new name.
+
+  '
+must_know[6].point: 'Round for the table you print, not for the column you compute with.
+
+  '
+must_know[7].point: 'A new column is only as right as the rule you wrote. `mutate()` will compute any rule on every
+
+  row without complaint.
+
+  '

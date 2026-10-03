@@ -1,0 +1,1 @@
+- Cut the definition sentence "The file on disk is not changed by being read, and an analysis that never writes to it can always be rerun from it." Only "Reading never changes the file." remains, and the section's title promise (reading without changing) plus Exercise/Problem 10 (MD5 check after an Excel save) lean on the rerun-from-raw reasoning.

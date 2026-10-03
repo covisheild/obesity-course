@@ -1,0 +1,115 @@
+definition.text: 'In R, a missing value is the constant `NA`, "not available". Any arithmetic on `NA` gives
+
+  `NA`. A raw file may instead mark a missing value with a code: an empty cell, a number such
+
+  as -99 or 999, or text such as "not recorded". R turns a code into `NA` only when it is told
+
+  to, at reading or in a later line of code. A code it was not told about is kept as an
+
+  ordinary value.
+
+
+  `is.na(x)` returns `TRUE` for each element of `x` that is `NA`. In arithmetic, `TRUE` counts
+
+  as 1 and `FALSE` as 0, so `sum(is.na(x))` is the number of missing values in `x`. Applied to
+
+  a data frame, `is.na()` returns a grid of `TRUE` and `FALSE` the shape of the data frame, and
+
+  `colSums()` adds it up column by column.
+
+
+  `mean(x, na.rm = TRUE)` and similar summaries leave out the missing values. The number of
+
+  values behind the result is then `sum(!is.na(x))`, not `length(x)`.
+
+
+  `drop_na()`, from the tidyr package, keeps only the rows with no missing value in the columns
+
+  it is given, or in every column when it is given none. Analysing only such rows is called
+
+  complete-case analysis.
+
+  '
+simplified_explanation: 'The last section made new columns. Some of the values it worked on were missing, and every
+
+  calculation that touched one gave `NA`. This section counts those gaps, and makes you say how
+
+  many there were.
+
+
+  A missing value reaches R in one of two ways. Either it is already `NA`, because the cell was
+
+  empty or the reading step was told which codes mean missing. Or it arrives disguised as a
+
+  real value: a weight of 999, a height of -99, the words "not recorded". R cannot tell a
+
+  disguised code from a measurement. A weight of 999 kg goes into the mean like any other
+
+  weight.
+
+
+  So the first job is to find the codes. Read the data dictionary, then look at the largest and
+
+  smallest values of each column. Turn every code into `NA` in your script, never in the file.
+
+
+  The second job is to count. `sum(is.na(x))` counts the missing values in one column.
+
+  `colSums(is.na(data))` counts them in every column at once.
+
+
+  The third job is to say how many values stand behind each number you report. Book 0 taught that
+
+  a mean is a sum divided by how many values there are. With `na.rm = TRUE` that "how many" is
+
+  smaller than the number of rows. Write it beside the mean.
+
+
+  Dropping every row with a gap, with `drop_na()`, is a choice, not a clean-up. It changes which
+
+  rows your answer is about. Name the columns you drop on, and report how many rows were left.
+
+  '
+must_know[0].point: 'The error is to think a missing value always shows as `NA`. A code such as 999 or -99 is
+
+  an ordinary number to R until you say otherwise. Before any summary, look at each column''s
+
+  smallest and largest values, and check the data dictionary for its missing codes.
+
+  '
+must_know[1].point: 'Count missing values with `sum(is.na(x))`, or `colSums(is.na(data))` for every column. Do it
+
+  once at the top of the script, and keep the printed counts with your outputs.
+
+  '
+must_know[2].point: 'Beside every mean, median or percentage, write the n it was computed from. With
+
+  `na.rm = TRUE` that n is `sum(!is.na(x))`, not the number of rows. Refuse a table whose n is
+
+  the row count of the file.
+
+  '
+must_know[3].point: '`drop_na()` with no columns named drops a row for a gap in any column, including a free-text
+
+  note. On the penguin file it keeps 34 of {{n:penguins_rows}} rows. Always name the columns,
+
+  and print `nrow()` before and after.
+
+  '
+must_know[4].point: 'Turn codes into `NA` in a new column made by code, never by editing the raw file. Then
+
+  anyone can see which values were changed and why.
+
+  '
+must_know[5].point: 'Complete-case analysis is a choice with consequences: it changes which people your answer is
+
+  about. Say in the methods which columns you required, and how many rows that left.
+
+  '
+must_know[6].point: 'Counting missing values tells you how many are gone, never why. A count cannot show
+
+  whether the people with gaps differ from the rest. So it cannot tell you whether leaving them
+
+  out has biased the answer.
+
+  '

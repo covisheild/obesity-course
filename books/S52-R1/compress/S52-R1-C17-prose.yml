@@ -1,0 +1,126 @@
+definition.text: '`pivot_longer()`, from the tidyr package, makes a data frame longer: it turns a set of
+
+  columns into two, one holding the old column names and one holding their values, and
+
+  repeats the other columns. It increases the rows and decreases the columns. `pivot_wider()`
+
+  does the reverse.
+
+
+  A key is a column, or set of columns, whose values pick out the row they belong to. A join
+
+  combines two data frames, `x` and `y`, by matching rows whose keys are equal.
+
+  `left_join(x, y)`, from the dplyr package, keeps every row of `x` and adds the columns of
+
+  `y`. A row of `x` with no match in `y` gets `NA` in the new columns. A row of `x` that
+
+  matches several rows of `y` appears once for each match. `anti_join(x, y)` returns the rows
+
+  of `x` that have no match in `y`.
+
+
+  `by` names the key. Left out, the join uses every column whose name the two data frames
+
+  share. The `relationship` argument states how many matches each row is expected to have, and
+
+  the join stops with an error if the data break it.
+
+  '
+simplified_explanation: 'The last section summarised one data frame. Real data often arrive in two shapes that summaries
+
+  cannot use directly. This section fixes both.
+
+
+  **The wide table.** A clinic writes a patient''s weight at three visits in three columns: visit 1,
+
+  visit 2, visit 3. It reads well on paper. But "visit" is a variable, and here its values sit in
+
+  the column names. There, `summarise(.by = visit)` cannot reach them.
+
+
+  **pivot_longer()** turns the three columns into two: one saying which visit, one saying the
+
+  weight. Three patients with three visits become nine rows, one per patient per visit.
+
+  **pivot_wider()** turns it back, for the table you print.
+
+
+  **The two files.** A survey sends the demographics in one file and the measurements in another,
+
+  with a participant number in both. That number is the key. **left_join()** matches the rows of
+
+  the two files on the key and puts the columns side by side. It keeps every row of the first file.
+
+  A row with no partner in the second file gets `NA`.
+
+
+  Here is the trap with joins. Suppose a key appears twice in the second file, by a slip in data
+
+  entry. Then the matching row of the first file appears twice in the result. No error, no warning.
+
+  The row count goes up by one, and every summary afterwards counts that person twice.
+
+
+  So count the rows before and after every join. Find keys that appear more than once. Find rows that did not match
+
+  with **anti_join()**. And tell the join what you expect with `relationship`, so it stops when
+
+  the data break the rule.
+
+
+  A join is one of the oldest operations in computing. Databases do it in a language called SQL,
+
+  and the next level of this subject teaches it there.
+
+  '
+must_know[0].point: 'Count the rows before and after every join. A `left_join()` that returns more rows than went
+
+  in has found a key that appears more than once in the second table. It says nothing about it.
+
+  '
+must_know[1].point: 'The error is to think a join only adds columns. It also adds rows when a key repeats, and every
+
+  count and mean after it counts those rows again. Say what you expect with `relationship`,
+
+  so the join stops when the data break it.
+
+  '
+must_know[2].point: 'Before a join, check the key in each table: count each value with `count()` and keep those with
+
+  `n > 1`. After it, find the rows that did not match with `anti_join()`, and find out why.
+
+  '
+must_know[3].point: 'Always write `by`. Left out, the join matches on every column the two tables share by name.
+
+  A column called `year` or `date` that means different things in each will then quietly match
+
+  nothing.
+
+  '
+must_know[4].point: 'A wide table with one column per visit, district or year has values of a variable in its column
+
+  names. Turn it long with `pivot_longer()` before summarising, and wide again only for the table
+
+  you print.
+
+  '
+must_know[5].point: 'A mean at each visit compares visits only if the same people are in every visit. Print the count
+
+  at each visit. A mean that moves when someone misses a visit is a change in who was measured,
+
+  not in weight.
+
+  '
+must_know[6].point: 'When a trainee''s merged thesis file "has a few more rows than it should", do not let them delete
+
+  rows by hand. Ask for the key counts before and after the join, and fix the duplicate in code.
+
+  '
+must_know[7].point: 'The join checks can tell you that keys match and how often. They cannot tell you that two rows
+
+  with the same key are really the same person. An ID reused for two people, or typed wrongly,
+
+  joins two people''s data without a trace.
+
+  '

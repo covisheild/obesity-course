@@ -1,0 +1,81 @@
+definition.text: 'A check, in this book, is a line of code that states something you believe about the data and
+
+  stops the script with an error when it is false.
+
+
+  `stopifnot()`, from base R, takes one or more expressions. If any of them is not `TRUE` in every
+
+  element, it stops with an error naming the first expression that failed, and the expressions
+
+  after it are not evaluated. A missing value counts as not `TRUE`, so an expression that gives
+
+  `NA` fails. When an expression is given a name, the name is printed in place of the expression.
+
+  When every expression is `TRUE`, `stopifnot()` prints nothing.
+
+
+  Three checks recur. A range check tests that every recorded value of a column lies between a
+
+  lower and an upper limit written in the code. The limits come from a source or a stated
+
+  decision, never from the smallest and largest values in the same data. A key is the column, or
+
+  set of columns, meant to pick out one row each. A key check tests that the key has as many
+
+  different values as the data have rows. `n_distinct()`, from dplyr, counts the different values
+
+  or combinations. A
+
+  row-count check stores the number of rows before a step that could change it, such as a join,
+
+  and compares it with the number after.
+
+  '
+simplified_explanation: "**stopifnot()** is the tool. Give each test a name that says the belief in words, and the error\nprints that name.\n\nThree checks cover most of what goes wrong.\n\n- **Range.** Every height lies between two limits you wrote down.\n- **Key.** Every row has its own ID. Count the different IDs with `n_distinct()` and compare with\n  the number of rows.\n- **Row count.** Count the rows before a join or a filter and again after. Then compare.\n\nA check that fails is a question, not a verdict. Look at the rows it found. Go back to the paper\nregister, the form or the person who measured. Then write the fix as a line of code, with the date\nand the reason in a comment. Never fix it in the raw file.\n"
+must_know[0].point: 'The error is to think that a script which runs without an error has checked the data. It has
+
+  checked nothing you did not write as a check.
+
+  '
+must_know[1].point: 'Write each belief about the data as a `stopifnot()` line with a name that says the belief in
+
+  words.
+
+  '
+must_know[2].point: 'A missing value fails `stopifnot()`. Do not delete the check to make the script run. Count the
+
+  missing values and report them, then check the recorded values with `na.rm = TRUE` inside
+
+  `all()`.
+
+  '
+must_know[3].point: 'Never set a range check''s limits from the smallest and largest values in the same data. Limits
+
+  taken from the data always pass on that data.
+
+  '
+must_know[4].point: 'Count the rows before and after every join and every filter, and compare the two in code. An ID
+
+  repeated in the table you join to adds rows with no warning.
+
+  '
+must_know[5].point: 'Fix a wrong value with a line of code. Pick the row by its ID and write the right value into a new
+
+  column. If no record gives the right value, set it to `NA` and report it.
+
+  '
+must_know[6].point: 'Never fix a row by its position, as in "row 3". Sorting or filtering earlier in the script
+
+  moves the rows, and the fix lands on someone else without any error.
+
+  '
+must_know[7].point: 'A weight of 180 kg outside your limits may be a real person, and a repeated ID may be a second
+
+  visit.
+
+  '
+must_know[8].point: 'A range check catches a value outside its limits and never a wrong value inside them. A height of
+
+  126 cm typed for 162 cm passes.
+
+  '

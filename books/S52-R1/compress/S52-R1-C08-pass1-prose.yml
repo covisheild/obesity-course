@@ -1,0 +1,44 @@
+definition.text: |
+  A data frame is R's table. Different columns may hold different types, but all the values within one column share one
+  type.
+
+  Data are tidy (Wickham 2014) when three rules hold. Each variable forms a column. Each
+  observation forms a row.
+simplified_explanation: |
+  Each column is a
+  vector, a set of values of one type: all numbers, or all text. Every column has the same
+  length. A tibble is the tidyverse's kind of data frame.
+
+  A table is tidy when three things are true:
+
+  - **One column, one variable.**
+  - **One row, one observation.** A second visit is a second
+    row, not a second column.
+  - **One table, one kind of unit.** Weight at each visit goes in a table with one
+    row per visit.
+
+  Data typed into a spreadsheet often break the rules. Weights at three visits sit in three
+  columns. Blood pressure is typed as "104/66" in one cell. Girls are marked by colouring their
+  rows pink. Each stops the computer from using the data.
+must_know[0].point: |
+  The error is to read the number of rows as the number of people, or birds, or children. Ask
+  first what one row stands for.
+must_know[1].point: |
+  When a register has one column per visit, the visit is hiding in the column names. Store it
+  as a column called `visit` with one row per visit.
+must_know[2].point: |
+  One cell, one value. "104/66", "45 kg", "2.3 or 2.4" and "0 (below detection)" each stop a
+  column from being numbers.
+must_know[3].point: |
+  Colour and highlighting are not data. Add a column, such as `recheck` with TRUE or FALSE, instead.
+must_know[4].point: |
+  Facts that do not change between visits, such as sex and date of birth, go in a table with one
+  row per person.
+must_know[5].point: |
+  Before a data-entry team fills its first form, look at the sheet they designed. Ask for one
+  header row, one rectangle, one value per cell and no merged cells.
+must_know[6].point: |
+  The word "variable" has three meanings: Book 0's letter, R's named object, and a data frame's
+  column.
+must_know[7].point: |
+  Tidy data makes the next step easy. It does not make the values right.

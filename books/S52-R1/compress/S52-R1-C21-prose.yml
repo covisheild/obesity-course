@@ -1,0 +1,92 @@
+definition.text: 'Hidden state is anything a script uses that the script itself did not make. It may be an object
+
+  left in the workspace by a line typed in the console, a package attached earlier in the session,
+
+  or a file made by hand. A script that leans on hidden state runs for the person who has that state
+
+  and stops, or gives a different answer, for everyone else.
+
+
+  A script is tested for hidden state by running all of it, from the first line to the last, in a
+
+  fresh session. A fresh session is a new R process whose workspace is empty. It has attached no
+
+  package beyond R''s defaults. The one command for this is `Rscript code/analysis.R`, typed in a terminal
+
+  whose working directory is the project root. `Rscript` starts a new R and does not restore a
+
+  saved workspace. It runs the file''s lines in order and stops at the first error. `source()` also runs a file,
+
+  but in the current workspace. So it tests nothing about hidden state unless R has just been
+
+  restarted.
+
+
+  A script that passes this test also writes every result it makes into `output/` with code. It
+
+  sets the random-number seed with `set.seed()` before any random step. It ends with
+
+  `sessionInfo()`, which prints the version of R and of every attached package. Those versions are a record, not a
+
+  guarantee: a computer with other versions may still give another result.
+
+  '
+simplified_explanation: "Here is the trap with a script that works on your computer. While you work, R remembers. Every\nobject you made, in the script or typed in the console, sits in the workspace. Every package you\nloaded stays loaded. Your script can use all of that without saying where it came from. Then a\ncolleague runs it on their computer, where none of it exists, and it stops.\n\nSo test the script the way a stranger would run it. Start a new R with nothing in it, and run\nevery line from the top. There are two ways to do that.\n\n- In RStudio, restart R (the menu Session, then Restart R), then run the whole script.\n- In a terminal, in the project folder, type one command: `Rscript code/analysis.R`. It starts a\n  new R, runs the file from the first line to the last, and stops at the first error.\n\nThe second way is the one to write in your README, because it is one line anyone can type.\n\nIf the script passes, three more habits make its result the same every time.\n\n- It writes every table and figure into `output/` with code. Nothing is copied off the screen.\n- If any step is random, `set.seed()` comes first, with a number you choose. The same seed gives\n  the same \"random\" picks on every run.\n- Its last line is `sessionInfo()`, which prints the version of R and of each package. That is\n  the record of what made the result.\n\nTwo tools for later rungs grow out of this. Git keeps a record of every change to the script. You\nmeet it in the next rung of this subject. renv fixes the package versions, so that another\ncomputer uses the same ones. It comes two rungs up.\n"
+must_know[0].point: 'The error is to think that a script which runs on your computer is a script that runs. Your
+
+  session may be supplying an object or a package the script never makes. Before you send a
+
+  script to anyone, run it with `Rscript code/analysis.R` from the project folder. Send it only
+
+  when it reaches the last line.
+
+  '
+must_know[1].point: '`rm(list = ls())` empties the workspace and leaves every package loaded. `source()` runs a
+
+  file in the workspace you already have. Neither is a fresh session. Restart R, or use
+
+  `Rscript`.
+
+  '
+must_know[2].point: 'When a script stops with "object not found" on someone else''s computer, look for the line
+
+  that makes that object. If it is missing, the line lived only in your console. Add it to the
+
+  script, above the line that uses the object.
+
+  '
+must_know[3].point: 'Put `set.seed()` with a number you write down before any random step: a random sample of rows
+
+  to check, a random allocation, a simulation. Without it nobody, including you next month, can
+
+  get the same picks again.
+
+  '
+must_know[4].point: 'End every analysis script with `sessionInfo()`, and keep its printout with the outputs. When a
+
+  reviewer reruns your work and gets a different number, the version lines are the first place
+
+  to look.
+
+  '
+must_know[5].point: 'A number in your thesis that you typed from the screen has no line of code behind it. Write
+
+  every table to `output/` with code, and copy numbers into the text from those files. Rung 2 of
+
+  this subject teaches a document in which the code writes the number itself.
+
+  '
+must_know[6].point: 'A trainee says "it runs, I checked". Ask how. If the answer is "I ran it in RStudio", ask them
+
+  to restart R and run it again in front of you. The test takes one minute, and it is the one
+
+  their examiner, or their reader, will do.
+
+  '
+must_know[7].point: 'One command in a fresh session tests the script against your computer only. It cannot show
+
+  that a colleague with other package versions gets the same numbers, and it cannot show that
+
+  the numbers are right. Say "it reruns on my computer", and no more, until someone else has run it.
+
+  '

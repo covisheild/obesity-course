@@ -1,0 +1,80 @@
+definition.text: 'A package is a collection of R functions, data and documentation that extends what base R,
+
+  the set of standard packages installed with R itself, can do. Most packages are distributed
+
+  through CRAN, the Comprehensive R Archive Network.
+
+
+  Installing a package, with `install.packages()`, downloads it from a repository such as CRAN
+
+  and stores it on the computer. It is done once per computer, and again only to change the
+
+  version. Loading a package, with `library()`, makes its functions available in the current R
+
+  session. It is done in every session that uses the package, and until it is done, R does not
+
+  find the package''s functions.
+
+
+  Two attached packages may each have a function of the same name. Then the one attached later
+
+  masks the other: a call by that name runs the later one. `library()` prints a message naming
+
+  each masked function. The form `package::function()` calls a function from a named package,
+
+  whatever is attached, and loads the package if it is not loaded.
+
+
+  The tidyverse is a set of packages designed to work together. `library(tidyverse)` attaches
+
+  nine of them at once.
+
+
+  Every package has a version number, read with `packageVersion()`. R itself has one, held in
+
+  `R.version.string`. A package''s behaviour, and the messages it prints, can change between
+
+  versions. The outputs printed in this book come from R {{n:r_version}} and the package
+
+  versions listed at the front of the book. Newer versions of R and of these packages exist.
+
+  '
+simplified_explanation: "The functions you have used so far, `c()`, `mean()` and `round()`, come with R. Thousands\nmore have been written by other people and shared in packages. A package is a bundle of\nfunctions, with the help pages that explain them and sometimes some data. Most are kept on\nCRAN, the Comprehensive R Archive Network, a set of websites from which R downloads them.\n\nUsing a package takes two steps, and they happen at different times.\n\n1. **Install it, once per computer.** This downloads the package and stores it on your\n   machine. You type it in the console, not in your script:\n\n   ```r norun\n   install.packages(\"dplyr\")\n   ```\n\n2. **Load it, in every session.** This makes its functions available now. It goes at the top\n   of your script:\n\n   ```r norun\n   library(dplyr)\n   ```\n\nThink of a reference book. Installing buys the book and puts it on your shelf. Loading takes\nit down and opens it on the desk. You buy it once. Each new working session starts with a clear\ndesk, so you open it again.\n\nSome packages share a function name with another package. When that happens, the package you\nloaded last wins, and `library()` prints a message saying so. Loading dplyr, for example,\nhides another `filter()`, which belongs to stats, a package that comes with R. To be sure\nwhich one you get, write the package name and two colons in front: `dplyr::filter()` or\n`stats::filter()`.\n\nThe tidyverse is a family of packages built to work together. You can load nine of them with\n`library(tidyverse)`. This book loads the ones it needs one at a time, such as `library(readr)`\nand `library(dplyr)`. That way the top of every script shows exactly what it uses.\n\nPackages change. Each has a version number, and so does R. The outputs in this book were made\nwith R {{n:r_version}} and dplyr {{n:dplyr_version}}, and newer versions of both exist. Check\nyours with:\n\n```r\nR.version.string\npackageVersion(\"dplyr\")\n```\n\n```output\n[1] \"R version 4.3.3 (2024-02-29)\"\n[1] ‘1.1.4’\n```\n"
+must_know[0].point: 'The error is to put `install.packages()` in your script. It downloads the package every time
+
+  the script runs, and it changes the version on whoever runs it. Install once, in the console.
+
+  Put only `library()` calls in the script, at the top.
+
+  '
+must_know[1].point: '"could not find function" almost always means the package that holds the function is not
+
+  loaded in this session. Check the `library()` lines at the top of the script before you
+
+  suspect anything else.
+
+  '
+must_know[2].point: 'Read the message that `library()` prints. After `library(dplyr)`, `filter()` means dplyr''s.
+
+  When a call does something you did not expect, ask whether a later package masked the
+
+  function you meant, and write `package::function()` to be sure.
+
+  '
+must_know[3].point: 'Record the version of R and of every package your analysis loads, in the script''s output.
+
+  A methods section that says only "analysed in R" cannot be rerun with confidence.
+
+  '
+must_know[4].point: 'When a trainee''s output differs from the book''s in a message or a detail, have them compare
+
+  versions with `packageVersion()` before they rewrite their code.
+
+  '
+must_know[5].point: 'A version number names a release. It does not pin it: the next person to run
+
+  `install.packages()` gets whatever version is current that day. Keeping a project on fixed
+
+  versions needs a separate tool, renv, taught two rungs above this one.
+
+  '

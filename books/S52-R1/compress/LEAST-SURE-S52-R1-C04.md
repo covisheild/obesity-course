@@ -1,0 +1,1 @@
+Least sure: cutting the `sex <- c("female", "male", "female")` block and "Text is printed inside quotation marks". No kept code now shows a character vector, and must-know [0] tells the reader to "look for quotation marks". Exercise 1, practice 7 and 9 all hinge on spotting quoted output; the definition sentence saying character values print in quotes was also cut.

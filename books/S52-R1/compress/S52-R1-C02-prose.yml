@@ -1,0 +1,128 @@
+definition.text: 'R is a program that reads instructions written in the R language and carries them out.
+
+  RStudio is a separate application, an integrated development environment (IDE), that makes R
+
+  easier to use: it gives a script editor, the console, and panes for objects, plots and help
+
+  pages. R is installed first, then RStudio. The printed outputs in this book came from R
+
+  {{n:r_version}}; newer releases exist.
+
+
+  The console is the pane in which R shows a prompt, `>`, and waits for one instruction. Each
+
+  instruction typed there is run once. If it is an expression, its value is printed and then
+
+  lost. If the instruction is incomplete, R shows `+` instead of `>` and waits for the rest.
+
+
+  A script is a plain-text file of R code, saved with a name ending in `.R`. Its lines are run in
+
+  order, from the top. Together with the data files, the script is the lasting record of an
+
+  analysis: from it, every result can be made again.
+
+
+  R does arithmetic with `+` (plus), `-` (minus), `*` (times), `/` (divided by) and `^` (to the
+
+  power of). It follows the order Book 0 taught. Brackets come first, then powers, then
+
+  multiplication and division, then addition and subtraction, left to right within each pair.
+
+
+  Everything after a `#` on a line is a comment. R ignores it; people read it.
+
+
+  An error message is R''s statement that it could not carry out an instruction. It says what it
+
+  could not do and, for a line it could not read, where on the line it stopped.
+
+  '
+simplified_explanation: 'You install two programs. R is the one that does the work: you give it an instruction, and it
+
+  carries it out. RStudio is the window you work in. Install R first, then RStudio, from their
+
+  own websites.
+
+
+  Open RStudio and you see several panes. Two matter today.
+
+
+  **The console** is where R waits for you. It shows a `>` sign. Type `2 + 3` after it and press
+
+  Enter. R prints `[1] 5`. The `[1]` only marks the first value on the line; ignore it for now. The
+
+  answer is printed once and kept nowhere. If you press Enter on an unfinished line, R shows `+`
+
+  and waits for the rest.
+
+
+  **The script** is a plain text file of instructions, one per line, saved with a name ending in
+
+  `.R`. Open one from the File menu: New File, then R script. Type your instructions there instead
+
+  of in the console. Put the cursor on a line and press Ctrl and Enter together. RStudio sends that
+
+  line to the console, and the answer appears there. Select every line and press Ctrl and Enter,
+
+  and the whole file runs from the top.
+
+
+  The difference is the whole point of this book. The console is a place to try things. The script
+
+  is what you keep. Tomorrow, or in a year, or on your guide''s computer, the script makes the same
+
+  answers again.
+
+
+  R''s arithmetic signs differ from Book 0''s in two places. Times is `*`, not ×. Divided by is `/`,
+
+  not ÷. Powers are `^`, so 1.6 squared is `1.6^2`. The order of working is the one you already
+
+  know: brackets, powers, then times and divide, then plus and minus.
+
+
+  A `#` starts a comment. R skips everything after it on that line. Use comments to say why a line
+
+  is there.
+
+
+  When R cannot do what you asked, it prints an error message. Read it word by word. It usually
+
+  says exactly what went wrong.
+
+  '
+must_know[0].point: 'The error is to think the console keeps your work. It keeps a list of everything you typed,
+
+  the wrong lines with the right ones, and nothing says which was which. Type into the console to
+
+  try something. Put anything you want to keep into the script.
+
+  '
+must_know[1].point: 'R''s signs are `*` for times, `/` for divided by and `^` for a power. Typing × or ÷ stops R
+
+  with an error, and typing the letter x as times does too.
+
+  '
+must_know[2].point: '`72 / 1.6 * 1.6` gives 72, not a BMI. R divides and multiplies from left to right. When you mean
+
+  "divided by a product", put the product in brackets or use a power.
+
+  '
+must_know[3].point: 'Write a unit conversion as a line of code, with a comment, rather than doing it in your head
+
+  and typing the result. A reader can then see that 160 became 1.6 because the register was in
+
+  centimetres.
+
+  '
+must_know[4].point: 'When an answer comes out, check its size against what you expect before you use it. A BMI of
+
+  0.003 kg/m^2 or 72 kg/m^2 for an ordinary adult means the code is wrong, however cleanly it ran.
+
+  '
+must_know[5].point: 'When a trainee shows you a number from R, ask to see the script, not the console. If there is
+
+  no script, ask them to write one and run it from the top before you look at the number.
+
+  '
