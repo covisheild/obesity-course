@@ -1,0 +1,92 @@
+# S47-R1-C05 · Inside the Union government: Cabinet, ministries, departments
+
+**Definition.** Under Article 74(1) of the Constitution there is a Council of Ministers, with the Prime Minister
+at its head, to aid and advise the President, who acts in accordance with its advice. The
+Council is collectively responsible to the House of the People (Article 75(3)). The Union
+Cabinet is the council of the Prime Minister and the other Ministers of Cabinet rank, in the
+words of Article 352(3).
+
+All executive action of the Government of India is expressed to be taken in the name of the
+President (Article 77(1)). Article 77(3) has the President make rules for the transaction of
+the Government's business and for its allocation among Ministers. Two orders of 14 January 1961
+are those rules.
+
+The Government of India (Allocation of Business) Rules, 1961 say who owns what. Rule 2 lists the
+Ministries, Departments, Secretariats and Offices in the First Schedule, and calls them all
+"departments". Rule 3 distributes the subjects among them in the Second Schedule. The rules
+stand as amended up to Amendment Series no. 386 of 22 July 2026.
+
+In that Second Schedule, the subjects this book needs sit in different departments. The Food
+Safety and Standards Act, 2006 is with the Department of Health and Family Welfare (item 3(a)).
+The Goods and Services Tax Council and the Central Goods and Services Tax Act are with the
+Department of Revenue (items 18A and 21(a)).
+
+Aerated water and soft drinks, and industries such as
+biscuits, confectionery and ready-to-eat foods, are with the Ministry of Food Processing
+Industries (items 6 and 2). Regulation of packaged commodities is with the Department of Consumer
+Affairs (item 6). The public distribution system and the trade in and price control of sugar and
+foodstuffs are with the Department of Food and Public Distribution (items 8 to 10). Elementary
+and secondary education are with the Department of School Education and Literacy (items 1 and
+12). The National Nutrition Mission is with the Ministry of Women and Child Development (item 5).
+
+The Government of India (Transaction of Business) Rules, 1961 say how business is decided. Under
+rule 3, business allotted to a department is disposed of by, or under the directions of, its
+Minister-in-charge. Under rule 4(1), when a case concerns more than one department, no decision
+is taken until all of them concur or the Cabinet decides.
+
+Rule 4(3) requires the Ministry of Law
+to be consulted on proposals for legislation. Under rule 7, the cases in the Second Schedule go
+before the Cabinet. They include cases involving legislation, differences of opinion between
+Ministers, and proposals to vary or reverse a Cabinet decision. Standing Committees of the
+Cabinet may decide matters referred to them, and the Cabinet may review their decisions (rule
+6). Cases of legislation are not disposed of by a Committee. These rules stand as amended up to
+Amendment Series no. 75 of 13 January 2025.
+
+Article 166(3) gives each State's Governor the same rule-making power for the business of the
+State Government.
+
+**In plain terms.** The last section found which government may make law on a subject. This one goes inside the
+Union government to find which office holds it.
+
+At the top sits the Council of Ministers, led by the Prime Minister. The senior ministers in it
+form the Cabinet. Below them, the work is split among ministries, and most ministries are split
+again into departments.
+
+Two rulebooks, both made in 1961 and amended many times since, tell you how the split works. The
+Allocation of Business Rules say which department owns which subject. The Transaction of
+Business Rules say who decides a case, and which cases must go to the Cabinet.
+
+Here is why that matters. One proposal often touches several departments. When a case concerns
+more than one department, nothing is decided until they all agree, or the Cabinet decides. So
+"the government should act" names nobody. Your note has to name the department, and the entry in
+the rules that gives it the subject.
+
+**Must know points for you.**
+
+- The food ministry does not own food safety. Its Department of Food and Public Distribution has the public distribution system, grain, sugar and food prices. The Food Safety and Standards Act sits with the Department of Health and Family Welfare (Allocation of Business Rules, Second Schedule, item 3(a)). Send a food-standards proposal there, not to the food department.
+- "The government" is never an answer. Name the department and the item in the Second Schedule of the Allocation of Business Rules that gives it the subject. Add the amendment series you read.
+- The department that develops an industry is not the one that taxes it or sets its safety standards. Aerated water and soft drinks sit with the Ministry of Food Processing Industries. The tax sits with the Department of Revenue, and food standards with Health. A letter to the wrong one gets passed on, or filed.
+- A decision in one department may affect another's business. Then nothing is decided until all of them agree, or the Cabinet decides (Transaction of Business Rules, rule 4(1)). In your note, list every department that must agree. A proposal that needs four is slower than one that needs one.
+- Every proposal for a new Act goes to the Ministry of Law (rule 4(3)). It then goes to the whole Cabinet before Parliament sees it (Second Schedule, entry (a)). A proposal that needs a new Act is first a proposal to a department, and then to the Cabinet.
+- These rules show who owns a subject and whose agreement a decision needs. They change by amendment, so check the series number and date. They give no department the power to make a rule or a regulation; that comes from an Act. And they cover the Union only. For Chhattisgarh, open the State's own business rules (Article 166(3)) before naming a State department.
+
+**Exercise 1** (retrieval). Without looking back, write down:
+
+1. The Article under which the President makes the rules for the Government's business.
+2. The two sets of rules made under it, and what each tells you.
+3. Which Schedule of the Allocation of Business Rules lists departments, and which lists their
+   subjects.
+4. What rule 4(1) of the Transaction of Business Rules says about a case that concerns more
+   than one department.
+
+**Exercise 2** (interpretation). Your department's third proposal is a warning label on packaged foods high in sugar, salt or fat.
+Use the Second Schedule of the Allocation of Business Rules. Name the Union department that leads
+on it, and any others that rule 4(1) might bring in. Say what the lookup does not tell you.
+
+**Exercise 3** (critique). A draft letter from your department is addressed to the Ministry of Food Processing Industries.
+It asks the Ministry "to notify a higher tax on aerated drinks and stricter safety limits for
+them". Find what is wrong with the addressee.
+
+**Exercise 4** (teaching). A journalist has three minutes. The question: "Which ministry is responsible for sugary drinks
+in India?" Answer without jargon. Give one quotable sentence, and say how sure you are.
+

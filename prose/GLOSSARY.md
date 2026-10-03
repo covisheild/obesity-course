@@ -29,16 +29,19 @@ teaches were deleted. Terms used before their gloss, and terms used for two thin
 | Act | the name each statute passed by Parliament or a State Legislature is called by | `B0-R0-C43` |
 | action (of a learning objective) | one verb whose result can be seen or marked | `S57-R1-C09` |
 | active voice | the subject of the sentence performs the action of the verb: "We measured the weight" | `S58-R1-C06` |
+| actor (around a policy decision) | a person or organisation that tries to shape a decision, or is affected by it, without holding the power to take it | `S47-R1-C10` |
 | actor (in a food system) | anyone whose decision moves the food on, such as a farmer, a trader, a mill owner, a shopkeeper or the person who cooks; public bodies count too | `S37-R1-C01` |
 | adaptive part (of the fall in expenditure) | the extra fall in expenditure after a weight loss, beyond what the loss of fat and lean mass alone accounts for | `S01-R1-C09` |
 | adipocyte | a fat cell | `S01-R1-C01` |
 | adipose tissue | the tissue whose cells hold triglyceride until it is needed | `B0-R0-C36` |
 | adopted requirement | a number a body of experts has set, not measured in the person in front of you | `S01-R1-C03` |
 | ADP | what is left when ATP's last phosphate group is knocked off: the same molecule, one phosphate short | `B0-R0-C36` |
+| agenda setting | the first stage of the policy process, made up of naming a problem and putting forward options; it starts with choosing which issues get attention at all, before any frame is chosen | `S47-R1-C01` (stage), `S47-R1-C12` (defined) |
 | aligning people | Kotter: communicating the direction to everyone who can help carry it out or can block it, so that they understand it and are committed to it | `S57-R1-C16` |
 | alimentary canal | the gut tube | `B0-R0-C38` |
 | allele | one of the versions a gene comes in | `B0-R0-C37` |
 | allocation (of foodgrains) | grain set aside for a scheme, not grain that reached anyone; grain lifted is still not grain eaten | `S37-R1-C14` |
+| Allocation of Business Rules | the Union government's rules (1961, amended), made by the President under Article 77(3), saying which department owns which subject: departments in the First Schedule, subjects in the Second | `S47-R1-C05` |
 | alpha cell | the islet cell that makes glucagon | `B0-R0-C38` |
 | amendment | a later change stitched into the law | `B0-R0-C41` |
 | amino acid | one of a small fixed set of kinds of link a protein chain is built from | `B0-R0-C35` |
@@ -46,11 +49,13 @@ teaches were deleted. Terms used before their gloss, and terms used for two thin
 | anabolism | reactions that join small molecules into bigger ones, which costs energy | `B0-R0-C36` |
 | anaemic (as the NFHS fact sheet counts it) | haemoglobin below a cut-off for the person's group | `S58-R1-C22` |
 | anganwadi | a government child care centre, through which the National Food Security Act's meals for young children and for pregnant women and new mothers are given | `S37-R1-C12` |
+| annual financial statement | the statement of the Government of India's estimated receipts and expenditure for a financial year, which the President lays before both Houses of Parliament (Article 112(1)) | `S47-R1-C08` |
 | answerable (research question) | passes two tests: it is an empirical question, and it is feasible for the person asking | `S55-R1-C04` |
 | antiderivative | a function whose derivative is the given function; checked by differentiating it back, and written with plus C on the end, where C is any constant | `S02-R1-C06` |
 | Antyodaya household | one of the poorest households under the National Food Security Act, entitled to 35 kg of grain a month for the whole household | `S37-R1-C11` |
 | APMC (Agricultural Produce Marketing Committee) | the committee that runs a mandi; it fixes the mandi fees and commission charges (`S37-R1-C05`) | `S37-R1-C02`, `S37-R1-C05` |
 | argument | reasons, called premises, together with a further statement they are meant to establish | `B0-R0-C42` |
+| assent | the President's agreement that turns a passed Bill into an Act; the President may assent or withhold it (Article 111) | `S47-R1-C06` |
 | at random | every member has exactly the same chance of being the one you pick | `B0-R0-C24` |
 | at the objective's level (of an item) | the item cannot be answered by repeating something said or shown in the session | `S57-R1-C10` |
 | atom | a tiny heavy centre with much lighter electrons around it | `B0-R0-C31` |
@@ -71,6 +76,7 @@ teaches were deleted. Terms used before their gloss, and terms used for two thin
 | basic customs duty | the duty on an import that the releases name as a percentage of its value before duty; the rule for the landed price uses it alone | `S37-R1-C10` |
 | beta cell | the islet cell that makes insulin | `B0-R0-C38` |
 | bile | what the liver makes to break a large blob of fat into many tiny ones | `B0-R0-C38` |
+| Bill | a statute in draft | `S47-R1-C06` |
 | bimodal | having two clusters of values | `S58-R1-C16` |
 | bin | a range of values grouped together into one bar | `B0-R0-C40` |
 | bin width (of a histogram) | the width of each bar | `S58-R1-C16` |
@@ -85,10 +91,12 @@ teaches were deleted. Terms used before their gloss, and terms used for two thin
 | brand owner | the firm whose name and address the label must declare, whether it made the food or only marketed it | `S37-R1-C03` |
 | breaks conservation (of a claim) | asserts a fat change that could not have happened, given the energy that could plausibly have crossed the boundary drawn round the person over the stated time | `S01-R1-C08` |
 | buffer stock | grain held in reserve | `S37-R1-C08` |
+| Cabinet | the senior ministers of the Council of Ministers, which the Prime Minister leads | `S47-R1-C05` |
 | calibration | measuring a machine against something already known, so its readings mean something | `B0-R0-C32` |
 | calibration weight | a weight already checked and trusted to be correct | `B0-R0-C30` |
 | calorie | a unit of energy outside the SI, whose size in joules was fixed by agreement, and two agreements are in use | `B0-R0-C12` |
 | calorimeter | a machine that measures energy from the temperature change it causes | `B0-R0-C32` |
+| campaigning (for policy) | starting from a position about what ought to be done and arguing for one option; also called advocacy | `S47-R1-C17` |
 | capillaries | the smallest blood vessels | `B0-R0-C38` |
 | caption | the text printed with a figure; journals call it the figure legend | `S58-R1-C14` |
 | case report | a report that describes one patient, or a few | `S55-R1-C06` |
@@ -99,14 +107,17 @@ teaches were deleted. Terms used before their gloss, and terms used for two thin
 | cell | (1) of a table: where a row meets a column, the count of people who are both (`B0-R0-C26`); (2) a living cell: the smallest unit of a living thing (`B0-R0-C35`) | `B0-R0-C26`, `B0-R0-C35` |
 | central issue price | the price at which the Union government issues grain for the public distribution system to the States | `S37-R1-C10` |
 | central pool | the government's own stock of grain: the foodgrains procured through minimum support price operations (National Food Security Act, s. 2(2)) | `S37-R1-C09` |
+| centrally sponsored scheme | a scheme carried out through the State Governments and Union Territory administrations, its cost shared between the Central Government and the State by a stated ratio | `S47-R1-C08` |
+| cess | an extra tax charged alongside the main one | `S47-R1-C18` |
+| chain of authority | the ladder from the Constitution down to Acts, then rules or regulations, then notifications and orders; each lower instrument rests on, and must stay within, the one above | `S47-R1-C03` |
 | chartjunk | Tufte's word for decoration on a figure that "does not tell the viewer anything new" | `S58-R1-C18` |
 | checking a reference | four acts, each of which can fail on its own: find the source, confirm it is the source named, find the exact passage pointed to, read it to see whether it supports the claim | `B0-R0-C41` |
 | cherry-picking | choosing only the quotations that fit a claim, or cutting a quotation so that it fits; the first you catch only by reading the other transcripts for what runs against the claim | `S36-R1-C13` |
 | chord | the straight line laid across two points on a curve, whose slope is the average rate between them | `B0-R0-C21` |
 | chromosome | one of the structures genes sit along, in a fixed order; a person gets two copies of each, one from each parent | `B0-R0-C37` |
+| citation | an entry in the reference list of a later published work that points to an earlier one; it records that one work referred to another, not that the earlier work was used | `S55-R1-C06` |
 | citation database | a database that records the reference lists of the journals it indexes and, for each paper it holds, counts how many of those later works cite it | `S55-R1-C06` |
 | citation window | how long after publication the counting of citations runs | `S55-R1-C06` |
-| citation | an entry in the reference list of a later published work that points to an earlier one; it records that one work referred to another, not that the earlier work was used | `S55-R1-C06` |
 | civil society organisation | a group formed by citizens, outside government and outside business, to work for a public cause | `S57-R1-C15` |
 | claim (of a paper) | what the paper's evidence and reasoning are offered to support; in Book 0's terms, the conclusion, with the data as the premises | `S58-R1-C02` |
 | class normalised gain, 〈g〉 | Hake's class form of the normalised gain, worked out from class-average pre-test and post-test scores; not the mean of the learners' own normalised gains | `S57-R1-C12` |
@@ -124,6 +135,7 @@ teaches were deleted. Terms used before their gloss, and terms used for two thin
 | colour-vision deficiency | a reduced ability to tell certain colours apart, most often red from green | `S58-R1-C19` |
 | colour-vision-deficiency simulator | a program that shows a figure as a reader with colour-vision deficiency sees it | `S58-R1-C19` |
 | combustion | burning, a substance joining with oxygen | `B0-R0-C32` |
+| commencement | the date a provision of an Act comes into force, often left to a later notification and different for different provisions | `S47-R1-C03` |
 | commission agent | a middleman in a mandi paid a percentage for arranging the sale | `S37-R1-C02` |
 | Commission for Agricultural Costs and Prices (CACP) | the body of experts that recommends the minimum support prices, and the sugarcane FRP | `S37-R1-C09` |
 | common scale | one axis that every mark being compared is read against | `S58-R1-C15` |
@@ -137,6 +149,7 @@ teaches were deleted. Terms used before their gloss, and terms used for two thin
 | concentration | an amount of something held in a volume of something else | `B0-R0-C13` |
 | conceptual generalisation | what carries beyond a qualitative study: an idea, a reason and how it works, that a reader can test in another setting, as against a statistical estimate of how common something is in a population | `S36-R1-C02` |
 | conclusion | the claim the premises are offered for | `B0-R0-C42` |
+| Concurrent List | List III of the Seventh Schedule: subjects that belong to both Parliament and the State Legislatures (Article 246) | `S47-R1-C04` |
 | condition (of a learning objective) | what the learner is given, or is not allowed, while doing it | `S57-R1-C09` |
 | conditional probability | the same move with a chosen denominator: P(A given B), written P(A\|B), is the count who are both A and B divided by the count who are B | `B0-R0-C26` |
 | conduction | heat moving through matter that is staying put, by contact | `B0-R0-C34` |
@@ -161,6 +174,7 @@ teaches were deleted. Terms used before their gloss, and terms used for two thin
 | correction | subtracting a known systematic error, such as a zero error, from the reading (VIM 2.53) | `B0-R0-C30` |
 | correlation | a number worked out from paired measurements; this book does not teach it | `S58-R1-C08` |
 | counter (of a sum) | the letter, usually i, that comes with Σ, with its first and last values; it only says where a term sits | `S02-R1-C01` |
+| counter-frame | the problem, cause, judgement and remedy an opponent would give the same facts | `S47-R1-C15` |
 | covalent bond | a bond where two atoms share a pair of electrons | `B0-R0-C31` |
 | credibility | Kotter: whether people believe the person giving a direction; it rests on your record, and on whether what you do matches what you say | `S57-R1-C16` |
 | criterion task | Dunlosky and colleagues' name for the final test | `S57-R1-C05` |
@@ -168,6 +182,7 @@ teaches were deleted. Terms used before their gloss, and terms used for two thin
 | crore | ten million, or a hundred lakh | `B0-R0-C01` |
 | cross-sectional study | a study that enrols a sample of a population and measures exposure and outcome at the same time: one visit, one count | `S55-R1-C03` |
 | crossover (interaction) | the method that gives one style group its best score is not the one that gives another group its best; in a 2 × 2 table, one row's MD is positive and the other's negative | `S57-R1-C06` |
+| cue word | a word or short phrase that carries a frame in a few letters; a metaphor is one kind | `S47-R1-C15` |
 | cutting (a draft) | deleting words, sentences or paragraphs that do no work for the reader, biggest units first, so that what remains says the same in fewer words | `S58-R1-C12` |
 | cytoplasm | the watery jelly a cell is a bag of | `B0-R0-C35` |
 | d/dx | said "dee by dee x": the derivative with respect to x of what follows | `S02-R1-C03` |
@@ -196,6 +211,7 @@ teaches were deleted. Terms used before their gloss, and terms used for two thin
 | dimension | the kind of thing a quantity is: a length, a mass, a time, or a combination of these | `B0-R0-C11` |
 | diploid | holding two matching copies of each chromosome, one inherited from each parent | `B0-R0-C37` |
 | direct label | a group's name written beside its data, in place of a key saying which colour is which | `S58-R1-C18` |
+| disclosure (of an interest) | stating the interest so that others can weigh the advice; it does not remove the interest | `S47-R1-C10` |
 | discrete (random variable) | the values it can take can be listed, one by one | `S02-R1-C13` |
 | distribution | the set of values a quantity takes, across the people, occasions or measurements counted, together with how often each value turns up | `B0-R0-C27` |
 | diverging colour scale | for a change that can go either way: a light middle colour put at zero, the colours darkening at the same rate on both sides | `S58-R1-C19` |
@@ -232,8 +248,10 @@ teaches were deleted. Terms used before their gloss, and terms used for two thin
 | energy expenditure | the energy a body burns, or spends, in a day | `S01-R1-C03` |
 | energy intake | the energy a person eats in a day | `S01-R1-C03` |
 | entitlement (food) | a set quantity of food that a person or household has a legal right to, stated as a mass over a period, such as 5 kg of grain a person a month | `S37-R1-C11` |
+| entry (of a Seventh Schedule list) | one numbered subject in a list, in a few words, such as State List entry 6, public health and sanitation | `S47-R1-C04` |
 | entry (of a vector or matrix) | one number in the list; in a matrix, found by its row first and its column second | `S02-R1-C10` |
 | enzyme | a protein that makes one particular reaction go faster | `B0-R0-C35` |
+| episodic frame | telling an issue through one case or event, with its details: one child, one shop, one day | `S47-R1-C12` |
 | equation | a statement that two expressions are the same number | `B0-R0-C15` |
 | equilibrium (steady state) | a constant value of the state at which the rule gives a rate of zero, written W* and read "W star" | `S02-R1-C08` |
 | error | what a measurement says minus what is actually true, or minus a trusted reference value (VIM 2.16: "measured quantity value minus a reference quantity value") | `B0-R0-C30` |
@@ -243,7 +261,11 @@ teaches were deleted. Terms used before their gloss, and terms used for two thin
 | ethics committee (EC) | a group of people at a hospital, college or research body that reads a researcher's plan before any research starts and can say yes, no, or change this first; the committee, not the researcher, decides the kind of review | `S36-R1-C07` |
 | evaluate (teaching) | to measure some outcome of it | `S57-R1-C13` |
 | event | any collection of outcomes from the sample space | `B0-R0-C24` |
+| evidence | facts, actual or asserted, known through experience or observation, offered in support of a conclusion; it is not the conclusion | `S47-R1-C16` |
+| evidence-informed policymaking | policymaking in which the evidence used, and the judgements made about it, are found and stated systematically and openly; the rest of the process need not be | `S47-R1-C16` |
 | executive | the day-to-day running of government | `B0-R0-C43` |
+| executive decision | a decision of the government itself, with no new Act behind it | `S47-R1-C03` |
+| executive power | the power of a government to act by its own decision, reaching the matters its legislature has power to make laws on, not only those it has made laws on (Articles 73, 162) | `S47-R1-C03` |
 | exocrine | sending a secretion down a tube to where it is needed | `B0-R0-C38` |
 | exothermic | a change that gives heat out | `B0-R0-C31` |
 | expanding a bracket | multiplying every term inside it by what stands outside | `B0-R0-C15` |
@@ -261,6 +283,7 @@ teaches were deleted. Terms used before their gloss, and terms used for two thin
 | farmer's share of the consumer rupee | the farm-gate price divided by the retail price: at 75 per cent, Rs 75 of every Rs 100 paid at the shop reaches the farmer, who still pays for seed, labour and the trip to market out of it | `S37-R1-C04` |
 | fat mass | the triglyceride held in adipose tissue | `S01-R1-C01` |
 | fat-free mass | everything else the body weighs; some papers call it lean body mass, or lean mass | `S01-R1-C01` |
+| feasibility (of a policy option) | whether it can be done: evidence can inform it (costs, capacity, what the law allows), but whether the bodies with the power will commit to it is a judgement; not the same as "feasible (question)" (Book 7) | `S47-R1-C16` |
 | feasible (question) | the person asking can actually get the answer with what they have: people to reach, a way to measure, time, money, equipment and skill, and ethics committee approval | `S55-R1-C04` |
 | feedback (on a retrieval attempt) | showing the learner the correct answer after the attempt | `S57-R1-C03` |
 | feeling of learning | the learner's own judgement of how much they learned, usually given as a rating | `S57-R1-C01` |
@@ -288,7 +311,9 @@ teaches were deleted. Terms used before their gloss, and terms used for two thin
 | formative (of a test) | used only to show the learner and you where they stand | `S57-R1-C10` |
 | forthcoming (in a reference) | a paper accepted but not yet out; NLM's preferred word, also "in press" | `S58-R1-C05` |
 | forward step (Euler's method) | from the state at time t, compute the rate from the equation, then take the state at t + h to be about the state at t plus h times that rate | `S02-R1-C07` |
+| four jobs (around a decision) | propose, advise, decide, carry out: four jobs that can be told apart around any public decision; an adviser has no power to decide | `S47-R1-C02` |
 | fraction | a division that has not yet been carried out; a sum you have not done yet | `B0-R0-C02` |
+| frame (of an account) | what an account keeps in and what it drops; it usually names a problem, a cause, a judgement and a remedy | `S47-R1-C12` |
 | free energy | loose energy, of which a cell cannot hold a useful amount | `B0-R0-C36` |
 | free recall | notes away, each learner writes down all they can about the topic, then checks it against the key points | `S57-R1-C11` |
 | frequency table | lists each value, or each band of values, against the count of times it occurred | `B0-R0-C27` |
@@ -306,6 +331,7 @@ teaches were deleted. Terms used before their gloss, and terms used for two thin
 | glucagon | the hormone released when blood sugar is low, which empties the stores | `B0-R0-C38` |
 | glucose | the single sugar a body reaches for first as fuel | `B0-R0-C36` |
 | glycogen | a great many glucose molecules strung together, kept in the liver and the muscles | `B0-R0-C36` |
+| Government Bill | a Bill introduced by a Minister | `S47-R1-C06` |
 | grand rounds | a teaching talk for a whole department | `S57-R1-C09` |
 | grand total | what you get when you add up everything in the table | `B0-R0-C26` |
 | graph | a drawing of a relationship between two quantities, made of points | `B0-R0-C19` |
@@ -323,6 +349,7 @@ teaches were deleted. Terms used before their gloss, and terms used for two thin
 | hepatic portal vein | the vein along which blood from the gut runs straight to the liver | `B0-R0-C38` |
 | hidden verb | an action turned into a noun ("increase", "assessment") and carried by an empty verb ("was observed", "was done") | `S58-R1-C07` |
 | highlighting | marking the parts of a text that seem important while reading it | `S57-R1-C05` |
+| honest broker | in Oliver and Cairney, a researcher who passes on research honestly, clearly and in time, and seeks to stay neutral | `S47-R1-C17` |
 | hormone | a chemical made in one part of the body that affects other parts some distance away | `B0-R0-C38` |
 | hot cooked meal (HCM) | a meal eaten at the anganwadi centre, or at school, as against a take-home ration | `S37-R1-C12` |
 | Household Consumption Expenditure Survey (HCES) | India's survey of household spending, run by the Ministry of Statistics and Programme Implementation (MoSPI) | `S37-R1-C07` |
@@ -345,9 +372,11 @@ teaches were deleted. Terms used before their gloss, and terms used for two thin
 | infographic | a chart decorated with pictures | `B0-R0-C40` |
 | information gain | Ioannidis's third feature of useful clinical research: the study is large enough to inform | `S55-R1-C05` |
 | informed consent | a process with three parts: the person is given the information, understands it, and is free to say no (ICMR 2017, section 2.2); in writing, with a signature or thumb impression, except in exceptional cases an ethics committee approves | `S36-R1-C07` |
+| informing (policy) | setting out the options open to the body that decides, what the evidence says about each and how uncertain it is, without choosing | `S47-R1-C17` |
 | initial value | the state at one stated time, which picks out one solution of a differential equation | `S02-R1-C07` |
 | initial-value problem | a differential equation and an initial value together; a function solves it only if it satisfies both | `S02-R1-C07` |
 | ink (on a figure) | everything drawn on the figure: lines, bars, shading | `S58-R1-C17` |
+| inside lobbying | taking the case straight to lawmakers and officials: a meeting, a letter, a comment on a draft | `S47-R1-C10` |
 | instantaneous rate | how fast the quantity is changing at one moment: the steepness of the curve at that single point | `B0-R0-C21` |
 | institution that outlives you | a standing group, with written terms, roles and a named successor, that keeps working after you leave it | `S57-R1-C15` |
 | instrument | the word lawyers use for any one of the Constitution, a statute, a rule or regulation, or a notification | `B0-R0-C43` |
@@ -355,6 +384,7 @@ teaches were deleted. Terms used before their gloss, and terms used for two thin
 | integral | the total under a rate line, written with the sign ∫ | `B0-R0-C22` |
 | integrand | the rate being added up in an integral, written after the ∫ | `S02-R1-C05` |
 | intercept | the height of the line where the x quantity is zero | `B0-R0-C19` |
+| interest (of an actor) | what an actor stands to gain or lose from a decision | `S47-R1-C10` |
 | interleaving | mixing different problem types in one session instead of doing one type in a block | `S57-R1-C08` |
 | internal assessment | the CBME Curriculum 2024's marks from day-to-day tests; a student needs at least 50% of them, and 40% in theory and in practical separately, to sit the university exam in that subject | `S57-R1-C10` |
 | International Table calorie | 4.1868 joules, settled in 1956 | `B0-R0-C12` |
@@ -364,11 +394,13 @@ teaches were deleted. Terms used before their gloss, and terms used for two thin
 | ion | an atom left carrying a charge | `B0-R0-C31` |
 | ionic bond | a bond where one atom hands an electron to another and the opposite charges pull | `B0-R0-C31` |
 | islets (pancreatic islets) | the small islands of another kind of cell scattered through the pancreas, which put chemicals straight into the blood | `B0-R0-C38` |
+| issue advocate | in Oliver and Cairney, a researcher who recommends specific policy options | `S47-R1-C17` |
 | item (of a test) | one question or task on a test, marked on its own | `S57-R1-C10` |
 | jittering | spreading dots a little sideways at random, so that they do not sit on top of each other | `S58-R1-C16` |
 | joule | the SI unit of energy, written J | `B0-R0-C09` |
 | journey (of a finding) | the order of work that takes one result from its source to a results paragraph a reader can restate after one reading | `S58-R1-C23` |
 | key (on a figure) | the box in a corner of a figure that says which colour is which | `S58-R1-C14` |
+| key informant interview | an interview with someone chosen because they know the policy area | `S47-R1-C13` |
 | kharif, rabi | the names the MSP releases use for India's two main crop seasons; paddy is a kharif crop and wheat a rabi crop | `S37-R1-C09` |
 | kilocalorie | a thousand calories, the unit used for the energy in food, where it is often written just calories | `B0-R0-C12` |
 | kilojoule | a thousand joules; kilo means a thousand | `B0-R0-C12` |
@@ -399,6 +431,7 @@ teaches were deleted. Terms used before their gloss, and terms used for two thin
 | linear | equal steps in the input add the same amount to the output every time | `B0-R0-C20` |
 | lipid fraction | the proportion of a tissue's mass that is fat | `S01-R1-C02` |
 | lipolysis | the breakdown of stored triglycerides into free fatty acids and glycerol | `B0-R0-C38` |
+| lobbying | representing an organisation's case before government to influence policy; this book counts putting your department's case to an official too | `S47-R1-C10` |
 | local maximum, local minimum | a top that is higher than the ground near it; a bottom that is lower than the ground near it | `S02-R1-C09` |
 | locate (an intervention) | state three things: the stage at which it acts, the actor whose decision it changes, and the element of the food environment it moves | `S37-R1-C17` |
 | logarithm | the power you have to raise ten to, to get the number | `B0-R0-C07` |
@@ -430,6 +463,7 @@ teaches were deleted. Terms used before their gloss, and terms used for two thin
 | median | the middle value of the set once it is ordered from smallest to largest; with an even count, the mean of the two middle values | `B0-R0-C28` |
 | megajoule | a million joules, a thousand kilojoules; mega means 10^6, a million | `S01-R1-C02` |
 | memo | a note, written while you read a transcript, of what you notice and what you want to ask next | `S36-R1-C12` |
+| menu (of a frame) | the measures a frame makes easy to say | `S47-R1-C14` |
 | meshing hypothesis | the commonest version of the learning-styles hypothesis: teaching works best in the format that matches the learner's preference | `S57-R1-C06` |
 | meta-analysis | a study that combines the results of earlier studies of the same question into one answer | `S55-R1-C06` |
 | metabolically active tissue | the tissue that spends most of the energy spent at rest | `S01-R1-C01` |
@@ -443,6 +477,7 @@ teaches were deleted. Terms used before their gloss, and terms used for two thin
 | molar mass | how heavy one mole of a substance is, in grams per mole (g/mol); it belongs to the substance | `B0-R0-C13` |
 | mole | a fixed count of things, molecules here | `B0-R0-C13` |
 | molecule | a group of atoms held together by bonds | `B0-R0-C31` |
+| Money Bill | a Bill containing only provisions on the matters in Article 110(1), the first of them any tax; it cannot be introduced in the Rajya Sabha, which may only recommend amendments within fourteen days, and the Speaker decides whether a Bill is one | `S47-R1-C06` |
 | monosaccharide | a single sugar molecule, which is what breaking a starch gives you | `B0-R0-C36` |
 | monthly per capita consumption expenditure (MPCE) | a household's spending in a month, divided by the number of people in it | `S37-R1-C07` |
 | motivating and inspiring | Kotter: keeping people moving in the direction, despite obstacles, by appealing to their needs, values and emotions | `S57-R1-C16` |
@@ -485,6 +520,7 @@ teaches were deleted. Terms used before their gloss, and terms used for two thin
 | original research article | a journal paper that reports a study for the first time | `S58-R1-C01` |
 | outcome | one member of the sample space | `B0-R0-C24` |
 | outline (of a paper) | one sentence for each planned paragraph, each sentence the claim that paragraph makes, written before the prose | `S58-R1-C04` |
+| outside lobbying | taking the case to the public, through the press or a campaign, so that the public presses the government | `S47-R1-C10` |
 | overall maximum, overall minimum | the highest, or lowest, point over the whole stretch of inputs allowed | `S02-R1-C09` |
 | overweight (child under five) | weight-for-height more than two standard deviations above the WHO growth standard (the NFHS-5 cut-off) | `S37-R1-C15` |
 | P value | the number a statistical test prints beside a comparison; what it means is beyond this book | `S58-R1-C09` |
@@ -512,6 +548,8 @@ teaches were deleted. Terms used before their gloss, and terms used for two thin
 | place value | what a digit is worth because of where it sits | `B0-R0-C01` |
 | planning and budgeting | Kotter: setting targets, laying down detailed steps to reach them, and allocating resources to those steps | `S57-R1-C16` |
 | plasma membrane | the skin round a cell, which decides what gets in and what stays out | `B0-R0-C35` |
+| policy advocate | the OpenStax textbook's word for someone who campaigns for policy: starts from what ought to be done and argues for one option | `S47-R1-C17` |
+| policy analyst | the OpenStax textbook's word for someone who informs policy: sets out the options, the evidence on each and how uncertain it is, without choosing | `S47-R1-C17` |
 | polysaccharide | a chain of single sugar molecules, such as starch | `B0-R0-C36` |
 | pooled share (of talk) | all the interviewer's words across several interviews, divided by all the words in them; it differs from the mean share when the interviews differ in length | `S36-R1-C11` |
 | population | the whole group a question is about | `B0-R0-C28` |
@@ -519,31 +557,40 @@ teaches were deleted. Terms used before their gloss, and terms used for two thin
 | post-test | the test taken at the end of the teaching | `S57-R1-C10` |
 | potential energy | energy a thing has because of where it is, what it is made of, or what state it is in | `B0-R0-C31` |
 | pound | a unit this course does not use; exactly 0.453 592 37 kilogram | `S01-R1-C02` |
-| power calculation | the sum a survey or trial does to decide how many people it needs | `S36-R1-C02` |
 | power | (1) repeated multiplication of one number by itself, as 10^3 is ten times ten times ten (`B0-R0-C06`); (2) over people, the capacity to get things done through other people, from any source, authority being only one (`S57-R1-C16`) | `B0-R0-C06`, `S57-R1-C16` |
+| power calculation | the sum a survey or trial does to decide how many people it needs | `S36-R1-C02` |
 | power rule | for a positive whole number n, the derivative of x^n is n times x^(n minus 1) | `S02-R1-C03` |
+| Pre-legislative Consultation Policy | the Union's 2014 policy, a decision of the Committee of Secretaries and not a law, asking departments to put draft laws in public for at least thirty days; a department may skip it if it records why | `S47-R1-C06` |
 | pre-test | the test taken before the teaching | `S57-R1-C10` |
+| preamble | an Act's opening statement of why it was made | `S47-R1-C11` |
 | precision | how closely repeated readings agree with each other | `B0-R0-C30` |
 | predatory or pseudo-journal | (this book's reading; ICMJE's references section does not define it) a journal that presents itself as checking what it publishes and does not | `S58-R1-C05` |
 | predictor | one of the several columns a study predicts an outcome from, each given one weight | `S02-R1-C12` |
 | premise | a reason offered | `B0-R0-C42` |
 | preprint | a paper posted publicly before a journal has checked and accepted it | `S58-R1-C05` |
 | prevalence | how many people in a group have the condition, written P(condition present), with no test involved | `B0-R0-C26` |
+| previous publication | publishing a draft first, with a date, so that the public can object before the final rule or regulation is made | `S47-R1-C02`, `S47-R1-C07` |
 | price wedge | a gap that a public decision opens between two prices of the same food | `S37-R1-C10` |
+| priming | when what a reader meets first tilts how they judge what comes next | `S47-R1-C12` |
 | principle of proportional ink | Bergstrom and West: a shaded area must be in proportion to the value it stands for | `S58-R1-C17` |
 | priority household | a household under the National Food Security Act whose members are entitled to 5 kg of grain a month each | `S37-R1-C11` |
 | privacy | the person's right to control what is collected about them and who sees it | `S36-R1-C07` |
+| Private Member's Bill | a Bill introduced by a member of Parliament who is not a Minister | `S47-R1-C06` |
 | probability | a number from 0 to 1 that states how often an outcome would turn up if the same chance process were repeated a great many times | `B0-R0-C24` |
 | probability density | a curve that never goes below zero and has a total area of 1 beneath it; the area over a range is the probability of that range, and its height is a probability per unit, not a probability | `S02-R1-C13` |
 | probability distribution | the list of every value a random variable can take, each paired with its probability; a model of the chance process, where a frequency table is data | `S02-R1-C13` |
 | probe | a short follow-up that asks for more of what the respondent just said without suggesting what that should be, such as a pause, repeating their words, or "tell me more" | `S36-R1-C08` |
 | procurement | the state buying grain from farmers | `S37-R1-C08` |
 | professional body | an association whose members share one profession or discipline | `S57-R1-C15` |
+| programme | the work a public body does to carry a policy out: the staff, the money, the forms, the visits | `S47-R1-C01` |
 | prompt (in a topic guide) | a short note under a main question of something you hope the answer covers, used only if the respondent does not get there on their own; it names a topic, never an answer | `S36-R1-C06` |
 | proportion | a part out of the whole it came from, never more than one | `B0-R0-C05` |
 | proportion reaching the standard | the number of learners whose score meets the objective's standard, divided by the number tested | `S57-R1-C12` |
+| proposal | a course of action someone wants a public body to take; it is only a proposal until a body with the power to decide has decided it | `S47-R1-C01` |
 | protein | a folded chain of amino acids, whose shape is what it does | `B0-R0-C35` |
 | protocol | the written plan of a study | `S55-R1-C02` |
+| public interest group | a group that seeks a good reaching everyone; it still stands to gain when the decision goes its way | `S47-R1-C10` |
+| public policy | what public bodies do about matters of concern to some part of society, including the outcomes their action creates and a choice not to act | `S47-R1-C01` |
 | quadratic | a function of the form px² + qx + r | `S02-R1-C09` |
 | qualitative colour scale | a small set of colours that look clearly different from each other and equally strong, for groups that have no order | `S58-R1-C19` |
 | qualitative research | research that asks what something is, what it means to the people involved, how it comes about and why, by gathering people's own words and actions and analysing them without turning them into counts | `S36-R1-C01` |
@@ -562,6 +609,7 @@ teaches were deleted. Terms used before their gloss, and terms used for two thin
 | rate constant (k) | the rate divided by the amount; its unit is the rate's unit divided by the amount's, such as per day | `S02-R1-C04` |
 | rate line | the line the rate over each interval makes across a figure with time along the bottom | `B0-R0-C22` |
 | rate of change | a change divided by the time it took | `B0-R0-C21` |
+| ratify (a treaty) | the step by which a country becomes a Party, bound by the treaty | `S47-R1-C11` |
 | ratio | two quantities of the same kind set side by side by dividing one by the other | `B0-R0-C05` |
 | raw gain | post-test score minus pre-test score, in percentage points | `S57-R1-C12` |
 | reaction (Kirkpatrick's Level 1) | whether the learners liked the session | `S57-R1-C13` |
@@ -574,12 +622,14 @@ teaches were deleted. Terms used before their gloss, and terms used for two thin
 | reference list | the list at the end of a paper; each number in the text points to one entry in it | `S58-R1-C05` |
 | reference manager | a program that stores your references and types out the list | `S58-R1-C05` |
 | reflexivity | "sensitivity to the ways in which the researcher and the research process have shaped the collected data" (Mays and Pope 2000) | `S36-R1-C09` |
+| regressive tax | a tax applied at a lower overall rate as income rises, so it takes a bigger share of a poorer household's income | `S47-R1-C13` (first use), `S47-R1-C16` (defined) |
 | regulated system | a system that senses body weight, or a signal that tracks it, and pushes back when weight falls | `S01-R1-C09` |
 | regulation | what a body the statute set up may make, not Parliament; it binds because a statute said it could | `B0-R0-C43` |
 | relate question | a question that asks whether an exposure is associated with an outcome: whether the two go together | `S55-R1-C03` |
 | relative change | a difference between two percentages divided by the starting percentage, stated in per cent | `S58-R1-C09` |
 | relative frequency | a count divided by the total number counted; the proportion, under a longer name | `B0-R0-C27` |
 | report of activities | a write-up that records what the authors did, in the order they did it | `S58-R1-C02` |
+| repugnant (of a State law) | clashing with a law Parliament made on a Concurrent subject; Parliament's law prevails and the State law is void where the two clash (Article 254(1)) | `S47-R1-C04` |
 | rereading | studying a text again after a first reading: restudy done with a text | `S57-R1-C05` |
 | research interview | a conversation in which a researcher asks a respondent about a topic to gather the respondent's account of it; not a clinical consultation | `S36-R1-C03` |
 | research money | money that pays to find out an answer | `S55-R1-C07` |
@@ -613,7 +663,9 @@ teaches were deleted. Terms used before their gloss, and terms used for two thin
 | scalar | a single number used to multiply every entry of a vector | `S02-R1-C10` |
 | scale | how much of the quantity one step along an axis stands for, chosen by whoever draws the figure | `B0-R0-C19` |
 | scale factor | the number you multiply every length of a picture by | `B0-R0-C40` |
+| scheme | a programme the executive runs, with a name, a period, an amount of money and guidelines saying how it works; some rest on no Act of their own | `S47-R1-C08` |
 | scientific notation | a number between one and ten, times a power of ten | `B0-R0-C06` |
+| scoping review | a map of what has been studied on a question, not a pooled analysis | `S47-R1-C13` |
 | scoring sheet (five-item sheet) | this course's working tool for putting candidate questions in order: five items, 0, 1 or 2 points each, total out of 10; a zero on item 4 or 5 rejects the question whatever its total; the totals put judgements in order and measure nothing | `S55-R1-C08` |
 | second derivative | the derivative of the derivative, the rate of change of the rate; written f″(x) | `S02-R1-C03` |
 | second derivative test | where the derivative is zero, a second derivative above zero means a local minimum, below zero a local maximum, and zero decides nothing | `S02-R1-C09` |
@@ -659,6 +711,7 @@ teaches were deleted. Terms used before their gloss, and terms used for two thin
 | standard error of the mean | that spread of a random sample's average, over many samples of the same size | `B0-R0-C29` |
 | standardised mean difference (SMD) | the MD divided by the SD: the MD as a number of standard deviations; which SD is used is part of the definition | `S57-R1-C02` |
 | starch | the stuff rice, wheat and potato are mostly made of | `B0-R0-C36` |
+| State List | List II of the Seventh Schedule: subjects that belong to each State's Legislature (Article 246) | `S47-R1-C04` |
 | static rule | a kilogram of body fat is taken to hold a fixed number of kilocalories, so a surplus or deficit summed over time converts into fat at that fixed rate, every other quantity held constant; commonly 3,500 kilocalories a pound | `S01-R1-C07` |
 | statistic | the same kind of number, computed instead from a sample | `B0-R0-C29` |
 | statute | a law enacted by Parliament or a State Legislature, each called an Act | `B0-R0-C43` |
@@ -668,7 +721,8 @@ teaches were deleted. Terms used before their gloss, and terms used for two thin
 | strip chart | each value drawn as a dot along the value axis, one column of dots per group; also called a univariate scatterplot | `S58-R1-C16` |
 | structured interview | a questionnaire read aloud, with everything decided in advance and most answers picked from a list; its answers are counted | `S36-R1-C03` |
 | stunted | of a child under five, height-for-age more than two standard deviations below the WHO growth standard | `S37-R1-C15` |
-| subject | (1) of a formula, the one letter got on its own; getting it there is making it the subject (`B0-R0-C16`); (2) of a sentence, what the clause is about, the thing the verb is said of; find the verb, then ask "who or what" in front of it (`S58-R1-C06`) | `B0-R0-C16`, `S58-R1-C06` |
+| subject (of a formula) | the one letter got on its own; getting it there is making it the subject | `B0-R0-C16` |
+| subject (of a sentence) | what the clause is about, the thing the verb is said of; find the verb, then ask "who or what" in front of it | `S58-R1-C06` |
 | subjective (of how an outcome is measured) | stated by the learner or someone near them, as an opinion or a rating (Frich's A levels) | `S57-R1-C13` |
 | subordinate clause | a clause that has a subject and a verb but cannot stand alone; words such as although, because, when or while open one | `S58-R1-C06` |
 | subscript | a small letter or number set low after a symbol; part of the symbol's name, and never a multiplication | `S02-R1-C01` |
@@ -694,6 +748,7 @@ teaches were deleted. Terms used before their gloss, and terms used for two thin
 | temperature | how hot a thing is - a level, not an amount | `B0-R0-C34` |
 | tense | when the action happens; not the same as voice | `S58-R1-C06` |
 | testing effect | a retrieval attempt improves memory on a later test more than restudy does; it holds on a delayed test, and on a test minutes later restudy can come out ahead | `S57-R1-C03` |
+| thematic frame | telling an issue through the broad view: the trend over time and what led to it | `S47-R1-C12` |
 | thermic effect of food | the energy spent digesting, absorbing and processing what was eaten | `S01-R1-C04` |
 | thermochemical calorie | 4.184 joules exactly | `B0-R0-C12` |
 | time constant (τ) | ρ divided by the total slope, in days; the gap to the equilibrium shrinks as e^(-t/τ), so τ is 1 divided by the rate constant k | `S02-R1-C08` |
@@ -702,6 +757,8 @@ teaches were deleted. Terms used before their gloss, and terms used for two thin
 | topic position | the start of a sentence, which links back to what the reader already has and names whose story the sentence tells | `S58-R1-C07` |
 | topic sentence | the sentence that states a paragraph's one point, often first | `S58-R1-C10` |
 | total energy expenditure (TEE) | the product of physical activity level and basal metabolic rate: what a group spends in a day | `S01-R1-C03` |
+| trace (who decides) | a fixed sequence of six steps that takes a proposal to the body that can turn it into policy, and to the power that body would use | `S47-R1-C11` |
+| Transaction of Business Rules | the Union government's rules (1961, amended), made by the President under Article 77(3), saying who decides a case and which cases must go to the Cabinet | `S47-R1-C05` |
 | transcript | a written version of an interview recording, made by a person or a program; the text that analysis works on | `S36-R1-C10` |
 | transmission | teaching by telling: the teacher explains and the learners listen, take notes, and ask the odd question | `S57-R1-C01` |
 | triglyceride | the molecule fat is made of, in food and in a body alike | `B0-R0-C36` |
@@ -713,12 +770,14 @@ teaches were deleted. Terms used before their gloss, and terms used for two thin
 | uncited | (of a paper) its count of citations in a given database is zero; read it as no citation found in this database by this date | `S55-R1-C06` |
 | uncitedness ratio | the share of papers uncited, written as a fraction of 1, so 0.23 means 23 in every 100 | `S55-R1-C06` |
 | underweight (child under five) | weight-for-age more than two standard deviations below the WHO growth standard | `S37-R1-C15` |
+| Union List | List I of the Seventh Schedule: subjects that belong to Parliament (Article 246) | `S47-R1-C04` |
 | unit | an agreed amount that everybody measures against | `B0-R0-C09` |
 | unit of observation | what one row of a table stands for | `B0-R0-C39` |
 | upstream (of an intervention) | changing a decision taken before the person chooses: a crop, a recipe, a price, a shelf, a ration basket | `S37-R1-C17` |
 | utility (of a study technique) | Dunlosky and colleagues' overall rating, low, moderate or high: how widely a technique's benefit holds, and how it compares with the others | `S57-R1-C05` |
 | value axis | the axis a bar's length is read against: the side axis when bars stand up, the bottom axis when they lie flat | `B0-R0-C40` |
 | value message | the opinion a chart carries ("costs are monstrous"), in Bateman and colleagues' sense | `S58-R1-C18` |
+| value premise | a premise that says what matters, or what ought to be done | `S47-R1-C16` |
 | value question | a question about what ought to be done, which people answer from their values (Blackstone's textbook calls it an ethical question) | `S55-R1-C04` |
 | variable | a letter written in place of a number | `B0-R0-C15` |
 | variance | worked out from the squared deviations: add them, then divide by the count for a whole population, or by one less than the count for a sample | `B0-R0-C28` |
@@ -731,6 +790,7 @@ teaches were deleted. Terms used before their gloss, and terms used for two thin
 | warm-up question | an easy first question on something the respondent knows all about, to get them talking | `S36-R1-C06` |
 | wasted | of a child under five, weight-for-height more than two standard deviations below the WHO growth standard | `S37-R1-C15` |
 | weighted sum | each vector multiplied by its own number, then added: cv + dw for vectors v and w and numbers c and d | `S02-R1-C10` |
+| weighted votes (GST Council) | votes counted by weight, not by head: the Centre's weighs one-third of the votes cast and all the States' together two-thirds; a decision needs three-fourths of the weighted votes of the members present and voting | `S47-R1-C09` |
 | weights (of a weighted sum) | the numbers a weighted sum multiplies by; "weight" here means a multiplier, not body weight | `S02-R1-C10` |
 | WEIRD | short for western, educated, industrialized, rich and democratic: a review's label for a set of countries | `S57-R1-C03` |
 | where-clause | the words that fix what each symbol in an equation stands for, often a clause beginning "where" after it; it fixes each symbol's meaning, its unit and its sign | `S02-R1-C01` |

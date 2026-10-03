@@ -1,0 +1,83 @@
+# S47-R1-C09 · When no single body decides
+
+**Definition.** Authority over one proposal is often shared, in three common shapes.
+
+First, two legislatures may make law on the same subject. Under Article 246(2), Parliament and
+the Legislature of any State both have power to make laws on the matters in List III of the
+Seventh Schedule, the Concurrent List. Adulteration of foodstuffs and other goods is entry 18.
+
+Second, one body may seat members of both governments. The Goods and Services Tax (GST)
+Council is set up under Article 279A. The Union Finance Minister chairs it. Its other members
+are the Union Minister of State in charge of Revenue or Finance and a minister nominated by
+each State Government. It makes recommendations to the Union and the States on, among other things, the
+rates of goods and services tax. Each decision needs not less than {{n:gst_council_majority}} of the
+weighted votes of the members present and voting. The Central Government's vote weighs
+{{n:gst_union_vote_weight}} of the votes cast, and the State Governments' votes together {{n:gst_states_vote_weight}}.
+
+A recommendation is not a tax. The Central Government notifies the rate of central goods and
+services tax (CGST), under section 9(1) of the Central Goods and Services Tax Act, 2017. It
+does so "on the recommendations of the Council", at a rate not exceeding {{n:cgst_sugary_drinks_rate_pct}} per cent.
+
+Third, several bodies may each hold a power over part of one thing. A food advertisement that
+misleads falls under section 24 of the Food Safety and Standards Act, 2006. It also falls
+under section 21 of the Consumer Protection Act, 2019, which lets the Central Consumer
+Protection Authority (CCPA) order it discontinued or modified.
+
+A proposal addressed to "the government" names none of these bodies. Where several must act,
+one of them usually has to act first, because the others act on what it does.
+
+**In plain terms.** Sometimes no one body can say yes on its own. Here is the trap: a note that writes "the
+government should" has named no one, so no one has to answer it.
+
+Look for three shapes. Two legislatures may both make law on one subject. One council may seat
+ministers from the Union and every State, so neither side can decide without the other. Or two
+bodies may each hold a separate power over the same thing, such as one advertisement.
+
+The GST Council is the clearest case. It recommends tax rates. It does not levy them. The
+Central Government then issues the notification that sets the central rate. The Council's
+recommendations go to the States too.
+
+When several bodies must act, ask which one goes first. That is the one your note should be
+addressed to.
+
+**Figure.** Weighted votes in the GST Council under Article 279A(9), per cent of votes cast: the Central Government 33.3, all the States together 66.7. A decision needs three-fourths, 75. Neither side reaches it alone.
+
+*What the figure shows:* Two bars against a dashed line at 75. The Central Government's bar reaches 33.3; the bar for all the States together reaches 66.7. Both stop below the line.
+
+**Must know points for you.**
+
+- "The GST Council set the tax on sugary drinks" is wrong. The Council recommends, under Article 279A(4). The Central Government notifies the central rate under section 9(1) of the Central Goods and Services Tax Act. The Council's own release says only the notifications have the force of law.
+- Central tax on sugar-added and flavoured drinks (heading 2202 10) is {{n:cgst_sugary_drinks_rate_pct}} per cent. It sits in Schedule III of Notification 9/2025-Central Tax (Rate), in force 22 September 2025, as amended by 01/2026 from 1 May 2026. Never write that the Union levies {{n:gst_demerit_rate_pct}} per cent: section 9(1) caps the central rate at twenty.
+- Under Article 279A(9) a GST Council decision needs {{n:gst_council_majority}} of the weighted votes, with the Centre holding {{n:gst_union_vote_weight}} and the States together {{n:gst_states_vote_weight}}. Neither side reaches {{n:gst_council_majority_pct}} per cent alone. A case for a tax on sugary drinks has to be made to State finance ministers as well as to the Union.
+- When several bodies must act, write down the order. Ask whose act the others rest on. That body moves first, and your note goes to it first.
+- A proposal addressed to "the government" is addressed to no one. If you cannot yet name the body, write "not yet traced" and list what you will open next. That is a line someone can act on.
+- One tax change carries several dates: recommended 3 September 2025, notified 17 September, in force 22 September, amended in force 1 May 2026. Quote the date of the instrument that supports your sentence.
+- A map of who shares a decision tells you whom to address and in what order. It does not tell you how they will vote, or how the States' votes divide. Nor does it tell you whether two bodies with powers over one advertisement will both act.
+
+**Exercise 1** (retrieval). From memory: who sits on the GST Council, what share of the weighted votes does a decision
+need, and how are the votes weighted? What does section 9(1) of the CGST Act cap?
+
+**Exercise 2** (interpretation). Here are rows 1 to 4 of Schedule III of Notification No. 9/2025-Central Tax (Rate), 17
+September 2025. The heading of the Schedule is "Schedule III– 20%".
+
+```table
+| S. No. | Heading or tariff item | Description |
+| 1 | 2202 10 | All goods (including aerated waters), containing added sugar or other sweetening matter or flavoured |
+| 2 | 2202 91 00, 2202 99 90 | Other non-alcoholic beverages [other than those specified in Schedule I of this notification] |
+| 3 | 2202 99 90 | Caffeinated Beverages |
+| 4 | 2202 | Carbonated beverages of fruit drink or carbonated beverages with fruit juice |
+```
+
+Say what the {{n:cgst_sugary_drinks_rate_pct}}% is, who set it and under what power, and two things the table does not tell
+you.
+
+**Exercise 3** (critique). Here is a made-up line from a draft press note.
+
+> From 22 September 2025 the Union Government has levied {{n:gst_demerit_rate_pct}}% GST on cola, and it can raise
+> this further whenever it chooses.
+
+Find the errors and rewrite the sentence.
+
+**Exercise 4** (teaching). A journalist has three minutes and asks: "Who actually decided the tax on sugary drinks?"
+Answer in plain words, with one quotable sentence.
+

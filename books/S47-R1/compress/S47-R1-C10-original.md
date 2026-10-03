@@ -1,0 +1,92 @@
+# S47-R1-C10 · The people around a decision
+
+**Definition.** An actor around a policy decision is a person or organisation that tries to shape the
+decision, or is affected by it, without holding the power to take it. Actors include companies
+and their trade associations, professional bodies, non-governmental organisations and consumer
+groups, the media, researchers, and the people the decision affects. Public bodies that advise
+on a decision or carry it out, without taking it, are actors too.
+
+An actor's interest is what it stands to gain or lose from the decision. Every policy favours
+some and costs others, so every actor around it has an interest. That includes an organisation
+working for a public good, which benefits most or all people, rather than for a private gain.
+
+An interest group is a formal association of individuals or organisations that tries to
+influence government decisions or public policy. A trade association is an interest group of
+companies, usually in one trade or industry.
+
+Lobbying is representing an organisation's case before government in order to influence policy.
+Inside lobbying takes the case directly to lawmakers and officials. Outside lobbying takes it to
+the public, through the media and campaigns, so that the public presses the lawmakers.
+
+A conflict of interest is what a party has when it gains from one answer. An adviser or
+researcher has one when they stand to gain from one outcome of the decision they inform, so that
+the interest could bend their judgement. Disclosure is stating the interest, so that others can
+weigh the advice. Disclosure does not remove the interest.
+
+An interest does not remove a right to be heard. Where an Act requires rules to be made after
+previous publication of a draft, the rule-maker must consider any objection received from any
+person before the date it has set.
+
+**In plain terms.** The sections so far looked for the body that holds the power to decide. Around every decision
+stand many more people and organisations. They do not hold that power, and they still try to move
+it. Call each of them an actor.
+
+Here are the usual ones. Companies, and the trade associations they form, which are groups of
+companies in one trade acting together. Professional bodies, such as an association of doctors.
+Non-governmental organisations (NGOs) and consumer groups. The media. Researchers, which includes
+you.
+
+And the people the decision lands on: for a tax on sugary drinks, the children and young adults
+who buy the drinks, and their families. A government department that advises, but does not decide,
+is an actor too.
+
+For each actor, ask one question: what does it stand to gain or lose? The answer is its interest.
+Every policy has winners and losers, so every actor has an interest. A group that works for clean
+air or children's health has one too. Its interest is a public one rather than a private profit,
+but it is still an interest, and it still points one way.
+
+Actors push in two ways. Inside lobbying takes the case straight to the people in government: a
+meeting, a letter, a comment on a draft. Outside lobbying takes it to the public, through the press
+or a campaign, so that the public presses the government.
+
+An interest does not take away the right to speak. When a draft rule is published for objections,
+the body making it must consider objections from any person, a company included. What you do with
+an actor's interest is weigh it, not silence it.
+
+The same goes for you. You might gain from one answer through a grant, a job or a result that
+makes your name. Then you have a conflict of interest. Write it down at the front of your note.
+That is disclosure. It lets the reader weigh your advice. It does not make the pull go away.
+
+The next level of this subject gives all this a formal shape, the policy triangle of Walt and
+Gilson. It looks at four things together: the content of a policy, its context, its process and
+its actors. This section gives you the actors.
+
+**Must know points for you.**
+
+- The error is to treat the loudest actor as the decider. A campaign, a press storm or a powerful company can move a decision. None of them can take it. Before you address a note, find the body that holds the power, and treat everyone else as someone who pushes.
+- Refuse a stakeholder list that says "industry", "the public" or "the government". Ask for each actor by name. Ask for its job around the decision: decide, advise, carry out, push or be affected. Ask what it stands to gain or lose. A list that cannot say what each actor stands to lose has not been thought through.
+- An interest is not a reason to silence an actor. Where a draft rule is published for objections, the rule-maker must consider objections from any person, companies included. Weigh an objection on its premises and its logic. Use the objector's interest to decide where to look hardest.
+- A group working for children's health has an interest too. It stands to gain what it campaigns for. When an advocacy group's figure appears in your note, check it as hard as an industry figure.
+- Disclose every interest you have in the decision you write about, money or not, at the front of the note. Disclosure lets the reader weigh your advice. It does not remove the pull of the interest. A conflict of interest can affect how work is designed, analysed and read. So decide about a grant before the study starts, not when the report is written.
+- For a food tax in India, do not send your note to the Ministry of Health as if it decided. Summan and colleagues held {{n:summan_kii_n}} interviews in 2024 and reviewed documents. They report that the Ministry of Finance and the GST Council "determine tax design and rates". In this book's terms, the Council recommends and the Central Government notifies. The health ministries, they write, play "a largely advisory role". That is one study's judgement, not a measurement: it shows who holds the decision. It does not mean the health ministry's advice carries no weight.
+- When a trainee hands you a stakeholder table, point at each row and ask two questions aloud: does this actor decide, or push? What does it lose if the proposal goes through? Rows where they cannot answer the second question are the ones to rewrite.
+- A map of actors tells you who will push and in which direction. It does not tell you who will win, how much any actor's pressure counts, or whether an actor's argument is right. Judge the argument on its evidence, and leave predictions about who prevails to the process theories of the next level.
+
+**Exercise 1** (retrieval). Without looking back, answer three questions. What is an actor's interest? What is the
+difference between inside and outside lobbying? What does disclosure of a conflict of interest
+do, and what does it not do?
+
+**Exercise 2** (critique). Here is a made-up "Stakeholders" paragraph from a department's proposal for a rule on what
+school canteens in the district may sell.
+
+"School principals, parents and the canteen contractors all agree that junk food should be
+removed from canteens. The local soft-drink distributor has a conflict of interest and so should
+not be consulted. Our department has no interests to declare, because we receive no money from
+industry."
+
+Find three errors. For each, say what is wrong and what the paragraph should say instead.
+
+**Exercise 3** (teaching). A journalist has three minutes and asks: "Should drinks companies even be allowed to comment on
+a tax on sugary drinks? They will just protect their profits." Answer without jargon, and give
+one sentence they can quote.
+

@@ -1,0 +1,1 @@
+- Cut must_know[1] down to "Then write one line on what it leaves out.", dropping "Before you agree or disagree with a paragraph, write its four labels". The kept line now has no antecedent, and the habit of labelling before judging, which Exercise 2 drills, survives only implicitly.

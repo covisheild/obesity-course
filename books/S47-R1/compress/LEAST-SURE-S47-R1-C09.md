@@ -1,0 +1,1 @@
+- k3 cut (step 5a): Removed the definition's section 9(1) CGST sentences (the Central Government notifies the rate "on the recommendations of the Council", at a rate not exceeding the cap). Must-know 0 and 1 still name section 9(1) and the cap of twenty, but the quoted words "on the recommendations of the Council" are gone. Exercises 3 and 4 may need them.

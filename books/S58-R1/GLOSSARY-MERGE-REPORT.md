@@ -206,3 +206,10 @@ term of art; no row.
 
 `python check/parallel.py registries`: 0 problems. `python check/build.py --check`: blocking 0, 232
 warnings. `build.py` does not read `prose/GLOSSARY.md`, so the merge cannot change its counts.
+
+## Conductor's note at the catch-up merge (3 Oct 2026)
+
+The merged file had kept both the old row "subject (of a formula)" and the new two-sense row "subject",
+so one term had two rows. To change no existing row mid-series, the conductor restored the old row as
+it stands and made the new sense its own row, **subject (of a sentence)** (`S58-R1-C06`). §2's account
+above of a single two-sense row is superseded by this.
