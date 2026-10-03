@@ -259,7 +259,10 @@ def notion_sync_live(live):
 # ---------------------------------------------------------------- the two modes
 
 def build_pdf(book_id):
-    run([sys.executable, os.path.join(CHECK, "build.py"), "--subject", book_id], cwd=ROOT)
+    # A frozen book passed the code gate when it froze; the PDF re-renders the same text, so the
+    # publisher does not need R (check/code_gate.py, CODE_GATE=frozen).
+    subprocess.run([sys.executable, os.path.join(CHECK, "build.py"), "--subject", book_id], cwd=ROOT, check=True,
+                   env=dict(os.environ, CODE_GATE="frozen"))
     path = os.path.join(CHECK, "_build", f"{book_id}.pdf")
     if not os.path.exists(path):
         raise SystemExit(f"{book_id}: the build made no PDF")
