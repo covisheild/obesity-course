@@ -1,0 +1,1 @@
+- Cut "A 95% CI is a range worked out from the sample so that ... 95 per cent of such ranges would contain the true mean." Kept the SE formula and "mean plus or minus 2 SE", so Exercise 2 can still be worked, but the reader is never told what a CI means.

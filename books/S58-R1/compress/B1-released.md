@@ -1,0 +1,106 @@
+# B1 · What a unit is, and the SI base and derived units
+
+**Definition.** A measurement is a number together with a unit. A number given without its unit is not a
+measurement.
+
+The International System of Units (SI) is the system of units in which the numerical values of
+seven defining constants are fixed exactly. Since 20 May 2019 all SI units are defined in terms
+of constants that describe the natural world.
+
+Seven base units keep their role inside that system: the second, the metre, the kilogram, the
+ampere, the kelvin, the mole and the candela.
+
+A derived unit is a product of powers of the base units. The joule, written J, is the SI unit
+of energy, and J = kg m^2 s^-2.
+
+**In plain terms.** A measurement has two halves. A number, and a unit. Take one half away and the other half says
+nothing.
+
+A unit is an agreed amount that everybody measures against. One metre is an agreed length.
+
+The agreement is only worth something if it is the same agreement everywhere. That is the job the
+SI does.
+
+Seven units are called base units. They are the second, the metre, the kilogram, the ampere, the
+kelvin, the mole and the candela.
+
+Every other unit is built out of those seven by multiplying and dividing. A unit built that way
+is called a derived unit.
+
+**Illustration.** A strip of tablets is labelled 500. Five hundred what? Five hundred milligrams and five hundred
+micrograms are both ordinary strengths, and one is a thousand times the other. So you go and
+find the unit, every time, and you never carry a bare number into a calculation.
+
+Now build some units yourself. You only need two to start: the metre for length and the second
+for time.
+
+Speed is how far, divided by how long. So its unit is a length divided by a time.
+
+```working
+    metres divided by seconds
+    = m/s
+```
+
+Area is a length times a length.
+
+```working
+    metres times metres
+    = m^2
+```
+
+Volume is a length three times over, which gives m^3. Density is a mass divided by a volume,
+which gives kg/m^3.
+
+Now go and read the SI's own words. The page is called The International System of Units (SI),
+and it is published by the International Bureau of Weights and Measures (BIPM) at
+https://www.bipm.org/en/measurement-units. Open it and search inside the page for "J =".
+
+```working
+    J = kg m2 s-2
+```
+
+Say it out loud as a sentence. A joule is a kilogram, times a square metre, divided by a second
+squared.
+
+A prefix is a name for a power of ten stuck on the front of a unit. It changes the size of the
+unit and nothing else.
+
+```table
+    prefix  multiply the unit by  so
+    kilo    10^3                  one kilometre is 1,000 metres
+    centi   10^-2                 one centimetre is 0.01 metres
+    milli   10^-3                 one milligram is 0.001 grams
+    micro   10^-6                 one microgram is 0.000001 grams
+```
+
+The symbol for kilo is k, for centi is c and for milli is m. The symbol for micro is the Greek
+letter mu, written µ.
+
+One minute is 60 seconds. One hour is 3,600 seconds.
+
+**Where this picture breaks.** Building a unit out of base units tells you what kind of quantity you are holding. It tells you
+nothing about whether the number beside it is right.
+
+And all of this is decided, not discovered.
+
+**Must know points for you.**
+
+- It is not a measurement at all. Send it back for the unit. Never work out which unit was meant from how big the number looks.
+- Read the unit off the label or the report before you read the number.
+- On its own m is the metre; in front of another unit it is milli, meaning a thousandth. So mg is a milligram.
+- A derived unit is a recipe rather than a label. When an unfamiliar quantity turns up in a paper, read its unit before you read its value.
+- The SI fixes every unit through seven constants with exact values. One of them is the speed of light in vacuum, at 299 792 458 metres per second.
+- Getting the units right proves nothing about accuracy. A machine reading twice the true value still reports in correct units.
+
+**Exercise 1** (retrieval). Without looking back, write down the seven SI base units. Then say in one sentence what makes a
+unit a derived unit, and build two derived units yourself from base units alone.
+
+**Exercise 2** (critique). Here is a column out of a block stores register. The header says Rice. The entries under it are
+250, 180, 4.2 and 300.
+
+Say what you would ask for before using any of it, and say what the 4.2 tells you.
+
+**Exercise 3** (teaching). A first-year resident tells you they can never remember whether the joule is kg m^2 s^-2 or
+kg m s^-2. You have ten minutes and a whiteboard. Teach them so that the question stops
+arising.
+

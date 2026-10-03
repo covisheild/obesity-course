@@ -20,12 +20,16 @@ teaches were deleted. Terms used before their gloss, and terms used for two thin
 | Term | Plain words it gets at first use | First taught in |
 | --- | --- | --- |
 | 2 × 2 table | a table of two rows and two columns, read "two by two" | `S57-R1-C06` |
+| abbreviation | a shortened form of a word or phrase | `S58-R1-C08` |
 | absolute path | a path that starts from the top of one computer's disk, so it names a place that exists on one computer only | `S52-R1-C07` |
 | absorption | a molecule passing through the wall of the gut and into the blood | `B0-R0-C36` |
+| abstract (of a paper) | a short summary of the whole paper, printed before it; its parts are the context, the gap, what was done, the main result and what it means (`S58-R1-C03`) | `S58-R1-C01`, `S58-R1-C03` |
 | accounting identity (for a body) | the change in body energy stores over an interval equals the energy intake minus the energy expenditure over that same interval | `S01-R1-C05` |
 | accuracy | how close a measured value comes to the true value | `B0-R0-C30` |
+| acronym (as Barnett and Doubleday count it) | a word in which half or more of the characters are capital letters | `S58-R1-C08` |
 | Act | the name each statute passed by Parliament or a State Legislature is called by | `B0-R0-C43` |
 | action (of a learning objective) | one verb whose result can be seen or marked | `S57-R1-C09` |
+| active voice | the subject of the sentence performs the action of the verb: "We measured the weight" | `S58-R1-C06` |
 | actor (around a policy decision) | a person or organisation that tries to shape a decision, or is affected by it, without holding the power to take it | `S47-R1-C10` |
 | actor (in a food system) | anyone whose decision moves the food on, such as a farmer, a trader, a mill owner, a shopkeeper or the person who cooks; public bodies count too | `S37-R1-C01` |
 | adaptive part (of the fall in expenditure) | the extra fall in expenditure after a weight loss, beyond what the loss of fat and lean mass alone accounts for | `S01-R1-C09` |
@@ -45,6 +49,7 @@ teaches were deleted. Terms used before their gloss, and terms used for two thin
 | amino acid | one of a small fixed set of kinds of link a protein chain is built from | `B0-R0-C35` |
 | amount-of-substance concentration | an amount of substance in a volume, such as millimoles per litre (mmol/L): it says how many | `B0-R0-C13` |
 | anabolism | reactions that join small molecules into bigger ones, which costs energy | `B0-R0-C36` |
+| anaemic (as the NFHS fact sheet counts it) | haemoglobin below a cut-off for the person's group | `S58-R1-C22` |
 | anganwadi | a government child care centre, through which the National Food Security Act's meals for young children and for pregnant women and new mothers are given | `S37-R1-C12` |
 | annual financial statement | the statement of the Government of India's estimated receipts and expenditure for a financial year, which the President lays before both Houses of Parliament (Article 112(1)) | `S47-R1-C08` |
 | answerable (research question) | passes two tests: it is an empirical question, and it is feasible for the person asking | `S55-R1-C04` |
@@ -61,7 +66,11 @@ teaches were deleted. Terms used before their gloss, and terms used for two thin
 | Atwater general factors | one fixed energy value for each of protein, fat and carbohydrate, used whatever the food | `B0-R0-C32` |
 | authority | the right to decide or to direct that comes with a post | `S57-R1-C16` |
 | average rate of change | the change between the two ends of an interval divided by its length; it uses nothing in between | `B0-R0-C21` |
+| average sentence length (ASL) | the number of words divided by the number of sentences | `S58-R1-C11` |
+| average syllables per word (ASW) | the number of syllables divided by the number of words | `S58-R1-C11` |
 | average value (of a rate) | the integral divided by the length of the interval | `S02-R1-C05` |
+| axis start | the value at which the value axis begins, written s | `S58-R1-C17` |
+| axis title | the words on an axis that name its quantity and its unit; an axis of categories needs no unit | `S58-R1-C20` |
 | basal metabolic rate (BMR) | the energy spent lying at rest after a fast | `S01-R1-C03` |
 | base | (1) of a power, the number being multiplied, as the ten in 10^3 (`B0-R0-C06`); (2) in DNA, one of the four units, A, G, C and T, whose order along DNA is the information (`B0-R0-C37`) | `B0-R0-C06`, `B0-R0-C37` |
 | base R | the set of standard packages installed with R itself | `S52-R1-C06` |
@@ -72,13 +81,17 @@ teaches were deleted. Terms used before their gloss, and terms used for two thin
 | beta cell | the islet cell that makes insulin | `B0-R0-C38` |
 | bile | what the liver makes to break a large blob of fat into many tiny ones | `B0-R0-C38` |
 | Bill | a statute in draft | `S47-R1-C06` |
+| bimodal | having two clusters of values | `S58-R1-C16` |
 | bin | a range of values grouped together into one bar | `B0-R0-C40` |
+| bin width (of a histogram) | the width of each bar | `S58-R1-C16` |
+| bitmap | an image saved as a grid of coloured dots called pixels; a png or jpeg file is one | `S58-R1-C22` |
 | blood sugar (blood glucose) | the glucose in the blood | `B0-R0-C38` |
 | Bloom's taxonomy | a sorted list of kinds of thinking skill; the 2001 revision has six levels, from lowest to highest: remember, understand, apply, analyse, evaluate and create | `S57-R1-C09` |
 | body mass index (BMI) | a person's mass in kilograms divided by the square of their height in metres, in kg/m^2 | `B0-R0-C14` |
 | bomb calorimeter | a sealed steel pot in a water tank, used to burn a weighed sample | `B0-R0-C32` |
 | bond | an attraction between two atoms that holds them together | `B0-R0-C31` |
 | boundary | the closed line you draw, with the system inside it and everything else outside | `B0-R0-C33` |
+| box plot | a box from the lower to the upper quartile, a line at the median, and whiskers out towards the far values | `S58-R1-C16` |
 | brand owner | the firm whose name and address the label must declare, whether it made the food or only marketed it | `S37-R1-C03` |
 | breaks conservation (of a claim) | asserts a fat change that could not have happened, given the energy that could plausibly have crossed the boundary drawn round the person over the stated time | `S01-R1-C08` |
 | buffer stock | grain held in reserve | `S37-R1-C08` |
@@ -89,6 +102,7 @@ teaches were deleted. Terms used before their gloss, and terms used for two thin
 | calorimeter | a machine that measures energy from the temperature change it causes | `B0-R0-C32` |
 | campaigning (for policy) | starting from a position about what ought to be done and arguing for one option; also called advocacy | `S47-R1-C17` |
 | capillaries | the smallest blood vessels | `B0-R0-C38` |
+| caption | the text printed with a figure; journals call it the figure legend | `S58-R1-C14` |
 | case report | a report that describes one patient, or a few | `S55-R1-C06` |
 | case-control study | a study that starts from the outcome: it enrols people who have the outcome (cases) and people who do not (controls), then compares what each group was exposed to in the past | `S55-R1-C03` |
 | catabolism | reactions that break a big molecule into smaller ones and let its energy go | `B0-R0-C36` |
@@ -100,20 +114,24 @@ teaches were deleted. Terms used before their gloss, and terms used for two thin
 | centrally sponsored scheme | a scheme carried out through the State Governments and Union Territory administrations, its cost shared between the Central Government and the State by a stated ratio | `S47-R1-C08` |
 | cess | an extra tax charged alongside the main one | `S47-R1-C18` |
 | chain of authority | the ladder from the Constitution down to Acts, then rules or regulations, then notifications and orders; each lower instrument rests on, and must stay within, the one above | `S47-R1-C03` |
+| chartjunk | Tufte's word for decoration on a figure that "does not tell the viewer anything new" | `S58-R1-C18` |
 | check (in code) | a line of code that states something you believe about the data and stops the script with an error when it is false | `S52-R1-C19` |
 | checking a reference | four acts, each of which can fail on its own: find the source, confirm it is the source named, find the exact passage pointed to, read it to see whether it supports the claim | `B0-R0-C41` |
 | checksum (MD5 checksum) | a 32-character code calculated from every byte of a file; change one character in the file and the code changes | `S52-R1-C07` (first use), `S52-R1-C09` (defined) |
 | cherry-picking | choosing only the quotations that fit a claim, or cutting a quotation so that it fits; the first you catch only by reading the other transcripts for what runs against the claim | `S36-R1-C13` |
 | chord | the straight line laid across two points on a curve, whose slope is the average rate between them | `B0-R0-C21` |
 | chromosome | one of the structures genes sit along, in a fixed order; a person gets two copies of each, one from each parent | `B0-R0-C37` |
+| citation | an entry in the reference list of a later published work that points to an earlier one; it records that one work referred to another, not that the earlier work was used | `S55-R1-C06` |
 | citation database | a database that records the reference lists of the journals it indexes and, for each paper it holds, counts how many of those later works cite it | `S55-R1-C06` |
 | citation window | how long after publication the counting of citations runs | `S55-R1-C06` |
-| citation | an entry in the reference list of a later published work that points to an earlier one; it records that one work referred to another, not that the earlier work was used | `S55-R1-C06` |
 | civil society organisation | a group formed by citizens, outside government and outside business, to work for a public cause | `S57-R1-C15` |
+| claim (of a paper) | what the paper's evidence and reasoning are offered to support; in Book 0's terms, the conclusion, with the data as the premises | `S58-R1-C02` |
 | class (of an R object) | the kind of object it is, which `class(x)` names, such as `Date` | `S52-R1-C15` |
 | class normalised gain, 〈g〉 | Hake's class form of the normalised gain, worked out from class-average pre-test and post-test scores; not the mean of the learners' own normalised gains | `S57-R1-C12` |
 | class title | one name the labelling regulation allows for a whole group of ingredients, such as "Sugar" | `S37-R1-C03` |
+| clause | a group of words with a subject and a verb | `S58-R1-C06` |
 | cleaned transcription (intelligent verbatim) | a transcript that tidies speech into readable sentences and drops the fillers and repeats | `S36-R1-C10` |
+| clinical trial | a study that gives a treatment to people and compares what happens | `S58-R1-C02` |
 | closed question | a question that fixes the possible answers before the respondent speaks: yes or no, a number, or one of a set of options the question supplies | `S36-R1-C05` |
 | closing question (in a topic guide) | the last question of a topic guide, such as "Is there anything I have not asked about that I should have?" | `S36-R1-C06` |
 | code (in a transcript) | a short label written beside a passage of a transcript that bears on the study question, saying what it is about; the reader's own label for finding and comparing passages, not yet a finding | `S36-R1-C12` |
@@ -121,12 +139,16 @@ teaches were deleted. Terms used before their gloss, and terms used for two thin
 | coercion | R converting combined values of different types to the highest type, in the order logical, numeric, character, without a warning; one text value turns a vector of numbers into text | `S52-R1-C04` |
 | cognitive load | the demand a learning task makes on working memory | `S57-R1-C08` |
 | cohort study | a study that starts from the exposure: it starts with people who do not yet have the outcome, records who is exposed and who is not, follows both groups over time and counts who develops the outcome | `S55-R1-C03` |
+| colour bar | the strip, like an axis, that shows which colour stands for which value | `S58-R1-C19` |
+| colour-vision deficiency | a reduced ability to tell certain colours apart, most often red from green | `S58-R1-C19` |
+| colour-vision-deficiency simulator | a program that shows a figure as a reader with colour-vision deficiency sees it | `S58-R1-C19` |
 | column specification | the type `read_csv()` guessed for each column, which it prints; read it every time | `S52-R1-C09` |
 | combustion | burning, a substance joining with oxygen | `B0-R0-C32` |
 | commencement | the date a provision of an Act comes into force, often left to a later notification and different for different provisions | `S47-R1-C03` |
 | comment (in code) | everything after a `#` on a line; R ignores it, people read it | `S52-R1-C02` |
 | commission agent | a middleman in a mandi paid a percentage for arranging the sale | `S37-R1-C02` |
 | Commission for Agricultural Costs and Prices (CACP) | the body of experts that recommends the minimum support prices, and the sugarcane FRP | `S37-R1-C09` |
+| common scale | one axis that every mark being compared is read against | `S58-R1-C15` |
 | comparison (in a research question) | the group, or the level of exposure, that the exposed group is set against | `S55-R1-C02` |
 | comparison group | (1) in a study built to answer a relate question, the people without the exposure, or without the outcome (`S55-R1-C03`); (2) in a test of a teaching method, the group that gets the usual way (`S57-R1-C02`) | `S55-R1-C03`, `S57-R1-C02` |
 | competency based (medical education) | the course is built from what a graduate must be able to do, not from a list of topics to cover | `S57-R1-C14` |
@@ -134,6 +156,7 @@ teaches were deleted. Terms used before their gloss, and terms used for two thin
 | complementary | each one completes the other; A always faces T and C always faces G | `B0-R0-C37` |
 | complete-case analysis | analysing only the rows with no missing value in the columns used | `S52-R1-C13` |
 | compound ingredient | an ingredient that is itself made of two or more ingredients | `S37-R1-C03` |
+| compressing (a draft) | keeping everything and packing it into fewer, longer sentences; not the same as cutting | `S58-R1-C12` |
 | concentration | an amount of something held in a volume of something else | `B0-R0-C13` |
 | conceptual generalisation | what carries beyond a qualitative study: an idea, a reason and how it works, that a reader can test in another setting, as against a statistical estimate of how common something is in a population | `S36-R1-C02` |
 | conclusion | the claim the premises are offered for | `B0-R0-C42` |
@@ -142,6 +165,7 @@ teaches were deleted. Terms used before their gloss, and terms used for two thin
 | condition (of a learning objective) | what the learner is given, or is not allowed, while doing it | `S57-R1-C09` |
 | conditional probability | the same move with a chosen denominator: P(A given B), written P(A\|B), is the count who are both A and B divided by the count who are B | `B0-R0-C26` |
 | conduction | heat moving through matter that is staying put, by contact | `B0-R0-C34` |
+| confidence interval (CI) | a range, worked out from the data, that shows how precisely an estimate such as a ratio is known; how it is worked out is beyond this book (`S58-R1-C09`); for a 95% CI, if the study were repeated many times, 95 per cent of such ranges would contain the true value (`S58-R1-C20`) | `S58-R1-C09`, `S58-R1-C20` |
 | confidentiality | the researcher's duty to keep safe what a person told them, including "from unauthorized access, use, disclosure, modification, loss or theft" (ICMR 2017, section 2.3) | `S36-R1-C07` |
 | conflict about the person | friction over who someone is: blame, dislike, a remark about their character or motives | `S57-R1-C16` |
 | conflict about the work | disagreement over what to do, how to do it, or on what evidence | `S57-R1-C16` |
@@ -152,6 +176,7 @@ teaches were deleted. Terms used before their gloss, and terms used for two thin
 | constant rule | the derivative of a constant is zero | `S02-R1-C03` |
 | Constitution | the founding law that every statute must fit | `B0-R0-C43` |
 | consumer unit | the survey's per-head measure that allows for age and sex, as against a plain count per person | `S01-R1-C03` |
+| context (on a figure) | the non-data ink that stays: axis titles, tick labels, a light grid or reference line, direct labels | `S58-R1-C18` |
 | context placement | Ioannidis's second feature of useful clinical research: earlier evidence has been systematically assessed before a new study | `S55-R1-C05` |
 | continuous (random variable) | can take any value in an interval, and its probabilities are areas under a curve; the probability of any one exact value is 0 | `S02-R1-C13` |
 | controlling and problem solving | Kotter: monitoring results against the plan, identifying where they depart from it, and planning and organizing to fix that | `S57-R1-C16` |
@@ -160,6 +185,7 @@ teaches were deleted. Terms used before their gloss, and terms used for two thin
 | conversion factor | a fraction whose top and bottom are the same quantity written in two different units, so it is equal to one | `B0-R0-C10` |
 | conversion table | a table giving the energy in a unit of each food | `S01-R1-C03` |
 | correction | subtracting a known systematic error, such as a zero error, from the reading (VIM 2.53) | `B0-R0-C30` |
+| correlation | a number worked out from paired measurements; this book does not teach it | `S58-R1-C08` |
 | counter (of a sum) | the letter, usually i, that comes with Σ, with its first and last values; it only says where a term sits | `S02-R1-C01` |
 | counter-frame | the problem, cause, judgement and remedy an opponent would give the same facts | `S47-R1-C15` |
 | covalent bond | a bond where two atoms share a pair of electrons | `B0-R0-C31` |
@@ -172,6 +198,7 @@ teaches were deleted. Terms used before their gloss, and terms used for two thin
 | crossover (interaction) | the method that gives one style group its best score is not the one that gives another group its best; in a 2 × 2 table, one row's MD is positive and the other's negative | `S57-R1-C06` |
 | CSV file | comma-separated values: a plain-text file whose first line holds the column names; nothing in it says what type each column is | `S52-R1-C09` |
 | cue word | a word or short phrase that carries a frame in a few letters; a metaphor is one kind | `S47-R1-C15` |
+| cutting (a draft) | deleting words, sentences or paragraphs that do no work for the reader, biggest units first, so that what remains says the same in fewer words | `S58-R1-C12` |
 | cytoplasm | the watery jelly a cell is a bag of | `B0-R0-C35` |
 | d/dx | said "dee by dee x": the derivative with respect to x of what follows | `S02-R1-C03` |
 | data dictionary | a separate file, laid out as a table, with one row per variable of one data file: its exact name, meaning, unit, type, the values it may take, how a missing value is written, and where each fact came from | `S52-R1-C10` |
@@ -179,9 +206,14 @@ teaches were deleted. Terms used before their gloss, and terms used for two thin
 | data frame | R's table: different columns may hold different types, but the values within one column share one type, and every column has the same length | `S52-R1-C08` |
 | data matrix | a matrix in which each row is one case and each column is one kind of measurement, always in the same place | `S02-R1-C11` |
 | Data Principal | under the Digital Personal Data Protection Act, 2023, "the individual to whom the personal data relates" (section 2(j)); in an interview, the person recorded | `S36-R1-C07` |
+| data ratio | the ratio of the two values themselves, b ÷ a, as against the drawn ratio | `S58-R1-C17` |
+| data-ink | the ink on a figure that changes when the data change: the bars, the points, the line | `S58-R1-C18` |
+| data-ink ratio | the data-ink divided by all the ink used to print the figure | `S58-R1-C18` |
 | date (in R) | an object of class `Date`: a number of days since 1 January 1970, printed year-month-day | `S52-R1-C15` |
 | de novo (double-duty action) | the WHO's third level: design a new action for both burdens from the start | `S37-R1-C15` |
 | decimal | place value carried on past the point: tenths, then hundredths, then thousandths | `B0-R0-C03` |
+| decoration (on a figure) | any element that tells the reader nothing about the data or about how to read them | `S58-R1-C18` |
+| default (of a program) | a setting a program uses when you have not chosen one | `S58-R1-C22` |
 | default (of an argument) | the value an argument takes when the call does not give one | `S52-R1-C05` |
 | deficit (of energy) | expenditure larger than intake; a surplus is the reverse | `S01-R1-C02` |
 | definition (kind of equation) | an equation that brings in a new quantity as a combination of others; it cannot be false | `S02-R1-C17` |
@@ -197,11 +229,15 @@ teaches were deleted. Terms used before their gloss, and terms used for two thin
 | differential equation | an equation involving an unknown function and one or more of its derivatives: a rule that gives the rate from the state | `S02-R1-C07` |
 | dimension | the kind of thing a quantity is: a length, a mass, a time, or a combination of these | `B0-R0-C11` |
 | diploid | holding two matching copies of each chromosome, one inherited from each parent | `B0-R0-C37` |
+| direct label | a group's name written beside its data, in place of a key saying which colour is which | `S58-R1-C18` |
 | disclosure (of an interest) | stating the interest so that others can weigh the advice; it does not remove the interest | `S47-R1-C10` |
 | discrete (random variable) | the values it can take can be listed, one by one | `S02-R1-C13` |
 | distribution | the set of values a quantity takes, across the people, occasions or measurements counted, together with how often each value turns up | `B0-R0-C27` |
+| diverging colour scale | for a change that can go either way: a light middle colour put at zero, the colours darkening at the same rate on both sides | `S58-R1-C19` |
 | DNA | the long molecule a cell's instructions are written in | `B0-R0-C37` |
 | do no harm (double-duty action) | the WHO's first level: check that an existing action does not raise the risk of the other forms of malnutrition | `S37-R1-C15` |
+| doer | whoever or whatever performs the action, whether or not it is the subject | `S58-R1-C06` |
+| DOI | a paper's permanent identifier | `S58-R1-C05` |
 | domain | the inputs a rule will accept | `B0-R0-C18` |
 | dominant | an allele that shows whenever it is present | `B0-R0-C37` |
 | dot product | multiply the entries of two vectors of the same length in matching positions, then add the products; written a · b, said "a dot b" | `S02-R1-C10` |
@@ -209,14 +245,17 @@ teaches were deleted. Terms used before their gloss, and terms used for two thin
 | double question | a question that asks two things in one sentence; split it | `S36-R1-C05` |
 | double-duty action | in the WHO's words, an intervention, programme or policy with the potential to reduce the risk or burden of both undernutrition and overweight at once | `S37-R1-C15` |
 | doubly labelled water | the method that measures what was actually spent: a person drinks water carrying rare, stable forms of hydrogen and oxygen, and how fast they leave the body over the next 10 to 14 days gives the average energy spent | `S01-R1-C03` |
+| drawn ratio | the ratio of two bars' heights as drawn from an axis start s: (b − s) ÷ (a − s) | `S58-R1-C17` |
 | dynamic model | a model built on energy balance, with expenditure allowed to change | `S01-R1-C07` |
 | e (the number) | the base of the one exponential curve whose slope where it crosses the vertical axis is exactly 1; about 2.71828 | `S02-R1-C04` |
 | economic cost (of grain) | the full cost to the government of buying, storing and moving the grain | `S37-R1-C10` |
+| editorial | a journal's opinion piece | `S58-R1-C01` |
 | effect size | a name papers often give an SMD | `S57-R1-C02` |
 | effective customs duty | what a December 2025 government backgrounder calls the duty on crude edible oils, a different and larger number than the basic duty; no held text says what it adds | `S37-R1-C10` |
 | elaborative interrogation | a study technique: the learner works out why a stated fact is true | `S57-R1-C07` |
 | electron | one of the much lighter particles in the cloud round an atom's tiny heavy centre | `B0-R0-C31` |
 | element (in working memory) | a piece of information held as one | `S57-R1-C08` |
+| elementary perceptual task | Cleveland and McGill's name for a judgment the eye makes about a mark to get its number back: position, length, angle, area and others | `S58-R1-C15` |
 | elimination | adding or subtracting the two equations, after multiplying where needed, so that one letter cancels | `B0-R0-C17` |
 | empirical question | a question that can be answered by observing the world | `S55-R1-C04` |
 | end-to-end analysis | one question taken from raw data to its final table and figure in a single script that another person can run | `S52-R1-C22` |
@@ -236,8 +275,10 @@ teaches were deleted. Terms used before their gloss, and terms used for two thin
 | equation | a statement that two expressions are the same number | `B0-R0-C15` |
 | equilibrium (steady state) | a constant value of the state at which the rule gives a rate of zero, written W* and read "W star" | `S02-R1-C08` |
 | error | (1) what a measurement says minus what is actually true, or minus a trusted reference value (VIM 2.16: "measured quantity value minus a reference quantity value") (`B0-R0-C30`); (2) in R, R stopping because it could not carry out an instruction, reported in an error message (`S52-R1-C02`) | `B0-R0-C30`, `S52-R1-C02` |
+| error bar | a line above and below the top of a bar, usually one standard deviation or one standard error each way (`S58-R1-C16`); drawn through a value, usually a mean, to show a range around it: descriptive bars (the range, the SD) show how the data are spread, inferential bars (the SE, a 95% CI) how precisely the mean is estimated (`S58-R1-C20`) | `S58-R1-C16`, `S58-R1-C20` |
 | error message | R's statement that it could not carry out an instruction: what it could not do and, for a line it could not read, where on the line it stopped | `S52-R1-C02` |
 | estimate | a number made from part of the group and used to stand in for the whole | `B0-R0-C29` |
+| et al. | Latin for "and others"; it follows the authors a reference lists | `S58-R1-C05` |
 | ethics committee (EC) | a group of people at a hospital, college or research body that reads a researcher's plan before any research starts and can say yes, no, or change this first; the committee, not the researcher, decides the kind of review | `S36-R1-C07` |
 | evaluate (teaching) | to measure some outcome of it | `S57-R1-C13` |
 | event | any collection of outcomes from the sample space | `B0-R0-C24` |
@@ -259,6 +300,7 @@ teaches were deleted. Terms used before their gloss, and terms used for two thin
 | factor | a column that stores each value together with its levels | `S52-R1-C14` |
 | fair and remunerative price (FRP) | the price the Union Government fixes for sugarcane, on the CACP's recommendation, which sugar mills must pay for the cane they buy | `S37-R1-C09` |
 | fair price shop | a licensed ration shop, from which the grain under the National Food Security Act is collected | `S37-R1-C11` |
+| false precision | a number carrying more digits than the data can support | `S58-R1-C09` |
 | farm-gate price | the price the farmer received at the first sale | `S37-R1-C04` |
 | farmer's share of the consumer rupee | the farm-gate price divided by the retail price: at 75 per cent, Rs 75 of every Rs 100 paid at the shop reaches the farmer, who still pays for seed, labour and the trip to market out of it | `S37-R1-C04` |
 | fat mass | the triglyceride held in adipose tissue | `S01-R1-C01` |
@@ -268,11 +310,15 @@ teaches were deleted. Terms used before their gloss, and terms used for two thin
 | feedback (on a retrieval attempt) | showing the learner the correct answer after the attempt | `S57-R1-C03` |
 | feeling of learning | the learner's own judgement of how much they learned, usually given as a rating | `S57-R1-C01` |
 | field notes | notes written the same day as an interview, before you listen to the recording: what happened, where, how it felt, what surprised you | `S36-R1-C08` |
+| figure sheet | (this book's term) the written list of the decisions for one figure, kept beside the data | `S58-R1-C22` |
 | FINER | one published checklist for a research question: feasible, interesting, novel, ethical and relevant; a published guide, not a rule | `S55-R1-C04` |
 | first derivative test | sorts a critical point by the sign of the derivative either side: positive to negative is a local maximum, negative to positive a local minimum, the same sign neither | `S02-R1-C09` |
 | first law of thermodynamics | the physicists' name for one version of conservation of energy: energy is never made or destroyed, only changed in form | `S01-R1-C06` |
 | first-order (differential equation) | gives the rate of change of a quantity at a moment as a rule in its state, in the time, or in both | `S02-R1-C07` |
 | fitted equation | an equation whose form was chosen by its author and whose constants were estimated from one set of measurements | `S02-R1-C17` |
+| flat data | numbers that vary in one direction only, such as one value per group | `S58-R1-C18` |
+| Flesch Reading Ease (FRE) | 206.835 minus 1.015 times ASL minus 84.6 times ASW; a higher score means easier text | `S58-R1-C11` |
+| Flesch–Kincaid grade level (FKGL) | Kincaid and colleagues' formula, 0.39 times ASL plus 11.8 times ASW minus 15.59; its result is a United States school grade | `S58-R1-C11` |
 | flow | a rate that changes a stock, with a time on the bottom of its unit | `B0-R0-C23` |
 | fluency | the ease with which a text reads or a fact comes to mind; it can come from things unrelated to understanding | `S57-R1-C05` |
 | focus group | a form of group interview in which a moderator asks the participants to talk to one another, and that talk between them is the data | `S36-R1-C04` |
@@ -283,7 +329,9 @@ teaches were deleted. Terms used before their gloss, and terms used for two thin
 | food supply chain | HLPE's name for the activities and actors that take food from production to consumption and to the disposal of its waste; its listed steps end at retail and markets | `S37-R1-C01` |
 | food system | everything that happens to food, and everyone who does it, from the field to the bin (HLPE's 2014 definition) | `S37-R1-C01` |
 | food waste | food, with its inedible parts such as peels and bones, removed at the shop, in food service or at home | `S37-R1-C02` |
+| footnote (of a table) | a note below a table, marked with a letter or symbol, carrying explanations, exclusions and nonstandard abbreviations | `S58-R1-C21` |
 | formative (of a test) | used only to show the learner and you where they stand | `S57-R1-C10` |
+| forthcoming (in a reference) | a paper accepted but not yet out; NLM's preferred word, also "in press" | `S58-R1-C05` |
 | forward step (Euler's method) | from the state at time t, compute the rate from the equation, then take the state at t + h to be about the state at t plus h times that rate | `S02-R1-C07` |
 | four jobs (around a decision) | propose, advise, decide, carry out: four jobs that can be told apart around any public decision; an adviser has no power to decide | `S47-R1-C02` |
 | fraction | a division that has not yet been carried out; a sum you have not done yet | `B0-R0-C02` |
@@ -298,6 +346,7 @@ teaches were deleted. Terms used before their gloss, and terms used for two thin
 | fundamental theorem of calculus (evaluation theorem) | if f is continuous and F is any antiderivative of f, the integral of f from a to b is F(b) minus F(a) | `S02-R1-C06` |
 | gallbladder | a small bag next to the liver that holds bile, concentrates it and lets it out | `B0-R0-C38` |
 | gap (between study sessions) | the time between two study sessions of the same material | `S57-R1-C04` |
+| gap (in a paper) | what is not yet known; the introduction moves to it from what is known (`S58-R1-C04`) | `S58-R1-C01`, `S58-R1-C04` |
 | Gazette | the government's official newspaper | `B0-R0-C43` |
 | gene | what fixes the order of the amino acids in one protein | `B0-R0-C37` |
 | general circulation | the blood that goes round the whole body | `B0-R0-C38` |
@@ -311,30 +360,38 @@ teaches were deleted. Terms used before their gloss, and terms used for two thin
 | grand rounds | a teaching talk for a whole department | `S57-R1-C09` |
 | grand total | what you get when you add up everything in the table | `B0-R0-C26` |
 | graph | a drawing of a relationship between two quantities, made of points | `B0-R0-C19` |
+| grey copy | a copy printed or photocopied in black and white; it keeps only how light or dark each colour is | `S58-R1-C19` |
 | gross energy | all the energy a food gives up when it is burnt to nothing, also called ingested energy | `B0-R0-C32` |
 | group interview | several people interviewed at once, each answering the researcher in turn | `S36-R1-C04` |
 | guideline (NMC) | a document NMC's undergraduate board sends out by letter and puts on its website; it binds because a regulation says students are trained as it says | `S57-R1-C14` |
+| haemoglobin (Hb) | the oxygen-carrying protein of the blood, measured in grams per decilitre (g/dl) | `S58-R1-C21` |
 | half-time | the time a shrinking exponential takes to fall to half of any starting value: ln 2 divided by k | `S02-R1-C04` |
+| hazard ratio | compares how fast an event happens in two groups | `S58-R1-C09` |
 | heat | energy moving, because one thing is hotter than another | `B0-R0-C34` |
 | heat capacity | the joules one particular object needs to go up by one degree | `B0-R0-C34` |
+| heat map | a table whose cells are shaded by value | `S58-R1-C19` |
 | help page | the page opened with `?name` that describes one function in fixed sections: Description, Usage, Arguments, Value and Examples | `S52-R1-C05` |
 | hepatic portal circulation | the route that takes every drop of blood leaving the gut through the liver before it goes anywhere else | `B0-R0-C38` |
 | hepatic portal vein | the vein along which blood from the gut runs straight to the liver | `B0-R0-C38` |
 | hidden state | anything a script uses that the script itself did not make | `S52-R1-C21` |
+| hidden verb | an action turned into a noun ("increase", "assessment") and carried by an empty verb ("was observed", "was done") | `S58-R1-C07` |
 | highlighting | marking the parts of a text that seem important while reading it | `S57-R1-C05` |
 | honest broker | in Oliver and Cairney, a researcher who passes on research honestly, clearly and in time, and seeks to stay neutral | `S47-R1-C17` |
 | hormone | a chemical made in one part of the body that affects other parts some distance away | `B0-R0-C38` |
 | hot cooked meal (HCM) | a meal eaten at the anganwadi centre, or at school, as against a take-home ration | `S37-R1-C12` |
 | Household Consumption Expenditure Survey (HCES) | India's survey of household spending, run by the Ministry of Statistics and Programme Implementation (MoSPI) | `S37-R1-C07` |
 | how-common question | a question with a population and an outcome and nothing else; it asks how common something is | `S55-R1-C02` |
+| hue | the name of a colour: red, green, blue | `S58-R1-C19` |
 | hydrophilic | water-loving: mixes with water | `B0-R0-C35` |
 | hydrophobic | water-hating: does not mix with water | `B0-R0-C35` |
+| hypothesis | a statement the study is designed to support or refute | `S58-R1-C04` |
 | identity (kind of equation) | an equation that holds for every value of its symbols because a conservation law, or counting, requires it | `S02-R1-C17` |
 | illusion of explanatory depth | people feel they understand how things work in far more detail than they do; their rating of their own understanding falls after they write out an explanation | `S57-R1-C07` |
 | implausible (of a weight-loss claim) | needs more than any deficit people are known to manage | `S01-R1-C08` |
 | implementation money | money that pays to carry a programme out | `S55-R1-C07` |
 | import dependency ratio (IDR) | the FAO's ratio: imports divided by production plus imports minus exports, times 100 | `S37-R1-C06` |
 | impossible (of a weight-loss claim) | needs more than the person's whole expenditure over the interval | `S01-R1-C08` |
+| IMRAD structure | the four parts the text of an original research article is usually divided into: Introduction, Methods, Results and Discussion | `S58-R1-C01` |
 | in-depth interview | an interview in which almost nothing is decided in advance: one broad opening question about one or two issues, and everything after that comes from what the person has said | `S36-R1-C03` |
 | independent | finding out one of them happened tells you nothing new about the other | `B0-R0-C25` |
 | Indian Medical Graduate (IMG) | the doctor the MBBS course is meant to produce; the CBME Curriculum 2024 gives the IMG seven roles | `S57-R1-C14` |
@@ -345,6 +402,7 @@ teaches were deleted. Terms used before their gloss, and terms used for two thin
 | informing (policy) | setting out the options open to the body that decides, what the evidence says about each and how uncertain it is, without choosing | `S47-R1-C17` |
 | initial value | the state at one stated time, which picks out one solution of a differential equation | `S02-R1-C07` |
 | initial-value problem | a differential equation and an initial value together; a function solves it only if it satisfies both | `S02-R1-C07` |
+| ink (on a figure) | everything drawn on the figure: lines, bars, shading | `S58-R1-C17` |
 | inside lobbying | taking the case straight to lawmakers and officials: a meeting, a letter, a comment on a draft | `S47-R1-C10` |
 | install (a package) | download it from a repository such as CRAN and store it on the computer, with `install.packages()`; once per computer | `S52-R1-C06` |
 | instantaneous rate | how fast the quantity is changing at one moment: the steepness of the curve at that single point | `B0-R0-C21` |
@@ -367,9 +425,12 @@ teaches were deleted. Terms used before their gloss, and terms used for two thin
 | ISO 8601 | writing a date year-month-day, such as 2021-04-03 | `S52-R1-C15` |
 | issue advocate | in Oliver and Cairney, a researcher who recommends specific policy options | `S47-R1-C17` |
 | item (of a test) | one question or task on a test, marked on its own | `S57-R1-C10` |
+| jittering | spreading dots a little sideways at random, so that they do not sit on top of each other | `S58-R1-C16` |
 | join | combining two data frames by matching rows whose keys are equal | `S52-R1-C17` |
 | joule | the SI unit of energy, written J | `B0-R0-C09` |
+| journey (of a finding) | the order of work that takes one result from its source to a results paragraph a reader can restate after one reading | `S58-R1-C23` |
 | key | a column, or set of columns, whose values pick out the row they belong to | `S52-R1-C17`, `S52-R1-C19` |
+| key (on a figure) | the box in a corner of a figure that says which colour is which | `S58-R1-C14` |
 | key check | a check that the key has as many different values as the data have rows | `S52-R1-C19` |
 | key informant interview | an interview with someone chosen because they know the policy area | `S47-R1-C13` |
 | kharif, rabi | the names the MSP releases use for India's two main crop seasons; paddy is a kharif crop and wheat a rabi crop | `S37-R1-C09` |
@@ -393,10 +454,12 @@ teaches were deleted. Terms used before their gloss, and terms used for two thin
 | learning styles | the idea that people differ in which mode of teaching or study works best for them | `S57-R1-C06` |
 | learning-styles hypothesis | the claim that teaching fitted to a learner's style gives a better learning outcome | `S57-R1-C06` |
 | least squares | choosing a number by making squared misses as small as possible | `S02-R1-C09` |
+| legend | (1) to a journal, a figure's caption (`S58-R1-C14`); (2) drawing programs' word for the key, which says which colour is which (`S58-R1-C18`) | `S58-R1-C14`, `S58-R1-C18` |
 | legislature | the body that makes law: Parliament for the country, a State Legislature for its own state | `B0-R0-C43` |
 | length (of a vector) | the number of entries it has | `S02-R1-C10` |
 | level (of a factor) | one of the allowed categories, in a set order; a value not among them becomes `NA` without an error | `S52-R1-C14` |
 | lever | a handle you pull to get a result; the identity gives you none | `S01-R1-C06` |
+| Lie Factor (LF) | Tufte's measure: the percentage change drawn in the figure divided by the percentage change in the data; 1 draws the change at its true size | `S58-R1-C17` |
 | ligand | the molecule that fits into a protein shaped to hold it | `B0-R0-C35` |
 | limit | the number the average rates close in on as the step h is taken closer and closer to zero, without h ever being set to zero | `S02-R1-C02` |
 | limits of integration | the two times at the foot and the top of the ∫ sign: where the time starts and where it stops | `S02-R1-C05` |
@@ -412,7 +475,9 @@ teaches were deleted. Terms used before their gloss, and terms used for two thin
 | long tail | the side of a distribution that thins out slowly | `B0-R0-C27` |
 | long-term memory | where what has been learned is kept; it has no known limit, and anything learned comes back from it as one piece | `S57-R1-C08` |
 | low-stakes test | a test whose score counts for little or nothing | `S57-R1-C03` |
+| luminosity (of a colour) | how bright or dark a colour looks | `S58-R1-C19` |
 | lurking variable | anything other than the method that affects the score | `S57-R1-C02` |
+| main clause | a clause that can stand as a sentence on its own; the main point of the sentence belongs in it | `S58-R1-C06` |
 | main question (in a topic guide) | one of the questions a study turns on, each coming from the study question (DeJonckheere and Vaughn's "core question") | `S36-R1-C06` |
 | maintenance requirement | the energy it takes to keep a person at a steady weight | `S01-R1-C04` |
 | management | Kotter: coping with complexity, by planning and budgeting, organizing and staffing, and controlling and problem solving | `S57-R1-C16` |
@@ -456,7 +521,9 @@ teaches were deleted. Terms used before their gloss, and terms used for two thin
 | motivating and inspiring | Kotter: keeping people moving in the direction, despite obstacles, by appealing to their needs, values and emotions | `S57-R1-C16` |
 | move (in a derivation) | one named step from a line to the next: substitute, rearrange, divide by a time interval and shrink it, differentiate or integrate both sides, or assume | `S02-R1-C16` |
 | mutually exclusive | they cannot both happen | `B0-R0-C25` |
+| n (in a caption) | how many independent, that is separate, people or units were measured; not the number of measurements | `S58-R1-C20` |
 | NA | "not available": R's mark for a missing value; almost any arithmetic or comparison that involves it gives `NA` | `S52-R1-C04` |
+| narrative review | a summary of published work on a topic | `S58-R1-C01` |
 | natural logarithm (ln) | the power to which e must be raised to give the number; defined only for numbers above zero | `S02-R1-C04` |
 | negative number | a number less than zero, as far below zero as the matching positive number is above it, written with a minus sign in front | `B0-R0-C01` |
 | negative predictive value | the share of negative results that are right | `B0-R0-C26` |
@@ -467,6 +534,8 @@ teaches were deleted. Terms used before their gloss, and terms used for two thin
 | net metabolizable energy | metabolizable energy with the energy the body itself spends on digesting the food and handling it taken off | `B0-R0-C32` |
 | net production | the harvest less what was kept for seed, fed to animals or wasted before sale | `S37-R1-C06` |
 | net signed area | the area under a rate line with the area below the time axis counted as negative, so subtracted | `S02-R1-C05` |
+| nickname (for a long name) | a short plain name used in place of an abbreviation, such as "the centre" for the primary health centre | `S58-R1-C08` |
+| non-data ink | everything on a figure that is not data-ink: frames, grid lines, background fills, shadows | `S58-R1-C18` |
 | normalised gain (g) | the raw gain divided by the room to gain, (post − pre) ÷ (100 − pre); a fraction with no unit, not defined for a pre-test of 100% | `S57-R1-C12` |
 | notebook entry | one equation recorded in six parts: the equation as printed, each symbol in words with its unit, the whole equation as one sentence, its kind, what it assumes or whom it was fitted on, and the paper with the equation's number or page | `S02-R1-C17` |
 | notification | an order issued under a power a statute gives, and published in the Gazette | `B0-R0-C43` |
@@ -475,31 +544,42 @@ teaches were deleted. Terms used before their gloss, and terms used for two thin
 | numerator | the number above the line, saying how many of the parts are being counted | `B0-R0-C02` |
 | nutrition transition | Popkin and colleagues' name for a shift in the world's diets towards processed food, edible oils and sweet drinks | `S37-R1-C07` |
 | object (in R) | a value R holds in memory under a name | `S52-R1-C03` |
+| object (of a verb) | the noun that receives the action of the verb | `S58-R1-C06` |
 | objective (of how an outcome is measured) | measured by a test, an observation or a record (Frich's B levels) | `S57-R1-C13` |
 | observation (in tidy data) | what one row holds, such as one child at one visit; a second visit is a second row, not a second column | `S52-R1-C08` |
 | odds | how many times more likely the event is than its opposite: p divided by (1 minus p) | `B0-R0-C24` |
+| odds ratio | the odds of an outcome in one group divided by the odds in another | `S58-R1-C09` |
 | on the person (of an intervention) | changing only the eater's own decision, made from an offer left as it was: at most it adds information | `S37-R1-C17` |
+| one message (of a paper) | a paper's central claim in one or two sentences, what the study found and why that matters, written before the draft | `S58-R1-C03` |
+| one-pass test | a reader who does not know the work reads a draft once and writes in one or two sentences what it argues; you compare that, part by part, with your own message | `S58-R1-C13` |
 | open question | a question the person answers in their own words, not by picking from a list; it leaves the form of the answer to the respondent | `S36-R1-C03`, `S36-R1-C05` |
 | open window (of a citation count) | citations counted up to one fixed date for papers of many years, so an older paper has had longer to be cited than a younger one | `S55-R1-C06` |
 | order of magnitude | which power of ten a number is nearest to | `B0-R0-C08` |
 | order-of-magnitude estimate | every input rounded to one digit and a power of ten, the answer claimed only to the nearest power of ten; it tests a figure rather than producing one | `B0-R0-C08` |
 | organizing and staffing | Kotter: creating a structure of jobs, filling them with qualified people, communicating the plan to them, delegating responsibility for it, and setting up systems to monitor it | `S57-R1-C16` |
 | origin | the point where the two axes of a graph cross | `B0-R0-C19` |
+| original research article | a journal paper that reports a study for the first time | `S58-R1-C01` |
 | outcome | one member of the sample space | `B0-R0-C24` |
+| outline (of a paper) | one sentence for each planned paragraph, each sentence the claim that paragraph makes, written before the prose | `S58-R1-C04` |
 | outside lobbying | taking the case to the public, through the press or a campaign, so that the public presses the government | `S47-R1-C10` |
 | overall maximum, overall minimum | the highest, or lowest, point over the whole stretch of inputs allowed | `S02-R1-C09` |
 | overweight (child under five) | weight-for-height more than two standard deviations above the WHO growth standard (the NFHS-5 cut-off) | `S37-R1-C15` |
+| P value | the number a statistical test prints beside a comparison; what it means is beyond this book | `S58-R1-C09` |
 | package | a bundle of R functions, with the help pages that explain them and sometimes data, that extends what base R can do | `S52-R1-C06` |
+| pairs (of values) | two sets of values from the same people measured twice, before and after something | `S58-R1-C16` |
 | parallel forms | two forms of a test in which each item on one has a partner on the other; only the case or the numbers differ | `S57-R1-C10` |
 | parameter | a number that describes the population, if every member of it could be measured | `B0-R0-C29` |
 | parsing (a date) | turning text into a date by reading it according to the order of its parts, as `ymd()`, `dmy()` and `mdy()` do | `S52-R1-C15` |
 | passage (of a transcript) | the stretch of a transcript that says one thing | `S36-R1-C12` |
+| passive voice | the subject receives the action; the verb has a form of "to be" and a past participle, and the doer moves into a phrase beginning "by" or is left out | `S58-R1-C06` |
+| past participle | the form of a verb that follows "has" or "was": measured, given, left | `S58-R1-C06` |
 | path | the address of a file | `S52-R1-C07` |
 | PECO | population, exposure, comparison, outcome: the four parts of a question about an exposure people meet in their ordinary lives | `S55-R1-C02` |
 | peer-reviewed (paper) | checked by other researchers before the journal accepts it | `S55-R1-C06` |
 | percentage | a fraction whose denominator is one hundred; per cent means per hundred | `B0-R0-C04` |
 | percentage change | the change divided by the value it started from, times one hundred | `B0-R0-C04` |
 | percentage point | the plain difference between two percentages, as against per cent, which divides | `B0-R0-C04` |
+| perceptually uniform (colour scale) | the same step in the data looks like the same step in colour anywhere along the scale | `S58-R1-C19` |
 | performance (in S57) | what a learner can do during a session or within minutes of it | `S57-R1-C01` |
 | personal data | under the Digital Personal Data Protection Act, 2023, "any data about an individual who is identifiable by or in relation to such data" (section 2(t)); a recording or transcript that can identify someone is personal data | `S36-R1-C07` |
 | phenotype | what you can see about a person, the traits they show | `B0-R0-C37` |
@@ -522,19 +602,22 @@ teaches were deleted. Terms used before their gloss, and terms used for two thin
 | post-test | the test taken at the end of the teaching | `S57-R1-C10` |
 | potential energy | energy a thing has because of where it is, what it is made of, or what state it is in | `B0-R0-C31` |
 | pound | a unit this course does not use; exactly 0.453 592 37 kilogram | `S01-R1-C02` |
-| power calculation | the sum a survey or trial does to decide how many people it needs | `S36-R1-C02` |
 | power | (1) repeated multiplication of one number by itself, as 10^3 is ten times ten times ten (`B0-R0-C06`); (2) over people, the capacity to get things done through other people, from any source, authority being only one (`S57-R1-C16`) | `B0-R0-C06`, `S57-R1-C16` |
+| power calculation | the sum a survey or trial does to decide how many people it needs | `S36-R1-C02` |
 | power rule | for a positive whole number n, the derivative of x^n is n times x^(n minus 1) | `S02-R1-C03` |
 | Pre-legislative Consultation Policy | the Union's 2014 policy, a decision of the Committee of Secretaries and not a law, asking departments to put draft laws in public for at least thirty days; a department may skip it if it records why | `S47-R1-C06` |
 | pre-test | the test taken before the teaching | `S57-R1-C10` |
 | preamble | an Act's opening statement of why it was made | `S47-R1-C11` |
 | precision | how closely repeated readings agree with each other | `B0-R0-C30` |
+| predatory or pseudo-journal | (this book's reading; ICMJE's references section does not define it) a journal that presents itself as checking what it publishes and does not | `S58-R1-C05` |
 | predictor | one of the several columns a study predicts an outcome from, each given one weight | `S02-R1-C12` |
 | premise | a reason offered | `B0-R0-C42` |
+| preprint | a paper posted publicly before a journal has checked and accepted it | `S58-R1-C05` |
 | prevalence | how many people in a group have the condition, written P(condition present), with no test involved | `B0-R0-C26` |
 | previous publication | publishing a draft first, with a date, so that the public can object before the final rule or regulation is made | `S47-R1-C02`, `S47-R1-C07` |
 | price wedge | a gap that a public decision opens between two prices of the same food | `S37-R1-C10` |
 | priming | when what a reader meets first tilts how they judge what comes next | `S47-R1-C12` |
+| principle of proportional ink | Bergstrom and West: a shaded area must be in proportion to the value it stands for | `S58-R1-C17` |
 | priority household | a household under the National Food Security Act whose members are entitled to 5 kg of grain a month each | `S37-R1-C11` |
 | privacy | the person's right to control what is collected about them and who sees it | `S36-R1-C07` |
 | Private Member's Bill | a Bill introduced by a member of Parliament who is not a Minister | `S47-R1-C06` |
@@ -556,6 +639,7 @@ teaches were deleted. Terms used before their gloss, and terms used for two thin
 | public interest group | a group that seeks a good reaching everyone; it still stands to gain when the decision goes its way | `S47-R1-C10` |
 | public policy | what public bodies do about matters of concern to some part of society, including the outcomes their action creates and a choice not to act | `S47-R1-C01` |
 | quadratic | a function of the form px² + qx + r | `S02-R1-C09` |
+| qualitative colour scale | a small set of colours that look clearly different from each other and equally strong, for groups that have no order | `S58-R1-C19` |
 | qualitative research | research that asks what something is, what it means to the people involved, how it comes about and why, by gathering people's own words and actions and analysing them without turning them into counts | `S36-R1-C01` |
 | quantile | the value below which a given share of the data lies; R places it between two values by one of nine rules, the seventh unless told otherwise | `S52-R1-C16` |
 | quantitative research | research that asks how many or how much: how common something is, how large a quantity is, or how large a difference a treatment makes | `S36-R1-C01` |
@@ -580,20 +664,26 @@ teaches were deleted. Terms used before their gloss, and terms used for two thin
 | raw file (raw data) | the data as it first reached you; never edited, and never saved over | `S52-R1-C01` (first use), `S52-R1-C09` (defined) |
 | raw gain | post-test score minus pre-test score, in percentage points | `S57-R1-C12` |
 | reaction (Kirkpatrick's Level 1) | whether the learners liked the session | `S57-R1-C13` |
+| readability formula | a formula that estimates how hard a passage is to read from three counts: words, sentences and syllables | `S58-R1-C11` |
 | README | a short plain-text file at the top of the project folder that says what the project is and where the data came from, and gives the one command that reruns the analysis and the folder to run it from | `S52-R1-C07` (first use), `S52-R1-C10` (defined) |
 | receptor | the protein a ligand fits into, which changes shape when it does | `B0-R0-C35` |
 | recessive | an allele that shows only when both copies are that version | `B0-R0-C37` |
 | redundant (column) | a column that is a weighted sum of other columns: once they are known, it says nothing about any row that they did not already say | `S02-R1-C12` |
+| redundant coding | the same information carried two ways, such as words on the chart and colour | `S58-R1-C19` |
 | reference | a pointer from a claim to the place that is supposed to support it | `B0-R0-C41` |
+| reference list | the list at the end of a paper; each number in the text points to one entry in it | `S58-R1-C05` |
+| reference manager | a program that stores your references and types out the list | `S58-R1-C05` |
 | reflexivity | "sensitivity to the ways in which the researcher and the research process have shaped the collected data" (Mays and Pope 2000) | `S36-R1-C09` |
 | regressive tax | a tax applied at a lower overall rate as income rises, so it takes a bigger share of a poorer household's income | `S47-R1-C13` (first use), `S47-R1-C16` (defined) |
 | regulated system | a system that senses body weight, or a signal that tracks it, and pushes back when weight falls | `S01-R1-C09` |
 | regulation | what a body the statute set up may make, not Parliament; it binds because a statute said it could | `B0-R0-C43` |
 | relate question | a question that asks whether an exposure is associated with an outcome: whether the two go together | `S55-R1-C03` |
+| relative change | a difference between two percentages divided by the starting percentage, stated in per cent | `S58-R1-C09` |
 | relative frequency | a count divided by the total number counted; the proportion, under a longer name | `B0-R0-C27` |
 | relative path | a path that starts from the working directory, such as `data-raw/heights.csv` | `S52-R1-C07` |
 | replicated (result) | independent investigators collected new data on the same question and reached the same answer | `S52-R1-C20` |
 | replication package | the data and code that authors deposit with a published paper | `S52-R1-C20` |
+| report of activities | a write-up that records what the authors did, in the order they did it | `S58-R1-C02` |
 | reproducible (result) | the same data, analysed again with the same code, give the same result; this does not show the result is correct | `S52-R1-C20` |
 | repugnant (of a State law) | clashing with a law Parliament made on a Concurrent subject; Parliament's law prevails and the State law is void where the two clash (Article 254(1)) | `S47-R1-C04` |
 | rereading | studying a text again after a first reading: restudy done with a text | `S57-R1-C05` |
@@ -611,14 +701,17 @@ teaches were deleted. Terms used before their gloss, and terms used for two thin
 | retention interval | the time between study and the test | `S57-R1-C01` |
 | retrieval practice (practice testing) | an attempt by a learner, during learning, to bring material already met back to mind from memory, by recall or recognition, without looking at it | `S57-R1-C03` |
 | retrofit (double-duty action) | the WHO's second level: change an existing action so that it also acts on the other burden | `S37-R1-C15` |
+| reverse outline | the outline of `S58-R1-C04` made after the draft instead of before it: the point of each paragraph in one sentence, written in the margin and read alone | `S58-R1-C10` |
 | ribosome | the machine in a cell that builds proteins | `B0-R0-C35` |
 | rise | the change up, between two points on a line | `B0-R0-C19` |
+| risk ratio | the risk in one group divided by the risk in another | `S58-R1-C09` |
 | role clarity | a written statement, for each decision or piece of work, of who decides, who does the work, and who is asked first | `S57-R1-C16` |
 | room to gain | 100 − pre: the most a learner, or a class, could have gained | `S57-R1-C12` |
 | rounding | choosing which place to stop at, and adjusting the last kept digit for what follows it | `B0-R0-C03` |
 | row-count check | storing the number of rows before a step that could change it, such as a join, and comparing it with the number after | `S52-R1-C19` |
 | RStudio | the window you work in; installed after R | `S52-R1-C02` |
 | rule | what the Central Government may make; like a regulation, it binds because a statute said it could | `B0-R0-C43` |
+| rule of four | give a risk ratio, odds ratio or ratio of two percentages two significant figures if its first digit that is not zero is 4 or more, otherwise three | `S58-R1-C09` |
 | run | the change across, between two points on a line | `B0-R0-C19` |
 | running total | the amounts for successive intervals, each a rate times a time, added up as you go | `B0-R0-C22` |
 | sample | the part of that group that was actually measured | `B0-R0-C28` |
@@ -641,6 +734,7 @@ teaches were deleted. Terms used before their gloss, and terms used for two thin
 | self-sufficiency ratio (SSR) | the FAO's ratio: gross production divided by production plus imports minus exports, times 100 | `S37-R1-C06` |
 | semi-structured interview | an interview that follows a short guide of open questions: the topics are decided, the path is not, and the order and wording change to suit the person | `S36-R1-C03` |
 | sensitivity | the share of people with the condition that the test catches, written P(test positive given condition present) | `B0-R0-C26` |
+| sequential colour scale | colours running from light to dark, for a value that runs from low to high | `S58-R1-C19` |
 | session (R session) | R from the moment it starts until it is closed or restarted | `S52-R1-C06` |
 | session built around retrieval | a session in which the learners spend much of the time bringing material back from memory, each alone and in writing, and seeing the correct answer afterwards | `S57-R1-C11` |
 | session plan | a written table of a session's parts, in order, with the minutes for each | `S57-R1-C11` |
@@ -650,9 +744,12 @@ teaches were deleted. Terms used before their gloss, and terms used for two thin
 | shape | where a distribution's values sit relative to each other | `B0-R0-C27` |
 | share of MPCE | a group's MPCE divided by total MPCE, times 100: a share of rupees spent, not of food eaten | `S37-R1-C07` |
 | sheet (of a workbook) | one tab of an Excel workbook | `S52-R1-C09` |
+| short title | a shortened title a journal may want, such as one of no more than 40 characters, letters and spaces both counted | `S58-R1-C03` |
+| showing the data | drawing every value | `S58-R1-C16` |
 | SI | the international system of units, the one the world agreed to measure in | `B0-R0-C09` |
 | sigma (Σ) | add up; it comes with a counter and the counter's first and last values | `S02-R1-C01` |
 | signal transduction | a signal outside the cell converted into a signal inside it | `B0-R0-C35` |
+| significant (in statistics) | the verdict of a statistical test: roughly, a difference too large to put down to chance; this book does not teach the test | `S58-R1-C08` |
 | significant figures | the digits in a number that carry information about the quantity | `B0-R0-C03` |
 | silent change | a change to data, or a choice about which data to use, that leaves no instruction a second person can read and run again, and that nothing on the screen announces | `S52-R1-C01` |
 | single-duty change | this book's reading word, not an official one: a change that acts on one burden and does not aim at the other | `S37-R1-C15` |
@@ -684,10 +781,14 @@ teaches were deleted. Terms used before their gloss, and terms used for two thin
 | statute | a law enacted by Parliament or a State Legislature, each called an Act | `B0-R0-C43` |
 | stock | a quantity that exists at a moment and can be measured at that moment, such as the water in a tank | `B0-R0-C23` |
 | stock limit | a limit on how much of a grain traders may hold | `S37-R1-C16` |
+| stress position | the end of a sentence, which holds the new information the reader should weigh most | `S58-R1-C07` |
+| strip chart | each value drawn as a dot along the value axis, one column of dots per group; also called a univariate scatterplot | `S58-R1-C16` |
 | structured interview | a questionnaire read aloud, with everything decided in advance and most answers picked from a list; its answers are counted | `S36-R1-C03` |
 | stunted | of a child under five, height-for-age more than two standard deviations below the WHO growth standard | `S37-R1-C15` |
 | subject (of a formula) | the one letter got on its own; getting it there is making it the subject | `B0-R0-C16` |
+| subject (of a sentence) | what the clause is about, the thing the verb is said of; find the verb, then ask "who or what" in front of it | `S58-R1-C06` |
 | subjective (of how an outcome is measured) | stated by the learner or someone near them, as an opinion or a rating (Frich's A levels) | `S57-R1-C13` |
+| subordinate clause | a clause that has a subject and a verb but cannot stand alone; words such as although, because, when or while open one | `S58-R1-C06` |
 | subscript | a small letter or number set low after a symbol; part of the symbol's name, and never a multiplication | `S02-R1-C01` |
 | subsidy (on ration grain) | the economic cost minus the central issue price: what the government pays that the household does not | `S37-R1-C10` |
 | substitution | (1) putting a number in place of a letter, everywhere it appears (`B0-R0-C15`); (2) to solve two equations, rearranging one to give a letter on its own and putting that into the other (`B0-R0-C17`) | `B0-R0-C15`, `B0-R0-C17` |
@@ -697,6 +798,7 @@ teaches were deleted. Terms used before their gloss, and terms used for two thin
 | supply (of a food, for use within a country) | over one stated period, production plus imports minus exports, minus the rise in stocks (or plus the fall) | `S37-R1-C06` |
 | supply-chain sketch | a written map of one packaged food, from its ingredients' crops to the shop, with every link marked checked, seen or unknown | `S37-R1-C18` |
 | surroundings | everything outside the line you drew | `B0-R0-C33` |
+| syllable | one beat of a spoken word | `S58-R1-C11` |
 | system | whatever you have drawn a line round, for the purpose of counting something | `B0-R0-C33` |
 | system of two equations | a pair of equations that have to hold at the same time | `B0-R0-C17` |
 | systematic error | pushes every reading the same way, by close to the same amount, every time | `B0-R0-C30` |
@@ -708,6 +810,7 @@ teaches were deleted. Terms used before their gloss, and terms used for two thin
 | teaching lineage | the people you teach, and the people they go on to teach | `S57-R1-C15` |
 | team you run | a set of people whose work on one job you direct, for as long as the job lasts | `S57-R1-C15` |
 | temperature | how hot a thing is - a level, not an amount | `B0-R0-C34` |
+| tense | when the action happens; not the same as voice | `S58-R1-C06` |
 | terminal | the window where you type commands to the computer itself rather than to R | `S52-R1-C07` |
 | testing effect | a retrieval attempt improves memory on a later test more than restudy does; it holds on a delayed test, and on a test minutes later restudy can come out ahead | `S57-R1-C03` |
 | thematic frame | telling an issue through the broad view: the trend over time and what led to it | `S47-R1-C12` |
@@ -717,7 +820,10 @@ teaches were deleted. Terms used before their gloss, and terms used for two thin
 | tidy data | data in which each variable forms a column, each observation forms a row, and each type of observational unit forms a table (Wickham 2014) | `S52-R1-C08` |
 | tidyverse | a family of packages; loading it loads nine, among them dplyr and readr | `S52-R1-C03` (first use), `S52-R1-C06` (defined) |
 | time constant (τ) | ρ divided by the total slope, in days; the gap to the equilibrium shrinks as e^(-t/τ), so τ is 1 divided by the rate constant k | `S02-R1-C08` |
+| title (of a figure) | the caption's first sentence, which states the finding; not text drawn across the figure | `S58-R1-C20` |
 | topic guide | the written list of areas and questions an interviewer takes into a semi-structured interview; a guide, not a script | `S36-R1-C06` |
+| topic position | the start of a sentence, which links back to what the reader already has and names whose story the sentence tells | `S58-R1-C07` |
+| topic sentence | the sentence that states a paragraph's one point, often first | `S58-R1-C10` |
 | total energy expenditure (TEE) | the product of physical activity level and basal metabolic rate: what a group spends in a day | `S01-R1-C03` |
 | trace (who decides) | a fixed sequence of six steps that takes a proposal to the body that can turn it into policy, and to the power that body would use | `S47-R1-C11` |
 | Transaction of Business Rules | the Union government's rules (1961, amended), made by the President under Article 77(3), saying who decides a case and which cases must go to the Cabinet | `S47-R1-C05` |
@@ -725,6 +831,7 @@ teaches were deleted. Terms used before their gloss, and terms used for two thin
 | transmission | teaching by telling: the teacher explains and the learners listen, take notes, and ask the odd question | `S57-R1-C01` |
 | triglyceride | the molecule fat is made of, in food and in a body alike | `B0-R0-C36` |
 | trueness | how close the average of many repeated readings sits to the true value | `B0-R0-C30` |
+| truncating an axis | starting a bar chart's value axis above zero | `S58-R1-C17` |
 | turn | one unbroken stretch of speech by one speaker in a transcript | `S36-R1-C11` |
 | two-way table | a table that sorts the same people twice, one way down the columns and the other way across the rows | `B0-R0-C26` |
 | type (of a value in R) | the one kind of value a vector holds; the first three met are numeric (numbers), character (text) and logical (`TRUE` or `FALSE`) | `S52-R1-C04` |
@@ -738,13 +845,18 @@ teaches were deleted. Terms used before their gloss, and terms used for two thin
 | upstream (of an intervention) | changing a decision taken before the person chooses: a crop, a recipe, a price, a shelf, a ration basket | `S37-R1-C17` |
 | utility (of a study technique) | Dunlosky and colleagues' overall rating, low, moderate or high: how widely a technique's benefit holds, and how it compares with the others | `S57-R1-C05` |
 | value axis | the axis a bar's length is read against: the side axis when bars stand up, the bottom axis when they lie flat | `B0-R0-C40` |
+| value message | the opinion a chart carries ("costs are monstrous"), in Bateman and colleagues' sense | `S58-R1-C18` |
 | value premise | a premise that says what matters, or what ought to be done | `S47-R1-C16` |
 | value question | a question about what ought to be done, which people answer from their values (Blackstone's textbook calls it an ethical question) | `S55-R1-C04` |
 | variable | (1) a letter written in place of a number (`B0-R0-C15`); (2) in R, another name for a named object (`S52-R1-C03`); (3) in a table of data, what one column holds: one column, one variable (`S52-R1-C08`) | `B0-R0-C15`, `S52-R1-C03`, `S52-R1-C08` |
 | variance | worked out from the squared deviations: add them, then divide by the count for a whole population, or by one less than the count for a sample | `B0-R0-C28` |
 | vector | (1) an ordered list of numbers, called its entries; one row of a data table is a vector; (2) in R, an ordered set of values of one type, held as one object under one name and built with `c()`; each column of a data frame is one | `S02-R1-C10`, `S52-R1-C04` |
+| vector graphic | an image saved as the shapes themselves, redrawn at any size without losing sharpness; a pdf can hold one | `S58-R1-C22` |
+| verb | the word for what happens: an action, an occurrence or a state of being | `S58-R1-C06` |
 | verb (dplyr) | a dplyr function that does one thing to a data frame and hands back a new one, leaving the one it was given unchanged | `S52-R1-C11` |
 | villi | the tiny fingers lining the gut | `B0-R0-C38` |
+| violin plot | a smoothed outline of where the values fall | `S58-R1-C16` |
+| voice | which of the doer and the thing acted on is the subject: whether the subject did the action or received it; tense says when | `S58-R1-C06` |
 | warm-up question | an easy first question on something the respondent knows all about, to get them talking | `S36-R1-C06` |
 | wasted | of a child under five, weight-for-height more than two standard deviations below the WHO growth standard | `S37-R1-C15` |
 | weighted sum | each vector multiplied by its own number, then added: cv + dw for vectors v and w and numbers c and d | `S02-R1-C10` |
@@ -764,3 +876,4 @@ teaches were deleted. Terms used before their gloss, and terms used for two thin
 | x-axis | the flat line along the bottom of a graph | `B0-R0-C19` |
 | y-axis | the upright line up the side of a graph | `B0-R0-C19` |
 | zero error | an instrument reading something other than zero where it should read zero, as a thermometer in melting ice reading 0.3 °C | `B0-R0-C30` |
+| zig-zag (of a paragraph) | leaving a topic and coming back to it later | `S58-R1-C10` |
