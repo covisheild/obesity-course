@@ -269,17 +269,17 @@ simplified_explanation: |
 
   Using a package takes two steps, and they happen at different times.
 
-  1. **Install it, once per computer.** You type it in the console, not in your script:
+  **First, install it, once per computer.** You type it in the console, not in your script:
 
-     ```r norun
-     install.packages("dplyr")
-     ```
+  ```r norun
+  install.packages("dplyr")
+  ```
 
-  2. **Load it, in every session.** It goes at the top of your script:
+  **Then load it, in every session.** It goes at the top of your script:
 
-     ```r norun
-     library(dplyr)
-     ```
+  ```r norun
+  library(dplyr)
+  ```
 
   Some packages share a function name with another package. Loading dplyr, for example, hides
   another `filter()`, which belongs to stats, a package that comes with R. To be sure which one
@@ -571,8 +571,8 @@ practice:
 - level: 5
   prompt: |
     Without loading any package, count the rows of `penguins_raw.csv` in your project's
-    `data-raw` folder, and say what one row stands for. (`S52-R1-C07` sets up the project; if
-    you have none yet, do this after it.)
+    `data-raw` folder, and say what one row stands for. (The project is set up in `S52-R1-C07`;
+    if you have none yet, do this after it.)
   answer: |
     ```r
     readr::read_csv(here::here("data-raw", "penguins_raw.csv"), show_col_types = FALSE) |>

@@ -244,15 +244,7 @@ illustrations:
     [1] 333
     ```
 
-    333 rows. Each column you add can take more rows away. Here are the four counts side by side:
-
-    ```table
-    | Rows kept | Number of rows |
-    | all rows | 344 |
-    | body mass present | 342 |
-    | body mass and sex present | 333 |
-    | every column present | 34 |
-    ```
+    333 rows. Each column you add can take more rows away.
   analogy_breaks_when: |
     The counts are of rows in this one file, which records nesting observations, not a survey of
     all penguins. They say how many rows each choice keeps, not whether the rows kept are like the
@@ -294,7 +286,7 @@ illustrations:
     0's order-of-magnitude check catches it in one glance: no clinic's mean adult weight is in the
     hundreds.
 
-    The best place to fix this is the reading step. `S52-R1-C09` declared codes with `na =` in
+    The best place to fix this is the reading step: in `S52-R1-C09` you declared codes with `na =` in
     `read_csv()`. When the data are already in R, perhaps from a file
     type that has no such argument, fix them in code. Make a new column with `if_else()`, keeping
     the old one beside it:
@@ -699,15 +691,6 @@ practice:
 
     Run it. Find what broke, and why the report looks reasonable.
   answer: |
-    ```r
-    weights <- c(58, -9, 66, 71, -9, 63)
-    mean(weights[!is.na(weights)])
-    ```
-
-    ```output
-    [1] 40
-    ```
-
     The code gives 40, as reported, and 40 is wrong. `!is.na()` removes nothing, because there is
     no `NA` in the vector: the two -9s are ordinary numbers, and they pull the mean down.
 
@@ -755,15 +738,10 @@ practice:
     They report: "height could not be summarised; the data are missing". Find what broke.
   answer: |
     ```r
-    mean(camp$height_cm)
     class(camp$height_cm)
     ```
 
     ```output
-    [1] NA
-    Warning message:
-    In mean.default(camp$height_cm) :
-      argument is not numeric or logical: returning NA
     [1] "character"
     ```
 
@@ -939,7 +917,9 @@ figures:
   source: draw.py
   spec:
     kind: bar
-    from_table: {block: 0, x: 0, y: [1]}
+    x: ["all rows", "body mass present", "body mass and sex present", "every column present"]
+    series:
+    - {name: "Number of rows", y: [344, 342, 333, 34]}
     x_label: rows kept
     y_label: number of rows
     y_range: [0, 400]

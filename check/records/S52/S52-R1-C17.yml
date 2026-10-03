@@ -196,7 +196,7 @@ simplified_explanation: |
   3. But "visit" is a variable, and here its values sit in the column names. In the column names,
   `summarise(.by = visit)` cannot reach them.
 
-  **pivot_longer()** turns the three columns into two: one saying which visit, one saying the weight.
+  `pivot_longer()` turns the three columns into two: one saying which visit, one saying the weight.
 
   **The two files.** A survey sends the demographics in one file and the measurements in another, with a
   participant number in both.
@@ -205,7 +205,7 @@ simplified_explanation: |
   matching row of the first file appears twice in the result. No error, no warning.
 
   So count the rows before and after every join. Find keys that appear more than once. Find rows that did not match
-  with **anti_join()**.
+  with `anti_join()`.
 illustrations:
 - body: |
     Start with a made-up weight register in the wide shape a clinic would write by hand. Each
@@ -638,6 +638,8 @@ exercises:
     Without looking back, say what each of these returns: `pivot_longer()`, `pivot_wider()`,
     `left_join(x, y)` and `anti_join(x, y)`.
   answer: |
+    What each returns:
+
     - `pivot_longer()`: the same data with more rows and fewer columns; a set of columns becomes a
       column of their names and a column of their values.
     - `pivot_wider()`: the reverse, with fewer rows and more columns.

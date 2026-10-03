@@ -427,37 +427,47 @@ illustrations:
 
     `<int>` marks whole numbers (integers), and `<NA>` is how a tibble prints a missing text value.
     Two values, FEMALE and MALE, in capitals, and 11 rows missing. To see how the file writes a missing
-    value, look at its first lines as plain text with `head -n 5`, a terminal command that prints a
-    file's first 5 lines:
+    value, look at one line of it as plain text. `sed -n 5p`, a terminal command, prints a file's fifth
+    line, which is its fourth row after the header. `cut -c 64-124` keeps characters 64 to 124 of it,
+    from the Stage column to the measurements:
 
     ```sh
-    head -n 5 data-raw/penguins_raw.csv
+    sed -n 5p data-raw/penguins_raw.csv | cut -c 64-124
     ```
 
     ```output
-    studyName,Sample Number,Species,Region,Island,Stage,Individual ID,Clutch Completion,Date Egg,Culmen Length (mm),Culmen Depth (mm),Flipper Length (mm),Body Mass (g),Sex,Delta 15 N (o/oo),Delta 13 C (o/oo),Comments
-    PAL0708,1,Adelie Penguin (Pygoscelis adeliae),Anvers,Torgersen,"Adult, 1 Egg Stage",N1A1,Yes,2007-11-11,39.1,18.7,181,3750,MALE,NA,NA,Not enough blood for isotopes.
-    PAL0708,2,Adelie Penguin (Pygoscelis adeliae),Anvers,Torgersen,"Adult, 1 Egg Stage",N1A2,Yes,2007-11-11,39.5,17.4,186,3800,FEMALE,8.94956,-24.69454,NA
-    PAL0708,3,Adelie Penguin (Pygoscelis adeliae),Anvers,Torgersen,"Adult, 1 Egg Stage",N2A1,Yes,2007-11-16,40.3,18,195,3250,FEMALE,8.36821,-25.33302,NA
-    PAL0708,4,Adelie Penguin (Pygoscelis adeliae),Anvers,Torgersen,"Adult, 1 Egg Stage",N2A2,Yes,2007-11-16,NA,NA,NA,NA,NA,NA,NA,Adult not sampled.
+    "Adult, 1 Egg Stage",N2A2,Yes,2007-11-16,NA,NA,NA,NA,NA,NA,NA
     ```
 
     The fourth row, N2A2, has `NA` where its measurements should be. So the file writes a missing
     value as `NA`, which `read_csv()` reads as missing without being told. The quotes round
     `"Adult, 1 Egg Stage"` mark it as one value, so its comma does not start a new column.
 
-    Here is the dictionary, for the columns this book uses most. Each entry says where it came from.
+    Here is the dictionary, for the columns this book uses most, printed in two halves to fit the
+    page; in the file it is one table. Each entry says where it came from.
 
     ```table
-    | Variable, exactly as in the file | Meaning | Unit | Type | Allowed values | Source |
-    | Species | penguin species | none | text | three spellings, listed by count(Species) | help page; values from the file |
-    | Island | island where the sample was taken | none | text | Biscoe, Dream, Torgersen | help page; values from the file |
-    | Individual ID | identifier of the penguin | none | text | not one per row: 190 values in 344 rows | help page says unique; the file disagrees |
-    | Sample Number | running number of the sample | none | number | with Species, one per row | help page; checked in the file |
-    | Culmen Length (mm) | length of the ridge along the top of the bill | mm | number | expected range not stated | help page; name from the file |
-    | Body Mass (g) | body mass | g | number | expected range not stated | help page; name from the file |
-    | Sex | sex of the penguin | none | text | FEMALE, MALE | help page; values from the file |
-    | Delta 15 N (o/oo) | ratio of the nitrogen isotopes 15N to 14N | o/oo, from the column name | number | expected range not stated | help page; unit from the file |
+    | Variable, as in the file | Meaning | Unit | Type |
+    | Species | penguin species | none | text |
+    | Island | island where the sample was taken | none | text |
+    | Individual ID | identifier of the penguin | none | text |
+    | Sample Number | running number of the sample | none | number |
+    | Culmen Length (mm) | length of the ridge along the top of the bill | mm | number |
+    | Body Mass (g) | body mass | g | number |
+    | Sex | sex of the penguin | none | text |
+    | Delta 15 N (o/oo) | ratio of the nitrogen isotopes 15N to 14N | o/oo, from the column name | number |
+    ```
+
+    ```table
+    | Variable | Allowed values | Source |
+    | Species | three spellings, listed by count(Species) | help page; values from the file |
+    | Island | Biscoe, Dream, Torgersen | help page; values from the file |
+    | Individual ID | not one per row: 190 values in 344 rows | help page says unique; the file disagrees |
+    | Sample Number | with Species, one per row | help page; checked in the file |
+    | Culmen Length (mm) | expected range not stated | help page; name from the file |
+    | Body Mass (g) | expected range not stated | help page; name from the file |
+    | Sex | FEMALE, MALE | help page; values from the file |
+    | Delta 15 N (o/oo) | expected range not stated | help page; unit from the file |
     ```
 
     The full dictionary has {{n:penguins_cols}} rows, one for each column, and one more fact for the whole file:
@@ -506,7 +516,7 @@ illustrations:
     > Written with R {{n:r_version}}. Contact: your name and email address.
 
     The checksum is the one the section on reading a raw file taught you to take on the day the file
-    arrives. `S52-R1-C07` says what a terminal is; how to open one depends on your computer and is not covered
+    arrives. A terminal is explained in `S52-R1-C07`; how to open one depends on your computer and is not covered
     in this book.
 
     CC0 is the licence the package's own files state. Wilson and colleagues describe it as the "No

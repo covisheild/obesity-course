@@ -210,18 +210,18 @@ definition:
       claim_located: true
       checked_on: '2026-10-03'
 simplified_explanation: |
-  **mutate()** adds a column. You give the new column a name and a rule, and R applies the rule to
+  `mutate()` adds a column. You give the new column a name and a rule, and R applies the rule to
   every row. The number of rows does not change.
 
-  **if_else()** sorts rows into two groups by one test. **case_when()** sorts them into several
+  `if_else()` sorts rows into two groups by one test. `case_when()` sorts them into several
   groups. A row with a missing value passes no test and gets `NA`, which is what you want. Be
   careful with `.default`, the label for "everything else": a missing value lands there too.
 
-  **round()** is for showing a number, not for storing it. Keep full precision in the column you
+  `round()` is for showing a number, not for storing it. Keep full precision in the column you
   compute with, and round only what you print.
 
-  Text columns get cleaned the same way. **str_trim()** takes spaces off the ends.
-  **str_to_lower()** turns capitals into small letters. Together they turn "Male ", "male" and
+  Text columns get cleaned the same way. `str_trim()` takes spaces off the ends.
+  `str_to_lower()` turns capitals into small letters. Together they turn "Male ", "male" and
   "MALE" into "male".
 illustrations:
 - body: |

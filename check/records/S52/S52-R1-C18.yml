@@ -403,18 +403,6 @@ illustrations:
     9          NA     2
     ```
 
-    ```table
-    | Bin from (g) | Up to under (g) | Penguins |
-    | 2500 | 3000 | 9 |
-    | 3000 | 3500 | 62 |
-    | 3500 | 4000 | 94 |
-    | 4000 | 4500 | 59 |
-    | 4500 | 5000 | 51 |
-    | 5000 | 5500 | 34 |
-    | 5500 | 6000 | 29 |
-    | 6000 | 6500 | 4 |
-    ```
-
     The eight counts add up to {{n:penguins_mass_n}}, and the `NA` row holds the other 2. These are the heights of the
     eight bars. Rule 7 of Sandve and colleagues' ten rules for reproducible research asks for
     exactly this: keep the counts behind a histogram, not only the picture.
@@ -446,7 +434,7 @@ illustrations:
     Removed 2 rows containing missing values (`geom_point()`).
     ```
 
-    Look at the plot. The points are not blue. They are ggplot2's first default colour, a pinkish
+    The book prints no picture here, but on your screen the points are not blue. They are ggplot2's first default colour, a pinkish
     red, and a legend appears titled "colour" with one entry: "blue". Inside `aes()`, "blue" was
     treated as data, a column whose every value is the word "blue". ggplot2 gave that one value a
     colour of its own choosing and explained it in a legend.
@@ -484,7 +472,7 @@ illustrations:
       labs(
         x = "Flipper length (mm)",
         y = "Body mass (g)",
-        caption = "Source: palmerpenguins raw data (Gorman, Williams and Fraser), as read from data-raw/"
+        caption = "Source: palmerpenguins raw data, as read from data-raw/"
       )
 
     mass_flipper
@@ -571,7 +559,7 @@ illustrations:
       labs(x = "Species", y = "Rows in the file")
     ```
 
-    The bars stand at {{n:penguins_adelie}}, {{n:penguins_chinstrap}} and {{n:penguins_gentoo}}. A bar chart of means, with the axis cut to start at 3000 g,
+    On your screen the bars stand at {{n:penguins_adelie}}, {{n:penguins_chinstrap}} and {{n:penguins_gentoo}}. A bar chart of means, with the axis cut to start at 3000 g,
     would make the Gentoo bar look about three times the Adelie bar when its mean is about 1.4 times as
     large. Keep bar charts for counts and amounts that start at zero, and show distributions with
     boxes or histograms.
@@ -1187,8 +1175,12 @@ figures:
   alt: "A bar chart of eight body-mass bins: 9, 62, 94, 59, 51, 34, 29 and 4 penguins, from 2500 to under 3000 g up to 6000 to under 6500 g."
   source: "draw.py"
   spec:
+    derived:
+    - {value: "6500", from: "6000 + 500"}
     kind: "bar"
-    from_table: {block: 0, x: 0, y: [2]}
+    x: [2500, 3000, 3500, 4000, 4500, 5000, 5500, 6000]
+    series:
+    - {name: "Penguins", y: [9, 62, 94, 59, 51, 34, 29, 4]}
     x_label: "start of each 500 g bin, body mass (g)"
     y_label: "penguins"
     y_range: [0, 100]

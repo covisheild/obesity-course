@@ -323,13 +323,6 @@ illustrations:
     {{n:penguins_chinstrap}} of each. Those are the two missing values, one in each of two species. The tibble prints the
     means rounded to fit the screen.
 
-    ```table
-    | Species | Rows | Body masses used | Mean (g) | Median (g) |
-    | Adelie | 152 | 151 | 3701 | 3700 |
-    | Gentoo | 124 | 123 | 5076 | 5000 |
-    | Chinstrap | 68 | 68 | 3733 | 3700 |
-    ```
-
     Now put the table where a report can use it, without a hand touching a number. In your own
     project the `output/` folder already exists; the first line makes it if it does not, and does
     nothing if it does.
@@ -1238,7 +1231,9 @@ figures:
   source: "draw.py"
   spec:
     kind: "bar"
-    from_table: {block: 0, x: 0, y: [3]}
+    x: ["Adelie", "Gentoo", "Chinstrap"]
+    series:
+    - {name: "Mean (g)", y: [3701, 5076, 3733]}
     x_label: "species"
     y_label: "mean body mass (g)"
     y_range: [0, 6000]
@@ -1271,7 +1266,7 @@ figures:
   source: "draw.py"
   spec:
     kind: "bar"
-    from_table: {block: 1, x: 0, y: [3]}
+    from_table: {block: 0, x: 0, y: [3]}
     x_label: "rule for the quartiles"
     y_label: "interquartile range (cm)"
     y_range: [0, 12]

@@ -742,7 +742,7 @@ teaches were deleted. Terms used before their gloss, and terms used for two thin
 | value question | a question about what ought to be done, which people answer from their values (Blackstone's textbook calls it an ethical question) | `S55-R1-C04` |
 | variable | (1) a letter written in place of a number (`B0-R0-C15`); (2) in R, another name for a named object (`S52-R1-C03`); (3) in a table of data, what one column holds: one column, one variable (`S52-R1-C08`) | `B0-R0-C15`, `S52-R1-C03`, `S52-R1-C08` |
 | variance | worked out from the squared deviations: add them, then divide by the count for a whole population, or by one less than the count for a sample | `B0-R0-C28` |
-| vector | (1) an ordered list of numbers, called its entries; one row of a data table is a vector (`S02-R1-C10`); (2) in R, an ordered set of values of one type, held as one object under one name and built with `c()`; each column of a data frame is one (`S52-R1-C04`) | `S02-R1-C10`, `S52-R1-C04` |
+| vector | (1) an ordered list of numbers, called its entries; one row of a data table is a vector; (2) in R, an ordered set of values of one type, held as one object under one name and built with `c()`; each column of a data frame is one | `S02-R1-C10`, `S52-R1-C04` |
 | verb (dplyr) | a dplyr function that does one thing to a data frame and hands back a new one, leaving the one it was given unchanged | `S52-R1-C11` |
 | villi | the tiny fingers lining the gut | `B0-R0-C38` |
 | warm-up question | an easy first question on something the respondent knows all about, to get them talking | `S36-R1-C06` |

@@ -582,14 +582,6 @@ illustrations:
          106      361      389      670
     ```
 
-    ```table
-    | Column | What it holds | Missing values |
-    | BMXWT | weight (kg) | 106 |
-    | BMXHT | standing height (cm) | 361 |
-    | BMXBMI | body mass index (kg/m^2) | 389 |
-    | BMXWAIST | waist circumference (cm) | 670 |
-    ```
-
     BMI is missing more often than weight or height. The documentation says BMI was calculated from
     weight and height, so it is missing whenever either one is. Check that, with `|` meaning "or":
 
@@ -1098,7 +1090,9 @@ figures:
   source: draw.py
   spec:
     kind: bar
-    from_table: {block: 0, x: 0, y: [2]}
+    x: ["BMXWT", "BMXHT", "BMXBMI", "BMXWAIST"]
+    series:
+    - {name: "Missing values", y: [106, 361, 389, 670]}
     x_label: column of BMX_L
     y_label: rows with the value missing
     y_range: [0, 750]

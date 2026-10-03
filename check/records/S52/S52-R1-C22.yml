@@ -108,6 +108,8 @@ definition:
         The analysis in this section uses no weights, so every summary in it is unweighted and
         describes the participants only. Survey weights are the subject of S54.
 simplified_explanation: |
+  Eight steps, in the order real work runs them.
+
   1. **The question.** One sentence, saying who, what is measured, and how it is summarised.
   2. **The data.** Download the raw files. Read the terms that come with them. Record each file's
      checksum.
@@ -179,14 +181,14 @@ illustrations:
     two files, for the variables the question needs and no others:
 
     ```table
-    | Variable | File | Meaning | Unit | Codes | Source |
-    | SEQN | both | respondent sequence number, one per person | none | a number | codebooks; checked unique in the file |
-    | RIAGENDR | DEMO_L | gender | none | 1 Male, 2 Female | DEMO_L codebook |
-    | RIDAGEYR | DEMO_L | age in years at the screening interview | years | 0 to 79; 80 means 80 and over | DEMO_L codebook |
-    | RIDEXPRG | DEMO_L | pregnancy status at the exam | none | 1 pregnant, 2 not pregnant, 3 cannot tell; missing for anyone not asked | DEMO_L codebook |
-    | BMXWT | BMX_L | weight | kg | measured value | BMX_L codebook |
-    | BMXHT | BMX_L | standing height | cm | measured value | BMX_L codebook |
-    | BMXBMI | BMX_L | BMI, worked out from weight and height and rounded to one decimal | kg/m^2 | worked-out value | BMX_L codebook |
+    | Variable | Meaning, with unit | Codes | Source |
+    | SEQN | respondent sequence number, one per person | a number | both codebooks; checked unique in the file |
+    | RIAGENDR | gender | 1 Male, 2 Female | DEMO_L codebook |
+    | RIDAGEYR | age in years at the screening interview | 0 to 79; 80 means 80 and over | DEMO_L codebook |
+    | RIDEXPRG | pregnancy status at the exam | 1 pregnant, 2 not pregnant, 3 cannot tell; missing for anyone not asked | DEMO_L codebook |
+    | BMXWT | weight, kg | measured value | BMX_L codebook |
+    | BMXHT | standing height, cm | measured value | BMX_L codebook |
+    | BMXBMI | BMI, kg/m^2, worked out from weight and height and rounded to one decimal | worked-out value | BMX_L codebook |
     ```
 
     Two entries will matter in the script. Ages of 80 and over are all written as 80, so no age in
@@ -343,16 +345,7 @@ illustrations:
     ```
 
     The largest gap is under 0.05 kg/m^2, which is what rounding to one decimal allows. So the
-    column is what the codebook says it is. Here are the counts at each step:
-
-    ```table
-    | Step | Rows |
-    | body measures file as read | 8860 |
-    | after the join | 8860 |
-    | aged 20 and over | 6064 |
-    | not pregnant at the exam | 6023 |
-    | with a BMI | 5929 |
-    ```
+    column is what the codebook says it is.
   analogy_breaks_when: |
     The expected count caught the pregnancy filter because `count()` gave the number of pregnant
     adults before the filter (41, the codebook's figure too), so you knew what to expect. A filter whose correct result you cannot
@@ -525,13 +518,6 @@ illustrations:
     The three quartiles answer the question, as R's default (type 7) gives them: a quarter of the values lie
     below the first quartile, half below the median, three quarters below the third quartile.
 
-    ```table
-    | Share of adults below the value (%) | Male | Female |
-    | 25 | 24.9 | 24.4 |
-    | 50 | 28.1 | 28.7 |
-    | 75 | 32.4 | 34.7 |
-    ```
-
     The median BMI is {{n:nhanes_men_bmi_median}} kg/m^2 in men and 28.7 kg/m^2 in women (unweighted: these participants only), close together. The spread is
     not. The middle half of the women runs from 24.4 to 34.7 kg/m^2, a width of 10.3 kg/m^2. The
     middle half of the men runs from 24.9 to 32.4 kg/m^2, a width of 7.5 kg/m^2. The women's upper
@@ -666,6 +652,8 @@ exercises:
     Without looking back, list the steps of an end-to-end analysis in the order real work runs
     them. Then say what the gate to the next rung is.
   answer: |
+    The steps, in order:
+
     1. The question.
     2. The raw files, their terms and their checksums.
     3. The data dictionary.
@@ -709,8 +697,7 @@ exercises:
        `sessionInfo()`.
     9. After `output/` is deleted, `Rscript code/analysis.R` brings back the same table, byte for
        byte.
-    10. Your colleague's run gives the same table. If it does not, the two `sessionInfo()`
-        printouts are compared and the difference is written in the README.
+    10. Your colleague's run gives the same table. If it does not, the two `sessionInfo()` printouts are compared and the difference is written in the README.
 
     Write, beside the result, what it does not show.
   skill_ref: S52-R1-K01
@@ -723,6 +710,8 @@ exercises:
     BMI 24.6 kg/m^2 (n = 412)". Find each thing that stops this project from passing the gate, and
     say what each one would cost her.
   answer: |
+    Five things stop it from passing.
+
     - The README gives no single command, and "in order" leaves the reader guessing. Fix: one
       script, or one command that runs both, written in the README.
     - The path is absolute and names her desktop, so the script stops on every other computer.
@@ -779,8 +768,13 @@ figures:
   alt: "A chart of points for two groups at 25, 50 and 75 per cent. Male: 24.9, 28.1, 32.4 kg/m^2. Female: 24.4, 28.7, 34.7 kg/m^2. The female points start lower and end higher."
   source: "draw.py"
   spec:
+    derived:
+    - {value: "75", from: "100 * 3 / 4"}
     kind: "scatter"
-    from_table: {block: 2, x: 0, y: [1, 2]}
+    x: [25, 50, 75]
+    series:
+    - {name: "Male", y: [24.9, 28.1, 32.4]}
+    - {name: "Female", y: [24.4, 28.7, 34.7]}
     x_label: "share of adults below the value (%)"
     y_label: "BMI (kg/m^2)"
     relations:
@@ -811,7 +805,9 @@ figures:
   source: "draw.py"
   spec:
     kind: "bar"
-    from_table: {block: 1, x: 0, y: [1]}
+    x: ["body measures file as read", "after the join", "aged 20 and over", "not pregnant at the exam", "with a BMI"]
+    series:
+    - {name: "Rows", y: [8860, 8860, 6064, 6023, 5929]}
     x_label: "step of the script"
     y_label: "rows"
     y_range: [0, 10000]

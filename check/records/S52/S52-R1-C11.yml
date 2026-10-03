@@ -258,7 +258,7 @@ definition:
       claim_located: true
       checked_on: '2026-10-03'
 simplified_explanation: |
-  **filter()** keeps rows. You write a test, and a row stays only if the test says `TRUE` for it.
+  `filter()` keeps rows. You write a test, and a row stays only if the test says `TRUE` for it.
 
   Here is the trap that catches everyone once. A test on a missing value gives neither `TRUE` nor `FALSE`. It gives `NA`, "don't know". `filter()`
   drops every row where the test says "don't know". To find the missing ones, ask `is.na()`, which answers `TRUE` or `FALSE`.
@@ -1127,6 +1127,8 @@ practice:
     What it does not establish:
 
     - That heavy Gentoo penguins are male in general. Two rows are two rows.
+    - Anything about the Gentoo row with no body mass, N38A2. `filter()` dropped it, because its
+      test was `NA`.
     - Anything about a penguin of exactly 6000 g. "Over 6 kg" became `> 6000`, which leaves 6000
       out. If the speaker meant "6 kg or more", the test is `>= 6000`. Run that too:
 
@@ -1151,8 +1153,6 @@ practice:
 
       Four rows, because two show exactly 6000 g, and all four are recorded as male. Here
       the two readings agree. They need not. Say which one you used.
-    - Anything about the Gentoo row with no body mass, N38A2. `filter()` dropped it, because its
-      test was `NA`.
   refs:
   - horst_2020_palmerpenguins
 retrieval_items:
