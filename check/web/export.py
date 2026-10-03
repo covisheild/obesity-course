@@ -224,6 +224,26 @@ def mark_terms(h, terms, seen, at=(0, 0)):
     return "".join(out)
 
 
+SENSE = re.compile(r"\((\d)\)\s*(.*?)(?=;\s*\(\d\)\s|$)", re.S)
+
+
+def senses_of(row):
+    """[(plain words, [record ids])]: one item per numbered sense, or the whole row if unnumbered."""
+    if not row["plain"].startswith("(1) "):
+        return [(row["plain"], row["ids"])]
+    parts = [m.group(2).strip().rstrip(";").strip() for m in SENSE.finditer(row["plain"])]
+    out = []
+    for n, part in enumerate(parts):
+        ids = re.findall(r"(?:B0|S\d\d)-R\d-C\d\d", part)
+        # The id in brackets says where it is taught; the reader sees that in "First taught in".
+        part = re.sub(r"\s*\(`?(?:B0|S\d\d)-R\d-C\d\d`?\)\s*$", "", part)
+        if not ids:
+            # GLOSSARY.md: the last column lists the senses' records in the senses' order.
+            ids = [row["ids"][n]] if len(row["ids"]) == len(parts) else row["ids"]
+        out.append((part, ids))
+    return out or [(row["plain"], row["ids"])]
+
+
 def book_terms(book_id, number_of, recs, b0_label):
     """The glossary a book may use: terms first taught in this book or in an earlier one.
 
@@ -233,19 +253,23 @@ def book_terms(book_id, number_of, recs, b0_label):
     mine_n = number_of.get(book_id, 0)
     groups = {}
     for row in glossary():
-        books = {reader_book(i) for i in row["ids"]}
-        if not any(number_of.get(b, 999) <= mine_n for b in books):
-            continue
         key = row["head"].lower()
         if len(key) < 3 or key in EVERYDAY:
             continue
-        first = min(position(i, recs, number_of) for i in row["ids"])
-        where = ", ".join(sorted({label_for(i, recs, b0_label, number_of) for i in row["ids"]}))
-        sense = {"term": row["term"], "plain": inline_md(row["plain"], recs, b0_label, number_of),
-                 "where": where, "own": book_id in books}
-        g = groups.setdefault(key, {"head": row["head"], "senses": [], "from": first})
-        g["senses"].append(sense)
-        g["from"] = min(g["from"], first)
+        # One row may hold several numbered senses, each naming the record that teaches it:
+        # "(1) ... (`B0-R0-C42`); (2) ... (`S52-R1-C05`)". A book shows only the senses taught in
+        # it or in an earlier book, never one a later book teaches.
+        for plain, ids in senses_of(row):
+            ids = [i for i in ids if number_of.get(reader_book(i), 999) <= mine_n]
+            if not ids:
+                continue
+            first = min(position(i, recs, number_of) for i in ids)
+            where = ", ".join(sorted({label_for(i, recs, b0_label, number_of) for i in ids}))
+            sense = {"term": row["term"], "plain": inline_md(plain, recs, b0_label, number_of),
+                     "where": where, "own": any(reader_book(i) == book_id for i in ids)}
+            g = groups.setdefault(key, {"head": row["head"], "senses": [], "from": first})
+            g["senses"].append(sense)
+            g["from"] = min(g["from"], first)
     entries, matchers = [], []
     for gid, (key, g) in enumerate(sorted(groups.items())):
         g["senses"].sort(key=lambda s: not s["own"])
