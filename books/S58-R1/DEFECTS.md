@@ -651,3 +651,15 @@ All 29 figures were opened as images. Figure-specific notes from the planners ar
 - **FIG-5 (S58-R1-C16, `s58-r1-c16-every-value.png`):** x ticks run 0–25 over adults numbered 1–24; the ward labels carry the grouping. Minor; tool limitation on tick placement.
 - **FIG-6 (contract, deferred; from C19 item 7):** a one-series figure is filled in the palette's saturated primary (magenta) with no spec option to choose a lighter fill or a neutral grey; C19 teaches colour only for meaning. Fix with FIG-1/FIG-2 in a contract-change chat.
 - **RENDER-1 (contract, deferred; from C07 item 8 and every section's reference-list item):** the rendered reference lists are in the series' house style, not the NLM style C05 teaches, number per section, can repeat a number inside one bracket, and print `library.bib` notes. C05 tells the reader so (fixer decision 1). Renderer change for a contract-change chat (master handover §4 item 5 already lists the bracket de-duplication).
+
+## Found in the rendered pages (Step 7b, 3 Oct 2026)
+
+One fresh reader of the built PDF looked at about 120 of its 206 pages. Record-level items went into the section defect files (C01, C03, C05, C06, C08, C09, C11, C15, C17, C20, C21, C22, C23) under "Found in the rendered pages". The rest are the shared renderer's, deferred to a contract-change chat (`check/**` is frozen while books run):
+
+- **RENDER-2:** the Inter faces bundled in `check/pdf/fonts/` have no √, ≈ or superscript minus, and the Inter font stacks in `check/pdf/style.css` fall back to nothing that has them, so those signs print blank in tables, captions and the Symbols page ("the value:   9 = 3", "10 ³ = 0.001"). Body text (Source Serif 4 → DejaVu Serif) is unaffected. Fix: add "DejaVu Sans" to every Inter stack (or merge the glyphs into the Inter files). Affects every book's Symbols page.
+- **RENDER-3:** URLs and identifiers hyphenated mid-word in tables and reference lists ("ht-/tps://", "PM-/C2064100", "re-/commendations").
+- **RENDER-4:** table header rows styled two ways (dark bar vs plain) across the book; narrow first columns break words mid-word ("paragr/aph", "Introdu/ction").
+- **RENDER-5:** lists in the answers appendix print in a visibly larger type than the body.
+- **RENDER-6:** page-break faults: a paragraph broken with a third of a page blank (pp. 34, 102), a practice label stranded at a page foot (p. 176), a table's last row alone on the next page (pp. 87–88, 135).
+- **RENDER-1** (above) covers the reference lists (396 entries, one per cited passage; house style; notes printed).
+- The glossary prints empty (p. 200) and the series list calls this book "in progress" (p. 201): both are expected at this stage (glossary merge and freeze come next).
