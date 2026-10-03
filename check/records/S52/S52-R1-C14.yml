@@ -18,14 +18,10 @@ concept_deps:
 - S52-R1-C13
 definition:
   text: |
-    A categorical variable takes one of a fixed, known set of values, such as sex or island. In R
-    it can be stored as text (a character vector) or as a factor. A factor stores each value
-    together with its levels: the list of allowed categories, in a set order. The order of the
-    levels decides the order of the rows in a count and of the categories in a table or plot.
+    A factor stores each value together with its levels: the list of allowed categories, in a set order.
 
-    `factor(x, levels = ...)` makes a factor with the levels given. A value of `x` that is not
-    among the levels becomes `NA`, without an error. With no levels given, they are taken from
-    the data in alphabetical order. `levels(f)` lists them.
+    `factor(x, levels = ...)` makes a factor with the levels given. A value of `x` that is not among the levels becomes `NA`,
+    without an error. With no levels given, they are taken from the data in alphabetical order.
 
     Three functions come from the forcats package. The first, `fct_recode()`, renames levels,
     written `new = "old"`, and leaves the others as they are. The second, `fct_relevel()`, moves
@@ -148,27 +144,15 @@ definition:
         Quoted for audit only (CC BY-NC-ND). The same section says “male” is different from
         “ male ”, with spaces at the beginning and end.
 simplified_explanation: |
-  The last section counted what was missing. This one counts what is there, when what is there is
-  a category: female or male, Biscoe or Dream, a thali or a sandwich.
+  "Male", "male " with a space at the end, and "M" are three different values to R.
 
-  A category column has a short list of allowed values. Typed by hand, it rarely keeps to the
-  list. "Male", "male " with a space at the end, and "M" are three different values to R. Each one
-  becomes its own group in a count, and nobody meant three groups.
-
-  **count()** shows you every value a column actually holds, and how many rows hold it. Run it on
-  every category column before you do anything else with it. A misspelling shows up as an extra
-  row.
-
-  A **factor** is a category column that knows its list. You give the list, called the levels, and
-  their order. The order then decides how a count or a table is laid out.
+  **count()** shows you every value a column actually holds, and how many rows hold it. A
+  misspelling shows up as an extra row.
 
   Here is the trap. When you make a factor and a value is not on your list, R turns it into `NA`
-  and says nothing. A misspelt "Female" quietly becomes missing. So clean the text first, with the
-  tools from the section on making new columns, and count again after making the factor.
+  and says nothing.
 
-  Codes need the same care. A file may store sex as 1 and 2. The data dictionary says which is
-  which, and **fct_recode()** writes that into the script: `female = "1"`. Never guess the codes
-  from the data.
+  Codes need the same care. A file may store sex as 1 and 2. Never guess the codes from the data.
 
   Two counts at once, `count(species, island)`, is Book 0's two-way table, written as one row
   per pair.
@@ -453,40 +437,33 @@ illustrations:
     from `fct_relevel()` or from the levels you list yourself does not move.
 must_know:
 - point: |
-    Run `count()` on every category column before you use it. Each misspelling, stray space or
-    capital letter shows up as an extra row, and that is the only place it shows up.
+    Run `count()` on every category column before you use it.
   kind: move
   bearing: methodological
 - point: |
-    The error is to think `factor()` warns about a value that is not one of its levels. It does
-    not. The value becomes `NA`, silently. Count the factor after making it, and treat any new
-    `NA` as a spelling you missed.
+    Count the factor after making it, and treat any new `NA` as a spelling you missed.
   kind: misconception
   bearing: methodological
 - point: |
-    Turn numeric codes into labelled categories with the labels from the data dictionary, written
-    once in the script with `fct_recode()`. Refuse a summary that averages a code.
+    Refuse a summary that averages a code.
   kind: trap
   bearing: methodological
 - point: |
     If you misspell an old level in `fct_recode()`, R warns "Unknown levels" and leaves that level
-    unchanged. Read the warning; it means a category you meant to rename is still there.
+    unchanged.
   kind: trap
   bearing: methodological
 - point: |
-    Set the order of the levels on purpose, with the levels you list or with `fct_relevel()`. The
-    order decides how every later count, table and plot is laid out.
+    Set the order of the levels on purpose, with the levels you list or with `fct_relevel()`.
   kind: move
   bearing: teaching
 - point: |
-    Use `.drop = FALSE` when you need the categories with no rows. A table that leaves out its
-    zeros hides that a combination never occurred.
+    A table that leaves out its zeros hides that a combination never occurred.
   kind: consequence
   bearing: methodological
 - point: |
     A clean count shows how many rows hold each category. It cannot show that the category was
-    recorded correctly in the first place. A patient entered as male when female stays male in
-    every count.
+    recorded correctly in the first place.
   kind: boundary
   bearing: clinical
 exercises:

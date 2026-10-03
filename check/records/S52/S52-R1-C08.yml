@@ -16,27 +16,13 @@ concept_deps:
 - S52-R1-C07
 definition:
   text: |
-    A data frame is R's table. It is a set of named columns placed side by side, where each column
-    is a vector and every column has the same number of elements, so the columns line up into rows.
-    Different columns may hold different types, but all the values within one column share one
-    type.
-
-    A tibble is the form of data frame the tidyverse uses. It prints its number of rows and
-    columns and the type of each column.
-
-    A variable, in the sense used here, is everything that measures one attribute, such as height,
-    across all the units measured. An observation is everything measured on one unit, such as one
-    child at one visit, across all the attributes.
+    A data frame is R's table. Different columns may hold different types, but all the values
+    within one column share one type.
 
     Data are tidy (Wickham 2014) when three rules hold. Each variable forms a column. Each
     observation forms a row. Each type of observational unit forms a table: facts about a child
     that do not change between visits go in one table, and measurements made at each visit go in
-    another. Any other arrangement is untidy.
-
-    Three untidy shapes are common. Values are used as
-    column names, as when weight at visits 1, 2 and 3 sits in three columns. Two variables are
-    stored in one column, as in a blood pressure written "104/66". Two kinds of unit are stored in
-    one table.
+    another.
   references:
   - citekey: swc_r_gapminder
     kind: textbook
@@ -190,32 +176,19 @@ definition:
         each individual in dataset". The second illustration shows that the ID alone does not
         pick out one bird.
 simplified_explanation: |
-  Book 0 asked four questions of every table, and the first was: what does one row stand for?
-  Tidy data turns that question into rules for how a table is built.
-
-  In R a table is a data frame. Picture it as columns standing side by side. Each column is a
-  vector, a set of values of one type: all numbers, or all text. Every column has the same
-  length. So the first value of every column belongs to the first row, the second to the second
-  row, and so on. A tibble is the tidyverse's kind of data frame. It tells you its size and the
+  Each column is a vector, a set of values of one type: all numbers, or all text. Every column has
+  the same length. A tibble is the tidyverse's kind of data frame. It tells you its size and the
   type of each column when it prints.
 
   A table is tidy when three things are true:
 
-  - **One column, one variable.** Height in one column, weight in another, and nothing else in
-    either.
-  - **One row, one observation.** One child at one visit is one row. A second visit is a second
-    row, not a second column.
-  - **One table, one kind of unit.** A child's sex and date of birth do not change between visits,
-    so they go in a table with one row per child. Weight at each visit goes in a table with one
-    row per visit.
-
-  The word "variable" now has three meanings in this book, and they must be kept apart. In Book 0
-  it was a letter standing for a number. In R it is the name of an object you made. In a data
-  frame it is a column: everything measured about one attribute.
+  - **One column, one variable.**
+  - **One row, one observation.** A second visit is a second row, not a second column.
+  - **One table, one kind of unit.** Weight at each visit goes in a table with one row per visit.
 
   Data typed into a spreadsheet often break the rules. Weights at three visits sit in three
   columns. Blood pressure is typed as "104/66" in one cell. Girls are marked by colouring their
-  rows pink. Each of these looks fine to the eye. Each stops the computer from using the data.
+  rows pink. Each stops the computer from using the data.
 illustrations:
 - body: |
     Start with a register the way a clinic might keep it in a spreadsheet. The numbers are made up.
@@ -443,46 +416,41 @@ illustrations:
 must_know:
 - point: |
     The error is to read the number of rows as the number of people, or birds, or children. Ask
-    first what one row stands for. Count the IDs, and check that an ID always points to the same
-    person, before you write "n = " in a report.
+    first what one row stands for.
   kind: misconception
   bearing: methodological
 - point: |
     When a register has one column per visit, the visit is hiding in the column names. Store it
-    as a column called `visit` with one row per visit. A fourth visit then adds rows, and no code
-    changes.
+    as a column called `visit` with one row per visit.
   kind: move
   bearing: methodological
 - point: |
     One cell, one value. "104/66", "45 kg", "2.3 or 2.4" and "0 (below detection)" each stop a
-    column from being numbers. Split the two numbers into two columns, move the unit into the
-    column name or the data dictionary, and put notes in a notes column.
+    column from being numbers.
   kind: trap
   bearing: methodological
 - point: |
-    Colour and highlighting are not data. A row painted yellow to mean "recheck" is lost the
-    moment the file is saved as CSV. Add a column, such as `recheck` with TRUE or FALSE, instead.
+    Colour and highlighting are not data. Add a column, such as `recheck` with TRUE or FALSE,
+    instead.
   kind: trap
   bearing: methodological
 - point: |
     Facts that do not change between visits, such as sex and date of birth, go in a table with one
-    row per person. Repeating them on every visit row invites the day when the copies disagree.
+    row per person.
   kind: consequence
   bearing: methodological
 - point: |
-    Before a data-entry team fills its first form, look at the sheet they designed. Ask for one
-    header row, one rectangle, one value per cell and no merged cells. Fixing the layout later costs far
-    more than agreeing it first.
+    Before a data-entry team fills its first form, look at the sheet they designed. Ask for one header
+    row, one rectangle, one value per cell and no merged cells.
   kind: move
   bearing: policy
 - point: |
     The word "variable" has three meanings: Book 0's letter, R's named object, and a data frame's
-    column. When a trainee is confused, ask which one they mean before you answer.
+    column.
   kind: move
   bearing: teaching
 - point: |
-    Tidy data makes the next step easy. It does not make the values right. A tidy table can hold a
-    weight of 700 kg as neatly as one of 70 kg.
+    Tidy data makes the next step easy. It does not make the values right.
   kind: boundary
   bearing: methodological
 exercises:

@@ -28,18 +28,8 @@ definition:
     An end-to-end analysis takes one question from raw data to its final table and figure in a
     single script that another person can run.
 
-    Real work does it in this order. Write the question. Obtain the raw files, read their terms of
-    use, and record their checksums. Write the data dictionary from the source's documentation. Set
-    up the project folder.
-
-    Then write the script,
-    which reads, checks, joins, cleans, derives, summarises, plots, writes its outputs to `output/`
-    and prints the versions that made them. Write the README, whose rerun line is the one command.
-    Last, a fresh session, or a second person, runs that command and gets the same outputs.
-
     The analysis is reproducible in this book's sense when the outputs come back the same from the
-    raw files with that one command. That says the result can be checked. It does not say the
-    result is right, or that it describes any population beyond the rows in the file.
+    raw files with that one command.
   references:
   - citekey: r4ds_2e
     kind: textbook
@@ -118,8 +108,6 @@ definition:
         The analysis in this section uses no weights, so every summary in it is unweighted and
         describes the participants only. Survey weights are the subject of S54.
 simplified_explanation: |
-  This section puts the whole book into one piece of work, in the order you would really do it.
-
   1. **The question.** One sentence, saying who, what is measured, and how it is summarised.
   2. **The data.** Download the raw files. Read the terms that come with them. Record each file's
      checksum.
@@ -128,16 +116,12 @@ simplified_explanation: |
   4. **The project folder.** `data-raw/` for the files as they arrived, `code/` for the script,
      `output/` for what the script makes.
   5. **The script.** Read, check, join, clean, work out new columns, summarise, plot, write the
-     outputs, print the versions. Every step is a line of code.
+     outputs, print the versions.
   6. **The README.** What the project is, where the data came from, and the one command that
      reruns it.
   7. **The rerun.** Delete the outputs and run the command from nothing. The same table and the
      same figure must come back.
   8. **What it does not show.** Say it, next to the result.
-
-  The data here are real: the body measures and the demographics of the people examined in an
-  American national survey, NHANES, in 2021 to 2023. The method is the same for a thesis dataset
-  from Raipur.
 illustrations:
 - body: |
     Start with the question, written in one sentence before you touch the data:
@@ -649,27 +633,22 @@ illustrations:
     differ in its bytes when nothing you would see has changed.
 must_know:
 - point: |
-    Write the question before you open the data, and write who it is about. "Adults aged 20 and
-    over examined in this survey cycle, not pregnant" decides every filter in the script. Without
-    it, each filter becomes a choice made after seeing the numbers.
+    Write the question before you open the data, and write who it is about.
   kind: move
   bearing: methodological
 - point: |
-    The error is to trust a filter because it ran without a warning. `filter(RIDEXPRG != 1)` ran
-    silently and dropped 4971 adults instead of 41, because a missing value is neither equal nor
-    unequal to 1. Before each filter, write down how many rows you expect it to keep, and check.
+    The error is to trust a filter because it ran without a warning. Before each filter, write
+    down how many rows you expect it to keep, and check.
   kind: misconception
   bearing: methodological
 - point: |
     Record each raw file's checksum in the README on the day it arrives, and the terms it came
-    with. Someone who questions your result months later can confirm in one line that they hold the
-    same file. They can also see whether they may use it.
+    with.
   kind: move
   bearing: policy
 - point: |
     Put a printed row count after every step that can add or drop rows, and a `stopifnot()` where
-    you know the right count. The log of counts is the first thing an examiner, or you next year,
-    reads to see what the script did.
+    you know the right count.
   kind: move
   bearing: methodological
 - point: |
@@ -681,15 +660,13 @@ must_know:
   refs:
   - nchs_nhanes_2021_2023_bmx_demo
 - point: |
-    The gate is one command from raw data to the same outputs. When you hand a project on, or ask
-    for one, the first test is that command in a fresh session. Ask for it before you read a single
+    The gate is one command from raw data to the same outputs. Ask for it before you read a single
     result.
   kind: move
   bearing: teaching
 - point: |
     Reproducible means the result can be checked, not that it is right. A wrong cut-point or a
-    wrong filter reruns perfectly. Rerunning shows that the script is complete; only reading it
-    shows whether it asks the right question.
+    wrong filter reruns perfectly.
   kind: boundary
   bearing: methodological
 common_misreading: |

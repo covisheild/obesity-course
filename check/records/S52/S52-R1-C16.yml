@@ -20,26 +20,19 @@ concept_deps:
 definition:
   text: |
     `summarise()`, from the dplyr package, makes a new data frame. It has one row for each
-    group, or a single row for the whole data frame when there are no groups. It has one column
-    for each grouping variable and one for each summary you name.
+    group, or a single row for the whole data frame when there are no groups.
 
-    A summary is a function that turns a column into one value. The function `n()` gives the
-    number of rows in the group, whatever they hold. The functions `mean()` and `median()` give
-    the mean and the median. The function `sd()` gives the standard deviation, dividing by one
-    less than the count. The function `quantile()` gives quartiles and other quantiles, and
-    `IQR()` gives the interquartile range. Both use the seventh of nine rules for placing a
-    quantile between two values, unless told otherwise.
-
-    When the column holds a missing value, `mean()`, `median()` and `sd()` give `NA`, and
-    `quantile()` and `IQR()` stop with an error, unless `na.rm = TRUE` is given.
+    The function `n()` gives the number of rows in the group, whatever they hold. The function
+    `sd()` gives the standard deviation, dividing by one less than the count. The function
+    `quantile()` gives quartiles and other quantiles, and `IQR()` gives the interquartile
+    range. Both use the seventh of nine rules for placing a quantile between two values, unless
+    told otherwise.
 
     `group_by()` marks a data frame as grouped by one or more columns, so that the next verbs
-    work group by group. `ungroup()` removes the marking. A `summarise()` on data grouped by
-    several columns removes only the last of them, so its result is still grouped. The `.by`
-    argument of `summarise()` groups for that one step only, and leaves the result ungrouped.
+    work group by group. `ungroup()` removes the marking. The `.by` argument of `summarise()`
+    groups for that one step only, and leaves the result ungrouped.
 
-    `count(a)` gives the number of rows for each value of `a`. It is roughly
-    `group_by(a) |> summarise(n = n())`.
+    `count(a)` gives the number of rows for each value of `a`.
   references:
   - citekey: rdocs_s52r1_dplyr
     kind: textbook
@@ -226,30 +219,14 @@ definition:
         Carries the reason a summary table is written to a file by code rather than copied from
         the screen.
 simplified_explanation: |
-  Earlier sections chose the rows of a data frame and changed its columns, one row still standing
-  for one observation. This one shrinks it. A summary turns many rows into one number: how many there are, their mean, their
-  median, their spread. Book 0 taught each of these by hand. Here R does the arithmetic, and your
-  job moves to choosing the summary and reading it.
+  The shape of the answer tells you what you asked for. Three species give three rows. If you expected three rows and got eight, you
+  grouped by something else as well.
 
-  **summarise()**, met once in the section on missing values, gives one row. Ask it for the mean body mass of every penguin in the file and
-  you get one row with one number.
+  Put the count beside every summary.
 
-  **group_by()** before it, or **.by** inside it, gives one row per group: one row per species,
-  one row per district, one row per clinic. The shape of the answer tells you what you asked for.
-  Three species give three rows. If you expected three rows and got eight, you grouped by
-  something else as well.
+  Quartiles have more than one recipe. None is wrong. Say which you used.
 
-  Put the count beside every summary. A mean of 3700 g from 151 penguins and a mean of 3700 g
-  from 3 penguins are not the same evidence. The reader of your table cannot tell them apart
-  unless you print the count. Be careful which count. `n()` counts rows. If some rows have no
-  value, the mean used fewer than `n()` of them. Count the values the mean actually used with
-  `sum(!is.na(x))`.
-
-  Quartiles have more than one recipe. Book 0's recipe, R's default and the one SPSS uses can give
-  three different answers on the same small set of numbers. None is wrong. Say which you used.
-
-  When the table is done, write it to a file in `output/` with code. Never copy a number off the
-  screen into a report. If the data change, rerun the script and the file changes with them.
+  Never copy a number off the screen into a report. If the data change, rerun the script and the file changes with them.
 
   A summary describes the rows in your file. It is not, by itself, a figure for anyone outside it.
 illustrations:
@@ -562,40 +539,32 @@ illustrations:
     it and the result comes back ungrouped, so the trap waits until the day you add a second.
 must_know:
 - point: |
-    Print the count beside every summary, and print the right count. `n()` counts rows. With
-    `na.rm = TRUE`, a mean uses only the rows that have a value, so count those with
-    `sum(!is.na(x))`. A table that prints {{n:penguins_adelie}} beside a mean of 151 values is wrong by one, and the
-    reader cannot see it.
+    Print the count beside every summary, and print the right count. `n()` counts rows. With `na.rm = TRUE`, a mean
+    uses only the rows that have a value, so count those with `sum(!is.na(x))`.
   kind: trap
   bearing: methodological
 - point: |
     The error is to think `na.rm = TRUE` fixes missing values. It only leaves them out, without a
-    word. Report how many were left out, in every table.
+    word.
   kind: misconception
   bearing: methodological
 - point: |
-    Check the shape of the result before reading a number. One row per group is what you asked
-    for. If there are more rows than groups you expected, an extra grouping column, or an `NA`
-    group, is in there.
+    Check the shape of the result before reading a number.
   kind: move
   bearing: methodological
 - point: |
     After `group_by()` on two columns, `summarise()` leaves the result grouped by the first. A
-    percentage worked out next is a percentage within each group, not of the total. Use `.by`,
-    or end with `ungroup()`.
+    percentage worked out next is a percentage within each group, not of the total.
   kind: trap
   bearing: methodological
 - point: |
-    Quartiles from R, SPSS and Book 0's hand method can differ on the same small set of numbers.
     When two tables disagree on a quartile, ask which rule each used before you suspect the data.
-    Name your software and rule in your methods.
   kind: consequence
   bearing: methodological
   refs:
   - rdocs_s52r1_stats
 - point: |
-    Write every summary table to `output/` with code. A number copied off the screen into a
-    thesis cannot be traced back. It also stays wrong when the data are corrected.
+    A number copied off the screen into a thesis cannot be traced back.
   kind: move
   bearing: methodological
   refs:
@@ -608,7 +577,7 @@ must_know:
 - point: |
     A summary describes the rows in your file. It is not an estimate for any population unless the
     rows were chosen to stand for one. For a survey, it also needs the survey's sample weights,
-    which a later book teaches. No line of `summarise()` can supply either.
+    which a later book teaches.
   kind: boundary
   bearing: methodological
 exercises:

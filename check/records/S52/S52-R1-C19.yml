@@ -37,10 +37,6 @@ definition:
     or combinations. A
     row-count check stores the number of rows before a step that could change it, such as a join,
     and compares it with the number after.
-
-    A value a check finds wrong is corrected by a line of code, never in the raw file. The line
-    picks out the row by its key, writes the corrected value into a new column, and carries a
-    comment giving the date, what was changed, and where the correct value came from.
   references:
   - citekey: rdocs_s52r1_base
     kind: textbook
@@ -185,28 +181,19 @@ definition:
         The lesson's check is made by the spreadsheet at the moment of typing. This section's check
         is made by the script on every run, after the data arrive; the two complement each other.
 simplified_explanation: |
-  Every analysis rests on beliefs about the data that nobody wrote down. Every height is in
-  centimetres. Each child appears once. The join did not add rows. A check writes one such belief as
-  a line of code, and the script stops the moment the belief is false.
-
-  **stopifnot()** is the tool. Give it a test that should be `TRUE`. If it is, nothing happens and
-  the script carries on. If it is not, the script stops with an error. Give each test a name that
-  says the belief in words, and the error prints that name.
+  **stopifnot()** is the tool. Give each test a name that says the belief in words, and the error
+  prints that name.
 
   Three checks cover most of what goes wrong.
 
-  - **Range.** Every height lies between two limits you wrote down. This is Book 0's
-    order-of-magnitude check, done by the computer on every row, every time the script runs.
+  - **Range.** Every height lies between two limits you wrote down.
   - **Key.** Every row has its own ID. Count the different IDs with `n_distinct()` and compare with
     the number of rows.
-  - **Row count.** Count the rows before a join or a filter and again after. Then compare. The
-    cases left out of the daily figures in the first section of this book grew unseen until
-    someone compared one count with another.
+  - **Row count.** Count the rows before a join or a filter and again after. Then compare.
 
   A check that fails is a question, not a verdict. Look at the rows it found. Go back to the paper
   register, the form or the person who measured. Then write the fix as a line of code, with the date
-  and the reason in a comment. Never fix it in the raw file. The raw file stays as it came, and the
-  script shows every change made to it.
+  and the reason in a comment. Never fix it in the raw file.
 illustrations:
 - body: |
     Start with an analysis that looks finished. Here is a made-up clinic register of six adults,
@@ -535,13 +522,12 @@ illustrations:
 must_know:
 - point: |
     The error is to think that a script which runs without an error has checked the data. It has
-    checked nothing you did not write as a check. A BMI computed from a height in metres runs as
-    smoothly as a right one.
+    checked nothing you did not write as a check.
   kind: misconception
   bearing: methodological
 - point: |
     Write each belief about the data as a `stopifnot()` line with a name that says the belief in
-    words. When it fails, the error message tells the next reader exactly what was assumed.
+    words.
   kind: move
   bearing: methodological
   refs:
@@ -554,22 +540,19 @@ must_know:
   bearing: methodological
 - point: |
     Never set a range check's limits from the smallest and largest values in the same data. Limits
-    taken from the data always pass on that data. Take them from a source or a stated decision, and
-    write which in a comment.
+    taken from the data always pass on that data.
   kind: trap
   bearing: methodological
 - point: |
     Count the rows before and after every join and every filter, and compare the two in code. An ID
-    repeated in the table you join to adds rows with no warning. Every mean after it counts someone
-    twice. dplyr warns only when IDs repeat in both tables.
+    repeated in the table you join to adds rows with no warning.
   kind: consequence
   bearing: methodological
   refs:
   - rdocs_s52r1_dplyr
 - point: |
     Fix a wrong value with a line of code. Pick the row by its ID and write the right value into a new
-    column. Say in a comment the date and where the right value came from. If no record gives the
-    right value, set it to `NA` and report it. Never guess it.
+    column. If no record gives the right value, set it to `NA` and report it.
   kind: move
   bearing: methodological
   refs:
@@ -580,15 +563,13 @@ must_know:
   kind: trap
   bearing: teaching
 - point: |
-    A check that fails is a question, not a verdict. A weight of 180 kg outside your limits may be a
-    real person, and a repeated ID may be a second visit. Look at the rows and the paper before you
-    change anything.
+    A weight of 180 kg outside your limits may be a real person, and a repeated ID may be a second
+    visit.
   kind: consequence
   bearing: clinical
 - point: |
     A range check catches a value outside its limits and never a wrong value inside them. A height of
-    126 cm typed for 162 cm passes. So a script whose checks all pass has data that are possible, not
-    data that are right.
+    126 cm typed for 162 cm passes.
   kind: boundary
   bearing: methodological
 exercises:

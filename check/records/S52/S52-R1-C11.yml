@@ -15,23 +15,19 @@ concept_deps:
 - S52-R1-C09
 definition:
   text: |
-    Four functions of the dplyr package choose parts of a data frame. Each takes a data frame as its
-    first argument and returns a new data frame. None of them changes the data frame it was given.
-    To keep a result, assign it to a name.
+    Four functions of the dplyr package choose parts of a data frame. None of them changes the data
+    frame it was given. To keep a result, assign it to a name.
 
     `select()` keeps the columns you name, in the order you name them, and drops the rest. Every row
-    is kept. A column can be renamed inside it with `new_name = old_name`. Selection helpers pick
-    columns by their names: `starts_with("Culmen")` picks every column whose name starts with
-    "Culmen".
+    is kept.
 
     `rename()` changes the names of columns you name, with `new_name = old_name`, and keeps every
     column, in its place.
 
-    `filter()` keeps the rows for which a condition is `TRUE`. A condition is built from
-    comparisons (`==` equal to, `!=` not equal to, `<`, `>`, `<=`, `>=`) joined by `&` (and), `|`
-    (or) and `!` (not). `x %in% c(a, b)` is `TRUE` where `x` equals one of the values listed.
-    Several conditions separated by commas must all be `TRUE`. A row whose condition is `NA` is
-    dropped. So a test for a missing value is written `is.na(x)`, never `x == NA`.
+    `filter()` keeps the rows for which a condition is `TRUE`. A condition is built from comparisons
+    (`==` equal to, `!=` not equal to, `<`, `>`, `<=`, `>=`) joined by `&` (and), `|` (or) and `!`
+    (not). Several conditions separated by commas must all be `TRUE`. A row whose condition is `NA`
+    is dropped. So a test for a missing value is written `is.na(x)`, never `x == NA`.
 
     `arrange()` sorts the rows by the values of the columns named, smallest first. `desc()` sorts
     largest first. Missing values go to the end either way.
@@ -196,30 +192,12 @@ definition:
       claim_located: true
       checked_on: '2026-10-02'
 simplified_explanation: |
-  The section on reading a raw file left you with the whole penguin file in R as one data frame:
-  {{n:penguins_rows}} rows and {{n:penguins_cols}} columns. Most questions need a few of those columns and some of the rows. Four functions do the
-  choosing.
-
-  **select()** keeps columns. You name the ones you want and the rest are dropped. Every row stays.
-
-  **rename()** gives columns new names and keeps all of them.
-
   **filter()** keeps rows. You write a test, and a row stays only if the test says `TRUE` for it.
-  "Island is Dream" is a test. So is "body mass is more than 4,000 g".
 
-  **arrange()** puts the rows in order: smallest first, or largest first with `desc()`.
+  Here is the trap that catches everyone once. A test on a missing value gives neither `TRUE` nor `FALSE`. It gives `NA`, "don't know". `filter()`
+  drops every row where the test says "don't know". To find the missing ones, ask `is.na()`, which answers `TRUE` or `FALSE`.
 
-  Here is the trap that catches everyone once. A test on a missing value gives neither `TRUE` nor
-  `FALSE`. It gives `NA`, "don't know". `filter()` drops every row where the test says "don't know".
-  So a test written as "body mass equals missing" says "don't know" on every row, and you get no
-  rows at all. To find the missing ones, ask `is.na()`, which answers `TRUE` or `FALSE`.
-
-  One more thing holds for all four. None of them touches the data frame you gave it. Each hands
-  back a new one, prints it, and forgets it, unless you give the result a name with `<-`. Your raw
-  data stays exactly as it was read.
-
-  The pipe, `|>`, lets you write the steps one under another. Read each `|>` as "then": take the
-  penguins, then keep these rows, then keep these columns, then sort.
+  Read each `|>` as "then": take the penguins, then keep these rows, then keep these columns, then sort.
 illustrations:
 - body: |
     Start with a question that fails. Which penguins have no body mass recorded?
@@ -443,42 +421,34 @@ illustrations:
     island.
 must_know:
 - point: |
-    The error is to write `filter(x == NA)` to find missing values. It returns no rows, without a
-    warning, and reads like "none are missing". Write `filter(is.na(x))`.
+    The error is to write `filter(x == NA)` to find missing values. Write `filter(is.na(x))`.
   kind: misconception
   bearing: methodological
 - point: |
-    An empty result is a claim about your test before it is a claim about your data. When
-    `filter()` returns no rows, or far fewer than you expected, print the column you tested and
-    look at its values. "Adelie penguin" with a small p matches nothing in this file.
+    An empty result is a claim about your test before it is a claim about your data.
   kind: trap
   bearing: methodological
 - point: |
-    `filter()` drops a row whose test is `NA`. So "body mass more than 4000 g" also drops the two
-    penguins with no body mass. Whenever you report a count after a filter, say whether missing
-    values were dropped by it.
+    `filter()` drops a row whose test is `NA`. Whenever you report a count after a filter, say
+    whether missing values were dropped by it.
   kind: consequence
   bearing: methodological
 - point: |
     Never type a filter into the raw file by deleting rows. Write the `filter()` line in the script.
-    It is visible, it can be undone by deleting one line, and the raw file stays whole for the next
-    question.
   kind: move
   bearing: methodological
 - point: |
-    A verb that is not assigned changes nothing. If a result vanishes on the next line, look for the
-    missing `<-`.
+    A verb that is not assigned changes nothing.
   kind: trap
   bearing: teaching
 - point: |
     Rename awkward column names once, near the top of the script, into snake case (lowercase words
-    joined by `_`). Every later line is shorter, and nobody has to type backticks again.
+    joined by `_`).
   kind: move
   bearing: methodological
 - point: |
     `filter()` keeps the rows that pass the test you wrote. It cannot tell you whether that test
-    matches your question. "Female" in a sex column may be coded "F", "FEMALE", 2 or "female"; read
-    the data dictionary before you write the test.
+    matches your question.
   kind: boundary
   bearing: methodological
 exercises:

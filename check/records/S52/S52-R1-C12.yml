@@ -16,10 +16,8 @@ concept_deps:
 - S52-R1-C11
 definition:
   text: |
-    `mutate()`, from the dplyr package, adds columns to a data frame. Each new column is computed
-    from columns already there, one row at a time, and the result has the same number of rows as
-    the input. A new column goes on the right. If its name is the name of an existing column, it
-    replaces that column. Within one `mutate()`, a column made first can be used by the next.
+    `mutate()`, from the dplyr package, adds columns to a data frame. A new column goes on the
+    right. If its name is the name of an existing column, it replaces that column.
 
     `if_else(condition, true, false)` gives one value where the condition is `TRUE` and another
     where it is `FALSE`. Where the condition is `NA`, the result is `NA`, unless a value is given
@@ -27,16 +25,13 @@ definition:
 
     `case_when()` takes a list of cases, each written `condition ~ value`. It checks them in order,
     and each row gets the value of the first case whose condition is `TRUE`. A row that matches no
-    case gets `.default` if one is given, and `NA` otherwise. A row whose conditions are all `NA`
-    counts as matching no case.
+    case gets `.default` if one is given, and `NA` otherwise.
 
     `round(x, digits)` rounds to that many decimal places. A 5 at the cut is rounded to the even
-    digit, so `round(2.5)` is 2. Rounding acts on the number as the computer stores it, which may
-    differ from the number as printed.
+    digit, so `round(2.5)` is 2.
 
     `str_trim()` removes spaces from the start and end of a piece of text. `str_to_lower()` turns
-    text into lower case. Both come from the stringr package. `rename_with()` renames columns by
-    applying a function to their names.
+    text into lower case. Both come from the stringr package.
   references:
   - citekey: rdocs_s52r1_dplyr
     kind: textbook
@@ -181,24 +176,14 @@ definition:
       note: |-
         Row 88 gives the same cut-point for women. The fact sheet's adult rows cover ages 15 to 49.
 simplified_explanation: |
-  The last section chose rows and columns that were already in the file. This one makes columns
-  that were not there. A body mass index comes from weight and height. A body mass in kilograms
-  comes from one in grams. A group label comes from a cut-point.
-
   **mutate()** adds a column. You give the new column a name and a rule, and R applies the rule to
-  every row. The number of rows does not change. Book 0's rule for BMI, weight in kilograms divided
-  by height in metres squared, becomes one line of code.
+  every row. The number of rows does not change.
 
-  Give the new column a new name. If you reuse an old name, the old column is replaced, and its
-  values are gone from your data frame. The raw file still has them, but your script no longer
-  shows where the new numbers came from.
+  Give the new column a new name.
 
   **if_else()** sorts rows into two groups by one test. **case_when()** sorts them into several
-  groups. Its tests are checked in order, and each row takes the label of the first test it passes.
-  So the order of
-  the tests is part of the rule, and so is which side of each cut-point the boundary value falls on.
-  A row with a missing value passes no test and gets `NA`, which is what you want. Be careful with
-  `.default`, the label for "everything else": a missing value lands there too.
+  groups. A row with a missing value passes no test and gets `NA`, which is what you want. Be
+  careful with `.default`, the label for "everything else": a missing value lands there too.
 
   **round()** is for showing a number, not for storing it. Keep full precision in the column you
   compute with, and round only what you print.
@@ -206,9 +191,6 @@ simplified_explanation: |
   Text columns get cleaned the same way. **str_trim()** takes spaces off the ends.
   **str_to_lower()** turns capitals into small letters. Together they turn "Male ", "male" and
   "MALE" into "male".
-
-  All of it happens in the script. The raw file is never edited: not to convert a unit, not to fix
-  a spelling, not to add a column.
 illustrations:
 - body: |
     Start with BMI, on a made-up clinic register of five adults. Heights are in centimetres, as a
@@ -518,20 +500,16 @@ illustrations:
     that for this file, and only for this file.
 must_know:
 - point: |
-    Convert units in code, in a new column, before using them. Never type converted values into the
-    raw file: the conversion is then invisible, and a second conversion by someone else doubles the
-    error.
+    Convert units in code, in a new column, before using them.
   kind: move
   bearing: methodological
 - point: |
-    A BMI computed from height in centimetres is 10,000 times too small. Before trusting any new
-    column, look at a few of its values and ask whether they are the right size.
+    A BMI computed from height in centimetres is 10,000 times too small.
   kind: trap
   bearing: clinical
 - point: |
-    The error is to think a value that prints as 25 is 25. A stored number can sit a hair below
-    or above what is printed. At a cut-point, decide a rounding rule, write it in a comment, and
-    group on the rounded column.
+    The error is to think a value that prints as 25 is 25. At a cut-point, decide a rounding
+    rule, write it in a comment, and group on the rounded column.
   kind: misconception
   bearing: methodological
 - point: |
@@ -541,23 +519,19 @@ must_know:
   bearing: methodological
 - point: |
     Leave `.default` out unless you mean it. With `.default` set, a missing value is given that
-    label as if it had been measured. Without it, a missing value stays `NA`.
+    label as if it had been measured.
   kind: trap
   bearing: methodological
 - point: |
-    Give a new column a new name. Reusing the name of a column from the raw file replaces it, and
-    the script no longer shows where the new values came from.
+    Give a new column a new name.
   kind: move
   bearing: teaching
 - point: |
-    Round for the table you print, not for the column you compute with. Rounding first and
-    computing after carries the rounding error into every later number.
+    Round for the table you print, not for the column you compute with.
   kind: consequence
   bearing: methodological
 - point: |
-    A new column is only as right as the rule you wrote. `mutate()` will compute any rule on every
-    row without complaint. It cannot tell you that a cut-point is the wrong one for the people in
-    your data.
+    A new column is only as right as the rule you wrote.
   kind: boundary
   bearing: clinical
 exercises:

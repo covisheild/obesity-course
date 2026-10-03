@@ -17,38 +17,24 @@ concept_deps:
 - S52-R1-C19
 definition:
   text: |
-    A result is reproducible when the same data, analysed again with the same code, give the same
-    result. A result is replicated when independent investigators collect new data on the same
-    question and reach the same answer. Peng (2011) calls replication the ultimate standard for a
-    scientific claim, and reproducibility a minimum standard for when replication is not possible.
-    Between no replication and full replication he describes a spectrum: a study is more or less
-    reproducible depending on what data and code are made available. Reproducing a result does not
-    show that it is correct.
-
-    Running the shared code again without an error, called re-execution, is needed for
-    reproduction and is not enough for it: code can run and still produce a different result.
+    A result is reproducible when the same data, analysed again with the same code, give the same result. A result is
+    replicated when independent investigators collect new data on the same question and reach the same answer. Reproducing a
+    result does not show that it is correct.
 
     Trisovic, Lau, Pasquier and Crosas (2022) measured re-execution at scale. They took 2109
     replication packages, the data and code that authors deposit with a published paper, from the
     Harvard Dataverse, a website where researchers deposit such files. The packages were published
     from 2010 to July 2020 and held 9078 R files.
 
-    Each file was run in a clean environment under
-    three versions of R (3.2, 3.6 and 4.0), with up to one hour per file and five hours per package.
-    Each was run once as deposited and once after an automatic code cleaning. The cleaning removed
-    absolute file paths, standardised file encoding and installed the packages the code used. A
-    file counted as a success if any of the three versions ran it without error. Files that ran out
-    of time were excluded from the success rate.
+    Each was run once as deposited and once after an automatic code cleaning. Files that ran out of time were excluded from
+    the success rate.
 
     Their abstract reports that {{n:trisovic_fail_initial_pct}} of the R files failed to complete without error on first
     execution, and {{n:trisovic_fail_cleaned_pct}} after code cleaning. Their results table gives success rates of 25% without
-    cleaning, 40% with cleaning and 56% for the better of the two runs. The abstract's figures and
-    the table's are on different bases, and the paper's two 56% figures are different quantities.
-    Code cleaning fixed every error caused by `setwd()`, and many caused by missing packages.
-    Errors that remained included packages missing or of an incompatible version, wrong paths and
-    output folders, and objects that did not exist. Journals with the strictest data-sharing
-    policies had the highest re-execution rates. Most packages came from the social sciences, and
-    all from one website.
+    cleaning, 40% with cleaning and 56% for the better of the two runs. Errors that remained included packages missing or of
+    an incompatible version, wrong paths and output folders, and objects that did not exist. Journals with the strictest
+    data-sharing policies had the highest re-execution rates. Most packages came from the social sciences, and all from one
+    website.
   references:
   - citekey: peng_2011
     kind: primary
@@ -292,28 +278,18 @@ definition:
       claim_located: true
       checked_on: '2026-10-02'
 simplified_explanation: |
-  Two words that sound alike mean different things.
+  **Reproduce** means: take the same data, run the same code, get the same numbers.
 
-  **Reproduce** means: take the same data, run the same code, get the same numbers. Someone else can
-  do it with your project folder in an afternoon.
+  **Replicate** means: collect new data on the same question and see whether the answer holds.
 
-  **Replicate** means: collect new data on the same question and see whether the answer holds. That is
-  a new study, and it may take years.
-
-  Reproducing is the smaller test. It cannot tell you whether the analysis was right, only whether
-  it was done as described. But a study's data and code make it possible. And it catches the slips
-  the first section of this book was about.
+  Reproducing is the smaller test. It cannot tell you whether the analysis was right, only whether it
+  was done as described.
 
   The first step of reproducing is that the code runs at all. One large study tested that. It took
   thousands of R files that researchers had shared with their published papers, and ran each on a
   clean computer. Most did not run.
 
-  Many of the reasons are ones you have already met in this
-  book. A script set the working directory to a folder on its author's computer. A package was not
-  installed, or was the wrong version. A file was in the wrong place.
-
-  A script that runs is still not a result reproduced. It may run and print different numbers. So
-  "the code runs" is the floor, not the finish.
+  A script that runs is still not a result reproduced. It may run and print different numbers.
 illustrations:
 - body: |
     Start with a script that worked, on the computer it was written on. Here are its first lines, made
@@ -559,54 +535,47 @@ must_know:
   - trisovic_2022
 - point: |
     The error is to think that sharing your code makes your work reproducible. Code that sets the
-    working directory to your own folder stops on its first line on another computer. So does code
-    that loads a package nobody else has.
+    working directory to your own folder stops on its first line on another computer.
   kind: misconception
   bearing: methodological
   refs:
   - trisovic_2022
 - point: |
-    Before you quote a percentage from a study, find what it is a share of. The study's 25% success rate
-    leaves out the files that ran out of time; its abstract's {{n:trisovic_fail_initial_pct}} "failed" is on another basis.
-    Quote each with its own words.
+    Before you quote a percentage from a study, find what it is a share of. The study's 25% success rate leaves out the
+    files that ran out of time; its abstract's {{n:trisovic_fail_initial_pct}} "failed" is on another basis.
   kind: trap
   bearing: methodological
   refs:
   - trisovic_2022
 - point: |
-    Run your script on a clean computer, or in a fresh R session, before you share it. The study's
-    errors included a folder on the author's computer, a missing package and a missing file. Each
-    shows up the first time someone else runs your code, and is cheapest to find yourself.
+    Run your script on a clean computer, or in a fresh R session, before you share it.
   kind: move
   bearing: methodological
   refs:
   - trisovic_2022
 - point: |
-    Code that runs is not a result reproduced. Ask for the comparison of the output with the paper's
-    numbers before you accept that a study was reproduced.
+    Code that runs is not a result reproduced.
   kind: trap
   bearing: methodological
   refs:
   - trisovic_2022
 - point: |
-    A reproducible analysis can still be wrong. Reproducing it shows it was done as described, not
-    that it was the right analysis. Do not offer reproducibility as evidence that a finding is true.
+    A reproducible analysis can still be wrong. Do not offer reproducibility as evidence that a
+    finding is true.
   kind: boundary
   bearing: public
   refs:
   - peng_2011
 - point: |
     Journals with the strictest data-sharing policies had the highest re-execution rates in this study.
-    That is a correlation across a few journals, not a measured effect of the policy. In a committee,
-    offer it as a reason to consider such a policy, not as proof that it works.
+    That is a correlation across a few journals, not a measured effect of the policy.
   kind: consequence
   bearing: policy
   refs:
   - trisovic_2022
 - point: |
     The finding is that most shared R code does not rerun as deposited. Studies of other websites,
-    fields and years that find most files running would overturn it. This study used one
-    website, mostly social science, and code deposited from 2010 to 2020.
+    fields and years that find most files running would overturn it.
   kind: boundary
   bearing: methodological
   refs:

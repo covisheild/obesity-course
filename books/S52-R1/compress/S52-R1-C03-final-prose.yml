@@ -19,6 +19,9 @@ definition.text: 'An object is a value R holds in memory under a name. The assig
 
   shows in its Environment pane.
 
+
+  R accepts `=` in most places.
+
   '
 simplified_explanation: '```r
 
@@ -54,9 +57,11 @@ simplified_explanation: '```r
   - **A name holds a value, not a sum.** It changes only when you run its line again.
 
 
-  That list is not your script. It holds every line you ran today, in whatever order you ran it,
+  The objects you have made so far sit in a list called the workspace. RStudio shows it in the
 
-  including lines you typed only in the console.
+  Environment pane, and `ls()` prints it. That list is not your script. It holds every line you ran
+
+  today, in whatever order you ran it, including lines you typed only in the console.
 
 
   Write names in small letters, with `_` between words, and put the unit in the name: `height_cm`,
@@ -69,7 +74,7 @@ simplified_explanation: '```r
   comes later in the book.
 
   '
-must_know[0].point: 'After any correction, run the script from the top.
+must_know[0].point: 'The error is to think a name holds a formula. After any correction, run the script from the top.
 
   '
 must_know[1].point: 'The workspace is not your script. Trust a result only after it has come from running the
@@ -92,6 +97,8 @@ must_know[4].point: '"object ''x'' not found" usually means a typing slip or a w
   makes `x` was never run.
 
   '
-must_know[5].point: 'Names help a reviewer follow the steps; only checking the values tells you they are right.
+must_know[5].point: 'A good name makes code readable, not correct. Names help a reviewer follow the steps; only
+
+  checking the values tells you they are right.
 
   '

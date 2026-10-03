@@ -18,12 +18,8 @@ concept_deps:
 - S52-R1-C08
 definition:
   text: |
-    A CSV file, short for comma-separated values, is plain text. Each line is one row; within a
-    line, values are separated by commas; the first line, the header row, gives the column names.
-    Nothing in the file says what type each column is.
-
-    Reading a file copies its contents into R as a data frame. The file on disk is not changed by
-    being read, and an analysis that never writes to it can always be rerun from it.
+    A CSV file, short for comma-separated values, is plain text. Nothing in the file says what type
+    each column is.
 
     `read_csv()`, from the readr package, reads a CSV file. It guesses each column's type from a
     sample of its values and prints the guess, the column specification. Values listed in its `na`
@@ -204,33 +200,20 @@ definition:
       claim_located: true
       checked_on: '2026-10-02'
 simplified_explanation: |
-  A raw file is the data as it first reached you. It may be the export from a survey tablet, the
-  file a laboratory machine wrote, or the spreadsheet a camp team typed. Tools for collecting data in the
-  field, such as KoboToolbox, ODK and REDCap, write such files, and the next level of this subject
-  teaches them. Here the file has already arrived.
+  A raw file is the data as it first reached you.
 
-  The commonest raw file is a CSV. Open one in a plain text editor, such as Notepad, and you see
-  lines of text with commas between the values. The first line holds the column names. That is
-  all there is: no colours, no formulas, and nothing saying which column is a number.
+  The commonest raw file is a CSV. The first line holds the column names.
 
-  So `read_csv()` has to guess. It looks at the values in each column and decides: numbers, text,
-  dates or TRUE and FALSE. Then it prints what it decided. Read that report every time. A column
-  you expected to be numbers that comes out as text means some cell in it is not a number.
+  So `read_csv()` has to guess. Then it prints what it decided. Read that report every time. A column you
+  expected to be numbers that comes out as text means some cell in it is not a number.
 
   Two habits keep the guess honest:
 
   - **Name the missing-value codes.** If the file uses -99, or "NR", for "not recorded", say so
     in `na = c("", "NA", "-99", "NR")`. Otherwise -99 is read as a real number.
   - **Say what you expect.** `col_types` tells `read_csv()` which type each column should have.
-    A value that does not fit is reported, instead of quietly turning the whole column into text.
 
-  Reading never changes the file. `read_csv()` makes a copy inside R and leaves the file alone.
-  The file is changed only if something writes to it: you, in a spreadsheet, or a line of code
-  that saves over it. In this book nothing does.
-
-  Data in a department may come as an Excel or SPSS file, and some surveys publish files in other
-  formats. `read_excel()` reads Excel files. The haven package reads SPSS files with `read_sav()`
-  and the SAS transport files of American surveys with `read_xpt()`.
+  Reading never changes the file.
 illustrations:
 - body: |
     Start with a failure. A school camp team sends you a file. Where a child could not be
@@ -664,37 +647,31 @@ must_know:
   bearing: methodological
 - point: |
     A number column that the report calls `chr` holds at least one value that is not a number.
-    Find it with `col_types` and `problems()`, then deal with it in code. Never open the raw file
-    and retype the cell.
+    Never open the raw file and retype the cell.
   kind: move
   bearing: methodological
 - point: |
-    Record the MD5 checksum of every raw file in the README on the day it arrives. When someone
-    says "it's the same file", you can check in one line instead of arguing.
+    Record the MD5 checksum of every raw file in the README on the day it arrives.
   kind: move
   bearing: methodological
 - point: |
-    Open an Excel file you were sent only as a copy. Browsing the original invites typing into it
-    or saving over it by accident. Read the original into R with `read_excel()`, giving the sheet
-    and range.
+    Open an Excel file you were sent only as a copy. Read the original into R with
+    `read_excel()`, giving the sheet and range.
   kind: trap
   bearing: methodological
 - point: |
     When a department hands over an SPSS file, read it with `read_sav()` rather than asking for an
-    Excel export. The SPSS file carries its labels and its missing-value codes; an export may drop
-    both.
+    Excel export.
   kind: move
   bearing: policy
 - point: |
     Any average you compute from an NHANES file without its sample weights describes the people in
-    the file only. Say "unweighted" next to it, and never present it as the figure for the United
-    States, still less for India.
+    the file only.
   kind: boundary
   bearing: public
 - point: |
     Reading carefully catches codes and types. It cannot catch a wrong value that is a valid
-    number: a height of 182 cm typed for 128 cm reads perfectly. That needs a check on the values
-    themselves.
+    number: a height of 182 cm typed for 128 cm reads perfectly.
   kind: boundary
   bearing: methodological
 exercises:

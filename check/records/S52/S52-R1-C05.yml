@@ -17,24 +17,16 @@ definition:
     the brackets are its arguments, and the call returns one result, which R prints or which you
     assign to a name.
 
-    Each argument has a name. An argument may be given by name, as `digits = 1`, or by position,
-    in the order the function lists its arguments. Arguments given by name are matched first, and
-    the rest are matched by position.
+    Each argument has a name. An argument may be given by name, as `digits = 1`, or by position, in
+    the order the function lists its arguments.
 
-    Most arguments have a default value, which is used when the call does not give one. The
-    defaults are shown in the Usage section of the function's help page, as in
-    `mean(x, trim = 0, na.rm = FALSE, ...)`. For `mean()`, `median()` and `sd()`, the argument
-    `na.rm` says whether missing values (`NA`) are removed before the computation. Its default,
-    `FALSE`, makes the result `NA` whenever a value is missing. Setting it to `TRUE` computes the
-    result from the values that are present, so the count behind the result is smaller.
-
-    Calls can be nested, as in `round(mean(x), 1)`, and R works from the inside out. The pipe,
-    `|>`, part of R since version 4.1.0, writes the same thing in reading order: `x |> f(y)` is
-    the call `f(x, y)`. The thing on the left becomes the first argument of the call on the right.
+    Most arguments have a default value, which is used when the call does not give one. For
+    `mean()`, `median()` and `sd()`, the argument `na.rm` says whether missing values (`NA`) are
+    removed before the computation. Its default, `FALSE`, makes the result `NA` whenever a value is
+    missing.
 
     A help page, opened with `?name` or `help(name)`, describes one function in fixed sections:
-    Description, Usage, Arguments, Value (what it returns) and Examples. An error message names the
-    call that failed and says what was wrong with its arguments.
+    Description, Usage, Arguments, Value (what it returns) and Examples.
   references:
   - citekey: swc_r_gapminder
     kind: textbook
@@ -181,12 +173,6 @@ definition:
         The manual's text continues with example(topic). The same block gives help(solve) and
         ?solve as the two ways to open a help page.
 simplified_explanation: |
-  The last section ended with a sum that came back `NA`. Getting past that needs functions.
-
-  You met functions in Book 0 as input, rule and output, written f(x). R writes them the same
-  way: a name, then brackets, then the input inside. The rule is the function's job. The output
-  is the value it gives back:
-
   ```r
   heights_cm <- c(152, 160.5, 171)
   mean(heights_cm)
@@ -196,30 +182,14 @@ simplified_explanation: |
   [1] 161.1667
   ```
 
-  Whatever goes inside the brackets is an argument. Many functions take more than one. Each
-  argument has a name. `round()` takes the number to round, called `x`, and how many decimal places to
-  keep, called `digits`:
+  Whatever goes inside the brackets is an argument. Many functions take more than one. `round()` takes
+  the number to round, called `x`, and how many decimal places to keep, called `digits`:
 
   ```r
   round(161.1667, digits = 1)
   ```
 
   ```output
-  [1] 161.2
-  ```
-
-  You can leave the names out, and R then matches the values by their order. You can also give
-  every name and put them in any order. These three lines do the same thing:
-
-  ```r
-  round(161.1667, 1)
-  round(x = 161.1667, digits = 1)
-  round(digits = 1, x = 161.1667)
-  ```
-
-  ```output
-  [1] 161.2
-  [1] 161.2
   [1] 161.2
   ```
 
@@ -236,8 +206,7 @@ simplified_explanation: |
   [1] 161.2
   ```
 
-  That line is short, but long nests are hard to read, because the first step is buried in the
-  middle. The pipe, written `|>`, puts the steps in the order they happen. Read it as "then":
+  The pipe, written `|>`, puts the steps in the order they happen. Read it as "then":
 
   ```r
   heights_cm |>
@@ -249,9 +218,8 @@ simplified_explanation: |
   [1] 161.2
   ```
 
-  Take the heights, then take their mean, then round it to one decimal place. The pipe hands
-  the thing on its left to the call on its right, as the first argument. So `round(1)` here means
-  `round(the mean, 1)`.
+  The pipe hands the thing on its left to the call on its right, as the first argument. So `round(1)`
+  here means `round(the mean, 1)`.
 
   To find out what a function's arguments are called and what they do, open its help page. Type
   a question mark and the name: `?round`.
@@ -451,9 +419,7 @@ must_know:
   kind: misconception
   bearing: methodological
 - point: |
-    A missing value typed as 0 gives no `NA` and no warning, and pulls the mean down. In the
-    penguin example it moved the mean from 3769.444 g to 3392.5 g. When a mean looks low, look
-    for zeros that mean "not measured".
+    A missing value typed as 0 gives no `NA` and no warning, and pulls the mean down.
   kind: trap
   bearing: methodological
 - point: |
@@ -464,8 +430,7 @@ must_know:
   bearing: methodological
 - point: |
     Before you use a function for the first time, open its help page and read Usage and
-    Arguments. The defaults decide what happens when you say nothing, and `na.rm = FALSE` is a
-    default that changes answers.
+    Arguments.
   kind: move
   bearing: methodological
 - point: |
@@ -474,9 +439,7 @@ must_know:
   kind: move
   bearing: teaching
 - point: |
-    No argument can tell you why a value is missing. `na.rm = TRUE` gives the right mean of the
-    values present. Whether that mean stands for the whole group depends on which values went
-    missing, and no function call can check that.
+    No argument can tell you why a value is missing.
   kind: boundary
   bearing: methodological
 - point: |

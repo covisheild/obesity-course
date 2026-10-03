@@ -274,6 +274,13 @@ def _paragraphs(text: str) -> list[str]:
 
 
 def _sentences(para: str) -> list[str]:
+    # Inline code (S52-R1, 3 Oct 2026). Punctuation inside a `code span` never ends a sentence
+    # ("and `!` (not)", "`na.rm = TRUE`"), and a sentence that opens with a code span is a new
+    # sentence whatever its first character ("`bmi <- ...` makes...", "`-99` read as text...").
+    # Marked before the backticks are stripped, because afterwards the information is gone.
+    para = re.sub(r"`[^`]*`", lambda m: m.group(0).replace(".", "<dot>").replace("?", "<qm>")
+                  .replace("!", "<ex>"), para)
+    para = re.sub(r"(?:(?<=[.?!])|(?<=[.?!][\"'”’)]))\s+(?=`)", "\x00", para)
     flat = re.sub(r"\s+", " ", re.sub(r"[*_`]", "", para)).strip()
     flat = re.sub(r"(?<![\'’])\b(e\.g|i\.e|etc|vs|No|Dr|Mr|Ms|Art|s|ss)\.", r"\1<dot>", flat)
     # A sentence may open with a symbol written in lower case: "dES/dt is the rate...", "d/dx,
@@ -282,9 +289,15 @@ def _sentences(para: str) -> list[str]:
     # (S01-R1 C02/C07, S02-R1 C02/C03). A lower-case opening counts as a new sentence when its
     # first token is a Greek letter or carries a slash, caret, digit or capital (a symbol, not a
     # word); abbreviations are already protected above.
+    # 3 Oct 2026 (S52-R1, R code in prose): a sentence may also open with a function call or a
+    # column picker written in code ("filter() keeps rows.", "df$x is a vector.") or with the
+    # negation sign ("!is.na(x) keeps..."); before this the splitter fused such a sentence into
+    # the one before it, so cut, restore and validate disagreed on S52-R1 C03, C05, C09, C11-C14.
     parts = re.split(r"(?:(?<=[.?!])|(?<=[.?!][\"'”’)]))\s+"
-                     r"(?=[A-Z\"'(“‘Α-Ωα-ω]|[a-z][^\s]*?[/^0-9A-Z])", flat)
-    return [p.replace("<dot>", ".").strip() for p in parts if p.strip()]
+                     r"(?=[A-Z\"'(“‘Α-Ωα-ω!]|[a-z][^\s]*?[/^0-9A-Z($])", flat)
+    parts = [q for p in parts for q in p.split("\x00")]
+    return [p.replace("<dot>", ".").replace("<qm>", "?").replace("<ex>", "!").strip()
+            for p in parts if p.strip()]
 
 
 def _syllables(word: str) -> int:

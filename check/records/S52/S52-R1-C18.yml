@@ -255,34 +255,26 @@ definition:
       claim_located: true
       checked_on: '2026-10-02'
 simplified_explanation: |
-  Book 0 taught you to read a figure in four steps. What one mark stands for. What each axis
-  measures, and in what unit. Where each axis starts. Where the numbers came from. Now you make a
-  figure, and the same four answers are what you write down in code.
-
   A plot in ggplot2 is built from three parts.
 
   **The data**: a data frame, one row per observation, as every section since tidy data has
   used.
 
-  **The mappings**: which column goes where. Flipper length along the bottom, body mass up the
-  side, species as colour. You write these inside `aes()`, short for aesthetics, the visual
-  properties of a mark.
+  **The mappings**: which column goes where. You write these inside `aes()`, short for aesthetics,
+  the visual properties of a mark.
 
   **The geom**: what kind of mark. Points for a scatter plot, bars for a histogram or a count,
   boxes for a boxplot.
 
-  You join the parts with `+`. Change the geom and the same data, mapped the same way, become a
-  different picture.
+  You join the parts with `+`.
 
   Two traps come up early. Inside `aes()` means "let this vary with a column". Outside it means
   "make every mark this". Write `colour = "blue"` inside and ggplot2 treats "blue" as data. And a
   histogram's bars depend on bins you did not choose unless you choose them: set their width and
   where they start.
 
-  Then finish the figure as Book 0 asked: axis titles with units, and a line saying where the data
-  came from. Save it to `output/` with `ggsave()`, from the script, at a size you write down. Never
-  export it with the mouse. When the data change, rerun the script and every figure is redrawn
-  from them.
+  Save it to `output/` with `ggsave()`, from the script, at a size you write down. Never export it
+  with the mouse.
 illustrations:
 - body: |
     Start with a histogram of penguin body mass. Load the packages, read the file, and make the
@@ -563,19 +555,17 @@ illustrations:
 must_know:
 - point: |
     Write a colour or size inside `aes()` only when it should vary with a column. Inside, a fixed
-    value such as "blue" is treated as data. You get the wrong colour, and a legend explaining a
-    value that does not exist.
+    value such as "blue" is treated as data.
   kind: trap
   bearing: methodological
 - point: |
     Read every message and warning ggplot2 prints. "Removed 2 rows" means your figure shows fewer
-    observations than your data frame holds. Say how many it shows, in the caption.
+    observations than your data frame holds.
   kind: move
   bearing: methodological
 - point: |
     The error is to think a histogram shows the shape of the data. It shows the data cut into bins
-    someone chose. Set `binwidth` and `boundary` in the code, try more than one width, and keep the
-    counts per bin in a file.
+    someone chose.
   kind: misconception
   bearing: methodological
   refs:
@@ -587,24 +577,18 @@ must_know:
   bearing: public
 - point: |
     Every axis title names the quantity and its unit, and every figure carries a source line.
-    A figure without them is one a reader cannot check, which Book 0 taught you to refuse.
   kind: move
   bearing: methodological
 - point: |
     Save every figure with `ggsave()` from the script, with its width, height and units written in.
-    A figure exported with the mouse cannot be redrawn when the data change, and nobody can tell
-    which version of the data made it.
   kind: move
   bearing: methodological
 - point: |
-    When a trainee's thesis figure looks wrong, ask for the code before the picture. The mapping,
-    the bins and the rows removed are all in the code; none is visible in the image.
+    When a trainee's thesis figure looks wrong, ask for the code before the picture.
   kind: move
   bearing: teaching
 - point: |
-    The grammar guarantees that the figure draws your data faithfully. It cannot guarantee that the
-    data are right, that the comparison is fair, or that a pattern means anything. Those questions
-    come before the plot and after it.
+    The grammar guarantees that the figure draws your data faithfully.
   kind: boundary
   bearing: methodological
 exercises:

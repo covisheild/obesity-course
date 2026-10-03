@@ -1,0 +1,83 @@
+definition.text: 'A path is the address of a file. An absolute path starts from the top of one computer''s disk, such as
+
+  `C:/Users/priya/Documents/thesis/data-raw/heights.csv`, so it names a place that exists on one
+
+  computer only.
+
+  '
+simplified_explanation: 'Give every analysis its own folder. Inside it, make three folders:
+
+
+  ```table
+
+  | Folder | What goes in it | Who writes to it |
+
+  | data-raw/ | the data exactly as it arrived | you, once, when it arrives; never the code |
+
+  | code/ | your scripts | you |
+
+  | output/ | tables, figures and cleaned files the scripts make | only the scripts |
+
+  ```
+
+
+  Put a short plain-text file called README at the top. It says what the project is, where the
+
+  data came from, and how to run it again.
+
+
+  `C:/Users/priya/Documents/thesis/data-raw/heights.csv` is the full address on Priya''s laptop. On your
+
+  laptop there is no `C:/Users/priya` folder, so that address leads nowhere. `data-raw/heights.csv` says
+
+  "from where I am now, go into data-raw".
+
+
+  So use `here()`, which finds the top of the project for you: `here("data-raw", "heights.csv")` gives
+
+  the full address on whichever computer runs it.
+
+
+  Never write a full address from your own computer into a script. And never start a script with
+
+  `setwd()`, the function that moves R''s current home to a named folder.
+
+  '
+must_know[0].point: 'An address that starts with `C:/Users/` or `/home/` names a folder on one computer. Before
+
+  you send a script, search it for such addresses and replace each one with `here()`.
+
+  '
+must_know[1].point: 'Build every file address with `here()`, starting from the project root: `here("data-raw",
+
+  "file.csv")` to read, `here("output", "table.csv")` to write.
+
+  '
+must_know[2].point: 'A script that starts with `setwd()` and a folder name works only on the computer it was written
+
+  on.
+
+  '
+must_know[3].point: 'No code ever writes into `data-raw/`, and no one edits a raw file there. Put the correction in code, and write the corrected file
+
+  to `output/`.
+
+  '
+must_know[4].point: 'Everything in `output/` can be deleted and made again by running the code.
+
+  '
+must_know[5].point: 'A trainee''s script fails on your computer with "does not exist". Look at the address in the
+
+  failing line before you look at the data, and check whether it names a folder on their computer.
+
+  '
+must_know[6].point: 'Name files with no spaces, no brackets and no capital letters used to tell two files apart.
+
+  `Final data (2).xlsx` and `final data.xlsx` are a quarrel waiting to happen.
+
+  '
+must_know[7].point: 'A tidy folder and safe addresses fix only where files are. Do not accept "the paths are
+
+  relative" as proof that someone else can rerun the work.
+
+  '

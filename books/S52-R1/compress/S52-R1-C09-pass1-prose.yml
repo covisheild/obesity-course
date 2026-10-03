@@ -1,50 +1,68 @@
-definition.text: |
-  A CSV file, short for comma-separated values, is plain text.
-  Nothing in the file says what type each column is.
+definition.text: 'A CSV file, short for comma-separated values, is plain text. Nothing in the file says what type
 
-  `read_csv()`, from the readr package, reads a CSV file. It guesses each column's type from a
+  each column is.
+
+
+  `read_csv()`, from the readr package, reads a CSV file. It guesses each column''s type from a
+
   sample of its values and prints the guess, the column specification. Values listed in its `na`
-  argument become `NA`, R's code for a missing value; by default the list is the empty string and
+
+  argument become `NA`, R''s code for a missing value; by default the list is the empty string and
+
   the text `NA`. The `col_types` argument states the types you expect instead of letting readr
+
   guess. A value that does not fit its stated type becomes `NA`, readr warns, and `problems()`
+
   lists each such value with its row and column.
 
-  `read_excel()`, from readxl, reads Excel `.xls` and `.xlsx`
+
+  Other formats need other functions. `read_excel()`, from readxl, reads Excel `.xls` and `.xlsx`
+
   files, one sheet at a time, optionally from a stated cell range. From haven, `read_sav()` reads
-  SPSS `.sav` files and `read_xpt()` reads SAS transport `.xpt` files; both keep each column's
+
+  SPSS `.sav` files and `read_xpt()` reads SAS transport `.xpt` files; both keep each column''s
+
   label, the description stored with it in the file, as a label attribute of that column.
-simplified_explanation: |
-  A raw file is the data as it first reached you.
 
-  Read that report every time. A column
-  you expected to be numbers that comes out as text means some cell in it is not a number.
+  '
+simplified_explanation: "A raw file is the data as it first reached you.\n\nThe commonest raw file is a CSV. The first line holds the column names.\n\nRead that report every time. A column you expected to be numbers that comes out as text means some cell\nin it is not a number.\n\nTwo habits keep the guess honest:\n\n- **Name the missing-value codes.** If the file uses -99, or \"NR\", for \"not recorded\", say so\n  in `na = c(\"\", \"NA\", \"-99\", \"NR\")`. Otherwise -99 is read as a real number.\n- **Say what you expect.** `col_types` tells `read_csv()` which type each column should have.\n\nReading never changes the file.\n"
+must_know[0].point: 'The error is to think that a file which reads without an error has been read correctly. -99
 
-  Two habits keep the guess honest:
+  read as a height raises no warning. Read the column report, and declare every missing-value
 
-  - **Name the missing-value codes.** If the file uses -99, or "NR", for "not recorded", say so
-    in `na = c("", "NA", "-99", "NR")`. Otherwise -99 is read as a real number.
-  - **Say what you expect.** `col_types` tells `read_csv()` which type each column should have.
+  code from the file''s documentation in `na` before you compute anything.
 
-  Reading never changes the file.
-must_know[0].point: |
-  The error is to think that a file which reads without an error has been read correctly. Read the column report, and declare every missing-value
-  code from the file's documentation in `na` before you compute anything.
-must_know[1].point: |
-  Giving `na` replaces the default list. Write `na = c("", "NA", "-99")`, not `na = "-99"`;
+  '
+must_know[1].point: 'Giving `na` replaces the default list. Write `na = c("", "NA", "-99")`, not `na = "-99"`;
+
   the second form stops reading empty cells and the text "NA" as missing.
-must_know[2].point: |
-  A number column that the report calls `chr` holds at least one value that is not a number.
-must_know[3].point: |
-  Record the MD5 checksum of every raw file in the README on the day it arrives.
-must_know[4].point: |
-  Open an Excel file you were sent only as a copy. Read the original into R with `read_excel()`, giving the sheet
-  and range.
-must_know[5].point: |
-  When a department hands over an SPSS file, read it with `read_sav()` rather than asking for an
+
+  '
+must_know[2].point: 'A number column that the report calls `chr` holds at least one value that is not a number.
+
+  Never open the raw file and retype the cell.
+
+  '
+must_know[3].point: 'Record the MD5 checksum of every raw file in the README on the day it arrives.
+
+  '
+must_know[4].point: 'Open an Excel file you were sent only as a copy. Read the original into R with
+
+  `read_excel()`, giving the sheet and range.
+
+  '
+must_know[5].point: 'When a department hands over an SPSS file, read it with `read_sav()` rather than asking for an
+
   Excel export.
-must_know[6].point: |
-  Any average you compute from an NHANES file without its sample weights describes the people in
+
+  '
+must_know[6].point: 'Any average you compute from an NHANES file without its sample weights describes the people in
+
   the file only.
-must_know[7].point: |
-  Reading carefully catches codes and types. It cannot catch a wrong value that is a valid
+
+  '
+must_know[7].point: 'Reading carefully catches codes and types. It cannot catch a wrong value that is a valid
+
   number: a height of 182 cm typed for 128 cm reads perfectly.
+
+  '
