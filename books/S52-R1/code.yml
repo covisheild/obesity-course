@@ -1,0 +1,7 @@
+# The reader's project, as the code gate builds it for every session (check/code_gate.py).
+# Each line: a path inside the project <- a repository file copied there before the code runs.
+# The gate also puts an empty .here file at the project root, so here::here() finds the root.
+# Raw data goes in data-raw/ and is never edited; code reads it from there.
+data-raw/penguins_raw.csv: sources/data/penguins_raw.csv
+data-raw/BMX_L.xpt: sources/data/BMX_L.xpt
+data-raw/DEMO_L.xpt: sources/data/DEMO_L.xpt

@@ -1,0 +1,535 @@
+FORCATS 1.0.0 — VERSION-MATCHED HELP PAGES FROM THE BOOK'S R 4.3.3 SANDBOX
+VERBATIM SOURCE PACK (EXCERPTS)
+============================================================
+
+Transcription rule for this file: every line between a [TEXT] and an [END TEXT] line is an exact,
+unaltered slice of a raw render made in the book's sandbox and saved under books/S52-R1/intake/raw/, cut
+programmatically (raw[i:j]) by books/S52-R1/intake/build-c/build.py and re-checked by verify.py as a
+whitespace-normalised substring of that render. Nothing has been paraphrased. Where material is left out,
+the omission is marked [...] in place. Lines beginning [NOTE] are this file's own annotation and are NOT
+source text. Quoted evidence in this header is cut the same way.
+
+LOCATORS: these are local documents, not web pages, so each block heading carries a locator, not a URL:
+  rhelp://<package>@<version>/<Rd name>     the installed help page (what ?topic shows in R)
+  rvignette://<package>@<version>/<name>    the installed vignette (what vignette("<name>") shows)
+  rfile://<package>@<version>/DESCRIPTION   the installed DESCRIPTION file, byte for byte
+The package's website shows the CURRENT version's documentation, which may differ from what is held here.
+
+HOW RENDERED (2026-10-02): R 4.3.3, in a UTF-8 locale, with options(useFancyQuotes = FALSE) so quotation
+marks print as straight ASCII ' and "; help pages by tools::Rd2txt(utils:::.getHelpFile(help(topic,
+package = pkg)), options = list(underline_titles = FALSE, width = 80)); vignettes from the installed HTML
+by xml2 1.3.6, taking h1-h4, p, pre, top-level li and table elements in document order (headings marked
+with #, list items with -, code and printed output as in the vignette's own <pre> blocks; images not
+held). Script: books/S52-R1/intake/build-c/render.R. Help pages print no output for their Examples: the
+code there is shown, not run.
+
+CITATION: Wickham, Hadley. forcats: Tools for Working with Categorical Variables (Factors). R package version 1.0.0, published on CRAN 2023-01-29. Help pages as installed.
+PACKAGE TITLE (from DESCRIPTION): "Title: Tools for Working with Categorical Variables (Factors)"
+VERSION read with packageVersion() on 2026-10-02: "forcats 1.0.0"
+LICENCE: the installed DESCRIPTION file states
+  "License: MIT + file LICENSE"
+The LICENSE file it names is not present in the installed package (system.file("LICENSE",
+package = "forcats") returns ""), so its year and copyright-holder lines were not read.
+
+WHAT THIS FILE HOLDS: these help pages, each whole (description, usage, arguments, details, value, examples
+as code): fct_recode (Rd "fct_recode"); fct_relevel (Rd "fct_relevel"); fct_infreq (Rd "fct_inorder"). Vignette sections, each whole as marked:
+  - vignette "forcats": Introduction to forcats: whole (ordering by frequency, NAs in levels and values, combining levels, ordering by another variable, manual reordering)
+The DESCRIPTION file, whole. Every other help page and vignette of the package is NOT held.
+
+VERSION WARNING: this is the documentation of the version the book's outputs were made with. Newer versions
+exist (see `tidyverse_news_s52r1` for what changed in dplyr, tidyr, readr and ggplot2). A reader on a newer
+version may see different text in ?topic. Current online reference (orientation only, not this text): https://forcats.tidyverse.org/
+
+===============================================================================
+1. forcats::fct_recode — help page "fct_recode" (forcats 1.0.0), whole
+rhelp://forcats@1.0.0/fct_recode
+===============================================================================
+
+[TEXT]
+fct_recode               package:forcats               R Documentation
+
+Change factor levels by hand
+
+Description:
+
+     Change factor levels by hand
+
+Usage:
+
+     fct_recode(.f, ...)
+     
+Arguments:
+
+      .f: A factor (or character vector).
+
+     ...: <'dynamic-dots'> A sequence of named character vectors where
+          the name gives the new level, and the value gives the old
+          level. Levels not otherwise mentioned will be left as is.
+          Levels can be removed by naming them 'NULL'.
+
+Examples:
+
+     x <- factor(c("apple", "bear", "banana", "dear"))
+     fct_recode(x, fruit = "apple", fruit = "banana")
+     
+     # If you make a mistake you'll get a warning
+     fct_recode(x, fruit = "apple", fruit = "bananana")
+     
+     # If you name the level NULL it will be removed
+     fct_recode(x, NULL = "apple", fruit = "banana")
+     
+     # Wrap the left hand side in quotes if it contains special variables
+     fct_recode(x, "an apple" = "apple", "a bear" = "bear")
+     
+     # When passing a named vector to rename levels use !!! to splice
+     x <- factor(c("apple", "bear", "banana", "dear"))
+     levels <- c(fruit = "apple", fruit = "banana")
+     fct_recode(x, !!!levels)
+     
+[END TEXT]
+
+===============================================================================
+2. forcats::fct_relevel — help page "fct_relevel" (forcats 1.0.0), whole
+rhelp://forcats@1.0.0/fct_relevel
+===============================================================================
+
+[TEXT]
+fct_relevel              package:forcats               R Documentation
+
+Reorder factor levels by hand
+
+Description:
+
+     This is a generalisation of 'stats::relevel()' that allows you to
+     move any number of levels to any location.
+
+Usage:
+
+     fct_relevel(.f, ..., after = 0L)
+     
+Arguments:
+
+      .f: A factor (or character vector).
+
+     ...: Either a function (or formula), or character levels.
+
+          A function will be called with the current levels as input,
+          and the return value (which must be a character vector) will
+          be used to relevel the factor.
+
+          Any levels not mentioned will be left in their existing
+          order, by default after the explicitly mentioned levels.
+          Supports tidy dots.
+
+   after: Where should the new values be placed?
+
+Examples:
+
+     f <- factor(c("a", "b", "c", "d"), levels = c("b", "c", "d", "a"))
+     fct_relevel(f)
+     fct_relevel(f, "a")
+     fct_relevel(f, "b", "a")
+     
+     # Move to the third position
+     fct_relevel(f, "a", after = 2)
+     
+     # Relevel to the end
+     fct_relevel(f, "a", after = Inf)
+     fct_relevel(f, "a", after = 3)
+     
+     # Relevel with a function
+     fct_relevel(f, sort)
+     fct_relevel(f, sample)
+     fct_relevel(f, rev)
+     
+     # Using 'Inf' allows you to relevel to the end when the number
+     # of levels is unknown or variable (e.g. vectorised operations)
+     df <- forcats::gss_cat[, c("rincome", "denom")]
+     lapply(df, levels)
+     
+     df2 <- lapply(df, fct_relevel, "Don't know", after = Inf)
+     lapply(df2, levels)
+     
+     # You'll get a warning if the levels don't exist
+     fct_relevel(f, "e")
+     
+[END TEXT]
+
+===============================================================================
+3. forcats::fct_infreq — help page "fct_inorder" (forcats 1.0.0), whole
+rhelp://forcats@1.0.0/fct_inorder
+===============================================================================
+
+[TEXT]
+fct_inorder              package:forcats               R Documentation
+
+Reorder factor levels by first appearance, frequency, or numeric order
+
+Description:
+
+     This family of functions changes only the order of the levels.
+
+        • 'fct_inorder()': by the order in which they first appear.
+
+        • 'fct_infreq()': by number of observations with each level
+          (largest first)
+
+        • 'fct_inseq()': by numeric value of level.
+
+Usage:
+
+     fct_inorder(f, ordered = NA)
+     
+     fct_infreq(f, w = NULL, ordered = NA)
+     
+     fct_inseq(f, ordered = NA)
+     
+Arguments:
+
+       f: A factor
+
+ ordered: A logical which determines the "ordered" status of the output
+          factor. 'NA' preserves the existing status of the factor.
+
+       w: An optional numeric vector giving weights for frequency of
+          each value (not level) in f.
+
+Examples:
+
+     f <- factor(c("b", "b", "a", "c", "c", "c"))
+     f
+     fct_inorder(f)
+     fct_infreq(f)
+     
+     f <- factor(1:3, levels = c("3", "2", "1"))
+     f
+     fct_inseq(f)
+     
+[END TEXT]
+
+===============================================================================
+4. vignette("forcats", package = "forcats") 1.0.0 — Introduction to forcats: whole (ordering by frequency, NAs in levels and values, combining levels, ordering by another variable, manual reordering)
+rvignette://forcats@1.0.0/forcats
+===============================================================================
+
+[TEXT]
+# Introduction to forcats
+
+#### Emily Robinson
+
+The goal of the forcats package is to provide a
+suite of useful tools that solve common problems with factors. Factors
+are useful when you have categorical data, variables that have a fixed
+and known set of values, and when you want to display character vectors
+in non-alphabetical order. If you want to learn more, the best place to
+start is the chapter on
+factors in R for Data Science.
+
+## Ordering by frequency
+
+library(dplyr)
+library(ggplot2)
+library(forcats)
+
+Let’s try answering the question, “what are the most common hair
+colors of star wars characters?” Let’s start off by making a bar
+plot:
+
+ggplot(starwars, aes(y = hair_color)) + 
+  geom_bar()
+
+
+
+That’s okay, but it would be more helpful the graph was ordered by
+count. This is a case of an unordered categorical
+variable where we want it ordered by its frequency. To do so, we can use
+the function fct_infreq():
+
+ggplot(starwars, aes(y = fct_infreq(hair_color))) + 
+  geom_bar()
+
+
+
+Note that fct_infreq() it automatically puts NA at the
+top, even though that doesn’t have the smallest number of entries.
+
+It’s a little surprising that the NA bar isn’t ordered
+by frequency. To understand why we need to make a brief digression to
+discuss NAs in values vs. NAs in levels
+
+## NAss in levels and values
+
+There are two ways to represent a missing value in a factor:
+
+- You can include it in the values of the factor; it does not
+appear in the levels and is.na() reports it as missing.
+This is how missing values are encoded in a factor by default:
+f <- factor(c("x", "y", NA))
+levels(f)
+#> [1] "x" "y"
+is.na(f)
+#> [1] FALSE FALSE  TRUE
+
+- You can include it in the levels of the factor and
+is.na() does not report it as missing. This requires a
+little more work to create, because, by default, factor()
+uses exclude = NA, meaning that missing values are not
+included in the levels. You can force NA to be included by
+setting exclude = NULL:
+f <- factor(c("x", "y", NA), exclude = NULL)
+levels(f)
+#> [1] "x" "y" NA
+is.na(f)
+#> [1] FALSE FALSE FALSE
+
+NAs in the values tend to be best for data analysis,
+since is.na() works as you’d expect. NAs in
+the levels can be useful for display if you need to control where they
+appear in a table or a plot.
+
+To fix the issue above, we can use
+fct_na_value_to_level() to convert the NA in
+the value to an NA in the levels. Then they appear where you’d
+expect:
+
+ggplot(starwars, aes(y = fct_infreq(fct_na_value_to_level(hair_color)))) + 
+  geom_bar() + 
+  labs(y = "Hair color")
+
+
+
+(If you need the opposite operation, you can use
+fct_na_level_to_value().)
+
+## Combining levels
+
+Let’s take a look at skin color now:
+
+starwars %>%
+  count(skin_color, sort = TRUE)
+#> # A tibble: 31 × 2
+#>    skin_color     n
+#>    <chr>      <int>
+#>  1 fair          17
+#>  2 light         11
+#>  3 dark           6
+#>  4 green          6
+#>  5 grey           6
+#>  6 pale           5
+#>  7 brown          4
+#>  8 blue           2
+#>  9 blue, grey     2
+#> 10 orange         2
+#> # … with 21 more rows
+
+We see that there’s 31 different skin colors - if we want to make a
+plot this would be way too many to display! Let’s reduce it to only be
+the top 5. We can use fct_lump() to “lump” all the
+infrequent colors into one factor, “other.” The argument n
+is the number of levels we want to keep.
+
+starwars %>%
+  mutate(skin_color = fct_lump(skin_color, n = 5)) %>%
+  count(skin_color, sort = TRUE)
+#> # A tibble: 6 × 2
+#>   skin_color     n
+#>   <fct>      <int>
+#> 1 Other         41
+#> 2 fair          17
+#> 3 light         11
+#> 4 dark           6
+#> 5 green          6
+#> 6 grey           6
+
+We could also have used prop instead, which keeps all
+the levels that appear at least prop of the time. For
+example, let’s keep skin colors that at least 10% of the characters
+have:
+
+starwars %>%
+  mutate(skin_color = fct_lump(skin_color, prop = .1)) %>%
+  count(skin_color, sort = TRUE)
+#> # A tibble: 3 × 2
+#>   skin_color     n
+#>   <fct>      <int>
+#> 1 Other         59
+#> 2 fair          17
+#> 3 light         11
+
+Only light and fair remain; everything else is other.
+
+If you wanted to call it something than “other”, you can change it
+with the argument other_level:
+
+starwars %>%
+  mutate(skin_color = fct_lump(skin_color, prop = .1, other_level = "extra")) %>%
+  count(skin_color, sort = TRUE)
+#> # A tibble: 3 × 2
+#>   skin_color     n
+#>   <fct>      <int>
+#> 1 extra         59
+#> 2 fair          17
+#> 3 light         11
+
+What if we wanted to see if the average mass differed by eye color?
+We’ll only look at the 6 most popular eye colors and remove
+NAs.
+
+avg_mass_eye_color <- starwars %>%
+  mutate(eye_color = fct_lump(eye_color, n = 6)) %>%
+  group_by(eye_color) %>%
+  summarise(mean_mass = mean(mass, na.rm = TRUE))
+
+avg_mass_eye_color
+#> # A tibble: 7 × 2
+#>   eye_color mean_mass
+#>   <fct>         <dbl>
+#> 1 black          76.3
+#> 2 blue           86.5
+#> 3 brown          66.1
+#> 4 orange        282. 
+#> 5 red            81.4
+#> 6 yellow         81.1
+#> 7 Other          68.4
+
+## Ordering by another variable
+
+It looks like people (or at least one person) with orange eyes are
+definitely heavier! If we wanted to make a graph, it would be nice if it
+was ordered by mean_mass. We can do this with
+fct_reorder(), which reorders one variable by another.
+
+avg_mass_eye_color %>%
+  mutate(eye_color = fct_reorder(eye_color, mean_mass)) %>%
+  ggplot(aes(x = eye_color, y = mean_mass)) + 
+  geom_col()
+
+
+
+## Manually reordering
+
+Let’s switch to using another dataset, gss_cat, the
+general social survey. What is the income distribution among the
+respondents?
+
+gss_cat %>%
+  count(rincome)
+#> # A tibble: 16 × 2
+#>    rincome            n
+#>    <fct>          <int>
+#>  1 No answer        183
+#>  2 Don't know       267
+#>  3 Refused          975
+#>  4 $25000 or more  7363
+#>  5 $20000 - 24999  1283
+#>  6 $15000 - 19999  1048
+#>  7 $10000 - 14999  1168
+#>  8 $8000 to 9999    340
+#>  9 $7000 to 7999    188
+#> 10 $6000 to 6999    215
+#> 11 $5000 to 5999    227
+#> 12 $4000 to 4999    226
+#> 13 $3000 to 3999    276
+#> 14 $1000 to 2999    395
+#> 15 Lt $1000         286
+#> 16 Not applicable  7043
+
+Notice that the income levels are in the correct order - they start
+with the non-answers and then go from highest to lowest. This is the
+same order you’d see if you plotted it as a bar chart. This is not a
+coincidence. When you’re working with ordinal data, where there is an
+order, you can have an ordered factor. You can examine them with the
+base function levels(), which prints them in order:
+
+levels(gss_cat$rincome)
+#>  [1] "No answer"      "Don't know"     "Refused"        "$25000 or more"
+#>  [5] "$20000 - 24999" "$15000 - 19999" "$10000 - 14999" "$8000 to 9999" 
+#>  [9] "$7000 to 7999"  "$6000 to 6999"  "$5000 to 5999"  "$4000 to 4999" 
+#> [13] "$3000 to 3999"  "$1000 to 2999"  "Lt $1000"       "Not applicable"
+
+But what if your factor came in the wrong order? Let’s simulate that
+by reordering the levels of rincome randomly with
+fct_shuffle():
+
+reshuffled_income <- gss_cat$rincome %>%
+  fct_shuffle()
+
+levels(reshuffled_income)
+#>  [1] "Refused"        "$1000 to 2999"  "$7000 to 7999"  "$10000 - 14999"
+#>  [5] "$25000 or more" "$15000 - 19999" "Lt $1000"       "$3000 to 3999" 
+#>  [9] "$6000 to 6999"  "$5000 to 5999"  "$8000 to 9999"  "No answer"     
+#> [13] "Not applicable" "$20000 - 24999" "Don't know"     "$4000 to 4999"
+
+Now if we plotted it, it would show in this order, which is all over
+the place! How can we fix this and put it in the right order?
+
+We can use the function fct_relevel() when we need to
+manually reorder our factor levels. In addition to the factor, you give
+it a character vector of level names, and specify where you want to move
+them. It defaults to moving them to the front, but you can move them
+after another level with the argument after. If you want to
+move it to the end, you set after equal to
+Inf.
+
+For example, let’s say we wanted to move Lt $1000 and
+$1000 to 2999 to the front. We would write:
+
+fct_relevel(reshuffled_income, c("Lt $1000", "$1000 to 2999")) %>%
+  levels()
+#>  [1] "Lt $1000"       "$1000 to 2999"  "Refused"        "$7000 to 7999" 
+#>  [5] "$10000 - 14999" "$25000 or more" "$15000 - 19999" "$3000 to 3999" 
+#>  [9] "$6000 to 6999"  "$5000 to 5999"  "$8000 to 9999"  "No answer"     
+#> [13] "Not applicable" "$20000 - 24999" "Don't know"     "$4000 to 4999"
+
+What if we want to move them to the second and third place?
+
+fct_relevel(reshuffled_income, c("Lt $1000", "$1000 to 2999"), after = 1) %>%
+  levels()
+#>  [1] "Refused"        "Lt $1000"       "$1000 to 2999"  "$7000 to 7999" 
+#>  [5] "$10000 - 14999" "$25000 or more" "$15000 - 19999" "$3000 to 3999" 
+#>  [9] "$6000 to 6999"  "$5000 to 5999"  "$8000 to 9999"  "No answer"     
+#> [13] "Not applicable" "$20000 - 24999" "Don't know"     "$4000 to 4999"
+[END TEXT]
+
+===============================================================================
+5. DESCRIPTION file of forcats 1.0.0, whole (title, authors, licence, version, publication date)
+rfile://forcats@1.0.0/DESCRIPTION
+===============================================================================
+
+[TEXT]
+Package: forcats
+Title: Tools for Working with Categorical Variables (Factors)
+Version: 1.0.0
+Authors@R: c(
+    person("Hadley", "Wickham", , "hadley@rstudio.com", role = c("aut", "cre")),
+    person("RStudio", role = c("cph", "fnd"))
+  )
+Description: Helpers for reordering factor levels (including moving
+    specified levels to front, ordering by first appearance, reversing,
+    and randomly shuffling), and tools for modifying factor levels
+    (including collapsing rare levels into other, 'anonymising', and
+    manually 'recoding').
+License: MIT + file LICENSE
+URL: https://forcats.tidyverse.org/,
+        https://github.com/tidyverse/forcats
+BugReports: https://github.com/tidyverse/forcats/issues
+Depends: R (>= 3.4)
+Imports: cli (>= 3.4.0), glue, lifecycle, magrittr, rlang (>= 1.0.0),
+        tibble
+Suggests: covr, dplyr, ggplot2, knitr, readr, rmarkdown, testthat (>=
+        3.0.0), withr
+VignetteBuilder: knitr
+Config/Needs/website: tidyverse/tidytemplate
+Config/testthat/edition: 3
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 7.2.3
+NeedsCompilation: no
+Packaged: 2023-01-27 14:11:11 UTC; hadleywickham
+Author: Hadley Wickham [aut, cre],
+  RStudio [cph, fnd]
+Maintainer: Hadley Wickham <hadley@rstudio.com>
+Repository: CRAN
+Date/Publication: 2023-01-29 22:20:02 UTC
+Built: R 4.2.2; ; 'Wed, 01 Feb 2023 11:58:16 -0600'; unix
+[END TEXT]

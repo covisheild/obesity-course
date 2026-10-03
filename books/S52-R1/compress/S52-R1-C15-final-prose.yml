@@ -1,0 +1,72 @@
+definition.text: 'In R, a date is an object of class `Date`. It is stored as a number of days since 1 January
+
+  1970 and printed in the ISO 8601 form, year-month-day, such as 2021-04-03.
+
+
+  Text becomes a date by parsing: reading it according to the order of its parts. The lubridate
+
+  functions are named for that order. `ymd()` reads year, month, day; `dmy()` reads day, month,
+
+  year; `mdy()` reads month, day, year. Each accepts any separator. Text that does not fit the
+
+  order becomes `NA`, with a warning that says how many values failed to parse. `read_csv()`
+
+  recognises dates already written as year-month-day and leaves other forms as text.
+
+
+  Subtracting one date from another gives a time difference in days. Adding a number to a date
+
+  gives the date that many days later.
+
+  '
+simplified_explanation: 'To R, a date is a number of days, counted from 1 January 1970, that prints as year-month-day.
+
+  Because it is a number underneath, you can subtract one date from another and get days.
+
+
+  A date usually arrives as text, such as "03/04/2021". Is that 3 April or 4 March? The text
+
+  cannot tell you.
+
+
+  Here is the trap. If you pick the wrong order, some dates come out wrong and still look like
+
+  dates. Others fail and become `NA`.
+
+
+  Broman and Woo recommend the ISO 8601 form, year-month-day: 2021-04-03.
+
+  '
+must_know[0].point: 'Read day-first text with `mdy()`, and every date whose day is 12 or less comes out as a real,
+
+  wrong date. Only the others fail.
+
+  '
+must_know[1].point: 'Before parsing a date column, find out the order of its parts from the data dictionary or the
+
+  form.
+
+  '
+must_know[2].point: 'Read every "failed to parse" warning. The number in it is the count of dates you have
+
+  turned into `NA`.
+
+  '
+must_know[3].point: 'When you design a form or a register, write dates as year-month-day, ISO 8601, as Broman and Woo
+
+  recommend.
+
+  '
+must_know[4].point: 'A spreadsheet date may reach you as a day count such as 41822. The starting date differs
+
+  between systems, and a one-day or four-year slip looks like a real date.
+
+  '
+must_know[5].point: 'Compute age from the date of birth and the visit date, never by subtracting years.
+
+  '
+must_know[6].point: 'If a spreadsheet already turned a gene name or a date into something else, no function in R
+
+  can tell you what was there before.
+
+  '

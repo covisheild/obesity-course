@@ -1,0 +1,55 @@
+definition.text: 'A function call is a function''s name followed by round brackets. The values written inside
+
+  the brackets are its arguments, and the call returns one result, which R prints or which you
+
+  assign to a name.
+
+
+  Each argument has a name. An argument may be given by name, as `digits = 1`, or by position, in
+
+  the order the function lists its arguments.
+
+
+  Most arguments have a default value, which is used when the call does not give one. For
+
+  `mean()`, `median()` and `sd()`, the argument `na.rm` says whether missing values (`NA`) are
+
+  removed before the computation. Its default, `FALSE`, makes the result `NA` whenever a value is
+
+  missing.
+
+  '
+simplified_explanation: "```r\nheights_cm <- c(152, 160.5, 171)\nmean(heights_cm)\n```\n\n```output\n[1] 161.1667\n```\n\nWhatever goes inside the brackets is an argument. Many functions take more than one. `round()` takes\nthe number to round, called `x`, and how many decimal places to keep, called `digits`:\n\n```r\nround(161.1667, digits = 1)\n```\n\n```output\n[1] 161.2\n```\n\nLeave out an argument altogether and R uses its default. The default for `digits` is 0, so\n`round(161.1667)` gives a whole number.\n\nOne call can sit inside another, and R works from the inside out:\n\n```r\nround(mean(heights_cm), 1)\n```\n\n```output\n[1] 161.2\n```\n\nThe pipe, written `|>`, puts the steps in the order they happen. Read it as \"then\":\n\n```r\nheights_cm |>\n  mean() |>\n  round(1)\n```\n\n```output\n[1] 161.2\n```\n\nThe pipe hands the thing on its left to the call on its right, as the first argument.\n\nTo find out what a function's arguments are called and what they do, open its help page. Type\na question mark and the name: `?round`.\n"
+must_know[0].point: 'The error is to read `mean(x, na.rm = TRUE)` as the mean of all your values. It is the mean
+
+  of the values present. Report the count with it, "3.77 kg (n = 9)", every time.
+
+  '
+must_know[1].point: 'A missing value typed as 0 gives no `NA` and no warning, and pulls the mean down.
+
+  '
+must_know[2].point: 'Name every argument after the first. `round(x, digits = 1)` says what the 1 is.
+
+  `mean(3750, 3800, 3250)` runs, gives 3750 and is wrong, because unnamed values were matched
+
+  by position to arguments you did not intend.
+
+  '
+must_know[3].point: 'Before you use a function for the first time, open its help page and read Usage and
+
+  Arguments.
+
+  '
+must_know[4].point: 'Read an error message as a sentence about one call: which function, which argument, what
+
+  was wrong. Fix that argument and nothing else, then run the line again.
+
+  '
+must_know[5].point: 'No argument can tell you why a value is missing.
+
+  '
+must_know[6].point: 'If you find yourself copying the same block of calls three times with one thing changed, you
+
+  need a function of your own.
+
+  '

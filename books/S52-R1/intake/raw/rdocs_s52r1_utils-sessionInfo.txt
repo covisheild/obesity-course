@@ -1,0 +1,128 @@
+sessionInfo               package:utils                R Documentation
+
+Collect Information About the Current R Session
+
+Description:
+
+     Get and report version information about R, the OS and attached or
+     loaded packages.
+
+     The 'print()' and 'toLatex()' methods (for a '"sessionInfo"'
+     object) show the locale and timezone information by default, when
+     'locale' or 'tzone' are true.  The 'system.codepage' is only shown
+     when it is not empty, i.e., only on Windows, _and_ if it differs
+     from 'code.page', see below or 'l10n_info()'.
+
+Usage:
+
+     sessionInfo(package = NULL)
+     ## S3 method for class 'sessionInfo'
+     print(x, locale = TRUE, tzone = locale,
+           RNG = !identical(x$RNGkind, .RNGdefaults), ...)
+     ## S3 method for class 'sessionInfo'
+     toLatex(object, locale = TRUE, tzone = locale,
+             RNG = !identical(object$RNGkind, .RNGdefaults), ...)
+     osVersion
+     
+Arguments:
+
+ package: a character vector naming installed packages, or 'NULL' (the
+          default) meaning all attached packages.
+
+       x: an object of class '"sessionInfo"'.
+
+  object: an object of class '"sessionInfo"'.
+
+  locale: show locale, by default 'tzone', and (on Windows) code page
+          information?
+
+   tzone: show time zone information?
+
+     RNG: show information on 'RNGkind()'?  Defaults to true iff it
+          differs from the R version's default, i.e., 'RNGversion(*)'.
+
+     ...: currently not used.
+
+Value:
+
+     'sessionInfo()' returns an object of class '"sessionInfo"' which
+     has 'print' and 'toLatex' methods.  This is a list with components
+
+R.version: a list, the result of calling 'R.Version()'.
+
+platform: a character string describing the platform R was built under.
+          Where sub-architectures are in use this is of the form
+          'platform/sub-arch (nn-bit)'.
+
+ running: a character string (or possibly 'NULL'), the same as
+          'osVersion', see below.
+
+ RNGkind: a character vector, the result of calling 'RNGkind()'.
+
+ matprod: a character string, the result of calling
+          'getOption("matprod")'.
+
+    BLAS: a character string, the result of calling
+          'extSoftVersion()["BLAS"]'.
+
+  LAPACK: a character string, the result of calling 'La_library()'.
+
+LA_version: a character string, the result of calling 'La_version()'.
+
+  locale: a character string, the result of calling 'Sys.getlocale()'.
+
+   tzone: a character string, the result of calling 'Sys.timezone()'.
+
+tzcode_type: a character string indicating source (system/internal) of
+          the date-time conversion and printing functions.
+
+basePkgs: a character vector of base packages which are attached.
+
+otherPkgs: (not always present): a named list of the results of calling
+          'packageDescription' on other attached packages.
+
+loadedOnly: (not always present): a named list of the results of
+          calling 'packageDescription' on packages whose namespaces are
+          loaded but are not attached.
+
+'osVersion':
+
+     'osVersion' is a character string (or possibly 'NULL' on bizarre
+     platforms) describing the OS and version which it is running under
+     (as distinct from built under).  This attempts to name a Linux
+     distribution and give the OS name on an Apple Mac.
+
+     It is the same as 'sessionInfo()$running' and created when loading
+     the 'utils' package.
+
+     Windows may report unexpected versions: see the help for
+     'win.version'.
+
+     How OSes identify themselves and their versions can be arcane:
+     where possible 'osVersion' (and hence 'sessionInfo()$running')
+     uses a human-readable form.
+
+     Where R was compiled under macOS 10.x (as the CRAN Intel
+     distributions were prior to R 4.3.0) but running under 'Big Sur'
+     or later, macOS reports itself as '10.16' (which R recognizes as
+     'Big Sur ...') and not '11', '12', ....
+
+Note:
+
+     The information on 'loaded' packages and namespaces is the
+     _current_ version installed at the location the package was loaded
+     from: it can be wrong if another process has been changing
+     packages during the session.
+
+See Also:
+
+     'R.version', 'R_compiled_by'
+
+Examples:
+
+     sI <- sessionInfo()
+     sI
+     # The same, showing the RNGkind, but not the locale :
+       print(sI, RNG = TRUE, locale = FALSE)
+     toLatex(sI, locale = FALSE) # shortest; possibly desirable at end of report
+     

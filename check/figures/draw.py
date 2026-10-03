@@ -774,6 +774,9 @@ def draw_spec(rec, fig_entry, out_dir=HERE, book_id=None):
                     for xv, yv, raw in zip(res["x"], s["y"], s["y_raw"]):
                         ax.annotate(raw, (xv, yv), textcoords="offset points", xytext=(0, 6),
                                     ha="center", fontsize=7.5, color=pal["muted"])
+        if res.get("x_ticks"):
+            ax.set_xticks(res["x_ticks"])
+            ax.set_xticklabels([f"{v:g}" for v in res["x_ticks"]])
         names = figspec._names(res)
         snames = [s["name"] for s in res["series"]]
         for rel in res["relations"]:

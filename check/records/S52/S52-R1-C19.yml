@@ -1,0 +1,1302 @@
+concept_id: S52-R1-C19
+subject: S52
+rung: 1
+sequence: 19
+name: Checking the data in code
+concept_type: derivable
+clusters:
+- craft-and-integrity
+ground_floor_deps:
+- B0-R0-C08
+- B0-R0-C14
+concept_deps:
+- S52-R1-C01
+- S52-R1-C04
+- S52-R1-C09
+- S52-R1-C10
+- S52-R1-C11
+- S52-R1-C12
+- S52-R1-C13
+- S52-R1-C17
+definition:
+  text: |
+    A check, in this book, is a line of code that states something you believe about the data and
+    stops the script with an error when it is false.
+
+    `stopifnot()`, from base R, takes one or more expressions. If any of them is not `TRUE` in every
+    element, it stops with an error naming the first expression that failed, and the expressions
+    after it are not evaluated. A missing value counts as not `TRUE`, so an expression that gives
+    `NA` fails. When an expression is given a name, the name is printed in place of the expression.
+    Without a name it prints the expression, as in `all(x > 0) is not TRUE`. When every expression
+    is `TRUE`, `stopifnot()` prints nothing.
+
+    Three checks recur. A range check tests that every recorded value of a column lies between a
+    lower and an upper limit written in the code. The limits come from a source or a stated
+    decision, never from the smallest and largest values in the same data. A key is the column, or
+    set of columns, meant to pick out one row each. A key check tests that the key has as many
+    different values as the data have rows. `n_distinct()`, from dplyr, counts the different values
+    or combinations. A
+    row-count check stores the number of rows before a step that could change it, such as a join,
+    and compares it with the number after.
+  references:
+  - citekey: rdocs_s52r1_base
+    kind: textbook
+    locator: 'help page "stopifnot" (base 4.3.3), Description'
+    quote: |-
+      If any of the expressions (in '...' or 'exprs') are not 'all' 'TRUE', 'stop' is called, producing an error message indicating the _first_ expression which was not ('all') true.
+    verified:
+      resolved_id: rhelp://base@4.3.3/stopifnot
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+  - citekey: rdocs_s52r1_base
+    kind: textbook
+    locator: 'help page "stopifnot" (base 4.3.3), Details: evaluation stops at the first failure'
+    quote: |-
+      Since R version 3.5.0, expressions _are_ evaluated sequentially, and hence evaluation stops as soon as there is a "non-TRUE", as indicated by the above conceptual equivalence statement.
+    verified:
+      resolved_id: rhelp://base@4.3.3/stopifnot
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+  - citekey: rdocs_s52r1_base
+    kind: textbook
+    locator: 'help page "stopifnot" (base 4.3.3), Details: the conceptual equivalent, in which a missing value fails'
+    quote: |-
+      { if(any(is.na(A)) || !all(A)) stop(...);
+    verified:
+      resolved_id: rhelp://base@4.3.3/stopifnot
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+      note: |-
+        The help page states the NA rule in code, not in words: the expression stops if any element
+        is NA or if not all elements are TRUE. The sentence before it reads "'stopifnot(A, B)' or
+        equivalently 'stopifnot(exprs= {A ; B})' are conceptually equivalent to".
+  - citekey: rdocs_s52r1_base
+    kind: textbook
+    locator: 'help page "stopifnot" (base 4.3.3), Arguments, ...: names replace the message'
+    quote: |-
+      If names are provided to '...', they will be used in lieu of the default error message.
+    verified:
+      resolved_id: rhelp://base@4.3.3/stopifnot
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+  - citekey: rdocs_s52r1_base
+    kind: textbook
+    locator: 'help page "stopifnot" (base 4.3.3), Value'
+    quote: |-
+      ('NULL' if all statements in '...' are 'TRUE'.)
+    verified:
+      resolved_id: rhelp://base@4.3.3/stopifnot
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+      note: |-
+        NULL returned invisibly prints nothing, as the gate-filled outputs in this section show.
+  - citekey: rdocs_s52r1_dplyr
+    kind: textbook
+    locator: 'help page "n_distinct" (dplyr 1.1.4), Description'
+    quote: |-
+      'n_distinct()' counts the number of unique/distinct combinations in a set of one or more vectors.
+    verified:
+      resolved_id: rhelp://dplyr@1.1.4/n_distinct
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+  - citekey: rdocs_s52r1_dplyr
+    kind: textbook
+    locator: 'help page "mutate-joins" (dplyr 1.1.4), Arguments, relationship: the default warns only on many-to-many'
+    quote: |-
+      'NULL', the default, doesn't expect there to be any relationship between 'x' and 'y'. However, for equality joins it will check for a many-to-many relationship (which is typically unexpected) and will warn if one occurs
+    verified:
+      resolved_id: rhelp://dplyr@1.1.4/mutate-joins
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+      note: |-
+        Carries the must-know point that an ID repeated in one table only adds rows with no warning;
+        the gate-filled output of practice level 8 (second problem) shows four rows and no warning.
+  - citekey: wilson_2017
+    kind: primary
+    locator: 'Data management, 1a "Save the raw data"'
+    quote: |-
+      It is tempting to overwrite raw data files with cleaned-up versions, but faithful retention is essential for rerunning analyses from start to finish, for recovery from analytical mishaps, and for experimenting without fear.
+    verified:
+      resolved_id: https://doi.org/10.1371/journal.pcbi.1005510
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+  - citekey: wilson_2017
+    kind: primary
+    locator: 'Data management, 1e "Record all the steps used to process data"'
+    quote: |-
+      The best way to do this is to write scripts for every stage of data processing.
+    verified:
+      resolved_id: https://doi.org/10.1371/journal.pcbi.1005510
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+  - citekey: wilson_2017
+    kind: primary
+    locator: 'Data management, 1f "use a unique identifier for every record"'
+    quote: |-
+      It is generally wise to give each record or unit a unique, persistent key and to use the same names and codes when variables in 2 data sets refer to the same thing.
+    verified:
+      resolved_id: https://doi.org/10.1371/journal.pcbi.1005510
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+  - citekey: sandve_2013
+    kind: primary
+    locator: 'Rule 2 "Avoid Manual Data Manipulation Steps", first paragraph'
+    quote: |-
+      Whenever possible, rely on the execution of programs instead of manual procedures to modify data. Such manual procedures are not only inefficient and error-prone, they are also difficult to reproduce.
+    verified:
+      resolved_id: https://doi.org/10.1371/journal.pcbi.1003285
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+  - citekey: sandve_2013
+    kind: primary
+    locator: 'Rule 5 "Record All Intermediate Results", first paragraph: looking at intermediate results'
+    quote: |-
+      Quickly browsing through intermediate results can reveal discrepancies toward what is assumed, and can in this way uncover bugs or faulty interpretations that are not apparent in the final results.
+    verified:
+      resolved_id: https://doi.org/10.1371/journal.pcbi.1003285
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+  - citekey: dc_spreadsheets
+    kind: textbook
+    locator: 'Episode 04 "Quality Assurance", first paragraph'
+    quote: |-
+      Quality assurance stops bad data from ever being entered by checking to see if values are valid during data entry.
+    verified:
+      resolved_id: https://datacarpentry.github.io/spreadsheet-ecology-lesson/04-quality-control.html
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+      note: |-
+        The lesson's check is made by the spreadsheet at the moment of typing. This section's check
+        is made by the script on every run, after the data arrive; the two complement each other.
+simplified_explanation: |
+  `stopifnot()` is the tool. Give each test a name that says the belief in words, and the error
+  prints that name.
+
+  Three checks cover most of what goes wrong.
+
+  - **Range.** Every height lies between two limits you wrote down.
+  - **Key.** Every row has its own ID. Count the different IDs with `n_distinct()` and compare with
+    the number of rows.
+  - **Row count.** Count the rows before a join or a filter and again after. Then compare.
+
+  A check that fails is a question, not a verdict. Look at the rows it found. Go back to the paper
+  register, the form or the person who measured. Then write the fix as a line of code, with the date
+  and the reason in a comment. Never fix it in the raw file.
+illustrations:
+- body: |
+    Start with an analysis that looks finished. Here is a made-up clinic register of six adults,
+    typed from paper. Heights are in centimetres and weights in kilograms. Two values were typed
+    wrong, and nothing in the code below knows it.
+
+    ```r
+    library(dplyr, warn.conflicts = FALSE)
+
+    clinic <- tibble(
+      id = c(101, 102, 103, 104, 105, 106),
+      height_cm = c(152, 160, 1.6, 171, 158, 165),
+      weight_kg = c(41, 64, 58, 80.2, 620, 58)
+    )
+    ```
+
+    Compute each BMI from height in metres, as the section on making new columns did, and report the
+    median:
+
+    ```r
+    clinic |>
+      mutate(bmi = weight_kg / (height_cm / 100)^2) |>
+      summarise(n = n(), median_bmi = median(bmi))
+    ```
+
+    ```output
+    # A tibble: 1 × 2
+          n median_bmi
+      <int>      <dbl>
+    1     6       26.2
+    ```
+
+    The code runs with no warning. A median BMI of 26.2 kg/m^2 in a clinic of six adults looks
+    ordinary. You could put it in a report, and nobody reading the report would object.
+
+    The median hides the damage. Patient 103's height was typed as 1.6, a height in metres, and
+    patient 105's weight as 620 for 62. Their BMIs are absurd, but the median looks only at the
+    middle of the ordered values, so the median still looks ordinary. It is wrong all the same: the
+    two absurd values went to the top and pushed two ordinary ones into the middle. With six rows you
+    might have spotted them by eye. With six thousand you would not.
+
+    Now write down what you believed about the data, as code. Every height lies between 50 and 250
+    cm. Every weight lies between 20 and 300 kg. These limits are a decision, not a fact about
+    people. They are set wide on purpose, so that a value outside them is one you must look at
+    before you use it. Write them where anyone reading the script can see them and argue with them,
+    as Book 0 asked of every guess. `all()` turns many `TRUE` and `FALSE` values into one, and it is
+    where `na.rm = TRUE` goes.
+
+    ```r error
+    stopifnot(
+      "every height is between 50 and 250 cm" =
+        all(clinic$height_cm >= 50 & clinic$height_cm <= 250),
+      "every weight is between 20 and 300 kg" =
+        all(clinic$weight_kg >= 20 & clinic$weight_kg <= 300)
+    )
+    ```
+
+    ```output
+    Error: every height is between 50 and 250 cm
+    ```
+
+    The script stops, and the message is the belief that failed. It stopped at the first failure,
+    so the weight check never ran. To see every row that breaks either limit, filter for them:
+
+    ```r
+    clinic |>
+      filter(
+        height_cm < 50 | height_cm > 250 |
+          weight_kg < 20 | weight_kg > 300
+      )
+    ```
+
+    ```output
+    # A tibble: 2 × 3
+         id height_cm weight_kg
+      <dbl>     <dbl>     <dbl>
+    1   103       1.6        58
+    2   105     158         620
+    ```
+
+    Two rows: patient 103 and patient 105. Now go back to the paper register; in this made-up story
+    it reads 160 cm for patient 103 and 62 kg for patient 105. Correct both in code. Pick out each
+    row by its ID, never by its position. Put the corrected values in new columns, so the typed values
+    stay beside them. Say in a comment when you made the change and where the right value came from.
+
+    ```r
+    clinic_checked <- clinic |>
+      mutate(
+        # 2026-10-02: register page for id 103 reads 160 cm; it was typed
+        # as 1.6, a height in metres. Corrected here, raw file not edited.
+        height_cm_checked = if_else(id == 103, 160, height_cm),
+        # 2026-10-02: register page for id 105 reads 62 kg, typed as 620.
+        weight_kg_checked = if_else(id == 105, 62, weight_kg)
+      )
+
+    stopifnot(
+      "every height is between 50 and 250 cm" =
+        all(clinic_checked$height_cm_checked >= 50 &
+          clinic_checked$height_cm_checked <= 250),
+      "every weight is between 20 and 300 kg" =
+        all(clinic_checked$weight_kg_checked >= 20 &
+          clinic_checked$weight_kg_checked <= 300)
+    )
+    ```
+
+    This time `stopifnot()` prints nothing. Silence is the answer you wanted: every test was `TRUE`.
+    Now the median:
+
+    ```r
+    clinic_checked |>
+      mutate(
+        bmi = weight_kg_checked / (height_cm_checked / 100)^2
+      ) |>
+      summarise(n = n(), median_bmi = median(bmi))
+    ```
+
+    ```output
+    # A tibble: 1 × 2
+          n median_bmi
+      <int>      <dbl>
+    1     6       23.7
+    ```
+
+    The median moved from 26.2 to 23.7 kg/m^2. Both numbers looked reasonable. Only one was right,
+    and only the check could tell them apart.
+  analogy_breaks_when: |
+    The six patients, the two slips and the paper register are made up. The code is the point, not
+    the BMIs.
+
+    The limits catch a slip that makes a value far too large or far too small: a height in metres, a
+    weight with an extra zero. They never catch a slip that stays inside them. A height of 126 cm
+    typed for 162 cm passes both checks, and so would a weight of 58 kg typed for 85 kg. Like Book 0's
+    order-of-magnitude check, a range check finds the impossible, not the wrong.
+- body: |
+    Now run the same kind of checks on real data. The National Health and Nutrition Examination
+    Survey (NHANES) of the United States, 2021–2023 cycle, gives its body measures in one file and its
+    demographics in another, as the section on reshaping and joining used them. Each row of each file
+    is one participant, with an ID in the column `SEQN`.
+
+    ```r
+    library(haven)
+    library(dplyr, warn.conflicts = FALSE)
+
+    bmx <- read_xpt(here::here("data-raw", "BMX_L.xpt"))
+    demo <- read_xpt(here::here("data-raw", "DEMO_L.xpt"))
+    ```
+
+    First the key check. The join assumes that `SEQN` picks out one row in each file. Write that
+    down:
+
+    ```r
+    stopifnot(
+      "SEQN is unique in BMX_L" = n_distinct(bmx$SEQN) == nrow(bmx),
+      "SEQN is unique in DEMO_L" = n_distinct(demo$SEQN) == nrow(demo)
+    )
+    ```
+
+    Nothing printed, so both are true. Next the row-count check. Store the number of rows before the
+    join, join, and compare:
+
+    ```r
+    n_before <- nrow(bmx)
+
+    joined <- bmx |>
+      left_join(demo, by = "SEQN")
+
+    stopifnot("the join kept every row" = nrow(joined) == n_before)
+
+    nrow(joined)
+    ```
+
+    ```output
+    [1] 8860
+    ```
+
+    Still {{n:bmx_rows}} rows, as before the join. The section on reshaping and joining wrote the
+    same promise into the join itself, with `relationship = "one-to-one"`. The row-count check does
+    the same job after any step, not only a join. Now keep the adults, aged 20 or over:
+
+    ```r
+    adults <- joined |>
+      filter(RIDAGEYR >= 20)
+
+    nrow(adults)
+    ```
+
+    ```output
+    [1] 6064
+    ```
+
+    {{n:nhanes_adults_rows}} adults. Now the range checks, with the same limits as before. `BMXHT` is
+    standing height in centimetres and `BMXWT` is weight in kilograms.
+
+    ```r error
+    stopifnot(
+      "adult heights are between 50 and 250 cm" =
+        all(adults$BMXHT >= 50 & adults$BMXHT <= 250)
+    )
+    ```
+
+    ```output
+    Error: adult heights are between 50 and 250 cm
+    ```
+
+    The check fails. Before you hunt for a giant, count what made it fail:
+
+    ```r
+    sum(adults$BMXHT < 50 | adults$BMXHT > 250, na.rm = TRUE)
+    sum(is.na(adults$BMXHT))
+    ```
+
+    ```output
+    [1] 0
+    [1] 67
+    ```
+
+    No height lies outside the limits. But 67 adults have no height recorded, and a missing value is
+    not `TRUE`, so `stopifnot()` fails on it. That is the right default: the check has made you
+    notice the missing values. Now decide what you mean. The range check is about the heights that
+    were measured, so say so with `na.rm = TRUE` inside `all()`. The missing ones are counted and
+    reported, as the section on missing values taught, not hidden.
+
+    ```r
+    stopifnot(
+      "measured adult heights are between 50 and 250 cm" =
+        all(adults$BMXHT >= 50 & adults$BMXHT <= 250, na.rm = TRUE),
+      "measured adult weights are between 20 and 300 kg" =
+        all(adults$BMXWT >= 20 & adults$BMXWT <= 300, na.rm = TRUE)
+    )
+
+    sum(is.na(adults$BMXWT))
+    ```
+
+    ```output
+    [1] 81
+    ```
+
+    Both pass, and 81 adults have no weight. Last, keep the adults with both measures, and count:
+
+    ```r
+    adults_measured <- adults |>
+      filter(!is.na(BMXHT), !is.na(BMXWT))
+
+    nrow(adults_measured)
+    ```
+
+    ```output
+    [1] 5970
+    ```
+
+    Put the row counts side by side. Each line of the script that could change the number of rows
+    now has a number beside it.
+
+    ```table
+    | Step | Rows |
+    | BMX_L as read | 8860 |
+    | after the join | 8860 |
+    | aged 20 or over | 6064 |
+    | both measures recorded | 5970 |
+    ```
+
+    The last two rows differ by 94. That is the number of adults missing a height, a weight or both,
+    and a report must say it.
+
+    One more thing to notice. The survey's own codebook prints a "Range of Values" for height of 79.1
+    to 200.7 cm. That is the smallest and largest height in the file, across all ages measured. It
+    describes the file. A check with those numbers as its limits would pass on this file by
+    construction, and so it could never catch an error in it.
+  analogy_breaks_when: |
+    These are counts of rows in a file. The survey's documentation says its sample weights should be
+    used to analyse the body measures data, and nothing here uses them. So no count in this example
+    says anything about adults in the United States. Survey weights are taught in the subject on
+    India's data infrastructure and complex survey analysis.
+
+    The public NHANES file has already been cleaned by the people who released it, so every range
+    check on the recorded values passes. A register typed by hand in a clinic will rarely be so kind. The checks earn their place
+    on the day they fail.
+  numbers:
+  - value: '8860'
+    unit: rows of BMX_L as read_xpt() reads it, one per examined participant
+    citekey: nchs_nhanes_2021_2023_bmx_demo
+    as_of: '2024-09'
+    quote: |-
+      rows: 8860
+  - value: '6064'
+    unit: rows of BMX_L joined to DEMO_L with age 20 or over
+    citekey: nchs_nhanes_2021_2023_bmx_demo
+    as_of: '2024-09'
+    quote: |-
+      BMX rows with RIDAGEYR >= 20: 6064
+  - value: '67'
+    unit: adults aged 20 or over with no standing height recorded
+    citekey: nchs_nhanes_2021_2023_bmx_demo
+    as_of: '2024-09'
+    quote: |-
+      of these, missing BMXWT / BMXHT / BMXBMI / BMXWAIST: 81 / 67 / 94 / 302
+  - value: '81'
+    unit: adults aged 20 or over with no weight recorded
+    citekey: nchs_nhanes_2021_2023_bmx_demo
+    as_of: '2024-09'
+    quote: |-
+      of these, missing BMXWT / BMXHT / BMXBMI / BMXWAIST: 81 / 67 / 94 / 302
+  - value: '79.1'
+    unit: cm, smallest standing height in BMX_L, printed by the codebook as the start of its Range of Values
+    citekey: nchs_nhanes_2021_2023_bmx_demo
+    as_of: '2024-09'
+    quote: |-
+      79.1 to 200.7 Range of Values 8499 8499
+  - value: '200.7'
+    unit: cm, largest standing height in BMX_L, printed by the codebook as the end of its Range of Values
+    citekey: nchs_nhanes_2021_2023_bmx_demo
+    as_of: '2024-09'
+    quote: |-
+      79.1 to 200.7 Range of Values 8499 8499
+must_know:
+- point: |
+    The error is to think that a script which runs without an error has checked the data. It has
+    checked nothing you did not write as a check.
+  kind: misconception
+  bearing: methodological
+- point: |
+    Write each belief about the data as a `stopifnot()` line with a name that says the belief in
+    words.
+  kind: move
+  bearing: methodological
+  refs:
+  - rdocs_s52r1_base
+- point: |
+    A missing value fails `stopifnot()`. Do not delete the check to make the script run. Count the
+    missing values and report them, then check the recorded values with `na.rm = TRUE` inside
+    `all()`.
+  kind: trap
+  bearing: methodological
+- point: |
+    Never set a range check's limits from the smallest and largest values in the same data. Limits
+    taken from the data always pass on that data.
+  kind: trap
+  bearing: methodological
+- point: |
+    Count the rows before and after every join and every filter, and compare the two in code. An ID
+    repeated in the table you join to adds rows with no warning.
+  kind: consequence
+  bearing: methodological
+  refs:
+  - rdocs_s52r1_dplyr
+- point: |
+    Fix a wrong value with a line of code. Pick the row by its ID and write the right value into a new
+    column. If no record gives the right value, set it to `NA` and report it.
+  kind: move
+  bearing: methodological
+  refs:
+  - sandve_2013
+- point: |
+    Never fix a row by its position, as in "row 3". Sorting or filtering earlier in the script
+    moves the rows, and the fix lands on someone else without any error.
+  kind: trap
+  bearing: teaching
+- point: |
+    A value outside your limits may still be a real person, and a repeated ID may be a second visit.
+    Look before you correct.
+  kind: consequence
+  bearing: clinical
+- point: |
+    A range check catches a value outside its limits and never a wrong value inside them. A height of
+    126 cm typed for 162 cm passes.
+  kind: boundary
+  bearing: methodological
+exercises:
+- type: critique
+  prompt: |
+    A colleague found a weight of 620 kg in their thesis spreadsheet. They looked up the paper form,
+    which said 62, typed 62 into the cell, saved the file and reran their analysis. Say what is wrong
+    with this, and what they should have done.
+  answer: |
+    The correction is right. The way it was made is not.
+
+    The raw file is no longer the file that was collected. Nothing in it shows that one cell was
+    changed, when, by whom, or why. A second reader who compares the file with the forms finds no
+    trace of the slip that was fixed.
+
+    The step cannot be rerun. If the raw file is ever replaced by a fresh export from the data entry
+    system, the 620 comes back. The fix lived in one person's hands, not in the script.
+
+    Nothing will catch the next one. A weight of 620 was found by luck. The script still contains no
+    line that would stop on a weight of 700.
+
+    Instead: leave the raw file as it is. In the script, add a range check on weight, so that the
+    script stops on 620. Then add a dated line that sets a new column to 62 for that one ID, with a
+    comment saying the paper form gave 62. Rerun. The check now passes, and the script shows the
+    change to anyone who reads it.
+  skill_ref: S52-R1-K02
+- type: design
+  prompt: |
+    Your thesis dataset, made up for this exercise, is a CSV file of school children aged 6 to 14 from
+    one district. It has one row per child. Its columns are `child_id`, `school_code`, `age_years`,
+    `sex` (written `F` or `M`), `height_cm` and `weight_kg`. Write the checks you would put at the top
+    of your script, straight after reading the file. For each limit, say where it comes from.
+  answer: |
+    One possible set. The file does not exist, so the code is shown and not run.
+
+    ```r norun
+    library(readr)
+    library(dplyr, warn.conflicts = FALSE)
+
+    children <- read_csv(
+      here::here("data-raw", "school_children.csv"),
+      show_col_types = FALSE
+    )
+
+    stopifnot(
+      # one row per child, as the protocol says
+      "child_id is unique" = n_distinct(children$child_id) == nrow(children),
+      # the protocol enrols ages 6 to 14 only
+      "every age is 6 to 14" =
+        all(children$age_years >= 6 & children$age_years <= 14, na.rm = TRUE),
+      # the data dictionary allows F, M or missing
+      "sex is F, M or missing" =
+        all(children$sex %in% c("F", "M") | is.na(children$sex)),
+      # decision, set wide: a height outside 80 to 200 cm is looked at
+      "heights are 80 to 200 cm" =
+        all(children$height_cm >= 80 & children$height_cm <= 200,
+          na.rm = TRUE),
+      # decision, set wide: a weight outside 10 to 120 kg is looked at
+      "weights are 10 to 120 kg" =
+        all(children$weight_kg >= 10 & children$weight_kg <= 120,
+          na.rm = TRUE)
+    )
+
+    sum(is.na(children$height_cm))
+    sum(is.na(children$weight_kg))
+    ```
+
+    Where each limit comes from matters as much as the code. The age limits and the one-row-per-child
+    rule come from the protocol. The allowed values of `sex` come from the data dictionary. The height
+    and weight limits are your decision. Set them wide, so they catch a slip of units or an extra
+    digit, and write that they are a decision. None of them comes from the file's own smallest and
+    largest values.
+
+    Two more checks belong further down the script. One is a row count before and after any join,
+    for example to a table of schools by `school_code`. The other is a row count after each filter.
+  skill_ref: S52-R1-K01
+- type: retrieval
+  prompt: |
+    Without looking back, write the three kinds of check this section uses, one line of code for each.
+    Then say what `stopifnot()` does with a missing value.
+  answer: |
+    A range check: `all(x >= lower & x <= upper, na.rm = TRUE)`, with the limits from a source or a
+    stated decision.
+
+    A key check: `n_distinct(data$id) == nrow(data)`.
+
+    A row-count check: store `n_before <- nrow(data)` before a join or filter, then test
+    `nrow(result) == n_before`.
+
+    Each goes inside `stopifnot()`, with a name that says the belief in words. A missing value makes
+    a test `NA`, and `stopifnot()` treats `NA` as a failure and stops.
+- type: teaching
+  prompt: |
+    A first-year resident has ten minutes and a whiteboard. They say: "I always look at my data before
+    I analyse it, so I don't need checks in code." Teach them what a check in code does that looking
+    does not.
+  answer: |
+    Agree first. Looking is good, and a check does not replace it.
+
+    Then draw two columns on the board: "looking" and "a check in code".
+
+    Looking happens once, on the day you look. A check runs every time the script runs. When a new
+    batch of forms arrives next month, nobody looks again; the check does.
+
+    Looking at 6000 rows means looking at the first twenty. A check reads every row.
+
+    What you looked for is in your head. A check writes it down: "every height is between 50 and 250
+    cm". Your guide can read it and argue with the limits. A future you can read it too.
+
+    Then show the made-up six-patient register from this section. The median BMI with two slips in it
+    was 26.2 kg/m^2, a normal-looking number. Looking at the result told you nothing. One
+    `stopifnot()` line stopped the script and named the problem.
+
+    End on the limit. A check catches only what it tests, and a wrong value inside the limits passes.
+    So keep looking, and write down what you look for.
+quantitative: true
+practice_note: |
+  Thirteen problems. The technique has four moves (a stopifnot test, a range, a key, a row count)
+  plus the corrections that follow a failure, and each has a trap that runs silently: or for and,
+  limits from the data, a missing value, a fix by position, a check deleted to make a join pass. Each
+  trap needs its own diagnostic problem, and the transfer band needs both a dataset claim and a
+  claim about a script.
+practice:
+- level: 1
+  prompt: |
+    Before you run them, say what each line prints.
+
+    ```r norun
+    stopifnot(2 + 2 == 4)
+    stopifnot(c(5, 12, 7) > 0)
+    stopifnot(c(5, -12, 7) > 0)
+    ```
+  answer: |
+    ```r error
+    stopifnot(2 + 2 == 4)
+    stopifnot(c(5, 12, 7) > 0)
+    stopifnot(c(5, -12, 7) > 0)
+    ```
+
+    ```output
+    Error: c(5, -12, 7) > 0 are not all TRUE
+    ```
+
+    The first two print nothing: each test is `TRUE` in every element, and `stopifnot()` is silent
+    when it passes. The third stops. The comparison gives `TRUE FALSE TRUE`, and one `FALSE` is enough.
+    The message repeats the expression that failed, because it has no name.
+- level: 2
+  prompt: |
+    Five made-up heights, in centimetres:
+
+    ```r
+    heights <- c(152, 1.6, 171, 158, 16.5)
+    ```
+
+    Write one line that counts how many lie outside 50 to 250 cm.
+  answer: |
+    ```r
+    sum(heights < 50 | heights > 250)
+    ```
+
+    ```output
+    [1] 2
+    ```
+
+    Two: 1.6 and 16.5. Each comparison gives `TRUE` or `FALSE` for every element. `|` (or) is `TRUE`
+    when either side is, and `sum()` counts each `TRUE` as 1. The 1.6 looks like a height in metres,
+    and the 16.5 like a slipped decimal point. The count tells you only that two need looking at.
+- level: 3
+  prompt: |
+    Five made-up patient IDs:
+
+    ```r
+    library(dplyr, warn.conflicts = FALSE)
+
+    ids <- c(101, 102, 103, 103, 104)
+    ```
+
+    Write a check that stops if any ID appears twice. Say what it prints.
+  answer: |
+    ```r error
+    stopifnot("every ID is different" = n_distinct(ids) == length(ids))
+    ```
+
+    ```output
+    Error: every ID is different
+    ```
+
+    It stops. `n_distinct(ids)` is 4, because 103 appears twice, and `length(ids)` is 5. Four is not
+    five, so the test is `FALSE`, and the error prints the name you gave it.
+- level: 3
+  prompt: |
+    Three made-up weights, in kilograms, one missing:
+
+    ```r
+    weights <- c(58, NA, 72)
+    ```
+
+    Say what `stopifnot(all(weights > 20))` prints. Then write a version that checks only the
+    recorded weights, and a line that counts the missing ones.
+  answer: |
+    ```r error
+    stopifnot(all(weights > 20))
+    ```
+
+    ```output
+    Error: all(weights > 20) is not TRUE
+    ```
+
+    It stops. `weights > 20` gives `TRUE NA TRUE`. So `all()` cannot say that all are `TRUE`, and
+    gives `NA`. `stopifnot()` treats `NA` as a failure.
+
+    ```r
+    stopifnot(all(weights > 20, na.rm = TRUE))
+    sum(is.na(weights))
+    ```
+
+    ```output
+    [1] 1
+    ```
+
+    With `na.rm = TRUE`, `all()` looks only at the recorded values, and the check passes silently.
+    The second line prints 1: one weight is missing, and that number belongs in your report.
+- level: 4
+  prompt: |
+    Read the penguin file:
+
+    ```r
+    library(readr)
+
+    penguins_raw <- read_csv(
+      here::here("data-raw", "penguins_raw.csv"),
+      show_col_types = FALSE
+    )
+    ```
+
+    Write a check that stops the script if any recorded body mass, in grams, lies outside 1000 to
+    10,000 g. Those limits are a decision made for practice, not a fact about penguins. Then count the
+    rows with no body mass.
+  answer: |
+    ```r
+    stopifnot(
+      "recorded body masses are 1000 to 10000 g" =
+        all(penguins_raw$`Body Mass (g)` >= 1000 &
+          penguins_raw$`Body Mass (g)` <= 10000, na.rm = TRUE)
+    )
+
+    sum(is.na(penguins_raw$`Body Mass (g)`))
+    ```
+
+    ```output
+    [1] 2
+    ```
+
+    The check prints nothing, so every recorded body mass lies within the limits. Two rows have no
+    body mass. Keep the unit in the check's name. A limit of 10 would be right in kilograms and wrong
+    in grams, and the name tells the next reader which was meant.
+  refs:
+  - horst_2020_palmerpenguins
+- level: 5
+  prompt: |
+    Read the penguin file:
+
+    ```r
+    library(readr)
+    library(dplyr, warn.conflicts = FALSE)
+
+    penguins_raw <- read_csv(
+      here::here("data-raw", "penguins_raw.csv"),
+      show_col_types = FALSE
+    )
+    ```
+
+    The section on the data dictionary found that species together with sample number picks out one
+    row each. Write two checks: that the file has the {{n:penguins_rows}} rows its help page states, and that species
+    with sample number is a key. Then try the same key check on `Individual ID` alone, and say what
+    happens.
+  answer: |
+    ```r
+    stopifnot(
+      "the file has 344 rows" = nrow(penguins_raw) == 344,
+      "Species with Sample Number is a key" =
+        n_distinct(penguins_raw$Species, penguins_raw$`Sample Number`) ==
+          nrow(penguins_raw)
+    )
+    ```
+
+    Both pass. The first check is worth having for its own sake. If someone hands you a different
+    version of the file, the script stops on its first lines.
+
+    ```r error
+    stopifnot(
+      "Individual ID is a key" =
+        n_distinct(penguins_raw$`Individual ID`) == nrow(penguins_raw)
+    )
+    ```
+
+    ```output
+    Error: Individual ID is a key
+    ```
+
+    It stops: there are {{n:penguins_ids}} different IDs in {{n:penguins_rows}} rows. The help page calls this column the unique ID
+    for each individual, and the check shows it does not pick out one row each. That is not an error
+    to correct. It is a question about what one row stands for, and the section on the data
+    dictionary records the answer you found rather than guessing.
+  refs:
+  - horst_2020_palmerpenguins
+- level: 6
+  prompt: |
+    Read the NHANES body measures file:
+
+    ```r
+    library(haven)
+
+    bmx <- read_xpt(here::here("data-raw", "BMX_L.xpt"))
+    ```
+
+    The file has a BMI column in kg/m^2, named `BMXBMI`. Beside it are weight `BMXWT` in kilograms
+    and height `BMXHT` in centimetres. Check in code that the BMI column agrees with weight divided by height in
+    metres squared, on every row where all three are recorded. The file prints BMI to one decimal
+    place, so allow a difference of up to 0.05.
+  answer: |
+    ```r
+    bmi_calc <- bmx$BMXWT / (bmx$BMXHT / 100)^2
+    difference <- abs(bmi_calc - bmx$BMXBMI)
+
+    max(difference, na.rm = TRUE)
+
+    stopifnot(
+      "BMXBMI agrees with weight / height^2 to 0.05" =
+        all(difference <= 0.05, na.rm = TRUE)
+    )
+    ```
+
+    ```output
+    [1] 0.04997855
+    ```
+
+    The largest difference is 0.04997855 kg/m^2, just under 0.05, and the check passes. A number
+    rounded to one decimal place is never more than 0.05 from the full value. So this is what you would
+    see if the survey worked out BMI from these two columns and rounded it. The check does not prove
+    that is how they did it. It shows that nothing in the file says otherwise.
+
+    A column that disagrees
+    with its own formula is a cheap error to find. This line looks for it on every row where all
+    three are recorded, at once. `abs()` gives the size of a difference without its sign.
+  refs:
+  - nchs_nhanes_2021_2023_bmx_demo
+- level: 7
+  prompt: |
+    A colleague checks the heights in a made-up register:
+
+    ```r
+    register <- data.frame(
+      id = c(1, 2, 3),
+      height_cm = c(158, 1.62, 171)
+    )
+
+    stopifnot(
+      "heights are between 50 and 250 cm" =
+        all(register$height_cm >= 50 | register$height_cm <= 250)
+    )
+    ```
+
+    Nothing printed, and they write in their notes: "heights checked, all within range." Find what
+    broke.
+  answer: |
+    The check uses `|` (or) where it needs `&` (and). Every number is either at least 50 or at most
+    250, and most are both. So the test is `TRUE` for every possible height, and the check can never
+    fail. The height of 1.62 passed because 1.62 is at most 250.
+
+    ```r error
+    stopifnot(
+      "heights are between 50 and 250 cm" =
+        all(register$height_cm >= 50 & register$height_cm <= 250)
+    )
+    ```
+
+    ```output
+    Error: heights are between 50 and 250 cm
+    ```
+
+    With `&` the check stops, as it should. The 1.62 looks like a height in metres.
+
+    Why the wrong answer looks reasonable: a check that passes looks exactly like a check that works.
+    The only way to know a check can fail is to watch it fail once. Feed it a value you know is wrong
+    before you trust its silence.
+- level: 7
+  prompt: |
+    A colleague corrects a height in a made-up register. The paper register gives 160 cm for patient
+    103.
+
+    ```r
+    library(dplyr, warn.conflicts = FALSE)
+
+    clinic <- tibble(
+      id = c(101, 102, 103),
+      height_cm = c(171, 160, 1.6)
+    )
+
+    clinic_sorted <- clinic |>
+      arrange(height_cm)
+
+    # register page for id 103 reads 160 cm
+    clinic_sorted$height_cm[3] <- 160
+
+    clinic_sorted
+    ```
+
+    ```output
+    # A tibble: 3 × 2
+         id height_cm
+      <dbl>     <dbl>
+    1   103       1.6
+    2   102     160
+    3   101     160
+    ```
+
+    All three heights now look sensible. Find what broke.
+  answer: |
+    The fix picked the row by its position, and the position had changed. `arrange()` sorted the rows
+    by height. Patient 103, with 1.6, moved to the top, and row 3 became patient 101. The line set
+    patient 101's height of 171 cm to 160 cm. Patient 103 still has 1.6.
+
+    Pick the row by its ID, and put the corrected value in a new column:
+
+    ```r
+    clinic_checked <- clinic |>
+      mutate(
+        # register page for id 103 reads 160 cm; typed as 1.6
+        height_cm_checked = if_else(id == 103, 160, height_cm)
+      )
+
+    clinic_checked
+    ```
+
+    ```output
+    # A tibble: 3 × 3
+         id height_cm height_cm_checked
+      <dbl>     <dbl>             <dbl>
+    1   101     171                 171
+    2   102     160                 160
+    3   103       1.6               160
+    ```
+
+    Now only patient 103 changes, whatever order the rows are in, and the typed value stays beside the
+    corrected one.
+
+    Why the wrong answer looks reasonable: after the fix every height is plausible, so a range check
+    passes. The error moved from one patient to another. It did not leave.
+- level: 8
+  prompt: |
+    A colleague writes a range check on made-up weights:
+
+    ```r
+    weights <- c(58, 64, 620, 71, 49)
+
+    lower <- min(weights, na.rm = TRUE)
+    upper <- max(weights, na.rm = TRUE)
+
+    stopifnot(
+      "weights are within range" =
+        all(weights >= lower & weights <= upper, na.rm = TRUE)
+    )
+    ```
+
+    The check passes, and they report "all weights within range". Find what broke.
+  answer: |
+    The limits were taken from the data. `lower` is the smallest weight, 49, and `upper` is the
+    largest, 620. Every value lies between the smallest and the largest value, so the check passes on
+    any data at all. It cannot fail, and the 620 kg weight sets its own upper limit.
+
+    Take the limits from outside the data, a source or a stated decision, and write which:
+
+    ```r error
+    # decision, set wide: an adult weight outside 20 to 300 kg is looked at
+    stopifnot(
+      "weights are 20 to 300 kg" =
+        all(weights >= 20 & weights <= 300, na.rm = TRUE)
+    )
+    ```
+
+    ```output
+    Error: weights are 20 to 300 kg
+    ```
+
+    Now the check stops on the 620.
+
+    Why the wrong answer looks reasonable: `min()` and `max()` feel like "the range", and the code
+    looks careful. But a range taken from the data describes the data. It can never flag an error in
+    the data.
+- level: 8
+  prompt: |
+    A colleague joins made-up visit records to a made-up table of people:
+
+    ```r
+    library(dplyr, warn.conflicts = FALSE)
+
+    visits <- tibble(id = c(1, 2, 3), weight_kg = c(61, 74, 55))
+    people <- tibble(
+      id = c(1, 2, 2, 3),
+      sex = c("female", "male", "male", "female")
+    )
+
+    n_before <- nrow(visits)
+
+    joined <- visits |>
+      left_join(people, by = "id")
+    ```
+
+    ```r error
+    stopifnot("the join kept every row" = nrow(joined) == n_before)
+    ```
+
+    ```output
+    Error: the join kept every row
+    ```
+
+    They say: "The check is too strict. I deleted it, the script runs, and the mean weight is 66 kg."
+    Find what broke.
+  answer: |
+    The check was right, and deleting it hid the problem. Person 2 appears twice in `people`, so the
+    join matched visit 2 to both rows and the result has four rows, not three:
+
+    ```r
+    nrow(joined)
+
+    people |>
+      count(id) |>
+      filter(n > 1)
+    ```
+
+    ```output
+    [1] 4
+    # A tibble: 1 × 2
+         id     n
+      <dbl> <int>
+    1     2     2
+    ```
+
+    The mean over the joined rows counts person 2's weight twice: (61 + 74 + 74 + 55) ÷ 4 = 66 kg. The
+    mean of the three visits is (61 + 74 + 55) ÷ 3 = 63.3 kg.
+
+    ```r
+    mean(joined$weight_kg)
+    mean(visits$weight_kg)
+    ```
+
+    ```output
+    [1] 66
+    [1] 63.33333
+    ```
+
+    The fix is in the table of people. Find out why person 2 is there twice. If the two rows are the
+    same entry typed twice, remove one in code, with a dated comment saying so, and keep the row-count
+    check. If they are two different people sharing an ID, the ID needs fixing at its source.
+
+    Why the wrong answer looks reasonable: the script ran, and 66 kg is a believable mean. A check
+    that stops a script feels like the problem. It is the messenger.
+- level: 9
+  prompt: |
+    A draft thesis on the NHANES 2021–2023 files says: "Height and weight were checked for all {{n:nhanes_adults_rows}}
+    adults, and every value was plausible." The adults are those aged 20 or over. Turn the sentence into
+    code, with limits of 50 to 250 cm and 20 to 300 kg. Run it, and say what the result does not
+    establish.
+  answer: |
+    Read, join, keep the adults, then count the values outside the limits and the values missing.
+
+    ```r
+    library(haven)
+    library(dplyr, warn.conflicts = FALSE)
+
+    bmx <- read_xpt(here::here("data-raw", "BMX_L.xpt"))
+    demo <- read_xpt(here::here("data-raw", "DEMO_L.xpt"))
+
+    adults <- bmx |>
+      left_join(demo, by = "SEQN") |>
+      filter(RIDAGEYR >= 20)
+
+    nrow(adults)
+    sum(adults$BMXHT < 50 | adults$BMXHT > 250, na.rm = TRUE)
+    sum(adults$BMXWT < 20 | adults$BMXWT > 300, na.rm = TRUE)
+    sum(is.na(adults$BMXHT))
+    sum(is.na(adults$BMXWT))
+    ```
+
+    ```output
+    [1] 6064
+    [1] 0
+    [1] 0
+    [1] 67
+    [1] 81
+    ```
+
+    There are {{n:nhanes_adults_rows}} adults, and no recorded height or weight lies outside the limits. But 67 have no
+    height and 81 no weight. So "checked for all {{n:nhanes_adults_rows}}" is not true: {{n:nhanes_adults_rows}} − 67 = 5997 heights and
+    {{n:nhanes_adults_rows}} − 81 = 5983 weights were checked. The sentence should say how many of each were recorded.
+
+    What the result does not establish:
+
+    - That the values are right. A wrong value inside the limits passes.
+    - That the limits are the right ones. They are a decision, set wide, and the thesis should state
+      them.
+    - Anything about adults in the United States. These are counts of rows, and the survey's sample
+      weights were not used.
+  refs:
+  - nchs_nhanes_2021_2023_bmx_demo
+- level: 10
+  prompt: |
+    A colleague's script reads the penguin file and computes the mean body mass of each species. In a
+    made-up meeting they say: "The data are clean. The script ran without a single error." Decide what
+    you would have to compute before you could call the penguin file clean. Write it, run it, and say
+    what it still does not establish.
+  answer: |
+    "Ran without an error" says only that no line failed. A line can fail only if it tests something.
+    So write the beliefs the analysis rests on as checks. Is it the right file? Is there one row per
+    sample? Are the body masses of a possible size? Does `Sex` hold only the values the data
+    dictionary allows?
+
+    ```r
+    library(readr)
+    library(dplyr, warn.conflicts = FALSE)
+
+    penguins_raw <- read_csv(
+      here::here("data-raw", "penguins_raw.csv"),
+      show_col_types = FALSE
+    )
+
+    stopifnot(
+      "the file has 344 rows" = nrow(penguins_raw) == 344,
+      "Species with Sample Number is a key" =
+        n_distinct(penguins_raw$Species, penguins_raw$`Sample Number`) ==
+          nrow(penguins_raw),
+      # decision for practice: a body mass outside 1000 to 10000 g is looked at
+      "recorded body masses are 1000 to 10000 g" =
+        all(penguins_raw$`Body Mass (g)` >= 1000 &
+          penguins_raw$`Body Mass (g)` <= 10000, na.rm = TRUE),
+      "Sex is FEMALE, MALE or missing" =
+        all(penguins_raw$Sex %in% c("FEMALE", "MALE") | is.na(penguins_raw$Sex))
+    )
+
+    sum(is.na(penguins_raw$`Body Mass (g)`))
+    sum(is.na(penguins_raw$Sex))
+    ```
+
+    ```output
+    [1] 2
+    [1] 11
+    ```
+
+    All four checks pass. Two rows have no body mass and 11 have no sex recorded; a mean by species
+    leaves out the first two, and should say so.
+
+    What it still does not establish:
+
+    - That any value is correct. A body mass typed 3750 for 3570 passes every check here.
+    - That "clean" means anything without the list. Clean against which checks? Put the checks in the
+      script, and the word can be replaced by the list.
+    - That the colleague's means are right. The checks are about the file. A mistake in the
+      summarising code is a separate question.
+  refs:
+  - horst_2020_palmerpenguins
+retrieval_items:
+- q: What does stopifnot() print when every test it is given is TRUE?
+  a: Nothing. It is silent when every test passes, and stops with an error naming the first failed
+    test otherwise.
+- q: Why does stopifnot(all(x > 0)) stop when x contains a missing value?
+  a: The comparison gives NA for the missing value, so all() gives NA, and stopifnot() treats NA as
+    not TRUE. Count the missing values, then check the recorded ones with na.rm = TRUE inside all().
+- q: Name the three checks this section uses and one line of code for each.
+  a: A range check, all(x >= lower & x <= upper, na.rm = TRUE); a key check, n_distinct(id) ==
+    nrow(data); a row-count check, nrow(after) == n_before, with n_before stored before the step.
+- q: Why must a range check's limits never come from the smallest and largest values in the data?
+  a: Every value lies between the smallest and the largest, so the check would pass on any data and
+    could never catch an error.
+- q: How is a wrong value found by a check corrected?
+  a: By a line of code that picks the row by its ID, writes the right value into a new column, and
+    carries a comment with the date and where the right value came from. The raw file is not edited.
+figures:
+- file: "s52-r1-c19-nhanes-row-counts.png"
+  caption: "Rows after each step of the NHANES 2021–2023 checking script: 8860 in the body measures file as read, 8860 after joining the demographics file on SEQN, 6064 aged 20 or over, and 5970 with both height and weight recorded. The 94 adults missing a height, a weight or both are the difference between the last two bars. These are counts of rows in the files, unweighted, and estimate nothing about the United States."
+  alt: "A bar chart of four steps. BMX_L as read: 8860 rows. After the join to DEMO_L on SEQN: 8860. Aged 20 or over: 6064. Both height and weight recorded: 5970."
+  source: "draw.py"
+  spec:
+    kind: "bar"
+    from_table: {block: 0, x: 0, y: [1]}
+    x_label: "step of the script"
+    y_label: "rows"
+    y_range: [0, 10000]
+    value_labels: true
+    relations:
+    - {check: "y[0] = y[1]"}
+    - {check: "y[2] - y[3] = 94"}
+- file: "s52-r1-c19-median-before-after.png"
+  caption: "Median BMI of the six adults in the made-up clinic register, before and after the range checks. As typed, with patient 103's height as 1.6 and patient 105's weight as 620, the median is 26.2 kg/m^2; with both corrected in code from the paper register, it is 23.7 kg/m^2. Both bars look like an ordinary clinic; only the check told them apart."
+  alt: "A bar chart of two medians: 26.2 kg/m^2 as typed, 23.7 kg/m^2 after the two corrections, a difference of 2.5."
+  source: "draw.py"
+  spec:
+    kind: "bar"
+    x: ["as typed", "after correcting ids 103 and 105"]
+    series:
+    - {name: "median BMI", y: ["26.2", "23.7"]}
+    x_label: "clinic register"
+    y_label: "median BMI (kg/m^2)"
+    y_range: [0, 30]
+    value_labels: true
+    size: [5.2, 3.0]
+    derived:
+    - {value: "2.5", from: "26.2 - 23.7"}
+    relations:
+    - {check: "y[0] - y[1] = 2.5"}
+- file: "s52-r1-c19-missing-measures.png"
+  caption: "Missing measures among the 6064 NHANES adults aged 20 or over, counted after the height range check failed on them: 67 have no height, 81 have no weight, and 94 have no height, no weight or both (6064 - 5970). The bars overlap: 67 + 81 - 94 = 54 adults lack both. A report states these counts beside any result from the 5970."
+  alt: "A bar chart of three counts: no height 67, no weight 81, no height or weight or both 94."
+  source: "draw.py"
+  spec:
+    kind: "bar"
+    x: ["no height", "no weight", "no height, no weight\nor both"]
+    series:
+    - {name: "adults", y: ["67", "81", "94"]}
+    x_label: "missing in the adults aged 20 or over"
+    y_label: "adults"
+    y_range: [0, 100]
+    value_labels: true
+    size: [5.6, 3.0]
+    derived:
+    - {value: "54", from: "67 + 81 - 94"}
+    relations:
+    - {check: "y[2] = 6064 - 5970"}
+    - {check: "y[0] + y[1] - y[2] = 54"}
+provenance:
+  map_version_id: fc19c8bc-a216-4131-99fb-ebe3f19cec4a
+  outcome_refs:
+  - S52-R1-S2
+  - S52-R1-O3
+  - S52-R1-G
+review:
+  stability: long
+  trigger: '2031-10-02'
+  last_reviewed: '2026-10-02'
+status: drafted

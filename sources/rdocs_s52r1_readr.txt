@@ -1,0 +1,957 @@
+READR 2.1.5 — VERSION-MATCHED HELP PAGES FROM THE BOOK'S R 4.3.3 SANDBOX
+VERBATIM SOURCE PACK (EXCERPTS)
+============================================================
+
+Transcription rule for this file: every line between a [TEXT] and an [END TEXT] line is an exact,
+unaltered slice of a raw render made in the book's sandbox and saved under books/S52-R1/intake/raw/, cut
+programmatically (raw[i:j]) by books/S52-R1/intake/build-c/build.py and re-checked by verify.py as a
+whitespace-normalised substring of that render. Nothing has been paraphrased. Where material is left out,
+the omission is marked [...] in place. Lines beginning [NOTE] are this file's own annotation and are NOT
+source text. Quoted evidence in this header is cut the same way.
+
+LOCATORS: these are local documents, not web pages, so each block heading carries a locator, not a URL:
+  rhelp://<package>@<version>/<Rd name>     the installed help page (what ?topic shows in R)
+  rvignette://<package>@<version>/<name>    the installed vignette (what vignette("<name>") shows)
+  rfile://<package>@<version>/DESCRIPTION   the installed DESCRIPTION file, byte for byte
+The package's website shows the CURRENT version's documentation, which may differ from what is held here.
+
+HOW RENDERED (2026-10-02): R 4.3.3, in a UTF-8 locale, with options(useFancyQuotes = FALSE) so quotation
+marks print as straight ASCII ' and "; help pages by tools::Rd2txt(utils:::.getHelpFile(help(topic,
+package = pkg)), options = list(underline_titles = FALSE, width = 80)); vignettes from the installed HTML
+by xml2 1.3.6, taking h1-h4, p, pre, top-level li and table elements in document order (headings marked
+with #, list items with -, code and printed output as in the vignette's own <pre> blocks; images not
+held). Script: books/S52-R1/intake/build-c/render.R. Help pages print no output for their Examples: the
+code there is shown, not run.
+
+CITATION: Wickham, Hadley; Hester, Jim; Bryan, Jennifer. readr: Read Rectangular Text Data. R package version 2.1.5, published on CRAN 2024-01-10. Help pages as installed.
+PACKAGE TITLE (from DESCRIPTION): "Title: Read Rectangular Text Data"
+VERSION read with packageVersion() on 2026-10-02: "readr 2.1.5"
+LICENCE: the installed DESCRIPTION file states
+  "License: MIT + file LICENSE"
+The LICENSE file it names is not present in the installed package (system.file("LICENSE",
+package = "readr") returns ""), so its year and copyright-holder lines were not read.
+
+WHAT THIS FILE HOLDS: these help pages, each whole (description, usage, arguments, details, value, examples
+as code): read_csv (Rd "read_delim"); problems (Rd "problems"). Vignette sections, each whole as marked:
+  - vignette "readr": Introduction to readr: whole (vector parsers, column specification, rectangular parsers, overriding the defaults, available column specifications, output)
+The DESCRIPTION file, whole. Every other help page and vignette of the package is NOT held.
+
+VERSION WARNING: this is the documentation of the version the book's outputs were made with. Newer versions
+exist (see `tidyverse_news_s52r1` for what changed in dplyr, tidyr, readr and ggplot2). A reader on a newer
+version may see different text in ?topic. Current online reference (orientation only, not this text): https://readr.tidyverse.org
+
+===============================================================================
+1. readr::read_csv — help page "read_delim" (readr 2.1.5), whole
+rhelp://readr@2.1.5/read_delim
+===============================================================================
+
+[TEXT]
+read_delim                package:readr                R Documentation
+
+Read a delimited file (including CSV and TSV) into a tibble
+
+Description:
+
+     'read_csv()' and 'read_tsv()' are special cases of the more
+     general 'read_delim()'. They're useful for reading the most common
+     types of flat file data, comma separated values and tab separated
+     values, respectively. 'read_csv2()' uses ; for the field separator
+     and , for the decimal point. This format is common in some
+     European countries.
+
+Usage:
+
+     read_delim(
+       file,
+       delim = NULL,
+       quote = "\"",
+       escape_backslash = FALSE,
+       escape_double = TRUE,
+       col_names = TRUE,
+       col_types = NULL,
+       col_select = NULL,
+       id = NULL,
+       locale = default_locale(),
+       na = c("", "NA"),
+       quoted_na = TRUE,
+       comment = "",
+       trim_ws = FALSE,
+       skip = 0,
+       n_max = Inf,
+       guess_max = min(1000, n_max),
+       name_repair = "unique",
+       num_threads = readr_threads(),
+       progress = show_progress(),
+       show_col_types = should_show_types(),
+       skip_empty_rows = TRUE,
+       lazy = should_read_lazy()
+     )
+     
+     read_csv(
+       file,
+       col_names = TRUE,
+       col_types = NULL,
+       col_select = NULL,
+       id = NULL,
+       locale = default_locale(),
+       na = c("", "NA"),
+       quoted_na = TRUE,
+       quote = "\"",
+       comment = "",
+       trim_ws = TRUE,
+       skip = 0,
+       n_max = Inf,
+       guess_max = min(1000, n_max),
+       name_repair = "unique",
+       num_threads = readr_threads(),
+       progress = show_progress(),
+       show_col_types = should_show_types(),
+       skip_empty_rows = TRUE,
+       lazy = should_read_lazy()
+     )
+     
+     read_csv2(
+       file,
+       col_names = TRUE,
+       col_types = NULL,
+       col_select = NULL,
+       id = NULL,
+       locale = default_locale(),
+       na = c("", "NA"),
+       quoted_na = TRUE,
+       quote = "\"",
+       comment = "",
+       trim_ws = TRUE,
+       skip = 0,
+       n_max = Inf,
+       guess_max = min(1000, n_max),
+       progress = show_progress(),
+       name_repair = "unique",
+       num_threads = readr_threads(),
+       show_col_types = should_show_types(),
+       skip_empty_rows = TRUE,
+       lazy = should_read_lazy()
+     )
+     
+     read_tsv(
+       file,
+       col_names = TRUE,
+       col_types = NULL,
+       col_select = NULL,
+       id = NULL,
+       locale = default_locale(),
+       na = c("", "NA"),
+       quoted_na = TRUE,
+       quote = "\"",
+       comment = "",
+       trim_ws = TRUE,
+       skip = 0,
+       n_max = Inf,
+       guess_max = min(1000, n_max),
+       progress = show_progress(),
+       name_repair = "unique",
+       num_threads = readr_threads(),
+       show_col_types = should_show_types(),
+       skip_empty_rows = TRUE,
+       lazy = should_read_lazy()
+     )
+     
+Arguments:
+
+    file: Either a path to a file, a connection, or literal data
+          (either a single string or a raw vector).
+
+          Files ending in '.gz', '.bz2', '.xz', or '.zip' will be
+          automatically uncompressed. Files starting with http://,
+          https://, ftp://, or ftps:// will be automatically
+          downloaded. Remote gz files can also be automatically
+          downloaded and decompressed.
+
+          Literal data is most useful for examples and tests. To be
+          recognised as literal data, the input must be either wrapped
+          with 'I()', be a string containing at least one new line, or
+          be a vector containing at least one string with a new line.
+
+          Using a value of 'clipboard()' will read from the system
+          clipboard.
+
+   delim: Single character used to separate fields within a record.
+
+   quote: Single character used to quote strings.
+
+escape_backslash: Does the file use backslashes to escape special
+          characters? This is more general than 'escape_double' as
+          backslashes can be used to escape the delimiter character,
+          the quote character, or to add special characters like \\n.
+
+escape_double: Does the file escape quotes by doubling them? i.e. If
+          this option is 'TRUE', the value """" represents a single
+          quote, \".
+
+col_names: Either 'TRUE', 'FALSE' or a character vector of column
+          names.
+
+          If 'TRUE', the first row of the input will be used as the
+          column names, and will not be included in the data frame. If
+          'FALSE', column names will be generated automatically: X1,
+          X2, X3 etc.
+
+          If 'col_names' is a character vector, the values will be used
+          as the names of the columns, and the first row of the input
+          will be read into the first row of the output data frame.
+
+          Missing ('NA') column names will generate a warning, and be
+          filled in with dummy names '...1', '...2' etc. Duplicate
+          column names will generate a warning and be made unique, see
+          'name_repair' to control how this is done.
+
+col_types: One of 'NULL', a 'cols()' specification, or a string. See
+          'vignette("readr")' for more details.
+
+          If 'NULL', all column types will be inferred from 'guess_max'
+          rows of the input, interspersed throughout the file. This is
+          convenient (and fast), but not robust. If the guessed types
+          are wrong, you'll need to increase 'guess_max' or supply the
+          correct types yourself.
+
+          Column specifications created by 'list()' or 'cols()' must
+          contain one column specification for each column. If you only
+          want to read a subset of the columns, use 'cols_only()'.
+
+          Alternatively, you can use a compact string representation
+          where each character represents one column:
+
+            • c = character
+
+            • i = integer
+
+            • n = number
+
+            • d = double
+
+            • l = logical
+
+            • f = factor
+
+            • D = date
+
+            • T = date time
+
+            • t = time
+
+            • ? = guess
+
+            • _ or - = skip
+
+          By default, reading a file without a column specification
+          will print a message showing what 'readr' guessed they were.
+          To remove this message, set 'show_col_types = FALSE' or set
+          'options(readr.show_col_types = FALSE)'.
+
+col_select: Columns to include in the results. You can use the same
+          mini-language as 'dplyr::select()' to refer to the columns by
+          name. Use 'c()' to use more than one selection expression.
+          Although this usage is less common, 'col_select' also accepts
+          a numeric column index. See '?tidyselect::language' for full
+          details on the selection language.
+
+      id: The name of a column in which to store the file path. This is
+          useful when reading multiple input files and there is data in
+          the file paths, such as the data collection date. If 'NULL'
+          (the default) no extra column is created.
+
+  locale: The locale controls defaults that vary from place to place.
+          The default locale is US-centric (like R), but you can use
+          'locale()' to create your own locale that controls things
+          like the default time zone, encoding, decimal mark, big mark,
+          and day/month names.
+
+      na: Character vector of strings to interpret as missing values.
+          Set this option to 'character()' to indicate no missing
+          values.
+
+quoted_na: *[Deprecated]* Should missing values inside quotes be
+          treated as missing values (the default) or strings. This
+          parameter is soft deprecated as of readr 2.0.0.
+
+ comment: A string used to identify comments. Any text after the
+          comment characters will be silently ignored.
+
+ trim_ws: Should leading and trailing whitespace (ASCII spaces and
+          tabs) be trimmed from each field before parsing it?
+
+    skip: Number of lines to skip before reading data. If 'comment' is
+          supplied any commented lines are ignored _after_ skipping.
+
+   n_max: Maximum number of lines to read.
+
+guess_max: Maximum number of lines to use for guessing column types.
+          Will never use more than the number of lines read. See
+          'vignette("column-types", package = "readr")' for more
+          details.
+
+name_repair: Handling of column names. The default behaviour is to
+          ensure column names are '"unique"'. Various repair strategies
+          are supported:
+
+            • '"minimal"': No name repair or checks, beyond basic
+              existence of names.
+
+            • '"unique"' (default value): Make sure names are unique
+              and not empty.
+
+            • '"check_unique"': No name repair, but check they are
+              'unique'.
+
+            • '"unique_quiet"': Repair with the 'unique' strategy,
+              quietly.
+
+            • '"universal"': Make the names 'unique' and syntactic.
+
+            • '"universal_quiet"': Repair with the 'universal'
+              strategy, quietly.
+
+            • A function: Apply custom name repair (e.g., 'name_repair
+              = make.names' for names in the style of base R).
+
+            • A purrr-style anonymous function, see
+              'rlang::as_function()'.
+
+          This argument is passed on as 'repair' to
+          'vctrs::vec_as_names()'. See there for more details on these
+          terms and the strategies used to enforce them.
+
+num_threads: The number of processing threads to use for initial
+          parsing and lazy reading of data. If your data contains
+          newlines within fields the parser should automatically detect
+          this and fall back to using one thread only. However if you
+          know your file has newlines within quoted fields it is safest
+          to set 'num_threads = 1' explicitly.
+
+progress: Display a progress bar? By default it will only display in an
+          interactive session and not while knitting a document. The
+          automatic progress bar can be disabled by setting option
+          'readr.show_progress' to 'FALSE'.
+
+show_col_types: If 'FALSE', do not show the guessed column types. If
+          'TRUE' always show the column types, even if they are
+          supplied. If 'NULL' (the default) only show the column types
+          if they are not explicitly supplied by the 'col_types'
+          argument.
+
+skip_empty_rows: Should blank rows be ignored altogether? i.e. If this
+          option is 'TRUE' then blank rows will not be represented at
+          all.  If it is 'FALSE' then they will be represented by 'NA'
+          values in all the columns.
+
+    lazy: Read values lazily? By default, this is 'FALSE', because
+          there are special considerations when reading a file lazily
+          that have tripped up some users. Specifically, things get
+          tricky when reading and then writing back into the same file.
+          But, in general, lazy reading ('lazy = TRUE') has many
+          benefits, especially for interactive use and when your
+          downstream work only involves a subset of the rows or
+          columns.
+
+          Learn more in 'should_read_lazy()' and in the documentation
+          for the 'altrep' argument of 'vroom::vroom()'.
+
+Value:
+
+     A 'tibble()'. If there are parsing problems, a warning will alert
+     you. You can retrieve the full details by calling 'problems()' on
+     your dataset.
+
+Examples:
+
+     # Input sources -------------------------------------------------------------
+     # Read from a path
+     read_csv(readr_example("mtcars.csv"))
+     read_csv(readr_example("mtcars.csv.zip"))
+     read_csv(readr_example("mtcars.csv.bz2"))
+     ## Not run:
+     
+     # Including remote paths
+     read_csv("https://github.com/tidyverse/readr/raw/main/inst/extdata/mtcars.csv")
+     ## End(Not run)
+     
+     
+     # Read from multiple file paths at once
+     continents <- c("africa", "americas", "asia", "europe", "oceania")
+     filepaths <- vapply(
+       paste0("mini-gapminder-", continents, ".csv"),
+       FUN = readr_example,
+       FUN.VALUE = character(1)
+     )
+     read_csv(filepaths, id = "file")
+     
+     # Or directly from a string with `I()`
+     read_csv(I("x,y\n1,2\n3,4"))
+     
+     # Column selection-----------------------------------------------------------
+     # Pass column names or indexes directly to select them
+     read_csv(readr_example("chickens.csv"), col_select = c(chicken, eggs_laid))
+     read_csv(readr_example("chickens.csv"), col_select = c(1, 3:4))
+     
+     # Or use the selection helpers
+     read_csv(
+       readr_example("chickens.csv"),
+       col_select = c(starts_with("c"), last_col())
+     )
+     
+     # You can also rename specific columns
+     read_csv(
+       readr_example("chickens.csv"),
+       col_select = c(egg_yield = eggs_laid, everything())
+     )
+     
+     # Column types --------------------------------------------------------------
+     # By default, readr guesses the columns types, looking at `guess_max` rows.
+     # You can override with a compact specification:
+     read_csv(I("x,y\n1,2\n3,4"), col_types = "dc")
+     
+     # Or with a list of column types:
+     read_csv(I("x,y\n1,2\n3,4"), col_types = list(col_double(), col_character()))
+     
+     # If there are parsing problems, you get a warning, and can extract
+     # more details with problems()
+     y <- read_csv(I("x\n1\n2\nb"), col_types = list(col_double()))
+     y
+     problems(y)
+     
+     # Column names --------------------------------------------------------------
+     # By default, readr duplicate name repair is noisy
+     read_csv(I("x,x\n1,2\n3,4"))
+     
+     # Same default repair strategy, but quiet
+     read_csv(I("x,x\n1,2\n3,4"), name_repair = "unique_quiet")
+     
+     # There's also a global option that controls verbosity of name repair
+     withr::with_options(
+       list(rlib_name_repair_verbosity = "quiet"),
+       read_csv(I("x,x\n1,2\n3,4"))
+     )
+     
+     # Or use "minimal" to turn off name repair
+     read_csv(I("x,x\n1,2\n3,4"), name_repair = "minimal")
+     
+     # File types ----------------------------------------------------------------
+     read_csv(I("a,b\n1.0,2.0"))
+     read_csv2(I("a;b\n1,0;2,0"))
+     read_tsv(I("a\tb\n1.0\t2.0"))
+     read_delim(I("a|b\n1.0|2.0"), delim = "|")
+     
+[END TEXT]
+
+===============================================================================
+2. readr::problems — help page "problems" (readr 2.1.5), whole
+rhelp://readr@2.1.5/problems
+===============================================================================
+
+[TEXT]
+problems                 package:readr                 R Documentation
+
+Retrieve parsing problems
+
+Description:
+
+     Readr functions will only throw an error if parsing fails in an
+     unrecoverable way. However, there are lots of potential problems
+     that you might want to know about - these are stored in the
+     'problems' attribute of the output, which you can easily access
+     with this function. 'stop_for_problems()' will throw an error if
+     there are any parsing problems: this is useful for automated
+     scripts where you want to throw an error as soon as you encounter
+     a problem.
+
+Usage:
+
+     problems(x = .Last.value)
+     
+     stop_for_problems(x)
+     
+Arguments:
+
+       x: A data frame (from read_*()) or a vector (from parse_*()).
+
+Value:
+
+     A data frame with one row for each problem and four columns:
+
+ row,col: Row and column of problem
+
+expected: What readr expected to find
+
+  actual: What it actually got
+
+Examples:
+
+     x <- parse_integer(c("1X", "blah", "3"))
+     problems(x)
+     
+     y <- parse_integer(c("1", "2", "3"))
+     problems(y)
+     
+[END TEXT]
+
+===============================================================================
+3. vignette("readr", package = "readr") 2.1.5 — Introduction to readr: whole (vector parsers, column specification, rectangular parsers, overriding the defaults, available column specifications, output)
+rvignette://readr@2.1.5/readr
+===============================================================================
+
+[TEXT]
+# Introduction to readr
+
+The key problem that readr solves is parsing a flat
+file into a tibble. Parsing is the process of taking a text file and
+turning it into a rectangular tibble where each column is the
+appropriate part. Parsing takes place in three basic stages:
+
+- The flat file is parsed into a rectangular matrix of
+strings.
+
+- The type of each column is determined.
+
+- Each column of strings is parsed into a vector of a more specific
+type.
+
+It’s easiest to learn how this works in the opposite order Below,
+you’ll learn how the:
+
+- Vector parsers turn a character vector in to a
+more specific type.
+
+- Column specification describes the type of each
+column and the strategy readr uses to guess types so you don’t need to
+supply them all.
+
+- Rectangular parsers turn a flat file into a
+matrix of rows and columns.
+
+Each parse_*() is coupled with a col_*()
+function, which will be used in the process of parsing a complete
+tibble.
+
+## Vector parsers
+
+It’s easiest to learn the vector parses using parse_
+functions. These all take a character vector and some options. They
+return a new vector the same length as the old, along with an attribute
+describing any problems.
+
+### Atomic vectors
+
+parse_logical(), parse_integer(),
+parse_double(), and parse_character() are
+straightforward parsers that produce the corresponding atomic
+vector.
+
+parse_integer(c("1", "2", "3"))
+#> [1] 1 2 3
+parse_double(c("1.56", "2.34", "3.56"))
+#> [1] 1.56 2.34 3.56
+parse_logical(c("true", "false"))
+#> [1]  TRUE FALSE
+
+By default, readr expects . as the decimal mark and
+, as the grouping mark. You can override this default using
+locale(), as described in
+vignette("locales").
+
+### Flexible numeric parser
+
+parse_integer() and parse_double() are
+strict: the input string must be a single number with no leading or
+trailing characters. parse_number() is more flexible: it
+ignores non-numeric prefixes and suffixes, and knows how to deal with
+grouping marks. This makes it suitable for reading currencies and
+percentages:
+
+parse_number(c("0%", "10%", "150%"))
+#> [1]   0  10 150
+parse_number(c("$1,234.5", "$12.45"))
+#> [1] 1234.50   12.45
+
+### Date/times
+
+readr supports three types of date/time data:
+
+- dates: number of days since 1970-01-01.
+
+- times: number of seconds since midnight.
+
+- datetimes: number of seconds since midnight 1970-01-01.
+
+parse_datetime("2010-10-01 21:45")
+#> [1] "2010-10-01 21:45:00 UTC"
+parse_date("2010-10-01")
+#> [1] "2010-10-01"
+parse_time("1:00pm")
+#> 13:00:00
+
+Each function takes a format argument which describes
+the format of the string. If not specified, it uses a default value:
+
+- parse_datetime() recognises ISO8601
+datetimes.
+
+- parse_date() uses the date_format
+specified by the locale(). The default value is
+%AD which uses an automatic date parser that recognises
+dates of the format Y-m-d or Y/m/d.
+
+- parse_time() uses the time_format
+specified by the locale(). The default value is
+%At which uses an automatic time parser that recognises
+times of the form H:M optionally followed by seconds and
+am/pm.
+
+In most cases, you will need to supply a format, as
+documented in parse_datetime():
+
+parse_datetime("1 January, 2010", "%d %B, %Y")
+#> [1] "2010-01-01 UTC"
+parse_datetime("02/02/15", "%m/%d/%y")
+#> [1] "2015-02-02 UTC"
+
+### Factors
+
+When reading a column that has a known set of values, you can read
+directly into a factor. parse_factor() will generate a
+warning if a value is not in the supplied levels.
+
+parse_factor(c("a", "b", "a"), levels = c("a", "b", "c"))
+#> [1] a b a
+#> Levels: a b c
+parse_factor(c("a", "b", "d"), levels = c("a", "b", "c"))
+#> Warning: 1 parsing failure.
+#> row col           expected actual
+#>   3  -- value in level set      d
+#> [1] a    b    <NA>
+#> attr(,"problems")
+#> # A tibble: 1 × 4
+#>     row   col expected           actual
+#>   <int> <int> <chr>              <chr> 
+#> 1     3    NA value in level set d     
+#> Levels: a b c
+
+## Column specification
+
+It would be tedious if you had to specify the type of every column
+when reading a file. Instead readr, uses some heuristics to guess the
+type of each column. You can access these results yourself using
+guess_parser():
+
+guess_parser(c("a", "b", "c"))
+#> [1] "character"
+guess_parser(c("1", "2", "3"))
+#> [1] "double"
+guess_parser(c("1,000", "2,000", "3,000"))
+#> [1] "number"
+guess_parser(c("2001/10/10"))
+#> [1] "date"
+
+The guessing policies are described in the documentation for the
+individual functions. Guesses are fairly strict. For example, we don’t
+guess that currencies are numbers, even though we can parse them:
+
+guess_parser("$1,234")
+#> [1] "character"
+parse_number("$1,234")
+#> [1] 1234
+
+There are two parsers that will never be guessed:
+col_skip() and col_factor(). You will always
+need to supply these explicitly.
+
+You can see the specification that readr would generate for a column
+file by using spec_csv(), spec_tsv() and so
+on:
+
+x <- spec_csv(readr_example("challenge.csv"))
+
+For bigger files, you can often make the specification simpler by
+changing the default column type using cols_condense()
+
+mtcars_spec <- spec_csv(readr_example("mtcars.csv"))
+mtcars_spec
+#> cols(
+#>   mpg = col_double(),
+#>   cyl = col_double(),
+#>   disp = col_double(),
+#>   hp = col_double(),
+#>   drat = col_double(),
+#>   wt = col_double(),
+#>   qsec = col_double(),
+#>   vs = col_double(),
+#>   am = col_double(),
+#>   gear = col_double(),
+#>   carb = col_double()
+#> )
+
+cols_condense(mtcars_spec)
+#> cols(
+#>   .default = col_double()
+#> )
+
+By default readr only looks at the first 1000 rows. This keeps file
+parsing speedy, but can generate incorrect guesses. For example, in
+challenge.csv the column types change in row 1001, so readr
+guesses the wrong types. One way to resolve the problem is to increase
+the number of rows:
+
+x <- spec_csv(readr_example("challenge.csv"), guess_max = 1001)
+
+Another way is to manually specify the col_type, as
+described below.
+
+## Rectangular parsers
+
+readr comes with five parsers for rectangular file formats:
+
+- read_csv() and read_csv2() for csv
+files
+
+- read_tsv() for tabs separated files
+
+- read_fwf() for fixed-width files
+
+- read_log() for web log files
+
+Each of these functions firsts calls spec_xxx() (as
+described above), and then parses the file according to that column
+specification:
+
+df1 <- read_csv(readr_example("challenge.csv"))
+#> Rows: 2000 Columns: 2
+#> ── Column specification ────────────────────────────────────────────────────────
+#> Delimiter: ","
+#> dbl  (1): x
+#> date (1): y
+#> 
+#> ℹ Use `spec()` to retrieve the full column specification for this data.
+#> ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
+
+The rectangular parsing functions almost always succeed; they’ll only
+fail if the format is severely messed up. Instead, readr will generate a
+data frame of problems. The first few will be printed out, and you can
+access them all with problems():
+
+problems(df1)
+#> # A tibble: 0 × 5
+#> # ℹ 5 variables: row <int>, col <int>, expected <chr>, actual <chr>, file <chr>
+
+You’ve already seen one way of handling bad guesses: increasing the
+number of rows used to guess the type of each column.
+
+df2 <- read_csv(readr_example("challenge.csv"), guess_max = 1001)
+#> Rows: 2000 Columns: 2
+#> ── Column specification ────────────────────────────────────────────────────────
+#> Delimiter: ","
+#> dbl  (1): x
+#> date (1): y
+#> 
+#> ℹ Use `spec()` to retrieve the full column specification for this data.
+#> ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
+
+Another approach is to manually supply the column specification.
+
+### Overriding the defaults
+
+In the previous examples, you may have noticed that readr printed the
+column specification that it used to parse the file:
+
+#> Parsed with column specification:
+#> cols(
+#>   x = col_integer(),
+#>   y = col_character()
+#> )
+
+You can also access it after the fact using spec():
+
+spec(df1)
+#> cols(
+#>   x = col_double(),
+#>   y = col_date(format = "")
+#> )
+spec(df2)
+#> cols(
+#>   x = col_double(),
+#>   y = col_date(format = "")
+#> )
+
+(This also allows you to access the full column specification if
+you’re reading a very wide file. By default, readr will only print the
+specification of the first 20 columns.)
+
+If you want to manually specify the column types, you can start by
+copying and pasting this code, and then tweaking it fix the parsing
+problems.
+
+df3 <- read_csv(
+  readr_example("challenge.csv"), 
+  col_types = list(
+    x = col_double(),
+    y = col_date(format = "")
+  )
+)
+
+In general, it’s good practice to supply an explicit column
+specification. It is more work, but it ensures that you get warnings if
+the data changes in unexpected ways. To be really strict, you can use
+stop_for_problems(df3). This will throw an error if there
+are any parsing problems, forcing you to fix those problems before
+proceeding with the analysis.
+
+### Available column specifications
+
+The available specifications are: (with string abbreviations in
+brackets)
+
+- col_logical() [l], containing only T,
+F, TRUE or FALSE.
+
+- col_integer() [i], integers.
+
+- col_double() [d], doubles.
+
+- col_character() [c], everything else.
+
+- col_factor(levels, ordered) [f], a fixed set of
+values.
+
+- col_date(format = "") [D]: with the locale’s
+date_format.
+
+- col_time(format = "") [t]: with the locale’s
+time_format.
+
+- col_datetime(format = "") [T]: ISO8601 date times
+
+- col_number() [n], numbers containing the
+grouping_mark
+
+- col_skip() [_, -], don’t import this column.
+
+- col_guess() [?], parse using the “best” type based on
+the input.
+
+Use the col_types argument to override the default
+choices. There are two ways to use it:
+
+- With a string: "dc__d": read first column as double,
+second as character, skip the next two and read the last column as a
+double. (There’s no way to use this form with types that take additional
+parameters.)
+
+- With a (named) list of col objects:
+read_csv("iris.csv", col_types = list(
+  Sepal.Length = col_double(),
+  Sepal.Width = col_double(),
+  Petal.Length = col_double(),
+  Petal.Width = col_double(),
+  Species = col_factor(c("setosa", "versicolor", "virginica"))
+))
+Or, with their abbreviations:
+  read_csv("iris.csv", col_types = list(
+  Sepal.Length = "d",
+  Sepal.Width = "d",
+  Petal.Length = "d",
+  Petal.Width = "d",
+  Species = col_factor(c("setosa", "versicolor", "virginica"))
+))
+
+Any omitted columns will be parsed automatically, so the previous
+call will lead to the same result as:
+
+read_csv("iris.csv", col_types = list(
+  Species = col_factor(c("setosa", "versicolor", "virginica")))
+)
+
+You can also set a default type that will be used instead of relying
+on the automatic detection for columns you don’t specify:
+
+read_csv("iris.csv", col_types = list(
+  Species = col_factor(c("setosa", "versicolor", "virginica")),
+  .default = col_double())
+)
+
+If you only want to read specified columns, use
+cols_only():
+
+read_csv("iris.csv", col_types = cols_only(
+  Species = col_factor(c("setosa", "versicolor", "virginica")))
+)
+
+### Output
+
+The output of all these functions is a tibble. Note that characters
+are never automatically converted to factors (i.e. no more
+stringsAsFactors = FALSE) and column names are left as is,
+not munged into valid R identifiers (i.e. there is no
+check.names = TRUE). Row names are never set.
+
+Attributes store the column specification (spec()) and
+any parsing problems (problems()).
+[END TEXT]
+
+===============================================================================
+4. DESCRIPTION file of readr 2.1.5, whole (title, authors, licence, version, publication date)
+rfile://readr@2.1.5/DESCRIPTION
+===============================================================================
+
+[TEXT]
+Package: readr
+Title: Read Rectangular Text Data
+Version: 2.1.5
+Authors@R: c(
+    person("Hadley", "Wickham", , "hadley@posit.co", role = "aut"),
+    person("Jim", "Hester", role = "aut"),
+    person("Romain", "Francois", role = "ctb"),
+    person("Jennifer", "Bryan", , "jenny@posit.co", role = c("aut", "cre"),
+           comment = c(ORCID = "0000-0002-6983-2759")),
+    person("Shelby", "Bearrows", role = "ctb"),
+    person("Posit Software, PBC", role = c("cph", "fnd")),
+    person("https://github.com/mandreyel/", role = "cph",
+           comment = "mio library"),
+    person("Jukka", "Jylänki", role = c("ctb", "cph"),
+           comment = "grisu3 implementation"),
+    person("Mikkel", "Jørgensen", role = c("ctb", "cph"),
+           comment = "grisu3 implementation")
+  )
+Description: The goal of 'readr' is to provide a fast and friendly way to
+    read rectangular data (like 'csv', 'tsv', and 'fwf').  It is designed
+    to flexibly parse many types of data found in the wild, while still
+    cleanly failing when data unexpectedly changes.
+License: MIT + file LICENSE
+URL: https://readr.tidyverse.org, https://github.com/tidyverse/readr
+BugReports: https://github.com/tidyverse/readr/issues
+Depends: R (>= 3.6)
+Imports: cli (>= 3.2.0), clipr, crayon, hms (>= 0.4.1), lifecycle (>=
+        0.2.0), methods, R6, rlang, tibble, utils, vroom (>= 1.6.0)
+Suggests: covr, curl, datasets, knitr, rmarkdown, spelling, stringi,
+        testthat (>= 3.2.0), tzdb (>= 0.1.1), waldo, withr, xml2
+LinkingTo: cpp11, tzdb (>= 0.1.1)
+VignetteBuilder: knitr
+Config/Needs/website: tidyverse, tidyverse/tidytemplate
+Config/testthat/edition: 3
+Config/testthat/parallel: false
+Encoding: UTF-8
+Language: en-US
+RoxygenNote: 7.2.3
+NeedsCompilation: yes
+Packaged: 2024-01-10 21:03:49 UTC; jenny
+Author: Hadley Wickham [aut],
+  Jim Hester [aut],
+  Romain Francois [ctb],
+  Jennifer Bryan [aut, cre] (<https://orcid.org/0000-0002-6983-2759>),
+  Shelby Bearrows [ctb],
+  Posit Software, PBC [cph, fnd],
+  https://github.com/mandreyel/ [cph] (mio library),
+  Jukka Jylänki [ctb, cph] (grisu3 implementation),
+  Mikkel Jørgensen [ctb, cph] (grisu3 implementation)
+Maintainer: Jennifer Bryan <jenny@posit.co>
+Repository: CRAN
+Date/Publication: 2024-01-10 23:20:02 UTC
+Built: R 4.3.2; x86_64-pc-linux-gnu; 'Sat, 13 Jan 2024 10:43:43 -0600'; unix
+[END TEXT]

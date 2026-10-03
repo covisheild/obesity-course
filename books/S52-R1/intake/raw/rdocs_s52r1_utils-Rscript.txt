@@ -1,0 +1,99 @@
+Rscript                 package:utils                  R Documentation
+
+Scripting Front-End for R
+
+Description:
+
+     This is an alternative front end for use in '#!' scripts and other
+     scripting applications.
+
+Usage:
+
+     Rscript [options] file [args]
+     Rscript [options] -e expr [-e expr2 ...] [args]
+     
+Arguments:
+
+ options: a list of options, all beginning with '--'.  These can be any
+          of the options of the standard R front-end, and also those
+          described in the details.
+
+expr, expr2: R expression(s), properly quoted.
+
+    file: the name of a file containing R commands.  '-' indicates
+          'stdin'.
+
+    args: arguments to be passed to the script in 'file' or expressions
+          supplied via '-e'.
+
+Details:
+
+     'Rscript --help' gives details of usage, and 'Rscript --version'
+     gives the version of 'Rscript'.
+
+     Other invocations invoke the R front-end with selected options.
+     This front-end is convenient for writing '#!' scripts since it is
+     an executable and takes 'file' directly as an argument.  Options
+     '--no-echo --no-restore' are always supplied: these imply
+     '--no-save'. Arguments that contain spaces cannot be specified
+     directly on the '#!' line, because spaces and tabs are interpreted
+     as delimiters and there is no way to protect them from this
+     interpretation on the '#!' line. (The standard Windows command
+     line has no concept of '#!' scripts, but Cygwin shells do.)
+
+     _Either_ one or more '-e' options or 'file' should be supplied.
+     When using '-e' options be aware of the quoting rules in the shell
+     used: see the examples.
+
+     The prescribed order of arguments is important: e.g.  '--verbose'
+     specified after '-e' will be part of 'args' and passed to the
+     expression; the same will happen to '-e' specified after 'file'.
+
+     Additional options accepted as part of 'options' (before 'file' or
+     '-e') are
+
+     '--verbose' gives details of what 'Rscript' is doing.
+
+     '--default-packages=list' where 'list' is a comma-separated list
+          of package names or 'NULL'.  Sets the environment variable
+          'R_DEFAULT_PACKAGES' which determines the packages loaded on
+          startup.
+
+     Spaces are allowed in 'expr' and 'file' (but will need to be
+     protected from the shell in use, if any, for example by enclosing
+     the argument in quotes).
+
+     If '--default-packages' is not used, then 'Rscript' checks the
+     environment variable 'R_SCRIPT_DEFAULT_PACKAGES'. If this is set,
+     then it takes precedence over 'R_DEFAULT_PACKAGES'.
+
+     Normally the version of R is determined at installation, but this
+     can be overridden by setting the environment variable 'RHOME'.
+
+     'stdin()' refers to the input file, and 'file("stdin")' to the
+     'stdin' file stream of the process.
+
+Note:
+
+     'Rscript' is only supported on systems with the 'execv' system
+     call.
+
+Examples:
+
+     ## Not run:
+     
+     Rscript -e 'date()' -e 'format(Sys.time(), "%a %b %d %X %Y")'
+     
+     # Get the same initial packages in the same order as default R:
+     Rscript --default-packages=methods,datasets,utils,grDevices,graphics,stats -e 'sessionInfo()'
+     
+     ## example #! script for a Unix-alike
+     ## (arguments given on the #! line end up as [options] to Rscript, while
+     ## arguments passed to the #! script end up as [args], so available to
+     ## commandArgs())
+     #! /path/to/Rscript --vanilla --default-packages=utils
+     args <- commandArgs(TRUE)
+     res <- try(install.packages(args))
+     if(inherits(res, "try-error")) q(status=1) else q()
+     ## End(Not run)
+     

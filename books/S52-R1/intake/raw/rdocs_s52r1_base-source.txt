@@ -1,0 +1,215 @@
+source                  package:base                   R Documentation
+
+Read R Code from a File, a Connection or Expressions
+
+Description:
+
+     'source' causes R to accept its input from the named file or URL
+     or connection or expressions directly.  Input is read and 'parse'd
+     from that file until the end of the file is reached, then the
+     parsed expressions are evaluated sequentially in the chosen
+     environment.
+
+     'withAutoprint(exprs)' is a wrapper for 'source(exprs = exprs,
+     ..)' with different defaults.  Its main purpose is to evaluate and
+     auto-print expressions as if in a toplevel context, e.g, as in the
+     R console.
+
+Usage:
+
+     source(file, local = FALSE, echo = verbose, print.eval = echo,
+            exprs, spaced = use_file,
+            verbose = getOption("verbose"),
+            prompt.echo = getOption("prompt"),
+            max.deparse.length = 150, width.cutoff = 60L,
+            deparseCtrl = "showAttributes",
+            chdir = FALSE,
+            encoding = getOption("encoding"),
+            continue.echo = getOption("continue"),
+            skip.echo = 0, keep.source = getOption("keep.source"))
+     
+     withAutoprint(exprs, evaluated = FALSE, local = parent.frame(),
+                   print. = TRUE, echo = TRUE, max.deparse.length = Inf,
+                   width.cutoff = max(20, getOption("width")),
+                   deparseCtrl = c("keepInteger", "showAttributes", "keepNA"),
+                   ...)
+     
+Arguments:
+
+    file: a connection or a character string giving the pathname of the
+          file or URL to read from.  The 'stdin()' connection reads
+          from the console when interactive.
+
+   local: 'TRUE', 'FALSE' or an environment, determining where the
+          parsed expressions are evaluated.  'FALSE' (the default)
+          corresponds to the user's workspace (the global environment)
+          and 'TRUE' to the environment from which 'source' is called.
+
+    echo: logical; if 'TRUE', each expression is printed after parsing,
+          before evaluation.
+
+print.eval, print.: logical; if 'TRUE', the result of 'eval(i)' is
+          printed for each expression 'i'; defaults to the value of
+          'echo'.
+
+   exprs: for 'source()' and 'withAutoprint(*, evaluated=TRUE)':
+          _instead_ of specifying 'file', an 'expression', 'call', or
+          'list' of 'call''s, but _not_ an unevaluated "expression".
+
+          for 'withAutoprint()' (with default 'evaluated=FALSE'): one
+          or more unevaluated "expressions".
+
+evaluated: logical indicating that 'exprs' is passed to 'source(exprs=
+          *)' and hence must be evaluated, i.e., a formal 'expression',
+          'call' or 'list' of calls.
+
+  spaced: logical indicating if newline (hence empty line) should be
+          printed before each expression (when 'echo = TRUE').
+
+ verbose: if 'TRUE', more diagnostics (than just 'echo = TRUE') are
+          printed during parsing and evaluation of input, including
+          extra info for *each* expression.
+
+prompt.echo: character; gives the prompt to be used if 'echo = TRUE'.
+
+max.deparse.length: integer; is used only if 'echo' is 'TRUE' and gives
+          the maximal number of characters output for the deparse of a
+          single expression.
+
+width.cutoff: integer, passed to 'deparse()' which is used (only) when
+          there are no source references.
+
+deparseCtrl: 'character' vector, passed as 'control' to 'deparse()',
+          see also '.deparseOpts'.  In R version <= 3.3.x, this was
+          hardcoded to '"showAttributes"', which is the default
+          currently; 'deparseCtrl = "all"' may be preferable, when
+          strict back compatibility is not of importance.
+
+   chdir: logical; if 'TRUE' and 'file' is a pathname, the R working
+          directory is temporarily changed to the directory containing
+          'file' for evaluating.
+
+encoding: character vector.  The encoding(s) to be assumed when 'file'
+          is a character string: see 'file'.  A possible value is
+          '"unknown"' when the encoding is guessed: see the 'Encodings'
+          section.
+
+continue.echo: character; gives the prompt to use on continuation lines
+          if 'echo = TRUE'.
+
+skip.echo: integer; how many comment lines at the start of the file to
+          skip if 'echo = TRUE'.
+
+keep.source: logical: should the source formatting be retained when
+          echoing expressions, if possible?
+
+     ...: (for 'withAutoprint()':) further (non-file related) arguments
+          to be passed to 'source(.)'.
+
+Details:
+
+     Note that running code via 'source' differs in a few respects from
+     entering it at the R command line.  Since expressions are not
+     executed at the top level, auto-printing is not done.  So you will
+     need to include explicit 'print' calls for things you want to be
+     printed (and remember that this includes plotting by 'lattice',
+     FAQ Q7.22).  Since the complete file is parsed before any of it is
+     run, syntax errors result in none of the code being run.  If an
+     error occurs in running a syntactically correct script, anything
+     assigned into the workspace by code that has been run will be kept
+     (just as from the command line), but diagnostic information such
+     as 'traceback()' will contain additional calls to 'withVisible'.
+
+     All versions of R accept input from a connection with end of line
+     marked by LF (as used on Unix), CRLF (as used on DOS/Windows) or
+     CR (as used on classic Mac OS) and map this to newline.  The final
+     line can be incomplete, that is missing the final end-of-line
+     marker.
+
+     If 'keep.source' is true (the default in interactive use), the
+     source of functions is kept so they can be listed exactly as
+     input.
+
+     Unlike input from a console, lines in the file or on a connection
+     can contain an unlimited number of characters.
+
+     When 'skip.echo > 0', that many comment lines at the start of the
+     file will not be echoed.  This does not affect the execution of
+     the code at all.  If there are executable lines within the first
+     'skip.echo' lines, echoing will start with the first of them.
+
+     If 'echo' is true and a deparsed expression exceeds
+     'max.deparse.length', that many characters are output followed by
+     ' .... [TRUNCATED] '.
+
+Encodings:
+
+     By default the input is read and parsed in the current encoding of
+     the R session.  This is usually what is required, but occasionally
+     re-encoding is needed, e.g. if a file from a UTF-8-using system is
+     to be read on Windows (or _vice versa_).
+
+     The rest of this paragraph applies if 'file' is an actual filename
+     or URL (and not a connection).  If 'encoding = "unknown"', an
+     attempt is made to guess the encoding: the result of
+     'localeToCharset()' is used as a guide.  If 'encoding' has two or
+     more elements, they are tried in turn until the file/URL can be
+     read without error in the trial encoding.  If an actual 'encoding'
+     is specified (rather than the default or '"unknown"') in a Latin-1
+     or UTF-8 locale then character strings in the result will be
+     translated to the current encoding and marked as such (see
+     'Encoding').
+
+     If 'file' is a connection, it is not possible to re-encode the
+     input inside 'source', and so the 'encoding' argument is just used
+     to mark character strings in the parsed input in Latin-1 and UTF-8
+     locales: see 'parse'.
+
+References:
+
+     Becker, R. A., Chambers, J. M. and Wilks, A. R. (1988) _The New S
+     Language_.  Wadsworth & Brooks/Cole.
+
+See Also:
+
+     'demo' which uses 'source'; 'eval', 'parse' and 'scan';
+     'options("keep.source")'.
+
+     'sys.source' which is a streamlined version to source a file into
+     an environment.
+
+     'The R Language Definition' for a discussion of source directives.
+
+Examples:
+
+     someCond <- 7 > 6
+     ## want an if-clause to behave "as top level" wrt auto-printing :
+     ## (all should look "as if on top level", e.g. non-assignments should print:)
+     if(someCond) withAutoprint({
+        x <- 1:12
+        x-1
+        (y <- (x-5)^2)
+        z <- y
+        z - 10
+     })
+     
+     ## If you want to source() a bunch of files, something like
+     ## the following may be useful:
+      sourceDir <- function(path, trace = TRUE, ...) {
+         op <- options(); on.exit(options(op)) # to reset after each 
+         for (nm in list.files(path, pattern = "[.][RrSsQq]$")) {
+            if(trace) cat(nm,":")
+            source(file.path(path, nm), ...)
+            if(trace) cat("\n")
+            options(op)
+         }
+      }
+     
+     suppressWarnings( rm(x,y) ) # remove 'x' or 'y' from global env
+     withAutoprint({ x <- 1:2; cat("x=",x,"\n"); y <- x^2 })
+     ## x and y now exist:
+     stopifnot(identical(x, 1:2), identical(y, x^2))
+     
+     withAutoprint({ formals(sourceDir); body(sourceDir) },
+                   max.deparse.length = 20, verbose = TRUE)
+     

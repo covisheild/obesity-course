@@ -1,0 +1,1199 @@
+concept_id: S52-R1-C18
+subject: S52
+rung: 1
+sequence: 18
+name: Plotting with the grammar of graphics
+concept_type: derivable
+clusters:
+- craft-and-integrity
+ground_floor_deps:
+- B0-R0-C19
+- B0-R0-C40
+- B0-R0-C28
+concept_deps:
+- S52-R1-C07
+- S52-R1-C11
+- S52-R1-C12
+- S52-R1-C16
+definition:
+  text: |
+    `ggplot()`, from the ggplot2 package, starts a plot from a data frame and a set of aesthetic
+    mappings. An aesthetic mapping, made with `aes()`, says which column of the data controls
+    which visual property of the marks: position along x, position along y, colour, and others.
+    A geom is the kind of mark that represents each observation or group, and each `geom_`
+    function adds one layer of marks. Layers are added to the plot with `+`.
+
+    The function `geom_histogram()` divides the x axis into bins and draws a bar whose height is
+    the count of observations in each bin. Unless told otherwise it uses 30 bins. A value on the
+    edge between two bins is then counted in the lower bin. The arguments `binwidth`,
+    `boundary` and `closed` set the width of the bins, where an edge falls, and which edge a bin
+    includes.
+
+    The function `geom_boxplot()` draws the median and a box from the first to the third
+    quartile. Its whiskers reach the furthest values within 1.5 times the interquartile range
+    beyond each end of the box (below the first quartile, above the third). Values beyond the whiskers are drawn one by one.
+
+    A visual property written inside `aes()` is mapped: it varies with a column. Written outside
+    `aes()`, as an argument of the geom, it is set: one fixed value for every mark. The function
+    `facet_wrap()` draws one panel for each value of a column. The function `ggsave()` writes a
+    plot to a file, at a size you give.
+  references:
+  - citekey: rdocs_s52r1_ggplot2
+    kind: textbook
+    locator: 'help page "ggplot" (ggplot2 3.4.4), Description'
+    quote: |-
+      'ggplot()' initializes a ggplot object. It can be used to declare the input data frame for a graphic and to specify the set of plot aesthetics intended to be common throughout all subsequent layers unless specifically overridden.
+    verified:
+      resolved_id: rhelp://ggplot2@3.4.4/ggplot
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+  - citekey: rdocs_s52r1_ggplot2
+    kind: textbook
+    locator: 'help page "ggplot" (ggplot2 3.4.4), Details: adding with a plus sign'
+    quote: |-
+      'ggplot()' is used to construct the initial plot object, and is almost always followed by a plus sign ('+') to add components to the plot.
+    verified:
+      resolved_id: rhelp://ggplot2@3.4.4/ggplot
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+  - citekey: rdocs_s52r1_ggplot2
+    kind: textbook
+    locator: 'help page "aes" (ggplot2 3.4.4), Description'
+    quote: |-
+      Aesthetic mappings describe how variables in the data are mapped to visual properties (aesthetics) of geoms.
+    verified:
+      resolved_id: rhelp://ggplot2@3.4.4/aes
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+  - citekey: r4ds_2e
+    kind: textbook
+    locator: 'ch. 1, section 1.2.3 "Creating a ggplot": what a geom is'
+    quote: |-
+      To do so, we need to define a geom: the geometrical object that a plot uses to represent data.
+    verified:
+      resolved_id: https://r4ds.hadley.nz/data-visualize.html
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+      note: |-
+        The geom_point() and geom_bar() help pages are not held; this chapter is cited for what a
+        geom is. CC BY-NC-ND: quoted for audit, not adapted.
+  - citekey: rdocs_s52r1_ggplot2
+    kind: textbook
+    locator: 'help page "geom_histogram" (ggplot2 3.4.4), Description'
+    quote: |-
+      Visualise the distribution of a single continuous variable by dividing the x axis into bins and counting the number of observations in each bin.
+    verified:
+      resolved_id: rhelp://ggplot2@3.4.4/geom_histogram
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+  - citekey: rdocs_s52r1_ggplot2
+    kind: textbook
+    locator: 'help page "geom_histogram" (ggplot2 3.4.4), Arguments, bins: the default'
+    quote: |-
+      bins: Number of bins. Overridden by 'binwidth'. Defaults to 30.
+    verified:
+      resolved_id: rhelp://ggplot2@3.4.4/geom_histogram
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+      note: |-
+        Details adds: "By default, the underlying computation ('stat_bin()') uses 30 bins; this is
+        not a good default".
+  - citekey: rdocs_s52r1_ggplot2
+    kind: textbook
+    locator: 'help page "geom_histogram" (ggplot2 3.4.4), Usage of stat_bin(): the default for closed'
+    quote: |-
+      closed = c("right", "left"),
+    verified:
+      resolved_id: rhelp://ggplot2@3.4.4/geom_histogram
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+      note: |-
+        The first value listed, "right", is the default. Arguments: "closed: One of '"right"' or
+        '"left"' indicating whether right or left edges of bins are included in the bin." That the
+        last bin also keeps its right edge with closed = "left" is not on the page; it was observed
+        by running ggplot2 3.4.4 (layer_data(): 1.2, 1.8, 2.1, 2.9, 3.0 with binwidth 1 and
+        boundary 1 give 2 and 3 under both settings).
+  - citekey: rdocs_s52r1_ggplot2
+    kind: textbook
+    locator: 'help page "geom_histogram" (ggplot2 3.4.4), Arguments, center, boundary'
+    quote: |-
+      'boundary' specifies the boundary between two bins.
+    verified:
+      resolved_id: rhelp://ggplot2@3.4.4/geom_histogram
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+  - citekey: rdocs_s52r1_ggplot2
+    kind: textbook
+    locator: 'help page "geom_boxplot" (ggplot2 3.4.4), Summary statistics: hinges'
+    quote: |-
+      The lower and upper hinges correspond to the first and third quartiles (the 25th and 75th percentiles).
+    verified:
+      resolved_id: rhelp://ggplot2@3.4.4/geom_boxplot
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+  - citekey: rdocs_s52r1_ggplot2
+    kind: textbook
+    locator: 'help page "geom_boxplot" (ggplot2 3.4.4), Summary statistics: whiskers and outlying points'
+    quote: |-
+      The upper whisker extends from the hinge to the largest value no further than 1.5 * IQR from the hinge (where IQR is the inter-quartile range, or distance between the first and third quartiles).
+    verified:
+      resolved_id: rhelp://ggplot2@3.4.4/geom_boxplot
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+      note: |-
+        The paragraph ends: 'Data beyond the end of the whiskers are called "outlying" points and
+        are plotted individually.'
+  - citekey: r4ds_2e
+    kind: textbook
+    locator: 'ch. 1, section 1.5.1, the note on terminology: mapping against setting'
+    quote: |-
+      We map variables to aesthetics if we want the visual attribute represented by that aesthetic to vary based on the values of that variable.
+    verified:
+      resolved_id: https://r4ds.hadley.nz/data-visualize.html
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+      note: |-
+        The next bullet: "Otherwise, we set the value of an aesthetic."
+  - citekey: swc_r_gapminder
+    kind: textbook
+    locator: 'Ep. 08 "Creating publication-quality graphics with ggplot2", tip "Setting an aesthetic to a value instead of a mapping"'
+    quote: |-
+      Since we don’t want to create a mapping to a specific variable, we can move the color specification outside of the
+    verified:
+      resolved_id: https://swcarpentry.github.io/r-novice-gapminder/08-plot-ggplot2.html
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+      note: |-
+        Just before it, the lesson shows geom_line(mapping = aes(color="blue")) and says it
+        "should work, but it doesn't". CC BY 4.0.
+  - citekey: rdocs_s52r1_ggplot2
+    kind: textbook
+    locator: 'help page "facet_wrap" (ggplot2 3.4.4), Description'
+    quote: |-
+      'facet_wrap()' wraps a 1d sequence of panels into 2d.
+    verified:
+      resolved_id: rhelp://ggplot2@3.4.4/facet_wrap
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+  - citekey: rdocs_s52r1_ggplot2
+    kind: textbook
+    locator: 'help page "ggsave" (ggplot2 3.4.4), Arguments, width, height, units'
+    quote: |-
+      width, height, units: Plot size in 'units' ("in", "cm", "mm", or "px"). If not supplied, uses the size of current graphics device.
+    verified:
+      resolved_id: rhelp://ggplot2@3.4.4/ggsave
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+  - citekey: r4ds_2e
+    kind: textbook
+    locator: 'ch. 1, section 1.6 "Saving your plots": give the size'
+    quote: |-
+      For reproducible code, you’ll want to specify them.
+    verified:
+      resolved_id: https://r4ds.hadley.nz/data-visualize.html
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+      note: |-
+        "them" is the width and height of the saved plot, named in the sentence before.
+  - citekey: tidyverse_news_s52r1
+    kind: textbook
+    locator: 'ggplot2 3.5.0, Bug fixes: ggsave() and directories'
+    quote: |-
+      no longer sometimes creates new directories, which is now controlled by the new
+    verified:
+      resolved_id: https://ggplot2.tidyverse.org/news/
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+      note: |-
+        The subject of the sentence is ggsave(), set as code; the argument is create.dir. This
+        book's outputs come from ggplot2 3.4.4; the line is why the code makes output/ before
+        saving.
+  - citekey: tidyverse_news_s52r1
+    kind: textbook
+    locator: 'ggplot2 4.0.0, Breaking changes: default bin boundary'
+    quote: |-
+      This may affect plots that use default binning
+    verified:
+      resolved_id: https://ggplot2.tidyverse.org/news/
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+      note: |-
+        The bullet begins: "In binning stats, the default boundary is now chosen to better adhere
+        to the nbin argument." Not tested here: the sandbox has ggplot2 3.4.4 only.
+  - citekey: tidyverse_news_s52r1
+    kind: textbook
+    locator: 'ggplot2 4.0.1, bug fix: stat_bin(boundary) was ignored'
+    quote: |-
+      Fixed bug where
+    verified:
+      resolved_id: https://ggplot2.tidyverse.org/news/
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-03'
+      note: |-
+        The bullet continues with stat_bin(boundary), set as code, then "was ignored (#6682)."
+        Re-check against the changelog at each new ggplot2 release.
+  - citekey: tidyverse_news_s52r1
+    kind: textbook
+    locator: 'ggplot2 4.0.3: geom_boxplot() gains quantile.type, default 7'
+    quote: |-
+      parameter (default
+    verified:
+      resolved_id: https://ggplot2.tidyverse.org/news/
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-03'
+      note: |-
+        The bullet: geom_boxplot() / stat_boxplot() "gain a" quantile.type "parameter (default" 7
+        ") to control the percentile definition used for hinges and median". It describes 4.0.3,
+        newer than the 3.4.4 that printed this book's outputs; in 3.4.4, layer_data() gives hinges
+        3350/4000, 3487.5/3950 and 4700/5500, the same as quantile().
+  - citekey: sandve_2013
+    kind: primary
+    locator: 'Rule 7 "Always Store Raw Data behind Plots", on histograms'
+    quote: |-
+      An example of this is the plotting of histograms, where both the values before binning (original data) and the counts per bin (heights of visualized bars) could be stored.
+    verified:
+      resolved_id: https://doi.org/10.1371/journal.pcbi.1003285
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+  - citekey: sandve_2013
+    kind: primary
+    locator: 'Rule 7 "Always Store Raw Data behind Plots", on keeping the plotting code'
+    quote: |-
+      When plotting is performed using a command-based system like R, it is convenient to also store the code used to make the plot.
+    verified:
+      resolved_id: https://doi.org/10.1371/journal.pcbi.1003285
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+simplified_explanation: |
+  A plot in ggplot2 is built from three parts.
+
+  **The data**: a data frame, one row per observation, as every section since tidy data has
+  used.
+
+  **The mappings**: which column goes where. You write these inside `aes()`, short for aesthetics,
+  the visual properties of a mark.
+
+  **The geom**: what kind of mark. Points for a scatter plot, bars for a histogram or a count,
+  boxes for a boxplot.
+
+  You join the parts with `+`.
+
+  Two traps come up early. Inside `aes()` means "let this vary with a column". Outside it means
+  "make every mark this". Write `colour = "blue"` inside and ggplot2 treats "blue" as data. And a
+  histogram's bars depend on bins you did not choose unless you choose them: set their width and
+  where they start.
+
+  Save it to `output/` with `ggsave()`, from the script, at a size you write down. Never export it
+  with the mouse.
+illustrations:
+- body: |
+    Start with a histogram of penguin body mass. Load the packages, read the file, and make the
+    short columns used in the summaries section.
+
+    ```r
+    library(readr)
+    library(dplyr, warn.conflicts = FALSE)
+    library(ggplot2)
+
+    penguins_raw <- read_csv(
+      here::here("data-raw", "penguins_raw.csv"),
+      show_col_types = FALSE
+    )
+
+    penguins <- penguins_raw |>
+      mutate(
+        species = case_when(
+          Species == "Adelie Penguin (Pygoscelis adeliae)" ~ "Adelie",
+          Species == "Chinstrap penguin (Pygoscelis antarctica)" ~ "Chinstrap",
+          Species == "Gentoo penguin (Pygoscelis papua)" ~ "Gentoo"
+        ),
+        body_mass_g = `Body Mass (g)`,
+        flipper_mm = `Flipper Length (mm)`
+      )
+
+    range(penguins$body_mass_g, na.rm = TRUE)
+    ```
+
+    ```output
+    [1] 2700 6300
+    ```
+
+    Now the plot: the data, one mapping, one geom.
+
+    ```r
+    ggplot(penguins, aes(x = body_mass_g)) +
+      geom_histogram()
+    ```
+
+    ```output
+    `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
+    Warning message:
+    Removed 2 rows containing non-finite values (`stat_bin()`).
+    ```
+
+    A histogram appears, and R prints two lines. Read both. The first says ggplot2 used 30 bins
+    because you did not choose any. Thirty is not a property of penguins. It is a default, and the
+    help page calls it "not a good default". The second says 2 rows were removed: the two penguins
+    with no body mass. The figure shows {{n:penguins_mass_n}} penguins, and nothing on it says so.
+
+    Choose the bins. Body masses run from 2700 g to 6300 g, so bins 500 g wide, starting at 2500 g,
+    cover them in eight bars. Say also which edge a bin includes. By default a penguin of exactly
+    3000 g goes in the bin "2500 to 3000". `closed = "left"` makes each bin run from its left edge
+    up to just under its right edge, so the same penguin counts in "3000 to under 3500"; the last
+    bin also keeps its right edge.
+
+    ```r
+    ggplot(penguins, aes(x = body_mass_g)) +
+      geom_histogram(binwidth = 500, boundary = 2500, closed = "left")
+    ```
+
+    ```output
+    Warning message:
+    Removed 2 rows containing non-finite values (`stat_bin()`).
+    ```
+
+    The warning about the 2 removed rows stays, and it should. Now count the same bins yourself,
+    so the numbers behind the bars exist somewhere other than in a picture. Dividing by 500,
+    rounding down with `floor()` and multiplying by 500 gives each penguin's bin start. `count()`
+    can make the column it counts; the name goes on the left of `=`.
+
+    ```r
+    mass_bins <- penguins |>
+      count(bin_start_g = floor(body_mass_g / 500) * 500)
+
+    mass_bins
+
+    dir.create(here::here("output"), showWarnings = FALSE)
+    write_csv(mass_bins, here::here("output", "mass_histogram_counts.csv"))
+    ```
+
+    ```output
+    # A tibble: 9 × 2
+      bin_start_g     n
+            <dbl> <int>
+    1        2500     9
+    2        3000    62
+    3        3500    94
+    4        4000    59
+    5        4500    51
+    6        5000    34
+    7        5500    29
+    8        6000     4
+    9          NA     2
+    ```
+
+    The eight counts add up to {{n:penguins_mass_n}}, and the `NA` row holds the other 2. These are the heights of the
+    eight bars. Rule 7 of Sandve and colleagues' ten rules for reproducible research asks for
+    exactly this: keep the counts behind a histogram, not only the picture.
+
+    Choosing the bins in code matters for one more reason. The outputs in this book come from
+    ggplot2 {{n:ggplot2_version}}. ggplot2 4.0.0 changed how it places bins by default, and its own
+    notes say this "may affect plots that use default binning". A histogram left on defaults can
+    change shape when a colleague runs your script on a newer version. One with its width and
+    boundary written down cannot, unless that version has a bug: the notes for 4.0.1 list a fixed
+    bug in which `boundary` was ignored.
+  analogy_breaks_when: |
+    The bars describe the {{n:penguins_mass_n}} penguins with a body mass in this file. They are not the shape of
+    body mass in any wider population of penguins.
+
+    Another bin width tells a different story. Bins of 100 g show more bumps, and some of them are
+    chance; bins of 1000 g hide real ones. There is no correct width. Try two or three, pick one
+    that shows what the data show, and write it in the code.
+- body: |
+    Now two variables, and the commonest early mistake. Continue in the same session. You want every
+    point blue, and you write the colour inside `aes()`:
+
+    ```r
+    ggplot(penguins, aes(x = flipper_mm, y = body_mass_g, colour = "blue")) +
+      geom_point()
+    ```
+
+    ```output
+    Warning message:
+    Removed 2 rows containing missing values (`geom_point()`).
+    ```
+
+    The book prints no picture here, but on your screen the points are not blue. They are ggplot2's first default colour, a pinkish
+    red, and a legend appears titled "colour" with one entry: "blue". Inside `aes()`, "blue" was
+    treated as data, a column whose every value is the word "blue". ggplot2 gave that one value a
+    colour of its own choosing and explained it in a legend.
+
+    Mapping and setting are different acts. Map a colour to a column when you want it to vary with
+    the data. Set it outside `aes()`, in the geom, when you want one colour for every point:
+
+    ```r
+    ggplot(penguins, aes(x = flipper_mm, y = body_mass_g, colour = species)) +
+      geom_point()
+
+    ggplot(penguins, aes(x = flipper_mm, y = body_mass_g)) +
+      geom_point(colour = "blue")
+    ```
+
+    ```output
+    Warning message:
+    Removed 2 rows containing missing values (`geom_point()`).
+    Warning message:
+    Removed 2 rows containing missing values (`geom_point()`).
+    ```
+
+    The first gives each species its own colour and a legend that means something. The second
+    makes every point blue and needs no legend.
+
+    Colour is one way to show a third variable. Facets are another: one small panel per species,
+    on the same axes, so the panels can be compared by eye. Finish the figure as Book 0 asked:
+    axis titles that name the quantity and its unit, and a source line. Then save it from the
+    script, at a size written in the code, into `output/`.
+
+    ```r
+    mass_flipper <- ggplot(penguins, aes(x = flipper_mm, y = body_mass_g)) +
+      geom_point() +
+      facet_wrap(~species) +
+      labs(
+        x = "Flipper length (mm)",
+        y = "Body mass (g)",
+        caption = "Source: palmerpenguins raw data, as read from data-raw/"
+      )
+
+    mass_flipper
+
+    dir.create(here::here("output"), showWarnings = FALSE)
+    ggsave(
+      here::here("output", "mass_flipper.png"),
+      plot = mass_flipper,
+      width = 18,
+      height = 10,
+      units = "cm"
+    )
+
+    file.exists(here::here("output", "mass_flipper.png"))
+    ```
+
+    ```output
+    Warning message:
+    Removed 2 rows containing missing values (`geom_point()`).
+    Warning message:
+    Removed 2 rows containing missing values (`geom_point()`).
+    [1] TRUE
+    ```
+
+    Three panels, one per species, each on the same scales. `~species` reads "by species". The
+    figure is in `output/`, made by the same line every time the script runs. The `dir.create()`
+    line matters for a reader on a newer version: from ggplot2 3.5.0, `ggsave()` makes a missing
+    folder only when its new `create.dir` argument tells it to.
+  analogy_breaks_when: |
+    A scatter plot shows that heavier penguins in this file tend to have longer flippers. It does
+    not show that one causes the other, and it says nothing about penguins outside the file.
+
+    Facets compare panels well only when they share axes, which `facet_wrap()` does unless told
+    otherwise. Free axes, one scale per panel, make every panel look equally spread out, and the
+    eye then compares shapes that are drawn on different rulers.
+- body: |
+    Last, the two plots most used in a thesis to compare groups: the boxplot and the bar chart.
+    Continue in the same session.
+
+    ```r
+    ggplot(penguins, aes(x = species, y = body_mass_g)) +
+      geom_boxplot() +
+      labs(x = "Species", y = "Body mass (g)")
+    ```
+
+    ```output
+    Warning message:
+    Removed 2 rows containing non-finite values (`stat_boxplot()`).
+    ```
+
+    Each box runs from the first quartile to the third, with a line at the median. Which quartiles?
+    The ones `quantile()` gives, R's type 7 from the section on summaries; ggplot2's notes for
+    the newer 4.0.3 name 7 as the default. Check them:
+
+    ```r
+    penguins |>
+      summarise(
+        q1_g = quantile(body_mass_g, probs = 0.25, na.rm = TRUE),
+        median_g = median(body_mass_g, na.rm = TRUE),
+        q3_g = quantile(body_mass_g, probs = 0.75, na.rm = TRUE),
+        .by = species
+      )
+    ```
+
+    ```output
+    # A tibble: 3 × 4
+      species    q1_g median_g  q3_g
+      <chr>     <dbl>    <dbl> <dbl>
+    1 Adelie    3350      3700  4000
+    2 Gentoo    4700      5000  5500
+    3 Chinstrap 3488.     3700  3950
+    ```
+
+    The Adelie box runs from 3350 g to 4000 g with its median at 3700 g. The Gentoo box runs from
+    4700 g to 5500 g. A boxplot's side axis need not start at zero. Every box, whisker and point
+    carries its value by position, read off the printed scale, as Book 0 said of a line chart.
+
+    A bar chart is different. A bar's value is its length, so its value axis must start at zero.
+    `geom_bar()` counts the rows in each category, as `count()` does:
+
+    ```r
+    ggplot(penguins, aes(x = species)) +
+      geom_bar() +
+      labs(x = "Species", y = "Rows in the file")
+    ```
+
+    On your screen the bars stand at {{n:penguins_adelie}}, {{n:penguins_chinstrap}} and {{n:penguins_gentoo}}. A bar chart of means, with the axis cut to start at 3000 g,
+    would make the Gentoo bar look about three times the Adelie bar when its mean is about 1.4 times as
+    large. Keep bar charts for counts and amounts that start at zero, and show distributions with
+    boxes or histograms.
+  analogy_breaks_when: |
+    A box hides how many values it summarises: a box drawn from 5 values looks as solid as one drawn
+    from 150. Print the n per group beside the figure, or in its caption.
+
+    The 1.4 is rounded: 5076 divided by 3701 is about 1.37. It compares two means in this file and
+    says nothing about how different a typical Gentoo and Adelie are.
+must_know:
+- point: |
+    Write a colour or size inside `aes()` only when it should vary with a column. Inside, a fixed
+    value such as "blue" is treated as data.
+  kind: trap
+  bearing: methodological
+- point: |
+    Read every message and warning ggplot2 prints. "Removed 2 rows" means your figure shows fewer
+    observations than your data frame holds.
+  kind: move
+  bearing: methodological
+- point: |
+    The error is to think a histogram shows the shape of the data. It shows the data cut into bins
+    someone chose.
+  kind: misconception
+  bearing: methodological
+  refs:
+  - sandve_2013
+- point: |
+    A bar chart's value axis starts at zero, because a bar's value is its length. A boxplot or a
+    scatter plot need not, because position carries the value.
+  kind: consequence
+  bearing: public
+- point: |
+    Every axis title names the quantity and its unit, and every figure carries a source line.
+  kind: move
+  bearing: methodological
+- point: |
+    Save every figure with `ggsave()` from the script, with its width, height and units written in.
+  kind: move
+  bearing: methodological
+- point: |
+    When a trainee's thesis figure looks wrong, ask for the code before the picture.
+  kind: move
+  bearing: teaching
+- point: |
+    The grammar draws exactly what the code says. It cannot guarantee that the data, the bins or
+    the rows it silently drops are right.
+  kind: boundary
+  bearing: methodological
+exercises:
+- type: calculation
+  prompt: |
+    Add to your penguin script a histogram of flipper length. Use bins 10 mm wide starting at
+    170 mm, each including its left edge. Give it an axis title with its unit, and a source line.
+    Save it to `output/flipper_histogram.png` at 15 cm by 10 cm. Write the counts per bin to
+    `output/flipper_histogram_counts.csv`. Say how many penguins the figure shows.
+  answer: |
+    ```r
+    library(readr)
+    library(dplyr, warn.conflicts = FALSE)
+    library(ggplot2)
+
+    penguins_raw <- read_csv(
+      here::here("data-raw", "penguins_raw.csv"),
+      show_col_types = FALSE
+    )
+
+    flipper_plot <- ggplot(penguins_raw, aes(x = `Flipper Length (mm)`)) +
+      geom_histogram(binwidth = 10, boundary = 170, closed = "left") +
+      labs(
+        x = "Flipper length (mm)",
+        y = "Penguins",
+        caption = "Source: palmerpenguins raw data, as read from data-raw/"
+      )
+
+    dir.create(here::here("output"), showWarnings = FALSE)
+    ggsave(
+      here::here("output", "flipper_histogram.png"),
+      plot = flipper_plot,
+      width = 15,
+      height = 10,
+      units = "cm"
+    )
+
+    flipper_counts <- penguins_raw |>
+      count(bin_start_mm = floor(`Flipper Length (mm)` / 10) * 10)
+
+    flipper_counts
+    write_csv(flipper_counts, here::here("output", "flipper_histogram_counts.csv"))
+    ```
+
+    ```output
+    Warning message:
+    Removed 2 rows containing non-finite values (`stat_bin()`).
+    # A tibble: 8 × 2
+      bin_start_mm     n
+             <dbl> <int>
+    1          170     8
+    2          180    69
+    3          190   113
+    4          200    38
+    5          210    71
+    6          220    35
+    7          230     8
+    8           NA     2
+    ```
+
+    The warning says 2 rows were removed, so the figure shows 342 rows. The counts per bin are
+    in the CSV file, beside the figure they describe; the `NA` row holds the 2 with no flipper
+    length.
+  skill_ref: S52-R1-K01
+- type: critique
+  prompt: |
+    A colleague makes the figures for her thesis by running code in the console. Then she clicks
+    Export in RStudio's plot pane and chooses "Save as image". She drags the size until it looks
+    right. After a data correction, she has to remake eleven figures. Say what is wrong
+    with this way of working and what she should do.
+  answer: |
+    Nothing connects each saved image to the code and data that made it. The console keeps no
+    record of which lines made figure 7, and the size she dragged to is written nowhere. After a
+    correction she must remember, for each of eleven figures, which code made it and at what size,
+    and get all of them right by hand.
+
+    Instead, put every figure in the analysis script. Make it with `ggplot()` and give it a name.
+    Then save it with `ggsave()` into `output/`, with its file name, width, height and units in
+    the code. After a correction she reruns the script once. All eleven figures are redrawn from
+    the corrected data, at the same size. Keep the counts behind each figure in a file beside it,
+    so a reader can check the numbers without measuring the picture.
+  skill_ref: S52-R1-K02
+- type: teaching
+  prompt: |
+    A journalist has three minutes. She has a bar chart from a press release. One district's bar for
+    "adults screened" looks five times another's, and the axis starts at 9,000.
+    Explain what she should ask for, without jargon.
+  answer: |
+    "A bar is read by its length, so the bars only tell the truth if they start at zero. This axis
+    starts at 9,000, so the bottom of every bar has been cut off. A district with 10,000 adults
+    screened and one with 9,200 would look like a tall bar and a stub, even though the numbers are
+    close. Ask for the chart redrawn from zero, or simply ask for the numbers. If the press office
+    made the chart in code, redrawing it is one line."
+- type: retrieval
+  prompt: |
+    Without looking back, name the three parts of a ggplot2 plot, and two choices that change a
+    histogram's bars without changing the data.
+  answer: |
+    The data, the aesthetic mappings made with `aes()`, and the geom.
+
+    The bin width and where the bins start (`binwidth` and `boundary`). Which edge each bin
+    includes (`closed`) changes the bars too, when values sit exactly on edges.
+quantitative: true
+practice_note: |
+  Twelve problems. The grammar is one idea, but each geom brings its own silent choice (bins and
+  their edges, which quartiles the box uses, where the value axis starts) and the commonest errors
+  are mapping a fixed value and joining layers with the pipe, so the diagnostic band is large.
+practice:
+- level: 1
+  prompt: |
+    In this line, name the data, each aesthetic mapping, and the geom.
+
+    ```r norun
+    ggplot(clinic, aes(x = age_years, y = bmi)) + geom_point()
+    ```
+  answer: |
+    The data are `clinic`. There are two mappings: `age_years` to position along x, and `bmi` to
+    position along y. The geom is `geom_point()`, so each row becomes one point. The line draws a
+    scatter plot of BMI against age.
+- level: 2
+  prompt: |
+    In each line, say whether the colour is mapped or set, and what the points will look like.
+
+    ```r norun
+    ggplot(clinic, aes(x = age_years, y = bmi, colour = sex)) + geom_point()
+    ggplot(clinic, aes(x = age_years, y = bmi)) + geom_point(colour = "darkgreen")
+    ```
+  answer: |
+    In the first, colour is mapped to the column `sex`, inside `aes()`. Each value of `sex` gets its
+    own colour, and a legend says which is which.
+
+    In the second, colour is set, outside `aes()`. Every point is dark green, and there is no legend,
+    because nothing varies.
+- level: 3
+  prompt: |
+    Six made-up values: 1.2, 1.8, 2.1, 2.9, 3.0 and 3.4. A histogram uses `binwidth = 1` and
+    `boundary = 1`, with ggplot2's default for which edge a bin includes. How many values go in the
+    bins from 1 to 2, 2 to 3 and 3 to 4? Then answer again with `closed = "left"`.
+  answer: |
+    By default a bin includes its right edge. The first bin is "above 1, up to 2", and the others
+    follow the same pattern. The first holds 1.2 and 1.8: 2 values. The second holds 2.1, 2.9 and
+    3.0: 3 values. The third holds 3.4 alone: 1 value.
+
+    With `closed = "left"` the bins are "1 up to under 2", "2 up to under 3" and "3 up to 4". The
+    first holds 1.2 and 1.8: 2 values. The second holds 2.1 and 2.9: 2 values. The value 3.0
+    moves to the third, with 3.4: 2 values.
+
+    Only the value sitting exactly on an edge moved. In real data, measurements are often rounded
+    to whole numbers, so many values sit on edges, and the choice changes the bars.
+- level: 4
+  prompt: |
+    Read the penguin file.
+
+    ```r
+    library(readr)
+    library(dplyr, warn.conflicts = FALSE)
+    library(ggplot2)
+
+    penguins_raw <- read_csv(
+      here::here("data-raw", "penguins_raw.csv"),
+      show_col_types = FALSE
+    )
+    ```
+
+    Draw a boxplot of body mass by island, with axis titles. Then give the median and the quartiles
+    the boxes are drawn from, with the number of body masses behind each box.
+  answer: |
+    ```r
+    ggplot(penguins_raw, aes(x = Island, y = `Body Mass (g)`)) +
+      geom_boxplot() +
+      labs(x = "Island", y = "Body mass (g)")
+
+    penguins_raw |>
+      summarise(
+        n_mass = sum(!is.na(`Body Mass (g)`)),
+        q1_g = quantile(`Body Mass (g)`, probs = 0.25, na.rm = TRUE),
+        median_g = median(`Body Mass (g)`, na.rm = TRUE),
+        q3_g = quantile(`Body Mass (g)`, probs = 0.75, na.rm = TRUE),
+        .by = Island
+      )
+    ```
+
+    ```output
+    Warning message:
+    Removed 2 rows containing non-finite values (`stat_boxplot()`).
+    # A tibble: 3 × 5
+      Island    n_mass  q1_g median_g  q3_g
+      <chr>      <int> <dbl>    <dbl> <dbl>
+    1 Torgersen     51 3338.    3700  4000
+    2 Biscoe       167 4200     4775  5325
+    3 Dream        124 3400     3688. 3956.
+    ```
+
+    The warning says 2 rows were removed: two penguins with no body mass. Biscoe's box sits highest,
+    with a median of 4775 g from 167 body masses. The boxes use the same quartiles as `quantile()`.
+    Biscoe is the only island with Gentoo penguins, the heaviest species, so the island comparison
+    is partly a species comparison.
+- level: 5
+  prompt: |
+    Read the penguin file.
+
+    ```r
+    library(readr)
+    library(ggplot2)
+
+    penguins_raw <- read_csv(
+      here::here("data-raw", "penguins_raw.csv"),
+      show_col_types = FALSE
+    )
+    ```
+
+    Draw a scatter plot of culmen depth against culmen length, one panel per species. The culmen is
+    the ridge of the bill. Give axis titles that carry units, and a source line. Save it to
+    `output/culmen.png` at 18 cm by 8 cm, and show that the file exists.
+  answer: |
+    ```r
+    culmen_plot <- ggplot(
+      penguins_raw,
+      aes(x = `Culmen Length (mm)`, y = `Culmen Depth (mm)`)
+    ) +
+      geom_point() +
+      facet_wrap(~Species) +
+      labs(
+        x = "Culmen length (mm)",
+        y = "Culmen depth (mm)",
+        caption = "Source: palmerpenguins raw data, as read from data-raw/"
+      )
+
+    dir.create(here::here("output"), showWarnings = FALSE)
+    ggsave(
+      here::here("output", "culmen.png"),
+      plot = culmen_plot,
+      width = 18,
+      height = 8,
+      units = "cm"
+    )
+
+    file.exists(here::here("output", "culmen.png"))
+    ```
+
+    ```output
+    Warning message:
+    Removed 2 rows containing missing values (`geom_point()`).
+    [1] TRUE
+    ```
+
+    The file exists. The plot was never shown on the screen, but `ggsave()` drew it to make the file.
+    Its warning says 2 rows were removed: the penguins with no culmen measurements are not in the
+    saved figure. Say so in the caption if the figure goes in a report.
+- level: 6
+  prompt: |
+    Read the penguin file.
+
+    ```r
+    library(readr)
+    library(dplyr, warn.conflicts = FALSE)
+    library(ggplot2)
+
+    penguins_raw <- read_csv(
+      here::here("data-raw", "penguins_raw.csv"),
+      show_col_types = FALSE
+    )
+    ```
+
+    Draw a bar chart of the number of rows for each value of `Sex`, with axis titles. Give the
+    heights of the bars, and say what the third bar is.
+  answer: |
+    ```r
+    ggplot(penguins_raw, aes(x = Sex)) +
+      geom_bar() +
+      labs(x = "Sex as recorded", y = "Rows in the file")
+
+    penguins_raw |>
+      count(Sex)
+    ```
+
+    ```output
+    # A tibble: 3 × 2
+      Sex        n
+      <chr>  <int>
+    1 FEMALE   165
+    2 MALE     168
+    3 <NA>      11
+    ```
+
+    {{n:penguins_female}} female, {{n:penguins_male}} male, and {{n:penguins_sex_missing}} with no sex recorded. The `NA` rows get a bar of their own, just as
+    `count()` gives them a row of their own. Keep it: the reader should see that
+    11 penguins could not be put in either group. The bars start at zero, so their lengths compare
+    fairly.
+- level: 7
+  prompt: |
+    A colleague wants all points dark red, and writes:
+
+    ```r norun
+    ggplot(penguins_raw, aes(x = `Flipper Length (mm)`, y = `Body Mass (g)`, colour = "darkred")) +
+      geom_point()
+    ```
+
+    The points come out pinkish red, and a legend says "darkred". She decides her version of R
+    "cannot show dark red". Find what broke.
+  answer: |
+    The colour is inside `aes()`, so it is a mapping. ggplot2 treated "darkred" as a value in the
+    data, a column holding that one word, and gave it the first colour of its own default set. The
+    legend explains that value. R can draw dark red; it was never asked to.
+
+    Move the colour out of `aes()`, into the geom, to set it:
+
+    ```r norun
+    ggplot(penguins_raw, aes(x = `Flipper Length (mm)`, y = `Body Mass (g)`)) +
+      geom_point(colour = "darkred")
+    ```
+
+    Why the wrong conclusion looks reasonable: the code contains the word "darkred" and produced a
+    colour close to it. So the gap looks like a limit of the software. The legend is the clue: a
+    legend appears only for something mapped.
+- level: 7
+  prompt: |
+    You and a colleague run the same script on the same penguin file. Your histogram of body mass,
+    made with `geom_histogram()` and no other arguments, has a different shape from hers. You have
+    ggplot2 {{n:ggplot2_version}}; she has 4.0.3. She concludes one of the two data files must be corrupt. Say what
+    is more likely, and how to make the two figures agree.
+  answer: |
+    The data are more likely the same, and the bins different. ggplot2's notes for version 4.0.0
+    say the default bin boundary changed, and that this "may affect plots that use default
+    binning". With no `binwidth` or `boundary` given, each version placed its 30 bins its own way.
+
+    Check the data first, cheaply: compare row counts and a checksum of the raw file, as the section
+    on raw files taught. Then make the bins part of the code:
+
+    ```r norun
+    ggplot(penguins_raw, aes(x = `Body Mass (g)`)) +
+      geom_histogram(binwidth = 500, boundary = 2500, closed = "left")
+    ```
+
+    With the width, the boundary and the edge rule written down, both versions draw the same bins.
+    Why the wrong conclusion looks reasonable: the code and the file are the same, so a different
+    picture seems to mean different data. The third ingredient, the package version, is invisible
+    unless you print it.
+  refs:
+  - tidyverse_news_s52r1
+- level: 8
+  prompt: |
+    A colleague used to the pipe writes:
+
+    ```r
+    library(readr)
+    library(ggplot2)
+
+    penguins_raw <- read_csv(
+      here::here("data-raw", "penguins_raw.csv"),
+      show_col_types = FALSE
+    )
+    ```
+
+    ```r error
+    ggplot(penguins_raw, aes(x = `Flipper Length (mm)`, y = `Body Mass (g)`)) |>
+      geom_point()
+    ```
+
+    ```output
+    Error in `geom_point()`:
+    ! `mapping` must be created by `aes()`
+    ℹ Did you use `%>%` or `|>` instead of `+`?
+    ```
+
+    Read the error. Say what broke and fix it.
+  answer: |
+    Layers are added to a plot with `+`, not passed along with `|>`. The pipe handed the whole plot
+    to `geom_point()` as its first argument, where `geom_point()` expects a mapping. The error
+    message even asks whether you used `|>` instead of `+`.
+
+    ```r
+    ggplot(penguins_raw, aes(x = `Flipper Length (mm)`, y = `Body Mass (g)`)) +
+      geom_point()
+    ```
+
+    ```output
+    Warning message:
+    Removed 2 rows containing missing values (`geom_point()`).
+    ```
+
+    Now the plot draws, with the usual warning about 2 rows removed.
+
+    Why the wrong code looks reasonable: in every section before this one, each step of the work was
+    joined to the next with `|>`. ggplot2 is older than that habit and builds a plot by adding
+    layers.
+- level: 8
+  prompt: |
+    A made-up thesis figure caption says: "Figure 3. Body mass of all {{n:penguins_rows}} penguins, by species." The
+    code was:
+
+    ```r
+    library(readr)
+    library(ggplot2)
+
+    penguins_raw <- read_csv(
+      here::here("data-raw", "penguins_raw.csv"),
+      show_col_types = FALSE
+    )
+
+    ggplot(penguins_raw, aes(x = Species, y = `Body Mass (g)`)) +
+      geom_boxplot()
+    ```
+
+    ```output
+    Warning message:
+    Removed 2 rows containing non-finite values (`stat_boxplot()`).
+    ```
+
+    Find what is wrong with the caption, using only what R printed.
+  answer: |
+    R printed a warning: 2 rows were removed. The boxes are drawn from {{n:penguins_mass_n}} body masses, not {{n:penguins_rows}}. Two
+    penguins have no body mass, and `geom_boxplot()` left them out. The caption should say {{n:penguins_mass_n}}, and
+    the methods should say why 2 are missing.
+
+    Count them to be sure:
+
+    ```r
+    sum(is.na(penguins_raw$`Body Mass (g)`))
+    ```
+
+    ```output
+    [1] 2
+    ```
+
+    Why the wrong caption looks reasonable: {{n:penguins_rows}} is the number of rows in the file, which everyone
+    remembers. A warning in the console is easy to scroll past, and it is the only place the
+    difference is shown.
+- level: 9
+  prompt: |
+    A made-up draft says: "As Figure 1 shows, most penguins weigh between 3.5 and 4 kg." Draw the
+    histogram that would back the claim, and count the penguins in that range. Say whether the
+    claim holds, and what the figure does not establish.
+  answer: |
+    Draw the histogram with bins 500 g wide starting at 2500 g, so one bar is exactly 3500 to under
+    4000 g, and count:
+
+    ```r
+    library(readr)
+    library(dplyr, warn.conflicts = FALSE)
+    library(ggplot2)
+
+    penguins_raw <- read_csv(
+      here::here("data-raw", "penguins_raw.csv"),
+      show_col_types = FALSE
+    )
+
+    ggplot(penguins_raw, aes(x = `Body Mass (g)`)) +
+      geom_histogram(binwidth = 500, boundary = 2500, closed = "left")
+
+    penguins_raw |>
+      filter(!is.na(`Body Mass (g)`)) |>
+      summarise(
+        n_mass = n(),
+        n_3500_to_4000 = sum(`Body Mass (g)` >= 3500 & `Body Mass (g)` < 4000),
+        pct = 100 * n_3500_to_4000 / n_mass
+      )
+    ```
+
+    ```output
+    Warning message:
+    Removed 2 rows containing non-finite values (`stat_bin()`).
+    # A tibble: 1 × 3
+      n_mass n_3500_to_4000   pct
+       <int>          <int> <dbl>
+    1    342             94  27.5
+    ```
+
+    94 of the {{n:penguins_mass_n}} penguins with a body mass, 27.5%, weigh from 3500 g to under 4000 g. That bar is
+    the tallest, so 3.5 to 4 kg is the commonest band. But "most" means more than half, and this is
+    about a quarter. The sentence should say "the commonest band was 3.5 to 4 kg, holding 94 of {{n:penguins_mass_n}}
+    penguins (27.5%)".
+
+    What the figure does not establish:
+
+    - That the commonest band would be the same with other bins. With 250 g bins the tallest bar
+      could move.
+    - Anything about a typical penguin of any one species. The histogram mixes three species of
+      different size.
+    - Anything about penguins outside this study.
+  refs:
+  - horst_2020_palmerpenguins
+- level: 10
+  prompt: |
+    A made-up district officer says: "Give me one figure comparing BMI in men and women from that
+    American survey, for my slides." Make it from the joined NHANES files for adults aged 20 or
+    over, save it to `output/`, and say what the figure does not establish.
+  answer: |
+    Join the files and keep the adults. Label the codes: the codebook says `RIAGENDR` 1 is male and
+    2 is female. Draw boxes rather than bars, since BMI is a distribution and does not start at zero:
+
+    ```r
+    library(dplyr, warn.conflicts = FALSE)
+    library(ggplot2)
+
+    bmx <- haven::read_xpt(here::here("data-raw", "BMX_L.xpt"))
+    demo <- haven::read_xpt(here::here("data-raw", "DEMO_L.xpt"))
+
+    adults <- bmx |>
+      left_join(demo, by = "SEQN", relationship = "one-to-one") |>
+      filter(RIDAGEYR >= 20, !is.na(BMXBMI)) |>
+      mutate(sex = if_else(RIAGENDR == 1, "Men", "Women"))
+
+    count(adults, sex)
+
+    bmi_plot <- ggplot(adults, aes(x = sex, y = BMXBMI)) +
+      geom_boxplot() +
+      labs(
+        x = NULL,
+        y = "BMI (kg/m^2)",
+        caption = "NHANES 2021-2023, examined adults aged 20 or over; unweighted, not a US estimate"
+      )
+
+    dir.create(here::here("output"), showWarnings = FALSE)
+    ggsave(
+      here::here("output", "nhanes_bmi_by_sex.png"),
+      plot = bmi_plot,
+      width = 12,
+      height = 10,
+      units = "cm"
+    )
+    ```
+
+    ```output
+    # A tibble: 2 × 2
+      sex       n
+      <chr> <int>
+    1 Men    2680
+    2 Women  3290
+    ```
+
+    The figure has two boxes, from {{n:nhanes_men_bmi_n}} men and {{n:nhanes_women_bmi_n}} women with a BMI. The rows with no BMI were
+    removed before plotting, on purpose, so the counts printed are the counts drawn. `NULL` leaves
+    that axis without a title. The caption says what the boxes are, and what they are not.
+
+    What it does not establish:
+
+    - Anything about adults in the United States. The boxes are unweighted; the survey's
+      documentation says its sample weights should be used.
+    - Whether the difference between the boxes is more than chance, or large enough to matter.
+    - Anything about adults in the officer's district. A figure from one country's survey is not a
+      figure for another country's people.
+    - A clean comparison of BMI. It includes women who were pregnant at the exam, whose weight does
+      not measure the same thing.
+  refs:
+  - nchs_nhanes_2021_2023_bmx_demo
+retrieval_items:
+- q: What are the three parts every ggplot2 plot is built from?
+  a: The data (a data frame), the aesthetic mappings made with aes() (which column goes to which
+    visual property), and a geom (the kind of mark).
+- q: What is the difference between writing colour = "blue" inside aes() and inside geom_point()?
+  a: Inside aes() it is a mapping, so "blue" is treated as data and gets a default colour and a
+    legend. Inside geom_point() it is a setting, and every point is blue.
+- q: Why should a histogram's binwidth and boundary be written in the code?
+  a: The default of 30 bins is arbitrary, the bars change with the bins, and newer versions of
+    ggplot2 place default bins differently, so a figure on defaults may not redraw the same.
+- q: Why must a bar chart's value axis start at zero, when a boxplot's need not?
+  a: A bar's value is its length, which is only true from zero. A box or point carries its value by
+    position, read off the scale.
+- q: How should a figure leave R, and why?
+  a: By ggsave() in the script, into output/, with width, height and units written in, so that it
+    is redrawn from the data every time the script runs.
+figures:
+- file: "s52-r1-c18-mass-histogram.png"
+  caption: "The counts behind the histogram of penguin body mass with its bins chosen in code: 500 g wide from 2500 g, each including its left edge. The tallest bin, 3500 to under 4000 g, holds 94 of the 342 penguins with a body mass. The same counts are what the code writes to output/ beside the figure."
+  alt: "A bar chart of eight body-mass bins: 9, 62, 94, 59, 51, 34, 29 and 4 penguins, from 2500 to under 3000 g up to 6000 to under 6500 g."
+  source: "draw.py"
+  spec:
+    derived:
+    - {value: "6500", from: "6000 + 500"}
+    kind: "bar"
+    x: [2500, 3000, 3500, 4000, 4500, 5000, 5500, 6000]
+    series:
+    - {name: "Penguins", y: [9, 62, 94, 59, 51, 34, 29, 4]}
+    x_label: "start of each 500 g bin, body mass (g)"
+    y_label: "penguins"
+    y_range: [0, 100]
+    value_labels: true
+    relations:
+    - {check: "y1[0] + y1[1] + y1[2] + y1[3] + y1[4] + y1[5] + y1[6] + y1[7] = 342"}
+provenance:
+  map_version_id: fc19c8bc-a216-4131-99fb-ebe3f19cec4a
+  outcome_refs:
+  - S52-R1-S1
+  - S52-R1-B
+review:
+  stability: long
+  trigger: '2031-10-02'
+  last_reviewed: '2026-10-02'
+status: drafted

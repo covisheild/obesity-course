@@ -1,0 +1,1 @@
+- Cut every README-contents sentence except the rerun command (title and purpose, raw-data source/version/terms, where the dictionary is, what each output is, whom to contact) from both definition and plain terms. Exercise 2 (critique a thin README) and Exercise 3 (list what a README says) depend on that list, so the cold reader may be unable to answer them.

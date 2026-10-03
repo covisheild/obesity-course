@@ -1,0 +1,1290 @@
+concept_id: S52-R1-C16
+subject: S52
+rung: 1
+sequence: 16
+name: Summaries by group
+concept_type: derivable
+clusters:
+- craft-and-integrity
+ground_floor_deps:
+- B0-R0-C27
+- B0-R0-C28
+- B0-R0-C39
+concept_deps:
+- S52-R1-C05
+- S52-R1-C07
+- S52-R1-C11
+- S52-R1-C12
+- S52-R1-C13
+- S52-R1-C14
+definition:
+  text: |
+    `summarise()`, from the dplyr package, makes a new data frame. It has one row for each
+    group, or a single row for the whole data frame when there are no groups.
+
+    The function `n()` gives the number of rows in the group, whatever they hold. The function
+    `sd()` gives the standard deviation, dividing by one less than the count. A quantile is the
+    value below which a given share of the data lies. The function `quantile()` prints the 0%,
+    25%, 50%, 75% and 100% ones; 0% and 100% are the smallest and largest values. `IQR()` gives
+    the interquartile range. Both use the seventh of nine rules for placing a quantile between two values, unless
+    told otherwise.
+
+    `group_by()` marks a data frame as grouped by one or more columns, so that the next verbs
+    work group by group. `ungroup()` removes the marking. The `.by` argument of `summarise()`
+    groups for that one step only, and leaves the result ungrouped.
+
+    `count(a)` gives the number of rows for each value of `a`. `write_csv(data, path)`, from the
+    readr package, writes a data frame to a CSV file.
+  references:
+  - citekey: rdocs_s52r1_dplyr
+    kind: textbook
+    locator: 'help page "summarise" (dplyr 1.1.4), Description: one row per group'
+    quote: |-
+      It returns one row for each combination of grouping variables; if there are no grouping variables, the output will have a single row summarising all observations in the input. It will contain one column for each grouping variable and one column for each of the summary statistics that you have specified.
+    verified:
+      resolved_id: rhelp://dplyr@1.1.4/summarise
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+  - citekey: rdocs_s52r1_dplyr
+    kind: textbook
+    locator: 'help page "context" (dplyr 1.1.4), Description: n()'
+    quote: |-
+      'n()' gives the current group size.
+    verified:
+      resolved_id: rhelp://dplyr@1.1.4/context
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+  - citekey: rdocs_s52r1_stats
+    kind: textbook
+    locator: 'help page "sd" (stats 4.3.3), Details: the denominator'
+    quote: |-
+      Like 'var' this uses denominator n - 1.
+    verified:
+      resolved_id: rhelp://stats@4.3.3/sd
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+  - citekey: rdocs_s52r1_stats
+    kind: textbook
+    locator: 'help page "quantile" (stats 4.3.3), Types: nine algorithms, and the default'
+    quote: |-
+      The default method is type 7, as used by S and by R < 2.0.0.
+    verified:
+      resolved_id: rhelp://stats@4.3.3/quantile
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+      note: |-
+        The same section opens: "One of the nine quantile algorithms discussed in Hyndman and Fan
+        (1996), selected by 'type', is employed."
+  - citekey: rdocs_s52r1_stats
+    kind: textbook
+    locator: 'help page "quantile" (stats 4.3.3), Types: type 6 and the software that uses it'
+    quote: |-
+      Type 6 m = p. p[k] = k / (n + 1). Thus p[k] = E[F(x[k])]. This is used by Minitab and by SPSS.
+    verified:
+      resolved_id: rhelp://stats@4.3.3/quantile
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+  - citekey: rdocs_s52r1_stats
+    kind: textbook
+    locator: 'help page "quantile" (stats 4.3.3), Arguments, x: missing values'
+    quote: |-
+      'NA' and 'NaN' values are not allowed in numeric vectors unless 'na.rm' is 'TRUE'.
+    verified:
+      resolved_id: rhelp://stats@4.3.3/quantile
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+      note: |-
+        In R 4.3.3, quantile(c(1, NA)) stops with "missing values and NaN's not allowed if 'na.rm'
+        is FALSE"; IQR() passes its na.rm to quantile(). Checked by running it in the book's
+        sandbox.
+  - citekey: rdocs_s52r1_base
+    kind: textbook
+    locator: 'help page "mean" (base 4.3.3), Arguments, na.rm (median: help page "median" (stats 4.3.3), Value)'
+    quote: |-
+      na.rm: a logical evaluating to 'TRUE' or 'FALSE' indicating whether 'NA' values should be stripped before the computation proceeds.
+    verified:
+      resolved_id: rhelp://base@4.3.3/mean
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+      note: |-
+        The median help page, Value: "If there are no values or if 'na.rm = FALSE' and there are
+        'NA' values the result is 'NA' of the same type as 'x'".
+  - citekey: rdocs_s52r1_stats
+    kind: textbook
+    locator: 'help page "IQR" (stats 4.3.3), Details: quartiles from quantile()'
+    quote: |-
+      Note that this function computes the quartiles using the 'quantile' function rather than following Tukey's recommendations, i.e., 'IQR(x) = quantile(x, 3/4) - quantile(x, 1/4)'.
+    verified:
+      resolved_id: rhelp://stats@4.3.3/IQR
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+      note: |-
+        The usage line gives the default: "IQR(x, na.rm = FALSE, type = 7)".
+  - citekey: rdocs_s52r1_dplyr
+    kind: textbook
+    locator: 'help page "group_by" (dplyr 1.1.4), Description'
+    quote: |-
+      'group_by()' takes an existing tbl and converts it into a grouped tbl where operations are performed "by group". 'ungroup()' removes grouping.
+    verified:
+      resolved_id: rhelp://dplyr@1.1.4/group_by
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+  - citekey: rdocs_s52r1_dplyr
+    kind: textbook
+    locator: 'help page "summarise" (dplyr 1.1.4), Arguments, .groups: what is dropped by default'
+    quote: |-
+      If all the results have 1 row, you get "drop_last".
+    verified:
+      resolved_id: rhelp://dplyr@1.1.4/summarise
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+      note: |-
+        The same argument defines it: '"drop_last": dropping the last level of grouping.'
+  - citekey: rdocs_s52r1_dplyr
+    kind: textbook
+    locator: 'help page "summarise" (dplyr 1.1.4), Arguments, .by'
+    quote: |-
+      Optionally, a selection of columns to group by for just this operation, functioning as an alternative to 'group_by()'.
+    verified:
+      resolved_id: rhelp://dplyr@1.1.4/summarise
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+  - citekey: rdocs_s52r1_dplyr
+    kind: textbook
+    locator: 'help page "count" (dplyr 1.1.4), Description'
+    quote: |-
+      'count()' lets you quickly count the unique values of one or more variables: 'df %>% count(a, b)' is roughly equivalent to 'df %>% group_by(a, b) %>% summarise(n = n())'.
+    verified:
+      resolved_id: rhelp://dplyr@1.1.4/count
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+  - citekey: rdocs_s52r1_dplyr
+    kind: textbook
+    locator: 'help page "group_by" (dplyr 1.1.4), Ordering: groups in ascending order'
+    quote: |-
+      Currently, 'group_by()' internally orders the groups in ascending order. This results in ordered output from functions that aggregate groups, such as 'summarise()'.
+    verified:
+      resolved_id: rhelp://dplyr@1.1.4/group_by
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+  - citekey: r4ds_2e
+    kind: textbook
+    locator: 'ch. 3, section 3.6 "Case study: aggregates and sample size", first sentence'
+    quote: |-
+      Whenever you do any aggregation, it’s always a good idea to include a count (
+    verified:
+      resolved_id: https://r4ds.hadley.nz/data-transform.html
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+      note: |-
+        The sentence continues with the function `n()` set as code and "). That way, you can ensure
+        that you're not drawing conclusions based on very small amounts of data." CC BY-NC-ND:
+        quoted for audit, not adapted.
+  - citekey: r4ds_2e
+    kind: textbook
+    locator: 'ch. 7, section 7.5 "Writing to a file", first sentence: write_csv()'
+    quote: |-
+      readr also comes with two useful functions for writing data back to disk:
+    verified:
+      resolved_id: https://r4ds.hadley.nz/data-import.html
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+      note: |-
+        The sentence names `write_csv()` and `write_tsv()`, set as code. No readr help page for
+        write_csv() is held.
+  - citekey: sandve_2013
+    kind: primary
+    locator: 'Rule 9 "Connect Textual Statements to Underlying Results", last paragraph'
+    quote: |-
+      As a minimum, you should provide enough details along with your textual interpretations so as to allow the exact underlying results, or at least some related results, to be tracked down in the future.
+    verified:
+      resolved_id: https://doi.org/10.1371/journal.pcbi.1003285
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+      note: |-
+        Carries the reason a summary table is written to a file by code rather than copied from
+        the screen.
+simplified_explanation: |
+  The shape of the answer tells you what you asked for. Three species give three rows. If you expected three rows and got eight, you
+  grouped by something else as well.
+
+  Put the count beside every summary.
+
+  Quartiles have more than one recipe. None is wrong. Say which you used.
+
+  Never copy a number off the screen into a report. If the data change, rerun the script and the file changes with them.
+
+  A summary describes the rows in your file. It is not, by itself, a figure for anyone outside it.
+illustrations:
+- body: |
+    Start with the penguin file, and give the species short names as the section on making new
+    columns did. Keep a copy of body mass under a name without spaces.
+
+    ```r
+    library(readr)
+    library(dplyr, warn.conflicts = FALSE)
+
+    penguins_raw <- read_csv(
+      here::here("data-raw", "penguins_raw.csv"),
+      show_col_types = FALSE
+    )
+
+    penguins <- penguins_raw |>
+      mutate(
+        species = case_when(
+          Species == "Adelie Penguin (Pygoscelis adeliae)" ~ "Adelie",
+          Species == "Chinstrap penguin (Pygoscelis antarctica)" ~ "Chinstrap",
+          Species == "Gentoo penguin (Pygoscelis papua)" ~ "Gentoo"
+        ),
+        body_mass_g = `Body Mass (g)`
+      )
+    ```
+
+    Ask for the mean body mass of all the penguins:
+
+    ```r
+    penguins |>
+      summarise(mean_g = mean(body_mass_g))
+    ```
+
+    ```output
+    # A tibble: 1 × 1
+      mean_g
+       <dbl>
+    1     NA
+    ```
+
+    One row, as promised, and the answer is `NA`. Two penguins have no body mass, and one missing
+    value makes the whole mean missing. That is R refusing to guess. Tell `mean()` to leave the
+    missing values out, and ask for the count beside it:
+
+    ```r
+    penguins |>
+      summarise(
+        n_rows = n(),
+        mean_g = mean(body_mass_g, na.rm = TRUE)
+      )
+    ```
+
+    ```output
+    # A tibble: 1 × 2
+      n_rows mean_g
+       <int>  <dbl>
+    1    344  4202.
+    ```
+
+    Read the two numbers together. `n_rows` is {{n:penguins_rows}}, every row in the file. The mean was worked out
+    from {{n:penguins_mass_n}} of them, because `na.rm = TRUE` dropped the two without a body mass. The count beside
+    the mean is wrong by two, and nothing on the screen says so. Count the values the mean used,
+    not the rows:
+
+    ```r
+    mass_by_species <- penguins |>
+      summarise(
+        n_rows = n(),
+        n_mass = sum(!is.na(body_mass_g)),
+        mean_g = mean(body_mass_g, na.rm = TRUE),
+        sd_g = sd(body_mass_g, na.rm = TRUE),
+        median_g = median(body_mass_g, na.rm = TRUE),
+        iqr_g = IQR(body_mass_g, na.rm = TRUE),
+        .by = species
+      )
+
+    mass_by_species
+    ```
+
+    ```output
+    # A tibble: 3 × 7
+      species   n_rows n_mass mean_g  sd_g median_g iqr_g
+      <chr>      <int>  <int>  <dbl> <dbl>    <dbl> <dbl>
+    1 Adelie       152    151  3701.  459.     3700  650
+    2 Gentoo       124    123  5076.  504.     5000  800
+    3 Chinstrap     68     68  3733.  384.     3700  462.
+    ```
+
+    `.by = species` asked for one row per species, and there are three rows. Each row has its own
+    two counts. Adelie has {{n:penguins_adelie}} rows and 151 body masses; Gentoo has {{n:penguins_gentoo}} rows and {{n:penguins_gentoo_mass_n}}; Chinstrap has
+    {{n:penguins_chinstrap}} of each. Those are the two missing values, one in each of two species. The tibble prints the
+    means rounded to fit the screen.
+
+    Now put the table where a report can use it, without a hand touching a number. In your own
+    project the `output/` folder already exists; the first line makes it if it does not, and does
+    nothing if it does.
+
+    ```r
+    dir.create(here::here("output"), showWarnings = FALSE)
+
+    write_csv(
+      mass_by_species,
+      here::here("output", "mass_by_species.csv")
+    )
+
+    readLines(here::here("output", "mass_by_species.csv"))
+    ```
+
+    ```output
+    [1] "species,n_rows,n_mass,mean_g,sd_g,median_g,iqr_g"
+    [2] "Adelie,152,151,3700.662251655629,458.5661259101348,3700,650"
+    [3] "Gentoo,124,123,5076.016260162602,504.11623665709163,5000,800"
+    [4] "Chinstrap,68,68,3733.0882352941176,384.3350813871914,3700,462.5"
+    ```
+
+    `readLines()` prints a text file's lines as they are, to show what was written. The file
+    holds the full numbers, not the rounded ones on the screen. A report that quotes the
+    Adelie mean takes it from this file. If a corrected body mass arrives next month, you rerun the
+    script, the file changes, and the report's number can be checked against it.
+  analogy_breaks_when: |
+    The table describes the {{n:penguins_rows}} rows of this file: penguins measured on three islands in three
+    seasons. It is not a figure for all penguins of these species, and the file's documentation
+    makes no such claim.
+
+    Leaving out missing values is a choice. Here two body masses out of {{n:penguins_rows}} are missing, and the
+    choice barely matters. When a quarter of the values are missing, the mean of the rest may
+    describe a different group of penguins, or patients, from the one you meant. The section on
+    missing values says how to count and report them.
+- body: |
+    Here is a trap that catches people moving between Book 0 and R. Take nine made-up heights of
+    children, in centimetres, already in order: 121, 125, 127, 128, 132, 133, 134, 138, 141.
+
+    Work the quartiles by Book 0's method first. There are nine values, an odd count, so leave the
+    middle one, 132, out of both halves. The lower half is 121, 125, 127, 128. Its median, the
+    first quartile, is halfway between 125 and 127: 126. The upper half is 133, 134, 138, 141.
+    Its median, the third quartile, is halfway between 134 and 138: 136. The interquartile range
+    is 136 minus 126, which is 10.
+
+    ```working
+    first quartile = (125 + 127) divided by 2 = 126
+    third quartile = (134 + 138) divided by 2 = 136
+    interquartile range = 136 - 126 = 10
+    ```
+
+    Now ask R:
+
+    ```r
+    heights_cm <- c(121, 125, 127, 128, 132, 133, 134, 138, 141)
+
+    quantile(heights_cm)
+    IQR(heights_cm)
+    ```
+
+    ```output
+      0%  25%  50%  75% 100%
+     121  127  132  134  141
+    [1] 7
+    ```
+
+    R says the first quartile is 127, the third is 134, and the interquartile range is 7. Your
+    hand calculation said 126, 136 and 10. The median, 132, agrees.
+
+    Neither of you made a mistake. There is more than one rule for where a quartile sits when it
+    falls between two values. The help page for `quantile()` lists nine, and R uses type 7 unless
+    told otherwise. The same page says SPSS uses type 6. Ask for type 6:
+
+    ```r
+    quantile(heights_cm, type = 6)
+    ```
+
+    ```output
+      0%  25%  50%  75% 100%
+     121  126  132  136  141
+    ```
+
+    Type 6 gives 126 and 136, the same as Book 0's method on these nine values. That agreement
+    is a property of this set of numbers. It is not a rule that the two methods always agree.
+
+    ```table
+    | Method | First quartile (cm) | Third quartile (cm) | Interquartile range (cm) |
+    | Book 0, median of each half | 126 | 136 | 10 |
+    | R, type 7 (the default) | 127 | 134 | 7 |
+    | R, type 6 (said to be SPSS's) | 126 | 136 | 10 |
+    ```
+
+    So when a colleague's SPSS table and your R output disagree on a quartile, check the rule
+    before you check the data. And in your own methods section, name the software and the rule.
+  analogy_breaks_when: |
+    The nine heights are made up; they show the arithmetic and describe no children.
+
+    With hundreds of values the rules land very close together, because neighbouring values in a
+    big sorted list are close. The disagreement is largest with few values, which is exactly when
+    a thesis table is most likely to be checked by hand.
+- body: |
+    Now group by two columns at once, species and sex, and work out each group's share of all
+    the penguins. Continue in the same session.
+
+    ```r
+    penguins |>
+      group_by(species, Sex) |>
+      summarise(n = n()) |>
+      mutate(pct = 100 * n / sum(n))
+    ```
+
+    ```output
+    `summarise()` has grouped output by 'species'. You can override using
+    the `.groups` argument.
+    # A tibble: 8 × 4
+    # Groups:   species [3]
+      species   Sex        n   pct
+      <chr>     <chr>  <int> <dbl>
+    1 Adelie    FEMALE    73 48.0
+    2 Adelie    MALE      73 48.0
+    3 Adelie    <NA>       6  3.95
+    4 Chinstrap FEMALE    34 50
+    5 Chinstrap MALE      34 50
+    6 Gentoo    FEMALE    58 46.8
+    7 Gentoo    MALE      61 49.2
+    8 Gentoo    <NA>       5  4.03
+    ```
+
+    Eight rows, not six. Two species have penguins whose sex was not recorded, and `NA` became a
+    group of its own: 6 Adelie and 5 Gentoo. A summary never hides a missing category. It prints
+    it, and you decide what to say about it.
+
+    Read the message too. `summarise()` removed only the last grouping column, `Sex`, so the
+    result is still grouped by species. The line `# Groups: species [3]` says so.
+
+    The first row says 48.0% for Adelie females. But 73 is not 48% of {{n:penguins_rows}}. Because the result was
+    still grouped by species, `sum(n)` added up within each species: 73 divided by {{n:penguins_adelie}}, not by
+    {{n:penguins_rows}}. The code ran, gave tidy numbers, and answered a different question.
+
+    Group for one step only with `.by`, and the result comes back ungrouped:
+
+    ```r
+    penguins |>
+      summarise(n = n(), .by = c(species, Sex)) |>
+      mutate(pct = 100 * n / sum(n))
+    ```
+
+    ```output
+    # A tibble: 8 × 4
+      species   Sex        n   pct
+      <chr>     <chr>  <int> <dbl>
+    1 Adelie    MALE      73 21.2
+    2 Adelie    FEMALE    73 21.2
+    3 Adelie    <NA>       6  1.74
+    4 Gentoo    FEMALE    58 16.9
+    5 Gentoo    MALE      61 17.7
+    6 Gentoo    <NA>       5  1.45
+    7 Chinstrap FEMALE    34  9.88
+    8 Chinstrap MALE      34  9.88
+    ```
+
+    Now 73 Adelie females are 21.2% of all {{n:penguins_rows}}. The rows come in the order each group first
+    appears in the file, whereas `group_by()` sorted them. If you do use `group_by()`, end the
+    pipe with `ungroup()` before anything else touches the result.
+
+    For counts alone there is a shorter way, met in the section on categories. `count(species,
+    Sex)` gives the same eight rows and counts, and an ungrouped result.
+  analogy_breaks_when: |
+    The percentages describe the rows of this file. Whether 21.2% of all penguins on these islands
+    are female Adelies is a question about how the birds were chosen for study, which no summary
+    can answer.
+
+    Grouping and summarising is also what a database query does; the next rung runs the same
+    summaries on a whole survey in a database.
+
+    The leftover grouping trap needs two grouping columns. With one column, `summarise()` removes
+    it and the result comes back ungrouped, so the trap waits until the day you add a second.
+must_know:
+- point: |
+    Print the count beside every summary, and print the right count. `n()` counts rows. With `na.rm = TRUE`, a mean
+    uses only the rows that have a value, so count those with `sum(!is.na(x))`.
+  kind: trap
+  bearing: methodological
+- point: |
+    The error is to think `na.rm = TRUE` fixes missing values. It only leaves them out, without a
+    word.
+  kind: misconception
+  bearing: methodological
+- point: |
+    Check the shape of the result before reading a number.
+  kind: move
+  bearing: methodological
+- point: |
+    After `group_by()` on two columns, `summarise()` leaves the result grouped by the first. A
+    percentage worked out next is a percentage within each group, not of the total.
+  kind: trap
+  bearing: methodological
+- point: |
+    When two tables disagree on a quartile, ask which rule each used before you suspect the data.
+  kind: consequence
+  bearing: methodological
+  refs:
+  - rdocs_s52r1_stats
+- point: |
+    A number copied off the screen into a thesis cannot be traced back.
+  kind: consequence
+  bearing: methodological
+  refs:
+  - sandve_2013
+- point: |
+    When a trainee shows you a table of means, ask first for the count in each row and for how
+    many values were missing. Then ask for the median beside the mean, as Book 0 taught.
+  kind: move
+  bearing: teaching
+- point: |
+    A summary describes the rows in your file. It is not an estimate for any population unless the
+    rows were chosen to stand for one. For a survey, it also needs the survey's sample weights,
+    which a later book teaches.
+  kind: boundary
+  bearing: methodological
+exercises:
+- type: calculation
+  prompt: |
+    Add to your penguin script a summary of flipper length by island. Give, for each island, the
+    number of rows, the number of flipper lengths used, the mean and the median in millimetres.
+    Write the table to `output/flipper_by_island.csv`, and say which island's mean rests on the
+    fewest measurements.
+  answer: |
+    ```r
+    library(readr)
+    library(dplyr, warn.conflicts = FALSE)
+
+    penguins_raw <- read_csv(
+      here::here("data-raw", "penguins_raw.csv"),
+      show_col_types = FALSE
+    )
+
+    flipper_by_island <- penguins_raw |>
+      summarise(
+        n_rows = n(),
+        n_flipper = sum(!is.na(`Flipper Length (mm)`)),
+        mean_mm = mean(`Flipper Length (mm)`, na.rm = TRUE),
+        median_mm = median(`Flipper Length (mm)`, na.rm = TRUE),
+        .by = Island
+      )
+
+    flipper_by_island
+
+    dir.create(here::here("output"), showWarnings = FALSE)
+    write_csv(flipper_by_island, here::here("output", "flipper_by_island.csv"))
+    ```
+
+    ```output
+    # A tibble: 3 × 5
+      Island    n_rows n_flipper mean_mm median_mm
+      <chr>      <int>     <int>   <dbl>     <dbl>
+    1 Torgersen     52        51    191.       191
+    2 Biscoe       168       167    210.       214
+    3 Dream        124       124    193.       193
+    ```
+
+    Three islands, three rows. Torgersen's mean rests on the fewest flipper lengths: 51 of its {{n:penguins_torgersen}}
+    rows have one. Biscoe and Torgersen each lost one penguin to a missing flipper length; Dream
+    lost none. The file in `output/` holds the full numbers, and rerunning the script rewrites it.
+  skill_ref: S52-R1-K01
+- type: critique
+  prompt: |
+    A colleague's thesis table gives "Mean haemoglobin 11.2 g/dL (n = 312)" for the women in her
+    study. She ran `mean(hb, na.rm = TRUE)` in the console and read the answer off the screen. She
+    typed it into the Word table, with `nrow()` of her data frame as the n. Say what can be wrong
+    with that number and its n, and how her script should produce them instead.
+  answer: |
+    Two things can be wrong, and nobody can now tell whether they are.
+
+    The n may not be the n behind the mean. The function `nrow()` counts every woman in the data
+    frame.
+    `na.rm = TRUE` left out any woman with no haemoglobin result. If 20 results were missing, the
+    mean came from 292 women and the table says 312.
+
+    The number has no trail. It was read off a screen and typed. If a value in the data is later
+    corrected, or a typing slip turned 11.2 into 12.1, nothing connects the table to the code.
+
+    Instead, the script should compute the summary with `summarise()`: `n()` for the rows,
+    `sum(!is.na(hb))` for the results used, and the mean and median. It should write that table
+    to `output/` with `write_csv()`. The thesis table is then copied from that file, which the
+    script rewrites every time it runs. A later book shows documents in which the code writes
+    each number itself.
+  skill_ref: S52-R1-K02
+- type: teaching
+  prompt: |
+    A first-year resident has ten minutes and a whiteboard. She has just made a table of mean BMI
+    by district from a screening register. She does not see why you want a count in every row.
+    Teach her.
+  answer: |
+    Draw two made-up rows on the board. District A: mean BMI 24.0 kg/m^2. District B: mean BMI 27.0 kg/m^2.
+    Ask her which district has the higher BMI. She will say B.
+
+    Now add a count to each row: A, 2,400 adults; B, 4 adults. Ask again. The difference is the
+    same three units, but B's mean is four people. One person of high BMI who happened to come
+    that day could have made it.
+
+    Then add a second count: values used. Say B screened 40 adults but only 4 had weight and
+    height recorded. Now the mean describes the 4 who were measured, and nobody knows whether they
+    are like the other 36.
+
+    Write the rule under the table. Every summary row carries the number of rows and the number
+    of values used. In R that is `n()` and `sum(!is.na(x))`, inside the same `summarise()` as the
+    mean. Then the counts can never drift away from the number they describe.
+- type: retrieval
+  prompt: |
+    Without looking back, name three ways a table of summaries by group can be wrong, or
+    misleading, without any error message.
+  answer: |
+    Any three of these:
+
+    - The count printed is `n()`, the rows, while the mean used fewer values because
+      `na.rm = TRUE` left the missing ones out.
+    - A percentage worked out after `group_by()` on two columns is a share within each group, not
+      of the total, because the result was still grouped.
+    - A quartile differs from another tool's because the two use different rules.
+    - A group of `NA`, such as penguins with no sex recorded, is dropped from the report without a
+      word, though the summary printed it.
+    - A number was copied off the screen and later typed wrongly, or not updated when the data
+      changed.
+quantitative: true
+practice_note: |
+  Twelve problems. summarise() itself is one move, but grouping has three silent traps (the n
+  that counts rows not values, the leftover grouping that changes a percentage, and quartile rules
+  that differ between tools), and writing the table by code is a fourth habit; each needs a
+  diagnostic or applied problem of its own.
+practice:
+- level: 1
+  prompt: |
+    A made-up table:
+
+    ```r
+    library(dplyr, warn.conflicts = FALSE)
+
+    scores <- tibble(score = c(4, 9, 5))
+    ```
+
+    Write one line that gives the number of rows and the mean score, in one row.
+  answer: |
+    ```r
+    scores |>
+      summarise(n = n(), mean_score = mean(score))
+    ```
+
+    ```output
+    # A tibble: 1 × 2
+          n mean_score
+      <int>      <dbl>
+    1     3          6
+    ```
+
+    One row: 3 rows, and a mean of 6, since 4 plus 9 plus 5 is 18, and 18 divided by 3 is 6.
+- level: 2
+  prompt: |
+    A made-up table of two groups:
+
+    ```r
+    library(dplyr, warn.conflicts = FALSE)
+
+    visits <- tibble(
+      clinic = c("A", "B", "A", "B", "A"),
+      patients = c(12, 7, 9, 11, 6)
+    )
+    ```
+
+    Give the total number of patients for each clinic. Before you run it, say how many rows the
+    answer will have.
+  answer: |
+    Two clinics, so two rows.
+
+    ```r
+    visits |>
+      summarise(total = sum(patients), .by = clinic)
+    ```
+
+    ```output
+    # A tibble: 2 × 2
+      clinic total
+      <chr>  <dbl>
+    1 A         27
+    2 B         18
+    ```
+
+    Clinic A: 12 plus 9 plus 6 is 27. Clinic B: 7 plus 11 is 18.
+- level: 3
+  prompt: |
+    Use Book 0's method, the median of each half, on the four numbers 2, 4, 6 and 8. Work out the
+    first quartile, the third quartile and the interquartile range. Then run `quantile()` and `IQR()` on the same four
+    numbers in R. Say why the answers differ.
+  answer: |
+    Book 0: the lower half is 2 and 4, so the first quartile is halfway between them, 3.
+    The upper half is 6 and 8, so the third quartile is 7. The interquartile range is 7 minus 3,
+    which is 4.
+
+    ```r
+    quantile(c(2, 4, 6, 8))
+    IQR(c(2, 4, 6, 8))
+    ```
+
+    ```output
+      0%  25%  50%  75% 100%
+     2.0  3.5  5.0  6.5  8.0
+    [1] 3
+    ```
+
+    R gives 3.5 and 6.5, and an interquartile range of 3. R's default, type 7, places a quartile
+    by a different rule from Book 0's. Neither is a mistake. On four values the rules are far
+    apart; on hundreds they land close together.
+- level: 4
+  prompt: |
+    Read the penguin file.
+
+    ```r
+    library(readr)
+    library(dplyr, warn.conflicts = FALSE)
+
+    penguins_raw <- read_csv(
+      here::here("data-raw", "penguins_raw.csv"),
+      show_col_types = FALSE
+    )
+    ```
+
+    For each island, give the number of rows and the number of different species found there.
+    (`n_distinct(x)` counts the different values in `x`.)
+  answer: |
+    ```r
+    penguins_raw |>
+      summarise(
+        n_rows = n(),
+        n_species = n_distinct(Species),
+        .by = Island
+      )
+    ```
+
+    ```output
+    # A tibble: 3 × 3
+      Island    n_rows n_species
+      <chr>      <int>     <int>
+    1 Torgersen     52         1
+    2 Biscoe       168         2
+    3 Dream        124         2
+    ```
+
+    Torgersen: {{n:penguins_torgersen}} rows, 1 species. Biscoe: {{n:penguins_biscoe}} rows, 2 species. Dream: {{n:penguins_dream}} rows, 2 species. The
+    three counts of rows add up to {{n:penguins_rows}}, every row in the file. Only Adelie penguins were sampled on
+    all three islands.
+- level: 5
+  prompt: |
+    Read the penguin file.
+
+    ```r
+    library(readr)
+    library(dplyr, warn.conflicts = FALSE)
+
+    penguins_raw <- read_csv(
+      here::here("data-raw", "penguins_raw.csv"),
+      show_col_types = FALSE
+    )
+    ```
+
+    Give the median body mass in grams for each value of `Sex`, with the number of rows and the
+    number of body masses used. Say what the third row is, and why it is there.
+  answer: |
+    ```r
+    penguins_raw |>
+      summarise(
+        n_rows = n(),
+        n_mass = sum(!is.na(`Body Mass (g)`)),
+        median_g = median(`Body Mass (g)`, na.rm = TRUE),
+        .by = Sex
+      )
+    ```
+
+    ```output
+    # A tibble: 3 × 4
+      Sex    n_rows n_mass median_g
+      <chr>   <int>  <int>    <dbl>
+    1 MALE      168    168     4300
+    2 FEMALE    165    165     3650
+    3 <NA>       11      9     4100
+    ```
+
+    Males: {{n:penguins_male}} rows, median 4300 g. Females: {{n:penguins_female}} rows, median 3650 g. The third row is `NA`: 11
+    penguins whose sex was not recorded, 9 of them with a body mass. A summary does not drop a
+    missing category; it prints it as a group. Say how many penguins had no sex recorded, and do
+    not quietly leave them out of the table.
+- level: 6
+  prompt: |
+    Read the penguin file.
+
+    ```r
+    library(readr)
+    library(dplyr, warn.conflicts = FALSE)
+
+    penguins_raw <- read_csv(
+      here::here("data-raw", "penguins_raw.csv"),
+      show_col_types = FALSE
+    )
+    ```
+
+    Make a table of culmen length by species: the number of values used, the mean and the
+    standard deviation. The culmen is the ridge of the bill, measured in millimetres. Write it to
+    `output/culmen_by_species.csv`. Then show that the file exists and how many lines it has.
+  answer: |
+    ```r
+    culmen_by_species <- penguins_raw |>
+      summarise(
+        n_culmen = sum(!is.na(`Culmen Length (mm)`)),
+        mean_mm = mean(`Culmen Length (mm)`, na.rm = TRUE),
+        sd_mm = sd(`Culmen Length (mm)`, na.rm = TRUE),
+        .by = Species
+      )
+
+    dir.create(here::here("output"), showWarnings = FALSE)
+    write_csv(culmen_by_species, here::here("output", "culmen_by_species.csv"))
+
+    file.exists(here::here("output", "culmen_by_species.csv"))
+    length(readLines(here::here("output", "culmen_by_species.csv")))
+    ```
+
+    ```output
+    [1] TRUE
+    [1] 4
+    ```
+
+    The file exists, with 4 lines: a header and one line per species. The function `sd()` divides
+    by one less than the count, as Book 0 does for a sample. The numbers in the file are the ones a report
+    should quote.
+- level: 7
+  prompt: |
+    A colleague runs this and writes in her notes: "Adelie and Gentoo body masses were not
+    recorded; only Chinstrap has data."
+
+    ```r
+    library(readr)
+    library(dplyr, warn.conflicts = FALSE)
+
+    penguins_raw <- read_csv(
+      here::here("data-raw", "penguins_raw.csv"),
+      show_col_types = FALSE
+    )
+
+    penguins_raw |>
+      summarise(mean_g = mean(`Body Mass (g)`), .by = Species)
+    ```
+
+    ```output
+    # A tibble: 3 × 2
+      Species                                   mean_g
+      <chr>                                      <dbl>
+    1 Adelie Penguin (Pygoscelis adeliae)          NA
+    2 Gentoo penguin (Pygoscelis papua)            NA
+    3 Chinstrap penguin (Pygoscelis antarctica)  3733.
+    ```
+
+    Find what broke.
+  answer: |
+    Nothing is wrong with the data. `mean()` returns `NA` if even one value in the group is missing,
+    unless told to leave missing values out. Adelie and Gentoo each have one missing body mass;
+    Chinstrap has none. Count, then summarise:
+
+    ```r
+    penguins_raw |>
+      summarise(
+        n_rows = n(),
+        n_missing = sum(is.na(`Body Mass (g)`)),
+        mean_g = mean(`Body Mass (g)`, na.rm = TRUE),
+        .by = Species
+      )
+    ```
+
+    ```output
+    # A tibble: 3 × 4
+      Species                                   n_rows n_missing mean_g
+      <chr>                                      <int>     <int>  <dbl>
+    1 Adelie Penguin (Pygoscelis adeliae)          152         1  3701.
+    2 Gentoo penguin (Pygoscelis papua)            124         1  5076.
+    3 Chinstrap penguin (Pygoscelis antarctica)     68         0  3733.
+    ```
+
+    Adelie: 1 missing of {{n:penguins_adelie}}. Gentoo: 1 missing of {{n:penguins_gentoo}}. Both have a mean.
+
+    Why the wrong reading looks reasonable: `NA` means "not available", and the note took that to
+    mean the whole column was not available. It meant one value was.
+- level: 7
+  prompt: |
+    A colleague's table of Gentoo body mass reads "n = {{n:penguins_gentoo}}, mean 5076 g". Here is his code.
+
+    ```r
+    library(readr)
+    library(dplyr, warn.conflicts = FALSE)
+
+    penguins_raw <- read_csv(
+      here::here("data-raw", "penguins_raw.csv"),
+      show_col_types = FALSE
+    )
+
+    penguins_raw |>
+      filter(Species == "Gentoo penguin (Pygoscelis papua)") |>
+      summarise(
+        n = n(),
+        mean_g = mean(`Body Mass (g)`, na.rm = TRUE)
+      )
+    ```
+
+    ```output
+    # A tibble: 1 × 2
+          n mean_g
+      <int>  <dbl>
+    1   124  5076.
+    ```
+
+    The mean is right. Find what is wrong with the table.
+  answer: |
+    The n counts rows, not body masses. One Gentoo penguin has no body mass, so the mean was
+    worked out from {{n:penguins_gentoo_mass_n}} values, not {{n:penguins_gentoo}}.
+
+    ```r
+    penguins_raw |>
+      filter(Species == "Gentoo penguin (Pygoscelis papua)") |>
+      summarise(
+        n_rows = n(),
+        n_mass = sum(!is.na(`Body Mass (g)`)),
+        mean_g = mean(`Body Mass (g)`, na.rm = TRUE)
+      )
+    ```
+
+    ```output
+    # A tibble: 1 × 3
+      n_rows n_mass mean_g
+       <int>  <int>  <dbl>
+    1    124    123  5076.
+    ```
+
+    The table should read "n = {{n:penguins_gentoo_mass_n}}" for the mean, and say that 1 of {{n:penguins_gentoo}} had no body mass.
+
+    Why the wrong n looks reasonable: `n()` is the count every example shows beside a mean. With no
+    missing values it is the right one. The error only appears in a group with a gap.
+- level: 8
+  prompt: |
+    A colleague wants each species-and-sex group's share of all the penguins, and reports
+    "Gentoo males are 49.2% of the penguins in the file."
+
+    ```r
+    library(readr)
+    library(dplyr, warn.conflicts = FALSE)
+
+    penguins_raw <- read_csv(
+      here::here("data-raw", "penguins_raw.csv"),
+      show_col_types = FALSE
+    )
+
+    penguins_raw |>
+      group_by(Species, Sex) |>
+      summarise(n = n()) |>
+      mutate(pct = 100 * n / sum(n)) |>
+      filter(Sex == "MALE")
+    ```
+
+    ```output
+    `summarise()` has grouped output by 'Species'. You can override using
+    the `.groups` argument.
+    # A tibble: 3 × 4
+    # Groups:   Species [3]
+      Species                                   Sex       n   pct
+      <chr>                                     <chr> <int> <dbl>
+    1 Adelie Penguin (Pygoscelis adeliae)       MALE     73  48.0
+    2 Chinstrap penguin (Pygoscelis antarctica) MALE     34  50
+    3 Gentoo penguin (Pygoscelis papua)         MALE     61  49.2
+    ```
+
+    Find what broke.
+  answer: |
+    After `summarise()`, the result is still grouped by `Species`: the message says so. So `sum(n)`
+    adds up within each species. 61 Gentoo males are 49.2% of {{n:penguins_gentoo}} Gentoo penguins, not of all {{n:penguins_rows}}.
+
+    Count instead, which returns an ungrouped result:
+
+    ```r
+    penguins_raw |>
+      count(Species, Sex) |>
+      mutate(pct = 100 * n / sum(n)) |>
+      filter(Sex == "MALE")
+    ```
+
+    ```output
+    # A tibble: 3 × 4
+      Species                                   Sex       n   pct
+      <chr>                                     <chr> <int> <dbl>
+    1 Adelie Penguin (Pygoscelis adeliae)       MALE     73 21.2
+    2 Chinstrap penguin (Pygoscelis antarctica) MALE     34  9.88
+    3 Gentoo penguin (Pygoscelis papua)         MALE     61 17.7
+    ```
+
+    Gentoo males are 17.7% of the {{n:penguins_rows}} rows in the file. `count()` returns an ungrouped
+    result, so `sum(n)` is {{n:penguins_rows}}.
+
+    Why the wrong answer looks reasonable: 49.2% is a sensible share for males in one species, so
+    nothing about the number looks off. Only the denominator changed, and the denominator is not
+    printed.
+- level: 8
+  prompt: |
+    A colleague runs this to get mean body mass by short species name:
+
+    ```r
+    library(readr)
+    library(dplyr, warn.conflicts = FALSE)
+
+    penguins_raw <- read_csv(
+      here::here("data-raw", "penguins_raw.csv"),
+      show_col_types = FALSE
+    )
+    ```
+
+    ```r error
+    penguins_raw |>
+      summarise(
+        mean_g = mean(`Body Mass (g)`, na.rm = TRUE),
+        .by = species
+      ) |>
+      mutate(
+        species = case_when(
+          species == "Adelie Penguin (Pygoscelis adeliae)" ~ "Adelie",
+          species == "Chinstrap penguin (Pygoscelis antarctica)" ~ "Chinstrap",
+          species == "Gentoo penguin (Pygoscelis papua)" ~ "Gentoo"
+        )
+      )
+    ```
+
+    ```output
+    Error in `summarise()`:
+    ! Can't subset columns that don't exist.
+    ✖ Column `species` doesn't exist.
+    ```
+
+    Read the error. Say what broke and fix it.
+  answer: |
+    The file's column is `Species`, with a capital S. R tells capitals from small letters, so
+    `.by = species` names a column that does not exist yet. The short names have to be made before
+    the summary groups by them:
+
+    ```r
+    penguins_raw |>
+      mutate(
+        species = case_when(
+          Species == "Adelie Penguin (Pygoscelis adeliae)" ~ "Adelie",
+          Species == "Chinstrap penguin (Pygoscelis antarctica)" ~ "Chinstrap",
+          Species == "Gentoo penguin (Pygoscelis papua)" ~ "Gentoo"
+        )
+      ) |>
+      summarise(
+        mean_g = mean(`Body Mass (g)`, na.rm = TRUE),
+        .by = species
+      )
+    ```
+
+    ```output
+    # A tibble: 3 × 2
+      species   mean_g
+      <chr>      <dbl>
+    1 Adelie     3701.
+    2 Gentoo     5076.
+    3 Chinstrap  3733.
+    ```
+
+    Three rows, one per short name. A summary keeps only the grouping columns and the summaries,
+    so make every column you will group by before `summarise()`, not after.
+
+    Why the wrong code looks reasonable: the plan, "summarise, then rename", is fine in words.
+    But after `summarise()` the long `Species` column would be the only one left to rename, and
+    its name is not the one the code used.
+- level: 9
+  prompt: |
+    A made-up draft thesis says: "Gentoo penguins (n = {{n:penguins_gentoo}}) were heavier than Adelie penguins
+    (n = {{n:penguins_adelie}}), with mean body masses of 5076 g and 3701 g." Check every number in the sentence
+    against the penguin file. Then say what the result does not establish.
+  answer: |
+    ```r
+    library(readr)
+    library(dplyr, warn.conflicts = FALSE)
+
+    penguins_raw <- read_csv(
+      here::here("data-raw", "penguins_raw.csv"),
+      show_col_types = FALSE
+    )
+
+    penguins_raw |>
+      filter(Species != "Chinstrap penguin (Pygoscelis antarctica)") |>
+      summarise(
+        n_rows = n(),
+        n_mass = sum(!is.na(`Body Mass (g)`)),
+        mean_g = mean(`Body Mass (g)`, na.rm = TRUE),
+        median_g = median(`Body Mass (g)`, na.rm = TRUE),
+        .by = Species
+      )
+    ```
+
+    ```output
+    # A tibble: 2 × 5
+      Species                             n_rows n_mass mean_g median_g
+      <chr>                                <int>  <int>  <dbl>    <dbl>
+    1 Adelie Penguin (Pygoscelis adeliae)    152    151  3701.     3700
+    2 Gentoo penguin (Pygoscelis papua)      124    123  5076.     5000
+    ```
+
+    The means match, once rounded: 3701 g for Adelie and 5076 g for Gentoo. The counts do not
+    describe the means. Each n is the number of rows; each mean used one value fewer, 151 and
+    {{n:penguins_gentoo_mass_n}}. The sentence should give those, or say that one body mass was missing in each species.
+    The medians, 3700 g and 5000 g, tell the same story as the means.
+
+    What it does not establish:
+
+    - That Gentoo penguins in general are heavier. These are the penguins in one study, on certain
+      islands in certain seasons.
+    - How large the difference is against the spread within each species, or whether it could be
+      chance. That needs the standard deviations and a method from the statistics books.
+    - Why they differ. Species is not the only thing that differs between the two groups: they
+      were also sampled on different islands.
+  refs:
+  - horst_2020_palmerpenguins
+- level: 10
+  prompt: |
+    In a made-up lab meeting, someone says: "Male penguins in this dataset average about 4.5 kg."
+    Turn the sentence into code, run it, and say what the result does not establish.
+  answer: |
+    Body mass is in grams, so 4.5 kg is 4500 g. Summarise by sex, with counts:
+
+    ```r
+    library(readr)
+    library(dplyr, warn.conflicts = FALSE)
+
+    penguins_raw <- read_csv(
+      here::here("data-raw", "penguins_raw.csv"),
+      show_col_types = FALSE
+    )
+
+    penguins_raw |>
+      summarise(
+        n_mass = sum(!is.na(`Body Mass (g)`)),
+        mean_g = mean(`Body Mass (g)`, na.rm = TRUE),
+        .by = Sex
+      )
+
+    penguins_raw |>
+      filter(Sex == "MALE") |>
+      summarise(
+        n_mass = sum(!is.na(`Body Mass (g)`)),
+        mean_g = mean(`Body Mass (g)`, na.rm = TRUE),
+        .by = Species
+      )
+    ```
+
+    ```output
+    # A tibble: 3 × 3
+      Sex    n_mass mean_g
+      <chr>   <int>  <dbl>
+    1 MALE      168  4546.
+    2 FEMALE    165  3862.
+    3 <NA>        9  4006.
+    # A tibble: 3 × 3
+      Species                                   n_mass mean_g
+      <chr>                                      <int>  <dbl>
+    1 Adelie Penguin (Pygoscelis adeliae)           73  4043.
+    2 Gentoo penguin (Pygoscelis papua)             61  5485.
+    3 Chinstrap penguin (Pygoscelis antarctica)     34  3939.
+    ```
+
+    The {{n:penguins_male}} males average 4546 g, about 4.5 kg, so the sentence matches the file. Now look inside
+    it. Adelie males average 4043 g and Chinstrap males 3939 g; Gentoo males average 5485 g. No
+    species has males that average about 4.5 kg. The pooled mean sits between a group of lighter
+    birds and a group of heavier ones, and it describes almost no actual penguin.
+
+    What it does not establish:
+
+    - Anything about a typical male of any species. Grouping by sex alone mixed three species of
+      quite different size.
+    - Anything about the 11 penguins with no sex recorded, who are in neither group.
+    - Anything about penguins outside this study.
+  refs:
+  - horst_2020_palmerpenguins
+retrieval_items:
+- q: How many rows does summarise() return with no grouping, and with grouping by one column?
+  a: One row with no grouping. With grouping, one row for each group, that is, each distinct value
+    of the grouping column (including NA, if it occurs).
+- q: In summarise(), what does n() count, and how do you count the values a mean actually used?
+  a: n() counts the rows in the group, whatever they hold. sum(!is.na(x)) counts the values of x
+    that are not missing, which are the ones mean(x, na.rm = TRUE) used.
+- q: What is the difference between group_by() then summarise(), and summarise() with .by?
+  a: After group_by() on several columns, summarise() removes only the last, so the result is still
+    grouped; ungroup() removes the rest. .by groups for that one step and returns an ungrouped
+    result.
+- q: Why can R and SPSS give different quartiles for the same data?
+  a: There are several rules for placing a quartile between two values. R's quantile() uses type 7
+    by default; its help page says SPSS uses type 6.
+- q: Why should a summary table be written to output/ by code?
+  a: So that no number is copied by hand, and the table is rewritten from the data every time the
+    script runs.
+figures:
+- file: "s52-r1-c16-mass-by-species.png"
+  caption: "Mean body mass of the penguins in the file, by species, from the summary by species: Adelie 3701 g from 151 body masses, Gentoo 5076 g from 123, Chinstrap 3733 g from 68. The bars start at zero, so their lengths compare the means. The means describe the rows of this file."
+  alt: "A bar chart of three species. Adelie 3701 grams, Gentoo 5076 grams, Chinstrap 3733 grams, on an axis that starts at zero."
+  source: "draw.py"
+  spec:
+    kind: "bar"
+    x: ["Adelie", "Gentoo", "Chinstrap"]
+    series:
+    - {name: "Mean (g)", y: [3701, 5076, 3733]}
+    x_label: "species"
+    y_label: "mean body mass (g)"
+    y_range: [0, 6000]
+    value_labels: true
+- file: "s52-r1-c16-share-grouped-vs-all.png"
+  caption: "The same eight counts of penguins by species and sex, turned into percentages two ways. Still grouped by species, sum(n) adds up within each species, so 73 Adelie females print as 48.0%, a share of the 152 Adelie penguins. Grouped with .by for one step only, sum(n) adds up all 344 rows, and the same 73 are 21.2%. The code ran both times; only the second answers \"what share of all the penguins?\"."
+  alt: "A grouped bar chart of eight species and sex groups, each with two bars. Share within its species: Adelie female 48.0, male 48.0, sex not recorded 3.95; Chinstrap female 50, male 50; Gentoo female 46.8, male 49.2, sex not recorded 4.03. Share of all 344: 21.2, 21.2, 1.74, 9.88, 9.88, 16.9, 17.7, 1.45."
+  source: "draw.py"
+  spec:
+    kind: "bar"
+    x: ["Adelie\nfemale", "Adelie\nmale", "Adelie\nsex NA", "Chinstrap\nfemale", "Chinstrap\nmale", "Gentoo\nfemale", "Gentoo\nmale", "Gentoo\nsex NA"]
+    series:
+    - name: "still grouped by species: share of its species"
+      y: ["48.0", "48.0", "3.95", "50", "50", "46.8", "49.2", "4.03"]
+    - name: ".by, ungrouped: share of all 344 penguins"
+      y: ["21.2", "21.2", "1.74", "9.88", "9.88", "16.9", "17.7", "1.45"]
+    x_label: "species and sex"
+    y_label: "pct (%)"
+    y_range: [0, 80]
+    value_labels: true
+    size: [7.6, 3.4]
+    relations:
+    - {check: "y1[0] + y1[1] + y1[2] = 100"}
+    - {check: "y1[3] + y1[4] = 100"}
+    - {check: "y1[5] + y1[6] + y1[7] = 100"}
+    - {check: "y2[0] + y2[1] + y2[2] + y2[3] + y2[4] + y2[5] + y2[6] + y2[7] = 100"}
+- file: "s52-r1-c16-iqr-by-method.png"
+  caption: "The interquartile range of the nine children's heights, 121 to 141 cm, by three rules. Book 0's median of each half gives 136 - 126 = 10 cm; R's default, type 7, gives 134 - 127 = 7 cm; type 6 gives 10 cm again. The data are the same in every bar: only the rule for placing a quartile between two values differs, so a methods section names the software and the rule."
+  alt: "A bar chart of three interquartile ranges for the same nine heights: Book 0's method 10 cm, R type 7 7 cm, R type 6 10 cm."
+  source: "draw.py"
+  spec:
+    kind: "bar"
+    from_table: {block: 0, x: 0, y: [3]}
+    x_label: "rule for the quartiles"
+    y_label: "interquartile range (cm)"
+    y_range: [0, 12]
+    value_labels: true
+    relations:
+    - {check: "y[0] = 136 - 126"}
+    - {check: "y[1] = 134 - 127"}
+    - {check: "y[2] = y[0]"}
+provenance:
+  map_version_id: fc19c8bc-a216-4131-99fb-ebe3f19cec4a
+  outcome_refs:
+  - S52-R1-O2
+  - S52-R1-S1
+  bridge_ref:
+  - S52-R2-R3
+  - S52-R2-G2
+review:
+  stability: long
+  trigger: '2031-10-02'
+  last_reviewed: '2026-10-02'
+status: drafted

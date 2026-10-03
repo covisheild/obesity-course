@@ -1,0 +1,1274 @@
+concept_id: S52-R1-C12
+subject: S52
+rung: 1
+sequence: 12
+name: Making new columns
+concept_type: derivable
+clusters:
+- craft-and-integrity
+ground_floor_deps:
+- B0-R0-C10
+- B0-R0-C14
+- B0-R0-C03
+- B0-R0-C08
+concept_deps:
+- S52-R1-C04
+- S52-R1-C05
+- S52-R1-C11
+definition:
+  text: |
+    `mutate()`, from the dplyr package, adds columns to a data frame. A new column goes on the
+    right. If its name is the name of an existing column, it replaces that column.
+
+    `if_else(condition, true, false)` gives one value where the condition is `TRUE` and another
+    where it is `FALSE`. Where the condition is `NA`, the result is `NA`, unless a value is given
+    for `missing`.
+
+    `case_when()` takes a list of cases, each written `condition ~ value`. It checks them in order,
+    and each row gets the value of the first case whose condition is `TRUE`. A row that matches no
+    case gets `.default` if one is given, written `.default = "label"` after the cases, and `NA`
+    otherwise.
+
+    `round(x, digits)` rounds to that many decimal places. A 5 at the cut is rounded to the even
+    digit, so `round(2.5)` is 2.
+
+    `str_trim()` removes spaces from the start and end of a piece of text. `str_to_lower()` turns
+    text into lower case. Both come from the stringr package.
+  references:
+  - citekey: rdocs_s52r1_dplyr
+    kind: textbook
+    locator: 'help page "mutate" (dplyr 1.1.4), Description'
+    quote: |-
+      'mutate()' creates new columns that are functions of existing variables. It can also modify (if the name is the same as an existing column) and delete columns (by setting their value to 'NULL').
+    verified:
+      resolved_id: rhelp://dplyr@1.1.4/mutate
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+  - citekey: rdocs_s52r1_dplyr
+    kind: textbook
+    locator: 'help page "mutate" (dplyr 1.1.4), Value: rows'
+    quote: |-
+      The number of rows is not affected.
+    verified:
+      resolved_id: rhelp://dplyr@1.1.4/mutate
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+  - citekey: rdocs_s52r1_dplyr
+    kind: textbook
+    locator: 'help page "mutate" (dplyr 1.1.4), Arguments, .before, .after: where new columns go'
+    quote: |-
+      Optionally, control where new columns should appear (the default is to add to the right hand side).
+    verified:
+      resolved_id: rhelp://dplyr@1.1.4/mutate
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+  - citekey: rdocs_s52r1_dplyr
+    kind: textbook
+    locator: 'help page "if_else" (dplyr 1.1.4), Value'
+    quote: |-
+      Where 'condition' is 'TRUE', the matching values from 'true', where it is 'FALSE', the matching values from 'false', and where it is 'NA', the matching values from 'missing', if provided, otherwise a missing value will be used.
+    verified:
+      resolved_id: rhelp://dplyr@1.1.4/if_else
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+  - citekey: rdocs_s52r1_dplyr
+    kind: textbook
+    locator: 'help page "case_when" (dplyr 1.1.4), Description: cases in order, first match'
+    quote: |-
+      Each case is evaluated sequentially and the first match for each element determines the corresponding value in the output vector. If no cases match, the '.default' is used as a final "else" statment.
+    verified:
+      resolved_id: rhelp://dplyr@1.1.4/case_when
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+      note: |-
+        "statment" is the help page's own spelling.
+  - citekey: rdocs_s52r1_dplyr
+    kind: textbook
+    locator: 'help page "case_when" (dplyr 1.1.4), Arguments, .default: NA conditions, and no default'
+    quote: |-
+      'NA' values in the LHS conditions are treated like 'FALSE', meaning that the result at those locations will be assigned the '.default' value.
+    verified:
+      resolved_id: rhelp://dplyr@1.1.4/case_when
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+      note: |-
+        The same argument ends: "If 'NULL', the default, a missing value will be used."
+  - citekey: rdocs_s52r1_dplyr
+    kind: textbook
+    locator: 'help page "rename" (dplyr 1.1.4), Description: rename_with()'
+    quote: |-
+      'rename_with()' renames columns using a function.
+    verified:
+      resolved_id: rhelp://dplyr@1.1.4/rename
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+  - citekey: rdocs_s52r1_base
+    kind: textbook
+    locator: 'help page "Round" (base 4.3.3), Description: round()'
+    quote: |-
+      'round' rounds the values in its first argument to the specified number of decimal places (default 0).
+    verified:
+      resolved_id: rhelp://base@4.3.3/Round
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+  - citekey: rdocs_s52r1_base
+    kind: textbook
+    locator: 'help page "Round" (base 4.3.3), Details: rounding off a 5, and the represented number'
+    quote: |-
+      Therefore 'round(0.5)' is '0' and 'round(-1.5)' is '-2'. However, this is dependent on OS services and on representation error (since e.g. '0.15' is not represented exactly, the rounding rule applies to the represented number and not to the printed number, and so 'round(0.15, 1)' could be either '0.1' or '0.2').
+    verified:
+      resolved_id: rhelp://base@4.3.3/Round
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+      note: |-
+        The sentence before it: "Note that for rounding off a 5, the IEC 60559 standard (see also
+        'IEEE 754') is expected to be used, '_go to the even digit_'."
+  - citekey: rdocs_s52r1_stringr
+    kind: textbook
+    locator: 'help page "str_trim" (stringr 1.5.1), Description'
+    quote: |-
+      'str_trim()' removes whitespace from start and end of string
+    verified:
+      resolved_id: rhelp://stringr@1.5.1/str_trim
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+  - citekey: rdocs_s52r1_stringr
+    kind: textbook
+    locator: 'help page "case" (stringr 1.5.1), Description: str_to_lower()'
+    quote: |-
+      'str_to_lower()' converts to lower case.
+    verified:
+      resolved_id: rhelp://stringr@1.5.1/case
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+  - citekey: nfhs5_india_factsheet
+    kind: primary
+    locator: 'Key indicators, row 87: the lower BMI cut-point and its boundary'
+    quote: |-
+      Men whose Body Mass Index (BMI) is below normal (BMI <18.5 kg/m2)
+    verified:
+      resolved_id: https://dhsprogram.com/pubs/pdf/OF43/India_National_Fact_Sheet.pdf
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+      note: |-
+        Used only in the illustration, for the two cut-points and which side of each the boundary
+        value falls on. Row 86 gives the same cut-point for women.
+  - citekey: nfhs5_india_factsheet
+    kind: primary
+    locator: 'Key indicators, row 89: the upper BMI cut-point and its boundary'
+    quote: |-
+      Men who are overweight or obese (BMI ≥25.0 kg/m2)
+    verified:
+      resolved_id: https://dhsprogram.com/pubs/pdf/OF43/India_National_Fact_Sheet.pdf
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+      note: |-
+        Row 88 gives the same cut-point for women. The fact sheet's adult rows cover ages 15 to 49.
+  - citekey: rdocs_s52r1_dplyr
+    kind: textbook
+    locator: 'help page "case_when" (dplyr 1.1.4), Usage: .default after the cases'
+    quote: |-
+      case_when(..., .default = NULL, .ptype = NULL, .size = NULL)
+    verified:
+      resolved_id: rhelp://dplyr@1.1.4/case_when
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-03'
+  - citekey: rdocs_s52r1_dplyr
+    kind: textbook
+    locator: 'help page "rename" (dplyr 1.1.4), Arguments, .fn; Examples'
+    quote: |-
+      .fn: A function used to transform the selected '.cols'.
+    verified:
+      resolved_id: rhelp://dplyr@1.1.4/rename
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-03'
+      note: |-
+        The Examples pass the function by name, without brackets: "rename_with(iris, toupper)".
+  - citekey: rdocs_s52r1_base
+    kind: textbook
+    locator: 'help page "library" (base 4.3.3), Arguments: warn.conflicts'
+    quote: |-
+      If 'TRUE', warnings are printed about 'conflicts' from attaching the new package.
+    verified:
+      resolved_id: rhelp://base@4.3.3/library
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-03'
+simplified_explanation: |
+  `mutate()` adds a column. You give the new column a name and a rule, and R applies the rule to
+  every row. The number of rows does not change.
+
+  `if_else()` sorts rows into two groups by one test. `case_when()` sorts them into several
+  groups. A row with a missing value passes no test and gets `NA`, which is what you want. Be
+  careful with `.default`, the label for "everything else": a missing value lands there too.
+
+  `round()` is for showing a number, not for storing it. Keep full precision in the column you
+  compute with, and round only what you print.
+
+  Text columns get cleaned the same way. `str_trim()` takes spaces off the ends.
+  `str_to_lower()` turns capitals into small letters. Together they turn "Male ", "male" and
+  "MALE" into "male".
+illustrations:
+- body: |
+    Start with BMI, on a made-up clinic register of five adults. Heights are in centimetres, as a
+    clinic writes them; weights are in kilograms. Patient 104 has no weight recorded. dplyr makes
+    `tibble()` available too, and `warn.conflicts = FALSE` turns off the masking message that
+    `S52-R1-C06` explained.
+
+    ```r
+    library(dplyr, warn.conflicts = FALSE)
+
+    clinic <- tibble(
+      id = c(101, 102, 103, 104, 105),
+      height_cm = c(152, 160, 171, 158, 165),
+      weight_kg = c(41, 64, 80.2, NA, 58)
+    )
+    ```
+
+    Write Book 0's rule straight in, with the height as it is:
+
+    ```r
+    clinic |>
+      mutate(bmi = weight_kg / height_cm^2)
+    ```
+
+    ```output
+    # A tibble: 5 × 4
+         id height_cm weight_kg      bmi
+      <dbl>     <dbl>     <dbl>    <dbl>
+    1   101       152      41    0.00177
+    2   102       160      64    0.0025
+    3   103       171      80.2  0.00274
+    4   104       158      NA   NA
+    5   105       165      58    0.00213
+    ```
+
+    The code runs and every BMI is about 0.002. Nobody has a BMI of 0.002. The rule wants height in
+    metres, and a height in centimetres is 100 times larger. Squared, it is 10,000 times larger, so
+    every BMI came out 10,000 times too small. The order-of-magnitude check from Book 0 catches it in
+    one glance.
+
+    Convert first, in its own column, then use it. Within one `mutate()`, a column made on one line
+    can be used on the next.
+
+    ```r
+    clinic <- clinic |>
+      mutate(
+        height_m = height_cm / 100,
+        bmi = weight_kg / height_m^2
+      )
+
+    clinic
+    ```
+
+    ```output
+    # A tibble: 5 × 5
+         id height_cm weight_kg height_m   bmi
+      <dbl>     <dbl>     <dbl>    <dbl> <dbl>
+    1   101       152      41       1.52  17.7
+    2   102       160      64       1.6   25
+    3   103       171      80.2     1.71  27.4
+    4   104       158      NA       1.58  NA
+    5   105       165      58       1.65  21.3
+    ```
+
+    Now the numbers are BMIs, in kg/m^2. Patient 104 has `NA`: a missing weight gives a missing BMI,
+    which is honest. The height in centimetres is still there beside the height in metres. Nothing
+    was overwritten, so anyone reading the script can check the conversion row by row.
+  analogy_breaks_when: |
+    The five patients are made up, and their BMIs describe nobody. The code is the point, not the
+    numbers.
+
+    The conversion is right only if every height in the column is in centimetres. A register where
+    some heights were written in metres would give a mix of sensible and absurd BMIs, and no line
+    of code here would notice. Checking a range in code, so the script stops on a height of 1.6 cm,
+    comes later in this book.
+- body: |
+    Now put the patients into groups. The National Family Health Survey, NFHS-5 (2019–21), uses
+    two BMI cut-points in its India fact sheet. A BMI below 18.5 kg/m^2 is its "below normal"
+    group. A BMI of 25.0 kg/m^2 or more is its "overweight or obese" group. Notice the boundary
+    rule: 25.0 itself goes in the upper group, and 18.5 itself does not go in the lower one.
+
+    Write the three groups with `case_when()`, labelled by their ranges. The cases are checked in
+    order, so the second case only sees rows that failed the first.
+
+    ```r
+    clinic <- clinic |>
+      mutate(
+        bmi_group = case_when(
+          bmi < 18.5 ~ "below 18.5",
+          bmi < 25 ~ "18.5 to below 25",
+          bmi >= 25 ~ "25 or more"
+        )
+      )
+
+    clinic |>
+      select(id, bmi, bmi_group)
+    ```
+
+    ```output
+    # A tibble: 5 × 3
+         id   bmi bmi_group
+      <dbl> <dbl> <chr>
+    1   101  17.7 below 18.5
+    2   102  25   18.5 to below 25
+    3   103  27.4 25 or more
+    4   104  NA   <NA>
+    5   105  21.3 18.5 to below 25
+    ```
+
+    Look at patient 102. The BMI prints as 25, and the group says "18.5 to below 25". By the
+    survey's rule, 25.0 belongs in "25 or more". Something is wrong.
+
+    Ask R whether that BMI equals 25, and then print it with more digits.
+
+    ```r
+    clinic$bmi[2] == 25
+
+    print(clinic$bmi[2], digits = 17)
+    ```
+
+    ```output
+    [1] FALSE
+    [1] 24.999999999999996
+    ```
+
+    In `print()`, `digits` counts all the digits shown, 17 here, not decimal places as in `round()`.
+
+    The stored number is a hair below 25. On paper, 64 divided by 1.6^2 is exactly 25. But a computer stores
+    numbers in binary, and many decimals, 1.6 among them, have no exact binary form, in the same way
+    that one third has no exact decimal form. The tiny error survives the arithmetic, and
+    `bmi < 25` is `TRUE`.
+    The help page for `round()` warns of this: rounding applies to the number as stored, not as
+    printed.
+
+    Here is the trap. Printed digits are not stored digits, and a cut-point is exactly where a hair
+    matters. The fix is a rule you choose and write down. The survey states its cut-points to one
+    decimal place, so round the BMI to one decimal in a separate column, and group on that column.
+    `round(bmi, 1)` replaces the hair-below number with the number R stores for `25`, so
+    `bmi_1dp < 25` is `FALSE`.
+
+    ```r
+    clinic <- clinic |>
+      mutate(
+        bmi_1dp = round(bmi, 1),
+        bmi_group = case_when(
+          bmi_1dp < 18.5 ~ "below 18.5",
+          bmi_1dp < 25 ~ "18.5 to below 25",
+          bmi_1dp >= 25 ~ "25 or more"
+        )
+      )
+
+    clinic |>
+      select(id, bmi_1dp, bmi_group)
+    ```
+
+    ```output
+    # A tibble: 5 × 3
+         id bmi_1dp bmi_group
+      <dbl>   <dbl> <chr>
+    1   101    17.7 below 18.5
+    2   102    25   25 or more
+    3   103    27.4 25 or more
+    4   104    NA   <NA>
+    5   105    21.3 18.5 to below 25
+    ```
+
+    Patient 102 is now in "25 or more". Patient 104, with no BMI, has `NA` as a group: every test was
+    `NA`, no case matched, and `case_when()` gives `NA` when no case matches and no `.default` is
+    set. The full-precision `bmi` column is still there for any calculation.
+
+    Reusing the name `bmi_group` replaced the first, wrong grouping. That is acceptable here,
+    because `bmi_group` is a column your own script made two steps earlier, not a column from the
+    file. Never reuse the name of a column that came from the raw file.
+
+    The four patients with a BMI, as grouped:
+
+    ```table
+    | Patient | BMI to one decimal (kg/m^2) | Group |
+    | 101 | 17.7 | below 18.5 |
+    | 102 | 25.0 | 25 or more |
+    | 103 | 27.4 | 25 or more |
+    | 105 | 21.3 | 18.5 to below 25 |
+    ```
+  analogy_breaks_when: |
+    Rounding to one decimal before grouping is a rule chosen here because the cut-points are written
+    to one decimal. It is not taken from the fact sheet, which does not say how it rounds. A protocol
+    has to state its own rule, and the code has to follow it.
+
+    The labels name ranges, not conditions. Which range means what for a person's health is a
+    decision made by a body, set out in the books on measurement and on obesity in adults, not in
+    this one. The survey's cut-points apply to the adults it covers.
+- body: |
+    The same moves work on the penguin file. Its body mass is in grams; suppose your report wants
+    kilograms. Its sex column is in capitals. Its species names are long. Fix all three in one
+    `mutate()`, each into a new column.
+
+    ```r
+    library(readr)
+    library(dplyr, warn.conflicts = FALSE)
+    library(stringr)
+
+    penguins_raw <- read_csv(
+      here::here("data-raw", "penguins_raw.csv"),
+      show_col_types = FALSE
+    )
+
+    penguins <- penguins_raw |>
+      mutate(
+        body_mass_kg = `Body Mass (g)` / 1000,
+        sex = str_to_lower(Sex),
+        species = case_when(
+          Species == "Adelie Penguin (Pygoscelis adeliae)" ~ "Adelie",
+          Species == "Chinstrap penguin (Pygoscelis antarctica)" ~ "Chinstrap",
+          Species == "Gentoo penguin (Pygoscelis papua)" ~ "Gentoo"
+        )
+      )
+
+    penguins |>
+      select(Species, species, Sex, sex, `Body Mass (g)`, body_mass_kg)
+    ```
+
+    ```output
+    # A tibble: 344 × 6
+       Species              species Sex   sex   `Body Mass (g)` body_mass_kg
+       <chr>                <chr>   <chr> <chr>           <dbl>        <dbl>
+     1 Adelie Penguin (Pyg… Adelie  MALE  male             3750         3.75
+     2 Adelie Penguin (Pyg… Adelie  FEMA… fema…            3800         3.8
+     3 Adelie Penguin (Pyg… Adelie  FEMA… fema…            3250         3.25
+     4 Adelie Penguin (Pyg… Adelie  <NA>  <NA>               NA        NA
+     5 Adelie Penguin (Pyg… Adelie  FEMA… fema…            3450         3.45
+     6 Adelie Penguin (Pyg… Adelie  MALE  male             3650         3.65
+     7 Adelie Penguin (Pyg… Adelie  FEMA… fema…            3625         3.62
+     8 Adelie Penguin (Pyg… Adelie  MALE  male             4675         4.68
+     9 Adelie Penguin (Pyg… Adelie  <NA>  <NA>             3475         3.48
+    10 Adelie Penguin (Pyg… Adelie  <NA>  <NA>             4250         4.25
+    # ℹ 334 more rows
+    ```
+
+    Each new column sits beside the column it came from. `sex` and `Sex` are two different columns,
+    because R tells capitals from small letters.
+
+    A `case_when()` with no `.default` gives `NA` to any row it did not match. So check that every
+    row matched. Count the new column with `count()`, which lists each value with the number of
+    rows that hold it (the section on categories teaches it):
+
+    ```r
+    penguins |>
+      count(species)
+    ```
+
+    ```output
+    # A tibble: 3 × 2
+      species       n
+      <chr>     <int>
+    1 Adelie      152
+    2 Chinstrap    68
+    3 Gentoo      124
+    ```
+
+    {{n:penguins_adelie}}, {{n:penguins_chinstrap}} and {{n:penguins_gentoo}}, and no `NA` row. Every species name in the file was caught by one of the three
+    cases. If a fourth spelling had crept in, it would show up here as `NA`, and you would go and
+    look.
+
+    Last, the column names. `rename_with()` applies a function to every name. Give it
+    `str_to_lower`. Written without brackets, a function is handed over to be used on each name,
+    not called.
+
+    ```r
+    penguins_raw |>
+      rename_with(str_to_lower) |>
+      names()
+    ```
+
+    ```output
+     [1] "studyname"           "sample number"       "species"
+     [4] "region"              "island"              "stage"
+     [7] "individual id"       "clutch completion"   "date egg"
+    [10] "culmen length (mm)"  "culmen depth (mm)"   "flipper length (mm)"
+    [13] "body mass (g)"       "sex"                 "delta 15 n (o/oo)"
+    [16] "delta 13 c (o/oo)"   "comments"
+    ```
+
+    The names are now in lower case, but `body mass (g)` still has spaces and brackets, so it still
+    needs backticks. Making a name safe in one step needs text patterns that this book does not
+    teach. For a file with {{n:penguins_cols}} columns, name the ones you use with `rename()` or inside `select()`,
+    as the last section did.
+  analogy_breaks_when: |
+    Dividing by 1000 is exact only because grams and kilograms differ by a fixed factor. A column
+    that mixed units, some rows in grams and some in kilograms, would need a test on each row before
+    any conversion, and dividing every row by 1000 would hide the problem.
+
+    The three species labels work because the file holds exactly three spellings. The count proves
+    that for this file, and only for this file.
+must_know:
+- point: |
+    Convert units in code, in a new column, before using them.
+  kind: move
+  bearing: methodological
+- point: |
+    A BMI computed from height in centimetres is 10,000 times too small.
+  kind: trap
+  bearing: clinical
+- point: |
+    The error is to think a value that prints as 25 is 25. At a cut-point, decide a rounding
+    rule, write it in a comment, and group on the rounded column.
+  kind: misconception
+  bearing: methodological
+- point: |
+    The order of the cases in `case_when()` is part of the rule. With `bmi >= 18.5` first and
+    `bmi >= 25` second, nobody is ever put in "25 or more", and no error says so.
+  kind: trap
+  bearing: methodological
+- point: |
+    Leave `.default` out unless you mean it. With `.default` set, a missing value is given that
+    label as if it had been measured.
+  kind: trap
+  bearing: methodological
+- point: |
+    Give a new column a new name.
+  kind: move
+  bearing: teaching
+- point: |
+    Round for the table you print, not for the column you compute with.
+  kind: consequence
+  bearing: methodological
+- point: |
+    A new column is only as right as the rule you wrote.
+  kind: boundary
+  bearing: clinical
+exercises:
+- type: critique
+  prompt: |
+    A colleague's thesis dataset has a weight column in kilograms. They opened the spreadsheet,
+    typed a formula into a new column to compute BMI, filled it down, and saved the file. Then they
+    read it into R. Say what is wrong with this, and what they should do instead.
+  answer: |
+    Three things went wrong, and all three are about the raw file.
+
+    The raw file is no longer raw. A computed column now sits among the measured ones, and nothing in
+    the file says which is which. Anyone reading it later may take the BMI as measured.
+
+    The rule is hidden. Whether the formula converted height to metres, and how it rounded, lives
+    inside a cell nobody will open. If a weight is corrected later, the BMI may or may not update,
+    depending on whether the formula survived the save.
+
+    There is no record of the step. Nothing shows when the column was added or by whom.
+
+    Instead: keep the file exactly as collected, and compute BMI in the script with `mutate()`,
+    converting height to metres in its own column first. The rule is then one visible line, it reruns
+    whenever the data change, and the raw file stays clean.
+  skill_ref: S52-R1-K02
+- type: retrieval
+  prompt: |
+    Without looking back, name four ways a new column made with `mutate()` and `case_when()` can be
+    wrong without any error message.
+  answer: |
+    Any four of these:
+
+    - A unit not converted first: BMI from height in centimetres is 10,000 times too small.
+    - Cases in the wrong order: an early, wide case catches rows meant for a later one.
+    - A `.default` that catches missing values and labels them as if measured.
+    - A value at a cut-point that prints as the cut-point but is stored a hair below or above it.
+    - New values written over an old column, so the column's name and unit no longer match its
+      values.
+- type: calculation
+  prompt: |
+    Add to your penguin script a column of flipper length in centimetres. Add another that labels
+    each penguin's body mass as "4.5 kg or more" or "under 4.5 kg". The cut-point is chosen for
+    practice; it is not a biological threshold. Count how many rows get each label, including
+    any missing.
+  answer: |
+    ```r
+    library(readr)
+    library(dplyr, warn.conflicts = FALSE)
+
+    penguins_raw <- read_csv(
+      here::here("data-raw", "penguins_raw.csv"),
+      show_col_types = FALSE
+    )
+
+    penguins <- penguins_raw |>
+      mutate(
+        flipper_length_cm = `Flipper Length (mm)` / 10,
+        body_mass_kg = `Body Mass (g)` / 1000,
+        mass_group = if_else(
+          body_mass_kg >= 4.5,
+          "4.5 kg or more",
+          "under 4.5 kg"
+        )
+      )
+
+    penguins |>
+      count(mass_group)
+    ```
+
+    ```output
+    # A tibble: 3 × 2
+      mass_group         n
+      <chr>          <int>
+    1 4.5 kg or more   118
+    2 under 4.5 kg     224
+    3 <NA>               2
+    ```
+
+    118 rows show 4.5 kg or more, 224 show less, and 2 have no body mass, so no label. A
+    millimetre is a tenth of a centimetre, so dividing by 10 converts. The function `if_else()` gives
+    `NA` where the test is `NA`. So the two rows with no body mass are not quietly counted as
+    light.
+  skill_ref: S52-R1-K01
+quantitative: true
+practice_note: |
+  Thirteen problems: mutate() itself is one move, but each of its companions has a trap of its own
+  (units, the order of cases, .default, the stored number at a cut-point, rounding to even,
+  overwriting a column, using a column before it exists), and each needs a diagnostic problem.
+practice:
+- level: 1
+  prompt: |
+    A made-up table of three heights:
+
+    ```r
+    library(dplyr, warn.conflicts = FALSE)
+
+    heights <- tibble(height_cm = c(150, 162.5, 178))
+    ```
+
+    Add a column `height_m` with the heights in metres.
+  answer: |
+    ```r
+    heights |>
+      mutate(height_m = height_cm / 100)
+    ```
+
+    ```output
+    # A tibble: 3 × 2
+      height_cm height_m
+          <dbl>    <dbl>
+    1      150      1.5
+    2      162.     1.62
+    3      178      1.78
+    ```
+
+    A metre is 100 centimetres, so divide by 100: 1.5, 1.625 and 1.78 metres. The tibble prints
+    1.625 as 1.62, and 162.5 as `162.`, to fit its columns; the column holds the full values. The old
+    column stays beside the new one.
+- level: 2
+  prompt: |
+    A made-up table of three weights:
+
+    ```r
+    library(dplyr, warn.conflicts = FALSE)
+
+    weights <- tibble(weight_kg = c(72, 55, NA))
+    ```
+
+    Add a column that says "60 or more" or "under 60". Before you run it, say what the third row
+    will get.
+  answer: |
+    ```r
+    weights |>
+      mutate(group = if_else(weight_kg >= 60, "60 or more", "under 60"))
+    ```
+
+    ```output
+    # A tibble: 3 × 2
+      weight_kg group
+          <dbl> <chr>
+    1        72 60 or more
+    2        55 under 60
+    3        NA <NA>
+    ```
+
+    The third row gets `NA`. Its test, `NA >= 60`, is `NA`, and `if_else()` gives `NA` where the
+    test is `NA` unless you supply `missing`.
+- level: 3
+  prompt: |
+    Before you run it, say what this prints.
+
+    ```r norun
+    round(c(0.5, 1.5, 2.5))
+    ```
+  answer: |
+    ```r
+    round(c(0.5, 1.5, 2.5))
+    ```
+
+    ```output
+    [1] 0 2 2
+    ```
+
+    0, 2 and 2. A 5 at the cut goes to the even digit: 0.5 down to 0, 1.5 up to 2, 2.5 down to 2.
+    School rounding would give 1, 2 and 3. Both are rules; R uses the first.
+- level: 4
+  prompt: |
+    Read the penguin file.
+
+    ```r
+    library(readr)
+    library(dplyr, warn.conflicts = FALSE)
+
+    penguins_raw <- read_csv(
+      here::here("data-raw", "penguins_raw.csv"),
+      show_col_types = FALSE
+    )
+    ```
+
+    Add a column of flipper length in centimetres. What is the first penguin's flipper length in
+    centimetres?
+  answer: |
+    ```r
+    penguins_raw |>
+      mutate(flipper_length_cm = `Flipper Length (mm)` / 10) |>
+      select(`Flipper Length (mm)`, flipper_length_cm) |>
+      print(n = 4)
+    ```
+
+    ```output
+    # A tibble: 344 × 2
+      `Flipper Length (mm)` flipper_length_cm
+                      <dbl>             <dbl>
+    1                   181              18.1
+    2                   186              18.6
+    3                   195              19.5
+    4                    NA              NA
+    # ℹ 340 more rows
+    ```
+
+    The first penguin's flipper is 181 mm, which is 18.1 cm. There are 10 millimetres in a
+    centimetre, so divide by 10. Row 4 is `NA` in both columns: no flipper was measured.
+- level: 5
+  prompt: |
+    Read the penguin file.
+
+    ```r
+    library(readr)
+    library(dplyr, warn.conflicts = FALSE)
+
+    penguins_raw <- read_csv(
+      here::here("data-raw", "penguins_raw.csv"),
+      show_col_types = FALSE
+    )
+    ```
+
+    Work out body mass in kilograms. Then put each penguin in one of three groups. The groups are
+    "under 3.5 kg", "3.5 to under 4.5 kg" and "4.5 kg or more", cut-points chosen for practice.
+    Count the rows in each group.
+  answer: |
+    ```r
+    penguins_raw |>
+      mutate(
+        body_mass_kg = `Body Mass (g)` / 1000,
+        mass_group = case_when(
+          body_mass_kg < 3.5 ~ "under 3.5 kg",
+          body_mass_kg < 4.5 ~ "3.5 to under 4.5 kg",
+          body_mass_kg >= 4.5 ~ "4.5 kg or more"
+        )
+      ) |>
+      count(mass_group)
+    ```
+
+    ```output
+    # A tibble: 4 × 2
+      mass_group              n
+      <chr>               <int>
+    1 3.5 to under 4.5 kg   153
+    2 4.5 kg or more        118
+    3 under 3.5 kg           71
+    4 <NA>                    2
+    ```
+
+    153 rows from 3.5 to under 4.5 kg, 118 at 4.5 kg or more, 71 under 3.5 kg, and 2 with no
+    body mass. The four counts add to {{n:penguins_rows}}, every row. `count()` sorts the labels alphabetically,
+    which is why "3.5 to under 4.5 kg" comes first.
+- level: 6
+  prompt: |
+    A made-up register typed sex by hand:
+
+    ```r
+    library(dplyr, warn.conflicts = FALSE)
+    library(stringr)
+
+    register <- tibble(sex = c("Male", " female", "MALE ", "Female", "male"))
+    ```
+
+    How many different spellings are there now? Clean the column into a new one, and count the
+    values of the new one.
+  answer: |
+    Count the spellings as typed:
+
+    ```r
+    register |>
+      count(sex)
+    ```
+
+    ```output
+    # A tibble: 5 × 2
+      sex           n
+      <chr>     <int>
+    1 " female"     1
+    2 "Female"      1
+    3 "MALE "       1
+    4 "Male"        1
+    5 "male"        1
+    ```
+
+    Five rows, five different spellings: R treats " female" and "Female" as different values. Trim
+    the spaces, then lower the case, in a new column:
+
+    ```r
+    register |>
+      mutate(sex_clean = str_to_lower(str_trim(sex))) |>
+      count(sex_clean)
+    ```
+
+    ```output
+    # A tibble: 2 × 2
+      sex_clean     n
+      <chr>     <int>
+    1 female        2
+    2 male          3
+    ```
+
+    Two values: 2 female and 3 male. Read the nested call from the inside out: trim first, then
+    lower. The original `sex` column is kept, so the cleaning can be checked.
+- level: 7
+  prompt: |
+    A colleague computes BMI on a made-up register:
+
+    ```r
+    library(dplyr, warn.conflicts = FALSE)
+
+    register <- tibble(
+      height_cm = c(158, 172, 149),
+      weight_kg = c(62, 85, 47)
+    )
+
+    register |>
+      mutate(bmi = weight_kg / height_cm^2) |>
+      mutate(below_18_5 = bmi < 18.5)
+    ```
+
+    ```output
+    # A tibble: 3 × 4
+      height_cm weight_kg     bmi below_18_5
+          <dbl>     <dbl>   <dbl> <lgl>
+    1       158        62 0.00248 TRUE
+    2       172        85 0.00287 TRUE
+    3       149        47 0.00212 TRUE
+    ```
+
+    They report "all three patients have a BMI below 18.5 kg/m^2". Find what broke.
+  answer: |
+    The height is in centimetres. BMI needs metres, and a height 100 times too large, squared, makes
+    the BMI 10,000 times too small. Every BMI is about 0.002, which is below 18.5, so the test says
+    `TRUE` for everyone. Convert first:
+
+    ```r
+    register |>
+      mutate(
+        height_m = height_cm / 100,
+        bmi = weight_kg / height_m^2
+      )
+    ```
+
+    ```output
+    # A tibble: 3 × 4
+      height_cm weight_kg height_m   bmi
+          <dbl>     <dbl>    <dbl> <dbl>
+    1       158        62     1.58  24.8
+    2       172        85     1.72  28.7
+    3       149        47     1.49  21.2
+    ```
+
+    The BMIs are about 24.8, 28.7 and 21.2 kg/m^2. None is below 18.5.
+
+    Why the wrong answer looks reasonable: the code ran without a warning, and the test that followed
+    gave a tidy answer. Nobody looked at the BMI column itself, where 0.00248 would have given it away.
+- level: 7
+  prompt: |
+    A colleague groups BMI on a made-up register:
+
+    ```r
+    library(dplyr, warn.conflicts = FALSE)
+
+    register <- tibble(bmi = c(17.2, 23.9, 26.4, 31.0))
+
+    register |>
+      mutate(
+        bmi_group = case_when(
+          bmi < 18.5 ~ "below 18.5",
+          bmi >= 18.5 ~ "18.5 to below 25",
+          bmi >= 25 ~ "25 or more"
+        )
+      )
+    ```
+
+    ```output
+    # A tibble: 4 × 2
+        bmi bmi_group
+      <dbl> <chr>
+    1  17.2 below 18.5
+    2  23.9 18.5 to below 25
+    3  26.4 18.5 to below 25
+    4  31   18.5 to below 25
+    ```
+
+    They report "nobody in the register has a BMI of 25 or more". Find what broke.
+  answer: |
+    The cases are checked in order, and each row takes the first one it passes. A BMI of 26.4 passes
+    `bmi >= 18.5`, the second case, so it is labelled "18.5 to below 25" and never reaches the
+    third case. The second case must stop at 25:
+
+    ```r
+    register |>
+      mutate(
+        bmi_group = case_when(
+          bmi < 18.5 ~ "below 18.5",
+          bmi < 25 ~ "18.5 to below 25",
+          bmi >= 25 ~ "25 or more"
+        )
+      )
+    ```
+
+    ```output
+    # A tibble: 4 × 2
+        bmi bmi_group
+      <dbl> <chr>
+    1  17.2 below 18.5
+    2  23.9 18.5 to below 25
+    3  26.4 25 or more
+    4  31   25 or more
+    ```
+
+    Two of the four, 26.4 and 31.0, are in "25 or more".
+
+    Why the wrong answer looks reasonable: each line, read alone, is true of its group. The label
+    "18.5 to below 25" says "below 25", but the test beside it does not. The label is text; only the
+    test decides.
+- level: 8
+  prompt: |
+    A colleague groups BMI on a made-up register, and wants every row to have a group:
+
+    ```r
+    library(dplyr, warn.conflicts = FALSE)
+
+    register <- tibble(bmi = c(17.2, 23.9, NA, 26.4))
+
+    register |>
+      mutate(
+        bmi_group = case_when(
+          bmi < 18.5 ~ "below 18.5",
+          bmi < 25 ~ "18.5 to below 25",
+          .default = "25 or more"
+        )
+      ) |>
+      count(bmi_group)
+    ```
+
+    ```output
+    # A tibble: 3 × 2
+      bmi_group            n
+      <chr>            <int>
+    1 18.5 to below 25     1
+    2 25 or more           2
+    3 below 18.5           1
+    ```
+
+    They report "2 of the 4 patients have a BMI of 25 or more". Find what broke.
+  answer: |
+    The third patient has no BMI. Both tests are `NA` for that row, so no case matches, and the row
+    gets the `.default`, "25 or more". A missing value has been counted as a high BMI.
+
+    Write the last case as a test, and leave `.default` out:
+
+    ```r
+    register |>
+      mutate(
+        bmi_group = case_when(
+          bmi < 18.5 ~ "below 18.5",
+          bmi < 25 ~ "18.5 to below 25",
+          bmi >= 25 ~ "25 or more"
+        )
+      ) |>
+      count(bmi_group)
+    ```
+
+    ```output
+    # A tibble: 4 × 2
+      bmi_group            n
+      <chr>            <int>
+    1 18.5 to below 25     1
+    2 25 or more           1
+    3 below 18.5           1
+    4 <NA>                 1
+    ```
+
+    One patient in each group and one `NA`: 1 of the 3 with a BMI is at 25 or more.
+
+    Why the wrong answer looks reasonable: "everything else is 25 or more" is true of every patient
+    who has a BMI. The `.default` was written with measured values in mind, and the missing value
+    slipped through.
+- level: 8
+  prompt: |
+    A colleague converts body mass to kilograms and reports the mean:
+
+    ```r
+    library(readr)
+    library(dplyr, warn.conflicts = FALSE)
+
+    penguins_raw <- read_csv(
+      here::here("data-raw", "penguins_raw.csv"),
+      show_col_types = FALSE
+    )
+
+    penguins <- penguins_raw |>
+      mutate(`Body Mass (g)` = `Body Mass (g)` / 1000)
+
+    mean(penguins$`Body Mass (g)`, na.rm = TRUE)
+    ```
+
+    ```output
+    [1] 4.201754
+    ```
+
+    Their table says "mean body mass 4.2 g". Find what broke.
+  answer: |
+    The new values were written over the old column, under the old name. The column still says
+    "(g)" but now holds kilograms. The arithmetic is right and the label is wrong, so the table
+    reports a penguin of 4.2 grams.
+
+    Make a new column with a name that carries its unit:
+
+    ```r
+    penguins <- penguins_raw |>
+      mutate(body_mass_kg = `Body Mass (g)` / 1000)
+
+    mean(penguins$body_mass_kg, na.rm = TRUE)
+    ```
+
+    ```output
+    [1] 4.201754
+    ```
+
+    The mean body mass is 4.2 kg (4.201754 as printed), from the {{n:penguins_mass_n}} rows with a body mass.
+
+    Why the wrong answer looks reasonable: the number 4.2 is correct. Only its unit is wrong, and
+    the unit came from a name the code no longer matched.
+- level: 8
+  prompt: |
+    A colleague writes:
+
+    ```r
+    library(dplyr, warn.conflicts = FALSE)
+
+    register <- tibble(
+      height_cm = c(158, 172, 149),
+      weight_kg = c(62, 85, 47)
+    )
+    ```
+
+    ```r error
+    register |>
+      mutate(bmi = weight_kg / height_m^2) |>
+      mutate(height_m = height_cm / 100)
+    ```
+
+    ```output
+    Error in `mutate()`:
+    ℹ In argument: `bmi = weight_kg/height_m^2`.
+    Caused by error:
+    ! object 'height_m' not found
+    ```
+
+    Read the error. Say what broke and fix it.
+  answer: |
+    The first `mutate()` uses `height_m` before any line has made it. The pipe runs top to bottom,
+    so when BMI is computed, the column `height_m` does not exist yet. Swap the order, or make both
+    in one `mutate()`, height first:
+
+    ```r
+    register |>
+      mutate(
+        height_m = height_cm / 100,
+        bmi = weight_kg / height_m^2
+      )
+    ```
+
+    ```output
+    # A tibble: 3 × 4
+      height_cm weight_kg height_m   bmi
+          <dbl>     <dbl>    <dbl> <dbl>
+    1       158        62     1.58  24.8
+    2       172        85     1.72  28.7
+    3       149        47     1.49  21.2
+    ```
+
+    Why the wrong code looks reasonable: both lines are right. Only their order is wrong, and the
+    order is the one thing a pipe never rearranges for you.
+- level: 9
+  prompt: |
+    A made-up clinic audit says: "2 of our 5 patients had a BMI of 25.0 kg/m^2 or more." Here is the
+    register.
+
+    ```r
+    library(dplyr, warn.conflicts = FALSE)
+
+    audit <- tibble(
+      id = c(1, 2, 3, 4, 5),
+      height_cm = c(160, 155, 170, 165, 150),
+      weight_kg = c(64, 52, 75, 62, 54)
+    )
+    ```
+
+    Check the claim, and say what your answer does not establish.
+  answer: |
+    Compute BMI from height in metres. Then count the BMIs at 25 or more, first as stored, then
+    rounded to one decimal, the precision of the cut-point.
+
+    ```r
+    audit |>
+      mutate(
+        height_m = height_cm / 100,
+        bmi = weight_kg / height_m^2,
+        bmi_1dp = round(bmi, 1),
+        stored_25_plus = bmi >= 25,
+        rounded_25_plus = bmi_1dp >= 25
+      ) |>
+      select(id, bmi_1dp, stored_25_plus, rounded_25_plus)
+    ```
+
+    ```output
+    # A tibble: 5 × 4
+         id bmi_1dp stored_25_plus rounded_25_plus
+      <dbl>   <dbl> <lgl>          <lgl>
+    1     1    25   FALSE          TRUE
+    2     2    21.6 FALSE          FALSE
+    3     3    26   TRUE           TRUE
+    4     4    22.8 FALSE          FALSE
+    5     5    24   FALSE          FALSE
+    ```
+
+    Patient 1's BMI is 25.0 on paper (64 divided by 1.6^2 is 25), but as stored it falls a hair below 25.
+    Compared as stored, 1 patient is at 25 or more. Rounded to one decimal, 2 are: patients 1 and 3.
+    So the claim is true under the rounding rule and false without it. The audit should say which
+    rule it used.
+
+    What it does not establish: anything about the clinic's other patients, or about people outside
+    the clinic. Five patients are five patients. And the BMI itself says nothing about any one
+    patient's health without the rest of their assessment.
+- level: 10
+  prompt: |
+    A made-up draft thesis says: "Mean body mass of the Gentoo penguins was 5.08 kg." The penguin
+    file records body mass in grams. Turn the sentence into code, run it, and say what the result
+    does not establish.
+  answer: |
+    Convert to kilograms in a new column, keep the Gentoo penguins, and take the mean, leaving out
+    missing values.
+
+    ```r
+    library(readr)
+    library(dplyr, warn.conflicts = FALSE)
+
+    penguins_raw <- read_csv(
+      here::here("data-raw", "penguins_raw.csv"),
+      show_col_types = FALSE
+    )
+
+    gentoo <- penguins_raw |>
+      mutate(body_mass_kg = `Body Mass (g)` / 1000) |>
+      filter(Species == "Gentoo penguin (Pygoscelis papua)")
+
+    nrow(gentoo)
+    sum(is.na(gentoo$body_mass_kg))
+    mean(gentoo$body_mass_kg, na.rm = TRUE)
+    ```
+
+    ```output
+    [1] 124
+    [1] 1
+    [1] 5.076016
+    ```
+
+    5.076016 kg, which rounds to 5.08 kg. The sentence matches the file. But `na.rm = TRUE` left one
+    row out: the mean is of {{n:penguins_gentoo_mass_n}} of the {{n:penguins_gentoo}} Gentoo rows, and the sentence should say so.
+
+    What it does not establish:
+
+    - Anything about Gentoo penguins outside these three seasons of sampling.
+    - That the difference from another species' mean is real or large. A mean alone carries no
+      comparison and no measure of spread.
+    - What the missing penguin weighed. Leaving it out is a choice, and the section on missing
+      values says how to report it.
+  refs:
+  - horst_2020_palmerpenguins
+retrieval_items:
+- q: What does mutate() do to the number of rows?
+  a: Nothing. It adds or replaces columns and keeps every row.
+- q: In case_when(), which value does a row get if it passes more than one case?
+  a: The value of the first case it passes. The cases are checked in order.
+- q: What does case_when() give a row with a missing value when no .default is set?
+  a: NA. A missing value makes every test NA, no case matches, and with no .default the result is NA.
+- q: What does round(2.5) give in R, and why?
+  a: 2. A 5 at the cut is rounded to the even digit.
+- q: Why is a BMI computed from height in centimetres wrong by a factor of 10,000?
+  a: The height is 100 times too large, and squaring it makes the bottom of the fraction 10,000 times
+    too large, so the BMI is 10,000 times too small.
+figures:
+- file: s52-r1-c12-bmi-cut-points.png
+  caption: "The four made-up patients with a BMI, at one decimal place, against the two NFHS-5 cut-points: 18.5 and 25.0 kg/m^2. Patient 102 sits exactly on 25.0, which the survey's rule puts in the upper group. Patient 104 has no weight, so no BMI."
+  alt: "A bar chart of four patients: 101 at 17.7, 102 at 25.0, 103 at 27.4 and 105 at 21.3, with dashed lines across at 18.5 and 25."
+  source: draw.py
+  spec:
+    kind: bar
+    from_table: {block: 0, x: 0, y: [1]}
+    x_label: patient
+    y_label: BMI to one decimal (kg/m^2)
+    y_range: [0, 30]
+    labels:
+    - {text: "no BMI", at: [103.75, 3]}
+    - {text: "18.5", at: [103.75, 18.5]}
+    - {text: "25.0", at: [103.75, 25]}
+    refs:
+    - {y: 18.5}
+    - {y: 25}
+- file: s52-r1-c12-cm-vs-m.png
+  caption: "Each patient's BMI worked out with height in centimetres (across) against the same BMI with height in metres (up). Every point lies on the line y = 10,000 × x: a height 100 times larger, squared, is 10,000 times larger, so every BMI from centimetres is 10,000 times too small."
+  alt: "Four points on a straight dashed line: 0.00177 against 17.7, 0.00213 against 21.3, 0.0025 against 25 and 0.00274 against 27.4."
+  source: draw.py
+  spec:
+    kind: scatter
+    x: [0.00177, 0.0025, 0.00274, 0.00213]
+    series:
+    - {name: the four patients with a weight, y: [17.7, 25, 27.4, 21.3]}
+    x_label: BMI with height in centimetres
+    y_label: BMI with height in metres (kg/m^2)
+    relations:
+    - fit: "y = 10000*x"
+      draw: true
+      label: "y = 10,000 × x"
+provenance:
+  map_version_id: fc19c8bc-a216-4131-99fb-ebe3f19cec4a
+  outcome_refs:
+  - S52-R1-O2
+  - S52-R1-S1
+  - S52-R1-S2
+review:
+  stability: long
+  trigger: '2031-10-02'
+  last_reviewed: '2026-10-02'
+status: drafted

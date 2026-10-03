@@ -1,0 +1,702 @@
+concept_id: S52-R1-C06
+subject: S52
+rung: 1
+sequence: 6
+name: 'Packages: where they come from and which version you have'
+concept_type: derivable
+clusters:
+- craft-and-integrity
+ground_floor_deps:
+- B0-R0-C18
+concept_deps:
+- S52-R1-C05
+definition:
+  text: |
+    A package is a collection of R functions, data and documentation that extends what base R,
+    the set of standard packages installed with R itself, can do.
+
+    Installing a package, with `install.packages()`, downloads it from a repository such as CRAN
+    (the Comprehensive R Archive Network) and stores it on the computer. It is done once per
+    computer, and again only to change the version. Loading a package, with `library()`, makes its
+    functions available in the current R session (R from the moment it starts until it is closed
+    or restarted). `install.packages()` and `packageVersion()` need the name in quotation marks;
+    `library()` also accepts it without.
+
+    Every package has a version number, read with `packageVersion()`. R itself has one, held in
+    `R.version.string`. A package's behaviour, and the messages it prints, can change between
+    versions.
+  references:
+  - citekey: r4ds_2e
+    kind: textbook
+    locator: 'Introduction, Prerequisites, "The tidyverse": what a package is'
+    quote: |-
+      An R package is a collection of functions, data, and documentation that extends the capabilities of base R.
+    verified:
+      resolved_id: https://r4ds.hadley.nz/intro.html
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+      note: |-
+        R4DS 2e is CC BY-NC-ND: quoted briefly for audit; none of its text or code is adapted.
+  - citekey: r_intro_manual
+    kind: textbook
+    locator: '[13.1 Standard packages]: the base packages ship with R'
+    quote: |-
+      The standard (or base) packages are considered part of the R source code.
+    verified:
+      resolved_id: https://cran.r-project.org/doc/manuals/r-release/R-intro.html
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+  - citekey: r_intro_manual
+    kind: textbook
+    locator: '[13.2 Contributed packages and CRAN]: where packages come from'
+    quote: |-
+      Most are available for download from CRAN (https://CRAN.R-project.org/ and its mirrors) and other repositories such as Bioconductor
+    verified:
+      resolved_id: https://cran.r-project.org/doc/manuals/r-release/R-intro.html
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+  - citekey: r4ds_2e
+    kind: textbook
+    locator: 'Introduction, Prerequisites, "R": what CRAN stands for'
+    quote: |-
+      To download R, go to CRAN, the comprehensive R archive network
+    verified:
+      resolved_id: https://r4ds.hadley.nz/intro.html
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+  - citekey: rdocs_s52r1_utils
+    kind: textbook
+    locator: 'Help page "install.packages" (utils 4.3.3), Description'
+    quote: |-
+      Download and install packages from CRAN-like repositories or from local files.
+    verified:
+      resolved_id: rhelp://utils@4.3.3/install.packages
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+  - citekey: rdocs_s52r1_utils
+    kind: textbook
+    locator: 'Help page "install.packages" (utils 4.3.3), Arguments: pkgs, the current version'
+    quote: |-
+      character vector of the names of packages whose current versions should be downloaded from the repositories.
+    verified:
+      resolved_id: rhelp://utils@4.3.3/install.packages
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+      note: |-
+        Supports the boundary point: installing gets whatever version is current that day.
+  - citekey: r_intro_manual
+    kind: textbook
+    locator: '[13 Packages], first paragraph: a package must be loaded'
+    quote: |-
+      Only when a package is loaded are its contents available.
+    verified:
+      resolved_id: https://cran.r-project.org/doc/manuals/r-release/R-intro.html
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+  - citekey: rdocs_s52r1_base
+    kind: textbook
+    locator: 'Help page "library" (base 4.3.3), Description'
+    quote: |-
+      'library' and 'require' load and attach add-on packages.
+    verified:
+      resolved_id: rhelp://base@4.3.3/library
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+  - citekey: rdocs_s52r1_base
+    kind: textbook
+    locator: 'Help page "library" (base 4.3.3), Arguments: package, with or without quotation marks'
+    quote: |-
+      the name of a package, given as a name or literal character string
+    verified:
+      resolved_id: rhelp://base@4.3.3/library
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-03'
+  - citekey: r_intro_manual
+    kind: textbook
+    locator: '[1.10 Data permanency and removing objects]: a session has an end'
+    quote: |-
+      At the end of each R session you are given the opportunity to save all the currently available objects.
+    verified:
+      resolved_id: https://cran.r-project.org/doc/manuals/r-release/R-intro.html
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-03'
+  - citekey: r4ds_2e
+    kind: textbook
+    locator: 'Ch. 6 Workflow: scripts and projects, 6.2.1: the menu route to a fresh session'
+    quote: |-
+      you can go to Session > Restart R
+    verified:
+      resolved_id: https://r4ds.hadley.nz/workflow-scripts.html
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-03'
+  - citekey: rdocs_s52r1_base
+    kind: textbook
+    locator: 'Help page "library" (base 4.3.3), Arguments: warn.conflicts, what a conflict is'
+    quote: |-
+      A conflict is a function masking a function, or a non-function masking a non-function.
+    verified:
+      resolved_id: rhelp://base@4.3.3/library
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+  - citekey: r4ds_2e
+    kind: textbook
+    locator: 'Introduction, Prerequisites, "The tidyverse": the conflicts message on loading'
+    quote: |-
+      dplyr::filter() masks stats::filter()
+    verified:
+      resolved_id: https://r4ds.hadley.nz/intro.html
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+      note: |-
+        Printed by library(tidyverse) in R4DS's own (newer) versions. The section shows the same
+        conflict in the message library(dplyr) prints under this book's versions, from a fresh run.
+  - citekey: r_intro_manual
+    kind: textbook
+    locator: '[13.3 Namespaces]: the double-colon operator'
+    quote: |-
+      selects definitions from a particular namespace.
+    verified:
+      resolved_id: https://cran.r-project.org/doc/manuals/r-release/R-intro.html
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+      note: |-
+        The sentence opens "The double-colon operator ::"; the operator is split off by a code
+        fence in the extraction.
+  - citekey: r_intro_manual
+    kind: textbook
+    locator: '[13.3 Namespaces], last paragraph: :: loads the package'
+    quote: |-
+      The colon operators described above will also cause automatic loading of the associated package.
+    verified:
+      resolved_id: https://cran.r-project.org/doc/manuals/r-release/R-intro.html
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+  - citekey: r4ds_2e
+    kind: textbook
+    locator: 'Introduction, Prerequisites, "The tidyverse": the nine core packages'
+    quote: |-
+      This tells you that tidyverse loads nine packages: dplyr, forcats, ggplot2, lubridate, purrr, readr, stringr, tibble, tidyr.
+    verified:
+      resolved_id: https://r4ds.hadley.nz/intro.html
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+  - citekey: rdocs_s52r1_utils
+    kind: textbook
+    locator: 'Help page "packageDescription" (utils 4.3.3), Value: packageVersion'
+    quote: |-
+      'packageVersion()' returns a (length-one) object of class '"package_version"'.
+    verified:
+      resolved_id: rhelp://utils@4.3.3/packageDescription
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+  - citekey: rdocs_s52r1_utils
+    kind: textbook
+    locator: 'Help page "packageDescription" (utils 4.3.3), Details: comparing a version with text'
+    quote: |-
+      'packageVersion()' is a convenience shortcut, allowing things like
+    verified:
+      resolved_id: rhelp://utils@4.3.3/packageDescription
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-03'
+      note: |-
+        The help page continues with the example if (packageVersion("MASS") < "7.3"), a version
+        compared with text.
+  - citekey: horst_2020_palmerpenguins
+    kind: textbook
+    locator: 'Help page "penguins_raw", Description and Format: what a row records'
+    quote: |-
+      Includes nesting observations, penguin size data, and isotope measurements from blood samples for adult Adélie, Chinstrap, and Gentoo penguins.
+    verified:
+      resolved_id: rhelp://palmerpenguins@0.1.1/penguins_raw
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-03'
+      note: |-
+        Format gives studyName as "Sampling expedition from which data were collected" and
+        Individual ID as "the unique ID for each individual in dataset". In the held CSV, 60 of
+        the 284 species-and-ID pairs occur in more than one row, so a row is not a bird.
+  - citekey: r_intro_manual
+    kind: textbook
+    locator: 'Version line at the head of the manual: a newer R than this book''s'
+    quote: |-
+      This manual is for R, version 4.6.1 (2026-06-24).
+    verified:
+      resolved_id: https://cran.r-project.org/doc/manuals/r-release/R-intro.html
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+  - citekey: tidyverse_news_s52r1
+    kind: textbook
+    locator: 'dplyr changelog, dplyr 1.2.0 heading: a newer dplyr than this book''s'
+    quote: |-
+      ## dplyr 1.2.0 CRAN release: 2026-02-03
+    verified:
+      resolved_id: https://dplyr.tidyverse.org/news/
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+  - citekey: tidyverse_news_s52r1
+    kind: textbook
+    locator: 'dplyr changelog, dplyr 1.2.0, Minor improvements: the R version it requires'
+    quote: |-
+      R >=4.1.0 is now required, in line with the tidyverse standard of supporting the previous 5 minor releases of R (#7711).
+    verified:
+      resolved_id: https://dplyr.tidyverse.org/news/
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+simplified_explanation: |
+  A package is a bundle of functions, with the help pages that explain them and sometimes some
+  data. Most are kept on CRAN, a set of websites from which R downloads them.
+
+  Using a package takes two steps, and they happen at different times.
+
+  **First, install it, once per computer.** You type it in the console, not in your script:
+
+  ```r norun
+  install.packages("dplyr")
+  ```
+
+  **Then load it, in every session.** It goes at the top of your script:
+
+  ```r norun
+  library(dplyr)
+  ```
+
+  Some packages share a function name with another package. Loading dplyr, for example, hides
+  another `filter()`, which belongs to stats, a package that comes with R. To be sure which one
+  you get, write the package name and two colons in front: `dplyr::filter()` or
+  `stats::filter()`.
+
+  The tidyverse is a family of packages: loading it loads nine, among them dplyr and readr.
+
+  Packages change. Each has a version number, and so does R. Check yours with:
+
+  ```r
+  R.version.string
+  packageVersion("dplyr")
+  ```
+
+  ```output
+  [1] "R version 4.3.3 (2024-02-29)"
+  [1] ‘1.1.4’
+  ```
+illustrations:
+- body: |
+    Start a fresh R session (in RStudio, Session, then Restart R) and try a function from dplyr before loading it. `n_distinct()`
+    counts how many different values a vector holds. Here it is given the home districts of
+    four made-up clinic patients:
+
+    ```r error
+    n_distinct(c("Raipur", "Durg", "Raipur", "Bilaspur"))
+    ```
+
+    ```output
+    Error in n_distinct(c("Raipur", "Durg", "Raipur", "Bilaspur")) :
+      could not find function "n_distinct"
+    ```
+
+    R looked through everything loaded and found no function by that name. The package is
+    installed, but the session has not been told to use it. This is a common error in a
+    script that worked yesterday: yesterday's session had loaded the package, and today's has
+    not. Load it:
+
+    ```r
+    library(dplyr)
+    ```
+
+    ```output
+
+    Attaching package: ‘dplyr’
+
+    The following objects are masked from ‘package:stats’:
+
+        filter, lag
+
+    The following objects are masked from ‘package:base’:
+
+        intersect, setdiff, setequal, union
+    ```
+
+    Read the message. "Masked" means hidden. dplyr has functions called `filter()` and `lag()`,
+    and so does stats. It also has four functions whose names are already used in base. From
+    now on in this session, `filter` means dplyr's `filter()`. Now the call works:
+
+    ```r
+    n_distinct(c("Raipur", "Durg", "Raipur", "Bilaspur"))
+    ```
+
+    ```output
+    [1] 3
+    ```
+
+    Three different districts. To see the order R searches in, ask for the search list:
+
+    ```r
+    search()
+    ```
+
+    ```output
+     [1] ".GlobalEnv"        "package:dplyr"     "package:stats"
+     [4] "package:graphics"  "package:grDevices" "package:utils"
+     [7] "package:datasets"  "package:methods"   "Autoloads"
+    [10] "package:base"
+    ```
+
+    `.GlobalEnv` is the workspace, where the objects you make are kept, and R looks there first. dplyr now comes
+    before stats, which is why its `filter()` wins.
+
+    The two-colon form needs no `library()` call at all. It names the package and the function
+    together. Read the practice file and count its rows, using readr without loading it. Two
+    new pieces appear here. `here::here()` builds the path to the file from the top of your
+    project, which `S52-R1-C07` sets up; if you have none yet, run this after that section. `show_col_types = FALSE` turns off
+    a report that `read_csv()` prints, which the section on reading files explains. `nrow()`
+    counts the rows of a table:
+
+    ```r
+    readr::read_csv(here::here("data-raw", "penguins_raw.csv"), show_col_types = FALSE) |>
+      nrow()
+    ```
+
+    ```output
+    [1] 344
+    ```
+
+    The file has {{n:penguins_rows}} rows. One row is one adult penguin's record on one sampling
+    expedition, a nesting observation; the same bird can appear in more than one row. The two-colon form is useful when you need one
+    function from a package once. When a script uses a package throughout, load it with
+    `library()` at the top, so a reader sees at once what the script needs.
+  analogy_breaks_when: |
+    The district names are made up. The search list printed here is the one from a fresh
+    session in this book's setup. Yours will list more if you load more packages, and RStudio may
+    show extra entries.
+- body: |
+    Here is the failure that versions cause. A script written two years ago uses a function
+    that a newer version of a package has changed. The script stops with an error, or, worse,
+    runs and prints something slightly different. Nothing in the script tells you which version
+    it was written for.
+
+    So record the versions. Ask for the version of R and of each package your script loads:
+
+    ```r
+    R.version.string
+    packageVersion("dplyr")
+    packageVersion("readr")
+    ```
+
+    ```output
+    [1] "R version 4.3.3 (2024-02-29)"
+    [1] ‘1.1.4’
+    [1] ‘2.1.5’
+    ```
+
+    These are the versions behind every output in this book: R {{n:r_version}}, dplyr
+    {{n:dplyr_version}} and readr {{n:readr_version}}. They are not the newest. When this book
+    was written (checked 2 October 2026), R 4.6.1 (June 2026) and dplyr 1.2.0 (February 2026) had been released. The
+    dplyr 1.2.0 changelog, the list of what changed in that version, adds new functions and,
+    among other changes, now requires R 4.1.0 or later.
+
+    For you this means two things. First, if your output differs from the book's in a message
+    or a small detail, compare your versions with the book's before you suspect your code.
+    Second, your own script should say which versions it ran on. `packageVersion()` returns a
+    version, not plain text, so R compares it with the text part by part, as numbers:
+
+    ```r
+    packageVersion("dplyr") >= "1.1.0"
+    ```
+
+    ```output
+    [1] TRUE
+    ```
+
+    Printing the versions at the end of every script, in one line, is the subject of a later
+    section on running a script from top to bottom.
+  analogy_breaks_when: |
+    A version number tells you which release you have, not what changed between releases. For
+    that you read the package's changelog. Even with the same versions, a different operating
+    system can, rarely, give a different result.
+must_know:
+- point: |
+    The error is to put `install.packages()` in your script. Install once, in the console.
+  kind: misconception
+  bearing: methodological
+- point: |
+    "could not find function" means R has no function by that name loaded. Check the spelling,
+    then check that its package is loaded in this session.
+  kind: trap
+  bearing: methodological
+- point: |
+    Read the message that `library()` prints. After `library(dplyr)`, `filter()` means dplyr's.
+  kind: trap
+  bearing: methodological
+- point: |
+    Record the version of R and of every package your analysis loads, in the script's output.
+  kind: move
+  bearing: methodological
+- point: |
+    When a trainee's output differs from the book's in a message or a detail, have them compare
+    versions with `packageVersion()` before they rewrite their code.
+  kind: move
+  bearing: teaching
+- point: |
+    A version number names a release. It does not pin it: the next person to run
+    `install.packages()` gets whatever version is current that day.
+  kind: boundary
+  bearing: methodological
+exercises:
+- type: design
+  prompt: |
+    You are starting a script, `analysis.R`, that will read a raw file with readr and
+    reshape it with dplyr. Write its first lines: the packages it needs and a record of the
+    versions it ran on. Say why `install.packages()` does not appear in it.
+  answer: |
+    One version:
+
+    ```r
+    # Packages: installed once per computer with install.packages(), loaded here
+    library(readr)
+    library(dplyr, warn.conflicts = FALSE)  # hides the masking message shown above
+
+    # Versions this script ran on
+    R.version.string
+    packageVersion("readr")
+    packageVersion("dplyr")
+    ```
+
+    ```output
+    [1] "R version 4.3.3 (2024-02-29)"
+    [1] ‘2.1.5’
+    [1] ‘1.1.4’
+    ```
+
+    `install.packages()` is not in the script because installing is done once per computer, in
+    the console. In a script it would download the package on every run, need an internet
+    connection, and quietly change the version for anyone who ran it. The `library()` lines at
+    the top tell a reader at once which packages the script needs. The version lines record what
+    it ran on, so a later difference can be traced to a version and not to the code.
+  skill_ref: S52-R1-K01
+- type: retrieval
+  prompt: |
+    Without looking back, say how often you run `install.packages()` and how often you run
+    `library()`, and where each one goes.
+  answer: |
+    `install.packages()` once per computer, typed in the console. `library()` in every session
+    that uses the package, at the top of the script.
+quantitative: true
+practice_note: |
+  Seven problems: the section has three moves (load versus install, the two-colon form and
+  masking, reading versions), each simple to perform, so one mechanical try each, one applied
+  use on the practice file, two diagnostics for the two errors every new user meets, and one
+  transfer from a methods sentence.
+practice:
+- level: 1
+  prompt: |
+    Write the line you would type in the console to install the package readr. Then write the
+    line that goes at the top of a script that uses it.
+  answer: |
+    In the console, once per computer:
+
+    ```r norun
+    install.packages("readr")
+    ```
+
+    At the top of the script:
+
+    ```r
+    library(readr)
+    ```
+
+    readr prints nothing when it loads. Silence means it worked.
+- level: 2
+  prompt: |
+    In a fresh session you load dplyr and then type `filter(...)`. Which package's `filter()`
+    runs? Write the call you would use to run the other one, and the line that shows you what
+    dplyr hides when it loads.
+  answer: |
+    dplyr's `filter()` runs, because dplyr was attached after stats and masks it. The other is
+    called as `stats::filter()`. The line that shows the masking is the `library()` call itself:
+
+    ```r
+    library(dplyr)
+    ```
+
+    ```output
+
+    Attaching package: ‘dplyr’
+
+    The following objects are masked from ‘package:stats’:
+
+        filter, lag
+
+    The following objects are masked from ‘package:base’:
+
+        intersect, setdiff, setequal, union
+    ```
+
+    The message lists `filter` among the objects masked from `package:stats`.
+- level: 3
+  prompt: |
+    Write the lines that print the version of R you are running and the version of the package
+    here.
+  answer: |
+    ```r
+    R.version.string
+    packageVersion("here")
+    ```
+
+    ```output
+    [1] "R version 4.3.3 (2024-02-29)"
+    [1] ‘1.0.1’
+    ```
+
+    This book's outputs were made with these versions. Yours may be newer.
+- level: 5
+  prompt: |
+    Without loading any package, count the rows of `penguins_raw.csv` in your project's
+    `data-raw` folder, and say what one row stands for. (The project is set up in `S52-R1-C07`;
+    if you have none yet, do this after it.)
+  answer: |
+    ```r
+    readr::read_csv(here::here("data-raw", "penguins_raw.csv"), show_col_types = FALSE) |>
+      nrow()
+    ```
+
+    ```output
+    [1] 344
+    ```
+
+    `readr::` and `here::` call each function from its package without `library()`. The file
+    has {{n:penguins_rows}} rows. One row is one adult penguin's record on one sampling
+    expedition; the same bird can appear in more than one row.
+  refs:
+  - horst_2020_palmerpenguins
+- level: 7
+  prompt: |
+    A colleague's script begins as below and stops at its second line with the error shown.
+    The script worked for them yesterday. Find what broke.
+
+    ```r error
+    raw <- here::here("data-raw", "penguins_raw.csv")
+    penguins_raw <- read_csv(raw, show_col_types = FALSE)
+    ```
+
+    ```output
+    Error in read_csv(raw, show_col_types = FALSE) :
+      could not find function "read_csv"
+    ```
+  answer: |
+    `read_csv()` belongs to readr, and the script never loads readr. Yesterday the colleague
+    had loaded it by hand in the console, so the session knew the function. Today's fresh
+    session does not. Add the `library()` line at the top:
+
+    ```r
+    library(readr)
+    raw <- here::here("data-raw", "penguins_raw.csv")
+    penguins_raw <- read_csv(raw, show_col_types = FALSE)
+    nrow(penguins_raw)
+    ```
+
+    ```output
+    [1] 344
+    ```
+
+    The script now reads the file's {{n:penguins_rows}} rows. A script must load everything it uses. Whatever
+    happened in the console earlier does not count.
+- level: 8
+  prompt: |
+    A colleague wants to report the version of dplyr. Their line and its error are below. Find
+    what broke, and say why the mistake is easy to make.
+
+    ```r error
+    packageVersion(dplyr)
+    ```
+
+    ```output
+    Error: object 'dplyr' not found
+    ```
+  answer: |
+    `packageVersion()` takes the package's name as text, in quotation marks. Without them, R
+    looks for an object called `dplyr`, and there is none.
+
+    ```r
+    packageVersion("dplyr")
+    ```
+
+    ```output
+    [1] ‘1.1.4’
+    ```
+
+    The mistake is easy to make because `library(dplyr)` works without quotation marks, so the
+    two calls look as though they should take the same form. They do not: `library()` is written
+    to accept a bare name, and most functions are not.
+- level: 9
+  prompt: |
+    A made-up thesis methods section says: "All analyses were carried out in R." Write the lines
+    that would record what this sentence leaves out, for an analysis that uses readr and dplyr.
+    Run them, and say what even your fuller record does not establish.
+  answer: |
+    ```r
+    R.version.string
+    packageVersion("readr")
+    packageVersion("dplyr")
+    ```
+
+    ```output
+    [1] "R version 4.3.3 (2024-02-29)"
+    [1] ‘2.1.5’
+    [1] ‘1.1.4’
+    ```
+
+    A fuller sentence: "All analyses were carried out in R version {{n:r_version}} with readr
+    {{n:readr_version}} and dplyr {{n:dplyr_version}}."
+
+    What the fuller record does not establish:
+
+    - That the analysis gives the same numbers on newer versions. It records what was used, not
+      what would happen with something else.
+    - That these are the only packages involved. Packages that load other packages, and the
+      operating system, are not listed. A complete record comes later, in the section on
+      running a script from top to bottom.
+    - That the code is correct. Recorded versions make a wrong analysis repeatable, not right.
+retrieval_items:
+- q: What is the difference between install.packages() and library()?
+  a: install.packages() downloads a package and stores it on the computer, once. library() makes
+    an installed package's functions available in the current session, every session.
+- q: After library(dplyr), which filter() runs when you type filter(), and how do you call the
+    other one?
+  a: dplyr's, because it was attached later and masks stats'. Call the other as stats::filter().
+- q: How do you find which version of a package you have?
+  a: packageVersion("name"), with the name in quotation marks. R.version.string gives R's own
+    version.
+figure_note: "The section's content is two short steps and a version number; its outputs are messages and single values, and a chart of them would only redraw text."
+provenance:
+  map_version_id: fc19c8bc-a216-4131-99fb-ebe3f19cec4a
+  outcome_refs:
+  - S52-R1-O1
+  - S52-R1-G
+  - S52-R1-S1
+  bridge_ref:
+  - S52-R2-P01
+review:
+  stability: long
+  trigger: '2031-10-02, and sooner at the next R minor release or dplyr release'
+  last_reviewed: '2026-10-02'
+status: drafted

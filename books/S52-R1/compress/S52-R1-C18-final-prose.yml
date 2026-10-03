@@ -1,0 +1,105 @@
+definition.text: '`ggplot()`, from the ggplot2 package, starts a plot from a data frame and a set of aesthetic
+
+  mappings. An aesthetic mapping, made with `aes()`, says which column of the data controls
+
+  which visual property of the marks: position along x, position along y, colour, and others.
+
+  A geom is the kind of mark that represents each observation or group, and each `geom_`
+
+  function adds one layer of marks. Layers are added to the plot with `+`.
+
+
+  The function `geom_histogram()` divides the x axis into bins and draws a bar whose height is
+
+  the count of observations in each bin. Unless told otherwise it uses 30 bins. A value on the
+
+  edge between two bins is then counted in the bin to its left. The arguments `binwidth`,
+
+  `boundary` and `closed` set the width of the bins, where an edge falls, and which edge a bin
+
+  includes.
+
+
+  The function `geom_boxplot()` draws the median and a box from the first to the third
+
+  quartile. Its whiskers reach the furthest values within 1.5 times the interquartile range of
+
+  the box. Values beyond the whiskers are drawn one by one.
+
+
+  A visual property written inside `aes()` is mapped: it varies with a column. Written outside
+
+  `aes()`, as an argument of the geom, it is set: one fixed value for every mark. The function
+
+  `facet_wrap()` draws one panel for each value of a column. The function `ggsave()` writes a
+
+  plot to a file, at a size you give.
+
+  '
+simplified_explanation: 'A plot in ggplot2 is built from three parts.
+
+
+  **The data**: a data frame, one row per observation, as every section since tidy data has
+
+  used.
+
+
+  **The mappings**: which column goes where. You write these inside `aes()`, short for aesthetics,
+
+  the visual properties of a mark.
+
+
+  **The geom**: what kind of mark. Points for a scatter plot, bars for a histogram or a count,
+
+  boxes for a boxplot.
+
+
+  You join the parts with `+`.
+
+
+  Two traps come up early. Inside `aes()` means "let this vary with a column". Outside it means
+
+  "make every mark this". Write `colour = "blue"` inside and ggplot2 treats "blue" as data. And a
+
+  histogram''s bars depend on bins you did not choose unless you choose them: set their width and
+
+  where they start.
+
+
+  Save it to `output/` with `ggsave()`, from the script, at a size you write down. Never export it
+
+  with the mouse.
+
+  '
+must_know[0].point: 'Write a colour or size inside `aes()` only when it should vary with a column. Inside, a fixed
+
+  value such as "blue" is treated as data.
+
+  '
+must_know[1].point: 'Read every message and warning ggplot2 prints. "Removed 2 rows" means your figure shows fewer
+
+  observations than your data frame holds.
+
+  '
+must_know[2].point: 'The error is to think a histogram shows the shape of the data. It shows the data cut into bins
+
+  someone chose.
+
+  '
+must_know[3].point: 'A bar chart''s value axis starts at zero, because a bar''s value is its length. A boxplot or a
+
+  scatter plot need not, because position carries the value.
+
+  '
+must_know[4].point: 'Every axis title names the quantity and its unit, and every figure carries a source line.
+
+  '
+must_know[5].point: 'Save every figure with `ggsave()` from the script, with its width, height and units written in.
+
+  '
+must_know[6].point: 'When a trainee''s thesis figure looks wrong, ask for the code before the picture.
+
+  '
+must_know[7].point: 'The grammar guarantees that the figure draws your data faithfully.
+
+  '

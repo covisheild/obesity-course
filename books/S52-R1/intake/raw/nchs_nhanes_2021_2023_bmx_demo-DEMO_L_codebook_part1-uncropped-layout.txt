@@ -1,0 +1,747 @@
+10/2/26, 11:32 AM                                                                    DEMO_L
+
+
+  National Health and Nutrition Examination Survey                                                                 TA B L E
+  August 2021-August 2023 Data Documentation, Codebook, and Frequencies                                          Component Descrip
+                                                                                                                 Eligible Sample
+  Demographic Variables and Sample Weights (DEMO_L)                                                              Interview Setting a
+                                                                                                                 Quality Assurance
+  Data File: DEMO_L.xpt
+                                                                                                                 Data Processing an
+  First Published: September 2024                                                                                Analytic Notes
+                                                                                                                 References
+  Last Revised: NA
+                                                                                                                 Codebook
+                                                                                                                      SEQN - Respo
+
+  Component Description                                                                                               SDDSRVYR -
+                                                                                                                      RIDSTATR - I
+        After suspension of NHANES field operations in March 2020 due to the COVID-19 pandemic,
+                                                                                                                      RIAGENDR -
+        data collection began for a new 2-year cycle in August 2021. The August 2021-August 2023
+        nationally representative data are based on an updated sample design and modified interview                   RIDAGEYR - A
+        as well as examination procedures. See the Plan and Operations report of the NHANES August                    RIDAGEMN -
+        2021-August 2023 for details on the survey content and procedures for the cycle. For more                     mos
+        detail on changes to sample design and analytic guidelines specific to this cycle, please see the
+        “Analytic Notes” section below.                                                                               RIDRETH1 - R
+                                                                                                                      RIDRETH3 - R
+        This demographics file provides information on the following topics:                                          RIDEXMON -
+                                                                                                                      RIDEXAGM -
+                Survey participant’s household interview and examination status;                                      years
+
+                Interview and examination sample weights;                                                             DMQMILIZ - S
+                                                                                                                      Forces
+                Masked variance units;
+                                                                                                                      DMDBORN4 -
+                The six-month time period when the examination was performed;
+                                                                                                                      DMDYRUSR -
+                Pregnancy status;
+                                                                                                                      DMDEDUC2 -
+                The ratio of family income to poverty guidelines;
+                                                                                                                      DMDMARTZ -
+                Total number of people in the Household;
+                                                                                                                      RIDEXPRG - P
+                Demographic information about the household reference person; and
+                                                                                                                      DMDHHSIZ -
+                Other selected demographic information, such as gender, age, race/Hispanic origin,                    Household
+                education, marital status, military service status, country of birth, and years of U.S.
+                residence.                                                                                            DMDHRGND
+                                                                                                                      DMDHRAGZ -
+  Eligible Sample                                                                                                     DMDHREDZ -
+                                                                                                                      DMDHRMAZ -
+        All participants in the NHANES August 2021-August 2023 sample are included in this dataset.
+        The target age group for individual demographic variables in this file varies by the topic. Please            DMDHSEDZ -
+        review the codebook carefully.                                                                                level
+                                                                                                                      WTINT2YR -
+                                                                                                                      WTMEC2YR -
+  Interview Setting and Mode of Administration
+                                                                                                                      SDMVSTRA -
+        The family and sample person demographics questionnaires were asked by trained                                SDMVPSU - M
+        interviewers using the Computer-Assisted Personal Interview (CAPI) system in the participant’s
+        home or by telephone. The respondent selected the language of interview (English or Spanish)                  INDFMPIR - R
+        or requested that an interpreter be used. Hand cards, showing response choices or information
+        that survey participants needed to answer the questions, were used for some questions. When
+        necessary, the interviewer further assisted the respondent by reading the response choices
+        listed on the hand cards.
+
+
+        Participants 16 years and older and emancipated minors were interviewed directly. A proxy
+        provided information for survey participants who were under 16 and for participants who could
+        not answer the questions themselves.
+
+
+        The NHANES August 2021-August 2023 demographics questionnaires are available on the
+        NHANES website.
+
+
+
+  Quality Assurance & Quality Control
+        The CAPI system is programmed with built-in consistency checks to reduce data entry errors
+        and online help screens to assist interviewers in defining key terms.
+
+
+        After collection, interview data were reviewed by the NHANES field office staff for accuracy and
+        completeness of selected items. The interviewers were required to audio record interviews and
+        the recorded interviews were reviewed by NCHS staff and interviewer supervisors.                     
+
+https://wwwn.cdc.gov/Nchs/Data/Nhanes/Public/2021/DataFiles/DEMO_L.htm                                                             1/31
+10/2/26, 11:32 AM                                                                   DEMO_L
+
+  Data Processing and Editing
+                                                                                                                  TA B L E
+        Frequency counts were checked, “skip” patterns were verified, and the plausibility of question
+        responses was reviewed. Edits were made to some variables to ensure the completeness,
+                                                                                                                Component Descrip
+        consistency, and analytic usefulness of the data. Edits were also made to address data
+        disclosure concerns.                                                                                    Eligible Sample
+                                                                                                                Interview Setting a
+        SDDSRVYR: identifies the specific data release cycle. A value of “12” denotes NHANES August             Quality Assurance
+        2021-August 2023 data.
+                                                                                                                Data Processing an
+                                                                                                                Analytic Notes
+        RIDSTATR: identifies whether a participant was both interviewed at home or by telephone
+        and examined in the mobile examination center (MEC), or was only interviewed but never                  References
+        participated in the examination.                                                                        Codebook
+                                                                                                                     SEQN - Respo
+        RIDAGEYR: Age in years at the time of the screening interview for survey participants
+                                                                                                                     SDDSRVYR -
+        between the ages of 1 and 79 years of age. Due to disclosure concerns, all responses of
+        participants aged 80 years and older are coded as “80.” In NHANES August 2021-August 2023,                   RIDSTATR - I
+        the weighted mean age for participants 80 years and older is 85 years.                                       RIAGENDR -
+                                                                                                                     RIDAGEYR - A
+        RIDAGEYR was calculated based on the participant’s date of birth. In rare cases, if the actual
+                                                                                                                     RIDAGEMN -
+        date of birth was missing but the participant’s age in years was provided, the reported age was
+                                                                                                                     mos
+        used.
+                                                                                                                     RIDRETH1 - R
+
+        RIDAGEMN: Age in months, at the time of the screening interview, is provided for participants                RIDRETH3 - R
+        who were less than 25 months of age at the time of examination (RIDEXAGM < 25). If the                       RIDEXMON -
+        exact date of birth was not provided by the respondent, the age in months was calculated
+                                                                                                                     RIDEXAGM -
+        based on the imputed age in years at the time of the screening interview.
+                                                                                                                     years
+                                                                                                                     DMQMILIZ - S
+        RIDEXAGM: Age in months, at the time of examination, for participants who were less than                     Forces
+        240 months of age at the time of examination (RIDEXAGM < 240).
+                                                                                                                     DMDBORN4 -
+                                                                                                                     DMDYRUSR -
+        RIDRETH3: race-ethnicity categories used since the 2011-2012 survey cycle to accommodate
+        the oversample of Asian Americans. It was derived from responses to the survey questions on                  DMDEDUC2 -
+        race and Hispanic origin. Respondents who self-identified as “Mexican American” were coded                   DMDMARTZ -
+        as such (i.e., RIDRETH3=1) regardless of their other race-ethnicity identities. Otherwise,
+        participants who self-identified as “Hispanic” were coded as “2, Other Hispanic.” Non-Hispanic               RIDEXPRG - P
+        participants were categorized based on their self-reported races: non-Hispanic White                         DMDHHSIZ -
+        (RIDRETH3=3), non-Hispanic Black (RIDRETH3=4), non-Hispanic Asian (RIDRETH3=6), and                          Household
+        other non-Hispanic races, including non-Hispanic multiracial (RIDRETH3=7). Code “5” was not
+                                                                                                                     DMDHRGND
+        used in RIDRETH3.
+                                                                                                                     DMDHRAGZ -
+
+        RIDRETH1: race-ethnicity variable that can be linked to the previous NHANES race-ethnicity                   DMDHREDZ -
+        variable in 1999-2010. Non-Hispanic Asian participants are grouped with other non-Hispanic                   DMDHRMAZ -
+        races in code “5” (other non-Hispanic race including non-Hispanic multiracial) in RIDRETH1.
+                                                                                                                     DMDHSEDZ -
+        Codes “6” and “7” were not used in RIDRETH1. Coding procedures for other categories in
+                                                                                                                     level
+        RIDRETH1 were compatible to RIDRETH3.
+                                                                                                                     WTINT2YR -
+
+        RIDEXMON: indicates the six-month time period when the examination was performed.                            WTMEC2YR -
+                                                                                                                     SDMVSTRA -
+        DMQMILIZ: provides information on whether the participant has ever served on active duty in                  SDMVPSU - M
+        the U.S. Armed Forces, military Reserves, or National Guard. Active duty does not include
+                                                                                                                     INDFMPIR - R
+        training for the Reserves or National Guard, but does include activation, for service in the U.S.
+        or in a foreign country, in support of military or humanitarian operations.
+
+
+        This variable has been included in NHANES since 2011-2012. Prior to 2011, the information
+        was collected using a question with different wording that asked if the participant had served
+        in the U.S. Armed Forces, and released in variable DMQMILIT.
+
+
+        DMDBORN4: To address disclosure risk concerns, starting in 2011, country of birth was
+        recoded into two categories: 1) Born in 50 U.S. states or Washington, DC; and 2) Born in other
+        countries, including U.S. territories.
+
+
+        DMDYRUSR: the number of years the participant has lived in the United States. Participants
+        born outside the U.S. were asked the month and year when they came to live in the U.S.
+        (DMQ.160). Responses were used to calculate the length of U.S. residency and recoded into 6
+        categories: 1 = Less than 1 year, 2 = 1 to 4 years, 3 = 5 to 9 years, 4 = 10 to 14 years, 5 =
+        15 to 19 years, and 6 = 20 year or more. For participants who did not report the month of
+        their arrival, a value of 7 (July) was used.
+
+
+        DMDEDUC2: the highest grade or level of education completed by adults 20 years and older.
+
+
+        DMDMARTZ: The marital status question was asked of people 14 years of age and older. Due            
+        to disclosure risk, marital status is only released for people 20 years of age and older, and
+
+
+https://wwwn.cdc.gov/Nchs/Data/Nhanes/Public/2021/DataFiles/DEMO_L.htm                                                            2/31
+10/2/26, 11:32 AM                                                                   DEMO_L
+        recoded from the original 6 categories to 3 categories (1 = Married/Living with partner; 2 =
+        Widowed/Divorced/Separated; 3 = Never married).
+                                                                                                                  TA B L E
+        RIDEXPRG: Pregnancy status at the time of the health examination was ascertained for                    Component Descrip
+        females 8–59 years of age. Due to disclosure risk, pregnancy status is released only for
+        women 20-44 years of age. RIDEXPRG values are based on self-reported pregnancy status and               Eligible Sample
+        urine pregnancy test results. People who reported they were pregnant at the time of exam                Interview Setting a
+        were assumed to be pregnant (RIDEXPRG=1). Those who reported they were not pregnant or
+                                                                                                                Quality Assurance
+        did not know their pregnancy status were further classified based on the results of the urine
+        pregnancy test. If the respondent reported “no” or “don’t know” and the urine test result was           Data Processing an
+        positive, the respondent was coded as pregnant (RIDEXPRG=1). If the respondent reported                 Analytic Notes
+        “no” and the urine test was negative, the respondent was coded not pregnant (RIDEXPRG=2).
+        If the respondent reported did not know her pregnancy status and the urine test was negative,           References
+        the respondent was coded "could not be determined” (RIDEXPRG=3). People who were                        Codebook
+        interviewed, but not examined also have an RIDEXPRG value = 3 (could not be determined).
+                                                                                                                     SEQN - Respo
+                                                                                                                     SDDSRVYR -
+        DMDHHSIZ: the number of people in the participant’s household, ranging from 1 to 7. Due to
+        disclosure concerns, individuals living in households with 7 or more people are included in the              RIDSTATR - I
+        category “7 or more”.                                                                                        RIAGENDR -
+                                                                                                                     RIDAGEYR - A
+        INDFMPIR: the ratio of family income to poverty level. The Department of Health and Human
+                                                                                                                     RIDAGEMN -
+        Services (HHS) poverty guidelines were used as the poverty measure to calculate this ratio.                  mos
+        These guidelines are issued annually in the Federal Register and are used to determine
+        financial eligibility for certain federal programs, such as Head Start, Supplemental Nutrition               RIDRETH1 - R
+        Assistance Program (SNAP), Special Supplemental Nutrition Program for Women, Infants, and                    RIDRETH3 - R
+        Children (WIC), and the National School Lunch Program. The poverty guidelines vary by family
+                                                                                                                     RIDEXMON -
+        size and geographic location.
+                                                                                                                     RIDEXAGM -
+        INDFMPIR was calculated by dividing total annual family (or individual) income by the poverty                years
+        guidelines specific to the survey year.                                                                      DMQMILIZ - S
+                                                                                                                     Forces
+        During the household interview, the respondent was asked to report total income for the entire
+                                                                                                                     DMDBORN4 -
+        family in the last calendar year in dollars. A family is defined as a group of two people or more
+        related by birth, marriage, or adoption and residing together. Annual individual income was                  DMDYRUSR -
+        asked for households with one person, or households comprised of unrelated individuals.                      DMDEDUC2 -
+
+        If the respondent was not willing or able to provide an exact dollar figure, the interviewer                 DMDMARTZ -
+        asked an additional question to determine whether the income was < $20,000 or ≥ $20,000.                     RIDEXPRG - P
+        Based on the respondent’s answer to this question, he/she was asked to select a category of
+                                                                                                                     DMDHHSIZ -
+        income from a hand card. For respondents who selected an income category, their family
+                                                                                                                     Household
+        incomes were set as the midpoint of the selected range. INDFMPIR was not computed if the
+        respondent only reported income as < $20,000 or ≥ $20,000 without additional details.                        DMDHRGND
+        INDFMPIR values at or above 5.00 were coded as 5.00 or more because of disclosure concerns.                  DMDHRAGZ -
+        Values were not computed if income data were missing.
+                                                                                                                     DMDHREDZ -
+                                                                                                                     DMDHRMAZ -
+        Household Reference Person: The household reference person is defined as the first
+        household member 18 years of age or older listed on the household member roster who owns                     DMDHSEDZ -
+        or rents the household residence. The household reference person is comparable to “family                    level
+        reference person” in NHANES programs prior to 1999. Household reference person data have                     WTINT2YR -
+        often used in analysis as indicators characterizing the socioeconomic status for youth. This
+        public use demographics file contains household reference person information for participants                WTMEC2YR -
+        aged 0 to 19 years, including data on gender (DMDHRGND), age (DMDHRAGZ), education level                     SDMVSTRA -
+        (DMDHREDZ), and marital status (DMDHRMAZ), as well as the education level of the
+                                                                                                                     SDMVPSU - M
+        household reference person’s spouse (DMDHSEDZ). Household reference person information
+        for adult participants 20 years and older is available through NCHS Research Data Center.                    INDFMPIR - R
+
+
+        Due to disclosure concerns, the household reference person’s age was recoded into a
+        categorical variable (<20, 20-39, 40-59, or 60+ years); the household reference person’s
+        education level and their spouse’s education level variables were recoded from the original 5
+        categories to 3 categories (1 = Less than high school; 2 = High school grad/GED or some
+        college/AA degree; 3 = College graduate or above); and the household reference person’s
+        marital status variable was recoded from the original 6 categories to 3 categories (1 =
+        Married/Living with partner; 2 = Widowed/Divorced/Separated; 3 = Never married).
+
+
+
+  Analytic Notes
+        The August 2021–August 2023 NHANES sample design is similar to past cycles that drew a
+        multi-year, stratified, clustered four-stage sample of the U.S. civilian noninstitutionalized
+        population to provide national health estimates. However, notable design changes were made
+        to adapt to the pandemic environment, including no person-level oversampling by race and
+        Hispanic origin and income. As a result, the number of participants for certain demographic
+        subgroups are noticeably lower than in previous cycles, and users should expect reduced
+        statistical precision for these groups. Additionally, person-level oversampling based on age
+        group was added. The potential increase in clustering by household was investigated with the
+        finding that the mean number of participants from each household was not substantially
+        different from previous cycles.                                                                     
+
+https://wwwn.cdc.gov/Nchs/Data/Nhanes/Public/2021/DataFiles/DEMO_L.htm                                                            3/31
+10/2/26, 11:32 AM                                                                    DEMO_L
+        Although the August 2021-August 2023 cycle represents a two-year data collection period,
+        there is a 15-month gap between it and the previous dataset (2017-March 2020). This gap in
+        data collection presents an important analytic consideration given it represents the COVID-19
+                                                                                                                   TA B L E
+        pandemic during which some health behaviors and outcomes were likely affected by
+        disruptions that occurred in healthcare delivery, employment, and education. Data users are              Component Descrip
+        urged to proceed with caution before combining August 2021-August 2023 with previous cycles              Eligible Sample
+        to calculate cross sectional health estimates or conducting trend analysis, given the 15-month
+                                                                                                                 Interview Setting a
+        period with unobserved data may include unusual patterns.
+                                                                                                                 Quality Assurance
+        Age at screening: used to determine eligibility for an examination component and should be               Data Processing an
+        used for most analyses.                                                                                  Analytic Notes
+                                                                                                                 References
+        DMDMARTZ: Marital status is only released for people 20 years of age and older to reduce
+                                                                                                                 Codebook
+        disclosure risk. Prior to 2007, marital status was released for participants aged 14 and older. In
+        NHANES August 2021-August 2023, the percentage of people aged 14-19 who are married or                        SEQN - Respo
+        living with a partner is less than 2%.
+                                                                                                                      SDDSRVYR -
+                                                                                                                      RIDSTATR - I
+        RIDEXPRG: To reduce disclosure risk, pregnancy status is released only for women aged 20-
+        44 years. The percentage of pregnant women/girls aged 8-19 or 45-59 years is less than 1%                     RIAGENDR -
+        in NHANES August 2021-August 2023.                                                                            RIDAGEYR - A
+                                                                                                                      RIDAGEMN -
+        Masked Variance Units (MVUs): Fifteen MVUs and 30 masked primary sampling units                               mos
+        (PSUs) are included in the NHANES August 2021-August 2023. Each stratum has 2 PSUs.                           RIDRETH1 - R
+        These MVUs are a collection of secondary sampling units that are aggregated into groups for
+        the purpose of variance estimation. Variance estimates produced using the MVUs closely                        RIDRETH3 - R
+        approximate variances that would have been estimated using the “true” sample design                           RIDEXMON -
+        variance units. MVUs are used to protect confidentiality and to reduce disclosure risk and are
+                                                                                                                      RIDEXAGM -
+        described in NHANES Analytic Guidelines. Analysts should review the Guidelines carefully prior                years
+        to analyzing survey data.
+                                                                                                                      DMQMILIZ - S
+                                                                                                                      Forces
+        Sample Weights: The 2-year sample weights (WTINT2YR, WTMEC2YR, depending on the
+                                                                                                                      DMDBORN4 -
+        analysis) should be used for all NHANES August 2021-August 2023 analyses.
+                                                                                                                      DMDYRUSR -
+
+        Please refer to the NHANES Analytic Guidelines and the on-line NHANES Tutorial for further                    DMDEDUC2 -
+        details on the use of sample weights and other analytic issues.                                               DMDMARTZ -
+                                                                                                                      RIDEXPRG - P
+        Disclosure risks and issues pertaining to confidentiality protection prevent NCHS from releasing
+                                                                                                                      DMDHHSIZ -
+        all the NHANES demographic variables publicly. Additional information and instructions for
+                                                                                                                      Household
+        requesting use of these data are available through the NCHS RDC.
+                                                                                                                      DMDHRGND
+                                                                                                                      DMDHRAGZ -
+  References                                                                                                          DMDHREDZ -
+        Terry AL, Chiappa MM, McAllister J, Woodwell DA, Graber JE. Plan and operations of the National               DMDHRMAZ -
+        Health and Nutrition Examination Survey, August 2021–August 2023. National Center for Health                  DMDHSEDZ -
+        Statistics. Vital Health Stat 1(66). 2024. DOI: https://stacks.cdc.gov/view/cdc/151927                        level
+        U.S. Department of Health & Human Services. Poverty Guidelines, Research, and Measurement.                    WTINT2YR -
+        Washington, DC: U.S. Department of Health & Human Services.
+        https://aspe.hhs.gov/topics/poverty-economic-mobility/poverty-guidelines/prior-hhs-poverty-                   WTMEC2YR -
+        guidelines-federal-register-references                                                                        SDMVSTRA -
+                                                                                                                      SDMVPSU - M
+                                                                                                                      INDFMPIR - R
+
+
+
+
+                                                                                                             
+
+https://wwwn.cdc.gov/Nchs/Data/Nhanes/Public/2021/DataFiles/DEMO_L.htm                                                             4/31
+10/2/26, 11:32 AM                                                              DEMO_L
+
+
+  Codebook and Frequencies                                                                    TA B L E
+
+    SEQN - Respondent sequence number                                                       Component Descrip
+                                                                                            Eligible Sample
+                                                                                            Interview Setting a
+         Variable Name:           SEQN
+                                                                                            Quality Assurance
+         SAS Label:               Respondent sequence number                                Data Processing an
+         English Text:            Respondent sequence number.                               Analytic Notes
+
+         Target:                  Both males and females 0 YEARS - 150 YEARS                References
+                                                                                            Codebook
+                                                                                                 SEQN - Respo
+                                                                                                 SDDSRVYR -
+                                                                                                 RIDSTATR - I
+                                                                                                 RIAGENDR -
+                                                                                                 RIDAGEYR - A
+                                                                                                 RIDAGEMN -
+                                                                                                 mos
+                                                                                                 RIDRETH1 - R
+                                                                                                 RIDRETH3 - R
+                                                                                                 RIDEXMON -
+                                                                                                 RIDEXAGM -
+                                                                                                 years
+                                                                                                 DMQMILIZ - S
+                                                                                                 Forces
+                                                                                                 DMDBORN4 -
+                                                                                                 DMDYRUSR -
+                                                                                                 DMDEDUC2 -
+                                                                                                 DMDMARTZ -
+                                                                                                 RIDEXPRG - P
+                                                                                                 DMDHHSIZ -
+                                                                                                 Household
+                                                                                                 DMDHRGND
+                                                                                                 DMDHRAGZ -
+                                                                                                 DMDHREDZ -
+                                                                                                 DMDHRMAZ -
+                                                                                                 DMDHSEDZ -
+                                                                                                 level
+                                                                                                 WTINT2YR -
+                                                                                                 WTMEC2YR -
+                                                                                                 SDMVSTRA -
+                                                                                                 SDMVPSU - M
+                                                                                                 INDFMPIR - R
+
+
+
+
+                                                                                        
+
+https://wwwn.cdc.gov/Nchs/Data/Nhanes/Public/2021/DataFiles/DEMO_L.htm                                        5/31
+10/2/26, 11:32 AM                                                               DEMO_L
+
+
+    SDDSRVYR - Data release cycle                                                                        TA B L E
+
+                                                                                                       Component Descrip
+         Variable Name:            SDDSRVYR                                                            Eligible Sample
+
+         SAS Label:                Data release cycle                                                  Interview Setting a
+                                                                                                       Quality Assurance
+         English Text:             Data release cycle
+                                                                                                       Data Processing an
+         Target:                   Both males and females 0 YEARS - 150 YEARS
+                                                                                                       Analytic Notes
+
+               Code or               Value Description             Count Cumulative      Skip to       References
+                Value                                                                     Item         Codebook
+
+          12             NHANES August 2021-August 2023 public     11933   11933                            SEQN - Respo
+                         release
+                                                                                                            SDDSRVYR -
+          .              Missing                                   0       11933                            RIDSTATR - I
+                                                                                                            RIAGENDR -
+                                                                                                            RIDAGEYR - A
+                                                                                                            RIDAGEMN -
+                                                                                                            mos
+                                                                                                            RIDRETH1 - R
+                                                                                                            RIDRETH3 - R
+                                                                                                            RIDEXMON -
+                                                                                                            RIDEXAGM -
+                                                                                                            years
+                                                                                                            DMQMILIZ - S
+                                                                                                            Forces
+                                                                                                            DMDBORN4 -
+                                                                                                            DMDYRUSR -
+                                                                                                            DMDEDUC2 -
+                                                                                                            DMDMARTZ -
+                                                                                                            RIDEXPRG - P
+                                                                                                            DMDHHSIZ -
+                                                                                                            Household
+                                                                                                            DMDHRGND
+                                                                                                            DMDHRAGZ -
+                                                                                                            DMDHREDZ -
+                                                                                                            DMDHRMAZ -
+                                                                                                            DMDHSEDZ -
+                                                                                                            level
+                                                                                                            WTINT2YR -
+                                                                                                            WTMEC2YR -
+                                                                                                            SDMVSTRA -
+                                                                                                            SDMVPSU - M
+                                                                                                            INDFMPIR - R
+
+
+
+
+                                                                                                   
+
+https://wwwn.cdc.gov/Nchs/Data/Nhanes/Public/2021/DataFiles/DEMO_L.htm                                                   6/31
+10/2/26, 11:32 AM                                                                   DEMO_L
+
+
+    RIDSTATR - Interview/Examination status                                                                       TA B L E
+
+                                                                                                                Component Descrip
+         Variable Name:             RIDSTATR                                                                    Eligible Sample
+
+         SAS Label:                 Interview/Examination status                                                Interview Setting a
+                                                                                                                Quality Assurance
+         English Text:              Interview and examination status of the participant.
+                                                                                                                Data Processing an
+         Target:                    Both males and females 0 YEARS - 150 YEARS
+                                                                                                                Analytic Notes
+
+          Code or Value              Value Description              Count    Cumulative      Skip to Item       References
+                                                                                                                Codebook
+          1               Interviewed only                          3073     3073
+                                                                                                                     SEQN - Respo
+          2               Both interviewed and MEC examined         8860     11933
+                                                                                                                     SDDSRVYR -
+          .               Missing                                   0        11933                                   RIDSTATR - I
+                                                                                                                     RIAGENDR -
+                                                                                                                     RIDAGEYR - A
+                                                                                                                     RIDAGEMN -
+                                                                                                                     mos
+                                                                                                                     RIDRETH1 - R
+                                                                                                                     RIDRETH3 - R
+                                                                                                                     RIDEXMON -
+                                                                                                                     RIDEXAGM -
+                                                                                                                     years
+                                                                                                                     DMQMILIZ - S
+                                                                                                                     Forces
+                                                                                                                     DMDBORN4 -
+                                                                                                                     DMDYRUSR -
+                                                                                                                     DMDEDUC2 -
+                                                                                                                     DMDMARTZ -
+                                                                                                                     RIDEXPRG - P
+                                                                                                                     DMDHHSIZ -
+                                                                                                                     Household
+                                                                                                                     DMDHRGND
+                                                                                                                     DMDHRAGZ -
+                                                                                                                     DMDHREDZ -
+                                                                                                                     DMDHRMAZ -
+                                                                                                                     DMDHSEDZ -
+                                                                                                                     level
+                                                                                                                     WTINT2YR -
+                                                                                                                     WTMEC2YR -
+                                                                                                                     SDMVSTRA -
+                                                                                                                     SDMVPSU - M
+                                                                                                                     INDFMPIR - R
+
+
+
+
+                                                                                                            
+
+https://wwwn.cdc.gov/Nchs/Data/Nhanes/Public/2021/DataFiles/DEMO_L.htm                                                            7/31
+10/2/26, 11:32 AM                                                              DEMO_L
+
+
+    RIAGENDR - Gender                                                                                    TA B L E
+
+                                                                                                       Component Descrip
+         Variable Name:           RIAGENDR                                                             Eligible Sample
+
+         SAS Label:               Gender                                                               Interview Setting a
+                                                                                                       Quality Assurance
+         English Text:            Gender of the participant.
+                                                                                                       Data Processing an
+         Target:                  Both males and females 0 YEARS - 150 YEARS
+                                                                                                       Analytic Notes
+
+              Code or Value      Value Description         Count    Cumulative      Skip to Item       References
+                                                                                                       Codebook
+          1                   Male                       5575      5575
+                                                                                                            SEQN - Respo
+          2                   Female                     6358      11933
+                                                                                                            SDDSRVYR -
+          .                   Missing                    0         11933
+                                                                                                            RIDSTATR - I
+                                                                                                            RIAGENDR -
+                                                                                                            RIDAGEYR - A
+                                                                                                            RIDAGEMN -
+                                                                                                            mos
+                                                                                                            RIDRETH1 - R
+                                                                                                            RIDRETH3 - R
+                                                                                                            RIDEXMON -
+                                                                                                            RIDEXAGM -
+                                                                                                            years
+                                                                                                            DMQMILIZ - S
+                                                                                                            Forces
+                                                                                                            DMDBORN4 -
+                                                                                                            DMDYRUSR -
+                                                                                                            DMDEDUC2 -
+                                                                                                            DMDMARTZ -
+                                                                                                            RIDEXPRG - P
+                                                                                                            DMDHHSIZ -
+                                                                                                            Household
+                                                                                                            DMDHRGND
+                                                                                                            DMDHRAGZ -
+                                                                                                            DMDHREDZ -
+                                                                                                            DMDHRMAZ -
+                                                                                                            DMDHSEDZ -
+                                                                                                            level
+                                                                                                            WTINT2YR -
+                                                                                                            WTMEC2YR -
+                                                                                                            SDMVSTRA -
+                                                                                                            SDMVPSU - M
+                                                                                                            INDFMPIR - R
+
+
+
+
+                                                                                                   
+
+https://wwwn.cdc.gov/Nchs/Data/Nhanes/Public/2021/DataFiles/DEMO_L.htm                                                   8/31
+10/2/26, 11:32 AM                                                                  DEMO_L
+
+
+    RIDAGEYR - Age in years at screening                                                                         TA B L E
+
+                                                                                                               Component Descrip
+         Variable Name:            RIDAGEYR                                                                    Eligible Sample
+
+         SAS Label:                Age in years at screening                                                   Interview Setting a
+                                                                                                               Quality Assurance
+         English Text:             Age in years of the participant at the time of screening. Individuals
+                                   80 and over are top-coded at 80 years of age.                               Data Processing an
+
+         Target:                   Both males and females 0 YEARS - 150 YEARS                                  Analytic Notes
+                                                                                                               References
+              Code or Value        Value Description           Count      Cumulative        Skip to Item       Codebook
+          0 to 79             Range of Values                  11408     11408                                      SEQN - Respo
+
+          80                  80 years of age and over         525       11933                                      SDDSRVYR -
+                                                                                                                    RIDSTATR - I
+          .                   Missing                          0         11933
+                                                                                                                    RIAGENDR -
+                                                                                                                    RIDAGEYR - A
+                                                                                                                    RIDAGEMN -
+                                                                                                                    mos
+                                                                                                                    RIDRETH1 - R
+                                                                                                                    RIDRETH3 - R
+                                                                                                                    RIDEXMON -
+                                                                                                                    RIDEXAGM -
+                                                                                                                    years
+                                                                                                                    DMQMILIZ - S
+                                                                                                                    Forces
+                                                                                                                    DMDBORN4 -
+                                                                                                                    DMDYRUSR -
+                                                                                                                    DMDEDUC2 -
+                                                                                                                    DMDMARTZ -
+                                                                                                                    RIDEXPRG - P
+                                                                                                                    DMDHHSIZ -
+                                                                                                                    Household
+                                                                                                                    DMDHRGND
+                                                                                                                    DMDHRAGZ -
+                                                                                                                    DMDHREDZ -
+                                                                                                                    DMDHRMAZ -
+                                                                                                                    DMDHSEDZ -
+                                                                                                                    level
+                                                                                                                    WTINT2YR -
+                                                                                                                    WTMEC2YR -
+                                                                                                                    SDMVSTRA -
+                                                                                                                    SDMVPSU - M
+                                                                                                                    INDFMPIR - R
+
+
+
+
+                                                                                                           
+
+https://wwwn.cdc.gov/Nchs/Data/Nhanes/Public/2021/DataFiles/DEMO_L.htm                                                           9/31
+10/2/26, 11:32 AM                                                               DEMO_L
+
+
+    RIDAGEMN - Age in months at screening - 0 to 24 mos                                                       TA B L E
+
+                                                                                                            Component Descrip
+         Variable Name:           RIDAGEMN                                                                  Eligible Sample
+
+         SAS Label:               Age in months at screening - 0 to 24 mos                                  Interview Setting a
+                                                                                                            Quality Assurance
+         English Text:            Age in months of the participant at the time of screening. Reported
+                                  for persons aged 24 months or younger at the time of exam (or             Data Processing an
+                                  screening if not examined).
+                                                                                                            Analytic Notes
+         Target:                  Both males and females 0 YEARS - 2 YEARS                                  References
+                                                                                                            Codebook
+              Code or Value      Value Description        Count       Cumulative        Skip to Item
+                                                                                                                 SEQN - Respo
+          0 to 24             Range of Values            377        377                                          SDDSRVYR -
+          .                   Missing                    11556      11933                                        RIDSTATR - I
+                                                                                                                 RIAGENDR -
+                                                                                                                 RIDAGEYR - A
+                                                                                                                 RIDAGEMN -
+                                                                                                                 mos
+                                                                                                                 RIDRETH1 - R
+                                                                                                                 RIDRETH3 - R
+                                                                                                                 RIDEXMON -
+                                                                                                                 RIDEXAGM -
+                                                                                                                 years
+                                                                                                                 DMQMILIZ - S
+                                                                                                                 Forces
+                                                                                                                 DMDBORN4 -
+                                                                                                                 DMDYRUSR -
+                                                                                                                 DMDEDUC2 -
+                                                                                                                 DMDMARTZ -
+                                                                                                                 RIDEXPRG - P
+                                                                                                                 DMDHHSIZ -
+                                                                                                                 Household
+                                                                                                                 DMDHRGND
+                                                                                                                 DMDHRAGZ -
+                                                                                                                 DMDHREDZ -
+                                                                                                                 DMDHRMAZ -
+                                                                                                                 DMDHSEDZ -
+                                                                                                                 level
+                                                                                                                 WTINT2YR -
+                                                                                                                 WTMEC2YR -
+                                                                                                                 SDMVSTRA -
+                                                                                                                 SDMVPSU - M
+                                                                                                                 INDFMPIR - R
+
+
+
+
+                                                                                                        
+
+https://wwwn.cdc.gov/Nchs/Data/Nhanes/Public/2021/DataFiles/DEMO_L.htm                                                    10/31
+10/2/26, 11:32 AM                                                                   DEMO_L
+
+
+    RIDRETH1 - Race/Hispanic origin                                                                                 TA B L E
+
+                                                                                                                  Component Descrip
+         Variable Name:              RIDRETH1                                                                     Eligible Sample
+
+         SAS Label:                  Race/Hispanic origin                                                         Interview Setting a
+                                                                                                                  Quality Assurance
+         English Text:               Recode of reported race and Hispanic origin information
+                                                                                                                  Data Processing an
+         Target:                     Both males and females 0 YEARS - 150 YEARS
+                                                                                                                  Analytic Notes
+
+           Code or Value              Value Description             Count    Cumulative        Skip to Item       References
+                                                                                                                  Codebook
+          1                Mexican American                         1117     1117
+                                                                                                                       SEQN - Respo
+          2                Other Hispanic                           1373     2490
+                                                                                                                       SDDSRVYR -
+          3                Non-Hispanic White                       6217     8707
+                                                                                                                       RIDSTATR - I
+          4                Non-Hispanic Black                       1597     10304                                     RIAGENDR -
+          5                Other Race - Including Multi-Racial      1629     11933                                     RIDAGEYR - A
+
+          .                Missing                                  0        11933                                     RIDAGEMN -
+                                                                                                                       mos
+                                                                                                                       RIDRETH1 - R
+                                                                                                                       RIDRETH3 - R
+                                                                                                                       RIDEXMON -
+                                                                                                                       RIDEXAGM -
+                                                                                                                       years
+                                                                                                                       DMQMILIZ - S
+                                                                                                                       Forces
+                                                                                                                       DMDBORN4 -
+                                                                                                                       DMDYRUSR -
+                                                                                                                       DMDEDUC2 -
+                                                                                                                       DMDMARTZ -
+                                                                                                                       RIDEXPRG - P
+                                                                                                                       DMDHHSIZ -
+                                                                                                                       Household
+                                                                                                                       DMDHRGND
+                                                                                                                       DMDHRAGZ -
+                                                                                                                       DMDHREDZ -
+                                                                                                                       DMDHRMAZ -
+                                                                                                                       DMDHSEDZ -
+                                                                                                                       level
+                                                                                                                       WTINT2YR -
+                                                                                                                       WTMEC2YR -
+                                                                                                                       SDMVSTRA -
+                                                                                                                       SDMVPSU - M
+                                                                                                                       INDFMPIR - R
+
+
+
+
+                                                                                                              
+
+https://wwwn.cdc.gov/Nchs/Data/Nhanes/Public/2021/DataFiles/DEMO_L.htm                                                             11/31
+

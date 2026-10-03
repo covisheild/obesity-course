@@ -1,0 +1,1025 @@
+concept_id: S52-R1-C21
+subject: S52
+rung: 1
+sequence: 21
+name: Top to bottom in a fresh session, with one command
+concept_type: derivable
+clusters:
+- craft-and-integrity
+ground_floor_deps: []
+concept_deps:
+- S52-R1-C02
+- S52-R1-C03
+- S52-R1-C06
+- S52-R1-C07
+- S52-R1-C16
+- S52-R1-C20
+definition:
+  text: |
+    Hidden state is anything a script uses that the script itself did not make.
+
+    A script is tested for hidden state by running all of it, from the first line to the last, in a fresh session. A
+    fresh session is a new R process whose workspace is empty. It has attached no package beyond R's defaults. The
+    one command for this is `Rscript code/analysis.R`, typed in a terminal whose working directory is the project
+    root.
+
+    A script that passes this test also writes every result it makes into `output/` with code. It sets the
+    random-number seed with `set.seed()` before any random step. It ends with `sessionInfo()`, which prints the
+    version of R and of every attached package.
+  references:
+  - citekey: r4ds_2e
+    kind: textbook
+    locator: 'Ch. 6 "Workflow: scripts and projects", 6.2.1 "What is the source of truth?", first paragraph'
+    quote: |-
+      your source of truth should be the R scripts. With your R scripts (and your data files), you can recreate the environment.
+    verified:
+      resolved_id: https://r4ds.hadley.nz/workflow-scripts.html
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+  - citekey: r4ds_2e
+    kind: textbook
+    locator: 'Ch. 6, 6.2.1, the pair of keyboard shortcuts: restart R, then re-run the script'
+    quote: |-
+      Press Cmd/Ctrl + Shift + 0/F10 to restart R.
+    verified:
+      resolved_id: https://r4ds.hadley.nz/workflow-scripts.html
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+      note: |-
+        The next item of the same list is "Press Cmd/Ctrl + Shift + S to re-run the current script."
+        The paragraph after it gives the menu route, Session > Restart R.
+  - citekey: r4ds_2e
+    kind: textbook
+    locator: 'Ch. 6, 6.2.1, last paragraph: restarting regularly for a clean slate'
+    quote: |-
+      This makes it even more important to regularly restart R so that you’re starting with a clean slate.
+    verified:
+      resolved_id: https://r4ds.hadley.nz/workflow-scripts.html
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+  - citekey: rdocs_s52r1_utils
+    kind: textbook
+    locator: 'Help page "Rscript" (utils 4.3.3), Details: the options always supplied'
+    quote: |-
+      Options '--no-echo --no-restore' are always supplied: these imply '--no-save'.
+    verified:
+      resolved_id: rhelp://utils@4.3.3/Rscript
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+      note: |-
+        "--no-restore" is the option under which R does not reload a saved workspace; "--no-save"
+        means it does not save one on exit. The Usage line of the same page is "Rscript [options]
+        file [args]".
+  - citekey: rdocs_s52r1_base
+    kind: textbook
+    locator: 'Help page "source" (base 4.3.3), Arguments: local'
+    quote: |-
+      'FALSE' (the default) corresponds to the user's workspace (the global environment)
+    verified:
+      resolved_id: rhelp://base@4.3.3/source
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+      note: |-
+        So source() with its defaults runs the file's lines where the reader's own objects already
+        are. The Description says the parsed expressions "are evaluated sequentially in the chosen
+        environment".
+  - citekey: rdocs_s52r1_base
+    kind: textbook
+    locator: 'Help page "Random" (base 4.3.3), Description: set.seed'
+    quote: |-
+      'set.seed' is the recommended way to specify seeds.
+    verified:
+      resolved_id: rhelp://base@4.3.3/Random
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+  - citekey: rdocs_s52r1_base
+    kind: textbook
+    locator: 'Help page "Random" (base 4.3.3), Examples: the same seed gives the same numbers'
+    quote: |-
+      set.seed(42); u2 <- runif(30) # the same because of identical RNG status:
+    verified:
+      resolved_id: rhelp://base@4.3.3/Random
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+      note: |-
+        The See Also of the same page names 'sample' "for random sampling with and without
+        replacement", the function used in the illustration.
+  - citekey: rdocs_s52r1_base
+    kind: textbook
+    locator: 'Help page "Random" (base 4.3.3), Details: sample.kind, the default changed in R 3.6.0'
+    quote: |-
+      The former was the default in versions prior to 3.6.0
+    verified:
+      resolved_id: rhelp://base@4.3.3/Random
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-03'
+      note: |-
+        The sentence before it reads "'sample.kind' can be '"Rounding"' or '"Rejection"', or partial
+        matches to these." So R 3.6.0 changed the default method that `sample()` uses.
+  - citekey: rdocs_s52r1_utils
+    kind: textbook
+    locator: 'Help page "sessionInfo" (utils 4.3.3), Description'
+    quote: |-
+      Get and report version information about R, the OS and attached or loaded packages.
+    verified:
+      resolved_id: rhelp://utils@4.3.3/sessionInfo
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+  - citekey: sandve_2013
+    kind: primary
+    locator: 'Rule 6: For Analyses That Include Randomness, Note Underlying Random Seeds'
+    quote: |-
+      For analyses that involve random numbers, this means that the random seed should be recorded.
+    verified:
+      resolved_id: https://doi.org/10.1371/journal.pcbi.1003285
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+  - citekey: sandve_2013
+    kind: primary
+    locator: 'Rule 3: Archive the Exact Versions of All External Programs Used, last sentence'
+    quote: |-
+      As a minimum, you should note the exact names and versions of the main programs you use.
+    verified:
+      resolved_id: https://doi.org/10.1371/journal.pcbi.1003285
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+  - citekey: sandve_2013
+    kind: primary
+    locator: 'Rule 1: For Every Result, Keep Track of How It Was Produced, second paragraph'
+    quote: |-
+      By instead specifying the full analysis workflow in a form that allows for direct execution, one can ensure that the specification matches the analysis that was (subsequently) performed
+    verified:
+      resolved_id: https://doi.org/10.1371/journal.pcbi.1003285
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+  - citekey: sandve_2013
+    kind: primary
+    locator: 'Rule 9: Connect Textual Statements to Underlying Results, last paragraph'
+    quote: |-
+      As a minimum, you should provide enough details along with your textual interpretations so as to allow the exact underlying results, or at least some related results, to be tracked down in the future.
+    verified:
+      resolved_id: https://doi.org/10.1371/journal.pcbi.1003285
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+      note: |-
+        Carries the doorstep to S52-R2: a number in a report should lead back to the result that
+        made it. The same rule names tools that put analyses inside documents; Quarto is not named
+        there and is named in this record only as S52-R2's subject.
+  - citekey: trisovic_2022
+    kind: primary
+    locator: 'Best Practices and Recommendations, first recommendation for researchers who use R'
+    quote: |-
+      Library versions in a project should be captured ideally by using the renv package. Otherwise, you may use a DESCRIPTION file or install.R or include the output of sessionInfo() from the researcher’s R session.
+    verified:
+      resolved_id: https://doi.org/10.1038/s41597-022-01143-6
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+  - citekey: trisovic_2022
+    kind: primary
+    locator: 'Results, after Fig. 8: errors left after code cleaning'
+    quote: |-
+      other library errors appeared if a library was not installed or was incompatible due to its version. Such an outcome demonstrates the need to capture the R software and dependency versions required for reuse.
+    verified:
+      resolved_id: https://doi.org/10.1038/s41597-022-01143-6
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+  - citekey: trisovic_2022
+    kind: primary
+    locator: 'Results, after Fig. 8: the "object not found" error'
+    quote: |-
+      “R object not found” error occurs when using a variable that does not exist. While it is hard to pin the cause of this error precisely, it is often related to missing files or incomplete code.
+    verified:
+      resolved_id: https://doi.org/10.1038/s41597-022-01143-6
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+  - citekey: trisovic_2022
+    kind: primary
+    locator: 'Abstract: the share of R files that stopped with an error'
+    quote: |-
+      We find that 74% of R files failed to complete without error in the initial execution
+    verified:
+      resolved_id: https://doi.org/10.1038/s41597-022-01143-6
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+      note: |-
+        Used once, through the number key the last section registered, only to say what this
+        section's test is for. The abstract's 56% after code cleaning is on another basis from the
+        results table (file header); it is not used here.
+  - citekey: wilson_2017
+    kind: primary
+    locator: 'Project organization, 4d: the controller or driver script'
+    quote: |-
+      The second type of file in src is controller or driver scripts that contain all the analysis steps for the entire project from start to finish
+    verified:
+      resolved_id: https://doi.org/10.1371/journal.pcbi.1005510
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+      note: |-
+        Wilson and colleagues call such a script "runall" for a small project with one main output;
+        this book's `code/analysis.R` plays that part.
+  - citekey: wilson_2017
+    kind: primary
+    locator: 'Keeping track of changes, second paragraph: version control'
+    quote: |-
+      We believe that the best tools for tracking changes are the version control systems that are used in software development, such as Git, Mercurial, and Subversion.
+    verified:
+      resolved_id: https://doi.org/10.1371/journal.pcbi.1005510
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+simplified_explanation: |
+  Here is the trap with a script that works on your computer. While you work, R remembers. Every
+  object you made, in the script or typed in the console, sits in the workspace. Every package you
+  attached stays attached. Then a colleague runs it on their computer, where none of it exists, and it
+  stops.
+
+  So test the script the way a stranger would run it. Start a new R with nothing in it, and run
+  every line from the top. There are two ways to do that.
+
+  - In RStudio, restart R (the menu Session, then Restart R), then run the whole script.
+  - In a terminal, in the project folder, type one command: `Rscript code/analysis.R`.
+
+  The second way is the one to write in your README, because it is one line anyone can type.
+illustrations:
+- body: |
+    Start with a script that works for you and for nobody else. An hour ago, exploring the penguin
+    file, you typed these lines in the console:
+
+    ```r
+    library(readr)
+    library(dplyr, warn.conflicts = FALSE)
+
+    penguins_raw <- read_csv(
+      here::here("data-raw", "penguins_raw.csv"),
+      show_col_types = FALSE
+    )
+    ```
+
+    Then you tried a few things, and saved the line worth keeping as your script, `code/analysis.R`:
+
+    ```r file=code/analysis.R
+    library(dplyr, warn.conflicts = FALSE)
+
+    penguins_raw |>
+      count(Island)
+    ```
+
+    Select all of it in the editor and run it. It prints the rows per island, because `penguins_raw`
+    is still in your session from the console.
+
+    It works. Now run it the way anyone else would. Open a terminal in the project folder and type
+    the one command:
+
+    ```sh error
+    Rscript code/analysis.R
+    ```
+
+    ```output
+    Error: object 'penguins_raw' not found
+    Execution halted
+    ```
+
+    Read the error literally. The new R has no object called `penguins_raw`. Nothing in the script
+    makes one. In your session it existed because you typed the reading line in the console an
+    hour ago. The script was never complete. Your workspace was hiding the gap.
+
+    Trisovic and colleagues reran R files that researchers had shared alongside published studies,
+    and {{n:trisovic_fail_initial_pct}} failed to complete without error the first time they were
+    run, as the last section showed. "Object not found" was one of the errors they met, and they write that it is "often
+    related to missing files or incomplete code". This one is incomplete code.
+
+    Fix it in the script, not in the session. Put the packages first, then the reading line:
+
+    ```r file=code/analysis.R
+    library(readr)
+    library(dplyr, warn.conflicts = FALSE)
+    library(here)
+
+    penguins_raw <- read_csv(
+      here("data-raw", "penguins_raw.csv"),
+      show_col_types = FALSE
+    )
+
+    penguins_raw |>
+      count(Island)
+    ```
+
+    Run the same command again:
+
+    ```sh
+    Rscript code/analysis.R
+    ```
+
+    ```output
+    here() starts at ~/project
+    # A tibble: 3 × 2
+      Island        n
+      <chr>     <int>
+    1 Biscoe      168
+    2 Dream       124
+    3 Torgersen    52
+    ```
+
+    The same three counts, now from a script that makes everything it uses. Notice that `Rscript`
+    printed the table without being asked. It prints what each line returns, just as the console
+    does.
+  analogy_breaks_when: |
+    The fresh run catches what the script takes from your session: objects, attached packages, a
+    working directory you set by hand. It does not catch what the script takes from your computer.
+    A package that is installed on your computer and not on your colleague's still stops the script
+    on theirs, at its `library()` line. A different version of a package may run without any error
+    and give a different result.
+
+    `Rscript` also stops at the first error. A script with three problems shows you one at a time.
+    Fix it and run it again until it reaches the last line.
+- body: |
+    Now the second trap: clearing the workspace by hand looks like a fresh start and is not one.
+    The function `rm()` removes objects. `rm(list = ls())` removes every object the workspace lists.
+    Run it, then ask what is left:
+
+    ```r
+    rm(list = ls())
+    ls()
+    search()
+    ```
+
+    ```output
+    character(0)
+     [1] ".GlobalEnv"        "package:dplyr"     "package:readr"
+     [4] "package:stats"     "package:graphics"  "package:grDevices"
+     [7] "package:utils"     "package:datasets"  "package:methods"
+    [10] "Autoloads"         "package:base"
+    ```
+
+    `ls()` prints `character(0)`, an empty list: no objects. But `search()`, which lists where R
+    looks for a name, still shows `package:dplyr` and `package:readr`. They are still attached. A
+    script that forgot `library(dplyr)` would still find `count()` here, and stop on your
+    colleague's computer. Only a new R clears both. In RStudio that is Session, then Restart R, or
+    Ctrl + Shift + F10, followed by Ctrl + Shift + S to run the whole script. In a terminal it is
+    `Rscript`.
+
+    The same holds for `source()`. It reads a file and runs its lines in your current workspace, so
+    a script run with `source()` can still lean on objects and packages you already have. Use it
+    only straight after a restart.
+
+    Now make the one command produce everything. Two more things go into the script. The first is a
+    random step. Suppose you want five rows picked at random, to check by hand against the field
+    notebooks. The function `sample()` picks at random, and `sample(344, 5)` picks five of the whole
+    numbers from 1 to {{n:penguins_rows}}. Each run picks different ones, unless you set the seed first. The seed is
+    the starting point R's random numbers are worked out from. See what it does:
+
+    ```r
+    set.seed(2026)
+    sample(344, 5)
+    set.seed(2026)
+    sample(344, 5)
+    set.seed(7)
+    sample(344, 5)
+    ```
+
+    ```output
+    [1] 221 121 294  45 111
+    [1] 221 121 294  45 111
+    [1] 298 103 194 271 218
+    ```
+
+    The same seed gives the same five rows. A different seed gives different ones. The seed is a
+    number you choose and write in the script, so the next person gets your five rows, not their
+    own.
+
+    The second is `sessionInfo()` as the last line. Here is the whole script:
+
+    ```r file=code/analysis.R
+    # analysis.R: penguin rows by island, and five rows to check by hand
+    # Run from the project folder: Rscript code/analysis.R
+
+    library(readr)
+    library(dplyr, warn.conflicts = FALSE)
+    library(here)
+
+    penguins_raw <- read_csv(
+      here("data-raw", "penguins_raw.csv"),
+      show_col_types = FALSE
+    )
+
+    dir.create(here("output"), showWarnings = FALSE)
+
+    island_counts <- penguins_raw |>
+      count(Island)
+    write_csv(island_counts, here("output", "island_counts.csv"))
+
+    # Five row numbers, picked at random, to check against the
+    # field notebooks. The seed makes the same five come out every run.
+    set.seed(2026)
+    rows_to_check <- tibble(row = sample(nrow(penguins_raw), 5))
+    write_csv(rows_to_check, here("output", "rows_to_check.csv"))
+
+    sessionInfo()
+    ```
+
+    `dir.create()` makes the `output` folder if it is not there, and `showWarnings = FALSE` keeps
+    it quiet when it is. Without that line the script would stop on a fresh copy of the project,
+    where `output/` does not exist yet. `write_csv()` writes a table to a CSV file, as in the
+    section on summaries by group. `tibble()` makes a small table, here with one column, `row`.
+
+    Run it:
+
+    ```sh
+    Rscript code/analysis.R
+    ```
+
+    ```output
+    here() starts at ~/project
+    R version 4.3.3 (2024-02-29)
+    Platform: x86_64-pc-linux-gnu (64-bit)
+    Running under: Ubuntu 24.04.5 LTS
+
+    Matrix products: default
+    BLAS:   /usr/lib/x86_64-linux-gnu/blas/libblas.so.3.12.0
+    LAPACK: /usr/lib/x86_64-linux-gnu/lapack/liblapack.so.3.12.0
+
+    locale:
+     [1] LC_CTYPE=C.utf8       LC_NUMERIC=C          LC_TIME=C.utf8
+     [4] LC_COLLATE=C.utf8     LC_MONETARY=C.utf8    LC_MESSAGES=C.utf8
+     [7] LC_PAPER=C.utf8       LC_NAME=C             LC_ADDRESS=C
+    [10] LC_TELEPHONE=C        LC_MEASUREMENT=C.utf8 LC_IDENTIFICATION=C
+
+    time zone: UTC
+    tzcode source: system (glibc)
+
+    attached base packages:
+    [1] stats     graphics  grDevices utils     datasets  methods   base
+
+    other attached packages:
+    [1] here_1.0.1  dplyr_1.1.4 readr_2.1.5
+
+    loaded via a namespace (and not attached):
+     [1] utf8_1.2.4       R6_2.5.1         bit_4.0.5        tidyselect_1.2.0
+     [5] tzdb_0.4.0       magrittr_2.0.3   glue_1.7.0       tibble_3.2.1
+     [9] parallel_4.3.3   pkgconfig_2.0.3  bit64_4.0.5      generics_0.1.3
+    [13] lifecycle_1.0.4  cli_3.6.2        fansi_1.0.5      vctrs_0.6.5
+    [17] compiler_4.3.3   rprojroot_2.0.4  tools_4.3.3      hms_1.1.3
+    [21] pillar_1.9.0     crayon_1.5.2     rlang_1.1.3      vroom_1.6.5
+    ```
+
+    Nothing else printed, because the script writes its tables to files. Look in `output/`, and read
+    one back as plain text. In the terminal, `ls` lists a folder and `cat` prints a file:
+
+    ```sh
+    ls output
+    cat output/rows_to_check.csv
+    ```
+
+    ```output
+    island_counts.csv
+    rows_to_check.csv
+    row
+    221
+    121
+    294
+    45
+    111
+    ```
+
+    The five row numbers in the file are the five from `set.seed(2026)` above. Now read the record
+    at the bottom of the run. The first line names R {{n:r_version}}. Under "other attached
+    packages" are the three this script attached, each with its version: here {{n:here_version}},
+    dplyr {{n:dplyr_version}}, readr {{n:readr_version}}. Under "loaded via a namespace (and not
+    attached)" are packages that are loaded but not attached. "Running under" names the computer's
+    operating system. Anyone who gets a different answer from your script can compare their own
+    `sessionInfo()` with yours, line by line.
+  analogy_breaks_when: |
+    `sessionInfo()` records the versions. It does not install them. A colleague with a newer dplyr
+    can read that you used {{n:dplyr_version}} and still have to find and install the old version by
+    hand. Pinning versions so that another computer gets the same ones is what renv does, two rungs
+    up. Recording every change to the script itself is version control, the next rung's subject.
+
+    A seed makes a random step repeat on the same version of R. It does not make the five rows a
+    good sample, and it does not promise the same five on a version of R whose random-number method
+    has changed, as it did in R 3.6.0. That is why the seed and the R version are both recorded.
+must_know:
+- point: |
+    The error is to think that a script which runs on your computer is a script that runs. Before
+    you send a script to anyone, run it with `Rscript code/analysis.R` from the project folder.
+    Send it only when it reaches the last line.
+  kind: misconception
+  bearing: methodological
+- point: |
+    `rm(list = ls())` empties the workspace and leaves every package attached. `source()` runs a
+    file in the workspace you already have. Neither is a fresh session. Restart R, or use
+    `Rscript`.
+  kind: trap
+  bearing: methodological
+- point: |
+    When a script stops with "object not found" on someone else's computer, look for the line
+    that makes that object. Add it to the script, above the line that uses the object.
+  kind: move
+  bearing: methodological
+- point: |
+    Put `set.seed()` with a number you write down before any random step: a random sample of rows
+    to check, a random allocation, a simulation.
+  kind: move
+  bearing: methodological
+- point: |
+    End every analysis script with `sessionInfo()`, and keep its printout with the outputs.
+  kind: move
+  bearing: methodological
+  refs:
+  - trisovic_2022
+- point: |
+    A number in your thesis that you typed from the screen has no line of code behind it. Write
+    every table to `output/` with code, and copy numbers into the text from those files.
+  kind: consequence
+  bearing: methodological
+- point: |
+    A trainee says "it runs, I checked". Ask how. If the answer is "I ran it in RStudio", ask them
+    to restart R and run it again in front of you.
+  kind: move
+  bearing: teaching
+- point: |
+    One command in a fresh session tests the script against your computer only. It cannot show that a
+    colleague with other package versions gets the same numbers, and it cannot show that the numbers
+    are right.
+  kind: boundary
+  bearing: methodological
+exercises:
+- type: retrieval
+  prompt: |
+    Without looking back, say what "hidden state" is. Name the one command that tests a script for
+    it. Say why `rm(list = ls())` is not enough.
+  answer: |
+    Hidden state is anything a script uses that the script did not make. It may be an object typed
+    in the console, a package attached earlier or a file made by hand.
+
+    The command is `Rscript code/analysis.R`, typed in a terminal in the project folder. It starts
+    a new R and runs the file from the first line to the last.
+
+    `rm(list = ls())` removes the objects and leaves the packages attached, so a script that forgot a
+    `library()` line would still run.
+- type: build
+  prompt: |
+    Take the script you have been building through this book. Restart R, or open a terminal in the
+    project folder, and run it with `Rscript code/analysis.R`. Fix every error in the script, one at
+    a time, until it reaches the last line. Then make sure that it writes its outputs to `output/`
+    with code, that any random step follows `set.seed()`, and that it ends with `sessionInfo()`.
+    Delete `output/` and run the command again. Write the command into your README.
+  answer: |
+    There is no single right script. Check yours against these:
+
+    1. `Rscript code/analysis.R`, from the project folder, runs to the end with no error.
+    2. Every `library()` line the script needs is in the script, at the top.
+    3. The raw file is read in the script, with `here()`, from `data-raw/`.
+    4. The script makes `output/` if it is missing (`dir.create()`), and every table and figure is
+       written there by a line of code.
+    5. A seed set with `set.seed()` comes before any random step.
+    6. The last line is `sessionInfo()`.
+    7. After you delete `output/` and run the command again, every output comes back.
+    8. The README's "To rerun" line is that exact command.
+
+    If any of these fails, the script still depends on something outside it.
+  skill_ref: S52-R1-K01
+- type: teaching
+  prompt: |
+    A journalist has three minutes. A research group has just been told that its published analysis
+    "does not reproduce". The journalist asks what that usually means, and whether it means the
+    result is false. Answer them.
+  answer: |
+    It can mean that someone took the group's data and code and could not get the code to run, or
+    got a different number. One study looked at R code shared on one research website. About three in
+    four files did not run to the end without an error the first time. Common causes are dull ones: a file kept
+    in a folder only the author had, a missing step, a package that has since changed.
+
+    So "does not reproduce" says that the analysis cannot be checked as it stands. It does not say
+    that the result is false. It says nobody can yet show that it is true.
+
+    The quotable sentence: "If an analysis cannot be rerun, you cannot tell whether it is wrong,
+    and neither can its authors."
+quantitative: true
+practice_note: |
+  Ten problems. The technique is one test, a fresh run, and the mechanical band covers its three
+  parts (a seed, an empty workspace, attached packages). The weight is on the diagnostic and transfer
+  bands, because hidden state shows itself only when the code meets a second session.
+practice:
+- level: 1
+  prompt: |
+    Predict whether these lines print the same three numbers twice, then run them.
+
+    ```r norun
+    set.seed(11)
+    sample(10, 3)
+    set.seed(11)
+    sample(10, 3)
+    ```
+  answer: |
+    ```r
+    set.seed(11)
+    sample(10, 3)
+    set.seed(11)
+    sample(10, 3)
+    ```
+
+    ```output
+    [1] 10  2  8
+    [1] 10  2  8
+    ```
+
+    The same three, because the seed is set to the same number before each pick.
+- level: 2
+  prompt: |
+    Predict what the last line prints, then run all three. `exists()` asks whether an object of that
+    name exists.
+
+    ```r norun
+    height_cm <- c(132, 141, 150)
+    rm(list = ls())
+    exists("height_cm")
+    ```
+  answer: |
+    ```r
+    height_cm <- c(132, 141, 150)
+    rm(list = ls())
+    exists("height_cm")
+    ```
+
+    ```output
+    [1] FALSE
+    ```
+
+    `rm(list = ls())` removed every object, so `height_cm` no longer exists, and `exists()` answers
+    FALSE.
+- level: 3
+  prompt: |
+    Predict what the last line prints, then run all three. Does `rm(list = ls())` detach dplyr?
+
+    ```r norun
+    library(dplyr, warn.conflicts = FALSE)
+    rm(list = ls())
+    "package:dplyr" %in% search()
+    ```
+  answer: |
+    ```r
+    library(dplyr, warn.conflicts = FALSE)
+    rm(list = ls())
+    "package:dplyr" %in% search()
+    ```
+
+    ```output
+    [1] TRUE
+    ```
+
+    TRUE. dplyr is still on the list of places R searches. `rm()` removes objects, not packages.
+    The operator `%in%` asks whether the text on its left is among the values on its right.
+- level: 4
+  prompt: |
+    Write a script, `code/analysis.R`, that reads the penguin file from `data-raw/`, counts the rows
+    of each species, and writes the counts to `output/species_counts.csv`. It must run on a fresh
+    copy of the project, where `output/` does not exist. Run it with `Rscript`, then show the file it
+    wrote.
+  answer: |
+    ```r file=code/analysis.R
+    library(readr)
+    library(dplyr, warn.conflicts = FALSE)
+    library(here)
+
+    penguins_raw <- read_csv(
+      here("data-raw", "penguins_raw.csv"),
+      show_col_types = FALSE
+    )
+
+    dir.create(here("output"), showWarnings = FALSE)
+
+    species_counts <- penguins_raw |>
+      count(Species)
+    write_csv(species_counts, here("output", "species_counts.csv"))
+    ```
+
+    ```sh
+    Rscript code/analysis.R
+    cat output/species_counts.csv
+    ```
+
+    ```output
+    here() starts at ~/project
+    Species,n
+    Adelie Penguin (Pygoscelis adeliae),152
+    Chinstrap penguin (Pygoscelis antarctica),68
+    Gentoo penguin (Pygoscelis papua),124
+    ```
+
+    {{n:penguins_adelie}}, {{n:penguins_chinstrap}} and {{n:penguins_gentoo}} rows, which add up to {{n:penguins_rows}}. These are rows of the file, one per
+    nesting observation, not counts of birds. The `dir.create()` line is what lets the script run
+    on a copy with no `output/` folder.
+- level: 5
+  prompt: |
+    This section's last run of `code/analysis.R` ended with `sessionInfo()`, and its printout named
+    the version of dplyr under "other attached packages". Get the same version number with one line
+    of code instead of reading it by eye.
+  answer: |
+    ```r
+    packageVersion("dplyr")
+    ```
+
+    ```output
+    [1] ‘1.1.4’
+    ```
+
+    `packageVersion()`, from the section on packages, prints version {{n:dplyr_version}}. That is
+    the same as `dplyr_1.1.4` in the printout. Your own computer may print a newer version. Then your outputs may differ from
+    this book's, and the version line tells you why.
+- level: 6
+  prompt: |
+    You want ten penguin rows picked at random, for a colleague to check against the field
+    notebooks. She must get the same ten when she runs your script. Write the lines that pick ten
+    row numbers from the penguin file with seed 52. Show that running them twice gives the same ten.
+  answer: |
+    ```r
+    library(readr)
+
+    penguins_raw <- read_csv(
+      here::here("data-raw", "penguins_raw.csv"),
+      show_col_types = FALSE
+    )
+
+    set.seed(52)
+    first <- sample(nrow(penguins_raw), 10)
+    set.seed(52)
+    second <- sample(nrow(penguins_raw), 10)
+
+    first
+    identical(first, second)
+    ```
+
+    ```output
+     [1]  82 179 339 317 133 142  55 220 273 117
+    [1] TRUE
+    ```
+
+    `nrow(penguins_raw)` is {{n:penguins_rows}}, so the picks are row numbers from 1 to {{n:penguins_rows}}.
+    `identical()` asks whether two objects are exactly the same, and answers TRUE. In the script,
+    `set.seed(52)` goes once, directly above the pick. The same ten come out for anyone who runs it
+    on the same version of R.
+- level: 7
+  prompt: |
+    Meera's script reports the mean body mass of the penguins. Earlier in the same session she had
+    typed two lines in the console. Here is everything her session ran, and what it printed:
+
+    ```r
+    library(readr)
+    library(dplyr, warn.conflicts = FALSE)
+    penguins_raw <- read_csv(here::here("data-raw", "penguins_raw.csv"),
+                             show_col_types = FALSE)
+    penguins_raw <- penguins_raw |>
+      filter(Island == "Biscoe")
+    ```
+
+    Her script, `code/analysis.R`, run line by line in that session:
+
+    ```r
+    library(dplyr, warn.conflicts = FALSE)
+    penguins_raw |>
+      summarise(mean_mass_g = mean(`Body Mass (g)`, na.rm = TRUE))
+    ```
+
+    ```output
+    # A tibble: 1 × 1
+      mean_mass_g
+            <dbl>
+    1       4716.
+    ```
+
+    She writes "mean body mass 4716 g" in her draft. What broke, and what is the right number for
+    the whole file?
+  answer: |
+    The script uses `penguins_raw` without making it. In her session that object was the Biscoe
+    rows only, because of the second console line. So 4716 g is the mean for one island, and the
+    script does not say so. It looks reasonable because it is a real mean of real penguins.
+
+    Save her script and run it as a stranger would:
+
+    ```r file=code/analysis.R
+    library(dplyr, warn.conflicts = FALSE)
+    penguins_raw |>
+      summarise(mean_mass_g = mean(`Body Mass (g)`, na.rm = TRUE))
+    ```
+
+    ```sh error
+    Rscript code/analysis.R
+    ```
+
+    ```output
+    Error: object 'penguins_raw' not found
+    Execution halted
+    ```
+
+    The fresh run finds the gap at once. Add the packages and the reading line to the script:
+
+    ```r file=code/analysis.R
+    library(readr)
+    library(dplyr, warn.conflicts = FALSE)
+    penguins_raw <- read_csv(here::here("data-raw", "penguins_raw.csv"),
+                             show_col_types = FALSE)
+    penguins_raw |>
+      summarise(mean_mass_g = mean(`Body Mass (g)`, na.rm = TRUE))
+    ```
+
+    ```sh
+    Rscript code/analysis.R
+    ```
+
+    ```output
+    # A tibble: 1 × 1
+      mean_mass_g
+            <dbl>
+    1       4202.
+    ```
+
+    About {{n:penguins_mass_mean_g}} g for every row with a body mass, against 4716 g for Biscoe alone. If she wants
+    Biscoe, the filter belongs in the script, where a reader can see it.
+- level: 8
+  prompt: |
+    Ravi checks his script before sending it. In his session the penguin file is already read. He
+    runs the script with `source()`, sees no error, and tells his guide it is reproducible:
+
+    ```r
+    library(readr)
+    penguins_raw <- read_csv(here::here("data-raw", "penguins_raw.csv"),
+                             show_col_types = FALSE)
+    ```
+
+    ```r file=code/analysis.R
+    n_rows <- nrow(penguins_raw)
+    ```
+
+    ```r
+    source(here::here("code", "analysis.R"))
+    n_rows
+    ```
+
+    ```output
+    [1] 344
+    ```
+
+    What is wrong with his check?
+  answer: |
+    `source()` ran the script in Ravi's own workspace, where `penguins_raw` already existed. So the
+    check could not find the missing reading line. It looks like a test because the whole file ran
+    without an error. But it ran with Ravi's objects.
+
+    The test that counts starts from nothing:
+
+    ```r file=code/analysis.R
+    n_rows <- nrow(penguins_raw)
+    ```
+
+    ```sh error
+    Rscript code/analysis.R
+    ```
+
+    ```output
+    Error: object 'penguins_raw' not found
+    Execution halted
+    ```
+
+    The script needs `library(readr)` and the `read_csv()` line at its top. Then the same command
+    runs to the end. `source()` is a fair test only straight after restarting R.
+- level: 9
+  prompt: |
+    A thesis's methods chapter says: "All analyses were performed in R and are fully reproducible."
+    The candidate gives you the project folder. Decide what to run to test the sentence, write it
+    down, and then say what a successful run would still not establish.
+  answer: |
+    Run the README's command in a terminal, in the project folder, on your computer:
+
+    ```sh norun
+    Rscript code/analysis.R
+    ```
+
+    Then compare what lands in `output/` with the tables in the thesis, number by number. Read the
+    `sessionInfo()` printout at the end of the run against the versions the candidate recorded.
+
+    If the run reaches the last line and every number matches, you have shown one thing. The script
+    reruns from the raw files on a second computer and gives the thesis's numbers.
+
+    It does not establish:
+
+    - that the numbers are right. A script can rerun perfectly and still compute the wrong thing;
+    - that the raw files are the files that were collected. The run starts from whatever is in
+      `data-raw/`;
+    - that it will rerun next year. Newer package versions may stop it or change a result, unless
+      the versions are pinned, which is renv's job two rungs up;
+    - that every number in the text came from the script. A number typed into the chapter by hand
+      has no line of code behind it.
+
+    So the sentence the candidate can defend is narrower: "The analysis reruns from the raw data
+    with one command, `Rscript code/analysis.R`, on R {{n:r_version}}."
+- level: 10
+  prompt: |
+    In a department meeting a colleague says: "My script gives the same table every time. I ran it
+    twice yesterday in RStudio and got the same numbers." His script reads the penguin file and
+    writes the number of rows of each sex to `output/sex_counts.csv`. Decide what would actually
+    test his claim, run it, and say what your result does not establish.
+  answer: |
+    Running twice in the same RStudio session tests nothing new: the second run had the first
+    run's workspace. The test is two runs that each start from nothing, with `output/` deleted in
+    between, and a comparison of the files. Here is his script:
+
+    ```r file=code/analysis.R
+    library(readr)
+    library(dplyr, warn.conflicts = FALSE)
+    library(here)
+
+    penguins_raw <- read_csv(
+      here("data-raw", "penguins_raw.csv"),
+      show_col_types = FALSE
+    )
+
+    dir.create(here("output"), showWarnings = FALSE)
+
+    sex_counts <- penguins_raw |>
+      count(Sex)
+    write_csv(sex_counts, here("output", "sex_counts.csv"))
+    ```
+
+    Run it and keep a copy of the output. Delete `output/`, run it again, and compare. `cmp`
+    compares two files and prints nothing when they are the same. `cp` copies a file, `rm -r` deletes
+    a folder, `&&` runs the next command only if the last one succeeded, and `echo` prints its words:
+
+    ```sh
+    Rscript code/analysis.R > /dev/null 2>&1
+    cp output/sex_counts.csv first_run.csv
+    rm -r output
+    Rscript code/analysis.R > /dev/null 2>&1
+    cmp first_run.csv output/sex_counts.csv && echo "identical"
+    cat output/sex_counts.csv
+    ```
+
+    ```output
+    identical
+    Sex,n
+    FEMALE,165
+    MALE,168
+    NA,11
+    ```
+
+    `> /dev/null 2>&1` throws away what each run prints, since only the files matter here. The two
+    files are identical: {{n:penguins_female}}, {{n:penguins_male}} and {{n:penguins_sex_missing}} rows, which add up to {{n:penguins_rows}}.
+
+    What this does not establish:
+
+    - that the script runs on his colleagues' computers, with their package versions;
+    - that the counts are right. They are the rows of the file, and the 11 rows with no sex
+      recorded are counted as NA, not hidden;
+    - anything about penguins beyond this file.
+
+    He can now say "the script gives the same table from a fresh start on my computer". That is
+    more than he could say before, and less than "it reproduces".
+retrieval_items:
+- q: What does `Rscript code/analysis.R` do, and from which folder do you type it?
+  a: It starts a new R with an empty workspace, runs the file from its first line to its last, and
+    stops at the first error. You type it in a terminal whose working directory is the project
+    folder.
+- q: Why is `source()` in a session you have been working in not a test of a script?
+  a: It runs the file in your current workspace, so the script can still use objects and packages
+    you made or attached earlier. Restart R first, or use `Rscript`.
+- q: What does `set.seed()` do, and where does it go in a script?
+  a: It fixes the starting point of R's random numbers, so a random step gives the same result on
+    every run. It goes before the random step, with a number written in the script.
+- q: What does `sessionInfo()` print, and why put it at the end of a script?
+  a: The version of R, the operating system and the version of every attached package. At the end
+    of the script it records what produced that run's outputs.
+figure_note: "The section's evidence is the difference between two runs of the same script, shown as their printed outputs; it has no quantity for a chart to draw."
+provenance:
+  map_version_id: fc19c8bc-a216-4131-99fb-ebe3f19cec4a
+  outcome_refs:
+  - S52-R1-S1
+  - S52-R1-S2
+  - S52-R1-G
+  - S52-R1-B
+  bridge_ref:
+  - S52-R2-P02
+  - S52-R2-R1
+  - S52-R2-R2
+  - S52-R2-G
+review:
+  stability: long
+  trigger: '2031-10-02'
+  last_reviewed: '2026-10-02'
+status: drafted

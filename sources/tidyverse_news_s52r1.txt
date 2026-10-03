@@ -1,0 +1,1711 @@
+TIDYVERSE CHANGELOGS (ggplot2, dplyr, readr, tidyr) — ENTRIES AFTER THE BOOK'S INSTALLED VERSIONS
+VERBATIM SOURCE PACK (EXCERPTS)
+============================================================
+
+Transcription rule for this file: every line between a [TEXT] and an [END TEXT] line is an exact,
+unaltered slice of the text returned by the TinyFish fetch_content tool (markdown) for the URL in that
+block's heading, saved unchanged under books/S52-R1/intake/raw/ and cut programmatically (raw[i:j]) by
+books/S52-R1/intake/build-c/build.py; verify.py re-checks each as a whitespace-normalised substring of the
+saved fetch. The markdown conversion puts each inline code name (`filter()`) in its own fenced block on
+separate lines; that is how the fetch returned it and it is kept. Where material is left out, the omission
+is marked [...] in place. Lines beginning [NOTE] are this file's own annotation and are NOT source text.
+
+CITATION: the changelog (NEWS) pages of the package websites, each built from the package's NEWS.md:
+  ggplot2 https://ggplot2.tidyverse.org/news/   dplyr https://dplyr.tidyverse.org/news/
+  readr https://readr.tidyverse.org/news/       tidyr https://tidyr.tidyverse.org/news/
+URL FETCHED: those four URLs, TinyFish fetch_content, markdown, ttl 0 (live), 2026-10-02.
+
+NEWEST ENTRY ON EACH PAGE on 2026-10-02 (cut from the fetch): "## ggplot2 4.0.3"; "## dplyr 1.2.0";
+"## readr 2.2.0"; "## tidyr 1.3.2". [NOTE] Task 1 (READY.md) recorded dplyr 1.2.1 as the newest
+heading; the page fetched here has no 1.2.1 entry, its newest heading is 1.2.0. readr 2.2.0 carries no
+"CRAN release" date line on the page.
+
+INSTALLED VERSIONS (the book's): ggplot2 3.4.4, dplyr 1.1.4, readr 2.1.5, tidyr 1.3.1 (packageVersion(),
+see the rdocs_s52r1_* files). Only entries for LATER versions are held.
+
+LICENCE: none is stated on the four pages. The text is the package's NEWS.md, part of the package source;
+the installed DESCRIPTION files (rdocs_s52r1_* files) give "License: MIT + file LICENSE" for all four. The
+pages themselves record the relicensing, e.g. ggplot2: "* Update the ggplot2 licence to an MIT license (#4231, #4232, #4233, and #4281)" and readr: "We are systematically re-licensing tidyverse and r-lib packages to use the MIT license, to make our package licenses as clear and permissive as possible.
+
+To this end the readr and vroom packages are now released under the MIT license."
+
+SELECTION RULE (intake brief): only entries about behaviour a beginner's code in S52-R1 could meet — a
+changed default, a new function or argument replacing a pattern the book teaches, or the deprecation or
+removal of something in the book's function list (filter, select, mutate, summarise, group_by, arrange,
+count, if_else, case_when, left_join, anti_join; pivot_longer, pivot_wider, drop_na; read_csv, problems;
+ggplot, aes, geom_histogram, geom_boxplot, ggsave, facet_wrap) — plus each version's heading and summary
+where the block starts at it. Whole version entries are held for readr 2.2.0, readr 2.1.6, tidyr 1.3.2
+and ggplot2 4.0.3, because they are short. Everything else is omitted and marked.
+
+WHAT THIS FILE DOES NOT SAY: it does not say which of these changes alters any output printed in S52-R1.
+That is found only by running the book's code on the newer versions, which this sandbox cannot install.
+
+===============================================================================
+1. ggplot2 4.0.3, whole entry (geom_boxplot() gains quantile.type, default 7)
+https://ggplot2.tidyverse.org/news/
+===============================================================================
+
+[TEXT]
+## ggplot2 4.0.3
+
+CRAN release: 2026-04-22
+
+This is a hotfix release fixing a test, a bug and introducing a feature.
+
+* Adapt to changes in
+
+  ```
+  rlang::warn_dots_used()
+  ```
+
+  (@lionel-, #6830).
+* Fixed bug where
+
+  ```
+  guide_axis_theta()
+  ```
+
+  didn’t anticipate old-style text elements (#6803).
+* ```
+  geom_boxplot()
+  ```
+
+  /
+
+  ```
+  stat_boxplot()
+  ```
+
+  gain a
+
+  ```
+  quantile.type
+  ```
+
+  parameter (default
+
+  ```
+  7
+  ```
+
+  ) to control the percentile definition used for hinges and median; set
+
+  ```
+  quantile.type = 2
+  ```
+
+  to match SAS’s default
+
+  ```
+  PCTLDEF = 5
+  ```
+
+  , enabling parity with SAS boxplots out-of-the-box. (@munoztd0, #6819)
+[END TEXT]
+
+[...]
+[NOTE] Omitted: ggplot2 4.0.2 (one internal change) and all of 4.0.1 except the bullet below.
+
+===============================================================================
+2. ggplot2 4.0.1 (CRAN release 2025-11-14), bug fix: stat_bin(boundary) was ignored
+https://ggplot2.tidyverse.org/news/
+===============================================================================
+
+[TEXT]
+* Fixed bug where
+
+  ```
+  stat_bin(boundary)
+  ```
+
+  was ignored (#6682).
+[END TEXT]
+
+[...]
+[NOTE] Omitted: the other 4.0.1 bug fixes and improvements.
+
+===============================================================================
+3. ggplot2 4.0.0 (CRAN release 2025-09-11): heading, "Breaking changes" and "Lifecycle changes", whole
+https://ggplot2.tidyverse.org/news/
+===============================================================================
+
+[TEXT]
+## ggplot2 4.0.0
+
+CRAN release: 2025-09-11
+
+### User facing
+
+#### Breaking changes
+
+* The S3 parts of ggplot2 have been replaced with S7 bits (#6352).
+* (breaking)
+
+  ```
+  geom_violin(quantiles)
+  ```
+
+  now has actual quantiles based on the data, rather than inferred quantiles based on the computed density. The
+
+  ```
+  quantiles
+  ```
+
+  parameter that replaces
+
+  ```
+  draw_quantiles
+  ```
+
+  now belongs to
+
+  ```
+  stat_ydensity()
+  ```
+
+  instead of
+
+  ```
+  geom_violin()
+  ```
+
+  (@teunbrand, #4120).
+* (Breaking) The defaults for all geoms can be set at one in the theme. (@teunbrand based on pioneering work by @dpseidel, #2239)
+  + A new
+
+    ```
+    theme(geom)
+    ```
+
+    argument is used to track these defaults.
+  + The
+
+    ```
+    element_geom()
+    ```
+
+    function can be used to populate that argument.
+  + The
+
+    ```
+    from_theme()
+    ```
+
+    function allows access to the theme default fields from inside the
+
+    ```
+    aes()
+    ```
+
+    function.
+* A new
+* Moved the following packages in the description. If your package depended on ggplot2 to install these dependencies, you may need to list these in your own DESCRIPTION file now (#5986).
+  + Moved mgcv from Imports to Suggests
+  + Moved tibble from Imports to Suggests
+  + Removed glue dependency
+* Default labels are derived in
+
+  ```
+  build_ggplot()
+  ```
+
+  (previously
+
+  ```
+  ggplot_build()
+  ```
+
+  ) rather than in the layer method of
+
+  ```
+  update_ggplot()
+  ```
+
+  (previously
+
+  ```
+  ggplot_add.Layer()
+  ```
+
+  ). This may affect code that accessed the
+
+  ```
+  plot$labels
+  ```
+
+  property (@teunbrand, #5894).
+* In binning stats, the default
+
+  ```
+  boundary
+  ```
+
+  is now chosen to better adhere to the
+
+  ```
+  nbin
+  ```
+
+  argument. This may affect plots that use default binning (@teunbrand, #5882, #5036)
+
+#### Lifecycle changes
+
+* Deprecated functions and arguments prior to ggplot2 3.0.0 throw errors instead of warnings.
+* Functions and arguments that were soft-deprecated up to ggplot2 3.4.0 now throw warnings.
+* ```
+  annotation_borders()
+  ```
+
+  replaces the now-deprecated
+
+  ```
+  borders()
+  ```
+
+  (@teunbrand, #6392)
+* Turned off fallback for
+
+  ```
+  size
+  ```
+
+  to
+
+  ```
+  linewidth
+  ```
+
+  translation in
+
+  ```
+  geom_bar()
+  ```
+
+  /
+
+  ```
+  geom_col()
+  ```
+
+  (#4848).
+* The
+
+  ```
+  fatten
+  ```
+
+  argument has been deprecated in
+
+  ```
+  geom_boxplot()
+  ```
+
+  ,
+
+  ```
+  geom_crossbar()
+  ```
+
+  and
+
+  ```
+  geom_pointrange()
+  ```
+
+  (@teunbrand, #4881).
+* The following methods have been deprecated:
+
+  ```
+  fortify.lm()
+  ```
+
+  ,
+
+  ```
+  fortify.glht()
+  ```
+
+  ,
+
+  ```
+  fortify.confint.glht()
+  ```
+
+  ,
+
+  ```
+  fortify.summary.glht()
+  ```
+
+  and
+
+  ```
+  fortify.cld()
+  ```
+
+  . It is recommend to use
+
+  ```
+  broom::augment()
+  ```
+
+  and
+
+  ```
+  broom::tidy()
+  ```
+
+  instead (@teunbrand, #3816).
+* ```
+  geom_errorbarh()
+  ```
+
+  is deprecated in favour of
+
+  ```
+  geom_errorbar(orientation = "y")
+  ```
+
+  (@teunbrand, #5961).
+* Special getter and setter functions have been renamed for consistency, allowing for better tab-completion with
+
+  ```
+  get_*
+  ```
+
+  - and
+
+  ```
+  set_*
+  ```
+
+  -prefixes. The old names remain available for backward compatibility (@teunbrand, #5568).
+* ```
+  facet_wrap()
+  ```
+
+  has new options for the
+
+  ```
+  dir
+  ```
+
+  argument for additional control over panel directions. They absorb interactions with the now-deprecated
+
+  ```
+  as.table
+  ```
+
+  argument. Internally
+
+  ```
+  dir = "h"
+  ```
+
+  or
+
+  ```
+  dir = "v"
+  ```
+
+  is deprecated (@teunbrand, #5212).
+* ```
+  coord_trans()
+  ```
+
+  was renamed to
+
+  ```
+  coord_transform()
+  ```
+
+  (@nmercadeb, #5825).
+[END TEXT]
+
+[...]
+[NOTE] Omitted: the 4.0.0 "Improvements" (themes, scales, coords, layers, other), bug fixes and developer-facing changes, except the bullet below.
+
+===============================================================================
+4. ggplot2 4.0.0, Improvements > Other: a variable's label attribute used as default label
+https://ggplot2.tidyverse.org/news/
+===============================================================================
+
+[TEXT]
+* An attempt is made to use a variable’s label attribute as default label (@teunbrand, #4631)
+[END TEXT]
+
+[...]
+[NOTE] Omitted: everything else in 4.0.0 and all of 3.5.2 (infrastructure for extension packages) and 3.5.1 (regression fixes).
+
+===============================================================================
+5. ggplot2 3.5.0 (CRAN release 2024-02-23): heading, summary and "Breaking changes", whole
+https://ggplot2.tidyverse.org/news/
+===============================================================================
+
+[TEXT]
+## ggplot2 3.5.0
+
+CRAN release: 2024-02-23
+
+This is a minor release that turned out quite beefy. It is focused on overhauling the guide system: the system responsible for displaying information from scales in the guise of axes and legends. As part of that overhaul, new guides have been implemented and existing guides have been refined. The look and feel of guides has been mostly preserved, but their internals and styling options have changed drastically.
+
+Briefly summarising other highlights, we also welcome
+
+```
+coord_radial()
+```
+
+as a successor of
+
+```
+coord_polar()
+```
+
+. Initial support for newer graphical features, such as pattern fills has been added. The API has changed how
+
+```
+I()
+```
+
+/
+
+```
+<AsIs>
+```
+
+vectors interact with the scale system, namely: not at all.
+
+### Breaking changes
+
+* The guide system. As a whole. See ‘new features’ for more information. While the S3 guide generics are still in place, the S3 methods for
+
+  ```
+  guide_train()
+  ```
+
+  ,
+
+  ```
+  guide_merge()
+  ```
+
+  ,
+
+  ```
+  guide_geom()
+  ```
+
+  ,
+
+  ```
+  guide_transform()
+  ```
+
+  ,
+
+  ```
+  guide_gengrob()
+  ```
+
+  have been superseded by the respective ggproto methods. In practice, this will mean that
+
+  ```
+  NextMethod()
+  ```
+
+  or sub-classing ggplot2’s guides with the S3 system will no longer work.
+* By default,
+
+  ```
+  guide_legend()
+  ```
+
+  now only draws a key glyph for a layer when the value is in the layer’s data. To revert to the old behaviour, you can still set
+
+  ```
+  show.legend = c({aesthetic} = TRUE)
+  ```
+
+  (@teunbrand, #3648).
+* In the
+
+  ```
+  scale_{colour/fill}_gradient2()
+  ```
+
+  and
+
+  ```
+  scale_{colour/fill}_steps2()
+  ```
+
+  functions, the
+
+  ```
+  midpoint
+  ```
+
+  argument is transformed by the scale transformation (#3198).
+* The
+
+  ```
+  legend.key
+  ```
+
+  theme element is set to inherit from the
+
+  ```
+  panel.background
+  ```
+
+  theme element. The default themes no longer set the
+
+  ```
+  legend.key
+  ```
+
+  element. This causes a visual change with the default
+
+  ```
+  theme_gray()
+  ```
+
+  (#5549).
+* The
+
+  ```
+  scale_name
+  ```
+
+  argument in
+
+  ```
+  continuous_scale()
+  ```
+
+  ,
+
+  ```
+  discrete_scale()
+  ```
+
+  and
+
+  ```
+  binned_scale()
+  ```
+
+  is soft-deprecated. If you have implemented custom scales, be advised to double-check that unnamed arguments ends up where they should (@teunbrand, #1312).
+* The
+
+  ```
+  legend.text.align
+  ```
+
+  and
+
+  ```
+  legend.title.align
+  ```
+
+  arguments in
+
+  ```
+  theme()
+  ```
+
+  are deprecated. The
+
+  ```
+  hjust
+  ```
+
+  setting of the
+
+  ```
+  legend.text
+  ```
+
+  and
+
+  ```
+  legend.title
+  ```
+
+  elements continues to fulfill the role of text alignment (@teunbrand, #5347).
+* ‘lines’ units in
+
+  ```
+  geom_label()
+  ```
+
+  , often used in the
+
+  ```
+  label.padding
+  ```
+
+  argument, are now are relative to the text size. This causes a visual change, but fixes a misalignment issue between the textbox and text (@teunbrand, #4753)
+* ```
+  coord_flip()
+  ```
+
+  has been marked as superseded. The recommended alternative is to swap the
+
+  ```
+  x
+  ```
+
+  and
+
+  ```
+  y
+  ```
+
+  aesthetic and/or using the
+
+  ```
+  orientation
+  ```
+
+  argument in a layer (@teunbrand, #5130).
+* The
+
+  ```
+  trans
+  ```
+
+  argument in scales and secondary axes has been renamed to
+
+  ```
+  transform
+  ```
+
+  . The
+
+  ```
+  trans
+  ```
+
+  argument itself is deprecated. To access the transformation from the scale, a new
+
+  ```
+  get_transformation()
+  ```
+
+  method is added to Scale-classes (#5558).
+* Providing a numeric vector to
+
+  ```
+  theme(legend.position)
+  ```
+
+  has been deprecated. To set the default legend position inside the plot use
+
+  ```
+  theme(legend.position = "inside", legend.position.inside = c(...))
+  ```
+
+  instead.
+[END TEXT]
+
+[...]
+[NOTE] Omitted: 3.5.0 "New features" (guide system, coord_radial, patterns) and most improvements and bug fixes, except the three bullets below.
+
+===============================================================================
+6. ggplot2 3.5.0, Improvements: geom_boxplot() gains an outliers argument
+https://ggplot2.tidyverse.org/news/
+===============================================================================
+
+[TEXT]
+* ```
+  geom_boxplot()
+  ```
+
+  gains an
+
+  ```
+  outliers
+  ```
+
+  argument to switch outliers on or off, in a manner that does affects the scale range. For hiding outliers that does not affect the scale range, you can continue to use
+
+  ```
+  outlier.shape = NA
+  ```
+
+  (@teunbrand, #4892).
+[END TEXT]
+
+===============================================================================
+7. ggplot2 3.5.0, Improvements: facet_grid()/facet_wrap() gain an axes argument
+https://ggplot2.tidyverse.org/news/
+===============================================================================
+
+[TEXT]
+* The new argument
+
+  ```
+  axes
+  ```
+
+  in
+
+  ```
+  facet_grid()
+  ```
+
+  and
+
+  ```
+  facet_wrap()
+  ```
+
+  controls the display of axes at interior panel positions. Additionally, the
+
+  ```
+  axis.labels
+  ```
+
+  argument can be used to only draw tick marks or fully labelled axes (@teunbrand, #4064).
+[END TEXT]
+
+===============================================================================
+8. ggplot2 3.5.0, Bug fixes: ggsave() and directory creation (new create.dir argument)
+https://ggplot2.tidyverse.org/news/
+===============================================================================
+
+[TEXT]
+* ```
+  ggsave()
+  ```
+
+  no longer sometimes creates new directories, which is now controlled by the new
+
+  ```
+  create.dir
+  ```
+
+  argument (#5489).
+[END TEXT]
+
+[...]
+[NOTE] Omitted: the rest of 3.5.0. Entries for 3.4.4 and earlier (the installed version and before) are not held.
+
+===============================================================================
+9. dplyr 1.2.0 (CRAN release 2026-02-03): heading and the first new feature, filter_out()
+https://dplyr.tidyverse.org/news/
+===============================================================================
+
+[TEXT]
+## dplyr 1.2.0
+
+CRAN release: 2026-02-03
+
+### New features
+
+* New
+
+  ```
+  filter_out()
+  ```
+
+  companion to
+
+  ```
+  filter()
+  ```
+
+  .
+  + Use
+
+    ```
+    filter()
+    ```
+
+    when specifying rows to keep.
+  + Use
+
+    ```
+    filter_out()
+    ```
+
+    when specifying rows to drop.
+
+  ```
+  filter_out()
+  ```
+
+  simplifies cases where you would have previously used a
+
+  ```
+  filter()
+  ```
+
+  to drop rows. It is particularly useful when missing values are involved. For example, to drop rows where the
+
+  ```
+  count
+  ```
+
+  is zero:
+
+  ```
+  df |> filter(count != 0 | is.na(count)) df |> filter_out(count == 0)
+  ```
+
+  With
+
+  ```
+  filter()
+  ```
+
+  , you must provide a “negative” condition of
+
+  ```
+  != 0
+  ```
+
+  and must explicitly guard against accidentally dropping rows with
+
+  ```
+  NA
+  ```
+
+  . With
+
+  ```
+  filter_out()
+  ```
+
+  , you directly specify rows to drop and you don’t have to guard against dropping rows with
+
+  ```
+  NA
+  ```
+
+  , which tends to result in much clearer code.
+
+  This work is a result of Tidyup 8: Expanding the
+
+  ```
+  filter()
+  ```
+
+  family, with a lot of great feedback from the community (#6560, #6891).
+[END TEXT]
+
+[...]
+[NOTE] Omitted: when_any()/when_all().
+
+===============================================================================
+10. dplyr 1.2.0, New features: case_when() becomes one of a family of four (replace_when(), recode_values(), replace_values())
+https://dplyr.tidyverse.org/news/
+===============================================================================
+
+[TEXT]
+* ```
+  case_when()
+  ```
+
+  is now part of a family of 4 related functions, 3 of which are new:
+  + Use
+
+    ```
+    case_when()
+    ```
+
+    to create a new vector based on logical conditions.
+  + Use
+
+    ```
+    replace_when()
+    ```
+
+    to update an existing vector based on logical conditions.
+  + Use
+
+    ```
+    recode_values()
+    ```
+
+    to create a new vector by mapping all old values to new values.
+  + Use
+
+    ```
+    replace_values()
+    ```
+
+    to update an existing vector by mapping some old values to new values.
+
+  Learn all about these in a new vignette,
+
+  ```
+  vignette("recoding-replacing")
+  ```
+
+  .
+
+  ```
+  replace_when()
+  ```
+
+  is particularly useful for conditionally mutating rows within one or more columns, and can be thought of as an enhanced version of
+
+  ```
+  base::replace()
+  ```
+
+  .
+
+  ```
+  recode_values()
+  ```
+
+  and
+
+  ```
+  replace_values()
+  ```
+
+  have the familiar
+
+  ```
+  case_when()
+  ```
+
+  -style formula interface for easy interactive use, but also have
+
+  ```
+  from
+  ```
+
+  and
+
+  ```
+  to
+  ```
+
+  arguments as a way for you to incorporate a pre-built lookup table, making them more holistic replacements for both
+
+  ```
+  case_match()
+  ```
+
+  and
+
+  ```
+  recode()
+  ```
+
+  .
+
+  This work is a result of Tidyup 7: Recoding and replacing values in the tidyverse, with a lot of great feedback from the community (#7728, #7729).
+[END TEXT]
+
+===============================================================================
+11. dplyr 1.2.0, New features: case_when() gains .unmatched
+https://dplyr.tidyverse.org/news/
+===============================================================================
+
+[TEXT]
+* ```
+  case_when()
+  ```
+
+  has gained a new
+
+  ```
+  .unmatched
+  ```
+
+  argument. For extra safety, set
+
+  ```
+  .unmatched = "error"
+  ```
+
+  rather than providing a
+
+  ```
+  .default
+  ```
+
+  when you believe that you’ve handled every possible case, and it will error if a case is left unhandled. The new
+
+  ```
+  recode_values()
+  ```
+
+  also has this argument (#7653).
+[END TEXT]
+
+[...]
+[NOTE] Omitted: speed of if_else()/case_when()/coalesce(), between(ptype), rbind() for rowwise_df.
+
+===============================================================================
+12. dplyr 1.2.0, "Lifecycle changes": "Newly stable" and "Newly deprecated", whole
+https://dplyr.tidyverse.org/news/
+===============================================================================
+
+[TEXT]
+### Lifecycle changes
+
+#### Newly stable
+
+* ```
+  .by
+  ```
+
+  has moved from experimental to stable (#7762).
+* ```
+  reframe()
+  ```
+
+  has moved from experimental to stable (#7713, @VisruthSK).
+
+#### Newly deprecated
+
+* ```
+  case_match()
+  ```
+
+  is soft-deprecated, and is fully replaced by
+
+  ```
+  recode_values()
+  ```
+
+  and
+
+  ```
+  replace_values()
+  ```
+
+  , which are more flexible, more powerful, and have much better names.
+* In
+
+  ```
+  case_when()
+  ```
+
+  , supplying all size 1 LHS inputs along with a size >1 RHS input is now soft-deprecated. This is an improper usage of
+
+  ```
+  case_when()
+  ```
+
+  that should instead be a series of if statements, like:
+
+  ```
+  # Scalars! code <- 1L flavor <- "vanilla" # Improper usage: case_when( code == 1L && flavor == "chocolate" ~ x, code == 1L && flavor == "vanilla" ~ y, code == 2L && flavor == "vanilla" ~ z, .default = default ) # Recommended: if (code == 1L && flavor == "chocolate") { x } else if (code == 1L && flavor == "vanilla") { y } else if (code == 2L && flavor == "vanilla") { z } else { default }
+  ```
+
+  The recycling behavior that allows this style of
+
+  ```
+  case_when()
+  ```
+
+  to work is unsafe, and can result in silent bugs that we’d like to guard against with an error in the future (#7082).
+* The
+
+  ```
+  dplyr.legacy_locale
+  ```
+
+  global option is soft-deprecated. If you used this to affect the ordering of
+
+  ```
+  arrange()
+  ```
+
+  , use
+
+  ```
+  arrange(.locale =)
+  ```
+
+  instead. If you used this to affect the ordering of
+
+  ```
+  group_by() |> summarise()
+  ```
+
+  , follow up with an additional call to
+
+  ```
+  arrange(.locale =)
+  ```
+
+  instead (#7760).
+* Passing
+
+  ```
+  size
+  ```
+
+  to
+
+  ```
+  if_else()
+  ```
+
+  is now deprecated. The output size is always taken from the
+
+  ```
+  condition
+  ```
+
+  (#7722).
+[END TEXT]
+
+[...]
+[NOTE] Omitted: the list of long-deprecated functions now defunct, warning or removed, except the item below (none of the others is in the book's function list).
+
+===============================================================================
+13. dplyr 1.2.0, now defunct: returning more or less than 1 row per group in summarise()
+https://dplyr.tidyverse.org/news/
+===============================================================================
+
+[TEXT]
+  + Returning more or less than 1 row per group in
+
+    ```
+    summarise()
+    ```
+
+    . Deprecated in 1.1.0 (Jan 2023), use
+
+    ```
+    reframe()
+    ```
+
+    instead.
+[END TEXT]
+
+[...]
+[NOTE] Omitted: other defunct, warning and removed items; minor improvements except the three below.
+
+===============================================================================
+14. dplyr 1.2.0, Minor improvements: base pipe in the documentation
+https://dplyr.tidyverse.org/news/
+===============================================================================
+
+[TEXT]
+* The base pipe is now used throughout the documentation (#7711).
+[END TEXT]
+
+===============================================================================
+15. dplyr 1.2.0, Minor improvements: the .groups message from summarise()
+https://dplyr.tidyverse.org/news/
+===============================================================================
+
+[TEXT]
+* The
+
+  ```
+  .groups
+  ```
+
+  message emitted by
+
+  ```
+  summarise()
+  ```
+
+  is hopefully more clear now (#6986).
+[END TEXT]
+
+===============================================================================
+16. dplyr 1.2.0, Minor improvements: R >= 4.1.0 required
+https://dplyr.tidyverse.org/news/
+===============================================================================
+
+[TEXT]
+* R >=4.1.0 is now required, in line with the tidyverse standard of supporting the previous 5 minor releases of R (#7711).
+[END TEXT]
+
+[...]
+[NOTE] Entries for dplyr 1.1.4 (the installed version) and earlier are not held.
+
+===============================================================================
+17. readr 2.2.0, whole entry (removed deprecated functions; literal data must be wrapped in I())
+https://readr.tidyverse.org/news/
+===============================================================================
+
+[TEXT]
+## readr 2.2.0
+
+This release advances many deprecations.
+
+* ```
+  melt_csv()
+  ```
+
+  ,
+
+  ```
+  melt_csv2()
+  ```
+
+  ,
+
+  ```
+  melt_delim()
+  ```
+
+  ,
+
+  ```
+  melt_tsv()
+  ```
+
+  ,
+
+  ```
+  melt_fwf()
+  ```
+
+  ,
+
+  ```
+  melt_table()
+  ```
+
+  ,
+
+  ```
+  melt_table2()
+  ```
+
+  , and all
+
+  ```
+  melt_*_chunked()
+  ```
+
+  variants have been removed from readr. These functions were deprecated in readr 2.0.0 (2021-07-20). See the meltr package (https://github.com/r-lib/meltr).
+* ```
+  read_table2()
+  ```
+
+  has been removed from readr. This function was deprecated in readr 2.0.0 (2021-07-20) in favor of
+
+  ```
+  read_table()
+  ```
+
+  . Use
+
+  ```
+  read_table()
+  ```
+
+  instead.
+* ```
+  read_csv()
+  ```
+
+  ,
+
+  ```
+  read_csv2()
+  ```
+
+  ,
+
+  ```
+  read_tsv()
+  ```
+
+  ,
+
+  ```
+  read_delim()
+  ```
+
+  , and
+
+  ```
+  read_fwf()
+  ```
+
+  now emit a deprecation warning when literal data is passed without wrapping it in
+
+  ```
+  I()
+  ```
+
+  . For example, usage like
+
+  ```
+  read_csv(I("x,y\n1,2"))
+  ```
+
+  is preferred over
+
+  ```
+  read_csv("x,y\n1,2")
+  ```
+
+  (#1611).
+* The
+
+  ```
+  quote_escape
+  ```
+
+  parameter has been removed from
+
+  ```
+  write_delim()
+  ```
+
+  ,
+
+  ```
+  write_csv()
+  ```
+
+  ,
+
+  ```
+  write_csv2()
+  ```
+
+  ,
+
+  ```
+  write_excel_csv()
+  ```
+
+  ,
+
+  ```
+  write_excel_csv2()
+  ```
+
+  ,
+
+  ```
+  write_tsv()
+  ```
+
+  ,
+
+  ```
+  format_delim()
+  ```
+
+  ,
+
+  ```
+  format_csv()
+  ```
+
+  ,
+
+  ```
+  format_csv2()
+  ```
+
+  , and
+
+  ```
+  format_tsv()
+  ```
+
+  . This parameter was deprecated in readr 2.0.0 (2021-07-20) in favor of the
+
+  ```
+  escape
+  ```
+
+  parameter. Use
+
+  ```
+  escape
+  ```
+
+  instead.
+* The
+
+  ```
+  path
+  ```
+
+  parameter has been removed from
+
+  ```
+  write_delim()
+  ```
+
+  ,
+
+  ```
+  write_csv()
+  ```
+
+  ,
+
+  ```
+  write_csv2()
+  ```
+
+  ,
+
+  ```
+  write_excel_csv()
+  ```
+
+  ,
+
+  ```
+  write_excel_csv2()
+  ```
+
+  ,
+
+  ```
+  write_tsv()
+  ```
+
+  ,
+
+  ```
+  write_lines()
+  ```
+
+  ,
+
+  ```
+  write_file()
+  ```
+
+  , and
+
+  ```
+  write_rds()
+  ```
+
+  . This parameter was deprecated in readr 1.4.0 (2020-01-31) in favor of the
+
+  ```
+  file
+  ```
+
+  parameter. Use
+
+  ```
+  file
+  ```
+
+  instead.
+* The
+
+  ```
+  skip_empty_rows
+  ```
+
+  argument of
+
+  ```
+  fwf_empty()
+  ```
+
+  now throws an error if used in edition 2. This argument was deprecated in readr 2.0.0 (2021-07-20).
+* The
+
+  ```
+  quoted_na
+  ```
+
+  argument now throws an error if used in edition 2 with
+
+  ```
+  read_delim()
+  ```
+
+  ,
+
+  ```
+  read_csv()
+  ```
+
+  ,
+
+  ```
+  read_csv2()
+  ```
+
+  , or
+
+  ```
+  read_tsv()
+  ```
+
+  . This usage was first deprecated in readr 2.0.0 (2021-07-20).
+[END TEXT]
+
+===============================================================================
+18. readr 2.1.6 (CRAN release 2025-11-14), whole entry
+https://readr.tidyverse.org/news/
+===============================================================================
+
+[TEXT]
+## readr 2.1.6
+
+CRAN release: 2025-11-14
+
+* ```
+  locale(encoding =)
+  ```
+
+  now warns, instead of errors, when the
+
+  ```
+  encoding
+  ```
+
+  cannot be found in the return value of
+
+  ```
+  iconvlist()
+  ```
+
+  . The motivation is to remove an unnecessary blocker on platforms, such as Alpine Linux, where the output of
+
+  ```
+  iconvlist()
+  ```
+
+  does not reflect the actual capabilities (@bastistician, #1537).
+* Help files below
+
+  ```
+  man/
+  ```
+
+  have been re-generated, as part of the effort to support HTML reference manuals on CRAN.
+* readr no longer uses
+
+  ```
+  SETLENGTH()
+  ```
+
+  ,
+
+  ```
+  SET_TRUELENGTH()
+  ```
+
+  , or
+
+  ```
+  SET_GROWABLE_BIT()
+  ```
+
+  . This change improves C API compliance, with a small performance cost affecting only the legacy first edition parser.
+[END TEXT]
+
+[...]
+[NOTE] Entries for readr 2.1.5 (the installed version) and earlier are not held.
+
+===============================================================================
+19. tidyr 1.3.2 (CRAN release 2025-12-19), whole entry
+https://tidyr.tidyverse.org/news/
+===============================================================================
+
+[TEXT]
+## tidyr 1.3.2
+
+CRAN release: 2025-12-19
+
+* ```
+  fill()
+  ```
+
+  gains a
+
+  ```
+  .by
+  ```
+
+  argument as an alternative to
+
+  ```
+  dplyr::group_by()
+  ```
+
+  for applying the fill per group, similar to
+
+  ```
+  nest(.by =)
+  ```
+
+  and
+
+  ```
+  dplyr::mutate(.by =)
+  ```
+
+  (@olivroy, #1439).
+* ```
+  expand_grid()
+  ```
+
+  gains a new
+
+  ```
+  .vary
+  ```
+
+  argument, allowing users to control whether the first column varies fastest or slowest (#1543, @JamesHWade).
+* ```
+  unnest_longer()
+  ```
+
+  now places
+
+  ```
+  indices_to
+  ```
+
+  columns before value columns (#1486, @andrewshibata).
+* ```
+  unchop()
+  ```
+
+  produces a more helpful error message when columns cannot be cast to
+
+  ```
+  ptype
+  ```
+
+  (@mgirlich, #1477).
+* ```
+  unite()
+  ```
+
+  no longer errors if you provide a selection that doesn’t select any columns. Instead, it returns a column containing the empty string (#1548, @catalamarti).
+* ```
+  pivot_wider_spec()
+  ```
+
+  now throws a more informative error on non-data frame inputs (@catalamarti, #1510).
+* Fixed an internal error in
+
+  ```
+  pivot_wider()
+  ```
+
+  (#1609, @krlmlr).
+* R >=4.1.0 is now required, in line with the tidyverse standard of supporting the previous 5 minor releases of R (#1613).
+* The base pipe is now used throughout the documentation (#1613).
+* tidyr now requires dplyr >=1.1.0 (#1568, @catalamarti).
+* tidyr is now compliant with R’s C API (#1618).
+[END TEXT]
+
+[...]
+[NOTE] The page lists no entry headed tidyr 1.3.1 (the installed version): after 1.3.2 it goes to 1.3.0. Entries for 1.3.0 and earlier are not held.

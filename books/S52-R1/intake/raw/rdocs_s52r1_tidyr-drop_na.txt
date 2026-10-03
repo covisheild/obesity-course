@@ -1,0 +1,36 @@
+drop_na                 package:tidyr                  R Documentation
+
+Drop rows containing missing values
+
+Description:
+
+     'drop_na()' drops rows where any column specified by '...'
+     contains a missing value.
+
+Usage:
+
+     drop_na(data, ...)
+     
+Arguments:
+
+    data: A data frame.
+
+     ...: <'tidy-select'> Columns to inspect for missing values. If
+          empty, all columns are used.
+
+Details:
+
+     Another way to interpret 'drop_na()' is that it only keeps the
+     "complete" rows (where no rows contain missing values).
+     Internally, this completeness is computed through
+     'vctrs::vec_detect_complete()'.
+
+Examples:
+
+     df <- tibble(x = c(1, 2, NA), y = c("a", NA, "b"))
+     df %>% drop_na()
+     df %>% drop_na(x)
+     
+     vars <- "y"
+     df %>% drop_na(x, any_of(vars))
+     

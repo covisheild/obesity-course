@@ -1,0 +1,51 @@
+definition.text: '`summarise()`, from the dplyr package, makes a new data frame. It has one row for each group, or a single row for the whole data frame when there are no groups.
+
+
+  The function `n()` gives the number of rows in the group, whatever they hold. The function `sd()` gives the standard deviation, dividing by one less than the count. The function `quantile()` gives quartiles and other quantiles, and `IQR()` gives the interquartile range. Both use the seventh of nine rules for placing a quantile between two values, unless told otherwise.
+
+
+  `group_by()` marks a data frame as grouped by one or more columns, so that the next verbs work group by group. `ungroup()` removes the marking. The `.by` argument of `summarise()` groups for that one step only, and leaves the result ungrouped.
+
+
+  `count(a)` gives the number of rows for each value of `a`.
+
+  '
+simplified_explanation: 'The shape of the answer tells you what you asked for. Three species give three rows. If you expected three rows and got eight, you grouped by something else as well.
+
+
+  Put the count beside every summary.
+
+
+  Quartiles have more than one recipe. None is wrong. Say which you used.
+
+
+  Never copy a number off the screen into a report. If the data change, rerun the script and the file changes with them.
+
+
+  A summary describes the rows in your file. It is not, by itself, a figure for anyone outside it.
+
+  '
+must_know[0].point: 'Print the count beside every summary, and print the right count. `n()` counts rows. With `na.rm = TRUE`, a mean uses only the rows that have a value, so count those with `sum(!is.na(x))`.
+
+  '
+must_know[1].point: 'The error is to think `na.rm = TRUE` fixes missing values. It only leaves them out, without a word.
+
+  '
+must_know[2].point: 'Check the shape of the result before reading a number.
+
+  '
+must_know[3].point: 'After `group_by()` on two columns, `summarise()` leaves the result grouped by the first. A percentage worked out next is a percentage within each group, not of the total.
+
+  '
+must_know[4].point: 'When two tables disagree on a quartile, ask which rule each used before you suspect the data.
+
+  '
+must_know[5].point: 'A number copied off the screen into a thesis cannot be traced back.
+
+  '
+must_know[6].point: 'Then ask for the median beside the mean, as Book 0 taught.
+
+  '
+must_know[7].point: 'It is not an estimate for any population unless the rows were chosen to stand for one. For a survey, it also needs the survey''s sample weights, which a later book teaches.
+
+  '

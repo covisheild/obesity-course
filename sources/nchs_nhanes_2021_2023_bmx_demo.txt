@@ -1,0 +1,2282 @@
+NHANES AUGUST 2021-AUGUST 2023: BODY MEASURES (BMX_L) AND DEMOGRAPHIC VARIABLES AND SAMPLE WEIGHTS
+(DEMO_L) - THE TWO DATA FILES, THEIR CODEBOOKS AND THE NCHS DATA USER AGREEMENT
+============================================================
+
+Transcription rule for this file: every line beneath a block heading that is not
+prefixed with [NOTE] is an exact, unaltered slice of the raw text named in that heading
+(RAW: books/S52-R1/intake/raw/<name>), cut programmatically (raw[i:j], one contiguous slice per
+block) by books/S52-R1/intake/build-d/build.py and re-checked by build-d/verify.py as a
+whitespace-normalised substring of that raw text; nothing has been paraphrased, smoothed or
+merged. Each block's passage is set in double quotation marks (the marks are this file's).
+Material left out is marked [...] with a [NOTE]. Lines beginning [NOTE] are this file's own
+annotation and are NOT source text.
+Blocks 1-2 are output of this repository's scripts (R 4.3.3, haven 2.5.4) run on the data files;
+blocks 3-7 are the text layer of the codebook PDFs Harsh printed; blocks 8-10 are pages fetched by
+the S52-R1 group c intake (TinyFish, 2026-10-02).
+
+WHAT IT IS: the National Center for Health Statistics (NCHS, Centers for Disease Control and
+Prevention), National Health and Nutrition Examination Survey (NHANES), August 2021-August 2023
+cycle: the public data files BMX_L.xpt (Body Measures, Mobile Examination Center) and DEMO_L.xpt
+(Demographic Variables and Sample Weights), SAS transport format, each "First Published: September
+2024", "Last Revised: NA" (blocks 3 and 5).
+CITATION: National Center for Health Statistics. National Health and Nutrition Examination Survey,
+August 2021-August 2023: Body Measures (BMX_L) and Demographic Variables and Sample Weights (DEMO_L)
+data files and documentation. NCHS, Centers for Disease Control and Prevention; first published
+September 2024. https://wwwn.cdc.gov/Nchs/Data/Nhanes/Public/2021/DataFiles/ (accessed 2 October 2026).
+
+THE DATA FILES HELD (byte for byte, not text): sources/data/BMX_L.xpt and sources/data/DEMO_L.xpt.
+Harsh downloaded them in a browser on 2 Oct 2026 from the .xpt links of the same folder as the
+codebooks, https://wwwn.cdc.gov/Nchs/Data/Nhanes/Public/2021/DataFiles/ (BMX_L.xpt, DEMO_L.xpt),
+and supplied them to this intake; they were copied unchanged into sources/data/ and their MD5
+re-checked after copying. Recorded by script (block 1):
+  BMX_L.xpt: 1563200 bytes, MD5 ab25a36296e5b61881d42fef61c06b84, 8860 rows x 22 columns
+  DEMO_L.xpt: 2582160 bytes, MD5 14555b1f4e3c909172e900f63a2ecd03, 11933 rows x 27 columns
+  missing (NA) in BMX_L: BMXWT 106, BMXHT 361, BMXBMI 389, BMXWAIST 670
+  every BMX_L SEQN is in DEMO_L; after the join on SEQN, BMX rows with RIDAGEYR >= 20: 6064
+THE CODEBOOKS: printed by Harsh to PDF from the CDC pages
+https://wwwn.cdc.gov/Nchs/Data/Nhanes/Public/2021/DataFiles/BMX_L.htm and .../DEMO_L.htm on 2 Oct 2026.
+The PDFs confirm it: every page's header prints the print time ("10/2/26, 11:31 AM" on BMX_L,
+"10/2/26, 11:32 AM" on DEMO_L) and the page title, and every footer prints the page's URL and a
+page counter ("1/24" ... "24/24" for BMX_L; "1/31" ... "31/31" for DEMO_L, the 31 pages split by Harsh
+into three consecutive PDFs of 11, 10 and 10 pages). BMX_L_codebook.pdf: 24 pages, 4,783,331
+bytes, MD5 a79aea0f5af6fb33900adc1de12abaa7, creator Chrome 154 (Skia/PDF). DEMO_L_codebook_part1/2/3.pdf:
+319,478 / 262,890 / 250,196 bytes, MD5 92b19db5aa76e918fa4912fcd6eea083 / fd825c0fb9eab2e687c72642bd1a75c6 /
+5287d4d238f8a588b7e7bd9bad2b7128 (split with PDFsam Basic). The PDFs are not held in the repository.
+PRINTED COUNTS AGAINST THE DATA: every printed code-table row of both codebooks (155 rows, 47
+variables with tables) agrees with the count computed from the .xpt files, cumulative column
+included (block 2). SEQN has no table in either codebook.
+TERMS (block 10): the NCHS Data User Agreement, dated "September 17, 2024": users will "1. Use the
+data in this dataset for statistical reporting and analysis only. 2. Make no attempt to learn the
+identity of any person or establishment included in these data. 3. Not link this dataset with
+individually identifiable data from other NCHS or non-NCHS datasets. ..." Neither the agreement
+nor the codebooks state a copyright or a licence.
+[NOTE] Any summary of these files in the book is unweighted: the codebooks say the examination
+sample weights "should be used to analyze the body measures data" (block 3) and the 2-year weights
+"should be used for all NHANES August 2021-August 2023 analyses" (block 5). An unweighted mean
+describes these participants and estimates nothing about the US population (survey weights are
+S54's subject).
+
+WHAT THIS FILE HOLDS: script-recorded facts of the two data files (block 1); the printed-vs-computed
+comparison (block 2); the BMX_L documentation and codebook whole (blocks 3-4); the DEMO_L
+documentation and codebook whole (blocks 5-7); the two rows of the NHANES data pages that list the
+files (blocks 8-9); the NCHS Data User Agreement (block 10).
+NOT HELD: the frequency listing at the end of the nhanes.R output (it is in the raw file and is
+superseded by block 2); the browser's navigation sidebar on each codebook page; the NHANES
+Anthropometry Procedures Manual, Plan and Operations report and Analytic Guidelines that the
+codebooks name (not opened).
+
+
+===============================================================================
+1. Facts recorded by script from the two .xpt files held in sources/data/ (whole output up to the frequency listing)
+RAW: nchs_nhanes_2021_2023_bmx_demo-facts.txt (output of build-d/nhanes.R, R 4.3.3, haven 2.5.4)
+===============================================================================
+
+[NOTE] This block is output of this repository's script, not text of NCHS. The labels of five DEMO_L variables contain the byte 0x92 (a Windows-1252 apostrophe) where the codebook prints 'person’s'; R prints that byte as <92>.
+
+"R version: R version 4.3.3 (2024-02-29) 
+haven version (packageVersion): 2.5.4 
+
+== BMX_L
+file: sources/data/BMX_L.xpt 
+bytes: 1563200 
+md5: ab25a36296e5b61881d42fef61c06b84 
+rows: 8860 
+columns: 22 
+variables (name: label as read by read_xpt; class):
+  SEQN: Respondent sequence number; numeric
+  BMDSTATS: Body Measures Component Status Code; numeric
+  BMXWT: Weight (kg); numeric
+  BMIWT: Weight Comment; numeric
+  BMXRECUM: Recumbent Length (cm); numeric
+  BMIRECUM: Recumbent Length Comment; numeric
+  BMXHEAD: Head Circumference (cm); numeric
+  BMIHEAD: Head Circumference Comment; numeric
+  BMXHT: Standing Height (cm); numeric
+  BMIHT: Standing Height Comment; numeric
+  BMXBMI: Body Mass Index (kg/m**2); numeric
+  BMDBMIC: BMI Category - Children/Youth; numeric
+  BMXLEG: Upper Leg Length (cm); numeric
+  BMILEG: Upper Leg Length Comment; numeric
+  BMXARML: Upper Arm Length (cm); numeric
+  BMIARML: Upper Arm Length Comment; numeric
+  BMXARMC: Arm Circumference (cm); numeric
+  BMIARMC: Arm Circumference Comment; numeric
+  BMXWAIST: Waist Circumference (cm); numeric
+  BMIWAIST: Waist Circumference Comment; numeric
+  BMXHIP: Hip Circumference (cm); numeric
+  BMIHIP: Hip Circumference Comment; numeric
+
+== DEMO_L
+file: sources/data/DEMO_L.xpt 
+bytes: 2582160 
+md5: 14555b1f4e3c909172e900f63a2ecd03 
+rows: 11933 
+columns: 27 
+variables (name: label as read by read_xpt; class):
+  SEQN: Respondent sequence number; numeric
+  SDDSRVYR: Data release cycle; numeric
+  RIDSTATR: Interview/Examination status; numeric
+  RIAGENDR: Gender; numeric
+  RIDAGEYR: Age in years at screening; numeric
+  RIDAGEMN: Age in months at screening - 0 to 24 mos; numeric
+  RIDRETH1: Race/Hispanic origin; numeric
+  RIDRETH3: Race/Hispanic origin w/ NH Asian; numeric
+  RIDEXMON: Six-month time period; numeric
+  RIDEXAGM: Age in months at exam - 0 to 19 years; numeric
+  DMQMILIZ: Served active duty in US Armed Forces; numeric
+  DMDBORN4: Country of birth; numeric
+  DMDYRUSR: Length of time in US; numeric
+  DMDEDUC2: Education level - Adults 20+; numeric
+  DMDMARTZ: Marital status; numeric
+  RIDEXPRG: Pregnancy status at exam; numeric
+  DMDHHSIZ: Total number of people in the Household; numeric
+  DMDHRGND: HH ref person<92>s gender; numeric
+  DMDHRAGZ: HH ref person<92>s age in years; numeric
+  DMDHREDZ: HH ref person<92>s education level; numeric
+  DMDHRMAZ: HH ref person<92>s marital status; numeric
+  DMDHSEDZ: HH ref person<92>s spouse<92>s education level; numeric
+  WTINT2YR: Full sample 2-year interview weight; numeric
+  WTMEC2YR: Full sample 2-year MEC exam weight; numeric
+  SDMVSTRA: Masked variance pseudo-stratum; numeric
+  SDMVPSU: Masked variance pseudo-PSU; numeric
+  INDFMPIR: Ratio of family income to poverty; numeric
+
+== BMX_L: missing values (sum(is.na())) for four measures
+  BMXWT: 106
+  BMXHT: 361
+  BMXBMI: 389
+  BMXWAIST: 670
+
+== DEMO_L: counts
+  RIDSTATR (table, NA included):
+
+   1    2 <NA> 
+3073 8860    0 
+  RIAGENDR (table, NA included):
+
+   1    2 <NA> 
+5575 6358    0 
+  RIDAGEYR range (min, max): 0 80 
+  RIDAGEYR missing: 0 
+  RIDAGEYR == 80 (top code): 525 
+
+== Join BMX_L to DEMO_L on SEQN (dplyr-free: merge, all.x = TRUE)
+  SEQN unique in BMX_L: TRUE ; SEQN unique in DEMO_L: TRUE 
+  BMX_L SEQNs found in DEMO_L: 8860 of 8860 
+  rows after join: 8860 
+  RIDSTATR among joined BMX rows (table):
+
+   2 <NA> 
+8860    0 
+  BMX rows with RIDAGEYR >= 20: 6064 
+  of these, missing BMXWT / BMXHT / BMXBMI / BMXWAIST: 81 / 67 / 94 / 302 
+  of these, RIDEXPRG == 1 (pregnant at exam): 41"
+
+
+===============================================================================
+2. Every printed code-table row of both codebooks compared with the count in the .xpt files
+RAW: nchs_nhanes_2021_2023_bmx_demo-printed-vs-computed.txt (output of build-d/compare.R, haven 2.5.4)
+===============================================================================
+
+[NOTE] Output of this repository's scripts, not text of NCHS: parse_codebook.py read the rows from the raw codebook texts (blocks 5-9); compare.R counted each row in the data (a code counts equal values; a range counts non-missing values between its ends that have no code row of their own; '.' counts NA) and recomputed the cumulative column.
+
+"haven 2.5.4 
+ dataset variable code_or_value                description                                     count computed cumulative computed_cum agree
+ BMX_L   SEQN                                  (no code table printed)                                  NA                  NA        -    
+ BMX_L   BMDSTATS 1                            Complete data for age group                     8235   8235    8235        8235        yes  
+ BMX_L   BMDSTATS 2                            Partial: Only height and weight obtained        147     147    8382        8382        yes  
+ BMX_L   BMDSTATS 3                            Other partial exam                              409     409    8791        8791        yes  
+ BMX_L   BMDSTATS 4                            No body measures exam data                      69       69    8860        8860        yes  
+ BMX_L   BMDSTATS .                            Missing                                         0         0    8860        8860        yes  
+ BMX_L   BMXWT    2.7 to 248.2                 Range of Values                                 8754   8754    8754        8754        yes  
+ BMX_L   BMXWT    .                            Missing                                         106     106    8860        8860        yes  
+ BMX_L   BMIWT    1                            Could not obtain                                30       30    30            30        yes  
+ BMX_L   BMIWT    3                            Clothing                                        296     296    326          326        yes  
+ BMX_L   BMIWT    4                            Medical appliance                               19       19    345          345        yes  
+ BMX_L   BMIWT    .                            Missing                                         8515   8515    8860        8860        yes  
+ BMX_L   BMXRECUM 48.5 to 118.8                Range of Values                                 454     454    454          454        yes  
+ BMX_L   BMXRECUM .                            Missing                                         8406   8406    8860        8860        yes  
+ BMX_L   BMIRECUM 1                            Could not obtain                                18       18    18            18        yes  
+ BMX_L   BMIRECUM 3                            Not straight                                    0         0    18            18        yes  
+ BMX_L   BMIRECUM .                            Missing                                         8842   8842    8860        8860        yes  
+ BMX_L   BMXHEAD  34.4 to 46.5                 Range of Values                                 70       70    70            70        yes  
+ BMX_L   BMXHEAD  .                            Missing                                         8790   8790    8860        8860        yes  
+ BMX_L   BMIHEAD  1                            Could not obtain                                0         0    0              0        yes  
+ BMX_L   BMIHEAD  .                            Missing                                         8860   8860    8860        8860        yes  
+ BMX_L   BMXHT    79.1 to 200.7                Range of Values                                 8499   8499    8499        8499        yes  
+ BMX_L   BMXHT    .                            Missing                                         361     361    8860        8860        yes  
+ BMX_L   BMIHT    1                            Could not obtain                                46       46    46            46        yes  
+ BMX_L   BMIHT    3                            Not straight                                    88       88    134          134        yes  
+ BMX_L   BMIHT    .                            Missing                                         8726   8726    8860        8860        yes  
+ BMX_L   BMXBMI   11.1 to 74.8                 Range of Values                                 8471   8471    8471        8471        yes  
+ BMX_L   BMXBMI   .                            Missing                                         389     389    8860        8860        yes  
+ BMX_L   BMDBMIC  1                            Underweight                                     92       92    92            92        yes  
+ BMX_L   BMDBMIC  2                            Normal weight                                   1469   1469    1561        1561        yes  
+ BMX_L   BMDBMIC  3                            Overweight                                      372     372    1933        1933        yes  
+ BMX_L   BMDBMIC  4                            Obese                                           559     559    2492        2492        yes  
+ BMX_L   BMDBMIC  .                            Missing                                         6368   6368    8860        8860        yes  
+ BMX_L   BMXLEG   24.9 to 51.6                 Range of Values                                 7335   7335    7335        7335        yes  
+ BMX_L   BMXLEG   .                            Missing                                         1525   1525    8860        8860        yes  
+ BMX_L   BMILEG   1                            Could not obtain                                396     396    396          396        yes  
+ BMX_L   BMILEG   .                            Missing                                         8464   8464    8860        8860        yes  
+ BMX_L   BMXARML  10 to 49.2                   Range of Values                                 8568   8568    8568        8568        yes  
+ BMX_L   BMXARML  .                            Missing                                         292     292    8860        8860        yes  
+ BMX_L   BMIARML  1                            Could not obtain                                200     200    200          200        yes  
+ BMX_L   BMIARML  .                            Missing                                         8660   8660    8860        8860        yes  
+ BMX_L   BMXARMC  12 to 63.3                   Range of Values                                 8562   8562    8562        8562        yes  
+ BMX_L   BMXARMC  .                            Missing                                         298     298    8860        8860        yes  
+ BMX_L   BMIARMC  1                            Could not obtain                                205     205    205          205        yes  
+ BMX_L   BMIARMC  .                            Missing                                         8655   8655    8860        8860        yes  
+ BMX_L   BMXWAIST 39.8 to 187                  Range of Values                                 8190   8190    8190        8190        yes  
+ BMX_L   BMXWAIST .                            Missing                                         670     670    8860        8860        yes  
+ BMX_L   BMIWAIST 1                            Could not obtain                                347     347    347          347        yes  
+ BMX_L   BMIWAIST .                            Missing                                         8513   8513    8860        8860        yes  
+ BMX_L   BMXHIP   69.9 to 187.1                Range of Values                                 6776   6776    6776        6776        yes  
+ BMX_L   BMXHIP   .                            Missing                                         2084   2084    8860        8860        yes  
+ BMX_L   BMIHIP   1                            Could not obtain                                361     361    361          361        yes  
+ BMX_L   BMIHIP   .                            Missing                                         8499   8499    8860        8860        yes  
+ DEMO_L  SEQN                                  (no code table printed)                                  NA                  NA        -    
+ DEMO_L  SDDSRVYR 12                           NHANES August 2021-August 2023 public           11933 11933    11933      11933        yes  
+ DEMO_L  SDDSRVYR .                            Missing                                         0         0    11933      11933        yes  
+ DEMO_L  RIDSTATR 1                            Interviewed only                                3073   3073    3073        3073        yes  
+ DEMO_L  RIDSTATR 2                            Both interviewed and MEC examined               8860   8860    11933      11933        yes  
+ DEMO_L  RIDSTATR .                            Missing                                         0         0    11933      11933        yes  
+ DEMO_L  RIAGENDR 1                            Male                                            5575   5575    5575        5575        yes  
+ DEMO_L  RIAGENDR 2                            Female                                          6358   6358    11933      11933        yes  
+ DEMO_L  RIAGENDR .                            Missing                                         0         0    11933      11933        yes  
+ DEMO_L  RIDAGEYR 0 to 79                      Range of Values                                 11408 11408    11408      11408        yes  
+ DEMO_L  RIDAGEYR 80                           80 years of age and over                        525     525    11933      11933        yes  
+ DEMO_L  RIDAGEYR .                            Missing                                         0         0    11933      11933        yes  
+ DEMO_L  RIDAGEMN 0 to 24                      Range of Values                                 377     377    377          377        yes  
+ DEMO_L  RIDAGEMN .                            Missing                                         11556 11556    11933      11933        yes  
+ DEMO_L  RIDRETH1 1                            Mexican American                                1117   1117    1117        1117        yes  
+ DEMO_L  RIDRETH1 2                            Other Hispanic                                  1373   1373    2490        2490        yes  
+ DEMO_L  RIDRETH1 3                            Non-Hispanic White                              6217   6217    8707        8707        yes  
+ DEMO_L  RIDRETH1 4                            Non-Hispanic Black                              1597   1597    10304      10304        yes  
+ DEMO_L  RIDRETH1 5                            Other Race - Including Multi-Racial             1629   1629    11933      11933        yes  
+ DEMO_L  RIDRETH1 .                            Missing                                         0         0    11933      11933        yes  
+ DEMO_L  RIDRETH3 1                            Mexican American                                1117   1117    1117        1117        yes  
+ DEMO_L  RIDRETH3 2                            Other Hispanic                                  1373   1373    2490        2490        yes  
+ DEMO_L  RIDRETH3 3                            Non-Hispanic White                              6217   6217    8707        8707        yes  
+ DEMO_L  RIDRETH3 4                            Non-Hispanic Black                              1597   1597    10304      10304        yes  
+ DEMO_L  RIDRETH3 6                            Non-Hispanic Asian                              681     681    10985      10985        yes  
+ DEMO_L  RIDRETH3 7                            Other Race - Including Multi-Racial             948     948    11933      11933        yes  
+ DEMO_L  RIDRETH3 .                            Missing                                         0         0    11933      11933        yes  
+ DEMO_L  RIDEXMON 1                            November 1 through April 30                     4251   4251    4251        4251        yes  
+ DEMO_L  RIDEXMON 2                            May 1 through October 31                        4609   4609    8860        8860        yes  
+ DEMO_L  RIDEXMON .                            Missing                                         3073   3073    11933      11933        yes  
+ DEMO_L  RIDEXAGM 0 to 239                     Range of Values                                 2787   2787    2787        2787        yes  
+ DEMO_L  RIDEXAGM .                            Missing                                         9146   9146    11933      11933        yes  
+ DEMO_L  DMQMILIZ 1                            Yes                                             694     694    694          694        yes  
+ DEMO_L  DMQMILIZ 2                            No                                              7606   7606    8300        8300        yes  
+ DEMO_L  DMQMILIZ 7                            Refused                                         1         1    8301        8301        yes  
+ DEMO_L  DMQMILIZ 9                            Don't know                                      0         0    8301        8301        yes  
+ DEMO_L  DMQMILIZ .                            Missing                                         3632   3632    11933      11933        yes  
+ DEMO_L  DMDBORN4 1                            Born in 50 US states or Washington,             10039 10039    10039      10039        yes  
+ DEMO_L  DMDBORN4 2                            Others                                          1875   1875    11914      11914        yes  
+ DEMO_L  DMDBORN4 77                           Refused                                         0         0    11914      11914        yes  
+ DEMO_L  DMDBORN4 99                           Don't know                                      0         0    11914      11914        yes  
+ DEMO_L  DMDBORN4 .                            Missing                                         19       19    11933      11933        yes  
+ DEMO_L  DMDYRUSR 1                            Less than 1 year                                101     101    101          101        yes  
+ DEMO_L  DMDYRUSR 2                            1 to 4 years                                    260     260    361          361        yes  
+ DEMO_L  DMDYRUSR 3                            5 to 9 years                                    225     225    586          586        yes  
+ DEMO_L  DMDYRUSR 4                            10 to 14 years                                  160     160    746          746        yes  
+ DEMO_L  DMDYRUSR 5                            15 to 19 years                                  158     158    904          904        yes  
+ DEMO_L  DMDYRUSR 6                            20 years or more                                912     912    1816        1816        yes  
+ DEMO_L  DMDYRUSR 77                           Refused                                         13       13    1829        1829        yes  
+ DEMO_L  DMDYRUSR 99                           Don't know                                      46       46    1875        1875        yes  
+ DEMO_L  DMDYRUSR .                            Missing                                         10058 10058    11933      11933        yes  
+ DEMO_L  DMDEDUC2 1                            Less than 9th grade                             373     373    373          373        yes  
+ DEMO_L  DMDEDUC2 2                            9-11th grade (Includes 12th grade with no       666     666    1039        1039        yes  
+ DEMO_L  DMDEDUC2 3                            High school graduate/GED or equivalent          1749   1749    2788        2788        yes  
+ DEMO_L  DMDEDUC2 4                            Some college or AA degree                       2370   2370    5158        5158        yes  
+ DEMO_L  DMDEDUC2 5                            College graduate or above                       2625   2625    7783        7783        yes  
+ DEMO_L  DMDEDUC2 7                            Refused                                         0         0    7783        7783        yes  
+ DEMO_L  DMDEDUC2 9                            Don't know                                      11       11    7794        7794        yes  
+ DEMO_L  DMDEDUC2 .                            Missing                                         4139   4139    11933      11933        yes  
+ DEMO_L  DMDMARTZ 1                            Married/Living with partner                     4136   4136    4136        4136        yes  
+ DEMO_L  DMDMARTZ 2                            Widowed/Divorced/Separated                      2022   2022    6158        6158        yes  
+ DEMO_L  DMDMARTZ 3                            Never married                                   1625   1625    7783        7783        yes  
+ DEMO_L  DMDMARTZ 77                           Refused                                         4         4    7787        7787        yes  
+ DEMO_L  DMDMARTZ 99                           Don't know                                      5         5    7792        7792        yes  
+ DEMO_L  DMDMARTZ .                            Missing                                         4141   4141    11933      11933        yes  
+ DEMO_L  RIDEXPRG 1                            Yes, positive lab pregnancy test or self-       41       41    41            41        yes  
+ DEMO_L  RIDEXPRG 2                            The participant was not pregnant at exam        1065   1065    1106        1106        yes  
+ DEMO_L  RIDEXPRG 3                            Cannot ascertain if the participant is pregnant 397     397    1503        1503        yes  
+ DEMO_L  RIDEXPRG .                            Missing                                         10430 10430    11933      11933        yes  
+ DEMO_L  DMDHHSIZ 1 to 6                       Range of Values                                 11309 11309    11309      11309        yes  
+ DEMO_L  DMDHHSIZ 7                            7 or more people in the Household               624     624    11933      11933        yes  
+ DEMO_L  DMDHHSIZ .                            Missing                                         0         0    11933      11933        yes  
+ DEMO_L  DMDHRGND 1                            Male                                            1793   1793    1793        1793        yes  
+ DEMO_L  DMDHRGND 2                            Female                                          2322   2322    4115        4115        yes  
+ DEMO_L  DMDHRGND .                            Missing                                         7818   7818    11933      11933        yes  
+ DEMO_L  DMDHRAGZ 1                            <20 years                                       83       83    83            83        yes  
+ DEMO_L  DMDHRAGZ 2                            20-39 years                                     1985   1985    2068        2068        yes  
+ DEMO_L  DMDHRAGZ 3                            40-59 years                                     1804   1804    3872        3872        yes  
+ DEMO_L  DMDHRAGZ 4                            60+ years                                       252     252    4124        4124        yes  
+ DEMO_L  DMDHRAGZ .                            Missing                                         7809   7809    11933      11933        yes  
+ DEMO_L  DMDHREDZ 1                            Less than high school degree                    550     550    550          550        yes  
+ DEMO_L  DMDHREDZ 2                            High school grad/GED or some college/AA         2004   2004    2554        2554        yes  
+ DEMO_L  DMDHREDZ 3                            College graduate or above                       1192   1192    3746        3746        yes  
+ DEMO_L  DMDHREDZ .                            Missing                                         8187   8187    11933      11933        yes  
+ DEMO_L  DMDHRMAZ 1                            Married/Living with partner                     2947   2947    2947        2947        yes  
+ DEMO_L  DMDHRMAZ 2                            Widowed/Divorced/Separated                      614     614    3561        3561        yes  
+ DEMO_L  DMDHRMAZ 3                            Never Married                                   459     459    4020        4020        yes  
+ DEMO_L  DMDHRMAZ .                            Missing                                         7913   7913    11933      11933        yes  
+ DEMO_L  DMDHSEDZ 1                            Less than high school degree                    300     300    300          300        yes  
+ DEMO_L  DMDHSEDZ 2                            High school grad/GED or some college/AA         942     942    1242        1242        yes  
+ DEMO_L  DMDHSEDZ 3                            College graduate or above                       885     885    2127        2127        yes  
+ DEMO_L  DMDHSEDZ .                            Missing                                         9806   9806    11933      11933        yes  
+ DEMO_L  WTINT2YR 4584.463196 to 170968.343177 Range of Values                                 11933 11933    11933      11933        yes  
+ DEMO_L  WTINT2YR .                            Missing                                         0         0    11933      11933        yes  
+ DEMO_L  WTMEC2YR 4581.595095 to 227108.296958 Range of Values                                 8860   8860    8860        8860        yes  
+ DEMO_L  WTMEC2YR 0                            Not MEC Examined                                3073   3073    11933      11933        yes  
+ DEMO_L  WTMEC2YR .                            Missing                                         0         0    11933      11933        yes  
+ DEMO_L  SDMVSTRA 173 to 187                   Range of Values                                 11933 11933    11933      11933        yes  
+ DEMO_L  SDMVSTRA .                            Missing                                         0         0    11933      11933        yes  
+ DEMO_L  SDMVPSU  1 to 2                       Range of Values                                 11933 11933    11933      11933        yes  
+ DEMO_L  SDMVPSU  .                            Missing                                         0         0    11933      11933        yes  
+ DEMO_L  INDFMPIR 0 to 4.99                    Range of Values                                 7743   7743    7743        7743        yes  
+ DEMO_L  INDFMPIR 5                            Value greater than or equal to 5.00             2149   2149    9892        9892        yes  
+ DEMO_L  INDFMPIR .                            Missing                                         2041   2041    11933      11933        yes  
+
+rows compared: 155  agree: 155  disagree: 0 
+variables with no printed code table: BMX_L SEQN DEMO_L SEQN"
+
+
+===============================================================================
+3. BMX_L documentation: title block, component description, eligible sample, protocol and procedure, quality assurance, data processing and editing, analytic notes (printed pp. 1-3)
+RAW: nchs_nhanes_2021_2023_bmx_demo-BMX_L-codebook.txt (pdftotext -layout cropped to the main column: -x 0 -y 0 -W 480 -H 842)
+===============================================================================
+
+[NOTE] The crop leaves out the page's right-hand navigation sidebar (the browser's 'TABLE' of contents, printed beside every page) and with it the page counter at the right end of each footer; each page keeps its print-time header ('10/2/26, ...') and its footer URL inside the passage.
+
+"10/2/26, 11:31 AM                                                                  BMX_L
+
+
+  National Health and Nutrition Examination Survey
+  August 2021-August 2023 Data Documentation, Codebook, and Frequencies
+
+  Body Measures (BMX_L)
+
+  Data File: BMX_L.xpt
+
+  First Published: September 2024
+
+  Last Revised: NA
+
+
+
+  Component Description
+        NHANES body measures data are used to monitor trends in infant and child growth, to
+        estimate the prevalence of overweight and obesity in U.S. children, adolescents, and adults,
+        and to examine the associations between body weight and the health and nutritional status of
+        the U.S. population.
+
+
+        The measurements and target age groups for the public body measures data file (BMX_L) are
+        as follows:
+
+
+               Weight: All ages
+               Head circumference: birth through 6 months
+               Recumbent length: birth through 47 months
+               Standing height: 2 years and older
+               Upper leg length: 8 years and older
+               Upper arm length: 2 months and older
+               Mid-upper arm circumference: 2 months and older
+               Waist circumference: 2 years and older
+               Hip circumference: 12 years and older
+
+  Eligible Sample
+        All examined survey participants in the NHANES August 2021-August 2023 sample are
+        included in this dataset. There were no medical, safety, or other exclusions for the body
+        measures protocol. The health technicians used their discretion to obtain as many measures as
+        practical for people who used a wheelchair.
+
+
+
+  Protocol and Procedure
+        The body measures data were collected, in the Mobile Examination Center (MEC), by trained
+        health technicians. The health technician was assisted by a recorder during the body measures
+        examination. The participant’s age at the time of the screening interview determined the body
+        measures examination protocol. In some instances, the age at the screening interview and age
+        at the time of the health examination differed by several weeks. The Demographics data file
+        includes variables age in years at screening (RIDAGEYR) for all participants and age in months
+        at exam (RIDEXAGEM) for participants 0 to 239 months.
+
+
+        Arm and leg measurements were made on the right side of the body. If a participant had an
+        amputation, medical condition, or medical appliance, such as a cast, that prevented
+        measurements from being taken on the right side of the body, the health technician took
+        measurements on the left side. The body measures file does not identify participants who had
+        amputations because that information may be considered identifiable and pose a disclosure
+        concern. The body weight data for participants who had limb amputations were set to
+        “missing.”
+
+
+        This data file includes body measures for women who were pregnant at the time of their health
+        examination. Pregnancy status at the time of the health examination is indicated by the
+        variable, RIDEXPRG, in the Demographic data file. RIDEXPRG values are reported for women
+        20–44 years of age. RIDEXPRG for several pregnant women who were outside of this age
+        range are not reported due to disclosure concerns. The body measures data for these
+        participants are also not reported.
+
+
+        The NHANES Anthropometry Procedures Manual are available on the NHANES website.
+
+
+
+  Quality Assurance & Quality Control
+
+
+https://wwwn.cdc.gov/Nchs/Data/Nhanes/Public/2021/DataFiles/BMX_L.htm
+10/2/26, 11:31 AM                                                                   BMX_L
+        The NHANES health technicians completed a 2-day training program with survey staff and an
+        expert anthropometrist. The training included an overview of the component, general
+        guidelines and technical skills for each measurement, and demonstrations conducted by the
+        expert examiner with volunteer subjects. The expert examiner reviewed and demonstrated the
+        proper technique to use for each measure. Supervised practice exercises followed, conducted
+        with several volunteer subjects, including infants, children, and adults. The chief health
+        technician, at each of the MECs, monitored staff performance in the field. Health technician
+        performance was also monitored using direct observation, data reviews, and periodic expert
+        examiner (gold standard comparison) evaluations.
+
+
+        The body measures examination rooms in each of the MECs were identical with respect to
+        layout and equipment. Scheduled equipment calibration was performed by the health
+        technicians and verified by supervisory staff. The Anthropometry Procedures Manual includes
+        detailed descriptions of the quality assurance and quality control measures that are used in the
+        NHANES anthropometry/body measures component.
+
+
+
+  Data Processing and Editing
+        The BMX_L data were reviewed for unusual and erroneous values. Review criteria were based
+        on the NHANES 1999–2016 body measurement data. During the data review, values that were
+        above the 99th percentile or below the 1st percentile, for a specific age or age-gender group,
+        were flagged for review. When records were flagged, the entire body measures record was
+        reviewed for reasonableness. Subject characteristics, such as height, weight, age, and gender
+        were taken into consideration. Values that were determined to be unrealistic were deleted from
+        the file. None of the original body measures data were changed and there are no imputed
+        values in this file.
+
+
+        Component status code (BMXSTATS):
+        This variable was created to indicate body measures component status. There are four
+        categories:
+
+
+             1. Complete data for age group
+             2. Partial: only height and weight obtained
+             3. Other: partial exam
+             4. No body measures exam data
+
+        Body Mass Index (BMXBMI):
+        Body Mass Index (BMI) was calculated as weight in kilograms divided by height in meters
+        squared, and then rounded to one decimal place.
+
+
+        BMI Category – Children/Adolescents (BMDBMIC):
+        This variable was created for children and adolescents aged 2 to 19 years at examination.
+        Cutoff criteria are based on the Centers for Disease Control (CDC) growth chart “BMI-for-age
+        charts, 2 to 20 years, by sex and age”. Age in months at examination was used to match age
+        in months from BMI growth chart data, separately for males and females. There are four
+        categories:
+
+
+             1. Underweight (BMI < 5th percentile)
+             2. Normal weight (BMI 5th to < 85th percentiles)
+             3. Overweight (BMI 85th to < 95th percentiles)
+             4. Obese (BMI ≥ 95th percentile)
+
+
+  Analytic Notes
+        Component status code: A final body measures component status code provides analysis with
+        a quick method of identifying survey participants with complete or partial body measure
+        measurement data.
+
+
+        Unusual values: Unusual body measures values were noted during the review of the data.
+        Typically, unusual values occurred when a subject was extremely short, tall, overweight, or
+        underweight. In addition, the upper arm length (BMXARML) and upper leg length (BMXLEG)
+        values may be affected by extreme amounts of adipose tissue. Analysts should examine the
+        distributions of the body measurements carefully and consider whether it is appropriate to
+        include or exclude extreme values in each analysis.
+
+
+        Comment codes: Comment codes were added by the health technicians, during data collection,
+        to document problems or situations that arose during the body measures examination. For
+        example, the variable BMIWT is a comment code for the body weight measurement. If a
+        participant did not change into the NHANES exam gown, a code of BMIWT of “3” denoting
+        “clothing worn” was made in the record. Analysts should review the comment code information
+        for each of the body measures prior to data analysis.
+
+
+
+
+https://wwwn.cdc.gov/Nchs/Data/Nhanes/Public/2021/DataFiles/BMX_L.htm
+10/2/26, 11:31 AM                                                                     BMX_L
+        Weight status classification: BMI, expressed as weight in kilograms divided by height in meters
+        squared (Kg/m2), is commonly used to classify weight status. The definitions of underweight,
+        normal weight, overweight, and obesity in children and adolescents are not directly
+        comparable with the definitions in adults. The age-and sex-specific 5th, 85th, and 95th
+        percentiles of the growth charts are usually used as cutoff criteria for children and adolescents.
+        The variable BMDBMIC provides weight status categorical for children and adolescents aged 2
+        to 19 years at examination. Consequently, BMDBMIC was not calculated for a few participants
+        who were 19 years at the screening interview but became 20 years at the health examination.
+
+
+        Sample weights: The NHANES examination sample weights should be used to analyze the body
+        measures data. Please refer to the NHANES Analytic Guidelines and the online NHANES Tutorial
+        for further details on the use of sample weights and other analytic issues."
+
+
+===============================================================================
+4. BMX_L codebook and frequencies: all 22 variables (printed pp. 3-24)
+RAW: nchs_nhanes_2021_2023_bmx_demo-BMX_L-codebook.txt (pdftotext -layout cropped to the main column: -x 0 -y 0 -W 480 -H 842)
+===============================================================================
+
+[NOTE] Contiguous with block 3, to the last page's footer URL. Variables in order: SEQN, BMDSTATS, BMXWT, BMIWT, BMXRECUM, BMIRECUM, BMXHEAD, BMIHEAD, BMXHT, BMIHT, BMXBMI, BMDBMIC, BMXLEG, BMILEG, BMXARML, BMIARML, BMXARMC, BMIARMC, BMXWAIST, BMIWAIST, BMXHIP, BMIHIP. The heading line 'BMXRECUM - Recumbent Length (cm)' does not come out in the cropped text layer; its variable block and table do. Page images checked: printed pp. 4 (BMDSTATS), 5 (BMXWT), 6 (BMIWT), 11 (BMXHT), 12 (BMIHT), 13 (BMXBMI), 21 (BMXWAIST).
+
+"Codebook and Frequencies
+
+    SEQN - Respondent sequence number
+
+         Variable Name:              SEQN
+
+         SAS Label:                  Respondent sequence number
+
+         English Text:               Respondent sequence number.
+
+         Target:                     Both males and females 0 YEARS - 150 YEARS
+
+
+
+
+https://wwwn.cdc.gov/Nchs/Data/Nhanes/Public/2021/DataFiles/BMX_L.htm
+10/2/26, 11:31 AM                                                                  BMX_L
+
+
+    BMDSTATS - Body Measures Component Status Code
+
+         Variable Name:             BMDSTATS
+
+         SAS Label:                 Body Measures Component Status Code
+
+         English Text:              Body Measures Component status Code
+
+         Target:                    Both males and females 0 YEARS - 150 YEARS
+
+
+          Code or Value              Value Description               Count Cumulative      Skip to Item
+
+          1               Complete data for age group                8235   8235
+
+          2               Partial: Only height and weight obtained   147    8382
+
+          3               Other partial exam                         409    8791
+
+          4               No body measures exam data                 69     8860
+
+          .               Missing                                    0      8860
+
+
+
+
+https://wwwn.cdc.gov/Nchs/Data/Nhanes/Public/2021/DataFiles/BMX_L.htm
+10/2/26, 11:31 AM                                                              BMX_L
+
+
+    BMXWT - Weight (kg)
+
+         Variable Name:           BMXWT
+
+         SAS Label:               Weight (kg)
+
+         English Text:            Weight (kg)
+
+         Target:                  Both males and females 0 YEARS - 150 YEARS
+
+
+              Code or Value      Value Description       Count      Cumulative         Skip to Item
+
+          2.7 to 248.2        Range of Values           8754      8754
+
+          .                   Missing                   106       8860
+
+
+
+
+https://wwwn.cdc.gov/Nchs/Data/Nhanes/Public/2021/DataFiles/BMX_L.htm
+10/2/26, 11:31 AM                                                              BMX_L
+
+
+    BMIWT - Weight Comment
+
+         Variable Name:           BMIWT
+
+         SAS Label:               Weight Comment
+
+         English Text:            Weight Comment
+
+         Target:                  Both males and females 0 YEARS - 150 YEARS
+
+
+              Code or Value      Value Description       Count      Cumulative         Skip to Item
+
+          1                   Could not obtain          30        30
+
+          3                   Clothing                  296       326
+
+          4                   Medical appliance         19        345
+
+          .                   Missing                   8515      8860
+
+
+
+
+https://wwwn.cdc.gov/Nchs/Data/Nhanes/Public/2021/DataFiles/BMX_L.htm
+10/2/26, 11:31 AM                                                           BMX_L
+
+
+    BMXRECUM - Recumbent Length (cm)
+
+         Variable Name:           BMXRECUM
+
+         SAS Label:               Recumbent Length (cm)
+
+         English Text:            Recumbent Length (cm)
+
+         Target:                  Both males and females 0 MONTHS - 47 MONTHS
+
+
+              Code or Value      Value Description        Count     Cumulative      Skip to Item
+
+          48.5 to 118.8       Range of Values           454       454
+
+          .                   Missing                   8406      8860
+
+
+
+
+https://wwwn.cdc.gov/Nchs/Data/Nhanes/Public/2021/DataFiles/BMX_L.htm
+10/2/26, 11:31 AM                                                           BMX_L
+
+
+    BMIRECUM - Recumbent Length Comment
+
+         Variable Name:           BMIRECUM
+
+         SAS Label:               Recumbent Length Comment
+
+         English Text:            Recumbent Length Comment
+
+         Target:                  Both males and females 0 MONTHS - 47 MONTHS
+
+
+              Code or Value      Value Description       Count      Cumulative      Skip to Item
+
+          1                   Could not obtain          18        18
+
+          3                   Not straight              0         18
+
+          .                   Missing                   8842      8860
+
+
+
+
+https://wwwn.cdc.gov/Nchs/Data/Nhanes/Public/2021/DataFiles/BMX_L.htm
+10/2/26, 11:31 AM                                                           BMX_L
+
+
+    BMXHEAD - Head Circumference (cm)
+
+         Variable Name:           BMXHEAD
+
+         SAS Label:               Head Circumference (cm)
+
+         English Text:            Head Circumference (cm)
+
+         Target:                  Both males and females 0 MONTHS - 6 MONTHS
+
+
+              Code or Value      Value Description       Count      Cumulative      Skip to Item
+
+          34.4 to 46.5        Range of Values           70        70
+
+          .                   Missing                   8790      8860
+
+
+
+
+https://wwwn.cdc.gov/Nchs/Data/Nhanes/Public/2021/DataFiles/BMX_L.htm
+10/2/26, 11:31 AM                                                             BMX_L
+
+
+    BMIHEAD - Head Circumference Comment
+
+         Variable Name:           BMIHEAD
+
+         SAS Label:               Head Circumference Comment
+
+         English Text:            Head Circumference Comment
+
+         Target:                  Both males and females 0 MONTHS - 6 MONTHS
+
+
+              Code or Value      Value Description       Count        Cumulative      Skip to Item
+
+          1                   Could not obtain          0         0
+
+          .                   Missing                   8860      8860
+
+
+
+
+https://wwwn.cdc.gov/Nchs/Data/Nhanes/Public/2021/DataFiles/BMX_L.htm
+10/2/26, 11:31 AM                                                              BMX_L
+
+
+    BMXHT - Standing Height (cm)
+
+         Variable Name:           BMXHT
+
+         SAS Label:               Standing Height (cm)
+
+         English Text:            Standing Height (cm)
+
+         Target:                  Both males and females 2 YEARS - 150 YEARS
+
+
+              Code or Value      Value Description       Count      Cumulative         Skip to Item
+
+          79.1 to 200.7       Range of Values            8499     8499
+
+          .                   Missing                    361      8860
+
+
+
+
+https://wwwn.cdc.gov/Nchs/Data/Nhanes/Public/2021/DataFiles/BMX_L.htm
+10/2/26, 11:31 AM                                                              BMX_L
+
+
+    BMIHT - Standing Height Comment
+
+         Variable Name:           BMIHT
+
+         SAS Label:               Standing Height Comment
+
+         English Text:            Standing Height Comment
+
+         Target:                  Both males and females 2 YEARS - 150 YEARS
+
+
+              Code or Value      Value Description       Count      Cumulative         Skip to Item
+
+          1                   Could not obtain          46        46
+
+          3                   Not straight              88        134
+
+          .                   Missing                   8726      8860
+
+
+
+
+https://wwwn.cdc.gov/Nchs/Data/Nhanes/Public/2021/DataFiles/BMX_L.htm
+10/2/26, 11:31 AM                                                              BMX_L
+
+
+    BMXBMI - Body Mass Index (kg/m**2)
+
+         Variable Name:           BMXBMI
+
+         SAS Label:               Body Mass Index (kg/m**2)
+
+         English Text:            Body Mass Index (kg/m**2)
+
+         Target:                  Both males and females 2 YEARS - 150 YEARS
+
+
+              Code or Value      Value Description       Count      Cumulative         Skip to Item
+
+          11.1 to 74.8        Range of Values           8471      8471
+
+          .                   Missing                   389       8860
+
+
+
+
+https://wwwn.cdc.gov/Nchs/Data/Nhanes/Public/2021/DataFiles/BMX_L.htm
+10/2/26, 11:31 AM                                                             BMX_L
+
+
+    BMDBMIC - BMI Category - Children/Youth
+
+         Variable Name:           BMDBMIC
+
+         SAS Label:               BMI Category - Children/Youth
+
+         English Text:            BMI Category - Children/Youth
+
+         Target:                  Both males and females 2 YEARS - 19 YEARS
+
+
+              Code or Value      Value Description       Count      Cumulative        Skip to Item
+
+          1                   Underweight               92        92
+
+          2                   Normal weight             1469      1561
+
+          3                   Overweight                372       1933
+
+          4                   Obese                     559       2492
+
+          .                   Missing                   6368      8860
+
+
+
+
+https://wwwn.cdc.gov/Nchs/Data/Nhanes/Public/2021/DataFiles/BMX_L.htm
+10/2/26, 11:31 AM                                                              BMX_L
+
+
+    BMXLEG - Upper Leg Length (cm)
+
+         Variable Name:           BMXLEG
+
+         SAS Label:               Upper Leg Length (cm)
+
+         English Text:            Upper Leg Length (cm)
+
+         Target:                  Both males and females 8 YEARS - 150 YEARS
+
+
+              Code or Value      Value Description        Count     Cumulative         Skip to Item
+
+          24.9 to 51.6        Range of Values             7335    7335
+
+          .                   Missing                     1525    8860
+
+
+
+
+https://wwwn.cdc.gov/Nchs/Data/Nhanes/Public/2021/DataFiles/BMX_L.htm
+10/2/26, 11:31 AM                                                              BMX_L
+
+
+    BMILEG - Upper Leg Length Comment
+
+         Variable Name:           BMILEG
+
+         SAS Label:               Upper Leg Length Comment
+
+         English Text:            Upper Leg Length Comment
+
+         Target:                  Both males and females 8 YEARS - 150 YEARS
+
+
+              Code or Value      Value Description       Count      Cumulative         Skip to Item
+
+          1                   Could not obtain          396       396
+
+          .                   Missing                   8464      8860
+
+
+
+
+https://wwwn.cdc.gov/Nchs/Data/Nhanes/Public/2021/DataFiles/BMX_L.htm
+10/2/26, 11:31 AM                                                           BMX_L
+
+
+    BMXARML - Upper Arm Length (cm)
+
+         Variable Name:           BMXARML
+
+         SAS Label:               Upper Arm Length (cm)
+
+         English Text:            Upper Arm Length (cm)
+
+         Target:                  Both males and females 2 MONTHS - 150 YEARS
+
+
+              Code or Value      Value Description        Count     Cumulative      Skip to Item
+
+          10 to 49.2          Range of Values             8568    8568
+
+          .                   Missing                     292     8860
+
+
+
+
+https://wwwn.cdc.gov/Nchs/Data/Nhanes/Public/2021/DataFiles/BMX_L.htm
+10/2/26, 11:31 AM                                                           BMX_L
+
+
+    BMIARML - Upper Arm Length Comment
+
+         Variable Name:           BMIARML
+
+         SAS Label:               Upper Arm Length Comment
+
+         English Text:            Upper Arm Length Comment
+
+         Target:                  Both males and females 2 MONTHS - 150 YEARS
+
+
+              Code or Value      Value Description       Count      Cumulative      Skip to Item
+
+          1                   Could not obtain          200       200
+
+          .                   Missing                   8660      8860
+
+
+
+
+https://wwwn.cdc.gov/Nchs/Data/Nhanes/Public/2021/DataFiles/BMX_L.htm
+10/2/26, 11:31 AM                                                           BMX_L
+
+
+    BMXARMC - Arm Circumference (cm)
+
+         Variable Name:           BMXARMC
+
+         SAS Label:               Arm Circumference (cm)
+
+         English Text:            Arm Circumference (cm)
+
+         Target:                  Both males and females 2 MONTHS - 150 YEARS
+
+
+              Code or Value      Value Description         Count    Cumulative      Skip to Item
+
+          12 to 63.3          Range of Values           8562       8562
+
+          .                   Missing                   298        8860
+
+
+
+
+https://wwwn.cdc.gov/Nchs/Data/Nhanes/Public/2021/DataFiles/BMX_L.htm
+10/2/26, 11:31 AM                                                           BMX_L
+
+
+    BMIARMC - Arm Circumference Comment
+
+         Variable Name:           BMIARMC
+
+         SAS Label:               Arm Circumference Comment
+
+         English Text:            Arm Circumference Comment
+
+         Target:                  Both males and females 2 MONTHS - 150 YEARS
+
+
+              Code or Value      Value Description       Count      Cumulative      Skip to Item
+
+          1                   Could not obtain          205       205
+
+          .                   Missing                   8655      8860
+
+
+
+
+https://wwwn.cdc.gov/Nchs/Data/Nhanes/Public/2021/DataFiles/BMX_L.htm
+10/2/26, 11:31 AM                                                              BMX_L
+
+
+    BMXWAIST - Waist Circumference (cm)
+
+         Variable Name:           BMXWAIST
+
+         SAS Label:               Waist Circumference (cm)
+
+         English Text:            Waist Circumference (cm)
+
+         Target:                  Both males and females 2 YEARS - 150 YEARS
+
+
+              Code or Value      Value Description       Count      Cumulative         Skip to Item
+
+          39.8 to 187         Range of Values           8190      8190
+
+          .                   Missing                   670       8860
+
+
+
+
+https://wwwn.cdc.gov/Nchs/Data/Nhanes/Public/2021/DataFiles/BMX_L.htm
+10/2/26, 11:31 AM                                                              BMX_L
+
+
+    BMIWAIST - Waist Circumference Comment
+
+         Variable Name:           BMIWAIST
+
+         SAS Label:               Waist Circumference Comment
+
+         English Text:            Waist Circumference Comment
+
+         Target:                  Both males and females 2 YEARS - 150 YEARS
+
+
+              Code or Value      Value Description       Count      Cumulative         Skip to Item
+
+          1                   Could not obtain          347       347
+
+          .                   Missing                   8513      8860
+
+
+
+
+https://wwwn.cdc.gov/Nchs/Data/Nhanes/Public/2021/DataFiles/BMX_L.htm
+10/2/26, 11:31 AM                                                           BMX_L
+
+
+    BMXHIP - Hip Circumference (cm)
+
+         Variable Name:           BMXHIP
+
+         SAS Label:               Hip Circumference (cm)
+
+         English Text:            Hip Circumference (cm)
+
+         Target:                  Both males and females 12 YEARS - 150 YEARS
+
+
+              Code or Value      Value Description         Count    Cumulative      Skip to Item
+
+          69.9 to 187.1       Range of Values           6776       6776
+
+          .                   Missing                   2084       8860
+
+
+
+
+https://wwwn.cdc.gov/Nchs/Data/Nhanes/Public/2021/DataFiles/BMX_L.htm
+10/2/26, 11:31 AM                                                           BMX_L
+
+
+    BMIHIP - Hip Circumference Comment
+
+         Variable Name:           BMIHIP
+
+         SAS Label:               Hip Circumference Comment
+
+         English Text:            Hip Circumference Comment
+
+         Target:                  Both males and females 12 YEARS - 150 YEARS
+
+
+              Code or Value      Value Description       Count      Cumulative      Skip to Item
+
+          1                   Could not obtain          361       361
+
+          .                   Missing                   8499      8860
+
+
+
+
+https://wwwn.cdc.gov/Nchs/Data/Nhanes/Public/2021/DataFiles/BMX_L.htm"
+
+
+===============================================================================
+5. DEMO_L documentation and codebook, part 1 of Harsh's print (printed pp. 1-11): title block, component description, eligible sample, interview setting, quality assurance, data processing and editing, analytic notes, references; variables SEQN, SDDSRVYR, RIDSTATR, RIAGENDR, RIDAGEYR, RIDAGEMN, RIDRETH1
+RAW: nchs_nhanes_2021_2023_bmx_demo-DEMO_L-codebook-part1.txt (pdftotext -layout cropped to the main column: -x 0 -y 0 -W 480 -H 842)
+===============================================================================
+
+[NOTE] The whole of this part's text, from the first page's print-time header to the last page's footer URL. The crop leaves out the page's right-hand navigation sidebar (the browser's 'TABLE' of contents, printed beside every page) and with it the page counter at the right end of each footer; each page keeps its print-time header ('10/2/26, ...') and its footer URL inside the passage. Page images checked: printed pp. 2 and 4 (RIDAGEYR top-code note; MVUs; sample weights), 7 (RIDSTATR), 8 (RIAGENDR), 9 (RIDAGEYR).
+
+"10/2/26, 11:32 AM                                                                    DEMO_L
+
+
+  National Health and Nutrition Examination Survey
+  August 2021-August 2023 Data Documentation, Codebook, and Frequencies
+
+  Demographic Variables and Sample Weights (DEMO_L)
+
+  Data File: DEMO_L.xpt
+
+  First Published: September 2024
+
+  Last Revised: NA
+
+
+
+  Component Description
+        After suspension of NHANES field operations in March 2020 due to the COVID-19 pandemic,
+        data collection began for a new 2-year cycle in August 2021. The August 2021-August 2023
+        nationally representative data are based on an updated sample design and modified interview
+        as well as examination procedures. See the Plan and Operations report of the NHANES August
+        2021-August 2023 for details on the survey content and procedures for the cycle. For more
+        detail on changes to sample design and analytic guidelines specific to this cycle, please see the
+        “Analytic Notes” section below.
+
+
+        This demographics file provides information on the following topics:
+
+
+                Survey participant’s household interview and examination status;
+                Interview and examination sample weights;
+                Masked variance units;
+                The six-month time period when the examination was performed;
+                Pregnancy status;
+                The ratio of family income to poverty guidelines;
+                Total number of people in the Household;
+                Demographic information about the household reference person; and
+                Other selected demographic information, such as gender, age, race/Hispanic origin,
+                education, marital status, military service status, country of birth, and years of U.S.
+                residence.
+
+
+  Eligible Sample
+        All participants in the NHANES August 2021-August 2023 sample are included in this dataset.
+        The target age group for individual demographic variables in this file varies by the topic. Please
+        review the codebook carefully.
+
+
+
+  Interview Setting and Mode of Administration
+        The family and sample person demographics questionnaires were asked by trained
+        interviewers using the Computer-Assisted Personal Interview (CAPI) system in the participant’s
+        home or by telephone. The respondent selected the language of interview (English or Spanish)
+        or requested that an interpreter be used. Hand cards, showing response choices or information
+        that survey participants needed to answer the questions, were used for some questions. When
+        necessary, the interviewer further assisted the respondent by reading the response choices
+        listed on the hand cards.
+
+
+        Participants 16 years and older and emancipated minors were interviewed directly. A proxy
+        provided information for survey participants who were under 16 and for participants who could
+        not answer the questions themselves.
+
+
+        The NHANES August 2021-August 2023 demographics questionnaires are available on the
+        NHANES website.
+
+
+
+  Quality Assurance & Quality Control
+        The CAPI system is programmed with built-in consistency checks to reduce data entry errors
+        and online help screens to assist interviewers in defining key terms.
+
+
+        After collection, interview data were reviewed by the NHANES field office staff for accuracy and
+        completeness of selected items. The interviewers were required to audio record interviews and
+        the recorded interviews were reviewed by NCHS staff and interviewer supervisors.
+
+
+
+
+https://wwwn.cdc.gov/Nchs/Data/Nhanes/Public/2021/DataFiles/DEMO_L.htm
+10/2/26, 11:32 AM                                                                   DEMO_L
+
+  Data Processing and Editing
+        Frequency counts were checked, “skip” patterns were verified, and the plausibility of question
+        responses was reviewed. Edits were made to some variables to ensure the completeness,
+        consistency, and analytic usefulness of the data. Edits were also made to address data
+        disclosure concerns.
+
+
+        SDDSRVYR: identifies the specific data release cycle. A value of “12” denotes NHANES August
+        2021-August 2023 data.
+
+
+        RIDSTATR: identifies whether a participant was both interviewed at home or by telephone
+        and examined in the mobile examination center (MEC), or was only interviewed but never
+        participated in the examination.
+
+
+        RIDAGEYR: Age in years at the time of the screening interview for survey participants
+        between the ages of 1 and 79 years of age. Due to disclosure concerns, all responses of
+        participants aged 80 years and older are coded as “80.” In NHANES August 2021-August 2023,
+        the weighted mean age for participants 80 years and older is 85 years.
+
+
+        RIDAGEYR was calculated based on the participant’s date of birth. In rare cases, if the actual
+        date of birth was missing but the participant’s age in years was provided, the reported age was
+        used.
+
+
+        RIDAGEMN: Age in months, at the time of the screening interview, is provided for participants
+        who were less than 25 months of age at the time of examination (RIDEXAGM < 25). If the
+        exact date of birth was not provided by the respondent, the age in months was calculated
+        based on the imputed age in years at the time of the screening interview.
+
+
+        RIDEXAGM: Age in months, at the time of examination, for participants who were less than
+        240 months of age at the time of examination (RIDEXAGM < 240).
+
+
+        RIDRETH3: race-ethnicity categories used since the 2011-2012 survey cycle to accommodate
+        the oversample of Asian Americans. It was derived from responses to the survey questions on
+        race and Hispanic origin. Respondents who self-identified as “Mexican American” were coded
+        as such (i.e., RIDRETH3=1) regardless of their other race-ethnicity identities. Otherwise,
+        participants who self-identified as “Hispanic” were coded as “2, Other Hispanic.” Non-Hispanic
+        participants were categorized based on their self-reported races: non-Hispanic White
+        (RIDRETH3=3), non-Hispanic Black (RIDRETH3=4), non-Hispanic Asian (RIDRETH3=6), and
+        other non-Hispanic races, including non-Hispanic multiracial (RIDRETH3=7). Code “5” was not
+        used in RIDRETH3.
+
+
+        RIDRETH1: race-ethnicity variable that can be linked to the previous NHANES race-ethnicity
+        variable in 1999-2010. Non-Hispanic Asian participants are grouped with other non-Hispanic
+        races in code “5” (other non-Hispanic race including non-Hispanic multiracial) in RIDRETH1.
+        Codes “6” and “7” were not used in RIDRETH1. Coding procedures for other categories in
+        RIDRETH1 were compatible to RIDRETH3.
+
+
+        RIDEXMON: indicates the six-month time period when the examination was performed.
+
+
+        DMQMILIZ: provides information on whether the participant has ever served on active duty in
+        the U.S. Armed Forces, military Reserves, or National Guard. Active duty does not include
+        training for the Reserves or National Guard, but does include activation, for service in the U.S.
+        or in a foreign country, in support of military or humanitarian operations.
+
+
+        This variable has been included in NHANES since 2011-2012. Prior to 2011, the information
+        was collected using a question with different wording that asked if the participant had served
+        in the U.S. Armed Forces, and released in variable DMQMILIT.
+
+
+        DMDBORN4: To address disclosure risk concerns, starting in 2011, country of birth was
+        recoded into two categories: 1) Born in 50 U.S. states or Washington, DC; and 2) Born in other
+        countries, including U.S. territories.
+
+
+        DMDYRUSR: the number of years the participant has lived in the United States. Participants
+        born outside the U.S. were asked the month and year when they came to live in the U.S.
+        (DMQ.160). Responses were used to calculate the length of U.S. residency and recoded into 6
+        categories: 1 = Less than 1 year, 2 = 1 to 4 years, 3 = 5 to 9 years, 4 = 10 to 14 years, 5 =
+        15 to 19 years, and 6 = 20 year or more. For participants who did not report the month of
+        their arrival, a value of 7 (July) was used.
+
+
+        DMDEDUC2: the highest grade or level of education completed by adults 20 years and older.
+
+
+        DMDMARTZ: The marital status question was asked of people 14 years of age and older. Due
+        to disclosure risk, marital status is only released for people 20 years of age and older, and
+
+
+https://wwwn.cdc.gov/Nchs/Data/Nhanes/Public/2021/DataFiles/DEMO_L.htm
+10/2/26, 11:32 AM                                                                   DEMO_L
+        recoded from the original 6 categories to 3 categories (1 = Married/Living with partner; 2 =
+        Widowed/Divorced/Separated; 3 = Never married).
+
+
+        RIDEXPRG: Pregnancy status at the time of the health examination was ascertained for
+        females 8–59 years of age. Due to disclosure risk, pregnancy status is released only for
+        women 20-44 years of age. RIDEXPRG values are based on self-reported pregnancy status and
+        urine pregnancy test results. People who reported they were pregnant at the time of exam
+        were assumed to be pregnant (RIDEXPRG=1). Those who reported they were not pregnant or
+        did not know their pregnancy status were further classified based on the results of the urine
+        pregnancy test. If the respondent reported “no” or “don’t know” and the urine test result was
+        positive, the respondent was coded as pregnant (RIDEXPRG=1). If the respondent reported
+        “no” and the urine test was negative, the respondent was coded not pregnant (RIDEXPRG=2).
+        If the respondent reported did not know her pregnancy status and the urine test was negative,
+        the respondent was coded "could not be determined” (RIDEXPRG=3). People who were
+        interviewed, but not examined also have an RIDEXPRG value = 3 (could not be determined).
+
+
+        DMDHHSIZ: the number of people in the participant’s household, ranging from 1 to 7. Due to
+        disclosure concerns, individuals living in households with 7 or more people are included in the
+        category “7 or more”.
+
+
+        INDFMPIR: the ratio of family income to poverty level. The Department of Health and Human
+        Services (HHS) poverty guidelines were used as the poverty measure to calculate this ratio.
+        These guidelines are issued annually in the Federal Register and are used to determine
+        financial eligibility for certain federal programs, such as Head Start, Supplemental Nutrition
+        Assistance Program (SNAP), Special Supplemental Nutrition Program for Women, Infants, and
+        Children (WIC), and the National School Lunch Program. The poverty guidelines vary by family
+        size and geographic location.
+
+        INDFMPIR was calculated by dividing total annual family (or individual) income by the poverty
+        guidelines specific to the survey year.
+
+        During the household interview, the respondent was asked to report total income for the entire
+        family in the last calendar year in dollars. A family is defined as a group of two people or more
+        related by birth, marriage, or adoption and residing together. Annual individual income was
+        asked for households with one person, or households comprised of unrelated individuals.
+
+        If the respondent was not willing or able to provide an exact dollar figure, the interviewer
+        asked an additional question to determine whether the income was < $20,000 or ≥ $20,000.
+        Based on the respondent’s answer to this question, he/she was asked to select a category of
+        income from a hand card. For respondents who selected an income category, their family
+        incomes were set as the midpoint of the selected range. INDFMPIR was not computed if the
+        respondent only reported income as < $20,000 or ≥ $20,000 without additional details.
+        INDFMPIR values at or above 5.00 were coded as 5.00 or more because of disclosure concerns.
+        Values were not computed if income data were missing.
+
+
+        Household Reference Person: The household reference person is defined as the first
+        household member 18 years of age or older listed on the household member roster who owns
+        or rents the household residence. The household reference person is comparable to “family
+        reference person” in NHANES programs prior to 1999. Household reference person data have
+        often used in analysis as indicators characterizing the socioeconomic status for youth. This
+        public use demographics file contains household reference person information for participants
+        aged 0 to 19 years, including data on gender (DMDHRGND), age (DMDHRAGZ), education level
+        (DMDHREDZ), and marital status (DMDHRMAZ), as well as the education level of the
+        household reference person’s spouse (DMDHSEDZ). Household reference person information
+        for adult participants 20 years and older is available through NCHS Research Data Center.
+
+
+        Due to disclosure concerns, the household reference person’s age was recoded into a
+        categorical variable (<20, 20-39, 40-59, or 60+ years); the household reference person’s
+        education level and their spouse’s education level variables were recoded from the original 5
+        categories to 3 categories (1 = Less than high school; 2 = High school grad/GED or some
+        college/AA degree; 3 = College graduate or above); and the household reference person’s
+        marital status variable was recoded from the original 6 categories to 3 categories (1 =
+        Married/Living with partner; 2 = Widowed/Divorced/Separated; 3 = Never married).
+
+
+
+  Analytic Notes
+        The August 2021–August 2023 NHANES sample design is similar to past cycles that drew a
+        multi-year, stratified, clustered four-stage sample of the U.S. civilian noninstitutionalized
+        population to provide national health estimates. However, notable design changes were made
+        to adapt to the pandemic environment, including no person-level oversampling by race and
+        Hispanic origin and income. As a result, the number of participants for certain demographic
+        subgroups are noticeably lower than in previous cycles, and users should expect reduced
+        statistical precision for these groups. Additionally, person-level oversampling based on age
+        group was added. The potential increase in clustering by household was investigated with the
+        finding that the mean number of participants from each household was not substantially
+        different from previous cycles.
+
+
+
+
+https://wwwn.cdc.gov/Nchs/Data/Nhanes/Public/2021/DataFiles/DEMO_L.htm
+10/2/26, 11:32 AM                                                                    DEMO_L
+        Although the August 2021-August 2023 cycle represents a two-year data collection period,
+        there is a 15-month gap between it and the previous dataset (2017-March 2020). This gap in
+        data collection presents an important analytic consideration given it represents the COVID-19
+        pandemic during which some health behaviors and outcomes were likely affected by
+        disruptions that occurred in healthcare delivery, employment, and education. Data users are
+        urged to proceed with caution before combining August 2021-August 2023 with previous cycles
+        to calculate cross sectional health estimates or conducting trend analysis, given the 15-month
+        period with unobserved data may include unusual patterns.
+
+
+        Age at screening: used to determine eligibility for an examination component and should be
+        used for most analyses.
+
+
+        DMDMARTZ: Marital status is only released for people 20 years of age and older to reduce
+        disclosure risk. Prior to 2007, marital status was released for participants aged 14 and older. In
+        NHANES August 2021-August 2023, the percentage of people aged 14-19 who are married or
+        living with a partner is less than 2%.
+
+
+        RIDEXPRG: To reduce disclosure risk, pregnancy status is released only for women aged 20-
+        44 years. The percentage of pregnant women/girls aged 8-19 or 45-59 years is less than 1%
+        in NHANES August 2021-August 2023.
+
+
+        Masked Variance Units (MVUs): Fifteen MVUs and 30 masked primary sampling units
+        (PSUs) are included in the NHANES August 2021-August 2023. Each stratum has 2 PSUs.
+        These MVUs are a collection of secondary sampling units that are aggregated into groups for
+        the purpose of variance estimation. Variance estimates produced using the MVUs closely
+        approximate variances that would have been estimated using the “true” sample design
+        variance units. MVUs are used to protect confidentiality and to reduce disclosure risk and are
+        described in NHANES Analytic Guidelines. Analysts should review the Guidelines carefully prior
+        to analyzing survey data.
+
+
+        Sample Weights: The 2-year sample weights (WTINT2YR, WTMEC2YR, depending on the
+        analysis) should be used for all NHANES August 2021-August 2023 analyses.
+
+
+        Please refer to the NHANES Analytic Guidelines and the on-line NHANES Tutorial for further
+        details on the use of sample weights and other analytic issues.
+
+
+        Disclosure risks and issues pertaining to confidentiality protection prevent NCHS from releasing
+        all the NHANES demographic variables publicly. Additional information and instructions for
+        requesting use of these data are available through the NCHS RDC.
+
+
+
+  References
+        Terry AL, Chiappa MM, McAllister J, Woodwell DA, Graber JE. Plan and operations of the National
+        Health and Nutrition Examination Survey, August 2021–August 2023. National Center for Health
+        Statistics. Vital Health Stat 1(66). 2024. DOI: https://stacks.cdc.gov/view/cdc/151927
+        U.S. Department of Health & Human Services. Poverty Guidelines, Research, and Measurement.
+        Washington, DC: U.S. Department of Health & Human Services.
+        https://aspe.hhs.gov/topics/poverty-economic-mobility/poverty-guidelines/prior-hhs-poverty-
+        guidelines-federal-register-references
+
+
+
+
+https://wwwn.cdc.gov/Nchs/Data/Nhanes/Public/2021/DataFiles/DEMO_L.htm
+10/2/26, 11:32 AM                                                              DEMO_L
+
+
+  Codebook and Frequencies
+
+    SEQN - Respondent sequence number
+
+         Variable Name:           SEQN
+
+         SAS Label:               Respondent sequence number
+
+         English Text:            Respondent sequence number.
+
+         Target:                  Both males and females 0 YEARS - 150 YEARS
+
+
+
+
+https://wwwn.cdc.gov/Nchs/Data/Nhanes/Public/2021/DataFiles/DEMO_L.htm
+10/2/26, 11:32 AM                                                               DEMO_L
+
+
+    SDDSRVYR - Data release cycle
+
+         Variable Name:            SDDSRVYR
+
+         SAS Label:                Data release cycle
+
+         English Text:             Data release cycle
+
+         Target:                   Both males and females 0 YEARS - 150 YEARS
+
+
+               Code or               Value Description             Count Cumulative      Skip to
+                Value                                                                     Item
+
+          12             NHANES August 2021-August 2023 public     11933   11933
+                         release
+
+          .              Missing                                   0       11933
+
+
+
+
+https://wwwn.cdc.gov/Nchs/Data/Nhanes/Public/2021/DataFiles/DEMO_L.htm
+10/2/26, 11:32 AM                                                                   DEMO_L
+
+
+    RIDSTATR - Interview/Examination status
+
+         Variable Name:             RIDSTATR
+
+         SAS Label:                 Interview/Examination status
+
+         English Text:              Interview and examination status of the participant.
+
+         Target:                    Both males and females 0 YEARS - 150 YEARS
+
+
+          Code or Value              Value Description              Count    Cumulative      Skip to Item
+
+          1               Interviewed only                          3073     3073
+
+          2               Both interviewed and MEC examined         8860     11933
+
+          .               Missing                                   0        11933
+
+
+
+
+https://wwwn.cdc.gov/Nchs/Data/Nhanes/Public/2021/DataFiles/DEMO_L.htm
+10/2/26, 11:32 AM                                                              DEMO_L
+
+
+    RIAGENDR - Gender
+
+         Variable Name:           RIAGENDR
+
+         SAS Label:               Gender
+
+         English Text:            Gender of the participant.
+
+         Target:                  Both males and females 0 YEARS - 150 YEARS
+
+
+              Code or Value      Value Description         Count    Cumulative      Skip to Item
+
+          1                   Male                       5575      5575
+
+          2                   Female                     6358      11933
+
+          .                   Missing                    0         11933
+
+
+
+
+https://wwwn.cdc.gov/Nchs/Data/Nhanes/Public/2021/DataFiles/DEMO_L.htm
+10/2/26, 11:32 AM                                                                  DEMO_L
+
+
+    RIDAGEYR - Age in years at screening
+
+         Variable Name:            RIDAGEYR
+
+         SAS Label:                Age in years at screening
+
+         English Text:             Age in years of the participant at the time of screening. Individuals
+                                   80 and over are top-coded at 80 years of age.
+
+         Target:                   Both males and females 0 YEARS - 150 YEARS
+
+
+              Code or Value        Value Description           Count      Cumulative        Skip to Item
+
+          0 to 79             Range of Values                  11408     11408
+
+          80                  80 years of age and over         525       11933
+
+          .                   Missing                          0         11933
+
+
+
+
+https://wwwn.cdc.gov/Nchs/Data/Nhanes/Public/2021/DataFiles/DEMO_L.htm
+10/2/26, 11:32 AM                                                               DEMO_L
+
+
+    RIDAGEMN - Age in months at screening - 0 to 24 mos
+
+         Variable Name:           RIDAGEMN
+
+         SAS Label:               Age in months at screening - 0 to 24 mos
+
+         English Text:            Age in months of the participant at the time of screening. Reported
+                                  for persons aged 24 months or younger at the time of exam (or
+                                  screening if not examined).
+
+         Target:                  Both males and females 0 YEARS - 2 YEARS
+
+
+              Code or Value      Value Description        Count       Cumulative        Skip to Item
+
+          0 to 24             Range of Values            377        377
+
+          .                   Missing                    11556      11933
+
+
+
+
+https://wwwn.cdc.gov/Nchs/Data/Nhanes/Public/2021/DataFiles/DEMO_L.htm
+10/2/26, 11:32 AM                                                                   DEMO_L
+
+
+    RIDRETH1 - Race/Hispanic origin
+
+         Variable Name:              RIDRETH1
+
+         SAS Label:                  Race/Hispanic origin
+
+         English Text:               Recode of reported race and Hispanic origin information
+
+         Target:                     Both males and females 0 YEARS - 150 YEARS
+
+
+           Code or Value              Value Description             Count    Cumulative        Skip to Item
+
+          1                Mexican American                         1117     1117
+
+          2                Other Hispanic                           1373     2490
+
+          3                Non-Hispanic White                       6217     8707
+
+          4                Non-Hispanic Black                       1597     10304
+
+          5                Other Race - Including Multi-Racial      1629     11933
+
+          .                Missing                                  0        11933
+
+
+
+
+https://wwwn.cdc.gov/Nchs/Data/Nhanes/Public/2021/DataFiles/DEMO_L.htm"
+
+
+===============================================================================
+6. DEMO_L codebook, part 2 (printed pp. 12-21): RIDRETH3, RIDEXMON, RIDEXAGM, DMQMILIZ, DMDBORN4, DMDYRUSR, DMDEDUC2, DMDMARTZ, RIDEXPRG, DMDHHSIZ
+RAW: nchs_nhanes_2021_2023_bmx_demo-DEMO_L-codebook-part2.txt (pdftotext -layout cropped to the main column: -x 0 -y 0 -W 480 -H 842)
+===============================================================================
+
+[NOTE] Whole part. Contiguous in print with block 5 (Harsh saved the 31 printed pages as three consecutive PDFs). In DMDBORN4 the description of code 1 is cut at 'Washington,' in the text layer: the cell wraps and its second line falls outside the crop. Page image checked: printed p. 20 (RIDEXPRG).
+
+"10/2/26, 11:32 AM                                                                   DEMO_L
+
+
+    RIDRETH3 - Race/Hispanic origin w/ NH Asian
+
+         Variable Name:              RIDRETH3
+
+         SAS Label:                  Race/Hispanic origin w/ NH Asian
+
+         English Text:               Recode of reported race and Hispanic origin information, with Non-
+                                     Hispanic Asian Category
+
+         Target:                     Both males and females 0 YEARS - 150 YEARS
+
+
+           Code or Value              Value Description             Count    Cumulative      Skip to Item
+
+          1                Mexican American                         1117     1117
+
+          2                Other Hispanic                           1373     2490
+
+          3                Non-Hispanic White                       6217     8707
+
+          4                Non-Hispanic Black                       1597     10304
+
+          6                Non-Hispanic Asian                       681      10985
+
+          7                Other Race - Including Multi-Racial      948      11933
+
+          .                Missing                                  0        11933
+
+
+
+
+https://wwwn.cdc.gov/Nchs/Data/Nhanes/Public/2021/DataFiles/DEMO_L.htm
+10/2/26, 11:32 AM                                                               DEMO_L
+
+
+    RIDEXMON - Six-month time period
+
+         Variable Name:            RIDEXMON
+
+         SAS Label:                Six-month time period
+
+         English Text:             Six month time period when the examination was performed - two
+                                   categories: November 1 through April 30, May 1 through October 31.
+
+         Target:                   Both males and females 0 YEARS - 150 YEARS
+
+
+              Code or Value         Value Description          Count     Cumulative      Skip to Item
+
+          1                   November 1 through April 30     4251     4251
+
+          2                   May 1 through October 31        4609     8860
+
+          .                   Missing                         3073     11933
+
+
+
+
+https://wwwn.cdc.gov/Nchs/Data/Nhanes/Public/2021/DataFiles/DEMO_L.htm
+10/2/26, 11:32 AM                                                              DEMO_L
+
+
+    RIDEXAGM - Age in months at exam - 0 to 19 years
+
+         Variable Name:           RIDEXAGM
+
+         SAS Label:               Age in months at exam - 0 to 19 years
+
+         English Text:            Age in months of the participant at the time of examination.
+                                  Reported for persons aged 19 years or younger at the time of
+                                  examination.
+
+         Target:                  Both males and females 0 YEARS - 19 YEARS
+
+
+              Code or Value      Value Description        Count      Cumulative        Skip to Item
+
+          0 to 239            Range of Values            2787      2787
+
+          .                   Missing                    9146      11933
+
+
+
+
+https://wwwn.cdc.gov/Nchs/Data/Nhanes/Public/2021/DataFiles/DEMO_L.htm
+10/2/26, 11:32 AM                                                                   DEMO_L
+
+
+    DMQMILIZ - Served active duty in US Armed Forces
+
+         Variable Name:             DMQMILIZ
+
+         SAS Label:                 Served active duty in US Armed Forces
+
+         English Text:              {Have you/Has SP} ever served on active duty in the U.S. Armed
+                                    Forces, military Reserves, or National Guard? (Active duty does not
+                                    include training for the Reserves or National Guard, but does include
+                                    activation, for service in the U.S. or in a foreign country, in support
+                                    of military or humanitarian operations.)
+
+         Target:                    Both males and females 17 YEARS - 150 YEARS
+
+
+              Code or Value        Value Description         Count       Cumulative          Skip to Item
+
+          1                   Yes                           694        694
+
+          2                   No                            7606       8300
+
+          7                   Refused                       1          8301
+
+          9                   Don't know                    0          8301
+
+          .                   Missing                       3632       11933
+
+
+
+
+https://wwwn.cdc.gov/Nchs/Data/Nhanes/Public/2021/DataFiles/DEMO_L.htm
+10/2/26, 11:32 AM                                                                 DEMO_L
+
+
+    DMDBORN4 - Country of birth
+
+         Variable Name:              DMDBORN4
+
+         SAS Label:                  Country of birth
+
+         English Text:               Country of birth
+
+         Target:                     Both males and females 0 YEARS - 150 YEARS
+
+
+           Code or Value              Value Description           Count   Cumulative       Skip to Item
+
+          1                Born in 50 US states or Washington,    10039   10039            DMDEDUC2
+
+          2                Others                                 1875    11914
+
+          77               Refused                                0       11914            DMDEDUC2
+
+          99               Don't know                             0       11914            DMDEDUC2
+
+          .                Missing                                19      11933
+
+
+
+
+https://wwwn.cdc.gov/Nchs/Data/Nhanes/Public/2021/DataFiles/DEMO_L.htm
+10/2/26, 11:32 AM                                                               DEMO_L
+
+
+    DMDYRUSR - Length of time in US
+
+         Variable Name:           DMDYRUSR
+
+         SAS Label:               Length of time in US
+
+         English Text:            Length of time the participant has been in the US.
+
+         Target:                  Both males and females 0 YEARS - 150 YEARS
+
+
+              Code or Value      Value Description        Count       Cumulative       Skip to Item
+
+          1                   Less than 1 year           101        101
+
+          2                   1 to 4 years               260        361
+
+          3                   5 to 9 years               225        586
+
+          4                   10 to 14 years             160        746
+
+          5                   15 to 19 years             158        904
+
+          6                   20 years or more           912        1816
+
+          77                  Refused                    13         1829
+
+          99                  Don't know                 46         1875
+
+          .                   Missing                    10058      11933
+
+
+
+
+https://wwwn.cdc.gov/Nchs/Data/Nhanes/Public/2021/DataFiles/DEMO_L.htm
+10/2/26, 11:32 AM                                                               DEMO_L
+
+
+    DMDEDUC2 - Education level - Adults 20+
+
+         Variable Name:            DMDEDUC2
+
+         SAS Label:                Education level - Adults 20+
+
+         English Text:             What is the highest grade or level of school {you have/SP has}
+                                   completed or the highest degree {you have/s/he has} received?
+
+         English Instructions:     HAND CARD DMQ1 READ HAND CARD CATEGORIES IF NECESSARY
+                                   ENTER HIGHEST LEVEL OF SCHOOL
+
+         Target:                   Both males and females 20 YEARS - 150 YEARS
+
+
+              Code or                 Value Description              Count Cumulative        Skip to
+               Value                                                                          Item
+
+          1              Less than 9th grade                         373     373
+
+          2              9-11th grade (Includes 12th grade with no   666     1039
+                         diploma)
+
+          3              High school graduate/GED or equivalent      1749    2788
+
+          4              Some college or AA degree                   2370    5158
+
+          5              College graduate or above                   2625    7783
+
+          7              Refused                                     0       7783
+
+          9              Don't know                                  11      7794
+
+          .              Missing                                     4139    11933
+
+
+
+
+https://wwwn.cdc.gov/Nchs/Data/Nhanes/Public/2021/DataFiles/DEMO_L.htm
+10/2/26, 11:32 AM                                                              DEMO_L
+
+
+    DMDMARTZ - Marital status
+
+         Variable Name:             DMDMARTZ
+
+         SAS Label:                 Marital status
+
+         English Text:              Marital status
+
+         Target:                    Both males and females 20 YEARS - 150 YEARS
+
+
+              Code or Value          Value Description        Count      Cumulative     Skip to Item
+
+          1                   Married/Living with partner     4136     4136
+
+          2                   Widowed/Divorced/Separated      2022     6158
+
+          3                   Never married                   1625     7783
+
+          77                  Refused                         4        7787
+
+          99                  Don't know                      5        7792
+
+          .                   Missing                         4141     11933
+
+
+
+
+https://wwwn.cdc.gov/Nchs/Data/Nhanes/Public/2021/DataFiles/DEMO_L.htm
+10/2/26, 11:32 AM                                                                  DEMO_L
+
+
+    RIDEXPRG - Pregnancy status at exam
+
+         Variable Name:              RIDEXPRG
+
+         SAS Label:                  Pregnancy status at exam
+
+         English Text:               Pregnancy status for females between 20 and 44 years of age at the
+                                     time of MEC exam.
+
+         Target:                     Females only 20 YEARS - 44 YEARS
+
+
+              Code or                  Value Description                   Count Cumulative     Skip to
+               Value                                                                             Item
+
+          1              Yes, positive lab pregnancy test or self-         41      41
+                         reported pregnant at exam
+
+          2              The participant was not pregnant at exam          1065    1106
+
+          3              Cannot ascertain if the participant is pregnant   397     1503
+                         at exam
+
+          .              Missing                                           10430   11933
+
+
+
+
+https://wwwn.cdc.gov/Nchs/Data/Nhanes/Public/2021/DataFiles/DEMO_L.htm
+10/2/26, 11:32 AM                                                                  DEMO_L
+
+
+    DMDHHSIZ - Total number of people in the Household
+
+         Variable Name:              DMDHHSIZ
+
+         SAS Label:                  Total number of people in the Household
+
+         English Text:               Total number of people in the Household
+
+         Target:                     Both males and females 0 YEARS - 150 YEARS
+
+
+           Code or Value              Value Description            Count       Cumulative   Skip to Item
+
+          1 to 6           Range of Values                         11309       11309
+
+          7                7 or more people in the Household       624         11933
+
+          .                Missing                                 0           11933
+
+
+
+
+https://wwwn.cdc.gov/Nchs/Data/Nhanes/Public/2021/DataFiles/DEMO_L.htm"
+
+
+===============================================================================
+7. DEMO_L codebook, part 3 (printed pp. 22-31): DMDHRGND, DMDHRAGZ, DMDHREDZ, DMDHRMAZ, DMDHSEDZ, WTINT2YR, WTMEC2YR, SDMVSTRA, SDMVPSU, INDFMPIR
+RAW: nchs_nhanes_2021_2023_bmx_demo-DEMO_L-codebook-part3.txt (pdftotext -layout cropped to the main column: -x 0 -y 0 -W 480 -H 842)
+===============================================================================
+
+[NOTE] Whole part. Contiguous in print with block 6. Page images checked: printed pp. 28 (WTMEC2YR), 29 (SDMVSTRA), 30 (SDMVPSU).
+
+"10/2/26, 11:32 AM                                                             DEMO_L
+
+
+    DMDHRGND - HH ref person’s gender
+
+         Variable Name:           DMDHRGND
+
+         SAS Label:               HH ref person’s gender
+
+         English Text:            HH ref person’s gender
+
+         Target:                  Both males and females 0 YEARS - 19 YEARS
+
+
+              Code or Value      Value Description         Count    Cumulative     Skip to Item
+
+          1                   Male                         1793    1793
+
+          2                   Female                       2322    4115
+
+          .                   Missing                      7818    11933
+
+
+
+
+https://wwwn.cdc.gov/Nchs/Data/Nhanes/Public/2021/DataFiles/DEMO_L.htm
+10/2/26, 11:32 AM                                                             DEMO_L
+
+
+    DMDHRAGZ - HH ref person’s age in years
+
+         Variable Name:           DMDHRAGZ
+
+         SAS Label:               HH ref person’s age in years
+
+         English Text:            HH ref person’s age in years
+
+         Target:                  Both males and females 0 YEARS - 19 YEARS
+
+
+              Code or Value      Value Description        Count    Cumulative      Skip to Item
+
+          1                   <20 years                  83       83
+
+          2                   20-39 years                1985     2068
+
+          3                   40-59 years                1804     3872
+
+          4                   60+ years                  252      4124
+
+          .                   Missing                    7809     11933
+
+
+
+
+https://wwwn.cdc.gov/Nchs/Data/Nhanes/Public/2021/DataFiles/DEMO_L.htm
+10/2/26, 11:32 AM                                                              DEMO_L
+
+
+    DMDHREDZ - HH ref person’s education level
+
+         Variable Name:            DMDHREDZ
+
+         SAS Label:                HH ref person’s education level
+
+         English Text:             HH ref person’s education level
+
+         Target:                   Both males and females 0 YEARS - 19 YEARS
+
+
+              Code or                Value Description               Count Cumulative   Skip to
+               Value                                                                     Item
+
+          1              Less than high school degree                550    550
+
+          2              High school grad/GED or some college/AA     2004   2554
+                         degree
+
+          3              College graduate or above                   1192   3746
+
+          .              Missing                                     8187   11933
+
+
+
+
+https://wwwn.cdc.gov/Nchs/Data/Nhanes/Public/2021/DataFiles/DEMO_L.htm
+10/2/26, 11:32 AM                                                                    DEMO_L
+
+
+    DMDHRMAZ - HH ref person’s marital status
+
+         Variable Name:             DMDHRMAZ
+
+         SAS Label:                 HH ref person’s marital status
+
+         English Text:              HH ref person’s marital status
+
+         Target:                    Both males and females 0 YEARS - 19 YEARS
+
+
+              Code or Value          Value Description               Count   Cumulative       Skip to Item
+
+          1                   Married/Living with partner        2947        2947
+
+          2                   Widowed/Divorced/Separated         614         3561
+
+          3                   Never Married                      459         4020
+
+          .                   Missing                            7913        11933
+
+
+
+
+https://wwwn.cdc.gov/Nchs/Data/Nhanes/Public/2021/DataFiles/DEMO_L.htm
+10/2/26, 11:32 AM                                                               DEMO_L
+
+
+    DMDHSEDZ - HH ref person’s spouse’s education level
+
+         Variable Name:            DMDHSEDZ
+
+         SAS Label:                HH ref person’s spouse’s education level
+
+         English Text:             HH ref person’s spouse’s education level
+
+         Target:                   Both males and females 0 YEARS - 19 YEARS
+
+
+              Code or                Value Description                Count Cumulative   Skip to
+               Value                                                                      Item
+
+          1              Less than high school degree                 300     300
+
+          2              High school grad/GED or some college/AA      942     1242
+                         degree
+
+          3              College graduate or above                    885     2127
+
+          .              Missing                                      9806    11933
+
+
+
+
+https://wwwn.cdc.gov/Nchs/Data/Nhanes/Public/2021/DataFiles/DEMO_L.htm
+10/2/26, 11:32 AM                                                                DEMO_L
+
+
+    WTINT2YR - Full sample 2-year interview weight
+
+         Variable Name:             WTINT2YR
+
+         SAS Label:                 Full sample 2-year interview weight
+
+         English Text:              Full sample 2 year interview weight.
+
+         Target:                    Both males and females 0 YEARS - 150 YEARS
+
+
+                    Code or Value              Value Description    Count   Cumulative    Skip to Item
+
+          4584.463196 to 170968.343177        Range of Values       11933   11933
+
+          .                                   Missing               0       11933
+
+
+
+
+https://wwwn.cdc.gov/Nchs/Data/Nhanes/Public/2021/DataFiles/DEMO_L.htm
+10/2/26, 11:32 AM                                                                DEMO_L
+
+
+    WTMEC2YR - Full sample 2-year MEC exam weight
+
+         Variable Name:             WTMEC2YR
+
+         SAS Label:                 Full sample 2-year MEC exam weight
+
+         English Text:              Full sample 2 year MEC exam weight.
+
+         Target:                    Both males and females 0 YEARS - 150 YEARS
+
+
+                    Code or Value            Value Description    Count   Cumulative      Skip to Item
+
+          4581.595095 to 227108.296958       Range of Values      8860    8860
+
+          0                                  Not MEC Examined     3073    11933
+
+          .                                  Missing              0       11933
+
+
+
+
+https://wwwn.cdc.gov/Nchs/Data/Nhanes/Public/2021/DataFiles/DEMO_L.htm
+10/2/26, 11:32 AM                                                              DEMO_L
+
+
+    SDMVSTRA - Masked variance pseudo-stratum
+
+         Variable Name:           SDMVSTRA
+
+         SAS Label:               Masked variance pseudo-stratum
+
+         English Text:            Masked variance unit pseudo-stratum variable for variance
+                                  estimation
+
+         Target:                  Both males and females 0 YEARS - 150 YEARS
+
+
+              Code or Value      Value Description        Count      Cumulative        Skip to Item
+
+          173 to 187          Range of Values            11933     11933
+
+          .                   Missing                    0         11933
+
+
+
+
+https://wwwn.cdc.gov/Nchs/Data/Nhanes/Public/2021/DataFiles/DEMO_L.htm
+10/2/26, 11:32 AM                                                              DEMO_L
+
+
+    SDMVPSU - Masked variance pseudo-PSU
+
+         Variable Name:           SDMVPSU
+
+         SAS Label:               Masked variance pseudo-PSU
+
+         English Text:            Masked variance unit pseudo-PSU variable for variance estimation
+
+         Target:                  Both males and females 0 YEARS - 150 YEARS
+
+
+              Code or Value      Value Description        Count      Cumulative        Skip to Item
+
+          1 to 2              Range of Values            11933     11933
+
+          .                   Missing                    0         11933
+
+
+
+
+https://wwwn.cdc.gov/Nchs/Data/Nhanes/Public/2021/DataFiles/DEMO_L.htm
+10/2/26, 11:32 AM                                                                   DEMO_L
+
+
+    INDFMPIR - Ratio of family income to poverty
+
+         Variable Name:              INDFMPIR
+
+         SAS Label:                  Ratio of family income to poverty
+
+         English Text:               Ratio of family income to poverty
+
+         Target:                     Both males and females 0 YEARS - 150 YEARS
+
+
+           Code or Value              Value Description              Count   Cumulative      Skip to Item
+
+          0 to 4.99        Range of Values                          7743     7743
+
+          5                Value greater than or equal to 5.00      2149     9892
+
+          .                Missing                                  2041     11933
+
+
+
+
+https://wwwn.cdc.gov/Nchs/Data/Nhanes/Public/2021/DataFiles/DEMO_L.htm"
+
+
+===============================================================================
+8. NHANES data page, Examination 2021-2023: the Body Measures row
+RAW: nhanes_s52r1-examination-2021-2023.txt (TinyFish fetch_content, markdown, 2026-10-02, saved by group c; URL https://wwwn.cdc.gov/nchs/nhanes/search/datapage.aspx?Component=Examination&Cycle=2021-2023)
+===============================================================================
+
+[NOTE] Backslashes before underscores are the fetch tool's markdown escapes.
+
+"Body Measures
+BMX\_L Doc
+BMX\_L Data [XPT - 1.5 MB]
+September 2024"
+
+
+===============================================================================
+9. NHANES data page, Demographics 2021-2023: the table header and the DEMO_L row
+RAW: nhanes_s52r1-demographics-2021-2023.txt (TinyFish fetch_content, markdown, 2026-10-02, saved by group c; URL https://wwwn.cdc.gov/nchs/nhanes/search/datapage.aspx?Component=Demographics&Cycle=2021-2023)
+===============================================================================
+
+[NOTE] Backslashes before underscores are the fetch tool's markdown escapes.
+
+"Data File Name
+Doc File
+Data File
+Date Published
+Demographic Variables and Sample Weights
+DEMO\_L Doc
+DEMO\_L Data [XPT - 2.5 MB]
+September 2024"
+
+
+===============================================================================
+10. NCHS Data User Agreement (the terms of use for the two data files), whole text of the page
+RAW: nhanes_s52r1-nchs-dua.txt (TinyFish fetch_content, markdown, 2026-10-02, saved by group c; URL https://www.cdc.gov/nchs/policy/data-user-agreement.html)
+===============================================================================
+
+[NOTE] The page's closing date line, 'Sources / Print / Share' and the empty 'Content Source:' are omitted after the passage.
+
+"September 17, 2024
+
+# Data User Agreement
+
+## What to know
+
+* National Center for Health Statistics (NCHS) offers survey data files for public-use, with some restrictions.
+* Researchers who use NCHS public-use data files can only use the information for statistical analysis or reporting purposes.
+* Read the NCHS Data User Agreement carefully before using publicly released NCHS data files.
+
+## Data use restrictions
+
+### Please read carefully before using publicly released NCHS data files
+
+The National Center for Health Statistics (NCHS), Centers for Disease Control and Prevention (CDC), conducts statistical and epidemiological activities under the authority granted by the Public Health Service Act (42 U.S.C. § 242k). NCHS survey data are protected by federal confidentiality laws including Section 308(d) Public Health Service Act [42 U.S.C. 242m(d)] and the Confidential Information Protection and Statistical Efficiency Act or CIPSEA [44 U.S.C. 3561-3583]. These confidentiality laws state the data collected by NCHS may be used only for statistical reporting and analysis. Any effort to determine the identity of individuals and establishments violates the assurances of confidentiality provided by federal law.
+
+## Terms and conditions
+
+NCHS does all it can to ensure that the identity of individuals and establishments cannot be disclosed. All direct identifiers, as well as any characteristics that might lead to identification, are omitted from the dataset. Any intentional identification or disclosure of an individual or establishment violates the assurances of confidentiality given to the providers of the information.
+
+Therefore, users will—
+
+1. Use the data in this dataset for statistical reporting and analysis only.
+2. Make no attempt to learn the identity of any person or establishment included in these data.
+3. Not link this dataset with individually identifiable data from other NCHS or non-NCHS datasets.
+4. Not engage in any efforts to assess disclosure methodologies applied to protect individuals and establishments or any research on methods of re-identification of individuals and establishments.
+
+By using these data you signify your agreement to comply with the above-stated statutorily based requirements.
+
+## Sanctions for violating NCHS Data Use Agreement
+
+Willfully disclosing any information that could identify a person or establishment in any manner to a person or agency not entitled to receive it, shall be guilty of a class E felony and imprisoned for not more than 5 years, or fined not more than $250,000, or both."
+
+
+[...]
+[NOTE] Omitted after block 10: the page's repeated date line and its 'Sources / Print / Share'
+links.

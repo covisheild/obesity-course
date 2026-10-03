@@ -1,0 +1,1 @@
+- Cut the plain-terms sentence "So a test written as 'body mass equals missing' says 'don't know' on every row, and you get no rows at all." The definition and must-know still say `x == NA` is wrong, but this was the only line spelling out why the result is zero rows rather than an error, which Exercise 1 (teach the `hb == NA` mistake) asks the reader to explain.

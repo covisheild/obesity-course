@@ -1,0 +1,47 @@
+definition.text: |
+  Four functions of the dplyr package choose parts of a data frame. None of them changes the data frame it was given.
+  To keep a result, assign it to a name.
+
+  `select()` keeps the columns you name, in the order you name them, and drops the rest. Every row
+  is kept.
+
+  `rename()` changes the names of columns you name, with `new_name = old_name`, and keeps every
+  column, in its place.
+
+  `filter()` keeps the rows for which a condition is `TRUE`. A condition is built from
+  comparisons (`==` equal to, `!=` not equal to, `<`, `>`, `<=`, `>=`) joined by `&` (and), `|`
+  (or) and `!` (not).
+  Several conditions separated by commas must all be `TRUE`. A row whose condition is `NA` is
+  dropped. So a test for a missing value is written `is.na(x)`, never `x == NA`.
+
+  `arrange()` sorts the rows by the values of the columns named, smallest first. `desc()` sorts
+  largest first. Missing values go to the end either way.
+
+  The pipe passes the data frame on its left to the function on its right, as that function's
+  first argument: `x |> f(y)` is `f(x, y)`.
+simplified_explanation: |
+  **filter()** keeps rows. You write a test, and a row stays only if the test says `TRUE` for it.
+
+  Here is the trap that catches everyone once. A test on a missing value gives neither `TRUE` nor
+  `FALSE`. It gives `NA`, "don't know". `filter()` drops every row where the test says "don't know".
+  To find the missing ones, ask `is.na()`, which answers `TRUE` or `FALSE`.
+
+  Read each `|>` as "then": take the
+  penguins, then keep these rows, then keep these columns, then sort.
+must_know[0].point: |
+  The error is to write `filter(x == NA)` to find missing values. Write `filter(is.na(x))`.
+must_know[1].point: |
+  An empty result is a claim about your test before it is a claim about your data.
+must_know[2].point: |
+  `filter()` drops a row whose test is `NA`. Whenever you report a count after a filter, say whether missing
+  values were dropped by it.
+must_know[3].point: |
+  Never type a filter into the raw file by deleting rows. Write the `filter()` line in the script.
+must_know[4].point: |
+  A verb that is not assigned changes nothing.
+must_know[5].point: |
+  Rename awkward column names once, near the top of the script, into snake case (lowercase words
+  joined by `_`).
+must_know[6].point: |
+  `filter()` keeps the rows that pass the test you wrote. It cannot tell you whether that test
+  matches your question.

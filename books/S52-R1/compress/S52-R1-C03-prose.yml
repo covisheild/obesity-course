@@ -1,0 +1,79 @@
+definition.text: 'An object is a value R holds in memory under a name. The assignment `name <- value` makes one:
+
+  R works out the right-hand side completely, then stores the result under the name on the
+
+  left. An assignment prints nothing. Typing the name alone prints the value.
+
+
+  Assigning to a name that already exists replaces its value. The name keeps no link to how the
+
+  value was made, so an object worked out from another object does not change when that other
+
+  object is later given a new value.
+
+
+  Names are case sensitive: `bmi` and `BMI` are different names. A name may contain letters,
+
+  digits, `.` and `_`, and no spaces. It must start with a letter, or with `.` not followed by a
+
+  digit.
+
+
+  The objects that exist at a given moment form the workspace, which `ls()` lists and RStudio
+
+  shows in its Environment pane. The workspace holds whatever has been run, in any order, in the
+
+  current session (R from the moment it starts until it is closed or restarted), whether or not
+
+  those lines are in the script.
+
+
+  The tidyverse style guide asks for names in lower case, with words joined by `_` (snake case),
+
+  and for `<-` rather than `=` for assignment. R accepts `=` in most places.
+
+
+  "Variable" now has two meanings in this book, and a third comes later. In Book 0''s algebra, a
+
+  variable is a letter standing for a number. In R, an object''s name is often called a variable.
+
+  Later, a variable will also mean one column of a table of data.
+
+  '
+simplified_explanation: "The last section ended with numbers typed straight into each line. This one gives them names.\n\n```r\nweight_kg <- 72\n```\n\nRead the arrow `<-` as \"gets\": weight_kg gets 72. R prints nothing. It has stored 72 under the\nname `weight_kg`. Type the name, and R prints the value back.\n\n```r\nweight_kg\n```\n\n```output\n[1] 72\n```\n\nA name is a label stuck on a value. Three things follow from that.\n\n- **Give the same name a new value, and the old one is gone.** No warning.\n- **A name holds a value, not a sum.** If you work out a BMI from `weight_kg` and then change\n  `weight_kg`, the BMI stays as it was. It changes only when you run its line again.\n- **R reads names exactly.** `Weight_kg` with a capital W is a different name. A name cannot start\n  with a digit and cannot hold a space.\n\nThe objects you have made so far sit in a list called the workspace. RStudio shows it in the\nEnvironment pane, and `ls()` prints it. That list is not your script. It holds every line you ran\ntoday, in whatever order you ran it, including lines you typed only in the console.\n\nWrite names in small letters, with `_` between words, and put the unit in the name:\n`height_cm`, `height_m`, `bmi`. Then a line such as `height_m <- height_cm / 100` explains itself.\n\nThe word \"variable\" now means two things. In Book 0's algebra, a variable was a letter standing\nfor a number. In R, people also call a named object a variable. A third meaning, a column in a\ntable of data, comes later in the book. The context tells you which is meant.\n"
+must_know[0].point: 'The error is to think a name holds a formula. `bmi <- weight_kg / height_m^2` stores one
+
+  number. Change the weight afterwards and `bmi` keeps the old answer until you run its line again.
+
+  After any correction, run the script from the top.
+
+  '
+must_know[1].point: 'The workspace is not your script. It holds whatever you ran today, in any order, including
+
+  lines typed only in the console. Trust a result only after it has come from running the
+
+  script from the top.
+
+  '
+must_know[2].point: 'Assigning to a name that already exists replaces its value without any warning. Give each
+
+  thing its own name, such as `bmi_visit1` and `bmi_visit2`, rather than reusing `bmi`.
+
+  '
+must_know[3].point: 'Put the unit in the name: `height_cm`, `height_m`, `weight_kg`. A line that divides
+
+  `height_cm` by 100 to make `height_m` can then be checked by reading it.
+
+  '
+must_know[4].point: '"object ''x'' not found" usually means a typing slip or a wrong capital letter, or a line that
+
+  makes `x` was never run. Check the spelling first, then whether the line that creates it has
+
+  run.
+
+  '
+must_know[5].point: 'A good name makes code readable, not correct. `bmi` can still hold the wrong number. Names help
+
+  a reviewer follow the steps; only checking the values tells you they are right.
+
+  '

@@ -1,0 +1,95 @@
+definition.text: 'A result is reproducible when the same data, analysed again with the same code, give the same result. A result is
+
+  replicated when independent investigators collect new data on the same question and reach the same answer. Reproducing a
+
+  result does not show that it is correct.
+
+
+  Trisovic, Lau, Pasquier and Crosas (2022) measured re-execution at scale. They took 2109
+
+  replication packages, the data and code that authors deposit with a published paper, from the
+
+  Harvard Dataverse, a website where researchers deposit such files. The packages were published
+
+  from 2010 to July 2020 and held 9078 R files.
+
+
+  Each was run once as deposited and once after an automatic code cleaning. Files that ran out of time were excluded from
+
+  the success rate.
+
+
+  Their abstract reports that {{n:trisovic_fail_initial_pct}} of the R files failed to complete without error on first
+
+  execution, and {{n:trisovic_fail_cleaned_pct}} after code cleaning. Their results table gives success rates of 25% without
+
+  cleaning, 40% with cleaning and 56% for the better of the two runs. Errors that remained included packages missing or of
+
+  an incompatible version, wrong paths and output folders, and objects that did not exist. Journals with the strictest
+
+  data-sharing policies had the highest re-execution rates. Most packages came from the social sciences, and all from one
+
+  website.
+
+  '
+simplified_explanation: '**Reproduce** means: take the same data, run the same code, get the same numbers.
+
+
+  **Replicate** means: collect new data on the same question and see whether the answer holds.
+
+
+  Reproducing is the smaller test. It cannot tell you whether the analysis was right, only whether it
+
+  was done as described.
+
+
+  The first step of reproducing is that the code runs at all. One large study tested that. It took
+
+  thousands of R files that researchers had shared with their published papers, and ran each on a
+
+  clean computer. Most did not run.
+
+
+  A script that runs is still not a result reproduced. It may run and print different numbers.
+
+  '
+must_know[0].point: 'One study ran 9078 R files shared with published papers on the Harvard Dataverse, deposited from
+
+  2010 to July 2020. Its authors report that {{n:trisovic_fail_initial_pct}} failed to run without
+
+  an error on first execution. Quote it with that source, sample and date, never as "most research
+
+  code is broken".
+
+  '
+must_know[1].point: 'The error is to think that sharing your code makes your work reproducible. Code that sets the
+
+  working directory to your own folder stops on its first line on another computer.
+
+  '
+must_know[2].point: 'Before you quote a percentage from a study, find what it is a share of. The study''s 25% success rate leaves out the
+
+  files that ran out of time; its abstract''s {{n:trisovic_fail_initial_pct}} "failed" is on another basis.
+
+  '
+must_know[3].point: 'Run your script on a clean computer, or in a fresh R session, before you share it.
+
+  '
+must_know[4].point: 'Code that runs is not a result reproduced.
+
+  '
+must_know[5].point: 'A reproducible analysis can still be wrong. Do not offer reproducibility as evidence that a
+
+  finding is true.
+
+  '
+must_know[6].point: 'Journals with the strictest data-sharing policies had the highest re-execution rates in this study.
+
+  That is a correlation across a few journals, not a measured effect of the policy.
+
+  '
+must_know[7].point: 'The finding is that most shared R code does not rerun as deposited. Studies of other websites,
+
+  fields and years that find most files running would overturn it.
+
+  '

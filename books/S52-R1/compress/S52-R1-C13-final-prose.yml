@@ -1,0 +1,69 @@
+definition.text: 'In R, a missing value is the constant `NA`, "not available". R turns a code into `NA` only
+
+  when it is told to, at reading or in a later line of code.
+
+
+  `is.na(x)` returns `TRUE` for each element of `x` that is `NA`. In arithmetic, `TRUE` counts
+
+  as 1 and `FALSE` as 0, so `sum(is.na(x))` is the number of missing values in `x`.
+
+
+  `mean(x, na.rm = TRUE)` and similar summaries leave out the missing values. The number of
+
+  values behind the result is then `sum(!is.na(x))`, not `length(x)`.
+
+
+  `drop_na()`, from the tidyr package, keeps only the rows with no missing value in the columns
+
+  it is given, or in every column when it is given none. Analysing only such rows is called
+
+  complete-case analysis.
+
+  '
+simplified_explanation: 'Or it arrives disguised as a real value: a weight of 999, a height of -99, the words "not
+
+  recorded". R cannot tell a disguised code from a measurement.
+
+
+  Read the data dictionary, then look at the largest and smallest values of each column. Turn
+
+  every code into `NA` in your script, never in the file.
+
+
+  The second job is to count. `sum(is.na(x))` counts the missing values in one column.
+
+  `colSums(is.na(data))` counts them in every column at once.
+
+
+  Dropping every row with a gap, with `drop_na()`, is a choice, not a clean-up. It changes which
+
+  rows your answer is about.
+
+  '
+must_know[0].point: 'A code such as 999 or -99 is an ordinary number to R until you say otherwise.
+
+  '
+must_know[1].point: 'Count missing values with `sum(is.na(x))`, or `colSums(is.na(data))` for every column.
+
+  '
+must_know[2].point: 'Beside every mean, median or percentage, write the n it was computed from. With `na.rm =
+
+  TRUE` that n is `sum(!is.na(x))`, not the number of rows.
+
+  '
+must_know[3].point: '`drop_na()` with no columns named drops a row for a gap in any column, including a free-text
+
+  note. Always name the columns, and print `nrow()` before and after.
+
+  '
+must_know[4].point: 'Turn codes into `NA` in a new column made by code, never by editing the raw file.
+
+  '
+must_know[5].point: 'Say in the methods which columns you required, and how many rows that left.
+
+  '
+must_know[6].point: 'Counting missing values tells you how many are gone, never why. A count cannot show whether
+
+  the people with gaps differ from the rest.
+
+  '

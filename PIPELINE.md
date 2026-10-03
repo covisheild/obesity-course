@@ -257,6 +257,10 @@ a batch can contradict itself.
 > real superscripts and subscripts, so do not write markup. Introduce an operator in words the
 > first time beside its symbol, then use the symbol.
 >
+> Code goes in ```` ```r ```` / ```` ```sh ```` fences (`claude.md` §1, "Code is fenced"). Never
+> type an ```` ```output ```` block: run `python check/code_gate.py --write --subject <SUBJECT>`,
+> read what it wrote, then `python check/code_gate.py --check --subject <SUBJECT>` until it passes.
+>
 > Use `illustrations` (a list) where one illustration does not do the teaching, and
 > `illustration` where it does.
 >
@@ -337,6 +341,11 @@ pass. Fresh contexts, every time.
 > says: the same numbers, the same units, bars from zero, nothing drawn that the data does not
 > support. The build has checked that each number appears in the text; you check that it is the
 > right number in the right place, and that the figure teaches what the section teaches.
+>
+> Then **the code**, where the book has any: run
+> `python check/code_gate.py --check --no-cache --subject <SUBJECT>` (a fresh run, not the cache)
+> and read each ```` ```output ```` block against its code as a reader would: does it show what the
+> prose says it shows?
 >
 > Then **the reader's traps** (28 Sep 2026): every headline number says what it does not mean
 > (SELFCHECK 4b); every symbol is explained at first use (14a); every number used in two sections

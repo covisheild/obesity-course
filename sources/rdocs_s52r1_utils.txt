@@ -1,0 +1,843 @@
+UTILS 4.3.3 — VERSION-MATCHED HELP PAGES FROM THE BOOK'S R 4.3.3 SANDBOX
+VERBATIM SOURCE PACK (EXCERPTS)
+============================================================
+
+Transcription rule for this file: every line between a [TEXT] and an [END TEXT] line is an exact,
+unaltered slice of a raw render made in the book's sandbox and saved under books/S52-R1/intake/raw/, cut
+programmatically (raw[i:j]) by books/S52-R1/intake/build-c/build.py and re-checked by verify.py as a
+whitespace-normalised substring of that render. Nothing has been paraphrased. Where material is left out,
+the omission is marked [...] in place. Lines beginning [NOTE] are this file's own annotation and are NOT
+source text. Quoted evidence in this header is cut the same way.
+
+LOCATORS: these are local documents, not web pages, so each block heading carries a locator, not a URL:
+  rhelp://<package>@<version>/<Rd name>     the installed help page (what ?topic shows in R)
+  rvignette://<package>@<version>/<name>    the installed vignette (what vignette("<name>") shows)
+  rfile://<package>@<version>/DESCRIPTION   the installed DESCRIPTION file, byte for byte
+The package's website shows the CURRENT version's documentation, which may differ from what is held here.
+
+HOW RENDERED (2026-10-02): R 4.3.3, in a UTF-8 locale, with options(useFancyQuotes = FALSE) so quotation
+marks print as straight ASCII ' and "; help pages by tools::Rd2txt(utils:::.getHelpFile(help(topic,
+package = pkg)), options = list(underline_titles = FALSE, width = 80)); vignettes from the installed HTML
+by xml2 1.3.6, taking h1-h4, p, pre, top-level li and table elements in document order (headings marked
+with #, list items with -, code and printed output as in the vignette's own <pre> blocks; images not
+held). Script: books/S52-R1/intake/build-c/render.R. Help pages print no output for their Examples: the
+code there is shown, not run.
+
+CITATION: R Core Team. The R Utils Package, part of R 4.3.3 (2024-02-29). Help pages as installed.
+PACKAGE TITLE (from DESCRIPTION): "Title: The R Utils Package"
+VERSION read with packageVersion() on 2026-10-02: "utils 4.3.3"
+LICENCE: the installed DESCRIPTION file states
+  "License: Part of R 4.3.3"
+and R itself, asked with R --version, states:
+  R is free software and comes with ABSOLUTELY NO WARRANTY.
+  You are welcome to redistribute it under the terms of the
+  GNU General Public License versions 2 or 3.
+
+WHAT THIS FILE HOLDS: these help pages, each whole (description, usage, arguments, details, value, examples
+as code): sessionInfo (Rd "sessionInfo"); Rscript (Rd "Rscript"); packageVersion (Rd "packageDescription"); install.packages (Rd "install.packages").
+The DESCRIPTION file, whole. Pages marked [extra] were not in the intake brief's list and were added because S52-R1's
+inventory uses them (C05, C06, C11-C13, C16, C19). Every other help page and vignette of the package is NOT held.
+
+VERSION WARNING: this is the documentation of the version the book's outputs were made with. Newer versions
+exist (see `tidyverse_news_s52r1` for what changed in dplyr, tidyr, readr and ggplot2). A reader on a newer
+version may see different text in ?topic. Current online reference (orientation only, not this text): none (base R documentation ships with R itself; R-project.org hosts the current release only)
+
+===============================================================================
+1. utils::sessionInfo — help page "sessionInfo" (utils 4.3.3), whole
+rhelp://utils@4.3.3/sessionInfo
+===============================================================================
+
+[TEXT]
+sessionInfo               package:utils                R Documentation
+
+Collect Information About the Current R Session
+
+Description:
+
+     Get and report version information about R, the OS and attached or
+     loaded packages.
+
+     The 'print()' and 'toLatex()' methods (for a '"sessionInfo"'
+     object) show the locale and timezone information by default, when
+     'locale' or 'tzone' are true.  The 'system.codepage' is only shown
+     when it is not empty, i.e., only on Windows, _and_ if it differs
+     from 'code.page', see below or 'l10n_info()'.
+
+Usage:
+
+     sessionInfo(package = NULL)
+     ## S3 method for class 'sessionInfo'
+     print(x, locale = TRUE, tzone = locale,
+           RNG = !identical(x$RNGkind, .RNGdefaults), ...)
+     ## S3 method for class 'sessionInfo'
+     toLatex(object, locale = TRUE, tzone = locale,
+             RNG = !identical(object$RNGkind, .RNGdefaults), ...)
+     osVersion
+     
+Arguments:
+
+ package: a character vector naming installed packages, or 'NULL' (the
+          default) meaning all attached packages.
+
+       x: an object of class '"sessionInfo"'.
+
+  object: an object of class '"sessionInfo"'.
+
+  locale: show locale, by default 'tzone', and (on Windows) code page
+          information?
+
+   tzone: show time zone information?
+
+     RNG: show information on 'RNGkind()'?  Defaults to true iff it
+          differs from the R version's default, i.e., 'RNGversion(*)'.
+
+     ...: currently not used.
+
+Value:
+
+     'sessionInfo()' returns an object of class '"sessionInfo"' which
+     has 'print' and 'toLatex' methods.  This is a list with components
+
+R.version: a list, the result of calling 'R.Version()'.
+
+platform: a character string describing the platform R was built under.
+          Where sub-architectures are in use this is of the form
+          'platform/sub-arch (nn-bit)'.
+
+ running: a character string (or possibly 'NULL'), the same as
+          'osVersion', see below.
+
+ RNGkind: a character vector, the result of calling 'RNGkind()'.
+
+ matprod: a character string, the result of calling
+          'getOption("matprod")'.
+
+    BLAS: a character string, the result of calling
+          'extSoftVersion()["BLAS"]'.
+
+  LAPACK: a character string, the result of calling 'La_library()'.
+
+LA_version: a character string, the result of calling 'La_version()'.
+
+  locale: a character string, the result of calling 'Sys.getlocale()'.
+
+   tzone: a character string, the result of calling 'Sys.timezone()'.
+
+tzcode_type: a character string indicating source (system/internal) of
+          the date-time conversion and printing functions.
+
+basePkgs: a character vector of base packages which are attached.
+
+otherPkgs: (not always present): a named list of the results of calling
+          'packageDescription' on other attached packages.
+
+loadedOnly: (not always present): a named list of the results of
+          calling 'packageDescription' on packages whose namespaces are
+          loaded but are not attached.
+
+'osVersion':
+
+     'osVersion' is a character string (or possibly 'NULL' on bizarre
+     platforms) describing the OS and version which it is running under
+     (as distinct from built under).  This attempts to name a Linux
+     distribution and give the OS name on an Apple Mac.
+
+     It is the same as 'sessionInfo()$running' and created when loading
+     the 'utils' package.
+
+     Windows may report unexpected versions: see the help for
+     'win.version'.
+
+     How OSes identify themselves and their versions can be arcane:
+     where possible 'osVersion' (and hence 'sessionInfo()$running')
+     uses a human-readable form.
+
+     Where R was compiled under macOS 10.x (as the CRAN Intel
+     distributions were prior to R 4.3.0) but running under 'Big Sur'
+     or later, macOS reports itself as '10.16' (which R recognizes as
+     'Big Sur ...') and not '11', '12', ....
+
+Note:
+
+     The information on 'loaded' packages and namespaces is the
+     _current_ version installed at the location the package was loaded
+     from: it can be wrong if another process has been changing
+     packages during the session.
+
+See Also:
+
+     'R.version', 'R_compiled_by'
+
+Examples:
+
+     sI <- sessionInfo()
+     sI
+     # The same, showing the RNGkind, but not the locale :
+       print(sI, RNG = TRUE, locale = FALSE)
+     toLatex(sI, locale = FALSE) # shortest; possibly desirable at end of report
+     
+[END TEXT]
+
+===============================================================================
+2. utils::Rscript — help page "Rscript" (utils 4.3.3), whole
+rhelp://utils@4.3.3/Rscript
+===============================================================================
+
+[TEXT]
+Rscript                 package:utils                  R Documentation
+
+Scripting Front-End for R
+
+Description:
+
+     This is an alternative front end for use in '#!' scripts and other
+     scripting applications.
+
+Usage:
+
+     Rscript [options] file [args]
+     Rscript [options] -e expr [-e expr2 ...] [args]
+     
+Arguments:
+
+ options: a list of options, all beginning with '--'.  These can be any
+          of the options of the standard R front-end, and also those
+          described in the details.
+
+expr, expr2: R expression(s), properly quoted.
+
+    file: the name of a file containing R commands.  '-' indicates
+          'stdin'.
+
+    args: arguments to be passed to the script in 'file' or expressions
+          supplied via '-e'.
+
+Details:
+
+     'Rscript --help' gives details of usage, and 'Rscript --version'
+     gives the version of 'Rscript'.
+
+     Other invocations invoke the R front-end with selected options.
+     This front-end is convenient for writing '#!' scripts since it is
+     an executable and takes 'file' directly as an argument.  Options
+     '--no-echo --no-restore' are always supplied: these imply
+     '--no-save'. Arguments that contain spaces cannot be specified
+     directly on the '#!' line, because spaces and tabs are interpreted
+     as delimiters and there is no way to protect them from this
+     interpretation on the '#!' line. (The standard Windows command
+     line has no concept of '#!' scripts, but Cygwin shells do.)
+
+     _Either_ one or more '-e' options or 'file' should be supplied.
+     When using '-e' options be aware of the quoting rules in the shell
+     used: see the examples.
+
+     The prescribed order of arguments is important: e.g.  '--verbose'
+     specified after '-e' will be part of 'args' and passed to the
+     expression; the same will happen to '-e' specified after 'file'.
+
+     Additional options accepted as part of 'options' (before 'file' or
+     '-e') are
+
+     '--verbose' gives details of what 'Rscript' is doing.
+
+     '--default-packages=list' where 'list' is a comma-separated list
+          of package names or 'NULL'.  Sets the environment variable
+          'R_DEFAULT_PACKAGES' which determines the packages loaded on
+          startup.
+
+     Spaces are allowed in 'expr' and 'file' (but will need to be
+     protected from the shell in use, if any, for example by enclosing
+     the argument in quotes).
+
+     If '--default-packages' is not used, then 'Rscript' checks the
+     environment variable 'R_SCRIPT_DEFAULT_PACKAGES'. If this is set,
+     then it takes precedence over 'R_DEFAULT_PACKAGES'.
+
+     Normally the version of R is determined at installation, but this
+     can be overridden by setting the environment variable 'RHOME'.
+
+     'stdin()' refers to the input file, and 'file("stdin")' to the
+     'stdin' file stream of the process.
+
+Note:
+
+     'Rscript' is only supported on systems with the 'execv' system
+     call.
+
+Examples:
+
+     ## Not run:
+     
+     Rscript -e 'date()' -e 'format(Sys.time(), "%a %b %d %X %Y")'
+     
+     # Get the same initial packages in the same order as default R:
+     Rscript --default-packages=methods,datasets,utils,grDevices,graphics,stats -e 'sessionInfo()'
+     
+     ## example #! script for a Unix-alike
+     ## (arguments given on the #! line end up as [options] to Rscript, while
+     ## arguments passed to the #! script end up as [args], so available to
+     ## commandArgs())
+     #! /path/to/Rscript --vanilla --default-packages=utils
+     args <- commandArgs(TRUE)
+     res <- try(install.packages(args))
+     if(inherits(res, "try-error")) q(status=1) else q()
+     ## End(Not run)
+     
+[END TEXT]
+
+===============================================================================
+3. utils::packageVersion [extra] — help page "packageDescription" (utils 4.3.3), whole
+rhelp://utils@4.3.3/packageDescription
+===============================================================================
+
+[TEXT]
+packageDescription            package:utils            R Documentation
+
+Package Description
+
+Description:
+
+     Parses and returns the 'DESCRIPTION' file of a package as a
+     '"packageDescription"'.
+
+     Utility functions return (transformed) parts of that.
+
+Usage:
+
+     packageDescription(pkg, lib.loc = NULL, fields = NULL,
+                        drop = TRUE, encoding = "")
+     packageVersion(pkg, lib.loc = NULL)
+     packageDate(pkg, lib.loc = NULL,
+                 date.fields = c("Date", "Packaged", "Date/Publication", "Built"),
+                 tryFormats = c("%Y-%m-%d", "%Y/%m/%d", "%D", "%m/%d/%y"),
+                 desc = packageDescription(pkg, lib.loc=lib.loc, fields=date.fields))
+     asDateBuilt(built)
+     
+Arguments:
+
+     pkg: a character string with the package name.
+
+ lib.loc: a character vector of directory names of R libraries, or
+          'NULL'.  The default value of 'NULL' corresponds to all
+          libraries currently known.  If the default is used, the
+          loaded packages and namespaces are searched before the
+          libraries.
+
+  fields: a character vector giving the tags of fields to return (if
+          other fields occur in the file they are ignored).
+
+    drop: If 'TRUE' and the length of 'fields' is 1, then a single
+          character string with the value of the respective field is
+          returned instead of an object of class
+          '"packageDescription"'.
+
+encoding: If there is an 'Encoding' field, to what encoding should
+          re-encoding be attempted?  If 'NA', no re-encoding.  The
+          other values are as used by 'iconv', so the default '""'
+          indicates the encoding of the current locale.
+
+date.fields: character vector of field tags to be tried.  The first for
+          which 'as.Date(.)' is not 'NA' will be returned. (Partly
+          experimental, see _Note_.)
+
+tryFormats: date formats to try, see 'as.Date.character()'.
+
+    desc: optionally, a named 'list' with components named from
+          'date.fields'; where the default is fine, a complete
+          'packageDescription()' maybe specified as well.
+
+   built: for 'asDateBuilt()', a 'character' string as from
+          'packageDescription(*, fields="Built")'.
+
+Details:
+
+     A package will not be 'found' unless it has a 'DESCRIPTION' file
+     which contains a valid 'Version' field.  Different warnings are
+     given when no package directory is found and when there is a
+     suitable directory but no valid 'DESCRIPTION' file.
+
+     An attached environment named to look like a package (e.g.,
+     'package:utils2') will be ignored.
+
+     'packageVersion()' is a convenience shortcut, allowing things like
+     'if (packageVersion("MASS") < "7.3") { do.things } '.
+
+     For 'packageDate()', if 'desc' is valid, both 'pkg' and 'lib.loc'
+     are not made use of.
+
+Value:
+
+     If a 'DESCRIPTION' file for the given package is found and can
+     successfully be read, 'packageDescription' returns an object of
+     class '"packageDescription"', which is a named list with the
+     values of the (given) fields as elements and the tags as names,
+     unless 'drop = TRUE'.
+
+     If parsing the 'DESCRIPTION' file was not successful, it returns a
+     named list of 'NA's with the field tags as names if 'fields' is
+     not null, and 'NA' otherwise.
+
+     'packageVersion()' returns a (length-one) object of class
+     '"package_version"'.
+
+     'packageDate()' will return a '"Date"' object from 'as.Date()' or
+     'NA'.
+
+     'asDateBuilt(built)' returns a '"Date"' object or signals an error
+     if 'built' is invalid.
+
+Note:
+
+     The default behavior of 'packageDate()', notably for
+     'date.fields', is somewhat experimental and may change.
+
+See Also:
+
+     'read.dcf'
+
+Examples:
+
+     packageDescription("stats")
+     packageDescription("stats", fields = c("Package", "Version"))
+     
+     packageDescription("stats", fields = "Version")
+     packageDescription("stats", fields = "Version", drop = FALSE)
+     
+     if(requireNamespace("MASS") && packageVersion("MASS") < "7.3.29")
+       message("you need to update 'MASS'")
+     
+     pu <- packageDate("utils")
+     str(pu)
+     stopifnot(identical(pu, packageDate(desc = packageDescription("utils"))),
+               identical(pu, packageDate("stats"))) # as "utils" and "stats" are
+                                        # both 'base R' and "Built" at same time
+     
+[END TEXT]
+
+===============================================================================
+4. utils::install.packages [extra] — help page "install.packages" (utils 4.3.3), whole
+rhelp://utils@4.3.3/install.packages
+===============================================================================
+
+[TEXT]
+install.packages             package:utils             R Documentation
+
+Install Packages from Repositories or Local Files
+
+Description:
+
+     Download and install packages from CRAN-like repositories or from
+     local files.
+
+Usage:
+
+     install.packages(pkgs, lib, repos = getOption("repos"),
+                      contriburl = contrib.url(repos, type),
+                      method, available = NULL, destdir = NULL,
+                      dependencies = NA, type = getOption("pkgType"),
+                      configure.args = getOption("configure.args"),
+                      configure.vars = getOption("configure.vars"),
+                      clean = FALSE, Ncpus = getOption("Ncpus", 1L),
+                      verbose = getOption("verbose"),
+                      libs_only = FALSE, INSTALL_opts, quiet = FALSE,
+                      keep_outputs = FALSE, ...)
+     
+Arguments:
+
+    pkgs: character vector of the names of packages whose current
+          versions should be downloaded from the repositories.
+
+          If 'repos = NULL', a character vector of file paths,
+
+          on Windows, file paths of '.zip' files containing binary
+              builds of packages.  ('http://' and 'file://' URLs are
+              also accepted and the files will be downloaded and
+              installed from local copies.)  Source directories or file
+              paths or URLs of archives may be specified with 'type =
+              "source"', but some packages need suitable tools
+              installed (see the 'Details' section).
+
+          On Unix-alikes, these file paths can be source directories or
+              archives or binary package archive files (as created by
+              'R CMD build --binary').  ('http://' and 'file://' URLs
+              are also accepted and the files will be downloaded and
+              installed from local copies.)  On a CRAN build of R for
+              macOS these can be '.tgz' files containing binary package
+              archives.  Tilde-expansion will be done on file paths.
+
+          If this is missing, a listbox of available packages is
+          presented where possible in an interactive R session.
+
+     lib: character vector giving the library directories where to
+          install the packages.  Recycled as needed.  If missing,
+          defaults to the first element of '.libPaths()'.
+
+   repos: character vector, the base URL(s) of the repositories to use,
+          e.g., the URL of a CRAN mirror such as
+          '"https://cloud.r-project.org"'.  For more details on
+          supported URL schemes see 'url'.
+
+          Can be 'NULL' to install from local files, directories or
+          URLs: this will be inferred by extension from 'pkgs' if of
+          length one.
+
+contriburl: URL(s) of the contrib sections of the repositories.  Use
+          this argument if your repository mirror is incomplete, e.g.,
+          because you mirrored only the 'contrib' section, or only have
+          binary packages.  Overrides argument 'repos'.  Incompatible
+          with 'type = "both"'.
+
+  method: download method, see 'download.file'.  Unused if a non-'NULL'
+          'available' is supplied.
+
+available: a matrix as returned by 'available.packages' listing
+          packages available at the repositories, or 'NULL' when the
+          function makes an internal call to 'available.packages'.
+          Incompatible with 'type = "both"'.
+
+ destdir: directory where downloaded packages are stored.  If it is
+          'NULL' (the default) a subdirectory 'downloaded_packages' of
+          the session temporary directory will be used (and the files
+          will be deleted at the end of the session).
+
+dependencies: logical indicating whether to also install uninstalled
+          packages which these packages depend on/link
+          to/import/suggest (and so on recursively).  Not used if
+          'repos = NULL'.  Can also be a character vector, a subset of
+          'c("Depends", "Imports", "LinkingTo", "Suggests",
+          "Enhances")'.
+
+          Only supported if 'lib' is of length one (or missing), so it
+          is unambiguous where to install the dependent packages.  If
+          this is not the case it is ignored, with a warning.
+
+          The default, 'NA', means 'c("Depends", "Imports",
+          "LinkingTo")'.
+
+          'TRUE' means to use 'c("Depends", "Imports", "LinkingTo",
+          "Suggests")' for 'pkgs' and 'c("Depends", "Imports",
+          "LinkingTo")' for added dependencies: this installs all the
+          packages needed to run 'pkgs', their examples, tests and
+          vignettes (if the package author specified them correctly).
+
+          In all of these, '"LinkingTo"' is omitted for binary
+          packages.
+
+    type: character, indicating the type of package to download and
+          install.  Will be '"source"' except on Windows and some macOS
+          builds: see the section on 'Binary packages' for those.
+
+configure.args: (Used only for source installs.) A character vector or
+          a named list.  If a character vector with no names is
+          supplied, the elements are concatenated into a single string
+          (separated by a space) and used as the value for the
+          '--configure-args' flag in the call to 'R CMD INSTALL'.  If
+          the character vector has names these are assumed to identify
+          values for '--configure-args' for individual packages.  This
+          allows one to specify settings for an entire collection of
+          packages which will be used if any of those packages are to
+          be installed.  (These settings can therefore be re-used and
+          act as default settings.)
+
+          A named list can be used also to the same effect, and that
+          allows multi-element character strings for each package which
+          are concatenated to a single string to be used as the value
+          for '--configure-args'.
+
+configure.vars: (Used only for source installs.) Analogous to
+          'configure.args' for flag '--configure-vars', which is used
+          to set environment variables for the 'configure' run.
+
+   clean: a logical value indicating whether to add the '--clean' flag
+          to the call to 'R CMD INSTALL'.  This is sometimes used to
+          perform additional operations at the end of the package
+          installation in addition to removing intermediate files.
+
+   Ncpus: the number of parallel processes to use for a parallel
+          install of more than one source package.  Values greater than
+          one are supported if the 'make' command specified by
+          'Sys.getenv("MAKE", "make")' accepts argument '-k -j Ncpus'.
+
+ verbose: a logical indicating if some "progress report" should be
+          given.
+
+libs_only: a logical value: should the '--libs-only' option be used to
+          install only additional sub-architectures for source
+          installs?  (See also 'INSTALL_opts'.)  This can also be used
+          on Windows to install just the DLL(s) from a binary package,
+          e.g. to add 64-bit DLLs to a 32-bit install.
+
+INSTALL_opts: an optional character vector of additional option(s) to
+          be passed to 'R CMD INSTALL' for a source package install.
+          E.g., 'c("--html", "--no-multiarch", "--no-test-load")'.
+
+          Can also be a named list of character vectors to be used as
+          additional options, with names the respective package names.
+
+   quiet: logical: if true, reduce the amount of output.  This is _not_
+          passed to 'available.packages()' in case that is called, on
+          purpose.
+
+keep_outputs: a logical: if true, keep the outputs from installing
+          source packages in the current working directory, with the
+          names of the output files the package names with '.out'
+          appended.  Alternatively, a character string giving the
+          directory in which to save the outputs.  Ignored when
+          installing from local files.
+
+     ...: Arguments to be passed to 'download.file',
+          'available.packages', or to the functions for binary installs
+          on macOS and Windows (which accept an argument '"lock"': see
+          the section on 'Locking').
+
+Details:
+
+     This is the main function to install packages.  It takes a vector
+     of names and a destination library, downloads the packages from
+     the repositories and installs them.  (If the library is omitted it
+     defaults to the first directory in '.libPaths()', with a message
+     if there is more than one.)  If 'lib' is omitted or is of length
+     one and is not a (group) writable directory, in interactive use
+     the code offers to create a personal library tree (the first
+     element of 'Sys.getenv("R_LIBS_USER")') and install there.
+
+     Detection of a writable directory is problematic on Windows: see
+     the 'Note' section.
+
+     For installs from a repository an attempt is made to install the
+     packages in an order that respects their dependencies.  This does
+     assume that all the entries in 'lib' are on the default library
+     path for installs (set by environment variable 'R_LIBS').
+
+     You are advised to run 'update.packages' before 'install.packages'
+     to ensure that any already installed dependencies have their
+     latest versions.
+
+Value:
+
+     Invisible 'NULL'.
+
+Binary packages:
+
+     This section applies only to platforms where binary packages are
+     available: Windows and CRAN builds for macOS.
+
+     R packages are primarily distributed as _source_ packages, but
+     _binary_ packages (a packaging up of the installed package) are
+     also supported, and the type most commonly used on Windows and by
+     the CRAN builds for macOS.  This function can install either type,
+     either by downloading a file from a repository or from a local
+     file.
+
+     Possible values of 'type' are (currently) '"source"',
+     '"mac.binary"', and '"win.binary"': the appropriate binary type
+     where supported can also be selected as '"binary"'.
+
+     For a binary install from a repository, the function checks for
+     the availability of a source package on the same repository, and
+     reports if the source package has a later version, or is available
+     but no binary version is.  This check can be suppressed by using
+
+         options(install.packages.check.source = "no")
+     
+     and should be if there is a partial repository containing only
+     binary files.
+
+     An alternative (and the current default) is '"both"' which means
+     'use binary if available and current, otherwise try source'. The
+     action if there are source packages which are preferred but may
+     contain code which needs to be compiled is controlled by
+     'getOption("install.packages.compile.from.source")'.  'type =
+     "both"' will be silently changed to '"binary"' if either
+     'contriburl' or 'available' is specified.
+
+     Using packages with 'type = "source"' always works provided the
+     package contains no C/C++/Fortran code that needs compilation.
+     Otherwise,
+
+     on Windows, you will need to have installed the Rtools collection
+          as described in the 'R for Windows FAQ' _and_ you must have
+          the 'PATH' environment variable set up as required by Rtools.
+
+          For a 32/64-bit installation of R on Windows, a small
+          minority of packages with compiled code need either
+          'INSTALL_opts = "--force-biarch"' or 'INSTALL_opts =
+          "--merge-multiarch"' for a source installation.  (It is safe
+          to always set the latter when installing from a repository or
+          tarballs, although it will be a little slower.)
+
+          When installing a package on Windows, 'install.packages' will
+          abort the install if it detects that the package is already
+          installed and is currently in use.  In some circumstances
+          (e.g., multiple instances of R running at the same time and
+          sharing a library) it will not detect a problem, but the
+          installation may fail as Windows locks files in use.
+
+     On Unix-alikes, when the package contains C/C++/Fortran code that
+          needs compilation, suitable compilers and related tools need
+          to be installed.  On macOS you need to have installed the
+          'Command-line tools for Xcode' (see the 'R Installation and
+          Administration' manual) and if needed by the package a
+          Fortran compiler, and have them in your path.
+
+Locking:
+
+     There are various options for locking: these differ between source
+     and binary installs.
+
+     By default for a source install, the library directory is 'locked'
+     by creating a directory '00LOCK' within it.  This has two
+     purposes: it prevents any other process installing into that
+     library concurrently, and is used to store any previous version of
+     the package to restore on error.  A finer-grained locking is
+     provided by the option '--pkglock' which creates a separate lock
+     for each package: this allows enough freedom for parallel
+     installation.  Per-package locking is the default when installing
+     a single package, and for multiple packages when 'Ncpus > 1L'.
+     Finally locking (and restoration on error) can be suppressed by
+     '--no-lock'.
+
+     For a macOS binary install, no locking is done by default.
+     Setting argument 'lock' to 'TRUE' (it defaults to the value of
+     'getOption("install.lock", FALSE)') will use per-directory locking
+     as described for source installs.  For Windows binary install,
+     per-directory locking is used by default ('lock' defaults to the
+     value of 'getOption("install.lock", TRUE)').  If the value is
+     '"pkglock"' per-package locking will be used.
+
+     If package locking is used on Windows with 'libs_only = TRUE' and
+     the installation fails, the package will be restored to its
+     previous state.
+
+     Note that it is possible for the package installation to fail so
+     badly that the lock directory is not removed: this inhibits any
+     further installs to the library directory (or for '--pkglock', of
+     the package) until the lock directory is removed manually.
+
+Parallel installs:
+
+     Parallel installs are attempted if 'pkgs' has length greater than
+     one and 'Ncpus > 1'.  It makes use of a parallel 'make', so the
+     'make' specified (default 'make') when R was built must be capable
+     of supporting 'make -j n': GNU make, 'dmake' and 'pmake' do, but
+     Solaris 'make' and older FreeBSD 'make' do not: if necessary
+     environment variable 'MAKE' can be set for the current session to
+     select a suitable 'make'.
+
+     'install.packages' needs to be able to compute all the
+     dependencies of 'pkgs' from 'available', including if one element
+     of 'pkgs' depends indirectly on another.  This means that if for
+     example you are installing CRAN packages which depend on
+     Bioconductor packages which in turn depend on CRAN packages,
+     'available' needs to cover both CRAN and Bioconductor packages.
+
+Timeouts:
+
+     A limit on the elapsed time for each call to 'R CMD INSTALL' (so
+     for source installs) can be set _via_ environment variable
+     '_R_INSTALL_PACKAGES_ELAPSED_TIMEOUT_': in seconds (or in minutes
+     or hours with optional suffix 'm' or 'h', suffix 's' being allowed
+     for the default seconds) with '0' meaning no limit.
+
+     For non-parallel installs this is implemented _via_ the 'timeout'
+     argument of 'system2': for parallel installs _via_ the OS's
+     'timeout' command.  (The one tested is from GNU 'coreutils',
+     commonly available on Linux but not other Unix-alikes.  If no such
+     command is available the timeout request is ignored, with a
+     warning. On Windows, one needs to specify a suitable 'timeout'
+     command via environment variable 'R_TIMEOUT', because
+     'c:/Windows/system32/timeout.exe' is not.)  For parallel installs
+     a 'Error 124' message from 'make' indicates that timeout occurred.
+
+     Timeouts during installation might leave lock directories behind
+     and not restore previous versions.
+
+Version requirements on source installs:
+
+     If you are not running an up-to-date version of R you may see a
+     message like
+
+        package 'RODBC' is not available (for R version 3.5.3)
+     
+     One possibility is that the package is not available in any of the
+     selected repositories; another is that is available but only for
+     current or recent versions of R.  For CRAN packages take a look at
+     the package's CRAN page (e.g.,
+     <https://cran.r-project.org/package=RODBC>). If that indicates in
+     the 'Depends' field a dependence on a later version of R you will
+     need to look in the 'Old sources' section and select the URL of a
+     version of comparable age to your R.  Then you can supply that URL
+     as the first argument of 'install.packages()': you may need to
+     first manually install its dependencies.
+
+     For other repositories, using 'available.packages(filters =
+     "OS_type")[pkgname, ]' will show if the package is available for
+     any R version (for your OS).
+
+Note:
+
+     On Unix-alikes: Some binary distributions of R have 'INSTALL' in a
+          separate bundle, e.g. an 'R-devel' RPM.  'install.packages'
+          will give an error if called with 'type = "source"' on such a
+          system.
+
+          Some binary Linux distributions of R can be installed on a
+          machine without the tools needed to install packages: a
+          possible remedy is to do a complete install of R which should
+          bring in all those tools as dependencies.
+
+     On Windows: 'install.packages' tries to detect if you have write
+          permission on the library directories specified, but Windows
+          reports unreliably.  If there is only one library directory
+          (the default), R tries to find out by creating a test
+          directory, but even this need not be the whole story: you may
+          have permission to write in a library directory but lack
+          permission to write binary files (such as '.dll' files)
+          there.  See the 'R for Windows FAQ' for workarounds.
+
+See Also:
+
+     'update.packages', 'available.packages', 'download.packages',
+     'installed.packages', 'contrib.url'.
+
+     See 'download.file' for how to handle proxies and other options to
+     monitor file transfers.
+
+     'untar' for manually unpacking source package tarballs.
+
+     'INSTALL', 'REMOVE', 'remove.packages', 'library', '.packages',
+     'read.dcf'
+
+     The 'R Installation and Administration' manual for how to set up a
+     repository.
+
+Examples:
+
+     ## Not run:
+     
+     ## A Linux example for Fedora's layout of udunits2 headers.
+     install.packages(c("ncdf4", "RNetCDF"),
+       configure.args = c(RNetCDF = "--with-netcdf-include=/usr/include/udunits2"))
+     ## End(Not run)
+     
+[END TEXT]
+
+===============================================================================
+5. DESCRIPTION file of utils 4.3.3, whole (title, authors, licence, version, publication date)
+rfile://utils@4.3.3/DESCRIPTION
+===============================================================================
+
+[TEXT]
+Package: utils
+Version: 4.3.3
+Priority: base
+Title: The R Utils Package
+Author: R Core Team and contributors worldwide
+Maintainer: R Core Team <do-use-Contact-address@r-project.org>
+Contact: R-help mailing list <r-help@r-project.org>
+Description: R utility functions.
+License: Part of R 4.3.3
+Suggests: methods, xml2, commonmark, knitr
+NeedsCompilation: yes
+Built: R 4.3.3; x86_64-pc-linux-gnu; 2024-03-31 19:05:56 UTC; unix
+[END TEXT]

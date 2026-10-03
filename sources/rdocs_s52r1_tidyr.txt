@@ -1,0 +1,1334 @@
+TIDYR 1.3.1 — VERSION-MATCHED HELP PAGES FROM THE BOOK'S R 4.3.3 SANDBOX
+VERBATIM SOURCE PACK (EXCERPTS)
+============================================================
+
+Transcription rule for this file: every line between a [TEXT] and an [END TEXT] line is an exact,
+unaltered slice of a raw render made in the book's sandbox and saved under books/S52-R1/intake/raw/, cut
+programmatically (raw[i:j]) by books/S52-R1/intake/build-c/build.py and re-checked by verify.py as a
+whitespace-normalised substring of that render. Nothing has been paraphrased. Where material is left out,
+the omission is marked [...] in place. Lines beginning [NOTE] are this file's own annotation and are NOT
+source text. Quoted evidence in this header is cut the same way.
+
+LOCATORS: these are local documents, not web pages, so each block heading carries a locator, not a URL:
+  rhelp://<package>@<version>/<Rd name>     the installed help page (what ?topic shows in R)
+  rvignette://<package>@<version>/<name>    the installed vignette (what vignette("<name>") shows)
+  rfile://<package>@<version>/DESCRIPTION   the installed DESCRIPTION file, byte for byte
+The package's website shows the CURRENT version's documentation, which may differ from what is held here.
+
+HOW RENDERED (2026-10-02): R 4.3.3, in a UTF-8 locale, with options(useFancyQuotes = FALSE) so quotation
+marks print as straight ASCII ' and "; help pages by tools::Rd2txt(utils:::.getHelpFile(help(topic,
+package = pkg)), options = list(underline_titles = FALSE, width = 80)); vignettes from the installed HTML
+by xml2 1.3.6, taking h1-h4, p, pre, top-level li and table elements in document order (headings marked
+with #, list items with -, code and printed output as in the vignette's own <pre> blocks; images not
+held). Script: books/S52-R1/intake/build-c/render.R. Help pages print no output for their Examples: the
+code there is shown, not run.
+
+CITATION: Wickham, Hadley; Vaughan, Davis; Girlich, Maximilian. tidyr: Tidy Messy Data. R package version 1.3.1, published on CRAN 2024-01-24. Help pages as installed.
+PACKAGE TITLE (from DESCRIPTION): "Title: Tidy Messy Data"
+VERSION read with packageVersion() on 2026-10-02: "tidyr 1.3.1"
+LICENCE: the installed DESCRIPTION file states
+  "License: MIT + file LICENSE"
+The LICENSE file it names is not present in the installed package (system.file("LICENSE",
+package = "tidyr") returns ""), so its year and copyright-holder lines were not read.
+
+WHAT THIS FILE HOLDS: these help pages, each whole (description, usage, arguments, details, value, examples
+as code): pivot_longer (Rd "pivot_longer"); pivot_wider (Rd "pivot_wider"); drop_na (Rd "drop_na"). Vignette sections, each whole as marked:
+  - vignette "tidy-data": Tidy data: the introduction, "Data tidying" and "Defining tidy data" (data structure, data semantics, the three rules), whole
+  - vignette "tidy-data": Tidy data: "Tidying messy datasets" with its first two cases, "Column headers are values, not variable names" and "Multiple variables stored in one column", whole
+  - vignette "pivot": Pivoting: "Introduction", "Longer" and its first case "String data in column names", whole
+  - vignette "pivot": Pivoting: "Wider" and its first case "Capture-recapture data", whole
+The DESCRIPTION file, whole. Every other help page and vignette of the package is NOT held.
+
+VERSION WARNING: this is the documentation of the version the book's outputs were made with. Newer versions
+exist (see `tidyverse_news_s52r1` for what changed in dplyr, tidyr, readr and ggplot2). A reader on a newer
+version may see different text in ?topic. Current online reference (orientation only, not this text): https://tidyr.tidyverse.org
+
+===============================================================================
+1. tidyr::pivot_longer — help page "pivot_longer" (tidyr 1.3.1), whole
+rhelp://tidyr@1.3.1/pivot_longer
+===============================================================================
+
+[TEXT]
+pivot_longer               package:tidyr               R Documentation
+
+Pivot data from wide to long
+
+Description:
+
+     'pivot_longer()' "lengthens" data, increasing the number of rows
+     and decreasing the number of columns. The inverse transformation
+     is 'pivot_wider()'
+
+     Learn more in 'vignette("pivot")'.
+
+Usage:
+
+     pivot_longer(
+       data,
+       cols,
+       ...,
+       cols_vary = "fastest",
+       names_to = "name",
+       names_prefix = NULL,
+       names_sep = NULL,
+       names_pattern = NULL,
+       names_ptypes = NULL,
+       names_transform = NULL,
+       names_repair = "check_unique",
+       values_to = "value",
+       values_drop_na = FALSE,
+       values_ptypes = NULL,
+       values_transform = NULL
+     )
+     
+Arguments:
+
+    data: A data frame to pivot.
+
+    cols: <'tidy-select'> Columns to pivot into longer format.
+
+     ...: Additional arguments passed on to methods.
+
+cols_vary: When pivoting 'cols' into longer format, how should the
+          output rows be arranged relative to their original row
+          number?
+
+            • '"fastest"', the default, keeps individual rows from
+              'cols' close together in the output. This often produces
+              intuitively ordered output when you have at least one key
+              column from 'data' that is not involved in the pivoting
+              process.
+
+            • '"slowest"' keeps individual columns from 'cols' close
+              together in the output. This often produces intuitively
+              ordered output when you utilize all of the columns from
+              'data' in the pivoting process.
+
+names_to: A character vector specifying the new column or columns to
+          create from the information stored in the column names of
+          'data' specified by 'cols'.
+
+            • If length 0, or if 'NULL' is supplied, no columns will be
+              created.
+
+            • If length 1, a single column will be created which will
+              contain the column names specified by 'cols'.
+
+            • If length >1, multiple columns will be created. In this
+              case, one of 'names_sep' or 'names_pattern' must be
+              supplied to specify how the column names should be split.
+              There are also two additional character values you can
+              take advantage of:
+
+                • 'NA' will discard the corresponding component of the
+                  column name.
+
+                • '".value"' indicates that the corresponding component
+                  of the column name defines the name of the output
+                  column containing the cell values, overriding
+                  'values_to' entirely.
+
+names_prefix: A regular expression used to remove matching text from
+          the start of each variable name.
+
+names_sep, names_pattern: If 'names_to' contains multiple values, these
+          arguments control how the column name is broken up.
+
+          'names_sep' takes the same specification as 'separate()', and
+          can either be a numeric vector (specifying positions to break
+          on), or a single string (specifying a regular expression to
+          split on).
+
+          'names_pattern' takes the same specification as 'extract()',
+          a regular expression containing matching groups (()).
+
+          If these arguments do not give you enough control, use
+          'pivot_longer_spec()' to create a spec object and process
+          manually as needed.
+
+names_ptypes, values_ptypes: Optionally, a list of column
+          name-prototype pairs. Alternatively, a single empty prototype
+          can be supplied, which will be applied to all columns. A
+          prototype (or ptype for short) is a zero-length vector (like
+          'integer()' or 'numeric()') that defines the type, class, and
+          attributes of a vector. Use these arguments if you want to
+          confirm that the created columns are the types that you
+          expect. Note that if you want to change (instead of confirm)
+          the types of specific columns, you should use
+          'names_transform' or 'values_transform' instead.
+
+names_transform, values_transform: Optionally, a list of column
+          name-function pairs. Alternatively, a single function can be
+          supplied, which will be applied to all columns. Use these
+          arguments if you need to change the types of specific
+          columns. For example, 'names_transform = list(week =
+          as.integer)' would convert a character variable called 'week'
+          to an integer.
+
+          If not specified, the type of the columns generated from
+          'names_to' will be character, and the type of the variables
+          generated from 'values_to' will be the common type of the
+          input columns used to generate them.
+
+names_repair: What happens if the output has invalid column names? The
+          default, '"check_unique"' is to error if the columns are
+          duplicated. Use '"minimal"' to allow duplicates in the
+          output, or '"unique"' to de-duplicated by adding numeric
+          suffixes. See 'vctrs::vec_as_names()' for more options.
+
+values_to: A string specifying the name of the column to create from
+          the data stored in cell values. If 'names_to' is a character
+          containing the special '.value' sentinel, this value will be
+          ignored, and the name of the value column will be derived
+          from part of the existing column names.
+
+values_drop_na: If 'TRUE', will drop rows that contain only 'NA's in
+          the 'value_to' column. This effectively converts explicit
+          missing values to implicit missing values, and should
+          generally be used only when missing values in 'data' were
+          created by its structure.
+
+Details:
+
+     'pivot_longer()' is an updated approach to 'gather()', designed to
+     be both simpler to use and to handle more use cases. We recommend
+     you use 'pivot_longer()' for new code; 'gather()' isn't going away
+     but is no longer under active development.
+
+Examples:
+
+     # See vignette("pivot") for examples and explanation
+     
+     # Simplest case where column names are character data
+     relig_income
+     relig_income %>%
+       pivot_longer(!religion, names_to = "income", values_to = "count")
+     
+     # Slightly more complex case where columns have common prefix,
+     # and missing missings are structural so should be dropped.
+     billboard
+     billboard %>%
+       pivot_longer(
+         cols = starts_with("wk"),
+         names_to = "week",
+         names_prefix = "wk",
+         values_to = "rank",
+         values_drop_na = TRUE
+       )
+     
+     # Multiple variables stored in column names
+     who %>% pivot_longer(
+       cols = new_sp_m014:newrel_f65,
+       names_to = c("diagnosis", "gender", "age"),
+       names_pattern = "new_?(.*)_(.)(.*)",
+       values_to = "count"
+     )
+     
+     # Multiple observations per row. Since all columns are used in the pivoting
+     # process, we'll use `cols_vary` to keep values from the original columns
+     # close together in the output.
+     anscombe
+     anscombe %>%
+       pivot_longer(
+         everything(),
+         cols_vary = "slowest",
+         names_to = c(".value", "set"),
+         names_pattern = "(.)(.)"
+       )
+     
+[END TEXT]
+
+===============================================================================
+2. tidyr::pivot_wider — help page "pivot_wider" (tidyr 1.3.1), whole
+rhelp://tidyr@1.3.1/pivot_wider
+===============================================================================
+
+[TEXT]
+pivot_wider               package:tidyr                R Documentation
+
+Pivot data from long to wide
+
+Description:
+
+     'pivot_wider()' "widens" data, increasing the number of columns
+     and decreasing the number of rows. The inverse transformation is
+     'pivot_longer()'.
+
+     Learn more in 'vignette("pivot")'.
+
+Usage:
+
+     pivot_wider(
+       data,
+       ...,
+       id_cols = NULL,
+       id_expand = FALSE,
+       names_from = name,
+       names_prefix = "",
+       names_sep = "_",
+       names_glue = NULL,
+       names_sort = FALSE,
+       names_vary = "fastest",
+       names_expand = FALSE,
+       names_repair = "check_unique",
+       values_from = value,
+       values_fill = NULL,
+       values_fn = NULL,
+       unused_fn = NULL
+     )
+     
+Arguments:
+
+    data: A data frame to pivot.
+
+     ...: Additional arguments passed on to methods.
+
+ id_cols: <'tidy-select'> A set of columns that uniquely identify each
+          observation. Typically used when you have redundant
+          variables, i.e. variables whose values are perfectly
+          correlated with existing variables.
+
+          Defaults to all columns in 'data' except for the columns
+          specified through 'names_from' and 'values_from'. If a
+          tidyselect expression is supplied, it will be evaluated on
+          'data' after removing the columns specified through
+          'names_from' and 'values_from'.
+
+id_expand: Should the values in the 'id_cols' columns be expanded by
+          'expand()' before pivoting? This results in more rows, the
+          output will contain a complete expansion of all possible
+          values in 'id_cols'. Implicit factor levels that aren't
+          represented in the data will become explicit. Additionally,
+          the row values corresponding to the expanded 'id_cols' will
+          be sorted.
+
+names_from, values_from: <'tidy-select'> A pair of arguments describing
+          which column (or columns) to get the name of the output
+          column ('names_from'), and which column (or columns) to get
+          the cell values from ('values_from').
+
+          If 'values_from' contains multiple values, the value will be
+          added to the front of the output column.
+
+names_prefix: String added to the start of every variable name. This is
+          particularly useful if 'names_from' is a numeric vector and
+          you want to create syntactic variable names.
+
+names_sep: If 'names_from' or 'values_from' contains multiple
+          variables, this will be used to join their values together
+          into a single string to use as a column name.
+
+names_glue: Instead of 'names_sep' and 'names_prefix', you can supply a
+          glue specification that uses the 'names_from' columns (and
+          special '.value') to create custom column names.
+
+names_sort: Should the column names be sorted? If 'FALSE', the default,
+          column names are ordered by first appearance.
+
+names_vary: When 'names_from' identifies a column (or columns) with
+          multiple unique values, and multiple 'values_from' columns
+          are provided, in what order should the resulting column names
+          be combined?
+
+            • '"fastest"' varies 'names_from' values fastest, resulting
+              in a column naming scheme of the form: value1_name1,
+              value1_name2, value2_name1, value2_name2. This is the
+              default.
+
+            • '"slowest"' varies 'names_from' values slowest, resulting
+              in a column naming scheme of the form: value1_name1,
+              value2_name1, value1_name2, value2_name2.
+
+names_expand: Should the values in the 'names_from' columns be expanded
+          by 'expand()' before pivoting? This results in more columns,
+          the output will contain column names corresponding to a
+          complete expansion of all possible values in 'names_from'.
+          Implicit factor levels that aren't represented in the data
+          will become explicit. Additionally, the column names will be
+          sorted, identical to what 'names_sort' would produce.
+
+names_repair: What happens if the output has invalid column names? The
+          default, '"check_unique"' is to error if the columns are
+          duplicated. Use '"minimal"' to allow duplicates in the
+          output, or '"unique"' to de-duplicated by adding numeric
+          suffixes. See 'vctrs::vec_as_names()' for more options.
+
+values_fill: Optionally, a (scalar) value that specifies what each
+          'value' should be filled in with when missing.
+
+          This can be a named list if you want to apply different fill
+          values to different value columns.
+
+values_fn: Optionally, a function applied to the value in each cell in
+          the output. You will typically use this when the combination
+          of 'id_cols' and 'names_from' columns does not uniquely
+          identify an observation.
+
+          This can be a named list if you want to apply different
+          aggregations to different 'values_from' columns.
+
+unused_fn: Optionally, a function applied to summarize the values from
+          the unused columns (i.e. columns not identified by 'id_cols',
+          'names_from', or 'values_from').
+
+          The default drops all unused columns from the result.
+
+          This can be a named list if you want to apply different
+          aggregations to different unused columns.
+
+          'id_cols' must be supplied for 'unused_fn' to be useful,
+          since otherwise all unspecified columns will be considered
+          'id_cols'.
+
+          This is similar to grouping by the 'id_cols' then summarizing
+          the unused columns using 'unused_fn'.
+
+Details:
+
+     'pivot_wider()' is an updated approach to 'spread()', designed to
+     be both simpler to use and to handle more use cases. We recommend
+     you use 'pivot_wider()' for new code; 'spread()' isn't going away
+     but is no longer under active development.
+
+See Also:
+
+     'pivot_wider_spec()' to pivot "by hand" with a data frame that
+     defines a pivoting specification.
+
+Examples:
+
+     # See vignette("pivot") for examples and explanation
+     
+     fish_encounters
+     fish_encounters %>%
+       pivot_wider(names_from = station, values_from = seen)
+     # Fill in missing values
+     fish_encounters %>%
+       pivot_wider(names_from = station, values_from = seen, values_fill = 0)
+     
+     # Generate column names from multiple variables
+     us_rent_income
+     us_rent_income %>%
+       pivot_wider(
+         names_from = variable,
+         values_from = c(estimate, moe)
+       )
+     
+     # You can control whether `names_from` values vary fastest or slowest
+     # relative to the `values_from` column names using `names_vary`.
+     us_rent_income %>%
+       pivot_wider(
+         names_from = variable,
+         values_from = c(estimate, moe),
+         names_vary = "slowest"
+       )
+     
+     # When there are multiple `names_from` or `values_from`, you can use
+     # use `names_sep` or `names_glue` to control the output variable names
+     us_rent_income %>%
+       pivot_wider(
+         names_from = variable,
+         names_sep = ".",
+         values_from = c(estimate, moe)
+       )
+     us_rent_income %>%
+       pivot_wider(
+         names_from = variable,
+         names_glue = "{variable}_{.value}",
+         values_from = c(estimate, moe)
+       )
+     
+     # Can perform aggregation with `values_fn`
+     warpbreaks <- as_tibble(warpbreaks[c("wool", "tension", "breaks")])
+     warpbreaks
+     warpbreaks %>%
+       pivot_wider(
+         names_from = wool,
+         values_from = breaks,
+         values_fn = mean
+       )
+     
+     # Can pass an anonymous function to `values_fn` when you
+     # need to supply additional arguments
+     warpbreaks$breaks[1] <- NA
+     warpbreaks %>%
+       pivot_wider(
+         names_from = wool,
+         values_from = breaks,
+         values_fn = ~ mean(.x, na.rm = TRUE)
+       )
+     
+[END TEXT]
+
+===============================================================================
+3. tidyr::drop_na — help page "drop_na" (tidyr 1.3.1), whole
+rhelp://tidyr@1.3.1/drop_na
+===============================================================================
+
+[TEXT]
+drop_na                 package:tidyr                  R Documentation
+
+Drop rows containing missing values
+
+Description:
+
+     'drop_na()' drops rows where any column specified by '...'
+     contains a missing value.
+
+Usage:
+
+     drop_na(data, ...)
+     
+Arguments:
+
+    data: A data frame.
+
+     ...: <'tidy-select'> Columns to inspect for missing values. If
+          empty, all columns are used.
+
+Details:
+
+     Another way to interpret 'drop_na()' is that it only keeps the
+     "complete" rows (where no rows contain missing values).
+     Internally, this completeness is computed through
+     'vctrs::vec_detect_complete()'.
+
+Examples:
+
+     df <- tibble(x = c(1, 2, NA), y = c("a", NA, "b"))
+     df %>% drop_na()
+     df %>% drop_na(x)
+     
+     vars <- "y"
+     df %>% drop_na(x, any_of(vars))
+     
+[END TEXT]
+
+===============================================================================
+4. vignette("tidy-data", package = "tidyr") 1.3.1 — Tidy data: the introduction, "Data tidying" and "Defining tidy data" (data structure, data semantics, the three rules), whole
+rvignette://tidyr@1.3.1/tidy-data
+===============================================================================
+
+[TEXT]
+# Tidy data
+
+(This is an informal and code heavy version of the full tidy data paper.
+Please refer to that for more details.)
+
+## Data tidying
+
+It is often said that 80% of data analysis is spent on the cleaning
+and preparing data. And it’s not just a first step, but it must be
+repeated many times over the course of analysis as new problems come to
+light or new data is collected. To get a handle on the problem, this
+paper focuses on a small, but important, aspect of data cleaning that I
+call data tidying: structuring datasets to facilitate
+analysis.
+
+The principles of tidy data provide a standard way to organise data
+values within a dataset. A standard makes initial data cleaning easier
+because you don’t need to start from scratch and reinvent the wheel
+every time. The tidy data standard has been designed to facilitate
+initial exploration and analysis of the data, and to simplify the
+development of data analysis tools that work well together. Current
+tools often require translation. You have to spend time munging the
+output from one tool so you can input it into another. Tidy datasets and
+tidy tools work hand in hand to make data analysis easier, allowing you
+to focus on the interesting domain problem, not on the uninteresting
+logistics of data.
+
+## Defining tidy data
+
+Happy families are all alike; every unhappy family is unhappy in its
+own way — Leo Tolstoy
+
+Like families, tidy datasets are all alike but every messy dataset is
+messy in its own way. Tidy datasets provide a standardized way to link
+the structure of a dataset (its physical layout) with its semantics (its
+meaning). In this section, I’ll provide some standard vocabulary for
+describing the structure and semantics of a dataset, and then use those
+definitions to define tidy data.
+
+### Data structure
+
+Most statistical datasets are data frames made up of
+rows and columns. The columns are
+almost always labeled and the rows are sometimes labeled. The following
+code provides some data about an imaginary classroom in a format
+commonly seen in the wild. The table has three columns and four rows,
+and both rows and columns are labeled.
+
+library(tibble)
+classroom <- tribble(
+  ~name,    ~quiz1, ~quiz2, ~test1,
+  "Billy",  NA,     "D",    "C",
+  "Suzy",   "F",    NA,     NA,
+  "Lionel", "B",    "C",    "B",
+  "Jenny",  "A",    "A",    "B"
+  )
+classroom
+#> # A tibble: 4 × 4
+#>   name   quiz1 quiz2 test1
+#>   <chr>  <chr> <chr> <chr>
+#> 1 Billy  <NA>  D     C    
+#> 2 Suzy   F     <NA>  <NA> 
+#> 3 Lionel B     C     B    
+#> 4 Jenny  A     A     B
+
+There are many ways to structure the same underlying data. The
+following table shows the same data as above, but the rows and columns
+have been transposed.
+
+tribble(
+  ~assessment, ~Billy, ~Suzy, ~Lionel, ~Jenny,
+  "quiz1",     NA,     "F",   "B",     "A",
+  "quiz2",     "D",    NA,    "C",     "A",
+  "test1",     "C",    NA,    "B",     "B"
+  )
+#> # A tibble: 3 × 5
+#>   assessment Billy Suzy  Lionel Jenny
+#>   <chr>      <chr> <chr> <chr>  <chr>
+#> 1 quiz1      <NA>  F     B      A    
+#> 2 quiz2      D     <NA>  C      A    
+#> 3 test1      C     <NA>  B      B
+
+The data is the same, but the layout is different. Our vocabulary of
+rows and columns is simply not rich enough to describe why the two
+tables represent the same data. In addition to appearance, we need a way
+to describe the underlying semantics, or meaning, of the values
+displayed in the table.
+
+### Data semantics
+
+A dataset is a collection of values, usually either
+numbers (if quantitative) or strings (if qualitative). Values are
+organised in two ways. Every value belongs to a
+variable and an observation. A
+variable contains all values that measure the same underlying attribute
+(like height, temperature, duration) across units. An observation
+contains all values measured on the same unit (like a person, or a day,
+or a race) across attributes.
+
+A tidy version of the classroom data looks like this: (you’ll learn
+how the functions work a little later)
+
+library(tidyr)
+library(dplyr)
+
+classroom2 <- classroom %>% 
+  pivot_longer(quiz1:test1, names_to = "assessment", values_to = "grade") %>% 
+  arrange(name, assessment)
+classroom2
+#> # A tibble: 12 × 3
+#>   name  assessment grade
+#>   <chr> <chr>      <chr>
+#> 1 Billy quiz1      <NA> 
+#> 2 Billy quiz2      D    
+#> 3 Billy test1      C    
+#> 4 Jenny quiz1      A    
+#> 5 Jenny quiz2      A    
+#> 6 Jenny test1      B    
+#> # ℹ 6 more rows
+
+This makes the values, variables, and observations more clear. The
+dataset contains 36 values representing three variables and 12
+observations. The variables are:
+
+- name, with four possible values (Billy, Suzy,
+Lionel, and Jenny).
+
+- assessment, with three possible values (quiz1,
+quiz2, and test1).
+
+- grade, with five or six values depending on how you
+think of the missing value (A, B, C, D, F, NA).
+
+The tidy data frame explicitly tells us the definition of an
+observation. In this classroom, every combination of name
+and assessment is a single measured observation. The
+dataset also informs us of missing values, which can and do have
+meaning. Billy was absent for the first quiz, but tried to salvage his
+grade. Suzy failed the first quiz, so she decided to drop the class. To
+calculate Billy’s final grade, we might replace this missing value with
+an F (or he might get a second chance to take the quiz). However, if we
+want to know the class average for Test 1, dropping Suzy’s structural
+missing value would be more appropriate than imputing a new value.
+
+For a given dataset, it’s usually easy to figure out what are
+observations and what are variables, but it is surprisingly difficult to
+precisely define variables and observations in general. For example, if
+the columns in the classroom data were height and
+weight we would have been happy to call them variables. If
+the columns were height and width, it would be
+less clear cut, as we might think of height and width as values of a
+dimension variable. If the columns were
+home phone and work phone, we could treat
+these as two variables, but in a fraud detection environment we might
+want variables phone number and number type
+because the use of one phone number for multiple people might suggest
+fraud. A general rule of thumb is that it is easier to describe
+functional relationships between variables (e.g., z is a
+linear combination of x and y,
+density is the ratio of weight to
+volume) than between rows, and it is easier to make
+comparisons between groups of observations (e.g., average of group a
+vs. average of group b) than between groups of columns.
+
+In a given analysis, there may be multiple levels of observation. For
+example, in a trial of new allergy medication we might have three
+observational types: demographic data collected from each person
+(age, sex, race), medical data
+collected from each person on each day (number of sneezes,
+redness of eyes), and meteorological data collected on each
+day (temperature, pollen count).
+
+Variables may change over the course of analysis. Often the variables
+in the raw data are very fine grained, and may add extra modelling
+complexity for little explanatory gain. For example, many surveys ask
+variations on the same question to better get at an underlying trait. In
+early stages of analysis, variables correspond to questions. In later
+stages, you change focus to traits, computed by averaging together
+multiple questions. This considerably simplifies analysis because you
+don’t need a hierarchical model, and you can often pretend that the data
+is continuous, not discrete.
+
+### Tidy data
+
+Tidy data is a standard way of mapping the meaning of a dataset to
+its structure. A dataset is messy or tidy depending on how rows, columns
+and tables are matched up with observations, variables and types. In
+tidy data:
+
+- Each variable is a column; each column is a variable.
+
+- Each observation is a row; each row is an observation.
+
+- Each value is a cell; each cell is a single value.
+
+This is Codd’s 3rd normal form, but with the constraints framed in
+statistical language, and the focus put on a single dataset rather than
+the many connected datasets common in relational databases.
+Messy data is any other arrangement of the data.
+
+Tidy data makes it easy for an analyst or a computer to extract
+needed variables because it provides a standard way of structuring a
+dataset. Compare the different versions of the classroom data: in the
+messy version you need to use different strategies to extract different
+variables. This slows analysis and invites errors. If you consider how
+many data analysis operations involve all of the values in a variable
+(every aggregation function), you can see how important it is to extract
+these values in a simple, standard way. Tidy data is particularly well
+suited for vectorised programming languages like R, because the layout
+ensures that values of different variables from the same observation are
+always paired.
+
+While the order of variables and observations does not affect
+analysis, a good ordering makes it easier to scan the raw values. One
+way of organising variables is by their role in the analysis: are values
+fixed by the design of the data collection, or are they measured during
+the course of the experiment? Fixed variables describe the experimental
+design and are known in advance. Computer scientists often call fixed
+variables dimensions, and statisticians usually denote them with
+subscripts on random variables. Measured variables are what we actually
+measure in the study. Fixed variables should come first, followed by
+measured variables, each ordered so that related variables are
+contiguous. Rows can then be ordered by the first variable, breaking
+ties with the second and subsequent (fixed) variables. This is the
+convention adopted by all tabular displays in this paper.
+[END TEXT]
+
+===============================================================================
+5. vignette("tidy-data", package = "tidyr") 1.3.1 — Tidy data: "Tidying messy datasets" with its first two cases, "Column headers are values, not variable names" and "Multiple variables stored in one column", whole
+rvignette://tidyr@1.3.1/tidy-data
+===============================================================================
+
+[TEXT]
+## Tidying messy datasets
+
+Real datasets can, and often do, violate the three precepts of tidy
+data in almost every way imaginable. While occasionally you do get a
+dataset that you can start analysing immediately, this is the exception,
+not the rule. This section describes the five most common problems with
+messy datasets, along with their remedies:
+
+- Column headers are values, not variable names.
+
+- Multiple variables are stored in one column.
+
+- Variables are stored in both rows and columns.
+
+- Multiple types of observational units are stored in the same
+table.
+
+- A single observational unit is stored in multiple
+tables.
+
+Surprisingly, most messy datasets, including types of messiness not
+explicitly described above, can be tidied with a small set of tools:
+pivoting (longer and wider) and separating. The following sections
+illustrate each problem with a real dataset that I have encountered, and
+show how to tidy them.
+
+### Column headers are values, not variable names
+
+A common type of messy dataset is tabular data designed for
+presentation, where variables form both the rows and columns, and column
+headers are values, not variable names. While I would call this
+arrangement messy, in some cases it can be extremely useful. It provides
+efficient storage for completely crossed designs, and it can lead to
+extremely efficient computation if desired operations can be expressed
+as matrix operations.
+
+The following code shows a subset of a typical dataset of this form.
+This dataset explores the relationship between income and religion in
+the US. It comes from a report produced by the Pew Research Center, an
+American think-tank that collects data on attitudes to topics ranging
+from religion to the internet, and produces many reports that contain
+datasets in this format.
+
+relig_income
+#> # A tibble: 18 × 11
+#>   religion  `<$10k` `$10-20k` `$20-30k` `$30-40k` `$40-50k` `$50-75k` `$75-100k`
+#>   <chr>       <dbl>     <dbl>     <dbl>     <dbl>     <dbl>     <dbl>      <dbl>
+#> 1 Agnostic       27        34        60        81        76       137        122
+#> 2 Atheist        12        27        37        52        35        70         73
+#> 3 Buddhist       27        21        30        34        33        58         62
+#> 4 Catholic      418       617       732       670       638      1116        949
+#> 5 Don’t kn…      15        14        15        11        10        35         21
+#> 6 Evangeli…     575       869      1064       982       881      1486        949
+#> # ℹ 12 more rows
+#> # ℹ 3 more variables: `$100-150k` <dbl>, `>150k` <dbl>,
+#> #   `Don't know/refused` <dbl>
+
+This dataset has three variables, religion,
+income and frequency. To tidy it, we need to
+pivot the non-variable columns into a two-column
+key-value pair. This action is often described as making a wide dataset
+longer (or taller).
+
+When pivoting variables, we need to provide the name of the new
+key-value columns to create. After defining the columns to pivot (every
+column except for religion), you will need the name of the key column,
+which is the name of the variable defined by the values of the column
+headings. In this case, it’s income. The second argument is
+the name of the value column, frequency.
+
+relig_income %>% 
+  pivot_longer(-religion, names_to = "income", values_to = "frequency")
+#> # A tibble: 180 × 3
+#>   religion income  frequency
+#>   <chr>    <chr>       <dbl>
+#> 1 Agnostic <$10k          27
+#> 2 Agnostic $10-20k        34
+#> 3 Agnostic $20-30k        60
+#> 4 Agnostic $30-40k        81
+#> 5 Agnostic $40-50k        76
+#> 6 Agnostic $50-75k       137
+#> # ℹ 174 more rows
+
+This form is tidy because each column represents a variable and each
+row represents an observation, in this case a demographic unit
+corresponding to a combination of religion and
+income.
+
+This format is also used to record regularly spaced observations over
+time. For example, the Billboard dataset shown below records the date a
+song first entered the billboard top 100. It has variables for
+artist, track, date.entered,
+rank and week. The rank in each week after it
+enters the top 100 is recorded in 75 columns, wk1 to
+wk75. This form of storage is not tidy, but it is useful
+for data entry. It reduces duplication since otherwise each song in each
+week would need its own row, and song metadata like title and artist
+would need to be repeated. This will be discussed in more depth in multiple types.
+
+billboard
+#> # A tibble: 317 × 79
+#>   artist      track date.entered   wk1   wk2   wk3   wk4   wk5   wk6   wk7   wk8
+#>   <chr>       <chr> <date>       <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl>
+#> 1 2 Pac       Baby… 2000-02-26      87    82    72    77    87    94    99    NA
+#> 2 2Ge+her     The … 2000-09-02      91    87    92    NA    NA    NA    NA    NA
+#> 3 3 Doors Do… Kryp… 2000-04-08      81    70    68    67    66    57    54    53
+#> 4 3 Doors Do… Loser 2000-10-21      76    76    72    69    67    65    55    59
+#> 5 504 Boyz    Wobb… 2000-04-15      57    34    25    17    17    31    36    49
+#> 6 98^0        Give… 2000-08-19      51    39    34    26    26    19     2     2
+#> # ℹ 311 more rows
+#> # ℹ 68 more variables: wk9 <dbl>, wk10 <dbl>, wk11 <dbl>, wk12 <dbl>,
+#> #   wk13 <dbl>, wk14 <dbl>, wk15 <dbl>, wk16 <dbl>, wk17 <dbl>, wk18 <dbl>,
+#> #   wk19 <dbl>, wk20 <dbl>, wk21 <dbl>, wk22 <dbl>, wk23 <dbl>, wk24 <dbl>,
+#> #   wk25 <dbl>, wk26 <dbl>, wk27 <dbl>, wk28 <dbl>, wk29 <dbl>, wk30 <dbl>,
+#> #   wk31 <dbl>, wk32 <dbl>, wk33 <dbl>, wk34 <dbl>, wk35 <dbl>, wk36 <dbl>,
+#> #   wk37 <dbl>, wk38 <dbl>, wk39 <dbl>, wk40 <dbl>, wk41 <dbl>, wk42 <dbl>, …
+
+To tidy this dataset, we first use pivot_longer() to
+make the dataset longer. We transform the columns from wk1
+to wk76, making a new column for their names,
+week, and a new value for their values,
+rank:
+
+billboard2 <- billboard %>% 
+  pivot_longer(
+    wk1:wk76, 
+    names_to = "week", 
+    values_to = "rank", 
+    values_drop_na = TRUE
+  )
+billboard2
+#> # A tibble: 5,307 × 5
+#>   artist track                   date.entered week   rank
+#>   <chr>  <chr>                   <date>       <chr> <dbl>
+#> 1 2 Pac  Baby Don't Cry (Keep... 2000-02-26   wk1      87
+#> 2 2 Pac  Baby Don't Cry (Keep... 2000-02-26   wk2      82
+#> 3 2 Pac  Baby Don't Cry (Keep... 2000-02-26   wk3      72
+#> 4 2 Pac  Baby Don't Cry (Keep... 2000-02-26   wk4      77
+#> 5 2 Pac  Baby Don't Cry (Keep... 2000-02-26   wk5      87
+#> 6 2 Pac  Baby Don't Cry (Keep... 2000-02-26   wk6      94
+#> # ℹ 5,301 more rows
+
+Here we use values_drop_na = TRUE to drop any missing
+values from the rank column. In this data, missing values represent
+weeks that the song wasn’t in the charts, so can be safely dropped.
+
+In this case it’s also nice to do a little cleaning, converting the
+week variable to a number, and figuring out the date corresponding to
+each week on the charts:
+
+billboard3 <- billboard2 %>%
+  mutate(
+    week = as.integer(gsub("wk", "", week)),
+    date = as.Date(date.entered) + 7 * (week - 1),
+    date.entered = NULL
+  )
+billboard3
+#> # A tibble: 5,307 × 5
+#>   artist track                    week  rank date      
+#>   <chr>  <chr>                   <int> <dbl> <date>    
+#> 1 2 Pac  Baby Don't Cry (Keep...     1    87 2000-02-26
+#> 2 2 Pac  Baby Don't Cry (Keep...     2    82 2000-03-04
+#> 3 2 Pac  Baby Don't Cry (Keep...     3    72 2000-03-11
+#> 4 2 Pac  Baby Don't Cry (Keep...     4    77 2000-03-18
+#> 5 2 Pac  Baby Don't Cry (Keep...     5    87 2000-03-25
+#> 6 2 Pac  Baby Don't Cry (Keep...     6    94 2000-04-01
+#> # ℹ 5,301 more rows
+
+Finally, it’s always a good idea to sort the data. We could do it by
+artist, track and week:
+
+billboard3 %>% arrange(artist, track, week)
+#> # A tibble: 5,307 × 5
+#>   artist track                    week  rank date      
+#>   <chr>  <chr>                   <int> <dbl> <date>    
+#> 1 2 Pac  Baby Don't Cry (Keep...     1    87 2000-02-26
+#> 2 2 Pac  Baby Don't Cry (Keep...     2    82 2000-03-04
+#> 3 2 Pac  Baby Don't Cry (Keep...     3    72 2000-03-11
+#> 4 2 Pac  Baby Don't Cry (Keep...     4    77 2000-03-18
+#> 5 2 Pac  Baby Don't Cry (Keep...     5    87 2000-03-25
+#> 6 2 Pac  Baby Don't Cry (Keep...     6    94 2000-04-01
+#> # ℹ 5,301 more rows
+
+Or by date and rank:
+
+billboard3 %>% arrange(date, rank)
+#> # A tibble: 5,307 × 5
+#>   artist   track   week  rank date      
+#>   <chr>    <chr>  <int> <dbl> <date>    
+#> 1 Lonestar Amazed     1    81 1999-06-05
+#> 2 Lonestar Amazed     2    54 1999-06-12
+#> 3 Lonestar Amazed     3    44 1999-06-19
+#> 4 Lonestar Amazed     4    39 1999-06-26
+#> 5 Lonestar Amazed     5    38 1999-07-03
+#> 6 Lonestar Amazed     6    33 1999-07-10
+#> # ℹ 5,301 more rows
+
+### Multiple variables stored in one column
+
+After pivoting columns, the key column is sometimes a combination of
+multiple underlying variable names. This happens in the tb
+(tuberculosis) dataset, shown below. This dataset comes from the World
+Health Organisation, and records the counts of confirmed tuberculosis
+cases by country, year, and demographic group.
+The demographic groups are broken down by sex (m, f) and
+age (0-14, 15-25, 25-34, 35-44, 45-54, 55-64, unknown).
+
+tb <- as_tibble(read.csv("tb.csv", stringsAsFactors = FALSE))
+tb
+#> # A tibble: 5,769 × 22
+#>   iso2   year   m04  m514  m014 m1524 m2534 m3544 m4554 m5564   m65    mu   f04
+#>   <chr> <int> <int> <int> <int> <int> <int> <int> <int> <int> <int> <int> <int>
+#> 1 AD     1989    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA
+#> 2 AD     1990    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA
+#> 3 AD     1991    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA
+#> 4 AD     1992    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA
+#> 5 AD     1993    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA
+#> 6 AD     1994    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA    NA
+#> # ℹ 5,763 more rows
+#> # ℹ 9 more variables: f514 <int>, f014 <int>, f1524 <int>, f2534 <int>,
+#> #   f3544 <int>, f4554 <int>, f5564 <int>, f65 <int>, fu <int>
+
+First we use pivot_longer() to gather up the
+non-variable columns:
+
+tb2 <- tb %>% 
+  pivot_longer(
+    !c(iso2, year), 
+    names_to = "demo", 
+    values_to = "n", 
+    values_drop_na = TRUE
+  )
+tb2
+#> # A tibble: 35,750 × 4
+#>   iso2   year demo      n
+#>   <chr> <int> <chr> <int>
+#> 1 AD     1996 m014      0
+#> 2 AD     1996 m1524     0
+#> 3 AD     1996 m2534     0
+#> 4 AD     1996 m3544     4
+#> 5 AD     1996 m4554     1
+#> 6 AD     1996 m5564     0
+#> # ℹ 35,744 more rows
+
+Column headers in this format are often separated by a
+non-alphanumeric character (e.g. ., -,
+_, :), or have a fixed width format, like in
+this dataset. separate() makes it easy to split a compound
+variables into individual variables. You can either pass it a regular
+expression to split on (the default is to split on non-alphanumeric
+columns), or a vector of character positions. In this case we want to
+split after the first character:
+
+tb3 <- tb2 %>% 
+  separate(demo, c("sex", "age"), 1)
+tb3
+#> # A tibble: 35,750 × 5
+#>   iso2   year sex   age       n
+#>   <chr> <int> <chr> <chr> <int>
+#> 1 AD     1996 m     014       0
+#> 2 AD     1996 m     1524      0
+#> 3 AD     1996 m     2534      0
+#> 4 AD     1996 m     3544      4
+#> 5 AD     1996 m     4554      1
+#> 6 AD     1996 m     5564      0
+#> # ℹ 35,744 more rows
+
+Storing the values in this form resolves a problem in the original
+data. We want to compare rates, not counts, which means we need to know
+the population. In the original format, there is no easy way to add a
+population variable. It has to be stored in a separate table, which
+makes it hard to correctly match populations to counts. In tidy form,
+adding variables for population and rate is easy because they’re just
+additional columns.
+
+In this case, we could also do the transformation in a single step by
+supplying multiple column names to names_to and also
+supplying a grouped regular expression to
+names_pattern:
+
+tb %>% pivot_longer(
+  !c(iso2, year), 
+  names_to = c("sex", "age"), 
+  names_pattern = "(.)(.+)",
+  values_to = "n", 
+  values_drop_na = TRUE
+)
+#> # A tibble: 35,750 × 5
+#>   iso2   year sex   age       n
+#>   <chr> <int> <chr> <chr> <int>
+#> 1 AD     1996 m     014       0
+#> 2 AD     1996 m     1524      0
+#> 3 AD     1996 m     2534      0
+#> 4 AD     1996 m     3544      4
+#> 5 AD     1996 m     4554      1
+#> 6 AD     1996 m     5564      0
+#> # ℹ 35,744 more rows
+[END TEXT]
+
+[...]
+[NOTE] Omitted: the cases "Variables are stored in both rows and columns", "Multiple types in one table", "One type in multiple tables".
+
+===============================================================================
+6. vignette("pivot", package = "tidyr") 1.3.1 — Pivoting: "Introduction", "Longer" and its first case "String data in column names", whole
+rvignette://tidyr@1.3.1/pivot
+===============================================================================
+
+[TEXT]
+# Pivoting
+
+## Introduction
+
+This vignette describes the use of the new
+pivot_longer() and pivot_wider() functions.
+Their goal is to improve the usability of gather() and
+spread(), and incorporate state-of-the-art features found
+in other packages.
+
+For some time, it’s been obvious that there is something
+fundamentally wrong with the design of spread() and
+gather(). Many people don’t find the names intuitive and
+find it hard to remember which direction corresponds to spreading and
+which to gathering. It also seems surprisingly hard to remember the
+arguments to these functions, meaning that many people (including me!)
+have to consult the documentation every time.
+
+There are two important new features inspired by other R packages
+that have been advancing reshaping in R:
+
+- pivot_longer() can work with multiple value
+variables that may have different types, inspired by the enhanced
+melt() and dcast() functions provided by the
+data.table
+package by Matt Dowle and Arun Srinivasan.
+
+- pivot_longer() and pivot_wider() can
+take a data frame that specifies precisely how metadata stored in column
+names becomes data variables (and vice versa), inspired by the cdata package by John
+Mount and Nina Zumel.
+
+In this vignette, you’ll learn the key ideas behind
+pivot_longer() and pivot_wider() as you see
+them used to solve a variety of data reshaping challenges ranging from
+simple to complex.
+
+To begin we’ll load some needed packages. In real analysis code, I’d
+imagine you’d do with the library(tidyverse), but I can’t
+do that here since this vignette is embedded in a package.
+
+library(tidyr)
+library(dplyr)
+library(readr)
+
+## Longer
+
+pivot_longer() makes datasets longer by
+increasing the number of rows and decreasing the number of columns. I
+don’t believe it makes sense to describe a dataset as being in “long
+form”. Length is a relative term, and you can only say (e.g.) that
+dataset A is longer than dataset B.
+
+pivot_longer() is commonly needed to tidy wild-caught
+datasets as they often optimise for ease of data entry or ease of
+comparison rather than ease of analysis. The following sections show how
+to use pivot_longer() for a wide range of realistic
+datasets.
+
+### String data in column names
+
+The relig_income dataset stores counts based on a survey
+which (among other things) asked people about their religion and annual
+income:
+
+relig_income
+#> # A tibble: 18 × 11
+#>    religion `<$10k` `$10-20k` `$20-30k` `$30-40k` `$40-50k` `$50-75k` `$75-100k`
+#>    <chr>      <dbl>     <dbl>     <dbl>     <dbl>     <dbl>     <dbl>      <dbl>
+#>  1 Agnostic      27        34        60        81        76       137        122
+#>  2 Atheist       12        27        37        52        35        70         73
+#>  3 Buddhist      27        21        30        34        33        58         62
+#>  4 Catholic     418       617       732       670       638      1116        949
+#>  5 Don’t k…      15        14        15        11        10        35         21
+#>  6 Evangel…     575       869      1064       982       881      1486        949
+#>  7 Hindu          1         9         7         9        11        34         47
+#>  8 Histori…     228       244       236       238       197       223        131
+#>  9 Jehovah…      20        27        24        24        21        30         15
+#> 10 Jewish        19        19        25        25        30        95         69
+#> # ℹ 8 more rows
+#> # ℹ 3 more variables: `$100-150k` <dbl>, `>150k` <dbl>,
+#> #   `Don't know/refused` <dbl>
+
+This dataset contains three variables:
+
+- religion, stored in the rows,
+
+- income spread across the column names, and
+
+- count stored in the cell values.
+
+To tidy it we use pivot_longer():
+
+relig_income %>% 
+  pivot_longer(
+    cols = !religion, 
+    names_to = "income", 
+    values_to = "count"
+  )
+#> # A tibble: 180 × 3
+#>    religion income             count
+#>    <chr>    <chr>              <dbl>
+#>  1 Agnostic <$10k                 27
+#>  2 Agnostic $10-20k               34
+#>  3 Agnostic $20-30k               60
+#>  4 Agnostic $30-40k               81
+#>  5 Agnostic $40-50k               76
+#>  6 Agnostic $50-75k              137
+#>  7 Agnostic $75-100k             122
+#>  8 Agnostic $100-150k            109
+#>  9 Agnostic >150k                 84
+#> 10 Agnostic Don't know/refused    96
+#> # ℹ 170 more rows
+
+- The first argument is the dataset to reshape,
+relig_income.
+
+- cols describes which columns need to be reshaped. In
+this case, it’s every column apart from religion.
+
+- names_to gives the name of the variable that will be
+created from the data stored in the column names,
+i.e. income.
+
+- values_to gives the name of the variable that will
+be created from the data stored in the cell value,
+i.e. count.
+
+Neither the names_to nor the values_to
+column exists in relig_income, so we provide them as
+strings surrounded by quotes.
+[END TEXT]
+
+[...]
+[NOTE] Omitted: the remaining pivot_longer() cases (numeric data and many variables in column names, multiple observations per row).
+
+===============================================================================
+7. vignette("pivot", package = "tidyr") 1.3.1 — Pivoting: "Wider" and its first case "Capture-recapture data", whole
+rvignette://tidyr@1.3.1/pivot
+===============================================================================
+
+[TEXT]
+## Wider
+
+pivot_wider() is the opposite of
+pivot_longer(): it makes a dataset wider
+by increasing the number of columns and decreasing the number of rows.
+It’s relatively rare to need pivot_wider() to make tidy
+data, but it’s often useful for creating summary tables for
+presentation, or data in a format needed by other tools.
+
+### Capture-recapture data
+
+The fish_encounters dataset, contributed by Myfanwy
+Johnston, describes when fish swimming down a river are detected by
+automatic monitoring stations:
+
+fish_encounters
+#> # A tibble: 114 × 3
+#>    fish  station  seen
+#>    <fct> <fct>   <int>
+#>  1 4842  Release     1
+#>  2 4842  I80_1       1
+#>  3 4842  Lisbon      1
+#>  4 4842  Rstr        1
+#>  5 4842  Base_TD     1
+#>  6 4842  BCE         1
+#>  7 4842  BCW         1
+#>  8 4842  BCE2        1
+#>  9 4842  BCW2        1
+#> 10 4842  MAE         1
+#> # ℹ 104 more rows
+
+Many tools used to analyse this data need it in a form where each
+station is a column:
+
+fish_encounters %>% 
+  pivot_wider(
+    names_from = station, 
+    values_from = seen
+  )
+#> # A tibble: 19 × 12
+#>    fish  Release I80_1 Lisbon  Rstr Base_TD   BCE   BCW  BCE2  BCW2   MAE   MAW
+#>    <fct>   <int> <int>  <int> <int>   <int> <int> <int> <int> <int> <int> <int>
+#>  1 4842        1     1      1     1       1     1     1     1     1     1     1
+#>  2 4843        1     1      1     1       1     1     1     1     1     1     1
+#>  3 4844        1     1      1     1       1     1     1     1     1     1     1
+#>  4 4845        1     1      1     1       1    NA    NA    NA    NA    NA    NA
+#>  5 4847        1     1      1    NA      NA    NA    NA    NA    NA    NA    NA
+#>  6 4848        1     1      1     1      NA    NA    NA    NA    NA    NA    NA
+#>  7 4849        1     1     NA    NA      NA    NA    NA    NA    NA    NA    NA
+#>  8 4850        1     1     NA     1       1     1     1    NA    NA    NA    NA
+#>  9 4851        1     1     NA    NA      NA    NA    NA    NA    NA    NA    NA
+#> 10 4854        1     1     NA    NA      NA    NA    NA    NA    NA    NA    NA
+#> # ℹ 9 more rows
+
+This dataset only records when a fish was detected by the station -
+it doesn’t record when it wasn’t detected (this is common with this type
+of data). That means the output data is filled with NAs.
+However, in this case we know that the absence of a record means that
+the fish was not seen, so we can ask
+pivot_wider() to fill these missing values in with
+zeros:
+
+fish_encounters %>% 
+  pivot_wider(
+    names_from = station, 
+    values_from = seen,
+    values_fill = 0
+  )
+#> # A tibble: 19 × 12
+#>    fish  Release I80_1 Lisbon  Rstr Base_TD   BCE   BCW  BCE2  BCW2   MAE   MAW
+#>    <fct>   <int> <int>  <int> <int>   <int> <int> <int> <int> <int> <int> <int>
+#>  1 4842        1     1      1     1       1     1     1     1     1     1     1
+#>  2 4843        1     1      1     1       1     1     1     1     1     1     1
+#>  3 4844        1     1      1     1       1     1     1     1     1     1     1
+#>  4 4845        1     1      1     1       1     0     0     0     0     0     0
+#>  5 4847        1     1      1     0       0     0     0     0     0     0     0
+#>  6 4848        1     1      1     1       0     0     0     0     0     0     0
+#>  7 4849        1     1      0     0       0     0     0     0     0     0     0
+#>  8 4850        1     1      0     1       1     1     1     0     0     0     0
+#>  9 4851        1     1      0     0       0     0     0     0     0     0     0
+#> 10 4854        1     1      0     0       0     0     0     0     0     0     0
+#> # ℹ 9 more rows
+[END TEXT]
+
+[...]
+[NOTE] Omitted: the rest of the vignette (aggregation, names from several variables, tidy census, implicit missing values, unused columns, contact list, longer-then-wider, manual specs).
+
+===============================================================================
+8. DESCRIPTION file of tidyr 1.3.1, whole (title, authors, licence, version, publication date)
+rfile://tidyr@1.3.1/DESCRIPTION
+===============================================================================
+
+[TEXT]
+Package: tidyr
+Title: Tidy Messy Data
+Version: 1.3.1
+Authors@R: c(
+    person("Hadley", "Wickham", , "hadley@posit.co", role = c("aut", "cre")),
+    person("Davis", "Vaughan", , "davis@posit.co", role = "aut"),
+    person("Maximilian", "Girlich", role = "aut"),
+    person("Kevin", "Ushey", , "kevin@posit.co", role = "ctb"),
+    person("Posit Software, PBC", role = c("cph", "fnd"))
+  )
+Description: Tools to help to create tidy data, where each column is a
+    variable, each row is an observation, and each cell contains a single
+    value.  'tidyr' contains tools for changing the shape (pivoting) and
+    hierarchy (nesting and 'unnesting') of a dataset, turning deeply
+    nested lists into rectangular data frames ('rectangling'), and
+    extracting values out of string columns. It also includes tools for
+    working with missing values (both implicit and explicit).
+License: MIT + file LICENSE
+URL: https://tidyr.tidyverse.org, https://github.com/tidyverse/tidyr
+BugReports: https://github.com/tidyverse/tidyr/issues
+Depends: R (>= 3.6)
+Imports: cli (>= 3.4.1), dplyr (>= 1.0.10), glue, lifecycle (>= 1.0.3),
+        magrittr, purrr (>= 1.0.1), rlang (>= 1.1.1), stringr (>=
+        1.5.0), tibble (>= 2.1.1), tidyselect (>= 1.2.0), utils, vctrs
+        (>= 0.5.2)
+Suggests: covr, data.table, knitr, readr, repurrrsive (>= 1.1.0),
+        rmarkdown, testthat (>= 3.0.0)
+LinkingTo: cpp11 (>= 0.4.0)
+VignetteBuilder: knitr
+Config/Needs/website: tidyverse/tidytemplate
+Config/testthat/edition: 3
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 7.3.0
+NeedsCompilation: yes
+Packaged: 2024-01-23 14:27:23 UTC; hadleywickham
+Author: Hadley Wickham [aut, cre],
+  Davis Vaughan [aut],
+  Maximilian Girlich [aut],
+  Kevin Ushey [ctb],
+  Posit Software, PBC [cph, fnd]
+Maintainer: Hadley Wickham <hadley@posit.co>
+Repository: CRAN
+Date/Publication: 2024-01-24 14:50:09 UTC
+Built: R 4.3.2; x86_64-pc-linux-gnu; 'Thu, 01 Feb 2024 20:50:19 +0100'; unix
+[END TEXT]

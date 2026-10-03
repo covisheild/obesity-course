@@ -1,0 +1,169 @@
+HERE 1.0.1 — VERSION-MATCHED HELP PAGES FROM THE BOOK'S R 4.3.3 SANDBOX
+VERBATIM SOURCE PACK (EXCERPTS)
+============================================================
+
+Transcription rule for this file: every line between a [TEXT] and an [END TEXT] line is an exact,
+unaltered slice of a raw render made in the book's sandbox and saved under books/S52-R1/intake/raw/, cut
+programmatically (raw[i:j]) by books/S52-R1/intake/build-c/build.py and re-checked by verify.py as a
+whitespace-normalised substring of that render. Nothing has been paraphrased. Where material is left out,
+the omission is marked [...] in place. Lines beginning [NOTE] are this file's own annotation and are NOT
+source text. Quoted evidence in this header is cut the same way.
+
+LOCATORS: these are local documents, not web pages, so each block heading carries a locator, not a URL:
+  rhelp://<package>@<version>/<Rd name>     the installed help page (what ?topic shows in R)
+  rvignette://<package>@<version>/<name>    the installed vignette (what vignette("<name>") shows)
+  rfile://<package>@<version>/DESCRIPTION   the installed DESCRIPTION file, byte for byte
+The package's website shows the CURRENT version's documentation, which may differ from what is held here.
+
+HOW RENDERED (2026-10-02): R 4.3.3, in a UTF-8 locale, with options(useFancyQuotes = FALSE) so quotation
+marks print as straight ASCII ' and "; help pages by tools::Rd2txt(utils:::.getHelpFile(help(topic,
+package = pkg)), options = list(underline_titles = FALSE, width = 80)); vignettes from the installed HTML
+by xml2 1.3.6, taking h1-h4, p, pre, top-level li and table elements in document order (headings marked
+with #, list items with -, code and printed output as in the vignette's own <pre> blocks; images not
+held). Script: books/S52-R1/intake/build-c/render.R. Help pages print no output for their Examples: the
+code there is shown, not run.
+
+CITATION: Müller, Kirill. here: A Simpler Way to Find Your Files. R package version 1.0.1, published on CRAN 2020-12-13. Help pages as installed.
+PACKAGE TITLE (from DESCRIPTION): "Title: A Simpler Way to Find Your Files"
+VERSION read with packageVersion() on 2026-10-02: "here 1.0.1"
+LICENCE: the installed DESCRIPTION file states
+  "License: MIT + file LICENSE"
+The LICENSE file it names is not present in the installed package (system.file("LICENSE",
+package = "here") returns ""), so its year and copyright-holder lines were not read.
+
+WHAT THIS FILE HOLDS: these help pages, each whole (description, usage, arguments, details, value, examples
+as code): here (Rd "here").
+The DESCRIPTION file, whole. Every other help page and vignette of the package is NOT held.
+
+VERSION WARNING: this is the documentation of the version the book's outputs were made with. Newer versions
+exist (see `tidyverse_news_s52r1` for what changed in dplyr, tidyr, readr and ggplot2). A reader on a newer
+version may see different text in ?topic. Current online reference (orientation only, not this text): https://here.r-lib.org/
+
+===============================================================================
+1. here::here — help page "here" (here 1.0.1), whole
+rhelp://here@1.0.1/here
+===============================================================================
+
+[TEXT]
+here                   package:here                    R Documentation
+
+Find your files
+
+Description:
+
+     'here()' uses a reasonable heuristics to find your project's
+     files, based on the current working directory at the time when the
+     package is loaded. Use it as a drop-in replacement for
+     'file.path()', it will always locate the files relative to your
+     project root.
+
+Usage:
+
+     here(...)
+     
+Arguments:
+
+     ...: [character]
+          Path components below the project root, can be empty. Each
+          argument should be a string containing one or more path
+          components separated by a forward slash '"/"'.
+
+Details:
+
+     This package is intended for interactive use only. Use
+     'rprojroot::has_file()' or the other functions in the 'rprojroot'
+     package for more control, or for package development.
+
+     If 'here()' raises an error or otherwise behaves unexpectedly, you
+     may have attached 'plyr' or another package after 'here'. Correct
+     this using the 'conflicted' package, or use 'here::here("data",
+     "df.rda")'.
+
+Project root:
+
+     The project root is established with a call to here::'i_am()'.
+     Although not recommended, it can be changed by calling
+     'here::i_am()' again.
+
+     In the absence of such a call (e.g. for a new project), starting
+     with the current working directory during package load time, the
+     directory hierarchy is walked upwards until a directory with at
+     least one of the following conditions is found:
+
+        • contains a file '.here'
+
+        • contains a file matching [.]Rproj$ with contents matching
+          ^Version: in the first line
+
+        • contains a file 'DESCRIPTION' with contents matching
+          ^Package:
+
+        • contains a file 'remake.yml'
+
+        • contains a file '.projectile'
+
+        • contains a directory '.git'
+
+        • contains a file '.git' with contents matching ^gitdir:
+
+        • contains a directory '.svn'
+
+     In either case, 'here()' appends its arguments as path components
+     to the root directory.
+
+Examples:
+
+     here()
+     ## Not run:
+     
+     here("some", "path", "below", "your", "project", "root.txt")
+     here("some/path/below/your/project/root.txt")
+     ## End(Not run)
+     
+[END TEXT]
+
+===============================================================================
+2. DESCRIPTION file of here 1.0.1, whole (title, authors, licence, version, publication date)
+rfile://here@1.0.1/DESCRIPTION
+===============================================================================
+
+[TEXT]
+Package: here
+Title: A Simpler Way to Find Your Files
+Version: 1.0.1
+Date: 2020-12-13
+Authors@R: 
+    c(person(given = "Kirill",
+             family = "M\u00fcller",
+             role = c("aut", "cre"),
+             email = "krlmlr+r@mailbox.org",
+             comment = c(ORCID = "0000-0002-1416-3412")),
+      person(given = "Jennifer",
+             family = "Bryan",
+             role = "ctb",
+             email = "jenny@rstudio.com",
+             comment = c(ORCID = "0000-0002-6983-2759")))
+Description: Constructs paths to your project's files.
+    Declare the relative path of a file within your project with 'i_am()'.
+    Use the 'here()' function as a drop-in replacement for 'file.path()',
+    it will always locate the files relative to your project root.
+License: MIT + file LICENSE
+URL: https://here.r-lib.org/, https://github.com/r-lib/here
+BugReports: https://github.com/r-lib/here/issues
+Imports: rprojroot (>= 2.0.2)
+Suggests: conflicted, covr, fs, knitr, palmerpenguins, plyr, readr,
+        rlang, rmarkdown, testthat, uuid, withr
+VignetteBuilder: knitr
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 7.1.1.9000
+Config/testthat/edition: 3
+NeedsCompilation: no
+Packaged: 2020-12-13 06:59:33 UTC; kirill
+Author: Kirill Müller [aut, cre] (<https://orcid.org/0000-0002-1416-3412>),
+  Jennifer Bryan [ctb] (<https://orcid.org/0000-0002-6983-2759>)
+Maintainer: Kirill Müller <krlmlr+r@mailbox.org>
+Repository: CRAN
+Date/Publication: 2020-12-13 07:30:02 UTC
+Built: R 4.1.1; ; 'Mon, 06 Sep 2021 13:19:15 +0200'; unix
+[END TEXT]

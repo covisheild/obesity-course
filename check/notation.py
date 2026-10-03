@@ -44,6 +44,10 @@ def inventory(md: str):
     skipped, so a URL's characters are not counted as notation.
     """
     known = table()
+    # Code blocks first, whole (2 Oct 2026): record fences (```r norun) and the booklet's
+    # pandoc fences (```{.r}); no-op on text without them. Then any other fence, as before.
+    import codeblocks
+    md = codeblocks.md_strip(codeblocks.strip(md))
     md = re.sub(r"```.*?```", "", md, flags=re.S)
     md = re.sub(r"<!--.*?-->", "", md, flags=re.S)
     md = re.sub(r"\]\([^)]*\)", "]", md)

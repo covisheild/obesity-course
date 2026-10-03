@@ -1,0 +1,119 @@
+arrange                 package:dplyr                  R Documentation
+
+Order rows using column values
+
+Description:
+
+     'arrange()' orders the rows of a data frame by the values of
+     selected columns.
+
+     Unlike other dplyr verbs, 'arrange()' largely ignores grouping;
+     you need to explicitly mention grouping variables (or use
+     '.by_group = TRUE') in order to group by them, and functions of
+     variables are evaluated once per data frame, not once per group.
+
+Usage:
+
+     arrange(.data, ..., .by_group = FALSE)
+     
+     ## S3 method for class 'data.frame'
+     arrange(.data, ..., .by_group = FALSE, .locale = NULL)
+     
+Arguments:
+
+   .data: A data frame, data frame extension (e.g. a tibble), or a lazy
+          data frame (e.g. from dbplyr or dtplyr). See _Methods_,
+          below, for more details.
+
+     ...: <'data-masking'> Variables, or functions of variables. Use
+          'desc()' to sort a variable in descending order.
+
+.by_group: If 'TRUE', will sort first by grouping variable. Applies to
+          grouped data frames only.
+
+ .locale: The locale to sort character vectors in.
+
+            • If 'NULL', the default, uses the '"C"' locale unless the
+              'dplyr.legacy_locale' global option escape hatch is
+              active. See the dplyr-locale help page for more details.
+
+            • If a single string from 'stringi::stri_locale_list()' is
+              supplied, then this will be used as the locale to sort
+              with. For example, '"en"' will sort with the American
+              English locale. This requires the stringi package.
+
+            • If '"C"' is supplied, then character vectors will always
+              be sorted in the C locale. This does not require stringi
+              and is often much faster than supplying a locale
+              identifier.
+
+          The C locale is not the same as English locales, such as
+          '"en"', particularly when it comes to data containing a mix
+          of upper and lower case letters. This is explained in more
+          detail on the locale help page under the Default locale
+          section.
+
+Details:
+
+  Missing values:
+
+       Unlike base sorting with 'sort()', 'NA' are:
+
+         • always sorted to the end for local data, even when wrapped
+           with 'desc()'.
+
+         • treated differently for remote data, depending on the
+           backend.
+
+Value:
+
+     An object of the same type as '.data'. The output has the
+     following properties:
+
+        • All rows appear in the output, but (usually) in a different
+          place.
+
+        • Columns are not modified.
+
+        • Groups are not modified.
+
+        • Data frame attributes are preserved.
+
+Methods:
+
+     This function is a *generic*, which means that packages can
+     provide implementations (methods) for other classes. See the
+     documentation of individual methods for extra arguments and
+     differences in behaviour.
+
+     The following methods are currently available in loaded packages:
+     no methods found.
+
+See Also:
+
+     Other single table verbs: 'filter()', 'mutate()', 'reframe()',
+     'rename()', 'select()', 'slice()', 'summarise()'
+
+Examples:
+
+     arrange(mtcars, cyl, disp)
+     arrange(mtcars, desc(disp))
+     
+     # grouped arrange ignores groups
+     by_cyl <- mtcars %>% group_by(cyl)
+     by_cyl %>% arrange(desc(wt))
+     # Unless you specifically ask:
+     by_cyl %>% arrange(desc(wt), .by_group = TRUE)
+     
+     # use embracing when wrapping in a function;
+     # see ?rlang::args_data_masking for more details
+     tidy_eval_arrange <- function(.data, var) {
+       .data %>%
+         arrange({{ var }})
+     }
+     tidy_eval_arrange(mtcars, mpg)
+     
+     # Use `across()` or `pick()` to select columns with tidy-select
+     iris %>% arrange(pick(starts_with("Sepal")))
+     iris %>% arrange(across(starts_with("Sepal"), desc))
+     

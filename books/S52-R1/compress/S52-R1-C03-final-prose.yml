@@ -1,0 +1,104 @@
+definition.text: 'An object is a value R holds in memory under a name. The assignment `name <- value` makes one:
+
+  R works out the right-hand side completely, then stores the result under the name on the
+
+  left. An assignment prints nothing. Typing the name alone prints the value.
+
+
+  Assigning to a name that already exists replaces its value.
+
+
+  Names are case sensitive: `bmi` and `BMI` are different names. A name may contain letters,
+
+  digits, `.` and `_`, and no spaces. It must start with a letter, or with `.` not followed by a
+
+  digit.
+
+
+  The objects that exist at a given moment form the workspace, which `ls()` lists and RStudio
+
+  shows in its Environment pane.
+
+
+  R accepts `=` in most places.
+
+  '
+simplified_explanation: '```r
+
+  weight_kg <- 72
+
+  ```
+
+
+  Read the arrow `<-` as "gets": weight_kg gets 72. R prints nothing. Type the name, and R prints
+
+  the value back.
+
+
+  ```r
+
+  weight_kg
+
+  ```
+
+
+  ```output
+
+  [1] 72
+
+  ```
+
+
+  A name is a label stuck on a value.
+
+
+  - **Give the same name a new value, and the old one is gone.**
+
+  - **A name holds a value, not a sum.** It changes only when you run its line again.
+
+
+  The objects you have made so far sit in a list called the workspace. RStudio shows it in the
+
+  Environment pane, and `ls()` prints it. That list is not your script. It holds every line you ran
+
+  today, in whatever order you ran it, including lines you typed only in the console.
+
+
+  Write names in small letters, with `_` between words, and put the unit in the name: `height_cm`,
+
+  `height_m`, `bmi`.
+
+
+  In R, people also call a named object a variable. A third meaning, a column in a table of data,
+
+  comes later in the book.
+
+  '
+must_know[0].point: 'The error is to think a name holds a formula. After any correction, run the script from the top.
+
+  '
+must_know[1].point: 'The workspace is not your script. Trust a result only after it has come from running the
+
+  script from the top.
+
+  '
+must_know[2].point: 'Give each thing its own name, such as `bmi_visit1` and `bmi_visit2`, rather than reusing
+
+  `bmi`.
+
+  '
+must_know[3].point: 'A line that divides `height_cm` by 100 to make `height_m` can then be checked by
+
+  reading it.
+
+  '
+must_know[4].point: '"object ''x'' not found" usually means a typing slip or a wrong capital letter, or a line that
+
+  makes `x` was never run.
+
+  '
+must_know[5].point: 'A good name makes code readable, not correct. Names help a reviewer follow the steps; only
+
+  checking the values tells you they are right.
+
+  '

@@ -1,0 +1,44 @@
+definition.text: 'An end-to-end analysis takes one question from raw data to its final table and figure in a single script that another person can run.
+
+
+  The analysis is reproducible in this book''s sense when the outputs come back the same from the raw files with that one command.
+
+  '
+simplified_explanation: '1. **The question.** One sentence, saying who, what is measured, and how it is summarised.
+
+  2. **The data.** Download the raw files. Read the terms that come with them. Record each file''s checksum.
+
+  3. **The dictionary.** One row per variable you will use: its name in the file, its meaning, its unit, its codes, and where you found them.
+
+  4. **The project folder.** `data-raw/` for the files as they arrived, `code/` for the script, `output/` for what the script makes.
+
+  5. **The script.** Read, check, join, clean, work out new columns, summarise, plot, write the outputs, print the versions.
+
+  6. **The README.** What the project is, where the data came from, and the one command that reruns it.
+
+  7. **The rerun.** Delete the outputs and run the command from nothing. The same table and the same figure must come back.
+
+  8. **What it does not show.** Say it, next to the result.
+
+  '
+must_know[0].point: 'Write the question before you open the data, and write who it is about.
+
+  '
+must_know[1].point: 'The error is to trust a filter because it ran without a warning. Before each filter, write down how many rows you expect it to keep, and check.
+
+  '
+must_know[2].point: 'Record each raw file''s checksum in the README on the day it arrives, and the terms it came with.
+
+  '
+must_know[3].point: 'Put a printed row count after every step that can add or drop rows, and a `stopifnot()` where you know the right count.
+
+  '
+must_know[4].point: 'Any summary of an NHANES file without its sample weights describes the participants in the file. Write "unweighted" beside it, and never present it as the figure for the United States, still less for India.
+
+  '
+must_know[5].point: 'The gate is one command from raw data to the same outputs. Ask for it before you read a single result.
+
+  '
+must_know[6].point: 'Reproducible means the result can be checked, not that it is right. A wrong cut-point or a wrong filter reruns perfectly.
+
+  '

@@ -1,0 +1,170 @@
+definition.text: 'A vector is an ordered set of values that R holds as one object under one name. The
+
+  function `c()` combines values into a vector, in the order given.
+
+
+  Every element of a vector has the same type. Numeric values are numbers (R keeps two kinds,
+
+  integer and double, and treats both as numbers).
+
+
+  When values of different types are combined, R converts all of them to the highest type in
+
+  the order logical, then numeric, then character. This conversion is called coercion. A
+
+  single text value therefore turns a vector of numbers into a vector of text, and functions
+
+  that compute on numbers, such as `mean()`, return no number for it.
+
+
+  `NA`, for "not available", marks a value that is missing. Almost any arithmetic or
+
+  comparison that involves `NA` returns `NA`, because the result cannot be known. The
+
+  function `is.na()` returns `TRUE` for each element that is `NA`. The comparison `x == NA`
+
+  returns `NA` for every element and finds nothing.
+
+
+  What R prints is a rounded display.
+
+  '
+simplified_explanation: 'In R, a set of values in a row, kept in order under one name, is a vector. You build one with
+
+  `c()`, which stands for combine:
+
+
+  ```r
+
+  height_cm <- c(152, 160.5, 171)
+
+  height_cm
+
+  ```
+
+
+  ```output
+
+  [1] 152.0 160.5 171.0
+
+  ```
+
+
+  A vector holds one type of value. The three you need now are numbers (numeric), text
+
+  (character) and `TRUE` or `FALSE` (logical).
+
+
+  ```r
+
+  sex <- c("female", "male", "female")
+
+  sex
+
+  ```
+
+
+  ```output
+
+  [1] "female" "male"   "female"
+
+  ```
+
+
+  Arithmetic works on the whole vector at once, element by element. Divide the heights by 100
+
+  and every height turns into metres:
+
+
+  ```r
+
+  height_cm / 100
+
+  ```
+
+
+  ```output
+
+  [1] 1.520 1.605 1.710
+
+  ```
+
+
+  R repeats a single number as often as the longer vector needs.
+
+
+  A comparison asks the same question of every element and answers `TRUE` or `FALSE` for each:
+
+
+  ```r
+
+  height_cm > 155
+
+  ```
+
+
+  ```output
+
+  [1] FALSE  TRUE  TRUE
+
+  ```
+
+
+  Square brackets pick elements out. A number inside them is a position. A logical vector
+
+  inside them keeps the elements where it says `TRUE`:
+
+
+  ```r
+
+  height_cm[2]
+
+  height_cm[height_cm > 155]
+
+  ```
+
+
+  ```output
+
+  [1] 160.5
+
+  [1] 160.5 171.0
+
+  ```
+
+  '
+must_know[0].point: 'The error is to believe a column that looks like numbers holds numbers. Before you compute
+
+  anything, print the vector and look for quotation marks, or ask `typeof()`.
+
+  '
+must_know[1].point: '`x == NA` never finds a missing value. Use `is.na(x)`, and refuse any count of missing
+
+  values that was made with `==`.
+
+  '
+must_know[2].point: 'Do not make the `NA` go away by writing a 0 in its place. Find out how many values are
+
+  missing first.
+
+  '
+must_know[3].point: '"NA" typed inside quotation marks is the two letters N and A, not a missing value.
+
+  '
+must_know[4].point: 'Never test two decimals with `==`. Report a number to the precision of the measurement
+
+  behind it, whatever R prints.
+
+  '
+must_know[5].point: '`is.na()` finds only R''s own `NA`. Suppose a raw file writes a missing weight as -99 or 999.
+
+  To R, that is a weight of -99 or 999, and it goes into every mean until you tell R what the
+
+  code means.
+
+  '
+must_know[6].point: 'Ask them to print the vector and point to the quotation marks or the `NA`. The habit of
+
+  looking is the thing worth teaching.
+
+  '

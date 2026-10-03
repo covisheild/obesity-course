@@ -1,0 +1,60 @@
+definition.text: |
+  Installing a package, with `install.packages()`, downloads it from a repository such as CRAN
+  and stores it on the computer. It is done once per computer, and again only to change the
+  version. Loading a package, with `library()`, makes its functions available in the current R
+  session.
+
+  Every package has a version number, read with `packageVersion()`. R itself has one, held in
+  `R.version.string`. A package's behaviour, and the messages it prints, can change between
+  versions.
+simplified_explanation: |
+  A package is a bundle of
+  functions, with the help pages that explain them and sometimes some data.
+
+  Using a package takes two steps, and they happen at different times.
+
+  1. **Install it, once per computer.** You type it in the console, not in your script:
+
+     ```r norun
+     install.packages("dplyr")
+     ```
+
+  2. **Load it, in every session.** It goes at the top
+     of your script:
+
+     ```r norun
+     library(dplyr)
+     ```
+
+  Some packages share a function name with another package. Loading dplyr, for example,
+  hides another `filter()`, which belongs to stats, a package that comes with R. To be sure
+  which one you get, write the package name and two colons in front: `dplyr::filter()` or
+  `stats::filter()`.
+
+  Each has a version number, and so does R. Check
+  yours with:
+
+  ```r
+  R.version.string
+  packageVersion("dplyr")
+  ```
+
+  ```output
+  [1] "R version 4.3.3 (2024-02-29)"
+  [1] ‘1.1.4’
+  ```
+must_know[0].point: |
+  The error is to put `install.packages()` in your script. Install once, in the console.
+must_know[1].point: |
+  "could not find function" almost always means the package that holds the function is not
+  loaded in this session.
+must_know[2].point: |
+  Read the message that `library()` prints. After `library(dplyr)`, `filter()` means dplyr's.
+must_know[3].point: |
+  Record the version of R and of every package your analysis loads, in the script's output.
+must_know[4].point: |
+  When a trainee's output differs from the book's in a message or a detail, have them compare
+  versions with `packageVersion()` before they rewrite their code.
+must_know[5].point: |
+  A version number names a release. It does not pin it: the next person to run
+  `install.packages()` gets whatever version is current that day.

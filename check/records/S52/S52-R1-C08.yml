@@ -1,0 +1,866 @@
+concept_id: S52-R1-C08
+subject: S52
+rung: 1
+sequence: 8
+name: Tidy data and the data frame
+concept_type: derivable
+clusters:
+- craft-and-integrity
+ground_floor_deps:
+- B0-R0-C39
+- B0-R0-C15
+concept_deps:
+- S52-R1-C03
+- S52-R1-C04
+- S52-R1-C05
+- S52-R1-C07
+definition:
+  text: |
+    A data frame is R's table. Different columns may hold different types, but all the values
+    within one column share one type.
+
+    Data are tidy (Wickham 2014) when three rules hold. Each variable forms a column. Each
+    observation forms a row. Each type of observational unit forms a table: facts about a child
+    that do not change between visits go in one table, and measurements made at each visit go in
+    another.
+  references:
+  - citekey: swc_r_gapminder
+    kind: textbook
+    locator: 'Ep. 04 "Data Structures", after str(cats2): what a data frame is made of'
+    quote: |-
+      Data frames are composed of rows and columns, where each column has the same number of rows. Different columns in a data frame can be made up of different data types (this is what makes them so versatile), but everything in a given column needs to be the same type (e.g., vector, factor, or list).
+    verified:
+      resolved_id: https://swcarpentry.github.io/r-novice-gapminder/04-data-structures-part1.html
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+  - citekey: swc_r_gapminder
+    kind: textbook
+    locator: 'Ep. 04 "Data Structures": the columns are vectors'
+    quote: |-
+      the columns of data we load into R data.frames are all vectors
+    verified:
+      resolved_id: https://swcarpentry.github.io/r-novice-gapminder/04-data-structures-part1.html
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+  - citekey: r4ds_2e
+    kind: textbook
+    locator: 'Ch. 1 "Data visualization", 1.2.1 "The penguins data frame": definition of a data frame'
+    quote: |-
+      A data frame is a rectangular collection of variables (in the columns) and observations (in the rows).
+    verified:
+      resolved_id: https://r4ds.hadley.nz/data-visualize.html
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+  - citekey: wickham_2014_tidy
+    kind: primary
+    locator: 'Section 2.2 "Data semantics", first paragraph: variable and observation'
+    quote: |-
+      A variable contains all values that measure the same underlying attribute (like height, temperature, duration) across units. An observation contains all values measured on the same unit (like a person, or a day, or a race) across attributes.
+    verified:
+      resolved_id: https://doi.org/10.18637/jss.v059.i10
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+  - citekey: wickham_2014_tidy
+    kind: primary
+    locator: 'Section 2.3 "Tidy data": the three rules'
+    quote: |-
+      1. Each variable forms a column. 2. Each observation forms a row. 3. Each type of observational unit forms a table.
+    verified:
+      resolved_id: https://doi.org/10.18637/jss.v059.i10
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+  - citekey: wickham_2014_tidy
+    kind: primary
+    locator: 'Section 2.3, after the three rules: any other arrangement'
+    quote: |-
+      Messy data is any other arrangement of the data.
+    verified:
+      resolved_id: https://doi.org/10.18637/jss.v059.i10
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+  - citekey: wickham_2014_tidy
+    kind: primary
+    locator: 'Section 3 "Tidying messy datasets", the list of the five most common problems (first, second and fourth items)'
+    quote: |-
+      Column headers are values, not variable names.
+    verified:
+      resolved_id: https://doi.org/10.18637/jss.v059.i10
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+      note: |-
+        The same list gives "Multiple variables are stored in one column." and "Multiple types of
+        observational units are stored in the same table.", the other two shapes the definition
+        names. Wickham's word is "messy"; this book says "untidy".
+  - citekey: wickham_2014_tidy
+    kind: primary
+    locator: 'Section 2.2: several types of observation in one study (the allergy trial example)'
+    quote: |-
+      In a given analysis, there may be multiple levels of observations.
+    verified:
+      resolved_id: https://doi.org/10.18637/jss.v059.i10
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+  - citekey: r4ds_2e
+    kind: textbook
+    locator: 'Ch. 5 "Data tidying", 5.2 "Tidy data": the book''s own third rule, which differs from Wickham 2014'
+    quote: |-
+      3. Each value is a cell; each cell is a single value.
+    verified:
+      resolved_id: https://r4ds.hadley.nz/data-tidy.html
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+      note: |-
+        R for Data Science states the third rule about cells, not about tables. The definition
+        follows Wickham 2014; the cell rule appears below as Broman and Woo's data-entry advice.
+  - citekey: broman_woo_2018_tas
+    kind: primary
+    locator: 'Section 6 "Put Just One Thing in a Cell", first paragraph'
+    quote: |-
+      Do not put more than one thing in a cell.
+    verified:
+      resolved_id: https://doi.org/10.1080/00031305.2017.1375989
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+  - citekey: broman_woo_2018_tas
+    kind: primary
+    locator: 'Section 7 "Make it a Rectangle", first paragraph'
+    quote: |-
+      The best layout for your data within a spreadsheet is as a single big rectangle with rows corresponding to subjects and columns corresponding to variables. The first row should contain variable names, and please do not use more than one row for the variable names.
+    verified:
+      resolved_id: https://doi.org/10.1080/00031305.2017.1375989
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+  - citekey: broman_woo_2018_tas
+    kind: primary
+    locator: 'Section 10 "Do Not Use Font Color or Highlighting as Data", last paragraph'
+    quote: |-
+      rather than use highlighting to indicate sex, it is better to include a sex column, with values Male or Female.
+    verified:
+      resolved_id: https://doi.org/10.1080/00031305.2017.1375989
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+  - citekey: broman_woo_2018_tas
+    kind: primary
+    locator: 'Section 6, second paragraph: units out of the cell'
+    quote: |-
+      It is better to write 45 and put the units in the column name, such as body_weight_g.
+    verified:
+      resolved_id: https://doi.org/10.1080/00031305.2017.1375989
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+  - citekey: horst_2020_palmerpenguins
+    kind: textbook
+    locator: 'Help page "penguins_raw" (palmerpenguins 0.1.1), Description and the Individual ID entry'
+    quote: |-
+      Includes nesting observations, penguin size data, and isotope measurements from blood samples for adult Adélie, Chinstrap, and Gentoo penguins.
+    verified:
+      resolved_id: rhelp://palmerpenguins@0.1.1/penguins_raw
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+      note: |-
+        The same page describes Individual ID as "a character string denoting the unique ID for
+        each individual in dataset". The second illustration shows that the ID alone does not
+        pick out one bird.
+  - citekey: wickham_2014_tidy
+    kind: primary
+    locator: 'Section 2.2 "Data semantics", second paragraph: defining variables in general'
+    quote: |-
+      it is surprisingly diﬃcult to precisely deﬁne variables and observations in general.
+    verified:
+      resolved_id: https://doi.org/10.18637/jss.v059.i10
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-03'
+  - citekey: broman_woo_2018_tas
+    kind: primary
+    locator: 'Section 9 "No Calculations in the Raw Data Files", first paragraph'
+    quote: |-
+      your primary data file should contain just the data and nothing else: no calculations, no graphs.
+    verified:
+      resolved_id: https://doi.org/10.1080/00031305.2017.1375989
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-03'
+  - citekey: horst_2020_palmerpenguins
+    kind: textbook
+    locator: 'Help page "penguins_raw" (palmerpenguins 0.1.1), Format, the Individual ID entry'
+    quote: |-
+      Individual ID a character string denoting the unique ID for each individual in dataset
+    verified:
+      resolved_id: rhelp://palmerpenguins@0.1.1/penguins_raw
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-03'
+simplified_explanation: |
+  Each column is a vector, a set of values of one type: all numbers, or all text. Every column has
+  the same length. A tibble is the tidyverse's kind of data frame. It tells you its size and the
+  type of each column when it prints.
+
+  A table is tidy when three things are true:
+
+  - **One column, one variable.**
+  - **One row, one observation.** A second visit is a second row, not a second column.
+  - **One table, one kind of unit.** Weight at each visit goes in a table with one row per visit.
+
+  Data typed into a spreadsheet often break the rules. Weights at three visits sit in three
+  columns. Blood pressure is typed as "104/66" in one cell. Girls are marked by colouring their
+  rows pink. Each stops the computer from using the data.
+illustrations:
+- body: |
+    Start with a register the way a clinic might keep it in a spreadsheet. The numbers are made up.
+    Each child has a row, each visit's weight has a column, and blood pressure at the first visit
+    is typed as one piece of text. Blood pressure is measured in millimetres of mercury, written
+    mmHg.
+
+    Build it in R. The function `tibble()`, from the tibble package, makes a tibble from named
+    vectors, one per column:
+
+    ```r
+    library(tibble)
+    register <- tibble(
+      child_id = c("C01", "C02", "C03"),
+      weight_v1_kg = c(21.4, 25.0, 19.8),
+      weight_v2_kg = c(22.1, 25.6, 20.3),
+      bp_v1 = c("104/66", "110/70", "98/62")
+    )
+    register
+    ```
+
+    ```output
+    # A tibble: 3 × 4
+      child_id weight_v1_kg weight_v2_kg bp_v1
+      <chr>           <dbl>        <dbl> <chr>
+    1 C01              21.4         22.1 104/66
+    2 C02              25           25.6 110/70
+    3 C03              19.8         20.3 98/62
+    ```
+
+    In printed output, `#` marks R's summary lines, not comments. Under each name the tibble prints
+    the column's type: `<chr>` text, `<dbl>` numbers, `<date>` dates.
+
+    Now ask two simple questions of it. First, what is the average systolic pressure, the upper
+    number?
+
+    ```r
+    mean(register$bp_v1)
+    ```
+
+    ```output
+    [1] NA
+    Warning message:
+    In mean.default(register$bp_v1) :
+      argument is not numeric or logical: returning NA
+    ```
+
+    R cannot average "104/66". It is text, because one cell holds two numbers and a slash. Second,
+    what is the average weight over all visits? There is no single column of weights to average.
+    You would have to name each visit's column, and change the code when a third visit is added.
+
+    Rebuild it tidy. A weight is measured on one child at one visit, so one row is one visit, and
+    the visit number becomes a column of its own:
+
+    ```r
+    visits <- tibble(
+      child_id = c("C01", "C01", "C02", "C02", "C03", "C03"),
+      visit = c(1, 2, 1, 2, 1, 2),
+      weight_kg = c(21.4, 22.1, 25.0, 25.6, 19.8, 20.3)
+    )
+    visits
+    mean(visits$weight_kg)
+    ```
+
+    ```output
+    # A tibble: 6 × 3
+      child_id visit weight_kg
+      <chr>    <dbl>     <dbl>
+    1 C01          1      21.4
+    2 C01          2      22.1
+    3 C02          1      25
+    4 C02          2      25.6
+    5 C03          1      19.8
+    6 C03          2      20.3
+    [1] 22.36667
+    ```
+
+    The `$` sign picks one column out of a data frame by its name: `visits$weight_kg` is the
+    weight column, a numeric vector. Its mean, worked by hand, is 134.2 divided by 6:
+
+    ```working
+    21.4 + 22.1 + 25.0 + 25.6 + 19.8 + 20.3 = 134.2
+    134.2 / 6 = 22.36667
+    ```
+
+    The blood pressure becomes two columns, each holding one number:
+
+    ```r
+    bp <- tibble(
+      child_id = c("C01", "C02", "C03"),
+      systolic_mmhg = c(104, 110, 98),
+      diastolic_mmhg = c(66, 70, 62)
+    )
+    mean(bp$systolic_mmhg)
+    ```
+
+    ```output
+    [1] 104
+    ```
+
+    One more rule is built into R itself. Every column must have the same length. Leave a value
+    out and `tibble()` refuses:
+
+    ```r error
+    tibble(child_id = c("C01", "C02", "C03"), weight_kg = c(21.4, 25.0))
+    ```
+
+    ```output
+    Error in `tibble()`:
+    ! Tibble columns must have compatible sizes.
+    • Size 3: Existing data.
+    • Size 2: Column `weight_kg`.
+    ℹ Only values of size one are recycled.
+    ```
+
+    `!` gives the error, `•` the details, `ℹ` a hint.
+    Three names and two weights cannot line up into rows, so R stops rather than guess which child
+    has no weight. A missing weight is written `NA`, which keeps the place.
+  analogy_breaks_when: |
+    "Tidy" depends on the question. For a question about how weight changes between visit 1 and
+    visit 2 in each child, a table with the two weights side by side is the handy shape, and
+    Wickham's own paper finds it "surprisingly difficult" to define variables in general. The
+    rules give a default for storing data, not a ban on other shapes made from it by code for one
+    use.
+
+    The register's numbers are made up. The average of 22.36667 kg describes these six made-up
+    visits and nothing else.
+- body: |
+    Now the real file. Read the penguin data and look at it with `glimpse()`, from the tibble
+    package, which prints each column on its own line with its type and its first few values. Lines
+    too long for the screen end in …:
+
+    ```r
+    library(readr)
+    library(tibble)
+    library(here)
+    penguins_raw <- read_csv(here("data-raw", "penguins_raw.csv"), show_col_types = FALSE)
+    glimpse(penguins_raw)
+    ```
+
+    ```output
+    here() starts at ~/project
+    Rows: 344
+    Columns: 17
+    $ studyName             <chr> "PAL0708", "PAL0708", "PAL0708", "PAL070…
+    $ `Sample Number`       <dbl> 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 1…
+    $ Species               <chr> "Adelie Penguin (Pygoscelis adeliae)", "…
+    $ Region                <chr> "Anvers", "Anvers", "Anvers", "Anvers", …
+    $ Island                <chr> "Torgersen", "Torgersen", "Torgersen", "…
+    $ Stage                 <chr> "Adult, 1 Egg Stage", "Adult, 1 Egg Stag…
+    $ `Individual ID`       <chr> "N1A1", "N1A2", "N2A1", "N2A2", "N3A1", …
+    $ `Clutch Completion`   <chr> "Yes", "Yes", "Yes", "Yes", "Yes", "Yes"…
+    $ `Date Egg`            <date> 2007-11-11, 2007-11-11, 2007-11-16, 200…
+    $ `Culmen Length (mm)`  <dbl> 39.1, 39.5, 40.3, NA, 36.7, 39.3, 38.9, …
+    $ `Culmen Depth (mm)`   <dbl> 18.7, 17.4, 18.0, NA, 19.3, 20.6, 17.8, …
+    $ `Flipper Length (mm)` <dbl> 181, 186, 195, NA, 193, 190, 181, 195, 1…
+    $ `Body Mass (g)`       <dbl> 3750, 3800, 3250, NA, 3450, 3650, 3625, …
+    $ Sex                   <chr> "MALE", "FEMALE", "FEMALE", NA, "FEMALE"…
+    $ `Delta 15 N (o/oo)`   <dbl> NA, 8.94956, 8.36821, NA, 8.76651, 8.664…
+    $ `Delta 13 C (o/oo)`   <dbl> NA, -24.69454, -25.33302, NA, -25.32426,…
+    $ Comments              <chr> "Not enough blood for isotopes.", NA, NA…
+    ```
+
+    `nrow()` and `ncol()` count rows and columns:
+
+    ```r
+    nrow(penguins_raw)
+    ncol(penguins_raw)
+    ```
+
+    ```output
+    [1] 344
+    [1] 17
+    ```
+
+    Several column names have spaces and brackets in them, such as `Body Mass (g)`. To use such a
+    name in code, wrap it in backticks, the slanted quote marks on the key left of 1:
+
+    ```r
+    mean(penguins_raw$`Body Mass (g)`, na.rm = TRUE)
+    ```
+
+    ```output
+    [1] 4201.754
+    ```
+
+    The average body mass of the penguins with a mass recorded is {{n:penguins_mass_mean}} grams. Now ask Book
+    0's first question. What does one row stand for? The help page of the palmerpenguins package
+    (`?palmerpenguins::penguins_raw`, once the package is installed) says the file holds nesting
+    observations of adult penguins, and calls `Individual ID` the unique ID for each individual.
+    If one row were one bird, there would be as many IDs as rows. Count them (`unique()` keeps one
+    copy of each value, and `length()` counts them):
+
+    ```r
+    length(unique(penguins_raw$`Individual ID`))
+    ```
+
+    ```output
+    [1] 190
+    ```
+
+    There are {{n:penguins_ids}} different IDs in {{n:penguins_rows}} rows. So some ID appears more than once.
+    Take one and look at the species and island of every row that carries it:
+
+    ```r
+    penguins_raw$Species[penguins_raw$`Individual ID` == "N1A1"]
+    penguins_raw$Island[penguins_raw$`Individual ID` == "N1A1"]
+    ```
+
+    ```output
+    [1] "Adelie Penguin (Pygoscelis adeliae)"
+    [2] "Gentoo penguin (Pygoscelis papua)"
+    [1] "Torgersen" "Biscoe"
+    ```
+
+    The ID `N1A1` belongs to an Adélie penguin on Torgersen island and to a Gentoo penguin on
+    Biscoe island. Those are two different birds. The ID alone does not pick out one penguin. One
+    row is one nesting observation of one adult, and you need more than one column to say which
+    bird it is.
+
+    Check the file against the rules, and against four pieces of Broman and Woo's advice: one thing
+    per cell, one rectangle with one header row, no colour as data, and no calculations in the raw
+    file. Each column holds one attribute. The units sit in the column names, `(mm)` and `(g)`, as
+    Broman and Woo suggest, and not inside the cells. Free-text notes
+    have their own column, `Comments`, rather than being typed into a measurement cell. By the
+    rules, this file is close to tidy. What it does not do is tell you, from any one column, which
+    rows are the same bird.
+  analogy_breaks_when: |
+    The average of {{n:penguins_mass_mean}} grams is a fact about the rows in this file that have a body mass. It
+    mixes three species and both sexes, so it describes no actual group of penguins.
+
+    The check above shows that one ID can name two birds. It does not show how many birds there
+    are. That depends on which columns together pick out one bird, and the help page does not say.
+must_know:
+- point: |
+    The error is to read the number of rows as the number of people, or birds, or children. Ask
+    first what one row stands for.
+  kind: misconception
+  bearing: methodological
+- point: |
+    When a register has one column per visit, the visit is hiding in the column names. Store it
+    as a column called `visit` with one row per visit.
+  kind: move
+  bearing: methodological
+- point: |
+    One cell, one value. "104/66", "45 kg", "2.3 or 2.4" and "0 (below detection)" each stop a
+    column from being numbers.
+  kind: trap
+  bearing: methodological
+- point: |
+    Colour and highlighting are not data. Add a column, such as `recheck` with TRUE or FALSE,
+    instead.
+  kind: trap
+  bearing: methodological
+- point: |
+    Facts that do not change between visits, such as sex and date of birth, go in a table with one
+    row per person.
+  kind: consequence
+  bearing: methodological
+- point: |
+    Before a data-entry team fills its first form, look at the sheet they designed. Ask for one header
+    row, one rectangle, one value per cell and no merged cells.
+  kind: move
+  bearing: policy
+- point: |
+    When a sentence says "variable", ask which of three things it means: Book 0's letter, an R
+    object, or a column.
+  kind: move
+  bearing: teaching
+- point: |
+    Tidy data makes the next step easy. It does not make the values right.
+  kind: boundary
+  bearing: methodological
+exercises:
+- type: retrieval
+  prompt: |
+    Without looking back, say what a data frame is made of, and what one row of the penguin file
+    stands for.
+  answer: |
+    A data frame is a set of named columns side by side. Each column is a vector whose values share
+    one type, and every column has the same length, so the values line up into rows.
+
+    One row of the penguin file is one nesting observation of one adult penguin, made on one
+    expedition. It is not one penguin: the same ID appears on rows for birds of different species
+    and islands.
+- type: critique
+  prompt: |
+    Here is a made-up data-entry sheet from a school health camp. It has one header row, with these
+    column headings: `Name`, `Class/Section`, `Ht 1 (cm)`, `Ht 2 (cm)`, `Wt (kg)`, `BMI`, `Remarks`. Rows for
+    children referred to the clinic are highlighted red. Find every place where the sheet breaks
+    the tidy rules or Broman and Woo's advice, and give the tidy layout.
+  answer: |
+    ```table
+    | Problem | Why it breaks a rule | Fix |
+    | Class/Section | two variables in one column | separate columns class and section |
+    | Ht 1 (cm), Ht 2 (cm) | a value (the measurement number) in the column names | one column height_cm with a column measurement_no, one row per measurement |
+    | BMI | a calculation in the raw data | leave it out of the raw file; compute it in code |
+    | red highlighting | colour used as data | a column referred, TRUE or FALSE |
+    | Name | not a tidy-rule break; a confidentiality point: it can repeat and carries personal information | a child_id column; names kept apart in a separate, protected file |
+    ```
+
+    The tidy result is two tables. One has a row per child: `child_id`, `class`, `section`,
+    `referred`, `remarks`. The other has a row per measurement: `child_id`, `measurement_no`,
+    `height_cm`. Weight was measured once, so it can sit in the child table as `weight_kg`.
+
+    The units in `Ht 1 (cm)` and `Wt (kg)` were in the column names, which is allowed. They
+    stay there, as `height_cm` and `weight_kg`.
+  skill_ref: S52-R1-K01
+quantitative: true
+practice:
+- level: 1
+  prompt: |
+    How many rows and columns does this made-up tibble have? Check with `nrow()` and `ncol()`.
+
+    ```r norun
+    tibble::tibble(x = c(1, 2, 3), y = c("a", "b", "c"))
+    ```
+  answer: |
+    ```r
+    small <- tibble::tibble(x = c(1, 2, 3), y = c("a", "b", "c"))
+    nrow(small)
+    ncol(small)
+    ```
+
+    ```output
+    [1] 3
+    [1] 2
+    ```
+
+    Three rows, because each column has three values. Two columns, `x` and `y`.
+- level: 2
+  prompt: |
+    Make a tibble of three made-up children with columns `child_id`, `height_cm` and `weight_kg`.
+    Print it, then pick out the weight column with `$` and find its mean.
+  answer: |
+    One answer. Your values will differ.
+
+    ```r
+    library(tibble)
+    children <- tibble(
+      child_id = c("A01", "A02", "A03"),
+      height_cm = c(121, 127, 118),
+      weight_kg = c(22.5, 25.1, 20.9)
+    )
+    children
+    mean(children$weight_kg)
+    ```
+
+    ```output
+    # A tibble: 3 × 3
+      child_id height_cm weight_kg
+      <chr>        <dbl>     <dbl>
+    1 A01            121      22.5
+    2 A02            127      25.1
+    3 A03            118      20.9
+    [1] 22.83333
+    ```
+
+    ```working
+    22.5 + 25.1 + 20.9 = 68.5
+    68.5 / 3 = 22.83333
+    ```
+- level: 4
+  prompt: |
+    Read `penguins_raw.csv` from the project. Give its number of rows and columns, and the mean
+    flipper length of the penguins with one recorded, with its unit.
+  answer: |
+    ```r
+    library(readr)
+    library(here)
+    penguins_raw <- read_csv(here("data-raw", "penguins_raw.csv"), show_col_types = FALSE)
+    nrow(penguins_raw)
+    ncol(penguins_raw)
+    mean(penguins_raw$`Flipper Length (mm)`, na.rm = TRUE)
+    ```
+
+    ```output
+    here() starts at ~/project
+    [1] 344
+    [1] 17
+    [1] 200.9152
+    ```
+
+    {{n:penguins_rows}} rows and {{n:penguins_cols}} columns. The mean flipper length is 200.9152
+    mm, over the rows that have a flipper length. The column name carries the unit, millimetres.
+    The name needs backticks because it contains spaces and brackets.
+- level: 5
+  prompt: |
+    Which islands does the penguin file cover? Use `unique()` on the right column.
+  answer: |
+    ```r
+    library(readr)
+    library(here)
+    penguins_raw <- read_csv(here("data-raw", "penguins_raw.csv"), show_col_types = FALSE)
+    unique(penguins_raw$Island)
+    ```
+
+    ```output
+    here() starts at ~/project
+    [1] "Torgersen" "Biscoe"    "Dream"
+    ```
+
+    Three islands: Torgersen, Biscoe and Dream. `unique()` gives each different value once, in the
+    order it first appears.
+- level: 6
+  prompt: |
+    In the penguin file, how many rows come from each of the three expeditions named in the
+    column `studyName`? Use `table()`, which counts how often each value occurs. Then say what one
+    row of the file stands for, and why it is not "one penguin".
+  answer: |
+    ```r
+    library(readr)
+    library(here)
+    penguins_raw <- read_csv(here("data-raw", "penguins_raw.csv"), show_col_types = FALSE)
+    table(penguins_raw$studyName)
+    ```
+
+    ```output
+    here() starts at ~/project
+
+    PAL0708 PAL0809 PAL0910
+        110     114     120
+    ```
+
+    One row is one nesting observation of one adult penguin, made on one expedition. It is not
+    one penguin, for two reasons the section showed. The same ID can appear on rows for different
+    species and islands, so an ID does not name one bird. And nothing in the file says that two
+    rows from different expeditions are not the same bird seen twice. The expedition counts add
+    up to the {{n:penguins_rows}} rows:
+
+    ```working
+    110 + 114 + 120 = 344
+    ```
+- level: 7
+  prompt: |
+    A resident tries to find the average body mass. Run her code. Find what broke and say why the
+    code looked right to her.
+
+    ```r
+    library(readr)
+    library(here)
+    penguins_raw <- read_csv(here("data-raw", "penguins_raw.csv"), show_col_types = FALSE)
+    ```
+
+    ```output
+    here() starts at ~/project
+    ```
+
+    ```r error
+    mean(penguins_raw$Body Mass (g), na.rm = TRUE)
+    ```
+
+    ```output
+    Error: <text>:1:24: unexpected symbol
+    1: mean(penguins_raw$Body Mass
+                               ^
+    ```
+
+  answer: |
+    The last line broke. The column name `Body Mass (g)` has spaces and brackets, so R reads
+    `penguins_raw$Body` and then meets the word `Mass`, which it cannot place. It stops before running
+    anything on that line.
+
+    It looked right because the name is typed exactly as it appears in the file. The repair is
+    backticks round the whole name:
+
+    ```r
+    mean(penguins_raw$`Body Mass (g)`, na.rm = TRUE)
+    ```
+
+    ```output
+    [1] 4201.754
+    ```
+
+    The mean is {{n:penguins_mass_mean}} grams.
+- level: 8
+  prompt: |
+    A camp register is entered with blood pressure as text. The data are made up. A resident runs
+    this code to find the average blood pressure and writes "BP data not available" in her report.
+    Run it. Find what broke, and say why her conclusion looks reasonable.
+
+    ```r
+    camp <- tibble::tibble(
+      child_id = c("K1", "K2", "K3", "K4"),
+      bp = c("102/64", "108/70", "96/60", "110/72")
+    )
+    mean(camp$bp)
+    ```
+
+    ```output
+    [1] NA
+    Warning message:
+    In mean.default(camp$bp) : argument is not numeric or logical: returning NA
+    ```
+  answer: |
+    Nothing is missing. The `bp` column holds two numbers and a slash in each cell, so it is text,
+    and `mean()` cannot average text. It warns, and returns `NA`. `NA` usually means "not
+    available", so "data not available" reads as if R said so. The warning says something else:
+    the argument is not numeric.
+
+    The repair is in the layout, not in the analysis. Store systolic and diastolic pressure in two
+    columns:
+
+    ```r
+    camp <- tibble::tibble(
+      child_id = c("K1", "K2", "K3", "K4"),
+      systolic_mmhg = c(102, 108, 96, 110),
+      diastolic_mmhg = c(64, 70, 60, 72)
+    )
+    mean(camp$systolic_mmhg)
+    mean(camp$diastolic_mmhg)
+    ```
+
+    ```output
+    [1] 104
+    [1] 66.5
+    ```
+
+    ```working
+    102 + 108 + 96 + 110 = 416
+    416 / 4 = 104
+    64 + 70 + 60 + 72 = 266
+    266 / 4 = 66.5
+    ```
+
+    When the raw file arrives with "102/64" in it, the split is done in code, and the raw file
+    is left as it came.
+- level: 9
+  prompt: |
+    A made-up thesis draft says: "Weight was recorded at three visits for each of the three
+    children (Table 2)." Table 2 has columns `child`, `visit_1`, `visit_2` and `visit_3`. The
+    weights are, in kilograms: child P1 18.2, 18.6, 19.1; P2 20.4, 20.9, 21.0; P3 17.5, 17.8, 18.4.
+    Build the tidy table, check its number of rows against the sentence, and find the mean weight.
+    Then say what your table does not establish.
+  answer: |
+    One row per child per visit:
+
+    ```r
+    library(tibble)
+    weights <- tibble(
+      child_id = c("P1", "P1", "P1", "P2", "P2", "P2", "P3", "P3", "P3"),
+      visit = c(1, 2, 3, 1, 2, 3, 1, 2, 3),
+      weight_kg = c(18.2, 18.6, 19.1, 20.4, 20.9, 21.0, 17.5, 17.8, 18.4)
+    )
+    nrow(weights)
+    mean(weights$weight_kg)
+    ```
+
+    ```output
+    [1] 9
+    [1] 19.1
+    ```
+
+    Three children times three visits is nine observations, and the table has nine rows, so it
+    matches the sentence.
+
+    ```working
+    3 * 3 = 9
+    18.2 + 18.6 + 19.1 + 20.4 + 20.9 + 21.0 + 17.5 + 17.8 + 18.4 = 171.9
+    171.9 / 9 = 19.1
+    ```
+
+    What the table does not establish:
+
+    - That the visits were at the same times for each child. The visit number is an order, not a
+      date.
+    - Anything about children in general. The three children are made up, and three real
+      children would describe only themselves.
+    - That the mean of nine weights means anything. It mixes three children at three times. The
+      tidy shape makes it easy to compute; it does not make it a sensible summary.
+- level: 10
+  prompt: |
+    In a meeting someone says: "The penguin file has data on {{n:penguins_rows}} penguins." Decide what to compute
+    to test the claim, compute it, and say what your answer does not establish.
+  answer: |
+    The claim treats one row as one penguin. Test that by counting rows, then counting what might
+    identify a bird.
+
+    ```r
+    library(readr)
+    library(here)
+    penguins_raw <- read_csv(here("data-raw", "penguins_raw.csv"), show_col_types = FALSE)
+    nrow(penguins_raw)
+    length(unique(penguins_raw$`Individual ID`))
+    length(unique(paste(penguins_raw$Species, penguins_raw$Island, penguins_raw$`Individual ID`)))
+    ```
+
+    ```output
+    here() starts at ~/project
+    [1] 344
+    [1] 190
+    [1] 304
+    ```
+
+    Rows against IDs is enough to refute the claim. The last line is a further check: `paste()`
+    joins the three columns into one piece of text per row, and `unique()` keeps each different
+    combination once.
+
+    There are {{n:penguins_rows}} rows, {{n:penguins_ids}} different IDs, and 304 different combinations of
+    species, island and ID. So "{{n:penguins_rows}} penguins" is wrong if the same bird can appear on more than one
+    expedition. "{{n:penguins_ids}} penguins" is wrong too, because one ID can name birds of two species.
+
+    What the answer does not establish: the number of birds. Suppose species, island and ID
+    together always name one bird, and a bird keeps its ID from one expedition to the next. Then
+    there were 304 birds. Neither is stated in the file or on its help page. Say "{{n:penguins_rows}} nesting observations", which
+    the file supports, and stop there.
+  refs:
+  - horst_2020_palmerpenguins
+retrieval_items:
+- q: State the three rules of tidy data as Wickham (2014) gives them.
+  a: Each variable forms a column. Each observation forms a row. Each type of observational unit forms a table.
+- q: What must be true of the columns of a data frame?
+  a: Each column is a vector, all the values within one column share one type, and every column has the same number of values, so they line up into rows.
+- q: Name three common untidy shapes.
+  a: Values used as column names (weight at visit 1, 2, 3 in three columns); two variables in one column or cell (blood pressure as "104/66"); two kinds of unit in one table (child facts repeated on every visit row).
+- q: What are the three meanings of "variable" in this book?
+  a: A letter standing for a number (Book 0), the name of an object in R, and a column of a data frame holding everything measured about one attribute.
+figures:
+- file: s52-r1-c08-rows-and-ids.png
+  caption: "The penguin file has 344 rows but only 190 different values of Individual ID, so 154 rows repeat an ID that an earlier row already carries. One row is not one bird, and N1A1 alone names two birds of different species."
+  alt: "Two bars: rows in the file, 344; different Individual IDs, 190."
+  source: draw.py
+  spec:
+    kind: bar
+    x: ["rows in the file", "different Individual IDs"]
+    series:
+    - {name: "count", y: [344, 190]}
+    x_label: what was counted in penguins_raw
+    y_label: count
+    value_labels: true
+    size: [5.0, 3.0]
+    derived:
+    - {value: "154", from: "344 - 190"}
+    relations:
+    - check: "y[0] - y[1] = 154"
+provenance:
+  map_version_id: fc19c8bc-a216-4131-99fb-ebe3f19cec4a
+  outcome_refs:
+  - S52-R1-O2
+  - S52-R1-S1
+review:
+  stability: long
+  trigger: '2031-10-02'
+  last_reviewed: '2026-10-02'
+status: drafted

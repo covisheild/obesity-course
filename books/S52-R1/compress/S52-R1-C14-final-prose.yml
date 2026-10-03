@@ -1,0 +1,68 @@
+definition.text: 'A factor stores each value together with its levels: the list of allowed categories, in a set order.
+
+
+  `factor(x, levels = ...)` makes a factor with the levels given. A value of `x` that is not among the levels becomes `NA`,
+
+  without an error. With no levels given, they are taken from the data in alphabetical order.
+
+
+  Three functions come from the forcats package. The first, `fct_recode()`, renames levels,
+
+  written `new = "old"`, and leaves the others as they are. The second, `fct_relevel()`, moves
+
+  the named levels to the front. The third, `fct_infreq()`, orders the levels by how many rows have each one, largest first.
+
+
+  `count()`, from dplyr, gives the number of rows for each value of one column, or for each
+
+  combination of values of two or more columns. For a factor, `.drop = FALSE` also lists the
+
+  combinations that never occur, with a count of 0.
+
+  '
+simplified_explanation: '"Male", "male " with a space at the end, and "M" are three different values to R.
+
+
+  **count()** shows you every value a column actually holds, and how many rows hold it. A
+
+  misspelling shows up as an extra row.
+
+
+  Here is the trap. When you make a factor and a value is not on your list, R turns it into `NA`
+
+  and says nothing.
+
+
+  Codes need the same care. A file may store sex as 1 and 2. Never guess the codes from the data.
+
+
+  Two counts at once, `count(species, island)`, is Book 0''s two-way table, written as one row
+
+  per pair.
+
+  '
+must_know[0].point: 'Run `count()` on every category column before you use it.
+
+  '
+must_know[1].point: 'Count the factor after making it, and treat any new `NA` as a spelling you missed.
+
+  '
+must_know[2].point: 'Refuse a summary that averages a code.
+
+  '
+must_know[3].point: 'If you misspell an old level in `fct_recode()`, R warns "Unknown levels" and leaves that level
+
+  unchanged.
+
+  '
+must_know[4].point: 'Set the order of the levels on purpose, with the levels you list or with `fct_relevel()`.
+
+  '
+must_know[5].point: 'A table that leaves out its zeros hides that a combination never occurred.
+
+  '
+must_know[6].point: 'A clean count shows how many rows hold each category. It cannot show that the category was
+
+  recorded correctly in the first place.
+
+  '

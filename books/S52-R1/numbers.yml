@@ -1,0 +1,171 @@
+# books/S52-R1/numbers.yml: every number this book uses in more than one section (claude.md §4a).
+# Prose writes {{n:key}}; another book's number is {{n:S01-R1/key}}. The build substitutes the
+# value before any check runs, blocks on an unknown key and warns on an unused one.
+# Started at Task 1, 2026-10-02. Versions were read in this sandbox with packageVersion() and
+# R.version.string; they are reused in the front matter, C06 and C21, and in every caption that says
+# which version produced an output. Citekeys marked "proposed" are filed at intake (READY.md).
+numbers:
+  r_version:
+    value: "4.3.3"
+    meaning: version of R that produced every printed output in this book (R.version.string, "R version 4.3.3 (2024-02-29)")
+    source: read in the build sandbox with R --version, 2026-10-02
+  tidyverse_version:
+    value: "2.0.0"
+    meaning: tidyverse meta-package version installed when the outputs were produced
+    source: packageVersion("tidyverse") in the build sandbox, 2026-10-02
+  dplyr_version:
+    value: "1.1.4"
+    meaning: dplyr version installed when the outputs were produced
+    source: packageVersion("dplyr") in the build sandbox, 2026-10-02
+  tidyr_version:
+    value: "1.3.1"
+    meaning: tidyr version installed when the outputs were produced
+    source: packageVersion("tidyr") in the build sandbox, 2026-10-02
+  readr_version:
+    value: "2.1.5"
+    meaning: readr version installed when the outputs were produced
+    source: packageVersion("readr") in the build sandbox, 2026-10-02
+  ggplot2_version:
+    value: "3.4.4"
+    meaning: ggplot2 version installed when the outputs were produced
+    source: packageVersion("ggplot2") in the build sandbox, 2026-10-02
+  readxl_version:
+    value: "1.4.3"
+    meaning: readxl version installed when the outputs were produced
+    source: packageVersion("readxl") in the build sandbox, 2026-10-02
+  haven_version:
+    value: "2.5.4"
+    meaning: haven version installed when the outputs were produced
+    source: packageVersion("haven") in the build sandbox, 2026-10-02
+  lubridate_version:
+    value: "1.9.3"
+    meaning: lubridate version installed when the outputs were produced
+    source: packageVersion("lubridate") in the build sandbox, 2026-10-02
+  forcats_version:
+    value: "1.0.0"
+    meaning: forcats version installed when the outputs were produced
+    source: packageVersion("forcats") in the build sandbox, 2026-10-02
+  here_version:
+    value: "1.0.1"
+    meaning: here version installed when the outputs were produced
+    source: packageVersion("here") in the build sandbox, 2026-10-02
+  renv_version:
+    value: "1.0.3"
+    meaning: renv version installed in the build sandbox (named in C21; renv itself is taught at S52-R3)
+    source: packageVersion("renv") in the build sandbox, 2026-10-02
+  ziemann_affected_pct:
+    value: "19.6%"
+    meaning: share of published articles with Excel gene lists affected by gene name errors, 18 journals, 2005-2015 (C01, C15)
+    source: ziemann_2016 (proposed citekey; Results, "the proportion of published articles with Excel files containing gene lists that are affected by gene name errors is 19.6 %")
+  trisovic_fail_initial_pct:
+    value: "74%"
+    meaning: share of R files from Harvard Dataverse replication datasets (2010-2020) that failed to complete without error on first execution (C20, C21)
+    source: trisovic_2022 (proposed citekey; Abstract)
+  trisovic_fail_cleaned_pct:
+    value: "56%"
+    meaning: the same share after automatic code cleaning (C20, C21)
+    source: trisovic_2022 (proposed citekey; Abstract)
+  penguins_rows:
+    value: "344"
+    meaning: 'rows of data-raw/penguins_raw.csv as read_csv() reads it (readr 2.1.5), one per nesting observation of an adult penguin'
+    source: 'S52-R1-C07, illustration 1, nrow(penguins) (gate-filled output); agrees with horst_2020_palmerpenguins header "rows (read_csv): 344"'
+  penguins_cols:
+    value: "17"
+    meaning: 'columns of data-raw/penguins_raw.csv as read_csv() reads it'
+    source: 'S52-R1-C07, practice level 4, dim(penguins) (gate-filled output); agrees with horst_2020_palmerpenguins header "columns (read_csv): 17"'
+  bmx_rows:
+    value: "8860"
+    meaning: 'rows of NHANES 2021-2023 BMX_L.xpt as haven::read_xpt() reads it (one per examined participant, all ages)'
+    source: 'S52-R1-C09, illustration 3, dim(bmx) (gate-filled output); agrees with nchs_nhanes_2021_2023_bmx_demo header "8860 rows x 22 columns"'
+  nhanes_adults_rows:
+    value: "6064"
+    meaning: 'rows of NHANES 2021-2023 BMX_L joined to DEMO_L on SEQN with RIDAGEYR >= 20 (participants aged 20 or over with a body measures record; unweighted count of rows)'
+    source: 'S52-R1-C19, illustration 2, nrow(adults) (gate-filled output); agrees with nchs_nhanes_2021_2023_bmx_demo block 1 "BMX rows with RIDAGEYR >= 20: 6064"'
+  bmx_cols:
+    value: "22"
+    meaning: 'columns of NHANES 2021-2023 BMX_L.xpt as haven::read_xpt() reads it'
+    source: 'S52-R1-C09, illustration 3, dim(bmx) (gate-filled output)'
+  demo_rows:
+    value: "11933"
+    meaning: 'rows of NHANES 2021-2023 DEMO_L.xpt as haven::read_xpt() reads it (one per screened participant, interviewed and examined or interviewed only)'
+    source: 'S52-R1-C17, illustration 3, nrow(demo) (gate-filled output); agrees with nchs_nhanes_2021_2023_bmx_demo header "DEMO_L.xpt: ... 11933 rows x 27 columns"; also printed in S52-R1-C09 practice level 6'
+  penguins_ids:
+    value: "190"
+    meaning: 'distinct values of Individual ID in data-raw/penguins_raw.csv (an ID can name more than one bird; not a count of penguins)'
+    source: 'S52-R1-C08, illustrations, length(unique(penguins_raw$`Individual ID`)) (gate-filled output); also C10 n_distinct(), C19 practice level 5'
+  penguins_mass_n:
+    value: "342"
+    meaning: 'rows of penguins_raw.csv with a recorded Body Mass (g) (2 of the 344 are NA)'
+    source: 'S52-R1-C13, illustrations, summarise() of body mass (gate-filled output); also C11, C12, C16, C18'
+  penguins_mass_mean:
+    value: "4201.754"
+    meaning: 'mean Body Mass (g) of the 342 rows with a body mass, as R prints it (grams)'
+    source: 'S52-R1-C08, illustrations, mean(penguins_raw$`Body Mass (g)`, na.rm = TRUE) (gate-filled output); also C11'
+  penguins_mass_mean_g:
+    value: "4202"
+    meaning: 'the same mean rounded to whole grams, as a tibble prints it (4202.) and as prose reports it'
+    source: 'S52-R1-C13, illustrations, summarise() output printed as 4202. (gate-filled); also C11, C21'
+  penguins_adelie:
+    value: "152"
+    meaning: 'rows of penguins_raw.csv whose Species is the Adelie penguin'
+    source: 'S52-R1-C14, practice level 8, count(species) (gate-filled output); also C11, C12, C16, C18, C21'
+  penguins_chinstrap:
+    value: "68"
+    meaning: 'rows whose Species is the Chinstrap penguin'
+    source: 'S52-R1-C14, practice level 8, count(species) (gate-filled output); also C11, C12, C16, C18, C21'
+  penguins_gentoo:
+    value: "124"
+    meaning: 'rows whose Species is the Gentoo penguin'
+    source: 'S52-R1-C14, practice level 8, count(species) (gate-filled output); also C12, C16, C18, C21'
+  penguins_gentoo_mass_n:
+    value: "123"
+    meaning: 'Gentoo rows with a recorded body mass (one of the 124 is NA)'
+    source: 'S52-R1-C16, illustrations, summary by species (gate-filled output, Gentoo 124 rows, 123 masses); also C12'
+  penguins_female:
+    value: "165"
+    meaning: 'rows with Sex recorded as FEMALE'
+    source: 'S52-R1-C14, practice level 9, count(sex) (gate-filled output); also C16, C18, C21'
+  penguins_male:
+    value: "168"
+    meaning: 'rows with Sex recorded as MALE'
+    source: 'S52-R1-C14, practice level 9, count(sex) (gate-filled output); also C16, C18, C21'
+  penguins_sex_missing:
+    value: "11"
+    meaning: 'rows with no recorded Sex (NA as read_csv() reads the file with its default na)'
+    source: 'S52-R1-C14, practice level 9, count(sex) (gate-filled output); also C18, C21; agrees with C13 practice level 3'
+  penguins_torgersen:
+    value: "52"
+    meaning: 'rows from Torgersen island (all Adelie)'
+    source: 'S52-R1-C14, illustrations, count(island) (gate-filled output); also C11, C16'
+  penguins_biscoe:
+    value: "168"
+    meaning: 'rows from Biscoe island'
+    source: 'S52-R1-C14, illustrations, count(island) (gate-filled output); also C16'
+  penguins_dream:
+    value: "124"
+    meaning: 'rows from Dream island'
+    source: 'S52-R1-C14, illustrations, count(island) (gate-filled output); also C16'
+  nhanes_men_bmi_n:
+    value: "2680"
+    meaning: 'NHANES 2021-2023 BMX_L joined to DEMO_L, RIDAGEYR >= 20, RIAGENDR 1 (male), BMXBMI present (unweighted count of rows)'
+    source: 'S52-R1-C17, illustrations, summary by RIAGENDR (gate-filled output); also C18 practice, C22 illustrations (no men are excluded as pregnant)'
+  nhanes_women_bmi_n:
+    value: "3290"
+    meaning: 'the same for RIAGENDR 2 (female), before any exclusion for pregnancy (C22 excludes 41 and has 3249)'
+    source: 'S52-R1-C17, illustrations, summary by RIAGENDR (gate-filled output); also C18 practice'
+  nhanes_men_bmi_mean:
+    value: "29.3"
+    meaning: 'unweighted mean BMXBMI of those 2680 men, kg/m^2, as the tibble prints it'
+    source: 'S52-R1-C17, illustrations, summary by RIAGENDR (gate-filled output); also C22 illustrations'
+  nhanes_men_bmi_median:
+    value: "28.1"
+    meaning: 'unweighted median BMXBMI of those 2680 men, kg/m^2, as the tibble prints it'
+    source: 'S52-R1-C17, illustrations, summary by RIAGENDR (gate-filled output); also C22 illustrations'
+# TODO at the source gate, once Harsh chooses the build dataset (READY.md, candidates A, B, C):
+#   dataset_rows, dataset_cols, and the missing-value counts the sections reuse, read by running
+#   the code on the chosen file. Do not fill from this comment. For candidate B (penguins_raw.csv,
+#   palmerpenguins 0.1.1) Task 1 read 344 rows and 17 columns; candidate A (NHANES BMX_L, DEMO_L)
+#   was not opened.
+# TODO at intake: newest release versions, if the book prints them in more than one place
+#   (opened 2026-10-02 as changelog headings: R 4.6.1, ggplot2 4.0.3, dplyr 1.2.1, readr 2.2.0,
+#   tidyr 1.3.2, renv 1.3.0); register them here with their URL as source when they are first used.

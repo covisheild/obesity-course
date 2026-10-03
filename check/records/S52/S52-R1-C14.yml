@@ -1,0 +1,977 @@
+concept_id: S52-R1-C14
+subject: S52
+rung: 1
+sequence: 14
+name: Categories as factors
+concept_type: derivable
+clusters:
+- craft-and-integrity
+ground_floor_deps:
+- B0-R0-C26
+- B0-R0-C39
+concept_deps:
+- S52-R1-C04
+- S52-R1-C08
+- S52-R1-C10
+- S52-R1-C11
+- S52-R1-C12
+- S52-R1-C13
+definition:
+  text: |
+    A factor stores each value together with its levels: the list of allowed categories, in a set order.
+
+    `factor(x, levels = ...)` makes a factor with the levels given. A value of `x` that is not among the levels becomes `NA`,
+    without an error. With no levels given, they are taken from the data in alphabetical order.
+
+    Three functions come from the forcats package. The first, `fct_recode()`, renames levels,
+    written `new = "old"`, and leaves the others as they are. The second, `fct_relevel()`, moves
+    the named levels to the front, written `fct_relevel(x, "level")`. The third, `fct_infreq()`, orders the levels by how many rows have each one, largest first.
+    Each also takes a text column, and makes it a factor first, with its levels in alphabetical order.
+
+    `count()`, from dplyr, gives the number of rows for each value of one column, or for each
+    combination of values of two or more columns. For a factor, `.drop = FALSE` also lists the
+    combinations that never occur, with a count of 0.
+  references:
+  - citekey: r4ds_2e
+    kind: textbook
+    locator: 'ch. 16 "Factors", 16.1 Introduction: what a factor is for'
+    quote: |-
+      Factors are used for categorical variables, variables that have a fixed and known set of possible values.
+    verified:
+      resolved_id: https://r4ds.hadley.nz/factors.html
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+      note: |-
+        Quoted for audit only (CC BY-NC-ND). The base R help page for factor() is not held, so
+        factor() itself is cited to this chapter, and its behaviour is shown by the book's own
+        gate-run outputs.
+  - citekey: r4ds_2e
+    kind: textbook
+    locator: 'ch. 16, 16.2 Factor basics: values not in the levels'
+    quote: |-
+      And any values not in the level will be silently converted to NA:
+    verified:
+      resolved_id: https://r4ds.hadley.nz/factors.html
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+  - citekey: r4ds_2e
+    kind: textbook
+    locator: 'ch. 16, 16.2 Factor basics: levels taken from the data'
+    quote: |-
+      If you omit the levels, they’ll be taken from the data in alphabetical order:
+    verified:
+      resolved_id: https://r4ds.hadley.nz/factors.html
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+  - citekey: rdocs_s52r1_forcats
+    kind: textbook
+    locator: 'help page "fct_recode" (forcats 1.0.0), Arguments: new name on the left, old on the right'
+    quote: |-
+      A sequence of named character vectors where the name gives the new level, and the value gives the old level. Levels not otherwise mentioned will be left as is.
+    verified:
+      resolved_id: rhelp://forcats@1.0.0/fct_recode
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+      note: |-
+        The same page's argument .f reads "A factor (or character vector)", so a character vector
+        of codes can be recoded directly. fct_relevel's .f reads the same. That the levels made
+        from text are alphabetical is shown by the gate-run outputs (practice level 3: breakfast,
+        lunch, dinner from "1", "2", "3"; practice level 5: Biscoe before Dream).
+  - citekey: rdocs_s52r1_forcats
+    kind: textbook
+    locator: 'help page "fct_relevel" (forcats 1.0.0), Arguments, ...: levels not mentioned'
+    quote: |-
+      Any levels not mentioned will be left in their existing order, by default after the explicitly mentioned levels.
+    verified:
+      resolved_id: rhelp://forcats@1.0.0/fct_relevel
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+  - citekey: rdocs_s52r1_forcats
+    kind: textbook
+    locator: 'help page "fct_inorder" (forcats 1.0.0), Description: fct_infreq()'
+    quote: |-
+      by number of observations with each level (largest first)
+    verified:
+      resolved_id: rhelp://forcats@1.0.0/fct_inorder
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+      note: |-
+        The Description opens "This family of functions changes only the order of the levels."
+  - citekey: rdocs_s52r1_dplyr
+    kind: textbook
+    locator: 'help page "count" (dplyr 1.1.4), Description'
+    quote: |-
+      'count()' lets you quickly count the unique values of one or more variables
+    verified:
+      resolved_id: rhelp://dplyr@1.1.4/count
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+  - citekey: rdocs_s52r1_dplyr
+    kind: textbook
+    locator: 'help page "count" (dplyr 1.1.4), Arguments, .drop'
+    quote: |-
+      For 'count()': if 'FALSE' will include counts for empty groups (i.e. for levels of factors that don't exist in the data).
+    verified:
+      resolved_id: rhelp://dplyr@1.1.4/count
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+  - citekey: broman_woo_2018_tas
+    kind: textbook
+    locator: 'section 2 "Be Consistent", consistent codes for categorical variables (p. 2)'
+    quote: |-
+      use a single common value for males (e.g., “male”), and a single common value for females (e.g., “female”).
+    verified:
+      resolved_id: https://doi.org/10.1080/00031305.2017.1375989
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+      note: |-
+        Quoted for audit only (CC BY-NC-ND). The same section says “male” is different from
+        “ male ”, with spaces at the beginning and end.
+simplified_explanation: |
+  "Male", "male " with a space at the end, and "M" are three different values to R.
+
+  `count()` shows you every value a column actually holds, and how many rows hold it. A
+  misspelling shows up as an extra row.
+
+  Here is the trap. When you make a factor and a value is not on your list, R turns it into `NA`
+  and says nothing.
+
+  Codes need the same care. A file may store sex as 1 and 2. Never guess the codes from the data.
+
+  Two counts at once, `count(species, island)`, is Book 0's two-way table, written as one row
+  per pair.
+illustrations:
+- body: |
+    Start with a column typed by hand. Here is a made-up register of six patients, with sex as the
+    staff wrote it.
+
+    ```r
+    library(dplyr)
+    library(stringr)
+    library(forcats)
+
+    register <- tibble(
+      id = c(1, 2, 3, 4, 5, 6),
+      sex = c("Male", "male ", "Female", "F", "female", "MALE")
+    )
+    ```
+
+    ```output
+
+    Attaching package: ‘dplyr’
+
+    The following objects are masked from ‘package:stats’:
+
+        filter, lag
+
+    The following objects are masked from ‘package:base’:
+
+        intersect, setdiff, setequal, union
+    ```
+
+    You want two categories, female and male. Make a factor with those two levels, and count it:
+
+    ```r
+    register |>
+      mutate(sex_f = factor(sex, levels = c("female", "male"))) |>
+      count(sex_f)
+    ```
+
+    ```output
+    # A tibble: 2 × 2
+      sex_f      n
+      <fct>  <int>
+    1 female     1
+    2 <NA>       5
+    ```
+
+    One female, no male, and five missing. Not one value was missing in the register. `factor()`
+    turned every value that did not match a level exactly into `NA`, and it gave no warning. A
+    report built on this would say five patients' sex was "not recorded".
+
+    Go back a step and count the text as it is:
+
+    ```r
+    register |>
+      count(sex)
+    ```
+
+    ```output
+    # A tibble: 6 × 2
+      sex          n
+      <chr>    <int>
+    1 "F"          1
+    2 "Female"     1
+    3 "MALE"       1
+    4 "Male"       1
+    5 "female"     1
+    6 "male "      1
+    ```
+
+    Six rows, six spellings, each held once. This is the count to run first, on every category
+    column.
+
+    Now clean it in steps, each into a new column. Trim the spaces and lower the case, as the
+    section on making new columns did. Then rename the one code that is left, "f", with
+    `fct_recode()`: the new name on the left, the old one on the right.
+
+    ```r
+    register <- register |>
+      mutate(
+        sex_clean = str_to_lower(str_trim(sex)),
+        sex_f = fct_recode(sex_clean, female = "f"),
+        sex_f = factor(sex_f, levels = c("female", "male"))
+      )
+
+    register |>
+      count(sex_f)
+    ```
+
+    ```output
+    # A tibble: 2 × 2
+      sex_f      n
+      <fct>  <int>
+    1 female     3
+    2 male       3
+    ```
+
+    Three female and three male, and no `NA`. The last line sets the order of the levels, so
+    female comes first in every count and table, whatever order the data arrive in.
+  analogy_breaks_when: |
+    The six patients are made up. The spellings are the kind that hand entry produces; Broman and
+    Woo's advice on data entry warns against exactly this mix of "male" and " male ".
+
+    Lowering the case and trimming spaces catches only these slips. "Mle" or "fem" would survive
+    both steps, and the final `factor()` would turn them into `NA`. The count after the factor is
+    what catches them, so never skip it.
+- body: |
+    Now codes. Many forms store a category as a number. Here is a made-up thesis dataset of five
+    students, where sex is stored as 1 or 2. The data dictionary for this made-up study says 1
+    means female and 2 means male.
+
+    ```r
+    library(dplyr)
+    library(forcats)
+
+    students <- tibble(
+      id = c(101, 102, 103, 104, 105),
+      sex_code = c(1, 2, 2, 1, 2)
+    )
+
+    mean(students$sex_code)
+    ```
+
+    ```output
+    [1] 1.6
+    ```
+
+    R gives a mean sex of 1.6. The arithmetic is right and the number means nothing: 1 and 2 are
+    labels, not amounts. A numeric code invites exactly this kind of summary.
+
+    Turn the code into a factor with the dictionary's labels. `fct_recode()` works on text, so turn
+    the numbers into text first with `as.character()`. Keep the code column beside the new one.
+
+    ```r
+    students <- students |>
+      mutate(
+        sex = fct_recode(as.character(sex_code), female = "1", male = "2")
+      )
+
+    students
+
+    students |>
+      count(sex)
+    ```
+
+    ```output
+    # A tibble: 5 × 3
+         id sex_code sex
+      <dbl>    <dbl> <fct>
+    1   101        1 female
+    2   102        2 male
+    3   103        2 male
+    4   104        1 female
+    5   105        2 male
+    # A tibble: 2 × 2
+      sex        n
+      <fct>  <int>
+    1 female     2
+    2 male       3
+    ```
+
+    Two female, three male. The column type now reads `<fct>`, a factor. Every label came from the dictionary, written once in the script, where anyone can
+    check it against the dictionary.
+  analogy_breaks_when: |
+    The codes and their meanings are made up for this example. Another study may use 1 for male,
+    or 0 and 1, or M and F. The labels in your script must come from your own data dictionary,
+    never from this page or from habit.
+- body: |
+    Last, the penguin file. It has three category columns you will use often: species, island
+    and sex. Count the islands first.
+
+    ```r
+    library(readr)
+    library(dplyr)
+    library(forcats)
+
+    penguins_raw <- read_csv(
+      here::here("data-raw", "penguins_raw.csv"),
+      show_col_types = FALSE
+    )
+
+    penguins_raw |>
+      count(Island)
+    ```
+
+    ```output
+    # A tibble: 3 × 2
+      Island        n
+      <chr>     <int>
+    1 Biscoe      168
+    2 Dream       124
+    3 Torgersen    52
+    ```
+
+    The column is text, `<chr>`, so `count()` lists the islands alphabetically. A factor is
+    something you choose to make.
+
+    Make the factors. Shorten the species names with `fct_recode()`, and order the islands by how
+    many rows each has with `fct_infreq()`.
+
+    ```r
+    penguins <- penguins_raw |>
+      mutate(
+        species = fct_recode(
+          Species,
+          Adelie = "Adelie Penguin (Pygoscelis adeliae)",
+          Chinstrap = "Chinstrap penguin (Pygoscelis antarctica)",
+          Gentoo = "Gentoo penguin (Pygoscelis papua)"
+        ),
+        island = fct_infreq(Island)
+      )
+
+    levels(penguins$island)
+
+    penguins |>
+      count(island)
+    ```
+
+    ```output
+    [1] "Biscoe"    "Dream"     "Torgersen"
+    # A tibble: 3 × 2
+      island        n
+      <fct>     <int>
+    1 Biscoe      168
+    2 Dream       124
+    3 Torgersen    52
+    ```
+
+    `levels()` lists a factor's levels in their order. Biscoe comes first now, because it has the
+    most rows. The counts are the same; only the order
+    changed.
+
+    ```table
+    | Island | Rows |
+    | Biscoe | 168 |
+    | Dream | 124 |
+    | Torgersen | 52 |
+    ```
+
+    Now two columns at once. `count(species, island)` gives one row for each pair that occurs.
+    With `.drop = FALSE`, it also gives the pairs that never occur, with 0:
+
+    ```r
+    penguins |>
+      count(species, island, .drop = FALSE)
+    ```
+
+    ```output
+    # A tibble: 9 × 3
+      species   island        n
+      <fct>     <fct>     <int>
+    1 Adelie    Biscoe       44
+    2 Adelie    Dream        56
+    3 Adelie    Torgersen    52
+    4 Chinstrap Biscoe        0
+    5 Chinstrap Dream        68
+    6 Chinstrap Torgersen     0
+    7 Gentoo    Biscoe      124
+    8 Gentoo    Dream         0
+    9 Gentoo    Torgersen     0
+    ```
+
+    Nine rows: three species times three islands. Laid out as Book 0's two-way table, with species
+    down the side and islands across the top, the same counts read:
+
+    ```table
+    | Species | Biscoe | Dream | Torgersen |
+    | Adelie | 44 | 56 | 52 |
+    | Chinstrap | 0 | 68 | 0 |
+    | Gentoo | 124 | 0 | 0 |
+    ```
+
+    The zeros carry information. In this file, Chinstrap penguins were recorded only on Dream, and
+    Gentoo only on Biscoe. Without `.drop = FALSE`, those zeros would not appear at all, and you
+    might not notice that they exist.
+  analogy_breaks_when: |
+    The counts are rows of the file, which are nesting observations on the islands sampled. A zero
+    says no such row was recorded. It does not say that no Chinstrap penguin lives on Biscoe.
+
+    `fct_infreq()` orders by the counts in this file. Another season's file could order the
+    islands differently, which matters if a report compares tables across files. A fixed order
+    from `fct_relevel()` or from the levels you list yourself does not move.
+must_know:
+- point: |
+    Run `count()` on every category column before you use it.
+  kind: move
+  bearing: methodological
+- point: |
+    `factor()` does not warn when a value matches no level. Count the factor after making it, and
+    treat any new `NA` as a spelling you missed.
+  kind: misconception
+  bearing: methodological
+- point: |
+    Refuse a summary that averages a code.
+  kind: move
+  bearing: methodological
+- point: |
+    If you misspell an old level in `fct_recode()`, R warns "Unknown levels" and leaves that level
+    unchanged.
+  kind: trap
+  bearing: methodological
+- point: |
+    Set the order of the levels on purpose, with the levels you list or with `fct_relevel()`.
+  kind: move
+  bearing: teaching
+- point: |
+    A table that leaves out its zeros hides that a combination never occurred.
+  kind: consequence
+  bearing: methodological
+- point: |
+    A clean count shows how many rows hold each category. It cannot show that the category was
+    recorded correctly in the first place.
+  kind: boundary
+  bearing: clinical
+exercises:
+- type: calculation
+  prompt: |
+    In your penguin script, make `sex` a factor with the levels "female" and "male", in that order,
+    from the file's `Sex` column. Count it, and say how many rows have no recorded sex.
+  answer: |
+    ```r
+    library(readr)
+    library(dplyr, warn.conflicts = FALSE)
+    library(stringr)
+
+    penguins_raw <- read_csv(
+      here::here("data-raw", "penguins_raw.csv"),
+      show_col_types = FALSE
+    )
+
+    penguins <- penguins_raw |>
+      mutate(sex = factor(str_to_lower(Sex), levels = c("female", "male")))
+
+    penguins |>
+      count(sex)
+    ```
+
+    ```output
+    # A tibble: 3 × 2
+      sex        n
+      <fct>  <int>
+    1 female   165
+    2 male     168
+    3 <NA>      11
+    ```
+
+    {{n:penguins_female}} female, {{n:penguins_male}} male, and {{n:penguins_sex_missing}} with no recorded sex. The file writes FEMALE and MALE in
+    capitals, so the values are lowered first. Without `str_to_lower()`, `factor()` would match
+    nothing, and all {{n:penguins_rows}} rows would become `NA`. The 11 `NA`s here were already missing in the
+    file, as the section on missing values counted.
+  skill_ref: S52-R1-K01
+- type: retrieval
+  prompt: |
+    Without looking back, say what `factor()` does with a value that is not among the levels you
+    gave it. Then name the line you run to catch that.
+  answer: |
+    It turns the value into `NA`, with no warning. Catch it by running `count()` on the new factor
+    and looking for an `NA` row that was not there before.
+- type: teaching
+  prompt: |
+    A first-year resident has ten minutes and a whiteboard. Their thesis data has a column
+    `tobacco` coded 0, 1 and 2, and they have reported "mean tobacco use 0.8". Explain what is
+    wrong, and show them how to fix it.
+  answer: |
+    Write the three codes on the board and ask what each means. They will have to look in the data
+    dictionary, which is the point. The numbers are labels, and only the dictionary says what they
+    stand for. Suppose it says 0 never, 1 former, 2 current.
+
+    Ask what "0.8" means. It is not a kind of tobacco use. It is an average of labels, like
+    averaging bed numbers. A different coding, 1 to 3 instead of 0 to 2, would give a different
+    "mean" for the same people.
+
+    Then write the fix. Turn the code into a factor with the dictionary's labels:
+    `fct_recode(as.character(tobacco), never = "0", former = "1", current = "2")`. Keep the code
+    column beside it. Report a count of each category with its share, not a mean.
+quantitative: true
+practice_note: |
+  Ten problems: factor(), fct_recode(), fct_relevel(), fct_infreq() and count() are each one move,
+  and the traps are a silent NA from factor(), a misspelt old level in fct_recode(), codes recoded
+  against the dictionary, and a two-way count read as a statement about the world.
+practice:
+- level: 1
+  prompt: |
+    Before you run it, say in what order the levels come.
+
+    ```r norun
+    factor(c("Dream", "Biscoe", "Dream", "Torgersen"))
+    ```
+  answer: |
+    ```r
+    factor(c("Dream", "Biscoe", "Dream", "Torgersen"))
+    ```
+
+    ```output
+    [1] Dream     Biscoe    Dream     Torgersen
+    Levels: Biscoe Dream Torgersen
+    ```
+
+    The levels are Biscoe, Dream, Torgersen: with no
+    levels given, `factor()` takes them from the data in alphabetical order.
+- level: 2
+  prompt: |
+    Before you run it, say what the levels of the result are, in order.
+
+    ```r norun
+    library(forcats)
+
+    fct_infreq(c("rice", "roti", "rice", "millet", "rice", "roti"))
+    ```
+  answer: |
+    ```r
+    library(forcats)
+
+    fct_infreq(c("rice", "roti", "rice", "millet", "rice", "roti"))
+    ```
+
+    ```output
+    [1] rice   roti   rice   millet rice   roti
+    Levels: rice roti millet
+    ```
+
+    rice, roti, millet. Rice appears three times, roti twice and millet once, and `fct_infreq()`
+    puts the most frequent first. The values themselves do not move.
+- level: 3
+  prompt: |
+    A made-up column codes the meal eaten as 1 (breakfast), 2 (lunch) or 3 (dinner). Turn it into
+    a factor with those labels.
+
+    ```r
+    meal_code <- c(2, 3, 3, 1, 2)
+    ```
+  answer: |
+    ```r
+    library(forcats)
+
+    fct_recode(as.character(meal_code), breakfast = "1", lunch = "2", dinner = "3")
+    ```
+
+    ```output
+    [1] lunch     dinner    dinner    breakfast lunch
+    Levels: breakfast lunch dinner
+    ```
+
+    lunch, dinner, dinner, breakfast, lunch. `fct_recode()` takes text, so the numbers are turned
+    into text first. Each new label sits on the left of its old code.
+- level: 4
+  prompt: |
+    Read the penguin file.
+
+    ```r
+    library(readr)
+    library(dplyr, warn.conflicts = FALSE)
+
+    penguins_raw <- read_csv(
+      here::here("data-raw", "penguins_raw.csv"),
+      show_col_types = FALSE
+    )
+    ```
+
+    Count the rows for each value of `Clutch Completion`. What does a "No" mean, according to the
+    data's help page?
+  answer: |
+    ```r
+    penguins_raw |>
+      count(`Clutch Completion`)
+    ```
+
+    ```output
+    # A tibble: 2 × 2
+      `Clutch Completion`     n
+      <chr>               <int>
+    1 No                     36
+    2 Yes                   308
+    ```
+
+    36 rows say "No" and 308 say "Yes", which add to {{n:penguins_rows}}. The help page describes the column as
+    whether the study nest was "observed with a full clutch, i.e., 2 eggs". So "No" means the
+    nest was not seen with two eggs.
+  refs:
+  - horst_2020_palmerpenguins
+- level: 5
+  prompt: |
+    Read the penguin file.
+
+    ```r
+    library(readr)
+    library(dplyr, warn.conflicts = FALSE)
+    library(forcats)
+
+    penguins_raw <- read_csv(
+      here::here("data-raw", "penguins_raw.csv"),
+      show_col_types = FALSE
+    )
+    ```
+
+    Make a factor of island in which Torgersen comes first and the other islands keep their
+    alphabetical order. Count it.
+  answer: |
+    ```r
+    penguins_raw |>
+      mutate(island = fct_relevel(Island, "Torgersen")) |>
+      count(island)
+    ```
+
+    ```output
+    # A tibble: 3 × 2
+      island        n
+      <fct>     <int>
+    1 Torgersen    52
+    2 Biscoe      168
+    3 Dream       124
+    ```
+
+    Torgersen {{n:penguins_torgersen}}, Biscoe {{n:penguins_biscoe}}, Dream {{n:penguins_dream}}. `fct_relevel()` moves the named level to the front. It
+    leaves the rest in their existing order, which for a text column is alphabetical.
+- level: 7
+  prompt: |
+    A colleague makes a factor from a made-up register and reports: "2 of the 6 patients were
+    female."
+
+    ```r
+    library(dplyr, warn.conflicts = FALSE)
+
+    register <- tibble(sex = c("female", "Female", "male", "female", "Female ", "male"))
+
+    register |>
+      mutate(sex = factor(sex, levels = c("female", "male"))) |>
+      count(sex)
+    ```
+
+    ```output
+    # A tibble: 3 × 2
+      sex        n
+      <fct>  <int>
+    1 female     2
+    2 male       2
+    3 <NA>       2
+    ```
+
+    Find what broke, and why the report looks reasonable.
+  answer: |
+    Two "Female" values have a capital letter, and one also has a space at the end. Neither
+    matches the level "female", so `factor()` turned both into `NA` without a warning. Two
+    females became missing, and the colleague read only the female row.
+
+    Clean the text first:
+
+    ```r
+    library(stringr)
+
+    register |>
+      mutate(sex = factor(str_to_lower(str_trim(sex)), levels = c("female", "male"))) |>
+      count(sex)
+    ```
+
+    ```output
+    # A tibble: 2 × 2
+      sex        n
+      <fct>  <int>
+    1 female     4
+    2 male       2
+    ```
+
+    4 of the 6 were female.
+
+    Why the wrong report looks reasonable: the count printed a female row and a male row, the
+    two categories that were expected. The `NA` row was below them, and nobody asked why a
+    register with no gaps had two missing values.
+- level: 8
+  prompt: |
+    A colleague shortens the species names in the penguin file:
+
+    ```r
+    library(readr)
+    library(dplyr, warn.conflicts = FALSE)
+    library(forcats)
+
+    penguins_raw <- read_csv(
+      here::here("data-raw", "penguins_raw.csv"),
+      show_col_types = FALSE
+    )
+
+    penguins_raw |>
+      mutate(
+        species = fct_recode(
+          Species,
+          Adelie = "Adelie Penguin (Pygoscelis adeliae)",
+          Chinstrap = "Chinstrap Penguin (Pygoscelis antarctica)",
+          Gentoo = "Gentoo penguin (Pygoscelis papua)"
+        )
+      ) |>
+      count(species)
+    ```
+
+    ```output
+    # A tibble: 3 × 2
+      species                                       n
+      <fct>                                     <int>
+    1 Adelie                                      152
+    2 Chinstrap penguin (Pygoscelis antarctica)    68
+    3 Gentoo                                      124
+    Warning message:
+    There was 1 warning in `mutate()`.
+    ℹ In argument: `species = fct_recode(...)`.
+    Caused by warning:
+    ! Unknown levels in `f`: Chinstrap Penguin (Pygoscelis antarctica)
+    ```
+
+    Their table has three rows, labelled "Adelie", "Chinstrap penguin (Pygoscelis antarctica)" and
+    "Gentoo". They decide the file's Chinstrap name is "too long to fix" and leave it. Find what
+    broke.
+  answer: |
+    The old name for Chinstrap was typed with a capital P, "Penguin". The file writes "penguin".
+    The name did not match, so `fct_recode()` warned "Unknown levels" and left the level as it was.
+    The warning said what happened.
+
+    Copy the old names from a `count()` of the column, not from memory:
+
+    ```r
+    penguins_raw |>
+      mutate(
+        species = fct_recode(
+          Species,
+          Adelie = "Adelie Penguin (Pygoscelis adeliae)",
+          Chinstrap = "Chinstrap penguin (Pygoscelis antarctica)",
+          Gentoo = "Gentoo penguin (Pygoscelis papua)"
+        )
+      ) |>
+      count(species)
+    ```
+
+    ```output
+    # A tibble: 3 × 2
+      species       n
+      <fct>     <int>
+    1 Adelie      152
+    2 Chinstrap    68
+    3 Gentoo      124
+    ```
+
+    Adelie {{n:penguins_adelie}}, Chinstrap {{n:penguins_chinstrap}}, Gentoo {{n:penguins_gentoo}}.
+
+    Why the wrong conclusion looks reasonable: the counts were right and only a label was long, so
+    it looked like a cosmetic problem. It was a typing error that the warning had already named.
+- level: 8
+  prompt: |
+    A made-up study's data dictionary says sex is coded 1 = male, 2 = female. A resident writes:
+
+    ```r
+    library(dplyr, warn.conflicts = FALSE)
+    library(forcats)
+
+    study <- tibble(sex_code = c(2, 2, 1, 2, 1, 2, 2))
+
+    study |>
+      mutate(sex = fct_recode(as.character(sex_code), female = "1", male = "2")) |>
+      count(sex)
+    ```
+
+    ```output
+    # A tibble: 2 × 2
+      sex        n
+      <fct>  <int>
+    1 female     2
+    2 male       5
+    ```
+
+    Their results say "5 of the 7 participants were male". Find what broke.
+  answer: |
+    The labels are swapped. The dictionary says 1 is male, and the code says 1 is female. Every
+    participant has the wrong label, and the code ran without a warning, because R has no way to
+    know what the codes mean.
+
+    ```r
+    study |>
+      mutate(sex = fct_recode(as.character(sex_code), male = "1", female = "2")) |>
+      count(sex)
+    ```
+
+    ```output
+    # A tibble: 2 × 2
+      sex        n
+      <fct>  <int>
+    1 male       2
+    2 female     5
+    ```
+
+    5 of the 7 were female and 2 were male.
+
+    Why the wrong answer looks reasonable: the code is tidy and the counts add up. A swap of labels
+    changes no total. Only a line-by-line check against the dictionary catches it, so copy the
+    labels from the dictionary into a comment beside the line.
+- level: 9
+  prompt: |
+    A made-up draft report says: "Of the 333 penguins with sex recorded, {{n:penguins_male}} were male." Check the
+    sentence against the penguin file and say what it does not establish.
+  answer: |
+    ```r
+    library(readr)
+    library(dplyr, warn.conflicts = FALSE)
+
+    penguins_raw <- read_csv(
+      here::here("data-raw", "penguins_raw.csv"),
+      show_col_types = FALSE
+    )
+
+    penguins_raw |>
+      count(Sex)
+    ```
+
+    ```output
+    # A tibble: 3 × 2
+      Sex        n
+      <chr>  <int>
+    1 FEMALE   165
+    2 MALE     168
+    3 <NA>      11
+    ```
+
+    {{n:penguins_male}} MALE and {{n:penguins_female}} FEMALE make 333 with sex recorded, and 11 more have none. The sentence
+    matches the file's rows. {{n:penguins_male}} of 333 is 50.5 per cent.
+
+    What it does not establish:
+
+    - That the colony is about half male. The rows are nesting observations of birds that were
+      sampled, not a count of every penguin.
+    - Anything about the birds in the 11 rows with no recorded sex.
+    - That each row is a different bird. The file's IDs repeat, as an earlier section showed.
+  refs:
+  - horst_2020_palmerpenguins
+- level: 10
+  prompt: |
+    In a made-up meeting, someone says: "The penguin data show that Gentoo penguins live only on
+    Biscoe." Turn the claim into a count, run it, and say what the result does and does not
+    establish.
+  answer: |
+    ```r
+    library(readr)
+    library(dplyr, warn.conflicts = FALSE)
+    library(forcats)
+
+    penguins_raw <- read_csv(
+      here::here("data-raw", "penguins_raw.csv"),
+      show_col_types = FALSE
+    )
+
+    penguins_raw |>
+      mutate(island = factor(Island)) |>
+      filter(Species == "Gentoo penguin (Pygoscelis papua)") |>
+      count(island, .drop = FALSE)
+    ```
+
+    ```output
+    # A tibble: 3 × 2
+      island        n
+      <fct>     <int>
+    1 Biscoe      124
+    2 Dream         0
+    3 Torgersen     0
+    ```
+
+    All {{n:penguins_gentoo}} Gentoo rows are from Biscoe, with 0 from Dream and 0 from Torgersen. Making the island
+    a factor first, with `.drop = FALSE`, keeps the zeros in view.
+
+    What it establishes: in this file, every Gentoo row was recorded on Biscoe.
+
+    What it does not establish:
+
+    - Where Gentoo penguins live. The file covers three islands near one research station, and
+      only the nests the study chose to sample. A zero means none was recorded, not none exists.
+    - Why. Whether the study went looking for Gentoo on Dream and Torgersen, the file does not say.
+    - The claim in the meeting moved from "were recorded only on" to "live only on". That move is
+      the error.
+  refs:
+  - horst_2020_palmerpenguins
+retrieval_items:
+- q: What is a factor, in one sentence?
+  a: A category column that stores each value together with its levels, the list of allowed
+    categories in a set order.
+- q: What does fct_recode(x, female = "1") do?
+  a: It renames the level "1" to "female". The new name goes on the left and the old one on the
+    right; levels not mentioned are left as they are.
+- q: Why should you never take the mean of a numeric category code?
+  a: The numbers are labels, not amounts. Their mean depends on which numbers were chosen as codes
+    and describes nobody.
+- q: What does .drop = FALSE add to a count() of factors?
+  a: The combinations of levels that never occur, each with a count of 0.
+figures:
+- file: s52-r1-c14-island-counts.png
+  caption: "Rows of the penguin file on each island, in the order fct_infreq() gives: Biscoe 168, Dream 124, Torgersen 52. The order follows the counts; a fixed order from fct_relevel() would not."
+  alt: "A bar chart with three bars in falling order: Biscoe 168, Dream 124, Torgersen 52."
+  source: draw.py
+  spec:
+    kind: bar
+    from_table: {block: 0, x: 0, y: [1]}
+    x_label: island
+    y_label: rows in the file
+    y_range: [0, 200]
+    value_labels: true
+    relations:
+    - check: "sum(y) = 344"
+    derived:
+    - {value: "344", from: "168 + 124 + 52"}
+- file: s52-r1-c14-species-by-island.png
+  caption: "Rows of the penguin file for each species on each island, as count(species, island, .drop = FALSE) gives them. The zeros are pairs that never occur in this file: Chinstrap rows come only from Dream, Gentoo rows only from Biscoe, and only Adelie rows come from all three islands."
+  alt: "Grouped bars for three species. Adelie: Biscoe 44, Dream 56, Torgersen 52. Chinstrap: Biscoe 0, Dream 68, Torgersen 0. Gentoo: Biscoe 124, Dream 0, Torgersen 0."
+  source: draw.py
+  spec:
+    kind: bar
+    from_table: {block: 1, x: 0, y: [1, 2, 3]}
+    x_label: species
+    y_label: rows in the file
+    y_range: [0, 140]
+    value_labels: true
+    relations:
+    - check: "sum(y1) + sum(y2) + sum(y3) = 344"
+    derived:
+    - {value: "344", from: "44 + 56 + 52 + 68 + 124"}
+provenance:
+  map_version_id: fc19c8bc-a216-4131-99fb-ebe3f19cec4a
+  outcome_refs:
+  - S52-R1-O2
+  - S52-R1-S1
+review:
+  stability: long
+  trigger: '2031-10-02'
+  last_reviewed: '2026-10-02'
+status: drafted

@@ -43,6 +43,7 @@ import yaml
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from _book import Book, take_opts  # noqa: E402
+import codeblocks  # noqa: E402  - on sys.path via _book (check/)
 
 BOOK = None     # set in main()
 
@@ -77,6 +78,23 @@ def _dump(path, mapping):
                        default_flow_style=False, width=10 ** 6)
 
 
+def _lead(head, text):
+    """A label and its text on one line, as before - unless the text opens with a code block
+    (2 Oct 2026), which must start on a line of its own or it stops being a fence."""
+    text = str(text).strip()
+    opens_code = bool(codeblocks.OPEN.match(text.split("\n", 1)[0]))
+    return f"{head}\n\n{text}" if opens_code else f"{head} {text}"
+
+
+def _point(p):
+    """A must-know point as one list line - or, if it carries code, with its line breaks kept
+    and indented under the marker, so the code block survives (2 Oct 2026)."""
+    if not codeblocks.has_code(p):
+        return f"- {' '.join(p.split())}"
+    lines = p.strip("\n").split("\n")
+    return "- " + lines[0] + "".join("\n" + ("  " + l if l.strip() else "") for l in lines[1:])
+
+
 def _tail(r, label, prose):
     """Everything after the prose: must-knows, exercises, practice prompts.
 
@@ -86,14 +104,14 @@ def _tail(r, label, prose):
     points = [v for k, v in prose.items() if k.startswith("must_know")]
     if points:
         md += ["**Must know points for you.**", ""]
-        md += [f"- {' '.join(p.split())}" for p in points] + [""]
+        md += [_point(p) for p in points] + [""]
     for i, ex in enumerate(r.get("exercises") or [], 1):
         kind = f" ({ex.get('type')})" if ex.get("type") else ""
-        md += [f"**Exercise {i}**{kind}. {ex.get('prompt', '').strip()}", ""]
+        md += [_lead(f"**Exercise {i}**{kind}.", ex.get('prompt', '')), ""]
     prac = sorted((p for p in (r.get("practice") or []) if isinstance(p, dict)),
                   key=lambda q: q.get("level", 0))
     for i, q in enumerate(prac, 1):
-        md += [f"**{i}.** {q.get('prompt', '').strip()}", ""]
+        md += [_lead(f"**{i}.**", q.get('prompt', '')), ""]
     return md
 
 
@@ -101,7 +119,7 @@ def section_md(r, label, prose):
     md = [f"# {label} · {r['name']}", ""]
     for k, head in HEADS.items():
         if k in prose:
-            md += [f"{head} {prose[k].strip()}", ""]
+            md += [_lead(head, prose[k]), ""]
     # Figures go in as caption plus alt text. The first Part C pass left them out, and the cold
     # reader reported - correctly, for what it had been given - that four sections argue from
     # drawings that do not exist. Half of C5's gap list was that one omission. A reader who has

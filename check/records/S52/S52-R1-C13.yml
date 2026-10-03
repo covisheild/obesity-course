@@ -1,0 +1,973 @@
+concept_id: S52-R1-C13
+subject: S52
+rung: 1
+sequence: 13
+name: 'Missing values: counting them and saying how many'
+concept_type: derivable
+clusters:
+- craft-and-integrity
+ground_floor_deps:
+- B0-R0-C28
+- B0-R0-C04
+- B0-R0-C08
+concept_deps:
+- S52-R1-C04
+- S52-R1-C05
+- S52-R1-C08
+- S52-R1-C09
+- S52-R1-C11
+- S52-R1-C12
+definition:
+  text: |
+    In R, a missing value is the constant `NA`, "not available". R turns a code into `NA` only
+    when it is told to, at reading or in a later line of code.
+
+    `is.na(x)` returns `TRUE` for each element of `x` that is `NA`. In arithmetic, `TRUE` counts
+    as 1 and `FALSE` as 0, so `sum(is.na(x))` is the number of missing values in `x`.
+
+    `mean(x, na.rm = TRUE)` and similar summaries leave out the missing values. The number of
+    values behind the result is then `sum(!is.na(x))`, not `length(x)`.
+
+    `drop_na()`, from the tidyr package, keeps only the rows with no missing value in the columns
+    it is given, or in every column when it is given none. Analysing only such rows is called
+    complete-case analysis.
+  references:
+  - citekey: rdocs_s52r1_base
+    kind: textbook
+    locator: 'help page "NA" (base 4.3.3), Title and Description'
+    quote: |-
+      'NA' is a logical constant of length 1 which contains a missing value indicator.
+    verified:
+      resolved_id: rhelp://base@4.3.3/NA
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+      note: |-
+        The page's title is "'Not Available' / Missing Values".
+  - citekey: rdocs_s52r1_base
+    kind: textbook
+    locator: 'help page "NA" (base 4.3.3), Details: arithmetic on NA'
+    quote: |-
+      Numerical computations using 'NA' will normally result in 'NA'
+    verified:
+      resolved_id: rhelp://base@4.3.3/NA
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+  - citekey: rdocs_s52r1_base
+    kind: textbook
+    locator: 'help page "NA" (base 4.3.3), Value: is.na() on a data frame'
+    quote: |-
+      The data frame method for 'is.na' returns a logical matrix with the same dimensions as the data frame
+    verified:
+      resolved_id: rhelp://base@4.3.3/NA
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+  - citekey: r_intro_manual
+    kind: textbook
+    locator: 'section 2.4 "Logical vectors" (heading lost in extraction), last paragraph: TRUE and FALSE in arithmetic'
+    quote: |-
+      Logical vectors may be used in ordinary arithmetic, in which case they are coerced into numeric vectors,
+    verified:
+      resolved_id: https://cran.r-project.org/doc/manuals/r-release/R-intro.html
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+      note: |-
+        The sentence goes on: FALSE becoming 0 and TRUE becoming 1. The extraction splits those
+        words around code fences, so only the opening is quoted.
+  - citekey: r4ds_2e
+    kind: textbook
+    locator: 'ch. 18 "Missing values", 18.2.2 Fixed values: special values that stand for missing'
+    quote: |-
+      Sometimes you’ll hit the opposite problem where some concrete value actually represents a missing value.
+    verified:
+      resolved_id: https://r4ds.hadley.nz/missing-values.html
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+      note: |-
+        The same paragraph names "some special value like 99 or -999" and advises handling it "when
+        reading in the data" where possible. Quoted for audit only (CC BY-NC-ND).
+  - citekey: dc_spreadsheets
+    kind: textbook
+    locator: 'ep. 02 "Formatting problems", Using problematic null values'
+    quote: |-
+      Many statistical programs will not recognize that these are intended to represent missing (null) values.
+    verified:
+      resolved_id: https://datacarpentry.github.io/spreadsheet-ecology-lesson/02-common-mistakes.html
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+      note: |-
+        "These" are -999, 999 and 0, named in the sentence before.
+  - citekey: rdocs_s52r1_tidyr
+    kind: textbook
+    locator: 'help page "drop_na" (tidyr 1.3.1), Description'
+    quote: |-
+      'drop_na()' drops rows where any column specified by '...' contains a missing value.
+    verified:
+      resolved_id: rhelp://tidyr@1.3.1/drop_na
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+  - citekey: rdocs_s52r1_tidyr
+    kind: textbook
+    locator: 'help page "drop_na" (tidyr 1.3.1), Arguments, ...: no columns named means all columns'
+    quote: |-
+      Columns to inspect for missing values. If empty, all columns are used.
+    verified:
+      resolved_id: rhelp://tidyr@1.3.1/drop_na
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+  - citekey: rdocs_s52r1_tidyr
+    kind: textbook
+    locator: 'help page "drop_na" (tidyr 1.3.1), Details: complete rows'
+    quote: |-
+      Another way to interpret 'drop_na()' is that it only keeps the "complete" rows
+    verified:
+      resolved_id: rhelp://tidyr@1.3.1/drop_na
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+  - citekey: rdocs_s52r1_dplyr
+    kind: textbook
+    locator: 'help page "summarise" (dplyr 1.1.4), Description and Arguments, ...: one row, and sum(is.na(y)) as a summary'
+    quote: |-
+      A vector of length 1, e.g. 'min(x)', 'n()', or 'sum(is.na(y))'.
+    verified:
+      resolved_id: rhelp://dplyr@1.1.4/summarise
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+      note: |-
+        The Description says that with no grouping variables "the output will have a single row
+        summarising all observations in the input".
+  - citekey: rdocs_s52r1_dplyr
+    kind: textbook
+    locator: 'help page "context" (dplyr 1.1.4), Description: n()'
+    quote: |-
+      'n()' gives the current group size.
+    verified:
+      resolved_id: rhelp://dplyr@1.1.4/context
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+simplified_explanation: |
+  A missing value reaches R in one of two ways. Either it is already `NA`, or it arrives disguised
+  as a real value: a weight of 999, a height of -99, the words "not recorded". R cannot tell a
+  disguised code from a measurement.
+
+  Read the data dictionary, then look at the largest and smallest values of each column. Turn
+  every code into `NA` in your script, never in the file.
+
+  Then count. `sum(is.na(x))` counts the missing values in one column.
+  `colSums(is.na(data))` counts them in every column at once.
+
+  Dropping rows with `drop_na()` is a choice, not a clean-up. It changes which rows your answer
+  is about.
+illustrations:
+- body: |
+    Start with the step that looks tidiest and does the most damage. Read the penguin file and
+    keep only the rows with no missing value, using `drop_na()` with no columns named.
+
+    ```r
+    library(readr)
+    library(tidyr)
+
+    penguins_raw <- read_csv(
+      here::here("data-raw", "penguins_raw.csv"),
+      show_col_types = FALSE
+    )
+
+    complete <- drop_na(penguins_raw)
+
+    nrow(penguins_raw)
+    nrow(complete)
+    ```
+
+    ```output
+    [1] 344
+    [1] 34
+    ```
+
+    Of {{n:penguins_rows}} rows, 34 survive. Nine rows in ten are gone. Any summary of `complete`
+    describes 34 rows, and nothing in its output says so.
+
+    Count the missing values in each column to see why. `is.na()` on the whole data frame gives a
+    grid of `TRUE` and `FALSE`. `colSums()` adds up each column of the grid, counting each `TRUE`
+    as 1.
+
+    ```r
+    colSums(is.na(penguins_raw))
+    ```
+
+    ```output
+              studyName       Sample Number             Species
+                      0                   0                   0
+                 Region              Island               Stage
+                      0                   0                   0
+          Individual ID   Clutch Completion            Date Egg
+                      0                   0                   0
+     Culmen Length (mm)   Culmen Depth (mm) Flipper Length (mm)
+                      2                   2                   2
+          Body Mass (g)                 Sex   Delta 15 N (o/oo)
+                      2                  11                  14
+      Delta 13 C (o/oo)            Comments
+                     13                 290
+    ```
+
+    The `Comments` column is empty in 290 rows. It holds a note only when the field team had
+    something to add, so a gap there is not a missing measurement at all. Yet `drop_na()` with no
+    columns named treats it as one, and every row without a comment is thrown out.
+
+    Name the columns your question needs. For a question about body mass, that is one column:
+
+    ```r
+    nrow(drop_na(penguins_raw, `Body Mass (g)`))
+    ```
+
+    ```output
+    [1] 342
+    ```
+
+    {{n:penguins_mass_n}} rows: only the 2 with no body mass are left out. For a question about body mass and sex,
+    name both:
+
+    ```r
+    nrow(drop_na(penguins_raw, `Body Mass (g)`, Sex))
+    ```
+
+    ```output
+    [1] 333
+    ```
+
+    333 rows. Each column you add can take more rows away.
+  analogy_breaks_when: |
+    The counts are of rows in this one file, which records nesting observations, not a survey of
+    all penguins. They say how many rows each choice keeps, not whether the rows kept are like the
+    rows left out.
+
+    A gap in `Comments` is harmless here because the column is a free note. In another file an
+    empty cell can be a real missing measurement. The data dictionary says which.
+- body: |
+    Now the disguised code. Here is a made-up register of five adults at a clinic, already read
+    into R. Whoever entered it typed 999 when the scale was not available.
+
+    ```r
+    library(dplyr)
+
+    register <- tibble(
+      id = c(1, 2, 3, 4, 5),
+      weight_kg = c(62, 999, 71, 58, 999)
+    )
+
+    mean(register$weight_kg)
+    ```
+
+    ```output
+
+    Attaching package: ‘dplyr’
+
+    The following objects are masked from ‘package:stats’:
+
+        filter, lag
+
+    The following objects are masked from ‘package:base’:
+
+        intersect, setdiff, setequal, union
+
+    [1] 437.8
+    ```
+
+    A mean weight of 437.8 kg. Nothing warned you, because 999 is a perfectly good number. Book
+    0's order-of-magnitude check catches it in one glance: no clinic's mean adult weight is in the
+    hundreds.
+
+    The best place to fix this is the reading step: in `S52-R1-C09` you declared codes with `na =` in
+    `read_csv()`. When the data are already in R, perhaps from a file
+    type that has no such argument, fix them in code. Make a new column with `if_else()`, keeping
+    the old one beside it:
+
+    ```r
+    register <- register |>
+      mutate(weight_kg_clean = if_else(weight_kg == 999, NA, weight_kg))
+
+    register
+    ```
+
+    ```output
+    # A tibble: 5 × 3
+         id weight_kg weight_kg_clean
+      <dbl>     <dbl>           <dbl>
+    1     1        62              62
+    2     2       999              NA
+    3     3        71              71
+    4     4        58              58
+    5     5       999              NA
+    ```
+
+    Now count and summarise. `summarise()` collapses a data frame into one row of summaries; a
+    later section uses it for groups. Here it gives three numbers together: the rows, the missing
+    values, and the mean of the rest. `n()` counts the rows.
+
+    ```r
+    register |>
+      summarise(
+        rows = n(),
+        missing = sum(is.na(weight_kg_clean)),
+        mean_weight_kg = mean(weight_kg_clean, na.rm = TRUE)
+      )
+    ```
+
+    ```output
+    # A tibble: 1 × 3
+       rows missing mean_weight_kg
+      <int>   <int>          <dbl>
+    1     5       2           63.7
+    ```
+
+    The tibble prints the mean as 63.7 kg, and it is the mean of 3 weights, not 5. Write it that
+    way: "mean weight 63.7 kg (n = 3; 2 of 5 not weighed)". Book 0's mean is a sum divided by a count, and
+    the count is part of the answer.
+  analogy_breaks_when: |
+    The five adults and their weights are made up. The numbers show the arithmetic, not anything
+    about any clinic.
+
+    Replacing 999 is right only if 999 is never a real value in that column. For weight in
+    kilograms it cannot be. For a column such as a cholesterol reading, 999 could be real, which
+    is why the code list comes from the data dictionary, not from guessing.
+- body: |
+    Last, watch the count change the answer. Take the mean body mass twice: once from every row
+    with a body mass, and once from only those whose sex is also recorded, as
+    a complete-case analysis on those two columns would.
+
+    ```r
+    library(readr)
+    library(dplyr)
+    library(tidyr)
+
+    penguins_raw <- read_csv(
+      here::here("data-raw", "penguins_raw.csv"),
+      show_col_types = FALSE
+    )
+
+    penguins_raw |>
+      summarise(
+        n = sum(!is.na(`Body Mass (g)`)),
+        mean_mass_g = mean(`Body Mass (g)`, na.rm = TRUE)
+      )
+
+    penguins_raw |>
+      drop_na(`Body Mass (g)`, Sex) |>
+      summarise(
+        n = n(),
+        mean_mass_g = mean(`Body Mass (g)`)
+      )
+    ```
+
+    ```output
+    # A tibble: 1 × 2
+          n mean_mass_g
+      <int>       <dbl>
+    1   342       4202.
+    # A tibble: 1 × 2
+          n mean_mass_g
+      <int>       <dbl>
+    1   333       4207.
+    ```
+
+    Two means, {{n:penguins_mass_mean_g}} g from {{n:penguins_mass_n}} rows and 4207 g from 333. The dot after each number means the
+    tibble rounded it to fit the column. The difference is small here.
+    It is still a difference, made by a choice about rows, not by anything measured. The 9 rows
+    left out the second time have a body mass and no recorded sex, and nobody can tell from this
+    file whether they were heavier or lighter than the rest.
+
+    That is why the n goes beside every number. A reader who sees "4207 g (n = 333)" next to
+    "{{n:penguins_rows}} rows in the file" can ask where the other 11 went. A reader who sees "4207
+    g" cannot.
+  analogy_breaks_when: |
+    Here the two means are close. That does not mean dropping rows is safe in general: in another
+    file the rows with gaps may be very different from the rest, and the means far apart. Whether
+    that happens depends on why the values are missing, which is the subject of a later book on
+    missing data.
+must_know:
+- point: |
+    A code such as 999 or -99 is an ordinary number to R until you say otherwise.
+  kind: misconception
+  bearing: methodological
+- point: |
+    Count missing values with `sum(is.na(x))`, or `colSums(is.na(data))` for every column.
+  kind: move
+  bearing: methodological
+- point: |
+    Beside every mean, median or percentage, write the n it was computed from. With `na.rm =
+    TRUE` that n is `sum(!is.na(x))`, not the number of rows.
+  kind: trap
+  bearing: methodological
+- point: |
+    `drop_na()` with no columns named drops a row for a gap in any column, including a free-text
+    note. Always name the columns, and print `nrow()` before and after.
+  kind: trap
+  bearing: methodological
+- point: |
+    Turn codes into `NA` in a new column made by code, never by editing the raw file.
+  kind: move
+  bearing: teaching
+- point: |
+    Say in the methods which columns you required, and how many rows that left.
+  kind: consequence
+  bearing: methodological
+- point: |
+    Counting missing values tells you how many are gone, never why. A count cannot show whether
+    the people with gaps differ from the rest.
+  kind: boundary
+  bearing: methodological
+exercises:
+- type: calculation
+  prompt: |
+    In your penguin script, count the missing values of flipper length. Then give the mean flipper
+    length in millimetres, with the number of rows it was computed from, written the way a
+    table would show it.
+  answer: |
+    ```r
+    library(readr)
+    library(dplyr, warn.conflicts = FALSE)
+
+    penguins_raw <- read_csv(
+      here::here("data-raw", "penguins_raw.csv"),
+      show_col_types = FALSE
+    )
+
+    sum(is.na(penguins_raw$`Flipper Length (mm)`))
+
+    penguins_raw |>
+      summarise(
+        n = sum(!is.na(`Flipper Length (mm)`)),
+        mean_flipper_mm = mean(`Flipper Length (mm)`, na.rm = TRUE)
+      )
+    ```
+
+    ```output
+    [1] 2
+    # A tibble: 1 × 2
+          n mean_flipper_mm
+      <int>           <dbl>
+    1   342            201.
+    ```
+
+    Flipper length is missing in 2 rows, so the mean comes from 342 rows. The tibble prints
+    it rounded to fit, as `201.`. In a table: "mean flipper length 201 mm (n = 342)".
+  skill_ref: S52-R1-K01
+- type: critique
+  prompt: |
+    A made-up thesis methods section says: "Participants with missing data were excluded. Mean
+    BMI was 26.1 kg/m^2." The dataset had 412 participants and 28 columns. Say what is missing from
+    these two sentences, and rewrite them.
+  answer: |
+    Three things are missing.
+
+    Which columns. "Missing data" could mean a gap in any of the 28 columns, or only in height
+    and weight. With `drop_na()` and no columns named, a gap in a column unrelated to BMI would
+    remove the participant too.
+
+    How many. The reader cannot tell whether 400 participants were left or 40.
+
+    The n behind the mean. "Mean BMI was 26.1 kg/m^2" needs its count beside it.
+
+    Here is a rewrite. The counts are left blank, because the thesis did not give them: "Participants
+    without a measured height or weight were excluded (n = ___ of 412). Mean BMI was 26.1 kg/m^2
+    (n = ___)." The script that made the table prints both counts, so they are copied from its
+    output, never typed from memory.
+  skill_ref: S52-R1-K02
+- type: retrieval
+  prompt: |
+    Without looking back, write the line that counts the missing values in one column `x`. Then
+    write the line that counts them in every column of a data frame `d`. Last, say what
+    `drop_na()` does when no column is named.
+  answer: |
+    `sum(is.na(x))` for one column, because `TRUE` counts as 1. `colSums(is.na(d))` for every
+    column. With no column named, `drop_na()` keeps only the rows with no missing value in any
+    column.
+quantitative: true
+practice_note: |
+  Eleven problems: counting, na.rm and drop_na() are three short moves, but each hides a different
+  silent error (a code left as a number, a code that turns a column into text, a drop on every
+  column, an n taken from the row count), and each gets its own diagnostic or transfer problem.
+practice:
+- level: 1
+  prompt: |
+    How many missing values does this made-up vector hold? Write the line that counts them, and
+    say what it prints before you run it.
+
+    ```r norun
+    x <- c(3, NA, 7, NA, NA, 2)
+    ```
+  answer: |
+    ```r
+    x <- c(3, NA, 7, NA, NA, 2)
+    sum(is.na(x))
+    ```
+
+    ```output
+    [1] 3
+    ```
+
+    Three. `is.na(x)` gives `FALSE TRUE FALSE TRUE TRUE FALSE`, and `sum()` counts each `TRUE` as 1.
+- level: 2
+  prompt: |
+    Before you run them, say what each line prints, and how many values the second mean is
+    computed from.
+
+    ```r norun
+    weights <- c(54, 61, NA, 70)
+    mean(weights)
+    mean(weights, na.rm = TRUE)
+    ```
+  answer: |
+    ```r
+    weights <- c(54, 61, NA, 70)
+    mean(weights)
+    mean(weights, na.rm = TRUE)
+    ```
+
+    ```output
+    [1] NA
+    [1] 61.66667
+    ```
+
+    The first is `NA`: one value is not known, so the sum is not known. The second leaves the
+    missing value out. The sum is 54 plus 61 plus 70, which is 185, and 185 divided by 3 is
+    61.66667. It is the mean of 3 values, not 4.
+- level: 3
+  prompt: |
+    A made-up three-row table:
+
+    ```r
+    library(tidyr)
+
+    d <- tibble::tibble(
+      height_cm = c(150, NA, 162),
+      weight_kg = c(48, 55, NA)
+    )
+    ```
+
+    How many rows does `drop_na(d)` keep? How many does `drop_na(d, height_cm)` keep? Say both
+    before you run them.
+  answer: |
+    ```r
+    nrow(drop_na(d))
+    nrow(drop_na(d, height_cm))
+    ```
+
+    ```output
+    [1] 1
+    [1] 2
+    ```
+
+    `drop_na(d)` keeps 1 row: only the first has both values. `drop_na(d, height_cm)` looks at
+    height alone and keeps 2 rows, the first and the third.
+- level: 4
+  prompt: |
+    Read the penguin file.
+
+    ```r
+    library(readr)
+
+    penguins_raw <- read_csv(
+      here::here("data-raw", "penguins_raw.csv"),
+      show_col_types = FALSE
+    )
+    ```
+
+    How many rows have no recorded sex? What percentage of the rows is that, to one decimal
+    place?
+  answer: |
+    ```r
+    sum(is.na(penguins_raw$Sex))
+    round(100 * sum(is.na(penguins_raw$Sex)) / nrow(penguins_raw), 1)
+    ```
+
+    ```output
+    [1] 11
+    [1] 3.2
+    ```
+
+    11 of the {{n:penguins_rows}} rows have no recorded sex. 11 divided by {{n:penguins_rows}} is 0.03198, which is 3.2 per cent.
+    The denominator is every row, because the question is about the whole file.
+- level: 5
+  prompt: |
+    Read the penguin file.
+
+    ```r
+    library(readr)
+    library(dplyr, warn.conflicts = FALSE)
+
+    penguins_raw <- read_csv(
+      here::here("data-raw", "penguins_raw.csv"),
+      show_col_types = FALSE
+    )
+    ```
+
+    In one `summarise()`, give the number of rows, the number of missing values of `Delta 15 N
+    (o/oo)`, and the mean of the values present. Write the result as a table would show it. The
+    data's help page describes Delta 15 N as a measure of the ratio of two forms of nitrogen,
+    taken from a blood sample. Its unit, o/oo, is in the column name.
+  answer: |
+    ```r
+    penguins_raw |>
+      summarise(
+        rows = n(),
+        missing = sum(is.na(`Delta 15 N (o/oo)`)),
+        mean_delta_15n = mean(`Delta 15 N (o/oo)`, na.rm = TRUE)
+      )
+    ```
+
+    ```output
+    # A tibble: 1 × 3
+       rows missing mean_delta_15n
+      <int>   <int>          <dbl>
+    1   344      14           8.73
+    ```
+
+    {{n:penguins_rows}} rows, 14 missing, so the mean is of 330 values: 8.73 as printed. In
+    a table: "mean delta 15 N 8.73 o/oo (n = 330; 14 of {{n:penguins_rows}} not measured)".
+  refs:
+  - horst_2020_palmerpenguins
+- level: 6
+  prompt: |
+    Read the penguin file.
+
+    ```r
+    library(readr)
+    library(tidyr)
+
+    penguins_raw <- read_csv(
+      here::here("data-raw", "penguins_raw.csv"),
+      show_col_types = FALSE
+    )
+    ```
+
+    A question needs culmen length, culmen depth and both blood measurements, `Delta 15 N (o/oo)`
+    and `Delta 13 C (o/oo)`. How many rows have all four? How many does that leave out?
+  answer: |
+    ```r
+    kept <- drop_na(
+      penguins_raw,
+      `Culmen Length (mm)`,
+      `Culmen Depth (mm)`,
+      `Delta 15 N (o/oo)`,
+      `Delta 13 C (o/oo)`
+    )
+
+    nrow(kept)
+    nrow(penguins_raw) - nrow(kept)
+    ```
+
+    ```output
+    [1] 330
+    [1] 14
+    ```
+
+    330 rows have all four, so 14 are left out. The four columns are missing in 2, 2, 14 and 13
+    rows, which add to 31, yet only 14 rows go. The gaps overlap: the rows missing a culmen
+    measurement or a carbon value are among the 14 missing a nitrogen value. You cannot add up
+    column counts to get the rows lost. Count the rows.
+- level: 7
+  prompt: |
+    A colleague's made-up register used -9 for "not weighed". They report: "Mean weight was 40
+    kg, after removing missing values."
+
+    ```r
+    weights <- c(58, -9, 66, 71, -9, 63)
+    mean(weights[!is.na(weights)])
+    ```
+
+    ```output
+    [1] 40
+    ```
+
+    Run it. Find what broke, and why the report looks reasonable.
+  answer: |
+    The code gives 40, as reported, and 40 is wrong. `!is.na()` removes nothing, because there is
+    no `NA` in the vector: the two -9s are ordinary numbers, and they pull the mean down.
+
+    Turn the codes into `NA` first, then count and average:
+
+    ```r
+    weights_clean <- dplyr::if_else(weights == -9, NA, weights)
+    sum(is.na(weights_clean))
+    mean(weights_clean, na.rm = TRUE)
+    ```
+
+    ```output
+    [1] 2
+    [1] 64.5
+    ```
+
+    2 missing, and the mean of the other 4 is 64.5 kg. The report should say "64.5 kg (n = 4)".
+
+    Why the wrong version looks reasonable: 40 kg is a possible adult weight, "removing missing
+    values" was written, and the line does remove `NA`s. It had none to remove. `dplyr::if_else()` calls the function from dplyr
+    without loading the whole package, so it works on a plain vector here.
+- level: 7
+  prompt: |
+    A made-up camp file has a height column where the field worker wrote "not recorded" for one
+    child. A resident reads it and asks for the mean height:
+
+    ```r
+    library(readr)
+
+    camp <- read_csv(I("id,height_cm
+    1,131
+    2,not recorded
+    3,128"), show_col_types = FALSE)
+
+    mean(camp$height_cm)
+    ```
+
+    ```output
+    [1] NA
+    Warning message:
+    In mean.default(camp$height_cm) :
+      argument is not numeric or logical: returning NA
+    ```
+
+    They report: "height could not be summarised; the data are missing". Find what broke.
+  answer: |
+    ```r
+    class(camp$height_cm)
+    ```
+
+    ```output
+    [1] "character"
+    ```
+
+    `class()` says what kind of object R holds, here text. The words "not recorded" are text, so
+    `read_csv()` read the whole column as text, `chr`. A
+    mean of text is not defined: R warns and returns `NA`. Only one height is missing, not all.
+
+    Declare the code when reading, keeping the default missing values beside it:
+
+    ```r
+    camp <- read_csv(I("id,height_cm
+    1,131
+    2,not recorded
+    3,128"), na = c("", "NA", "not recorded"), show_col_types = FALSE)
+
+    sum(is.na(camp$height_cm))
+    mean(camp$height_cm, na.rm = TRUE)
+    ```
+
+    ```output
+    [1] 1
+    [1] 129.5
+    ```
+
+    One missing value, and the mean of the other two heights is 129.5 cm (n = 2).
+
+    Why the wrong conclusion looks reasonable: R printed `NA`, which usually means missing. Here
+    it meant "this is not a number", and the warning above it said so.
+- level: 8
+  prompt: |
+    A colleague wants the mean body mass of the penguins whose sex is known. They write:
+
+    ```r
+    library(readr)
+    library(tidyr)
+
+    penguins_raw <- read_csv(
+      here::here("data-raw", "penguins_raw.csv"),
+      show_col_types = FALSE
+    )
+
+    known <- drop_na(penguins_raw)
+
+    nrow(known)
+    mean(known$`Body Mass (g)`)
+    ```
+
+    ```output
+    [1] 34
+    [1] 3877.206
+    ```
+
+    Their table says "mean body mass of penguins of known sex, 3877.206 g". Find what broke.
+  answer: |
+    `drop_na()` with no columns named dropped every row with a gap anywhere, mostly in
+    `Comments`. The mean is of 34 rows, not of every row of known sex. Name the columns:
+
+    ```r
+    known <- drop_na(penguins_raw, Sex, `Body Mass (g)`)
+
+    nrow(known)
+    mean(known$`Body Mass (g)`)
+    ```
+
+    ```output
+    [1] 333
+    [1] 4207.057
+    ```
+
+    333 rows of known sex have a body mass, and their mean is 4207.057 g. The first answer was
+    329.851 g too low. The 34 rows with a comment and no other gap are not a fair picture of the
+    rest.
+
+    Why the wrong answer looks reasonable: the code ran, the number is a believable penguin
+    weight, and no `NA` appeared. Only `nrow(known)` gives it away.
+- level: 9
+  prompt: |
+    A made-up draft report says: "Mean body mass was {{n:penguins_mass_mean_g}} g in the {{n:penguins_rows}} penguins studied." Check
+    the sentence against the penguin file, rewrite it, and say what your rewritten sentence does
+    not establish.
+  answer: |
+    ```r
+    library(readr)
+    library(dplyr, warn.conflicts = FALSE)
+
+    penguins_raw <- read_csv(
+      here::here("data-raw", "penguins_raw.csv"),
+      show_col_types = FALSE
+    )
+
+    penguins_raw |>
+      summarise(
+        rows = n(),
+        n = sum(!is.na(`Body Mass (g)`)),
+        mean_mass_g = mean(`Body Mass (g)`, na.rm = TRUE)
+      )
+    ```
+
+    ```output
+    # A tibble: 1 × 3
+       rows     n mean_mass_g
+      <int> <int>       <dbl>
+    1   344   342       4202.
+    ```
+
+    The mean prints as {{n:penguins_mass_mean_g}} g, so the number is right. The count is wrong: the mean
+    is of {{n:penguins_mass_n}} rows, because 2 have no body mass. Rewrite: "Mean body mass was {{n:penguins_mass_mean_g}} g (n = {{n:penguins_mass_n}};
+    2 of {{n:penguins_rows}} not weighed)."
+
+    What it does not establish:
+
+    - What the birds in the 2 rows weighed, or why they were not weighed.
+    - Anything about penguins outside these three seasons and three islands.
+    - That {{n:penguins_rows}} rows are {{n:penguins_rows}} penguins. The file records nesting observations, and an earlier
+      section showed that its IDs repeat.
+  refs:
+  - horst_2020_palmerpenguins
+- level: 10
+  prompt: |
+    In a made-up department meeting, a resident presenting the penguin analysis says: "We did a
+    complete-case analysis, so missing data were not a problem." The analysis needs body mass,
+    flipper length and sex. Find out what the complete-case analysis did, and say what the
+    resident's sentence claims that the data cannot show.
+  answer: |
+    ```r
+    library(readr)
+    library(dplyr, warn.conflicts = FALSE)
+    library(tidyr)
+
+    penguins_raw <- read_csv(
+      here::here("data-raw", "penguins_raw.csv"),
+      show_col_types = FALSE
+    )
+
+    cc <- drop_na(penguins_raw, `Body Mass (g)`, `Flipper Length (mm)`, Sex)
+
+    nrow(penguins_raw)
+    nrow(cc)
+    ```
+
+    ```output
+    [1] 344
+    [1] 333
+    ```
+
+    The complete-case analysis kept 333 of {{n:penguins_rows}} rows and left out 11. That much the code can show,
+    and the methods should say it.
+
+    What the sentence claims that the data cannot show:
+
+    - "Not a problem" means the 11 rows left out are like the 333 kept. A count cannot show
+      that. It needs a reason why the values are missing, which this file does not record.
+    - The analysis did not deal with the missing data. It chose to leave those rows out, and
+      that choice is part of the result. Better: "Rows missing body mass, flipper length or sex
+      were excluded (11 of {{n:penguins_rows}})."
+    - How to judge whether leaving rows out could bias a result is taught in a later book on
+      missing data.
+retrieval_items:
+- q: Why does a missing weight typed as 999 corrupt a mean in R?
+  a: R reads 999 as an ordinary number, so it goes into the sum and the mean like a real weight.
+    It becomes NA only when you declare it as a missing-value code, at reading or in code.
+- q: What does sum(is.na(x)) count, and why does it work?
+  a: The number of missing values in x. is.na() gives TRUE for each missing value, and in
+    arithmetic TRUE counts as 1 and FALSE as 0.
+- q: After mean(x, na.rm = TRUE), what n should you report?
+  a: The number of values present, sum(!is.na(x)), not the number of rows.
+- q: What does drop_na() do when you name no columns?
+  a: It keeps only the rows with no missing value in any column, including free-text columns.
+figures:
+- file: s52-r1-c13-rows-kept.png
+  caption: "Rows of the penguin file kept by four choices: all 344 rows; 342 with a body mass; 333 with a body mass and a recorded sex; 34 with no gap in any column. The last drop is driven by the Comments column, which is empty in 290 rows."
+  alt: "A bar chart with four bars: all rows 344, body mass present 342, body mass and sex present 333, every column present 34."
+  source: draw.py
+  spec:
+    kind: bar
+    x: ["all rows", "body mass present", "body mass and sex present", "every column present"]
+    series:
+    - {name: "Number of rows", y: [344, 342, 333, 34]}
+    x_label: rows kept
+    y_label: number of rows
+    y_range: [0, 400]
+    value_labels: true
+- file: s52-r1-c13-missing-by-column.png
+  caption: "Missing values in each column of the penguin file that has any, as colSums(is.na()) counts them. Comments, a free note, is empty in 290 rows; every measurement column misses 14 or fewer. This is why drop_na() with no columns named keeps only 34 rows."
+  alt: "A bar chart of the columns with any missing value: Culmen Length 2, Culmen Depth 2, Flipper Length 2, Body Mass 2, Sex 11, Delta 15 N 14, Delta 13 C 13, Comments 290."
+  source: draw.py
+  spec:
+    kind: bar
+    x: [Culmen Length, Culmen Depth, Flipper Length, Body Mass, Sex, Delta 15 N, Delta 13 C, Comments]
+    series:
+    - {name: missing values, y: [2, 2, 2, 2, 11, 14, 13, 290]}
+    x_label: column (units left off)
+    y_label: rows with the value missing
+    y_range: [0, 330]
+    size: [7.6, 3.2]
+    value_labels: true
+- file: s52-r1-c13-code-999.png
+  caption: "The made-up clinic register's weights as typed, with 999 where the scale was not available. Left in, the two 999s pull the mean of all 5 values to 437.8 kg; turned into NA, the mean of the 3 real weights is 63.7 kg."
+  alt: "A bar chart of five weights, 62, 999, 71, 58 and 999, with a dashed line at 437.8 and another at 63.7."
+  source: draw.py
+  spec:
+    kind: bar
+    x: [1, 2, 3, 4, 5]
+    series:
+    - {name: weight_kg as typed, y: [62, 999, 71, 58, 999]}
+    x_label: id
+    y_label: weight_kg as typed
+    y_range: [0, 1100]
+    value_labels: true
+    relations:
+    - check: "mean(y) = 437.8"
+    - check: "(y[0] + y[2] + y[3])/3 = 63.7"
+    refs:
+    - {y: 437.8, label: ""}
+    - {y: 63.7, label: ""}
+    labels:
+    - {text: "mean of all 5, 999s left in: 437.8", at: [2.75, 437.8], offset: [0, 4]}
+    - {text: "mean of the 3 real weights: 63.7", at: [3.5, 63.7], offset: [-60, 22]}
+provenance:
+  map_version_id: fc19c8bc-a216-4131-99fb-ebe3f19cec4a
+  outcome_refs:
+  - S52-R1-O2
+  - S52-R1-S1
+  - S52-R1-S2
+review:
+  stability: long
+  trigger: '2031-10-02'
+  last_reviewed: '2026-10-02'
+status: drafted

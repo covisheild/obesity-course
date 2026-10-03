@@ -1,0 +1,1 @@
+- Cut the definition's rounding sentences ("A 5 at the cut is rounded to the even digit, so `round(2.5)` is 2" and "Rounding acts on the number as the computer stores it..."). Must-know 2 still says a printed 25 may not be 25, but nothing now says why, or that R rounds halves to even, which a cut-point practice problem may need.

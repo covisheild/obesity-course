@@ -1,0 +1,162 @@
+read_spss                package:haven                 R Documentation
+
+Read and write SPSS files
+
+Description:
+
+     'read_sav()' reads both '.sav' and '.zsav' files; 'write_sav()'
+     creates '.zsav' files when 'compress = TRUE'. 'read_por()' reads
+     '.por' files. 'read_spss()' uses either 'read_por()' or
+     'read_sav()' based on the file extension.
+
+Usage:
+
+     read_sav(
+       file,
+       encoding = NULL,
+       user_na = FALSE,
+       col_select = NULL,
+       skip = 0,
+       n_max = Inf,
+       .name_repair = "unique"
+     )
+     
+     read_por(
+       file,
+       user_na = FALSE,
+       col_select = NULL,
+       skip = 0,
+       n_max = Inf,
+       .name_repair = "unique"
+     )
+     
+     write_sav(data, path, compress = c("byte", "none", "zsav"), adjust_tz = TRUE)
+     
+     read_spss(
+       file,
+       user_na = FALSE,
+       col_select = NULL,
+       skip = 0,
+       n_max = Inf,
+       .name_repair = "unique"
+     )
+     
+Arguments:
+
+    file: Either a path to a file, a connection, or literal data
+          (either a single string or a raw vector).
+
+          Files ending in '.gz', '.bz2', '.xz', or '.zip' will be
+          automatically uncompressed. Files starting with http://,
+          https://, ftp://, or ftps:// will be automatically
+          downloaded. Remote gz files can also be automatically
+          downloaded and decompressed.
+
+          Literal data is most useful for examples and tests. To be
+          recognised as literal data, the input must be either wrapped
+          with 'I()', be a string containing at least one new line, or
+          be a vector containing at least one string with a new line.
+
+          Using a value of 'clipboard()' will read from the system
+          clipboard.
+
+encoding: The character encoding used for the file. The default,
+          'NULL', use the encoding specified in the file, but sometimes
+          this value is incorrect and it is useful to be able to
+          override it.
+
+ user_na: If 'TRUE' variables with user defined missing will be read
+          into 'labelled_spss()' objects. If 'FALSE', the default,
+          user-defined missings will be converted to 'NA'.
+
+col_select: One or more selection expressions, like in
+          'dplyr::select()'. Use 'c()' or 'list()' to use more than one
+          expression. See '?dplyr::select' for details on available
+          selection options. Only the specified columns will be read
+          from 'data_file'.
+
+    skip: Number of lines to skip before reading data.
+
+   n_max: Maximum number of lines to read.
+
+.name_repair: Treatment of problematic column names:
+
+            • '"minimal"': No name repair or checks, beyond basic
+              existence,
+
+            • '"unique"': Make sure names are unique and not empty,
+
+            • '"check_unique"': (default value), no name repair, but
+              check they are 'unique',
+
+            • '"universal"': Make the names 'unique' and syntactic
+
+            • a function: apply custom name repair (e.g., '.name_repair
+              = make.names' for names in the style of base R).
+
+            • A purrr-style anonymous function, see
+              'rlang::as_function()'
+
+          This argument is passed on as 'repair' to
+          'vctrs::vec_as_names()'. See there for more details on these
+          terms and the strategies used to enforce them.
+
+    data: Data frame to write.
+
+    path: Path to a file where the data will be written.
+
+compress: Compression type to use:
+
+            • "byte": the default, uses byte compression.
+
+            • "none": no compression. This is useful for software that
+              has issues with byte compressed '.sav' files (e.g. SAS).
+
+            • "zsav": uses zlib compression and produces a '.zsav'
+              file. zlib compression is supported by SPSS version 21.0
+              and above.
+
+          'TRUE' and 'FALSE' can be used for backwards compatibility,
+          and correspond to the "zsav" and "none" options respectively.
+
+adjust_tz: Stata, SPSS and SAS do not have a concept of time zone, and
+          all date-time variables are treated as UTC. 'adjust_tz'
+          controls how the timezone of date-time values is treated when
+          writing.
+
+            • If 'TRUE' (the default) the timezone of date-time values
+              is ignored, and they will display the same in R and
+              Stata/SPSS/SAS, e.g. '"2010-01-01 09:00:00 NZDT"' will be
+              written as '"2010-01-01 09:00:00"'. Note that this
+              changes the underlying numeric data, so use caution if
+              preserving between-time-point differences is critical.
+
+            • If 'FALSE', date-time values are written as the
+              corresponding UTC value, e.g. '"2010-01-01 09:00:00
+              NZDT"' will be written as '"2009-12-31 20:00:00"'.
+
+Details:
+
+     Currently haven can read and write logical, integer, numeric,
+     character and factors. See 'labelled_spss()' for how labelled
+     variables in SPSS are handled in R.
+
+Value:
+
+     A tibble, data frame variant with nice defaults.
+
+     Variable labels are stored in the "label" attribute of each
+     variable. It is not printed on the console, but the RStudio viewer
+     will show it.
+
+     'write_sav()' returns the input 'data' invisibly.
+
+Examples:
+
+     path <- system.file("examples", "iris.sav", package = "haven")
+     read_sav(path)
+     
+     tmp <- tempfile(fileext = ".sav")
+     write_sav(mtcars, tmp)
+     read_sav(tmp)
+     
