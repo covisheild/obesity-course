@@ -676,7 +676,22 @@ retrieval_items:
   a: '`*` for times, `/` for divided by, `^` for to the power of.'
 - q: What does R do with everything after a `#` on a line?
   a: It ignores it. The text is a comment, for people to read.
-figure_note: "The section is about where code is typed and where it is kept; each result is one printed number, and a chart of them would add nothing the outputs do not show."
+figures:
+- file: s52-r1-c02-three-bmi-answers.png
+  caption: "The three answers R printed for the same made-up patient's BMI. Height typed in centimetres, 72 / 160^2, gives 0.0028125, a factor of 10,000 too small and too short to see as a bar. The power left out, 72 / 1.6 * 1.6, gives back the weight, 72. Only 72 / 1.6^2 gives 28.125 kg/m^2, a number in the tens, as an adult's BMI should be."
+  alt: "A bar chart with three bars. Try 1, 72 / 160^2: 0.0028125, too small to show above the axis. Try 2, 72 / 1.6 * 1.6: 72. Try 3, 72 / 1.6^2: 28.125."
+  source: draw.py
+  spec:
+    kind: bar
+    x: ["try 1: 72 / 160^2", "try 2: 72 / 1.6 * 1.6", "try 3: 72 / 1.6^2"]
+    series:
+    - {name: "answer R printed", y: [0.0028125, 72, 28.125]}
+    x_label: what was typed, in the order typed
+    y_label: answer R printed
+    y_range: [0, 80]
+    value_labels: true
+    relations:
+    - check: "y[2] / y[0] = 10000"
 provenance:
   map_version_id: fc19c8bc-a216-4131-99fb-ebe3f19cec4a
   outcome_refs:

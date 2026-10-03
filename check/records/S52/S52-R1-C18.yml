@@ -1222,19 +1222,38 @@ retrieval_items:
   a: By ggsave() in the script, into output/, with width, height and units written in, so that it
     is redrawn from the data every time the script runs.
 figures:
-- file: s52-r1-c18-mass-histogram.png
-  caption: "The counts behind the first illustration's histogram of penguin body mass: bins 500 g wide from 2500 g, each including its left edge. The tallest bin, 3500 to under 4000 g, holds 94 of the 342 penguins with a body mass. The same counts are what the code writes to output/ beside the figure."
+- file: "s52-r1-c18-mass-histogram.png"
+  caption: "The counts behind the histogram of penguin body mass with its bins chosen in code: 500 g wide from 2500 g, each including its left edge. The tallest bin, 3500 to under 4000 g, holds 94 of the 342 penguins with a body mass. The same counts are what the code writes to output/ beside the figure."
   alt: "A bar chart of eight body-mass bins: 9, 62, 94, 59, 51, 34, 29 and 4 penguins, from 2500 to under 3000 g up to 6000 to under 6500 g."
-  source: draw.py
+  source: "draw.py"
   spec:
-    kind: bar
+    kind: "bar"
     from_table: {block: 0, x: 0, y: [2]}
-    x_label: start of each 500 g bin, body mass (g)
-    y_label: penguins
+    x_label: "start of each 500 g bin, body mass (g)"
+    y_label: "penguins"
     y_range: [0, 100]
     value_labels: true
     relations:
-    - check: "y1[0] + y1[1] + y1[2] + y1[3] + y1[4] + y1[5] + y1[6] + y1[7] = 342"
+    - {check: "y1[0] + y1[1] + y1[2] + y1[3] + y1[4] + y1[5] + y1[6] + y1[7] = 342"}
+- file: "s52-r1-c18-quartiles-by-species.png"
+  caption: "The three numbers each box of the body-mass boxplot is drawn from, as quantile() gives them (type 7): the first quartile at 0.25, the median, and the third quartile at 0.75. The Adelie box runs from 3350 g to 4000 g with its median at 3700 g; the Gentoo box from 4700 g to 5500 g. Chinstrap's first quartile is 3488 g as the tibble prints it. A box carries its values by position, so this axis need not start at zero."
+  alt: "A chart of points at quantiles 0.25, 0.5 and 0.75 for three species. Adelie: 3350, 3700, 4000 g. Gentoo: 4700, 5000, 5500 g. Chinstrap: 3488, 3700, 3950 g. The Gentoo points lie well above the other two species, whose medians are both 3700 g."
+  source: "draw.py"
+  spec:
+    kind: "scatter"
+    x: ["0.25", "0.5", "0.75"]
+    series:
+    - {name: "Adelie", y: ["3350", "3700", "4000"]}
+    - {name: "Gentoo", y: ["4700", "5000", "5500"]}
+    - {name: "Chinstrap", y: ["3488", "3700", "3950"]}
+    x_label: "quantile (share of penguins below the value)"
+    y_label: "body mass (g)"
+    y_range: [3000, 6000]
+    labels:
+    - {text: "Adelie and Chinstrap medians, both 3700", at: [0.5, 3700], offset: [8, -14]}
+    relations:
+    - {check: "y1[2] - y1[0] = 4000 - 3350"}
+    - {check: "y2[1] = 5000"}
 provenance:
   map_version_id: fc19c8bc-a216-4131-99fb-ebe3f19cec4a
   outcome_refs:

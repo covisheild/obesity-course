@@ -1134,6 +1134,22 @@ figures:
     value_labels: true
     relations:
     - check: "y[2] = 389"
+- file: s52-r1-c09-camp-minus-99.png
+  caption: "Heights in the made-up camp file as read_csv() reads them when it is not told the code: child S02's -99 becomes a height of -99 cm, the bar below zero, and min() returns -99. Declaring na = c(\"\", \"NA\", \"-99\") makes it NA, and the shortest measured child is 128 cm."
+  alt: "A bar chart of three children's heights: S01 at 128, S02 at -99 below the zero line, S03 at 131."
+  source: draw.py
+  spec:
+    kind: bar
+    x: [S01, S02, S03]
+    series:
+    - {name: height_cm as read, y: [128, -99, 131]}
+    x_label: child
+    y_label: height_cm as read (cm)
+    y_range: [-130, 160]
+    value_labels: true
+    relations:
+    - check: "min(y) = -99"
+    - check: "min(y[0], y[2]) = 128"
 provenance:
   map_version_id: fc19c8bc-a216-4131-99fb-ebe3f19cec4a
   outcome_refs:

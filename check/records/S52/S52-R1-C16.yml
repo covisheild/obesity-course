@@ -1406,17 +1406,54 @@ retrieval_items:
   a: So that no number is copied by hand, and the table is rewritten from the data every time the
     script runs.
 figures:
-- file: s52-r1-c16-mass-by-species.png
-  caption: "Mean body mass of the penguins in the file, by species, from the first illustration's table: Adelie 3701 g from 151 body masses, Gentoo 5076 g from 123, Chinstrap 3733 g from 68. The bars start at zero, so their lengths compare the means. The means describe the rows of this file."
+- file: "s52-r1-c16-mass-by-species.png"
+  caption: "Mean body mass of the penguins in the file, by species, from the summary by species: Adelie 3701 g from 151 body masses, Gentoo 5076 g from 123, Chinstrap 3733 g from 68. The bars start at zero, so their lengths compare the means. The means describe the rows of this file."
   alt: "A bar chart of three species. Adelie 3701 grams, Gentoo 5076 grams, Chinstrap 3733 grams, on an axis that starts at zero."
-  source: draw.py
+  source: "draw.py"
   spec:
-    kind: bar
+    kind: "bar"
     from_table: {block: 0, x: 0, y: [3]}
-    x_label: species
-    y_label: mean body mass (g)
+    x_label: "species"
+    y_label: "mean body mass (g)"
     y_range: [0, 6000]
     value_labels: true
+- file: "s52-r1-c16-share-grouped-vs-all.png"
+  caption: "The same eight counts of penguins by species and sex, turned into percentages two ways. Still grouped by species, sum(n) adds up within each species, so 73 Adelie females print as 48.0%, a share of the 152 Adelie penguins. Grouped with .by for one step only, sum(n) adds up all 344 rows, and the same 73 are 21.2%. The code ran both times; only the second answers \"what share of all the penguins?\"."
+  alt: "A grouped bar chart of eight species and sex groups, each with two bars. Share within its species: Adelie female 48.0, male 48.0, sex not recorded 3.95; Chinstrap female 50, male 50; Gentoo female 46.8, male 49.2, sex not recorded 4.03. Share of all 344: 21.2, 21.2, 1.74, 9.88, 9.88, 16.9, 17.7, 1.45."
+  source: "draw.py"
+  spec:
+    kind: "bar"
+    x: ["Adelie\nfemale", "Adelie\nmale", "Adelie\nsex NA", "Chinstrap\nfemale", "Chinstrap\nmale", "Gentoo\nfemale", "Gentoo\nmale", "Gentoo\nsex NA"]
+    series:
+    - name: "still grouped by species: share of its species"
+      y: ["48.0", "48.0", "3.95", "50", "50", "46.8", "49.2", "4.03"]
+    - name: ".by, ungrouped: share of all 344 penguins"
+      y: ["21.2", "21.2", "1.74", "9.88", "9.88", "16.9", "17.7", "1.45"]
+    x_label: "species and sex"
+    y_label: "pct (%)"
+    y_range: [0, 80]
+    value_labels: true
+    size: [7.6, 3.4]
+    relations:
+    - {check: "y1[0] + y1[1] + y1[2] = 100"}
+    - {check: "y1[3] + y1[4] = 100"}
+    - {check: "y1[5] + y1[6] + y1[7] = 100"}
+    - {check: "y2[0] + y2[1] + y2[2] + y2[3] + y2[4] + y2[5] + y2[6] + y2[7] = 100"}
+- file: "s52-r1-c16-iqr-by-method.png"
+  caption: "The interquartile range of the nine children's heights, 121 to 141 cm, by three rules. Book 0's median of each half gives 136 - 126 = 10 cm; R's default, type 7, gives 134 - 127 = 7 cm; type 6 gives 10 cm again. The data are the same in every bar: only the rule for placing a quartile between two values differs, so a methods section names the software and the rule."
+  alt: "A bar chart of three interquartile ranges for the same nine heights: Book 0's method 10 cm, R type 7 7 cm, R type 6 10 cm."
+  source: "draw.py"
+  spec:
+    kind: "bar"
+    from_table: {block: 1, x: 0, y: [3]}
+    x_label: "rule for the quartiles"
+    y_label: "interquartile range (cm)"
+    y_range: [0, 12]
+    value_labels: true
+    relations:
+    - {check: "y[0] = 136 - 126"}
+    - {check: "y[1] = 134 - 127"}
+    - {check: "y[2] = y[0]"}
 provenance:
   map_version_id: fc19c8bc-a216-4131-99fb-ebe3f19cec4a
   outcome_refs:

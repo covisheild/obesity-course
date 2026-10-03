@@ -883,6 +883,37 @@ figures:
     relations:
     - check: "sum(y) = 15841"
     - check: "y[5] + y[6] + y[7] = 11968"
+- file: s52-r1-c01-years-counted.png
+  caption: "Years in which a country carried public debt above 90% of its GDP, as Herndon, Ash and Pollin counted them in Reinhart and Rogoff's working spreadsheet: 110 in all the data, 96 after the exclusions the authors chose, 71 after those exclusions and the spreadsheet error. Choices nobody wrote down, and one formula, removed 39 of the 110 years."
+  alt: "A bar chart of three steps. All the data: 110 years. After the chosen exclusions: 96. After the exclusions and the spreadsheet error: 71."
+  source: draw.py
+  spec:
+    kind: bar
+    x: ["all the data", "after the chosen exclusions", "after exclusions and spreadsheet error"]
+    series:
+    - {name: "years counted", y: [110, 96, 71]}
+    x_label: step
+    y_label: years counted (debt above 90% of GDP)
+    value_labels: true
+    size: [7.4, 3.0]
+    derived:
+    - {value: "39", from: "110 - 71"}
+    relations:
+    - check: "y[0] - y[2] = 39"
+- file: s52-r1-c01-growth-three-ways.png
+  caption: "Average growth in the high-debt category, in % a year, three ways. With all the data it was 2.2%. The spreadsheet error alone moved it only to 1.9%, 0.3 of a percentage point. All the problems together, the exclusions, the weighting and the error, gave the published -0.1%."
+  alt: "A bar chart with three bars: all the data, 2.2; spreadsheet error alone, 1.9; all problems together, as published, -0.1, a short bar below the zero line."
+  source: draw.py
+  spec:
+    kind: bar
+    x: ["all the data", "spreadsheet error alone", "all problems together (published)"]
+    series:
+    - {name: "average growth", y: [2.2, 1.9, -0.1]}
+    x_label: which problems were left in
+    y_label: average growth (% a year)
+    value_labels: true
+    relations:
+    - check: "y[0] - y[1] = 0.3"
 provenance:
   map_version_id: fc19c8bc-a216-4131-99fb-ebe3f19cec4a
   outcome_refs:

@@ -616,7 +616,22 @@ retrieval_items:
     output is; whom to contact.
 - q: Why should an "expected range" not be filled from the smallest and largest values in your file?
   a: A range taken from the data describes the data, so it can never flag an error in the data.
-figure_note: "The section's two products are a table and a short text file, both shown in full; a figure would be a table drawn as a picture."
+figures:
+- file: s52-r1-c10-ids-vs-rows.png
+  caption: "Different values in the penguin file against its 344 rows. Individual ID, which the help page calls unique, has only 190 different values, so it does not pick out one row each. Species with Sample Number has 344 different pairs, one for every row, and that is what the dictionary records as the identifier."
+  alt: "A bar chart with three bars: rows in the file 344, different Individual ID values 190, different Species and Sample Number pairs 344."
+  source: draw.py
+  spec:
+    kind: bar
+    x: [rows in the file, different Individual IDs, different Species + Sample Number]
+    series:
+    - {name: count, y: [344, 190, 344]}
+    x_label: what was counted
+    y_label: number
+    y_range: [0, 400]
+    value_labels: true
+    relations:
+    - check: "y[0] = y[2]"
 provenance:
   map_version_id: fc19c8bc-a216-4131-99fb-ebe3f19cec4a
   outcome_refs:

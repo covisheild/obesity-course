@@ -1096,6 +1096,23 @@ figures:
     value_labels: true
     relations:
     - check: "sum(y) = 344"
+    derived:
+    - {value: "344", from: "168 + 124 + 52"}
+- file: s52-r1-c14-species-by-island.png
+  caption: "Rows of the penguin file for each species on each island, as count(species, island, .drop = FALSE) gives them. The zeros are pairs that never occur in this file: Chinstrap rows come only from Dream, Gentoo rows only from Biscoe, and only Adelie rows come from all three islands."
+  alt: "Grouped bars for three species. Adelie: Biscoe 44, Dream 56, Torgersen 52. Chinstrap: Biscoe 0, Dream 68, Torgersen 0. Gentoo: Biscoe 124, Dream 0, Torgersen 0."
+  source: draw.py
+  spec:
+    kind: bar
+    from_table: {block: 1, x: 0, y: [1, 2, 3]}
+    x_label: species
+    y_label: rows in the file
+    y_range: [0, 140]
+    value_labels: true
+    relations:
+    - check: "sum(y1) + sum(y2) + sum(y3) = 344"
+    derived:
+    - {value: "344", from: "44 + 56 + 52 + 68 + 124"}
 provenance:
   map_version_id: fc19c8bc-a216-4131-99fb-ebe3f19cec4a
   outcome_refs:

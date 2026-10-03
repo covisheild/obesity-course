@@ -583,7 +583,37 @@ exercises:
     Writing the format in the dictionary, with an example, is the step that stops a data-entry
     operator from typing 21/06/2014.
 quantitative: true
-figure_note: "Each step here is a single date or a day count printed by the code; a chart would redraw those printed values and show nothing the outputs do not."
+figures:
+- file: s52-r1-c15-days-after-first.png
+  caption: "Days from the first camp visit to each visit, from subtracting one Date from another: 0 for the first visit itself, 12 for the visit of 2021-04-15, and -34 for the visit of 2021-02-28, which came before the first."
+  alt: "A bar chart of three visits: 2021-04-03 at 0, 2021-04-15 at 12, and 2021-02-28 at -34, below the zero line."
+  source: draw.py
+  spec:
+    kind: bar
+    x: ["2021-04-03", "2021-04-15", "2021-02-28"]
+    series:
+    - {name: days after the first visit, y: [0, 12, -34]}
+    x_label: visit_date
+    y_label: days after the first visit
+    y_range: [-45, 25]
+    value_labels: true
+- file: s52-r1-c15-age-days-years.png
+  caption: "Age at the visit in days against age in years for the three made-up patients. Every point lies on y = x / 365.25. Patient 1's 31.0 is printed rounded; the stored value is just under 31, so floor() gives 30 completed years."
+  alt: "Three points on a straight dashed line: 7346 days at 20.1 years, 11319 days at 31.0 years, 13369 days at 36.6 years."
+  source: draw.py
+  spec:
+    kind: scatter
+    x: [11319, 13369, 7346]
+    series:
+    - {name: the three patients, y: ["31.0", "36.6", "20.1"]}
+    x_label: age_days
+    y_label: age_years
+    relations:
+    - fit: "y = x/365.25"
+      draw: true
+      label: "y = x / 365.25"
+    labels:
+    - {text: "patient 1: 31.0 printed, 30 completed years", at: [11319, 31], offset: [-150, 10]}
 practice_note: |
   Eleven problems: parsing by order, the date as a day count, subtraction and age are separate
   moves, and each of the three ways parsing goes wrong (all NA, some silently wrong, a spreadsheet

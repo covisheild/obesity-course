@@ -822,7 +822,41 @@ retrieval_items:
   a: Values used as column names (weight at visit 1, 2, 3 in three columns); two variables in one column or cell (blood pressure as "104/66"); two kinds of unit in one table (child facts repeated on every visit row).
 - q: What are the three meanings of "variable" in this book?
   a: A letter standing for a number (Book 0), the name of an object in R, and a column of a data frame holding everything measured about one attribute.
-figure_note: "The section's content is the shape of a table, and the tables are printed in the illustrations; a chart would redraw the same rows and columns as a picture of a table."
+figures:
+- file: s52-r1-c08-visit-weights.png
+  caption: "The tidy visits table drawn row by row: one bar for each child at each visit, six rows in one weight_kg column: 21.4, 22.1, 25.0, 25.6, 19.8 and 20.3 kg. Because every weight sits in that one column, mean(visits$weight_kg) needs no visit names: the six weights add to 134.2 kg, and 134.2 divided by 6 is 22.36667 kg, the dashed line."
+  alt: "Six bars: C01 visit 1, 21.4; C01 visit 2, 22.1; C02 visit 1, 25.0; C02 visit 2, 25.6; C03 visit 1, 19.8; C03 visit 2, 20.3. A dashed line at 22.36667 marks the mean."
+  source: draw.py
+  spec:
+    kind: bar
+    x: ["C01 visit 1", "C01 visit 2", "C02 visit 1", "C02 visit 2", "C03 visit 1", "C03 visit 2"]
+    series:
+    - {name: "weight_kg", y: [21.4, 22.1, 25.0, 25.6, 19.8, 20.3]}
+    x_label: row of the visits table (child, visit)
+    y_label: weight (kg)
+    y_range: [0, 30]
+    refs:
+    - {y: 22.36667, label: "mean 22.36667 kg"}
+    relations:
+    - check: "sum(y) = 134.2"
+    - check: "sum(y) / 6 = 22.36667"
+- file: s52-r1-c08-rows-and-ids.png
+  caption: "The practice file has 344 rows but only 190 different values of Individual ID, so 154 rows repeat an ID that an earlier row already carries. One row is not one bird, and N1A1 alone names two birds of different species."
+  alt: "Two bars: rows in the file, 344; different Individual IDs, 190."
+  source: draw.py
+  spec:
+    kind: bar
+    x: ["rows in the file", "different Individual IDs"]
+    series:
+    - {name: "count", y: [344, 190]}
+    x_label: what was counted in penguins_raw
+    y_label: count
+    value_labels: true
+    size: [5.0, 3.0]
+    derived:
+    - {value: "154", from: "344 - 190"}
+    relations:
+    - check: "y[0] - y[1] = 154"
 provenance:
   map_version_id: fc19c8bc-a216-4131-99fb-ebe3f19cec4a
   outcome_refs:

@@ -1298,15 +1298,30 @@ retrieval_items:
     unchanged.
 figures:
 - file: s52-r1-c11-rows-left.png
-  caption: "Rows left after each step of the second example's pipe: 344 rows in the file, 176 on Dream or Torgersen, and 85 of those recorded as FEMALE."
-  alt: "A bar chart with three bars: all penguins 344, island is Dream or Torgersen 176, and sex is FEMALE 85."
+  caption: "Rows left after each filter() step in the search for the heaviest females on Dream and Torgersen: 344 rows in the file, 176 on Dream or Torgersen, and 85 of those with sex recorded as FEMALE. Each condition can only take rows away."
+  alt: "A bar chart with three bars: all rows 344, island is Dream or Torgersen 176, and sex is FEMALE 85."
   source: draw.py
   spec:
     kind: bar
-    from_table: {block: 0, x: 0, y: [1]}
+    x: [all rows, island is Dream or Torgersen, and sex is FEMALE]
+    series:
+    - {name: rows left, y: [344, 176, 85]}
     x_label: step of the pipe
     y_label: rows left
     y_range: [0, 400]
+    value_labels: true
+- file: s52-r1-c11-na-test.png
+  caption: "Rows returned by two ways of asking which penguins have no body mass. The test == NA returns 0 rows, because a comparison with NA is NA on every row and filter() drops those rows. is.na() returns the 2 penguins that really have no body mass, N2A2 and N38A2."
+  alt: "A bar chart with two bars: filter with == NA returns 0 rows, filter with is.na returns 2 rows."
+  source: draw.py
+  spec:
+    kind: bar
+    x: ["filter(mass == NA)", "filter(is.na(mass))"]
+    series:
+    - {name: rows returned, y: [0, 2]}
+    x_label: the test inside filter(), on Body Mass (g)
+    y_label: rows returned
+    y_range: [0, 3]
     value_labels: true
 provenance:
   map_version_id: fc19c8bc-a216-4131-99fb-ebe3f19cec4a

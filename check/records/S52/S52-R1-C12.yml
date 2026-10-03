@@ -1388,6 +1388,21 @@ figures:
     refs:
     - {y: 18.5, label: "18.5"}
     - {y: 25, label: "25.0"}
+- file: s52-r1-c12-cm-vs-m.png
+  caption: "Each patient's BMI worked out with height in centimetres (across) against the same BMI with height in metres (up). Every point lies on the line y = 10,000 × x: a height 100 times larger, squared, is 10,000 times larger, so every BMI from centimetres is 10,000 times too small."
+  alt: "Four points on a straight dashed line: 0.00177 against 17.7, 0.00213 against 21.3, 0.0025 against 25 and 0.00274 against 27.4."
+  source: draw.py
+  spec:
+    kind: scatter
+    x: [0.00177, 0.0025, 0.00274, 0.00213]
+    series:
+    - {name: the four patients with a weight, y: [17.7, 25, 27.4, 21.3]}
+    x_label: BMI with height in centimetres
+    y_label: BMI with height in metres (kg/m^2)
+    relations:
+    - fit: "y = 10000*x"
+      draw: true
+      label: "y = 10,000 × x"
 provenance:
   map_version_id: fc19c8bc-a216-4131-99fb-ebe3f19cec4a
   outcome_refs:

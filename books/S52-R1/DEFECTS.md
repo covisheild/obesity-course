@@ -508,3 +508,10 @@ code block goes through the code gate.
 - **B-C22-9** · Illus. · "The three quartiles answer the question, as Book 0 taught them" · These are R's type-7 quartiles, which C16 showed can differ from Book 0's. This is a contradiction. · Close with "as R's default (type 7) gives them", or drop "as Book 0 taught them".
 - **B-C22-10** · Illus. · `... |> ggplot() + geom_...` · It mixes `|>` and `+` right after C18 P9 called that an error. · Close with a gloss: the pipe hands the data to `ggplot()`, and the layers after it still join with `+`.
 - **B-C22-11** · `must_know[5].point` / Illus. · "The gate is one command from raw data to the same outputs." / "the gate to the next rung" · "Gate" and "rung" are undefined (series vocabulary). · Close with a one-line gloss at first use in the book, or with a pointer.
+
+## Found by the conductor's look at the figures (3 Oct 2026)
+
+All 38 figures opened as images. One layout fault: `s52-r1-c17-visit-means.png` puts ticks at 1.25, 1.50,
+1.75 ... on a "visit" axis that only takes 1, 2, 3 (fix the spec's x ticks; never edit the PNG). Noted, not a
+fault: in `s52-r1-c18-quartiles-by-species.png` the Adelie and Chinstrap medians coincide at 3700 g, which the
+figure annotates.

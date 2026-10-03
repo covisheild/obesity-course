@@ -681,21 +681,44 @@ retrieval_items:
   a: No. Reproducing it shows it was done as described with that data and code. Peng (2011) says it does
     not guarantee the quality, correctness or validity of the results.
 figures:
-- file: s52-r1-c20-reexecution-results.png
+- file: "s52-r1-c20-reexecution-results.png"
   caption: "Trisovic and colleagues' results table for R files shared on Harvard Dataverse, 2010 to July 2020: files that ran without error, stopped with an error, or exceeded the time limit. Without code cleaning: 952, 2878 and 3829 of 7659 files. With cleaning: 1472, 2223 and 3719 of 7414. Best of both runs: 1581, 1238 and 5790 of 8609. The table's success rates, 25%, 40% and 56%, leave out the files that ran out of time."
   alt: "A bar chart with three groups: without code cleaning, with code cleaning, and best of both. Each has three bars: success 952, 1472 and 1581; error 2878, 2223 and 1238; time limit exceeded 3829, 3719 and 5790."
-  source: draw.py
+  source: "draw.py"
   spec:
-    kind: bar
+    kind: "bar"
     from_table: {block: 0, x: 0, y: [1, 2, 3]}
-    x_label: run
-    y_label: R files
+    x_label: "run"
+    y_label: "R files"
     y_range: [0, 6500]
     value_labels: true
     relations:
-    - check: "y1[0] + y2[0] + y3[0] = 7659"
-    - check: "y1[1] + y2[1] + y3[1] = 7414"
-    - check: "y1[2] + y2[2] + y3[2] = 8609"
+    - {check: "y1[0] + y2[0] + y3[0] = 7659"}
+    - {check: "y1[1] + y2[1] + y3[1] = 7414"}
+    - {check: "y1[2] + y2[2] + y3[2] = 8609"}
+- file: "s52-r1-c20-success-share-two-bases.png"
+  caption: "The same success counts from Trisovic and colleagues' table as shares on two bases. Over successes and errors only, the table's basis, they are 0.2486, 0.3984 and 0.5608: the table's 25%, 40% and 56%. Over every file with a result, time-outs included, they are 952 ÷ 7659 = 0.1243, 1472 ÷ 7414 = 0.1985 and 1581 ÷ 8609 = 0.1836. On that basis the best of both runs is no better than the run with cleaning, because 5790 of its files ran out of time. Per cent of what decides the number."
+  alt: "A grouped bar chart of three runs, each with two bars. Share of files that finished: 0.2486, 0.3984, 0.5608. Share of all files with a result: 0.1243, 0.1985, 0.1836."
+  source: "draw.py"
+  spec:
+    kind: "bar"
+    x: ["without code cleaning", "with code cleaning", "best of both"]
+    series:
+    - {name: "success ÷ (success + error)", y: ["0.2486", "0.3984", "0.5608"]}
+    - {name: "success ÷ all files with a result", y: ["0.1243", "0.1985", "0.1836"]}
+    x_label: "run"
+    y_label: "share of R files"
+    y_range: [0, 0.7]
+    value_labels: true
+    derived:
+    - {value: "0.1243", from: "952 / 7659"}
+    - {value: "0.1985", from: "1472 / 7414"}
+    - {value: "0.1836", from: "1581 / 8609"}
+    relations:
+    - {check: "952 / (952 + 2878) = 0.2486"}
+    - {check: "1472 / (1472 + 2223) = 0.3984"}
+    - {check: "1581 / (1581 + 1238) = 0.5608"}
+    - {check: "1581 / 8609 = 0.1836"}
 provenance:
   map_version_id: fc19c8bc-a216-4131-99fb-ebe3f19cec4a
   outcome_refs:

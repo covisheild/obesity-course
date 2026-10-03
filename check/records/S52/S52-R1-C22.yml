@@ -788,18 +788,53 @@ retrieval_items:
   a: The participants in the file only. It is not an estimate for the United States, because the
     survey's documentation says its sample weights should be used.
 figures:
-- file: s52-r1-c22-bmi-quartiles.png
+- file: "s52-r1-c22-bmi-quartiles.png"
   caption: "The first quartile, median and third quartile of measured BMI in 2680 men and 3249 women aged 20 and over, not pregnant, examined in NHANES 2021–2023. The medians are close, 28.1 and 28.7 kg/m^2; the women's third quartile, 34.7 kg/m^2, is higher than the men's, 32.4 kg/m^2. Unweighted: these values describe the participants, not the United States."
   alt: "A chart of points for two groups at 25, 50 and 75 per cent. Male: 24.9, 28.1, 32.4 kg/m^2. Female: 24.4, 28.7, 34.7 kg/m^2. The female points start lower and end higher."
-  source: draw.py
+  source: "draw.py"
   spec:
-    kind: scatter
+    kind: "scatter"
     from_table: {block: 2, x: 0, y: [1, 2]}
-    x_label: share of adults below the value (%)
-    y_label: BMI (kg/m^2)
+    x_label: "share of adults below the value (%)"
+    y_label: "BMI (kg/m^2)"
     relations:
-    - check: "y2[2] - y2[0] = 10.3"
-    - check: "y1[2] - y1[0] = 7.5"
+    - {check: "y2[2] - y2[0] = 10.3"}
+    - {check: "y1[2] - y1[0] = 7.5"}
+- file: "s52-r1-c22-pregnancy-filter.png"
+  caption: "Rows left by two ways of dropping the 41 adults pregnant at the exam from the 6064 aged 20 and over. The first try, filter(RIDEXPRG != 1), keeps 1093: the 1065 coded 2 and the 28 coded 3. It drops the 4930 rows where RIDEXPRG is missing, every man among them, with no warning. Keeping a row if RIDEXPRG is missing or not 1 leaves 6023, the 6064 minus 41 expected before the line was run."
+  alt: "A bar chart of three counts: adults aged 20 and over 6064; first try, RIDEXPRG not equal to 1, 1093; missing or not 1, 6023."
+  source: "draw.py"
+  spec:
+    kind: "bar"
+    x: ["aged 20 and over", "first try:\nRIDEXPRG != 1", "is.na(RIDEXPRG) |\nRIDEXPRG != 1"]
+    series:
+    - {name: "rows", y: ["6064", "1093", "6023"]}
+    x_label: "step"
+    y_label: "rows"
+    y_range: [0, 7000]
+    value_labels: true
+    size: [5.8, 3.0]
+    relations:
+    - {check: "y[0] - y[2] = 41"}
+    - {check: "y[1] = 1065 + 28"}
+    - {check: "y[0] - y[1] = 41 + 4930"}
+    - {check: "41 + 1065 + 28 + 4930 = 6064"}
+- file: "s52-r1-c22-rows-per-step.png"
+  caption: "Rows after each step of the end-to-end script: 8860 in the body measures file as read and after the join on SEQN, 6064 aged 20 and over, 6023 not pregnant at the exam, and 5929 with a BMI. The 41 pregnant adults and the 94 without a weight or a height are the two drops after the age filter. Each count is printed by the script, so a step that loses the wrong rows shows here first."
+  alt: "A bar chart of five steps: body measures file as read 8860, after the join 8860, aged 20 and over 6064, not pregnant at the exam 6023, with a BMI 5929."
+  source: "draw.py"
+  spec:
+    kind: "bar"
+    from_table: {block: 1, x: 0, y: [1]}
+    x_label: "step of the script"
+    y_label: "rows"
+    y_range: [0, 10000]
+    value_labels: true
+    size: [8.0, 3.0]
+    relations:
+    - {check: "y[0] = y[1]"}
+    - {check: "y[2] - y[3] = 41"}
+    - {check: "y[3] - y[4] = 94"}
 provenance:
   map_version_id: fc19c8bc-a216-4131-99fb-ebe3f19cec4a
   outcome_refs:

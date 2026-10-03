@@ -1333,20 +1333,57 @@ retrieval_items:
   a: By a line of code that picks the row by its ID, writes the right value into a new column, and
     carries a comment with the date and where the right value came from. The raw file is not edited.
 figures:
-- file: s52-r1-c19-nhanes-row-counts.png
-  caption: "Rows after each step of the NHANES 2021–2023 example: 8860 in the body measures file as read, 8860 after joining the demographics file on SEQN, 6064 aged 20 or over, and 5970 with both height and weight recorded. The 94 adults missing a height, a weight or both are the difference between the last two bars. These are counts of rows in the files, unweighted, and estimate nothing about the United States."
+- file: "s52-r1-c19-nhanes-row-counts.png"
+  caption: "Rows after each step of the NHANES 2021–2023 checking script: 8860 in the body measures file as read, 8860 after joining the demographics file on SEQN, 6064 aged 20 or over, and 5970 with both height and weight recorded. The 94 adults missing a height, a weight or both are the difference between the last two bars. These are counts of rows in the files, unweighted, and estimate nothing about the United States."
   alt: "A bar chart of four steps. BMX_L as read: 8860 rows. After the join to DEMO_L on SEQN: 8860. Aged 20 or over: 6064. Both height and weight recorded: 5970."
-  source: draw.py
+  source: "draw.py"
   spec:
-    kind: bar
+    kind: "bar"
     from_table: {block: 0, x: 0, y: [1]}
-    x_label: step of the script
-    y_label: rows
+    x_label: "step of the script"
+    y_label: "rows"
     y_range: [0, 10000]
     value_labels: true
     relations:
-    - check: "y[0] = y[1]"
-    - check: "y[2] - y[3] = 94"
+    - {check: "y[0] = y[1]"}
+    - {check: "y[2] - y[3] = 94"}
+- file: "s52-r1-c19-median-before-after.png"
+  caption: "Median BMI of the six adults in the made-up clinic register, before and after the range checks. As typed, with patient 103's height as 1.6 and patient 105's weight as 620, the median is 26.2 kg/m^2; with both corrected in code from the paper register, it is 23.7 kg/m^2. Both bars look like an ordinary clinic; only the check told them apart."
+  alt: "A bar chart of two medians: 26.2 kg/m^2 as typed, 23.7 kg/m^2 after the two corrections, a difference of 2.5."
+  source: "draw.py"
+  spec:
+    kind: "bar"
+    x: ["as typed", "after correcting ids 103 and 105"]
+    series:
+    - {name: "median BMI", y: ["26.2", "23.7"]}
+    x_label: "clinic register"
+    y_label: "median BMI (kg/m^2)"
+    y_range: [0, 30]
+    value_labels: true
+    size: [5.2, 3.0]
+    derived:
+    - {value: "2.5", from: "26.2 - 23.7"}
+    relations:
+    - {check: "y[0] - y[1] = 2.5"}
+- file: "s52-r1-c19-missing-measures.png"
+  caption: "Missing measures among the 6064 NHANES adults aged 20 or over, counted after the height range check failed on them: 67 have no height, 81 have no weight, and 94 have no height, no weight or both (6064 - 5970). The bars overlap: 67 + 81 - 94 = 54 adults lack both. A report states these counts beside any result from the 5970."
+  alt: "A bar chart of three counts: no height 67, no weight 81, no height or weight or both 94."
+  source: "draw.py"
+  spec:
+    kind: "bar"
+    x: ["no height", "no weight", "no height, no weight\nor both"]
+    series:
+    - {name: "adults", y: ["67", "81", "94"]}
+    x_label: "missing in the adults aged 20 or over"
+    y_label: "adults"
+    y_range: [0, 100]
+    value_labels: true
+    size: [5.6, 3.0]
+    derived:
+    - {value: "54", from: "67 + 81 - 94"}
+    relations:
+    - {check: "y[2] = 6064 - 5970"}
+    - {check: "y[0] + y[1] - y[2] = 54"}
 provenance:
   map_version_id: fc19c8bc-a216-4131-99fb-ebe3f19cec4a
   outcome_refs:

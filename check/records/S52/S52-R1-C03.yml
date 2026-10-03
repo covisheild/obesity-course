@@ -769,7 +769,24 @@ retrieval_items:
   a: The set of objects that exist now in the session, listed by `ls()`. It holds whatever was run, in any order, including lines typed only in the console, so it can differ from what the script would make.
 - q: Which style does this book use for names and for assignment?
   a: Lower-case names with words joined by `_` (snake case), with units where they help, and `<-` for assignment.
-figure_note: "The section is about how names hold values; each step prints one value, and a chart of those values would show nothing the printed outputs do not."
+figures:
+- file: s52-r1-c03-bmi-stored-value.png
+  caption: "The value of bmi each time it was printed. First, with weight_kg 72, it is 28.125. After weight_kg is changed to 74, bmi still prints 28.125, because R stored the answer and not the recipe. Only when the line bmi <- weight_kg / height_m^2 is run again does it become 28.90625, which is 74 / 1.6^2."
+  alt: "Three bars. Print 1: 28.125. Print 2, after the weight was changed to 74: still 28.125. Print 3, after the BMI line was run again: 28.90625, which is 74 / 1.6^2."
+  source: draw.py
+  spec:
+    kind: bar
+    x: ["print 1: weight_kg 72", "print 2: weight_kg now 74, bmi not rerun", "print 3: bmi line run again"]
+    series:
+    - {name: "bmi as printed", y: [28.125, 28.125, 28.90625]}
+    x_label: each time bmi was printed
+    y_label: bmi (kg/m^2)
+    value_labels: true
+    y_range: [0, 32]
+    size: [6.8, 3.0]
+    relations:
+    - check: "y[1] = y[0]"
+    - check: "y[2] = 74 / 1.6^2"
 provenance:
   map_version_id: fc19c8bc-a216-4131-99fb-ebe3f19cec4a
   outcome_refs:

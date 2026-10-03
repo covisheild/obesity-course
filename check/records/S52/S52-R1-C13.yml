@@ -999,6 +999,42 @@ figures:
     y_label: number of rows
     y_range: [0, 400]
     value_labels: true
+- file: s52-r1-c13-missing-by-column.png
+  caption: "Missing values in each column of the penguin file that has any, as colSums(is.na()) counts them. Comments, a free note, is empty in 290 rows; every measurement column misses 14 or fewer. This is why drop_na() with no columns named keeps only 34 rows."
+  alt: "A bar chart of the columns with any missing value: Culmen Length 2, Culmen Depth 2, Flipper Length 2, Body Mass 2, Sex 11, Delta 15 N 14, Delta 13 C 13, Comments 290."
+  source: draw.py
+  spec:
+    kind: bar
+    x: [Culmen Length, Culmen Depth, Flipper Length, Body Mass, Sex, Delta 15 N, Delta 13 C, Comments]
+    series:
+    - {name: missing values, y: [2, 2, 2, 2, 11, 14, 13, 290]}
+    x_label: column (units left off)
+    y_label: rows with the value missing
+    y_range: [0, 330]
+    size: [7.6, 3.2]
+    value_labels: true
+- file: s52-r1-c13-code-999.png
+  caption: "The made-up clinic register's weights as typed, with 999 where the scale was not available. Left in, the two 999s pull the mean of all 5 values to 437.8 kg; turned into NA, the mean of the 3 real weights is 63.7 kg."
+  alt: "A bar chart of five weights, 62, 999, 71, 58 and 999, with a dashed line at 437.8 and another at 63.7."
+  source: draw.py
+  spec:
+    kind: bar
+    x: [1, 2, 3, 4, 5]
+    series:
+    - {name: weight_kg as typed, y: [62, 999, 71, 58, 999]}
+    x_label: id
+    y_label: weight_kg as typed
+    y_range: [0, 1100]
+    value_labels: true
+    relations:
+    - check: "mean(y) = 437.8"
+    - check: "(y[0] + y[2] + y[3])/3 = 63.7"
+    refs:
+    - {y: 437.8, label: ""}
+    - {y: 63.7, label: ""}
+    labels:
+    - {text: "mean of all 5, 999s left in: 437.8", at: [2.75, 437.8], offset: [0, 4]}
+    - {text: "mean of the 3 real weights: 63.7", at: [3.5, 63.7], offset: [-60, 22]}
 provenance:
   map_version_id: fc19c8bc-a216-4131-99fb-ebe3f19cec4a
   outcome_refs:
