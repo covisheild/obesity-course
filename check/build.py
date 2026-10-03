@@ -1147,7 +1147,11 @@ def _notation(text: str) -> str:
 
     # Inline code (`x^2`, `~ island`) is verbatim, like a code block: parked untouched. Only
     # spans that carry a caret or tilde are parked, so text without them is unaffected.
-    text = re.sub(r"((?<!`)`[^`\n]*[\^~][^`\n]*`(?!`))", park("{0}"), text)
+    # Pair backticks left to right (3 Oct 2026): the old pattern could start at the CLOSING
+    # backtick of one span and run to the opening one of the next, parking the prose between
+    # them ("`BMXBMI`, in kg/m^2, beside `BMXWT`") as code, so its caret was never typeset.
+    text = re.sub(r"((?<!`)`[^`\n]*`(?!`))",
+                  lambda m: park("{0}")(m) if re.search(r"[\^~]", m.group(0)) else m.group(0), text)
     text = _SUP.sub(_sup, text)
     text = _LOGB.sub(park("log~{0}~"), text)
     text = text.replace("^", r"\^").replace("~", r"\~")
