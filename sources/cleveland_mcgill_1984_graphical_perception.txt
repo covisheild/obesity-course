@@ -1,0 +1,583 @@
+CLEVELAND AND McGILL 1984, GRAPHICAL PERCEPTION - VERBATIM EXCERPTS
+====================================================================================================
+
+Transcription rule for this file: every line beneath a block heading that does not begin with [NOTE] and comes
+before the next [...] or [END TEXT] is an exact, unaltered slice of the text layer of the PDF named below, cut by
+script (raw[i:j], books/S58-R1/intake/build-G.py) from the text extracted by pdftotext -layout. Nothing has been
+paraphrased, merged or corrected: OCR errors are left in the passages and the correct reading is given in a
+[NOTE]. [...] marks an omission; lines beginning [NOTE] are this file's own annotation and are NOT source text.
+Taken 2 Oct 2026. This source was NOT fetched by a tool: Harsh downloaded the PDF by hand and supplied it in the
+chat (JSTOR and the publisher's site may not be fetched automatically for this course).
+
+WORK: Cleveland WS, McGill R. Graphical perception: theory, experimentation, and application to the development of
+graphical methods. Journal of the American Statistical Association 1984 Sep;79(387):531-554 (Applications Section).
+doi:10.1080/01621459.1984.10478080. Authors at AT&T Bell Laboratories, Murray Hill, NJ.
+FILE: a Taylor & Francis download, 25 PDF pages: a publisher cover page ("This article was downloaded by: [Michigan
+State University] On: 28 February 2015", block 1), then the article, journal pp. 531-554 = PDF pp. 2-25
+(PDF page = journal page - 529). Scanned pages with an OCR text layer ("Acrobat 5.0 Paper Capture"); each article
+page carries a margin stamp "Downloaded by [Michigan State University] at 01:41 28 February 2015".
+SHA-256 of the PDF: 804f08bebc1929d7eeabce9d55b9796d9a3b67d7b429b1f9956e8e91eab5def3.
+COPYRIGHT AND TERMS AS STATED: the article's first page, "(c) Journal of the American Statistical Association"
+(block 1); the publisher's cover page, "This article may be used for research, teaching, and private study
+purposes. Any substantial or systematic reproduction, redistribution, reselling, loan, sub-licensing, systematic
+supply, or distribution in any form to anyone is expressly forbidden" (block 1). Publisher copyright (American
+Statistical Association; published by Taylor & Francis). NOT open access. Held here as short verbatim excerpts,
+privately, for study and for quotation with citation in the course; never to be redistributed as a whole.
+EXTRACTION: `pdftotext -layout` prints the journal's two columns side by side, so the whole-page extraction
+(books/S58-R1/intake/raw/G-cleveland_mcgill_1984-pdftotext.txt) interleaves the columns. The passages are therefore
+cut from books/S58-R1/intake/raw/G-cleveland_mcgill_1984-pdftotext-columns.txt: the same tool and mode run on each
+page's left and right column separately (crop at the gutter; books/S58-R1/intake/extract-G.py). Each passage was
+also checked line by line against the whole-page extraction (every line found there).
+OCR CHECK: every block that carries a number or the ranking was checked against the page image (pdftoppm -r 80;
+the exponents on p. 541 and two lines on pp. 539-540 also at 200 dpi): pages 531 (abstract and copyright line),
+532 (Figure 1 and the ten tasks), 535-537 (the ranking), 539-542 (design, subjects, accuracy measure, results),
+544-545 (summary, dot charts), 547 (shading), 552-553 (conclusions), and the cover page. OCR errors found in the
+held passages: "I0" for 10 (p. 535); "8 t x 11" for 8 1/2 x 11, the formula s_i, ".18to", "56.2.Subjects"
+(p. 539); the accuracy measure "logz( I ... I + I/@." for log2(|judged percent - true percent| + 1/8) and "(3.)"
+for "(5).)" (p. 540); "2'.32" for 2^1.32, "2.97" for 2^.97, "4-" for "4.", "l7" for 17 (p. 541); "barcharts",
+"0 Journal" for (c) Journal (p. 531); "For\each" (p. 545); a stray ";" (p. 544); em dashes as hyphens throughout.
+Every other number in the held passages matched the image. Each error is noted under its block.
+KEY CONTENT HELD (for S58-R1 C14): the abstract; the ten elementary perceptual tasks and the hypothesised order,
+most to least accurate: 1 position along a common scale; 2 positions along nonaligned scales; 3 length, direction,
+angle; 4 area; 5 volume, curvature; 6 shading, color saturation (ranks 3, 5 and 6 are ties); position-length
+experiment (55 subjects, 51 analysed; 5 judgment types on bar charts, types 1-3 position, 4-5 length) and
+position-angle experiment (54 subjects, 51 analysed; pie chart vs bar chart); accuracy = midmean of
+log2(|judged - true| + 1/8); length errors 40%-250% larger than position (factors 1.4 to 2.5); angle errors a
+factor of 1.96 larger than position; the pie chart more accurate than the bar chart in only 3 of 40 cases; large
+errors 5.3 (length) and 7.3 (angle) times as frequent as for position; the recommendations: replace pie charts and
+divided bar charts by (grouped) dot charts or bar charts, "neither graphical form should be used"; the stated
+limits of the theory.
+WHAT IS NOT HELD: the introduction after the abstract, the descriptions of graph forms in section 2, the
+psychophysics (Stevens's power law, Baird, Weber's law) and the framed rectangle in section 3, the bias analysis,
+the bootstrap (section 4.4), sections 5.2-5.4 except one sentence of 5.3, most of section 6, all figures, the
+references. Absence of a passage from this file is not absence from the paper.
+
+
+====================================================================================================
+BLOCK 1 - Cover page of the Taylor & Francis download (citation, DOI, terms of use) and the article's copyright line
+WHERE: cover page (PDF p. 1), journal p. 531 (PDF p. 2)
+FROM: PDF text layer, books/S58-R1/intake/raw/G-cleveland_mcgill_1984-pdftotext-columns.txt
+====================================================================================================
+
+[TEXT]
+This article was downloaded by: [Michigan State University]
+On: 28 February 2015, At: 01:41
+Publisher: Taylor & Francis
+Informa Ltd Registered in England and Wales Registered Number: 1072954 Registered office: Mortimer House, 37-41
+Mortimer Street, London W1T 3JH, UK
+
+
+
+                                 Journal of the American Statistical Association
+                                 Publication details, including instructions for authors and subscription information:
+                                 http://www.tandfonline.com/loi/uasa20
+
+                                 Graphical Perception: Theory, Experimentation, and
+                                 Application to the Development of Graphical Methods
+                                                      a                 a
+                                 William S. Cleveland & Robert McGill
+                                 a
+                                  AT&T Bell Laboratories , Murray Hill , NJ , 07974 , USA
+                                 Published online: 12 Mar 2012.
+
+
+
+
+To cite this article: William S. Cleveland & Robert McGill (1984) Graphical Perception: Theory, Experimentation, and Application to
+the Development of Graphical Methods, Journal of the American Statistical Association, 79:387, 531-554
+
+To link to this article: http://dx.doi.org/10.1080/01621459.1984.10478080
+[...]
+This article may be used for research, teaching, and private study purposes. Any substantial or systematic
+reproduction, redistribution, reselling, loan, sub-licensing, systematic supply, or distribution in any form to anyone is
+expressly forbidden. Terms & Conditions of access and use can be found at http://www.tandfonline.com/page/terms-
+and-conditions
+[...]
+0 Journal of the American Statistical Association
+                        September 1984, Volume 79, Number 387
+                                           Applications Section
+[END TEXT]
+[NOTE] The cover page (PDF p. 1) is the publisher's, added at download; it is not part of the 1984 article.
+[NOTE] OCR: "0 Journal of the American Statistical Association" is, on the page image (p. 531), "(c) Journal of the American
+[NOTE] Statistical Association" (the copyright sign).
+
+====================================================================================================
+BLOCK 2 - Abstract
+WHERE: journal p. 531 (PDF p. 2)
+FROM: PDF text layer, books/S58-R1/intake/raw/G-cleveland_mcgill_1984-pdftotext-columns.txt
+====================================================================================================
+
+[TEXT]
+The subject of graphical methods for data analysis and
+                                                                      for data presentation needs a scientific foundation. In this
+                                                                      article we take a few steps in the direction of establishing
+                                                                      such a foundation. Our approach is based on graphical
+                                                                      perception-the visual decoding of information encoded
+                                                                      on graphs-and it includes both theory and experimen-
+                                                                      tation to test the theory. The theory deals with a small
+                                                                      but important piece of the whole process of graphical
+                                                                      perception. The first part is an identification of a set of
+                                                                      elementary perceptual tasks that are carried out when
+Downloaded by [Michigan State University] at 01:41 28 February 2015
+
+
+
+
+                                                                      people extract quantitative information from graphs. The
+                                                                      second part is an ordering of the tasks on the basis of
+                                                                      how accurately people perform them. Elements of the
+                                                                      theory are tested by experimentation in which subjects
+                                                                      record their judgments of the quantitative information on
+                                                                      graphs. The experiments validate these elements but also
+                                                                       suggest that the set of elementary tasks should be ex-
+                                                                      panded. The theory provides a guideline for graph con-
+                                                                       struction: Graphs should employ elementary tasks as high
+                                                                      in the ordering as possible. This principle is applied to a
+                                                                       variety of graphs, including bar charts, divided barcharts,
+                                                                      pie charts, and statistical maps with shading. The con-
+                                                                      clusion is that radical surgery on these popular graphs is
+                                                                       needed, and as replacements we offer alternative graph-
+                                                                       ical forms-dot charts, dot charts with grouping, and
+                                                                      framed-rectangle charts.
+[END TEXT]
+[NOTE] The line "Downloaded by [Michigan State University] at 01:41 28 February 2015" inside this block (and twice in
+[NOTE] block 5) is the download stamp printed in the page margin, not article text.
+[NOTE] OCR: "divided barcharts" is "divided bar charts" on the page image (p. 531). Throughout this file the text layer
+[NOTE] prints a hyphen where the page has an em dash (e.g. "perception-the visual decoding", "ranks-3, 5 , and 6-have").
+
+====================================================================================================
+BLOCK 3 - Section 2: the ten elementary perceptual tasks (Figure 1)
+WHERE: journal p. 532 (PDF p. 3)
+FROM: PDF text layer, books/S58-R1/intake/raw/G-cleveland_mcgill_1984-pdftotext-columns.txt
+====================================================================================================
+
+[TEXT]
+Figure 1 illustrates 10 elementary perceptual tasks that
+                                                                      people use to extract quantitative information from
+[...]
+graphs. (Color saturation is not illustrated, to avoid the
+ nuisance and expense of color reproduction.)
+[...]
+We do not
+pretend that our list is exhaustive; for example, color hue
+and texture (Bertin 1973) are two elementary tasks ex-
+cluded from the list because they do not have an unam-
+biguous single method of ordering from small to large and
+thus might be regarded as better for encoding categories
+rather than real variables.
+[END TEXT]
+[NOTE] Figure 1 (p. 532, image checked) shows ten labelled panels: position common scale, position non-aligned scales,
+[NOTE] length, direction, angle, area, volume, curvature, shading, color saturation. The figure itself is not held.
+
+====================================================================================================
+BLOCK 4 - Section 3: ordering the elementary perceptual tasks by the accuracy of extraction (the ranking)
+WHERE: journal p. 535 (PDF p. 6), journal p. 536 (PDF p. 7), journal p. 537 (PDF p. 8)
+FROM: PDF text layer, books/S58-R1/intake/raw/G-cleveland_mcgill_1984-pdftotext-columns.txt
+====================================================================================================
+
+[TEXT]
+3. THEORY: ORDERING THE ELEMENTARY
+          PERCEPTUAL TASKS BY THE ACCURACY
+                     OF EXTRACTION
+   In this section we hypothesize an ordering of the I0
+elementary perceptual tasks on the basis of the accuracy
+with which people can extract quantitative information
+by using them. One elementary perceptual task is taken
+to be more accurate than another if it leads to human
+judgments that come closer to the actual encoded quan-
+tities.
+[...]
+Our premise, however, is this:
+    A graphical f o r m that involves elementary perceptual
+    tasks that lead to more accurate judgments than an-
+    other graphical f o r m (with the same quantitative in-
+[...]
+formation) will result in better organization and in-
+                                                                           crease the chances of a correct perception of patterns
+                                                                           and behavior.
+                                                                      In Section 5 we give examples of patterns emerging when
+                                                                      elementary perceptual tasks are changed to increase the
+                                                                      accuracy of judgments.
+[...]
+The following are the 10 elementary tasks in Figure 1,
+ ordered from most to least accurate:
+     1. Position along a common scale
+     2. Positions along nonaligned scales
+     3. Length, direction, angle
+     4. Area
+     5 . Volume, curvature
+     6. Shading, color saturation
+[...]
+Three of the ranks-3, 5 , and 6-have more than one
+                                                                      task; at the moment there is not enough information to
+                                                                      separate the ties.
+[...]
+In the ordering of perceptual tasks, length judgments
+                                                                      are hypothesized to be more accurate than area judg-
+                                                                      ments, which in turn are hypothesized to be more ac-
+                                                                      curate than volume judgments. This ordering is based on
+                                                                      a combination of psychophysical theory and experimental
+                                                                      results.
+[END TEXT]
+[NOTE] OCR: "an ordering of the I0" is "an ordering of the 10" on the page image (p. 535).
+[NOTE] OCR: "graphical f o r m" is "graphical form" (italic) on the page image (p. 535); the premise is set in italics.
+[NOTE] The six-rank list was checked against the page image (p. 536): it reads exactly 1. Position along a common scale;
+[NOTE] 2. Positions along nonaligned scales; 3. Length, direction, angle; 4. Area; 5. Volume, curvature; 6. Shading,
+[NOTE] color saturation ("5 ." in the text layer is "5." on the page). The ordering is the authors' HYPOTHESIS; the
+[NOTE] paper's two experiments test only position against length and position against angle (blocks 5-7).
+
+====================================================================================================
+BLOCK 5 - Section 4.1-4.3: the two experiments, their subjects and the accuracy measure
+WHERE: journal p. 538 (PDF p. 9), journal p. 539 (PDF p. 10), journal p. 540 (PDF p. 11)
+FROM: PDF text layer, books/S58-R1/intake/raw/G-cleveland_mcgill_1984-pdftotext-columns.txt
+====================================================================================================
+
+[TEXT]
+We began checking the hypothesized ordering by run-
+ ning two experiments. The experiments demonstrated
+ very clearly that some judgments of position along a com-
+ mon scale are more accurate than some judgments of
+ length and of angle. Strictly speaking we cannot do more
+ than assert that the results hold for the particular types
+ of graphs in the experiment, but the important point is
+ that the theory has correctly predicted the outcome.
+[...]
+In one experiment 55 subjects were shown the five
+                                                                       types of graphs depicted in Figure 4. (The graphs used in
+                                                                       the experiment were much larger than in Figure 4, each
+                                                                       being on a separate 8 t x 11 page and filling a large portion
+                                                                       of the page.) Each graph was either a divided bar chart
+                                                                       (as in the rightmost panel) or a grouped bar chart (as in
+                                                                       the leftmost panel). A grouped bar chart can be used to
+                                                                       show the same type of data as a divided bar chart by
+                                                                       encoding the total by the left bar of each group and en-
+                                                                       coding the divisions by the remaining bars. On a grouped
+                                                                       bar chart, unlike on a divided bar chart, all values can be
+                                                                       extracted and compared by judging position along a com-
+                                                                       mon scale.
+Downloaded by [Michigan State University] at 01:41 28 February 2015
+
+
+
+
+                                                                          On each graph two bars or divisions were marked with
+                                                                       dots, and subjects were asked to judge what percent the
+                                                                       smaller is of the larger. For the grouped bar charts, the
+                                                                       dots appeared either in the second and third bars of the
+                                                                      left group or in the second bars of the two groups. For
+                                                                      the divided bar chart, the dots appeared either in the bot-
+                                                                      tom divisions of the two bars or in the top divisions of
+                                                                       the two bars or in the top two divisions of the left bar.
+                                                                       For Judgment Types 1-3, subjects had to judge position
+                                                                       along a common scale, and for Judgment Types 4 and 5 ,
+                                                                       subjects had to judge length. Hence we call this the po-
+                                                                       sition-length experiment.
+[...]
+In this position-length experiment, the values involved
+                                                                      in the subjects’ judgments were
+                                                                                  s i = 10 x 10(i-l)’lz, i = 1, . . . , 10,
+                                                                      which are equally spaced on a log scale and range from
+                                                                       10 to 56.2.Subjects judged the ratios of 10 pairs of values;
+                                                                      the ratios ranged from .18to .83. Each pair of values was
+                                                                      judged five times, once for each of the five judgment
+                                                                      types.
+[...]
+In the second experiment 54 subjects judged the two
+types of graphs shown in Figure 3; one type was a pie
+chart and the other was an ordinary bar chart. Ten sets
+of five numbers that added to 100 were generated, and
+each set was encoded by a bar chart and a pie chart,
+resulting in 20 graphs. For each graph, the answer sheet
+indicated which pie segment or bar was largest and sub-
+jects were asked to judge what percentage each of the
+other four values was of the maximum. Since subjects
+were judging position or angle, we call this the position-
+angle experiment.
+[...]
+For the
+ values that actually arose in the constrained random se-
+ lection, the ratios ranged from 10.0 to 99.7%.
+[...]
+In the position-length experiment, the judgments of
+four people were deleted because it was clear from their
+answers that they had not followed instructions. In the
+position-angle experiment, the judgments of three sub-
+jects were deleted for the same reason. For both exper-
+iments, 51 subjects remained for analysis.
+[...]
+We did not detect any differences in the accuracies of
+ the judgments of the nontechnical and technical groups.
+[...]
+To measure accuracy we used
+                                                                            logz( I judged percent - true percent I + I/@.
+Downloaded by [Michigan State University] at 01:41 28 February 2015
+
+
+
+
+                                                                      A log scale seemed appropriate to measure relative error;
+                                                                      we added 1/8 to prevent a distortion of the scale at the
+                                                                      bottom end because the absolute errors in some cases got
+                                                                      very close to zero. We used log base 2 because average
+                                                                      relative errors tended to change by factors less than 10.
+[...]
+Principally because of the outliers, we estimated the lo-
+                                                                      cation of the distribution of the 51 log error values for
+                                                                      each experimental unit by the midmean, a robust estimate
+                                                                      of location (Mosteller and Tukey 1977).
+[...]
+subjects were judging. The striking pattern is that the log
+ absolute errors almost always increase from Type 1
+ through Type 5. (The type numbers were chosen after the
+ analysis to correspond to most accurate (1) to least ac-
+ curate (3.)   We will discuss this pattern in more detail
+ later.
+     The midmeans from the left panel of Figure 14 minus
+ the corresponding midmeans in the right panel are plotted
+ in Figure 15 against the true percentage, with a lowess.
+  curve superimposed. In only 3 of the 40 cases was the
+ pie chart more accurate on average than the bar chart.
+[END TEXT]
+[NOTE] OCR, checked against the page image (p. 539): "8 t x 11 page" is "8 1/2 x 11 page"; "s i = 10 x 10(i-l)'lz" is
+[NOTE] s_i = 10 x 10^((i-1)/12) (i = 1, ..., 10; 10 x 10^(9/12) = 56.2 agrees); ".18to .83" is ".18 to .83";
+[NOTE] "56.2.Subjects" is "56.2. Subjects". The numbers 55, 54, 20 graphs, 10.0 to 99.7%, four and three deleted, 51 match.
+[NOTE] OCR, checked against the page image (p. 540): the accuracy measure "logz( I judged percent - true percent I + I/@."
+[NOTE] is log2(|judged percent - true percent| + 1/8); "least accurate (3.)" is "least accurate (5).)"; 51, 3 of the 40
+[NOTE] match.
+
+====================================================================================================
+BLOCK 6 - Section 4.3 results: position against length, position against angle, and large errors
+WHERE: journal p. 541 (PDF p. 12), journal p. 542 (PDF p. 13)
+FROM: PDF text layer, books/S58-R1/intake/raw/G-cleveland_mcgill_1984-pdftotext-columns.txt
+====================================================================================================
+
+[TEXT]
+The top panel of Figure 16 shows that average errors
+   for length judgments are considerably larger than those
+   for position judgments. A multiple comparison analysis
+   (discussed in Section 4.4) showed that all pairs of the five
+   averages are significantly different at the .05 level, except
+   for Judgment Types 2 and 3. The larger of the two length
+   values is 1.32 log units greater than the smallest of the
+   three position values, which is a factor of 2'.32 = 2.5.
+   The smaller length value is .51 log units greater than the
+   largest position value, which is a factor of 1.4. Thus the
+   average errors for length judgments are 40%-250% larger
+   than those for position judgments.
+      The bottom panel of Figure 16 shows that the average
+   error for angle judgments is considerably larger than for
+   position judgments. The difference is .97 on the log scale,
+   which is a factor of 2.97 = 1.96, and is statistically sig-
+   nificant.
+[...]
+The top panel of Figure 17 shows a summary of the
+   large errors for the position-length experiment. Of the
+   2,550 judgments made by the subjects, 136 had a log error
+   greater than 4- The top panel Of Figure l7 shows the per-
+   centage of these large errors that occurred for each of the
+[...]
+judgment types. Seventy-eight percent of the large errors
+                                                                      occurred for the length judgments; since there were three
+                                                                      position judgments for each two length judgments, the
+                                                                      rate of occurrence of large errors for length judgments is
+                                                                      5.3 times that for position judgments.
+                                                                         The bottom panel of Figure 17 shows the percentage
+                                                                      of large errors (those greater than 4) for the position-
+                                                                       angle experiment; in this experiment 219 of the 4,080
+                                                                      judgments had large errors. Eighty-eight percent of the
+                                                                      large errors occurred for the angle judgments; thus the
+                                                                      rate of occurrence of large errors for the angle judgments
+                                                                      is 7.3 times that for the position judgments.
+[END TEXT]
+[NOTE] OCR, checked against the page image (p. 541, also at 200 dpi): "a factor of 2'.32 = 2.5" is 2^1.32 = 2.5;
+[NOTE] "a factor of 2.97 = 1.96" is 2^.97 = 1.96; "greater than 4-" is "greater than 4."; "Figure l7" is "Figure 17".
+[NOTE] The numbers .05, 1.32, .51, 1.4, 40%-250%, .97, 2,550, 136 match the image. Page 542 (image checked): 5.3, 219,
+[NOTE] 4,080, 7.3 and the words "Seventy-eight" and "Eighty-eight" match.
+
+====================================================================================================
+BLOCK 7 - Section 4.5: Summary of the Experiments
+WHERE: journal p. 544 (PDF p. 15)
+FROM: PDF text layer, books/S58-R1/intake/raw/G-cleveland_mcgill_1984-pdftotext-columns.txt
+====================================================================================================
+
+[TEXT]
+4.5 Summary of the Experiments
+    Two experiments were run in which subjects judged
+ bar charts and pie charts. In the first experiment, five
+ types of judgments were made-two length judgments
+ and three judgments of position along a common scale.
+ In the second experiment, there were two types of judg-
+ ment-position and angle. For all types of judgments,
+ subjects made visual assessments of what percentage one
+ value was of a larger value; thus all recorded values were
+ between 0 and 100. In both experiments there were 51
+ subjects with usable data.
+    Figure 16 summarizes the accuracy of the judgments.
+ The top panel shows the first experiment and the bottom
+ panel shows the second. The scale is the log base 2 of
+ the absolute errors plus 1/8. In the first experiment, po-
+ sition judgments were more accurate than length judg-
+ ments by factors varying from 1.4 to 2.5. In the second
+ experiment, position judgments were 1.96 times as ac-
+ curate as angle judgments. The 95% confidence intervals
+
+
+
+;
+ shown in Figure 16 were computed by using the boot-
+ strap. An important part of the contribution to the errors
+ for length and angle judgments is consistent bias. When
+ the true percentages are in the range of 25-50, subjects
+ tend to underestimate values for these types of judg-
+ ments.
+    The first experiment suggested that the position task
+ should be expanded to a whole range of tasks. As the
+ distance between the two values being judged increased
+ along an axis perpendicular to the common scale, the
+ accuracy decreased. Type 1 judgments had the smallest
+ distance, Type 2 the next smallest, and Type 3 the largest.
+ Not surprisingly, after just two experiments a revision of
+ the theory seems appropriate.
+[END TEXT]
+[NOTE] Checked against the page image (p. 544): 51, 1/8, 1.4 to 2.5, 1.96, 95%, 25-50 match. The lone ";" line inside
+[NOTE] the passage is a text-layer artifact; the page has no such mark.
+
+====================================================================================================
+BLOCK 8 - Section 5 and 5.1: designing graphs from the ordering; pie charts and divided bar charts replaced by dot charts
+WHERE: journal p. 544 (PDF p. 15), journal p. 545 (PDF p. 16)
+FROM: PDF text layer, books/S58-R1/intake/raw/G-cleveland_mcgill_1984-pdftotext-columns.txt
+====================================================================================================
+
+[TEXT]
+The mode of graph design that we advocate is the con-
+ struction of a graphical form that uses elementary per-
+ ceptual tasks as high in the hierarchy as possible. The
+ hypothesis is that by selecting as high as possible, we will
+ elicit judgments that are as accurate as possible, and
+ therefore the graph will maximize a viewer’s ability to
+ detect patterns and organize the quantitative information.
+[...]
+For certain types of data structures, one cannot always
+                                                                      use the most accurate elementary task, judging position
+                                                                      along a common scale. But this is not true of the data
+                                                                      represented in divided bar charts and pie charts; one can
+                                                                      always represent such data along a common scale.
+                                                                         A pie chart can always be replaced by a bar chart, thus
+                                                                      replacing angle judgments by position judgments. In so
+                                                                      doing it might be sensible in many cases to make the scale
+                                                                      go from 0 to 100% so that the viewer can more readily
+                                                                      appreciate the fraction that each bar is of 100%; but 0 to
+                                                                      25 or 50% are also reasonable simple choices.
+[...]
+Actually we prefer dot charts, which are introduced
+                                                                      and discussed in Cleveland (1983), to bar charts. Figures
+                                                                       16, 17, and 20 are dot charts. (The reasons for our pref-
+                                                                      erence depart somewhat from our theme, so we refer the
+                                                                      reader to Cleveland 1983.)
+[...]
+Figure 22 is a pie chart. What is the ordering of the
+                                                                      values of the five categories? The answer is not easy to
+                                                                      find from the pie chart. From the dot chart in Figure 23,
+                                                                      it is clear that the ordering from smallest to largest is A
+                                                                      to E. This demonstrates the increase in ability to perceive
+                                                                      patterns that results from the increased accuracy of per-
+                                                                      ceptions based on position relative to that based on angle
+                                                                      judgments.
+[...]
+A divided bar chart can always be replaced by a
+                                                                      grouped bar chart; again, we prefer a grouped dot chart
+                                                                      (discussed in Cleveland 1982) to a grouped bar chart. To
+[...]
+illustrate the replacement of divided bar charts, consider
+  the graph in Figure 24. What is the ordering of the five
+  items in category A? As with the pie chart, making the
+  judgments is not easy. Figure 25 is a grouped dot chart
+  of the data in Figure 24. For\each of the categories A, B,
+  and C, the totals and the item values are shown. Thus
+  the many length judgments in the divided bar chart have
+  been replaced by position judgments. It is clear that the
+   order of the items in category A from smallest to largest
+   is 1 to 5. Again, there is an increased ability to perceive
+  patterns as a result of the increased accuracy of percep-
+   tions.
+[...]
+Our analysis has provided, in a sense, a resolution of
+  the “Bar-Circle Debate,” as Kruskal (1982) refers to it.
+  This was a controversy (Eells 1926; Croxton 1927; Crox-
+  ton and Stryker 1927; von Huhn 1927) about whether the
+  divided bar chart or the pie chart was superior for por-
+  traying the parts of a whole. The contest appears to have
+  ended in a draw. We conclude that neither graphical form
+  should be used because other methods are demonstrably
+  better.
+[END TEXT]
+[NOTE] Checked against the page images (pp. 544-545): 0 to 100%, 0 to 25 or 50%, Figures 16, 17, 20, 22-25 match.
+[NOTE] OCR: "For\each" is "For each" (a speck on the page). Figures 22-25 (pie chart, dot chart, divided bar chart,
+[NOTE] grouped dot chart) are not held.
+
+====================================================================================================
+BLOCK 9 - Section 5.3: shading at the bottom of the hierarchy
+WHERE: journal p. 547 (PDF p. 18)
+FROM: PDF text layer, books/S58-R1/intake/raw/G-cleveland_mcgill_1984-pdftotext-columns.txt
+====================================================================================================
+
+[TEXT]
+To judge the values of a real variable encoded on a
+patch map with shading, one must perform the elemen-
+tary perceptual task of judging shading, which is at the
+bottom of our perceptual hierarchy.
+[END TEXT]
+
+====================================================================================================
+BLOCK 10 - Section 6: Perspectives, realism, and criticism (the paper's conclusions)
+WHERE: journal p. 552 (PDF p. 23), journal p. 553 (PDF p. 24)
+FROM: PDF text layer, books/S58-R1/intake/raw/G-cleveland_mcgill_1984-pdftotext-columns.txt
+====================================================================================================
+
+[TEXT]
+is accumulated. The outcomes of the two experiments
+  reported here were correctly predicted by the theory; po-
+  sition judgments were more accurate than length judg-
+  ments and angle judgments. The position-length exper-
+  iment suggests, however, that a revision in the theory
+  might be appropriate. Although Judgment Types 1-3 in-
+  volved judgments of position along a common scale,
+  namely the vertical scale of the bar charts, the horizontal
+  distance between the graphical elements being judged
+  varied from 0 cm for Type 1 to 2.8 cm for Type 2 to 5.6
+  cm for Type 3; Figures 16 and 17 show that errors in-
+  creased in going from Type 1 to Type 2 to Type 3. This
+  suggests that the elementary task of judging position be
+  expanded into a continuum of tasks for which accuracy
+  is conjectured to decrease with increasing distance be-
+  tween the graphical elements encoding the data, where
+  distance is measured perpendicular to the axis along
+  which the data are plotted. Not surprisingly, after just
+  two experiments a revision in the theory appears nec-
+  essary.
+[...]
+The ordering of the perceptual tasks does not provide
+  a complete prescription for how to make a graph. Rather,
+  it provides a set of guidelines that must be used with
+  judgment in designing a graph.
+[...]
+We cannot realistically claim to
+                                                                      have isolated 10 basic, independent perceptual tasks.
+                                                                      Each task is really a complex set of tasks, and there is
+                                                                      much overlap.
+[...]
+Whatever the limitations of the current theory, it ap-
+                                                                      pears to have led to some useful results. Its application
+                                                                      to some of the most-used charts in graphical communi-
+                                                                      cation (bar charts, divided bar charts, pie charts, and sta-
+                                                                      tistical maps with shading) has led to replacements (dot
+                                                                      charts, dot charts with grouping, and framed-rectangle
+                                                                      charts). We do not lightly recommend the dismissal of
+                                                                      some of the most popular graph forms, but it appears to
+                                                                      be the inescapable conclusion of this analysis of graph
+                                                                      design. If progress is to be made in graphics, we must be
+                                                                      prepared to set aside old procedures when better ones
+                                                                      are developed, just as is done in other areas of science.
+[END TEXT]
+[NOTE] Checked against the page images (pp. 552-553): 0 cm, 2.8 cm, 5.6 cm, Types 1-3, "10 basic" match. The first
+[NOTE] passage begins mid-sentence: the sentence starts at the foot of the left column of p. 552, which is not held.

@@ -1,0 +1,668 @@
+concept_id: S58-R1-C22
+subject: S58
+rung: 1
+sequence: 22
+name: "Making the plot: from a table of numbers to a finished figure"
+concept_type: derivable
+clusters:
+- craft-and-integrity
+ground_floor_deps:
+- B0-R0-C39
+- B0-R0-C40
+concept_deps:
+- S58-R1-C14
+- S58-R1-C15
+- S58-R1-C16
+- S58-R1-C17
+- S58-R1-C18
+- S58-R1-C19
+- S58-R1-C20
+- S58-R1-C21
+definition:
+  text: |
+    Making a figure is a sequence of decisions, taken in a fixed order, which any program can be made to
+    carry out. The first four decide the figure's content. They are the claim, the mark that suits the
+    shape of the data, the range of the value axis (the side axis that carries the numbers), and the
+    words on it, with each axis titled and given its unit.
+
+    A default is a setting a program uses when you have not chosen one. Defaults are made to suit
+    any plot, so they suit no particular plot well.
+
+    In this book, a figure sheet is the written list of the decisions for one figure, kept beside the data.
+
+    An image is saved either as a bitmap, a grid of coloured dots called pixels, or as a vector
+    graphic, which stores the shapes themselves and is redrawn at any size without losing
+    sharpness. A png or jpeg file is a bitmap; a pdf can hold a vector graphic.
+  references:
+  - citekey: rougier_2014_ten_rules_figures
+    kind: textbook
+    locator: "Rule 2: Identify Your Message"
+    quote: |-
+      Only after identifying the message will it be worth the time to develop your figure
+    verified:
+      resolved_id: https://doi.org/10.1371/journal.pcbi.1003833
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+      note: |-
+        The first decision: the claim before the drawing. The article is CC0.
+  - citekey: rougier_2014_ten_rules_figures
+    kind: textbook
+    locator: "Rule 5: Do Not Trust the Defaults"
+    quote: |-
+      Since these settings are to be used for virtually any type of plot, they are not fine-tuned for a specific type of plot. In other words, they are good enough for any plot but they are best for none.
+    verified:
+      resolved_id: https://doi.org/10.1371/journal.pcbi.1003833
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+      note: |-
+        The definition of a default and why each is checked. The same rule lists what defaults
+        set: "size, font, colors, styles, ticks, markers, etc."
+  - citekey: rougier_2014_ten_rules_figures
+    kind: textbook
+    locator: "Rule 5: Do Not Trust the Defaults, second sentence"
+    quote: |-
+      When the end-user does not specify anything, these default settings are used to specify size, font, colors, styles, ticks, markers, etc.
+    verified:
+      resolved_id: https://doi.org/10.1371/journal.pcbi.1003833
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+  - citekey: rougier_2014_ten_rules_figures
+    kind: textbook
+    locator: "Rule 5: Do Not Trust the Defaults, the list of packages"
+    quote: |-
+      you can usually recognize the specific style of each software package (Matlab, Excel, Keynote, etc.)
+    verified:
+      resolved_id: https://doi.org/10.1371/journal.pcbi.1003833
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+      note: |-
+        A spreadsheet's chart is one of the defaults Rougier and colleagues mean.
+  - citekey: rougier_2014_ten_rules_figures
+    kind: textbook
+    locator: "Rule 7: Do Not Mislead the Reader"
+    quote: |-
+      If your software automatically re-scales values, you might obtain an objective representation of the data (because title, labels, and ticks indicate clearly what is actually displayed) that is nonetheless visually misleading
+    verified:
+      resolved_id: https://doi.org/10.1371/journal.pcbi.1003833
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+      note: |-
+        Why the axis start is checked even when the program chose it. The record does not say
+        which programs re-scale; the illustration's draft chart is invented.
+  - citekey: rougier_2014_ten_rules_figures
+    kind: textbook
+    locator: "Rule 10: Get the Right Tool"
+    quote: |-
+      the software or library you're using to make a visualization can be different from the software or library you're using to conduct your research and/or analyze your data
+    verified:
+      resolved_id: https://doi.org/10.1371/journal.pcbi.1003833
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+  - citekey: wilke_2019_dataviz_preface
+    kind: textbook
+    locator: "Preface, the paragraph on interactive plot programs"
+    quote: |-
+      Please be aware that Excel is an interactive plot program as well and is not recommended for figure preparation (or data analysis).
+    verified:
+      resolved_id: https://clauswilke.com/dataviz/preface.html
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+      note: |-
+        CC BY-NC-ND 4.0: quoted, never adapted. The paragraph opens "For all the above reasons,
+        interactive plot programs are a bad idea. They inherently force you to manually prepare
+        your figures."
+  - citekey: wilke_2019_dataviz_preface
+    kind: textbook
+    locator: "Preface, the paragraph on automation"
+    quote: |-
+      First, the moment you manually edit a figure, your final figure becomes irreproducible. A third party cannot generate the exact same figure you did.
+    verified:
+      resolved_id: https://clauswilke.com/dataviz/preface.html
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+      note: |-
+        Why the decisions are written down. Wilke's own answer is to generate figures by code;
+        this book routes code to the course's book on R and reproducibility.
+  - citekey: wilke_2019_dataviz_preface
+    kind: textbook
+    locator: "Preface, the paragraph on R and ggplot2"
+    quote: |-
+      You can use any plotting software you want to generate the kinds of figures I’m showing here.
+    verified:
+      resolved_id: https://clauswilke.com/dataviz/preface.html
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+      note: |-
+        The principles are independent of the program. The apostrophe is the source's curly one.
+  - citekey: wilke_2019_dataviz_ch28
+    kind: textbook
+    locator: "Chapter 28, opening section, the sentence set on its own"
+    quote: |-
+      The best visualization software is the one that allows you to make the figures you need.
+    verified:
+      resolved_id: https://clauswilke.com/dataviz/choosing-visualization-software.html
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+  - citekey: wilke_2019_dataviz_ch28
+    kind: textbook
+    locator: "§28.3 Separation of content and design, first paragraph"
+    quote: |-
+      By content, I refer to the specific data set shown, the data transformations applied (if any), the specific mappings from data onto aesthetics, the scales, the axis ranges, and the type of plot (scatter plot, line plot, bar plot, boxplot, etc.).
+    verified:
+      resolved_id: https://clauswilke.com/dataviz/choosing-visualization-software.html
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+      note: |-
+        Wilke's "aesthetics" are what this book calls marks and their colours and positions.
+  - citekey: wilke_2019_dataviz_ch28
+    kind: textbook
+    locator: "§28.3 Separation of content and design, first paragraph, next sentence"
+    quote: |-
+      Design, on the other hand, describes features such as the foreground and background colors, font specifications (e.g. font size, face, and family), symbol shapes and sizes, the placement of legends, axis ticks, axis titles, and plot titles, and whether or not the figure has a background grid.
+    verified:
+      resolved_id: https://clauswilke.com/dataviz/choosing-visualization-software.html
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+      note: |-
+        This book puts axis titles with content (step 4), because without them the content
+        cannot be read; Wilke lists their placement under design. The order is otherwise his.
+  - citekey: wilke_2019_dataviz_ch28
+    kind: textbook
+    locator: "§28.3, last paragraph"
+    quote: |-
+      If you have to make figures interactively, in particular with a software that does not keep track of all data transformations and visual tweaks you have applied, consider taking careful notes on how you make each figure, so that all your work remains reproducible.
+    verified:
+      resolved_id: https://clauswilke.com/dataviz/choosing-visualization-software.html
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+      note: |-
+        The basis of the figure sheet. "Figure sheet" is this book's name for Wilke's careful
+        notes.
+  - citekey: wilke_2019_dataviz_ch28
+    kind: textbook
+    locator: "§28.2 Data exploration versus data presentation, the paragraph on manual sprucing up"
+    quote: |-
+      we end up introducing a small modification to how we analyze our data, and consequently all figures have to be redrawn
+    verified:
+      resolved_id: https://clauswilke.com/dataviz/choosing-visualization-software.html
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+  - citekey: wilke_2019_dataviz_ch24
+    kind: textbook
+    locator: "Chapter 24, first paragraph"
+    quote: |-
+      In my experience, nearly all plot libraries and graphing softwares have poor defaults.
+    verified:
+      resolved_id: https://clauswilke.com/dataviz/small-axis-labels.html
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+      note: |-
+        Said of the size of axis labels and annotations. The chapter's URL is the one in the
+        course bibliography.
+  - citekey: wilke_2019_dataviz_ch27
+    kind: textbook
+    locator: "§27.1 Bitmap and vector graphics, first paragraph"
+    quote: |-
+      Bitmaps or raster graphics store the image as a grid of individual points (called pixels), each with a specified color. By contrast, vector graphics store the geometric arrangement of individual graphical elements in the image.
+    verified:
+      resolved_id: https://clauswilke.com/dataviz/image-file-formats.html
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+  - citekey: wilke_2019_dataviz_ch27
+    kind: textbook
+    locator: "§27.1, the paragraph after Table 27.1"
+    quote: |-
+      Vector graphics are also called “resolution-independent,” because they can be magnified to arbitrary size without losing detail or sharpness.
+    verified:
+      resolved_id: https://clauswilke.com/dataviz/image-file-formats.html
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+  - citekey: wilke_2019_dataviz_ch27
+    kind: textbook
+    locator: "Chapter 27, second paragraph"
+    quote: |-
+      My own preference is to use pdf for high-quality publication-ready files and generally whenever possible, png for online documents and other scenarios where bitmap graphics are required, and jpeg as the final resort if the png files are too large.
+    verified:
+      resolved_id: https://clauswilke.com/dataviz/image-file-formats.html
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+  - citekey: wilke_2019_dataviz_ch27
+    kind: textbook
+    locator: "§27.2 Lossless and lossy compression, the paragraph on avoiding jpeg"
+    quote: |-
+      In particular, you should avoid it for images containing line drawings or text, as is the case for data visualizations or screen shots.
+    verified:
+      resolved_id: https://clauswilke.com/dataviz/image-file-formats.html
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+      note: |-
+        "it" is the jpeg format, named in the sentence before.
+  - citekey: wilke_2019_dataviz_ch27
+    kind: textbook
+    locator: "§27.3 Converting between image formats"
+    quote: |-
+      after saving a vector graphic into a bitmap format, e.g. a pdf file as a jpeg, the resolution independence that is a key feature of the vector graphic has been lost
+    verified:
+      resolved_id: https://clauswilke.com/dataviz/image-file-formats.html
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+  - citekey: icmje_2026_manuscript_preparation
+    kind: guideline
+    locator: "Section IV.A.3.i Illustrations (Figures), first paragraph"
+    quote: |-
+      Most submission systems have detailed instructions on the quality of images and check them after manuscript upload.
+    verified:
+      resolved_id: https://www.icmje.org/recommendations/browse/manuscript-preparation/preparing-for-submission.html
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+      note: |-
+        Off-type reference (guideline on a derivable concept), held and quoted. ICMJE asks others
+        not to reprint the Recommendations: quoted briefly and linked.
+  - citekey: icmje_2026_manuscript_preparation
+    kind: guideline
+    locator: "Section IV.A.3.i Illustrations (Figures), third paragraph"
+    quote: |-
+      large enough to remain legible when the figure is reduced for publication
+    verified:
+      resolved_id: https://www.icmje.org/recommendations/browse/manuscript-preparation/preparing-for-submission.html
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+simplified_explanation: |
+  A program will draw a chart from your numbers in one click. That chart is the program's guess,
+  made for every chart at once.
+
+  So decide first, then draw. Write your decisions down in order.
+
+  Keep that list. When a number changes, or a reviewer asks for a change, you can draw the
+  figure again in minutes and get the same result.
+illustration:
+  body: |
+    Here is the trap with the chart a program offers first. It looks finished.
+
+    Open the *National Family Health Survey (NFHS-5), 2019-21: India Fact Sheet* at https://dhsprogram.com/pubs/pdf/OF43/India_National_Fact_Sheet.pdf. Search
+    for anaemic. The fact sheet counts a person as anaemic when their haemoglobin, measured in grams
+    per decilitre (g/dl), is below a cut-off for their group. For women it is 12.0 g/dl, or 11.0 if
+    pregnant (indicators 93 and 94). Five of its rows are these ([22] marks a footnote).
+
+    > 92. Children age 6-59 months who are anaemic (<11.0 g/dl)[22] (%) 64.2 68.3 67.1 58.6
+
+    > 95. All women age 15-49 years who are anaemic[22] (%) 53.8 58.5 57.0 53.1
+
+    > 96. All women age 15-19 years who are anaemic[22] (%) 56.5 60.2 59.1 54.1
+
+    > 97. Men age 15-49 years who are anaemic (<13.0 g/dl)[22] (%) 20.4 27.4 25.0 22.7
+
+    > 98. Men age 15-19 years who are anaemic (<13.0 g/dl)[22] (%) 25.0 33.9 31.1 29.2
+
+    The four columns are NFHS-5 (2019-21) urban, rural and total, then NFHS-4 (2015-16) total, as
+    in the overweight rows you have used all through this book. Take the two totals for each
+    group into a table of your own.
+
+    ```table
+    | group | NFHS-4, 2015-16 (%) | NFHS-5, 2019-21 (%) |
+    | children 6-59 months | 58.6 | 67.1 |
+    | women 15-19 | 54.1 | 59.1 |
+    | women 15-49 | 53.1 | 57.0 |
+    | men 15-19 | 29.2 | 31.1 |
+    | men 15-49 | 22.7 | 25.0 |
+    ```
+
+    Now suppose you select the table and ask your program for a column chart.
+
+    It has a title
+    across the top, "Chart 1". A key in a box says "Series1" and "Series2". The value axis
+    starts at 20. The text is small and grey. The bars are red and green. A dark grid line runs
+    every 5 points. It saves as a jpeg.
+
+    Do not start fixing what you see.
+
+    **1. The claim.** Cover the chart and write the one sentence it should make. Here: between NFHS-4 and NFHS-5, the share with anaemia rose in every group.
+
+    Keep every row, even one that would weaken the claim. Here none does: indicators 93 and 94, for
+    non-pregnant and pregnant women, rose too. The fact sheet prints no confidence intervals. So it
+    cannot show whether the smallest rises are more than sampling variation.
+
+    **2. The mark.** The shape of the data is amounts for a set of groups, at two times. That
+    takes bars, or dots where the bars would end, on one shared axis (`S58-R1-C15`). Put each
+    group's two bars side by side, because the claim compares the two rounds within a group.
+
+    **3. The axis.** Bars start at zero, so the starting point of 20 goes.
+
+    **4. The words.** Title the value axis with the quantity and its unit: "anaemic (%)". Delete "Chart 1": the finding goes in the caption, not across the
+    drawing.
+
+    **5. The defaults.** Go through the rest one at a time and ask of each what it tells the reader (`S58-R1-C18`). The dark grid goes, or becomes faint. Make
+    the small grey text larger and darker.
+
+    **6. Colour.** Its job here is to separate two rounds. Red against green fails in grey and for a reader with colour-vision deficiency (`S58-R1-C19`).
+    Choose two colours that differ clearly in lightness. Where you cannot, keep the order fixed and
+    name each round on the figure.
+
+    **7. The caption.** Finding first, then what the bars are, who, when, and the source (`S58-R1-C20`).
+
+    **8. Saving.** Read the journal's instructions on file type and size first. Never use a jpeg for a chart: Wilke says to avoid it for "images containing
+    line drawings or text".
+
+    **9. The checks.** Shrink the figure on screen to about {{n:figure_check_width_low_cm}} to {{n:figure_check_width_high_cm}} cm wide, the size of one column
+    of a printed page, and read every label (`S58-R1-C20`).
+
+    Here is the figure sheet you have written. It records the data as well as the nine decisions.
+
+    ```table
+    | step | decision for this figure |
+    | claim | anaemia rose between NFHS-4 and NFHS-5 in every group the fact sheet reports |
+    | data | five rows of the NFHS-5 India fact sheet, NFHS-4 and NFHS-5 totals; pregnant and non-pregnant women left out, contained in all women |
+    | mark | bars, the two rounds side by side within each group |
+    | axis | value axis from 0 to 80, titled "anaemic (%)" |
+    | words | groups under the bars with ages in years; no title on the drawing |
+    | defaults changed | no key; faint grid; larger, darker text |
+    | colour | this book's two colours merge in grey, so NFHS-4 always on the left and each round named over the first pair |
+    | caption | finding first; what the bars show; ages; no counts in the source; source and indicator numbers |
+    | saving | the journal's format and size; otherwise pdf, and png where a bitmap is required |
+    | checks | read at {{n:figure_check_width_low_cm}} cm wide; in grey; through a simulator |
+    ```
+
+    The figure drawn from this sheet is the one at the start of this section. That is the point: any program that will take these decisions can draw it again.
+  analogy_breaks_when: |
+    The sheet makes the figure repeatable only as far as you wrote it down. A change you make by
+    dragging a label with the mouse and forget to record is lost the next time.
+
+    Each group has its own cut-off for haemoglobin, so the bars compare shares, not haemoglobin
+    levels.
+  numbers:
+  - value: "67.1"
+    unit: per cent of children aged 6-59 months anaemic, NFHS-5 (2019-21), India total
+    citekey: nfhs5_india_factsheet
+    as_of: '2026-10-02'
+    quote: |-
+      92. Children age 6-59 months who are anaemic (<11.0 g/dl)22 (%) 64.2 68.3 67.1 58.6
+  - value: "58.6"
+    unit: per cent of children aged 6-59 months anaemic, NFHS-4 (2015-16), India total
+    citekey: nfhs5_india_factsheet
+    as_of: '2026-10-02'
+    quote: |-
+      92. Children age 6-59 months who are anaemic (<11.0 g/dl)22 (%) 64.2 68.3 67.1 58.6
+  - value: "57.0"
+    unit: per cent of all women aged 15-49 anaemic, NFHS-5, India total
+    citekey: nfhs5_india_factsheet
+    as_of: '2026-10-02'
+    quote: |-
+      95. All women age 15-49 years who are anaemic22 (%) 53.8 58.5 57.0 53.1
+  - value: "53.1"
+    unit: per cent of all women aged 15-49 anaemic, NFHS-4, India total
+    citekey: nfhs5_india_factsheet
+    as_of: '2026-10-02'
+    quote: |-
+      95. All women age 15-49 years who are anaemic22 (%) 53.8 58.5 57.0 53.1
+  - value: "59.1"
+    unit: per cent of all women aged 15-19 anaemic, NFHS-5, India total
+    citekey: nfhs5_india_factsheet
+    as_of: '2026-10-02'
+    quote: |-
+      96. All women age 15-19 years who are anaemic22 (%) 56.5 60.2 59.1 54.1
+  - value: "54.1"
+    unit: per cent of all women aged 15-19 anaemic, NFHS-4, India total
+    citekey: nfhs5_india_factsheet
+    as_of: '2026-10-02'
+    quote: |-
+      96. All women age 15-19 years who are anaemic22 (%) 56.5 60.2 59.1 54.1
+  - value: "25.0"
+    unit: per cent of men aged 15-49 anaemic, NFHS-5, India total
+    citekey: nfhs5_india_factsheet
+    as_of: '2026-10-02'
+    quote: |-
+      97. Men age 15-49 years who are anaemic (<13.0 g/dl)22 (%) 20.4 27.4 25.0 22.7
+  - value: "22.7"
+    unit: per cent of men aged 15-49 anaemic, NFHS-4, India total
+    citekey: nfhs5_india_factsheet
+    as_of: '2026-10-02'
+    quote: |-
+      97. Men age 15-49 years who are anaemic (<13.0 g/dl)22 (%) 20.4 27.4 25.0 22.7
+  - value: "31.1"
+    unit: per cent of men aged 15-19 anaemic, NFHS-5, India total
+    citekey: nfhs5_india_factsheet
+    as_of: '2026-10-02'
+    quote: |-
+      98. Men age 15-19 years who are anaemic (<13.0 g/dl)22 (%) 25.0 33.9 31.1 29.2
+  - value: "29.2"
+    unit: per cent of men aged 15-19 anaemic, NFHS-4, India total
+    citekey: nfhs5_india_factsheet
+    as_of: '2026-10-02'
+    quote: |-
+      98. Men age 15-19 years who are anaemic (<13.0 g/dl)22 (%) 25.0 33.9 31.1 29.2
+  - value: "12.0"
+    unit: g/dl, haemoglobin cut-off for anaemia in non-pregnant women aged 15-49
+    citekey: nfhs5_india_factsheet
+    as_of: '2026-10-03'
+    quote: |-
+      93. Non-pregnant women age 15-49 years who are anaemic (<12.0 g/dl)22 (%) 54.1  58.7  57.2  53.2
+  - value: "11.0"
+    unit: g/dl, haemoglobin cut-off for anaemia in pregnant women aged 15-49
+    citekey: nfhs5_india_factsheet
+    as_of: '2026-10-03'
+    quote: |-
+      94. Pregnant women age 15-49 years who are anaemic (<11.0 g/dl)22 (%) 45.7  54.3  52.2  50.4
+figures:
+- file: s58-r1-c22-anaemia-two-rounds.png
+  caption: "Between NFHS-4 (2015-16) and NFHS-5 (2019-21), the share with anaemia rose in each of the five groups shown, by 1.9 to 8.5 percentage points. Bars show the per cent anaemic, by each group's own haemoglobin cut-off; ages in years. Counts are not given in the source. Source: NFHS-5 India Fact Sheet, indicators 92 and 95 to 98."
+  alt: "Five pairs of bars from zero, NFHS-4 on the left of each pair and NFHS-5 on the right, named over the first pair, each bar's value printed on it: children 6-59 months 58.6 and 67.1; women 15-19 54.1 and 59.1; women 15-49 53.1 and 57.0; men 15-19 29.2 and 31.1; men 15-49 22.7 and 25.0. In every pair the NFHS-5 bar is taller."
+  source: draw.py
+  spec:
+    kind: bar
+    # Literal rather than from_table: a table series takes its header as a legend entry, and this
+    # book's two series colours merge in grey (RECONCILE.md), so the rounds are named directly over
+    # the first pair and the series are left unnamed, which leaves no legend.
+    x: ["children 6-59 months", "women 15-19", "women 15-49", "men 15-19", "men 15-49"]
+    series:
+    - name: ""
+      y: ["58.6", "54.1", "53.1", "29.2", "22.7"]
+    - name: ""
+      y: ["67.1", "59.1", "57.0", "31.1", "25.0"]
+    labels:
+    - {text: "NFHS-4", at: [-0.335, 63.5], offset: [0, 2]}
+    - {text: "NFHS-5", at: [0.015, 72], offset: [0, 2]}
+    x_label: ""
+    y_label: "anaemic (%)"
+    value_labels: true
+    y_range: [0, 80]
+    size: [7.4, 3.2]
+    derived:
+    - {value: "8.5", from: "67.1 - 58.6"}
+    - {value: "5.0", from: "59.1 - 54.1"}
+    - {value: "3.9", from: "57.0 - 53.1"}
+    - {value: "1.9", from: "31.1 - 29.2"}
+    - {value: "2.3", from: "25.0 - 22.7"}
+    relations:
+    - check: "y2[0] - y1[0] = 8.5"
+    - check: "y2[1] - y1[1] = 5.0"
+    - check: "y2[2] - y1[2] = 3.9"
+    - check: "y2[3] - y1[3] = 1.9"
+    - check: "y2[4] - y1[4] = 2.3"
+must_know:
+- point: |
+    Write the figure's decisions down before you open the program, in order: claim, mark, axis,
+    words, defaults, colour, caption, saving, checks. If you start by fixing what the first
+    chart shows, you fix what you happen to notice.
+  kind: move
+  bearing: methodological
+  refs: [rougier_2014_ten_rules_figures, wilke_2019_dataviz_ch28]
+- point: |
+    "The program drew it, so it is a neutral picture of the numbers" is the error. Every setting
+    you did not choose was chosen for any chart at all. Check each one, the axis start first.
+  kind: misconception
+  bearing: methodological
+  refs: [rougier_2014_ten_rules_figures]
+- point: |
+    A spreadsheet will do only if you change nearly every default. If a spreadsheet is what you
+    have, keep a figure sheet beside the file, and record every change as you make it.
+  kind: trap
+  bearing: methodological
+  refs: [wilke_2019_dataviz_preface, wilke_2019_dataviz_ch28]
+- point: |
+    Never finish a figure by hand in a drawing program and leave no record. When a reviewer
+    asks for one changed number, every hand edit has to be done again, and some will be
+    forgotten.
+  kind: consequence
+  bearing: methodological
+  refs: [wilke_2019_dataviz_preface]
+- point: |
+    Read the journal's instructions for figures before you save. Where they leave it to you, save
+    a vector graphic such as a pdf for print. Use a png where a bitmap is required, and never a
+    jpeg for a chart.
+  kind: move
+  bearing: methodological
+  refs: [icmje_2026_manuscript_preparation, wilke_2019_dataviz_ch27]
+- point: |
+    Check the figure at the size it will be printed, not at the size of your screen. Shrink it to
+    one column's width, then view it in grey and through a simulator.
+  kind: move
+  bearing: methodological
+  refs: [icmje_2026_manuscript_preparation]
+- point: |
+    When a trainee shows you a chart, ask for the figure sheet before you look at the chart.
+  kind: move
+  bearing: teaching
+- point: |
+    The procedure makes sure each decision is taken on purpose. A perfectly made figure of a
+    wrong table is a wrong figure, so check the data against their source before step 1.
+  kind: boundary
+  bearing: methodological
+common_misreading: |
+  "Wilke says Excel is not recommended, so a figure made in a spreadsheet is wrong." A figure is
+  right or wrong by what it shows: its claim, its mark, its axis and its words. Wilke's objection
+  is that a figure made by hand cannot be made again exactly. In his own words, "The best
+  visualization software is the one that allows you to make the figures you need." A spreadsheet
+  figure made from a written figure sheet, with every default checked, can be a good figure. It is
+  harder to repeat than one drawn by code. Drawing figures by code is taught in the course's book on
+  R and reproducibility (S52).
+reporting_sentence: |
+  Figures were drawn in [program and version] from the data in [table or file]. The decisions
+  for each figure, including axis ranges and colours, are listed in [supplementary file].
+exercises:
+- type: retrieval
+  prompt: |
+    From memory: list the nine decisions for making a figure, in order. Which four decide what
+    the figure shows, and which come after?
+  answer: |
+    Claim, mark, axis, words; then defaults, colour, caption, saving, checks.
+
+    The first four decide what the figure shows: the claim, the mark, the axis range, and the
+    axis titles with units. The rest come after. Check the defaults one by one. Give colour a job.
+    Write the caption. Choose the file type and size. Last, check it at printed size, in grey and
+    through a simulator.
+  confidence_first: true
+- type: critique
+  prompt: |
+    A colleague hands you the figure sheet below for a figure in her thesis. It is invented. Say
+    what is wrong with each line you would change, and what you would write instead.
+
+    ```table
+    | step | decision |
+    | claim | anaemia in NFHS-5 |
+    | mark | 3-D columns, the program's first offer |
+    | axis | the program's own range, which starts at 50 |
+    | words | title on top: "Anaemia"; axis untitled |
+    | colour | red for women, green for men |
+    | saving | jpeg, so the file is small |
+    ```
+  answer: |
+    Every line needs changing.
+
+    - Claim: "anaemia in NFHS-5" is a topic. Write the finding, for example "anaemia was more than
+      twice as common in women as in men aged 15-49 in NFHS-5". Then decide what to draw.
+    - Mark: a 3-D effect adds depth that is not in the data (`S58-R1-C18`). Use flat bars, or dots.
+    - Axis: bars start at zero. Men aged 15-49 were at 25.0 per cent in NFHS-5, so an axis from 50
+      cannot show the men's bar at all. Take the axis from 0, and title it "anaemic (%)".
+    - Words: the title moves into the caption, as a finding. The value axis needs its quantity
+      and unit.
+    - Colour: red against green fails in grey and for readers with the commonest colour-vision
+      deficiency. Two groups with no order take two colours of clearly different lightness, or
+      direct labels and one colour.
+    - Saving: jpeg blurs lines and text. Use the journal's format; otherwise pdf, or png where a
+      bitmap is required.
+
+    Three lines are missing: no step for checking the defaults that are left, none for the
+    caption, and none for the checks at printed size and in grey.
+  skill_ref: S58-R1-K02
+- type: design
+  prompt: |
+    Take the figure you are drawing for your build section. Write its figure sheet, the data and
+    all nine decisions, before you open any program. Then draw it, and note every place where you had to change
+    something the sheet did not mention. Add those to the sheet.
+  answer: |
+    Judge your sheet by whether a colleague could draw the same figure from it and your data
+    without asking you anything. Check four lines in particular.
+
+    - The claim is a sentence that would be false if the data had come out otherwise.
+    - The axis line gives the start and the end. Bars start at zero; any other start for points is
+      stated, with the reason.
+    - The defaults line names each default you changed, not "tidied up".
+    - The checks line records what you did: the width you shrank it to, and that you viewed it in
+      grey and through a simulator.
+
+    Every change you had to add after drawing is a decision you were about to make by accident.
+    The list of them is worth keeping for your next figure.
+  skill_ref: S58-R1-K02
+- type: teaching
+  prompt: |
+    A first-year resident says: "I only have a spreadsheet, and my guide says it is fine. Why
+    should I bother with all these steps?" Ten minutes, with a whiteboard.
+  answer: |
+    Agree with the guide first: a spreadsheet can draw a good figure. Wilke's own test is whether
+    the software lets you make the figure you need.
+
+    Then draw the program's first chart on the board, from her own data if she has them. Give it a
+    title on top, a key saying "Series1", an axis starting above zero, and small text. Ask her what each
+    element tells the reader. Most tell nothing, and the axis start misleads. Rougier and
+    colleagues' point is that defaults suit every chart and so suit none.
+
+    Then the real cost. Ask what happens when her guide finds one wrong value in the data. If she
+    changed fifteen things by hand, she must remember and repeat all fifteen. Show her the figure
+    sheet: the data and nine decisions, written once, kept beside the file. With it, the redraw takes minutes.
+
+    End on what the sheet does not do. It does not make her data right. She checks those first.
+retrieval_items:
+- q: What are the nine decisions for making a figure, in order?
+  a: Claim, mark, axis, words; then defaults, colour, caption, saving, checks (at printed size, in grey, through a simulator).
+- q: Why does Wilke not recommend Excel for figures?
+  a: It is an interactive program, so every figure is made by hand and cannot be repeated exactly; manual edits make a figure irreproducible.
+- q: Which file types suit a chart?
+  a: A vector graphic such as a pdf for print, a png where a bitmap is required; never a jpeg, which blurs lines and text. Follow the journal's instructions first.
+- q: What is a figure sheet for?
+  a: It records every decision for one figure, beside its data, so that you or anyone else can draw the same figure again.
+quantitative: false
+provenance:
+  map_version_id: fc19c8bc-a216-4131-99fb-ebe3f19cec4a
+  outcome_refs:
+  - S58-R1-S2
+  bridge_ref:
+  - S58-R2-R2
+  - S58-R2-B
+review:
+  stability: long
+  trigger: '2031-10-02'
+  as_of: '2026-10-02'
+  last_reviewed: '2026-10-02'
+status: drafted

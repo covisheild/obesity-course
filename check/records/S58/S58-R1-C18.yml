@@ -1,0 +1,664 @@
+concept_id: S58-R1-C18
+subject: S58
+rung: 1
+sequence: 18
+name: Decoration that does no work
+concept_type: empirical
+clusters:
+- craft-and-integrity
+ground_floor_deps:
+- B0-R0-C40
+concept_deps: [S58-R1-C14, S58-R1-C17]
+definition:
+  text: |
+    Tufte divides the ink on a figure into two kinds. Data-ink is the ink that changes when the
+    data change: the bars, the points, the line. Everything else is non-data ink: frames, grid
+    lines, background fills, shadows. The data-ink ratio is the data-ink divided by all the ink
+    used to print the figure.
+
+    Tufte's rule is to maximise this ratio "within reason": erase non-data ink, and erase
+    data-ink that repeats what other ink already shows. He gives no one-sentence definition of
+    chartjunk. He introduces it as decoration that "does not tell the viewer anything new".
+
+    In this book, decoration is any element that tells the reader nothing about the data or about
+    how to read them. A shadow, a coloured background behind a single plot, a frame round the
+    whole figure and a dark grid are decoration. So is a 3-D effect on flat data: numbers that
+    vary in one direction only, such as one value per group. Axis titles, tick labels and a light
+    grid or reference line are context. So is a direct label: a group's name written beside its
+    data, in place of a key saying which colour is which (drawing programs call it the legend).
+    Context is non-data ink, and it stays (Wilke).
+  references:
+  - citekey: tufte_1983_visual_display
+    kind: textbook
+    locator: "Ch. 4 Data-Ink and Graphical Redesign, p. 93, the definition of data-ink"
+    quote: |-
+      Data-ink is the non-erasable core of a graphic, the non-redundant ink arranged in response to variation in the numbers represented.
+    verified:
+      resolved_id: "Tufte ER. The Visual Display of Quantitative Information. Graphics Press; 1983 (first edition, tenth printing 1990), p. 93"
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+      note: |-
+        First edition, 1983, the copy held; page numbers not checked against the 2001 second
+        edition.
+  - citekey: tufte_1983_visual_display
+    kind: textbook
+    locator: "Ch. 4, p. 93, the data-ink ratio, third line of the display"
+    quote: |-
+      proportion of a graphic that can be erased without loss of data-information.
+    verified:
+      resolved_id: "Tufte ER. The Visual Display of Quantitative Information. Graphics Press; 1983 (first edition, tenth printing 1990), p. 93"
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+      note: |-
+        The ratio is printed as a display fraction that the text layer garbles. The held file's
+        annotation, read from the page image, gives it as data-ink divided by total ink used to
+        print the graphic, equal to 1.0 minus the proportion of a graphic that can be erased
+        without loss of data-information. The record sets the formula in its own notation in a
+        working block and quotes only the clean words.
+  - citekey: tufte_1983_visual_display
+    kind: textbook
+    locator: "Ch. 4, p. 96, Maximizing the Share of Data-Ink"
+    quote: |-
+      Maximize the data-ink ratio, within reason.
+    verified:
+      resolved_id: "Tufte ER. The Visual Display of Quantitative Information. Graphics Press; 1983 (first edition, tenth printing 1990), p. 96"
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+      note: |-
+        The two erasing principles follow: "Erase non-data-ink, within reason." (p. 96) and
+        "Erase redundant data-ink, within reason." (p. 100).
+  - citekey: tufte_1983_visual_display
+    kind: textbook
+    locator: "Ch. 4, p. 100, the second erasing principle"
+    quote: |-
+      Erase redundant data-ink, within reason.
+    verified:
+      resolved_id: "Tufte ER. The Visual Display of Quantitative Information. Graphics Press; 1983 (first edition, tenth printing 1990), p. 100"
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+  - citekey: tufte_1983_visual_display
+    kind: textbook
+    locator: "Ch. 5 Chartjunk, p. 107, opening paragraph, where the term is introduced"
+    quote: |-
+      The interior decoration of graphics generates a lot of ink that does not tell the viewer anything new.
+    verified:
+      resolved_id: "Tufte ER. The Visual Display of Quantitative Information. Graphics Press; 1983 (first edition, tenth printing 1990), p. 107"
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+      note: |-
+        Tufte gives no one-sentence definition. The same paragraph goes on: "it is all
+        non-data-ink or redundant data-ink, and it is often chartjunk."
+  - citekey: wilke_2019_dataviz_ch23
+    kind: textbook
+    locator: "Ch. 23 Balance the data and the context, opening paragraph"
+    quote: |-
+      At the same time, context and visual structure are important, and overly minimizing the plot elements that provide them can result in figures that are difficult to read, confusing, or simply not that compelling.
+    verified:
+      resolved_id: https://clauswilke.com/dataviz/balance-data-context.html
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+      note: |-
+        The sentences before it name the elements that are not data: "plot axes, axis ticks and
+        labels, axis titles, legends, and plot annotations", which "generally provide context
+        for the data and/or visual structure to the plot". Backs the line between decoration
+        and context.
+  - citekey: bateman_2010_useful_junk
+    kind: primary
+    locator: "Abstract"
+    quote: |-
+      We found that people’s accuracy in describing the embellished charts was no worse than for plain charts, and that their recall after a two-to-three-week gap was significantly better.
+    verified:
+      resolved_id: https://doi.org/10.1145/1753326.1753716
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+      note: |-
+        Quoted from the camera-ready PDF on a third-party academic host, as the CHI 2010 paper.
+        The apostrophe is the curly one of the text layer.
+  - citekey: bateman_2010_useful_junk
+    kind: primary
+    locator: "COMPARISON OF PLAIN AND EMBELLISHED CHARTS, Participants and Apparatus"
+    quote: |-
+      Twenty participants (9 male, 11 female), aged between 18 and 40 were recruited from a local university
+    verified:
+      resolved_id: https://doi.org/10.1145/1753326.1753716
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+  - citekey: bateman_2010_useful_junk
+    kind: primary
+    locator: "Procedure, Part 2: Recall Task"
+    quote: |-
+      with ten pa rticipants in each
+    verified:
+      resolved_id: https://doi.org/10.1145/1753326.1753716
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+      note: |-
+        "pa rticipants" is the text layer's stray space, kept as held. The sentence places
+        participants in one of two recall conditions, immediate or long-term. Backs "the 10 people
+        tested then".
+  - citekey: bateman_2010_useful_junk
+    kind: primary
+    locator: "RESULTS, Recall, paragraph on the long-term group"
+    quote: |-
+      For participants in the long-t erm recall group, there were significant differences in recall scores for the subject of the chart
+    verified:
+      resolved_id: https://doi.org/10.1145/1753326.1753716
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+      note: |-
+        The results are reported as t-tests (t with 9 degrees of freedom, for example t9=2.56,
+        p=.015 for the subject). The held text gives no difference in score points; the means are
+        in Figures 4 to 6, which are images and not held.
+  - citekey: bateman_2010_useful_junk
+    kind: primary
+    locator: "DISCUSSION, on why interpretation accuracy was not reduced"
+    quote: |-
+      It is important to note that we did not constrain the amount of time participants had to examine the charts.
+    verified:
+      resolved_id: https://doi.org/10.1145/1753326.1753716
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+  - citekey: bateman_2010_useful_junk
+    kind: primary
+    locator: "DISCUSSION, Design Questions and Implications"
+    quote: |-
+      it could be that a task that required detailed analysis of charts is hampered more by embellishments, rather than the high-level description task that we asked of our participants.
+    verified:
+      resolved_id: https://doi.org/10.1145/1753326.1753716
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+      note: |-
+        The authors' own statement of what would overturn their result; the record's last
+        paragraph of the definition rests on it.
+  - citekey: tufte_1983_visual_display
+    kind: textbook
+    locator: "Ch. 4, p. 96, redundant data-ink: the labelled, shaded bar"
+    quote: |-
+      unambiguously locates the altitude in six separate ways (any five of the six can be erased and the sixth will still indicate the height)
+    verified:
+      resolved_id: "Tufte ER. The Visual Display of Quantitative Information. Graphics Press; 1983 (first edition, tenth printing 1990), p. 96"
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+      note: |-
+        The six follow in the same sentence: the heights of the left line, the shading and the
+        right line, the top line, the position of the number and the number itself. Backs the
+        first illustration's paragraph on the printed value.
+  - citekey: tufte_1983_visual_display
+    kind: textbook
+    locator: "Ch. 5, p. 116, the grid on a look-up graphic"
+    quote: |-
+      When a graphic serves as a look-up table, then a grid may help in reading and interpolating.
+    verified:
+      resolved_id: "Tufte ER. The Visual Display of Quantitative Information. Graphics Press; 1983 (first edition, tenth printing 1990), p. 116"
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+      note: |-
+        p. 113 has "Dark grid lines are chartjunk." and p. 116 goes on: "A gray grid works well".
+  - citekey: wilke_2019_dataviz_ch26
+    kind: textbook
+    locator: "Ch. 26 Don't go 3D, §26.1 Avoid gratuitous 3D, first paragraph"
+    quote: |-
+      Notably, in none of these cases does the third dimension convey any actual data.
+    verified:
+      resolved_id: https://clauswilke.com/dataviz/no-3d.html
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+      note: |-
+        The second paragraph says the projection "distorts the data"; the Titanic example (322
+        first-class passengers read as fewer than 300) follows in the third.
+  - citekey: wilke_2019_dataviz_ch20
+    kind: textbook
+    locator: "Ch. 20 Redundant coding, §20.2 Designing figures without legends, the rule set apart"
+    quote: |-
+      Whenever possible, design your figures so they don’t need a legend.
+    verified:
+      resolved_id: https://clauswilke.com/dataviz/redundant-coding.html
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+      note: |-
+        The paragraph before it explains that "legends always put an extra mental burden on the
+        reader" and names the strategy "direct labeling".
+  - citekey: wilke_2019_dataviz_ch23
+    kind: textbook
+    locator: "Ch. 23, figure 23.3 caption, the over-minimal figure"
+    quote: |-
+      In this example, the concept of removing non-data ink has been taken too far.
+    verified:
+      resolved_id: https://clauswilke.com/dataviz/balance-data-context.html
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+      note: |-
+        The caption goes on: "The data points seem to float in space." The figure itself is not
+        held and is not reproduced (CC BY-NC-ND).
+  - citekey: bateman_2010_useful_junk
+    kind: primary
+    locator: "RESULTS, Gaze Detection"
+    quote: |-
+      participants spent 67% of their on-screen time looking at data or data and embellishments for Holmes charts as compared to 78% for Plain charts.
+    verified:
+      resolved_id: https://doi.org/10.1145/1753326.1753716
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+      note: |-
+        The paper is inconsistent on when gaze was recorded: Measures says "throughout the
+        description task", Gaze Detection says "During the recall portion". The record says only
+        "while the charts were on screen".
+  - citekey: bateman_2010_useful_junk
+    kind: primary
+    locator: "RESULTS, Description, the value message"
+    quote: |-
+      with better descriptions of a value message for the Holmes charts than the plain charts
+    verified:
+      resolved_id: https://doi.org/10.1145/1753326.1753716
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+      note: |-
+        Reported as t19=3.37, p=.003. Q4 of the procedure defines it: "Is the author trying to
+        communicate some message through the chart?"
+  - citekey: bateman_2010_useful_junk
+    kind: primary
+    locator: "INTRODUCTION, last paragraph"
+    quote: |-
+      However, we do not advocate this strategy as a general principle, because the use of strong images in charts is contentious
+    verified:
+      resolved_id: https://doi.org/10.1145/1753326.1753716
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+  - citekey: bateman_2010_useful_junk
+    kind: primary
+    locator: "DISCUSSION, The wider problem of bias in charts"
+    quote: |-
+      There is therefore no guarantee that minimalist charts are free from bias.
+    verified:
+      resolved_id: https://doi.org/10.1145/1753326.1753716
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+      note: |-
+        The next paragraph lists "the scale of axes" among the ways even minimalist charts can be
+        biased.
+  - citekey: rougier_2014_ten_rules_figures
+    kind: textbook
+    locator: "Rule 8: Avoid \"Chartjunk\""
+    quote: |-
+      However, an element that could be considered chartjunk in one figure can be justified in another.
+    verified:
+      resolved_id: https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1003833
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-02'
+      note: |-
+        CC0. The same rule quotes Tufte as "Regardless of the cause"; Tufte's own words on p. 107
+        are "Regardless of its cause". The record quotes Tufte from Tufte.
+simplified_explanation: |
+  Every mark on a figure either tells the reader something or gets in the way. The bars and points
+  tell. So do the axis titles and the labels: without them the bars mean nothing.
+
+  So ask one question of each mark: what does this tell the reader? If the answer is "nothing",
+  delete it.
+illustrations:
+- body: |
+    Here is a figure of the kind spreadsheet defaults and slide templates produce. It is made up
+    for this example, from real numbers. It shows the share of women and men aged 15-49 with
+    overweight or obesity in the National Family Health Survey (NFHS-5),
+    {{n:nfhs5_women_ow_ob_pct}}% and {{n:nfhs5_men_ow_ob_pct}}%. The bars are 3-D columns on a
+    shaded background. A dark grid sits behind them, and a frame runs round the whole. A key box
+    says which colour is which. The value is printed on top of each bar.
+
+    Go through it one element at a time. For each, ask: what does this tell the reader about the
+    data, or about how to read them?
+
+    ```table
+    | element | what it tells the reader | what to do |
+    | 3-D columns | nothing; the third dimension carries no data | draw flat bars |
+    | shaded background | nothing | delete |
+    | dark grid | where values fall, but it competes with the bars | keep a few light grey lines, or none |
+    | frame round the figure | nothing | delete |
+    | key box | which bar is which, but the eye must travel to it | direct labels: "women" and "men" under the bars |
+    | value on each bar | the exact number, a second time | keep only if readers need the exact values |
+    | axis title with its unit | what the bars measure | keep |
+    ```
+
+    The 3-D columns are not only useless. They bend the data. Open Wilke's *Fundamentals of Data
+    Visualization*, chapter 26, at https://clauswilke.com/dataviz/no-3d.html, and search for 322.
+
+    > there were 322 passengers total traveling in 1st class, yet Figure 26.2 suggests that the number was less than 300.
+
+    A 3-D bar's top floats away from the back wall where the grid lines are drawn. Readers read it
+    against the wrong line.
+
+    The value printed on each bar is a smaller case. Tufte counts six ways a plain labelled bar
+    shows one number: its left edge, its right edge, its shading, its top line, the position of
+    the label and the label itself. Any five can go and the sixth still shows it. Keep the printed
+    value when readers will want the exact number. Otherwise the bar is enough.
+
+    Now stop. Wilke shows the opposite mistake: a figure whose axis labels are so faint, and whose
+    grid is so bare, that the points "seem to float in space". Tufte's own rule ends "within
+    reason". The axis title, the tick labels and the direct labels stay.
+  analogy_breaks_when: |
+    The table works for a figure read on a page. A light grid that is clutter in a paper can help
+    on a figure people use to look up values, and Tufte himself says a grid may help "When a
+    graphic serves as a look-up table". Rougier and colleagues put it generally: "an element that
+    could be considered chartjunk in one figure can be justified in another". Ask what the reader
+    will do with the figure before you delete anything.
+
+    The made-up slide uses real NFHS numbers. The Titanic figure is Wilke's, and the 322 is his.
+  numbers:
+  - value: "24.0"
+    unit: "% of women aged 15-49 overweight or obese, NFHS-5, India"
+    citekey: nfhs5_india_factsheet
+    as_of: '2026-10-02'
+    quote: |-
+      88. Women who are overweight or obese (BMI ≥25.0 kg/m2)21 (%) 33.2 19.7 24.0 20.6
+  - value: "22.9"
+    unit: "% of men aged 15-49 overweight or obese, NFHS-5, India"
+    citekey: nfhs5_india_factsheet
+    as_of: '2026-10-02'
+    quote: |-
+      89. Men who are overweight or obese (BMI ≥25.0 kg/m2) (%) 29.8 19.3 22.9 18.9
+  - value: "322"
+    unit: "first-class passengers on the Titanic, in Wilke's 3-D bar example"
+    citekey: wilke_2019_dataviz_ch26
+    as_of: '2026-10-02'
+    quote: |-
+      there were 322 passengers total traveling in 1st class, yet Figure 26.2 suggests that the number was less than 300.
+  - value: "300"
+    unit: "passengers, what the 3-D first-class bar appears to show"
+    citekey: wilke_2019_dataviz_ch26
+    as_of: '2026-10-02'
+    quote: |-
+      there were 322 passengers total traveling in 1st class, yet Figure 26.2 suggests that the number was less than 300.
+- body: |
+    Now the case for decoration, and it is a real one. Open Bateman and colleagues (2010), "Useful junk?
+    The effects of visual embellishment on comprehension and memorability of charts", at
+    https://doi.org/10.1145/1753326.1753716. Read the abstract.
+
+    > We found that people’s accuracy in describing the embellished charts was no worse than for plain charts, and that their recall after a two-to-three-week gap was significantly better.
+
+    Before you use this, read how it was done. Twenty students saw 14 charts by the graphic artist
+    Nigel Holmes, whose charts are built into cartoon pictures, and plain versions of the same
+    charts. Each person saw one version of each chart. They described each chart aloud, with as
+    much time as they wanted. Then 10 of them were tested on the charts after five minutes, and
+    10 after two to three weeks.
+
+    An eye tracker recorded where they looked while the charts were on screen. Search for 67%.
+
+    > participants spent 67% of their on-screen time looking at data or data and embellishments for Holmes charts as compared to 78% for Plain charts.
+
+    > For Holmes charts, users spent 27% of their on-screen time looking at areas that contained both data and embellishments, and 13% of their time looking at embellishments that did not communicate any data.
+
+    Split the Holmes charts' time four ways.
+
+    ```working
+    67 minus 27 = 40
+    100 minus 67 minus 13 = 20
+    40 plus 27 plus 13 plus 20 = 100
+    100 minus 78 = 22
+    ```
+
+    On the Holmes charts, 40% of the time went on data alone, 27% on data drawn as part of a
+    picture, 13% on picture alone and 20% elsewhere on the screen. On the plain charts, 78% went
+    on data and 22% elsewhere. The pictures took looking time, and still the descriptions were no
+    worse.
+
+    Now read what else they found. Search for value message.
+
+    > with better descriptions of a value message for the Holmes charts than the plain charts
+
+    A value message is the opinion a chart carries: "costs are monstrous". The pictures carried
+    one, and readers picked it up. The authors write that "we do not advocate this strategy as a
+    general principle".
+
+    So here is what the study allows. A picture tied to the message may help a poster or a public
+    leaflet be remembered. It does not allow a 3-D bar, a shadow or a background in a paper's
+    figure. Those carry no message and some bend the data. And it does not show that decoration is
+    harmless when a reader studies exact values against a clock.
+  analogy_breaks_when: |
+    One study, 20 students at one university, 14 charts by one artist, and 10 people in each
+    memory group. Viewing was untimed and the task was to describe each chart aloud. The paper
+    reports t-tests and p values in its text, not the size of the difference in points. A reader
+    of a methods section, checking a confidence interval against an axis, is doing a different
+    task.
+
+    Plain charts are not neutral either. The authors point out that a minimal chart can still
+    mislead through "the scale of axes" and the choice of data. Removing decoration does not fix
+    an axis; `S58-R1-C17` does.
+  numbers:
+  - value: "20"
+    unit: "participants"
+    citekey: bateman_2010_useful_junk
+    as_of: '2026-10-02'
+    quote: |-
+      Twenty participants (9 male, 11 female), aged between 18 and 40 were recruited from a local university
+  - value: "14"
+    unit: "charts, each in a Holmes and a plain version"
+    citekey: bateman_2010_useful_junk
+    as_of: '2026-10-02'
+    quote: |-
+      yielding 14 charts, each with a Holmes version and a plain version.
+  - value: "10"
+    unit: "participants in each recall group (immediate, long-term)"
+    citekey: bateman_2010_useful_junk
+    as_of: '2026-10-02'
+    quote: |-
+      with ten pa rticipants in each
+  - value: "67"
+    unit: "% of on-screen time on data, or data and decoration together, Holmes charts"
+    citekey: bateman_2010_useful_junk
+    as_of: '2026-10-02'
+    quote: |-
+      participants spent 67% of their on-screen time looking at data or data and embellishments for Holmes charts as compared to 78% for Plain charts.
+  - value: "78"
+    unit: "% of on-screen time on data, plain charts"
+    citekey: bateman_2010_useful_junk
+    as_of: '2026-10-02'
+    quote: |-
+      participants spent 67% of their on-screen time looking at data or data and embellishments for Holmes charts as compared to 78% for Plain charts.
+  - value: "27"
+    unit: "% of on-screen time on data drawn as part of a picture, Holmes charts"
+    citekey: bateman_2010_useful_junk
+    as_of: '2026-10-02'
+    quote: |-
+      For Holmes charts, users spent 27% of their on-screen time looking at areas that contained both data and embellishments, and 13% of their time looking at embellishments that did not communicate any data.
+  - value: "13"
+    unit: "% of on-screen time on picture alone, Holmes charts"
+    citekey: bateman_2010_useful_junk
+    as_of: '2026-10-02'
+    quote: |-
+      For Holmes charts, users spent 27% of their on-screen time looking at areas that contained both data and embellishments, and 13% of their time looking at embellishments that did not communicate any data.
+must_know:
+- point: |
+    "The cleanest figure is the one with the least ink" is the error. Delete decoration; keep
+    context.
+  kind: misconception
+  bearing: methodological
+  refs: [tufte_1983_visual_display, wilke_2019_dataviz_ch23]
+- point: |
+    Ask one question of every element of a figure: what does it tell the reader about the data,
+    or about how to read them? Do this before you change anything else.
+  kind: move
+  bearing: methodological
+- point: |
+    Never draw flat data in 3-D. The third dimension carries no data and it bends the bars: in
+    Wilke's example, 322 first-class passengers read as fewer than 300.
+  kind: consequence
+  bearing: methodological
+  refs: [wilke_2019_dataviz_ch26]
+- point: |
+    Use direct labels: write each line's or group's name beside its data, and delete the key.
+  kind: move
+  bearing: methodological
+  refs: [wilke_2019_dataviz_ch20]
+- point: |
+    "Useful junk?" found that cartoon charts were described no worse, and were remembered better
+    two to three weeks later. That was 20 students, with no time limit. It does not show that
+    decoration is harmless when a reader needs exact values, and the authors say so. Keep it out of
+    a paper's figure.
+  kind: dispute
+  bearing: methodological
+  refs: [bateman_2010_useful_junk]
+- point: |
+    A picture on a chart carries an opinion. On a public chart, choose a picture only if you are
+    willing to say its message out loud.
+  kind: trap
+  bearing: public
+  refs: [bateman_2010_useful_junk]
+- point: |
+    Removing decoration cannot fix a dishonest axis. A plain bar chart that starts above zero is
+    still wrong. So fix the axis first, then the decoration.
+  kind: boundary
+  bearing: methodological
+- point: |
+    When a trainee brings you a chart straight from a spreadsheet, do not redraw it for them. Have
+    them delete one element at a time, and ask after each whether the reader lost anything.
+  kind: move
+  bearing: teaching
+exercises:
+- type: retrieval
+  prompt: |
+    From memory: what is data-ink, what is the data-ink ratio, and what two words does Tufte attach
+    to his rule to maximise it? Name two elements that are not data-ink but should stay.
+  answer: |
+    Data-ink is the ink that changes when the data change: the bars, points and lines. The
+    data-ink ratio is the data-ink divided by all the ink used to print the figure.
+
+    Tufte's rule is to maximise it "within reason".
+
+    Any two of: the axis titles with their units, the tick labels, a light grid or reference line,
+    direct labels. They are context. Without them the data cannot be read.
+- type: critique
+  prompt: |
+    A made-up district report has a figure for six blocks. It shows the share of children under 5
+    weighed last month at the anganwadi, the village child-care centre. The figure has:
+
+    - 3-D cylinders in six colours, with a shadow under each;
+    - a key matching the colours to block names;
+    - a dark grid every 5%;
+    - a picture of a weighing scale behind the bars;
+    - no axis title;
+    - a value axis running from 60% to 100%.
+
+    List what you would change, in the order you would change it, and say why for each.
+  answer: |
+    Start with the axis, because no amount of tidying fixes it. Bars from 60% exaggerate every gap
+    between blocks (`S58-R1-C17`). Start the axis at zero, or draw the six values as dots on a
+    stated range.
+
+    Then the elements, asking of each what it tells the reader.
+
+    The 3-D cylinders and their shadows tell nothing and bend the heights against the grid. Draw
+    flat bars or dots.
+
+    The six colours tell nothing the block names do not. Use one colour, and write each block's
+    name under its bar. The key then goes.
+
+    The picture of a scale behind the bars is decoration, and it competes with the data. Delete it.
+
+    The dark grid: keep a few light lines, or none.
+
+    Add what is missing. An axis title with its unit: "children under 5 weighed last month (%)".
+    The month and the source in the caption.
+
+    Last, sort the blocks from highest to lowest if the order of blocks means nothing.
+  skill_ref: S58-R1-K02
+- type: teaching
+  prompt: |
+    A first-year resident has read the abstract of "Useful junk?" and says: "So chartjunk is fine
+    now. Decorated charts are remembered better." You have ten minutes and a whiteboard. Say what
+    you would teach.
+  answer: |
+    Start with what the study found, fairly. In 20 students, charts built into cartoon pictures
+    were described as accurately as plain charts. Ten of them, tested two to three weeks later,
+    remembered the decorated charts better.
+
+    Then draw the design on the board. Fourteen charts by one illustrator. Untimed viewing. The task
+    was to describe each chart aloud, not to read off exact values. Ten people per memory group.
+    The paper reports t-tests, not how many points better.
+
+    Then the second finding: readers saw the designer's opinion, the "value message", more often in
+    the decorated charts. A picture argues.
+
+    Then what it does not cover. The pictures were tied to each chart's subject. A 3-D effect, a
+    shadow or a background fill carries no message at all, and 3-D bends the bars. Nothing in the
+    study speaks for those.
+
+    End with the rule. In a paper's figure, delete what tells the reader nothing and keep the
+    labels. On a poster, a picture tied to the one message may help people remember it, if you
+    accept the opinion it adds. The authors themselves do not advocate it "as a general principle".
+retrieval_items:
+- q: What is the data-ink ratio?
+  a: The ink that shows data divided by all the ink used to print the figure, or 1 minus the share
+    of the ink that could be erased without losing any data. Tufte says to maximise it "within
+    reason".
+- q: What did "Useful junk?" (Bateman and colleagues, 2010) find, and in whom?
+  a: In 20 students, cartoon-decorated charts were described as accurately as plain ones and were
+    remembered better after two to three weeks (10 people in that group). Viewing was untimed and
+    the task was spoken description.
+- q: Which non-data elements of a figure should stay?
+  a: Context. Axis titles with units, tick labels, a light grid or reference line, and direct
+    labels. Without them the data cannot be read.
+common_misreading: |
+  "A study showed decorated charts are remembered better, so decoration is fine." The study had 20
+  students. They had no time limit, and they described each chart aloud. Each picture was tied to
+  its chart's subject. The study found no loss for that task, and better memory weeks later.
+
+  It also found that the pictures carried the designer's opinion. It says nothing for 3-D, shadows or
+  coloured backgrounds, which carry no message. And it says nothing for a figure read for exact
+  values.
+figures:
+- file: s58-r1-c18-where-they-looked.png
+  caption: "The pictures took looking time. On the Holmes charts, built into cartoon pictures, 40% of on-screen time went on data alone, 27% on data drawn as part of a picture, 13% on picture alone and 20% elsewhere. On the plain charts, 78% went on data and 22% elsewhere; they have no picture, so those two bars are 0. Bateman and colleagues, \"Useful junk?\": an eye tracker, 20 students, untimed viewing."
+  alt: "Paired bars from zero for four parts of the screen, Holmes charts on the left of each pair and plain charts on the right, the first pair labelled. Holmes charts: data alone 40, data in a picture 27, picture alone 13, elsewhere 20. Plain charts: data 78, data in a picture 0, picture alone 0, elsewhere 22."
+  source: draw.py
+  spec:
+    kind: bar
+    x: ["data alone", "data in a picture", "picture alone", "elsewhere"]
+    series:
+    - {name: "Holmes charts", y: [40, 27, 13, 20]}
+    - {name: "plain charts", y: [78, 0, 0, 22]}
+    x_label: "where people looked"
+    y_label: "share of on-screen time (%)"
+    y_range: [0, 100]
+    value_labels: true
+    labels:
+    - {text: "Holmes", at: [-0.175, 40], offset: [-15, 13]}
+    - {text: "plain", at: [0.175, 78], offset: [-10, 13]}
+    - {text: "Holmes", at: [2.825, 20], offset: [-15, 13]}
+    - {text: "plain", at: [3.175, 22], offset: [-10, 13]}
+    relations:
+    - check: "sum(y1) = 100"
+    - check: "sum(y2) = 100"
+provenance:
+  map_version_id: fc19c8bc-a216-4131-99fb-ebe3f19cec4a
+  outcome_refs:
+  - S58-R1-O3
+  - S58-R1-S2
+  bridge_ref:
+  - S58-R2-P02
+review:
+  stability: medium
+  trigger: 'Date 2029-10-02; and on event, whichever comes first: a replication of Bateman and colleagues'' experiment, or a study of decoration in figures read for exact values.'
+  as_of: '2026-10-02'
+  last_reviewed: '2026-10-02'
+quantitative: false
+status: drafted

@@ -1,0 +1,1 @@
+- Simplified explanation: cut the whole "Some words are traps" paragraph on "significant", "random", "normal", "correlation". The definition and must-know 4 still name the words, but neither says in plain terms why the everyday sense is a trap. Exercise 2 depends on spotting "significantly" and "correlated" in the made-up paragraph.
