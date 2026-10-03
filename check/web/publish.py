@@ -162,7 +162,19 @@ def clone_site():
     if not os.path.isdir(os.path.join(SITE_DIR, ".git")):
         run(["git", "clone", "--quiet", "--no-tags", site_remote(), SITE_DIR])
     run(["git", "fetch", "--quiet", "origin", "main"], cwd=SITE_DIR)
-    subprocess.run(["git", "fetch", "--quiet", "origin", f"{BRANCH}:refs/remotes/origin/{BRANCH}"], cwd=SITE_DIR)
+    if subprocess.run(["git", "fetch", "--quiet", "origin", f"{BRANCH}:refs/remotes/origin/{BRANCH}"], cwd=SITE_DIR).returncode:
+        # The branch is gone (its pull request was merged and it was deleted): forget a stale copy.
+        subprocess.run(["git", "update-ref", "-d", f"refs/remotes/origin/{BRANCH}"], cwd=SITE_DIR)
+
+
+def push_branch():
+    """Push the publisher branch. The remote is a URL, so a bare --force-with-lease has no remote-tracking
+    ref to compare with and git rejects it as "stale info" once the branch exists. State the lease
+    explicitly: the commit clone_site() fetched (empty when the branch did not exist)."""
+    seen = subprocess.run(["git", "rev-parse", "--verify", "--quiet", f"refs/remotes/origin/{BRANCH}"],
+                          cwd=SITE_DIR, capture_output=True, text=True).stdout.strip()
+    run(["git", "push", "--quiet", f"--force-with-lease=refs/heads/{BRANCH}:{seen}", site_remote(),
+         f"{BRANCH}:refs/heads/{BRANCH}"], cwd=SITE_DIR)
 
 
 def open_pr():
@@ -404,7 +416,7 @@ def publish_mode():
     run(["git", "-c", "user.name=Book publisher", "-c", "user.email=contact@drharshmaheshwari.com",
          "commit", "--quiet", "-m", f"Publish {names}\n\nExported from obesity-course {os.environ.get('GITHUB_SHA', '')[:7]} by the book publisher."],
         cwd=SITE_DIR)
-    run(["git", "push", "--quiet", "--force-with-lease", site_remote(), f"{BRANCH}:refs/heads/{BRANCH}"], cwd=SITE_DIR)
+    push_branch()
     pr = open_pr()
     if not pr:
         body = (("New or updated books from the Obesity Expertise series: " + names + ".\n\n" if todo else
