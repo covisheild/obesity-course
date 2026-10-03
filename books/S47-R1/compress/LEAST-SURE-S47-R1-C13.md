@@ -1,0 +1,1 @@
+Cut the survey's "fielded late 2006 to early 2007 to N adults" sentence and the "For each... 10 or more counted as important" scoring sentences from definition.text. Exercise 1 needs country, years and sample; they now survive only via must_know[2]'s "2006-07" — the sample size {{n:barry_n}} no longer appears anywhere, and "important" is undefined.
