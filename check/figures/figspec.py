@@ -287,6 +287,10 @@ def resolve(rec, fig):
     # fingerprint it was drawn with (added 24 September 2026 for S02-R1).
     if bands:
         out["bands"] = bands
+    # `x_ticks`: explicit tick positions, e.g. [1, 2, 3] for a visit axis that takes whole values
+    # only (3 Oct 2026, S52-R1); added only when declared, so other specs keep their fingerprint.
+    if spec.get("x_ticks"):
+        out["x_ticks"] = [float(v) for v in spec["x_ticks"]]
     curves = [_curve(c, "curves", series) for c in spec.get("curves") or []]
     areas = [_area(a) for a in spec.get("areas") or []]
     refs = [_ref(r) for r in spec.get("refs") or []]
