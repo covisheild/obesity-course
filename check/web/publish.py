@@ -17,6 +17,9 @@ open publisher branch (`books/auto-publish`):
 While the repository variable PUBLISH_MODE is not `auto`, it stops there: Harsh merges the pull
 request after looking at the Preview. With PUBLISH_MODE=auto it merges the pull request itself.
 
+With no new book, a run still re-exports the published books; if their text on the site would change
+(a fix to export.py or a new glossary sense), it opens the same kind of pull request.
+
 Every run also brings Notion up to date with the live site: a book whose version is on the site's
 `main` gets 🌐 On website, Stage = Live, Live URL and Last published.
 
@@ -349,8 +352,8 @@ def publish_mode():
             say(f"- Notion: marked live: {', '.join(changed)}")
     except Exception as e:  # noqa: BLE001
         say(f"- Notion could not be updated: {e}")
-    if not todo:
-        say("- Nothing new to publish.")
+    if not todo and open_pr():
+        say("- Nothing new to publish; a publisher pull request is already waiting.")
         return True
 
     s3 = r2()
@@ -393,18 +396,25 @@ def publish_mode():
     say("- Every PDF and figure answers from files.drharshmaheshwari.com")
 
     run(["git", "add", "-A", DATA], cwd=SITE_DIR)
-    names = ", ".join(f"{b} v{v}" for b, v in todo)
+    if not todo and not subprocess.run(["git", "diff", "--cached", "--quiet"], cwd=SITE_DIR).returncode:
+        say("- Nothing new to publish, and the books' text on the site is current.")
+        return True
+    # No new book but the export changed (a fix to export.py or the glossary): the same Preview stop.
+    names = ", ".join(f"{b} v{v}" for b, v in todo) or "updated book text (no new book)"
     run(["git", "-c", "user.name=Book publisher", "-c", "user.email=contact@drharshmaheshwari.com",
          "commit", "--quiet", "-m", f"Publish {names}\n\nExported from obesity-course {os.environ.get('GITHUB_SHA', '')[:7]} by the book publisher."],
         cwd=SITE_DIR)
     run(["git", "push", "--quiet", "--force-with-lease", site_remote(), f"{BRANCH}:refs/heads/{BRANCH}"], cwd=SITE_DIR)
     pr = open_pr()
     if not pr:
-        body = ("New or updated books from the Obesity Expertise series: " + names + ".\n\n"
-                "PDFs and figures are on R2 and every link was checked. Cloudflare builds a Preview of this branch: "
-                "open it, look at the new books, and merge this pull request to make them live.\n\n"
+        body = (("New or updated books from the Obesity Expertise series: " + names + ".\n\n" if todo else
+                 "No new book: the reader's text for the published books changed (a fix to the export or the glossary).\n\n") +
+                ("PDFs and figures are on R2 and every link was checked. " if todo else "") +
+                "Cloudflare builds a Preview of this branch: "
+                "open it, look at the books, and merge this pull request to make the change live.\n\n"
                 "Made by `check/web/publish.py` in obesity-course.")
-        st, pr = gh("POST", f"/repos/{SITE_REPO}/pulls", {"title": f"Publish {names}", "head": BRANCH, "base": "main", "body": body})
+        title = f"Publish {names}" if todo else "Update the books' web text (no new book)"
+        st, pr = gh("POST", f"/repos/{SITE_REPO}/pulls", {"title": title, "head": BRANCH, "base": "main", "body": body})
         if st not in (200, 201):
             say(f"- **Could not open the pull request ({st})**: {pr.get('message')}")
             return False
