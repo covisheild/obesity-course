@@ -453,6 +453,21 @@ def write_record(path, rid, r_parsed, plans):
 
 # ---------------------------------------------------------------- entry points
 
+def _published_frozen(rid: str) -> bool:
+    """CODE_GATE=frozen (set by check/web/publish.py, 3 Oct 2026): a frozen book passed this gate
+    when it was frozen, and publishing re-renders the same text, so its code is not run again.
+    Without this, every publish would need R and the author's exact package versions on the
+    publishing machine. A book still in progress is always gated."""
+    if os.environ.get("CODE_GATE") != "frozen":
+        return False
+    meta = os.path.join(REPO, "books", book_of(rid), "book.yml")
+    try:
+        with open(meta, encoding="utf-8") as fh:
+            return (yaml.safe_load(fh) or {}).get("status") == "frozen"
+    except OSError:
+        return False
+
+
 def build_problems(recs: dict) -> list:
     """Blocking messages for check/build.py: one scan per record; the gate only where code is."""
     out = []
@@ -464,6 +479,8 @@ def build_problems(recs: dict) -> list:
                 out.append(f"{rid}: fence tag(s) {', '.join(bad)} not known - code is ```r, ```output "
                            "or ```sh; arithmetic ```working; tables ```table")
         if not has_code_raw(raw):
+            continue
+        if _published_frozen(rid):
             continue
         fails, _, _ = gate_record(rid, r, use_cache=True)
         for where, msg, _diff in fails:

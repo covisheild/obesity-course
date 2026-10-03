@@ -100,6 +100,10 @@ def _tidy(h):
     h = h.replace('<figcaption aria-hidden="true">', "<figcaption>")
     # Grid tables carry pandoc's column widths as inline styles; the reader sizes tables itself.
     h = re.sub(r'<colgroup>.*?</colgroup>', "", h, flags=re.S)
+    # Code blocks (S52-R1 on): pandoc numbers every line with an anchor and an id (cb1-1, ...),
+    # which would repeat on a page that holds many sections. The code itself is untouched.
+    h = re.sub(r'<a href="#cb\d+-\d+" aria-hidden="true" tabindex="-1"></a>', "", h)
+    h = re.sub(r' id="cb\d+(?:-\d+)?"', "", h)
     return h
 
 
@@ -118,11 +122,15 @@ NOTES = []
 def leak_check(where, h):
     """build._caret_check, applied to every piece of HTML this writes rather than to one page."""
     text = _html.unescape(re.sub(r"<[^>]+>", "", h))
+    # As build._caret_check: R code prints carets and tildes verbatim by design, so code blocks
+    # and inline code are left out of the caret/tilde count (not of the id and path checks).
+    code_free = re.sub(r"<code\b[^>]*>.*?</code>", "", re.sub(r"<pre\b[^>]*>.*?</pre>", "", h, flags=re.S), flags=re.S)
+    prose_text = _html.unescape(re.sub(r"<[^>]+>", "", code_free))
     # A caret means a superscript the notation layer missed: always a fault. A tilde can be the book's
     # own words: S02-R1 quotes sources that write "~90 g/day" and then says what the ~ means. So a
     # tilde is reported, as build._caret_check reports it, and does not stop the export.
-    for m in re.finditer(r"[\^~]", text):
-        msg = f"{where}: literal {'caret' if m.group(0) == '^' else 'tilde'}: ...{text[max(0, m.start() - 50):m.end() + 20]}..."
+    for m in re.finditer(r"[\^~]", prose_text):
+        msg = f"{where}: literal {'caret' if m.group(0) == '^' else 'tilde'}: ...{prose_text[max(0, m.start() - 50):m.end() + 20]}..."
         (LEAKS if m.group(0) == "^" else NOTES).append(msg)
     for p in sorted(set(re.findall(r"(?<![/\w.])(?:sources|check|books)/[\w./-]+", text))):
         LEAKS.append(f"{where}: repository path reached the page: {p}")
