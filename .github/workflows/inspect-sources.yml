@@ -1,0 +1,20 @@
+# One-off: print the structure (never the text) of the Statistics sources in the private R2 bucket.
+name: Inspect sources
+on:
+  push:
+    branches: [claude/relaxed-hawking-6heye3]
+    paths: [check/web/inspect_sources.py, .github/workflows/inspect-sources.yml]
+  workflow_dispatch:
+jobs:
+  inspect:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: '3.11' }
+      - run: pip install -q boto3 pypandoc_binary
+      - run: python check/web/inspect_sources.py stats/
+        env:
+          R2_ACCOUNT_ID: ${{ secrets.R2_ACCOUNT_ID }}
+          R2_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
+          R2_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
