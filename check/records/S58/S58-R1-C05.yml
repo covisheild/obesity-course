@@ -15,11 +15,14 @@ definition:
   text: |
     This section follows two documents. The first is the Recommendations of the International
     Committee of Medical Journal Editors (ICMJE), updated January 2026, section IV.A.3.g,
-    References. The second is the style guide those Recommendations point to for format: Citing
-    Medicine, 2nd edition, from the US National Library of Medicine (NLM).
+    References. The committee was once known as the Vancouver Group. The second document is the
+    style guide those Recommendations point to for format: Citing Medicine, 2nd edition, from the
+    US National Library of Medicine (NLM).
 
     What to cite. Cite original research directly where you can, and the published article rather
-    than its abstract. Do not cite articles in predatory or pseudo-journals.
+    than its abstract. Where you cannot obtain the original, this book's advice is to cite the
+    source you read and say in your sentence whose figure it is. Do not cite articles in predatory
+    or pseudo-journals.
 
     Mark a preprint as a preprint.
 
@@ -444,7 +447,7 @@ definition:
         illustration.
   - citekey: sollaci_pereira_2004_imrad
     kind: primary
-    locator: "Discussion, first paragraph"
+    locator: "Discussion, third paragraph"
     quote: |-
       culminating with the guidelines set by the International Committee of Medical Journal Editors, formerly known as the Vancouver Group, first published in the late 1970s
     verified:
@@ -453,8 +456,8 @@ definition:
       claim_located: true
       checked_on: '2026-10-02'
       note: |-
-        Off-type reference, held and quoted. Used only for the committee's former name, in must-know
-        point 8. No held source says journals call the style "Vancouver"; the record does not say it.
+        Off-type reference, held and quoted. Used only for the committee's former name, in the
+        definition. No held source says journals call the style "Vancouver"; the record does not say it.
 simplified_explanation: |
   Every sentence in your paper that rests on someone else's work carries a number, such as (3). The
   number points to one entry in the list at the end of the paper, the reference list. Number your
@@ -467,7 +470,7 @@ simplified_explanation: |
   A reference manager, a program that stores your references and types out the list, can do the
   typing.
 
-  ICMJE asks you not to cite predatory or pseudo-journals, and the section does not define them. In
+  ICMJE asks you not to cite predatory or pseudo-journals, and ICMJE's references section does not define them. In
   this book, read the phrase as journals that present themselves as checking what they publish and do
   not. How to recognise one is taught at the next rung.
 illustrations:
@@ -511,11 +514,16 @@ illustrations:
     https://www.icmje.org/recommendations/browse/manuscript-preparation/preparing-for-submission.html.
   analogy_breaks_when: |
     This rebuilds one kind of source: a journal article with three authors and no page range. A
-    book, a report such as the NFHS fact sheet, a web page or a dataset follows other chapters of
-    Citing Medicine, which this section does not teach. Open the right chapter before you format one.
+    book, a report such as the National Family Health Survey (NFHS) fact sheet, a web page or a
+    dataset follows other chapters of Citing Medicine, which this section does not teach. Open the
+    right chapter before you format one.
 
-    A journal may also ask for its own variant: fewer authors before "et al.", no day of the month,
-    no issue number, or the DOI. Its instructions for authors win over this table.
+    A journal may also ask for its own variant: fewer authors before "et al." (Latin for "and
+    others"), no day of the month, no issue number, or the DOI. Its instructions for authors win
+    over this table.
+
+    This book's own reference lists are printed in the series' house style, and are not a model.
+    Your references follow NLM, as this section teaches.
   numbers:
   - value: "2014"
     quote: "Published: September 11, 2014"
@@ -560,6 +568,9 @@ illustrations:
     This numbering is the system ICMJE describes, with the numbers in parentheses. A journal's
     instructions may show the numbers in another form, or may not number references at all; then
     its instructions tell you how to order the list.
+
+    This book numbers each passage it checked, not each source, and uses square brackets, so that
+    every number names the exact words behind a claim. A journal paper follows ICMJE.
 - body: |
     Here is the trap with a number found second-hand. Suppose you read in a review that about a
     quarter of Indian women have overweight or obesity, citing the national survey. The review is
@@ -628,7 +639,7 @@ must_know:
   refs: [icmje_2026_manuscript_preparation]
 - point: |
     Before you submit, check that no reference is a retracted paper. Search PubMed for "Retracted
-    publication [pt]", or look each paper up in PubMed.
+    publication [pt]"; "pt" stands for publication type. Or look each paper up in PubMed.
   kind: trap
   bearing: methodological
   refs: [icmje_2026_manuscript_preparation]
@@ -657,12 +668,6 @@ must_know:
   bearing: methodological
   refs: [nlm_citing_medicine_2007]
 - point: |
-    The committee behind these Recommendations was once known as the Vancouver Group. Where the
-    journal states its own variant, the journal wins.
-  kind: move
-  bearing: methodological
-  refs: [sollaci_pereira_2004_imrad, icmje_2026_manuscript_preparation]
-- point: |
     A reference in perfect NLM format can still point to a paper that does not say what your
     sentence says. When you check a student's thesis, open three of its references at random
     and read the passages they point to.
@@ -677,23 +682,7 @@ common_misreading: |
 reporting_sentence: |
   Among women aged 15-49 in India, {{n:nfhs5_women_ow_ob_pct}} per cent had overweight or obesity in
   NFHS-5 (2019-21), against {{n:nfhs4_women_ow_ob_pct}} per cent in NFHS-4 (2015-16) (1).
-figures:
-- file: s58-r1-c05-first-mention-numbers.png
-  caption: "Each source keeps the number it got at its first mention, and a new source takes the next free number. A returns as (1) in sentence 3. D, cited only in Table 1, takes (3) at sentence 4, where the text first mentions the table, so C in sentence 5 gets (4). The sources and sentences are the made-up draft of this section."
-  alt: "Five bars from zero, one per sentence, each as tall as the reference number printed there: sentence 1 A (1), sentence 2 B (2), sentence 3 A again (1), sentence 4 D through Table 1 (3), sentence 5 C (4)."
-  source: draw.py
-  spec:
-    kind: bar
-    x: ["sentence 1\nA", "sentence 2\nB", "sentence 3\nA again", "sentence 4\nD, via Table 1", "sentence 5\nC"]
-    series:
-    - name: number printed in the text
-      y: ["1", "2", "1", "3", "4"]
-    x_label: "sentence of the draft introduction, and the source it cites"
-    y_label: "reference number printed"
-    y_range: [0, 5]
-    value_labels: true
-    relations:
-    - check: "y[2] = y[0]"
+figure_note: "The numbering is a sequence of labels; the table in illustration 2 shows it, and a chart would draw labels as amounts."
 exercises:
 - type: retrieval
   prompt: |
@@ -749,11 +738,12 @@ exercises:
     is only in a table". Sentence 4 cites S as (3). Sentence 5 cites P again, as (4). Which numbers
     are wrong under ICMJE's rule, and what should every number be?
   answer: |
-    Two numbers are wrong. R is numbered where the text first mentions Table 1, which is sentence
-    3. R is the third source met, so it is (3), not (5). And P in sentence 5 is a source already
-    cited, so it keeps its first number, (1), not (4).
+    Three numbers are wrong. R is numbered where the text first mentions Table 1, which is sentence
+    3. R is the third source met, so it is (3), not (5). S, printed (3), is (4): it is first met in
+    sentence 4, after R. And P in sentence 5 is a source already cited, so it keeps its first
+    number, (1), not (4).
 
-    S, first met in sentence 4 after R, then becomes (4). The correct numbers are P (1), Q (2),
+    The correct numbers are P (1), Q (2),
     R (3), S (4), and P again (1). The reference list runs P, Q, R, S.
 - type: teaching
   prompt: |

@@ -15,8 +15,8 @@ concept_deps:
 definition:
   text: |
     A paper is written as an argument when its text states a claim and gives the evidence and the
-    reasoning that support it, in the order the reasoning needs. In the terms of Book 0's section
-    on argument, the claim is the conclusion, the data are the premises, and the reasoning that
+    reasoning that support it, in the order the reasoning needs. In the terms of `B0-R0-C42`, on
+    argument, the claim is the conclusion, the data are the premises, and the reasoning that
     carries one to the other is the inference.
 
     A report of activities records what the authors did, in the order they did it.
@@ -76,6 +76,26 @@ definition:
       opened: true
       claim_located: true
       checked_on: '2026-10-02'
+  - citekey: mensh_kording_2017_structuring_papers
+    kind: textbook
+    locator: "Rule 7, the paragraph on results paragraphs"
+    quote: |-
+      Each subsequent paragraph in the results section starts with a sentence or two that set up the question that the paragraph answers
+    verified:
+      resolved_id: https://doi.org/10.1371/journal.pcbi.1005619
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-03'
+  - citekey: mensh_kording_2017_structuring_papers
+    kind: textbook
+    locator: "Rule 7, the paragraph on results paragraphs"
+    quote: |-
+      the paragraph ends with a sentence that answers the question
+    verified:
+      resolved_id: https://doi.org/10.1371/journal.pcbi.1005619
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-03'
   - citekey: icmje_2026_manuscript_preparation
     kind: guideline
     locator: "IV.A.3.e Results, first paragraph"
@@ -164,11 +184,11 @@ illustrations:
 - body: |
     Start with a results paragraph written as a diary. It is made up for this section, but its
     numbers are real: they are the overweight-or-obese rows of the National Family Health Survey
-    fact sheet for India.
+    (NFHS) fact sheet for India.
 
     > We opened the NFHS-5 India fact sheet and went to the section on the nutritional status of
     > adults. We first read the row for women aged 15-49 and found that
-    > {{n:nfhs5_women_ow_ob_pct}} per cent were overweight or obese. We then read the row for men
+    > {{n:nfhs5_women_ow_ob_pct}} per cent had overweight or obesity. We then read the row for men
     > and found {{n:nfhs5_men_ow_ob_pct}} per cent. Next we read the NFHS-4 column, which gave
     > {{n:nfhs4_women_ow_ob_pct}} per cent for women and {{n:nfhs4_men_ow_ob_pct}} per cent for
     > men. Finally, we subtracted each NFHS-4 figure from its NFHS-5 figure.
@@ -204,8 +224,9 @@ illustrations:
     and NFHS-5 India fact sheets and subtracted the first from the second" is one sentence, and it
     goes in the methods.
 
-    Last, say what the claim does not cover. It is about adults aged 15-49 only. Overweight and
-    obese are counted together, because the fact sheet gives no separate row for obese. And two
+    Last, say what the claim does not cover. It is about adults aged 15-49 only, and the women's
+    rows leave out women who were pregnant or had given birth in the last two months. Overweight and
+    obesity are counted together, because the fact sheet gives no separate row for obesity. And two
     surveys of different people show that the share rose, not why it rose.
   analogy_breaks_when: |
     This paragraph carries one claim with four numbers, so the claim-first order is easy to see.
@@ -237,8 +258,10 @@ illustrations:
     viewpoint on avoidable waste in research is at https://doi.org/10.1016/S0140-6736(09)60329-9. Find the
     section headed "Biased or unusable reports of research".
 
-    There they cite a study of reports of clinical trials. Adequate information on the treatment
-    tested was in around 60 per cent of the reports. By checking references, writing to authors
+    There they cite a study of reports of clinical trials — studies that give a treatment to people
+    and compare what happens. This book has not read that study; the figures are as Chalmers and
+    Glasziou report them. Adequate information on the treatment tested was in around 60 per cent of
+    the reports. By checking references, writing to authors
     and searching further, it could be found for 90 per cent of the trials. Work out the gap.
 
     ```working
@@ -267,8 +290,8 @@ illustrations:
     quote: "it is possible to increase to 90% the proportion of trials for which adequate information could be made available."
 figures:
 - file: s58-r1-c02-unusable-reports.png
-  caption: "For about 30 trials in every 100, the authors knew what treatment they had tested and how it was given, but their report did not say it: adequate information was in around 60 per cent of reports as published, and could be found for 90 per cent of the trials by checking references, writing to authors and searching further. The dashed line marks 90 per cent. Figures from one study of trial reports cited by Chalmers and Glasziou (2009), not their own measurement."
-  alt: "Two bars from zero: 60 per cent of trial reports as published, 90 per cent of trials after further searching, with a dashed line at 90 above the first bar showing the 30-point gap."
+  caption: "For about 30 trials in every 100, the authors knew what treatment they had tested and how it was given, but their report did not say it: adequate information was in around 60 per cent of reports as published, and could be found for 90 per cent of the trials by checking references, writing to authors and searching further. The dashed line marks 90 per cent. Figures from one study of trial reports, as reported by Chalmers and Glasziou (2009); this book has not read the original study."
+  alt: "Two bars from zero: 60 per cent of trial reports as published, 90 per cent of trials after further searching, with a dashed line at 90 above the first bar showing the 30-percentage-point gap."
   source: draw.py
   spec:
     kind: bar
@@ -282,7 +305,7 @@ figures:
     refs:
     - {y: 90, label: ""}
     labels:
-    - {text: "30 points known\nbut not reported", at: [0, 76], offset: [-40, -10]}
+    - {text: "30 percentage points\nknown but not reported", at: [0, 76], offset: [-40, -10]}
     relations:
     - check: "y[1] - y[0] = 30"
 must_know:
@@ -294,10 +317,12 @@ must_know:
   refs: [mensh_kording_2017_structuring_papers]
 - point: |
     Before you write a results paragraph, write its claim as one sentence. Keep only the sentences
-    that support that claim, and put the claim first.
+    that support that claim, and put the claim first. This rule is for a results paragraph. Mensh
+    and Kording instead open it on its question and end it on the answer. Either way the claim is
+    printed, not left to the reader.
   kind: move
   bearing: methodological
-  refs: [icmje_2026_manuscript_preparation]
+  refs: [icmje_2026_manuscript_preparation, mensh_kording_2017_structuring_papers]
 - point: |
     If a paragraph ends on a step, such as "we then compared the two groups", the reader has to do
     your conclusion for you. Finish the step: print the result of the comparison and say what it
@@ -331,7 +356,7 @@ common_misreading: |
   "Argument" can sound like persuasion: state your claim, and leave out whatever does not fit it.
   That reading is wrong. It leads straight to biased reporting.
 
-  ICMJE's Recommendations ask for
+  The International Committee of Medical Journal Editors (ICMJE) asks in its Recommendations for
   data on every main and secondary outcome named in the methods. Chalmers and Glasziou give two
   examples of biased reporting. Harms of a treatment are left out. The main outcome is changed
   between the plan and the report. An argument in a paper states its claim. Then it shows all the
@@ -344,7 +369,7 @@ reporting_sentence: |
 exercises:
 - type: retrieval
   prompt: |
-    From memory: in the terms of Book 0's section on argument, what are a paper's claim, its data,
+    From memory: in the terms of `B0-R0-C42`, on argument, what are a paper's claim, its data,
     and the reasoning between them? And what are the two separate ways the argument can fail?
   answer: |
     The claim is the conclusion. The data are the premises. The reasoning that carries the data to
@@ -387,9 +412,11 @@ exercises:
     goes to the methods.
 - type: design
   prompt: |
-    Take one results paragraph from your own thesis or draft, the section you chose for this book's
-    build. Mark each sentence with a letter. Write C if it states a claim, E if it is evidence for
-    a claim, S if it describes a step of the work. Then rewrite the paragraph as an argument.
+    Take one results paragraph from the section you chose for this book's build: one section of
+    your own manuscript or thesis, chosen before you start, as "How to read" asks. Mark each
+    sentence with a letter. Write C if it states a claim, E if it is evidence for a claim, S if it
+    describes a step of the work. A sentence that reports a number from a step is E; the step itself
+    goes to the methods. Then rewrite the paragraph as an argument.
   answer: |
     Check your rewrite four ways.
 
