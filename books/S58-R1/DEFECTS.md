@@ -663,3 +663,4 @@ One fresh reader of the built PDF looked at about 120 of its 206 pages. Record-l
 - **RENDER-6:** page-break faults: a paragraph broken with a third of a page blank (pp. 34, 102), a practice label stranded at a page foot (p. 176), a table's last row alone on the next page (pp. 87–88, 135).
 - **RENDER-1** (above) covers the reference lists (396 entries, one per cited passage; house style; notes printed).
 - The glossary prints empty (p. 200) and the series list calls this book "in progress" (p. 201): both are expected at this stage (glossary merge and freeze come next).
+- **Conductor, after the rendered-page verifier (3 Oct 2026):** C20 Exercise 3's answer bullets also ran inline (p. 196, found by the verifier, not in any item): a lead line "The problems:" was added before the list, as in C21 and C22.
