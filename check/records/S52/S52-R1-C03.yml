@@ -27,7 +27,7 @@ definition:
     The objects that exist at a given moment form the workspace, which `ls()` lists and RStudio
     shows in its Environment pane.
 
-    R accepts `=` in most places.
+    R accepts `=` in most places; this book uses `<-`.
   references:
   - citekey: r_intro_manual
     kind: textbook
@@ -213,13 +213,17 @@ simplified_explanation: |
   - **A name holds a value, not a sum.** It changes only when you run its line again.
 
   The objects you have made so far sit in a list called the workspace. RStudio shows it in the
-  Environment pane, and `ls()` prints it. That list is not your script. It holds every line you ran
-  today, in whatever order you ran it, including lines you typed only in the console.
+  Environment pane, at the upper right, and `ls()` prints it. That list is not your script. It
+  holds every object made by whatever you ran today, in whatever order you ran it, including lines
+  you typed only in the console.
 
   Write names in small letters, with `_` between words, and put the unit in the name: `height_cm`,
-  `height_m`, `bmi`.
+  `height_m`, `bmi`. The style guide this book follows, written for the tidyverse (a family of
+  packages you meet in `S52-R1-C06`), calls this snake case. It also asks for `<-`, not `=`, for
+  assignment.
 
-  In R, people also call a named object a variable. A third meaning, a column in a table of data,
+  In Book 0 a variable was a letter standing for a number. In R, people also call a named object a
+  variable. A third meaning, a column in a table of data,
   comes later in the book.
 illustrations:
 - body: |
@@ -282,8 +286,8 @@ illustrations:
     So the fix belongs in the script. Change the first line to 74, with a comment saying why. Then
     run every line from the top, so that each object is made from the ones above it.
   analogy_breaks_when: |
-    Book 0's algebra letter is the wrong picture here. In `BMI = w / h^2`, w stands for whatever
-    number you substitute, and the formula holds for all of them at once. In R, `weight_kg` holds
+    Book 0's algebra letter is the wrong picture here. In Book 0's I = m divided by h^2, m stands
+    for whatever number you substitute, and the formula holds for all of them at once. In R, `weight_kg` holds
     one value, the last one assigned, and `bmi` holds one number worked out once.
 
     The patient and the copying error are made up. The correction itself is real practice: a
@@ -317,21 +321,8 @@ illustrations:
          ^
     ```
 
-    A name with a space in it:
-
-    ```r error
-    weight visit2 <- 73
-    ```
-
-    ```output
-    Error: <text>:1:8: unexpected symbol
-    1: weight visit2
-               ^
-    ```
-
-    Both stop with "unexpected symbol". R read the first part as one thing, then met a second part
-    it could not join to it. In the RStudio console the same message ends with the words R could
-    not read, such as `in "2nd_visit_kg"`.
+    "Unexpected symbol" means R read the first part, `2`, as one thing, then met a second part it
+    could not join to it.
 
     Now name it so the rules and the reader are both satisfied:
 
@@ -364,11 +355,6 @@ must_know:
     Give each thing its own name, such as `bmi_visit1` and `bmi_visit2`, rather than reusing
     `bmi`.
   kind: trap
-  bearing: methodological
-- point: |
-    A line that divides `height_cm` by 100 to make `height_m` can then be checked by
-    reading it.
-  kind: move
   bearing: methodological
 - point: |
     "object 'x' not found" usually means a typing slip or a wrong capital letter, or a line that
@@ -522,8 +508,6 @@ practice:
 
     A name must start with a letter or a dot, so `2024_bmi` and `_bmi` fail. A name cannot hold a
     space, so `bmi 2024` fails. Of the three that work, only `bmi_2024` follows this book's style.
-    A name starting with a dot, like `.bmi`, is also left out of what `ls()` prints, which makes it
-    easy to forget.
 - level: 3
   prompt: |
     Predict what the last line prints, then run the lines to check.
@@ -758,21 +742,21 @@ practice:
     - That every height was recorded in centimetres. It describes the plan, not the register.
     - That anyone checked. A conversion applied to every row runs just as smoothly on a value
       recorded in the wrong unit.
-    - That the results are right. A check on the size of each value would catch an entry like this
-      one. For adults, heights between roughly 1 m and 2 m once converted is such a check.
+    - That the results are right. A check you set yourself, such as flagging any adult height
+      outside 1 m to 2 m, would catch an entry like this one.
 retrieval_items:
 - q: What does `bmi <- weight_kg / height_m^2` store, and what happens to `bmi` if you later change `weight_kg`?
   a: It stores one number, the result worked out when the line ran. Changing `weight_kg` later leaves `bmi` unchanged until its line is run again.
 - q: Which characters may an R name contain, and how must it start?
   a: Letters, digits, `.` and `_`, and no spaces. It must start with a letter, or with a dot not followed by a digit.
 - q: What is the workspace, and why is it not the same as your script?
-  a: The set of objects that exist now in the session, listed by `ls()`. It holds whatever was run, in any order, including lines typed only in the console, so it can differ from what the script would make.
+  a: The set of objects that exist now, listed by `ls()`. It holds the objects made by whatever was run, in any order, including lines typed only in the console, so it can differ from what the script would make.
 - q: Which style does this book use for names and for assignment?
   a: Lower-case names with words joined by `_` (snake case), with units where they help, and `<-` for assignment.
 figures:
 - file: s52-r1-c03-bmi-stored-value.png
-  caption: "The value of bmi each time it was printed. First, with weight_kg 72, it is 28.125. After weight_kg is changed to 74, bmi still prints 28.125, because R stored the answer and not the recipe. Only when the line bmi <- weight_kg / height_m^2 is run again does it become 28.90625, which is 74 / 1.6^2."
-  alt: "Three bars. Print 1: 28.125. Print 2, after the weight was changed to 74: still 28.125. Print 3, after the BMI line was run again: 28.90625, which is 74 / 1.6^2."
+  caption: "The value of bmi each time it was printed. First, with weight_kg 72, it is 28.125. After weight_kg is changed to 74, bmi still prints 28.125, because R stored the answer and not the recipe. Only when the line `bmi <- weight_kg / height_m^2` is run again does it become 28.90625, which is 74 divided by 1.6 squared."
+  alt: "Three bars. Print 1: 28.125. Print 2, after the weight was changed to 74: still 28.125. Print 3, after the BMI line was run again: 28.90625, which is 74 divided by 1.6 squared."
   source: draw.py
   spec:
     kind: bar

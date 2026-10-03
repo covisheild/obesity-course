@@ -16,13 +16,13 @@ definition:
     A silent change is a change to data, or a choice about which data to use, that leaves no instruction a second person can read and run again, and that nothing on
     the screen announces.
 
-    Gene symbols turned into dates. Ziemann, Eren and El-Osta report that Microsoft Excel, used
-    with its default settings, converts some gene symbols to dates: SEPT2 becomes "2-Sep" and
-    MARCH1 becomes "1-Mar".
+    Gene symbols turned into dates. Ziemann, Eren and El-Osta reported in 2016 that Microsoft
+    Excel, used with its default settings, converted some gene symbols to dates: SEPT2 became
+    "2-Sep" and MARCH1 became "1-Mar".
 
-    A spreadsheet formula and undeclared choices. One formula averaged rows 30 to 44 instead of rows 30 to 49, which left out five countries entirely.
+    A spreadsheet formula and undeclared choices. One formula in Reinhart and Rogoff's working spreadsheet averaged rows 30 to 44 instead of rows 30 to 49, which left out five countries entirely.
 
-    The papers' highest category was public debt above 90% of gross domestic product (GDP), a measure of the size of an economy.
+    Their papers' highest category was public debt above 90% of gross domestic product (GDP), a measure of the size of an economy.
 
     Rows lost in transfer. Public Health England (PHE) stated on 4 October 2020 that 15,841
     positive test results for coronavirus disease 2019 (COVID-19), from 25 September to 2 October,
@@ -250,6 +250,30 @@ definition:
       checked_on: '2026-10-02'
   - citekey: herndon_2014_cje
     kind: primary
+    locator: 'p. 265, section 3.4: one number per country, whatever its years'
+    quote: |-
+      with each country counting as a single observation, no matter how many years it appears in any given public debt/GDP category: 19 years for the UK or 1 year only for New Zealand.
+    verified:
+      resolved_id: https://doi.org/10.1093/cje/bet075
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-03'
+  - citekey: herndon_2014_cje
+    kind: primary
+    locator: 'p. 269, Table 5, last two "Interactive effects" rows, >90% column: 0.0 with three problems, −0.1 with the transcription error added'
+    quote: |-
+      Spreadsheet error + selective years exclusion + 4.1 2.9 3.4 −0.1 country weights + transcription error
+    verified:
+      resolved_id: https://doi.org/10.1093/cje/bet075
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-03'
+      note: |-
+        The row above, "Spreadsheet error + selective years exclusion + country weights", gives 0.0;
+        the text layer wraps each row's label round its figures. Section 3.5 (p. 267) names the
+        fourth item: "a transcription error in transferring the country average figure".
+  - citekey: herndon_2014_cje
+    kind: primary
     locator: 'p. 269, Table 5, row "Spreadsheet error only", last column (>90%)'
     quote: |-
       Spreadsheet error only 4.2 3.0 3.2 1.9
@@ -422,15 +446,15 @@ simplified_explanation: |
   Here is the trap with data. A number can change, or a row can go missing, and nothing on the screen
   tells you. The table looks right, so you trust it.
 
-  - **A program changed values as the file was opened.** About one in five genomics papers that came
-    with Excel gene lists carried such errors.
+  - **A program changed values as the file was opened.** About one in five papers with Excel gene
+    lists, in the 18 genomics journals the authors screened, carried such errors.
   - **A formula covered the wrong rows, and choices went unsaid.** Other data had been left out on
     purpose, and the paper never said so.
   - **A transfer lost rows.** Some files were too big for the system that loaded them.
 
   So this book follows one rule. You never edit the raw data file. Every change you make to the
   data is a line of code, kept in a file, that anyone can read and run again. And you count your
-  rows before and after each step.
+  rows before and after each step. `S52-R1-C02` shows what a line of code and a comment look like.
 illustrations:
 - body: |
     Start with the gene names, because the failure is easy to picture.
@@ -442,14 +466,15 @@ illustrations:
     The authors then went looking for how often this reached published papers. They wrote programs
     to screen 35,175 supplementary Excel files from 18 journals, published from 2005 to 2015.
     Supplementary files are the extra files published alongside a paper. They found gene lists attached to 3597 papers. They confirmed errors in 704 of those papers.
+    Those 704 papers held 987 files with errors.
 
     Now check their headline figure yourself, as Book 0's section on percentages taught you. Ask
     first: per cent of what? Of the papers that had gene lists in Excel files. Not of all papers in
     those journals.
 
     ```working
-    704 ÷ 3597 = 0.1957
-    0.1957 × 100 = 19.57
+    704 divided by 3597 = 0.1957...
+    0.1957 times 100 = 19.57
     ```
 
     That rounds to {{n:ziemann_affected_pct}}, the figure they state. It is about one paper in five.
@@ -539,14 +564,18 @@ illustrations:
     The exclusions were choices. Some early post-war years for Australia, Canada and New Zealand
     were left out, and the papers never said so.
 
+    The weighting was a third choice. Each country's average counted once, whether it rested on
+    one year or nineteen.
+
     Then read what each problem did to the answer. With all the data, average growth in the
     high-debt category was 2.2% a year. The published figure was −0.1%. Herndon and colleagues
-    corrected each problem alone, too. The spreadsheet error by itself moved the figure only from
-    2.2% to 1.9%. So did the exclusions alone, and so did the weighting alone. It took all of them
-    together, which the authors say interact strongly, to reach −0.1%.
+    also put back each problem on its own. The spreadsheet error by itself moved the figure only
+    from 2.2% to 1.9%. So did the exclusions alone, and so did the weighting alone. The three
+    together, which the authors say interact strongly, brought it to 0.0%. A fourth slip, a figure
+    copied wrongly, took it to the published −0.1%.
 
     Reinhart and Rogoff acknowledged the spreadsheet errors. In their 2013 working paper, Herndon
-    and colleagues drew a lesson for economists: the advantages of reproducible code over working
+    and colleagues drew a lesson for people who analyse economic data: the advantages of reproducible code over working
     spreadsheets.
   analogy_breaks_when: |
     It is tempting to tell this as "a spreadsheet slip changed world policy". The replication does
@@ -593,6 +622,12 @@ illustrations:
     as_of: '2026-10-02'
     quote: |-
       Spreadsheet error only 4.2 3.0 3.2 1.9
+  - value: '0.0'
+    unit: per cent a year, the same mean with the spreadsheet error, exclusions and weighting applied together
+    citekey: herndon_2014_cje
+    as_of: '2026-10-03'
+    quote: |-
+      Spreadsheet error + selective years exclusion + 4.1 2.9 3.4 0.0
   - value: '30'
     unit: first spreadsheet row averaged
     citekey: herndon_2014_cje
@@ -640,7 +675,7 @@ illustrations:
     ```working
     957 + 744 + 757 + 0 + 1415 + 3049 + 4133 + 4786 = 15841
     3049 + 4133 + 4786 = 11968
-    11968 ÷ 15841 = 0.7555
+    11968 divided by 15841 = 0.7555...
     ```
 
     The total matches the 15,841 in the statement. The last three days hold 11,968 results, and 11,968
@@ -745,7 +780,7 @@ must_know:
   refs:
   - herndon_2014_cje
 - point: |
-    Do not repeat "a spreadsheet slip caused austerity" or "Excel lost the COVID cases". The
+    Do not repeat "a spreadsheet slip changed government policy" or "Excel lost the COVID cases". The
     replication found the slip alone moved the result from 2.2% to 1.9% a year. The PHE statement
     names no software. Quote what each source says, and no more.
   kind: trap
@@ -756,7 +791,7 @@ must_know:
 - point: |
     When you open someone else's data file, look for values that have changed type, such as text turned into
     dates.
-  kind: number
+  kind: move
   bearing: methodological
   refs:
   - ziemann_2016
@@ -864,7 +899,7 @@ retrieval_items:
 - q: What did Excel, with its default settings, do to gene symbols such as SEPT2 and MARCH1, and how common was it in the papers Ziemann and colleagues screened?
   a: It turned them into dates ("2-Sep", "1-Mar"). Errors were confirmed in 704 of the 3597 papers with Excel gene lists, about one in five ({{n:ziemann_affected_pct}}), in 18 journals from 2005 to 2015.
 - q: In the Reinhart and Rogoff replication, what did the spreadsheet error alone do to average growth in the high-debt category, and what did all the problems together do?
-  a: The spreadsheet error alone moved it from 2.2% to 1.9% a year. All the problems together, the exclusions, the weighting and the error, gave the published −0.1%.
+  a: The spreadsheet error alone moved it from 2.2% to 1.9% a year. All the problems together, the exclusions, the weighting, the spreadsheet error and a copying slip, gave the published −0.1%.
 - q: What cause did Public Health England give for the 15,841 results missing from the daily figures in October 2020, and what does its statement not say?
   a: Some files exceeded the maximum file size of the process that loads them into central systems. The statement does not name Excel, any software, a file format or a row limit.
 - q: What rule does this book follow because of cases like these?
@@ -883,25 +918,8 @@ figures:
     relations:
     - check: "sum(y) = 15841"
     - check: "y[5] + y[6] + y[7] = 11968"
-- file: s52-r1-c01-years-counted.png
-  caption: "Years in which a country carried public debt above 90% of its GDP, as Herndon, Ash and Pollin counted them in Reinhart and Rogoff's working spreadsheet: 110 in all the data, 96 after the exclusions the authors chose, 71 after those exclusions and the spreadsheet error. Choices nobody wrote down, and one formula, removed 39 of the 110 years."
-  alt: "A bar chart of three steps. All the data: 110 years. After the chosen exclusions: 96. After the exclusions and the spreadsheet error: 71."
-  source: draw.py
-  spec:
-    kind: bar
-    x: ["all the data", "after the chosen exclusions", "after exclusions and spreadsheet error"]
-    series:
-    - {name: "years counted", y: [110, 96, 71]}
-    x_label: step
-    y_label: years counted (debt above 90% of GDP)
-    value_labels: true
-    size: [7.4, 3.0]
-    derived:
-    - {value: "39", from: "110 - 71"}
-    relations:
-    - check: "y[0] - y[2] = 39"
 - file: s52-r1-c01-growth-three-ways.png
-  caption: "Average growth in the high-debt category, in % a year, three ways. With all the data it was 2.2%. The spreadsheet error alone moved it only to 1.9%, 0.3 of a percentage point. All the problems together, the exclusions, the weighting and the error, gave the published -0.1%."
+  caption: "Average growth in the high-debt category, in % a year, three ways. With all the data it was 2.2%. The spreadsheet error alone moved it only to 1.9%, 0.3 of a percentage point. All the problems together, the exclusions, the weighting, the spreadsheet error and a copying slip, gave the published -0.1%."
   alt: "A bar chart with three bars: all the data, 2.2; spreadsheet error alone, 1.9; all problems together, as published, -0.1, a short bar below the zero line."
   source: draw.py
   spec:

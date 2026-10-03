@@ -19,7 +19,9 @@ definition:
   text: |
     A result is reproducible when the same data, analysed again with the same code, give the same result. A result is
     replicated when independent investigators collect new data on the same question and reach the same answer. Reproducing a
-    result does not show that it is correct.
+    result does not show that it is correct. Peng (2011) calls replication the ultimate standard for judging scientific
+    claims. Between full replication and none he places a spectrum: a study is more or less reproducible depending on what
+    data and code are made available.
 
     Trisovic, Lau, Pasquier and Crosas (2022) measured re-execution at scale. They took 2109
     replication packages, the data and code that authors deposit with a published paper, from the
@@ -256,7 +258,7 @@ definition:
       checked_on: '2026-10-02'
   - citekey: trisovic_2022
     kind: primary
-    locator: 'Background, third paragraph: why social science dominates'
+    locator: 'Results, RQ 9: most datasets labelled social science'
     quote: |-
       Still, most of the datasets are labeled’social science,’ though some have multiple subject labels.
     verified:
@@ -265,8 +267,7 @@ definition:
       claim_located: true
       checked_on: '2026-10-02'
       note: |-
-        RQ 9 adds: "Still, most of the datasets are labeled’social science,’ though some have multiple
-        subject labels." (The missing space and the quotation marks are the text's own.)
+        The missing space and the quotation marks are the text's own.
   - citekey: trisovic_2022
     kind: primary
     locator: 'Limitations of the Study, last paragraph: one source'
@@ -286,8 +287,8 @@ simplified_explanation: |
   was done as described.
 
   The first step of reproducing is that the code runs at all. One large study tested that. It took
-  thousands of R files that researchers had shared with their published papers, and ran each on a
-  clean computer. Most did not run.
+  thousands of R files that researchers had shared with their published papers, and tried to run
+  each on a clean computer. Most did not run.
 
   A script that runs is still not a result reproduced. It may run and print different numbers.
 illustrations:
@@ -312,14 +313,17 @@ illustrations:
     Trisovic and colleagues measured how often this happens. They took 2109 replication packages from
     the Harvard Dataverse, a website where researchers deposit their files. A replication package is
     the data and code that authors deposit with a published paper. These were published from 2010 to July 2020, and together held 9078 R
-    files. The team ran every file on a clean computer under three versions of R. They gave each file
-    up to one hour, and each package up to five. Then they ran everything again after an automatic
+    files. The team tried to run each file on a clean computer under three versions of R. They gave
+    each file up to one hour, and each package up to five. Not every file got a result: when earlier
+    files used up a package's five hours, the rest never ran. Then they tried again after an automatic
     cleaning step. It removed absolute paths, the `C:/Users/...` kind, fixed how the text of each file
-    was stored, and installed every package the code loaded.
+    was stored, and added lines that install any package the code loads, if it is missing.
 
     Here is their results table, as they give it. A file counts as a success if any of the three
     versions of R ran it to the end without an error. "Time limit exceeded" means the file was still
-    running when its hour ran out.
+    running when its hour ran out. The paper does not spell out the "best of both" row. Its counts fit
+    the paper's rule applied to both runs together, so a file that errored in one run and ran out of
+    time in the other is left out.
 
     ```table
     | Run | Success | Error | Time limit exceeded |
@@ -350,8 +354,7 @@ illustrations:
     The abstract gives its figures the other way round: {{n:trisovic_fail_initial_pct}} of R files "failed to complete without
     error" on first execution, and {{n:trisovic_fail_cleaned_pct}} after cleaning. Those two are the authors' summary. The table's
     rates are on a different basis, and its 56% is a success rate where the abstract's 56% is a failure
-    rate. The parts of the paper this book holds do not show how the abstract's figures were worked
-    out. So quote the abstract's sentence as the abstract's, and the table's rates with the table's
+    rate. The paper does not show how the abstract's two figures were worked out. So quote the abstract's sentence as the abstract's, and the table's rates with the table's
     labels, and never mix the two.
 
     Last, the reasons. The cleaning fixed every error caused by `setwd()`, the line that set the
@@ -497,13 +500,12 @@ illustrations:
     without an error" is a fact about the code. "Reproduced" is a fact about the result, and it needs
     someone to compare the output with the paper.
 
-    Now place your own thesis on Peng's spectrum. At one end, you publish the paper and nothing else.
-    Further along, you share the code. Further still, the code and the data, so that someone can run
-    one and get the other. At the far end, someone collects new data in another district and asks the
-    same question: that is replication, and no amount of tidy code gives it to you.
+    Now place your own thesis on Peng's spectrum. Where it sits depends, in his words, on "what data
+    and code are made available". At the far end, someone collects new data in another district and
+    asks the same question: that is replication, and no amount of tidy code gives it to you.
 
-    A project folder that reruns from raw data with one command sits as far along the spectrum as code
-    and data can take it. That is the build this book asks for.
+    A project folder that reruns from raw data with one command makes both your data and your code
+    available. That is the build this book asks for.
   analogy_breaks_when: |
     The three packages were picked at random from 127, and three is a handful. The study reports what
     it found in them; it does not give a share of shared code that reproduces its paper.
@@ -525,7 +527,7 @@ illustrations:
       To access how the code re-execution relates to research reproducibility, we select a random sample of three datasets where all files were executed successfully and attempt to compare its outputs to the reported ones.
 must_know:
 - point: |
-    One study ran 9078 R files shared with published papers on the Harvard Dataverse, deposited from
+    One study took 9078 R files shared with published papers on the Harvard Dataverse, deposited from
     2010 to July 2020. Its authors report that {{n:trisovic_fail_initial_pct}} failed to run without
     an error on first execution. Quote it with that source, sample and date, never as "most research
     code is broken".
@@ -574,7 +576,8 @@ must_know:
   refs:
   - trisovic_2022
 - point: |
-    The finding is that most shared R code does not rerun as deposited. Studies of other websites,
+    The finding is that most R files shared on Harvard Dataverse from 2010 to July 2020 did not rerun
+    as deposited. Studies of other websites,
     fields and years that find most files running would overturn it.
   kind: boundary
   bearing: methodological
@@ -589,13 +592,13 @@ exercises:
   answer: |
     The sentence makes two claims, and neither follows.
 
-    "Available on request" is not shared. Peng's spectrum runs from sharing nothing to sharing code
-    and data together. Code kept on the author's own computer sits at the near end. A request may
-    never be answered, and the computer may not last.
+    "Available on request" is not shared. On Peng's spectrum, a study is more or less reproducible
+    depending on what data and code are made available. Code kept on the author's own computer has
+    not been made available. A request may never be answered, and the computer may not last.
 
     "So the analysis is fully reproducible" claims that the code would run on someone else's computer
-    and print the same numbers. Nobody has tested that. The largest study we have ran 9078 R
-    files deposited with published papers. Its authors report that {{n:trisovic_fail_initial_pct}}
+    and print the same numbers. Nobody has tested that. One large study took 9078 R files
+    deposited with published papers. Its authors report that {{n:trisovic_fail_initial_pct}}
     failed to run without an error the first time. Among the common causes were a working directory
     on the author's computer and packages that were missing.
 
@@ -625,8 +628,8 @@ exercises:
       deposited from 2010 to July 2020, most from the social sciences.
     - "Works" is too wide. A success means the file ran to the end without an error on a clean computer,
       under one of three versions of R. It does not mean the file printed the paper's numbers.
-    - "Harvard study" names the website, not the finding's reach. The study was published in the
-      journal Scientific Data in 2022.
+    - "Harvard" names the website and the institute that built it. It says nothing about how far
+      the finding reaches.
     - It leaves out the second run. After an automatic cleaning step, the table's success rate rose to
       40%.
 - type: retrieval
@@ -650,8 +653,8 @@ exercises:
     run?" Answer without jargon, say how sure you are, and give them one sentence they could quote.
   answer: |
     For one large body of code, yes, as deposited. A team took over nine thousand files of code in the
-    R language, shared by researchers alongside published papers on one big website. They ran each
-    on a clean computer. In their own summary, about three in four did not run to the end without
+    R language, shared by researchers alongside published papers on one big website. They tried to
+    run each on a clean computer. In their own summary, about three in four did not run to the end without
     an error the first time. After a simple automatic fix-up they report a little over half still failing.
 
     How sure? Fairly, for that website. It was one website, mostly social science, code shared
@@ -661,8 +664,8 @@ exercises:
     the author's own computer, or needed a piece of software that was not there. And running is not the
     same as being right. Code can run perfectly and still give a wrong answer.
 
-    A quotable sentence: "Most shared research code that has been tested would not run as shared.
-    Many of the reasons are simple to prevent."
+    A quotable sentence: "One large study looked at R code shared on one research website. About three
+    in four files did not run to the end without an error. Many of the reasons are simple to prevent."
 quantitative: false
 retrieval_items:
 - q: What is the difference between reproducing a result and replicating it?

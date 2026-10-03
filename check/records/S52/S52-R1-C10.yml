@@ -243,8 +243,66 @@ definition:
       opened: true
       claim_located: true
       checked_on: '2026-10-02'
+  - citekey: rdocs_s52r1_dplyr
+    kind: textbook
+    locator: 'help page "filter" (dplyr 1.1.4), Arguments, "...": columns named as variables of the data'
+    quote: |-
+      Expressions that return a logical value, and are defined in terms of the variables in '.data'.
+    verified:
+      resolved_id: rhelp://dplyr@1.1.4/filter
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-03'
+      note: |-
+        count()'s "..." carries the same tag: "<'data-masking'> Variables to group by."
+  - citekey: rdocs_s52r1_base
+    kind: textbook
+    locator: 'help page "library" (base 4.3.3), Arguments: warn.conflicts'
+    quote: |-
+      If 'TRUE', warnings are printed about 'conflicts' from attaching the new package.
+    verified:
+      resolved_id: rhelp://base@4.3.3/library
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-03'
+  - citekey: rdocs_s52r1_readr
+    kind: textbook
+    locator: 'vignette "readr" (readr 2.1.5), Available column specifications, and Date/times: the default date format'
+    quote: |-
+      %AD which uses an automatic date parser that recognises dates of the format Y-m-d or Y/m/d.
+    verified:
+      resolved_id: rvignette://readr@2.1.5/readr
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-03'
+      note: |-
+        The same vignette, Available column specifications: "col_date(format = "") [D]: with the
+        locale's date_format"; Date/times: the locale's date_format default "is %AD".
+  - citekey: rdocs_s52r1_readr
+    kind: textbook
+    locator: 'help page "read_delim" (readr 2.1.5), Arguments: quote'
+    quote: |-
+      quote: Single character used to quote strings.
+    verified:
+      resolved_id: rhelp://readr@2.1.5/read_delim
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-03'
+      note: |-
+        That the quoted comma stays inside one value is shown by the gate's own run: spec() lists
+        17 columns, with Stage among them.
+  - citekey: horst_2020_palmerpenguins
+    kind: textbook
+    locator: 'DESCRIPTION file (palmerpenguins 0.1.1), Description: LTER expanded'
+    quote: |-
+      Palmer Station Long Term Ecological Research (LTER) Program
+    verified:
+      resolved_id: https://cran.r-project.org/package=palmerpenguins
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-03'
 simplified_explanation: |
-  It is itself a small table, one row per column of the data. For each column it says:
+  A data dictionary is itself a small table, one row per column of the data. For each column it says:
 
   - the exact name, letter for letter, as it is in the file;
   - what the column means, in plain words;
@@ -274,7 +332,7 @@ illustrations:
 
     ```r
     library(readr)
-    library(dplyr)
+    library(dplyr, warn.conflicts = FALSE)
 
     penguins_raw <- read_csv(
       here::here("data-raw", "penguins_raw.csv"),
@@ -287,17 +345,6 @@ illustrations:
     ```
 
     ```output
-
-    Attaching package: ‘dplyr’
-
-    The following objects are masked from ‘package:stats’:
-
-        filter, lag
-
-    The following objects are masked from ‘package:base’:
-
-        intersect, setdiff, setequal, union
-
     cols(
       studyName = col_character(),
       `Sample Number` = col_double(),
@@ -320,6 +367,9 @@ illustrations:
     [1] 344
     ```
 
+    `warn.conflicts = FALSE` turns off the masking message that `S52-R1-C06` explained. In the
+    output, `col_date(format = "")` means the date was read in readr's default form, year-month-day.
+
     {{n:penguins_cols}} columns and {{n:penguins_rows}} rows, as the help page said. But read the names. The file says
     `Culmen Length (mm)`, `Flipper Length (mm)`, `Body Mass (g)` and `Delta 15 N (o/oo)`, with a unit
     in brackets after the name. Six of the names you copied
@@ -329,6 +379,7 @@ illustrations:
     The units are a second difference. The help page gives millimetres and grams in words. It gives
     no unit for the two isotope columns; the file's own header writes "o/oo" after them. So the unit
     column of your dictionary says "o/oo, as written in the column name; the help page gives no unit".
+    Neither source says what "o/oo" stands for, so the cell copies it and does not translate it.
     That cell records exactly what you know and where it came from, and no more.
 
     The third difference is in the identifiers. The help page calls `Individual ID` "the unique ID for
@@ -357,7 +408,8 @@ illustrations:
     344 combinations for {{n:penguins_rows}} rows: one each.
 
     Last, the allowed values and the missing code. The help page says only that Sex is "a character
-    string". `count()` lists each value with the number of rows that hold it:
+    string". `count()` lists each value with the number of rows that hold it. Inside dplyr functions
+    you name a column without `$`; the function looks it up in the data frame it was given.
 
     ```r
     penguins_raw |>
@@ -373,8 +425,10 @@ illustrations:
     3 <NA>      11
     ```
 
+    `<int>` marks whole numbers (integers), and `<NA>` is how a tibble prints a missing text value.
     Two values, FEMALE and MALE, in capitals, and 11 rows missing. To see how the file writes a missing
-    value, look at its first lines as plain text:
+    value, look at its first lines as plain text with `head -n 5`, a terminal command that prints a
+    file's first 5 lines:
 
     ```sh
     head -n 5 data-raw/penguins_raw.csv
@@ -388,8 +442,9 @@ illustrations:
     PAL0708,4,Adelie Penguin (Pygoscelis adeliae),Anvers,Torgersen,"Adult, 1 Egg Stage",N2A2,Yes,2007-11-16,NA,NA,NA,NA,NA,NA,NA,Adult not sampled.
     ```
 
-    The fourth penguin, N2A2, has `NA` where its measurements should be. So the file writes a missing
-    value as `NA`, which `read_csv()` reads as missing without being told.
+    The fourth row, N2A2, has `NA` where its measurements should be. So the file writes a missing
+    value as `NA`, which `read_csv()` reads as missing without being told. The quotes round
+    `"Adult, 1 Egg Stage"` mark it as one value, so its comma does not start a new column.
 
     Here is the dictionary, for the columns this book uses most. Each entry says where it came from.
 
@@ -407,7 +462,8 @@ illustrations:
 
     The full dictionary has {{n:penguins_cols}} rows, one for each column, and one more fact for the whole file:
     missing values are written `NA`. Save it as a CSV file, `penguins_raw_dictionary.csv`, beside the
-    raw file in `data-raw/`. Raw data and the facts about it belong together. You type the dictionary
+    raw file in `data-raw/`. Wilson and colleagues keep raw data and the facts about it (its
+    metadata) in the same folder. You type the dictionary
     once, by hand, before any cleaning. No code ever writes to that folder.
 
     Notice the cells that say "expected range not stated". Broman and Woo suggest giving the expected
@@ -435,7 +491,8 @@ illustrations:
     > An analysis of adult penguin body mass by species and sex, written while learning R.
     >
     > Raw data: `data-raw/penguins_raw.csv`, copied unchanged from the palmerpenguins R package,
-    > version 0.1.1, licence CC0. The data were collected by Palmer Station Antarctica LTER and
+    > version 0.1.1, licence CC0. The data were collected by Palmer Station Antarctica LTER (Long
+    > Term Ecological Research) and
     > K. Gorman, and first published by Gorman, Williams and Fraser in PLoS ONE in 2014. MD5
     > checksum on arrival: 049da101568e078f9845c8b366481810.
     >
@@ -449,10 +506,10 @@ illustrations:
     > Written with R {{n:r_version}}. Contact: your name and email address.
 
     The checksum is the one the section on reading a raw file taught you to take on the day the file
-    arrives.
+    arrives. How to open a terminal in the folder is in `S52-R1-C07`.
 
     CC0 is the licence the package's own files state. Wilson and colleagues describe it as the "No
-    Rights Reserved" licence: anyone may reuse the data without asking.
+    Rights Reserved" licence.
 
     Read it back as the colleague. Each question they had is answered in a line. The line "To rerun"
     is the one that matters most. If you cannot write it yet, because the analysis needs a click
@@ -492,8 +549,8 @@ must_know:
   kind: consequence
   bearing: methodological
 - point: |
-    Never fill an "expected range" cell with the smallest and largest values in your own file. Leave
-    it blank and say why, until a source or a protocol gives the range.
+    Never fill an "expected range" cell with the smallest and largest values in your own file. Write
+    "not stated" in it, and where you looked, until a source or a protocol gives the range.
   kind: trap
   bearing: methodological
 - point: |

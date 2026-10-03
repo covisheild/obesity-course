@@ -10,6 +10,7 @@ ground_floor_deps:
 - B0-R0-C10
 - B0-R0-C14
 - B0-R0-C03
+- B0-R0-C08
 concept_deps:
 - S52-R1-C04
 - S52-R1-C05
@@ -25,7 +26,8 @@ definition:
 
     `case_when()` takes a list of cases, each written `condition ~ value`. It checks them in order,
     and each row gets the value of the first case whose condition is `TRUE`. A row that matches no
-    case gets `.default` if one is given, and `NA` otherwise.
+    case gets `.default` if one is given, written `.default = "label"` after the cases, and `NA`
+    otherwise.
 
     `round(x, digits)` rounds to that many decimal places. A 5 at the cut is rounded to the even
     digit, so `round(2.5)` is 2.
@@ -175,11 +177,41 @@ definition:
       checked_on: '2026-10-02'
       note: |-
         Row 88 gives the same cut-point for women. The fact sheet's adult rows cover ages 15 to 49.
+  - citekey: rdocs_s52r1_dplyr
+    kind: textbook
+    locator: 'help page "case_when" (dplyr 1.1.4), Usage: .default after the cases'
+    quote: |-
+      case_when(..., .default = NULL, .ptype = NULL, .size = NULL)
+    verified:
+      resolved_id: rhelp://dplyr@1.1.4/case_when
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-03'
+  - citekey: rdocs_s52r1_dplyr
+    kind: textbook
+    locator: 'help page "rename" (dplyr 1.1.4), Arguments, .fn; Examples'
+    quote: |-
+      .fn: A function used to transform the selected '.cols'.
+    verified:
+      resolved_id: rhelp://dplyr@1.1.4/rename
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-03'
+      note: |-
+        The Examples pass the function by name, without brackets: "rename_with(iris, toupper)".
+  - citekey: rdocs_s52r1_base
+    kind: textbook
+    locator: 'help page "library" (base 4.3.3), Arguments: warn.conflicts'
+    quote: |-
+      If 'TRUE', warnings are printed about 'conflicts' from attaching the new package.
+    verified:
+      resolved_id: rhelp://base@4.3.3/library
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-03'
 simplified_explanation: |
   **mutate()** adds a column. You give the new column a name and a rule, and R applies the rule to
   every row. The number of rows does not change.
-
-  Give the new column a new name.
 
   **if_else()** sorts rows into two groups by one test. **case_when()** sorts them into several
   groups. A row with a missing value passes no test and gets `NA`, which is what you want. Be
@@ -194,29 +226,18 @@ simplified_explanation: |
 illustrations:
 - body: |
     Start with BMI, on a made-up clinic register of five adults. Heights are in centimetres, as a
-    clinic writes them; weights are in kilograms. Patient 104 has no weight recorded.
+    clinic writes them; weights are in kilograms. Patient 104 has no weight recorded. dplyr makes
+    `tibble()` available too, and `warn.conflicts = FALSE` turns off the masking message that
+    `S52-R1-C06` explained.
 
     ```r
-    library(dplyr)
+    library(dplyr, warn.conflicts = FALSE)
 
     clinic <- tibble(
       id = c(101, 102, 103, 104, 105),
       height_cm = c(152, 160, 171, 158, 165),
       weight_kg = c(41, 64, 80.2, NA, 58)
     )
-    ```
-
-    ```output
-
-    Attaching package: ‘dplyr’
-
-    The following objects are masked from ‘package:stats’:
-
-        filter, lag
-
-    The following objects are masked from ‘package:base’:
-
-        intersect, setdiff, setequal, union
     ```
 
     Write Book 0's rule straight in, with the height as it is:
@@ -327,7 +348,9 @@ illustrations:
     [1] 24.999999999999996
     ```
 
-    The stored number is a hair below 25. On paper, 64 ÷ 1.6^2 is exactly 25. But a computer stores
+    In `print()`, `digits` counts all the digits shown, 17 here, not decimal places as in `round()`.
+
+    The stored number is a hair below 25. On paper, 64 divided by 1.6^2 is exactly 25. But a computer stores
     numbers in binary, and many decimals, 1.6 among them, have no exact binary form, in the same way
     that one third has no exact decimal form. The tiny error survives the arithmetic, and
     `bmi < 25` is `TRUE`.
@@ -337,6 +360,8 @@ illustrations:
     Here is the trap. Printed digits are not stored digits, and a cut-point is exactly where a hair
     matters. The fix is a rule you choose and write down. The survey states its cut-points to one
     decimal place, so round the BMI to one decimal in a separate column, and group on that column.
+    `round(bmi, 1)` replaces the hair-below number with the number R stores for `25`, so
+    `bmi_1dp < 25` is `FALSE`.
 
     ```r
     clinic <- clinic |>
@@ -396,7 +421,7 @@ illustrations:
 
     ```r
     library(readr)
-    library(dplyr)
+    library(dplyr, warn.conflicts = FALSE)
     library(stringr)
 
     penguins_raw <- read_csv(
@@ -462,29 +487,22 @@ illustrations:
     look.
 
     Last, the column names. `rename_with()` applies a function to every name. Give it
-    `str_to_lower`:
+    `str_to_lower`. Written without brackets, a function is handed over to be used on each name,
+    not called.
 
     ```r
     penguins_raw |>
       rename_with(str_to_lower) |>
-      select(species, starts_with("body"))
+      names()
     ```
 
     ```output
-    # A tibble: 344 × 2
-       species                             `body mass (g)`
-       <chr>                                         <dbl>
-     1 Adelie Penguin (Pygoscelis adeliae)            3750
-     2 Adelie Penguin (Pygoscelis adeliae)            3800
-     3 Adelie Penguin (Pygoscelis adeliae)            3250
-     4 Adelie Penguin (Pygoscelis adeliae)              NA
-     5 Adelie Penguin (Pygoscelis adeliae)            3450
-     6 Adelie Penguin (Pygoscelis adeliae)            3650
-     7 Adelie Penguin (Pygoscelis adeliae)            3625
-     8 Adelie Penguin (Pygoscelis adeliae)            4675
-     9 Adelie Penguin (Pygoscelis adeliae)            3475
-    10 Adelie Penguin (Pygoscelis adeliae)            4250
-    # ℹ 334 more rows
+     [1] "studyname"           "sample number"       "species"
+     [4] "region"              "island"              "stage"
+     [7] "individual id"       "clutch completion"   "date egg"
+    [10] "culmen length (mm)"  "culmen depth (mm)"   "flipper length (mm)"
+    [13] "body mass (g)"       "sex"                 "delta 15 n (o/oo)"
+    [16] "delta 13 c (o/oo)"   "comments"
     ```
 
     The names are now in lower case, but `body mass (g)` still has spaces and brackets, so it still
@@ -573,12 +591,12 @@ exercises:
   prompt: |
     Add to your penguin script a column of flipper length in centimetres. Add another that labels
     each penguin's body mass as "4.5 kg or more" or "under 4.5 kg". The cut-point is chosen for
-    practice; it is not a biological threshold. Count how many penguins get each label, including
+    practice; it is not a biological threshold. Count how many rows get each label, including
     any missing.
   answer: |
     ```r
     library(readr)
-    library(dplyr)
+    library(dplyr, warn.conflicts = FALSE)
 
     penguins_raw <- read_csv(
       here::here("data-raw", "penguins_raw.csv"),
@@ -601,17 +619,6 @@ exercises:
     ```
 
     ```output
-
-    Attaching package: ‘dplyr’
-
-    The following objects are masked from ‘package:stats’:
-
-        filter, lag
-
-    The following objects are masked from ‘package:base’:
-
-        intersect, setdiff, setequal, union
-
     # A tibble: 3 × 2
       mass_group         n
       <chr>          <int>
@@ -620,9 +627,9 @@ exercises:
     3 <NA>               2
     ```
 
-    118 penguins weigh 4.5 kg or more, 224 weigh less, and 2 have no body mass, so no label. A
+    118 rows show 4.5 kg or more, 224 show less, and 2 have no body mass, so no label. A
     millimetre is a tenth of a centimetre, so dividing by 10 converts. The function `if_else()` gives
-    `NA` where the test is `NA`. So the two penguins with no body mass are not quietly counted as
+    `NA` where the test is `NA`. So the two rows with no body mass are not quietly counted as
     light.
   skill_ref: S52-R1-K01
 quantitative: true
@@ -636,22 +643,9 @@ practice:
     A made-up table of three heights:
 
     ```r
-    library(dplyr)
+    library(dplyr, warn.conflicts = FALSE)
 
     heights <- tibble(height_cm = c(150, 162.5, 178))
-    ```
-
-    ```output
-
-    Attaching package: ‘dplyr’
-
-    The following objects are masked from ‘package:stats’:
-
-        filter, lag
-
-    The following objects are masked from ‘package:base’:
-
-        intersect, setdiff, setequal, union
     ```
 
     Add a column `height_m` with the heights in metres.
@@ -678,22 +672,9 @@ practice:
     A made-up table of three weights:
 
     ```r
-    library(dplyr)
+    library(dplyr, warn.conflicts = FALSE)
 
     weights <- tibble(weight_kg = c(72, 55, NA))
-    ```
-
-    ```output
-
-    Attaching package: ‘dplyr’
-
-    The following objects are masked from ‘package:stats’:
-
-        filter, lag
-
-    The following objects are masked from ‘package:base’:
-
-        intersect, setdiff, setequal, union
     ```
 
     Add a column that says "60 or more" or "under 60". Before you run it, say what the third row
@@ -739,25 +720,12 @@ practice:
 
     ```r
     library(readr)
-    library(dplyr)
+    library(dplyr, warn.conflicts = FALSE)
 
     penguins_raw <- read_csv(
       here::here("data-raw", "penguins_raw.csv"),
       show_col_types = FALSE
     )
-    ```
-
-    ```output
-
-    Attaching package: ‘dplyr’
-
-    The following objects are masked from ‘package:stats’:
-
-        filter, lag
-
-    The following objects are masked from ‘package:base’:
-
-        intersect, setdiff, setequal, union
     ```
 
     Add a column of flipper length in centimetres. What is the first penguin's flipper length in
@@ -766,24 +734,19 @@ practice:
     ```r
     penguins_raw |>
       mutate(flipper_length_cm = `Flipper Length (mm)` / 10) |>
-      select(`Flipper Length (mm)`, flipper_length_cm)
+      select(`Flipper Length (mm)`, flipper_length_cm) |>
+      print(n = 4)
     ```
 
     ```output
     # A tibble: 344 × 2
-       `Flipper Length (mm)` flipper_length_cm
-                       <dbl>             <dbl>
-     1                   181              18.1
-     2                   186              18.6
-     3                   195              19.5
-     4                    NA              NA
-     5                   193              19.3
-     6                   190              19
-     7                   181              18.1
-     8                   195              19.5
-     9                   193              19.3
-    10                   190              19
-    # ℹ 334 more rows
+      `Flipper Length (mm)` flipper_length_cm
+                      <dbl>             <dbl>
+    1                   181              18.1
+    2                   186              18.6
+    3                   195              19.5
+    4                    NA              NA
+    # ℹ 340 more rows
     ```
 
     The first penguin's flipper is 181 mm, which is 18.1 cm. There are 10 millimetres in a
@@ -794,7 +757,7 @@ practice:
 
     ```r
     library(readr)
-    library(dplyr)
+    library(dplyr, warn.conflicts = FALSE)
 
     penguins_raw <- read_csv(
       here::here("data-raw", "penguins_raw.csv"),
@@ -802,22 +765,9 @@ practice:
     )
     ```
 
-    ```output
-
-    Attaching package: ‘dplyr’
-
-    The following objects are masked from ‘package:stats’:
-
-        filter, lag
-
-    The following objects are masked from ‘package:base’:
-
-        intersect, setdiff, setequal, union
-    ```
-
     Work out body mass in kilograms. Then put each penguin in one of three groups. The groups are
     "under 3.5 kg", "3.5 to under 4.5 kg" and "4.5 kg or more", cut-points chosen for practice.
-    Count the penguins in each group.
+    Count the rows in each group.
   answer: |
     ```r
     penguins_raw |>
@@ -842,7 +792,7 @@ practice:
     4 <NA>                    2
     ```
 
-    153 penguins from 3.5 to under 4.5 kg, 118 at 4.5 kg or more, 71 under 3.5 kg, and 2 with no
+    153 rows from 3.5 to under 4.5 kg, 118 at 4.5 kg or more, 71 under 3.5 kg, and 2 with no
     body mass. The four counts add to {{n:penguins_rows}}, every row. `count()` sorts the labels alphabetically,
     which is why "3.5 to under 4.5 kg" comes first.
 - level: 6
@@ -850,23 +800,10 @@ practice:
     A made-up register typed sex by hand:
 
     ```r
-    library(dplyr)
+    library(dplyr, warn.conflicts = FALSE)
     library(stringr)
 
     register <- tibble(sex = c("Male", " female", "MALE ", "Female", "male"))
-    ```
-
-    ```output
-
-    Attaching package: ‘dplyr’
-
-    The following objects are masked from ‘package:stats’:
-
-        filter, lag
-
-    The following objects are masked from ‘package:base’:
-
-        intersect, setdiff, setequal, union
     ```
 
     How many different spellings are there now? Clean the column into a new one, and count the
@@ -914,7 +851,7 @@ practice:
     A colleague computes BMI on a made-up register:
 
     ```r
-    library(dplyr)
+    library(dplyr, warn.conflicts = FALSE)
 
     register <- tibble(
       height_cm = c(158, 172, 149),
@@ -927,17 +864,6 @@ practice:
     ```
 
     ```output
-
-    Attaching package: ‘dplyr’
-
-    The following objects are masked from ‘package:stats’:
-
-        filter, lag
-
-    The following objects are masked from ‘package:base’:
-
-        intersect, setdiff, setequal, union
-
     # A tibble: 3 × 4
       height_cm weight_kg     bmi below_18_5
           <dbl>     <dbl>   <dbl> <lgl>
@@ -978,7 +904,7 @@ practice:
     A colleague groups BMI on a made-up register:
 
     ```r
-    library(dplyr)
+    library(dplyr, warn.conflicts = FALSE)
 
     register <- tibble(bmi = c(17.2, 23.9, 26.4, 31.0))
 
@@ -993,17 +919,6 @@ practice:
     ```
 
     ```output
-
-    Attaching package: ‘dplyr’
-
-    The following objects are masked from ‘package:stats’:
-
-        filter, lag
-
-    The following objects are masked from ‘package:base’:
-
-        intersect, setdiff, setequal, union
-
     # A tibble: 4 × 2
         bmi bmi_group
       <dbl> <chr>
@@ -1050,7 +965,7 @@ practice:
     A colleague groups BMI on a made-up register, and wants every row to have a group:
 
     ```r
-    library(dplyr)
+    library(dplyr, warn.conflicts = FALSE)
 
     register <- tibble(bmi = c(17.2, 23.9, NA, 26.4))
 
@@ -1066,17 +981,6 @@ practice:
     ```
 
     ```output
-
-    Attaching package: ‘dplyr’
-
-    The following objects are masked from ‘package:stats’:
-
-        filter, lag
-
-    The following objects are masked from ‘package:base’:
-
-        intersect, setdiff, setequal, union
-
     # A tibble: 3 × 2
       bmi_group            n
       <chr>            <int>
@@ -1125,7 +1029,7 @@ practice:
 
     ```r
     library(readr)
-    library(dplyr)
+    library(dplyr, warn.conflicts = FALSE)
 
     penguins_raw <- read_csv(
       here::here("data-raw", "penguins_raw.csv"),
@@ -1139,17 +1043,6 @@ practice:
     ```
 
     ```output
-
-    Attaching package: ‘dplyr’
-
-    The following objects are masked from ‘package:stats’:
-
-        filter, lag
-
-    The following objects are masked from ‘package:base’:
-
-        intersect, setdiff, setequal, union
-
     [1] 4.201754
     ```
 
@@ -1172,7 +1065,7 @@ practice:
     [1] 4.201754
     ```
 
-    The mean body mass is 4.2 kg (4.201754 as printed), from the {{n:penguins_mass_n}} penguins with a body mass.
+    The mean body mass is 4.2 kg (4.201754 as printed), from the {{n:penguins_mass_n}} rows with a body mass.
 
     Why the wrong answer looks reasonable: the number 4.2 is correct. Only its unit is wrong, and
     the unit came from a name the code no longer matched.
@@ -1181,25 +1074,12 @@ practice:
     A colleague writes:
 
     ```r
-    library(dplyr)
+    library(dplyr, warn.conflicts = FALSE)
 
     register <- tibble(
       height_cm = c(158, 172, 149),
       weight_kg = c(62, 85, 47)
     )
-    ```
-
-    ```output
-
-    Attaching package: ‘dplyr’
-
-    The following objects are masked from ‘package:stats’:
-
-        filter, lag
-
-    The following objects are masked from ‘package:base’:
-
-        intersect, setdiff, setequal, union
     ```
 
     ```r error
@@ -1246,26 +1126,13 @@ practice:
     register.
 
     ```r
-    library(dplyr)
+    library(dplyr, warn.conflicts = FALSE)
 
     audit <- tibble(
       id = c(1, 2, 3, 4, 5),
       height_cm = c(160, 155, 170, 165, 150),
       weight_kg = c(64, 52, 75, 62, 54)
     )
-    ```
-
-    ```output
-
-    Attaching package: ‘dplyr’
-
-    The following objects are masked from ‘package:stats’:
-
-        filter, lag
-
-    The following objects are masked from ‘package:base’:
-
-        intersect, setdiff, setequal, union
     ```
 
     Check the claim, and say what your answer does not establish.
@@ -1296,7 +1163,7 @@ practice:
     5     5    24   FALSE          FALSE
     ```
 
-    Patient 1's BMI is 25.0 on paper (64 ÷ 1.6^2 = 25), but as stored it falls a hair below 25.
+    Patient 1's BMI is 25.0 on paper (64 divided by 1.6^2 is 25), but as stored it falls a hair below 25.
     Compared as stored, 1 patient is at 25 or more. Rounded to one decimal, 2 are: patients 1 and 3.
     So the claim is true under the rounding rule and false without it. The audit should say which
     rule it used.
@@ -1315,7 +1182,7 @@ practice:
 
     ```r
     library(readr)
-    library(dplyr)
+    library(dplyr, warn.conflicts = FALSE)
 
     penguins_raw <- read_csv(
       here::here("data-raw", "penguins_raw.csv"),
@@ -1332,24 +1199,13 @@ practice:
     ```
 
     ```output
-
-    Attaching package: ‘dplyr’
-
-    The following objects are masked from ‘package:stats’:
-
-        filter, lag
-
-    The following objects are masked from ‘package:base’:
-
-        intersect, setdiff, setequal, union
-
     [1] 124
     [1] 1
     [1] 5.076016
     ```
 
     5.076016 kg, which rounds to 5.08 kg. The sentence matches the file. But `na.rm = TRUE` left one
-    penguin out: the mean is of {{n:penguins_gentoo_mass_n}} of the {{n:penguins_gentoo}} Gentoo penguins, and the sentence should say so.
+    row out: the mean is of {{n:penguins_gentoo_mass_n}} of the {{n:penguins_gentoo}} Gentoo rows, and the sentence should say so.
 
     What it does not establish:
 
@@ -1385,9 +1241,11 @@ figures:
     y_range: [0, 30]
     labels:
     - {text: "no BMI", at: [103.75, 3]}
+    - {text: "18.5", at: [103.75, 18.5]}
+    - {text: "25.0", at: [103.75, 25]}
     refs:
-    - {y: 18.5, label: "18.5"}
-    - {y: 25, label: "25.0"}
+    - {y: 18.5}
+    - {y: 25}
 - file: s52-r1-c12-cm-vs-m.png
   caption: "Each patient's BMI worked out with height in centimetres (across) against the same BMI with height in metres (up). Every point lies on the line y = 10,000 × x: a height 100 times larger, squared, is 10,000 times larger, so every BMI from centimetres is 10,000 times too small."
   alt: "Four points on a straight dashed line: 0.00177 against 17.7, 0.00213 against 21.3, 0.0025 against 25 and 0.00274 against 27.4."

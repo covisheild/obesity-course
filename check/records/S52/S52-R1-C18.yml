@@ -25,13 +25,13 @@ definition:
 
     The function `geom_histogram()` divides the x axis into bins and draws a bar whose height is
     the count of observations in each bin. Unless told otherwise it uses 30 bins. A value on the
-    edge between two bins is then counted in the bin to its left. The arguments `binwidth`,
+    edge between two bins is then counted in the lower bin. The arguments `binwidth`,
     `boundary` and `closed` set the width of the bins, where an edge falls, and which edge a bin
     includes.
 
     The function `geom_boxplot()` draws the median and a box from the first to the third
-    quartile. Its whiskers reach the furthest values within 1.5 times the interquartile range of
-    the box. Values beyond the whiskers are drawn one by one.
+    quartile. Its whiskers reach the furthest values within 1.5 times the interquartile range
+    beyond each end of the box (below the first quartile, above the third). Values beyond the whiskers are drawn one by one.
 
     A visual property written inside `aes()` is mapped: it varies with a column. Written outside
     `aes()`, as an argument of the geom, it is set: one fixed value for every mark. The function
@@ -116,7 +116,10 @@ definition:
       checked_on: '2026-10-02'
       note: |-
         The first value listed, "right", is the default. Arguments: "closed: One of '"right"' or
-        '"left"' indicating whether right or left edges of bins are included in the bin."
+        '"left"' indicating whether right or left edges of bins are included in the bin." That the
+        last bin also keeps its right edge with closed = "left" is not on the page; it was observed
+        by running ggplot2 3.4.4 (layer_data(): 1.2, 1.8, 2.1, 2.9, 3.0 with binwidth 1 and
+        boundary 1 give 2 and 3 under both settings).
   - citekey: rdocs_s52r1_ggplot2
     kind: textbook
     locator: 'help page "geom_histogram" (ggplot2 3.4.4), Arguments, center, boundary'
@@ -234,6 +237,34 @@ definition:
       note: |-
         The bullet begins: "In binning stats, the default boundary is now chosen to better adhere
         to the nbin argument." Not tested here: the sandbox has ggplot2 3.4.4 only.
+  - citekey: tidyverse_news_s52r1
+    kind: textbook
+    locator: 'ggplot2 4.0.1, bug fix: stat_bin(boundary) was ignored'
+    quote: |-
+      Fixed bug where
+    verified:
+      resolved_id: https://ggplot2.tidyverse.org/news/
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-03'
+      note: |-
+        The bullet continues with stat_bin(boundary), set as code, then "was ignored (#6682)."
+        Re-check against the changelog at each new ggplot2 release.
+  - citekey: tidyverse_news_s52r1
+    kind: textbook
+    locator: 'ggplot2 4.0.3: geom_boxplot() gains quantile.type, default 7'
+    quote: |-
+      parameter (default
+    verified:
+      resolved_id: https://ggplot2.tidyverse.org/news/
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-03'
+      note: |-
+        The bullet: geom_boxplot() / stat_boxplot() "gain a" quantile.type "parameter (default" 7
+        ") to control the percentile definition used for hinges and median". It describes 4.0.3,
+        newer than the 3.4.4 that printed this book's outputs; in 3.4.4, layer_data() gives hinges
+        3350/4000, 3487.5/3950 and 4700/5500, the same as quantile().
   - citekey: sandve_2013
     kind: primary
     locator: 'Rule 7 "Always Store Raw Data behind Plots", on histograms'
@@ -282,7 +313,7 @@ illustrations:
 
     ```r
     library(readr)
-    library(dplyr)
+    library(dplyr, warn.conflicts = FALSE)
     library(ggplot2)
 
     penguins_raw <- read_csv(
@@ -300,19 +331,12 @@ illustrations:
         body_mass_g = `Body Mass (g)`,
         flipper_mm = `Flipper Length (mm)`
       )
+
+    range(penguins$body_mass_g, na.rm = TRUE)
     ```
 
     ```output
-
-    Attaching package: ‘dplyr’
-
-    The following objects are masked from ‘package:stats’:
-
-        filter, lag
-
-    The following objects are masked from ‘package:base’:
-
-        intersect, setdiff, setequal, union
+    [1] 2700 6300
     ```
 
     Now the plot: the data, one mapping, one geom.
@@ -334,9 +358,10 @@ illustrations:
     with no body mass. The figure shows {{n:penguins_mass_n}} penguins, and nothing on it says so.
 
     Choose the bins. Body masses run from 2700 g to 6300 g, so bins 500 g wide, starting at 2500 g,
-    cover them in eight bars. Say also which edge a bin includes. By default a value on an edge goes
-    in the bin to its left. `closed = "left"` makes each bin run from its left edge up to just under
-    its right edge, so a penguin of exactly 3000 g counts in "3000 to under 3500".
+    cover them in eight bars. Say also which edge a bin includes. By default a penguin of exactly
+    3000 g goes in the bin "2500 to 3000". `closed = "left"` makes each bin run from its left edge
+    up to just under its right edge, so the same penguin counts in "3000 to under 3500"; the last
+    bin also keeps its right edge.
 
     ```r
     ggplot(penguins, aes(x = body_mass_g)) +
@@ -350,7 +375,8 @@ illustrations:
 
     The warning about the 2 removed rows stays, and it should. Now count the same bins yourself,
     so the numbers behind the bars exist somewhere other than in a picture. Dividing by 500,
-    rounding down with `floor()` and multiplying by 500 gives each penguin's bin start:
+    rounding down with `floor()` and multiplying by 500 gives each penguin's bin start. `count()`
+    can make the column it counts; the name goes on the left of `=`.
 
     ```r
     mass_bins <- penguins |>
@@ -393,10 +419,12 @@ illustrations:
     eight bars. Rule 7 of Sandve and colleagues' ten rules for reproducible research asks for
     exactly this: keep the counts behind a histogram, not only the picture.
 
-    Choosing the bins in code matters for one more reason. ggplot2 4.0.0 changed how it places bins
-    by default, and its own notes say this "may affect plots that use default binning". A histogram
-    left on defaults can change shape when a colleague runs your script on a newer version. One with
-    its width and boundary written down cannot.
+    Choosing the bins in code matters for one more reason. The outputs in this book come from
+    ggplot2 {{n:ggplot2_version}}. ggplot2 4.0.0 changed how it places bins by default, and its own
+    notes say this "may affect plots that use default binning". A histogram left on defaults can
+    change shape when a colleague runs your script on a newer version. One with its width and
+    boundary written down cannot, unless that version has a bug: the notes for 4.0.1 list a fixed
+    bug in which `boundary` was ignored.
   analogy_breaks_when: |
     The bars describe the {{n:penguins_mass_n}} penguins with a body mass in this file. They are not the shape of
     body mass in any wider population of penguins.
@@ -483,8 +511,8 @@ illustrations:
 
     Three panels, one per species, each on the same scales. `~species` reads "by species". The
     figure is in `output/`, made by the same line every time the script runs. The `dir.create()`
-    line matters for a reader on a newer version: from ggplot2 3.5.0, `ggsave()` no longer makes a
-    missing folder for you.
+    line matters for a reader on a newer version: from ggplot2 3.5.0, `ggsave()` makes a missing
+    folder only when its new `create.dir` argument tells it to.
   analogy_breaks_when: |
     A scatter plot shows that heavier penguins in this file tend to have longer flippers. It does
     not show that one causes the other, and it says nothing about penguins outside the file.
@@ -508,14 +536,15 @@ illustrations:
     ```
 
     Each box runs from the first quartile to the third, with a line at the median. Which quartiles?
-    The ones `quantile()` gives, R's type 7 from the section on summaries. Check them:
+    The ones `quantile()` gives, R's type 7 from the section on summaries; ggplot2's notes for
+    the newer 4.0.3 name 7 as the default. Check them:
 
     ```r
     penguins |>
       summarise(
-        q1_g = quantile(body_mass_g, 0.25, na.rm = TRUE),
+        q1_g = quantile(body_mass_g, probs = 0.25, na.rm = TRUE),
         median_g = median(body_mass_g, na.rm = TRUE),
-        q3_g = quantile(body_mass_g, 0.75, na.rm = TRUE),
+        q3_g = quantile(body_mass_g, probs = 0.75, na.rm = TRUE),
         .by = species
       )
     ```
@@ -534,7 +563,7 @@ illustrations:
     carries its value by position, read off the printed scale, as Book 0 said of a line chart.
 
     A bar chart is different. A bar's value is its length, so its value axis must start at zero.
-    `geom_bar()` counts the rows in each category and draws bars from zero:
+    `geom_bar()` counts the rows in each category, as `count()` does:
 
     ```r
     ggplot(penguins, aes(x = species)) +
@@ -543,7 +572,7 @@ illustrations:
     ```
 
     The bars stand at {{n:penguins_adelie}}, {{n:penguins_chinstrap}} and {{n:penguins_gentoo}}. A bar chart of means, with the axis cut to start at 3000 g,
-    would make the Gentoo bar look several times the Adelie bar when its mean is about 1.4 times as
+    would make the Gentoo bar look about three times the Adelie bar when its mean is about 1.4 times as
     large. Keep bar charts for counts and amounts that start at zero, and show distributions with
     boxes or histograms.
   analogy_breaks_when: |
@@ -588,7 +617,8 @@ must_know:
   kind: move
   bearing: teaching
 - point: |
-    The grammar guarantees that the figure draws your data faithfully.
+    The grammar draws exactly what the code says. It cannot guarantee that the data, the bins or
+    the rows it silently drops are right.
   kind: boundary
   bearing: methodological
 exercises:
@@ -601,7 +631,7 @@ exercises:
   answer: |
     ```r
     library(readr)
-    library(dplyr)
+    library(dplyr, warn.conflicts = FALSE)
     library(ggplot2)
 
     penguins_raw <- read_csv(
@@ -634,17 +664,6 @@ exercises:
     ```
 
     ```output
-
-    Attaching package: ‘dplyr’
-
-    The following objects are masked from ‘package:stats’:
-
-        filter, lag
-
-    The following objects are masked from ‘package:base’:
-
-        intersect, setdiff, setequal, union
-
     Warning message:
     Removed 2 rows containing non-finite values (`stat_bin()`).
     # A tibble: 8 × 2
@@ -660,7 +679,7 @@ exercises:
     8           NA     2
     ```
 
-    The warning says 2 rows were removed, so the figure shows {{n:penguins_mass_n}} penguins. The counts per bin are
+    The warning says 2 rows were removed, so the figure shows 342 rows. The counts per bin are
     in the CSV file, beside the figure they describe; the `NA` row holds the 2 with no flipper
     length.
   skill_ref: S52-R1-K01
@@ -735,16 +754,17 @@ practice:
     because nothing varies.
 - level: 3
   prompt: |
-    Five made-up values: 1.2, 1.8, 2.1, 2.9 and 3.0. A histogram uses `binwidth = 1` and
+    Six made-up values: 1.2, 1.8, 2.1, 2.9, 3.0 and 3.4. A histogram uses `binwidth = 1` and
     `boundary = 1`, with ggplot2's default for which edge a bin includes. How many values go in the
-    bin from 1 to 2, and how many in the bin from 2 to 3? Then answer again with `closed = "left"`.
+    bins from 1 to 2, 2 to 3 and 3 to 4? Then answer again with `closed = "left"`.
   answer: |
-    By default a bin includes its right edge. So the bins are "above 1, up to 2" and "above 2, up to
-    3". 1.2 and 1.8 go in the first: 2 values. 2.1, 2.9 and 3.0 go in the second: 3 values.
+    By default a bin includes its right edge. The first bin is "above 1, up to 2", and the others
+    follow the same pattern. The first holds 1.2 and 1.8: 2 values. The second holds 2.1, 2.9 and
+    3.0: 3 values. The third holds 3.4 alone: 1 value.
 
-    With `closed = "left"` the bins are "1 up to under 2", "2 up to under 3" and "3 up to under 4".
-    The first holds 1.2 and 1.8: 2 values. The second holds 2.1 and 2.9: 2 values. 3.0 moves to a
-    third bin of its own.
+    With `closed = "left"` the bins are "1 up to under 2", "2 up to under 3" and "3 up to 4". The
+    first holds 1.2 and 1.8: 2 values. The second holds 2.1 and 2.9: 2 values. The value 3.0
+    moves to the third, with 3.4: 2 values.
 
     Only the value sitting exactly on an edge moved. In real data, measurements are often rounded
     to whole numbers, so many values sit on edges, and the choice changes the bars.
@@ -754,26 +774,13 @@ practice:
 
     ```r
     library(readr)
-    library(dplyr)
+    library(dplyr, warn.conflicts = FALSE)
     library(ggplot2)
 
     penguins_raw <- read_csv(
       here::here("data-raw", "penguins_raw.csv"),
       show_col_types = FALSE
     )
-    ```
-
-    ```output
-
-    Attaching package: ‘dplyr’
-
-    The following objects are masked from ‘package:stats’:
-
-        filter, lag
-
-    The following objects are masked from ‘package:base’:
-
-        intersect, setdiff, setequal, union
     ```
 
     Draw a boxplot of body mass by island, with axis titles. Then give the median and the quartiles
@@ -787,9 +794,9 @@ practice:
     penguins_raw |>
       summarise(
         n_mass = sum(!is.na(`Body Mass (g)`)),
-        q1_g = quantile(`Body Mass (g)`, 0.25, na.rm = TRUE),
+        q1_g = quantile(`Body Mass (g)`, probs = 0.25, na.rm = TRUE),
         median_g = median(`Body Mass (g)`, na.rm = TRUE),
-        q3_g = quantile(`Body Mass (g)`, 0.75, na.rm = TRUE),
+        q3_g = quantile(`Body Mass (g)`, probs = 0.75, na.rm = TRUE),
         .by = Island
       )
     ```
@@ -815,26 +822,12 @@ practice:
 
     ```r
     library(readr)
-    library(dplyr)
     library(ggplot2)
 
     penguins_raw <- read_csv(
       here::here("data-raw", "penguins_raw.csv"),
       show_col_types = FALSE
     )
-    ```
-
-    ```output
-
-    Attaching package: ‘dplyr’
-
-    The following objects are masked from ‘package:stats’:
-
-        filter, lag
-
-    The following objects are masked from ‘package:base’:
-
-        intersect, setdiff, setequal, union
     ```
 
     Draw a scatter plot of culmen depth against culmen length, one panel per species. The culmen is
@@ -881,26 +874,13 @@ practice:
 
     ```r
     library(readr)
-    library(dplyr)
+    library(dplyr, warn.conflicts = FALSE)
     library(ggplot2)
 
     penguins_raw <- read_csv(
       here::here("data-raw", "penguins_raw.csv"),
       show_col_types = FALSE
     )
-    ```
-
-    ```output
-
-    Attaching package: ‘dplyr’
-
-    The following objects are masked from ‘package:stats’:
-
-        filter, lag
-
-    The following objects are masked from ‘package:base’:
-
-        intersect, setdiff, setequal, union
     ```
 
     Draw a bar chart of the number of rows for each value of `Sex`, with axis titles. Give the
@@ -1078,7 +1058,7 @@ practice:
 
     ```r
     library(readr)
-    library(dplyr)
+    library(dplyr, warn.conflicts = FALSE)
     library(ggplot2)
 
     penguins_raw <- read_csv(
@@ -1099,17 +1079,6 @@ practice:
     ```
 
     ```output
-
-    Attaching package: ‘dplyr’
-
-    The following objects are masked from ‘package:stats’:
-
-        filter, lag
-
-    The following objects are masked from ‘package:base’:
-
-        intersect, setdiff, setequal, union
-
     Warning message:
     Removed 2 rows containing non-finite values (`stat_bin()`).
     # A tibble: 1 × 3
@@ -1142,7 +1111,7 @@ practice:
     2 is female. Draw boxes rather than bars, since BMI is a distribution and does not start at zero:
 
     ```r
-    library(dplyr)
+    library(dplyr, warn.conflicts = FALSE)
     library(ggplot2)
 
     bmx <- haven::read_xpt(here::here("data-raw", "BMX_L.xpt"))
@@ -1174,17 +1143,6 @@ practice:
     ```
 
     ```output
-
-    Attaching package: ‘dplyr’
-
-    The following objects are masked from ‘package:stats’:
-
-        filter, lag
-
-    The following objects are masked from ‘package:base’:
-
-        intersect, setdiff, setequal, union
-
     # A tibble: 2 × 2
       sex       n
       <chr> <int>
@@ -1193,8 +1151,8 @@ practice:
     ```
 
     The figure has two boxes, from {{n:nhanes_men_bmi_n}} men and {{n:nhanes_women_bmi_n}} women with a BMI. The rows with no BMI were
-    removed before plotting, on purpose, so the counts printed are the counts drawn. The caption
-    says what the boxes are, and what they are not.
+    removed before plotting, on purpose, so the counts printed are the counts drawn. `NULL` leaves
+    that axis without a title. The caption says what the boxes are, and what they are not.
 
     What it does not establish:
 
@@ -1203,6 +1161,8 @@ practice:
     - Whether the difference between the boxes is more than chance, or large enough to matter.
     - Anything about adults in the officer's district. A figure from one country's survey is not a
       figure for another country's people.
+    - A clean comparison of BMI. It includes women who were pregnant at the exam, whose weight does
+      not measure the same thing.
   refs:
   - nchs_nhanes_2021_2023_bmx_demo
 retrieval_items:
@@ -1235,25 +1195,6 @@ figures:
     value_labels: true
     relations:
     - {check: "y1[0] + y1[1] + y1[2] + y1[3] + y1[4] + y1[5] + y1[6] + y1[7] = 342"}
-- file: "s52-r1-c18-quartiles-by-species.png"
-  caption: "The three numbers each box of the body-mass boxplot is drawn from, as quantile() gives them (type 7): the first quartile at 0.25, the median, and the third quartile at 0.75. The Adelie box runs from 3350 g to 4000 g with its median at 3700 g; the Gentoo box from 4700 g to 5500 g. Chinstrap's first quartile is 3488 g as the tibble prints it. A box carries its values by position, so this axis need not start at zero."
-  alt: "A chart of points at quantiles 0.25, 0.5 and 0.75 for three species. Adelie: 3350, 3700, 4000 g. Gentoo: 4700, 5000, 5500 g. Chinstrap: 3488, 3700, 3950 g. The Gentoo points lie well above the other two species, whose medians are both 3700 g."
-  source: "draw.py"
-  spec:
-    kind: "scatter"
-    x: ["0.25", "0.5", "0.75"]
-    series:
-    - {name: "Adelie", y: ["3350", "3700", "4000"]}
-    - {name: "Gentoo", y: ["4700", "5000", "5500"]}
-    - {name: "Chinstrap", y: ["3488", "3700", "3950"]}
-    x_label: "quantile (share of penguins below the value)"
-    y_label: "body mass (g)"
-    y_range: [3000, 6000]
-    labels:
-    - {text: "Adelie and Chinstrap medians, both 3700", at: [0.5, 3700], offset: [8, -14]}
-    relations:
-    - {check: "y1[2] - y1[0] = 4000 - 3350"}
-    - {check: "y2[1] = 5000"}
 provenance:
   map_version_id: fc19c8bc-a216-4131-99fb-ebe3f19cec4a
   outcome_refs:

@@ -41,7 +41,7 @@ definition:
       checked_on: '2026-10-02'
       note: |-
         The same list goes on: "Download and install RStudio." This book's outputs come from R
-        4.3.3, not the latest version; the definition says so.
+        4.3.3, not the latest version; C06 says so.
   - citekey: swc_r_gapminder
     kind: textbook
     locator: 'Summary and Setup, Prerequisites: what RStudio is'
@@ -52,6 +52,36 @@ definition:
       opened: true
       claim_located: true
       checked_on: '2026-10-02'
+  - citekey: r4ds_2e
+    kind: textbook
+    locator: 'Introduction, Prerequisites, "R": where to download R'
+    quote: |-
+      To download R, go to CRAN, the comprehensive R archive network, https://cloud.r-project.org.
+    verified:
+      resolved_id: https://r4ds.hadley.nz/intro.html
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-03'
+  - citekey: r4ds_2e
+    kind: textbook
+    locator: 'Introduction, Prerequisites, "RStudio": where to download RStudio'
+    quote: |-
+      which you can download from https://posit.co/download/rstudio-desktop/.
+    verified:
+      resolved_id: https://r4ds.hadley.nz/intro.html
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-03'
+  - citekey: swc_r_gapminder
+    kind: textbook
+    locator: 'Episode 1, "Workflow within RStudio", way 2: lines pushed to the console'
+    quote: |-
+      use RStudio’s short cut keys for the Run command to push the current line, selected lines or modified lines to the interactive R console.
+    verified:
+      resolved_id: https://swcarpentry.github.io/r-novice-gapminder/01-rstudio-intro.html
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-03'
   - citekey: r4ds_2e
     kind: textbook
     locator: 'Introduction, Prerequisites, "RStudio"'
@@ -116,7 +146,7 @@ definition:
       checked_on: '2026-10-02'
   - citekey: r_intro_manual
     kind: textbook
-    locator: 'Section 2.2 "Vector arithmetic": the arithmetic operators, ending with ^'
+    locator: 'Section 2.2 "Vector arithmetic": the arithmetic operators, ending with the sign for a power'
     quote: |-
       and ``` ^ ``` for raising to a power.
     verified:
@@ -200,9 +230,11 @@ definition:
       claim_located: true
       checked_on: '2026-10-02'
 simplified_explanation: |
-  RStudio is the window you work in. Install R first, then RStudio, from their own websites.
+  RStudio is the window you work in. Install R first: download it from CRAN, the Comprehensive R
+  Archive Network (cloud.r-project.org). Then download RStudio from Posit's website
+  (posit.co/download/rstudio-desktop).
 
-  Open RStudio and you see several panes.
+  Open RStudio and you see several panes. The console is the one showing the prompt `>`.
 
   **The console** is where R waits for you. Type `2 + 3` after it and press Enter. R prints `[1]
   5`. The `[1]` only marks the first value on the line; ignore it for now. The answer is printed
@@ -211,11 +243,13 @@ simplified_explanation: |
   **The script** is a plain text file of instructions, one per line, saved with a name ending in
   `.R`. Open one from the File menu: New File, then R script. Put the cursor on a line and press
   Ctrl and Enter together. RStudio sends that line to the console, and the answer appears there.
-  Select every line and press Ctrl and Enter, and the whole file runs from the top.
+  Select every line with the mouse and press Ctrl and Enter (Cmd and Enter on a Mac), and the whole
+  file runs from the top.
 
   The console is a place to try things. The script is what you keep.
 
-  Times is `*`, not ×. Divided by is `/`, not ÷. Powers are `^`, so 1.6 squared is `1.6^2`. The
+  Times is `*`. Divided by is `/`. The signs × and ÷ that you may have met at school do not work
+  in R. Powers are `^`, so 1.6 squared is `1.6^2`. The
   order of working is the one you already know: brackets, powers, then times and divide, then plus
   and minus.
 
@@ -236,8 +270,9 @@ illustrations:
     [1] 0.0028125
     ```
 
-    R does exactly what you typed. Now do Book 0's order-of-magnitude check. An adult's BMI is a
-    number in the tens. This answer is thousands of times too small. The height went in as
+    R does exactly what you typed. Now do Book 0's order-of-magnitude check: round each input to
+    one figure. 70 divided by 2 squared, which is 4, is about 20, so the BMI should be in the tens.
+    This answer is thousands of times too small. The height went in as
     centimetres. 160 cm is 1.6 m, because a metre is 100 cm.
 
     Try again, and this time leave the squaring out by accident:
@@ -256,7 +291,7 @@ illustrations:
 
     ```r
     72 / 1.6^2
-    72 / (1.6 * 1.6)
+    72/(1.6*1.6)
     ```
 
     ```output
@@ -265,9 +300,10 @@ illustrations:
     ```
 
     Both lines give 28.125, so the patient's BMI is about 28.1 kg/m^2. The power is worked out
-    before the division, just as Book 0's order of operations says.
+    before the division, just as Book 0's order of operations says. The second line has no spaces,
+    and R gives the same answer. This book puts spaces round the signs so a line is easy to read.
 
-    One more slip. Book 0 taught you the sign ÷. Type it here:
+    One more slip. You may have learnt the sign ÷ at school. Type it here:
 
     ```r error
     72 ÷ 1.6^2
@@ -280,11 +316,11 @@ illustrations:
     ```
 
     Read the message literally. "Unexpected input" means R met a character it cannot read. The `^`
-    under the line points at the ÷ sign, which is not part of the R language. In the RStudio
-    console the same message reads `Error: unexpected input in "72 ÷"`. Either way, the fix is `/`.
+    under the line points at the ÷ sign, which is not part of the R language. The `1:4` says where:
+    line 1, fourth character. The fix is `/`.
 
     Now scroll up through the console. Five tries sit there, three of them wrong, in the order you
-    typed them. Nothing marks which one was right. If you came back next week, you would have to
+    typed them. Nothing marks which ones were right. If you came back next week, you would have to
     work it out again.
   analogy_breaks_when: |
     BMI is used here only because Book 0 taught it and the numbers are easy to check. The patient
@@ -313,7 +349,8 @@ illustrations:
     [1] 28.125
     ```
 
-    Select all the lines and press Ctrl and Enter. The comments are skipped. The two
+    Select all the lines and press Ctrl and Enter. In the console each line appears above its
+    answer; the book prints the answers only. The comments are skipped. The two
     calculations run, from the top, and their answers appear in the console.
 
     Read the second calculation as R reads it. The bracket `(160 / 100)` is worked out first, giving
@@ -340,7 +377,7 @@ must_know:
   kind: misconception
   bearing: methodological
 - point: |
-    Typing × or ÷ stops R with an error, and typing the letter x as times does too.
+    Typing × or ÷ stops R with an error.
   kind: trap
   bearing: methodological
 - point: |
@@ -355,7 +392,8 @@ must_know:
   bearing: methodological
 - point: |
     When an answer comes out, check its size against what you expect before you use it. A BMI of
-    0.003 kg/m^2 or 72 kg/m^2 for an ordinary adult means the code is wrong, however cleanly it ran.
+    0.003 kg/m^2, or a BMI equal to the weight you typed, means the code is wrong, however cleanly
+    it ran.
   kind: boundary
   bearing: methodological
 - point: |
@@ -596,10 +634,9 @@ practice:
     stops. That is what "unexpected symbol" means: a word where R did not expect one. The `3:5`
     says where: line 3, fifth character, which is where "of" begins.
 
-    The RStudio console runs the
-    lines one at a time. There, line 2 prints `[1] 1.65` first, and then the message reads
-    `Error: unexpected symbol in "BMI of"`. The book's output runs nothing from a block that R
-    cannot read, so it shows the error alone.
+    The book's output runs nothing from a block that R cannot read, so it shows the error alone.
+    In the RStudio console, run line by line, line 2 prints `[1] 1.65` first, and the message is
+    worded a little differently.
 
     ```r
     # Height in metres
@@ -678,7 +715,7 @@ retrieval_items:
   a: It ignores it. The text is a comment, for people to read.
 figures:
 - file: s52-r1-c02-three-bmi-answers.png
-  caption: "The three answers R printed for the same made-up patient's BMI. Height typed in centimetres, 72 / 160^2, gives 0.0028125, a factor of 10,000 too small and too short to see as a bar. The power left out, 72 / 1.6 * 1.6, gives back the weight, 72. Only 72 / 1.6^2 gives 28.125 kg/m^2, a number in the tens, as an adult's BMI should be."
+  caption: "The three answers R printed for the same made-up patient's body mass index (BMI). Height typed in centimetres, `72 / 160^2`, gives 0.0028125, a factor of 10,000 too small and too short to see as a bar. The power left out, `72 / 1.6 * 1.6`, gives back the weight, 72. Only `72 / 1.6^2` gives 28.125 kg/m^2, in the tens, as the rounded check expects."
   alt: "A bar chart with three bars. Try 1, 72 / 160^2: 0.0028125, too small to show above the axis. Try 2, 72 / 1.6 * 1.6: 72. Try 3, 72 / 1.6^2: 28.125."
   source: draw.py
   spec:

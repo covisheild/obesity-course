@@ -22,14 +22,13 @@ definition:
     When values of different types are combined, R converts all of them to the highest type in
     the order logical, then numeric, then character. This conversion is called coercion. A
     single text value therefore turns a vector of numbers into a vector of text, and functions
-    that compute on numbers, such as `mean()`, return no number for it.
+    that compute on numbers, such as `mean()`, return no number for it. Logical values turned
+    into numbers become 1 for `TRUE` and 0 for `FALSE`.
 
     `NA`, for "not available", marks a value that is missing. Almost any arithmetic or
     comparison that involves `NA` returns `NA`, because the result cannot be known. The
     function `is.na()` returns `TRUE` for each element that is `NA`. The comparison `x == NA`
     returns `NA` for every element and finds nothing.
-
-    What R prints is a rounded display.
   references:
   - citekey: r_intro_manual
     kind: textbook
@@ -202,6 +201,9 @@ simplified_explanation: |
   [1] 152.0 160.5 171.0
   ```
 
+  R prints every number in a vector with the same number of decimal places, so 152 shows as
+  152.0.
+
   A vector holds one type of value. The three you need now are numbers (numeric), text
   (character) and `TRUE` or `FALSE` (logical).
 
@@ -237,16 +239,21 @@ simplified_explanation: |
   [1] FALSE  TRUE  TRUE
   ```
 
+  `>` means greater than. The others are `<`, `>=` (greater than or equal to), `<=`, `==` (equal
+  to) and `!=` (not equal to).
+
   Square brackets pick elements out. A number inside them is a position. A logical vector
-  inside them keeps the elements where it says `TRUE`:
+  inside them keeps the elements where it says `TRUE`. `1:2` means positions 1 and 2:
 
   ```r
   height_cm[2]
+  height_cm[1:2]
   height_cm[height_cm > 155]
   ```
 
   ```output
   [1] 160.5
+  [1] 152.0 160.5
   [1] 160.5 171.0
   ```
 illustrations:
@@ -291,7 +298,9 @@ illustrations:
       argument is not numeric or logical: returning NA
     ```
 
-    You get `NA` and a warning, not a number. Try arithmetic instead, such as converting to
+    You get `NA` and a warning, not a number. A warning means R carried on and gave a result you
+    should distrust. `mean.default` is the version of `mean()` that handles plain numbers. Try
+    arithmetic instead, such as converting to
     grams:
 
     ```r error
@@ -302,7 +311,7 @@ illustrations:
     Error in weight_kg * 1000 : non-numeric argument to binary operator
     ```
 
-    That one stops with an error. Read it literally: "non-numeric argument" means one of the
+    That one stops with an error: R gave no result at all. Read it literally: "non-numeric argument" means one of the
     things being multiplied is not a number. It is the vector of text.
 
     You can ask R to turn the text back into numbers with `as.numeric()`. Watch what it does
@@ -396,7 +405,17 @@ illustrations:
     ```
 
     Penguins 8 and 10 do. Penguin 4 gets `NA`, not `FALSE`. R does not know its weight, so it
-    does not know the answer. Add the ten weights and the same thing happens to the total:
+    does not know the answer. An `NA` in the brackets gives an `NA` in the result:
+
+    ```r
+    body_mass_g[body_mass_g > 4000]
+    ```
+
+    ```output
+    [1]   NA 4675 4250
+    ```
+
+    Add the ten weights and the same thing happens to the total:
 
     ```r
     sum(body_mass_g)
@@ -484,7 +503,7 @@ illustrations:
     about first, which the next section shows how to do.
   analogy_breaks_when: |
     The ten weights are real values from the practice file, but they are the first ten rows
-    only. Nothing here describes the other 334 penguins, or penguins in general.
+    only. Nothing here describes the other 334 rows, or penguins in general.
 
     The BMI example uses one made-up adult. The digits it shows describe how R stores and
     prints a number, not how precise a weighing scale is.
@@ -500,7 +519,7 @@ illustrations:
     quote: |-
       PAL0708,2,Adelie Penguin (Pygoscelis adeliae),Anvers,Torgersen,"Adult, 1 Egg Stage",N1A2,Yes,2007-11-11,39.5,17.4,186,3800,FEMALE,8.94956,-24.69454,NA
   - value: '344'
-    unit: penguins (rows)
+    unit: rows
     citekey: horst_2020_palmerpenguins
     quote: |-
       A tibble with 344 rows and 17 variables:
@@ -536,7 +555,7 @@ must_know:
   kind: boundary
   bearing: methodological
 - point: |
-    Ask them to print the vector and point to the quotation marks or the `NA`. The habit of
+    When a trainee says R gave a wrong mean, ask them to print the vector and point to the quotation marks or the `NA`. The habit of
     looking is the thing worth teaching.
   kind: move
   bearing: teaching
@@ -756,8 +775,8 @@ practice:
 - level: 7
   prompt: |
     A colleague wants the tallest child's height from a made-up school register. Their code
-    and its output are below. They report "the tallest child is 98 cm". Find what broke, and
-    say why the answer looks reasonable.
+    and its output are below; `max()` gives the largest value. They report "the tallest child is
+    98 cm". Find what broke, and say why the answer looks reasonable.
 
     ```r
     height_cm <- c("98", "102", "110")
@@ -768,9 +787,8 @@ practice:
     [1] "98"
     ```
   answer: |
-    The heights were typed in quotation marks, so they are text, not numbers. `max()` of text
-    gives the value that comes last in alphabetical order. Text is compared one character at a
-    time, and "9" comes after "1", so "98" comes after "102" and "110".
+    The heights were typed in quotation marks, so they are text, not numbers. Text is compared
+    character by character, so "98" comes after "102" and "110".
 
     ```r
     height_cm <- c("98", "102", "110")
@@ -835,9 +853,8 @@ practice:
     ```
   answer: |
     The missing BMI was typed as "NA" inside quotation marks. That is the text N, A, not R's
-    missing value. One text value made the whole vector text, and `>=` then compared text in
-    alphabetical order. "NA" starts with a letter, which comes after every digit, so R put it
-    above "25".
+    missing value. One text value made the whole vector text, so `>=` turned 25 into the text
+    "25" and compared character by character. In this book's setup that puts "NA" above "25".
 
     ```r
     bmi <- c(22.1, 27.4, "NA", 30.2, 25.8)
@@ -856,8 +873,8 @@ practice:
     five answers are right, and the wrong one says `TRUE` with no warning.
 - level: 9
   prompt: |
-    A made-up draft report says: "Body mass was recorded for all of the first ten penguins in
-    the practice file." The first ten values of "Body Mass (g)" are as in problem 5. Check the
+    A made-up draft report says: "Body mass was recorded for all of the first ten rows of the
+    practice file." The first ten values of "Body Mass (g)" are as in problem 5. Check the
     sentence with code. Then say what your check does not tell you.
   answer: |
     ```r
@@ -872,7 +889,7 @@ practice:
     ```
 
     One of the ten is missing, the fourth, so the sentence is wrong. A corrected sentence: "Body
-    mass was recorded for 9 of the first 10 penguins."
+    mass was recorded for 9 of the first 10 rows."
 
     What the check does not tell you:
 
@@ -884,8 +901,8 @@ practice:
   - horst_2020_palmerpenguins
 - level: 10
   prompt: |
-    In a made-up meeting, someone says: "Of the first ten penguins in the file, two weighed more
-    than 4000 g." The first ten body masses are as in problem 5. Check the claim with code, and
+    In a made-up meeting, someone says: "In the first ten rows of the file, two body masses
+    are above 4000 g." The first ten body masses are as in problem 5. Check the claim with code, and
     then say what the result does not establish.
   answer: |
     A first try picks the body masses above 4000 g:
@@ -899,8 +916,7 @@ practice:
     [1]   NA 4675 4250
     ```
 
-    Three values come back, and one is `NA`. The comparison gave `NA` for penguin 4, and square
-    brackets turn an `NA` in a logical vector into an `NA` in the result. So count only the known
+    Three values come back, and one is `NA`, the comparison's answer for penguin 4. So count only the known
     values that pass the test. The symbol `&` means "and": both conditions must be `TRUE`.
 
     ```r
@@ -914,12 +930,12 @@ practice:
     [1] 2
     ```
 
-    Two penguins, 8 and 10, weigh more than 4000 g. The claim holds for the nine whose body mass
-    is known.
+    Rows 8 and 10 have body masses above 4000 g. The claim holds for the nine rows whose body
+    mass is known.
 
     What it does not establish:
 
-    - That exactly two of the ten weighed more than 4000 g. Penguin 4's body mass is unknown,
+    - That exactly two of the ten body masses are above 4000 g. Penguin 4's body mass is unknown,
       so the true count is two or three. "Two of the ten" hides that. "Two of the nine with a
       recorded body mass" does not.
     - Anything about penguins in the rest of the file, or penguins in general.

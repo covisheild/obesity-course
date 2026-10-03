@@ -17,13 +17,13 @@ concept_deps:
 - S52-R1-C13
 definition:
   text: |
-    In R, a date is an object of class `Date`. It is stored as a number of days since 1 January
+    In R, a date is an object of class `Date`; `class(x)` names the kind of object `x` is. It is stored as a number of days since 1 January
     1970 and printed in the ISO 8601 form, year-month-day, such as 2021-04-03.
 
     Text becomes a date by parsing: reading it according to the order of its parts. The lubridate
     functions are named for that order. `ymd()` reads year, month, day; `dmy()` reads day, month,
     year; `mdy()` reads month, day, year. Each accepts any separator. Text that does not fit the
-    order becomes `NA`, with a warning that says how many values failed to parse. `read_csv()`
+    order becomes `NA`, with a warning: how many failed, or that all of them did. `read_csv()`
     recognises dates already written as year-month-day and leaves other forms as text.
 
     Subtracting one date from another gives a time difference in days. Adding a number to a date
@@ -121,19 +121,6 @@ definition:
       checked_on: '2026-10-02'
       note: |-
         The same paragraph: "look for dates that are ~4 years off".
-  - citekey: dc_spreadsheets
-    kind: textbook
-    locator: 'ep. 03 "Dates as data", Preferred date format: separate columns'
-    quote: |-
-      It is much safer to store dates with YEAR, MONTH, DAY in separate columns or as YEAR and DAY-OF-YEAR in separate columns.
-    verified:
-      resolved_id: https://datacarpentry.github.io/spreadsheet-ecology-lesson/03-dates-as-data.html
-      opened: true
-      claim_located: true
-      checked_on: '2026-10-02'
-      note: |-
-        This lesson's advice differs from Broman and Woo's ISO 8601 recommendation. The record
-        gives both and does not merge them into one rule.
   - citekey: broman_woo_2018_tas
     kind: textbook
     locator: 'section 4 "Write Dates as YYYY-MM-DD" (p. 3): the ISO 8601 recommendation'
@@ -210,10 +197,11 @@ simplified_explanation: |
 illustrations:
 - body: |
     Start with a made-up camp register whose visit dates were typed with the day first. Here is
-    its text, held in R as `I()` marks it, the way an earlier section read a small file.
+    its text, read with `I()` to mark it as data rather than a file name, as an earlier section did.
 
     ```r
     library(readr)
+    library(dplyr, warn.conflicts = FALSE)
     library(lubridate)
 
     camp <- read_csv(I("id,visit
@@ -276,7 +264,8 @@ illustrations:
     Day first is the order the register used:
 
     ```r
-    camp$visit_date <- dmy(camp$visit)
+    camp <- camp |>
+      mutate(visit_date = dmy(visit))
 
     camp
     ```
@@ -310,7 +299,8 @@ illustrations:
 
     Subtraction gives a time difference in days: 0, 12 and -34. The third visit, in February, came
     34 days before the first, so its difference is negative. The last line shows the number behind
-    a date: 3 April 2021 is 18720 days after 1 January 1970.
+    a date: 3 April 2021 is 18720 days after 1 January 1970. Dates compare like numbers too:
+    `visit_date >= ymd("2021-04-01")` is `TRUE` for the two April visits.
   analogy_breaks_when: |
     The register is made up. A column that mixes orders, some day first and some month first, cannot
     be fixed by any single function. The 03/04 dates in it are lost unless another record says which
@@ -424,17 +414,6 @@ illustrations:
     ```
 
     ```output
-
-    Attaching package: ‘dplyr’
-
-    The following objects are masked from ‘package:stats’:
-
-        filter, lag
-
-    The following objects are masked from ‘package:base’:
-
-        intersect, setdiff, setequal, union
-
     # A tibble: 3 × 6
          id dob        visit      age_days age_years age_completed
       <dbl> <date>     <date>        <dbl>     <dbl>         <dbl>
@@ -475,7 +454,8 @@ illustrations:
     Time difference of 753 days
     ```
 
-    The first nest was recorded on 9 November 2007 and the last on 1 December 2009, 753 days later.
+    `Date Egg`, says the data's help page, is the date the study nest was observed with one egg.
+    The first is 9 November 2007 and the last 1 December 2009, 753 days later.
   analogy_breaks_when: |
     Dividing by 365.25 is a rule of thumb. On the day before or after a birthday it can put a person
     in the wrong whole year. For an exact age in completed years, lubridate has functions that count
@@ -496,8 +476,8 @@ must_know:
   kind: move
   bearing: methodological
 - point: |
-    Read every "failed to parse" warning. The number in it is the count of dates you have
-    turned into `NA`.
+    Read every "failed to parse" warning. It says how many dates became `NA`, or that all of
+    them did.
   kind: trap
   bearing: methodological
 - point: |
@@ -526,8 +506,7 @@ must_know:
 exercises:
 - type: calculation
   prompt: |
-    In your penguin script, give the date of the first and the last nest observed in the file, and
-    the number of days between them.
+    In your penguin script, check that `Date Egg` came in as a date, and count its missing values.
   answer: |
     ```r
     library(readr)
@@ -538,21 +517,16 @@ exercises:
     )
 
     class(penguins_raw$`Date Egg`)
-    min(penguins_raw$`Date Egg`)
-    max(penguins_raw$`Date Egg`)
-    max(penguins_raw$`Date Egg`) - min(penguins_raw$`Date Egg`)
+    sum(is.na(penguins_raw$`Date Egg`))
     ```
 
     ```output
     [1] "Date"
-    [1] "2007-11-09"
-    [1] "2009-12-01"
-    Time difference of 753 days
+    [1] 0
     ```
 
-    The column is already a `Date`, because the file writes it year-month-day. The first nest was
-    observed on 2007-11-09 and the last on 2009-12-01, 753 days apart. The column has no missing
-    dates, as the section on missing values counted, so `min()` and `max()` need no `na.rm`.
+    The column is already a `Date`, because the file writes it year-month-day. No date is
+    missing, so `min()` and `max()` on it need no `na.rm`.
   skill_ref: S52-R1-K01
 - type: retrieval
   prompt: |
@@ -624,7 +598,7 @@ practice:
     Turn the text "2023-11-14" into a date. Say what class the result has.
   answer: |
     ```r
-    library(lubridate)
+    library(lubridate, warn.conflicts = FALSE)
 
     d <- ymd("2023-11-14")
     d
@@ -632,13 +606,6 @@ practice:
     ```
 
     ```output
-
-    Attaching package: ‘lubridate’
-
-    The following objects are masked from ‘package:base’:
-
-        date, intersect, setdiff, union
-
     [1] "2023-11-14"
     [1] "Date"
     ```
@@ -649,27 +616,20 @@ practice:
     Before you run them, say what each line gives.
 
     ```r norun
-    library(lubridate)
+    library(lubridate, warn.conflicts = FALSE)
 
     dmy("05/06/2022")
     mdy("05/06/2022")
     ```
   answer: |
     ```r
-    library(lubridate)
+    library(lubridate, warn.conflicts = FALSE)
 
     dmy("05/06/2022")
     mdy("05/06/2022")
     ```
 
     ```output
-
-    Attaching package: ‘lubridate’
-
-    The following objects are masked from ‘package:base’:
-
-        date, intersect, setdiff, union
-
     [1] "2022-06-05"
     [1] "2022-05-06"
     ```
@@ -681,25 +641,18 @@ practice:
     Before you run it, say how many days this gives, and why.
 
     ```r norun
-    library(lubridate)
+    library(lubridate, warn.conflicts = FALSE)
 
     ymd("2024-03-01") - ymd("2024-02-01")
     ```
   answer: |
     ```r
-    library(lubridate)
+    library(lubridate, warn.conflicts = FALSE)
 
     ymd("2024-03-01") - ymd("2024-02-01")
     ```
 
     ```output
-
-    Attaching package: ‘lubridate’
-
-    The following objects are masked from ‘package:base’:
-
-        date, intersect, setdiff, union
-
     Time difference of 29 days
     ```
 
@@ -722,19 +675,12 @@ practice:
     second season, which starts on 2008-11-02?
   answer: |
     ```r
-    library(lubridate)
+    library(lubridate, warn.conflicts = FALSE)
 
     ymd("2008-11-02") - min(penguins_raw$`Date Egg`)
     ```
 
     ```output
-
-    Attaching package: ‘lubridate’
-
-    The following objects are masked from ‘package:base’:
-
-        date, intersect, setdiff, union
-
     Time difference of 359 days
     ```
 
@@ -747,7 +693,7 @@ practice:
 
     ```r
     library(readr)
-    library(dplyr)
+    library(dplyr, warn.conflicts = FALSE)
 
     penguins_raw <- read_csv(
       here::here("data-raw", "penguins_raw.csv"),
@@ -755,23 +701,10 @@ practice:
     )
     ```
 
-    ```output
-
-    Attaching package: ‘dplyr’
-
-    The following objects are masked from ‘package:stats’:
-
-        filter, lag
-
-    The following objects are masked from ‘package:base’:
-
-        intersect, setdiff, setequal, union
-    ```
-
-    How many nests were observed in November 2008?
+    How many rows have a `Date Egg` in November 2008?
   answer: |
     ```r
-    library(lubridate)
+    library(lubridate, warn.conflicts = FALSE)
 
     penguins_raw |>
       filter(
@@ -782,17 +715,10 @@ practice:
     ```
 
     ```output
-
-    Attaching package: ‘lubridate’
-
-    The following objects are masked from ‘package:base’:
-
-        date, intersect, setdiff, union
-
     [1] 114
     ```
 
-    114 rows. Dates compare like numbers. So "on or after 1 November and on or before 30
+    114 rows. "On or after 1 November and on or before 30
     November" is two comparisons, as `filter()` would write for any number.
 - level: 6
   prompt: |
@@ -800,34 +726,14 @@ practice:
     measurement in completed years.
 
     ```r
-    library(dplyr)
-    library(lubridate)
+    library(dplyr, warn.conflicts = FALSE)
+    library(lubridate, warn.conflicts = FALSE)
 
     children <- tibble(
       id = c("C1", "C2"),
       dob = dmy(c("21/06/2014", "05/12/2013")),
       measured = dmy(c("20/06/2024", "20/06/2024"))
     )
-    ```
-
-    ```output
-
-    Attaching package: ‘dplyr’
-
-    The following objects are masked from ‘package:stats’:
-
-        filter, lag
-
-    The following objects are masked from ‘package:base’:
-
-        intersect, setdiff, setequal, union
-
-
-    Attaching package: ‘lubridate’
-
-    The following objects are masked from ‘package:base’:
-
-        date, intersect, setdiff, union
     ```
   answer: |
     ```r
@@ -855,20 +761,13 @@ practice:
     were missing for all three patients."
 
     ```r
-    library(lubridate)
+    library(lubridate, warn.conflicts = FALSE)
 
     visits <- c("12/01/2022", "19/01/2022", "26/01/2022")
     ymd(visits)
     ```
 
     ```output
-
-    Attaching package: ‘lubridate’
-
-    The following objects are masked from ‘package:base’:
-
-        date, intersect, setdiff, union
-
     [1] NA NA NA
     Warning message:
     All formats failed to parse. No formats found.
@@ -894,23 +793,16 @@ practice:
 - level: 7
   prompt: |
     A colleague reads a made-up register whose dates were typed day first. They report: "1 of the 3
-    screening dates was missing; the first patient was screened on 2 March 2023."
+    screening dates was missing; the first patient was screened on 3 February 2023."
 
     ```r
-    library(lubridate)
+    library(lubridate, warn.conflicts = FALSE)
 
     screened <- c("02/03/2023", "11/03/2023", "17/03/2023")
     mdy(screened)
     ```
 
     ```output
-
-    Attaching package: ‘lubridate’
-
-    The following objects are masked from ‘package:base’:
-
-        date, intersect, setdiff, union
-
     [1] "2023-02-03" "2023-11-03" NA
     Warning message:
      1 failed to parse.
@@ -941,19 +833,12 @@ practice:
     who exported it remembers that the first visit was on 1 January 2024. A resident converts them:
 
     ```r
-    library(lubridate)
+    library(lubridate, warn.conflicts = FALSE)
 
     ymd("1899-12-31") + c(45292, 45306)
     ```
 
     ```output
-
-    Attaching package: ‘lubridate’
-
-    The following objects are masked from ‘package:base’:
-
-        date, intersect, setdiff, union
-
     [1] "2024-01-02" "2024-01-16"
     ```
 
@@ -981,34 +866,14 @@ practice:
     days." Here are the dates for the five patients it describes, typed day first.
 
     ```r
-    library(dplyr)
-    library(lubridate)
+    library(dplyr, warn.conflicts = FALSE)
+    library(lubridate, warn.conflicts = FALSE)
 
     clinic <- tibble(
       id = c(1, 2, 3, 4, 5),
       screened = dmy(c("02/05/2024", "02/05/2024", "09/05/2024", "09/05/2024", "16/05/2024")),
       visited = dmy(c("13/05/2024", "20/05/2024", "23/05/2024", "06/06/2024", "30/05/2024"))
     )
-    ```
-
-    ```output
-
-    Attaching package: ‘dplyr’
-
-    The following objects are masked from ‘package:stats’:
-
-        filter, lag
-
-    The following objects are masked from ‘package:base’:
-
-        intersect, setdiff, setequal, union
-
-
-    Attaching package: ‘lubridate’
-
-    The following objects are masked from ‘package:base’:
-
-        date, intersect, setdiff, union
     ```
 
     Check the claim, and say what your answer does not establish.
@@ -1044,7 +909,7 @@ practice:
   answer: |
     ```r
     library(readr)
-    library(dplyr)
+    library(dplyr, warn.conflicts = FALSE)
 
     penguins_raw <- read_csv(
       here::here("data-raw", "penguins_raw.csv"),
@@ -1060,17 +925,6 @@ practice:
     ```
 
     ```output
-
-    Attaching package: ‘dplyr’
-
-    The following objects are masked from ‘package:stats’:
-
-        filter, lag
-
-    The following objects are masked from ‘package:base’:
-
-        intersect, setdiff, setequal, union
-
     [1] 114
     [1] "2008-11-02"
     [1] "2008-11-25"
@@ -1082,9 +936,9 @@ practice:
 
     - That the egg was laid on that date. The help page describes `Date Egg` as the date the study
       nest was "observed with 1 egg". An egg may have been laid before the visit.
-    - "All penguins". The rows are the study nests, not every penguin in the colony.
-    - A fair rewrite: "In the 2008–09 season, all 114 study nests were first observed with one egg
-      between 2 and 25 November 2008."
+    - "All penguins". Each row is one bird at a study nest, not every penguin in the colony.
+    - A fair rewrite: "In the 2008–09 season, all 114 rows are of study nests first observed with
+      one egg between 2 and 25 November 2008."
   refs:
   - horst_2020_palmerpenguins
 retrieval_items:

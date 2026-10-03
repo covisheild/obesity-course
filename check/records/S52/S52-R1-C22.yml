@@ -245,8 +245,7 @@ illustrations:
     quote: |-
       Due to disclosure concerns, all responses of participants aged 80 years and older are coded as “80.”
 - body: |
-    Build the script a step at a time, checking the row count after each step. The first step that
-    went wrong while this section was being written goes first.
+    Build the script a step at a time, checking the row count after each step. One step goes wrong.
 
     Join the demographics onto the body measures by `SEQN`, as in the section on joining. A
     `left_join()` keeps every row of the left table, so the count must stay at {{n:bmx_rows}}.
@@ -254,7 +253,7 @@ illustrations:
     either file:
 
     ```r
-    library(dplyr)
+    library(dplyr, warn.conflicts = FALSE)
 
     n_distinct(bmx$SEQN)
     n_distinct(demo$SEQN)
@@ -265,17 +264,6 @@ illustrations:
     ```
 
     ```output
-
-    Attaching package: ‘dplyr’
-
-    The following objects are masked from ‘package:stats’:
-
-        filter, lag
-
-    The following objects are masked from ‘package:base’:
-
-        intersect, setdiff, setequal, union
-
     [1] 8860
     [1] 11933
     [1] 8860
@@ -342,7 +330,8 @@ illustrations:
 
     One more check before trusting the BMI column. The codebook says BMI was worked out as weight
     in kilograms divided by height in metres squared, then rounded to one decimal. Work it out
-    again and find the largest gap between yours and the file's:
+    again and find the largest gap between yours and the file's. `abs()` drops the sign of a
+    difference.
 
     ```r
     bmi_check <- adults$BMXWT / (adults$BMXHT / 100)^2
@@ -365,8 +354,8 @@ illustrations:
     | with a BMI | 5929 |
     ```
   analogy_breaks_when: |
-    The expected count caught the pregnancy filter because the codebook gave the number of
-    pregnant participants, so you knew what to expect. A filter whose correct result you cannot
+    The expected count caught the pregnancy filter because `count()` gave the number of pregnant
+    adults before the filter (41, the codebook's figure too), so you knew what to expect. A filter whose correct result you cannot
     predict has no such check. Count the rows it removes, and look at a few of them.
 
     The BMI check compares the file with itself. It confirms the column was worked out as
@@ -386,7 +375,7 @@ illustrations:
     # participants only.
 
     library(haven)
-    library(dplyr)
+    library(dplyr, warn.conflicts = FALSE)
     library(readr)
     library(ggplot2)
     library(here)
@@ -400,14 +389,14 @@ illustrations:
 
     # 2. Check the key: one row per participant in each file
     stopifnot(
-      n_distinct(bmx$SEQN) == nrow(bmx),
-      n_distinct(demo$SEQN) == nrow(demo)
+      "SEQN is unique in BMX_L" = n_distinct(bmx$SEQN) == nrow(bmx),
+      "SEQN is unique in DEMO_L" = n_distinct(demo$SEQN) == nrow(demo)
     )
 
     # 3. Join demographics onto body measures; no row added or lost
     nhanes <- bmx |>
       left_join(demo, by = "SEQN", relationship = "one-to-one")
-    stopifnot(nrow(nhanes) == nrow(bmx))
+    stopifnot("the join kept every row" = nrow(nhanes) == nrow(bmx))
 
     # 4. Keep adults not pregnant at the exam. RIDEXPRG is missing
     #    for everyone not asked, so missing rows are kept on purpose.
@@ -445,9 +434,9 @@ illustrations:
         n_adults = n(),
         n_bmi = sum(!is.na(bmi)),
         mean_bmi = round(mean(bmi, na.rm = TRUE), 1),
-        q1_bmi = quantile(bmi, 0.25, na.rm = TRUE),
+        q1_bmi = quantile(bmi, probs = 0.25, na.rm = TRUE),
         median_bmi = median(bmi, na.rm = TRUE),
-        q3_bmi = quantile(bmi, 0.75, na.rm = TRUE)
+        q3_bmi = quantile(bmi, probs = 0.75, na.rm = TRUE)
       )
     print(bmi_by_gender)
     write_csv(bmi_by_gender, here("output", "bmi_by_gender.csv"))
@@ -462,8 +451,8 @@ illustrations:
         y = "BMI (kg/m^2)",
         caption = "NHANES 2021-2023, aged 20+, not pregnant; unweighted"
       )
-    ggsave(here("output", "bmi_by_gender.png"), bmi_plot,
-           width = 5, height = 4, dpi = 150)
+    ggsave(here("output", "bmi_by_gender.png"), plot = bmi_plot,
+           width = 5, height = 4, units = "in", dpi = 150)
 
     # 8. Record the versions that made these outputs
     sessionInfo()
@@ -472,7 +461,10 @@ illustrations:
     Read it from the top and you can name the section of this book behind each step: the project
     folder and `here()`, reading a raw file, checks that stop the script, the join, choosing rows,
     new columns and factors, summaries by group, the plot, and the fresh run. `cat()` prints its
-    arguments as one line of text, which gives the run a short log of counts.
+    arguments as one line of text, which gives the run a short log of counts, and `"\n"` ends the
+    line. In step 4, `labels =` gives the names that replace the codes, in the order of `levels`. In
+    step 7, the pipe hands the data to `ggplot()`; the layers after it still join with `+`. `NULL`
+    leaves that axis without a title. `dpi` sets the dots per inch, the image's sharpness.
 
     Open a terminal in the project folder and type the README's command:
 
@@ -481,17 +473,6 @@ illustrations:
     ```
 
     ```output
-
-    Attaching package: ‘dplyr’
-
-    The following objects are masked from ‘package:stats’:
-
-        filter, lag
-
-    The following objects are masked from ‘package:base’:
-
-        intersect, setdiff, setequal, union
-
     here() starts at ~/project
     Participants with body measures: 8860
     Adults kept: 6023
@@ -541,7 +522,7 @@ illustrations:
     would have stopped at it. The versions printed below the table are the record of what produced
     it.
 
-    The three quartiles answer the question, as Book 0 taught them: a quarter of the values lie
+    The three quartiles answer the question, as R's default (type 7) gives them: a quarter of the values lie
     below the first quartile, half below the median, three quarters below the third quartile.
 
     ```table
@@ -551,7 +532,7 @@ illustrations:
     | 75 | 32.4 | 34.7 |
     ```
 
-    The median BMI is {{n:nhanes_men_bmi_median}} kg/m^2 in men and 28.7 kg/m^2 in women, close together. The spread is
+    The median BMI is {{n:nhanes_men_bmi_median}} kg/m^2 in men and 28.7 kg/m^2 in women (unweighted: these participants only), close together. The spread is
     not. The middle half of the women runs from 24.4 to 34.7 kg/m^2, a width of 10.3 kg/m^2. The
     middle half of the men runs from 24.9 to 32.4 kg/m^2, a width of 7.5 kg/m^2. The women's upper
     quarter reaches higher. The means, {{n:nhanes_men_bmi_mean}} and 30.3 kg/m^2, sit above both medians, because a long
@@ -602,10 +583,15 @@ illustrations:
     Female,3303,3249,30.3,24.4,28.7,34.7
     ```
 
+    `cp` copies a file and `rm -r` deletes a folder. `> /dev/null 2>&1` throws away what the run
+    prints. `cmp` compares two files and prints nothing when they are the same. `&&` runs the next
+    command only if the last one succeeded, and `echo` prints its words.
+
     Both outputs came back, and the table is identical to the one before. A colleague with the
     project folder runs the same command on their computer. If their table differs, the checksums
     and the version lines are where the two of you start looking. This is the gate to the next
-    rung: the analysis reproduces from the raw data with one command.
+    rung, the test you must pass before moving on to it: the analysis reproduces from the raw data
+    with one command.
 
     Now say what it does not show, in the README and next to any number you quote from it.
 
@@ -620,7 +606,7 @@ illustrations:
     - Its correctness rests on the checks. A mistake that passes every check reruns perfectly.
 
     The next rung of this subject takes the same project further. A block of code repeated three
-    times becomes a function you write. Git records every change to the script. A Quarto document
+    times becomes a function you write, and you run it over many columns, files or groups at once. Git records every change to the script. A Quarto document
     replaces the step where you copy 28.1 into your text: the code writes the number into the
     document itself. DuckDB queries files too big to read into R at once. A form tool such as
     KoboToolbox, ODK or REDCap writes the raw file at the point where the data are collected.
@@ -850,6 +836,7 @@ provenance:
   - S52-R2-P04
   - S52-R2-P05
   - S52-R2-R1
+  - S52-R2-A01
   - S52-R2-B
   - S52-R2-G
 review:

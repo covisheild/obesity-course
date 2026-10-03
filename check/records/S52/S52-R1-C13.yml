@@ -9,6 +9,7 @@ clusters:
 ground_floor_deps:
 - B0-R0-C28
 - B0-R0-C04
+- B0-R0-C08
 concept_deps:
 - S52-R1-C04
 - S52-R1-C05
@@ -155,17 +156,18 @@ definition:
       claim_located: true
       checked_on: '2026-10-02'
 simplified_explanation: |
-  Or it arrives disguised as a real value: a weight of 999, a height of -99, the words "not
-  recorded". R cannot tell a disguised code from a measurement.
+  A missing value reaches R in one of two ways. Either it is already `NA`, or it arrives disguised
+  as a real value: a weight of 999, a height of -99, the words "not recorded". R cannot tell a
+  disguised code from a measurement.
 
   Read the data dictionary, then look at the largest and smallest values of each column. Turn
   every code into `NA` in your script, never in the file.
 
-  The second job is to count. `sum(is.na(x))` counts the missing values in one column.
+  Then count. `sum(is.na(x))` counts the missing values in one column.
   `colSums(is.na(data))` counts them in every column at once.
 
-  Dropping every row with a gap, with `drop_na()`, is a choice, not a clean-up. It changes which
-  rows your answer is about.
+  Dropping rows with `drop_na()` is a choice, not a clean-up. It changes which rows your answer
+  is about.
 illustrations:
 - body: |
     Start with the step that looks tidiest and does the most damage. Read the penguin file and
@@ -192,7 +194,7 @@ illustrations:
     ```
 
     Of {{n:penguins_rows}} rows, 34 survive. Nine rows in ten are gone. Any summary of `complete`
-    describes 34 nests, and nothing in its output says so.
+    describes 34 rows, and nothing in its output says so.
 
     Count the missing values in each column to see why. `is.na()` on the whole data frame gives a
     grid of `TRUE` and `FALSE`. `colSums()` adds up each column of the grid, counting each `TRUE`
@@ -292,8 +294,8 @@ illustrations:
     0's order-of-magnitude check catches it in one glance: no clinic's mean adult weight is in the
     hundreds.
 
-    The best place to fix this is the reading step. An earlier section declared codes with
-    `na = c("", "NA", "999")` in `read_csv()`. When the data are already in R, perhaps from a file
+    The best place to fix this is the reading step. `S52-R1-C09` declared codes with `na =` in
+    `read_csv()`. When the data are already in R, perhaps from a file
     type that has no such argument, fix them in code. Make a new column with `if_else()`, keeping
     the old one beside it:
 
@@ -346,8 +348,8 @@ illustrations:
     kilograms it cannot be. For a column such as a cholesterol reading, 999 could be real, which
     is why the code list comes from the data dictionary, not from guessing.
 - body: |
-    Last, watch the count change the answer. Take the mean body mass of the penguins twice: once
-    from every penguin with a body mass, and once from only those whose sex is also recorded, as
+    Last, watch the count change the answer. Take the mean body mass twice: once from every row
+    with a body mass, and once from only those whose sex is also recorded, as
     a complete-case analysis on those two columns would.
 
     ```r
@@ -385,9 +387,9 @@ illustrations:
     1   333       4207.
     ```
 
-    Two means, {{n:penguins_mass_mean_g}} g from {{n:penguins_mass_n}} penguins and 4207 g from 333. The dot after each number means the
+    Two means, {{n:penguins_mass_mean_g}} g from {{n:penguins_mass_n}} rows and 4207 g from 333. The dot after each number means the
     tibble rounded it to fit the column. The difference is small here.
-    It is still a difference, made by a choice about rows, not by anything measured. The 9 penguins
+    It is still a difference, made by a choice about rows, not by anything measured. The 9 rows
     left out the second time have a body mass and no recorded sex, and nobody can tell from this
     file whether they were heavier or lighter than the rest.
 
@@ -434,20 +436,20 @@ must_know:
 exercises:
 - type: calculation
   prompt: |
-    In your penguin script, count the missing values in every column. Then give the mean flipper
-    length in millimetres, with the number of penguins it was computed from, written the way a
+    In your penguin script, count the missing values of flipper length. Then give the mean flipper
+    length in millimetres, with the number of rows it was computed from, written the way a
     table would show it.
   answer: |
     ```r
     library(readr)
-    library(dplyr)
+    library(dplyr, warn.conflicts = FALSE)
 
     penguins_raw <- read_csv(
       here::here("data-raw", "penguins_raw.csv"),
       show_col_types = FALSE
     )
 
-    colSums(is.na(penguins_raw))
+    sum(is.na(penguins_raw$`Flipper Length (mm)`))
 
     penguins_raw |>
       summarise(
@@ -457,38 +459,15 @@ exercises:
     ```
 
     ```output
-
-    Attaching package: ‘dplyr’
-
-    The following objects are masked from ‘package:stats’:
-
-        filter, lag
-
-    The following objects are masked from ‘package:base’:
-
-        intersect, setdiff, setequal, union
-
-              studyName       Sample Number             Species
-                      0                   0                   0
-                 Region              Island               Stage
-                      0                   0                   0
-          Individual ID   Clutch Completion            Date Egg
-                      0                   0                   0
-     Culmen Length (mm)   Culmen Depth (mm) Flipper Length (mm)
-                      2                   2                   2
-          Body Mass (g)                 Sex   Delta 15 N (o/oo)
-                      2                  11                  14
-      Delta 13 C (o/oo)            Comments
-                     13                 290
+    [1] 2
     # A tibble: 1 × 2
           n mean_flipper_mm
       <int>           <dbl>
     1   342            201.
     ```
 
-    Flipper length is missing in 2 rows, so the mean comes from 342 penguins. The tibble prints
-    it rounded to fit, as `201.`. In a table: "mean flipper length 201 mm (n = 342)". The other columns' counts are
-    the same as in the first illustration.
+    Flipper length is missing in 2 rows, so the mean comes from 342 rows. The tibble prints
+    it rounded to fit, as `201.`. In a table: "mean flipper length 201 mm (n = 342)".
   skill_ref: S52-R1-K01
 - type: critique
   prompt: |
@@ -611,7 +590,7 @@ practice:
     )
     ```
 
-    How many penguins have no recorded sex? What percentage of the rows is that, to one decimal
+    How many rows have no recorded sex? What percentage of the rows is that, to one decimal
     place?
   answer: |
     ```r
@@ -632,7 +611,7 @@ practice:
 
     ```r
     library(readr)
-    library(dplyr)
+    library(dplyr, warn.conflicts = FALSE)
 
     penguins_raw <- read_csv(
       here::here("data-raw", "penguins_raw.csv"),
@@ -640,23 +619,10 @@ practice:
     )
     ```
 
-    ```output
-
-    Attaching package: ‘dplyr’
-
-    The following objects are masked from ‘package:stats’:
-
-        filter, lag
-
-    The following objects are masked from ‘package:base’:
-
-        intersect, setdiff, setequal, union
-    ```
-
     In one `summarise()`, give the number of rows, the number of missing values of `Delta 15 N
     (o/oo)`, and the mean of the values present. Write the result as a table would show it. The
     data's help page describes Delta 15 N as a measure of the ratio of two forms of nitrogen,
-    taken from a blood sample.
+    taken from a blood sample. Its unit, o/oo, is in the column name.
   answer: |
     ```r
     penguins_raw |>
@@ -675,7 +641,9 @@ practice:
     ```
 
     {{n:penguins_rows}} rows, 14 missing, so the mean is of 330 values: 8.73 as printed. In
-    a table: "mean delta 15 N 8.73 (n = 330; 14 of {{n:penguins_rows}} not measured)", with the column's own unit.
+    a table: "mean delta 15 N 8.73 o/oo (n = 330; 14 of {{n:penguins_rows}} not measured)".
+  refs:
+  - horst_2020_palmerpenguins
 - level: 6
   prompt: |
     Read the penguin file.
@@ -717,37 +685,36 @@ practice:
     column counts to get the rows lost. Count the rows.
 - level: 7
   prompt: |
-    A colleague's made-up register used 999 for "not weighed". They report: "Mean weight was 64.5
+    A colleague's made-up register used -9 for "not weighed". They report: "Mean weight was 40
     kg, after removing missing values."
 
     ```r
-    weights <- c(58, 999, 66, 71, 999, 63)
+    weights <- c(58, -9, 66, 71, -9, 63)
     mean(weights[!is.na(weights)])
     ```
 
     ```output
-    [1] 376
+    [1] 40
     ```
 
     Run it. Find what broke, and why the report looks reasonable.
   answer: |
     ```r
-    weights <- c(58, 999, 66, 71, 999, 63)
+    weights <- c(58, -9, 66, 71, -9, 63)
     mean(weights[!is.na(weights)])
     ```
 
     ```output
-    [1] 376
+    [1] 40
     ```
 
-    The code gives 376, not 64.5. `!is.na()` removes nothing, because there is no `NA` in the
-    vector: the two 999s are ordinary numbers. The colleague's 64.5 kg came from somewhere else,
-    perhaps a hand calculation that skipped the codes, and the code does not back it.
+    The code gives 40, as reported, and 40 is wrong. `!is.na()` removes nothing, because there is
+    no `NA` in the vector: the two -9s are ordinary numbers, and they pull the mean down.
 
     Turn the codes into `NA` first, then count and average:
 
     ```r
-    weights_clean <- dplyr::if_else(weights == 999, NA, weights)
+    weights_clean <- dplyr::if_else(weights == -9, NA, weights)
     sum(is.na(weights_clean))
     mean(weights_clean, na.rm = TRUE)
     ```
@@ -757,11 +724,10 @@ practice:
     [1] 64.5
     ```
 
-    2 missing, and the mean of the other 4 is 64.5 kg. The report is right only once the code says
-    how it got there, and it should add "(n = 4)".
+    2 missing, and the mean of the other 4 is 64.5 kg. The report should say "64.5 kg (n = 4)".
 
-    Why the wrong version looks reasonable: "removing missing values" was written, and the line
-    does remove `NA`s. It had none to remove. `dplyr::if_else()` calls the function from dplyr
+    Why the wrong version looks reasonable: 40 kg is a possible adult weight, "removing missing
+    values" was written, and the line does remove `NA`s. It had none to remove. `dplyr::if_else()` calls the function from dplyr
     without loading the whole package, so it works on a plain vector here.
 - level: 7
   prompt: |
@@ -801,7 +767,8 @@ practice:
     [1] "character"
     ```
 
-    The words "not recorded" are text, so `read_csv()` read the whole column as text, `chr`. A
+    `class()` says what kind of object R holds, here text. The words "not recorded" are text, so
+    `read_csv()` read the whole column as text, `chr`. A
     mean of text is not defined: R warns and returns `NA`. Only one height is missing, not all.
 
     Declare the code when reading, keeping the default missing values beside it:
@@ -852,7 +819,7 @@ practice:
     Their table says "mean body mass of penguins of known sex, 3877.206 g". Find what broke.
   answer: |
     `drop_na()` with no columns named dropped every row with a gap anywhere, mostly in
-    `Comments`. The mean is of 34 penguins, not of the penguins of known sex. Name the columns:
+    `Comments`. The mean is of 34 rows, not of every row of known sex. Name the columns:
 
     ```r
     known <- drop_na(penguins_raw, Sex, `Body Mass (g)`)
@@ -866,8 +833,8 @@ practice:
     [1] 4207.057
     ```
 
-    333 penguins of known sex have a body mass, and their mean is 4207.057 g. The first answer was
-    329.851 g too low. The 34 rows that happen to carry a comment are not a fair picture of the
+    333 rows of known sex have a body mass, and their mean is 4207.057 g. The first answer was
+    329.851 g too low. The 34 rows with a comment and no other gap are not a fair picture of the
     rest.
 
     Why the wrong answer looks reasonable: the code ran, the number is a believable penguin
@@ -880,7 +847,7 @@ practice:
   answer: |
     ```r
     library(readr)
-    library(dplyr)
+    library(dplyr, warn.conflicts = FALSE)
 
     penguins_raw <- read_csv(
       here::here("data-raw", "penguins_raw.csv"),
@@ -896,17 +863,6 @@ practice:
     ```
 
     ```output
-
-    Attaching package: ‘dplyr’
-
-    The following objects are masked from ‘package:stats’:
-
-        filter, lag
-
-    The following objects are masked from ‘package:base’:
-
-        intersect, setdiff, setequal, union
-
     # A tibble: 1 × 3
        rows     n mean_mass_g
       <int> <int>       <dbl>
@@ -914,12 +870,12 @@ practice:
     ```
 
     The mean prints as {{n:penguins_mass_mean_g}} g, so the number is right. The count is wrong: the mean
-    is of {{n:penguins_mass_n}} penguins, because 2 have no body mass. Rewrite: "Mean body mass was {{n:penguins_mass_mean_g}} g (n = {{n:penguins_mass_n}};
+    is of {{n:penguins_mass_n}} rows, because 2 have no body mass. Rewrite: "Mean body mass was {{n:penguins_mass_mean_g}} g (n = {{n:penguins_mass_n}};
     2 of {{n:penguins_rows}} not weighed)."
 
     What it does not establish:
 
-    - What the 2 missing penguins weighed, or why they were not weighed.
+    - What the birds in the 2 rows weighed, or why they were not weighed.
     - Anything about penguins outside these three seasons and three islands.
     - That {{n:penguins_rows}} rows are {{n:penguins_rows}} penguins. The file records nesting observations, and an earlier
       section showed that its IDs repeat.
@@ -934,7 +890,7 @@ practice:
   answer: |
     ```r
     library(readr)
-    library(dplyr)
+    library(dplyr, warn.conflicts = FALSE)
     library(tidyr)
 
     penguins_raw <- read_csv(
@@ -949,17 +905,6 @@ practice:
     ```
 
     ```output
-
-    Attaching package: ‘dplyr’
-
-    The following objects are masked from ‘package:stats’:
-
-        filter, lag
-
-    The following objects are masked from ‘package:base’:
-
-        intersect, setdiff, setequal, union
-
     [1] 344
     [1] 333
     ```

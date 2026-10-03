@@ -95,7 +95,17 @@ definition:
       checked_on: '2026-10-02'
       note: |-
         Explains the second illustration's silent wrong answer: mean(3750, 3800, 3250) passes 3800
-        as trim, which is taken as 0.5, the median of the one value 3750.
+        as trim, which is taken as 0.5; the mean of the one value 3750 is 3750.
+  - citekey: rdocs_s52r1_base
+    kind: textbook
+    locator: 'Help page "mean" (base 4.3.3), Arguments: trim, what it does'
+    quote: |-
+      the fraction (0 to 0.5) of observations to be trimmed from each end of 'x' before the mean is computed.
+    verified:
+      resolved_id: rhelp://base@4.3.3/mean
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-03'
   - citekey: rdocs_s52r1_stats
     kind: textbook
     locator: 'Help page "median" (stats 4.3.3), Arguments: na.rm'
@@ -199,27 +209,29 @@ simplified_explanation: |
   One call can sit inside another, and R works from the inside out:
 
   ```r
-  round(mean(heights_cm), 1)
+  round(mean(heights_cm), digits = 1)
   ```
 
   ```output
   [1] 161.2
   ```
 
-  The pipe, written `|>`, puts the steps in the order they happen. Read it as "then":
+  The pipe, written `|>`, puts the steps in the order they happen. Read it as "then". Type it as
+  two characters, `|` then `>`. A line that ends in `|>` is unfinished, so R waits for the next
+  line, as with the `+` prompt in `S52-R1-C02`. The indent is only for reading:
 
   ```r
   heights_cm |>
     mean() |>
-    round(1)
+    round(digits = 1)
   ```
 
   ```output
   [1] 161.2
   ```
 
-  The pipe hands the thing on its left to the call on its right, as the first argument. So `round(1)`
-  here means `round(the mean, 1)`.
+  The pipe hands the thing on its left to the call on its right, as the first argument. So
+  `round(digits = 1)` here means `round(the mean, digits = 1)`.
 
   To find out what a function's arguments are called and what they do, open its help page. Type
   a question mark and the name: `?round`.
@@ -259,7 +271,7 @@ illustrations:
     [1] 3769.444
     ```
 
-    Now look at what that number is. It is not the mean of ten penguins. Check it with the tools
+    Now look at what that number is. It is not the mean of ten values. Check it with the tools
     from the last section, adding the known values and dividing by how many there are:
 
     ```r
@@ -323,11 +335,11 @@ illustrations:
     known values, then round to two decimal places.
 
     ```r
-    round(mean(body_mass_g / 1000, na.rm = TRUE), 2)
+    round(mean(body_mass_g / 1000, na.rm = TRUE), digits = 2)
 
     (body_mass_g / 1000) |>
       mean(na.rm = TRUE) |>
-      round(2)
+      round(digits = 2)
     ```
 
     ```output
@@ -342,7 +354,7 @@ illustrations:
 
     `na.rm = TRUE` gives the mean of the values present. It is the mean of all ten only if the
     missing one would have sat at that same mean, and nothing here can tell you whether it would.
-    Which values go missing, and why, is a question for a later rung.
+    Which values go missing, and why, is a question for a later book in this course.
 - body: |
     Error messages are about a call. Read them as sentences. Leave out an argument that has no
     default:
@@ -372,11 +384,12 @@ illustrations:
     name exists. Give a function the wrong kind of value:
 
     ```r error
-    round("3.77", 1)
+    round("3.77", digits = 1)
     ```
 
     ```output
-    Error in round("3.77", 1) : non-numeric argument to mathematical function
+    Error in round("3.77", digits = 1) :
+      non-numeric argument to mathematical function
     ```
 
     `round()` needs a number and was given text.
@@ -395,8 +408,9 @@ illustrations:
     No error and no warning, and 3750 g is a believable body mass. It is wrong. Without `c()`,
     the three numbers are three separate arguments, matched by position. `mean()` took 3750 as
     `x`, 3800 as its second argument, `trim`, and 3250 went into the `...` that collects extra
-    arguments. The help page says `trim` should lie between 0 and 0.5, and that values outside
-    that range are taken as the nearest end. So `trim` became 0.5, and the "mean" of the single
+    arguments. The help page says `trim` is "the fraction (0 to 0.5) of observations to be trimmed
+    from each end of 'x' before the mean is computed", and that values outside that range are
+    taken as the nearest end. So `trim` became 0.5, and the "mean" of the single
     value 3750 is 3750. The call you meant:
 
     ```r
@@ -444,7 +458,7 @@ must_know:
   bearing: methodological
 - point: |
     If you find yourself copying the same block of calls three times with one thing changed, you
-    need a function of your own. Writing one is taught at the next rung of this subject.
+    need a function of your own. Writing one is taught in a later book in this course.
   kind: consequence
   bearing: methodological
 exercises:
@@ -533,15 +547,15 @@ practice:
     answer.
 
     ```r norun
-    round(mean(c(61.2, 58.4, 70.9)), 1)
+    round(mean(c(61.2, 58.4, 70.9)), digits = 1)
     ```
   answer: |
     ```r
-    round(mean(c(61.2, 58.4, 70.9)), 1)
+    round(mean(c(61.2, 58.4, 70.9)), digits = 1)
 
     c(61.2, 58.4, 70.9) |>
       mean() |>
-      round(1)
+      round(digits = 1)
     ```
 
     ```output
@@ -555,13 +569,13 @@ practice:
   prompt: |
     The first ten flipper lengths in `penguins_raw.csv` are 181, 186, 195, a missing value, 193,
     190, 181, 195, 193 and 190 mm. Give their mean and their median in centimetres, each to one
-    decimal place, and say how many penguins each is based on.
+    decimal place, and say how many values each is based on.
   answer: |
     ```r
     flipper_mm <- c(181, 186, 195, NA, 193, 190, 181, 195, 193, 190)
     flipper_cm <- flipper_mm / 10
-    round(mean(flipper_cm, na.rm = TRUE), 1)
-    round(median(flipper_cm, na.rm = TRUE), 1)
+    round(mean(flipper_cm, na.rm = TRUE), digits = 1)
+    round(median(flipper_cm, na.rm = TRUE), digits = 1)
     sum(!is.na(flipper_cm))
     ```
 
@@ -571,8 +585,8 @@ practice:
     [1] 9
     ```
 
-    The mean is 18.9 cm and the median is 19 cm, each from the 9 penguins whose flipper length
-    is recorded. R prints 19 rather than 19.0, because it drops a final zero after the point.
+    The mean is 18.9 cm and the median is 19 cm, each from the 9 rows whose flipper length is
+    recorded. R prints 19 rather than 19.0: a single value is printed without a trailing zero.
 - level: 5
   prompt: |
     Using only the help page of `sd()`, find how to make it leave out missing values. The first
@@ -630,7 +644,8 @@ practice:
   answer: |
     The three numbers are not inside `c()`, so they are three separate arguments. R matched them
     by position: 3750 became `x`, 3800 became `trim`, and 3250 went into `...`. A `trim` above
-    0.5 is taken as 0.5, which gives the median of `x`, and `x` is the single value 3750.
+    0.5 is taken as 0.5. `x` is the single value 3750, and any mean of one value, trimmed or not,
+    is that value.
 
     ```r
     mean(c(3750, 3800, 3250))
@@ -679,7 +694,7 @@ practice:
     body_mass_g <- c(3750, 3800, 3250, NA, 3450, 3650, 3625, 4675, 3475, 4250)
     round(body_mass_g / 1000) |>
       mean(na.rm = TRUE) |>
-      round(2)
+      round(digits = 2)
     ```
 
     ```output
@@ -704,7 +719,7 @@ practice:
     ```r
     (body_mass_g / 1000) |>
       mean(na.rm = TRUE) |>
-      round(2)
+      round(digits = 2)
     ```
 
     ```output
@@ -717,7 +732,7 @@ practice:
     you work and round once, at the end.
 - level: 9
   prompt: |
-    A made-up draft report says: "The average body mass of the first ten penguins was 3392.5 g."
+    A made-up draft report says: "The average body mass in the first ten rows was 3392.5 g."
     The first ten body masses are as in problem 5. Work out with code how that number could have
     been produced. Say what the sentence gets wrong, and what a corrected sentence still does not
     establish.
@@ -739,7 +754,7 @@ practice:
     ```
 
     The report's number is the total of nine masses divided by ten: the missing weight was
-    treated as zero. A corrected sentence: "The mean body mass of the 9 penguins with a recorded
+    treated as zero. A corrected sentence: "The mean body mass of the 9 rows with a recorded
     weight was 3769.4 g."
 
     What the corrected sentence does not establish:
@@ -748,8 +763,8 @@ practice:
     - Anything about the penguins in the rest of the file, or about penguins in general.
 - level: 10
   prompt: |
-    A made-up thesis table reports "median body mass 3650 g (n = 10)" for the first ten penguins
-    in the practice file. The values are as in problem 5. Check both numbers with code, and say
+    A made-up thesis table reports "median body mass 3650 g (n = 10)" for the first ten rows of
+    the practice file. The values are as in problem 5. Check both numbers with code, and say
     what the checked result does not establish.
   answer: |
     ```r
@@ -769,7 +784,7 @@ practice:
 
     What the checked result does not establish:
 
-    - The median of all ten penguins. With a tenth value, the median would be the mean of the
+    - The median of all ten values. With a tenth value, the median would be the mean of the
       two middle values, and that depends on the missing weight.
     - Anything about penguins beyond these ten rows.
 retrieval_items:
@@ -783,8 +798,7 @@ retrieval_items:
 - q: Which section of a help page shows a function's arguments with their defaults?
   a: Usage.
 - q: How does R match arguments that are given without names?
-  a: By position, in the order the function lists its arguments, after any named arguments have
-    been matched.
+  a: By position, in the order the function lists its arguments.
 figures:
 - file: s52-r1-c05-three-averages.png
   caption: "The same ten body masses, with penguin 4 missing, summarised three ways. Typing the missing weight as 0 gives a mean of 3392.5 g. Leaving it out with na.rm = TRUE gives a mean of 3769.444 g and a median of 3650 g, both from 9 values."
@@ -806,6 +820,7 @@ provenance:
   - S52-R1-S1
   bridge_ref:
   - S52-R2-P01
+  - S52-R2-A01
 review:
   stability: long
   trigger: '2031-10-02'

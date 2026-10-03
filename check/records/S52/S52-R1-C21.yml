@@ -111,6 +111,19 @@ definition:
       note: |-
         The See Also of the same page names 'sample' "for random sampling with and without
         replacement", the function used in the illustration.
+  - citekey: rdocs_s52r1_base
+    kind: textbook
+    locator: 'Help page "Random" (base 4.3.3), Details: sample.kind, the default changed in R 3.6.0'
+    quote: |-
+      The former was the default in versions prior to 3.6.0
+    verified:
+      resolved_id: rhelp://base@4.3.3/Random
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-03'
+      note: |-
+        The sentence before it reads "'sample.kind' can be '"Rounding"' or '"Rejection"', or partial
+        matches to these." So R 3.6.0 changed the default method that `sample()` uses.
   - citekey: rdocs_s52r1_utils
     kind: textbook
     locator: 'Help page "sessionInfo" (utils 4.3.3), Description'
@@ -235,7 +248,7 @@ definition:
 simplified_explanation: |
   Here is the trap with a script that works on your computer. While you work, R remembers. Every
   object you made, in the script or typed in the console, sits in the workspace. Every package you
-  loaded stays loaded. Then a colleague runs it on their computer, where none of it exists, and it
+  attached stays attached. Then a colleague runs it on their computer, where none of it exists, and it
   stops.
 
   So test the script the way a stranger would run it. Start a new R with nothing in it, and run
@@ -252,7 +265,7 @@ illustrations:
 
     ```r
     library(readr)
-    library(dplyr)
+    library(dplyr, warn.conflicts = FALSE)
 
     penguins_raw <- read_csv(
       here::here("data-raw", "penguins_raw.csv"),
@@ -260,23 +273,10 @@ illustrations:
     )
     ```
 
-    ```output
-
-    Attaching package: ‘dplyr’
-
-    The following objects are masked from ‘package:stats’:
-
-        filter, lag
-
-    The following objects are masked from ‘package:base’:
-
-        intersect, setdiff, setequal, union
-    ```
-
     Then you tried a few things, and saved the line worth keeping as your script, `code/analysis.R`:
 
     ```r file=code/analysis.R
-    library(dplyr)
+    library(dplyr, warn.conflicts = FALSE)
 
     penguins_raw |>
       count(Island)
@@ -285,7 +285,7 @@ illustrations:
     Select all of it in the editor and run it. Your session runs these lines:
 
     ```r
-    library(dplyr)
+    library(dplyr, warn.conflicts = FALSE)
 
     penguins_raw |>
       count(Island)
@@ -308,17 +308,6 @@ illustrations:
     ```
 
     ```output
-
-    Attaching package: ‘dplyr’
-
-    The following objects are masked from ‘package:stats’:
-
-        filter, lag
-
-    The following objects are masked from ‘package:base’:
-
-        intersect, setdiff, setequal, union
-
     Error: object 'penguins_raw' not found
     Execution halted
     ```
@@ -336,7 +325,7 @@ illustrations:
 
     ```r file=code/analysis.R
     library(readr)
-    library(dplyr)
+    library(dplyr, warn.conflicts = FALSE)
     library(here)
 
     penguins_raw <- read_csv(
@@ -355,17 +344,6 @@ illustrations:
     ```
 
     ```output
-
-    Attaching package: ‘dplyr’
-
-    The following objects are masked from ‘package:stats’:
-
-        filter, lag
-
-    The following objects are masked from ‘package:base’:
-
-        intersect, setdiff, setequal, union
-
     here() starts at ~/project
     # A tibble: 3 × 2
       Island        n
@@ -407,7 +385,7 @@ illustrations:
     ```
 
     `ls()` prints `character(0)`, an empty list: no objects. But `search()`, which lists where R
-    looks for a name, still shows `package:dplyr` and `package:readr`. They are still loaded. A
+    looks for a name, still shows `package:dplyr` and `package:readr`. They are still attached. A
     script that forgot `library(dplyr)` would still find `count()` here, and stop on your
     colleague's computer. Only a new R clears both. In RStudio that is Session, then Restart R, or
     Ctrl + Shift + F10, followed by Ctrl + Shift + S to run the whole script. In a terminal it is
@@ -449,7 +427,7 @@ illustrations:
     # Run from the project folder: Rscript code/analysis.R
 
     library(readr)
-    library(dplyr)
+    library(dplyr, warn.conflicts = FALSE)
     library(here)
 
     penguins_raw <- read_csv(
@@ -484,17 +462,6 @@ illustrations:
     ```
 
     ```output
-
-    Attaching package: ‘dplyr’
-
-    The following objects are masked from ‘package:stats’:
-
-        filter, lag
-
-    The following objects are masked from ‘package:base’:
-
-        intersect, setdiff, setequal, union
-
     here() starts at ~/project
     R version 4.3.3 (2024-02-29)
     Platform: x86_64-pc-linux-gnu (64-bit)
@@ -529,7 +496,7 @@ illustrations:
     ```
 
     Nothing else printed, because the script writes its tables to files. Look in `output/`, and read
-    one back as plain text:
+    one back as plain text. In the terminal, `ls` lists a folder and `cat` prints a file:
 
     ```sh
     ls output
@@ -549,19 +516,20 @@ illustrations:
 
     The five row numbers in the file are the five from `set.seed(2026)` above. Now read the record
     at the bottom of the run. The first line names R {{n:r_version}}. Under "other attached
-    packages" are the three this script loaded, each with its version: here {{n:here_version}},
-    dplyr {{n:dplyr_version}}, readr {{n:readr_version}}. "Running under" names the computer's
+    packages" are the three this script attached, each with its version: here {{n:here_version}},
+    dplyr {{n:dplyr_version}}, readr {{n:readr_version}}. Under "loaded via a namespace (and not
+    attached)" are packages that are loaded but not attached. "Running under" names the computer's
     operating system. Anyone who gets a different answer from your script can compare their own
     `sessionInfo()` with yours, line by line.
   analogy_breaks_when: |
     `sessionInfo()` records the versions. It does not install them. A colleague with a newer dplyr
     can read that you used {{n:dplyr_version}} and still have to find and install the old version by
     hand. Pinning versions so that another computer gets the same ones is what renv does, two rungs
-    up.
+    up. Recording every change to the script itself is version control, the next rung's subject.
 
     A seed makes a random step repeat on the same version of R. It does not make the five rows a
     good sample, and it does not promise the same five on a version of R whose random-number method
-    has changed. That is why the seed and the R version are both recorded.
+    has changed, as it did in R 3.6.0. That is why the seed and the R version are both recorded.
 must_know:
 - point: |
     The error is to think that a script which runs on your computer is a script that runs. Before
@@ -570,7 +538,7 @@ must_know:
   kind: misconception
   bearing: methodological
 - point: |
-    `rm(list = ls())` empties the workspace and leaves every package loaded. `source()` runs a
+    `rm(list = ls())` empties the workspace and leaves every package attached. `source()` runs a
     file in the workspace you already have. Neither is a fresh session. Restart R, or use
     `Rscript`.
   kind: trap
@@ -614,12 +582,12 @@ exercises:
     it. Say why `rm(list = ls())` is not enough.
   answer: |
     Hidden state is anything a script uses that the script did not make. It may be an object typed
-    in the console, a package loaded earlier or a file made by hand.
+    in the console, a package attached earlier or a file made by hand.
 
     The command is `Rscript code/analysis.R`, typed in a terminal in the project folder. It starts
     a new R and runs the file from the first line to the last.
 
-    `rm(list = ls())` removes the objects and leaves the packages loaded, so a script that forgot a
+    `rm(list = ls())` removes the objects and leaves the packages attached, so a script that forgot a
     `library()` line would still run.
 - type: build
   prompt: |
@@ -649,9 +617,9 @@ exercises:
     "does not reproduce". The journalist asks what that usually means, and whether it means the
     result is false. Answer them.
   answer: |
-    Usually it means that someone took the group's data and code and could not get the code to
-    run, or got a different number. One study reran thousands of R files shared with published
-    papers, and most failed to run to the end without an error the first time. Common causes are dull ones: a file kept
+    It can mean that someone took the group's data and code and could not get the code to run, or
+    got a different number. One study looked at R code shared on one research website. About three in
+    four files did not run to the end without an error the first time. Common causes are dull ones: a file kept
     in a folder only the author had, a missing step, a package that has since changed.
 
     So "does not reproduce" says that the analysis cannot be checked as it stands. It does not say
@@ -662,7 +630,7 @@ exercises:
 quantitative: true
 practice_note: |
   Ten problems. The technique is one test, a fresh run, and the mechanical band covers its three
-  parts (a seed, an empty workspace, loaded packages). The weight is on the diagnostic and transfer
+  parts (a seed, an empty workspace, attached packages). The weight is on the diagnostic and transfer
   bands, because hidden state shows itself only when the code meets a second session.
 practice:
 - level: 1
@@ -691,7 +659,8 @@ practice:
     The same three, because the seed is set to the same number before each pick.
 - level: 2
   prompt: |
-    Predict what the last line prints, then run all three.
+    Predict what the last line prints, then run all three. `exists()` asks whether an object of that
+    name exists.
 
     ```r norun
     height_cm <- c(132, 141, 150)
@@ -709,36 +678,25 @@ practice:
     [1] FALSE
     ```
 
-    `rm(list = ls())` removed every object, so `height_cm` no longer exists. `exists()` asks whether
-    an object of that name exists, and answers FALSE.
+    `rm(list = ls())` removed every object, so `height_cm` no longer exists, and `exists()` answers
+    FALSE.
 - level: 3
   prompt: |
-    Predict what the last line prints, then run all three. Does `rm(list = ls())` unload dplyr?
+    Predict what the last line prints, then run all three. Does `rm(list = ls())` detach dplyr?
 
     ```r norun
-    library(dplyr)
+    library(dplyr, warn.conflicts = FALSE)
     rm(list = ls())
     "package:dplyr" %in% search()
     ```
   answer: |
     ```r
-    library(dplyr)
+    library(dplyr, warn.conflicts = FALSE)
     rm(list = ls())
     "package:dplyr" %in% search()
     ```
 
     ```output
-
-    Attaching package: ‘dplyr’
-
-    The following objects are masked from ‘package:stats’:
-
-        filter, lag
-
-    The following objects are masked from ‘package:base’:
-
-        intersect, setdiff, setequal, union
-
     [1] TRUE
     ```
 
@@ -753,7 +711,7 @@ practice:
   answer: |
     ```r file=code/analysis.R
     library(readr)
-    library(dplyr)
+    library(dplyr, warn.conflicts = FALSE)
     library(here)
 
     penguins_raw <- read_csv(
@@ -774,17 +732,6 @@ practice:
     ```
 
     ```output
-
-    Attaching package: ‘dplyr’
-
-    The following objects are masked from ‘package:stats’:
-
-        filter, lag
-
-    The following objects are masked from ‘package:base’:
-
-        intersect, setdiff, setequal, union
-
     here() starts at ~/project
     Species,n
     Adelie Penguin (Pygoscelis adeliae),152
@@ -797,67 +744,10 @@ practice:
     on a copy with no `output/` folder.
 - level: 5
   prompt: |
-    Write a script that loads readr and dplyr and ends with `sessionInfo()`. Run it with `Rscript`,
-    and read off the version of dplyr that produced the result. Then get the same version number
-    with one line of code instead of reading it by eye.
+    This section's last run of `code/analysis.R` ended with `sessionInfo()`, and its printout named
+    the version of dplyr under "other attached packages". Get the same version number with one line
+    of code instead of reading it by eye.
   answer: |
-    ```r file=code/analysis.R
-    library(readr)
-    library(dplyr)
-
-    sessionInfo()
-    ```
-
-    ```sh
-    Rscript code/analysis.R
-    ```
-
-    ```output
-
-    Attaching package: ‘dplyr’
-
-    The following objects are masked from ‘package:stats’:
-
-        filter, lag
-
-    The following objects are masked from ‘package:base’:
-
-        intersect, setdiff, setequal, union
-
-    R version 4.3.3 (2024-02-29)
-    Platform: x86_64-pc-linux-gnu (64-bit)
-    Running under: Ubuntu 24.04.5 LTS
-
-    Matrix products: default
-    BLAS:   /usr/lib/x86_64-linux-gnu/blas/libblas.so.3.12.0
-    LAPACK: /usr/lib/x86_64-linux-gnu/lapack/liblapack.so.3.12.0
-
-    locale:
-     [1] LC_CTYPE=C.utf8       LC_NUMERIC=C          LC_TIME=C.utf8
-     [4] LC_COLLATE=C.utf8     LC_MONETARY=C.utf8    LC_MESSAGES=C.utf8
-     [7] LC_PAPER=C.utf8       LC_NAME=C             LC_ADDRESS=C
-    [10] LC_TELEPHONE=C        LC_MEASUREMENT=C.utf8 LC_IDENTIFICATION=C
-
-    time zone: UTC
-    tzcode source: system (glibc)
-
-    attached base packages:
-    [1] stats     graphics  grDevices utils     datasets  methods   base
-
-    other attached packages:
-    [1] dplyr_1.1.4 readr_2.1.5
-
-    loaded via a namespace (and not attached):
-     [1] utf8_1.2.4       R6_2.5.1         tidyselect_1.2.0 tzdb_0.4.0
-     [5] magrittr_2.0.3   glue_1.7.0       tibble_3.2.1     pkgconfig_2.0.3
-     [9] generics_0.1.3   lifecycle_1.0.4  cli_3.6.2        fansi_1.0.5
-    [13] vctrs_0.6.5      compiler_4.3.3   hms_1.1.3        pillar_1.9.0
-    [17] rlang_1.1.3
-    ```
-
-    Under "other attached packages", `dplyr_1.1.4` says dplyr version {{n:dplyr_version}}. The same
-    number in one line, as the section on packages showed:
-
     ```r
     packageVersion("dplyr")
     ```
@@ -866,8 +756,9 @@ practice:
     [1] ‘1.1.4’
     ```
 
-    Your own computer may print a newer version. Then your outputs may differ from this book's,
-    and the version line tells you why.
+    `packageVersion()`, from the section on packages, prints version {{n:dplyr_version}}. That is
+    the same as `dplyr_1.1.4` in the printout. Your own computer may print a newer version. Then your outputs may differ from
+    this book's, and the version line tells you why.
 - level: 6
   prompt: |
     You want ten penguin rows picked at random, for a colleague to check against the field
@@ -907,30 +798,17 @@ practice:
 
     ```r
     library(readr)
-    library(dplyr)
+    library(dplyr, warn.conflicts = FALSE)
     penguins_raw <- read_csv(here::here("data-raw", "penguins_raw.csv"),
                              show_col_types = FALSE)
     penguins_raw <- penguins_raw |>
       filter(Island == "Biscoe")
     ```
 
-    ```output
-
-    Attaching package: ‘dplyr’
-
-    The following objects are masked from ‘package:stats’:
-
-        filter, lag
-
-    The following objects are masked from ‘package:base’:
-
-        intersect, setdiff, setequal, union
-    ```
-
     Her script, `code/analysis.R`, run line by line in that session:
 
     ```r
-    library(dplyr)
+    library(dplyr, warn.conflicts = FALSE)
     penguins_raw |>
       summarise(mean_mass_g = mean(`Body Mass (g)`, na.rm = TRUE))
     ```
@@ -952,7 +830,7 @@ practice:
     Save her script and run it as a stranger would:
 
     ```r file=code/analysis.R
-    library(dplyr)
+    library(dplyr, warn.conflicts = FALSE)
     penguins_raw |>
       summarise(mean_mass_g = mean(`Body Mass (g)`, na.rm = TRUE))
     ```
@@ -962,17 +840,6 @@ practice:
     ```
 
     ```output
-
-    Attaching package: ‘dplyr’
-
-    The following objects are masked from ‘package:stats’:
-
-        filter, lag
-
-    The following objects are masked from ‘package:base’:
-
-        intersect, setdiff, setequal, union
-
     Error: object 'penguins_raw' not found
     Execution halted
     ```
@@ -981,7 +848,7 @@ practice:
 
     ```r file=code/analysis.R
     library(readr)
-    library(dplyr)
+    library(dplyr, warn.conflicts = FALSE)
     penguins_raw <- read_csv(here::here("data-raw", "penguins_raw.csv"),
                              show_col_types = FALSE)
     penguins_raw |>
@@ -993,17 +860,6 @@ practice:
     ```
 
     ```output
-
-    Attaching package: ‘dplyr’
-
-    The following objects are masked from ‘package:stats’:
-
-        filter, lag
-
-    The following objects are masked from ‘package:base’:
-
-        intersect, setdiff, setequal, union
-
     # A tibble: 1 × 1
       mean_mass_g
             <dbl>
@@ -1102,7 +958,7 @@ practice:
 
     ```r file=code/analysis.R
     library(readr)
-    library(dplyr)
+    library(dplyr, warn.conflicts = FALSE)
     library(here)
 
     penguins_raw <- read_csv(
@@ -1118,7 +974,8 @@ practice:
     ```
 
     Run it and keep a copy of the output. Delete `output/`, run it again, and compare. `cmp`
-    compares two files and prints nothing when they are the same:
+    compares two files and prints nothing when they are the same. `cp` copies a file, `rm -r` deletes
+    a folder, `&&` runs the next command only if the last one succeeded, and `echo` prints its words:
 
     ```sh
     Rscript code/analysis.R > /dev/null 2>&1
@@ -1156,7 +1013,7 @@ retrieval_items:
     folder.
 - q: Why is `source()` in a session you have been working in not a test of a script?
   a: It runs the file in your current workspace, so the script can still use objects and packages
-    you made or loaded earlier. Restart R first, or use `Rscript`.
+    you made or attached earlier. Restart R first, or use `Rscript`.
 - q: What does `set.seed()` do, and where does it go in a script?
   a: It fixes the starting point of R's random numbers, so a random step gives the same result on
     every run. It goes before the random step, with a number written in the script.
@@ -1173,7 +1030,6 @@ provenance:
   - S52-R1-B
   bridge_ref:
   - S52-R2-P02
-  - S52-R2-P03
   - S52-R2-R1
   - S52-R2-R2
   - S52-R2-G

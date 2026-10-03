@@ -15,7 +15,8 @@ definition:
   text: |
     A path is the address of a file. An absolute path starts from the top of one computer's disk, such as
     `C:/Users/priya/Documents/thesis/data-raw/heights.csv`, so it names a place that exists on one
-    computer only.
+    computer only. A relative path starts from the working directory, the folder R treats as home.
+    `data-raw/heights.csv` is one.
   references:
   - citekey: r4ds_2e
     kind: textbook
@@ -183,17 +184,27 @@ definition:
       opened: true
       claim_located: true
       checked_on: '2026-10-02'
+  - citekey: r4ds_2e
+    kind: textbook
+    locator: 'Ch. 6, 6.2.3 "RStudio projects", first paragraph: making a project'
+    quote: |-
+      Click File > New Project, then follow the steps shown in Figure 6.3.
+    verified:
+      resolved_id: https://r4ds.hadley.nz/workflow-scripts.html
+      opened: true
+      claim_located: true
+      checked_on: '2026-10-03'
 simplified_explanation: |
   Give every analysis its own folder. Inside it, make three folders:
 
   ```table
   | Folder | What goes in it | Who writes to it |
-  | data-raw/ | the data exactly as it arrived | you, once, when it arrives; never the code |
+  | data-raw/ | the data exactly as it arrived, and its documentation | you, by hand; never the code |
   | code/ | your scripts | you |
   | output/ | tables, figures and cleaned files the scripts make | only the scripts |
   ```
 
-  Put a short plain-text file called README at the top. It says what the project is, where the
+  Put a short plain-text file called `README.txt` at the top. It says what the project is, where the
   data came from, and how to run it again.
 
   `C:/Users/priya/Documents/thesis/data-raw/heights.csv` is the full address on Priya's laptop. On your
@@ -209,7 +220,7 @@ illustrations:
 - body: |
     Start with the failure. A colleague, Priya, emails you the script for her thesis. You copy
     her `data-raw` file into your own project and run her first lines. (`read_csv()`, from the
-    readr package, reads a CSV file into R; the section on reading a raw file explains it.) Here
+    readr package, reads a CSV file (comma-separated values, a plain-text table) into R; the section on reading a raw file explains it.) Here
     they are, run on your computer:
 
     ```r error
@@ -236,7 +247,8 @@ illustrations:
     [1] "~/project"
     ```
 
-    On your computer this prints your own folder. Here it is the project folder. The file sits in
+    On your computer this prints your own folder. Here it is the project folder (`~` is short for
+    your home folder). The file sits in
     `data-raw` inside it, so give the address from there:
 
     ```r
@@ -254,7 +266,7 @@ illustrations:
 
     One more trap hides in addresses copied from Windows. The Windows file window writes paths
     with backslashes, `data-raw\penguins_raw.csv`. A backslash means something special to R, so a
-    path pasted with backslashes stops with an error. Type forward slashes, which R reads on every
+    path pasted with backslashes usually stops with an error, and can quietly point somewhere else. Type forward slashes, which R reads on every
     system.
   analogy_breaks_when: |
     The relative path worked here because R's working directory was the top of the project. If R
@@ -277,7 +289,7 @@ illustrations:
 
     It found the root by climbing upwards from the working directory until it met a marker file.
     In this book's project the marker is an empty file called `.here`. An RStudio project file
-    works the same way. Now build addresses from that root:
+    works the same way; in RStudio, File > New Project makes one. Now build addresses from that root:
 
     ```r
     here()
@@ -355,12 +367,13 @@ illustrations:
     on any computer that has the project folder.
   analogy_breaks_when: |
     `here()` finds the root only if the marker is there. Copy the project without its `.here` file
-    or RStudio project file and `here()` keeps climbing, and may settle on some other folder higher
-    up. Keep the marker in the project folder, and copy the whole folder when you share it.
+    or RStudio project file and `here()` keeps climbing, so it can settle on a folder higher up that
+    holds a marker. Keep the marker in the project folder, and copy the whole folder when you share it.
 
     A safe address fixes one cause of failure, the location of files. A script can still fail on
     another computer because a package is missing or is a different version. Running the whole
-    script in a fresh session on a second computer is a separate check.
+    script in a fresh session on a second computer is a separate check. Keeping every version of
+    the project's files, with version control, is the next rung's subject.
 must_know:
 - point: |
     An address that starts with `C:/Users/` or `/home/` names a folder on one computer. Before
@@ -383,7 +396,7 @@ must_know:
   kind: consequence
   bearing: methodological
 - point: |
-    Everything in `output/` can be deleted and made again by running the code.
+    Never put anything in `output/` that the code cannot make again.
   kind: consequence
   bearing: methodological
 - point: |
@@ -392,7 +405,7 @@ must_know:
   kind: move
   bearing: teaching
 - point: |
-    Name files with no spaces, no brackets and no capital letters used to tell two files apart.
+    Name files with no spaces and no brackets.
     `Final data (2).xlsx` and `final data.xlsx` are a quarrel waiting to happen.
   kind: trap
   bearing: methodological
@@ -426,7 +439,7 @@ exercises:
     ```table
     | Path | What it holds | Written by |
     | school_camp_2026/ | the project folder, named after the analysis | you, once |
-    | README | what the project is, where the file came from, how to rerun it | you |
+    | README.txt | what the project is, where the file came from, how to rerun it | you |
     | data-raw/camp_export.csv | the file exactly as the camp team sent it | nobody |
     | code/analysis.R | the one script that reads, checks, cleans and summarises | you |
     | output/ | cleaned file, summary tables, figures | the script only |
@@ -464,25 +477,10 @@ exercises:
     anyone's computer, user folder or desktop.
 quantitative: true
 practice_note: |
-  Ten problems. Building a path is one move, so the mechanical band is short. The weight is on
+  Nine problems. Building a path is one move, so the mechanical band is short. The weight is on
   the diagnostic and transfer bands, because this technique fails only when code meets another
   computer or a second run.
 practice:
-- level: 1
-  prompt: |
-    The project root is `~/project`. Write the `here()` call that gives the address of a file
-    called `heights.csv` inside `data-raw`, and run it.
-  answer: |
-    ```r
-    here::here("data-raw", "heights.csv")
-    ```
-
-    ```output
-    [1] "~/project/data-raw/heights.csv"
-    ```
-
-    Writing `here::here()` uses the function without loading the package with `library()`. The
-    file does not need to exist: `here()` builds the address and checks nothing.
 - level: 2
   prompt: |
     Say whether each address is absolute or relative.
@@ -560,7 +558,7 @@ practice:
     b. `analysis.R`
     c. `species_counts.csv`, written by your script
     d. `mass_histogram.png`, saved by your script
-    e. `README`
+    e. `README.txt`
     f. a copy of `penguins_raw.csv` in which you corrected one value by hand
   answer: |
     ```table
@@ -569,7 +567,7 @@ practice:
     | b. analysis.R | code/ |
     | c. species_counts.csv | output/ |
     | d. mass_histogram.png | output/ |
-    | e. README | the top of the project folder |
+    | e. README.txt | the top of the project folder |
     | f. hand-corrected copy | nowhere |
     ```
 
@@ -635,7 +633,8 @@ practice:
 - level: 8
   prompt: |
     A resident wants a quick test run on fewer rows. Her script keeps the first 300 rows and saves
-    them. She runs it twice. Run the two runs below. Find the line that broke, and say why nothing
+    them. She runs it twice. (`head(x, 300)` keeps the first 300 rows; `write_csv()` writes a table
+    to a file.) Run the two runs below. Find the line that broke, and say why nothing
     looked wrong on the first run.
 
     ```r
@@ -694,7 +693,7 @@ practice:
     Then say what your test does not establish.
   answer: |
     The nearest test you can run alone is to move the project somewhere else and run it there. Copy
-    the whole folder, marker included, into a new temporary folder, and run the script from inside
+    the folders the script needs, and the marker, into a new temporary folder, and run the script from inside
     the copy:
 
     ```sh
@@ -725,14 +724,8 @@ practice:
     A co-author writes: "Just email me the cleaned file. I don't need your code. The cleaned file
     is the result."
 
-    The project's script reads the raw penguin file and writes a file with the rows that have a
-    body mass recorded to `output/penguins_with_mass.csv`. Show that the cleaned file is
-    disposable: delete it, remake it from code, and check that the remade file is identical to the
-    first. Then say what this does not establish.
-  answer: |
-    Write the script, run it once, and record a fingerprint of its output. `tools::md5sum()`
-    computes an MD5 checksum, a 32-character code calculated from every byte of a file. Two
-    files with the same checksum have, for practical purposes, identical contents.
+    The project holds this script. It reads the raw penguin file and writes the rows that have a
+    body mass recorded to `output/penguins_with_mass.csv`:
 
     ```r file=code/clean.R
     library(readr)
@@ -744,22 +737,13 @@ practice:
     write_csv(with_mass, here("output", "penguins_with_mass.csv"))
     ```
 
-    The comment says what the middle line does. Picking a column with `$` and backticks is taught
-    in the next section. `write_csv()` writes a table to a CSV file.
+    Run these terminal commands. They run the script, print a checksum of the cleaned file, delete
+    the file (`rm`), remake it and print its checksum again. `tools::md5sum()` computes an MD5
+    checksum, a 32-character code calculated from every byte of a file; `S52-R1-C09` teaches it.
 
     ```sh
     Rscript code/clean.R
     Rscript -e 'unname(tools::md5sum("output/penguins_with_mass.csv"))'
-    ```
-
-    ```output
-    here() starts at ~/project
-    [1] "2d547e4c975aa165159abbda25d7fc9e"
-    ```
-
-    Now delete the output and remake it:
-
-    ```sh
     rm output/penguins_with_mass.csv
     Rscript code/clean.R
     Rscript -e 'unname(tools::md5sum("output/penguins_with_mass.csv"))'
@@ -768,12 +752,16 @@ practice:
     ```output
     here() starts at ~/project
     [1] "2d547e4c975aa165159abbda25d7fc9e"
+    here() starts at ~/project
+    [1] "2d547e4c975aa165159abbda25d7fc9e"
     ```
 
-    The two checksums are the same. The cleaned file can be thrown away and made again at any
-    time. So the result is the code and the raw file together, and the cleaned file is one product
-    of them.
-    Send the co-author the folder, not the file.
+    What does the result tell the co-author, and what does it not establish?
+  answer: |
+    The two checksums are the same, so the remade file is, for practical purposes, identical to
+    the one deleted. The cleaned file can be thrown away and made again at any time. So the result
+    is the code and the raw file together, and the cleaned file is one product of them. Send the
+    co-author the folder, not the file.
 
     What this does not establish:
 

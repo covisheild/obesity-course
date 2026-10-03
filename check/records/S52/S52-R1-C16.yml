@@ -23,16 +23,18 @@ definition:
     group, or a single row for the whole data frame when there are no groups.
 
     The function `n()` gives the number of rows in the group, whatever they hold. The function
-    `sd()` gives the standard deviation, dividing by one less than the count. The function
-    `quantile()` gives quartiles and other quantiles, and `IQR()` gives the interquartile
-    range. Both use the seventh of nine rules for placing a quantile between two values, unless
+    `sd()` gives the standard deviation, dividing by one less than the count. A quantile is the
+    value below which a given share of the data lies. The function `quantile()` prints the 0%,
+    25%, 50%, 75% and 100% ones; 0% and 100% are the smallest and largest values. `IQR()` gives
+    the interquartile range. Both use the seventh of nine rules for placing a quantile between two values, unless
     told otherwise.
 
     `group_by()` marks a data frame as grouped by one or more columns, so that the next verbs
     work group by group. `ungroup()` removes the marking. The `.by` argument of `summarise()`
     groups for that one step only, and leaves the result ungrouped.
 
-    `count(a)` gives the number of rows for each value of `a`.
+    `count(a)` gives the number of rows for each value of `a`. `write_csv(data, path)`, from the
+    readr package, writes a data frame to a CSV file.
   references:
   - citekey: rdocs_s52r1_dplyr
     kind: textbook
@@ -236,7 +238,7 @@ illustrations:
 
     ```r
     library(readr)
-    library(dplyr)
+    library(dplyr, warn.conflicts = FALSE)
 
     penguins_raw <- read_csv(
       here::here("data-raw", "penguins_raw.csv"),
@@ -252,19 +254,6 @@ illustrations:
         ),
         body_mass_g = `Body Mass (g)`
       )
-    ```
-
-    ```output
-
-    Attaching package: ‘dplyr’
-
-    The following objects are masked from ‘package:stats’:
-
-        filter, lag
-
-    The following objects are masked from ‘package:base’:
-
-        intersect, setdiff, setequal, union
     ```
 
     Ask for the mean body mass of all the penguins:
@@ -363,7 +352,8 @@ illustrations:
     [4] "Chinstrap,68,68,3733.0882352941176,384.3350813871914,3700,462.5"
     ```
 
-    The file holds the full numbers, not the rounded ones on the screen. A report that quotes the
+    `readLines()` prints a text file's lines as they are, to show what was written. The file
+    holds the full numbers, not the rounded ones on the screen. A report that quotes the
     Adelie mean takes it from this file. If a corrected body mass arrives next month, you rerun the
     script, the file changes, and the report's number can be checked against it.
   analogy_breaks_when: |
@@ -386,8 +376,8 @@ illustrations:
     is 136 minus 126, which is 10.
 
     ```working
-    first quartile = (125 + 127) ÷ 2 = 126
-    third quartile = (134 + 138) ÷ 2 = 136
+    first quartile = (125 + 127) divided by 2 = 126
+    third quartile = (134 + 138) divided by 2 = 136
     interquartile range = 136 - 126 = 10
     ```
 
@@ -441,38 +431,8 @@ illustrations:
     big sorted list are close. The disagreement is largest with few values, which is exactly when
     a thesis table is most likely to be checked by hand.
 - body: |
-    Now group by two columns at once: species and sex. Continue in the same session.
-
-    ```r
-    penguins |>
-      group_by(species, Sex) |>
-      summarise(n = n())
-    ```
-
-    ```output
-    `summarise()` has grouped output by 'species'. You can override using
-    the `.groups` argument.
-    # A tibble: 8 × 3
-    # Groups:   species [3]
-      species   Sex        n
-      <chr>     <chr>  <int>
-    1 Adelie    FEMALE    73
-    2 Adelie    MALE      73
-    3 Adelie    <NA>       6
-    4 Chinstrap FEMALE    34
-    5 Chinstrap MALE      34
-    6 Gentoo    FEMALE    58
-    7 Gentoo    MALE      61
-    8 Gentoo    <NA>       5
-    ```
-
-    Eight rows, not six. Two species have penguins whose sex was not recorded, and `NA` became a
-    group of its own: 6 Adelie and 5 Gentoo. A summary never hides a missing category. It prints
-    it, and you decide what to say about it.
-
-    Read the message too. `summarise()` removed only the last grouping column, `Sex`, so the
-    result is still grouped by species. The line `# Groups: species [3]` says so. Here is what that
-    does to the next step. Suppose you want each group's share of all the penguins:
+    Now group by two columns at once, species and sex, and work out each group's share of all
+    the penguins. Continue in the same session.
 
     ```r
     penguins |>
@@ -497,6 +457,13 @@ illustrations:
     7 Gentoo    MALE      61 49.2
     8 Gentoo    <NA>       5  4.03
     ```
+
+    Eight rows, not six. Two species have penguins whose sex was not recorded, and `NA` became a
+    group of its own: 6 Adelie and 5 Gentoo. A summary never hides a missing category. It prints
+    it, and you decide what to say about it.
+
+    Read the message too. `summarise()` removed only the last grouping column, `Sex`, so the
+    result is still grouped by species. The line `# Groups: species [3]` says so.
 
     The first row says 48.0% for Adelie females. But 73 is not 48% of {{n:penguins_rows}}. Because the result was
     still grouped by species, `sum(n)` added up within each species: 73 divided by {{n:penguins_adelie}}, not by
@@ -525,15 +492,18 @@ illustrations:
     ```
 
     Now 73 Adelie females are 21.2% of all {{n:penguins_rows}}. The rows come in the order each group first
-    appears in the file, where `group_by()` sorted them. If you do use `group_by()`, end the
+    appears in the file, whereas `group_by()` sorted them. If you do use `group_by()`, end the
     pipe with `ungroup()` before anything else touches the result.
 
     For counts alone there is a shorter way, met in the section on categories. `count(species,
-    Sex)` gives the same eight rows and counts as the first pipe above, and an ungrouped result.
+    Sex)` gives the same eight rows and counts, and an ungrouped result.
   analogy_breaks_when: |
     The percentages describe the rows of this file. Whether 21.2% of all penguins on these islands
     are female Adelies is a question about how the birds were chosen for study, which no summary
     can answer.
+
+    Grouping and summarising is also what a database query does; the next rung runs the same
+    summaries on a whole survey in a database.
 
     The leftover grouping trap needs two grouping columns. With one column, `summarise()` removes
     it and the result comes back ungrouped, so the trap waits until the day you add a second.
@@ -565,7 +535,7 @@ must_know:
   - rdocs_s52r1_stats
 - point: |
     A number copied off the screen into a thesis cannot be traced back.
-  kind: move
+  kind: consequence
   bearing: methodological
   refs:
   - sandve_2013
@@ -590,7 +560,7 @@ exercises:
   answer: |
     ```r
     library(readr)
-    library(dplyr)
+    library(dplyr, warn.conflicts = FALSE)
 
     penguins_raw <- read_csv(
       here::here("data-raw", "penguins_raw.csv"),
@@ -613,17 +583,6 @@ exercises:
     ```
 
     ```output
-
-    Attaching package: ‘dplyr’
-
-    The following objects are masked from ‘package:stats’:
-
-        filter, lag
-
-    The following objects are masked from ‘package:base’:
-
-        intersect, setdiff, setequal, union
-
     # A tibble: 3 × 5
       Island    n_rows n_flipper mean_mm median_mm
       <chr>      <int>     <int>   <dbl>     <dbl>
@@ -656,8 +615,8 @@ exercises:
     Instead, the script should compute the summary with `summarise()`: `n()` for the rows,
     `sum(!is.na(hb))` for the results used, and the mean and median. It should write that table
     to `output/` with `write_csv()`. The thesis table is then copied from that file, which the
-    script rewrites every time it runs. The section on running a whole script with one command
-    takes the last step, a document in which the code writes the number itself, to its doorstep.
+    script rewrites every time it runs. A later book shows documents in which the code writes
+    each number itself.
   skill_ref: S52-R1-K02
 - type: teaching
   prompt: |
@@ -665,7 +624,7 @@ exercises:
     by district from a screening register. She does not see why you want a count in every row.
     Teach her.
   answer: |
-    Draw two rows on the board. District A: mean BMI 24.0 kg/m^2. District B: mean BMI 27.0 kg/m^2.
+    Draw two made-up rows on the board. District A: mean BMI 24.0 kg/m^2. District B: mean BMI 27.0 kg/m^2.
     Ask her which district has the higher BMI. She will say B.
 
     Now add a count to each row: A, 2,400 adults; B, 4 adults. Ask again. The difference is the
@@ -707,22 +666,9 @@ practice:
     A made-up table:
 
     ```r
-    library(dplyr)
+    library(dplyr, warn.conflicts = FALSE)
 
     scores <- tibble(score = c(4, 9, 5))
-    ```
-
-    ```output
-
-    Attaching package: ‘dplyr’
-
-    The following objects are masked from ‘package:stats’:
-
-        filter, lag
-
-    The following objects are masked from ‘package:base’:
-
-        intersect, setdiff, setequal, union
     ```
 
     Write one line that gives the number of rows and the mean score, in one row.
@@ -745,25 +691,12 @@ practice:
     A made-up table of two groups:
 
     ```r
-    library(dplyr)
+    library(dplyr, warn.conflicts = FALSE)
 
     visits <- tibble(
       clinic = c("A", "B", "A", "B", "A"),
       patients = c(12, 7, 9, 11, 6)
     )
-    ```
-
-    ```output
-
-    Attaching package: ‘dplyr’
-
-    The following objects are masked from ‘package:stats’:
-
-        filter, lag
-
-    The following objects are masked from ‘package:base’:
-
-        intersect, setdiff, setequal, union
     ```
 
     Give the total number of patients for each clinic. Before you run it, say how many rows the
@@ -815,25 +748,12 @@ practice:
 
     ```r
     library(readr)
-    library(dplyr)
+    library(dplyr, warn.conflicts = FALSE)
 
     penguins_raw <- read_csv(
       here::here("data-raw", "penguins_raw.csv"),
       show_col_types = FALSE
     )
-    ```
-
-    ```output
-
-    Attaching package: ‘dplyr’
-
-    The following objects are masked from ‘package:stats’:
-
-        filter, lag
-
-    The following objects are masked from ‘package:base’:
-
-        intersect, setdiff, setequal, union
     ```
 
     For each island, give the number of rows and the number of different species found there.
@@ -866,25 +786,12 @@ practice:
 
     ```r
     library(readr)
-    library(dplyr)
+    library(dplyr, warn.conflicts = FALSE)
 
     penguins_raw <- read_csv(
       here::here("data-raw", "penguins_raw.csv"),
       show_col_types = FALSE
     )
-    ```
-
-    ```output
-
-    Attaching package: ‘dplyr’
-
-    The following objects are masked from ‘package:stats’:
-
-        filter, lag
-
-    The following objects are masked from ‘package:base’:
-
-        intersect, setdiff, setequal, union
     ```
 
     Give the median body mass in grams for each value of `Sex`, with the number of rows and the
@@ -919,25 +826,12 @@ practice:
 
     ```r
     library(readr)
-    library(dplyr)
+    library(dplyr, warn.conflicts = FALSE)
 
     penguins_raw <- read_csv(
       here::here("data-raw", "penguins_raw.csv"),
       show_col_types = FALSE
     )
-    ```
-
-    ```output
-
-    Attaching package: ‘dplyr’
-
-    The following objects are masked from ‘package:stats’:
-
-        filter, lag
-
-    The following objects are masked from ‘package:base’:
-
-        intersect, setdiff, setequal, union
     ```
 
     Make a table of culmen length by species: the number of values used, the mean and the
@@ -975,7 +869,7 @@ practice:
 
     ```r
     library(readr)
-    library(dplyr)
+    library(dplyr, warn.conflicts = FALSE)
 
     penguins_raw <- read_csv(
       here::here("data-raw", "penguins_raw.csv"),
@@ -987,17 +881,6 @@ practice:
     ```
 
     ```output
-
-    Attaching package: ‘dplyr’
-
-    The following objects are masked from ‘package:stats’:
-
-        filter, lag
-
-    The following objects are masked from ‘package:base’:
-
-        intersect, setdiff, setequal, union
-
     # A tibble: 3 × 2
       Species                                   mean_g
       <chr>                                      <dbl>
@@ -1041,7 +924,7 @@ practice:
 
     ```r
     library(readr)
-    library(dplyr)
+    library(dplyr, warn.conflicts = FALSE)
 
     penguins_raw <- read_csv(
       here::here("data-raw", "penguins_raw.csv"),
@@ -1057,17 +940,6 @@ practice:
     ```
 
     ```output
-
-    Attaching package: ‘dplyr’
-
-    The following objects are masked from ‘package:stats’:
-
-        filter, lag
-
-    The following objects are masked from ‘package:base’:
-
-        intersect, setdiff, setequal, union
-
     # A tibble: 1 × 2
           n mean_g
       <int>  <dbl>
@@ -1107,7 +979,7 @@ practice:
 
     ```r
     library(readr)
-    library(dplyr)
+    library(dplyr, warn.conflicts = FALSE)
 
     penguins_raw <- read_csv(
       here::here("data-raw", "penguins_raw.csv"),
@@ -1122,17 +994,6 @@ practice:
     ```
 
     ```output
-
-    Attaching package: ‘dplyr’
-
-    The following objects are masked from ‘package:stats’:
-
-        filter, lag
-
-    The following objects are masked from ‘package:base’:
-
-        intersect, setdiff, setequal, union
-
     `summarise()` has grouped output by 'Species'. You can override using
     the `.groups` argument.
     # A tibble: 3 × 4
@@ -1149,7 +1010,7 @@ practice:
     After `summarise()`, the result is still grouped by `Species`: the message says so. So `sum(n)`
     adds up within each species. 61 Gentoo males are 49.2% of {{n:penguins_gentoo}} Gentoo penguins, not of all {{n:penguins_rows}}.
 
-    Group for that step only, so the sum covers every row:
+    Count instead, which returns an ungrouped result:
 
     ```r
     penguins_raw |>
@@ -1179,25 +1040,12 @@ practice:
 
     ```r
     library(readr)
-    library(dplyr)
+    library(dplyr, warn.conflicts = FALSE)
 
     penguins_raw <- read_csv(
       here::here("data-raw", "penguins_raw.csv"),
       show_col_types = FALSE
     )
-    ```
-
-    ```output
-
-    Attaching package: ‘dplyr’
-
-    The following objects are masked from ‘package:stats’:
-
-        filter, lag
-
-    The following objects are masked from ‘package:base’:
-
-        intersect, setdiff, setequal, union
     ```
 
     ```r error
@@ -1265,7 +1113,7 @@ practice:
   answer: |
     ```r
     library(readr)
-    library(dplyr)
+    library(dplyr, warn.conflicts = FALSE)
 
     penguins_raw <- read_csv(
       here::here("data-raw", "penguins_raw.csv"),
@@ -1284,17 +1132,6 @@ practice:
     ```
 
     ```output
-
-    Attaching package: ‘dplyr’
-
-    The following objects are masked from ‘package:stats’:
-
-        filter, lag
-
-    The following objects are masked from ‘package:base’:
-
-        intersect, setdiff, setequal, union
-
     # A tibble: 2 × 5
       Species                             n_rows n_mass mean_g median_g
       <chr>                                <int>  <int>  <dbl>    <dbl>
@@ -1326,7 +1163,7 @@ practice:
 
     ```r
     library(readr)
-    library(dplyr)
+    library(dplyr, warn.conflicts = FALSE)
 
     penguins_raw <- read_csv(
       here::here("data-raw", "penguins_raw.csv"),
@@ -1350,17 +1187,6 @@ practice:
     ```
 
     ```output
-
-    Attaching package: ‘dplyr’
-
-    The following objects are masked from ‘package:stats’:
-
-        filter, lag
-
-    The following objects are masked from ‘package:base’:
-
-        intersect, setdiff, setequal, union
-
     # A tibble: 3 × 3
       Sex    n_mass mean_g
       <chr>   <int>  <dbl>

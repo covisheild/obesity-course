@@ -25,7 +25,8 @@ definition:
 
     Three functions come from the forcats package. The first, `fct_recode()`, renames levels,
     written `new = "old"`, and leaves the others as they are. The second, `fct_relevel()`, moves
-    the named levels to the front. The third, `fct_infreq()`, orders the levels by how many rows have each one, largest first.
+    the named levels to the front, written `fct_relevel(x, "level")`. The third, `fct_infreq()`, orders the levels by how many rows have each one, largest first.
+    Each also takes a text column, and makes it a factor first, with its levels in alphabetical order.
 
     `count()`, from dplyr, gives the number of rows for each value of one column, or for each
     combination of values of two or more columns. For a factor, `.drop = FALSE` also lists the
@@ -77,7 +78,9 @@ definition:
       checked_on: '2026-10-02'
       note: |-
         The same page's argument .f reads "A factor (or character vector)", so a character vector
-        of codes can be recoded directly.
+        of codes can be recoded directly. fct_relevel's .f reads the same. That the levels made
+        from text are alphabetical is shown by the gate-run outputs (practice level 3: breakfast,
+        lunch, dinner from "1", "2", "3"; practice level 5: Biscoe before Dream).
   - citekey: rdocs_s52r1_forcats
     kind: textbook
     locator: 'help page "fct_relevel" (forcats 1.0.0), Arguments, ...: levels not mentioned'
@@ -117,16 +120,6 @@ definition:
       For 'count()': if 'FALSE' will include counts for empty groups (i.e. for levels of factors that don't exist in the data).
     verified:
       resolved_id: rhelp://dplyr@1.1.4/count
-      opened: true
-      claim_located: true
-      checked_on: '2026-10-02'
-  - citekey: swc_r_gapminder
-    kind: textbook
-    locator: 'ep. 04 "Data Structures", Check your data for factors, point 5: text is read as text'
-    quote: |-
-      For R versions greater than 4.0.0, text data is no longer converted to factors anymore.
-    verified:
-      resolved_id: https://swcarpentry.github.io/r-novice-gapminder/04-data-structures-part1.html
       opened: true
       claim_located: true
       checked_on: '2026-10-02'
@@ -348,8 +341,8 @@ illustrations:
     3 Torgersen    52
     ```
 
-    The column is text, so `count()` lists the islands alphabetically. R has read text as text
-    since version 4.0.0. A factor is something you choose to make.
+    The column is text, `<chr>`, so `count()` lists the islands alphabetically. A factor is
+    something you choose to make.
 
     Make the factors. Shorten the species names with `fct_recode()`, and order the islands by how
     many rows each has with `fct_infreq()`.
@@ -382,7 +375,8 @@ illustrations:
     3 Torgersen    52
     ```
 
-    Biscoe comes first now, because it has the most rows. The counts are the same; only the order
+    `levels()` lists a factor's levels in their order. Biscoe comes first now, because it has the
+    most rows. The counts are the same; only the order
     changed.
 
     ```table
@@ -441,12 +435,13 @@ must_know:
   kind: move
   bearing: methodological
 - point: |
-    Count the factor after making it, and treat any new `NA` as a spelling you missed.
+    `factor()` does not warn when a value matches no level. Count the factor after making it, and
+    treat any new `NA` as a spelling you missed.
   kind: misconception
   bearing: methodological
 - point: |
     Refuse a summary that averages a code.
-  kind: trap
+  kind: move
   bearing: methodological
 - point: |
     If you misspell an old level in `fct_recode()`, R warns "Unknown levels" and leaves that level
@@ -470,11 +465,11 @@ exercises:
 - type: calculation
   prompt: |
     In your penguin script, make `sex` a factor with the levels "female" and "male", in that order,
-    from the file's `Sex` column. Count it, and say how many penguins have no recorded sex.
+    from the file's `Sex` column. Count it, and say how many rows have no recorded sex.
   answer: |
     ```r
     library(readr)
-    library(dplyr)
+    library(dplyr, warn.conflicts = FALSE)
     library(stringr)
 
     penguins_raw <- read_csv(
@@ -490,17 +485,6 @@ exercises:
     ```
 
     ```output
-
-    Attaching package: ‘dplyr’
-
-    The following objects are masked from ‘package:stats’:
-
-        filter, lag
-
-    The following objects are masked from ‘package:base’:
-
-        intersect, setdiff, setequal, union
-
     # A tibble: 3 × 2
       sex        n
       <fct>  <int>
@@ -540,13 +524,13 @@ exercises:
     column beside it. Report a count of each category with its share, not a mean.
 quantitative: true
 practice_note: |
-  Eleven problems: factor(), fct_recode(), fct_relevel(), fct_infreq() and count() are each one move,
+  Ten problems: factor(), fct_recode(), fct_relevel(), fct_infreq() and count() are each one move,
   and the traps are a silent NA from factor(), a misspelt old level in fct_recode(), codes recoded
   against the dictionary, and a two-way count read as a statement about the world.
 practice:
 - level: 1
   prompt: |
-    Before you run it, say what this prints, and in what order the levels come.
+    Before you run it, say in what order the levels come.
 
     ```r norun
     factor(c("Dream", "Biscoe", "Dream", "Torgersen"))
@@ -561,7 +545,7 @@ practice:
     Levels: Biscoe Dream Torgersen
     ```
 
-    The four values print in their own order. The levels are Biscoe, Dream, Torgersen: with no
+    The levels are Biscoe, Dream, Torgersen: with no
     levels given, `factor()` takes them from the data in alphabetical order.
 - level: 2
   prompt: |
@@ -614,25 +598,12 @@ practice:
 
     ```r
     library(readr)
-    library(dplyr)
+    library(dplyr, warn.conflicts = FALSE)
 
     penguins_raw <- read_csv(
       here::here("data-raw", "penguins_raw.csv"),
       show_col_types = FALSE
     )
-    ```
-
-    ```output
-
-    Attaching package: ‘dplyr’
-
-    The following objects are masked from ‘package:stats’:
-
-        filter, lag
-
-    The following objects are masked from ‘package:base’:
-
-        intersect, setdiff, setequal, union
     ```
 
     Count the rows for each value of `Clutch Completion`. What does a "No" mean, according to the
@@ -662,26 +633,13 @@ practice:
 
     ```r
     library(readr)
-    library(dplyr)
+    library(dplyr, warn.conflicts = FALSE)
     library(forcats)
 
     penguins_raw <- read_csv(
       here::here("data-raw", "penguins_raw.csv"),
       show_col_types = FALSE
     )
-    ```
-
-    ```output
-
-    Attaching package: ‘dplyr’
-
-    The following objects are masked from ‘package:stats’:
-
-        filter, lag
-
-    The following objects are masked from ‘package:base’:
-
-        intersect, setdiff, setequal, union
     ```
 
     Make a factor of island in which Torgersen comes first and the other islands keep their
@@ -704,64 +662,13 @@ practice:
 
     Torgersen {{n:penguins_torgersen}}, Biscoe {{n:penguins_biscoe}}, Dream {{n:penguins_dream}}. `fct_relevel()` moves the named level to the front. It
     leaves the rest in their existing order, which for a text column is alphabetical.
-- level: 6
-  prompt: |
-    Read the penguin file.
-
-    ```r
-    library(readr)
-    library(dplyr)
-
-    penguins_raw <- read_csv(
-      here::here("data-raw", "penguins_raw.csv"),
-      show_col_types = FALSE
-    )
-    ```
-
-    ```output
-
-    Attaching package: ‘dplyr’
-
-    The following objects are masked from ‘package:stats’:
-
-        filter, lag
-
-    The following objects are masked from ‘package:base’:
-
-        intersect, setdiff, setequal, union
-    ```
-
-    Count the penguins of each species by sex, in one count. Which species has the most rows with
-    no recorded sex?
-  answer: |
-    ```r
-    penguins_raw |>
-      count(Species, Sex)
-    ```
-
-    ```output
-    # A tibble: 8 × 3
-      Species                                   Sex        n
-      <chr>                                     <chr>  <int>
-    1 Adelie Penguin (Pygoscelis adeliae)       FEMALE    73
-    2 Adelie Penguin (Pygoscelis adeliae)       MALE      73
-    3 Adelie Penguin (Pygoscelis adeliae)       <NA>       6
-    4 Chinstrap penguin (Pygoscelis antarctica) FEMALE    34
-    5 Chinstrap penguin (Pygoscelis antarctica) MALE      34
-    6 Gentoo penguin (Pygoscelis papua)         FEMALE    58
-    7 Gentoo penguin (Pygoscelis papua)         MALE      61
-    8 Gentoo penguin (Pygoscelis papua)         <NA>       5
-    ```
-
-    Adelie has 6 rows with no recorded sex, Gentoo 5 and Chinstrap none: the 11 of the last
-    section. The pairs print one per row; Book 0's two-way table would put sex across the top.
 - level: 7
   prompt: |
     A colleague makes a factor from a made-up register and reports: "2 of the 6 patients were
     female."
 
     ```r
-    library(dplyr)
+    library(dplyr, warn.conflicts = FALSE)
 
     register <- tibble(sex = c("female", "Female", "male", "female", "Female ", "male"))
 
@@ -771,17 +678,6 @@ practice:
     ```
 
     ```output
-
-    Attaching package: ‘dplyr’
-
-    The following objects are masked from ‘package:stats’:
-
-        filter, lag
-
-    The following objects are masked from ‘package:base’:
-
-        intersect, setdiff, setequal, union
-
     # A tibble: 3 × 2
       sex        n
       <fct>  <int>
@@ -825,7 +721,7 @@ practice:
 
     ```r
     library(readr)
-    library(dplyr)
+    library(dplyr, warn.conflicts = FALSE)
     library(forcats)
 
     penguins_raw <- read_csv(
@@ -846,17 +742,6 @@ practice:
     ```
 
     ```output
-
-    Attaching package: ‘dplyr’
-
-    The following objects are masked from ‘package:stats’:
-
-        filter, lag
-
-    The following objects are masked from ‘package:base’:
-
-        intersect, setdiff, setequal, union
-
     # A tibble: 3 × 2
       species                                       n
       <fct>                                     <int>
@@ -911,7 +796,7 @@ practice:
     A made-up study's data dictionary says sex is coded 1 = male, 2 = female. A resident writes:
 
     ```r
-    library(dplyr)
+    library(dplyr, warn.conflicts = FALSE)
     library(forcats)
 
     study <- tibble(sex_code = c(2, 2, 1, 2, 1, 2, 2))
@@ -922,17 +807,6 @@ practice:
     ```
 
     ```output
-
-    Attaching package: ‘dplyr’
-
-    The following objects are masked from ‘package:stats’:
-
-        filter, lag
-
-    The following objects are masked from ‘package:base’:
-
-        intersect, setdiff, setequal, union
-
     # A tibble: 2 × 2
       sex        n
       <fct>  <int>
@@ -972,7 +846,7 @@ practice:
   answer: |
     ```r
     library(readr)
-    library(dplyr)
+    library(dplyr, warn.conflicts = FALSE)
 
     penguins_raw <- read_csv(
       here::here("data-raw", "penguins_raw.csv"),
@@ -984,17 +858,6 @@ practice:
     ```
 
     ```output
-
-    Attaching package: ‘dplyr’
-
-    The following objects are masked from ‘package:stats’:
-
-        filter, lag
-
-    The following objects are masked from ‘package:base’:
-
-        intersect, setdiff, setequal, union
-
     # A tibble: 3 × 2
       Sex        n
       <chr>  <int>
@@ -1004,13 +867,13 @@ practice:
     ```
 
     {{n:penguins_male}} MALE and {{n:penguins_female}} FEMALE make 333 with sex recorded, and 11 more have none. The sentence
-    matches the file. {{n:penguins_male}} of 333 is 50.5 per cent.
+    matches the file's rows. {{n:penguins_male}} of 333 is 50.5 per cent.
 
     What it does not establish:
 
     - That the colony is about half male. The rows are nesting observations of birds that were
       sampled, not a count of every penguin.
-    - Anything about the 11 penguins with no recorded sex.
+    - Anything about the birds in the 11 rows with no recorded sex.
     - That each row is a different bird. The file's IDs repeat, as an earlier section showed.
   refs:
   - horst_2020_palmerpenguins
@@ -1022,7 +885,7 @@ practice:
   answer: |
     ```r
     library(readr)
-    library(dplyr)
+    library(dplyr, warn.conflicts = FALSE)
     library(forcats)
 
     penguins_raw <- read_csv(
@@ -1037,17 +900,6 @@ practice:
     ```
 
     ```output
-
-    Attaching package: ‘dplyr’
-
-    The following objects are masked from ‘package:stats’:
-
-        filter, lag
-
-    The following objects are masked from ‘package:base’:
-
-        intersect, setdiff, setequal, union
-
     # A tibble: 3 × 2
       island        n
       <fct>     <int>

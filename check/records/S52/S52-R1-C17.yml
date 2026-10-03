@@ -73,38 +73,19 @@ definition:
       opened: true
       claim_located: true
       checked_on: '2026-10-02'
-  - citekey: wickham_2014_tidy
-    kind: primary
-    locator: 'section 3.1 "Column headers are values, not variable names", on the Pew table'
+  - citekey: rdocs_s52r1_tidyr
+    kind: textbook
+    locator: 'help page "pivot_wider" (tidyr 1.3.1), Arguments, names_from and values_from; id_cols'
     quote: |-
-      To tidy it, we need to melt, or stack it. In other words, we need to turn columns into rows.
+      A pair of arguments describing which column (or columns) to get the name of the output column ('names_from'), and which column (or columns) to get the cell values from ('values_from').
     verified:
-      resolved_id: https://doi.org/10.18637/jss.v059.i10
+      resolved_id: rhelp://tidyr@1.3.1/pivot_wider
       opened: true
       claim_located: true
-      checked_on: '2026-10-02'
+      checked_on: '2026-10-03'
       note: |-
-        Wickham's "melting" is the operation tidyr now calls pivot_longer().
-  - citekey: wickham_2014_tidy
-    kind: primary
-    locator: 'section 2.3 "Tidy data", the third rule'
-    quote: |-
-      3. Each type of observational unit forms a table.
-    verified:
-      resolved_id: https://doi.org/10.18637/jss.v059.i10
-      opened: true
-      claim_located: true
-      checked_on: '2026-10-02'
-  - citekey: wickham_2014_tidy
-    kind: primary
-    locator: 'section 3.4 "Multiple types in one table", last paragraph: merging back for analysis'
-    quote: |-
-      However, there are few data analysis tools that work directly with relational data, so analysis usually also requires denormalization or merging the datasets back into one table.
-    verified:
-      resolved_id: https://doi.org/10.18637/jss.v059.i10
-      opened: true
-      claim_located: true
-      checked_on: '2026-10-02'
+        id_cols, same page: "Defaults to all columns in 'data' except for the columns specified
+        through 'names_from' and 'values_from'."
   - citekey: rdocs_s52r1_dplyr
     kind: textbook
     locator: 'help page "mutate-joins" (dplyr 1.1.4), Description: what a mutating join does, and left_join()'
@@ -173,7 +154,8 @@ definition:
       checked_on: '2026-10-02'
       note: |-
         The default, NULL, checks only for a many-to-many relationship and warns; a duplicate key
-        on one side only passes silently.
+        on one side only passes silently. The same argument: '"one-to-one"' expects "Each row in
+        'x' matches at most 1 row in 'y'" and "Each row in 'y' matches at most 1 row in 'x'".
   - citekey: nchs_nhanes_2021_2023_bmx_demo
     kind: primary
     locator: 'BMX_L documentation, "Sample weights" paragraph (printed codebook)'
@@ -211,8 +193,8 @@ definition:
         The next row reads "2 Female 6358 11933". Used for what the codes 1 and 2 mean.
 simplified_explanation: |
   **The wide table.** A clinic writes a patient's weight at three visits in three columns: visit 1, visit 2, visit
-  3. But "visit" is a variable, and here its values sit in the column names. There, `summarise(.by = visit)` cannot
-  reach them.
+  3. But "visit" is a variable, and here its values sit in the column names. In the column names,
+  `summarise(.by = visit)` cannot reach them.
 
   **pivot_longer()** turns the three columns into two: one saying which visit, one saying the weight.
 
@@ -231,7 +213,7 @@ illustrations:
     visit 2.
 
     ```r
-    library(dplyr)
+    library(dplyr, warn.conflicts = FALSE)
     library(tidyr)
 
     weights_wide <- tibble(
@@ -240,19 +222,6 @@ illustrations:
       weight_v2 = c(80.9, 93.2, NA),
       weight_v3 = c(79.5, 92.8, 75.0)
     )
-    ```
-
-    ```output
-
-    Attaching package: ‘dplyr’
-
-    The following objects are masked from ‘package:stats’:
-
-        filter, lag
-
-    The following objects are masked from ‘package:base’:
-
-        intersect, setdiff, setequal, union
     ```
 
     Try to get the mean weight at each visit. The visit number is not in any column. It is part of
@@ -338,7 +307,10 @@ illustrations:
     3   103      77.1      NA        75
     ```
 
-    The same three rows and four columns you started with. Long for working, wide for reading.
+    The same three rows and four columns you started with. `names_from` names the column whose
+    values become the new column names, and `values_from` the column that fills them. The
+    remaining columns, here `id`, pick out the rows. `values_fill = 0` puts 0 where a combination
+    has no value; use it only for counts. Long for working, wide for reading.
   analogy_breaks_when: |
     The three patients are made up. Their weights show the reshaping and say nothing about any
     treatment or any person.
@@ -418,10 +390,12 @@ illustrations:
 
     Key 102 appears twice. Patient 106 has no demographic record. Neither is fixed by editing the
     raw file. Patient 106's missing record is a question for the clinic. The duplicate is removed
-    by a line of code, with a comment saying why, which a later section of this book teaches.
+    by a line of code, with a comment saying why; a later section shows how to make the script
+    stop on it.
 
-    Last, make the join refuse to add rows. Each BMI row should match at most one row of
-    demographics, which `relationship = "many-to-one"` says:
+    Last, make the join refuse to add rows. The `relationship` argument states how many matches
+    each row is expected to have, and the join stops with an error if the data break it. Each BMI
+    row should match at most one row of demographics, which `relationship = "many-to-one"` says:
 
     ```r error
     bmi |>
@@ -474,8 +448,8 @@ illustrations:
     ```
 
     The body measures file has {{n:bmx_rows}} rows and the demographics file {{n:demo_rows}}. The join kept
-    {{n:bmx_rows}}, the same as went in, and `relationship = "one-to-one"` did not stop, so no
-    `SEQN` appears twice in either file.
+    {{n:bmx_rows}}, the same as went in. `relationship = "one-to-one"` expects each key at most
+    once on each side; it did not stop, so no `SEQN` appears twice in either file.
 
     The demographics file has 3073 more rows than the body measures file. Who are they? Ask
     which demographic rows found no body measures, and look at their `RIDSTATR`. The codebook says
@@ -547,6 +521,9 @@ illustrations:
     describe the people examined, and estimate nothing about adults in the United States. The
     book on survey data teaches the weights.
   analogy_breaks_when: |
+    A join on a key is also the core of a database query; the next rung writes the same joins in
+    SQL (Structured Query Language).
+
     The join worked cleanly because NHANES built both files around one key and published it. A
     thesis dataset with a register typed in one place and laboratory results in another rarely
     has a key that clean: names spelled two ways, IDs with and without a leading zero. The checks
@@ -574,13 +551,13 @@ must_know:
   bearing: methodological
 - point: |
     Always write `by`. Left out, the join matches on every column the two tables share by name.
-    A column called `year` or `date` that means different things in each will then quietly match
-    nothing.
+    A column called `year` or `date` may mean different things in each. It will then be matched
+    too. dplyr names the columns it used in a message that is easy to miss.
   kind: trap
   bearing: methodological
 - point: |
-    A wide table with one column per visit, district or year has values of a variable in its column
-    names.
+    When a wide table has values of a variable in its column names, make it long with
+    `pivot_longer()` before summarising.
   kind: move
   bearing: methodological
 - point: |
@@ -606,7 +583,7 @@ exercises:
     demographics, and the joined rows with an age of 20 or over. State what each count tells you.
   answer: |
     ```r
-    library(dplyr)
+    library(dplyr, warn.conflicts = FALSE)
 
     bmx <- haven::read_xpt(here::here("data-raw", "BMX_L.xpt"))
     demo <- haven::read_xpt(here::here("data-raw", "DEMO_L.xpt"))
@@ -622,17 +599,6 @@ exercises:
     ```
 
     ```output
-
-    Attaching package: ‘dplyr’
-
-    The following objects are masked from ‘package:stats’:
-
-        filter, lag
-
-    The following objects are masked from ‘package:base’:
-
-        intersect, setdiff, setequal, union
-
     [1] 8860
     [1] 11933
     [1] 8860
@@ -690,22 +656,9 @@ practice:
 
     ```r
     library(tidyr)
-    library(dplyr)
+    library(dplyr, warn.conflicts = FALSE)
 
     screen <- tibble(child = "A", height_2024 = 121, height_2025 = 127)
-    ```
-
-    ```output
-
-    Attaching package: ‘dplyr’
-
-    The following objects are masked from ‘package:stats’:
-
-        filter, lag
-
-    The following objects are masked from ‘package:base’:
-
-        intersect, setdiff, setequal, union
     ```
 
     Make it long, with a column `year` and a column `height_cm`. How many rows will it have?
@@ -736,26 +689,13 @@ practice:
 
     ```r
     library(tidyr)
-    library(dplyr)
+    library(dplyr, warn.conflicts = FALSE)
 
     long <- tibble(
       district = c("Durg", "Durg", "Korba", "Korba"),
       round = c("r1", "r2", "r1", "r2"),
       screened = c(410, 455, 380, 362)
     )
-    ```
-
-    ```output
-
-    Attaching package: ‘dplyr’
-
-    The following objects are masked from ‘package:stats’:
-
-        filter, lag
-
-    The following objects are masked from ‘package:base’:
-
-        intersect, setdiff, setequal, union
     ```
 
     Make it wide, with one row per district and one column per round.
@@ -779,23 +719,10 @@ practice:
     Two made-up tables:
 
     ```r
-    library(dplyr)
+    library(dplyr, warn.conflicts = FALSE)
 
     x <- tibble(id = c(1, 2, 3), weight_kg = c(60, 72, 55))
     y <- tibble(id = c(2, 3, 3, 4), ward = c("A", "B", "C", "D"))
-    ```
-
-    ```output
-
-    Attaching package: ‘dplyr’
-
-    The following objects are masked from ‘package:stats’:
-
-        filter, lag
-
-    The following objects are masked from ‘package:base’:
-
-        intersect, setdiff, setequal, union
     ```
 
     Before you run `left_join(x, y, by = "id")`, say how many rows the result will have and which
@@ -823,23 +750,10 @@ practice:
     Read the two NHANES files.
 
     ```r
-    library(dplyr)
+    library(dplyr, warn.conflicts = FALSE)
 
     bmx <- haven::read_xpt(here::here("data-raw", "BMX_L.xpt"))
     demo <- haven::read_xpt(here::here("data-raw", "DEMO_L.xpt"))
-    ```
-
-    ```output
-
-    Attaching package: ‘dplyr’
-
-    The following objects are masked from ‘package:stats’:
-
-        filter, lag
-
-    The following objects are masked from ‘package:base’:
-
-        intersect, setdiff, setequal, union
     ```
 
     Check that `SEQN` identifies one row in each file: count how many values of `SEQN` appear more
@@ -871,26 +785,13 @@ practice:
 
     ```r
     library(readr)
-    library(dplyr)
+    library(dplyr, warn.conflicts = FALSE)
     library(tidyr)
 
     penguins_raw <- read_csv(
       here::here("data-raw", "penguins_raw.csv"),
       show_col_types = FALSE
     )
-    ```
-
-    ```output
-
-    Attaching package: ‘dplyr’
-
-    The following objects are masked from ‘package:stats’:
-
-        filter, lag
-
-    The following objects are masked from ‘package:base’:
-
-        intersect, setdiff, setequal, union
     ```
 
     Make a table with one row per species and one column per island, holding the number of rows of
@@ -926,28 +827,16 @@ practice:
     Read the two NHANES files.
 
     ```r
-    library(dplyr)
+    library(dplyr, warn.conflicts = FALSE)
 
     bmx <- haven::read_xpt(here::here("data-raw", "BMX_L.xpt"))
     demo <- haven::read_xpt(here::here("data-raw", "DEMO_L.xpt"))
     ```
 
-    ```output
-
-    Attaching package: ‘dplyr’
-
-    The following objects are masked from ‘package:stats’:
-
-        filter, lag
-
-    The following objects are masked from ‘package:base’:
-
-        intersect, setdiff, setequal, union
-    ```
-
     Join the age column `RIDAGEYR` to the body measures file. Then count how many examined
     participants are children under 2, and how many of those have a standing height (`BMXHT`).
-    Say why the second count is what it is.
+    Say why the second count is what it is. The BMX codebook lists the ages at which each body
+    measure is taken.
   answer: |
     ```r
     body <- bmx |>
@@ -986,7 +875,7 @@ practice:
 
     ```r
     library(readr)
-    library(dplyr)
+    library(dplyr, warn.conflicts = FALSE)
     library(tidyr)
 
     penguins_raw <- read_csv(
@@ -1004,17 +893,6 @@ practice:
     ```
 
     ```output
-
-    Attaching package: ‘dplyr’
-
-    The following objects are masked from ‘package:stats’:
-
-        filter, lag
-
-    The following objects are masked from ‘package:base’:
-
-        intersect, setdiff, setequal, union
-
     # A tibble: 3 × 2
       Species                                   mean_value
       <chr>                                          <dbl>
@@ -1062,7 +940,7 @@ practice:
     `year` is the year of birth. A colleague joins them and reports "no patient's sex is recorded".
 
     ```r
-    library(dplyr)
+    library(dplyr, warn.conflicts = FALSE)
 
     visits <- tibble(id = c(1, 2, 3), year = c(2025, 2025, 2026), bmi = c(26.2, 31.0, 23.4))
     register <- tibble(id = c(1, 2, 3), year = c(1980, 1972, 1991), sex = c("F", "M", "F"))
@@ -1072,17 +950,6 @@ practice:
     ```
 
     ```output
-
-    Attaching package: ‘dplyr’
-
-    The following objects are masked from ‘package:stats’:
-
-        filter, lag
-
-    The following objects are masked from ‘package:base’:
-
-        intersect, setdiff, setequal, union
-
     Joining with `by = join_by(id, year)`
     # A tibble: 3 × 4
          id  year   bmi sex
@@ -1126,23 +993,10 @@ practice:
     every column as text.
 
     ```r
-    library(dplyr)
+    library(dplyr, warn.conflicts = FALSE)
 
     register <- tibble(id = c(101, 102, 103), sex = c("F", "M", "F"))
     lab <- tibble(id = c("101", "102", "103"), hb = c("12.1", "14.3", "11.8"))
-    ```
-
-    ```output
-
-    Attaching package: ‘dplyr’
-
-    The following objects are masked from ‘package:stats’:
-
-        filter, lag
-
-    The following objects are masked from ‘package:base’:
-
-        intersect, setdiff, setequal, union
     ```
 
     ```r error
@@ -1193,7 +1047,7 @@ practice:
     what the merge does not establish.
   answer: |
     ```r
-    library(dplyr)
+    library(dplyr, warn.conflicts = FALSE)
 
     bmx <- haven::read_xpt(here::here("data-raw", "BMX_L.xpt"))
     demo <- haven::read_xpt(here::here("data-raw", "DEMO_L.xpt"))
@@ -1207,17 +1061,6 @@ practice:
     ```
 
     ```output
-
-    Attaching package: ‘dplyr’
-
-    The following objects are masked from ‘package:stats’:
-
-        filter, lag
-
-    The following objects are masked from ‘package:base’:
-
-        intersect, setdiff, setequal, union
-
     [1] 11933
     [1] 8860
     [1] 8860
@@ -1248,7 +1091,7 @@ practice:
     female:
 
     ```r
-    library(dplyr)
+    library(dplyr, warn.conflicts = FALSE)
 
     bmx <- haven::read_xpt(here::here("data-raw", "BMX_L.xpt"))
     demo <- haven::read_xpt(here::here("data-raw", "DEMO_L.xpt"))
@@ -1265,17 +1108,6 @@ practice:
     ```
 
     ```output
-
-    Attaching package: ‘dplyr’
-
-    The following objects are masked from ‘package:stats’:
-
-        filter, lag
-
-    The following objects are masked from ‘package:base’:
-
-        intersect, setdiff, setequal, union
-
     # A tibble: 2 × 4
       RIAGENDR n_bmi mean_bmi median_bmi
          <dbl> <int>    <dbl>      <dbl>
@@ -1294,8 +1126,7 @@ practice:
       could differ.
     - That a difference of about one unit matters, or is more than chance. That needs the
       statistics books.
-    - Anything about body fat. BMI is weight for height; the same BMI can mean different amounts of
-      fat in women and men.
+    - Anything about body fat. BMI is weight for height; it does not measure body fat.
   refs:
   - nchs_nhanes_2021_2023_bmx_demo
 retrieval_items:

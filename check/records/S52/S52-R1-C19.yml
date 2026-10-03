@@ -27,7 +27,8 @@ definition:
     element, it stops with an error naming the first expression that failed, and the expressions
     after it are not evaluated. A missing value counts as not `TRUE`, so an expression that gives
     `NA` fails. When an expression is given a name, the name is printed in place of the expression.
-    When every expression is `TRUE`, `stopifnot()` prints nothing.
+    Without a name it prints the expression, as in `all(x > 0) is not TRUE`. When every expression
+    is `TRUE`, `stopifnot()` prints nothing.
 
     Three checks recur. A range check tests that every recorded value of a column lies between a
     lower and an upper limit written in the code. The limits come from a source or a stated
@@ -201,26 +202,13 @@ illustrations:
     wrong, and nothing in the code below knows it.
 
     ```r
-    library(dplyr)
+    library(dplyr, warn.conflicts = FALSE)
 
     clinic <- tibble(
       id = c(101, 102, 103, 104, 105, 106),
       height_cm = c(152, 160, 1.6, 171, 158, 165),
       weight_kg = c(41, 64, 58, 80.2, 620, 58)
     )
-    ```
-
-    ```output
-
-    Attaching package: ‘dplyr’
-
-    The following objects are masked from ‘package:stats’:
-
-        filter, lag
-
-    The following objects are masked from ‘package:base’:
-
-        intersect, setdiff, setequal, union
     ```
 
     Compute each BMI from height in metres, as the section on making new columns did, and report the
@@ -244,14 +232,16 @@ illustrations:
 
     The median hides the damage. Patient 103's height was typed as 1.6, a height in metres, and
     patient 105's weight as 620 for 62. Their BMIs are absurd, but the median looks only at the
-    middle of the ordered values, so two absurd values at the top barely move it. With six rows you
+    middle of the ordered values, so the median still looks ordinary. It is wrong all the same: the
+    two absurd values went to the top and pushed two ordinary ones into the middle. With six rows you
     might have spotted them by eye. With six thousand you would not.
 
     Now write down what you believed about the data, as code. Every height lies between 50 and 250
     cm. Every weight lies between 20 and 300 kg. These limits are a decision, not a fact about
     people. They are set wide on purpose, so that a value outside them is one you must look at
     before you use it. Write them where anyone reading the script can see them and argue with them,
-    as Book 0 asked of every guess.
+    as Book 0 asked of every guess. `all()` turns many `TRUE` and `FALSE` values into one, and it is
+    where `na.rm = TRUE` goes.
 
     ```r error
     stopifnot(
@@ -346,7 +336,7 @@ illustrations:
 
     ```r
     library(haven)
-    library(dplyr)
+    library(dplyr, warn.conflicts = FALSE)
 
     bmx <- read_xpt(here::here("data-raw", "BMX_L.xpt"))
     demo <- read_xpt(here::here("data-raw", "DEMO_L.xpt"))
@@ -479,8 +469,8 @@ illustrations:
     says anything about adults in the United States. Survey weights are taught in the subject on
     India's data infrastructure and complex survey analysis.
 
-    The public NHANES file has already been cleaned by the people who released it, so every check
-    passes. A register typed by hand in a clinic will rarely be so kind. The checks earn their place
+    The public NHANES file has already been cleaned by the people who released it, so every range
+    check on the recorded values passes. A register typed by hand in a clinic will rarely be so kind. The checks earn their place
     on the day they fail.
   numbers:
   - value: '8860'
@@ -563,8 +553,8 @@ must_know:
   kind: trap
   bearing: teaching
 - point: |
-    A weight of 180 kg outside your limits may be a real person, and a repeated ID may be a second
-    visit.
+    A value outside your limits may still be a real person, and a repeated ID may be a second visit.
+    Look before you correct.
   kind: consequence
   bearing: clinical
 - point: |
@@ -607,7 +597,7 @@ exercises:
 
     ```r norun
     library(readr)
-    library(dplyr)
+    library(dplyr, warn.conflicts = FALSE)
 
     children <- read_csv(
       here::here("data-raw", "school_children.csv"),
@@ -742,22 +732,9 @@ practice:
     Five made-up patient IDs:
 
     ```r
-    library(dplyr)
+    library(dplyr, warn.conflicts = FALSE)
 
     ids <- c(101, 102, 103, 103, 104)
-    ```
-
-    ```output
-
-    Attaching package: ‘dplyr’
-
-    The following objects are masked from ‘package:stats’:
-
-        filter, lag
-
-    The following objects are masked from ‘package:base’:
-
-        intersect, setdiff, setequal, union
     ```
 
     Write a check that stops if any ID appears twice. Say what it prints.
@@ -847,25 +824,12 @@ practice:
 
     ```r
     library(readr)
-    library(dplyr)
+    library(dplyr, warn.conflicts = FALSE)
 
     penguins_raw <- read_csv(
       here::here("data-raw", "penguins_raw.csv"),
       show_col_types = FALSE
     )
-    ```
-
-    ```output
-
-    Attaching package: ‘dplyr’
-
-    The following objects are masked from ‘package:stats’:
-
-        filter, lag
-
-    The following objects are masked from ‘package:base’:
-
-        intersect, setdiff, setequal, union
     ```
 
     The section on the data dictionary found that species together with sample number picks out one
@@ -912,8 +876,8 @@ practice:
     bmx <- read_xpt(here::here("data-raw", "BMX_L.xpt"))
     ```
 
-    The file has a BMI column, `BMXBMI`, in kg/m^2, beside weight `BMXWT` in kilograms and height
-    `BMXHT` in centimetres. Check in code that the BMI column agrees with weight divided by height in
+    The file has a BMI column in kg/m^2, named `BMXBMI`. Beside it are weight `BMXWT` in kilograms
+    and height `BMXHT` in centimetres. Check in code that the BMI column agrees with weight divided by height in
     metres squared, on every row where all three are recorded. The file prints BMI to one decimal
     place, so allow a difference of up to 0.05.
   answer: |
@@ -936,9 +900,11 @@ practice:
     The largest difference is 0.04997855 kg/m^2, just under 0.05, and the check passes. A number
     rounded to one decimal place is never more than 0.05 from the full value. So this is what you would
     see if the survey worked out BMI from these two columns and rounded it. The check does not prove
-    that is how they did it. It shows that nothing in the file says otherwise. A column that disagrees
-    with its own formula is a cheap error to find. This line looks for it on all {{n:bmx_rows}} rows
-    at once.
+    that is how they did it. It shows that nothing in the file says otherwise.
+
+    A column that disagrees
+    with its own formula is a cheap error to find. This line looks for it on every row where all
+    three are recorded, at once. `abs()` gives the size of a difference without its sign.
   refs:
   - nchs_nhanes_2021_2023_bmx_demo
 - level: 7
@@ -946,9 +912,7 @@ practice:
     A colleague checks the heights in a made-up register:
 
     ```r
-    library(dplyr)
-
-    register <- tibble(
+    register <- data.frame(
       id = c(1, 2, 3),
       height_cm = c(158, 1.62, 171)
     )
@@ -957,19 +921,6 @@ practice:
       "heights are between 50 and 250 cm" =
         all(register$height_cm >= 50 | register$height_cm <= 250)
     )
-    ```
-
-    ```output
-
-    Attaching package: ‘dplyr’
-
-    The following objects are masked from ‘package:stats’:
-
-        filter, lag
-
-    The following objects are masked from ‘package:base’:
-
-        intersect, setdiff, setequal, union
     ```
 
     Nothing printed, and they write in their notes: "heights checked, all within range." Find what
@@ -1001,7 +952,7 @@ practice:
     103.
 
     ```r
-    library(dplyr)
+    library(dplyr, warn.conflicts = FALSE)
 
     clinic <- tibble(
       id = c(101, 102, 103),
@@ -1018,17 +969,6 @@ practice:
     ```
 
     ```output
-
-    Attaching package: ‘dplyr’
-
-    The following objects are masked from ‘package:stats’:
-
-        filter, lag
-
-    The following objects are masked from ‘package:base’:
-
-        intersect, setdiff, setequal, union
-
     # A tibble: 3 × 2
          id height_cm
       <dbl>     <dbl>
@@ -1115,7 +1055,7 @@ practice:
     A colleague joins made-up visit records to a made-up table of people:
 
     ```r
-    library(dplyr)
+    library(dplyr, warn.conflicts = FALSE)
 
     visits <- tibble(id = c(1, 2, 3), weight_kg = c(61, 74, 55))
     people <- tibble(
@@ -1127,19 +1067,6 @@ practice:
 
     joined <- visits |>
       left_join(people, by = "id")
-    ```
-
-    ```output
-
-    Attaching package: ‘dplyr’
-
-    The following objects are masked from ‘package:stats’:
-
-        filter, lag
-
-    The following objects are masked from ‘package:base’:
-
-        intersect, setdiff, setequal, union
     ```
 
     ```r error
@@ -1202,7 +1129,7 @@ practice:
 
     ```r
     library(haven)
-    library(dplyr)
+    library(dplyr, warn.conflicts = FALSE)
 
     bmx <- read_xpt(here::here("data-raw", "BMX_L.xpt"))
     demo <- read_xpt(here::here("data-raw", "DEMO_L.xpt"))
@@ -1219,17 +1146,6 @@ practice:
     ```
 
     ```output
-
-    Attaching package: ‘dplyr’
-
-    The following objects are masked from ‘package:stats’:
-
-        filter, lag
-
-    The following objects are masked from ‘package:base’:
-
-        intersect, setdiff, setequal, union
-
     [1] 6064
     [1] 0
     [1] 0
@@ -1264,7 +1180,7 @@ practice:
 
     ```r
     library(readr)
-    library(dplyr)
+    library(dplyr, warn.conflicts = FALSE)
 
     penguins_raw <- read_csv(
       here::here("data-raw", "penguins_raw.csv"),
@@ -1289,17 +1205,6 @@ practice:
     ```
 
     ```output
-
-    Attaching package: ‘dplyr’
-
-    The following objects are masked from ‘package:stats’:
-
-        filter, lag
-
-    The following objects are masked from ‘package:base’:
-
-        intersect, setdiff, setequal, union
-
     [1] 2
     [1] 11
     ```
