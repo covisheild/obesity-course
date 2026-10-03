@@ -8,11 +8,13 @@ clusters:
 - craft-and-integrity
 ground_floor_deps:
 - B0-R0-C03
+- B0-R0-C10
 - B0-R0-C28
 - B0-R0-C39
 concept_deps:
 - S58-R1-C09
 - S58-R1-C14
+- S58-R1-C19
 - S58-R1-C20
 definition:
   text: |
@@ -21,8 +23,8 @@ definition:
     when.
 
     Each column has a short heading with the unit. Explanations, exclusions and nonstandard
-    abbreviations go in footnotes below the table, marked with letters or symbols, not in the
-    headings.
+    abbreviations (check the target journal's instructions for authors) go in footnotes below
+    the table, marked with letters or symbols, not in the headings.
 
     Each heading is aligned like the column under it.
   references:
@@ -295,7 +297,8 @@ illustrations:
 
     The fifth column, of odds ratios and P values, is left out because this book does not teach
     odds ratios. Its heading, "Odds ratio (95%Confidence Interval) (P)", packs three things into
-    one heading, which is the explanatory matter ICMJE asks you to put in footnotes.
+    one heading. That is the explanatory matter the International Committee of Medical Journal
+    Editors (ICMJE) asks you to put in footnotes.
   numbers:
   - value: "74986"
     unit: "boys screened, total row of Table 1"
@@ -395,7 +398,7 @@ illustrations:
     job for a table. `S58-R1-C14` chose a figure for the same rows when the claim was a pattern,
     urban above rural. A paper uses one or the other for these numbers, never both.
 
-    Take the NFHS-5 India Fact Sheet, indicators 88 and 89. Build the table in five steps.
+    Take the National Family Health Survey (NFHS-5) India Fact Sheet, indicators 88 and 89. Build the table in five steps.
 
     1. Write the title above the table: what, in whom, where, when. Spell out the survey's name
        once.
@@ -513,7 +516,7 @@ must_know:
   refs: [icmje_2026_manuscript_preparation]
 - point: |
     Give every percentage its count, and name every measure of variation. A column of "mean ±
-    value" is unfinished until its heading or a footnote names the value.
+    value" (± is read "plus or minus") is unfinished until its heading or a footnote names the value.
   kind: move
   bearing: methodological
   refs: [icmje_2026_manuscript_preparation]
@@ -530,7 +533,8 @@ must_know:
   refs: [wilke_2019_dataviz_ch22]
 - point: |
     "Many rows, so a table" is a half-truth. A table is for exact values and for a reader who
-    looks up rows. For a pattern among many values, ICMJE offers a graph instead.
+    looks up rows. For a pattern among many values, ICMJE offers a graph instead. In this book's
+    advice, two or three numbers belong in a sentence.
   kind: boundary
   bearing: methodological
   refs: [icmje_2026_manuscript_preparation]
@@ -538,14 +542,15 @@ must_know:
     Keep the same decimal places down a column of like values, such as the per cents in one table:
     that is Wilke's rule. Cole adds a warning. A column of ratios or P values may need more digits
     in some rows than in others, by the rules of `S58-R1-C09`. Give each value the digits it needs,
-    and line the column up on the decimal point.
+    and line the column up on the decimal point. When a column's decimal places are the same,
+    right alignment lines up the decimal points.
   kind: boundary
   bearing: methodological
   refs: [wilke_2019_dataviz_ch22, cole_2015_too_many_digits]
 - point: |
-    Acknowledge every table's outside data in a source line, every time. Before you use
-    unpublished data, such as a colleague's register or another department's survey, get the
-    owner's permission.
+    Acknowledge every table's outside data in a source line, every time. For published data, the
+    source's licence decides whether you also need permission (next rung). For unpublished data,
+    such as a colleague's register, always get the owner's permission.
   kind: consequence
   bearing: policy
   refs: [icmje_2026_manuscript_preparation]
@@ -575,12 +580,12 @@ exercises:
   prompt: |
     A resident's thesis draft has the table below, made from the real NFHS-5 India Fact Sheet
     numbers for anaemia; the layout is made up for this exercise. Haemoglobin, written Hb, is the
-    oxygen-carrying protein of the blood, measured in grams per decilitre (g/dl). The table has a
+    oxygen-carrying protein of the blood, measured in grams per decilitre (g/dl; a decilitre is a tenth of a litre). The table has a
     border round every cell, and every number is centred.
 
     The table has no title. Its first column heading reads "Prevalence of anaemia among non
     pregnant women (Hb<12) and men (Hb<13) as per NFHS 5 survey conducted in 2019-21 in India
-    (capillary blood)". Its rows are:
+    (capillary blood)"; < is read "below". Its rows are:
 
     ```table
     | | Urban | Rural | Total |
@@ -619,7 +624,7 @@ exercises:
     table.
   answer: |
     Try each reading. If 1.91 years were the standard error, the standard deviation would be the
-    SE times the square root of n.
+    standard error times the square root of n.
 
     ```working
     square root of 74986 = 273.84
@@ -627,7 +632,7 @@ exercises:
     ```
 
     A standard deviation of 523 years is impossible for boys aged 11 to 17. So 1.91 must be the
-    standard deviation: about two thirds of the boys were within 1.91 years of 13.75.
+    standard deviation.
 
     That you could work it out does not excuse the omission. In a table, the heading should read
     "age, mean (SD), years", or a footnote should say that values are mean ± standard deviation.
@@ -659,7 +664,7 @@ exercises:
   answer: |
     Check it against this list. The title says what, in whom, where and when. Each heading is a
     few words and a unit. Every percentage has its count. Any "±" or bracketed value is named as
-    SD, SE or CI. Exclusions and abbreviations are in footnotes. A source line names any outside
+    standard deviation, standard error or confidence interval. Exclusions and abbreviations are in footnotes. A source line names any outside
     data.
 
     There are no lines down the table or between rows. Numbers are right-aligned with the same

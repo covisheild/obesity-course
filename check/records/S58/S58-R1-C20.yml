@@ -22,7 +22,8 @@ definition:
     The words on a figure let a reader understand it without the text of the paper.
 
     The caption is the text printed with a figure, and journals call it the figure legend. Its
-    first element is the figure's title, which states the finding. It then says what is shown, in
+    first sentence is the figure's title, which states the finding. The title is not text drawn
+    across the figure. A table's title, by contrast, sits above the table. The caption then says what is shown, in
     whom, where and when; how many independent people or units were measured, written n; what any
     error bar shows; and where the data came from.
 
@@ -30,8 +31,9 @@ definition:
     Descriptive error bars show how the data are spread: the range, from the lowest value to the
     highest, or the standard deviation (SD). Inferential error bars show how precisely the mean is
     estimated: the standard error of the mean (SE), which is the SD divided by the square root of
-    n, or a 95% confidence interval (CI). When n is 10 or more, it is approximately the mean plus
-    or minus 2 SE.
+    n, or a 95% confidence interval (CI). A 95% CI is a range worked out from the sample. If the
+    study were repeated many times, 95 per cent of such ranges would contain the true mean. When n
+    is 10 or more, the 95% CI is approximately the mean plus or minus 2 SE.
 
     In n, independent means separate people or units.
   references:
@@ -315,12 +317,13 @@ simplified_explanation: |
   which one it is, every time.
 illustrations:
 - body: |
-    `S58-R1-C14` gave the NFHS-5 urban and rural figure its claim, as the first sentence of the
-    caption. The rest of the words on that figure are still to do. Start from a draft as a
+    The claim for the figure of urban and rural adults in the fifth National Family Health Survey
+    (NFHS-5) came in `S58-R1-C14`, as the first sentence of its caption. The rest of the words on that figure are still to do. Start from a draft as a
     spreadsheet leaves it. The draft below is made up for this example; the numbers on it are the
     real ones.
 
-    It has four bars. The side axis runs from 0 to 35 with no title. The bottom axis says "Women"
+    It has four bars. The side axis, which carries the values (the value axis), runs from 0 to 35
+    with no title. The bottom axis says "Women"
     and "Men". A legend box in the corner says "Series1" and "Series2". Hold it up and ask what a
     reader who has only this page can tell. Series1 of what? Per cent of whom, measured how, in
     which survey?
@@ -329,15 +332,15 @@ illustrations:
 
     ```table
     | element | as the spreadsheet left it (made up) | finished |
-    | side axis title | none | adults with BMI {{n:nfhs5_ow_ob_bmi_cutoff}} kg/m^2 or more (%) |
+    | value axis title | none | adults with body mass index (BMI) {{n:nfhs5_ow_ob_bmi_cutoff}} kg/m^2 or more (%) |
     | bottom axis | Women, Men | women, men; no axis title needed |
     | legend | Series1, Series2 | none; "urban" and "rural" written beside the bars |
     | values | none | each bar's per cent printed on it |
     | text size | readable only with the figure filling the screen | readable at its printed width |
     ```
 
-    The side axis title names the quantity and its unit. BMI is the body mass index, in
-    kilograms per square metre (`B0-R0-C14`). "Women" and "men" are categories, so that axis
+    The value axis title names the quantity and its unit. BMI is in kilograms per
+    square metre (`B0-R0-C14`). "Women" and "men" are categories, so that axis
     needs no unit and no title. The legend goes, because the bars now carry their own names: the
     direct labelling of `S58-R1-C18`. The values go on the bars because the reader will want
     them. Rougier and colleagues: "If the numeric values are important, they must be provided
@@ -354,7 +357,7 @@ illustrations:
     So look at it about {{n:figure_check_width_low_cm}} to {{n:figure_check_width_high_cm}} cm wide, or from across the room. If you cannot read the tick
     labels there, neither can a reader of the printed page.
 
-    Now finish the caption. Put C14's sentence first, then everything a reader needs to read the
+    Now finish the caption. Put the claim from `S58-R1-C14` first, then everything a reader needs to read the
     bars without your paper:
 
     > Figure 2. A larger share of urban than of rural adults aged 15–49 had overweight or obesity,
@@ -499,8 +502,8 @@ illustrations:
 figures:
 - file: s58-r1-c20-three-error-bars.png
   caption: "One set of data, three error bars. Cumming, Fidler and Vaux's three measurements,
-    28.7, 38.7 and 52.6, have a mean of 40.0. One arm of each bar, as it would be drawn above and
-    below that mean: 12.0 for the standard deviation, 6.93 for the standard error, and 27.7 for an
+    28.7, 38.7 and 52.6, have a mean of 40.0. Each bar's height is the length of one arm; the error
+    bar itself would run that far above and below 40.0: 12.0 for the standard deviation, 6.93 for the standard error, and 27.7 for an
     approximate 95% confidence interval (4 times the standard error, their rule for three values).
     A reader cannot tell these apart unless the caption names the bar."
   alt: "Three bars of different heights for the same data: 12.0 for the standard deviation, 6.93
@@ -547,7 +550,7 @@ must_know:
   bearing: methodological
   refs: [cumming_2007_error_bars]
 - point: |
-    Title every axis with the quantity and its unit: "body mass index (kg/m^2)", not "BMI".
+    Title every measured axis with the quantity and its unit: "body mass index (kg/m^2)", not "BMI".
   kind: move
   bearing: methodological
   refs: [wilke_2019_dataviz_ch22]
@@ -583,8 +586,8 @@ must_know:
   refs: [wilke_2019_dataviz_ch24]
 - point: |
     Bars on the same group measured at different times cannot show whether the group changed
-    (Cumming's Rule 8). For that, the change in each person has to be worked out and its own
-    interval drawn.
+    (Cumming, Fidler and Vaux). For that, work out each person's change, then the mean change and
+    its interval.
   kind: boundary
   bearing: methodological
   refs: [cumming_2007_error_bars]
@@ -610,8 +613,9 @@ exercises:
 - type: interpretation
   prompt: |
     The numbers here are made up. A figure shows mean waist circumference in two groups, 92 cm and
-    88 cm. Each mean has an error bar whose arm is 3 cm long. The caption ends: "Values are mean ±
-    SEM; n = 40 per group." SEM is the standard error of the mean.
+    88 cm. Each mean has an error bar whose arm is 3 cm long. The caption uses "standard error of
+    the mean (SEM)", another name for the SE, and the sign ±, read "plus or minus". It ends:
+    "Values are mean ± SEM; n = 40 per group."
 
     What does a 3 cm arm tell you about how much waist circumference varies among the people? What
     does it tell you about how precisely each mean is known?
@@ -641,17 +645,19 @@ exercises:
     caption did its job: because it said SEM and gave n, you could work out both.
 - type: critique
   prompt: |
-    A draft thesis figure, made up for this exercise, has a side axis titled "BMI", no title on the
+    A draft thesis figure, made up for this exercise, has a value axis titled "BMI", no title on the
     bottom axis, and this caption:
 
     > Figure 3. Graph showing BMI of participants in the two groups. Error bars represent
     > variation. *p<0.05.
 
+    The asterisk marks a comparison whose P value was below, "<", 0.05.
+
     List everything a reader cannot tell from it, and rewrite what you can.
   answer: |
     - The first sentence names a topic, "graph showing BMI". It should state the finding, such as
       which group's mean BMI was higher and by how much.
-    - The side axis has no unit. It should read "body mass index (kg/m^2)".
+    - The value axis has no unit. It should read "body mass index (kg/m^2)".
     - The bottom axis gives no clue what the two groups are, unless their names sit on it. Name
       them on the axis or beside the bars.
     - "Variation" does not say whether the bars are the range, the SD, the SE or a 95% CI.

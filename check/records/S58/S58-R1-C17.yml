@@ -19,8 +19,10 @@ definition:
 
     The principle of proportional ink, so named by Bergstrom and West, says that a shaded area
     must be in proportion to the value it stands for. On an ordinary, linear axis a bar, or an
-    area shaded down to the axis, therefore starts at zero. On a logarithmic axis a bar stands for
-    a ratio, and it starts at 1. A point or a line carries its value by position alone.
+    area shaded down to the axis, therefore starts at zero. Ink here means everything drawn on the
+    figure: lines, bars, shading. On a logarithmic axis a bar stands for a ratio, and it starts at
+    1, because a ratio of 1 means no difference, and the logarithm of 1 is 0 (`B0-R0-C07`). A point
+    or a line carries its value by position alone.
 
     Take two bars with values a and b, a the smaller, drawn up from an axis start s above zero.
     Their drawn heights are a − s and b − s, read "a minus s" and "b minus s". The drawn ratio is
@@ -36,6 +38,10 @@ definition:
 
     An LF of 1 draws the change at its true size. Tufte counts an LF above 1.05 or below 0.95 as
     substantial distortion.
+
+    For two bars, measure both changes from the bar the change starts from. The LF then comes to
+    a ÷ (a − s) for a rise from a, and b ÷ (b − s) for a fall from b. Two groups side by side have
+    no start: measure from the group you compare against, and say which.
 
     Starting a bar chart's axis above zero is called truncating it. Truncation makes readers judge
     a difference as more severe.
@@ -326,15 +332,17 @@ illustrations:
     A Lie Factor of about 34.3, far past Tufte's 1.05.
 
     Look at what happened in those lines. The 3.4 sat on top of both fractions and dropped out.
-    What was left was 20.6 divided by 0.6. That holds for any two bars. Written as fractions, the
+    What was left was 20.6 divided by 0.6. That holds for any rise between two bars. Written as fractions, the
     change drawn is (b − a) ÷ (a − s), and the change in the data is (b − a) ÷ a.
-    Divide the first by the second. The b − a cancels, top and bottom.
+    Divide the first by the second. Dividing by a fraction is multiplying by it turned upside down.
+    The b − a then cancels, top and bottom.
 
     ```working
+    (b − a) ÷ (a − s) × a ÷ (b − a) = a ÷ (a − s)
     LF = a ÷ (a − s)
     ```
 
-    So the Lie Factor of a truncated bar chart depends only on the smaller bar and where the axis
+    So, for a rise from a, the Lie Factor depends only on the starting bar and where the axis
     starts. Try it on the slide.
 
     ```working
@@ -355,10 +363,9 @@ illustrations:
     Starting the axis halfway to the smaller value, at 10, already draws the rise almost twice
     its size. The last few points before 20.6 do most of the damage.
   analogy_breaks_when: |
-    The shortcut a ÷ (a − s) holds for two bars, with the percentage change measured from the
-    smaller one, a. For a fall, measure from the larger bar instead, or work the two percentage
-    changes out in full. With several bars, work it out for each pair you expect the reader to
-    compare.
+    The shortcut a ÷ (a − s) holds for a rise from a. For a fall from b it is b ÷ (b − s). For two
+    groups, work the two percentage changes out in full from the group you compare against, and
+    say which. With several bars, work it out for each pair you expect the reader to compare.
 
     The NFHS values are real; the slide is made up. The fact sheet's figures are for ages 15 to
     49, and "overweight or obese" is one combined row.
@@ -390,13 +397,14 @@ illustrations:
     allowing the axis to span the region not much larger than the range of the data values". The
     four values run from 18.9 to 24.0. An axis from 18 to 26 holds them with a little room, and it
     carries the change. Say in the caption that the axis starts at 18. Along the bottom, put each
-    round at the year its fieldwork ended: 2016 for NFHS-4, and 2021 for NFHS-5, which ran to 30
-    April 2021.
+    round at its last year: 2016 for NFHS-4, the end of its 2015-16 label, and 2021 for NFHS-5,
+    whose fieldwork ran to 30 April 2021.
 
     Third, bars of the change itself, from zero. Wilke allows this: bars may show a difference "as
     long as we make it explicit which differences we are showing". Women rose by
     {{n:nfhs5_women_ow_ob_change_pp}} percentage points and men by {{n:nfhs5_men_ow_ob_change_pp}}.
-    Two bars of 3.4 and 4.0, from zero, show the rise at its true size.
+    Two bars of 3.4 and 4.0, from zero, show the rise at its true size. The two rises come from
+    separate samples. The bars do not show that the rise was larger in men.
 
     Fourth, for a ratio, a logarithmic axis. Overweight or obesity was found in
     {{n:nfhs5_women_ow_ob_urban_pct}}% of urban women and {{n:nfhs5_women_ow_ob_rural_pct}}% of rural
@@ -452,7 +460,8 @@ illustrations:
       88. Women who are overweight or obese (BMI ≥25.0 kg/m2)21 (%) 33.2 19.7 24.0 20.6
 - body: |
     Does any of this change what readers think? Correll, Bertini and Franconeri tested it. Open
-    "Truncating the Y-Axis: Threat or Menace?" at https://arxiv.org/abs/1907.02035. In their first
+    "Truncating the Y-Axis: Threat or Menace?", the authors' preprint of their CHI 2020 paper, at
+    https://arxiv.org/abs/1907.02035. In their first
     experiment, 40 people rated how big the change in each chart looked, on a scale from 1 to 5. The same
     data were drawn with the axis starting at 0, 25 or 50%. Search for 0.36.
 
@@ -473,7 +482,7 @@ illustrations:
 
     So labelling a cut axis does not repair a bar chart. Changing the lengths does.
   analogy_breaks_when: |
-    These were online volunteers rating plain charts with no subject matter, 40, 32 and 25 people
+    These were paid online participants rating plain charts with no subject matter, 40, 32 and 25 people
     in the three experiments. The size of the shift will differ for a district officer reading
     a slide about her own district.
 
@@ -514,8 +523,10 @@ must_know:
   bearing: methodological
   refs: [correll_2020_truncating_yaxis]
 - point: |
-    Before you show or accept a bar chart whose axis starts above zero, work out a ÷ (a − s) with
-    the smaller bar. If it is above 1.05, redraw it before anyone discusses the size of the gap.
+    Before you show or accept a bar chart whose axis starts above zero, work out the LF from the
+    bar the change starts from: a ÷ (a − s) for a rise from a, b ÷ (b − s) for a fall from b. For
+    two groups, take the group you compare against, and say which. If the LF is above 1.05, redraw
+    the chart before anyone discusses the size of the gap.
   kind: move
   bearing: methodological
   refs: [tufte_1983_visual_display]
@@ -549,7 +560,7 @@ must_know:
   bearing: methodological
   refs: [correll_2020_truncating_yaxis]
 - point: |
-    Repeat the change in percentage points and in per cent, with both values.
+    Report the change in percentage points and in per cent, with both values.
   kind: consequence
   bearing: public
 exercises:
@@ -564,8 +575,9 @@ exercises:
     An LF of 1 draws the change at its true size. Tufte counts above 1.05, or below 0.95, as
     substantial distortion.
 
-    For two bars a and b, a the smaller, drawn from an axis start s, the LF is a ÷ (a − s). With
-    s at zero it is 1.
+    For two bars a and b, a the smaller, drawn from an axis start s: work out the LF from the bar
+    the change starts from. It is a ÷ (a − s) for a rise from a, b ÷ (b − s) for a fall from b.
+    For two groups, take the group you compare against, and say which. With s at zero it is 1.
 - type: design
   prompt: |
     Take one result from the manuscript or thesis section you are rewriting for this book. Plan
@@ -589,12 +601,15 @@ exercises:
     example: "The vertical axis starts at 18%. The share of women with overweight or obesity rose from {{n:nfhs4_women_ow_ob_pct}}% to {{n:nfhs5_women_ow_ob_pct}}%,
     a rise of 3.4 percentage points."
 
-    If your draft has bars from an axis above zero, work out a ÷ (a − s) and write it down. A
+    If your draft has bars from an axis above zero, work out the LF and write it down: a ÷ (a − s)
+    for a rise from a. A
     plan that leaves an LF above 1.05 in place has not finished.
   skill_ref: S58-R1-K02
 retrieval_items:
 - q: What is the Lie Factor of two bars, values a and b with a the smaller, drawn from an axis start s?
-  a: a ÷ (a − s). It is 1 when s is zero, and it grows fast as s nears a.
+  a: a ÷ (a − s) for a rise from a; b ÷ (b − s) for a fall from b. For two groups, measure from
+    the group you compare against. It is 1 when s is zero, and it grows fast as s nears the
+    starting bar.
 - q: Where must a bar start on a linear axis, and where on a logarithmic axis?
   a: At zero on a linear axis, because its length is its value. At 1 on a log axis, because there
     a bar stands for a ratio and 1 means "no difference".
@@ -653,7 +668,8 @@ practice:
     40 divided by 10 = 4
     ```
 
-    The Lie Factor is 4. The second line checks it with a ÷ (a − s): 40 divided by 40 minus 30.
+    The Lie Factor is 4. The second line checks it with a ÷ (a − s), for a rise from a: 40 divided
+    by 40 minus 30.
 - level: 2
   prompt: |
     A value rises from 10 to 20. An infographic shows each value as a picture, and doubles the
@@ -708,8 +724,9 @@ practice:
     ```
 - level: 3
   prompt: |
-    Two ratios, 2 and 0.5, are drawn as bars on a logarithmic axis. Work out each bar's length, in
-    units of log10, when the bars start at 1. Then work them out when the bars start at 0.1.
+    Two ratios, 2 and 0.5, are drawn as bars on a logarithmic axis. Work out each bar's length on
+    the log scale when the bars start at 1: the log10 of its ratio. Then work them out when the
+    bars start at 0.1.
   answer: |
     Starting at 1, a bar's length is the log10 of the ratio.
 
@@ -747,7 +764,7 @@ practice:
     ```
 
     Drawn heights of 0.9 and 4.9 percentage points. The NFHS-5 bar is 5.44 times the NFHS-4 bar,
-    for a data ratio of 1.21. Now the Lie Factor, with the smaller bar.
+    for a data ratio of 1.21. Now the Lie Factor of the rise from 18.9.
 
     ```working
     18.9 divided by 0.9 = 21.0
@@ -759,7 +776,8 @@ practice:
 - level: 5
   prompt: |
     Bergstrom and West describe a bar chart of jobs in Tennessee. The value for 2014 is about 1.08
-    times the value for 2010, but the 2014 bar uses about 2.7 times as much ink. Work out the Lie
+    times the value for 2010, but the 2014 bar uses about 2.7 times as much ink. The bars are
+    equally wide. Work out the Lie
     Factor. Then work out where the axis started, as a fraction of the 2010 value.
   answer: |
     As percentage changes: the data rose by 8 per cent, the ink by 170 per cent.
@@ -789,7 +807,7 @@ practice:
     ```
 
     The axis started at about 0.953 of the 2010 value: about 95 per cent of the way up the first
-    bar. Check with the shortcut: 1 ÷ (1 − 0.953) is about 21, as before.
+    bar. Check with the shortcut for a rise: 1 ÷ (1 − 0.953) is about 21, as before.
   refs: [bergstrom_west_2016_proportional_ink]
 - level: 5
   prompt: |
@@ -798,7 +816,7 @@ practice:
     A slide draws the two as bars on an axis starting at 15%. Work out the Lie Factor of the
     comparison.
   answer: |
-    The smaller bar is rural, 19.7, so the percentage changes are measured from it.
+    Compare urban against rural, so measure both percentage changes from rural, 19.7.
 
     ```working
     33.2 minus 19.7 = 13.5
@@ -811,7 +829,7 @@ practice:
     ```
 
     The urban figure is 68.5 per cent above the rural one. The drawing shows 287 per cent. The Lie
-    Factor is about 4.19, the same as 19.7 ÷ (19.7 − 15).
+    Factor of urban against rural is about 4.19, the same as 19.7 ÷ (19.7 − 15).
   refs: [nfhs5_india_factsheet]
 - level: 6
   prompt: |
@@ -832,7 +850,7 @@ practice:
     West advise for a line. Points are read by position, so this is honest, if the caption says the
     axis starts at 18.
 
-    Bars on that axis would not be honest. With the smaller bar of each pair:
+    Bars on that axis would not be honest. Measure each rise from NFHS-4:
 
     ```working
     20.6 minus 18 = 2.6
@@ -848,8 +866,8 @@ practice:
   prompt: |
     In NFHS-5, {{n:nfhs5_men_ow_ob_urban_pct}}% of urban men aged 15-49 and {{n:nfhs5_men_ow_ob_rural_pct}}% of rural men had overweight or obesity.
     For women the two figures were {{n:nfhs5_women_ow_ob_urban_pct}}% and {{n:nfhs5_women_ow_ob_rural_pct}}%. Draw the urban-to-rural ratio for women and for men
-    as bars on a logarithmic axis. Work out each ratio and each bar's length in units of log10, and
-    the ratio of the two lengths.
+    as bars on a logarithmic axis. Work out each ratio, each bar's length on the log scale (the
+    log10 of its ratio), and the ratio of the two lengths.
   answer: |
     ```working
     33.2 divided by 19.7 = 1.685
@@ -887,7 +905,7 @@ practice:
     5.6667 divided by 0.16505 = 34.33
     ```
 
-    The Lie Factor is about 34.3, as a ÷ (a − s) gives: 20.6 divided by 0.6.
+    The Lie Factor is about 34.3, as a ÷ (a − s) gives for a rise from a: 20.6 divided by 0.6.
 
     Why it looks reasonable: the ratio of the two ratios is a real comparison of picture against
     data. Bergstrom and West use ink ratios that way. But it is not Tufte's Lie Factor, and
@@ -1006,15 +1024,14 @@ figures:
     relations:
     - check: "y[1] / y[0] = 14.8"
 - file: s58-r1-c17-lie-factor-by-start.png
-  caption: "The Lie Factor climbs fastest as the axis start nears the smaller bar. Here it is for a bar slide of women aged 15-49 with overweight or obesity, 20.6% in NFHS-4 and 24.0% in NFHS-5, against where the value axis starts. It is 20.6 ÷ (20.6 − s): 1.00 from zero, 1.94 from 10, 3.68 from 15, 7.92 from 18 and 34.3 from 20. The dashed line is Tufte's 1.05. The side axis is logarithmic."
-  alt: "A rising curve, drawn on a logarithmic side axis, from 1.00 at an axis start of 0 through 1.94 at 10, 3.68 at 15 and 7.92 at 18, to 34.3 at 20. A dashed horizontal line at 1.05 sits just above the first point."
+  caption: "The Lie Factor climbs fastest as the axis start nears the smaller bar. Here it is for a bar slide of women aged 15-49 with overweight or obesity, 20.6% in NFHS-4 and 24.0% in NFHS-5, against where the value axis starts. It is 20.6 ÷ (20.6 − s): 1.00 from zero, 1.94 from 10, 3.68 from 15, 7.92 from 18 and 34.3 from 20. The dashed line is Tufte's 1.05."
+  alt: "A rising curve from 1.00 at an axis start of 0 through 1.94 at 10, 3.68 at 15 and 7.92 at 18, to 34.3 at 20. A dashed horizontal line at 1.05 sits just above the first point."
   source: draw.py
   spec:
     kind: line
     from_table: {block: 0, x: 0, y: [4]}
     x_label: "where the value axis starts (%)"
     y_label: "Lie Factor"
-    y_scale: log
     value_labels: true
     relations:
     - fit: "y = 20.6/(20.6 - x)"
@@ -1045,7 +1062,7 @@ figures:
     - check: "y2[0] - y1[0] = 3.4"
     - check: "y2[1] - y1[1] = 4.0"
 - file: s58-r1-c17-line-from-18.png
-  caption: "The same four values as points joined by lines, each survey placed at the year its fieldwork ended, 2016 for NFHS-4 and 2021 for NFHS-5. The side axis starts at 18%, not zero: a point carries its value by position, so this is honest when the caption says so. Women rose by 3.4 percentage points, men by 4.0."
+  caption: "The same four values as points joined by lines, each survey placed at its last year: 2016 for NFHS-4 (2015-16), and 2021 for NFHS-5, whose fieldwork ended on 30 April 2021. The side axis starts at 18%, not zero: a point carries its value by position, so this is honest when the caption says so. Women rose by 3.4 percentage points, men by 4.0."
   alt: "Two rising lines on an axis from 18 to 26, each labelled at its right end: women with circles, men with squares. Women: 20.6 in 2016 to 24.0 in 2021. Men: 18.9 to 22.9."
   source: draw.py
   spec:
@@ -1054,7 +1071,7 @@ figures:
     series:
     - {name: "women", y: [20.6, 24.0]}
     - {name: "men", y: [18.9, 22.9]}
-    x_label: "year the survey's fieldwork ended"
+    x_label: "last year of the survey"
     y_label: "overweight or obese, aged 15-49 (%)"
     y_range: [18, 26]
     labels:
@@ -1064,7 +1081,7 @@ figures:
     - check: "y1[1] - y1[0] = 3.4"
     - check: "y2[1] - y2[0] = 4.0"
 - file: s58-r1-c17-change-bars.png
-  caption: "The rise itself, drawn as bars from zero: between NFHS-4 (2015-16) and NFHS-5 (2019-21), overweight or obesity among adults aged 15-49 rose by 3.4 percentage points in women and 4.0 in men. Each bar's length is the change, so the change is drawn at its true size."
+  caption: "The rise itself, drawn as bars from zero: between NFHS-4 (2015-16) and NFHS-5 (2019-21), overweight or obesity among adults aged 15-49 rose by 3.4 percentage points in women and 4.0 in men. Each bar's length is the change, so the change is drawn at its true size. The two rises come from separate samples. The figure does not show that the rise was larger in men."
   alt: "Two bars from zero. Women: 3.4 percentage points. Men: 4.0."
   source: draw.py
   spec:

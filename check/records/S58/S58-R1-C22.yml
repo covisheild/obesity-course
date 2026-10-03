@@ -21,9 +21,9 @@ concept_deps:
 definition:
   text: |
     Making a figure is a sequence of decisions, taken in a fixed order, which any program can be made to
-    carry out. The first four decide the figure's content. They are the one claim it makes, the mark that
-    suits the shape of the data, and the range of the value axis. The fourth is the words on it, with each
-    axis titled and given its unit.
+    carry out. The first four decide the figure's content. They are the claim, the mark that suits the
+    shape of the data, the range of the value axis (the side axis that carries the numbers), and the
+    words on it, with each axis titled and given its unit.
 
     A default is a setting a program uses when you have not chosen one. Defaults are made to suit
     any plot, so they suit no particular plot well.
@@ -32,7 +32,7 @@ definition:
 
     An image is saved either as a bitmap, a grid of coloured dots called pixels, or as a vector
     graphic, which stores the shapes themselves and is redrawn at any size without losing
-    sharpness.
+    sharpness. A png or jpeg file is a bitmap; a pdf can hold a vector graphic.
   references:
   - citekey: rougier_2014_ten_rules_figures
     kind: textbook
@@ -302,17 +302,19 @@ illustration:
     Here is the trap with the chart a program offers first. It looks finished.
 
     Open the *National Family Health Survey (NFHS-5), 2019-21: India Fact Sheet* at https://dhsprogram.com/pubs/pdf/OF43/India_National_Fact_Sheet.pdf. Search
-    for anaemic. The fact sheet counts a person as anaemic when it is below a cut-off for their group. Five of its rows are these.
+    for anaemic. The fact sheet counts a person as anaemic when their haemoglobin, measured in grams
+    per decilitre (g/dl), is below a cut-off for their group. For women it is 12.0 g/dl, or 11.0 if
+    pregnant (indicators 93 and 94). Five of its rows are these ([22] marks a footnote).
 
-    > 92. Children age 6-59 months who are anaemic (<11.0 g/dl)22 (%) 64.2 68.3 67.1 58.6
+    > 92. Children age 6-59 months who are anaemic (<11.0 g/dl)[22] (%) 64.2 68.3 67.1 58.6
 
-    > 95. All women age 15-49 years who are anaemic22 (%) 53.8 58.5 57.0 53.1
+    > 95. All women age 15-49 years who are anaemic[22] (%) 53.8 58.5 57.0 53.1
 
-    > 96. All women age 15-19 years who are anaemic22 (%) 56.5 60.2 59.1 54.1
+    > 96. All women age 15-19 years who are anaemic[22] (%) 56.5 60.2 59.1 54.1
 
-    > 97. Men age 15-49 years who are anaemic (<13.0 g/dl)22 (%) 20.4 27.4 25.0 22.7
+    > 97. Men age 15-49 years who are anaemic (<13.0 g/dl)[22] (%) 20.4 27.4 25.0 22.7
 
-    > 98. Men age 15-19 years who are anaemic (<13.0 g/dl)22 (%) 25.0 33.9 31.1 29.2
+    > 98. Men age 15-19 years who are anaemic (<13.0 g/dl)[22] (%) 25.0 33.9 31.1 29.2
 
     The four columns are NFHS-5 (2019-21) urban, rural and total, then NFHS-4 (2015-16) total, as
     in the overweight rows you have used all through this book. Take the two totals for each
@@ -338,7 +340,9 @@ illustration:
 
     **1. The claim.** Cover the chart and write the one sentence it should make. Here: between NFHS-4 and NFHS-5, the share with anaemia rose in every group.
 
-    Rows that would weaken it stay in.
+    Keep every row, even one that would weaken the claim. Here none does: indicators 93 and 94, for
+    non-pregnant and pregnant women, rose too. The fact sheet prints no confidence intervals. So it
+    cannot show whether the smallest rises are more than sampling variation.
 
     **2. The mark.** The shape of the data is amounts for a set of groups, at two times. That
     takes bars, or dots where the bars would end, on one shared axis (`S58-R1-C15`). Put each
@@ -353,7 +357,8 @@ illustration:
     the small grey text larger and darker.
 
     **6. Colour.** Its job here is to separate two rounds. Red against green fails in grey and for a reader with colour-vision deficiency (`S58-R1-C19`).
-    Choose two colours that differ clearly in lightness.
+    Choose two colours that differ clearly in lightness. Where you cannot, keep the order fixed and
+    name each round on the figure.
 
     **7. The caption.** Finding first, then what the bars are, who, when, and the source (`S58-R1-C20`).
 
@@ -363,7 +368,7 @@ illustration:
     **9. The checks.** Shrink the figure on screen to about {{n:figure_check_width_low_cm}} to {{n:figure_check_width_high_cm}} cm wide, the size of one column
     of a printed page, and read every label (`S58-R1-C20`).
 
-    Here is the figure sheet you have written, decision by decision.
+    Here is the figure sheet you have written. It records the data as well as the nine decisions.
 
     ```table
     | step | decision for this figure |
@@ -372,14 +377,14 @@ illustration:
     | mark | bars, the two rounds side by side within each group |
     | axis | value axis from 0 to 80, titled "anaemic (%)" |
     | words | groups under the bars with ages in years; no title on the drawing |
-    | defaults changed | legend names the rounds; faint grid; larger, darker text |
-    | colour | two colours that differ in lightness; NFHS-4 always on the left; each round named over the first pair |
+    | defaults changed | no legend; faint grid; larger, darker text |
+    | colour | this book's two colours merge in grey, so NFHS-4 always on the left and each round named over the first pair |
     | caption | finding first; what the bars show; ages; no counts in the source; source and indicator numbers |
     | saving | the journal's format and size; otherwise pdf, and png where a bitmap is required |
     | checks | read at {{n:figure_check_width_low_cm}} cm wide; in grey; through a simulator |
     ```
 
-    The figure that results is drawn below. That is the point: any program that will take these decisions can draw it again.
+    The figure drawn from this sheet is the one at the start of this section. That is the point: any program that will take these decisions can draw it again.
   analogy_breaks_when: |
     The sheet makes the figure repeatable only as far as you wrote it down. A change you make by
     dragging a label with the mouse and forget to record is lost the next time.
@@ -447,6 +452,18 @@ illustration:
     as_of: '2026-10-02'
     quote: |-
       98. Men age 15-19 years who are anaemic (<13.0 g/dl)22 (%) 25.0 33.9 31.1 29.2
+  - value: "12.0"
+    unit: g/dl, haemoglobin cut-off for anaemia in non-pregnant women aged 15-49
+    citekey: nfhs5_india_factsheet
+    as_of: '2026-10-03'
+    quote: |-
+      93. Non-pregnant women age 15-49 years who are anaemic (<12.0 g/dl)22 (%) 54.1  58.7  57.2  53.2
+  - value: "11.0"
+    unit: g/dl, haemoglobin cut-off for anaemia in pregnant women aged 15-49
+    citekey: nfhs5_india_factsheet
+    as_of: '2026-10-03'
+    quote: |-
+      94. Pregnant women age 15-49 years who are anaemic (<11.0 g/dl)22 (%) 45.7  54.3  52.2  50.4
 figures:
 - file: s58-r1-c22-anaemia-two-rounds.png
   caption: "Between NFHS-4 (2015-16) and NFHS-5 (2019-21), the share with anaemia rose in each of the five groups shown, by 1.9 to 8.5 percentage points. Bars show the per cent anaemic, by each group's own haemoglobin cut-off; ages in years. Counts are not given in the source. Source: NFHS-5 India Fact Sheet, indicators 92 and 95 to 98."
@@ -538,7 +555,8 @@ common_misreading: |
   is that a figure made by hand cannot be made again exactly. In his own words, "The best
   visualization software is the one that allows you to make the figures you need." A spreadsheet
   figure made from a written figure sheet, with every default checked, can be a good figure. It is
-  harder to repeat than one drawn by code.
+  harder to repeat than one drawn by code. Drawing figures by code is taught in the course's book on
+  R and reproducibility (S52).
 reporting_sentence: |
   Figures were drawn in [program and version] from the data in [table or file]. The decisions
   for each figure, including axis ranges and colours, are listed in [supplementary file].
@@ -583,13 +601,13 @@ exercises:
     - Saving: jpeg blurs lines and text. Use the journal's format; otherwise pdf, or png where a
       bitmap is required.
 
-    Two lines are missing. There is no step for checking the defaults that are left, and none for
-    the checks at printed size and in grey.
+    Three lines are missing: no step for checking the defaults that are left, none for the
+    caption, and none for the checks at printed size and in grey.
   skill_ref: S58-R1-K02
 - type: design
   prompt: |
-    Take the figure you are drawing for your build section. Write its figure sheet, all nine
-    lines, before you open any program. Then draw it, and note every place where you had to change
+    Take the figure you are drawing for your build section. Write its figure sheet, the data and
+    all nine decisions, before you open any program. Then draw it, and note every place where you had to change
     something the sheet did not mention. Add those to the sheet.
   answer: |
     Judge your sheet by whether a colleague could draw the same figure from it and your data
@@ -620,7 +638,7 @@ exercises:
 
     Then the real cost. Ask what happens when her guide finds one wrong value in the data. If she
     changed fifteen things by hand, she must remember and repeat all fifteen. Show her the figure
-    sheet: nine lines, written once, kept beside the file. With it, the redraw takes minutes.
+    sheet: the data and nine decisions, written once, kept beside the file. With it, the redraw takes minutes.
 
     End on what the sheet does not do. It does not make her data right. She checks those first.
 retrieval_items:
