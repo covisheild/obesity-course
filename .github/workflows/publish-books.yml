@@ -1,0 +1,61 @@
+# The book publisher: frozen books go to drharshmaheshwari.com without any chat holding a key.
+# What it does and why: check/web/publish.py (top of the file). Setup: check/web/PUBLISHING.md.
+#
+#   push to main (a book frozen or changed) -> publish: PDF + figures to R2, a Preview pull request on the site
+#   every 6 hours                           -> publish (catches anything missed; marks merged books live in Notion)
+#   push to a claude/** branch (same files)  -> check: uses every key, builds Book 0, changes nothing
+#   Actions tab -> Run workflow             -> choose check or publish
+name: Publish books
+
+on:
+  push:
+    branches: [main, 'claude/**']
+    paths: ['books/*/book.yml', 'map/BOOKS.yml', 'check/records/**', 'check/figures/**', 'prose/GLOSSARY.md',
+            'check/references/**', 'check/pdf/**', 'check/web/**', '.github/workflows/publish-books.yml']
+  schedule:
+    - cron: '41 */6 * * *'
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: 'check (change nothing) or publish'
+        type: choice
+        options: [check, publish]
+        default: check
+
+concurrency:
+  group: publish-books
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+
+jobs:
+  publish:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install the build's tools
+        run: |
+          sudo apt-get update -qq && sudo apt-get install -y -qq libpango-1.0-0 libpangoft2-1.0-0 libharfbuzz0b fonts-dejavu-core
+          pip install -q pyyaml jsonschema weasyprint qrcode matplotlib fonttools boto3 pypandoc_binary
+          ln -sf "$(python -c 'import pypandoc; print(pypandoc.get_pandoc_path())')" /usr/local/bin/pandoc
+          pandoc --version | head -1
+      - name: Run the publisher
+        env:
+          R2_ACCOUNT_ID: ${{ secrets.R2_ACCOUNT_ID }}
+          R2_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
+          R2_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
+          SITE_REPO_TOKEN: ${{ secrets.SITE_REPO_TOKEN }}
+          NOTION_TOKEN: ${{ secrets.NOTION_TOKEN }}
+          PUBLISH_MODE: ${{ vars.PUBLISH_MODE }}
+          SITE_DIR: ${{ runner.temp }}/site
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then mode="${{ inputs.mode }}";
+          elif [ "${{ github.ref }}" = "refs/heads/main" ]; then mode=publish;
+          else mode=check; fi
+          echo "mode: $mode"
+          python check/web/publish.py "$mode"

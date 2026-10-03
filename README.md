@@ -39,6 +39,8 @@ plan/                  pilot inventories and verification notes
 python check/build.py --check          # schema, citations, plain-language checks
 python check/build.py --subject B0     # assemble a booklet to check/_build/: md, docx, html, pdf
 python check/series.py                 # regenerate map/BOOKS.yml after a book.yml status changes
+python check/web/export.py --frozen --out <site>/src/data/books/obesity-expertise
+                                       # frozen books -> the website reader's JSON (figures to R2)
 ```
 
 `check/_build/` is generated and not committed.
