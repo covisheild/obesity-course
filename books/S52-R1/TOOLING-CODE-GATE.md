@@ -268,3 +268,4 @@ field is then identical to the original, and validate's survival check passes.
 
 The S52-R1 records do not exist yet, so nothing was run on real book content. The gate reports
 `0 record(s) with code`.
+- 3 Oct: figure specs accept an opt-in `x_ticks` list (figspec.py, draw.py, schema), first used by C17's visit chart; other specs' fingerprints unchanged (build summary identical).
